@@ -21,12 +21,7 @@ impl BaseCodec for SseCodec {
 pub struct Rust2DartMessageSse(Vec<u8>);
 
 impl Rust2DartMessageTrait for Rust2DartMessageSse {
-    type InnerType = Vec<u8>;
     type WireSyncType = WireSyncReturnSse;
-
-    fn new(inner: Self::InnerType) -> Self {
-        Self(inner)
-    }
 
     fn simplest() -> Self {
         Self(vec![])

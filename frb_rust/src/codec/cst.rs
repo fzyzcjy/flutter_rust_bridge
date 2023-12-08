@@ -17,12 +17,7 @@ impl BaseCodec for CstCodec {
 pub struct Rust2DartMessageCst(DartAbi);
 
 impl Rust2DartMessageTrait for Rust2DartMessageCst {
-    type InnerType = ();
     type WireSyncType = ();
-
-    fn new(inner: Self::InnerType) -> Self {
-        unreachable!()
-    }
 
     fn simplest() -> Self {
         unreachable!()

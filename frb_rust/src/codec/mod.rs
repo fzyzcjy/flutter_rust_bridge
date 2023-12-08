@@ -9,18 +9,12 @@ pub(crate) mod sse;
 pub trait BaseCodec: Clone + Copy {
     type Message: Rust2DartMessageTrait;
 
-    fn encode<T: IntoDart>(
-        data: T,
-        result_code: Rust2DartAction,
-    ) -> <Self::Message as Rust2DartMessageTrait>::InnerType;
+    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Self::Message;
 }
 
 /// An encoded message
 pub trait Rust2DartMessageTrait {
-    type InnerType: IntoDart;
     type WireSyncType;
-
-    fn new(inner: Self::InnerType) -> Self;
 
     fn simplest() -> Self;
 

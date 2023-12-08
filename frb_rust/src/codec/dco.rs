@@ -22,12 +22,7 @@ impl BaseCodec for DcoCodec {
 pub struct Rust2DartMessageDco(DartAbi);
 
 impl Rust2DartMessageTrait for Rust2DartMessageDco {
-    type InnerType = DartAbi;
     type WireSyncType = WireSyncReturnDco;
-
-    fn new(inner: Self::InnerType) -> Self {
-        Self(inner)
-    }
 
     fn simplest() -> Self {
         Self(().into_dart())
