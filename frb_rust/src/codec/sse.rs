@@ -17,6 +17,37 @@ impl BaseCodec for SseCodec {
     }
 }
 
+pub struct Rust2DartMessageSse(Vec<u8>);
+
+impl Rust2DartMessageTrait for Rust2DartMessageSse {
+    type InnerType = Vec<u8>;
+    type WireSyncType = WireSyncReturnSse;
+
+    fn new(inner: Self::InnerType) -> Self {
+        Self(inner)
+    }
+
+    fn simplest() -> Self {
+        Self(vec![])
+    }
+
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
+        let WireSyncReturnSseStruct { ptr, len } = raw;
+        Self(vec_from_leak_ptr(ptr, len))
+    }
+
+    fn into_raw_wire_sync(self) -> Self::WireSyncType {
+        #[cfg(not(wasm))]
+        {
+            let (ptr, len) = into_leak_vec_ptr(self.0);
+            return WireSyncReturnSseStruct { ptr, len };
+        }
+
+        #[cfg(wasm)]
+        return self.0;
+    }
+}
+
 // TODO maybe move
 pub struct SseDeserializer {
     // Only to be used for generated code

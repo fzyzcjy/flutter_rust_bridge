@@ -15,3 +15,17 @@ pub trait BaseCodec: Clone + Copy {
         result_code: Rust2DartAction,
     ) -> <Self::Rust2DartMessage as Rust2DartMessageTrait>::InnerType;
 }
+
+/// An encoded message
+pub trait Rust2DartMessageTrait {
+    type InnerType: IntoDart;
+    type WireSyncType;
+
+    fn new(inner: Self::InnerType) -> Self;
+
+    fn simplest() -> Self;
+
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self;
+
+    fn into_raw_wire_sync(self) -> Self::WireSyncType;
+}
