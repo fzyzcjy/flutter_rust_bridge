@@ -8,7 +8,6 @@ use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen_codec_structs;
 use enum_dispatch::enum_dispatch;
-use serde::Serialize;
 use std::ops::Deref;
 
 codegen_codec_structs!(WireDartCodecEntrypoint);
@@ -27,4 +26,4 @@ pub(crate) trait WireDartCodecEntrypointTrait<'a>:
     fn generate_rust2dart_codec_object(&self, func: &IrFunc) -> String;
 }
 
-pub(crate) trait WireDartCodecOutputSpec: Clone + Serialize {}
+pub(crate) trait WireDartCodecOutputSpec {}
