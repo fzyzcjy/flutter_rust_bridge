@@ -68,10 +68,9 @@ class WriteBuffer {
   void _resize([int? requiredLength]) {
     final int doubleLength = _buffer.length * 2;
     final int newLength = math.max(requiredLength ?? 0, doubleLength);
-    final RustVecU8 newBuffer = RustVecU8(newLength, _buffer.binding);
-    newBuffer.setRange(0, _buffer.length, _buffer);
-    _buffer.dispose();
-    _buffer = newBuffer;
+    // NOTE MODIFIED Originally it creates a new list, but here we directly resize
+    // since Rust's Vec has good resize feature
+    _buffer.resize(newLength);
   }
 
   /// Write a Uint8 into the buffer.
