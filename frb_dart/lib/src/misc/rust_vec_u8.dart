@@ -18,13 +18,9 @@ class RustVecU8 {
   Uint8List? _typedListView;
 
   /// {@macro flutter_rust_bridge.internal}
-  factory RustVecU8(int length, GeneralizedFrbRustBinding binding) {
-    final ptr = binding.rustVecU8New(length);
-    final typedListView = ptr.asTypedList(length);
-    return RustVecU8._(length, binding, ptr, typedListView);
+  RustVecU8(this.length, this.binding) : _ptr = binding.rustVecU8New(length) {
+    _typedListView = _ptr!.asTypedList(length);
   }
-
-  RustVecU8._(this.length, this.binding, this._ptr, this._typedListView);
 
   /// {@macro flutter_rust_bridge.internal}
   void dispose() {
