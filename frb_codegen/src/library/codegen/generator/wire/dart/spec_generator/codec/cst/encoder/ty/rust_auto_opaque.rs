@@ -10,10 +10,10 @@ use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustAutoOpaqueWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
-        let enable_move = self.ir.ownership_mode == IrTypeOwnershipMode::Owned;
+        let needs_move = self.ir.needs_move();
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member
-            return raw.cstEncode(move: {enable_move});",
+            return raw.cstEncode(move: {needs_move});",
         )))
     }
 
