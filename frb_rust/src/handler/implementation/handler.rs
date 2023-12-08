@@ -125,10 +125,10 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> <Rust2DartCodec::Rust2DartMessage as Rust2DartMessageTrait>::WireSyncType
+    ) -> <Rust2DartCodec::Message as Rust2DartMessageTrait>::WireSyncType
     where
-        SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Rust2DartMessage, Rust2DartCodec::Rust2DartMessage>
-            + UnwindSafe,
+        SyncTaskFn:
+            FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
@@ -155,7 +155,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         // Deliberately construct simplest possible WireSyncReturn object
         // instead of more realistic things like `WireSyncReturnSrc::new(Panic, ...)`.
         // See comments in [wrap] for why.
-        .unwrap_or_else(|_| Rust2DartCodec::Rust2DartMessage::simplest().into_raw_wire_sync())
+        .unwrap_or_else(|_| Rust2DartCodec::Message::simplest().into_raw_wire_sync())
     }
 
     #[cfg(feature = "rust-async")]

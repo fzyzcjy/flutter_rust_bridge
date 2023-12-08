@@ -7,12 +7,12 @@ pub(crate) mod dco;
 pub(crate) mod sse;
 
 pub trait BaseCodec: Clone + Copy {
-    type Rust2DartMessage: Rust2DartMessageTrait;
+    type Message: Rust2DartMessageTrait;
 
     fn encode<T: IntoDart>(
         data: T,
         result_code: Rust2DartAction,
-    ) -> <Self::Rust2DartMessage as Rust2DartMessageTrait>::InnerType;
+    ) -> <Self::Message as Rust2DartMessageTrait>::InnerType;
 }
 
 /// An encoded message

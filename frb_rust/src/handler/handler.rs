@@ -48,10 +48,10 @@ pub trait Handler {
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> <Rust2DartCodec::Rust2DartMessage as Rust2DartMessageTrait>::WireSyncType
+    ) -> <Rust2DartCodec::Message as Rust2DartMessageTrait>::WireSyncType
     where
-        SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Rust2DartMessage, Rust2DartCodec::Rust2DartMessage>
-            + UnwindSafe,
+        SyncTaskFn:
+            FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 
     /// Same as [`wrap`][Handler::wrap], but for async Rust.

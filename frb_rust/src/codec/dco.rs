@@ -8,7 +8,7 @@ use crate::rust2dart::action::Rust2DartAction;
 pub struct DcoCodec;
 
 impl BaseCodec for DcoCodec {
-    type Rust2DartMessage = Rust2DartMessageDco;
+    type Message = Rust2DartMessageDco;
 
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
         if result_code == Rust2DartAction::CloseStream {

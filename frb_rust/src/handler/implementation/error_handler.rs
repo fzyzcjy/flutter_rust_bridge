@@ -23,11 +23,11 @@ impl ErrorHandler for ReportDartErrorHandler {
         Rust2DartSender::new(Channel::new(port)).send(msg);
     }
 
-    fn handle_error_sync<Rust2DartCodec>(&self, error: Error) -> Rust2DartCodec::Rust2DartMessage
+    fn handle_error_sync<Rust2DartCodec>(&self, error: Error) -> Rust2DartCodec::Message
     where
         Rust2DartCodec: BaseCodec,
     {
         let result_code = (&error).into();
-        Rust2DartCodec::Rust2DartMessage::new(Rust2DartCodec::encode(error, result_code))
+        Rust2DartCodec::Message::new(Rust2DartCodec::encode(error, result_code))
     }
 }

@@ -85,10 +85,10 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         &self,
         _task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<Rust2DartCodec::Rust2DartMessage, Rust2DartCodec::Rust2DartMessage>
+    ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
     where
-        SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Rust2DartMessage, Rust2DartCodec::Rust2DartMessage>
-            + UnwindSafe,
+        SyncTaskFn:
+            FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
         sync_task()
