@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::codec::CodecModePack;
+use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;

@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::codec::BaseCodecEntrypointTrait;
+use crate::codegen::generator::codec::structs::BaseCodecEntrypointTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,

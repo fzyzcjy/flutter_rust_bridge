@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::codec::{CodecMode, CodecModePack};
+use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;

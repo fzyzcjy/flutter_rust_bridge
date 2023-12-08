@@ -5,6 +5,7 @@ use crate::codegen::ir::pack::IrPack;
 
 pub(crate) mod acc;
 pub(crate) mod api_dart;
+pub(crate) mod codec;
 pub(crate) mod misc;
 pub(crate) mod wire;
 

@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart;
-use crate::codegen::generator::misc::codec::CodecMode;
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;

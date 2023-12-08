@@ -1,5 +1,5 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::generator::misc::codec::CodecMode;
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypoint, WireRustCodecOutputSpec,

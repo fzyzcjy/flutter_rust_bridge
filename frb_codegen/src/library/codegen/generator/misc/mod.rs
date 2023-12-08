@@ -8,7 +8,6 @@ use std::ops::Add;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
 
-pub(crate) mod codec;
 pub(crate) mod structs_macro;
 pub(crate) mod target;
 pub(crate) mod text_generator_utils;
