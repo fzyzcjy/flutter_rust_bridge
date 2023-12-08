@@ -10,15 +10,6 @@ pub enum Rust2DartAction {
     Panic = 3,
 }
 
-impl From<&Error> for Rust2DartAction {
-    fn from(value: &Error) -> Self {
-        match value {
-            Error::CustomError => Self::Error,
-            Error::Panic(_) => Self::Panic,
-        }
-    }
-}
-
 impl IntoDart for Rust2DartAction {
     fn into_dart(self) -> DartAbi {
         (self as i32).into_dart()
