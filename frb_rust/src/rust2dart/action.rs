@@ -5,7 +5,7 @@ use crate::platform_types::DartAbi;
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Rust2DartAction {
     Success = 0,
-    Error = 1,
+    Error = 1, // TODO rename?
     CloseStream = 2,
     Panic = 3,
 }
