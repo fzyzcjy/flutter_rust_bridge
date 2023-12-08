@@ -11,7 +11,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) struct DcoWireDartCodecEntrypoint {}
 
-impl BaseCodecEntrypointTrait<WireDartGeneratorContext, Box<dyn WireDartCodecOutputSpec>>
+impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, Box<dyn WireDartCodecOutputSpec>>
     for DcoWireDartCodecEntrypoint
 {
     fn generate_encode(
@@ -34,7 +34,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext, Box<dyn WireDartCodecOut
     }
 }
 
-impl WireDartCodecEntrypointTrait for DcoWireDartCodecEntrypoint {
+impl WireDartCodecEntrypointTrait<'_> for DcoWireDartCodecEntrypoint {
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
         unreachable!()
     }
