@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::generator::misc::StructOrRecord::Struct;
+use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {

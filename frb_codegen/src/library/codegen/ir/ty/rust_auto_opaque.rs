@@ -35,6 +35,6 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
 
 impl IrTypeRustAutoOpaque {
     pub(crate) fn needs_move(&self) -> bool {
-        self.ir.ownership_mode == IrTypeOwnershipMode::Owned
+        self.ownership_mode == IrTypeOwnershipMode::Owned
     }
 }
