@@ -24,8 +24,8 @@ pub mod output_code;
 #[derive(Serialize)]
 pub(super) struct WireRustOutputSpec {
     pub(super) misc: WireRustOutputSpecMisc,
-    pub(super) rust2dart: Vec<Box<dyn WireRustCodecOutputSpec>>,
-    pub(super) dart2rust: Vec<Box<dyn WireRustCodecOutputSpec>>,
+    pub(super) rust2dart: Vec<WireRustCodecOutputSpec>,
+    pub(super) dart2rust: Vec<WireRustCodecOutputSpec>,
 }
 
 pub(super) fn generate(

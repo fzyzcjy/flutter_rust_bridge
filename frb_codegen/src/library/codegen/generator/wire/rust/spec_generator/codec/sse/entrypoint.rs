@@ -10,14 +10,14 @@ use crate::codegen::ir::ty::IrType;
 
 pub(crate) struct SseWireRustCodecEntrypoint {}
 
-impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, Box<dyn WireRustCodecOutputSpec>>
+impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputSpec>
     for SseWireRustCodecEntrypoint
 {
     fn generate_encode(
         &self,
         context: WireRustGeneratorContext,
         types: &[IrType],
-    ) -> Option<Box<dyn WireRustCodecOutputSpec>> {
+    ) -> Option<WireRustCodecOutputSpec> {
         todo!()
     }
 
@@ -25,7 +25,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, Box<dyn WireRustCode
         &self,
         context: WireRustGeneratorContext,
         types: &[IrType],
-    ) -> Option<Box<dyn WireRustCodecOutputSpec>> {
+    ) -> Option<WireRustCodecOutputSpec> {
         todo!()
     }
 }

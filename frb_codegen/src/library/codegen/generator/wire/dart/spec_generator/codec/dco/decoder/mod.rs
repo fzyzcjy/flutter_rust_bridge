@@ -22,8 +22,6 @@ pub(crate) struct WireDartOutputSpecCodecDcoDecoder {
     pub(crate) impl_decode: Acc<Vec<WireDartOutputCode>>,
 }
 
-impl WireDartCodecOutputSpec for WireDartOutputSpecCodecDcoDecoder {}
-
 pub(crate) fn generate(
     context: WireDartCodecDcoGeneratorContext,
     types: &[IrType],

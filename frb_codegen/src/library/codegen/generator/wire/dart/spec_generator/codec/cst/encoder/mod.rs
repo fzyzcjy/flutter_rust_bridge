@@ -26,8 +26,6 @@ pub(crate) struct WireDartOutputSpecCodecCstEncoder {
     pub(crate) encode_api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
 }
 
-impl WireDartCodecOutputSpec for WireDartOutputSpecCodecCstEncoder {}
-
 pub(crate) fn generate(
     context: WireDartCodecCstGeneratorContext,
     types: &[IrType],

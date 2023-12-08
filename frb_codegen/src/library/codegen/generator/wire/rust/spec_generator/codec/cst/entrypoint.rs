@@ -16,14 +16,14 @@ use itertools::Itertools;
 
 pub(crate) struct CstWireRustCodecEntrypoint {}
 
-impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, Box<dyn WireRustCodecOutputSpec>>
+impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputSpec>
     for CstWireRustCodecEntrypoint
 {
     fn generate_encode(
         &self,
         context: WireRustGeneratorContext,
         types: &[IrType],
-    ) -> Option<Box<dyn WireRustCodecOutputSpec>> {
+    ) -> Option<WireRustCodecOutputSpec> {
         todo!()
     }
 
@@ -31,7 +31,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, Box<dyn WireRustCode
         &self,
         context: WireRustGeneratorContext,
         types: &[IrType],
-    ) -> Option<Box<dyn WireRustCodecOutputSpec>> {
+    ) -> Option<WireRustCodecOutputSpec> {
         todo!()
     }
 }

@@ -8,11 +8,12 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen_codec_structs;
 use enum_dispatch::enum_dispatch;
+use serde::Serialize;
 
 codegen_codec_structs!(WireRustCodecEntrypoint);
 
 pub(crate) trait WireRustCodecEntrypointTrait<'a>:
-    BaseCodecEntrypointTrait<WireRustGeneratorContext<'a>, Box<dyn WireRustCodecOutputSpec>>
+    BaseCodecEntrypointTrait<WireRustGeneratorContext<'a>, WireRustCodecOutputSpec>
 {
     fn generate_func_params(
         &self,
@@ -24,4 +25,5 @@ pub(crate) trait WireRustCodecEntrypointTrait<'a>:
         -> String;
 }
 
-pub(crate) trait WireRustCodecOutputSpec {}
+#[derive(Clone, Serialize)]
+pub(crate) struct WireRustCodecOutputSpec {}

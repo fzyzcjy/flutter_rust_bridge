@@ -13,25 +13,25 @@ use itertools::Itertools;
 
 pub(crate) struct CstWireDartCodecEntrypoint {}
 
-impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, Box<dyn WireDartCodecOutputSpec>>
+impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputSpec>
     for CstWireDartCodecEntrypoint
 {
     fn generate_encode(
         &self,
         context: WireDartGeneratorContext,
         types: &[IrType],
-    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
-        Some(Box::new(encoder::generate(
+    ) -> Option<WireDartCodecOutputSpec> {
+        Some(encoder::generate(
             context.as_wire_dart_codec_cst_context(),
             types,
-        )))
+        ))
     }
 
     fn generate_decode(
         &self,
         _context: WireDartGeneratorContext,
         _types: &[IrType],
-    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
+    ) -> Option<WireDartCodecOutputSpec> {
         None
     }
 }

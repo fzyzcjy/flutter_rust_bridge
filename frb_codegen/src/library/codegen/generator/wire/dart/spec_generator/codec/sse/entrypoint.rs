@@ -8,14 +8,14 @@ use crate::codegen::ir::ty::IrType;
 
 pub(crate) struct SseWireDartCodecEntrypoint {}
 
-impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, Box<dyn WireDartCodecOutputSpec>>
+impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputSpec>
     for SseWireDartCodecEntrypoint
 {
     fn generate_encode(
         &self,
         context: WireDartGeneratorContext,
         types: &[IrType],
-    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
+    ) -> Option<WireDartCodecOutputSpec> {
         None // TODO
     }
 
@@ -23,7 +23,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, Box<dyn WireDartCode
         &self,
         context: WireDartGeneratorContext,
         types: &[IrType],
-    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
+    ) -> Option<WireDartCodecOutputSpec> {
         None // TODO
     }
 }

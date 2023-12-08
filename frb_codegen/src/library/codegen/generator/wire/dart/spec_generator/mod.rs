@@ -26,8 +26,8 @@ pub(super) mod wire_class;
 #[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpec {
     pub(super) misc: WireDartOutputSpecMisc,
-    pub(super) rust2dart: Vec<Box<dyn WireDartCodecOutputSpec>>,
-    pub(super) dart2rust: Vec<Box<dyn WireDartCodecOutputSpec>>,
+    pub(super) rust2dart: Vec<WireDartCodecOutputSpec>,
+    pub(super) dart2rust: Vec<WireDartCodecOutputSpec>,
 }
 
 pub(crate) fn generate(
