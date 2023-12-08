@@ -31,7 +31,7 @@ fn generate_misc(mode: EncodeOrDecode) -> Acc<Vec<WireRustOutputCode>> {
                 fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
             }
 
-            
+            // TODO
             "
         }
         EncodeOrDecode::Decode => {
