@@ -1,4 +1,5 @@
 import 'dart:ffi' as ffi;
+import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 
@@ -24,5 +25,15 @@ class RustVecU8 {
     // Set ptr to null before calling free to avoid potential
     // double-free when error happens
     binding.rustVecU8Free(ptr, length);
+  }
+
+  /// {@macro flutter_rust_bridge.internal}
+  void operator []=(int index, int value) {
+    _ptr![index] = value;
+  }
+
+  /// {@macro flutter_rust_bridge.internal}
+  void setRange(int start, int end, Iterable<E> iterable) {
+    TODO;
   }
 }
