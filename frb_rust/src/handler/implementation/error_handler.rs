@@ -15,16 +15,17 @@ impl ErrorHandler for NoOpErrorHandler {
     fn on_error(&self, error: Error) {
         // nothing
     }
+}
 
-    // TODO
-    // fn handle_error<Rust2DartCodec>(&self, port: MessagePort, error: Error)
-    // where
-    //     Rust2DartCodec: BaseCodec,
-    // {
-    //     let msg = match error {
-    //         e @ Error::CustomError(_) => Rust2DartCodec::encode(e, Rust2DartAction::Error),
-    //         e @ Error::Panic(_) => Rust2DartCodec::encode(e, Rust2DartAction::Panic),
-    //     };
-    //     Rust2DartSender::new(Channel::new(port)).send(msg.into_dart_abi());
-    // }
+fn handle_error<Rust2DartCodec>(error_handler: impl ErrorHandler, port: MessagePort, error: Error)
+where
+    Rust2DartCodec: BaseCodec,
+{
+    error_handler.on_error(error);
+
+    let msg = match error {
+        e @ Error::CustomError => Rust2DartCodec::encode(e, Rust2DartAction::Error),
+        e @ Error::Panic(_) => Rust2DartCodec::encode(e, Rust2DartAction::Panic),
+    };
+    Rust2DartSender::new(Channel::new(port)).send(msg.into_dart_abi());
 }
