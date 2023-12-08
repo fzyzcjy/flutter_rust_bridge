@@ -39,7 +39,7 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 // Section: wire_funcs
 
-fn wire_hello_impl(ptr_: *const u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_hello_impl(port_: i64, ptr_: *const u8, rust_vec_len_: i32, data_len_: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _, _, i32, _>(
             flutter_rust_bridge::for_generated::TaskInfo {

@@ -24,8 +24,3 @@ Duration dcoDecodeDuration(int ts) {
   }
   return Duration(microseconds: ts);
 }
-
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-void sseEncodeNativePort(NativePortType port, SseSerializer serializer) {
-  serializer.buffer.putInt64(port);
-}

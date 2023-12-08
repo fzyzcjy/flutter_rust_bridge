@@ -37,6 +37,11 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         Acc::new(|_| {
             vec![
                 ExternFuncParam {
+                    name: "port_".to_owned(),
+                    rust_type: "i64".to_owned(),
+                    dart_type: "int".to_owned(),
+                },
+                ExternFuncParam {
                     name: "ptr_".to_owned(),
                     rust_type: "*const u8".to_owned(),
                     dart_type: "ffi.Pointer<ffi.Uint8>".to_owned(),
