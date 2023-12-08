@@ -78,6 +78,35 @@ impl CstDecode<i32> for i32 {
         self
     }
 }
+pub trait SseEncode {
+    fn sse_encode(self, serializer: Serializer);
+}
+
+pub trait SseDecode {
+    fn sse_decode(deserializer: Deserializer) -> T;
+}
+
+impl SseDecode for i32 {
+    fn sse_decode(deserializer: Deserializer) -> Self {
+        return TODO_depend_on_serializer;
+    }
+}
+
+// Section: rust2dart
+
+pub trait SseEncode {
+    fn sse_encode(self, serializer: Serializer);
+}
+
+pub trait SseDecode {
+    fn sse_decode(deserializer: Deserializer) -> T;
+}
+
+impl SseEncode for i32 {
+    fn sse_encode(self, serializer: Serializer) {
+        return TODO_depend_on_serializer;
+    }
+}
 
 #[cfg(not(target_family = "wasm"))]
 #[path = "frb_generated.io.rs"]
