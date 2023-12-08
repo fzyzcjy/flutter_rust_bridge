@@ -12,7 +12,13 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> String {
-        format!("return TODO_depend_on_serializer;")
+        match self.ir {
+            IrTypePrimitive::Unit => "".into(),
+            _ => format!(
+                "return deserializer.buffer.get{}();",
+                get_serializer_postfix(&self.ir)
+            ),
+        }
     }
 }
 

@@ -130,7 +130,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 // Section: rust2dart
 
 int _sse_decode_i_32(SseDeserializer deserializer) {
-  return TODO_depend_on_sirializer;
+  return deserializer.buffer.getInt32();
 }
 
 // Section: dart2rust
