@@ -28,7 +28,7 @@ pub(crate) fn generate(
             .filter_map(|ty| {
                 WireRustCodecDcoGenerator::new(ty.clone(), context).generate_impl_into_dart()
             })
-            .map(|x| Acc::new_common(x.into()))
+            .map(|x| Acc::<WireRustOutputCode>::new_common(x.into()))
             .collect(),
     }
 }

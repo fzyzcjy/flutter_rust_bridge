@@ -40,6 +40,16 @@ impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
     }
 }
 
+impl<T> FromIterator<Acc<Vec<T>>> for Acc<Vec<T>> {
+    fn from_iter<A: IntoIterator<Item = Acc<Vec<T>>>>(iter: A) -> Self {
+        iter.into_iter()
+            .fold(Acc::<Vec<T>>::default(), |mut acc, x| {
+                acc += x;
+                acc
+            })
+    }
+}
+
 impl<T> Acc<T> {
     pub fn new(mut init: impl FnMut(TargetOrCommon) -> T) -> Acc<T> {
         Acc {

@@ -58,7 +58,7 @@ pub(crate) fn generate(
             .distinct_output_types
             .iter()
             .filter_map(|ty| generate_wrapper_struct(ty, context))
-            .map(|x| Acc::new_common(x.into()))
+            .map(|x| Acc::<WireRustOutputCode>::new_common(x.into()))
             .collect(),
         static_checks: Acc::new_common(vec![generate_static_checks(
             &cache.distinct_types,
