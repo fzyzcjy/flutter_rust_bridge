@@ -10,15 +10,15 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl<T> CstDecodable<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl<T> CstDecode<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 where
-    JsValue: CstDecodable<T>,
+    JsValue: CstDecode<T>,
 {
     fn cst_decode(self) -> Option<T> {
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl CstDecodable<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> i32 {
         self.unchecked_into_f64() as _
     }

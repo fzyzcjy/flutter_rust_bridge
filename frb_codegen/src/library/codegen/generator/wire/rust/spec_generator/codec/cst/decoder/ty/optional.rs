@@ -11,7 +11,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for OptionalWireRustCodecCstGener
             wasm: (!is_js_value(&self.ir.inner)
                 && !self.ir.is_primitive()
                 && !self.ir.is_boxed_primitive())
-            .then(|| "self.map(CstDecodable::cst_decode)".into()),
+            .then(|| "self.map(CstDecode::cst_decode)".into()),
             ..Default::default()
         }
     }

@@ -47,13 +47,13 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 fn wire_boxed_blob_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    blob: impl CstDecodable<Box<[u8; 1600]>> + core::panic::UnwindSafe,
+    blob: impl CstDecode<Box<[u8; 1600]>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::array::BlobTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "boxed_blob_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_blob = blob.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::array::boxed_blob_twin_normal(api_blob)) } })
 }
 fn wire_func_test_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<crate::api::array::TestIdTwinNormal> + core::panic::UnwindSafe,
+    id: impl CstDecode<crate::api::array::TestIdTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::array::TestIdTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_test_id_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::array::func_test_id_twin_normal(api_id)) } })
 }
@@ -73,7 +73,7 @@ fn wire_get_complex_array_twin_normal_impl(port_: flutter_rust_bridge::for_gener
 }
 fn wire_last_number_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    array: impl CstDecodable<[f64; 16]> + core::panic::UnwindSafe,
+    array: impl CstDecode<[f64; 16]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, f64, _>(
@@ -92,25 +92,25 @@ fn wire_last_number_twin_normal_impl(
 }
 fn wire_nested_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<[crate::api::array::TestIdTwinNormal; 4]> + core::panic::UnwindSafe,
+    id: impl CstDecode<[crate::api::array::TestIdTwinNormal; 4]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,[crate::api::array::TestIdTwinNormal; 2],_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "nested_id_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::array::nested_id_twin_normal(api_id)) } })
 }
 fn wire_new_msgid_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<[u8; 32]> + core::panic::UnwindSafe,
+    id: impl CstDecode<[u8; 32]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::array::MessageIdTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "new_msgid_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::array::new_msgid_twin_normal(api_id)) } })
 }
 fn wire_return_boxed_feed_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<[u8; 8]> + core::panic::UnwindSafe,
+    id: impl CstDecode<[u8; 8]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::array::FeedIdTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "return_boxed_feed_id_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::array::return_boxed_feed_id_twin_normal(api_id)) } })
 }
 fn wire_return_boxed_raw_feed_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<crate::api::array::FeedIdTwinNormal> + core::panic::UnwindSafe,
+    id: impl CstDecode<crate::api::array::FeedIdTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, [u8; 8], _>(
@@ -131,7 +131,7 @@ fn wire_return_boxed_raw_feed_id_twin_normal_impl(
 }
 fn wire_use_boxed_blob_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    blob: impl CstDecodable<Box<crate::api::array::BlobTwinNormal>> + core::panic::UnwindSafe,
+    blob: impl CstDecode<Box<crate::api::array::BlobTwinNormal>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, [u8; 1600], _>(
@@ -150,7 +150,7 @@ fn wire_use_boxed_blob_twin_normal_impl(
 }
 fn wire_use_msgid_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<crate::api::array::MessageIdTwinNormal> + core::panic::UnwindSafe,
+    id: impl CstDecode<crate::api::array::MessageIdTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, [u8; 32], _>(
@@ -167,8 +167,8 @@ fn wire_use_msgid_twin_normal_impl(
 }
 fn wire_func_async_simple_add_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    b: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    a: impl CstDecode<i32> + core::panic::UnwindSafe,
+    b: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _, i32, _>(
@@ -205,7 +205,7 @@ fn wire_func_async_void_impl(port_: flutter_rust_bridge::for_generated::MessageP
 }
 fn wire_handle_customized_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    val: impl CstDecodable<crate::api::attribute::CustomizedTwinNormal> + core::panic::UnwindSafe,
+    val: impl CstDecode<crate::api::attribute::CustomizedTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -226,13 +226,13 @@ fn wire_handle_customized_struct_twin_normal_impl(
 }
 fn wire_next_user_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    user_id: impl CstDecodable<crate::api::attribute::UserIdTwinNormal> + core::panic::UnwindSafe,
+    user_id: impl CstDecode<crate::api::attribute::UserIdTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::attribute::UserIdTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "next_user_id_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_user_id = user_id.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::attribute::next_user_id_twin_normal(api_user_id)) } })
 }
 fn wire_benchmark_input_bytes_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    bytes: impl CstDecodable<Vec<u8>> + core::panic::UnwindSafe,
+    bytes: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, i32, _>(
@@ -253,7 +253,7 @@ fn wire_benchmark_input_bytes_twin_normal_impl(
 }
 fn wire_benchmark_output_bytes_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    size: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    size: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, Vec<u8>, _>(
@@ -289,19 +289,19 @@ fn wire_benchmark_void_twin_normal_impl(port_: flutter_rust_bridge::for_generate
 }
 fn wire_datetime_local_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,chrono::DateTime::<chrono::Local>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "datetime_local_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_d = d.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::chrono_type::datetime_local_twin_normal(api_d)) } })
 }
 fn wire_datetime_utc_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<chrono::DateTime<chrono::Utc>> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::DateTime<chrono::Utc>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,chrono::DateTime::<chrono::Utc>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "datetime_utc_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_d = d.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::chrono_type::datetime_utc_twin_normal(api_d)) } })
 }
 fn wire_duration_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<chrono::Duration> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::Duration> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, chrono::Duration, _>(
@@ -320,21 +320,21 @@ fn wire_duration_twin_normal_impl(
 }
 fn wire_handle_durations_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    durations: impl CstDecodable<Vec<chrono::Duration>> + core::panic::UnwindSafe,
-    since: impl CstDecodable<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
+    durations: impl CstDecode<Vec<chrono::Duration>> + core::panic::UnwindSafe,
+    since: impl CstDecode<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<chrono::DateTime::<chrono::Local>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_durations_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_durations = durations.cst_decode();let api_since = since.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::chrono_type::handle_durations_twin_normal(api_durations, api_since)) } })
 }
 fn wire_handle_timestamps_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    timestamps: impl CstDecodable<Vec<chrono::NaiveDateTime>> + core::panic::UnwindSafe,
-    epoch: impl CstDecodable<chrono::NaiveDateTime> + core::panic::UnwindSafe,
+    timestamps: impl CstDecode<Vec<chrono::NaiveDateTime>> + core::panic::UnwindSafe,
+    epoch: impl CstDecode<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<chrono::Duration>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_timestamps_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_timestamps = timestamps.cst_decode();let api_epoch = epoch.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::chrono_type::handle_timestamps_twin_normal(api_timestamps, api_epoch)) } })
 }
 fn wire_how_long_does_it_take_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    mine: impl CstDecodable<crate::api::chrono_type::FeatureChronoTwinNormal> + core::panic::UnwindSafe,
+    mine: impl CstDecode<crate::api::chrono_type::FeatureChronoTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, chrono::Duration, _>(
@@ -351,13 +351,13 @@ fn wire_how_long_does_it_take_twin_normal_impl(
 }
 fn wire_naivedatetime_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<chrono::NaiveDateTime> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,chrono::NaiveDateTime,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "naivedatetime_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_d = d.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::chrono_type::naivedatetime_twin_normal(api_d)) } })
 }
 fn wire_optional_empty_datetime_utc_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<Option<chrono::DateTime<chrono::Utc>>> + core::panic::UnwindSafe,
+    d: impl CstDecode<Option<chrono::DateTime<chrono::Utc>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<chrono::DateTime::<chrono::Utc>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "optional_empty_datetime_utc_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_d = d.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::chrono_type::optional_empty_datetime_utc_twin_normal(api_d)) } })
 }
@@ -371,7 +371,7 @@ fn wire_test_precise_chrono_twin_normal_impl(
 }
 fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::comment::StructWithCommentsTwinNormal> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StructWithCommentsTwinNormal_instance_method_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::comment::StructWithCommentsTwinNormal::instance_method_twin_normal(&api_that)) } })
 }
@@ -416,7 +416,7 @@ fn wire_return_dart_dynamic_twin_normal_impl(
 }
 fn wire_rust_call_dart_simple_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _, (), _>(
@@ -445,7 +445,7 @@ fn wire_rust_call_dart_simple_impl(
 }
 fn wire_async_accept_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, String, _>(
@@ -466,26 +466,26 @@ fn wire_async_accept_dart_opaque_twin_normal_impl(
 }
 fn wire_clone_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<flutter_rust_bridge::DartOpaque>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "clone_dart_opaque_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::dart_opaque::clone_dart_opaque_twin_normal(api_opaque)) } })
 }
 fn wire_create_enum_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::dart_opaque::EnumDartOpaqueTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_enum_dart_opaque_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::dart_opaque::create_enum_dart_opaque_twin_normal(api_opaque)) } })
 }
 fn wire_create_nested_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque1: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-    opaque2: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque1: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque2: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::dart_opaque::DartOpaqueNestedTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_nested_dart_opaque_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque1 = opaque1.cst_decode();let api_opaque2 = opaque2.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::dart_opaque::create_nested_dart_opaque_twin_normal(api_opaque1, api_opaque2)) } })
 }
 fn wire_drop_static_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    id: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -506,8 +506,7 @@ fn wire_drop_static_dart_opaque_twin_normal_impl(
 }
 fn wire_get_enum_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
-        + core::panic::UnwindSafe,
+    opaque: impl CstDecode<crate::api::dart_opaque::EnumDartOpaqueTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -528,7 +527,7 @@ fn wire_get_enum_dart_opaque_twin_normal_impl(
 }
 fn wire_get_nested_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<crate::api::dart_opaque::DartOpaqueNestedTwinNormal>
+    opaque: impl CstDecode<crate::api::dart_opaque::DartOpaqueNestedTwinNormal>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -550,7 +549,7 @@ fn wire_get_nested_dart_opaque_twin_normal_impl(
 }
 fn wire_loop_back_array_get_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<[flutter_rust_bridge::DartOpaque; 1]> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -571,13 +570,13 @@ fn wire_loop_back_array_get_twin_normal_impl(
 }
 fn wire_loop_back_array_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,[flutter_rust_bridge::DartOpaque; 1],_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_array_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::dart_opaque::loop_back_array_twin_normal(api_opaque)) } })
 }
 fn wire_loop_back_option_get_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -598,19 +597,19 @@ fn wire_loop_back_option_get_twin_normal_impl(
 }
 fn wire_loop_back_option_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<flutter_rust_bridge::DartOpaque>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_option_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::dart_opaque::loop_back_option_twin_normal(api_opaque)) } })
 }
 fn wire_loop_back_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,flutter_rust_bridge::DartOpaque,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::dart_opaque::loop_back_twin_normal(api_opaque)) } })
 }
 fn wire_loop_back_vec_get_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<Vec<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -631,13 +630,13 @@ fn wire_loop_back_vec_get_twin_normal_impl(
 }
 fn wire_loop_back_vec_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<flutter_rust_bridge::DartOpaque>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_vec_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::dart_opaque::loop_back_vec_twin_normal(api_opaque)) } })
 }
 fn wire_panic_unwrap_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -658,8 +657,8 @@ fn wire_panic_unwrap_dart_opaque_twin_normal_impl(
 }
 fn wire_set_static_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    id: impl CstDecode<i32> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -682,7 +681,7 @@ fn wire_set_static_dart_opaque_twin_normal_impl(
         )
 }
 fn wire_sync_accept_dart_opaque_twin_normal_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -700,7 +699,7 @@ fn wire_sync_accept_dart_opaque_twin_normal_impl(
         )
 }
 fn wire_sync_loopback_twin_normal_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -718,7 +717,7 @@ fn wire_sync_loopback_twin_normal_impl(
         )
 }
 fn wire_sync_option_dart_opaque_twin_normal_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -734,7 +733,7 @@ fn wire_sync_option_dart_opaque_twin_normal_impl(
         )
 }
 fn wire_sync_option_loopback_twin_normal_impl(
-    opaque: impl CstDecodable<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -752,7 +751,7 @@ fn wire_sync_option_loopback_twin_normal_impl(
         )
 }
 fn wire_unwrap_dart_opaque_twin_normal_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -771,64 +770,61 @@ fn wire_unwrap_dart_opaque_twin_normal_impl(
 }
 fn wire_func_enum_simple_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::enumeration::EnumSimpleTwinNormal> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::enumeration::EnumSimpleTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::enumeration::EnumSimpleTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_simple_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::enumeration::func_enum_simple_twin_normal(api_arg)) } })
 }
 fn wire_func_enum_with_item_mixed_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::enumeration::EnumWithItemMixedTwinNormal>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::enumeration::EnumWithItemMixedTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::enumeration::EnumWithItemMixedTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_item_mixed_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::enumeration::func_enum_with_item_mixed_twin_normal(api_arg)) } })
 }
 fn wire_func_enum_with_item_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::enumeration::EnumWithItemStructTwinNormal>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::enumeration::EnumWithItemStructTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::enumeration::EnumWithItemStructTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_item_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::enumeration::func_enum_with_item_struct_twin_normal(api_arg)) } })
 }
 fn wire_func_enum_with_item_tuple_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::enumeration::EnumWithItemTupleTwinNormal>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::enumeration::EnumWithItemTupleTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::enumeration::EnumWithItemTupleTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_item_tuple_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::enumeration::func_enum_with_item_tuple_twin_normal(api_arg)) } })
 }
 fn wire_handle_enum_parameter_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    weekday: impl CstDecodable<crate::api::misc_example::WeekdaysTwinNormal> + core::panic::UnwindSafe,
+    weekday: impl CstDecode<crate::api::misc_example::WeekdaysTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::misc_example::WeekdaysTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_enum_parameter_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_weekday = weekday.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::enumeration::handle_enum_parameter_twin_normal(api_weekday)) } })
 }
 fn wire_handle_enum_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    val: impl CstDecodable<crate::api::enumeration::KitchenSinkTwinNormal> + core::panic::UnwindSafe,
+    val: impl CstDecode<crate::api::enumeration::KitchenSinkTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::enumeration::KitchenSinkTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_enum_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_val = val.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::enumeration::handle_enum_struct_twin_normal(api_val)) } })
 }
 fn wire_handle_return_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecodable<String> + core::panic::UnwindSafe,
+    input: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<crate::api::misc_example::WeekdaysTwinNormal>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_return_enum_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::enumeration::handle_return_enum_twin_normal(api_input)) } })
 }
 fn wire_multiply_by_ten_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    measure: impl CstDecodable<crate::api::enumeration::MeasureTwinNormal> + core::panic::UnwindSafe,
+    measure: impl CstDecode<crate::api::enumeration::MeasureTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<crate::api::enumeration::MeasureTwinNormal>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "multiply_by_ten_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_measure = measure.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::enumeration::multiply_by_ten_twin_normal(api_measure)) } })
 }
 fn wire_print_note_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    note: impl CstDecodable<crate::api::enumeration::NoteTwinNormal> + core::panic::UnwindSafe,
+    note: impl CstDecode<crate::api::enumeration::NoteTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "print_note_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_note = note.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::enumeration::print_note_twin_normal(api_note)) } })
 }
 fn wire_EventTwinNormal_as_string_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::event_listener::EventTwinNormal> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::event_listener::EventTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, String, _>(
@@ -870,8 +866,8 @@ fn wire_close_event_listener_twin_normal_impl(
 }
 fn wire_create_event_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    address: impl CstDecodable<String> + core::panic::UnwindSafe,
-    payload: impl CstDecodable<String> + core::panic::UnwindSafe,
+    address: impl CstDecode<String> + core::panic::UnwindSafe,
+    payload: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -915,19 +911,19 @@ fn wire_register_event_listener_twin_normal_impl(
 }
 fn wire_CustomStructTwinNormal_new_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    message: impl CstDecodable<String> + core::panic::UnwindSafe,
+    message: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::exception::CustomStructTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_new_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_message = message.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::exception::CustomStructTwinNormal::new_twin_normal(api_message)) } })
 }
 fn wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::exception::CustomStructTwinNormal> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::exception::CustomStructTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  {  crate::api::exception::CustomStructTwinNormal::nonstatic_return_custom_struct_error_twin_normal(&api_that) } })
 }
 fn wire_CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::exception::CustomStructTwinNormal> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::exception::CustomStructTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  {  crate::api::exception::CustomStructTwinNormal::nonstatic_return_custom_struct_ok_twin_normal(&api_that) } })
 }
@@ -943,19 +939,19 @@ fn wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal_impl(
 }
 fn wire_SomeStructTwinNormal_new_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    value: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    value: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::exception::SomeStructTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_new_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_value = value.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::exception::SomeStructTwinNormal::new_twin_normal(api_value)) } })
 }
 fn wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::exception::SomeStructTwinNormal> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::exception::SomeStructTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  {  crate::api::exception::SomeStructTwinNormal::non_static_return_err_custom_error_twin_normal(&api_that) } })
 }
 fn wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::exception::SomeStructTwinNormal> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::exception::SomeStructTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  {  crate::api::exception::SomeStructTwinNormal::non_static_return_ok_custom_error_twin_normal(&api_that) } })
 }
@@ -999,7 +995,7 @@ fn wire_custom_enum_error_return_error_twin_normal_impl(
 }
 fn wire_custom_enum_error_return_ok_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, u32, _>(
@@ -1018,7 +1014,7 @@ fn wire_custom_enum_error_return_ok_twin_normal_impl(
 }
 fn wire_custom_nested_error_return_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::exception::CustomNestedErrorOuterTwinNormal>
+    arg: impl CstDecode<crate::api::exception::CustomNestedErrorOuterTwinNormal>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -1038,7 +1034,7 @@ fn wire_custom_nested_error_return_error_twin_normal_impl(
 }
 fn wire_custom_struct_error_return_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::exception::CustomStructErrorTwinNormal> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::exception::CustomStructErrorTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -1199,7 +1195,7 @@ fn wire_return_err_custom_error_twin_normal_impl(
 }
 fn wire_return_error_variant_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    variant: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    variant: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, u32, _>(
@@ -1269,7 +1265,7 @@ fn wire_call_old_module_system_twin_normal_impl(
 }
 fn wire_use_imported_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_enum: impl CstDecodable<crate::auxiliary::sample_types::MyEnum> + core::panic::UnwindSafe,
+    my_enum: impl CstDecode<crate::auxiliary::sample_types::MyEnum> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, bool, _>(
@@ -1292,7 +1288,7 @@ fn wire_use_imported_enum_twin_normal_impl(
 }
 fn wire_use_imported_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_struct: impl CstDecodable<crate::auxiliary::sample_types::MyStruct> + core::panic::UnwindSafe,
+    my_struct: impl CstDecode<crate::auxiliary::sample_types::MyStruct> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, bool, _>(
@@ -1320,21 +1316,21 @@ fn wire_another_macro_struct_twin_normal_impl(
 }
 fn wire_func_macro_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::inside_macro::MacroStruct> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::inside_macro::MacroStruct> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::inside_macro::MacroStruct,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_macro_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::inside_macro::func_macro_struct_twin_normal(api_arg)) } })
 }
 fn wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<String> + core::panic::UnwindSafe,
-    b: impl CstDecodable<String> + core::panic::UnwindSafe,
+    a: impl CstDecode<String> + core::panic::UnwindSafe,
+    b: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_concatenate_static_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::concatenate_static_twin_normal(api_a, api_b)) } })
 }
 fn wire_ConcatenateWithTwinNormal_concatenate_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::method::ConcatenateWithTwinNormal> + core::panic::UnwindSafe,
-    b: impl CstDecodable<String> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::method::ConcatenateWithTwinNormal> + core::panic::UnwindSafe,
+    b: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, String, _>(
@@ -1363,36 +1359,36 @@ fn wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin
 }
 fn wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.cst_decode();let api_max = max.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_twin_normal(api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::method::Log2TwinNormal>())) } })
 }
 fn wire_ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::method::ConcatenateWithTwinNormal> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::method::ConcatenateWithTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_at_1_twin_normal(&api_that, context.rust2dart_context().stream_sink::<_,u32>())) } })
 }
 fn wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::method::ConcatenateWithTwinNormal> + core::panic::UnwindSafe,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::method::ConcatenateWithTwinNormal> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.cst_decode();let api_key = key.cst_decode();let api_max = max.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_twin_normal(&api_that, api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::method::Log2TwinNormal>())) } })
 }
 fn wire_ConcatenateWithTwinNormal_new_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<String> + core::panic::UnwindSafe,
+    a: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::method::ConcatenateWithTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_new_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::new_twin_normal(api_a)) } })
 }
 fn wire_SumWithTwinNormal_sum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::method::SumWithTwinNormal> + core::panic::UnwindSafe,
-    y: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    z: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::method::SumWithTwinNormal> + core::panic::UnwindSafe,
+    y: impl CstDecode<u32> + core::panic::UnwindSafe,
+    z: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, u32, _>(
@@ -1415,9 +1411,9 @@ fn wire_SumWithTwinNormal_sum_twin_normal_impl(
 }
 fn wire_get_sum_array_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    b: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    c: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    a: impl CstDecode<u32> + core::panic::UnwindSafe,
+    b: impl CstDecode<u32> + core::panic::UnwindSafe,
+    c: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,[crate::api::method::SumWithTwinNormal; 3],_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "get_sum_array_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode();let api_c = c.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::method::get_sum_array_twin_normal(api_a, api_b, api_c)) } })
 }
@@ -1468,8 +1464,7 @@ fn wire_app_settings_vec_stream_twin_normal_impl(
 }
 fn wire_first_number_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    nums: impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::Numbers>
-        + core::panic::UnwindSafe,
+    nums: impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::Numbers> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, Option<i32>, _>(
@@ -1488,7 +1483,7 @@ fn wire_first_number_twin_normal_impl(
 }
 fn wire_first_sequence_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    seqs: impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
+    seqs: impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -1519,7 +1514,7 @@ fn wire_get_message_twin_normal_impl(port_: flutter_rust_bridge::for_generated::
 }
 fn wire_is_app_embedded_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    app_settings: impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
+    app_settings: impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -1567,8 +1562,8 @@ fn wire_mirror_tuple_stream_twin_normal_impl(
 }
 fn wire_repeat_number_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    num: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    times: impl CstDecodable<usize> + core::panic::UnwindSafe,
+    num: impl CstDecode<i32> + core::panic::UnwindSafe,
+    times: impl CstDecode<usize> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, mirror_Numbers, _>(
@@ -1590,8 +1585,8 @@ fn wire_repeat_number_twin_normal_impl(
 }
 fn wire_repeat_sequence_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    seq: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    times: impl CstDecodable<usize> + core::panic::UnwindSafe,
+    seq: impl CstDecode<i32> + core::panic::UnwindSafe,
+    times: impl CstDecode<usize> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, mirror_Sequences, _>(
@@ -1638,7 +1633,7 @@ fn wire_test_nested_raw_string_mirrored_twin_normal_impl(
 }
 fn wire_test_raw_string_enum_mirrored_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    nested: impl CstDecodable<bool> + core::panic::UnwindSafe,
+    nested: impl CstDecode<bool> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,mirror_RawStringEnumMirrored,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_raw_string_enum_mirrored_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_nested = nested.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::mirror::test_raw_string_enum_mirrored_twin_normal(api_nested)) } })
 }
@@ -1654,19 +1649,19 @@ fn wire_handle_big_buffers_twin_normal_impl(
 }
 fn wire_handle_complex_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    s: impl CstDecodable<crate::api::misc_example::MyTreeNodeTwinNormal> + core::panic::UnwindSafe,
+    s: impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::misc_example::MyTreeNodeTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_complex_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_s = s.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::misc_example::handle_complex_struct_twin_normal(api_s)) } })
 }
 fn wire_handle_nested_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    s: impl CstDecodable<crate::api::misc_example::MyNestedStructTwinNormal> + core::panic::UnwindSafe,
+    s: impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::misc_example::MyNestedStructTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_nested_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_s = s.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::misc_example::handle_nested_struct_twin_normal(api_s)) } })
 }
 fn wire_handle_string_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    s: impl CstDecodable<String> + core::panic::UnwindSafe,
+    s: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, String, _>(
@@ -1685,14 +1680,14 @@ fn wire_handle_string_twin_normal_impl(
 }
 fn wire_handle_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
-    boxed: impl CstDecodable<Box<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
+    boxed: impl CstDecode<Box<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::auxiliary::sample_types::MySize,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode();let api_boxed = boxed.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::misc_example::handle_struct_twin_normal(api_arg, api_boxed)) } })
 }
 fn wire_handle_vec_u8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    v: impl CstDecodable<Vec<u8>> + core::panic::UnwindSafe,
+    v: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, Vec<u8>, _>(
@@ -1711,26 +1706,26 @@ fn wire_handle_vec_u8_twin_normal_impl(
 }
 fn wire_list_of_primitive_enums_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    weekdays: impl CstDecodable<Vec<crate::api::misc_example::WeekdaysTwinNormal>>
+    weekdays: impl CstDecode<Vec<crate::api::misc_example::WeekdaysTwinNormal>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<crate::api::misc_example::WeekdaysTwinNormal>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "list_of_primitive_enums_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_weekdays = weekdays.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::misc_example::list_of_primitive_enums_twin_normal(api_weekdays)) } })
 }
 fn wire_test_abc_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    abc: impl CstDecodable<crate::api::misc_example::AbcTwinNormal> + core::panic::UnwindSafe,
+    abc: impl CstDecode<crate::api::misc_example::AbcTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::misc_example::AbcTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_abc_enum_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_abc = abc.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::misc_example::test_abc_enum_twin_normal(api_abc)) } })
 }
 fn wire_test_struct_with_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    se: impl CstDecodable<crate::api::misc_example::StructWithEnumTwinNormal> + core::panic::UnwindSafe,
+    se: impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::misc_example::StructWithEnumTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_struct_with_enum_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_se = se.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::misc_example::test_struct_with_enum_twin_normal(api_se)) } })
 }
 fn wire_empty_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    empty: impl CstDecodable<crate::api::misc_type::EmptyTwinNormal> + core::panic::UnwindSafe,
+    empty: impl CstDecode<crate::api::misc_type::EmptyTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::misc_type::EmptyTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "empty_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_empty = empty.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::misc_type::empty_struct_twin_normal(api_empty)) } })
 }
@@ -1751,7 +1746,7 @@ fn wire_func_return_unit_twin_normal_impl(port_: flutter_rust_bridge::for_genera
 }
 fn wire_func_string_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, String, _>(
@@ -1770,13 +1765,13 @@ fn wire_func_string_twin_normal_impl(
 }
 fn wire_handle_list_of_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    l: impl CstDecodable<Vec<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
+    l: impl CstDecode<Vec<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<crate::auxiliary::sample_types::MySize>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_list_of_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_l = l.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::misc_type::handle_list_of_struct_twin_normal(api_l)) } })
 }
 fn wire_handle_string_list_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    names: impl CstDecodable<Vec<String>> + core::panic::UnwindSafe,
+    names: impl CstDecode<Vec<String>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, Vec<String>, _>(
@@ -1797,13 +1792,13 @@ fn wire_handle_string_list_twin_normal_impl(
 }
 fn wire_handle_newtype_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::newtype_pattern::NewTypeIntTwinNormal> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::newtype_pattern::NewTypeIntTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::newtype_pattern::NewTypeIntTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_newtype_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::newtype_pattern::handle_newtype_twin_normal(api_arg)) } })
 }
 fn wire_handle_increment_boxed_optional_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opt: impl CstDecodable<Option<Box<f64>>> + core::panic::UnwindSafe,
+    opt: impl CstDecode<Option<Box<f64>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, f64, _>(
@@ -1824,13 +1819,13 @@ fn wire_handle_increment_boxed_optional_twin_normal_impl(
 }
 fn wire_handle_option_box_arguments_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    i8box: impl CstDecodable<Option<Box<i8>>> + core::panic::UnwindSafe,
-    u8box: impl CstDecodable<Option<Box<u8>>> + core::panic::UnwindSafe,
-    i32box: impl CstDecodable<Option<Box<i32>>> + core::panic::UnwindSafe,
-    i64box: impl CstDecodable<Option<Box<i64>>> + core::panic::UnwindSafe,
-    f64box: impl CstDecodable<Option<Box<f64>>> + core::panic::UnwindSafe,
-    boolbox: impl CstDecodable<Option<Box<bool>>> + core::panic::UnwindSafe,
-    structbox: impl CstDecodable<Option<Box<crate::api::optional::ExoticOptionalsTwinNormal>>>
+    i8box: impl CstDecode<Option<Box<i8>>> + core::panic::UnwindSafe,
+    u8box: impl CstDecode<Option<Box<u8>>> + core::panic::UnwindSafe,
+    i32box: impl CstDecode<Option<Box<i32>>> + core::panic::UnwindSafe,
+    i64box: impl CstDecode<Option<Box<i64>>> + core::panic::UnwindSafe,
+    f64box: impl CstDecode<Option<Box<f64>>> + core::panic::UnwindSafe,
+    boolbox: impl CstDecode<Option<Box<bool>>> + core::panic::UnwindSafe,
+    structbox: impl CstDecode<Option<Box<crate::api::optional::ExoticOptionalsTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -1866,15 +1861,15 @@ fn wire_handle_option_box_arguments_twin_normal_impl(
 }
 fn wire_handle_optional_increment_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opt: impl CstDecodable<Option<crate::api::optional::ExoticOptionalsTwinNormal>>
+    opt: impl CstDecode<Option<crate::api::optional::ExoticOptionalsTwinNormal>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<crate::api::optional::ExoticOptionalsTwinNormal>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_optional_increment_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opt = opt.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::optional::handle_optional_increment_twin_normal(api_opt)) } })
 }
 fn wire_handle_optional_return_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    left: impl CstDecodable<f64> + core::panic::UnwindSafe,
-    right: impl CstDecodable<f64> + core::panic::UnwindSafe,
+    left: impl CstDecode<f64> + core::panic::UnwindSafe,
+    right: impl CstDecode<f64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, Option<f64>, _>(
@@ -1896,22 +1891,22 @@ fn wire_handle_optional_return_twin_normal_impl(
 }
 fn wire_handle_optional_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    document: impl CstDecodable<Option<String>> + core::panic::UnwindSafe,
+    document: impl CstDecode<Option<String>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<crate::api::optional::ElementTwinNormal>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_optional_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_document = document.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::optional::handle_optional_struct_twin_normal(api_document)) } })
 }
 fn wire_handle_vec_of_opts_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opt: impl CstDecodable<crate::api::optional::OptVecsTwinNormal> + core::panic::UnwindSafe,
+    opt: impl CstDecode<crate::api::optional::OptVecsTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::optional::OptVecsTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_vec_of_opts_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opt = opt.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::optional::handle_vec_of_opts_twin_normal(api_opt)) } })
 }
 fn wire_primitive_optional_types_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_i32: impl CstDecodable<Option<i32>> + core::panic::UnwindSafe,
-    my_i64: impl CstDecodable<Option<i64>> + core::panic::UnwindSafe,
-    my_f64: impl CstDecodable<Option<f64>> + core::panic::UnwindSafe,
-    my_bool: impl CstDecodable<Option<bool>> + core::panic::UnwindSafe,
+    my_i32: impl CstDecode<Option<i32>> + core::panic::UnwindSafe,
+    my_i64: impl CstDecode<Option<i64>> + core::panic::UnwindSafe,
+    my_f64: impl CstDecode<Option<f64>> + core::panic::UnwindSafe,
+    my_bool: impl CstDecode<Option<bool>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, Option<i32>, _>(
@@ -1940,22 +1935,22 @@ fn wire_primitive_optional_types_twin_normal_impl(
 }
 fn wire_handle_vec_of_primitive_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    n: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    n: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_vec_of_primitive_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_n = n.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::primitive_list_misc::handle_vec_of_primitive_twin_normal(api_n)) } })
 }
 fn wire_handle_zero_copy_vec_of_primitive_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    n: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    n: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::primitive_list_misc::ZeroCopyVecOfPrimitivePackTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_zero_copy_vec_of_primitive_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_n = n.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::primitive_list_misc::handle_zero_copy_vec_of_primitive_twin_normal(api_n)) } })
 }
 fn wire_primitive_types_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_i32: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    my_i64: impl CstDecodable<i64> + core::panic::UnwindSafe,
-    my_f64: impl CstDecodable<f64> + core::panic::UnwindSafe,
-    my_bool: impl CstDecodable<bool> + core::panic::UnwindSafe,
+    my_i32: impl CstDecode<i32> + core::panic::UnwindSafe,
+    my_i64: impl CstDecode<i64> + core::panic::UnwindSafe,
+    my_f64: impl CstDecode<f64> + core::panic::UnwindSafe,
+    my_bool: impl CstDecode<bool> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, i32, _>(
@@ -1982,7 +1977,7 @@ fn wire_primitive_types_twin_normal_impl(
 }
 fn wire_primitive_u32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_u32: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    my_u32: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, u32, _>(
@@ -2003,13 +1998,13 @@ fn wire_primitive_u32_twin_normal_impl(
 }
 fn wire_boxed_blob_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    blob: impl CstDecodable<Box<[u8; 1600]>> + core::panic::UnwindSafe,
+    blob: impl CstDecode<Box<[u8; 1600]>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "boxed_blob_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_blob = blob.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::boxed_blob_twin_rust_async(api_blob).await) } })
 }
 fn wire_func_test_id_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>
+    id: impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_test_id_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::func_test_id_twin_rust_async(api_id).await) } })
@@ -2024,52 +2019,52 @@ fn wire_get_complex_array_twin_rust_async_impl(
 }
 fn wire_last_number_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    array: impl CstDecodable<[f64; 16]> + core::panic::UnwindSafe,
+    array: impl CstDecode<[f64; 16]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,f64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "last_number_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_array = array.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::last_number_twin_rust_async(api_array).await) } })
 }
 fn wire_nested_id_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4]>
+    id: impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4]>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 2],_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "nested_id_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::nested_id_twin_rust_async(api_id).await) } })
 }
 fn wire_new_msgid_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<[u8; 32]> + core::panic::UnwindSafe,
+    id: impl CstDecode<[u8; 32]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "new_msgid_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::new_msgid_twin_rust_async(api_id).await) } })
 }
 fn wire_return_boxed_feed_id_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<[u8; 8]> + core::panic::UnwindSafe,
+    id: impl CstDecode<[u8; 8]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "return_boxed_feed_id_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::return_boxed_feed_id_twin_rust_async(api_id).await) } })
 }
 fn wire_return_boxed_raw_feed_id_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>
+    id: impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,[u8; 8],_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "return_boxed_raw_feed_id_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::return_boxed_raw_feed_id_twin_rust_async(api_id).await) } })
 }
 fn wire_use_boxed_blob_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    blob: impl CstDecodable<Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync>>
+    blob: impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,[u8; 1600],_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "use_boxed_blob_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_blob = blob.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::use_boxed_blob_twin_rust_async(api_blob).await) } })
 }
 fn wire_use_msgid_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync>
+    id: impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,[u8; 32],_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "use_msgid_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::array_twin_rust_async::use_msgid_twin_rust_async(api_id).await) } })
 }
 fn wire_boxed_blob_twin_sync_impl(
-    blob: impl CstDecodable<Box<[u8; 1600]>> + core::panic::UnwindSafe,
+    blob: impl CstDecode<Box<[u8; 1600]>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2087,7 +2082,7 @@ fn wire_boxed_blob_twin_sync_impl(
         )
 }
 fn wire_func_test_id_twin_sync_impl(
-    id: impl CstDecodable<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
+    id: impl CstDecode<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -2136,7 +2131,7 @@ fn wire_get_complex_array_twin_sync_impl() -> flutter_rust_bridge::for_generated
         )
 }
 fn wire_last_number_twin_sync_impl(
-    array: impl CstDecodable<[f64; 16]> + core::panic::UnwindSafe,
+    array: impl CstDecode<[f64; 16]> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2154,7 +2149,7 @@ fn wire_last_number_twin_sync_impl(
         )
 }
 fn wire_nested_id_twin_sync_impl(
-    id: impl CstDecodable<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4]>
+    id: impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4]>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -2173,7 +2168,7 @@ fn wire_nested_id_twin_sync_impl(
         )
 }
 fn wire_new_msgid_twin_sync_impl(
-    id: impl CstDecodable<[u8; 32]> + core::panic::UnwindSafe,
+    id: impl CstDecode<[u8; 32]> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2191,7 +2186,7 @@ fn wire_new_msgid_twin_sync_impl(
         )
 }
 fn wire_return_boxed_feed_id_twin_sync_impl(
-    id: impl CstDecodable<[u8; 8]> + core::panic::UnwindSafe,
+    id: impl CstDecode<[u8; 8]> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2211,7 +2206,7 @@ fn wire_return_boxed_feed_id_twin_sync_impl(
         )
 }
 fn wire_return_boxed_raw_feed_id_twin_sync_impl(
-    id: impl CstDecodable<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
+    id: impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -2232,7 +2227,7 @@ fn wire_return_boxed_raw_feed_id_twin_sync_impl(
         )
 }
 fn wire_use_boxed_blob_twin_sync_impl(
-    blob: impl CstDecodable<Box<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>>
+    blob: impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -2251,7 +2246,7 @@ fn wire_use_boxed_blob_twin_sync_impl(
         )
 }
 fn wire_use_msgid_twin_sync_impl(
-    id: impl CstDecodable<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
+    id: impl CstDecode<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -2271,26 +2266,26 @@ fn wire_use_msgid_twin_sync_impl(
 }
 fn wire_handle_customized_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    val: impl CstDecodable<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync>
+    val: impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_customized_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_val = val.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::attribute_twin_rust_async::handle_customized_struct_twin_rust_async(api_val).await) } })
 }
 fn wire_next_user_id_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    user_id: impl CstDecodable<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync>
+    user_id: impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "next_user_id_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_user_id = user_id.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::attribute_twin_rust_async::next_user_id_twin_rust_async(api_user_id).await) } })
 }
 fn wire_handle_customized_struct_twin_sync_impl(
-    val: impl CstDecodable<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync>
+    val: impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_customized_struct_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_val = val.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::attribute_twin_sync::handle_customized_struct_twin_sync(api_val)) })
 }
 fn wire_next_user_id_twin_sync_impl(
-    user_id: impl CstDecodable<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
+    user_id: impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -2312,13 +2307,13 @@ fn wire_next_user_id_twin_sync_impl(
 }
 fn wire_benchmark_input_bytes_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    bytes: impl CstDecodable<Vec<u8>> + core::panic::UnwindSafe,
+    bytes: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,i32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_input_bytes_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_bytes = bytes.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_input_bytes_twin_rust_async(api_bytes).await) } })
 }
 fn wire_benchmark_output_bytes_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    size: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    size: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_output_bytes_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_size = size.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_output_bytes_twin_rust_async(api_size).await) } })
 }
@@ -2328,12 +2323,12 @@ fn wire_benchmark_void_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_void_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_void_twin_rust_async().await) } })
 }
 fn wire_benchmark_input_bytes_twin_sync_impl(
-    bytes: impl CstDecodable<Vec<u8>> + core::panic::UnwindSafe,
+    bytes: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_input_bytes_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_bytes = bytes.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_input_bytes_twin_sync(api_bytes)) })
 }
 fn wire_benchmark_output_bytes_twin_sync_impl(
-    size: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    size: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_output_bytes_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_size = size.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_output_bytes_twin_sync(api_size)) })
 }
@@ -2354,39 +2349,39 @@ fn wire_benchmark_void_twin_sync_impl() -> flutter_rust_bridge::for_generated::W
 }
 fn wire_datetime_local_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,chrono::DateTime::<chrono::Local>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "datetime_local_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_d = d.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::datetime_local_twin_rust_async(api_d).await) } })
 }
 fn wire_datetime_utc_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<chrono::DateTime<chrono::Utc>> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::DateTime<chrono::Utc>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,chrono::DateTime::<chrono::Utc>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "datetime_utc_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_d = d.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::datetime_utc_twin_rust_async(api_d).await) } })
 }
 fn wire_duration_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<chrono::Duration> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::Duration> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,chrono::Duration,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "duration_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_d = d.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::duration_twin_rust_async(api_d).await) } })
 }
 fn wire_handle_durations_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    durations: impl CstDecodable<Vec<chrono::Duration>> + core::panic::UnwindSafe,
-    since: impl CstDecodable<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
+    durations: impl CstDecode<Vec<chrono::Duration>> + core::panic::UnwindSafe,
+    since: impl CstDecode<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<chrono::DateTime::<chrono::Local>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_durations_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_durations = durations.cst_decode();let api_since = since.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::handle_durations_twin_rust_async(api_durations, api_since).await) } })
 }
 fn wire_handle_timestamps_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    timestamps: impl CstDecodable<Vec<chrono::NaiveDateTime>> + core::panic::UnwindSafe,
-    epoch: impl CstDecodable<chrono::NaiveDateTime> + core::panic::UnwindSafe,
+    timestamps: impl CstDecode<Vec<chrono::NaiveDateTime>> + core::panic::UnwindSafe,
+    epoch: impl CstDecode<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<chrono::Duration>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_timestamps_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_timestamps = timestamps.cst_decode();let api_epoch = epoch.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::handle_timestamps_twin_rust_async(api_timestamps, api_epoch).await) } })
 }
 fn wire_how_long_does_it_take_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    mine: impl CstDecodable<
+    mine: impl CstDecode<
             crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -2394,13 +2389,13 @@ fn wire_how_long_does_it_take_twin_rust_async_impl(
 }
 fn wire_naivedatetime_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<chrono::NaiveDateTime> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,chrono::NaiveDateTime,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "naivedatetime_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_d = d.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::naivedatetime_twin_rust_async(api_d).await) } })
 }
 fn wire_optional_empty_datetime_utc_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    d: impl CstDecodable<Option<chrono::DateTime<chrono::Utc>>> + core::panic::UnwindSafe,
+    d: impl CstDecode<Option<chrono::DateTime<chrono::Utc>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<chrono::DateTime::<chrono::Utc>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "optional_empty_datetime_utc_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_d = d.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::optional_empty_datetime_utc_twin_rust_async(api_d).await) } })
 }
@@ -2413,7 +2408,7 @@ fn wire_test_precise_chrono_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_precise_chrono_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_rust_async::test_precise_chrono_twin_rust_async().await) } })
 }
 fn wire_datetime_local_twin_sync_impl(
-    d: impl CstDecodable<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2433,7 +2428,7 @@ fn wire_datetime_local_twin_sync_impl(
         )
 }
 fn wire_datetime_utc_twin_sync_impl(
-    d: impl CstDecodable<chrono::DateTime<chrono::Utc>> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::DateTime<chrono::Utc>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2451,7 +2446,7 @@ fn wire_datetime_utc_twin_sync_impl(
         )
 }
 fn wire_duration_twin_sync_impl(
-    d: impl CstDecodable<chrono::Duration> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::Duration> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2469,8 +2464,8 @@ fn wire_duration_twin_sync_impl(
         )
 }
 fn wire_handle_durations_twin_sync_impl(
-    durations: impl CstDecodable<Vec<chrono::Duration>> + core::panic::UnwindSafe,
-    since: impl CstDecodable<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
+    durations: impl CstDecode<Vec<chrono::Duration>> + core::panic::UnwindSafe,
+    since: impl CstDecode<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2492,8 +2487,8 @@ fn wire_handle_durations_twin_sync_impl(
         )
 }
 fn wire_handle_timestamps_twin_sync_impl(
-    timestamps: impl CstDecodable<Vec<chrono::NaiveDateTime>> + core::panic::UnwindSafe,
-    epoch: impl CstDecodable<chrono::NaiveDateTime> + core::panic::UnwindSafe,
+    timestamps: impl CstDecode<Vec<chrono::NaiveDateTime>> + core::panic::UnwindSafe,
+    epoch: impl CstDecode<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2515,7 +2510,7 @@ fn wire_handle_timestamps_twin_sync_impl(
         )
 }
 fn wire_how_long_does_it_take_twin_sync_impl(
-    mine: impl CstDecodable<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync>
+    mine: impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -2534,7 +2529,7 @@ fn wire_how_long_does_it_take_twin_sync_impl(
         )
 }
 fn wire_naivedatetime_twin_sync_impl(
-    d: impl CstDecodable<chrono::NaiveDateTime> + core::panic::UnwindSafe,
+    d: impl CstDecode<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2554,7 +2549,7 @@ fn wire_naivedatetime_twin_sync_impl(
         )
 }
 fn wire_optional_empty_datetime_utc_twin_sync_impl(
-    d: impl CstDecodable<Option<chrono::DateTime<chrono::Utc>>> + core::panic::UnwindSafe,
+    d: impl CstDecode<Option<chrono::DateTime<chrono::Utc>>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "optional_empty_datetime_utc_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_d = d.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::chrono_type_twin_sync::optional_empty_datetime_utc_twin_sync(api_d)) })
 }
@@ -2591,7 +2586,7 @@ fn wire_test_precise_chrono_twin_sync_impl() -> flutter_rust_bridge::for_generat
 }
 fn wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<
+    that: impl CstDecode<
             crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -2618,7 +2613,7 @@ fn wire_function_with_comments_triple_slash_single_line_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "function_with_comments_triple_slash_single_line_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::comment_twin_rust_async::function_with_comments_triple_slash_single_line_twin_rust_async().await) } })
 }
 fn wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(
-    that: impl CstDecodable<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StructWithCommentsTwinSync_instance_method_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync::instance_method_twin_sync(&api_that)) })
@@ -2649,38 +2644,38 @@ fn wire_return_dart_dynamic_twin_sync_impl() -> flutter_rust_bridge::for_generat
 }
 fn wire_async_accept_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "async_accept_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::async_accept_dart_opaque_twin_rust_async(api_opaque).await) } })
 }
 fn wire_clone_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<flutter_rust_bridge::DartOpaque>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "clone_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::clone_dart_opaque_twin_rust_async(api_opaque).await) } })
 }
 fn wire_create_enum_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_enum_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::create_enum_dart_opaque_twin_rust_async(api_opaque).await) } })
 }
 fn wire_create_nested_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque1: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-    opaque2: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque1: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque2: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_nested_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque1 = opaque1.cst_decode();let api_opaque2 = opaque2.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::create_nested_dart_opaque_twin_rust_async(api_opaque1, api_opaque2).await) } })
 }
 fn wire_drop_static_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    id: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "drop_static_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::drop_static_dart_opaque_twin_rust_async(api_id).await) } })
 }
 fn wire_get_enum_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<
+    opaque: impl CstDecode<
             crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -2688,7 +2683,7 @@ fn wire_get_enum_dart_opaque_twin_rust_async_impl(
 }
 fn wire_get_nested_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<
+    opaque: impl CstDecode<
             crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -2696,66 +2691,66 @@ fn wire_get_nested_dart_opaque_twin_rust_async_impl(
 }
 fn wire_loop_back_array_get_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<[flutter_rust_bridge::DartOpaque; 1]> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_array_get_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_array_get_twin_rust_async(api_opaque).await) } })
 }
 fn wire_loop_back_array_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,[flutter_rust_bridge::DartOpaque; 1],_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_array_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_array_twin_rust_async(api_opaque).await) } })
 }
 fn wire_loop_back_option_get_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_option_get_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_option_get_twin_rust_async(api_opaque).await) } })
 }
 fn wire_loop_back_option_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<flutter_rust_bridge::DartOpaque>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_option_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_option_twin_rust_async(api_opaque).await) } })
 }
 fn wire_loop_back_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,flutter_rust_bridge::DartOpaque,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_twin_rust_async(api_opaque).await) } })
 }
 fn wire_loop_back_vec_get_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<Vec<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_vec_get_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_vec_get_twin_rust_async(api_opaque).await) } })
 }
 fn wire_loop_back_vec_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<flutter_rust_bridge::DartOpaque>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_vec_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::loop_back_vec_twin_rust_async(api_opaque).await) } })
 }
 fn wire_panic_unwrap_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "panic_unwrap_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::panic_unwrap_dart_opaque_twin_rust_async(api_opaque).await) } })
 }
 fn wire_set_static_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    id: impl CstDecode<i32> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "set_static_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode();let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::set_static_dart_opaque_twin_rust_async(api_id, api_opaque).await) } })
 }
 fn wire_async_accept_dart_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "async_accept_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::async_accept_dart_opaque_twin_sync(api_opaque)) })
 }
 fn wire_clone_dart_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2775,35 +2770,35 @@ fn wire_clone_dart_opaque_twin_sync_impl(
         )
 }
 fn wire_create_enum_dart_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_enum_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::create_enum_dart_opaque_twin_sync(api_opaque)) })
 }
 fn wire_create_nested_dart_opaque_twin_sync_impl(
-    opaque1: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-    opaque2: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque1: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque2: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_nested_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque1 = opaque1.cst_decode();let api_opaque2 = opaque2.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::create_nested_dart_opaque_twin_sync(api_opaque1, api_opaque2)) })
 }
 fn wire_drop_static_dart_opaque_twin_sync_impl(
-    id: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    id: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "drop_static_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_id = id.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::drop_static_dart_opaque_twin_sync(api_id)) })
 }
 fn wire_get_enum_dart_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync>
+    opaque: impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "get_enum_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::get_enum_dart_opaque_twin_sync(api_opaque)) })
 }
 fn wire_get_nested_dart_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync>
+    opaque: impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "get_nested_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::get_nested_dart_opaque_twin_sync(api_opaque)) })
 }
 fn wire_loop_back_array_get_twin_sync_impl(
-    opaque: impl CstDecodable<[flutter_rust_bridge::DartOpaque; 1]> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2823,7 +2818,7 @@ fn wire_loop_back_array_get_twin_sync_impl(
         )
 }
 fn wire_loop_back_array_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2843,12 +2838,12 @@ fn wire_loop_back_array_twin_sync_impl(
         )
 }
 fn wire_loop_back_option_get_twin_sync_impl(
-    opaque: impl CstDecodable<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "loop_back_option_get_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::loop_back_option_get_twin_sync(api_opaque)) })
 }
 fn wire_loop_back_option_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2868,7 +2863,7 @@ fn wire_loop_back_option_twin_sync_impl(
         )
 }
 fn wire_loop_back_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2888,7 +2883,7 @@ fn wire_loop_back_twin_sync_impl(
         )
 }
 fn wire_loop_back_vec_get_twin_sync_impl(
-    opaque: impl CstDecodable<Vec<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2908,7 +2903,7 @@ fn wire_loop_back_vec_get_twin_sync_impl(
         )
 }
 fn wire_loop_back_vec_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -2928,27 +2923,26 @@ fn wire_loop_back_vec_twin_sync_impl(
         )
 }
 fn wire_panic_unwrap_dart_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "panic_unwrap_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::panic_unwrap_dart_opaque_twin_sync(api_opaque)) })
 }
 fn wire_set_static_dart_opaque_twin_sync_impl(
-    id: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    opaque: impl CstDecodable<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    id: impl CstDecode<i32> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "set_static_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_id = id.cst_decode();let api_opaque = opaque.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::set_static_dart_opaque_twin_sync(api_id, api_opaque)) })
 }
 fn wire_func_enum_simple_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
-            crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
-        > + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_simple_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_simple_twin_rust_async(api_arg).await) } })
 }
 fn wire_func_enum_with_item_mixed_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -2956,7 +2950,7 @@ fn wire_func_enum_with_item_mixed_twin_rust_async_impl(
 }
 fn wire_func_enum_with_item_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -2964,7 +2958,7 @@ fn wire_func_enum_with_item_struct_twin_rust_async_impl(
 }
 fn wire_func_enum_with_item_tuple_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -2972,41 +2966,40 @@ fn wire_func_enum_with_item_tuple_twin_rust_async_impl(
 }
 fn wire_handle_enum_parameter_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    weekday: impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>
+    weekday: impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_enum_parameter_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_weekday = weekday.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::handle_enum_parameter_twin_rust_async(api_weekday).await) } })
 }
 fn wire_handle_enum_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    val: impl CstDecodable<
-            crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
-        > + core::panic::UnwindSafe,
+    val: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_enum_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_val = val.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::handle_enum_struct_twin_rust_async(api_val).await) } })
 }
 fn wire_handle_return_enum_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecodable<String> + core::panic::UnwindSafe,
+    input: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_return_enum_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::handle_return_enum_twin_rust_async(api_input).await) } })
 }
 fn wire_multiply_by_ten_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    measure: impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync>
+    measure: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "multiply_by_ten_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_measure = measure.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::multiply_by_ten_twin_rust_async(api_measure).await) } })
 }
 fn wire_print_note_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    note: impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync>
+    note: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "print_note_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_note = note.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::print_note_twin_rust_async(api_note).await) } })
 }
 fn wire_func_enum_simple_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -3027,31 +3020,31 @@ fn wire_func_enum_simple_twin_sync_impl(
         )
 }
 fn wire_func_enum_with_item_mixed_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_item_mixed_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_item_mixed_twin_sync(api_arg)) })
 }
 fn wire_func_enum_with_item_struct_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_item_struct_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_item_struct_twin_sync(api_arg)) })
 }
 fn wire_func_enum_with_item_tuple_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_item_tuple_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_item_tuple_twin_sync(api_arg)) })
 }
 fn wire_handle_enum_parameter_twin_sync_impl(
-    weekday: impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>
+    weekday: impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_enum_parameter_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_weekday = weekday.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::handle_enum_parameter_twin_sync(api_weekday)) })
 }
 fn wire_handle_enum_struct_twin_sync_impl(
-    val: impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>
+    val: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -3072,7 +3065,7 @@ fn wire_handle_enum_struct_twin_sync_impl(
         )
 }
 fn wire_handle_return_enum_twin_sync_impl(
-    input: impl CstDecodable<String> + core::panic::UnwindSafe,
+    input: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -3092,7 +3085,7 @@ fn wire_handle_return_enum_twin_sync_impl(
         )
 }
 fn wire_multiply_by_ten_twin_sync_impl(
-    measure: impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>
+    measure: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -3113,7 +3106,7 @@ fn wire_multiply_by_ten_twin_sync_impl(
         )
 }
 fn wire_print_note_twin_sync_impl(
-    note: impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>
+    note: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -3135,7 +3128,7 @@ fn wire_print_note_twin_sync_impl(
 }
 fn wire_EventTwinRustAsync_as_string_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
+    that: impl CstDecode<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "EventTwinRustAsync_as_string_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync::as_string_twin_rust_async(&api_that).await) } })
@@ -3147,8 +3140,8 @@ fn wire_close_event_listener_twin_rust_async_impl(
 }
 fn wire_create_event_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    address: impl CstDecodable<String> + core::panic::UnwindSafe,
-    payload: impl CstDecodable<String> + core::panic::UnwindSafe,
+    address: impl CstDecode<String> + core::panic::UnwindSafe,
+    payload: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_event_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_address = address.cst_decode();let api_payload = payload.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::event_listener_twin_rust_async::create_event_twin_rust_async(api_address, api_payload).await) } })
 }
@@ -3158,7 +3151,7 @@ fn wire_register_event_listener_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "register_event_listener_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context| async move {  crate::api::pseudo_manual::event_listener_twin_rust_async::register_event_listener_twin_rust_async(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>()).await } })
 }
 fn wire_EventTwinSync_as_string_twin_sync_impl(
-    that: impl CstDecodable<crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "EventTwinSync_as_string_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync::as_string_twin_sync(&api_that)) })
@@ -3168,8 +3161,8 @@ fn wire_close_event_listener_twin_sync_impl() -> flutter_rust_bridge::for_genera
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "close_event_listener_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(crate::api::pseudo_manual::event_listener_twin_sync::close_event_listener_twin_sync()) })
 }
 fn wire_create_event_twin_sync_impl(
-    address: impl CstDecodable<String> + core::panic::UnwindSafe,
-    payload: impl CstDecodable<String> + core::panic::UnwindSafe,
+    address: impl CstDecode<String> + core::panic::UnwindSafe,
+    payload: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -3197,23 +3190,21 @@ fn wire_register_event_listener_twin_sync_impl(
 }
 fn wire_CustomStructTwinRustAsync_new_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    message: impl CstDecodable<String> + core::panic::UnwindSafe,
+    message: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinRustAsync_new_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_message = message.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync::new_twin_rust_async(api_message).await) } })
 }
 fn wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<
-            crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync,
-        > + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context| async move {  crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync::nonstatic_return_custom_struct_error_twin_rust_async(&api_that).await } })
 }
 fn wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<
-            crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync,
-        > + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context| async move {  crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync::nonstatic_return_custom_struct_ok_twin_rust_async(&api_that).await } })
 }
@@ -3229,20 +3220,20 @@ fn wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async
 }
 fn wire_SomeStructTwinRustAsync_new_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    value: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    value: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinRustAsync_new_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_value = value.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync::new_twin_rust_async(api_value).await) } })
 }
 fn wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync>
+    that: impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context| async move {  crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync::non_static_return_err_custom_error_twin_rust_async(&api_that).await } })
 }
 fn wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync>
+    that: impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context| async move {  crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync::non_static_return_ok_custom_error_twin_rust_async(&api_that).await } })
@@ -3269,19 +3260,19 @@ fn wire_custom_enum_error_return_error_twin_rust_async_impl(
 }
 fn wire_custom_enum_error_return_ok_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "custom_enum_error_return_ok_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  crate::api::pseudo_manual::exception_twin_rust_async::custom_enum_error_return_ok_twin_rust_async(api_arg).await } })
 }
 fn wire_custom_nested_error_return_error_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "custom_nested_error_return_error_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  crate::api::pseudo_manual::exception_twin_rust_async::custom_nested_error_return_error_twin_rust_async(api_arg).await } })
 }
 fn wire_custom_struct_error_return_error_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -3339,7 +3330,7 @@ fn wire_return_err_custom_error_twin_rust_async_impl(
 }
 fn wire_return_error_variant_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    variant: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    variant: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "return_error_variant_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_variant = variant.cst_decode(); move |context| async move {  crate::api::pseudo_manual::exception_twin_rust_async::return_error_variant_twin_rust_async(api_variant).await } })
 }
@@ -3357,18 +3348,18 @@ fn wire_throw_anyhow_twin_rust_async_impl(port_: flutter_rust_bridge::for_genera
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "throw_anyhow_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {  crate::api::pseudo_manual::exception_twin_rust_async::throw_anyhow_twin_rust_async().await } })
 }
 fn wire_CustomStructTwinSync_new_twin_sync_impl(
-    message: impl CstDecodable<String> + core::panic::UnwindSafe,
+    message: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinSync_new_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_message = message.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync::new_twin_sync(api_message)) })
 }
 fn wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync_impl(
-    that: impl CstDecodable<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync::nonstatic_return_custom_struct_error_twin_sync(&api_that) })
 }
 fn wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync_impl(
-    that: impl CstDecodable<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync::nonstatic_return_custom_struct_ok_twin_sync(&api_that) })
@@ -3382,18 +3373,18 @@ fn wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinSync_static_return_custom_struct_ok_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync::static_return_custom_struct_ok_twin_sync() })
 }
 fn wire_SomeStructTwinSync_new_twin_sync_impl(
-    value: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    value: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinSync_new_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_value = value.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync::new_twin_sync(api_value)) })
 }
 fn wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync_impl(
-    that: impl CstDecodable<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinSync_non_static_return_err_custom_error_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync::non_static_return_err_custom_error_twin_sync(&api_that) })
 }
 fn wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync_impl(
-    that: impl CstDecodable<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync::non_static_return_ok_custom_error_twin_sync(&api_that) })
@@ -3425,18 +3416,18 @@ fn wire_custom_enum_error_return_error_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "custom_enum_error_return_error_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { crate::api::pseudo_manual::exception_twin_sync::custom_enum_error_return_error_twin_sync() })
 }
 fn wire_custom_enum_error_return_ok_twin_sync_impl(
-    arg: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "custom_enum_error_return_ok_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();crate::api::pseudo_manual::exception_twin_sync::custom_enum_error_return_ok_twin_sync(api_arg) })
 }
 fn wire_custom_nested_error_return_error_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "custom_nested_error_return_error_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();crate::api::pseudo_manual::exception_twin_sync::custom_nested_error_return_error_twin_sync(api_arg) })
 }
 fn wire_custom_struct_error_return_error_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "custom_struct_error_return_error_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();crate::api::pseudo_manual::exception_twin_sync::custom_struct_error_return_error_twin_sync(api_arg) })
@@ -3529,7 +3520,7 @@ fn wire_return_err_custom_error_twin_sync_impl(
         )
 }
 fn wire_return_error_variant_twin_sync_impl(
-    variant: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    variant: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -3588,13 +3579,13 @@ fn wire_call_old_module_system_twin_rust_async_impl(
 }
 fn wire_use_imported_enum_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_enum: impl CstDecodable<crate::auxiliary::sample_types::MyEnum> + core::panic::UnwindSafe,
+    my_enum: impl CstDecode<crate::auxiliary::sample_types::MyEnum> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,bool,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "use_imported_enum_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_my_enum = my_enum.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::use_imported_enum_twin_rust_async(api_my_enum).await) } })
 }
 fn wire_use_imported_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_struct: impl CstDecodable<crate::auxiliary::sample_types::MyStruct> + core::panic::UnwindSafe,
+    my_struct: impl CstDecode<crate::auxiliary::sample_types::MyStruct> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,bool,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "use_imported_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_my_struct = my_struct.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_rust_async::use_imported_struct_twin_rust_async(api_my_struct).await) } })
 }
@@ -3607,28 +3598,27 @@ fn wire_call_old_module_system_twin_sync_impl() -> flutter_rust_bridge::for_gene
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "call_old_module_system_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync::call_old_module_system_twin_sync()) })
 }
 fn wire_use_imported_enum_twin_sync_impl(
-    my_enum: impl CstDecodable<crate::auxiliary::sample_types::MyEnum> + core::panic::UnwindSafe,
+    my_enum: impl CstDecode<crate::auxiliary::sample_types::MyEnum> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "use_imported_enum_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_my_enum = my_enum.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync::use_imported_enum_twin_sync(api_my_enum)) })
 }
 fn wire_use_imported_struct_twin_sync_impl(
-    my_struct: impl CstDecodable<crate::auxiliary::sample_types::MyStruct> + core::panic::UnwindSafe,
+    my_struct: impl CstDecode<crate::auxiliary::sample_types::MyStruct> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "use_imported_struct_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_my_struct = my_struct.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync::use_imported_struct_twin_sync(api_my_struct)) })
 }
 fn wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<String> + core::panic::UnwindSafe,
-    b: impl CstDecodable<String> + core::panic::UnwindSafe,
+    a: impl CstDecode<String> + core::panic::UnwindSafe,
+    b: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::concatenate_static_twin_rust_async(api_a, api_b).await) } })
 }
 fn wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<
-            crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync,
-        > + core::panic::UnwindSafe,
-    b: impl CstDecodable<String> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>
+        + core::panic::UnwindSafe,
+    b: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_concatenate_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode();let api_b = b.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::concatenate_twin_rust_async(&api_that, api_b).await) } })
 }
@@ -3639,49 +3629,47 @@ fn wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_t
 }
 fn wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.cst_decode();let api_max = max.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_static_stream_sink_twin_rust_async(api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>()).await) } })
 }
 fn wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<
-            crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync,
-        > + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_at_1_twin_rust_async(&api_that, context.rust2dart_context().stream_sink::<_,u32>()).await) } })
 }
 fn wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<
-            crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync,
-        > + core::panic::UnwindSafe,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    that: impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>
+        + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.cst_decode();let api_key = key.cst_decode();let api_max = max.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::handle_some_stream_sink_twin_rust_async(&api_that, api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>()).await) } })
 }
 fn wire_ConcatenateWithTwinRustAsync_new_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<String> + core::panic::UnwindSafe,
+    a: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_new_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::new_twin_rust_async(api_a).await) } })
 }
 fn wire_SumWithTwinRustAsync_sum_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>
+    that: impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>
         + core::panic::UnwindSafe,
-    y: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    z: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    y: impl CstDecode<u32> + core::panic::UnwindSafe,
+    z: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SumWithTwinRustAsync_sum_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode();let api_y = y.cst_decode();let api_z = z.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync::sum_twin_rust_async(&api_that, api_y, api_z).await) } })
 }
 fn wire_get_sum_array_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    b: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    c: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    a: impl CstDecode<u32> + core::panic::UnwindSafe,
+    b: impl CstDecode<u32> + core::panic::UnwindSafe,
+    c: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,[crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync; 3],_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "get_sum_array_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode();let api_c = c.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::get_sum_array_twin_rust_async(api_a, api_b, api_c).await) } })
 }
@@ -3691,15 +3679,15 @@ fn wire_get_sum_struct_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "get_sum_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::get_sum_struct_twin_rust_async().await) } })
 }
 fn wire_ConcatenateWithTwinSync_concatenate_static_twin_sync_impl(
-    a: impl CstDecodable<String> + core::panic::UnwindSafe,
-    b: impl CstDecodable<String> + core::panic::UnwindSafe,
+    a: impl CstDecode<String> + core::panic::UnwindSafe,
+    b: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_concatenate_static_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::concatenate_static_twin_sync(api_a, api_b)) })
 }
 fn wire_ConcatenateWithTwinSync_concatenate_twin_sync_impl(
-    that: impl CstDecodable<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
         + core::panic::UnwindSafe,
-    b: impl CstDecodable<String> + core::panic::UnwindSafe,
+    b: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_concatenate_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();let api_b = b.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::concatenate_twin_sync(&api_that, api_b)) })
 }
@@ -3710,37 +3698,37 @@ fn wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_s
 }
 fn wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.cst_decode();let api_max = max.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_twin_sync(api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>())) } })
 }
 fn wire_ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_at_1_twin_sync(&api_that, context.rust2dart_context().stream_sink::<_,u32>())) } })
 }
 fn wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
         + core::panic::UnwindSafe,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.cst_decode();let api_key = key.cst_decode();let api_max = max.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_twin_sync(&api_that, api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>())) } })
 }
 fn wire_ConcatenateWithTwinSync_new_twin_sync_impl(
-    a: impl CstDecodable<String> + core::panic::UnwindSafe,
+    a: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_new_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_a = a.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::new_twin_sync(api_a)) })
 }
 fn wire_SumWithTwinSync_sum_twin_sync_impl(
-    that: impl CstDecodable<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
+    that: impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
         + core::panic::UnwindSafe,
-    y: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    z: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    y: impl CstDecode<u32> + core::panic::UnwindSafe,
+    z: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -3762,9 +3750,9 @@ fn wire_SumWithTwinSync_sum_twin_sync_impl(
         )
 }
 fn wire_get_sum_array_twin_sync_impl(
-    a: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    b: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    c: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    a: impl CstDecode<u32> + core::panic::UnwindSafe,
+    b: impl CstDecode<u32> + core::panic::UnwindSafe,
+    c: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -3812,14 +3800,13 @@ fn wire_app_settings_vec_stream_twin_rust_async_impl(
 }
 fn wire_first_number_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    nums: impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::Numbers>
-        + core::panic::UnwindSafe,
+    nums: impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::Numbers> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "first_number_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_nums = nums.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::first_number_twin_rust_async(api_nums).await) } })
 }
 fn wire_first_sequence_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    seqs: impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
+    seqs: impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "first_sequence_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_seqs = seqs.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::first_sequence_twin_rust_async(api_seqs).await) } })
@@ -3839,7 +3826,7 @@ fn wire_get_message_twin_rust_async_impl(port_: flutter_rust_bridge::for_generat
 }
 fn wire_is_app_embedded_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    app_settings: impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
+    app_settings: impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,bool,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "is_app_embedded_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_app_settings = app_settings.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::is_app_embedded_twin_rust_async(api_app_settings).await) } })
@@ -3856,15 +3843,15 @@ fn wire_mirror_tuple_stream_twin_rust_async_impl(
 }
 fn wire_repeat_number_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    num: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    times: impl CstDecodable<usize> + core::panic::UnwindSafe,
+    num: impl CstDecode<i32> + core::panic::UnwindSafe,
+    times: impl CstDecode<usize> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,mirror_Numbers,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "repeat_number_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_num = num.cst_decode();let api_times = times.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::repeat_number_twin_rust_async(api_num, api_times).await) } })
 }
 fn wire_repeat_sequence_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    seq: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    times: impl CstDecodable<usize> + core::panic::UnwindSafe,
+    seq: impl CstDecode<i32> + core::panic::UnwindSafe,
+    times: impl CstDecode<usize> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,mirror_Sequences,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "repeat_sequence_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_seq = seq.cst_decode();let api_times = times.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::repeat_sequence_twin_rust_async(api_seq, api_times).await) } })
 }
@@ -3895,7 +3882,7 @@ fn wire_test_nested_raw_string_mirrored_twin_rust_async_impl(
 }
 fn wire_test_raw_string_enum_mirrored_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    nested: impl CstDecodable<bool> + core::panic::UnwindSafe,
+    nested: impl CstDecode<bool> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,mirror_RawStringEnumMirrored,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_raw_string_enum_mirrored_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_nested = nested.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::test_raw_string_enum_mirrored_twin_rust_async(api_nested).await) } })
 }
@@ -3931,8 +3918,7 @@ fn wire_app_settings_vec_stream_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "app_settings_vec_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::app_settings_vec_stream_twin_sync(context.rust2dart_context().stream_sink::<_,Vec<mirror_ApplicationSettings>>())) } })
 }
 fn wire_first_number_twin_sync_impl(
-    nums: impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::Numbers>
-        + core::panic::UnwindSafe,
+    nums: impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::Numbers> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -3950,7 +3936,7 @@ fn wire_first_number_twin_sync_impl(
         )
 }
 fn wire_first_sequence_twin_sync_impl(
-    seqs: impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
+    seqs: impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -4013,7 +3999,7 @@ fn wire_get_message_twin_sync_impl() -> flutter_rust_bridge::for_generated::Wire
         )
 }
 fn wire_is_app_embedded_twin_sync_impl(
-    app_settings: impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
+    app_settings: impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -4042,8 +4028,8 @@ fn wire_mirror_tuple_stream_twin_sync_impl(port_: flutter_rust_bridge::for_gener
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_tuple_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_tuple_stream_twin_sync(context.rust2dart_context().stream_sink::<_,(mirror_ApplicationSettings,mirror_RawStringEnumMirrored,)>())) } })
 }
 fn wire_repeat_number_twin_sync_impl(
-    num: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    times: impl CstDecodable<usize> + core::panic::UnwindSafe,
+    num: impl CstDecode<i32> + core::panic::UnwindSafe,
+    times: impl CstDecode<usize> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4064,8 +4050,8 @@ fn wire_repeat_number_twin_sync_impl(
         )
 }
 fn wire_repeat_sequence_twin_sync_impl(
-    seq: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    times: impl CstDecodable<usize> + core::panic::UnwindSafe,
+    seq: impl CstDecode<i32> + core::panic::UnwindSafe,
+    times: impl CstDecode<usize> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4106,7 +4092,7 @@ fn wire_test_nested_raw_string_mirrored_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_nested_raw_string_mirrored_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::test_nested_raw_string_mirrored_twin_sync()) })
 }
 fn wire_test_raw_string_enum_mirrored_twin_sync_impl(
-    nested: impl CstDecodable<bool> + core::panic::UnwindSafe,
+    nested: impl CstDecode<bool> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_raw_string_enum_mirrored_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_nested = nested.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::test_raw_string_enum_mirrored_twin_sync(api_nested)) })
 }
@@ -4134,15 +4120,14 @@ fn wire_handle_big_buffers_twin_rust_async_impl(
 }
 fn wire_handle_complex_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    s: impl CstDecodable<
-            crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync,
-        > + core::panic::UnwindSafe,
+    s: impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_complex_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_s = s.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_complex_struct_twin_rust_async(api_s).await) } })
 }
 fn wire_handle_nested_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    s: impl CstDecodable<
+    s: impl CstDecode<
             crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -4150,26 +4135,26 @@ fn wire_handle_nested_struct_twin_rust_async_impl(
 }
 fn wire_handle_string_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    s: impl CstDecodable<String> + core::panic::UnwindSafe,
+    s: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_string_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_s = s.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_string_twin_rust_async(api_s).await) } })
 }
 fn wire_handle_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
-    boxed: impl CstDecodable<Box<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
+    boxed: impl CstDecode<Box<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::auxiliary::sample_types::MySize,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode();let api_boxed = boxed.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_struct_twin_rust_async(api_arg, api_boxed).await) } })
 }
 fn wire_handle_vec_u8_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    v: impl CstDecodable<Vec<u8>> + core::panic::UnwindSafe,
+    v: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_vec_u8_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_v = v.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_vec_u8_twin_rust_async(api_v).await) } })
 }
 fn wire_list_of_primitive_enums_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    weekdays: impl CstDecodable<
+    weekdays: impl CstDecode<
             Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>,
         > + core::panic::UnwindSafe,
 ) {
@@ -4177,14 +4162,14 @@ fn wire_list_of_primitive_enums_twin_rust_async_impl(
 }
 fn wire_test_abc_enum_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    abc: impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync>
+    abc: impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_abc_enum_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_abc = abc.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::test_abc_enum_twin_rust_async(api_abc).await) } })
 }
 fn wire_test_struct_with_enum_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    se: impl CstDecodable<
+    se: impl CstDecode<
             crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -4207,19 +4192,19 @@ fn wire_handle_big_buffers_twin_sync_impl() -> flutter_rust_bridge::for_generate
         )
 }
 fn wire_handle_complex_struct_twin_sync_impl(
-    s: impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>
+    s: impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_complex_struct_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_s = s.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::handle_complex_struct_twin_sync(api_s)) })
 }
 fn wire_handle_nested_struct_twin_sync_impl(
-    s: impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync>
+    s: impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_nested_struct_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_s = s.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::handle_nested_struct_twin_sync(api_s)) })
 }
 fn wire_handle_string_twin_sync_impl(
-    s: impl CstDecodable<String> + core::panic::UnwindSafe,
+    s: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4239,8 +4224,8 @@ fn wire_handle_string_twin_sync_impl(
         )
 }
 fn wire_handle_struct_twin_sync_impl(
-    arg: impl CstDecodable<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
-    boxed: impl CstDecodable<Box<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
+    boxed: impl CstDecode<Box<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4261,7 +4246,7 @@ fn wire_handle_struct_twin_sync_impl(
         )
 }
 fn wire_handle_vec_u8_twin_sync_impl(
-    v: impl CstDecodable<Vec<u8>> + core::panic::UnwindSafe,
+    v: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4281,13 +4266,13 @@ fn wire_handle_vec_u8_twin_sync_impl(
         )
 }
 fn wire_list_of_primitive_enums_twin_sync_impl(
-    weekdays: impl CstDecodable<Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>
+    weekdays: impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "list_of_primitive_enums_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_weekdays = weekdays.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::list_of_primitive_enums_twin_sync(api_weekdays)) })
 }
 fn wire_test_abc_enum_twin_sync_impl(
-    abc: impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
+    abc: impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -4308,14 +4293,14 @@ fn wire_test_abc_enum_twin_sync_impl(
         )
 }
 fn wire_test_struct_with_enum_twin_sync_impl(
-    se: impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync>
+    se: impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_struct_with_enum_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_se = se.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::test_struct_with_enum_twin_sync(api_se)) })
 }
 fn wire_empty_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    empty: impl CstDecodable<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync>
+    empty: impl CstDecode<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "empty_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_empty = empty.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::misc_type_twin_rust_async::empty_struct_twin_rust_async(api_empty).await) } })
@@ -4327,24 +4312,24 @@ fn wire_func_return_unit_twin_rust_async_impl(
 }
 fn wire_func_string_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_string_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::misc_type_twin_rust_async::func_string_twin_rust_async(api_arg).await) } })
 }
 fn wire_handle_list_of_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    l: impl CstDecodable<Vec<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
+    l: impl CstDecode<Vec<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<crate::auxiliary::sample_types::MySize>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_list_of_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_l = l.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::misc_type_twin_rust_async::handle_list_of_struct_twin_rust_async(api_l).await) } })
 }
 fn wire_handle_string_list_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    names: impl CstDecodable<Vec<String>> + core::panic::UnwindSafe,
+    names: impl CstDecode<Vec<String>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<String>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_string_list_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_names = names.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::misc_type_twin_rust_async::handle_string_list_twin_rust_async(api_names).await) } })
 }
 fn wire_empty_struct_twin_sync_impl(
-    empty: impl CstDecodable<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
+    empty: impl CstDecode<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -4380,7 +4365,7 @@ fn wire_func_return_unit_twin_sync_impl() -> flutter_rust_bridge::for_generated:
         )
 }
 fn wire_func_string_twin_sync_impl(
-    arg: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4398,7 +4383,7 @@ fn wire_func_string_twin_sync_impl(
         )
 }
 fn wire_handle_list_of_struct_twin_sync_impl(
-    l: impl CstDecodable<Vec<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
+    l: impl CstDecode<Vec<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4418,7 +4403,7 @@ fn wire_handle_list_of_struct_twin_sync_impl(
         )
 }
 fn wire_handle_string_list_twin_sync_impl(
-    names: impl CstDecodable<Vec<String>> + core::panic::UnwindSafe,
+    names: impl CstDecode<Vec<String>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4439,14 +4424,14 @@ fn wire_handle_string_list_twin_sync_impl(
 }
 fn wire_handle_newtype_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_newtype_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::newtype_pattern_twin_rust_async::handle_newtype_twin_rust_async(api_arg).await) } })
 }
 fn wire_handle_newtype_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -4468,229 +4453,229 @@ fn wire_handle_newtype_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_bool_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<bool>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<bool>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<bool>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_bool_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_bool_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_f32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<f32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<f32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<f32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_f32_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_f64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<f64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<f64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<f64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_f64_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_i16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<i16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<i16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i16_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_i32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i32_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_i64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<i64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<i64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i64_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_i8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<i8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<i8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i8_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_u16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<u16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<u16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u16_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_u32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<u32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<u32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u32_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_u64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<u64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<u64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u64_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_u8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<u8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u8_twin_normal(api_arg)) } })
 }
 fn wire_primitive_optional_types_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_i32: impl CstDecodable<Option<i32>> + core::panic::UnwindSafe,
-    my_i64: impl CstDecodable<Option<i64>> + core::panic::UnwindSafe,
-    my_f64: impl CstDecodable<Option<f64>> + core::panic::UnwindSafe,
-    my_bool: impl CstDecodable<Option<bool>> + core::panic::UnwindSafe,
+    my_i32: impl CstDecode<Option<i32>> + core::panic::UnwindSafe,
+    my_i64: impl CstDecode<Option<i64>> + core::panic::UnwindSafe,
+    my_f64: impl CstDecode<Option<f64>> + core::panic::UnwindSafe,
+    my_bool: impl CstDecode<Option<bool>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_optional_types_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_my_i32 = my_i32.cst_decode();let api_my_i64 = my_i64.cst_decode();let api_my_f64 = my_f64.cst_decode();let api_my_bool = my_bool.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_misc_twin_rust_async::primitive_optional_types_twin_rust_async(api_my_i32, api_my_i64, api_my_f64, api_my_bool).await) } })
 }
 fn wire_primitive_optional_types_twin_sync_impl(
-    my_i32: impl CstDecodable<Option<i32>> + core::panic::UnwindSafe,
-    my_i64: impl CstDecodable<Option<i64>> + core::panic::UnwindSafe,
-    my_f64: impl CstDecodable<Option<f64>> + core::panic::UnwindSafe,
-    my_bool: impl CstDecodable<Option<bool>> + core::panic::UnwindSafe,
+    my_i32: impl CstDecode<Option<i32>> + core::panic::UnwindSafe,
+    my_i64: impl CstDecode<Option<i64>> + core::panic::UnwindSafe,
+    my_f64: impl CstDecode<Option<f64>> + core::panic::UnwindSafe,
+    my_bool: impl CstDecode<Option<bool>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_optional_types_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_my_i32 = my_i32.cst_decode();let api_my_i64 = my_i64.cst_decode();let api_my_f64 = my_f64.cst_decode();let api_my_bool = my_bool.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_misc_twin_sync::primitive_optional_types_twin_sync(api_my_i32, api_my_i64, api_my_f64, api_my_bool)) })
 }
 fn wire_example_optional_primitive_type_bool_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<bool>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<bool>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<bool>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_bool_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_bool_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_f32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<f32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<f32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<f32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_f32_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_f64_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<f64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<f64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<f64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_f64_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_i16_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<i16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<i16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i16_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_i16_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_i32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_i32_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_i64_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<i64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<i64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_i64_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_i8_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<i8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<i8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i8_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_i8_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_u16_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<u16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<u16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u16_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_u16_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_u32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<u32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<u32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_u32_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_u64_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<u64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<u64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_u64_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_u8_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Option<u8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u8_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_rust_async::example_optional_primitive_type_u8_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_optional_primitive_type_bool_twin_sync_impl(
-    arg: impl CstDecodable<Option<bool>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<bool>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_bool_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_bool_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_f32_twin_sync_impl(
-    arg: impl CstDecodable<Option<f32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<f32>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_f32_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_f64_twin_sync_impl(
-    arg: impl CstDecodable<Option<f64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<f64>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f64_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_f64_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_i16_twin_sync_impl(
-    arg: impl CstDecodable<Option<i16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i16>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i16_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_i16_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_i32_twin_sync_impl(
-    arg: impl CstDecodable<Option<i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i32>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_i32_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_i64_twin_sync_impl(
-    arg: impl CstDecodable<Option<i64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i64>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i64_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_i64_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_i8_twin_sync_impl(
-    arg: impl CstDecodable<Option<i8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<i8>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i8_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_i8_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_u16_twin_sync_impl(
-    arg: impl CstDecodable<Option<u16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u16>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u16_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_u16_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_u32_twin_sync_impl(
-    arg: impl CstDecodable<Option<u32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u32>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_u32_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_u64_twin_sync_impl(
-    arg: impl CstDecodable<Option<u64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u64>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u64_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_u64_twin_sync(api_arg)) })
 }
 fn wire_example_optional_primitive_type_u8_twin_sync_impl(
-    arg: impl CstDecodable<Option<u8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Option<u8>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u8_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive_twin_sync::example_optional_primitive_type_u8_twin_sync(api_arg)) })
 }
 fn wire_handle_increment_boxed_optional_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opt: impl CstDecodable<Option<Box<f64>>> + core::panic::UnwindSafe,
+    opt: impl CstDecode<Option<Box<f64>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,f64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_increment_boxed_optional_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opt = opt.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_increment_boxed_optional_twin_rust_async(api_opt).await) } })
 }
 fn wire_handle_option_box_arguments_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    i8box: impl CstDecodable<Option<Box<i8>>> + core::panic::UnwindSafe,
-    u8box: impl CstDecodable<Option<Box<u8>>> + core::panic::UnwindSafe,
-    i32box: impl CstDecodable<Option<Box<i32>>> + core::panic::UnwindSafe,
-    i64box: impl CstDecodable<Option<Box<i64>>> + core::panic::UnwindSafe,
-    f64box: impl CstDecodable<Option<Box<f64>>> + core::panic::UnwindSafe,
-    boolbox: impl CstDecodable<Option<Box<bool>>> + core::panic::UnwindSafe,
-    structbox: impl CstDecodable<Option<Box<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>>> + core::panic::UnwindSafe,
+    i8box: impl CstDecode<Option<Box<i8>>> + core::panic::UnwindSafe,
+    u8box: impl CstDecode<Option<Box<u8>>> + core::panic::UnwindSafe,
+    i32box: impl CstDecode<Option<Box<i32>>> + core::panic::UnwindSafe,
+    i64box: impl CstDecode<Option<Box<i64>>> + core::panic::UnwindSafe,
+    f64box: impl CstDecode<Option<Box<f64>>> + core::panic::UnwindSafe,
+    boolbox: impl CstDecode<Option<Box<bool>>> + core::panic::UnwindSafe,
+    structbox: impl CstDecode<Option<Box<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_option_box_arguments_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_i8box = i8box.cst_decode();let api_u8box = u8box.cst_decode();let api_i32box = i32box.cst_decode();let api_i64box = i64box.cst_decode();let api_f64box = f64box.cst_decode();let api_boolbox = boolbox.cst_decode();let api_structbox = structbox.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_option_box_arguments_twin_rust_async(api_i8box, api_u8box, api_i32box, api_i64box, api_f64box, api_boolbox, api_structbox).await) } })
 }
 fn wire_handle_optional_increment_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opt: impl CstDecodable<
+    opt: impl CstDecode<
             Option<
                 crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync,
             >,
@@ -4700,51 +4685,51 @@ fn wire_handle_optional_increment_twin_rust_async_impl(
 }
 fn wire_handle_optional_return_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    left: impl CstDecodable<f64> + core::panic::UnwindSafe,
-    right: impl CstDecodable<f64> + core::panic::UnwindSafe,
+    left: impl CstDecode<f64> + core::panic::UnwindSafe,
+    right: impl CstDecode<f64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<f64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_optional_return_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_left = left.cst_decode();let api_right = right.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_optional_return_twin_rust_async(api_left, api_right).await) } })
 }
 fn wire_handle_optional_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    document: impl CstDecodable<Option<String>> + core::panic::UnwindSafe,
+    document: impl CstDecode<Option<String>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_optional_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_document = document.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_optional_struct_twin_rust_async(api_document).await) } })
 }
 fn wire_handle_vec_of_opts_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opt: impl CstDecodable<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync>
+    opt: impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_vec_of_opts_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opt = opt.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_vec_of_opts_twin_rust_async(api_opt).await) } })
 }
 fn wire_handle_increment_boxed_optional_twin_sync_impl(
-    opt: impl CstDecodable<Option<Box<f64>>> + core::panic::UnwindSafe,
+    opt: impl CstDecode<Option<Box<f64>>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_increment_boxed_optional_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opt = opt.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_sync::handle_increment_boxed_optional_twin_sync(api_opt)) })
 }
 fn wire_handle_option_box_arguments_twin_sync_impl(
-    i8box: impl CstDecodable<Option<Box<i8>>> + core::panic::UnwindSafe,
-    u8box: impl CstDecodable<Option<Box<u8>>> + core::panic::UnwindSafe,
-    i32box: impl CstDecodable<Option<Box<i32>>> + core::panic::UnwindSafe,
-    i64box: impl CstDecodable<Option<Box<i64>>> + core::panic::UnwindSafe,
-    f64box: impl CstDecodable<Option<Box<f64>>> + core::panic::UnwindSafe,
-    boolbox: impl CstDecodable<Option<Box<bool>>> + core::panic::UnwindSafe,
-    structbox: impl CstDecodable<
+    i8box: impl CstDecode<Option<Box<i8>>> + core::panic::UnwindSafe,
+    u8box: impl CstDecode<Option<Box<u8>>> + core::panic::UnwindSafe,
+    i32box: impl CstDecode<Option<Box<i32>>> + core::panic::UnwindSafe,
+    i64box: impl CstDecode<Option<Box<i64>>> + core::panic::UnwindSafe,
+    f64box: impl CstDecode<Option<Box<f64>>> + core::panic::UnwindSafe,
+    boolbox: impl CstDecode<Option<Box<bool>>> + core::panic::UnwindSafe,
+    structbox: impl CstDecode<
             Option<Box<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>>,
         > + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_option_box_arguments_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_i8box = i8box.cst_decode();let api_u8box = u8box.cst_decode();let api_i32box = i32box.cst_decode();let api_i64box = i64box.cst_decode();let api_f64box = f64box.cst_decode();let api_boolbox = boolbox.cst_decode();let api_structbox = structbox.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_sync::handle_option_box_arguments_twin_sync(api_i8box, api_u8box, api_i32box, api_i64box, api_f64box, api_boolbox, api_structbox)) })
 }
 fn wire_handle_optional_increment_twin_sync_impl(
-    opt: impl CstDecodable<Option<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>>
+    opt: impl CstDecode<Option<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_optional_increment_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opt = opt.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_sync::handle_optional_increment_twin_sync(api_opt)) })
 }
 fn wire_handle_optional_return_twin_sync_impl(
-    left: impl CstDecodable<f64> + core::panic::UnwindSafe,
-    right: impl CstDecodable<f64> + core::panic::UnwindSafe,
+    left: impl CstDecode<f64> + core::panic::UnwindSafe,
+    right: impl CstDecode<f64> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4765,7 +4750,7 @@ fn wire_handle_optional_return_twin_sync_impl(
         )
 }
 fn wire_handle_optional_struct_twin_sync_impl(
-    document: impl CstDecodable<Option<String>> + core::panic::UnwindSafe,
+    document: impl CstDecode<Option<String>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -4785,7 +4770,7 @@ fn wire_handle_optional_struct_twin_sync_impl(
         )
 }
 fn wire_handle_vec_of_opts_twin_sync_impl(
-    opt: impl CstDecodable<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
+    opt: impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -4807,43 +4792,43 @@ fn wire_handle_vec_of_opts_twin_sync_impl(
 }
 fn wire_example_primitive_type_bool_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<bool> + core::panic::UnwindSafe,
+    arg: impl CstDecode<bool> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,bool,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_bool_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive::example_primitive_type_bool_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_type_f32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<f32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<f32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,f32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_f32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive::example_primitive_type_f32_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_type_f64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<f64> + core::panic::UnwindSafe,
+    arg: impl CstDecode<f64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,f64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_f64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive::example_primitive_type_f64_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_type_i16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<i16> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i16> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,i16,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive::example_primitive_type_i16_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_type_i32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,i32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive::example_primitive_type_i32_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_type_i64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<i64> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,i64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive::example_primitive_type_i64_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_type_i8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<i8> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i8> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, i8, _>(
@@ -4866,25 +4851,25 @@ fn wire_example_primitive_type_i8_twin_normal_impl(
 }
 fn wire_example_primitive_type_u16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u16> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u16> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,u16,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive::example_primitive_type_u16_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_type_u32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive::example_primitive_type_u32_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_type_u64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,u64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive::example_primitive_type_u64_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_type_u8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u8> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u8> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, u8, _>(
@@ -4907,233 +4892,233 @@ fn wire_example_primitive_type_u8_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_bool_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<bool>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<bool>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<bool>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_bool_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_bool_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_f32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<f32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<f32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<f32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_f32_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_f64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<f64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<f64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<f64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_f64_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_i16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<i16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<i16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i16_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_i32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i32_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_i64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<i64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<i64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i64_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_i8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<i8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<i8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i8_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_u16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<u16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<u16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u16_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_u32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<u32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<u32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u32_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_u64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<u64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<u64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u64_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_u8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<u8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Vec<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u8_twin_normal(api_arg)) } })
 }
 fn wire_handle_vec_of_primitive_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    n: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    n: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_vec_of_primitive_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_n = n.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::handle_vec_of_primitive_twin_rust_async(api_n).await) } })
 }
 fn wire_handle_zero_copy_vec_of_primitive_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    n: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    n: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::ZeroCopyVecOfPrimitivePackTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_zero_copy_vec_of_primitive_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_n = n.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::handle_zero_copy_vec_of_primitive_twin_rust_async(api_n).await) } })
 }
 fn wire_handle_vec_of_primitive_twin_sync_impl(
-    n: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    n: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_vec_of_primitive_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_n = n.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_misc_twin_sync::handle_vec_of_primitive_twin_sync(api_n)) })
 }
 fn wire_handle_zero_copy_vec_of_primitive_twin_sync_impl(
-    n: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    n: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_zero_copy_vec_of_primitive_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_n = n.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_misc_twin_sync::handle_zero_copy_vec_of_primitive_twin_sync(api_n)) })
 }
 fn wire_example_primitive_list_type_bool_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<bool>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<bool>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<bool>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_bool_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_bool_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_f32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<f32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<f32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<f32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_f32_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_f64_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<f64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<f64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<f64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_f64_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_i16_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<i16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<i16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i16_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_i16_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_i32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_i32_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_i64_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<i64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<i64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_i64_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_i8_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<i8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<i8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i8_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_i8_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_u16_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<u16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<u16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u16_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_u16_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_u32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<u32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<u32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_u32_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_u64_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<u64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<u64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_u64_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_u8_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<Vec<u8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u8_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_rust_async::example_primitive_list_type_u8_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_list_type_bool_twin_sync_impl(
-    arg: impl CstDecodable<Vec<bool>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<bool>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_bool_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_bool_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_f32_twin_sync_impl(
-    arg: impl CstDecodable<Vec<f32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<f32>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_f32_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_f64_twin_sync_impl(
-    arg: impl CstDecodable<Vec<f64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<f64>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f64_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_f64_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_i16_twin_sync_impl(
-    arg: impl CstDecodable<Vec<i16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i16>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i16_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_i16_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_i32_twin_sync_impl(
-    arg: impl CstDecodable<Vec<i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i32>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_i32_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_i64_twin_sync_impl(
-    arg: impl CstDecodable<Vec<i64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i64>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i64_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_i64_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_i8_twin_sync_impl(
-    arg: impl CstDecodable<Vec<i8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<i8>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i8_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_i8_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_u16_twin_sync_impl(
-    arg: impl CstDecodable<Vec<u16>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u16>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u16_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_u16_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_u32_twin_sync_impl(
-    arg: impl CstDecodable<Vec<u32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u32>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_u32_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_u64_twin_sync_impl(
-    arg: impl CstDecodable<Vec<u64>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u64>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u64_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_u64_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_list_type_u8_twin_sync_impl(
-    arg: impl CstDecodable<Vec<u8>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u8_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync::example_primitive_list_type_u8_twin_sync(api_arg)) })
 }
 fn wire_primitive_types_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_i32: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    my_i64: impl CstDecodable<i64> + core::panic::UnwindSafe,
-    my_f64: impl CstDecodable<f64> + core::panic::UnwindSafe,
-    my_bool: impl CstDecodable<bool> + core::panic::UnwindSafe,
+    my_i32: impl CstDecode<i32> + core::panic::UnwindSafe,
+    my_i64: impl CstDecode<i64> + core::panic::UnwindSafe,
+    my_f64: impl CstDecode<f64> + core::panic::UnwindSafe,
+    my_bool: impl CstDecode<bool> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,i32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_types_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_my_i32 = my_i32.cst_decode();let api_my_i64 = my_i64.cst_decode();let api_my_f64 = my_f64.cst_decode();let api_my_bool = my_bool.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async::primitive_types_twin_rust_async(api_my_i32, api_my_i64, api_my_f64, api_my_bool).await) } })
 }
 fn wire_primitive_u32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    my_u32: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    my_u32: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_u32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_my_u32 = my_u32.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async::primitive_u32_twin_rust_async(api_my_u32).await) } })
 }
 fn wire_primitive_types_twin_sync_impl(
-    my_i32: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    my_i64: impl CstDecodable<i64> + core::panic::UnwindSafe,
-    my_f64: impl CstDecodable<f64> + core::panic::UnwindSafe,
-    my_bool: impl CstDecodable<bool> + core::panic::UnwindSafe,
+    my_i32: impl CstDecode<i32> + core::panic::UnwindSafe,
+    my_i64: impl CstDecode<i64> + core::panic::UnwindSafe,
+    my_f64: impl CstDecode<f64> + core::panic::UnwindSafe,
+    my_bool: impl CstDecode<bool> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -5159,7 +5144,7 @@ fn wire_primitive_types_twin_sync_impl(
         )
 }
 fn wire_primitive_u32_twin_sync_impl(
-    my_u32: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    my_u32: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -5180,122 +5165,122 @@ fn wire_primitive_u32_twin_sync_impl(
 }
 fn wire_example_primitive_type_bool_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<bool> + core::panic::UnwindSafe,
+    arg: impl CstDecode<bool> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,bool,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_bool_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_bool_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_f32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<f32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<f32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,f32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_f32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_f32_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_f64_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<f64> + core::panic::UnwindSafe,
+    arg: impl CstDecode<f64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,f64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_f64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_f64_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_i16_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<i16> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i16> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,i16,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i16_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_i16_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_i32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,i32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_i32_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_i64_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<i64> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,i64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_i64_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_i8_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<i8> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i8> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,i8,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i8_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_i8_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_u16_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u16> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u16> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u16,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u16_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_u16_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_u32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_u32_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_u64_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u64_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_u64_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_u8_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<u8> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u8> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u8,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u8_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_rust_async::example_primitive_type_u8_twin_rust_async(api_arg).await) } })
 }
 fn wire_example_primitive_type_bool_twin_sync_impl(
-    arg: impl CstDecodable<bool> + core::panic::UnwindSafe,
+    arg: impl CstDecode<bool> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_bool_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_bool_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_f32_twin_sync_impl(
-    arg: impl CstDecodable<f32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<f32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_f32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_f32_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_f64_twin_sync_impl(
-    arg: impl CstDecodable<f64> + core::panic::UnwindSafe,
+    arg: impl CstDecode<f64> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_f64_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_f64_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_i16_twin_sync_impl(
-    arg: impl CstDecodable<i16> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i16> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i16_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_i16_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_i32_twin_sync_impl(
-    arg: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_i32_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_i64_twin_sync_impl(
-    arg: impl CstDecodable<i64> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i64> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i64_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_i64_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_i8_twin_sync_impl(
-    arg: impl CstDecodable<i8> + core::panic::UnwindSafe,
+    arg: impl CstDecode<i8> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_i8_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_i8_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_u16_twin_sync_impl(
-    arg: impl CstDecodable<u16> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u16> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u16_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_u16_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_u32_twin_sync_impl(
-    arg: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_u32_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_u64_twin_sync_impl(
-    arg: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u64_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_u64_twin_sync(api_arg)) })
 }
 fn wire_example_primitive_type_u8_twin_sync_impl(
-    arg: impl CstDecodable<u8> + core::panic::UnwindSafe,
+    arg: impl CstDecode<u8> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_type_u8_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_twin_sync::example_primitive_type_u8_twin_sync(api_arg)) })
 }
@@ -5318,28 +5303,28 @@ fn wire_test_raw_string_item_struct_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_raw_string_item_struct_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(crate::api::pseudo_manual::raw_string_twin_sync::test_raw_string_item_struct_twin_sync()) })
 }
 fn wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync_impl(
-    that: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();let api_that = api_that.rust_auto_opaque_decode_ref()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_borrow_twin_sync(&api_that)) })
 }
 fn wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync_impl(
-    that: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();let mut api_that = api_that.rust_auto_opaque_decode_ref_mut()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_mut_borrow_twin_sync(&mut api_that)) })
 }
 fn wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync_impl(
-    that: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();let api_that = api_that.rust_auto_opaque_decode_owned()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_own_twin_sync(api_that)) })
 }
 fn wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync_impl(
-    that: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_instance_method_return_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();let api_that = api_that.rust_auto_opaque_decode_ref()?;
@@ -5354,21 +5339,21 @@ fn wire_NonCloneSimpleTwinSync_new_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_new_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::new_twin_sync())) })
 }
 fn wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync_impl(
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let api_arg = api_arg.rust_auto_opaque_decode_ref()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_arg_borrow_twin_sync(&api_arg)) })
 }
 fn wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync_impl(
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let mut api_arg = api_arg.rust_auto_opaque_decode_ref_mut()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_arg_mut_borrow_twin_sync(&mut api_arg)) })
 }
 fn wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync_impl(
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_static_method_arg_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let api_arg = api_arg.rust_auto_opaque_decode_owned()?;
@@ -5379,39 +5364,39 @@ fn wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_static_method_return_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::static_method_return_own_twin_sync())) })
 }
 fn wire_rust_auto_opaque_arg_borrow_twin_sync_impl(
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
-    expect: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    expect: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_arg_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let api_expect = expect.cst_decode();let api_arg = api_arg.rust_auto_opaque_decode_ref()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_borrow_twin_sync(&api_arg, api_expect)) })
 }
 fn wire_rust_auto_opaque_arg_mut_borrow_twin_sync_impl(
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
-    expect: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    adder: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    expect: impl CstDecode<i32> + core::panic::UnwindSafe,
+    adder: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_arg_mut_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let api_expect = expect.cst_decode();let api_adder = adder.cst_decode();let mut api_arg = api_arg.rust_auto_opaque_decode_ref_mut()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_mut_borrow_twin_sync(&mut api_arg, api_expect, api_adder)) })
 }
 fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_impl(
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_arg_own_and_return_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let api_arg = api_arg.rust_auto_opaque_decode_owned()?;
 Result::<_,anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_own_and_return_own_twin_sync(api_arg))) })
 }
 fn wire_rust_auto_opaque_arg_own_twin_sync_impl(
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
-    expect: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    expect: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_arg_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let api_expect = expect.cst_decode();let api_arg = api_arg.rust_auto_opaque_decode_owned()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_arg_own_twin_sync(api_arg, api_expect)) })
 }
 fn wire_rust_auto_opaque_callable_arg_twin_sync_impl(
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<
                     Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
@@ -5427,15 +5412,15 @@ fn wire_rust_auto_opaque_callable_return_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_callable_return_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_callable_return_twin_sync())) })
 }
 fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_impl(
-    a: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    a: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
-    b: impl CstDecodable<String> + core::panic::UnwindSafe,
+    b: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_normal_and_opaque_arg_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode();let api_a = api_a.rust_auto_opaque_decode_owned()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_normal_and_opaque_arg_twin_sync(api_a, api_b)) })
 }
 fn wire_rust_auto_opaque_plus_sign_arg_twin_sync_impl(
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>,
             >,
@@ -5449,12 +5434,12 @@ fn wire_rust_auto_opaque_plus_sign_return_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_plus_sign_return_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_plus_sign_return_twin_sync())) })
 }
 fn wire_rust_auto_opaque_return_own_twin_sync_impl(
-    initial: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    initial: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_return_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_initial = initial.cst_decode();Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_return_own_twin_sync(api_initial))) })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_impl(
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>,
             >,
@@ -5464,7 +5449,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(&api_arg)) })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_impl(
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>,
             >,
@@ -5474,7 +5459,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_s
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(&mut api_arg)) })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>,
             >,
@@ -5488,28 +5473,25 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync())) })
 }
 fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_impl(
-    arg: impl CstDecodable<
-            flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>,
-        > + core::panic::UnwindSafe,
-    expect: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>>
+        + core::panic::UnwindSafe,
+    expect: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let api_expect = expect.cst_decode();let api_arg = api_arg.rust_auto_opaque_decode_ref()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_arg_borrow_twin_sync(&api_arg, api_expect)) })
 }
 fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_impl(
-    arg: impl CstDecodable<
-            flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>,
-        > + core::panic::UnwindSafe,
-    expect: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>>
+        + core::panic::UnwindSafe,
+    expect: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let api_expect = expect.cst_decode();let mut api_arg = api_arg.rust_auto_opaque_decode_ref_mut()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(&mut api_arg, api_expect)) })
 }
 fn wire_rust_auto_opaque_trait_object_arg_own_twin_sync_impl(
-    arg: impl CstDecodable<
-            flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>,
-        > + core::panic::UnwindSafe,
-    expect: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>>
+        + core::panic::UnwindSafe,
+    expect: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_own_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();let api_expect = expect.cst_decode();let api_arg = api_arg.rust_auto_opaque_decode_owned()?;
 Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_arg_own_twin_sync(api_arg, api_expect)) })
@@ -5523,9 +5505,9 @@ fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_two_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::rust_auto_opaque_trait_object_return_own_two_twin_sync())) })
 }
 fn wire_rust_auto_opaque_two_args_twin_sync_impl(
-    a: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    a: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
-    b: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    b: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_two_args_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode();let api_a = api_a.rust_auto_opaque_decode_owned()?;
@@ -5547,9 +5529,8 @@ fn wire_create_opaque_twin_rust_async_impl(port_: flutter_rust_bridge::for_gener
 }
 fn wire_create_option_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<
-            Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>,
-        > + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::create_option_opaque_twin_rust_async(api_opaque).await) } })
 }
@@ -5565,7 +5546,7 @@ fn wire_frb_generator_test_twin_rust_async_impl(
 }
 fn wire_opaque_array_run_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecodable<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
+    data: impl CstDecode<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_array_run_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_data = data.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_array_run_twin_rust_async(api_data).await) } })
@@ -5575,7 +5556,7 @@ fn wire_opaque_array_twin_rust_async_impl(port_: flutter_rust_bridge::for_genera
 }
 fn wire_opaque_vec_run_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecodable<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
+    data: impl CstDecode<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_vec_run_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_data = data.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::opaque_vec_run_twin_rust_async(api_data).await) } })
@@ -5585,44 +5566,42 @@ fn wire_opaque_vec_twin_rust_async_impl(port_: flutter_rust_bridge::for_generate
 }
 fn wire_run_enum_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<
-            crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync,
-        > + core::panic::UnwindSafe,
+    opaque: impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_enum_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_enum_opaque_twin_rust_async(api_opaque).await) } })
 }
 fn wire_run_nested_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<
-            crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync,
-        > + core::panic::UnwindSafe,
+    opaque: impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_nested_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_nested_opaque_twin_rust_async(api_opaque).await) } })
 }
 fn wire_run_non_clone_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    clone: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
+    clone: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_non_clone_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_clone = clone.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_non_clone_twin_rust_async(api_clone).await) } })
 }
 fn wire_run_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_opaque_twin_rust_async(api_opaque).await) } })
 }
 fn wire_run_opaque_with_delay_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async::run_opaque_with_delay_twin_rust_async(api_opaque).await) } })
 }
 fn wire_unwrap_rust_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,String,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "unwrap_rust_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {  crate::api::pseudo_manual::rust_opaque_twin_rust_async::unwrap_rust_opaque_twin_rust_async(api_opaque).await } })
@@ -5651,9 +5630,8 @@ fn wire_create_opaque_twin_sync_impl() -> flutter_rust_bridge::for_generated::Wi
         )
 }
 fn wire_create_option_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<
-            Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>,
-        > + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
+        + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync::create_option_opaque_twin_sync(api_opaque)) })
 }
@@ -5690,7 +5668,7 @@ fn wire_frb_generator_test_twin_sync_impl() -> flutter_rust_bridge::for_generate
         )
 }
 fn wire_opaque_array_run_twin_sync_impl(
-    data: impl CstDecodable<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
+    data: impl CstDecode<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -5726,7 +5704,7 @@ fn wire_opaque_array_twin_sync_impl() -> flutter_rust_bridge::for_generated::Wir
         )
 }
 fn wire_opaque_vec_run_twin_sync_impl(
-    data: impl CstDecodable<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
+    data: impl CstDecode<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -5762,7 +5740,7 @@ fn wire_opaque_vec_twin_sync_impl() -> flutter_rust_bridge::for_generated::WireS
         )
 }
 fn wire_run_enum_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>
+    opaque: impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -5783,7 +5761,7 @@ fn wire_run_enum_opaque_twin_sync_impl(
         )
 }
 fn wire_run_nested_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync>
+    opaque: impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -5804,7 +5782,7 @@ fn wire_run_nested_opaque_twin_sync_impl(
         )
 }
 fn wire_run_non_clone_twin_sync_impl(
-    clone: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
+    clone: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -5825,7 +5803,7 @@ fn wire_run_non_clone_twin_sync_impl(
         )
 }
 fn wire_run_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -5846,13 +5824,13 @@ fn wire_run_opaque_twin_sync_impl(
         )
 }
 fn wire_run_opaque_with_delay_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync::run_opaque_with_delay_twin_sync(api_opaque)) })
 }
 fn wire_unwrap_rust_opaque_twin_sync_impl(
-    opaque: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -5872,14 +5850,14 @@ fn wire_unwrap_rust_opaque_twin_sync_impl(
 }
 fn wire_simple_adder_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    b: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    a: impl CstDecode<i32> + core::panic::UnwindSafe,
+    b: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,i32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "simple_adder_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::simple_twin_rust_async::simple_adder_twin_rust_async(api_a, api_b).await) } })
 }
 fn wire_simple_adder_twin_sync_impl(
-    a: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    b: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    a: impl CstDecode<i32> + core::panic::UnwindSafe,
+    b: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -5911,8 +5889,8 @@ fn wire_func_stream_return_panic_twin_rust_async_impl(
 }
 fn wire_func_stream_sink_arg_position_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    b: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    a: impl CstDecode<u32> + core::panic::UnwindSafe,
+    b: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_stream_sink_arg_position_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::func_stream_sink_arg_position_twin_rust_async(api_a, api_b, context.rust2dart_context().stream_sink::<_,u32>()).await) } })
 }
@@ -5923,28 +5901,28 @@ fn wire_handle_stream_of_struct_twin_rust_async_impl(
 }
 fn wire_handle_stream_sink_at_1_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_sink_at_1_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.cst_decode();let api_max = max.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_1_twin_rust_async(api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>()).await) } })
 }
 fn wire_handle_stream_sink_at_2_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_sink_at_2_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.cst_decode();let api_max = max.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_2_twin_rust_async(api_key, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>(), api_max).await) } })
 }
 fn wire_handle_stream_sink_at_3_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_stream_sink_at_3_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.cst_decode();let api_max = max.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_3_twin_rust_async(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>(), api_key, api_max).await) } })
 }
 fn wire_func_struct_with_one_field_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -5952,7 +5930,7 @@ fn wire_func_struct_with_one_field_twin_rust_async_impl(
 }
 fn wire_func_struct_with_two_field_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -5960,7 +5938,7 @@ fn wire_func_struct_with_two_field_twin_rust_async_impl(
 }
 fn wire_func_struct_with_zero_field_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync,
         > + core::panic::UnwindSafe,
 ) {
@@ -5968,62 +5946,60 @@ fn wire_func_struct_with_zero_field_twin_rust_async_impl(
 }
 fn wire_func_tuple_struct_with_one_field_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_tuple_struct_with_one_field_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_rust_async::func_tuple_struct_with_one_field_twin_rust_async(api_arg).await) } })
 }
 fn wire_func_tuple_struct_with_two_field_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync> + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_tuple_struct_with_two_field_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_rust_async::func_tuple_struct_with_two_field_twin_rust_async(api_arg).await) } })
 }
 fn wire_func_struct_with_one_field_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_struct_with_one_field_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_struct_with_one_field_twin_sync(api_arg)) })
 }
 fn wire_func_struct_with_two_field_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_struct_with_two_field_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_struct_with_two_field_twin_sync(api_arg)) })
 }
 fn wire_func_struct_with_zero_field_twin_sync_impl(
-    arg: impl CstDecodable<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>
+    arg: impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_struct_with_zero_field_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_struct_with_zero_field_twin_sync(api_arg)) })
 }
 fn wire_func_tuple_struct_with_one_field_twin_sync_impl(
-    arg: impl CstDecodable<
-            crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync,
-        > + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>
+        + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_tuple_struct_with_one_field_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_tuple_struct_with_one_field_twin_sync(api_arg)) })
 }
 fn wire_func_tuple_struct_with_two_field_twin_sync_impl(
-    arg: impl CstDecodable<
-            crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync,
-        > + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync>
+        + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_tuple_struct_with_two_field_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::structure_twin_sync::func_tuple_struct_with_two_field_twin_sync(api_arg)) })
 }
 fn wire_test_tuple_2_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    value: impl CstDecodable<Vec<(String, i32)>> + core::panic::UnwindSafe,
+    value: impl CstDecode<Vec<(String, i32)>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_tuple_2_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_value = value.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::tuple_twin_rust_async::test_tuple_2_twin_rust_async(api_value).await) } })
 }
 fn wire_test_tuple_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    value: impl CstDecodable<Option<(String, i32)>> + core::panic::UnwindSafe,
+    value: impl CstDecode<Option<(String, i32)>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,(String,i32,),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_tuple_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_value = value.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::tuple_twin_rust_async::test_tuple_twin_rust_async(api_value).await) } })
 }
 fn wire_test_tuple_2_twin_sync_impl(
-    value: impl CstDecodable<Vec<(String, i32)>> + core::panic::UnwindSafe,
+    value: impl CstDecode<Vec<(String, i32)>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -6041,7 +6017,7 @@ fn wire_test_tuple_2_twin_sync_impl(
         )
 }
 fn wire_test_tuple_twin_sync_impl(
-    value: impl CstDecodable<Option<(String, i32)>> + core::panic::UnwindSafe,
+    value: impl CstDecode<Option<(String, i32)>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -6060,24 +6036,24 @@ fn wire_test_tuple_twin_sync_impl(
 }
 fn wire_handle_type_alias_id_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    input: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_type_alias_id_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_rust_async::handle_type_alias_id_twin_rust_async(api_input).await) } })
 }
 fn wire_handle_type_alias_model_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    input: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_type_alias_model_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_rust_async::handle_type_alias_model_twin_rust_async(api_input).await) } })
 }
 fn wire_handle_type_nest_alias_id_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    input: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,u64,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_type_nest_alias_id_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_rust_async::handle_type_nest_alias_id_twin_rust_async(api_input).await) } })
 }
 fn wire_handle_type_alias_id_twin_sync_impl(
-    input: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    input: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -6097,36 +6073,36 @@ fn wire_handle_type_alias_id_twin_sync_impl(
         )
 }
 fn wire_handle_type_alias_model_twin_sync_impl(
-    input: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    input: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_type_alias_model_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_input = input.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_sync::handle_type_alias_model_twin_sync(api_input)) })
 }
 fn wire_handle_type_nest_alias_id_twin_sync_impl(
-    input: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    input: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_type_nest_alias_id_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_input = input.cst_decode();Result::<_,()>::Ok(crate::api::pseudo_manual::type_alias_twin_sync::handle_type_nest_alias_id_twin_sync(api_input)) })
 }
 fn wire_handle_nested_uuids_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: impl CstDecodable<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync>
+    ids: impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_nested_uuids_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_ids = ids.cst_decode(); move |context| async move {  crate::api::pseudo_manual::uuid_type_twin_rust_async::handle_nested_uuids_twin_rust_async(api_ids).await } })
 }
 fn wire_handle_uuid_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<uuid::Uuid> + core::panic::UnwindSafe,
+    id: impl CstDecode<uuid::Uuid> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,uuid::Uuid,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_uuid_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context| async move {  crate::api::pseudo_manual::uuid_type_twin_rust_async::handle_uuid_twin_rust_async(api_id).await } })
 }
 fn wire_handle_uuids_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: impl CstDecodable<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
+    ids: impl CstDecode<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,_,Vec<uuid::Uuid>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_uuids_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_ids = ids.cst_decode(); move |context| async move {  crate::api::pseudo_manual::uuid_type_twin_rust_async::handle_uuids_twin_rust_async(api_ids).await } })
 }
 fn wire_handle_nested_uuids_twin_sync_impl(
-    ids: impl CstDecodable<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync>
+    ids: impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -6145,7 +6121,7 @@ fn wire_handle_nested_uuids_twin_sync_impl(
         )
 }
 fn wire_handle_uuid_twin_sync_impl(
-    id: impl CstDecodable<uuid::Uuid> + core::panic::UnwindSafe,
+    id: impl CstDecode<uuid::Uuid> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -6161,7 +6137,7 @@ fn wire_handle_uuid_twin_sync_impl(
         )
 }
 fn wire_handle_uuids_twin_sync_impl(
-    ids: impl CstDecodable<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
+    ids: impl CstDecode<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -6188,7 +6164,7 @@ fn wire_test_raw_string_item_struct_twin_normal_impl(
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  { let api_that = api_that.rust_auto_opaque_decode_ref()?;
@@ -6196,7 +6172,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  { let mut api_that = api_that.rust_auto_opaque_decode_ref_mut()?;
@@ -6204,7 +6180,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  { let api_that = api_that.rust_auto_opaque_decode_owned()?;
@@ -6212,7 +6188,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  { let api_that = api_that.rust_auto_opaque_decode_ref()?;
@@ -6230,7 +6206,7 @@ fn wire_NonCloneSimpleTwinNormal_new_twin_normal_impl(
 }
 fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  { let api_arg = api_arg.rust_auto_opaque_decode_ref()?;
@@ -6238,7 +6214,7 @@ fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(
 }
 fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  { let mut api_arg = api_arg.rust_auto_opaque_decode_ref_mut()?;
@@ -6246,7 +6222,7 @@ fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(
 }
 fn wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  { let api_arg = api_arg.rust_auto_opaque_decode_owned()?;
@@ -6259,9 +6235,9 @@ fn wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal_impl(
 }
 fn wire_rust_auto_opaque_arg_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
-    expect: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    expect: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -6286,10 +6262,10 @@ fn wire_rust_auto_opaque_arg_borrow_twin_normal_impl(
 }
 fn wire_rust_auto_opaque_arg_mut_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
-    expect: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    adder: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    expect: impl CstDecode<i32> + core::panic::UnwindSafe,
+    adder: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -6317,7 +6293,7 @@ fn wire_rust_auto_opaque_arg_mut_borrow_twin_normal_impl(
 }
 fn wire_rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_arg_own_and_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  { let api_arg = api_arg.rust_auto_opaque_decode_owned()?;
@@ -6325,9 +6301,9 @@ fn wire_rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(
 }
 fn wire_rust_auto_opaque_arg_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
-    expect: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    expect: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -6352,7 +6328,7 @@ fn wire_rust_auto_opaque_arg_own_twin_normal_impl(
 }
 fn wire_rust_auto_opaque_callable_arg_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<
                     Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
@@ -6387,16 +6363,16 @@ fn wire_rust_auto_opaque_callable_return_twin_normal_impl(
 }
 fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    a: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
-    b: impl CstDecodable<String> + core::panic::UnwindSafe,
+    b: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_normal_and_opaque_arg_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode(); move |context|  { let api_a = api_a.rust_auto_opaque_decode_owned()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_normal_and_opaque_arg_twin_normal(api_a, api_b)) } })
 }
 fn wire_rust_auto_opaque_plus_sign_arg_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>,
             >,
@@ -6429,13 +6405,13 @@ fn wire_rust_auto_opaque_plus_sign_return_twin_normal_impl(
 }
 fn wire_rust_auto_opaque_return_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    initial: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    initial: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_initial = initial.cst_decode(); move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(crate::api::rust_auto_opaque::rust_auto_opaque_return_own_twin_normal(api_initial))) } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>,
             >,
@@ -6446,7 +6422,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_norma
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>,
             >,
@@ -6457,7 +6433,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_n
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
+    arg: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
                 std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>,
             >,
@@ -6473,30 +6449,27 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_norma
 }
 fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
-            flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>,
-        > + core::panic::UnwindSafe,
-    expect: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>>
+        + core::panic::UnwindSafe,
+    expect: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode();let api_expect = expect.cst_decode(); move |context|  { let api_arg = api_arg.rust_auto_opaque_decode_ref()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_arg_borrow_twin_normal(&api_arg, api_expect)) } })
 }
 fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
-            flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>,
-        > + core::panic::UnwindSafe,
-    expect: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>>
+        + core::panic::UnwindSafe,
+    expect: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode();let api_expect = expect.cst_decode(); move |context|  { let mut api_arg = api_arg.rust_auto_opaque_decode_ref_mut()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(&mut api_arg, api_expect)) } })
 }
 fn wire_rust_auto_opaque_trait_object_arg_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<
-            flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>,
-        > + core::panic::UnwindSafe,
-    expect: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>>
+        + core::panic::UnwindSafe,
+    expect: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode();let api_expect = expect.cst_decode(); move |context|  { let api_arg = api_arg.rust_auto_opaque_decode_owned()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_arg_own_twin_normal(api_arg, api_expect)) } })
@@ -6513,9 +6486,9 @@ fn wire_rust_auto_opaque_trait_object_return_own_two_twin_normal_impl(
 }
 fn wire_rust_auto_opaque_two_args_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    a: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
-    b: impl CstDecodable<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    b: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -6555,9 +6528,8 @@ fn wire_create_opaque_twin_normal_impl(port_: flutter_rust_bridge::for_generated
 }
 fn wire_create_option_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<
-            Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>,
-        > + core::panic::UnwindSafe,
+    opaque: impl CstDecode<Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::rust_opaque::create_option_opaque_twin_normal(api_opaque)) } })
 }
@@ -6573,7 +6545,7 @@ fn wire_frb_generator_test_twin_normal_impl(
 }
 fn wire_opaque_array_run_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecodable<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
+    data: impl CstDecode<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -6598,7 +6570,7 @@ fn wire_opaque_array_twin_normal_impl(port_: flutter_rust_bridge::for_generated:
 }
 fn wire_opaque_vec_run_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecodable<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
+    data: impl CstDecode<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -6623,7 +6595,7 @@ fn wire_opaque_vec_twin_normal_impl(port_: flutter_rust_bridge::for_generated::M
 }
 fn wire_run_enum_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<crate::api::rust_opaque::EnumOpaqueTwinNormal> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, String, _>(
@@ -6644,7 +6616,7 @@ fn wire_run_enum_opaque_twin_normal_impl(
 }
 fn wire_run_nested_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<crate::api::rust_opaque::OpaqueNestedTwinNormal> + core::panic::UnwindSafe,
+    opaque: impl CstDecode<crate::api::rust_opaque::OpaqueNestedTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -6665,7 +6637,7 @@ fn wire_run_nested_opaque_twin_normal_impl(
 }
 fn wire_run_non_clone_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    clone: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
+    clone: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -6687,7 +6659,7 @@ fn wire_run_non_clone_twin_normal_impl(
 }
 fn wire_run_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -6707,7 +6679,7 @@ fn wire_run_opaque_twin_normal_impl(
 }
 fn wire_run_opaque_with_delay_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -6729,7 +6701,7 @@ fn wire_run_opaque_with_delay_twin_normal_impl(
 }
 fn wire_unwrap_rust_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecodable<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
@@ -6820,9 +6792,8 @@ fn wire_sync_option_rust_opaque_twin_normal_impl(
         )
 }
 fn wire_sync_run_opaque_twin_normal_impl(
-    opaque: impl CstDecodable<
-            flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>,
-        > + core::panic::UnwindSafe,
+    opaque: impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>>
+        + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, _>(
@@ -6841,8 +6812,8 @@ fn wire_sync_run_opaque_twin_normal_impl(
 }
 fn wire_simple_adder_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<i32> + core::panic::UnwindSafe,
-    b: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    a: impl CstDecode<i32> + core::panic::UnwindSafe,
+    b: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, i32, _>(
@@ -6900,8 +6871,8 @@ fn wire_func_stream_return_panic_twin_normal_impl(
 }
 fn wire_func_stream_sink_arg_position_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    b: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    a: impl CstDecode<u32> + core::panic::UnwindSafe,
+    b: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -6948,8 +6919,8 @@ fn wire_handle_stream_of_struct_twin_normal_impl(
 }
 fn wire_handle_stream_sink_at_1_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -6975,8 +6946,8 @@ fn wire_handle_stream_sink_at_1_twin_normal_impl(
 }
 fn wire_handle_stream_sink_at_2_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -7002,8 +6973,8 @@ fn wire_handle_stream_sink_at_2_twin_normal_impl(
 }
 fn wire_handle_stream_sink_at_3_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    key: impl CstDecodable<u32> + core::panic::UnwindSafe,
-    max: impl CstDecodable<u32> + core::panic::UnwindSafe,
+    key: impl CstDecode<u32> + core::panic::UnwindSafe,
+    max: impl CstDecode<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -7029,7 +7000,7 @@ fn wire_handle_stream_sink_at_3_twin_normal_impl(
 }
 fn wire_func_stream_realistic_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<String> + core::panic::UnwindSafe,
+    arg: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -7051,42 +7022,39 @@ fn wire_func_stream_realistic_twin_normal_impl(
 }
 fn wire_func_struct_with_one_field_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::structure::StructWithOneFieldTwinNormal>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::structure::StructWithOneFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::structure::StructWithOneFieldTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_struct_with_one_field_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::structure::func_struct_with_one_field_twin_normal(api_arg)) } })
 }
 fn wire_func_struct_with_two_field_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::structure::StructWithTwoFieldTwinNormal>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::structure::StructWithTwoFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::structure::StructWithTwoFieldTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_struct_with_two_field_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::structure::func_struct_with_two_field_twin_normal(api_arg)) } })
 }
 fn wire_func_struct_with_zero_field_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::structure::StructWithZeroFieldTwinNormal>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::structure::StructWithZeroFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::structure::StructWithZeroFieldTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_struct_with_zero_field_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::structure::func_struct_with_zero_field_twin_normal(api_arg)) } })
 }
 fn wire_func_tuple_struct_with_one_field_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::structure::TupleStructWithOneFieldTwinNormal>
+    arg: impl CstDecode<crate::api::structure::TupleStructWithOneFieldTwinNormal>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::structure::TupleStructWithOneFieldTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_tuple_struct_with_one_field_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::structure::func_tuple_struct_with_one_field_twin_normal(api_arg)) } })
 }
 fn wire_func_tuple_struct_with_two_field_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecodable<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
+    arg: impl CstDecode<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::structure::TupleStructWithTwoFieldTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_tuple_struct_with_two_field_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::structure::func_tuple_struct_with_two_field_twin_normal(api_arg)) } })
 }
 fn wire_test_tuple_2_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    value: impl CstDecodable<Vec<(String, i32)>> + core::panic::UnwindSafe,
+    value: impl CstDecode<Vec<(String, i32)>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (), _>(
@@ -7105,7 +7073,7 @@ fn wire_test_tuple_2_twin_normal_impl(
 }
 fn wire_test_tuple_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    value: impl CstDecodable<Option<(String, i32)>> + core::panic::UnwindSafe,
+    value: impl CstDecode<Option<(String, i32)>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, (String, i32), _>(
@@ -7124,7 +7092,7 @@ fn wire_test_tuple_twin_normal_impl(
 }
 fn wire_handle_type_alias_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    input: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, u64, _>(
@@ -7145,13 +7113,13 @@ fn wire_handle_type_alias_id_twin_normal_impl(
 }
 fn wire_handle_type_alias_model_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    input: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::type_alias::TestModelTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_type_alias_model_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode(); move |context|  {  Result::<_,()>::Ok(crate::api::type_alias::handle_type_alias_model_twin_normal(api_input)) } })
 }
 fn wire_handle_type_nest_alias_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecodable<u64> + core::panic::UnwindSafe,
+    input: impl CstDecode<u64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, u64, _>(
@@ -7172,13 +7140,13 @@ fn wire_handle_type_nest_alias_id_twin_normal_impl(
 }
 fn wire_handle_nested_uuids_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: impl CstDecodable<crate::api::uuid_type::FeatureUuidTwinNormal> + core::panic::UnwindSafe,
+    ids: impl CstDecode<crate::api::uuid_type::FeatureUuidTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_,crate::api::uuid_type::FeatureUuidTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_nested_uuids_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_ids = ids.cst_decode(); move |context|  {  crate::api::uuid_type::handle_nested_uuids_twin_normal(api_ids) } })
 }
 fn wire_handle_uuid_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    id: impl CstDecodable<uuid::Uuid> + core::panic::UnwindSafe,
+    id: impl CstDecode<uuid::Uuid> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, uuid::Uuid, _>(
@@ -7195,7 +7163,7 @@ fn wire_handle_uuid_twin_normal_impl(
 }
 fn wire_handle_uuids_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: impl CstDecodable<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
+    ids: impl CstDecode<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, Vec<uuid::Uuid>, _>(
@@ -7338,19 +7306,19 @@ const _: fn() = || {
 
 // Section: dart2rust
 
-pub trait CstDecodable<T> {
+pub trait CstDecode<T> {
     fn cst_decode(self) -> T;
 }
 
-impl<T, S> CstDecodable<Option<T>> for *mut S
+impl<T, S> CstDecode<Option<T>> for *mut S
 where
-    *mut S: CstDecodable<T>,
+    *mut S: CstDecode<T>,
 {
     fn cst_decode(self) -> Option<T> {
         (!self.is_null()).then(|| self.cst_decode())
     }
 }
-impl CstDecodable<chrono::DateTime<chrono::Local>> for i64 {
+impl CstDecode<chrono::DateTime<chrono::Local>> for i64 {
     fn cst_decode(self) -> chrono::DateTime<chrono::Local> {
         let flutter_rust_bridge::for_generated::Timestamp { s, ns } =
             flutter_rust_bridge::for_generated::cst_decode_timestamp(self);
@@ -7363,14 +7331,14 @@ impl CstDecodable<chrono::DateTime<chrono::Local>> for i64 {
         )
     }
 }
-impl CstDecodable<chrono::NaiveDateTime> for i64 {
+impl CstDecode<chrono::NaiveDateTime> for i64 {
     fn cst_decode(self) -> chrono::NaiveDateTime {
         let flutter_rust_bridge::for_generated::Timestamp { s, ns } =
             flutter_rust_bridge::for_generated::cst_decode_timestamp(self);
         chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
     }
 }
-impl CstDecodable<chrono::DateTime<chrono::Utc>> for i64 {
+impl CstDecode<chrono::DateTime<chrono::Utc>> for i64 {
     fn cst_decode(self) -> chrono::DateTime<chrono::Utc> {
         let flutter_rust_bridge::for_generated::Timestamp { s, ns } =
             flutter_rust_bridge::for_generated::cst_decode_timestamp(self);
@@ -7381,7 +7349,7 @@ impl CstDecodable<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
-impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> for i32 {
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> for i32 {
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode {
         match self {
             0 => crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode::Standalone,
@@ -7390,12 +7358,12 @@ impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> 
         }
     }
 }
-impl CstDecodable<bool> for bool {
+impl CstDecode<bool> for bool {
     fn cst_decode(self) -> bool {
         self
     }
 }
-impl CstDecodable<crate::api::enumeration::EnumSimpleTwinNormal> for i32 {
+impl CstDecode<crate::api::enumeration::EnumSimpleTwinNormal> for i32 {
     fn cst_decode(self) -> crate::api::enumeration::EnumSimpleTwinNormal {
         match self {
             0 => crate::api::enumeration::EnumSimpleTwinNormal::A,
@@ -7404,7 +7372,7 @@ impl CstDecodable<crate::api::enumeration::EnumSimpleTwinNormal> for i32 {
         }
     }
 }
-impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync>
+impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync>
     for i32
 {
     fn cst_decode(
@@ -7417,7 +7385,7 @@ impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSi
         }
     }
 }
-impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync> for i32 {
+impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync> for i32 {
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync {
         match self {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync::A,
@@ -7426,37 +7394,37 @@ impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTw
         }
     }
 }
-impl CstDecodable<f32> for f32 {
+impl CstDecode<f32> for f32 {
     fn cst_decode(self) -> f32 {
         self
     }
 }
-impl CstDecodable<f64> for f64 {
+impl CstDecode<f64> for f64 {
     fn cst_decode(self) -> f64 {
         self
     }
 }
-impl CstDecodable<i16> for i16 {
+impl CstDecode<i16> for i16 {
     fn cst_decode(self) -> i16 {
         self
     }
 }
-impl CstDecodable<i32> for i32 {
+impl CstDecode<i32> for i32 {
     fn cst_decode(self) -> i32 {
         self
     }
 }
-impl CstDecodable<i64> for i64 {
+impl CstDecode<i64> for i64 {
     fn cst_decode(self) -> i64 {
         self
     }
 }
-impl CstDecodable<i8> for i8 {
+impl CstDecode<i8> for i8 {
     fn cst_decode(self) -> i8 {
         self
     }
 }
-impl CstDecodable<crate::auxiliary::sample_types::MyEnum> for i32 {
+impl CstDecode<crate::auxiliary::sample_types::MyEnum> for i32 {
     fn cst_decode(self) -> crate::auxiliary::sample_types::MyEnum {
         match self {
             0 => crate::auxiliary::sample_types::MyEnum::False,
@@ -7465,32 +7433,32 @@ impl CstDecodable<crate::auxiliary::sample_types::MyEnum> for i32 {
         }
     }
 }
-impl CstDecodable<u16> for u16 {
+impl CstDecode<u16> for u16 {
     fn cst_decode(self) -> u16 {
         self
     }
 }
-impl CstDecodable<u32> for u32 {
+impl CstDecode<u32> for u32 {
     fn cst_decode(self) -> u32 {
         self
     }
 }
-impl CstDecodable<u64> for u64 {
+impl CstDecode<u64> for u64 {
     fn cst_decode(self) -> u64 {
         self
     }
 }
-impl CstDecodable<u8> for u8 {
+impl CstDecode<u8> for u8 {
     fn cst_decode(self) -> u8 {
         self
     }
 }
-impl CstDecodable<usize> for usize {
+impl CstDecode<usize> for usize {
     fn cst_decode(self) -> usize {
         self
     }
 }
-impl CstDecodable<crate::api::misc_example::WeekdaysTwinNormal> for i32 {
+impl CstDecode<crate::api::misc_example::WeekdaysTwinNormal> for i32 {
     fn cst_decode(self) -> crate::api::misc_example::WeekdaysTwinNormal {
         match self {
             0 => crate::api::misc_example::WeekdaysTwinNormal::Monday,
@@ -7504,7 +7472,7 @@ impl CstDecodable<crate::api::misc_example::WeekdaysTwinNormal> for i32 {
         }
     }
 }
-impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>
     for i32
 {
     fn cst_decode(
@@ -7522,7 +7490,7 @@ impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_rust_async::Weekd
                     }
     }
 }
-impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> for i32 {
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> for i32 {
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync {
         match self {
             0 => crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync::Monday,
