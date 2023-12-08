@@ -15,20 +15,25 @@ class RustVecU8 {
   /// {@macro flutter_rust_bridge.internal}
   final GeneralizedFrbRustBinding binding;
 
+  Uint8List? _typedListView;
+
   /// {@macro flutter_rust_bridge.internal}
   factory RustVecU8(int length, GeneralizedFrbRustBinding binding) {
     final ptr = binding.rustVecU8New(length);
-    return RustVecU8._(length, binding, ptr);
+    final typedListView = ptr.asTypedList(length);
+    return RustVecU8._(length, binding, ptr, typedListView);
   }
 
-  RustVecU8._(this.length, this.binding, this._ptr);
+  RustVecU8._(this.length, this.binding, this._ptr, this._typedListView);
 
   /// {@macro flutter_rust_bridge.internal}
   void dispose() {
-    final ptr = _ptr!;
-    _ptr = null;
     // Set ptr to null before calling free to avoid potential
     // double-free when error happens
+    final ptr = _ptr!;
+    _ptr = null;
+    _typedListView = null;
+
     binding.rustVecU8Free(ptr, length);
   }
 
