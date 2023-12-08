@@ -10,7 +10,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
                     get_serializer_dart_postfix(&self.ir)
                 ),
                 Lang::RustLang(_) => format!(
-                    "serializer.cursor.write_{}::<NativeEndian>(self);",
+                    "serializer.cursor.write_{}::<NativeEndian>(self).unwrap();",
                     self.ir.rust_api_type()
                 ),
             },
@@ -27,7 +27,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
                 ),
                 Lang::RustLang(_) => {
                     format!(
-                        "deserializer.cursor.read_{}::<NativeEndian>()",
+                        "deserializer.cursor.read_{}::<NativeEndian>().unwrap()",
                         self.ir.rust_api_type()
                     )
                 }

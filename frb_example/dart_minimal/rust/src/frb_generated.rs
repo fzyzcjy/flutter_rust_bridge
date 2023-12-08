@@ -108,7 +108,7 @@ pub trait SseDecode {
 
 impl SseDecode for i32 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_i32::<NativeEndian>()
+        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
     }
 }
 
@@ -120,7 +120,7 @@ pub trait SseEncode {
 
 impl SseEncode for i32 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_i32::<NativeEndian>(self);
+        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
     }
 }
 
