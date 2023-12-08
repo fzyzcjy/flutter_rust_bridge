@@ -91,3 +91,8 @@ pub(crate) fn generate_code_header() -> String {
         env!("CARGO_PKG_VERSION")
     )
 }
+
+pub(crate) enum StructOrRecord {
+    Struct,
+    Record,
+}

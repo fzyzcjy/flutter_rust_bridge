@@ -1,5 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
+use crate::codegen::generator::misc::StructOrRecord;
+use crate::codegen::generator::misc::StructOrRecord::Struct;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_wasm;
@@ -8,7 +10,7 @@ use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::structure::IrTypeStructRef;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
-use GeneralizedStructGeneratorMode::Struct;
+use StructOrRecord::Record;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
@@ -30,22 +32,17 @@ impl<'a> StructRefWireDartCodecCstGenerator<'a> {
     }
 }
 
-pub(crate) enum GeneralizedStructGeneratorMode {
-    Struct,
-    Record,
-}
-
 pub(crate) struct GeneralizedStructGenerator<'a> {
     ir: IrTypeStructRef,
     context: WireDartCodecCstGeneratorContext<'a>,
-    mode: GeneralizedStructGeneratorMode,
+    mode: StructOrRecord,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
     pub(crate) fn new(
         ir: IrTypeStructRef,
         context: WireDartCodecCstGeneratorContext<'a>,
-        mode: GeneralizedStructGeneratorMode,
+        mode: StructOrRecord,
     ) -> Self {
         Self { ir, context, mode }
     }
@@ -104,7 +101,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
     fn field_name_dart_style(&self, index: usize, field: &IrField) -> String {
         match self.mode {
             Struct => field.name.dart_style(),
-            GeneralizedStructGeneratorMode::Record => format!("${}", index + 1),
+            Record => format!("${}", index + 1),
         }
     }
 }
