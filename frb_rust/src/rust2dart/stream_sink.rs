@@ -1,4 +1,4 @@
-use crate::codec::BaseCodec;
+use crate::codec::{BaseCodec, Rust2DartMessageTrait};
 use crate::for_generated::DcoCodec;
 use crate::generalized_isolate::{
     channel_to_handle, handle_to_channel, IntoDart, SendableChannelHandle,
@@ -36,16 +36,16 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSink<T, Rust2DartCodec> {
     where
         T: IntoIntoDart<D>,
     {
-        self.sender().send(Rust2DartCodec::encode(
-            value.into_into_dart(),
-            Rust2DartAction::Success,
-        ))
+        self.sender().send(
+            Rust2DartCodec::encode(value.into_into_dart(), Rust2DartAction::Success)
+                .into_dart_abi(),
+        )
     }
 
     /// Close the stream and ignore further messages. Returns false when
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
         self.sender()
-            .send(Rust2DartCodec::encode((), Rust2DartAction::CloseStream))
+            .send(Rust2DartCodec::encode((), Rust2DartAction::CloseStream).into_dart_abi())
     }
 }

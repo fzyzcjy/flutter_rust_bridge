@@ -20,7 +20,7 @@ impl ErrorHandler for ReportDartErrorHandler {
             e @ Error::CustomError(_) => Rust2DartCodec::encode(e, Rust2DartAction::Error),
             e @ Error::Panic(_) => Rust2DartCodec::encode(e, Rust2DartAction::Panic),
         };
-        Rust2DartSender::new(Channel::new(port)).send(msg);
+        Rust2DartSender::new(Channel::new(port)).send(msg.into_dart_abi());
     }
 
     fn handle_error_sync<Rust2DartCodec>(&self, error: Error) -> Rust2DartCodec::Message
