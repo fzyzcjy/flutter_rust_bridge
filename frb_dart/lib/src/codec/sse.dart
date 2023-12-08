@@ -26,14 +26,15 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E> {
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class SseSerializer {
-  final WriteBuffer _buffer;
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  final WriteBuffer buffer;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   SseSerializer(GeneralizedFrbRustBinding binding)
-      : _buffer = WriteBuffer(binding: binding);
+      : buffer = WriteBuffer(binding: binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  WriteBufferRaw intoRaw() => _buffer.intoRaw();
+  WriteBufferRaw intoRaw() => buffer.intoRaw();
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
