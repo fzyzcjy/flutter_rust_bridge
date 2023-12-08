@@ -19,6 +19,10 @@ class RustVecU8 {
 
   /// {@macro flutter_rust_bridge.internal}
   RustVecU8(this.length, this.binding) : _ptr = binding.rustVecU8New(length) {
+    _computeTypedListViewFromPtr();
+  }
+
+  void _computeTypedListViewFromPtr() {
     _typedListView = _ptr!.asTypedList(length);
   }
 
