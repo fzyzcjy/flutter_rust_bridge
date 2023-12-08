@@ -33,7 +33,7 @@ class SseSerializer {
       : _buffer = WriteBuffer(binding: binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  (ffi.Pointer<ffi.Uint8>, int) intoRaw() => _buffer.intoRaw().intoRaw();
+  WriteBufferRaw intoRaw() => _buffer.intoRaw();
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

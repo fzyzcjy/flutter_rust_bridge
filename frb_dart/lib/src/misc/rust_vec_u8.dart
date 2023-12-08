@@ -31,11 +31,11 @@ class RustVecU8 {
   }
 
   /// {@macro flutter_rust_bridge.internal}
-  (ffi.Pointer<ffi.Uint8>, int) intoRaw() {
+  ({ffi.Pointer<ffi.Uint8> ptr, int length}) intoRaw() {
     final ptr = _ptr!;
     final length = _length;
     _forget();
-    return (ptr, length);
+    return (ptr: ptr, length: length);
   }
 
   /// {@macro flutter_rust_bridge.internal}

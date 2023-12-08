@@ -1,6 +1,7 @@
 /// Copied and modified from https://github.com/flutter/flutter/blob/master/packages/flutter/lib/src/foundation/serialization.dart
 library;
 
+import 'dart:ffi' as ffi;
 import 'dart:math' as math;
 import 'dart:typed_data';
 
@@ -170,12 +171,20 @@ class WriteBuffer {
   /// The default implementation even do alloc-copy-dealloc which contains
   /// a memory copy. Other implementations may be faster, but still
   /// it is overhead.
-  (RustVecU8, int) intoRaw() {
+  WriteBufferRaw intoRaw() {
     if (_isDone) {
       throw StateError(
           'done() must not be called more than once on the same $runtimeType.');
     }
     _isDone = true;
-    return (_buffer, _currentSize);
+    final raw = _buffer.intoRaw();
+    return (ptr: raw.ptr, rustVecLen: raw.length, dataLen: _currentSize);
   }
 }
+
+/// {@macro flutter_rust_bridge.internal}
+typedef WriteBufferRaw = ({
+  ffi.Pointer<ffi.Uint8> ptr,
+  int rustVecLen,
+  int dataLen
+});
