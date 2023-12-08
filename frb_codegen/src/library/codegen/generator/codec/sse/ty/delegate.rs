@@ -4,26 +4,28 @@ use crate::codegen::generator::codec::sse::ty::*;
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
         let inner_expr = match &self.ir {
-            IrTypeDelegate::Array(inner) => TODO,
+            IrTypeDelegate::Array(_) => "src",
             IrTypeDelegate::String => "utf8.encoder.convert(src)",
-            IrTypeDelegate::PrimitiveEnum(inner) => {}
-            IrTypeDelegate::Time(inner) => {}
-            IrTypeDelegate::Uuid => {}
-            IrTypeDelegate::Backtrace => {}
-            IrTypeDelegate::Anyhow => {}
+            IrTypeDelegate::PrimitiveEnum(_) => "src.index",
+            IrTypeDelegate::Time(_) => "src.microsecondsSinceEpoch",
+            IrTypeDelegate::Uuid => "src.toBytes()",
+            IrTypeDelegate::Backtrace => "NOT_USED",
+            IrTypeDelegate::Anyhow => "NOT_USED",
         };
         simple_delegate_encode(lang, &self.ir.get_delegate(), inner_expr)
     }
 
     fn generate_decode(&self, lang: &Lang) -> String {
         let wrapper_expr = match &self.ir {
-            IrTypeDelegate::Array(inner) => TODO,
-            IrTypeDelegate::String => "TODO",
-            IrTypeDelegate::PrimitiveEnum(inner) => {}
-            IrTypeDelegate::Time(inner) => {}
-            IrTypeDelegate::Uuid => {}
-            IrTypeDelegate::Backtrace => {}
-            IrTypeDelegate::Anyhow => {}
+            IrTypeDelegate::Array(_) => {
+                "flutter_rust_bridge::for_generated::from_vec_to_array(inner)"
+            }
+            IrTypeDelegate::String => "String::from_utf8_lossy(&inner).into_owned()",
+            IrTypeDelegate::PrimitiveEnum(_) => "TODO",
+            IrTypeDelegate::Time(_) => "TODO",
+            IrTypeDelegate::Uuid => "TODO",
+            IrTypeDelegate::Backtrace => "TODO",
+            IrTypeDelegate::Anyhow => "TODO",
         };
         simple_delegate_decode(lang, &self.ir.get_delegate(), wrapper_expr)
     }
