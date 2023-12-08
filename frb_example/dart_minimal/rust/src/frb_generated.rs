@@ -14,6 +14,7 @@
 
 // Section: imports
 
+use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: executor
@@ -39,7 +40,7 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 // Section: wire_funcs
 
-fn wire_hello_impl(port_: i64, ptr_: *const u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_hello_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _, _, i32, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
@@ -57,6 +58,7 @@ fn wire_hello_impl(port_: i64, ptr_: *const u8, rust_vec_len_: i32, data_len_: i
                 };
                 let api_a = i32::sse_decode(&mut deserializer);
                 let api_b = i32::sse_decode(&mut deserializer);
+                deserializer.end();
                 move |context| Result::<_, ()>::Ok(crate::api::minimal::hello(api_a, api_b))
             },
         )
@@ -106,7 +108,7 @@ pub trait SseDecode {
 
 impl SseDecode for i32 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return deserializer.cursor.getInt32();
+        serializer.cursor.read_i32::<NativeEndian>()
     }
 }
 
@@ -118,7 +120,7 @@ pub trait SseEncode {
 
 impl SseEncode for i32 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.buffer.putInt32(self);
+        serializer.cursor.write_i32::<NativeEndian>(self);
     }
 }
 

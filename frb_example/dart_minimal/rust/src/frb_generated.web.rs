@@ -4,6 +4,7 @@
 // Section: imports
 
 use super::*;
+use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::wasm_bindgen;
 use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -37,7 +38,7 @@ pub fn frb_initialize_rust(
 }
 
 #[wasm_bindgen]
-pub fn wire_hello(port_: i64, ptr_: *const u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_hello(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
     wire_hello_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
