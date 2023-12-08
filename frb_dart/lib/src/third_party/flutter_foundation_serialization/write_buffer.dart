@@ -36,7 +36,8 @@ class WriteBuffer {
   bool _isDone = false;
   final ByteData _eightBytes;
   final Uint8List _eightBytesAsList;
-  static final Uint8List _zeroBuffer = Uint8List(8);
+
+  // static final Uint8List _zeroBuffer = Uint8List(8);
 
   void _add(int byte) {
     if (_currentSize == _buffer.length) {
