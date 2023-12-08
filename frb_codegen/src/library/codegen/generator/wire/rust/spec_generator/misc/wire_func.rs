@@ -54,7 +54,7 @@ pub(crate) fn generate_wire_func(
             func_name: func_name.clone(),
             params: params.clone().get(target),
             return_type: return_type.clone(),
-            body: generate_redirect_body(func),
+            body: generate_redirect_body(func, &params.common),
             target: target.try_into().unwrap(),
         }
         .into(),
@@ -252,15 +252,11 @@ fn generate_code_closure(
     }
 }
 
-fn generate_redirect_body(func: &IrFunc) -> String {
+fn generate_redirect_body(func: &IrFunc, params: &[ExternFuncParam]) -> String {
     format!(
         "{}_impl({})",
         wire_func_name(func),
-        has_port_argument(func.mode)
-            .then_some("port_")
-            .into_iter()
-            .chain(func.inputs.iter().map(|arg| arg.name.rust_style()))
-            .join(","),
+        params.iter().map(|x| x.name.clone()).join(", "),
     )
 }
 
