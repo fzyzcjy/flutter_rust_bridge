@@ -28,14 +28,14 @@ fn generate_misc(mode: EncodeOrDecode) -> Acc<Vec<WireRustOutputCode>> {
         EncodeOrDecode::Encode => {
             "
             pub trait SseEncode {
-                fn sse_encode(self, serializer: flutter_rust_bridge::for_generated::SseSerializer);
+                fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
             }
             "
         }
         EncodeOrDecode::Decode => {
             "
             pub trait SseDecode {
-                fn sse_decode(deserializer: flutter_rust_bridge::for_generated::SseDeserializer) -> Self;
+                fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self;
             }
             "
         }
@@ -57,7 +57,7 @@ fn generate_encode_or_decode_for_type(
         EncodeOrDecode::Encode => format!(
             "
             impl SseEncode for {rust_api_type} {{
-                fn sse_encode(self, serializer: flutter_rust_bridge::for_generated::SseSerializer) {{
+                fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {{
                     {body}
                 }}
             }}
@@ -66,7 +66,7 @@ fn generate_encode_or_decode_for_type(
         EncodeOrDecode::Decode => format!(
             "
             impl SseDecode for {rust_api_type} {{
-                fn sse_decode(deserializer: flutter_rust_bridge::for_generated::SseDeserializer) -> Self {{
+                fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {{
                     {body}
                 }}
             }}
