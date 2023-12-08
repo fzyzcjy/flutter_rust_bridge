@@ -48,7 +48,8 @@ fn wire_hello_impl(ptr_: *const u8, rust_vec_len_: i32, data_len_: i32) {
                 mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
             },
             move || {
-                TODO_generate_func_call_decode;
+                let api_a = a.sse_decode();
+                let api_b = b.sse_decode();
                 move |context| Result::<_, ()>::Ok(crate::api::minimal::hello(api_a, api_b))
             },
         )
