@@ -2,7 +2,7 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::handler::error::Error;
-use crate::handler::error_handler::ErrorListener;
+use crate::handler::error_listener::ErrorListener;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::sender::Rust2DartSender;

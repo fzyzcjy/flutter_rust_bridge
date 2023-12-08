@@ -4,11 +4,11 @@ use crate::dart_fn::DartFnFuture;
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
-use crate::handler::error_handler::ErrorListener;
+use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::HandlerConfig;
 use crate::handler::handler::{Handler, TaskContext, TaskInfo, TaskRetFutTrait};
-use crate::handler::implementation::error_handler::NoOpErrorListener;
+use crate::handler::implementation::error_listener::NoOpErrorListener;
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::message_port_to_handle;
@@ -45,16 +45,16 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
 /// The simple handler uses a simple thread pool to execute tasks.
 pub struct SimpleHandler<E: Executor, EH: ErrorListener> {
     executor: E,
-    error_handler: EH,
+    error_listener: EH,
     config: Mutex<Option<HandlerConfig>>,
 }
 
 impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
     /// Create a new default handler.
-    pub fn new(executor: E, error_handler: H) -> Self {
+    pub fn new(executor: E, error_listener: H) -> Self {
         SimpleHandler {
             executor,
-            error_handler,
+            error_listener,
             config: Mutex::new(None),
         }
     }
@@ -139,14 +139,14 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
                 {
                     Ok(data) => data,
                     Err(err) => {
-                        self.error_handler.on_error(Error::CustomError);
+                        self.error_listener.on_error(Error::CustomError);
                         err
                     }
                 }
             });
             catch_unwind_result
                 .unwrap_or_else(|error| {
-                    self.error_handler.on_error(Error::Panic(error));
+                    self.error_listener.on_error(Error::Panic(error));
                     Rust2DartCodec::encode(error, Rust2DartAction::Panic)
                 })
                 .into_raw_wire_sync()
@@ -210,7 +210,7 @@ impl<E: Executor, EH: ErrorListener> SimpleHandler<E, EH> {
                 let task = prepare();
                 execute(task_info2, task);
             }) {
-                self.error_handler
+                self.error_listener
                     .handle_error::<Rust2DartCodec>(task_info.port.unwrap(), Error::Panic(error));
             }
         });

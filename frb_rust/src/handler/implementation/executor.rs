@@ -2,7 +2,7 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::handler::error::Error;
-use crate::handler::error_handler::ErrorListener;
+use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::misc::into_into_dart::IntoIntoDart;
@@ -24,16 +24,16 @@ use std::panic::{AssertUnwindSafe, UnwindSafe};
 /// It creates an internal thread pool, and each call to a Rust function is
 /// handled by a different thread.
 pub struct SimpleExecutor<EH: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> {
-    error_handler: EH,
+    error_listener: EH,
     thread_pool: TP,
     async_runtime: AR,
 }
 
 impl<EH: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<EH, TP, AR> {
     /// Create a new executor backed by a thread pool.
-    pub fn new(error_handler: EH, thread_pool: TP, async_runtime: AR) -> Self {
+    pub fn new(error_listener: EH, thread_pool: TP, async_runtime: AR) -> Self {
         SimpleExecutor {
-            error_handler,
+            error_listener,
             thread_pool,
             async_runtime,
         }
@@ -55,8 +55,8 @@ impl<EH: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             + 'static,
         Rust2DartCodec: BaseCodec,
     {
-        let eh = self.error_handler;
-        let eh2 = self.error_handler;
+        let el = self.error_listener;
+        let el2 = self.error_listener;
 
         let TaskInfo { port, mode, .. } = task_info;
         let port = port.unwrap();
@@ -102,8 +102,8 @@ impl<EH: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             Future<Output = Result<DartCObject, DartCObject>> + TaskRetFutTrait + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
-        let eh = self.error_handler;
-        let eh2 = self.error_handler;
+        let el = self.error_listener;
+        let el2 = self.error_listener;
 
         self.async_runtime.spawn(async move {
             let TaskInfo { port, mode, .. } = task_info;
