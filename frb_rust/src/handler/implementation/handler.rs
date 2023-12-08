@@ -125,7 +125,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> <Rust2DartCodec::WireSyncReturnSrc as WireSyncReturnSrcTrait>::Target
+    ) -> <Rust2DartCodec::WireSyncReturnSrc as WireSyncReturnSrcTrait>::WireType
     where
         SyncTaskFn: FnOnce() -> Result<DartCObject, DartCObject> + UnwindSafe,
         Rust2DartCodec: BaseCodec,
