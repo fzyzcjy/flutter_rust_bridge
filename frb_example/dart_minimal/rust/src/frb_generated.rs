@@ -15,6 +15,7 @@
 // Section: imports
 
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
+use flutter_rust_bridge::for_generated::SseSerializer;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: executor
@@ -155,21 +156,23 @@ where
     T: SseEncode,
     E: SseEncode,
 {
-    match raw {
-        Ok(raw) => Ok(TODO),
-        Err(raw) => Err(TODO),
-    }
+    todo!()
 }
 
-fn transform_result_sse_sync<T, E>(raw: Result<T, E>) -> Result<TODO, TODO>
+fn transform_result_sse_sync<T, E>(
+    raw: Result<T, E>,
+    // TODO wrong result type
+) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
 where
     T: SseEncode,
     E: SseEncode,
 {
-    match raw {
-        Ok(raw) => Ok(TODO),
-        Err(raw) => Err(TODO),
-    }
+    todo!()
+}
+
+// TODO put it there
+impl SseEncode for () {
+    fn sse_encode(self, serializer: &mut SseSerializer) {}
 }
 
 fn transform_result_dco_normal<T, T2, E>(
