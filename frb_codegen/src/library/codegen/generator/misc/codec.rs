@@ -18,31 +18,30 @@ pub(crate) struct CodecModePack {
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_codec_structs {
-    ($enum_name:ident) => (
+    ($struct_name:ident) => (
         crate::codegen_codec_structs!(
             @private
 
-            $enum_name;
+            $struct_name;
 
             Cst,
             Dco,
             Sse,
         );
     );
-    (@private $enum_name:ident ; $($name:ident),*,) => (
+    (@private $struct_name:ident ; $($name:ident),*,) => (
         paste::paste! {
-            #[enum_dispatch([<$enum_name Trait>])]
-            pub(crate) enum $enum_name {
+            pub(crate) enum $struct_name {
                 $(
-                $name([<$name $enum_name>]),
+                $name([<$name $struct_name>]),
                 )*
             }
 
-            impl $enum_name {
+            impl $struct_name {
                 pub(crate) fn new(mode: CodecMode) -> Self {
                     match mode {
                         $(
-                        CodecMode::$name => Self::$name([<$name $enum_name>] {}),
+                        CodecMode::$name => Self::$name([<$name $struct_name>] {}),
                         )*
                     }
                 }
