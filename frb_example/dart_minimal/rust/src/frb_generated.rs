@@ -159,10 +159,7 @@ where
     todo!()
 }
 
-fn transform_result_sse_sync<T, E>(
-    raw: Result<T, E>,
-    // TODO wrong result type
-) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
+fn transform_result_sse_sync<T, E>(raw: Result<T, E>) -> Result<Vec<u8>, Vec<u8>>
 where
     T: SseEncode,
     E: SseEncode,
