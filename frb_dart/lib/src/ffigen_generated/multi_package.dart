@@ -276,6 +276,25 @@ class MultiPackageCBinding {
   late final _rust_vec_u8_new =
       _rust_vec_u8_newPtr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
 
+  ffi.Pointer<ffi.Uint8> rust_vec_u8_resize(
+    ffi.Pointer<ffi.Uint8> ptr,
+    int old_len,
+    int new_len,
+  ) {
+    return _rust_vec_u8_resize(
+      ptr,
+      old_len,
+      new_len,
+    );
+  }
+
+  late final _rust_vec_u8_resizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Uint8> Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('rust_vec_u8_resize');
+  late final _rust_vec_u8_resize = _rust_vec_u8_resizePtr.asFunction<
+      ffi.Pointer<ffi.Uint8> Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void rust_vec_u8_free(
     ffi.Pointer<ffi.Uint8> ptr,
     int len,

@@ -25,6 +25,8 @@ GeneralizedDartHandle dart_opaque_rust2dart_decode(uintptr_t ptr);
 
 uint8_t *rust_vec_u8_new(int32_t len);
 
+uint8_t *rust_vec_u8_resize(uint8_t *ptr, int32_t old_len, int32_t new_len);
+
 void rust_vec_u8_free(uint8_t *ptr, int32_t len);
 
 /**
