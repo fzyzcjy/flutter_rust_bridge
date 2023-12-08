@@ -47,7 +47,7 @@ impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
             "
             final serializer = SseSerializer();
             {maybe_serialize_port}{serialize_inputs}
-            final (ptr_, len_) = serializer.createLeakedNative();
+            final (ptr_, len_) = serializer.intoRaw();
             return {wire_func_name}(ptr_, len_);
             "
         )
