@@ -8,6 +8,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
 };
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::WireDartCodecSseGeneratorContext;
+use crate::codegen::generator::wire::dart::spec_generator::codec::sse::body::generate_encode_or_decode;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
@@ -58,39 +59,4 @@ impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
     fn generate_rust2dart_codec_object(&self, func: &IrFunc) -> String {
         todo!()
     }
-}
-
-fn generate_encode_or_decode(
-    context: WireDartCodecSseGeneratorContext,
-    types: &[IrType],
-    mode: EncodeOrDecode,
-) -> WireDartCodecOutputSpec {
-    let mut inner = Default::default();
-    inner += (types.iter())
-        .map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
-        .collect();
-    WireDartCodecOutputSpec { inner }
-}
-
-fn generate_encode_or_decode_for_type(
-    ty: &IrType,
-    context: WireDartCodecSseGeneratorContext,
-    mode: EncodeOrDecode,
-) -> Acc<WireDartOutputCode> {
-    let dart_api_type =
-        ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
-    let safe_ident = ty.safe_ident();
-    let body =
-        CodecSseTy::new(ty, CodecSseTyContext::new(context.ir_pack)).generate(&DartLang, mode);
-
-    Acc::new_common(
-        format!(
-            "
-            {dart_api_type} _sse_decode_{safe_ident}(Serializer serializer) {{
-                {body}
-            }}
-            "
-        )
-        .into(),
-    )
 }
