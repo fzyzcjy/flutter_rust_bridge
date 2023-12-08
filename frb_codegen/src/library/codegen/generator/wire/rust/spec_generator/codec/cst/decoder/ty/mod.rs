@@ -46,10 +46,6 @@ pub(crate) trait WireRustCodecCstGeneratorDecoderTrait {
         Default::default()
     }
 
-    fn generate_wire_func_call_decode(&self, name: &str) -> String {
-        format!("{name}.cst_decode()")
-    }
-
     fn generate_wire_func_param_api_type(&self) -> Option<String> {
         None
     }
