@@ -36,8 +36,8 @@ macro_rules! codegen_codec_structs {
                 Box<dyn [<$struct_name Trait>]<'a>>
             );
 
-            impl<'a> $struct_name<'a> {
-                pub(crate) fn new(mode: CodecMode) -> Self {
+            impl<'a> From<CodecMode> for $struct_name<'a> {
+                fn from(mode: CodecMode) -> Self {
                     match mode {
                         $(
                         CodecMode::$name => Self(Box::new([<$name $struct_name>] {})),
