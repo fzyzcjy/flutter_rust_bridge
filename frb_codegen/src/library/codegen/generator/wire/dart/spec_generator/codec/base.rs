@@ -11,6 +11,7 @@ use enum_dispatch::enum_dispatch;
 
 codegen_codec_structs!(WireDartCodecEntrypoint);
 
+#[enum_dispatch]
 pub(crate) trait WireDartCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, Box<dyn WireDartCodecOutputSpec>>
 {
