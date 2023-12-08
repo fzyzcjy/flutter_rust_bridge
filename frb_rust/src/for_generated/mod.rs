@@ -4,7 +4,8 @@
 mod cast;
 mod pointer;
 
-pub use crate::codec::sse::{SseDeserializer, SseSerializer};
+pub use crate::codec::dco::Rust2DartMessageDco;
+pub use crate::codec::sse::{Rust2DartMessageSse, SseDeserializer, SseSerializer};
 pub use crate::codec::{cst::CstCodec, dco::DcoCodec, sse::SseCodec};
 pub use crate::dart_opaque::dart2rust::cst_decode_dart_opaque;
 #[cfg(not(wasm))]
