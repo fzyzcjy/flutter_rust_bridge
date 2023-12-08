@@ -19,12 +19,31 @@ pub(crate) fn generate(
     context: WireRustCodecDcoGeneratorContext,
     types: &[IrType],
 ) -> WireRustCodecOutputSpec {
-    WireRustCodecOutputSpec {
-        inner: (types.iter())
-            .filter_map(|ty| {
-                WireRustCodecDcoGenerator::new(ty.clone(), context).generate_impl_into_dart()
-            })
-            .map(|x| Acc::<WireRustOutputCode>::new_common(x.into()))
-            .collect(),
-    }
+    let mut inner = Default::default();
+    inner += generate_misc();
+    inner += (types.iter())
+        .filter_map(|ty| {
+            WireRustCodecDcoGenerator::new(ty.clone(), context).generate_impl_into_dart()
+        })
+        .map(|x| Acc::<WireRustOutputCode>::new_common(x.into()))
+        .collect();
+    WireRustCodecOutputSpec { inner }
+}
+
+fn generate_misc() -> Acc<Vec<WireRustOutputCode>> {
+    Acc::new_common(vec![format!("
+        fn dco_transform_result<T, T2, E>(
+            raw: Result<T, E>,
+        ) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
+        where
+            T: flutter_rust_bridge::IntoIntoDart<T2>,
+            T2: flutter_rust_bridge::IntoDart,
+            E: flutter_rust_bridge::IntoDart,
+        {{
+            match raw {{
+                Ok(raw) => Ok(raw.into_into_dart().into_dart()),
+                Err(raw) => Err(raw.into_dart()),
+            }}
+        }}
+    ").into()])
 }

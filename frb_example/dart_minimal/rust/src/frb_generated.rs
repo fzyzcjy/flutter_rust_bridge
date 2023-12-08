@@ -148,6 +148,20 @@ impl SseDecode for i32 {
 
 // Section: rust2dart
 
+fn dco_transform_result<T, T2, E>(
+    raw: Result<T, E>,
+) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
+where
+    T: flutter_rust_bridge::IntoIntoDart<T2>,
+    T2: flutter_rust_bridge::IntoDart,
+    E: flutter_rust_bridge::IntoDart,
+{
+    match raw {
+        Ok(raw) => Ok(raw.into_into_dart().into_dart()),
+        Err(raw) => Err(raw.into_dart()),
+    }
+}
+
 pub trait SseEncode {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
 }
