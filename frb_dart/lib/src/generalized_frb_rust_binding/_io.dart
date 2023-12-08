@@ -40,6 +40,13 @@ class GeneralizedFrbRustBinding {
   void freeWireSyncReturn(WireSyncReturn val) =>
       _binding.free_wire_sync_return(val);
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  ffi.Pointer<ffi.Uint8> rustVecU8New(int len) => _binding.rust_vec_u8_new(len);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void rustVecU8Free(ffi.Pointer<ffi.Uint8> ptr, int len) =>
+      _binding.rust_vec_u8_free(ptr, len);
+
   void _userFriendlyDynamicLibraryErrorReporting(
       ArgumentError e, StackTrace s) {
     final message = e.message;

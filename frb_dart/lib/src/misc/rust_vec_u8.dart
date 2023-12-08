@@ -1,2 +1,26 @@
+import 'dart:ffi' as ffi;
+
+import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+
 /// The Rust `std::Vec<u8>` on the Dart side.
-class RustVecU8 {}
+/// Must call `dispose` manually, otherwise the memory will be leaked.
+class RustVecU8 {
+  final GeneralizedFrbRustBinding _binding;
+ 
+  /// Null = already disposed (to avoid accidential double free)
+  ffi.Pointer<ffi.Uint8>? _ptr;
+
+  final int _len;
+
+  /// {@macro flutter_rust_bridge.internal}
+  RustVecU8(this._len, this._binding) : _ptr = _binding.rustVecU8New(_len);
+
+  /// {@macro flutter_rust_bridge.internal}
+  void dispose() {
+    final ptr = _ptr!;
+    _ptr = null;
+    // Set ptr to null before calling free to avoid potential
+    // double-free when error happens
+    _binding.rustVecU8Free(ptr, _len);
+  }
+}
