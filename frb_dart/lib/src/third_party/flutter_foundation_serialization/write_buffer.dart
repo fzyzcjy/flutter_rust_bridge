@@ -69,6 +69,7 @@ class WriteBuffer {
     final int newLength = math.max(requiredLength ?? 0, doubleLength);
     final Uint8List newBuffer = Uint8List(newLength);
     newBuffer.setRange(0, _buffer.length, _buffer);
+    _buffer.dispose();
     _buffer = newBuffer;
   }
 
@@ -156,15 +157,14 @@ class WriteBuffer {
     }
   }
 
-  /// Finalize and return the written [ByteData].
-  ByteData done() {
+  // NOTE MODIFIED add
+  /// {@macro flutter_rust_bridge.internal}
+  (RustVecU8, int) intoRaw() {
     if (_isDone) {
       throw StateError(
           'done() must not be called more than once on the same $runtimeType.');
     }
-    final ByteData result = _buffer.buffer.asByteData(0, _currentSize);
-    _buffer = Uint8List(0);
     _isDone = true;
-    return result;
+    return (_buffer, _currentSize);
   }
 }
