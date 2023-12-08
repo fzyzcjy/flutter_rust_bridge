@@ -25,9 +25,9 @@ pub trait Rust2DartMessageTrait {
     fn into_raw_wire_sync(self) -> Self::WireSyncType;
 }
 
-pub struct WireSyncReturnCstWrapper(DartAbi);
+pub struct Rust2DartMessageCst(DartAbi);
 
-impl Rust2DartMessageTrait for WireSyncReturnCstWrapper {
+impl Rust2DartMessageTrait for Rust2DartMessageCst {
     type InnerType = ();
     type WireSyncType = ();
 
@@ -48,9 +48,9 @@ impl Rust2DartMessageTrait for WireSyncReturnCstWrapper {
     }
 }
 
-pub struct WireSyncReturnDcoWrapper(DartAbi);
+pub struct Rust2DartMessageDco(DartAbi);
 
-impl Rust2DartMessageTrait for WireSyncReturnDcoWrapper {
+impl Rust2DartMessageTrait for Rust2DartMessageDco {
     type InnerType = DartAbi;
     type WireSyncType = WireSyncReturnDco;
 
@@ -75,9 +75,9 @@ impl Rust2DartMessageTrait for WireSyncReturnDcoWrapper {
     }
 }
 
-pub struct WireSyncReturnSseWrapper(Vec<u8>);
+pub struct Rust2DartMessageSse(Vec<u8>);
 
-impl Rust2DartMessageTrait for WireSyncReturnSseWrapper {
+impl Rust2DartMessageTrait for Rust2DartMessageSse {
     type InnerType = Vec<u8>;
     type WireSyncType = WireSyncReturnSse;
 
