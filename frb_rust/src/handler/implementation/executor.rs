@@ -76,7 +76,8 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
+                eh.on_error(Error::Panic(error));
+                Rust2DartSender::new(Channel::new(port.clone())).send(error);
             }
         }));
     }
@@ -125,7 +126,8 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
             .await;
 
             if let Err(error) = async_result {
-                eh.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
+                eh.on_error(Error::Panic(error));
+                Rust2DartSender::new(Channel::new(port.clone())).send(error);
             }
         });
     }
@@ -157,7 +159,8 @@ impl ExecuteNormalOrAsyncUtils {
                 }
             }
             Err(error) => {
-                eh.handle_error::<Rust2DartCodec>(port, Error::CustomError(Box::new(error)));
+                eh.on_error(Error::CustomError(Box::new(error)));
+                sender.send(error);
             }
         };
     }
