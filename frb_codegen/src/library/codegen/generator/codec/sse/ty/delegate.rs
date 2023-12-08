@@ -3,10 +3,10 @@ use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
-        let gen = SimpleDelegateCodecCodegen::new(lang);
+        let gen = SimpleDelegateCodecCodegen::new(lang, self.ir.get_delegate());
         match self.ir {
-            IrTypeDelegate::Array(inner) => gen.encode(),
-            IrTypeDelegate::String => {}
+            IrTypeDelegate::Array(inner) => {}
+            IrTypeDelegate::String => gen.encode(),
             IrTypeDelegate::StringList => {}
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(inner) => {}
             IrTypeDelegate::PrimitiveEnum(inner) => {}
@@ -26,22 +26,23 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
 
 pub(super) struct SimpleDelegateCodecCodegen<'a> {
     lang: &'a Lang,
+    inner_ty: IrType,
 }
 
 impl<'a> SimpleDelegateCodecCodegen<'a> {
-    pub fn new(lang: &'a Lang) -> Self {
-        Self { lang }
+    pub fn new(lang: &'a Lang, inner_ty: IrType) -> Self {
+        Self { lang, inner_ty }
     }
 
-    pub(super) fn encode(&self, inner_ty: &IrType, inner_name: &str) -> String {
-        format!("{};", self.lang.call_encode(inner_ty, inner_name))
+    pub(super) fn encode(&self, inner_name: &str) -> String {
+        format!("{};", self.lang.call_encode(&self.inner_ty, inner_name))
     }
 
-    pub(super) fn decode(&self, inner_ty: &IrType, wrapper: &str) -> String {
+    pub(super) fn decode(&self, wrapper: &str) -> String {
         format!(
             "{var_decl} inner = {};
             return {wrapper};",
-            self.lang.call_decode(inner_ty),
+            self.lang.call_decode(&self.inner_ty),
             var_decl = self.lang.var_decl()
         )
     }
