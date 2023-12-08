@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerat
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypointTrait, WireRustCodecOutputSpec,
 };
+use crate::codegen::generator::wire::rust::spec_generator::codec::sse::body::generate_encode_or_decode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
@@ -19,7 +20,11 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
         types: &[IrType],
         mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
-        Some(TODO)
+        Some(generate_encode_or_decode(
+            context.as_wire_rust_codec_sse_context(),
+            types,
+            mode,
+        ))
     }
 }
 
