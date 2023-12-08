@@ -15,6 +15,7 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
+use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::sse::*;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
 use crate::codegen_generator_structs;
@@ -33,7 +34,7 @@ pub(crate) struct CodecSseTyContext<'a> {
 
 #[enum_dispatch]
 pub(crate) trait CodecSseTyTrait {
-    fn generate_encode(&self) -> String;
+    fn generate_encode(&self, lang: &impl Lang) -> String;
 
-    fn generate_decode(&self) -> String;
+    fn generate_decode(&self, lang: &impl Lang) -> String;
 }
