@@ -10,5 +10,8 @@ pub(crate) mod sse;
 pub trait BaseCodec: Clone + Copy {
     type WireSyncReturnWrapper: WireSyncReturnWrapperTrait;
 
-    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi;
+    fn encode<T: IntoDart>(
+        data: T,
+        result_code: Rust2DartAction,
+    ) -> <Self::WireSyncReturnWrapper as WireSyncReturnWrapperTrait>::InnerType;
 }

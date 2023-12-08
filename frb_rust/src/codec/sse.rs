@@ -12,7 +12,7 @@ pub struct SseCodec;
 impl BaseCodec for SseCodec {
     type WireSyncReturnWrapper = WireSyncReturnSseWrapper;
 
-    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
+    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Vec<u8> {
         todo!()
     }
 }

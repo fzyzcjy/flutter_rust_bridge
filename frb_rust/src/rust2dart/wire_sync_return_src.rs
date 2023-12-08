@@ -11,9 +11,10 @@ use crate::rust2dart::action::Rust2DartAction;
 /// This object is safe (no worries about memory leak, etc), while `WireSyncReturn` is not.
 /// That is why we have this intermediate object - we can safely play with this one.
 pub trait WireSyncReturnWrapperTrait {
+    type InnerType;
     type WireType;
 
-    fn new(inner: DartAbi) -> Self;
+    fn new(inner: Self::InnerType) -> Self;
 
     unsafe fn from_raw(raw: Self::WireType) -> Self;
 
@@ -23,9 +24,10 @@ pub trait WireSyncReturnWrapperTrait {
 pub struct WireSyncReturnCstWrapper(DartAbi);
 
 impl WireSyncReturnWrapperTrait for WireSyncReturnCstWrapper {
+    type InnerType = ();
     type WireType = ();
 
-    fn new(inner: DartAbi) -> Self {
+    fn new(inner: Self::InnerType) -> Self {
         unreachable!()
     }
 
@@ -41,9 +43,10 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnCstWrapper {
 pub struct WireSyncReturnDcoWrapper(DartAbi);
 
 impl WireSyncReturnWrapperTrait for WireSyncReturnDcoWrapper {
+    type InnerType = DartAbi;
     type WireType = WireSyncReturnDco;
 
-    fn new(inner: DartAbi) -> Self {
+    fn new(inner: Self::InnerType) -> Self {
         Self(inner)
     }
 
@@ -63,10 +66,11 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnDcoWrapper {
 pub struct WireSyncReturnSseWrapper(Vec<u8>);
 
 impl WireSyncReturnWrapperTrait for WireSyncReturnSseWrapper {
+    type InnerType = Vec<u8>;
     type WireType = WireSyncReturnSse;
 
-    fn new(inner: DartAbi) -> Self {
-        todo!()
+    fn new(inner: Self::InnerType) -> Self {
+        Self(inner)
     }
 
     unsafe fn from_raw(raw: Self::WireType) -> Self {

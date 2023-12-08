@@ -10,7 +10,7 @@ pub struct CstCodec;
 impl BaseCodec for CstCodec {
     type WireSyncReturnWrapper = WireSyncReturnCstWrapper;
 
-    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
+    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> () {
         unreachable!()
     }
 }
