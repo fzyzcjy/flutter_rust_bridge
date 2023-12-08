@@ -262,6 +262,37 @@ class MultiPackageCBinding {
   late final _dart_opaque_rust2dart_decode =
       _dart_opaque_rust2dart_decodePtr.asFunction<int Function(int)>();
 
+  ffi.Pointer<ffi.Uint8> rust_vec_u8_new(
+    int len,
+  ) {
+    return _rust_vec_u8_new(
+      len,
+    );
+  }
+
+  late final _rust_vec_u8_newPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Int32)>>(
+          'rust_vec_u8_new');
+  late final _rust_vec_u8_new =
+      _rust_vec_u8_newPtr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
+
+  void rust_vec_u8_free(
+    ffi.Pointer<ffi.Uint8> ptr,
+    int len,
+  ) {
+    return _rust_vec_u8_free(
+      ptr,
+      len,
+    );
+  }
+
+  late final _rust_vec_u8_freePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Uint8>, ffi.Int32)>>('rust_vec_u8_free');
+  late final _rust_vec_u8_free = _rust_vec_u8_freePtr
+      .asFunction<void Function(ffi.Pointer<ffi.Uint8>, int)>();
+
   /// # Safety
   ///
   /// This function should never be called manually.

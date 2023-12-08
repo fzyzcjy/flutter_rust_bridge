@@ -23,6 +23,10 @@ void dart_opaque_drop_thread_box_persistent_handle(uintptr_t ptr);
 
 GeneralizedDartHandle dart_opaque_rust2dart_decode(uintptr_t ptr);
 
+uint8_t *rust_vec_u8_new(int32_t len);
+
+void rust_vec_u8_free(uint8_t *ptr, int32_t len);
+
 /**
  * # Safety
  *
