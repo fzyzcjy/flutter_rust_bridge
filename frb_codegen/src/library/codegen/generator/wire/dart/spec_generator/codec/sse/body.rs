@@ -39,14 +39,22 @@ fn generate_encode_or_decode_for_type(
     let body = CodecSseTy::new(ty.clone(), CodecSseTyContext::new(context.ir_pack))
         .generate(&Lang::DartLang(DartLang), mode);
 
-    Acc::new_common(
-        format!(
+    let code = match mode {
+        EncodeOrDecode::Encode => format!(
+            "
+            void _sse_encode_{safe_ident}(Serializer serializer, {dart_api_type} src) {{
+                {body}
+            }}
+            "
+        ),
+        EncodeOrDecode::Decode => format!(
             "
             {dart_api_type} _sse_decode_{safe_ident}(Serializer serializer) {{
                 {body}
             }}
             "
-        )
-        .into(),
-    )
+        ),
+    };
+
+    Acc::new_common(code.into())
 }
