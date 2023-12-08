@@ -32,4 +32,8 @@ pub(crate) struct CodecSseTyContext<'a> {
 }
 
 #[enum_dispatch]
-pub(crate) trait CodecSseTyTrait {}
+pub(crate) trait CodecSseTyTrait {
+    fn generate_encode(&self) -> String;
+
+    fn generate_decode(&self) -> String;
+}
