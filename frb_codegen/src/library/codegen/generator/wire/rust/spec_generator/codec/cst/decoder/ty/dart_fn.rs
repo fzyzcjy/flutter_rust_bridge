@@ -1,3 +1,4 @@
+use convert_case::{Case, Casing};
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
@@ -10,12 +11,13 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
+use crate::codegen::generator::codec::structs::CodecMode;
 
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DartFnWireRustCodecCstGenerator<'a> {
-    fn generate_wire_func_call_decode(&self, name: &str) -> String {
+    fn generate_wire_func_call_decode(&self, name: &str, codec_mode: CodecMode) -> String {
         let closure_args = (0..self.ir.inputs.len())
             .map(|i| format!("arg{i}"))
             .collect_vec();
@@ -29,7 +31,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DartFnWireRustCodecCstGenerat
             "
             {{
                 use flutter_rust_bridge::IntoDart;
-                let dart_opaque: flutter_rust_bridge::DartOpaque = {name}.cst_decode();
+                let dart_opaque: flutter_rust_bridge::DartOpaque = {name}.{codec_mode}_decode();
 
                 move |{closure_args_str}| {{    
                     {HANDLER_NAME}.dart_fn_invoke(vec![
@@ -38,7 +40,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DartFnWireRustCodecCstGenerat
                     ])
                 }}
             }}
-            "
+            ",
+            codec_mode = codec_mode.to_string().to_case(Case::Snake)
         )
     }
 

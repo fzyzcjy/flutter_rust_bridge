@@ -16,11 +16,13 @@ mod structure;
 mod unencodable;
 
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
 use std::borrow::Cow;
 
@@ -46,8 +48,11 @@ pub(crate) trait WireRustCodecCstGeneratorDecoderTrait {
         Default::default()
     }
 
-    fn generate_wire_func_call_decode(&self, name: &str) -> String {
-        format!("{name}.cst_decode()")
+    fn generate_wire_func_call_decode(&self, name: &str, codec_mode: CodecMode) -> String {
+        format!(
+            "{name}.{code_mode}_decode()",
+            code_mode = codec_mode.to_string().to_case(Case::Snake)
+        )
     }
 
     fn generate_wire_func_param_api_type(&self) -> Option<String> {
