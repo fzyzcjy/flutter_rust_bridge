@@ -8,6 +8,7 @@ use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen_codec_structs;
 use enum_dispatch::enum_dispatch;
+use std::ops::Deref;
 
 codegen_codec_structs!(WireDartCodecEntrypoint);
 

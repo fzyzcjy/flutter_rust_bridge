@@ -44,6 +44,14 @@ macro_rules! codegen_codec_structs {
                     }
                 }
             }
+
+            impl<'a> std::ops::Deref for $struct_name<'a> {
+                type Target = Box<dyn [<$struct_name Trait>]<'a>>;
+
+                fn deref(&self) -> &Self::Target {
+                    &self.0
+                }
+            }
         }
     )
 }
