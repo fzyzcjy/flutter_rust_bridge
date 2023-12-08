@@ -9,9 +9,24 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen_codec_structs;
 use enum_dispatch::enum_dispatch;
 
-codegen_codec_structs!(WireDartCodecEntrypoint);
+// TODO
+// codegen_codec_structs!(WireDartCodecEntrypoint);
 
-#[enum_dispatch]
+pub(crate) enum WireDartCodecEntrypoint {
+    Cst(CstWireDartCodecEntrypoint),
+    Dco(DcoWireDartCodecEntrypoint),
+    Sse(SseWireDartCodecEntrypoint),
+}
+impl WireDartCodecEntrypoint {
+    pub(crate) fn new(mode: CodecMode) -> Self {
+        match mode {
+            CodecMode::Cst => Self::Cst(CstWireDartCodecEntrypoint {}),
+            CodecMode::Dco => Self::Dco(DcoWireDartCodecEntrypoint {}),
+            CodecMode::Sse => Self::Sse(SseWireDartCodecEntrypoint {}),
+        }
+    }
+}
+
 pub(crate) trait WireDartCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, Box<dyn WireDartCodecOutputSpec>>
 {
