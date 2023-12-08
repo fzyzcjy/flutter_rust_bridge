@@ -34,7 +34,7 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSink<T, Rust2DartCodec> {
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
     pub fn add(&self, value: Rust2DartCodec::Message) -> bool {
-        self.sender().send(value)
+        self.sender().send(value.into_dart_abi())
     }
 
     /// Close the stream and ignore further messages. Returns false when
