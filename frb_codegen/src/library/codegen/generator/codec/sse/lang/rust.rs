@@ -1,5 +1,6 @@
 use crate::codegen::generator::codec::sse::lang::LangTrait;
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 pub(crate) struct RustLang;
