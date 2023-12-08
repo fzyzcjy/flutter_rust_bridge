@@ -8,7 +8,6 @@ use crate::rust2dart::wire_sync_return_src::WireSyncReturnCstSrc;
 pub struct CstCodec;
 
 impl BaseCodec for CstCodec {
-    type WireSyncReturn = (); // should not be used
     type WireSyncReturnSrc = WireSyncReturnCstSrc;
 
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
