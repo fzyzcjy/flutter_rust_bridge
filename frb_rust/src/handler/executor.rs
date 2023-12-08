@@ -2,7 +2,7 @@ use crate::codec::BaseCodec;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::handler::{TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::misc::into_into_dart::IntoIntoDart;
-use crate::rust2dart::wire_sync_return_src::WireSyncReturnWrapperTrait;
+use crate::rust2dart::wire_sync_return_src::Rust2DartMessageTrait;
 use allo_isolate::ffi::DartCObject;
 use std::future::Future;
 use std::panic::{RefUnwindSafe, UnwindSafe};
@@ -27,12 +27,10 @@ pub trait Executor: RefUnwindSafe {
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<Rust2DartCodec::WireSyncReturnWrapper, Rust2DartCodec::WireSyncReturnWrapper>
+    ) -> Result<Rust2DartCodec::Rust2DartMessage, Rust2DartCodec::Rust2DartMessage>
     where
-        SyncTaskFn: FnOnce() -> Result<
-                Rust2DartCodec::WireSyncReturnWrapper,
-                Rust2DartCodec::WireSyncReturnWrapper,
-            > + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Rust2DartMessage, Rust2DartCodec::Rust2DartMessage>
+            + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 
     #[cfg(feature = "rust-async")]

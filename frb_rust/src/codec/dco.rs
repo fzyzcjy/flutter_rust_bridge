@@ -8,7 +8,7 @@ use crate::rust2dart::wire_sync_return_src::WireSyncReturnDcoWrapper;
 pub struct DcoCodec;
 
 impl BaseCodec for DcoCodec {
-    type WireSyncReturnWrapper = WireSyncReturnDcoWrapper;
+    type Rust2DartMessage = WireSyncReturnDcoWrapper;
 
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
         if result_code == Rust2DartAction::CloseStream {

@@ -15,10 +15,7 @@ pub(crate) trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'stati
         Rust2DartCodec: BaseCodec;
 
     /// Special handler only used for synchronous code.
-    fn handle_error_sync<Rust2DartCodec>(
-        &self,
-        error: Error,
-    ) -> Rust2DartCodec::WireSyncReturnWrapper
+    fn handle_error_sync<Rust2DartCodec>(&self, error: Error) -> Rust2DartCodec::Rust2DartMessage
     where
         Rust2DartCodec: BaseCodec;
 }

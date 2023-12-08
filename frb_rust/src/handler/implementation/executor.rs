@@ -9,7 +9,7 @@ use crate::platform_types::{DartAbi, MessagePort};
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
-use crate::rust2dart::wire_sync_return_src::WireSyncReturnWrapperTrait;
+use crate::rust2dart::wire_sync_return_src::Rust2DartMessageTrait;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use crate::{rust_async, transfer};
@@ -85,12 +85,10 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         &self,
         _task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<Rust2DartCodec::WireSyncReturnWrapper, Rust2DartCodec::WireSyncReturnWrapper>
+    ) -> Result<Rust2DartCodec::Rust2DartMessage, Rust2DartCodec::Rust2DartMessage>
     where
-        SyncTaskFn: FnOnce() -> Result<
-                Rust2DartCodec::WireSyncReturnWrapper,
-                Rust2DartCodec::WireSyncReturnWrapper,
-            > + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Rust2DartMessage, Rust2DartCodec::Rust2DartMessage>
+            + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
         sync_task()

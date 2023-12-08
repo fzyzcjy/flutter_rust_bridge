@@ -10,7 +10,7 @@ use std::io::Cursor;
 pub struct SseCodec;
 
 impl BaseCodec for SseCodec {
-    type WireSyncReturnWrapper = WireSyncReturnSseWrapper;
+    type Rust2DartMessage = WireSyncReturnSseWrapper;
 
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Vec<u8> {
         todo!()

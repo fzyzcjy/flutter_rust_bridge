@@ -10,7 +10,7 @@ use crate::rust2dart::action::Rust2DartAction;
 /// An object that can be converted into `WireSyncReturn*`
 /// This object is safe (no worries about memory leak, etc), while `WireSyncReturn` is not.
 /// That is why we have this intermediate object - we can safely play with this one.
-pub trait WireSyncReturnWrapperTrait {
+pub trait Rust2DartMessageTrait {
     type InnerType: IntoDart;
     type WireSyncType;
 
@@ -25,7 +25,7 @@ pub trait WireSyncReturnWrapperTrait {
 
 pub struct WireSyncReturnCstWrapper(DartAbi);
 
-impl WireSyncReturnWrapperTrait for WireSyncReturnCstWrapper {
+impl Rust2DartMessageTrait for WireSyncReturnCstWrapper {
     type InnerType = ();
     type WireSyncType = ();
 
@@ -48,7 +48,7 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnCstWrapper {
 
 pub struct WireSyncReturnDcoWrapper(DartAbi);
 
-impl WireSyncReturnWrapperTrait for WireSyncReturnDcoWrapper {
+impl Rust2DartMessageTrait for WireSyncReturnDcoWrapper {
     type InnerType = DartAbi;
     type WireSyncType = WireSyncReturnDco;
 
@@ -75,7 +75,7 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnDcoWrapper {
 
 pub struct WireSyncReturnSseWrapper(Vec<u8>);
 
-impl WireSyncReturnWrapperTrait for WireSyncReturnSseWrapper {
+impl Rust2DartMessageTrait for WireSyncReturnSseWrapper {
     type InnerType = Vec<u8>;
     type WireSyncType = WireSyncReturnSse;
 

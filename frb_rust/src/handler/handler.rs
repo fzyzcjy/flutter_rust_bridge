@@ -6,7 +6,7 @@ use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
 use crate::platform_types::{message_port_to_handle, DartAbi};
 use crate::rust2dart::context::TaskRust2DartContext;
-use crate::rust2dart::wire_sync_return_src::WireSyncReturnWrapperTrait;
+use crate::rust2dart::wire_sync_return_src::Rust2DartMessageTrait;
 use crate::DartOpaque;
 use allo_isolate::ffi::DartCObject;
 use std::future::Future;
@@ -48,12 +48,10 @@ pub trait Handler {
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> <Rust2DartCodec::WireSyncReturnWrapper as WireSyncReturnWrapperTrait>::WireSyncType
+    ) -> <Rust2DartCodec::Rust2DartMessage as Rust2DartMessageTrait>::WireSyncType
     where
-        SyncTaskFn: FnOnce() -> Result<
-                Rust2DartCodec::WireSyncReturnWrapper,
-                Rust2DartCodec::WireSyncReturnWrapper,
-            > + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Rust2DartMessage, Rust2DartCodec::Rust2DartMessage>
+            + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 
     /// Same as [`wrap`][Handler::wrap], but for async Rust.

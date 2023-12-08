@@ -8,7 +8,7 @@ use crate::rust2dart::wire_sync_return_src::WireSyncReturnCstWrapper;
 pub struct CstCodec;
 
 impl BaseCodec for CstCodec {
-    type WireSyncReturnWrapper = WireSyncReturnCstWrapper;
+    type Rust2DartMessage = WireSyncReturnCstWrapper;
 
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> () {
         unreachable!()
