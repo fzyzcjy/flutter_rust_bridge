@@ -20,7 +20,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
             IrTypeDelegate::Array(_) => {
                 "flutter_rust_bridge::for_generated::from_vec_to_array(inner)"
             }
-            IrTypeDelegate::String => "String::from_utf8_lossy(&inner).into_owned()",
+            IrTypeDelegate::String => "String::from_utf8(inner).unwrap()",
             IrTypeDelegate::PrimitiveEnum(_) => "TODO",
             IrTypeDelegate::Time(_) => "TODO",
             IrTypeDelegate::Uuid => "TODO",

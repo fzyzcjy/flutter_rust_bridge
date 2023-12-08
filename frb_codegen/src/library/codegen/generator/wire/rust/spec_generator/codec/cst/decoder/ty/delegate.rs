@@ -58,7 +58,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             IrTypeDelegate::String => {
                 Acc {
                     wasm: Some("self".into()),
-                    io: Some("let vec: Vec<u8> = self.cst_decode(); String::from_utf8_lossy(&vec).into_owned()".into()),
+                    io: Some("let vec: Vec<u8> = self.cst_decode(); String::from_utf8(vec).unwrap()".into()),
                     ..Default::default()
                 }
             },
