@@ -20,7 +20,6 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecEntrypointTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
@@ -279,7 +278,7 @@ fn generate_func_call_decode(func: &IrFunc, context: WireRustGeneratorContext) -
         .map(|field| {
             let name = field.name.rust_style();
             let wire_func_call_decode = WireRustGenerator::new(field.ty.clone(), context)
-                .generate_wire_func_call_decode(name, func.codec_mode_pack.dart2rust);
+                .generate_wire_func_call_decode(name);
             format!("let api_{name} = {wire_func_call_decode};")
         })
         .join("")
