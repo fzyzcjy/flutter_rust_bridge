@@ -9,7 +9,7 @@ pub struct CstCodec;
 impl BaseCodec for CstCodec {
     type Message = Rust2DartMessageCst;
 
-    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> () {
+    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Self::Message {
         unreachable!()
     }
 }

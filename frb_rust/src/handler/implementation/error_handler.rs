@@ -28,6 +28,6 @@ impl ErrorHandler for ReportDartErrorHandler {
         Rust2DartCodec: BaseCodec,
     {
         let result_code = (&error).into();
-        Rust2DartCodec::Message::new(Rust2DartCodec::encode(error, result_code))
+        Rust2DartCodec::encode(error, result_code)
     }
 }

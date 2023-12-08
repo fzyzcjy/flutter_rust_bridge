@@ -10,11 +10,11 @@ pub struct DcoCodec;
 impl BaseCodec for DcoCodec {
     type Message = Rust2DartMessageDco;
 
-    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
+    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Self::Message {
         if result_code == Rust2DartAction::CloseStream {
-            vec![result_code.into_dart()].into_dart()
+            Rust2DartMessageDco(vec![result_code.into_dart()].into_dart())
         } else {
-            vec![result_code.into_dart(), data.into_dart()].into_dart()
+            Rust2DartMessageDco(vec![result_code.into_dart(), data.into_dart()].into_dart())
         }
     }
 }
@@ -29,7 +29,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageDco {
     }
 
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
-        Self::new(*box_from_leak_ptr(raw))
+        Self(*box_from_leak_ptr(raw))
     }
 
     fn into_raw_wire_sync(self) -> Self::WireSyncType {

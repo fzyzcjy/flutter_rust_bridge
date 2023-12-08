@@ -13,7 +13,7 @@ pub struct SseCodec;
 impl BaseCodec for SseCodec {
     type Message = Rust2DartMessageSse;
 
-    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Vec<u8> {
+    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Self::Message {
         todo!()
     }
 }
