@@ -6,6 +6,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::{
     WireDartCodecDcoGenerator, WireDartCodecDcoGeneratorContext,
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecOutputSpec;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
@@ -16,11 +17,6 @@ use serde::Serialize;
 
 mod misc;
 pub(crate) mod ty;
-
-#[derive(Clone, Serialize)]
-pub(crate) struct WireDartOutputSpecCodecDcoDecoder {
-    pub(crate) impl_decode: Acc<Vec<WireDartOutputCode>>,
-}
 
 pub(crate) fn generate(
     context: WireDartCodecDcoGeneratorContext,

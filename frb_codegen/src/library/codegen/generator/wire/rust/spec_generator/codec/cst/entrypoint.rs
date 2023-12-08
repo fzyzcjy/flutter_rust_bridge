@@ -24,7 +24,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
         context: WireRustGeneratorContext,
         types: &[IrType],
     ) -> Option<WireRustCodecOutputSpec> {
-        None // TODO
+        None
     }
 
     fn generate_decode(
@@ -32,7 +32,10 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
         context: WireRustGeneratorContext,
         types: &[IrType],
     ) -> Option<WireRustCodecOutputSpec> {
-        None // TODO
+        Some(super::decoder::generate(
+            context.as_wire_rust_codec_cst_context(),
+            types,
+        ))
     }
 }
 

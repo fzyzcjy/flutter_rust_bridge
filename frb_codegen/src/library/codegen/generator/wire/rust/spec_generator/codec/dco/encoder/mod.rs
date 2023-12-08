@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
+use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecOutputSpec;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::{
     WireRustCodecDcoGenerator, WireRustCodecDcoGeneratorContext,
 };
@@ -14,17 +15,12 @@ use serde::Serialize;
 mod misc;
 pub(crate) mod ty;
 
-#[derive(Serialize)]
-pub(crate) struct WireDartOutputSpecCodecDcoEncoder {
-    pub impl_into_dart: Acc<Vec<WireRustOutputCode>>,
-}
-
 pub(crate) fn generate(
     context: WireRustCodecDcoGeneratorContext,
     types: &[IrType],
-) -> WireDartOutputSpecCodecDcoEncoder {
-    WireDartOutputSpecCodecDcoEncoder {
-        impl_into_dart: (types.iter())
+) -> WireRustCodecOutputSpec {
+    WireRustCodecOutputSpec {
+        inner: (types.iter())
             .filter_map(|ty| {
                 WireRustCodecDcoGenerator::new(ty.clone(), context).generate_impl_into_dart()
             })

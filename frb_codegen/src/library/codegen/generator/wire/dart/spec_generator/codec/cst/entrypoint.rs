@@ -3,7 +3,6 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
 };
-use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::WireDartCodecDcoGeneratorContext;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
@@ -21,7 +20,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
         context: WireDartGeneratorContext,
         types: &[IrType],
     ) -> Option<WireDartCodecOutputSpec> {
-        Some(encoder::generate(
+        Some(super::encoder::generate(
             context.as_wire_dart_codec_cst_context(),
             types,
         ))

@@ -4,8 +4,6 @@ use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerat
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypoint, WireRustCodecOutputSpec,
 };
-use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::WireDartOutputSpecCodecCstDecoder;
-use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::WireDartOutputSpecCodecDcoEncoder;
 use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
 use crate::codegen::ir::pack::IrPackComputedCache;
