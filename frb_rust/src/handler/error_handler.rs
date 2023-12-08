@@ -1,6 +1,6 @@
 use crate::codec::BaseCodec;
 use crate::handler::error::Error;
-use crate::platform_types::{MessagePort, WireSyncReturn};
+use crate::platform_types::MessagePort;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 

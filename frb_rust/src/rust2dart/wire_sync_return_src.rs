@@ -1,6 +1,6 @@
 use crate::for_generated::new_leak_box_ptr;
 use crate::generalized_isolate::IntoDart;
-use crate::platform_types::{DartAbi, WireSyncReturn};
+use crate::platform_types::DartAbi;
 use crate::rust2dart::action::Rust2DartAction;
 
 /// An object that can be converted into `WireSyncReturn`
