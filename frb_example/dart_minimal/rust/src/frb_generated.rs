@@ -48,7 +48,10 @@ fn wire_hello_impl(port_: i64, ptr_: *const u8, rust_vec_len_: i32, data_len_: i
                 mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
             },
             move || {
-                TODO_generate_func_call_decode;
+                let mut deserializer =
+                    unsafe { flutter_rust_bridge::for_generated::SseDeserializer::from_wire() };
+                let api_a = i32::sse_decode(&mut deserializer);
+                let api_b = i32::sse_decode(&mut deserializer);
                 move |context| Result::<_, ()>::Ok(crate::api::minimal::hello(api_a, api_b))
             },
         )
@@ -93,11 +96,11 @@ impl CstDecode<i32> for i32 {
     }
 }
 pub trait SseDecode {
-    fn sse_decode(deserializer: flutter_rust_bridge::for_generated::SseDeserializer) -> Self;
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self;
 }
 
 impl SseDecode for i32 {
-    fn sse_decode(deserializer: flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         return deserializer.buffer.getInt32();
     }
 }
@@ -105,11 +108,11 @@ impl SseDecode for i32 {
 // Section: rust2dart
 
 pub trait SseEncode {
-    fn sse_encode(self, serializer: flutter_rust_bridge::for_generated::SseSerializer);
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
 }
 
 impl SseEncode for i32 {
-    fn sse_encode(self, serializer: flutter_rust_bridge::for_generated::SseSerializer) {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.buffer.putInt32(self);
     }
 }
