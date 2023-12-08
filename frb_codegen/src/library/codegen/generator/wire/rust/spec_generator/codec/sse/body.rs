@@ -32,15 +32,22 @@ fn generate_encode_or_decode_for_type(
     let body = CodecSseTy::new(ty.clone(), CodecSseTyContext::new(context.ir_pack))
         .generate(&Lang::RustLang(RustLang), mode);
 
-    Acc::new_common(
-        format!(
-            // TODO
+    let code = match mode {
+        EncodeOrDecode::Encode => format!(
             "
-            {rust_api_type} _sse_decode_{safe_ident}(Serializer serializer) {{
+            void _sse_encode_{safe_ident}(Serializer serializer, {dart_api_type} src) {{
                 {body}
             }}
             "
-        )
-        .into(),
-    )
+        ),
+        EncodeOrDecode::Decode => format!(
+            "
+            {dart_api_type} _sse_decode_{safe_ident}(Serializer serializer) {{
+                {body}
+            }}
+            "
+        ),
+    };
+
+    Acc::new_common(code.into())
 }
