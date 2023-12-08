@@ -6,6 +6,7 @@ use crate::handler::error::error_to_string;
 use crate::platform_types::WireSyncReturnSseStruct;
 use crate::platform_types::{DartAbi, WireSyncReturnSse};
 use crate::rust2dart::action::Rust2DartAction;
+use byteorder::{NativeEndian, WriteBytesExt};
 use std::any::Any;
 use std::io::Cursor;
 
@@ -31,7 +32,7 @@ impl SseCodec {
         data_fn: impl FnOnce(&mut SseSerializer),
     ) -> Rust2DartMessageSse {
         let mut serializer = SseSerializer::new();
-        serialize_reuslt_code;
+        (serializer.cursor).write_u8(result_code as _).unwrap();
         data_fn(&mut serializer);
         todo!()
     }
