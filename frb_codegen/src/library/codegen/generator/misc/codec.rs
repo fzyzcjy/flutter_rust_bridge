@@ -19,18 +19,18 @@ pub(crate) struct CodecModePack {
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_codec_structs {
-    ($partial_name:ident) => (
+    ($partial_name:ident, $code:ident) => (
         crate::codegen_codec_structs!(
             @private
 
-            $partial_name;
+            $partial_name, $code;
 
             Cst,
             Dco,
             Sse,
         );
     );
-    (@private $partial_name:ident ; $($name:ident),*,) => (
+    (@private $partial_name:ident, $code:ident ; $($name:ident),*,) => (
         paste::paste! {
             pub(crate) struct [<$partial_name Entrypoint>]<'a>(
                 Box<dyn [<$partial_name EntrypointTrait>]<'a>>
@@ -52,6 +52,11 @@ macro_rules! codegen_codec_structs {
                 fn deref(&self) -> &Self::Target {
                     &self.0
                 }
+            }
+
+            #[derive(Clone, Serialize)]
+            pub(crate) struct [<$partial_name OutputSpec>] {
+                pub(crate) inner: Acc<Vec<$code>>,
             }
         }
     )

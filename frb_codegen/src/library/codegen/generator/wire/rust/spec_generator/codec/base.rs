@@ -5,12 +5,13 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::entrypoin
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::entrypoint::DcoWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
+use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen_codec_structs;
 use enum_dispatch::enum_dispatch;
 use serde::Serialize;
 
-codegen_codec_structs!(WireRustCodec);
+codegen_codec_structs!(WireRustCodec, WireRustOutputCode);
 
 pub(crate) trait WireRustCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireRustGeneratorContext<'a>, WireRustCodecOutputSpec>
@@ -24,6 +25,3 @@ pub(crate) trait WireRustCodecEntrypointTrait<'a>:
     fn generate_func_call_decode(&self, func: &IrFunc, context: WireRustGeneratorContext)
         -> String;
 }
-
-#[derive(Clone, Serialize)]
-pub(crate) struct WireRustCodecOutputSpec {}

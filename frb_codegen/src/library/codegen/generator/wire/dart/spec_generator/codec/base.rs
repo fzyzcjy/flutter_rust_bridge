@@ -13,7 +13,7 @@ use enum_dispatch::enum_dispatch;
 use serde::Serialize;
 use std::ops::Deref;
 
-codegen_codec_structs!(WireDartCodec);
+codegen_codec_structs!(WireDartCodec, WireDartOutputCode);
 
 pub(crate) trait WireDartCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, WireDartCodecOutputSpec>
@@ -27,9 +27,4 @@ pub(crate) trait WireDartCodecEntrypointTrait<'a>:
     ) -> Vec<String>;
 
     fn generate_rust2dart_codec_object(&self, func: &IrFunc) -> String;
-}
-
-#[derive(Clone, Serialize)]
-pub(crate) struct WireDartCodecOutputSpec {
-    pub(crate) inner: Acc<Vec<WireDartOutputCode>>,
 }
