@@ -159,7 +159,7 @@ where
     T: SseEncode,
     E: SseEncode,
 {
-    todo!()
+    TODO;
 }
 
 // TODO put it there
