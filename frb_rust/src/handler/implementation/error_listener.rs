@@ -6,6 +6,7 @@ use crate::handler::error_listener::ErrorListener;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::sender::Rust2DartSender;
+use std::any::Any;
 
 /// The default one.
 #[derive(Clone, Copy)]
@@ -15,16 +16,13 @@ impl ErrorListener for NoOpErrorListener {
     fn on_error(&self, error: Error) {
         // nothing
     }
+}
 
-    // TODO
-    // fn handle_error<Rust2DartCodec>(&self, port: MessagePort, error: Error)
-    // where
-    //     Rust2DartCodec: BaseCodec,
-    // {
-    //     let msg = match error {
-    //         e @ Error::CustomError(_) => Rust2DartCodec::encode(e, Rust2DartAction::Error),
-    //         e @ Error::Panic(_) => Rust2DartCodec::encode(e, Rust2DartAction::Panic),
-    //     };
-    //     Rust2DartSender::new(Channel::new(port)).send(msg.into_dart_abi());
-    // }
+pub(crate) fn handle_non_sync_panic_error(
+    error_listener: impl ErrorListener,
+    port: MessagePort,
+    error: Box<dyn Any + Send>,
+) {
+    error_listener.on_error(Error::Panic(error));
+    Rust2DartSender::new(Channel::new(port)).send(error.into_dart_abi());
 }

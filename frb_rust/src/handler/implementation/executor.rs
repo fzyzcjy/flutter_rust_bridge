@@ -5,6 +5,7 @@ use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
+use crate::handler::implementation::error_listener::handle_non_sync_panic_error;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::{DartAbi, MessagePort};
 use crate::rust2dart::action::Rust2DartAction;
@@ -76,7 +77,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             });
 
             if let Err(error) = thread_result {
-                el.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
+                handle_non_sync_panic_error(el, port, error);
             }
         }));
     }
@@ -131,7 +132,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             .await;
 
             if let Err(error) = async_result {
-                el.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
+                handle_non_sync_panic_error(el, port, error);
             }
         });
     }

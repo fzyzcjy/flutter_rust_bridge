@@ -8,7 +8,9 @@ use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::HandlerConfig;
 use crate::handler::handler::{Handler, TaskContext, TaskInfo, TaskRetFutTrait};
-use crate::handler::implementation::error_listener::NoOpErrorListener;
+use crate::handler::implementation::error_listener::{
+    handle_non_sync_panic_error, NoOpErrorListener,
+};
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::message_port_to_handle;
@@ -201,8 +203,7 @@ impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
                 let task = prepare();
                 execute(task_info2, task);
             }) {
-                self.error_listener
-                    .handle_error::<Rust2DartCodec>(task_info.port.unwrap(), Error::Panic(error));
+                handle_non_sync_panic_error(self.error_listener, task_info.port.unwrap(), error);
             }
         });
     }
