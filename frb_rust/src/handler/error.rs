@@ -1,6 +1,8 @@
+use crate::codec::BaseCodec;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::box_into_dart::BoxIntoDart;
 use crate::platform_types::DartAbi;
+use crate::rust2dart::action::Rust2DartAction;
 use std::any::Any;
 
 /// Errors that occur from normal code execution.
@@ -30,4 +32,10 @@ fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
         },
     }
     .to_string()
+}
+
+pub(crate) fn encode_panic_error<Rust2DartCodec: BaseCodec>(
+    error: &Box<dyn Any + Send>,
+) -> Rust2DartCodec::Message {
+    Rust2DartCodec::encode(error_to_string(error), Rust2DartAction::Panic)
 }
