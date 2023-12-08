@@ -37,12 +37,4 @@ impl WireRustCodecEntrypointTrait<'_> for DcoWireRustCodecEntrypoint {
     ) -> Acc<Vec<ExternFuncParam>> {
         unreachable!()
     }
-
-    fn generate_func_call_decode(
-        &self,
-        _func: &IrFunc,
-        _context: WireRustGeneratorContext,
-    ) -> String {
-        unreachable!()
-    }
 }

@@ -36,7 +36,7 @@ pub(crate) fn generate_wire_func(
     let params = dart2rust_codec.generate_func_params(func, context);
     let inner_func_args = generate_inner_func_args(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);
-    let code_decode = dart2rust_codec.generate_func_call_decode(func, context);
+    let code_decode = generate_func_call_decode(func, context);
     let code_inner_decode = generate_code_inner_decode(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_args);
     let handler_func_name = generate_handler_func_name(func, ir_pack, context);
@@ -270,4 +270,16 @@ fn ffi_call_mode(mode: IrFuncMode) -> &'static str {
         IrFuncMode::Sync => "Sync",
         IrFuncMode::Stream { .. } => "Stream",
     }
+}
+
+fn generate_func_call_decode(func: &IrFunc, context: WireRustGeneratorContext) -> String {
+    func.inputs
+        .iter()
+        .map(|field| {
+            let name = field.name.rust_style();
+            let wire_func_call_decode = WireRustGenerator::new(field.ty.clone(), context)
+                .generate_wire_func_call_decode(name);
+            format!("let api_{name} = {wire_func_call_decode};")
+        })
+        .join("")
 }
