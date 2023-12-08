@@ -44,12 +44,11 @@ pub fn wire_hello(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32)
 
 #[wasm_bindgen]
 pub fn wire_hello_sync(
-    port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
-    wire_hello_sync_impl(port_, ptr_, rust_vec_len_, data_len_)
+    wire_hello_sync_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

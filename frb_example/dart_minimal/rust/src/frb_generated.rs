@@ -64,7 +64,6 @@ fn wire_hello_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32
         )
 }
 fn wire_hello_sync_impl(
-    port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,

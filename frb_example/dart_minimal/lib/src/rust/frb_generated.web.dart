@@ -33,9 +33,9 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_hello(port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_hello_sync(int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_hello_sync(port_, ptr_, rust_vec_len_, data_len_);
+      wire_hello_sync(
+              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_hello_sync(ptr_, rust_vec_len_, data_len_);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
@@ -60,8 +60,8 @@ class RustLibWasmModule implements WasmModule {
       int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_hello_sync(int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_,
-          int data_len_);
+      wire_hello_sync(
+          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 }
