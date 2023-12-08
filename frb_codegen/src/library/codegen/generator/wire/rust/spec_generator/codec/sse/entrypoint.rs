@@ -8,6 +8,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::sse::body::gen
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 pub(crate) struct SseWireRustCodecEntrypoint {}
