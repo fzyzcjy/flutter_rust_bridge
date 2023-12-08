@@ -33,6 +33,11 @@ abstract class RustOpaque {
     return target.intoRaw();
   }
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  @internal
+  int sseEncode({bool? move}) =>
+      PlatformPointerUtil.ptrToInt(cstEncode(move: move));
+
   /// Dispose the underlying `Arc`.
   void dispose() => _arc.dispose();
 
