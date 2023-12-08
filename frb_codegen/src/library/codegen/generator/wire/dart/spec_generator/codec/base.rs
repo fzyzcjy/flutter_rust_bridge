@@ -13,7 +13,7 @@ use enum_dispatch::enum_dispatch;
 use serde::Serialize;
 use std::ops::Deref;
 
-codegen_codec_structs!(WireDartCodecEntrypoint);
+codegen_codec_structs!(WireDartCodec);
 
 pub(crate) trait WireDartCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, WireDartCodecOutputSpec>

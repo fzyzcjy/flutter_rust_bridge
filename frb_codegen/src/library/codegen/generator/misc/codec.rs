@@ -19,35 +19,35 @@ pub(crate) struct CodecModePack {
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_codec_structs {
-    ($struct_name:ident) => (
+    ($partial_name:ident) => (
         crate::codegen_codec_structs!(
             @private
 
-            $struct_name;
+            $partial_name;
 
             Cst,
             Dco,
             Sse,
         );
     );
-    (@private $struct_name:ident ; $($name:ident),*,) => (
+    (@private $partial_name:ident ; $($name:ident),*,) => (
         paste::paste! {
-            pub(crate) struct $struct_name<'a>(
-                Box<dyn [<$struct_name Trait>]<'a>>
+            pub(crate) struct [<$partial_name Entrypoint>]<'a>(
+                Box<dyn [<$partial_name EntrypointTrait>]<'a>>
             );
 
-            impl<'a> From<CodecMode> for $struct_name<'a> {
+            impl<'a> From<CodecMode> for [<$partial_name Entrypoint>]<'a> {
                 fn from(mode: CodecMode) -> Self {
                     match mode {
                         $(
-                        CodecMode::$name => Self(Box::new([<$name $struct_name>] {})),
+                        CodecMode::$name => Self(Box::new([<$name $partial_name Entrypoint>] {})),
                         )*
                     }
                 }
             }
 
-            impl<'a> std::ops::Deref for $struct_name<'a> {
-                type Target = Box<dyn [<$struct_name Trait>]<'a>>;
+            impl<'a> std::ops::Deref for [<$partial_name Entrypoint>]<'a> {
+                type Target = Box<dyn [<$partial_name EntrypointTrait>]<'a>>;
 
                 fn deref(&self) -> &Self::Target {
                     &self.0

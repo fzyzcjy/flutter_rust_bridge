@@ -54,10 +54,10 @@ pub(crate) fn generate(
         rust2dart: CodecMode::iter()
             .map(WireDartCodecEntrypoint::from)
             .flat_map(|codec| codec.generate_decode(context, &cache.distinct_output_types))
-            .collect_vec(),
+            .collect(),
         dart2rust: CodecMode::iter()
             .map(WireDartCodecEntrypoint::from)
             .flat_map(|codec| codec.generate_decode(context, &cache.distinct_input_types))
-            .collect_vec(),
+            .collect(),
     })
 }

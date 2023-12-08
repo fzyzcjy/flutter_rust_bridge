@@ -10,7 +10,7 @@ use crate::codegen_codec_structs;
 use enum_dispatch::enum_dispatch;
 use serde::Serialize;
 
-codegen_codec_structs!(WireRustCodecEntrypoint);
+codegen_codec_structs!(WireRustCodec);
 
 pub(crate) trait WireRustCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireRustGeneratorContext<'a>, WireRustCodecOutputSpec>
