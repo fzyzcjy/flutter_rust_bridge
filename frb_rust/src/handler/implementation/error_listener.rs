@@ -18,7 +18,7 @@ impl ErrorListener for NoOpErrorListener {
     }
 }
 
-pub(crate) fn handle_non_sync_panic_error(
+pub(crate) fn handle_non_sync_panic_error<Rust2DartCodec: BaseCodec>(
     error_listener: impl ErrorListener,
     port: MessagePort,
     error: Box<dyn Any + Send>,

@@ -203,7 +203,11 @@ impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
                 let task = prepare();
                 execute(task_info2, task);
             }) {
-                handle_non_sync_panic_error(self.error_listener, task_info.port.unwrap(), error);
+                handle_non_sync_panic_error::<Rust2DartCodec>(
+                    self.error_listener,
+                    task_info.port.unwrap(),
+                    error,
+                );
             }
         });
     }

@@ -77,7 +77,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             });
 
             if let Err(error) = thread_result {
-                handle_non_sync_panic_error(el, port, error);
+                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error);
             }
         }));
     }
@@ -132,7 +132,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             .await;
 
             if let Err(error) = async_result {
-                handle_non_sync_panic_error(el, port, error);
+                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error);
             }
         });
     }
