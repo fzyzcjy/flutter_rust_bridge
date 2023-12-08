@@ -1,2 +1,2 @@
-pub(super) mod lang;
-pub(super) mod ty;
+pub(crate) mod lang;
+pub(crate) mod ty;
