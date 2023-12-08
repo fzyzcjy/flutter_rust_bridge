@@ -7,6 +7,8 @@ use crate::rust2dart::action::Rust2DartAction;
 pub struct CstCodec;
 
 impl BaseCodec for CstCodec {
+    type WireSyncReturn = (); // should not be used
+
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
         unreachable!()
     }

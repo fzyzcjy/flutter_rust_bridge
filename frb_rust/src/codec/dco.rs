@@ -7,6 +7,11 @@ use crate::rust2dart::action::Rust2DartAction;
 pub struct DcoCodec;
 
 impl BaseCodec for DcoCodec {
+    #[cfg(wasm)]
+    type WireSyncReturn = wasm_bindgen::JsValue;
+    #[cfg(not(wasm))]
+    type WireSyncReturn = *mut allo_isolate::ffi::DartCObject;
+
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
         if result_code == Rust2DartAction::CloseStream {
             vec![result_code.into_dart()].into_dart()
