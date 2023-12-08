@@ -31,19 +31,36 @@ pub(crate) fn generate(
 }
 
 fn generate_misc() -> Acc<Vec<WireRustOutputCode>> {
-    Acc::new_common(vec![format!("
-        fn dco_transform_result<T, T2, E>(
-            raw: Result<T, E>,
-        ) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
-        where
-            T: flutter_rust_bridge::IntoIntoDart<T2>,
-            T2: flutter_rust_bridge::IntoDart,
-            E: flutter_rust_bridge::IntoDart,
-        {{
-            match raw {{
-                Ok(raw) => Ok(raw.into_into_dart().into_dart()),
-                Err(raw) => Err(raw.into_dart()),
+    let generate = |name, body| -> WireRustOutputCode {
+        format!(
+            "
+            fn {name}<T, T2, E>(
+                raw: Result<T, E>,
+            ) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
+            where
+                T: flutter_rust_bridge::IntoIntoDart<T2>,
+                T2: flutter_rust_bridge::IntoDart,
+                E: flutter_rust_bridge::IntoDart,
+            {{
+                {body}
             }}
-        }}
-    ").into()])
+            "
+        ).into()
+    };
+
+    Acc::new_common(vec![
+        generate(
+            "transform_result_dco_normal",
+            "
+                match raw {
+                    Ok(raw) => Ok(raw.into_into_dart().into_dart()),
+                    Err(raw) => Err(raw.into_dart()),
+                }
+            ",
+        ),
+        generate(
+            "transform_result_dco_sync",
+            "transform_result_dco_normal(raw)",
+        ),
+    ])
 }

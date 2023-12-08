@@ -59,7 +59,7 @@ fn wire_hello_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32
             let api_b = i32::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
-                sse_transform_result(Result::<_, ()>::Ok(crate::api::minimal::hello(
+                transform_result_sse_normal(Result::<_, ()>::Ok(crate::api::minimal::hello(
                     api_a, api_b,
                 )))
             }
@@ -88,7 +88,7 @@ fn wire_hello_sync_impl(
             let api_a = i32::sse_decode(&mut deserializer);
             let api_b = i32::sse_decode(&mut deserializer);
             deserializer.end();
-            sse_transform_result(Result::<_, ()>::Ok(crate::api::minimal::hello_sync(
+            transform_result_sse_sync(Result::<_, ()>::Ok(crate::api::minimal::hello_sync(
                 api_a, api_b,
             )))
         },
@@ -109,9 +109,9 @@ fn wire_minimal_adder_impl(
             let api_a = a.cst_decode();
             let api_b = b.cst_decode();
             move |context| {
-                dco_transform_result(Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(
-                    api_a, api_b,
-                )))
+                transform_result_dco_normal(Result::<_, ()>::Ok(
+                    crate::api::minimal::minimal_adder(api_a, api_b),
+                ))
             }
         },
     )
@@ -148,7 +148,7 @@ impl SseDecode for i32 {
 
 // Section: rust2dart
 
-fn dco_transform_result<T, T2, E>(
+fn transform_result_dco_normal<T, T2, E>(
     raw: Result<T, E>,
 ) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
 where
@@ -162,9 +162,22 @@ where
     }
 }
 
+fn transform_result_dco_sync<T, T2, E>(
+    raw: Result<T, E>,
+) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
+where
+    T: flutter_rust_bridge::IntoIntoDart<T2>,
+    T2: flutter_rust_bridge::IntoDart,
+    E: flutter_rust_bridge::IntoDart,
+{
+    transform_result_dco_normal(raw)
+}
+
 pub trait SseEncode {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
 }
+
+// TODO
 
 impl SseEncode for i32 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
