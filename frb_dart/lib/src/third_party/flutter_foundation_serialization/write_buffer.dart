@@ -31,7 +31,7 @@ class WriteBuffer {
 
   WriteBuffer._(this._buffer, this._eightBytes, this._eightBytesAsList);
 
-  RustVecU8 _buffer;
+  final RustVecU8 _buffer;
   int _currentSize = 0;
   bool _isDone = false;
   final ByteData _eightBytes;
