@@ -34,7 +34,7 @@ impl SseCodec {
         let mut serializer = SseSerializer::new();
         (serializer.cursor).write_u8(result_code as _).unwrap();
         data_fn(&mut serializer);
-        todo!()
+        Rust2DartMessageSse(serializer.cursor.into_inner())
     }
 }
 
