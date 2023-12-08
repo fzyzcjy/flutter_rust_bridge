@@ -28,7 +28,7 @@ pub(crate) fn generate_api_impl_normal_function(
         .join(", ");
     let execute_func_name = generate_execute_func_name(func);
 
-    let codec = rust2dart_codec.generate_rust2dart_codec_object(func);
+    let codec = generate_rust2dart_codec_object(func);
     let call_ffi_args = generate_call_ffi_args(func);
     let arg_values = generate_arg_values(func);
 
