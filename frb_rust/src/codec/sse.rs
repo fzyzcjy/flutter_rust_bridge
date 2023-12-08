@@ -3,14 +3,14 @@ use crate::for_generated::vec_from_leak_ptr;
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::{DartAbi, WireSyncReturnSse};
 use crate::rust2dart::action::Rust2DartAction;
-use crate::rust2dart::wire_sync_return_src::WireSyncReturnSseSrc;
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnSseWrapper;
 use std::io::Cursor;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct SseCodec;
 
 impl BaseCodec for SseCodec {
-    type WireSyncReturnSrc = WireSyncReturnSseSrc;
+    type WireSyncReturnWrapper = WireSyncReturnSseWrapper;
 
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
         todo!()

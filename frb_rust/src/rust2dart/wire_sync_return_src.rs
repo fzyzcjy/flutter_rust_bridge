@@ -10,7 +10,7 @@ use crate::rust2dart::action::Rust2DartAction;
 /// An object that can be converted into `WireSyncReturn*`
 /// This object is safe (no worries about memory leak, etc), while `WireSyncReturn` is not.
 /// That is why we have this intermediate object - we can safely play with this one.
-pub trait WireSyncReturnSrcTrait {
+pub trait WireSyncReturnWrapperTrait {
     type WireType;
 
     fn new(inner: DartAbi) -> Self;
@@ -20,9 +20,9 @@ pub trait WireSyncReturnSrcTrait {
     fn into_raw(self) -> Self::WireType;
 }
 
-pub struct WireSyncReturnCstSrc(DartAbi);
+pub struct WireSyncReturnCstWrapper(DartAbi);
 
-impl WireSyncReturnSrcTrait for WireSyncReturnCstSrc {
+impl WireSyncReturnWrapperTrait for WireSyncReturnCstWrapper {
     type WireType = ();
 
     fn new(inner: DartAbi) -> Self {
@@ -38,9 +38,9 @@ impl WireSyncReturnSrcTrait for WireSyncReturnCstSrc {
     }
 }
 
-pub struct WireSyncReturnDcoSrc(DartAbi);
+pub struct WireSyncReturnDcoWrapper(DartAbi);
 
-impl WireSyncReturnSrcTrait for WireSyncReturnDcoSrc {
+impl WireSyncReturnWrapperTrait for WireSyncReturnDcoWrapper {
     type WireType = WireSyncReturnDco;
 
     fn new(inner: DartAbi) -> Self {
@@ -60,9 +60,9 @@ impl WireSyncReturnSrcTrait for WireSyncReturnDcoSrc {
     }
 }
 
-pub struct WireSyncReturnSseSrc(Vec<u8>);
+pub struct WireSyncReturnSseWrapper(Vec<u8>);
 
-impl WireSyncReturnSrcTrait for WireSyncReturnSseSrc {
+impl WireSyncReturnWrapperTrait for WireSyncReturnSseWrapper {
     type WireType = WireSyncReturnSse;
 
     fn new(inner: DartAbi) -> Self {

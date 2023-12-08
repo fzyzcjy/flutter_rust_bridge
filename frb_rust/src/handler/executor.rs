@@ -31,7 +31,7 @@ pub trait Executor: RefUnwindSafe {
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<Rust2DartCodec::WireSyncReturnSrc, Er>
+    ) -> Result<Rust2DartCodec::WireSyncReturnWrapper, Er>
     where
         SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,

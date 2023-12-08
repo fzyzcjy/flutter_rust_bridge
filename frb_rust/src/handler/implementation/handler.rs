@@ -15,7 +15,7 @@ use crate::platform_types::DartAbi;
 use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
 use crate::rust2dart::action::Rust2DartAction;
-use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrcTrait;
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnWrapperTrait;
 use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 use crate::thread_pool::BaseThreadPool;
 use allo_isolate::ffi::DartCObject;
@@ -125,7 +125,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> <Rust2DartCodec::WireSyncReturnSrc as WireSyncReturnSrcTrait>::WireType
+    ) -> <Rust2DartCodec::WireSyncReturnWrapper as WireSyncReturnWrapperTrait>::WireType
     where
         SyncTaskFn: FnOnce() -> Result<DartCObject, DartCObject> + UnwindSafe,
         Rust2DartCodec: BaseCodec,
@@ -154,7 +154,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         // Deliberately construct simplest possible WireSyncReturn object
         // instead of more realistic things like `WireSyncReturnSrc::new(Panic, ...)`.
         // See comments in [wrap] for why.
-        .unwrap_or_else(|_| Rust2DartCodec::WireSyncReturnSrc::new(().into_dart()).into_raw())
+        .unwrap_or_else(|_| Rust2DartCodec::WireSyncReturnWrapper::new(().into_dart()).into_raw())
     }
 
     #[cfg(feature = "rust-async")]
