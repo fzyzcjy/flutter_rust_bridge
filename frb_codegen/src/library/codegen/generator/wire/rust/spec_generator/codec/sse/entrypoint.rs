@@ -55,6 +55,6 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         func: &IrFunc,
         context: WireRustGeneratorContext,
     ) -> String {
-        todo!()
+        "TODO_generate_func_call_decode;".into()
     }
 }
