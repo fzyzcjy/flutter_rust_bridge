@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
+use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypointTrait, WireRustCodecOutputSpec,
@@ -33,33 +34,39 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
 impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
     fn generate_func_params(
         &self,
-        _func: &IrFunc,
+        func: &IrFunc,
         _context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
-        Acc::new(|_| {
-            vec![
+        let mut params = vec![
+            ExternFuncParam {
+                name: "ptr_".to_owned(),
+                rust_type: "*mut u8".to_owned(),
+                dart_type: "ffi.Pointer<ffi.Uint8>".to_owned(),
+            },
+            ExternFuncParam {
+                name: "rust_vec_len_".to_owned(),
+                rust_type: "i32".to_owned(),
+                dart_type: "int".to_owned(),
+            },
+            ExternFuncParam {
+                name: "data_len_".to_owned(),
+                rust_type: "i32".to_owned(),
+                dart_type: "int".to_owned(),
+            },
+        ];
+
+        if has_port_argument(func.mode) {
+            params.insert(
+                0,
                 ExternFuncParam {
                     name: "port_".to_owned(),
                     rust_type: "i64".to_owned(),
                     dart_type: "int".to_owned(),
                 },
-                ExternFuncParam {
-                    name: "ptr_".to_owned(),
-                    rust_type: "*mut u8".to_owned(),
-                    dart_type: "ffi.Pointer<ffi.Uint8>".to_owned(),
-                },
-                ExternFuncParam {
-                    name: "rust_vec_len_".to_owned(),
-                    rust_type: "i32".to_owned(),
-                    dart_type: "int".to_owned(),
-                },
-                ExternFuncParam {
-                    name: "data_len_".to_owned(),
-                    rust_type: "i32".to_owned(),
-                    dart_type: "int".to_owned(),
-                },
-            ]
-        })
+            );
+        }
+
+        Acc::new(|_| params)
     }
 
     fn generate_func_call_decode(
