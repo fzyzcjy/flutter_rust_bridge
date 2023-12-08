@@ -139,8 +139,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
                 {
                     Ok(data) => data,
                     Err(err) => {
-                        self.error_handler
-                            .on_error(Error::CustomError(todo!() /*Box::new(err)*/));
+                        self.error_handler.on_error(Error::CustomError);
                         err
                     }
                 }

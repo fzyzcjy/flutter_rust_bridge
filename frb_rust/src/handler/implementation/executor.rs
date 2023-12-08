@@ -157,7 +157,7 @@ impl ExecuteNormalOrAsyncUtils {
                 }
             }
             Err(error) => {
-                eh.handle_error::<Rust2DartCodec>(port, Error::CustomError(Box::new(error)));
+                eh.handle_error::<Rust2DartCodec>(port, Error::CustomError);
             }
         };
     }

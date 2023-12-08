@@ -13,7 +13,7 @@ pub enum Rust2DartAction {
 impl From<&Error> for Rust2DartAction {
     fn from(value: &Error) -> Self {
         match value {
-            Error::CustomError(_) => Self::Error,
+            Error::CustomError => Self::Error,
             Error::Panic(_) => Self::Panic,
         }
     }

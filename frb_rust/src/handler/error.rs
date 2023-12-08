@@ -1,12 +1,12 @@
-use std::any::Any;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::box_into_dart::BoxIntoDart;
 use crate::platform_types::DartAbi;
+use std::any::Any;
 
 /// Errors that occur from normal code execution.
 pub enum Error {
-    /// Errors that implement [IntoDart].
-    CustomError(Box<dyn BoxIntoDart>),
+    /// Non-panic errors
+    CustomError,
     /// Exceptional errors from panicking.
     Panic(Box<dyn Any + Send>),
 }
@@ -15,17 +15,8 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::CustomError(_e) => "Box<dyn BoxIntoDart>".to_string(),
+            Error::CustomError => "Box<dyn BoxIntoDart>".to_string(),
             Error::Panic(panic_err) => error_to_string(panic_err),
-        }
-    }
-}
-
-impl IntoDart for Error {
-    fn into_dart(self) -> DartAbi {
-        match self {
-            Error::CustomError(e) => e.box_into_dart(),
-            Error::Panic(panic_err) => error_to_string(&panic_err).into_dart(),
         }
     }
 }
@@ -38,6 +29,5 @@ fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
             None => "Box<dyn Any>",
         },
     }
-        .to_string()
+    .to_string()
 }
-
