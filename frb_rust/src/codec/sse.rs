@@ -27,6 +27,10 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
         Self(vec![])
     }
 
+    fn into_dart_abi(self) -> DartAbi {
+        self.0.into_dart()
+    }
+
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
         let WireSyncReturnSseStruct { ptr, len } = raw;
         Self(vec_from_leak_ptr(ptr, len))

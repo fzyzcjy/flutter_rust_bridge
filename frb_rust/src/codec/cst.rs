@@ -23,6 +23,10 @@ impl Rust2DartMessageTrait for Rust2DartMessageCst {
         unreachable!()
     }
 
+    fn into_dart_abi(self) -> DartAbi {
+        unreachable!()
+    }
+
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
         unreachable!()
     }

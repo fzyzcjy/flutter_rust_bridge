@@ -28,6 +28,10 @@ impl Rust2DartMessageTrait for Rust2DartMessageDco {
         Self(().into_dart())
     }
 
+    fn into_dart_abi(self) -> DartAbi {
+        self.0
+    }
+
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
         Self(*box_from_leak_ptr(raw))
     }

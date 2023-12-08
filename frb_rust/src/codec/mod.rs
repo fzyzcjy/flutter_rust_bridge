@@ -18,6 +18,8 @@ pub trait Rust2DartMessageTrait {
 
     fn simplest() -> Self;
 
+    fn into_dart_abi(self) -> DartAbi;
+
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self;
 
     fn into_raw_wire_sync(self) -> Self::WireSyncType;
