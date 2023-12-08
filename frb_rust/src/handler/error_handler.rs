@@ -10,12 +10,7 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 /// or to an external logging service.
 pub(crate) trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     /// The default error handler.
-    fn handle_error<Rust2DartCodec>(&self, port: MessagePort, error: Error)
-    where
-        Rust2DartCodec: BaseCodec;
-
-    /// Special handler only used for synchronous code.
-    fn handle_error_sync<Rust2DartCodec>(&self, error: Error) -> Rust2DartCodec::Message
+    fn on_error<Rust2DartCodec>(&self, error: Error)
     where
         Rust2DartCodec: BaseCodec;
 }
