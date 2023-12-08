@@ -13,24 +13,15 @@ pub(crate) fn generate(
     context: WireRustCodecSseGeneratorContext,
     types: &[IrType],
 ) -> WireRustCodecOutputSpec {
-    WireRustCodecOutputSpec {
-        inner: generate_impl_decode(types, context),
-    }
-}
-
-pub(crate) fn generate_impl_decode(
-    types: &[IrType],
-    context: WireRustCodecSseGeneratorContext,
-) -> Acc<Vec<WireRustOutputCode>> {
-    let mut lines = Acc::<Vec<WireRustOutputCode>>::default();
-    lines.push_acc(generate_impl_decode_misc());
-    lines += (types.iter())
-        .map(|ty| generate_impl_decode_for_type(ty, context))
+    let mut inner = Acc::<Vec<WireRustOutputCode>>::default();
+    inner.push_acc(generate_misc());
+    inner += (types.iter())
+        .map(|ty| generate_for_type(ty, context))
         .collect();
-    lines
+    WireRustCodecOutputSpec { inner }
 }
 
-fn generate_impl_decode_misc() -> Acc<WireRustOutputCode> {
+fn generate_misc() -> Acc<WireRustOutputCode> {
     Acc::new_common(
         "
         pub trait SseDecodable {
@@ -41,7 +32,7 @@ fn generate_impl_decode_misc() -> Acc<WireRustOutputCode> {
     )
 }
 
-fn generate_impl_decode_for_type(
+fn generate_for_type(
     ty: &IrType,
     context: WireRustCodecSseGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
