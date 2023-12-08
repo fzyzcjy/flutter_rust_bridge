@@ -7,7 +7,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
             "
             {};
             if ({src_is_not_null}) {{
-                {}
+                {};
             }}
             ",
             lang.call_encode(&Primitive(IrTypePrimitive::Bool), &src_is_not_null),
