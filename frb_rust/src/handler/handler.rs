@@ -36,7 +36,9 @@ pub trait Handler {
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<DartCObject, DartCObject>
+        TaskFn: FnOnce(
+                TaskContext<Rust2DartCodec>,
+            ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
             + UnwindSafe
             + 'static,
@@ -63,8 +65,9 @@ pub trait Handler {
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRetFut:
-            Future<Output = Result<DartCObject, DartCObject>> + TaskRetFutTrait + UnwindSafe,
+        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
+            + TaskRetFutTrait
+            + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret>;

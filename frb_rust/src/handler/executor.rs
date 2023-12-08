@@ -16,7 +16,9 @@ pub trait Executor: RefUnwindSafe {
     /// value, i.e. types that implement [`IntoDart`].
     fn execute_normal<Rust2DartCodec, TaskFn>(&self, task_info: TaskInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<DartCObject, DartCObject>
+        TaskFn: FnOnce(
+                TaskContext<Rust2DartCodec>,
+            ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
             + UnwindSafe
             + 'static,
@@ -37,7 +39,8 @@ pub trait Executor: RefUnwindSafe {
     fn execute_async<Rust2DartCodec, TaskFn, TaskRetFut>(&self, task_info: TaskInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRetFut:
-            Future<Output = Result<DartCObject, DartCObject>> + TaskRetFutTrait + UnwindSafe,
+        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
+            + TaskRetFutTrait
+            + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 }

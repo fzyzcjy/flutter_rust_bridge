@@ -50,7 +50,9 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
 {
     fn execute_normal<Rust2DartCodec, TaskFn>(&self, task_info: TaskInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<DartCObject, DartCObject>
+        TaskFn: FnOnce(
+                TaskContext<Rust2DartCodec>,
+            ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
             + UnwindSafe
             + 'static,
@@ -105,8 +107,9 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
     fn execute_async<Rust2DartCodec, TaskFn, TaskRetFut>(&self, task_info: TaskInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRetFut:
-            Future<Output = Result<DartCObject, DartCObject>> + TaskRetFutTrait + UnwindSafe,
+        TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
+            + TaskRetFutTrait
+            + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
         let el = self.error_listener;
@@ -142,7 +145,7 @@ struct ExecuteNormalOrAsyncUtils;
 
 impl ExecuteNormalOrAsyncUtils {
     fn handle_result<Rust2DartCodec, EL>(
-        ret: Result<DartCObject, DartCObject>,
+        ret: Result<Rust2DartCodec::Message, Rust2DartCodec::Message>,
         mode: FfiCallMode,
         sender: Rust2DartSender,
         el: EL,
@@ -155,7 +158,7 @@ impl ExecuteNormalOrAsyncUtils {
             Ok(result) => {
                 match mode {
                     FfiCallMode::Normal => {
-                        sender.send(result);
+                        sender.send(result.into_dart_abi());
                     }
                     FfiCallMode::Stream => {
                         // nothing - ignore the return value of a Stream-typed function
@@ -165,7 +168,7 @@ impl ExecuteNormalOrAsyncUtils {
             }
             Err(error) => {
                 el.on_error(Error::CustomError);
-                sender.send(error);
+                sender.send(error.into_dart_abi());
             }
         };
     }
