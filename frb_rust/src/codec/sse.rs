@@ -15,4 +15,10 @@ impl BaseCodec for SseCodec {
 // TODO maybe move
 pub struct SseDeserializer {}
 
+impl SseDeserializer {
+    pub unsafe fn from_wire(ptr: *const u8, rust_vec_len: i32, data_len: i32) -> Self {
+        todo!()
+    }
+}
+
 pub struct SseSerializer {}

@@ -8,6 +8,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::sse::body::gen
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
+use itertools::Itertools;
 
 pub(crate) struct SseWireRustCodecEntrypoint {}
 
@@ -65,6 +66,18 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         func: &IrFunc,
         context: WireRustGeneratorContext,
     ) -> String {
-        "TODO_generate_func_call_decode;".into()
+        let primary = (func.inputs.iter())
+            .map(|field| {
+                let name = field.name.rust_style();
+                let rust_api_type = field.ty.rust_api_type();
+                format!("let api_{name} = {rust_api_type}::sse_decode(&mut deserializer);\n")
+            })
+            .join("");
+        format!(
+            "
+            let mut deserializer = unsafe {{ flutter_rust_bridge::for_generated::SseDeserializer::from_wire() }};
+            {primary}
+            "
+        )
     }
 }
