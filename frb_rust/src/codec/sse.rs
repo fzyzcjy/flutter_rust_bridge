@@ -35,4 +35,14 @@ impl SseDeserializer {
     }
 }
 
-pub struct SseSerializer {}
+pub struct SseSerializer {
+    pub cursor: Cursor<Vec<u8>>,
+}
+
+impl SseSerializer {
+    pub fn new() -> Self {
+        Self {
+            cursor: Cursor::new(vec![]),
+        }
+    }
+}
