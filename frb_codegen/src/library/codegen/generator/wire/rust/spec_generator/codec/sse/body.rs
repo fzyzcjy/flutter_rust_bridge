@@ -23,9 +23,8 @@ pub(super) fn generate_encode_or_decode(
     WireRustCodecOutputSpec { inner }
 }
 
-fn generate_misc() -> Acc<WireRustOutputCode> {
-    Acc::new_common(
-        r#"
+fn generate_misc() -> Acc<Vec<WireRustOutputCode>> {
+    Acc::new_common(vec![r#"
         pub trait SseEncode {
             fn sse_encode(self, serializer: Serializer);
         }
@@ -34,8 +33,7 @@ fn generate_misc() -> Acc<WireRustOutputCode> {
             fn sse_decode(deserializer: Deserializer) -> T;
         }
         "#
-        .into(),
-    )
+    .into()])
 }
 
 fn generate_encode_or_decode_for_type(
