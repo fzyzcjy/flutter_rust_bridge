@@ -109,6 +109,15 @@ class WriteBuffer {
     _addAll(_eightBytesAsList, 0, 8);
   }
 
+  // NOTE ADD by mimic the 64bit counterpart
+  /// Write an Float32 into the buffer.
+  void putFloat32(double value, {Endian? endian}) {
+    assert(!_isDone);
+    // _alignTo(4);
+    _eightBytes.setFloat32(0, value, endian ?? Endian.host);
+    _addAll(_eightBytesAsList, 0, 4);
+  }
+
   /// Write an Float64 into the buffer.
   void putFloat64(double value, {Endian? endian}) {
     assert(!_isDone);
