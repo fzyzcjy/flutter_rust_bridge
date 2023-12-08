@@ -98,7 +98,7 @@ pub trait SseDecode {
 
 impl SseDecode for i32 {
     fn sse_decode(deserializer: SseDeserializer) -> Self {
-        return TODO_depend_on_serializer;
+        return deserializer.buffer.getInt32();
     }
 }
 
@@ -110,7 +110,7 @@ pub trait SseEncode {
 
 impl SseEncode for i32 {
     fn sse_encode(self, serializer: SseSerializer) {
-        return TODO_depend_on_serializer;
+        serializer.buffer.putInt32(self);
     }
 }
 
