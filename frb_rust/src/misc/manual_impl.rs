@@ -39,14 +39,14 @@ pub fn cst_decode_uuid(id: Vec<u8>) -> uuid::Uuid {
     cst_decode_uuid_ref(id.as_slice())
 }
 
-#[cfg(feature = "uuid")]
-#[inline]
-pub fn cst_decode_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
-    ids.as_slice()
-        .chunks(UUID_SIZE_IN_BYTES)
-        .map(cst_decode_uuid_ref)
-        .collect::<Vec<uuid::Uuid>>()
-}
+// #[cfg(feature = "uuid")]
+// #[inline]
+// pub fn cst_decode_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
+//     ids.as_slice()
+//         .chunks(UUID_SIZE_IN_BYTES)
+//         .map(cst_decode_uuid_ref)
+//         .collect::<Vec<uuid::Uuid>>()
+// }
 
 #[cfg(test)]
 #[cfg(feature = "chrono")]
