@@ -15,7 +15,7 @@
 // Section: imports
 
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
-use flutter_rust_bridge::for_generated::SseSerializer;
+use flutter_rust_bridge::for_generated::{transform_result_dco, SseSerializer};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: executor
@@ -165,20 +165,6 @@ where
 // TODO put it there
 impl SseEncode for () {
     fn sse_encode(self, serializer: &mut SseSerializer) {}
-}
-
-fn transform_result_dco<T, T2, E>(
-    raw: Result<T, E>,
-) -> Result<
-    flutter_rust_bridge::for_generated::Rust2DartMessageDco,
-    flutter_rust_bridge::for_generated::Rust2DartMessageDco,
->
-where
-    T: flutter_rust_bridge::IntoIntoDart<T2>,
-    T2: flutter_rust_bridge::IntoDart,
-    E: flutter_rust_bridge::IntoDart,
-{
-    flutter_rust_bridge::for_generated::transform_result_dco(raw)
 }
 
 pub trait SseEncode {
