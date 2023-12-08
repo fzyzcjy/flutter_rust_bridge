@@ -11,7 +11,6 @@ use enum_dispatch::enum_dispatch;
 
 codegen_codec_structs!(WireRustCodecEntrypoint);
 
-#[enum_dispatch]
 pub(crate) trait WireRustCodecEntrypointTrait {
     fn generate_func_params(
         &self,

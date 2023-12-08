@@ -35,7 +35,7 @@ macro_rules! codegen_codec_structs {
                 Box<dyn [<$struct_name Trait>]<'a>>
             );
 
-            impl $struct_name {
+            impl<'a> $struct_name<'a> {
                 pub(crate) fn new(mode: CodecMode) -> Self {
                     match mode {
                         $(
