@@ -13,7 +13,7 @@ impl WireSyncReturnDcoSrc {
         Self(inner)
     }
 
-    pub fn leak(self) -> WireSyncReturnDco {
+    pub fn into_raw(self) -> WireSyncReturnDco {
         #[cfg(not(wasm))]
         return new_leak_box_ptr(self.0);
 
