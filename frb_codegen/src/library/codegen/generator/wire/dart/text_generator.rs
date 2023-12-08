@@ -36,12 +36,8 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
     );
     add("extra_functions", &spec.misc.extra_functions);
     add("wire_class", &spec.misc.wire_class);
-    add("impl_decode", &spec.rust2dart.impl_decode);
-    add("encode_funcs", &spec.dart2rust.encode_funcs);
-    add(
-        "encode_api_fill_to_wire_funcs",
-        &spec.dart2rust.encode_api_fill_to_wire_funcs,
-    );
+    add("rust2dart", &spec.rust2dart.inner);
+    add("dart2rust", &spec.dart2rust.inner);
 
     merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
 }

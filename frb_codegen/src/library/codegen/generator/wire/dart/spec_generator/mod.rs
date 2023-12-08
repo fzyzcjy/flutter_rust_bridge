@@ -4,8 +4,6 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypoint, WireDartCodecOutputSpec,
 };
-use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::WireDartOutputSpecCodecCstEncoder;
-use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::WireDartOutputSpecCodecDcoDecoder;
 use crate::codegen::generator::wire::dart::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
@@ -26,8 +24,8 @@ pub(super) mod wire_class;
 #[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpec {
     pub(super) misc: WireDartOutputSpecMisc,
-    pub(super) rust2dart: Vec<WireDartCodecOutputSpec>,
-    pub(super) dart2rust: Vec<WireDartCodecOutputSpec>,
+    pub(super) rust2dart: WireDartCodecOutputSpec,
+    pub(super) dart2rust: WireDartCodecOutputSpec,
 }
 
 pub(crate) fn generate(

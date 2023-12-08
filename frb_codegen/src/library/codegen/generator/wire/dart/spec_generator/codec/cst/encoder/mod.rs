@@ -20,24 +20,18 @@ use serde::Serialize;
 mod misc;
 pub(crate) mod ty;
 
-#[derive(Clone, Serialize)]
-pub(crate) struct WireDartOutputSpecCodecCstEncoder {
-    pub(crate) encode_funcs: Acc<Vec<WireDartOutputCode>>,
-    pub(crate) encode_api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
-}
-
 pub(crate) fn generate(
     context: WireDartCodecCstGeneratorContext,
     types: &[IrType],
-) -> WireDartOutputSpecCodecCstEncoder {
-    WireDartOutputSpecCodecCstEncoder {
-        encode_funcs: (types.iter())
-            .map(|ty| generate_encode_func(ty, context))
-            .collect(),
-        encode_api_fill_to_wire_funcs: (types.iter())
-            .map(|ty| Acc::new_io(generate_encode_api_fill_to_wire_func(ty, context)))
-            .collect(),
-    }
+) -> WireDartCodecOutputSpec {
+    let mut inner = Acc::<Vec<WireDartOutputCode>>::default();
+    inner += (types.iter())
+        .map(|ty| generate_encode_func(ty, context))
+        .collect();
+    inner += (types.iter())
+        .map(|ty| Acc::new_io(generate_encode_api_fill_to_wire_func(ty, context)))
+        .collect();
+    WireDartCodecOutputSpec { inner }
 }
 
 fn generate_encode_func(
