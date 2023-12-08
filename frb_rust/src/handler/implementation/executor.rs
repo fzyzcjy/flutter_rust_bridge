@@ -148,14 +148,7 @@ impl ExecuteNormalOrAsyncUtils {
             Ok(result) => {
                 match mode {
                     FfiCallMode::Normal => {
-                        // TODO wrong, the user should have already encoded?
-                        sender.send(
-                            Rust2DartCodec::encode(
-                                result.into_into_dart(),
-                                Rust2DartAction::Success,
-                            )
-                            .into_dart_abi(),
-                        );
+                        sender.send(result);
                     }
                     FfiCallMode::Stream => {
                         // nothing - ignore the return value of a Stream-typed function
