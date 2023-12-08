@@ -52,6 +52,15 @@ class ReadBuffer {
     return value;
   }
 
+  // NOTE ADD by mimic the 64bit counterpart
+  /// Reads a Float32 from the buffer.
+  double getFloat32({Endian? endian}) {
+    // _alignTo(4);
+    final double value = data.getFloat32(_position, endian ?? Endian.host);
+    _position += 4;
+    return value;
+  }
+
   /// Reads a Float64 from the buffer.
   double getFloat64({Endian? endian}) {
     // _alignTo(8);
