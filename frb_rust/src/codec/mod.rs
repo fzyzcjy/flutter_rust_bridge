@@ -9,6 +9,7 @@ pub(crate) mod sse;
 pub trait BaseCodec: Clone + Copy {
     type Message: Rust2DartMessageTrait;
 
+    // TODO for SSE, it is not `IntoDart`
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Self::Message;
 }
 
