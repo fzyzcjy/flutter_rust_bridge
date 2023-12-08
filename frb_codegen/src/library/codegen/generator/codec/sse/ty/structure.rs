@@ -36,12 +36,14 @@ impl<'a> GeneralizedStructGenerator<'a> {
 
     pub(super) fn generate_encode(&self, lang: &Lang) -> String {
         let st = self.ir.get(self.context.ir_pack);
-        st.fields
-            .iter()
-            .map(|field| {
+        (st.fields.iter().enumerate())
+            .map(|(index, field)| {
                 format!(
                     "{};\n",
-                    lang.call_encode(&field.ty, &format!("src.{}", field.name))
+                    lang.call_encode(
+                        &field.ty,
+                        &format!("src.{}", self.mode.field_name_dart_style(index, field))
+                    )
                 )
             })
             .join("")
@@ -49,14 +51,12 @@ impl<'a> GeneralizedStructGenerator<'a> {
 
     pub(super) fn generate_decode(&self, lang: &Lang) -> String {
         let st = self.ir.get(self.context.ir_pack);
-        let decode_fields = st
-            .fields
-            .iter()
-            .map(|field| {
+        let decode_fields = (st.fields.iter().enumerate())
+            .map(|(index, field)| {
                 format!(
                     "{} {} = {};\n",
                     lang.var_decl(),
-                    field.name,
+                    self.mode.field_name_dart_style(index, field),
                     lang.call_decode(&field.ty)
                 )
             })
