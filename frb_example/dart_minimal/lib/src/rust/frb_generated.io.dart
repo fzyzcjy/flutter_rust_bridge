@@ -64,19 +64,22 @@ class RustLibWire implements BaseWire {
 
   void wire_hello(
     ffi.Pointer<ffi.Uint8> ptr_,
-    int len_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_hello(
       ptr_,
-      len_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_helloPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<ffi.Uint8>, ffi.Int32)>>('wire_hello');
-  late final _wire_hello =
-      _wire_helloPtr.asFunction<void Function(ffi.Pointer<ffi.Uint8>, int)>();
+          ffi.Void Function(
+              ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>('wire_hello');
+  late final _wire_hello = _wire_helloPtr
+      .asFunction<void Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_minimal_adder(
     int port_,

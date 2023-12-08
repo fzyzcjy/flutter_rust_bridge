@@ -37,7 +37,7 @@ pub fn frb_initialize_rust(
 }
 
 #[wasm_bindgen]
-pub fn wire_hello(ptr_: *const u8, len_: i32) {
+pub fn wire_hello(ptr_: *const u8, rust_vec_len_: i32, data_len_: i32) {
     wire_hello_impl(port_, a, b)
 }
 
