@@ -110,7 +110,7 @@ class WriteBuffer {
   /// Write an Float64 into the buffer.
   void putFloat64(double value, {Endian? endian}) {
     assert(!_isDone);
-    _alignTo(8);
+    // _alignTo(8);
     _eightBytes.setFloat64(0, value, endian ?? Endian.host);
     _addAll(_eightBytesAsList);
   }
@@ -124,38 +124,39 @@ class WriteBuffer {
   /// Write all the values from an [Int32List] into the buffer.
   void putInt32List(Int32List list) {
     assert(!_isDone);
-    _alignTo(4);
+    // _alignTo(4);
     _append(list.buffer.asUint8List(list.offsetInBytes, 4 * list.length));
   }
 
   /// Write all the values from an [Int64List] into the buffer.
   void putInt64List(Int64List list) {
     assert(!_isDone);
-    _alignTo(8);
+    // _alignTo(8);
     _append(list.buffer.asUint8List(list.offsetInBytes, 8 * list.length));
   }
 
   /// Write all the values from a [Float32List] into the buffer.
   void putFloat32List(Float32List list) {
     assert(!_isDone);
-    _alignTo(4);
+    // _alignTo(4);
     _append(list.buffer.asUint8List(list.offsetInBytes, 4 * list.length));
   }
 
   /// Write all the values from a [Float64List] into the buffer.
   void putFloat64List(Float64List list) {
     assert(!_isDone);
-    _alignTo(8);
+    // _alignTo(8);
     _append(list.buffer.asUint8List(list.offsetInBytes, 8 * list.length));
   }
 
-  void _alignTo(int alignment) {
-    assert(!_isDone);
-    final int mod = _currentSize % alignment;
-    if (mod != 0) {
-      _addAll(_zeroBuffer, 0, alignment - mod);
-    }
-  }
+  // NOTE MODIFIED try remove this to simplify rust side
+  // void _alignTo(int alignment) {
+  //   assert(!_isDone);
+  //   final int mod = _currentSize % alignment;
+  //   if (mod != 0) {
+  //     _addAll(_zeroBuffer, 0, alignment - mod);
+  //   }
+  // }
 
   // NOTE MODIFIED add
   /// {@macro flutter_rust_bridge.internal}
