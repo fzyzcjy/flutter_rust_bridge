@@ -150,6 +150,7 @@ impl ExecuteNormalOrAsyncUtils {
             Ok(result) => {
                 match mode {
                     FfiCallMode::Normal => {
+                        // TODO wrong, the user should have already encoded?
                         sender.send(Rust2DartCodec::encode(
                             result.into_into_dart(),
                             Rust2DartAction::Success,
