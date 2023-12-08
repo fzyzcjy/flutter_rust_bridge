@@ -77,7 +77,8 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         format!(
             "
             let mut deserializer = unsafe {{ flutter_rust_bridge::for_generated::SseDeserializer::from_wire(ptr_, rust_vec_len_, data_len_) }};
-            {primary}"
+            {primary}
+            deserializer.end();"
         )
     }
 }
