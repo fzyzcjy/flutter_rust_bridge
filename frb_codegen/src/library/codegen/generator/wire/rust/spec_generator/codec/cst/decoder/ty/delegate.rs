@@ -90,7 +90,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                         ..Default::default()
                     };
                 }
-                let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::cst_decode_timestamp(self);";
+                let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::decode_timestamp(self);";
                 let codegen_naive =
                     "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")";
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive}, chrono::Utc)");
@@ -115,12 +115,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             // }
             IrTypeDelegate::Uuid => Acc::distribute(
                 Some(
-                    "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::cst_decode_uuid_ref(single.as_slice())".into(),
+                    "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuid(single)".into(),
                 ),
             ),
             // IrTypeDelegate::Uuids => Acc::distribute(
             //     Some(
-            //         "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::cst_decode_uuids(multiple)".into(),
+            //         "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuids(multiple)".into(),
             //     ),
             // ),
             IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "self.cst_decode()".into(),

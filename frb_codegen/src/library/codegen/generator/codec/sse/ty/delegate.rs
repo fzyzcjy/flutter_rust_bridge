@@ -22,10 +22,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
             }
             IrTypeDelegate::String => "String::from_utf8(inner).unwrap()",
             IrTypeDelegate::PrimitiveEnum(_) => "TODO",
-            IrTypeDelegate::Time(_) => "TODO",
-            IrTypeDelegate::Uuid => "TODO",
-            IrTypeDelegate::Backtrace => "TODO",
-            IrTypeDelegate::Anyhow => "TODO",
+            IrTypeDelegate::Time(_) => "chrono::Duration::microseconds(self)",
+            IrTypeDelegate::Uuid => "flutter_rust_bridge::for_generated::decode_uuid(inner)",
+            IrTypeDelegate::Backtrace => "NOT_USED",
+            IrTypeDelegate::Anyhow => "NOT_USED",
         };
         simple_delegate_decode(lang, &self.ir.get_delegate(), wrapper_expr)
     }

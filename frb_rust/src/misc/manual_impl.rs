@@ -26,7 +26,7 @@ pub(crate) const UUID_SIZE_IN_BYTES: usize = 16;
 
 #[cfg(feature = "uuid")]
 #[inline]
-pub fn cst_decode_uuid_ref(id: &[u8]) -> uuid::Uuid {
+fn decode_uuid_ref(id: &[u8]) -> uuid::Uuid {
     uuid::Uuid::from_bytes(
         *<&[u8] as std::convert::TryInto<&[u8; UUID_SIZE_IN_BYTES]>>::try_into(id)
             .expect("invalid uuid slice"),
@@ -35,8 +35,8 @@ pub fn cst_decode_uuid_ref(id: &[u8]) -> uuid::Uuid {
 
 #[cfg(feature = "uuid")]
 #[inline]
-pub fn cst_decode_uuid(id: Vec<u8>) -> uuid::Uuid {
-    cst_decode_uuid_ref(id.as_slice())
+pub fn decode_uuid(id: Vec<u8>) -> uuid::Uuid {
+    decode_uuid_ref(id.as_slice())
 }
 
 // #[cfg(feature = "uuid")]
