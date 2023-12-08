@@ -30,5 +30,5 @@ pub unsafe extern "C" fn free_wire_sync_return_dco(ptr: WireSyncReturnDco) {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn free_wire_sync_return_sse(ptr: WireSyncReturnSse) {
-    let _ = box_from_leak_ptr(ptr);
+    todo!()
 }
