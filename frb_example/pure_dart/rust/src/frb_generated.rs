@@ -7336,7 +7336,7 @@ const _: fn() = || {
     }
 };
 
-// Section: impl_decode
+// Section: dart2rust
 
 pub trait CstDecodable<T> {
     fn cst_decode(self) -> T;
@@ -7537,7 +7537,7 @@ impl CstDecodable<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwi
     }
 }
 
-// Section: impl_into_dart
+// Section: rust2dart
 
 impl flutter_rust_bridge::IntoDart for crate::api::misc_example::ATwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {

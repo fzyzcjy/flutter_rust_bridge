@@ -12,7 +12,7 @@ use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
-// Section: impl_decode
+// Section: dart2rust
 
 impl CstDecodable<chrono::Duration> for i64 {
     fn cst_decode(self) -> chrono::Duration {
@@ -4424,9 +4424,6 @@ impl CstDecodable<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync
         }
     }
 }
-
-// Section: decoderre2api_class
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_StringList {
@@ -6507,9 +6504,6 @@ pub struct wire_cst_user_id_twin_rust_async {
 pub struct wire_cst_user_id_twin_sync {
     value: u32,
 }
-
-// Section: impl_new_with_nullptr
-
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }

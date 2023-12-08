@@ -24974,7 +24974,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 }
 
-// Section: encode_funcs
+// Section: dart2rust
 
 PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(

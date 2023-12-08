@@ -14,7 +14,7 @@ use flutter_rust_bridge::for_generated::wasm_bindgen;
 use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
-// Section: impl_decode
+// Section: dart2rust
 
 impl<T> CstDecodable<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 where
