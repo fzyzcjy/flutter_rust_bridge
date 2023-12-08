@@ -1,12 +1,13 @@
-use std::any::Any;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::box_into_dart::BoxIntoDart;
 use crate::platform_types::DartAbi;
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnWrapperTrait;
+use std::any::Any;
 
 /// Errors that occur from normal code execution.
 pub enum Error {
     /// Errors that implement [IntoDart].
-    CustomError(Box<dyn BoxIntoDart>),
+    CustomError(Box<dyn WireSyncReturnWrapperTrait>),
     /// Exceptional errors from panicking.
     Panic(Box<dyn Any + Send>),
 }
@@ -15,7 +16,7 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::CustomError(_e) => "Box<dyn BoxIntoDart>".to_string(),
+            Error::CustomError(_e) => "Box<dyn WireSyncReturnWrapperTrait>".to_string(),
             Error::Panic(panic_err) => error_to_string(panic_err),
         }
     }
@@ -38,6 +39,5 @@ fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
             None => "Box<dyn Any>",
         },
     }
-        .to_string()
+    .to_string()
 }
-
