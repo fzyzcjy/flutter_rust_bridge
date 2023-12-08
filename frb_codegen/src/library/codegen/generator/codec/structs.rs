@@ -75,3 +75,9 @@ pub(crate) trait BaseCodecEntrypointTrait<C, O> {
 
     fn generate_decode(&self, context: C, types: &[IrType]) -> Option<O>;
 }
+
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+pub(crate) enum EncodeOrDecode {
+    Encode,
+    Decode,
+}

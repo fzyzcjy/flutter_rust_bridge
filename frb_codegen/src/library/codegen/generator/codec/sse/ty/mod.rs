@@ -51,9 +51,3 @@ pub(crate) trait CodecSseTyTrait {
 
     fn generate_decode(&self, lang: &Lang) -> String;
 }
-
-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
-pub(crate) enum EncodeOrDecode {
-    Encode,
-    Decode,
-}
