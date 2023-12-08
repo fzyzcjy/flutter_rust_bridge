@@ -31,17 +31,15 @@ macro_rules! codegen_codec_structs {
     );
     (@private $struct_name:ident ; $($name:ident),*,) => (
         paste::paste! {
-            pub(crate) enum $struct_name {
-                $(
-                $name([<$name $struct_name>]),
-                )*
-            }
+            pub(crate) struct $struct_name<'a>(
+                Box<dyn [<$struct_name Trait>]<'a>>
+            );
 
             impl $struct_name {
                 pub(crate) fn new(mode: CodecMode) -> Self {
                     match mode {
                         $(
-                        CodecMode::$name => Self::$name([<$name $struct_name>] {}),
+                        CodecMode::$name => Self(Box::new([<$name $struct_name>] {})),
                         )*
                     }
                 }
