@@ -30,16 +30,11 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSink<T, Rust2DartCodec> {
         Rust2DartSender::new(handle_to_channel(&self.sendable_channel_handle))
     }
 
+    // TODO about StreamSink vs StreamSinkRaw
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
-    pub fn add<D: IntoDart>(&self, value: T) -> bool
-    where
-        T: IntoIntoDart<D>,
-    {
-        self.sender().send(
-            Rust2DartCodec::encode(value.into_into_dart(), Rust2DartAction::Success)
-                .into_dart_abi(),
-        )
+    pub fn add(&self, value: Rust2DartCodec::Message) -> bool {
+        self.sender().send(value)
     }
 
     /// Close the stream and ignore further messages. Returns false when
