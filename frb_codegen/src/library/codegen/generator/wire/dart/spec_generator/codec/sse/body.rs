@@ -42,14 +42,14 @@ fn generate_encode_or_decode_for_type(
     let code = match mode {
         EncodeOrDecode::Encode => format!(
             "
-            void _sse_encode_{safe_ident}({dart_api_type} self, Serializer serializer) {{
+            void _sse_encode_{safe_ident}({dart_api_type} self, SseSerializer serializer) {{
                 {body}
             }}
             "
         ),
         EncodeOrDecode::Decode => format!(
             "
-            {dart_api_type} _sse_decode_{safe_ident}(Deserializer deserializer) {{
+            {dart_api_type} _sse_decode_{safe_ident}(SseDeserializer deserializer) {{
                 {body}
             }}
             "

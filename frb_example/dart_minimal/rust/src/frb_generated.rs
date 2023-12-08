@@ -93,11 +93,11 @@ impl CstDecode<i32> for i32 {
     }
 }
 pub trait SseDecode {
-    fn sse_decode(deserializer: Deserializer) -> T;
+    fn sse_decode(deserializer: SseDeserializer) -> T;
 }
 
 impl SseDecode for i32 {
-    fn sse_decode(deserializer: Deserializer) -> Self {
+    fn sse_decode(deserializer: SseDeserializer) -> Self {
         return TODO_depend_on_serializer;
     }
 }
@@ -105,11 +105,11 @@ impl SseDecode for i32 {
 // Section: rust2dart
 
 pub trait SseEncode {
-    fn sse_encode(self, serializer: Serializer);
+    fn sse_encode(self, serializer: SseSerializer);
 }
 
 impl SseEncode for i32 {
-    fn sse_encode(self, serializer: Serializer) {
+    fn sse_encode(self, serializer: SseSerializer) {
         return TODO_depend_on_serializer;
     }
 }
