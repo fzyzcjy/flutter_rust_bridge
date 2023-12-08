@@ -125,7 +125,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> <Rust2DartCodec::WireSyncReturnWrapper as WireSyncReturnWrapperTrait>::WireType
+    ) -> <Rust2DartCodec::WireSyncReturnWrapper as WireSyncReturnWrapperTrait>::WireSyncType
     where
         SyncTaskFn: FnOnce() -> Result<
                 Rust2DartCodec::WireSyncReturnWrapper,
@@ -152,12 +152,12 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
                     self.error_handler
                         .handle_error_sync::<Rust2DartCodec>(Error::Panic(error))
                 })
-                .into_raw()
+                .into_raw_wire_sync()
         })
         // Deliberately construct simplest possible WireSyncReturn object
         // instead of more realistic things like `WireSyncReturnSrc::new(Panic, ...)`.
         // See comments in [wrap] for why.
-        .unwrap_or_else(|_| Rust2DartCodec::WireSyncReturnWrapper::simplest().into_raw())
+        .unwrap_or_else(|_| Rust2DartCodec::WireSyncReturnWrapper::simplest().into_raw_wire_sync())
     }
 
     #[cfg(feature = "rust-async")]

@@ -48,7 +48,7 @@ pub trait Handler {
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> <Rust2DartCodec::WireSyncReturnWrapper as WireSyncReturnWrapperTrait>::WireType
+    ) -> <Rust2DartCodec::WireSyncReturnWrapper as WireSyncReturnWrapperTrait>::WireSyncType
     where
         SyncTaskFn: FnOnce() -> Result<
                 Rust2DartCodec::WireSyncReturnWrapper,

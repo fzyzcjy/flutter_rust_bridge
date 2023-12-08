@@ -24,7 +24,7 @@ pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> is
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn free_wire_sync_return_dco(value: WireSyncReturnDco) {
-    let _ = WireSyncReturnDcoWrapper::from_raw(value);
+    let _ = WireSyncReturnDcoWrapper::from_raw_wire_sync(value);
 }
 
 /// # Safety
@@ -32,5 +32,5 @@ pub unsafe extern "C" fn free_wire_sync_return_dco(value: WireSyncReturnDco) {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn free_wire_sync_return_sse(value: WireSyncReturnSse) {
-    let _ = WireSyncReturnSseWrapper::from_raw(value);
+    let _ = WireSyncReturnSseWrapper::from_raw_wire_sync(value);
 }

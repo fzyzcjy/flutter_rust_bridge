@@ -12,22 +12,22 @@ use crate::rust2dart::action::Rust2DartAction;
 /// That is why we have this intermediate object - we can safely play with this one.
 pub trait WireSyncReturnWrapperTrait {
     type InnerType: IntoDart;
-    type WireType;
+    type WireSyncType;
 
     fn new(inner: Self::InnerType) -> Self;
 
     fn simplest() -> Self;
 
-    unsafe fn from_raw(raw: Self::WireType) -> Self;
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self;
 
-    fn into_raw(self) -> Self::WireType;
+    fn into_raw_wire_sync(self) -> Self::WireSyncType;
 }
 
 pub struct WireSyncReturnCstWrapper(DartAbi);
 
 impl WireSyncReturnWrapperTrait for WireSyncReturnCstWrapper {
     type InnerType = ();
-    type WireType = ();
+    type WireSyncType = ();
 
     fn new(inner: Self::InnerType) -> Self {
         unreachable!()
@@ -37,11 +37,11 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnCstWrapper {
         unreachable!()
     }
 
-    unsafe fn from_raw(raw: Self::WireType) -> Self {
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
         unreachable!()
     }
 
-    fn into_raw(self) -> Self::WireType {
+    fn into_raw_wire_sync(self) -> Self::WireSyncType {
         unreachable!()
     }
 }
@@ -50,7 +50,7 @@ pub struct WireSyncReturnDcoWrapper(DartAbi);
 
 impl WireSyncReturnWrapperTrait for WireSyncReturnDcoWrapper {
     type InnerType = DartAbi;
-    type WireType = WireSyncReturnDco;
+    type WireSyncType = WireSyncReturnDco;
 
     fn new(inner: Self::InnerType) -> Self {
         Self(inner)
@@ -60,11 +60,11 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnDcoWrapper {
         Self(().into_dart())
     }
 
-    unsafe fn from_raw(raw: Self::WireType) -> Self {
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
         Self::new(*box_from_leak_ptr(raw))
     }
 
-    fn into_raw(self) -> Self::WireType {
+    fn into_raw_wire_sync(self) -> Self::WireSyncType {
         #[cfg(not(wasm))]
         return new_leak_box_ptr(self.0);
 
@@ -77,7 +77,7 @@ pub struct WireSyncReturnSseWrapper(Vec<u8>);
 
 impl WireSyncReturnWrapperTrait for WireSyncReturnSseWrapper {
     type InnerType = Vec<u8>;
-    type WireType = WireSyncReturnSse;
+    type WireSyncType = WireSyncReturnSse;
 
     fn new(inner: Self::InnerType) -> Self {
         Self(inner)
@@ -87,12 +87,12 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnSseWrapper {
         Self(vec![])
     }
 
-    unsafe fn from_raw(raw: Self::WireType) -> Self {
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
         let WireSyncReturnSseStruct { ptr, len } = raw;
         Self(vec_from_leak_ptr(ptr, len))
     }
 
-    fn into_raw(self) -> Self::WireType {
+    fn into_raw_wire_sync(self) -> Self::WireSyncType {
         #[cfg(not(wasm))]
         {
             let (ptr, len) = into_leak_vec_ptr(self.0);
