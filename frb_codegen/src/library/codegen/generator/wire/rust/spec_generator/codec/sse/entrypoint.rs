@@ -42,7 +42,12 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
                     dart_type: "ffi.Pointer<ffi.Uint8>".to_owned(),
                 },
                 ExternFuncParam {
-                    name: "len_".to_owned(),
+                    name: "rust_vec_len_".to_owned(),
+                    rust_type: "i32".to_owned(),
+                    dart_type: "int".to_owned(),
+                },
+                ExternFuncParam {
+                    name: "data_len_".to_owned(),
                     rust_type: "i32".to_owned(),
                     dart_type: "int".to_owned(),
                 },
