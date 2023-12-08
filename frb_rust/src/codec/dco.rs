@@ -12,16 +12,18 @@ pub struct DcoCodec;
 impl BaseCodec for DcoCodec {
     type Message = Rust2DartMessageDco;
 
-    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Self::Message {
-        Rust2DartMessageDco(vec![result_code.into_dart(), data.into_dart()].into_dart())
-    }
-
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
         Self::encode(error_to_string(error), Rust2DartAction::Panic)
     }
 
     fn encode_close_stream() -> Self::Message {
         Rust2DartMessageDco(vec![Rust2DartAction::CloseStream.into_dart()].into_dart())
+    }
+}
+
+impl DcoCodec {
+    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Rust2DartMessageDco {
+        Rust2DartMessageDco(vec![result_code.into_dart(), data.into_dart()].into_dart())
     }
 }
 
