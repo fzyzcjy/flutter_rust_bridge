@@ -1,3 +1,5 @@
+use crate::for_generated::{box_from_leak_ptr, new_leak_vec_ptr, vec_from_leak_ptr};
+
 #[cfg(not(wasm))]
 mod io;
 #[cfg(not(wasm))]
