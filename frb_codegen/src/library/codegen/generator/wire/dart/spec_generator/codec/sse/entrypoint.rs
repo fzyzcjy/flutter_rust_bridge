@@ -42,6 +42,7 @@ impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
         for input in func.inputs.iter() {
             lines.push(format!("serializer.serialize_TODO({});", input.name));
         }
+        lines.push("final (ptr_, len_) = serializer.createLeakedNative();".into());
         lines
     }
 
