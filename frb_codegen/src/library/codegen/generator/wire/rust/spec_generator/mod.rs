@@ -1,12 +1,18 @@
 use crate::codegen::dumper::Dumper;
+use crate::codegen::generator::misc::codec::CodecMode;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
+use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
+    WireRustCodecEntrypoint, WireRustCodecOutputSpec,
+};
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::WireDartOutputSpecCodecCstDecoder;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::WireDartOutputSpecCodecDcoEncoder;
 use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
+use itertools::Itertools;
 use serde::Serialize;
+use strum::IntoEnumIterator;
 
 pub(crate) mod base;
 pub(crate) mod codec;
@@ -18,8 +24,8 @@ pub mod output_code;
 #[derive(Serialize)]
 pub(super) struct WireRustOutputSpec {
     pub(super) misc: WireRustOutputSpecMisc,
-    pub(super) dart2rust: WireDartOutputSpecCodecCstDecoder,
-    pub(super) rust2dart: WireDartOutputSpecCodecDcoEncoder,
+    pub(super) rust2dart: Vec<Box<dyn WireRustCodecOutputSpec>>,
+    pub(super) dart2rust: Vec<Box<dyn WireRustCodecOutputSpec>>,
 }
 
 pub(super) fn generate(
@@ -36,13 +42,13 @@ pub(super) fn generate(
 
     Ok(WireRustOutputSpec {
         misc: misc::generate(context, &cache)?,
-        dart2rust: codec::cst::decoder::generate(
-            context.as_wire_rust_codec_cst_context(),
-            &cache.distinct_input_types,
-        ),
-        rust2dart: codec::dco::encoder::generate(
-            context.as_wire_rust_codec_dco_context(),
-            &cache.distinct_types,
-        ),
+        rust2dart: CodecMode::iter()
+            .map(WireRustCodecEntrypoint::from)
+            .flat_map(|codec| codec.generate_decode(context, &cache.distinct_input_types))
+            .collect_vec(),
+        dart2rust: CodecMode::iter()
+            .map(WireRustCodecEntrypoint::from)
+            .flat_map(|codec| codec.generate_decode(context, &cache.distinct_types))
+            .collect_vec(),
     })
 }
