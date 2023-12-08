@@ -4,11 +4,11 @@ use crate::codegen::generator::codec::sse::ty::*;
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
         let inner_expr = match &self.ir {
-            IrTypeDelegate::Array(_) => "src",
-            IrTypeDelegate::String => "utf8.encoder.convert(src)",
-            IrTypeDelegate::PrimitiveEnum(_) => "src.index",
-            IrTypeDelegate::Time(_) => "src.microsecondsSinceEpoch",
-            IrTypeDelegate::Uuid => "src.toBytes()",
+            IrTypeDelegate::Array(_) => "self",
+            IrTypeDelegate::String => "utf8.encoder.convert(self)",
+            IrTypeDelegate::PrimitiveEnum(_) => "self.index",
+            IrTypeDelegate::Time(_) => "self.microsecondsSinceEpoch",
+            IrTypeDelegate::Uuid => "self.toBytes()",
             IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED",
         };
         simple_delegate_encode(lang, &self.ir.get_delegate(), inner_expr)

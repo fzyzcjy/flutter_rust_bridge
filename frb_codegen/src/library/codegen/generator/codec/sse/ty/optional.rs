@@ -3,16 +3,16 @@ use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
-        let src_is_not_null = format!("src != {}", lang.null());
+        let self_is_not_null = format!("self != {}", lang.null());
         format!(
             "
             {};
-            if ({src_is_not_null}) {{
+            if ({self_is_not_null}) {{
                 {};
             }}
             ",
-            lang.call_encode(&Primitive(IrTypePrimitive::Bool), &src_is_not_null),
-            lang.call_encode(&*self.ir.inner, "src"),
+            lang.call_encode(&Primitive(IrTypePrimitive::Bool), &self_is_not_null),
+            lang.call_encode(&*self.ir.inner, "self"),
         )
     }
 

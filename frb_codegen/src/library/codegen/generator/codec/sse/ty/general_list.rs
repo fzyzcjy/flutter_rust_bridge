@@ -5,7 +5,7 @@ impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
         lang.for_loop(
             "item",
-            "src",
+            "self",
             &format!("{};", lang.call_encode(&self.ir.inner, "item")),
         )
     }
@@ -19,7 +19,7 @@ impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
             ",
             lang.for_loop(
                 "item",
-                "src",
+                "self",
                 &format!("ans.push({});", lang.call_decode(&self.ir.inner))
             ),
             var_decl = lang.var_decl(),

@@ -10,7 +10,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
         simple_delegate_encode(
             lang,
             &RUST_OPAQUE_WIRE_TYPE,
-            &format!("src.sseEncode(move: {needs_move})"),
+            &format!("self.sseEncode(move: {needs_move})"),
         )
     }
 

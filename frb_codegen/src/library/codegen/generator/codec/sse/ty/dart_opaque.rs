@@ -8,7 +8,7 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
         simple_delegate_encode(
             lang,
             &DART_OPAQUE_WIRE_TYPE,
-            "wire.dart_opaque_dart2rust_encode(src)",
+            "wire.dart_opaque_dart2rust_encode(self)",
         )
     }
 
