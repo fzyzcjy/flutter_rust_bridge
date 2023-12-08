@@ -1,6 +1,7 @@
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
 use crate::rust2dart::action::Rust2DartAction;
+use std::any::Any;
 
 pub(crate) mod cst;
 pub(crate) mod dco;
@@ -11,6 +12,8 @@ pub trait BaseCodec: Clone + Copy {
 
     // TODO for SSE, it is not `IntoDart`
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Self::Message;
+
+    fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message;
 }
 
 /// An encoded message

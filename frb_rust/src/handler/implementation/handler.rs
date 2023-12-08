@@ -3,7 +3,7 @@ use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::DartFnFuture;
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::IntoDart;
-use crate::handler::error::{encode_panic_error, Error};
+use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::HandlerConfig;
@@ -139,7 +139,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             });
             catch_unwind_result
                 .unwrap_or_else(|error| {
-                    let message = encode_panic_error::<Rust2DartCodec>(&error);
+                    let message = Rust2DartCodec::encode_panic(&error);
                     self.error_listener.on_error(Error::Panic(error));
                     message
                 })

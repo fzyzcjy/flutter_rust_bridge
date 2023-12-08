@@ -23,7 +23,7 @@ impl Error {
     }
 }
 
-fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
+pub(crate) fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
     match panic_err.downcast_ref::<&'static str>() {
         Some(s) => *s,
         None => match panic_err.downcast_ref::<String>() {
@@ -32,10 +32,4 @@ fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
         },
     }
     .to_string()
-}
-
-pub(crate) fn encode_panic_error<Rust2DartCodec: BaseCodec>(
-    error: &Box<dyn Any + Send>,
-) -> Rust2DartCodec::Message {
-    Rust2DartCodec::encode(error_to_string(error), Rust2DartAction::Panic)
 }
