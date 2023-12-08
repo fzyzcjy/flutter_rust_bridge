@@ -1,5 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::codec::structs::BaseCodecEntrypointTrait;
+use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypointTrait, WireRustCodecOutputSpec,
@@ -13,26 +13,13 @@ pub(crate) struct SseWireRustCodecEntrypoint {}
 impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputSpec>
     for SseWireRustCodecEntrypoint
 {
-    fn generate_encode(
+    fn generate(
         &self,
         context: WireRustGeneratorContext,
         types: &[IrType],
+        mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
-        Some(super::encoder::generate(
-            context.as_wire_rust_codec_sse_context(),
-            types,
-        ))
-    }
-
-    fn generate_decode(
-        &self,
-        context: WireRustGeneratorContext,
-        types: &[IrType],
-    ) -> Option<WireRustCodecOutputSpec> {
-        Some(super::decoder::generate(
-            context.as_wire_rust_codec_sse_context(),
-            types,
-        ))
+        Some(TODO)
     }
 }
 

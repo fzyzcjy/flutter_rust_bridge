@@ -1,4 +1,4 @@
-use crate::codegen::generator::codec::structs::BaseCodecEntrypointTrait;
+use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
@@ -13,23 +13,19 @@ pub(crate) struct DcoWireDartCodecEntrypoint {}
 impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputSpec>
     for DcoWireDartCodecEntrypoint
 {
-    fn generate_encode(
-        &self,
-        _context: WireDartGeneratorContext,
-        _types: &[IrType],
-    ) -> Option<WireDartCodecOutputSpec> {
-        None
-    }
-
-    fn generate_decode(
+    fn generate(
         &self,
         context: WireDartGeneratorContext,
         types: &[IrType],
+        mode: EncodeOrDecode,
     ) -> Option<WireDartCodecOutputSpec> {
-        Some(super::decoder::generate(
-            context.as_wire_dart_codec_dco_context(),
-            types,
-        ))
+        match mode {
+            EncodeOrDecode::Encode => None,
+            EncodeOrDecode::Decode => Some(super::decoder::generate(
+                context.as_wire_dart_codec_dco_context(),
+                types,
+            )),
+        }
     }
 }
 

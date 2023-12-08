@@ -1,8 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::Lang::DartLang;
-use crate::codegen::generator::codec::sse::ty::{CodecSseTy, CodecSseTyContext, EncodeOrDecode};
-use crate::codegen::generator::codec::structs::BaseCodecEntrypointTrait;
+use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
@@ -18,27 +17,16 @@ pub(crate) struct SseWireDartCodecEntrypoint {}
 impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputSpec>
     for SseWireDartCodecEntrypoint
 {
-    fn generate_encode(
+    fn generate(
         &self,
         context: WireDartGeneratorContext,
         types: &[IrType],
+        mode: EncodeOrDecode,
     ) -> Option<WireDartCodecOutputSpec> {
         Some(generate_encode_or_decode(
             context.as_wire_dart_codec_sse_context(),
             types,
-            EncodeOrDecode::Encode,
-        ))
-    }
-
-    fn generate_decode(
-        &self,
-        context: WireDartGeneratorContext,
-        types: &[IrType],
-    ) -> Option<WireDartCodecOutputSpec> {
-        Some(generate_encode_or_decode(
-            context.as_wire_dart_codec_sse_context(),
-            types,
-            EncodeOrDecode::Decode,
+            mode,
         ))
     }
 }

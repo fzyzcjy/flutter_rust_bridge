@@ -71,9 +71,7 @@ macro_rules! codegen_codec_structs {
 }
 
 pub(crate) trait BaseCodecEntrypointTrait<C, O> {
-    fn generate_encode(&self, context: C, types: &[IrType]) -> Option<O>;
-
-    fn generate_decode(&self, context: C, types: &[IrType]) -> Option<O>;
+    fn generate(&self, context: C, types: &[IrType], mode: EncodeOrDecode) -> Option<O>;
 }
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq)]
