@@ -11,7 +11,7 @@ use crate::rust2dart::action::Rust2DartAction;
 /// This object is safe (no worries about memory leak, etc), while `WireSyncReturn` is not.
 /// That is why we have this intermediate object - we can safely play with this one.
 pub trait WireSyncReturnWrapperTrait {
-    type InnerType;
+    type InnerType: IntoDart;
     type WireType;
 
     fn new(inner: Self::InnerType) -> Self;
