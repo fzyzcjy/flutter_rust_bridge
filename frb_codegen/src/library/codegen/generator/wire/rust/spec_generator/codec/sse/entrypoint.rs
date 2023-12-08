@@ -37,36 +37,38 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         func: &IrFunc,
         _context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
-        let mut params = vec![
-            ExternFuncParam {
-                name: "ptr_".to_owned(),
-                rust_type: "*mut u8".to_owned(),
-                dart_type: "ffi.Pointer<ffi.Uint8>".to_owned(),
-            },
-            ExternFuncParam {
-                name: "rust_vec_len_".to_owned(),
-                rust_type: "i32".to_owned(),
-                dart_type: "int".to_owned(),
-            },
-            ExternFuncParam {
-                name: "data_len_".to_owned(),
-                rust_type: "i32".to_owned(),
-                dart_type: "int".to_owned(),
-            },
-        ];
-
-        if has_port_argument(func.mode) {
-            params.insert(
-                0,
+        Acc::new(|_| {
+            let mut params = vec![
                 ExternFuncParam {
-                    name: "port_".to_owned(),
-                    rust_type: "i64".to_owned(),
+                    name: "ptr_".to_owned(),
+                    rust_type: "*mut u8".to_owned(),
+                    dart_type: "ffi.Pointer<ffi.Uint8>".to_owned(),
+                },
+                ExternFuncParam {
+                    name: "rust_vec_len_".to_owned(),
+                    rust_type: "i32".to_owned(),
                     dart_type: "int".to_owned(),
                 },
-            );
-        }
+                ExternFuncParam {
+                    name: "data_len_".to_owned(),
+                    rust_type: "i32".to_owned(),
+                    dart_type: "int".to_owned(),
+                },
+            ];
 
-        Acc::new(|_| params)
+            if has_port_argument(func.mode) {
+                params.insert(
+                    0,
+                    ExternFuncParam {
+                        name: "port_".to_owned(),
+                        rust_type: "i64".to_owned(),
+                        dart_type: "int".to_owned(),
+                    },
+                );
+            }
+
+            params
+        })
     }
 
     fn generate_func_call_decode(
