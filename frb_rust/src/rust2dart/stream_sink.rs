@@ -41,6 +41,6 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSink<T, Rust2DartCodec> {
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
         self.sender()
-            .send(Rust2DartCodec::encode((), Rust2DartAction::CloseStream).into_dart_abi())
+            .send(Rust2DartCodec::encode_close_stream().into_dart_abi())
     }
 }

@@ -23,6 +23,10 @@ impl BaseCodec for SseCodec {
         let msg = error_to_string(error);
         todo!()
     }
+
+    fn encode_close_stream() -> Self::Message {
+        todo!()
+    }
 }
 
 pub struct Rust2DartMessageSse(Vec<u8>);

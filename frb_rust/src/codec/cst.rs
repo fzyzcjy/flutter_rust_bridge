@@ -17,6 +17,10 @@ impl BaseCodec for CstCodec {
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
         unreachable!()
     }
+
+    fn encode_close_stream() -> Self::Message {
+        unreachable!()
+    }
 }
 
 pub struct Rust2DartMessageCst(DartAbi);
