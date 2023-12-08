@@ -133,16 +133,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         // For reason, see comments in [wrap]
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
-                match self
-                    .executor
-                    .execute_sync::<Rust2DartCodec, _>(task_info, sync_task)
-                {
-                    Ok(data) => data,
-                    Err(err) => {
-                        self.error_listener.on_error(Error::CustomError);
-                        err
-                    }
-                }
+                (self.executor).execute_sync::<Rust2DartCodec, _>(task_info, sync_task)
             });
             catch_unwind_result
                 .unwrap_or_else(|error| {

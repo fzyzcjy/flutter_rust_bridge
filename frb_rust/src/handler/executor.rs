@@ -27,7 +27,7 @@ pub trait Executor: RefUnwindSafe {
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
+    ) -> Rust2DartCodec::Message
     where
         SyncTaskFn:
             FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,

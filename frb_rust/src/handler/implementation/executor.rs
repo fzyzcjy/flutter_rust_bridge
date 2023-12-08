@@ -85,13 +85,19 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         &self,
         _task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
+    ) -> Rust2DartCodec::Message
     where
         SyncTaskFn:
             FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
-        sync_task()
+        match sync_task() {
+            Ok(data) => data,
+            Err(err) => {
+                self.error_listener.on_error(Error::CustomError);
+                err
+            }
+        }
     }
 
     #[cfg(feature = "rust-async")]
