@@ -154,7 +154,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         // Deliberately construct simplest possible WireSyncReturn object
         // instead of more realistic things like `WireSyncReturnSrc::new(Panic, ...)`.
         // See comments in [wrap] for why.
-        .unwrap_or_else(|_| WireSyncReturnSrc::new(().into_dart()).into_raw())
+        .unwrap_or_else(|_| Rust2DartCodec::WireSyncReturnSrc::new(().into_dart()).into_raw())
     }
 
     #[cfg(feature = "rust-async")]
