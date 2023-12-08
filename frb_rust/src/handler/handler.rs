@@ -6,6 +6,7 @@ use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
 use crate::platform_types::{message_port_to_handle, DartAbi};
 use crate::rust2dart::context::TaskRust2DartContext;
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrcTrait;
 use crate::DartOpaque;
 use allo_isolate::ffi::DartCObject;
 use std::future::Future;
@@ -47,7 +48,7 @@ pub trait Handler {
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> Rust2DartCodec::WireSyncReturn
+    ) -> <Rust2DartCodec::WireSyncReturnSrc as WireSyncReturnSrcTrait>::Target
     where
         SyncTaskFn: FnOnce() -> Result<DartCObject, DartCObject> + UnwindSafe,
         Rust2DartCodec: BaseCodec;
