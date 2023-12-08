@@ -1,5 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::generator::codec::structs::EncodeOrDecode::{Decode, Encode};
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypoint, WireRustCodecOutputSpec,
@@ -42,11 +43,11 @@ pub(super) fn generate(
         misc: misc::generate(context, &cache)?,
         dart2rust: CodecMode::iter()
             .map(WireRustCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate_decode(context, &cache.distinct_input_types))
+            .flat_map(|codec| codec.generate(context, &cache.distinct_input_types, Decode))
             .collect(),
         rust2dart: CodecMode::iter()
             .map(WireRustCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate_encode(context, &cache.distinct_types))
+            .flat_map(|codec| codec.generate(context, &cache.distinct_types, Encode))
             .collect(),
     })
 }

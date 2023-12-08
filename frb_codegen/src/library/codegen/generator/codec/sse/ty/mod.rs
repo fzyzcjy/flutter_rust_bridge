@@ -17,6 +17,7 @@ mod unencodable;
 
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::sse::*;
+use crate::codegen::generator::codec::structs::EncodeOrDecode;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
 use crate::codegen_generator_structs;
 use crate::library::codegen::ir::ty::IrTypeTrait;

@@ -19,7 +19,7 @@ pub(crate) struct CstWireRustCodecEntrypoint {}
 impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputSpec>
     for CstWireRustCodecEntrypoint
 {
-    fn generate_decode(
+    fn generate(
         &self,
         context: WireRustGeneratorContext,
         types: &[IrType],

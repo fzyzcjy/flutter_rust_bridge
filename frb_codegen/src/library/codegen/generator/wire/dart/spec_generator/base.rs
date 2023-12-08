@@ -67,6 +67,8 @@ impl WireDartGeneratorContext<'_> {
     pub(crate) fn as_wire_dart_codec_sse_context(&self) -> WireDartCodecSseGeneratorContext {
         WireDartCodecSseGeneratorContext {
             ir_pack: self.ir_pack,
+            config: self.config,
+            api_dart_config: self.api_dart_config,
         }
     }
 }
