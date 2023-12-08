@@ -7,14 +7,18 @@ use crate::rust2dart::action::Rust2DartAction;
 /// This object is safe (no worries about memory leak, etc), while `WireSyncReturn` is not.
 /// That is why we have this intermediate object - we can safely play with this one.
 pub trait WireSyncReturnSrc {
+    type Target;
+
     fn new(inner: DartAbi) -> Self;
 
-    fn into_raw(self) -> WireSyncReturnDco;
+    fn into_raw(self) -> Self::Target;
 }
 
 pub struct WireSyncReturnDcoSrc(DartAbi);
 
 impl WireSyncReturnSrc for WireSyncReturnDcoSrc {
+    type Target = WireSyncReturnDco;
+
     fn new(inner: DartAbi) -> Self {
         Self(inner)
     }
