@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
-use crate::codegen::generator::codec::sse::lang::Lang::DartLang;
+use crate::codegen::generator::codec::sse::lang::dart::DartLang;
+use crate::codegen::generator::codec::sse::lang::{Lang, LangTrait};
 use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
@@ -40,9 +41,11 @@ impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
         } else {
             ""
         };
+
         let serialize_inputs = (func.inputs.iter())
-            .map(|input| format!("serializer.serialize_TODO({});", input.name))
+            .map(|input| format!("{};", DartLang.call_encode(&input.ty, &input.name.raw)))
             .join("\n");
+
         format!(
             "
             final serializer = SseSerializer();
