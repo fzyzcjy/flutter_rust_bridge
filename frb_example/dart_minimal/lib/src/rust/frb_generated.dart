@@ -58,6 +58,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Future<int> hello({required int a, required int b, dynamic hint});
 
+  int helloSync({required int a, required int b, dynamic hint});
+
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
 
@@ -92,6 +94,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kHelloConstMeta => const TaskConstMeta(
         debugName: "hello",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  int helloSync({required int a, required int b, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        _sse_encode_i_32(a, serializer);
+        _sse_encode_i_32(b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_hello_sync(raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        parseSuccessData: _sse_decode_i_32,
+        parseErrorData: null,
+      ),
+      constMeta: kHelloSyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHelloSyncConstMeta => const TaskConstMeta(
+        debugName: "hello_sync",
         argNames: ["a", "b"],
       );
 

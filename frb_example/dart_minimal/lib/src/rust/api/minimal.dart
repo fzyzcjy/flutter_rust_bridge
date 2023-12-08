@@ -11,3 +11,6 @@ Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
 
 Future<int> hello({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.hello(a: a, b: b, hint: hint);
+
+int helloSync({required int a, required int b, dynamic hint}) =>
+    RustLib.instance.api.helloSync(a: a, b: b, hint: hint);

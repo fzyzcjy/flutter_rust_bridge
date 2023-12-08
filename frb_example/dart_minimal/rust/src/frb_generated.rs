@@ -63,6 +63,34 @@ fn wire_hello_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32
             },
         )
 }
+fn wire_hello_sync_impl(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _, _, _, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "hello_sync",
+                port: None,
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+            },
+            move || {
+                let mut deserializer = unsafe {
+                    flutter_rust_bridge::for_generated::SseDeserializer::from_wire(
+                        ptr_,
+                        rust_vec_len_,
+                        data_len_,
+                    )
+                };
+                let api_a = i32::sse_decode(&mut deserializer);
+                let api_b = i32::sse_decode(&mut deserializer);
+                deserializer.end();
+                Result::<_, ()>::Ok(crate::api::minimal::hello_sync(api_a, api_b))
+            },
+        )
+}
 fn wire_minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl CstDecode<i32> + core::panic::UnwindSafe,
