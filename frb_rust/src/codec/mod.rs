@@ -7,7 +7,7 @@ pub(crate) mod cst;
 pub(crate) mod dco;
 pub(crate) mod sse;
 
-pub(crate) trait BaseCodec: Clone + Copy {
+pub trait BaseCodec: Clone + Copy {
     type WireSyncReturnSrc: WireSyncReturnSrcTrait;
 
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi;
