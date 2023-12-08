@@ -31,10 +31,23 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
 impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
     fn generate_func_params(
         &self,
-        func: &IrFunc,
-        context: WireRustGeneratorContext,
+        _func: &IrFunc,
+        _context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
-        todo!()
+        Acc::new(|_| {
+            vec![
+                ExternFuncParam {
+                    name: "ptr_".to_owned(),
+                    rust_type: "*const u8".to_owned(),
+                    dart_type: "ffi.Pointer<ffi.Uint8>".to_owned(),
+                },
+                ExternFuncParam {
+                    name: "len_".to_owned(),
+                    rust_type: "i32".to_owned(),
+                    dart_type: "int".to_owned(),
+                },
+            ]
+        })
     }
 
     fn generate_func_call_decode(
