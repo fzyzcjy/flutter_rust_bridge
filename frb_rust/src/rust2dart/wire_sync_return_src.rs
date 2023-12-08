@@ -20,6 +20,24 @@ pub trait WireSyncReturnSrcTrait {
     fn into_raw(self) -> Self::Target;
 }
 
+pub struct WireSyncReturnCstSrc(DartAbi);
+
+impl WireSyncReturnSrcTrait for WireSyncReturnCstSrc {
+    type Target = ();
+
+    fn new(inner: DartAbi) -> Self {
+        unreachable!()
+    }
+
+    unsafe fn from_raw(raw: Self::Target) -> Self {
+        unreachable!()
+    }
+
+    fn into_raw(self) -> Self::Target {
+        unreachable!()
+    }
+}
+
 pub struct WireSyncReturnDcoSrc(DartAbi);
 
 impl WireSyncReturnSrcTrait for WireSyncReturnDcoSrc {
