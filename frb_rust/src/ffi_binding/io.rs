@@ -1,6 +1,6 @@
 use crate::for_generated::{box_from_leak_ptr, new_leak_vec_ptr, vec_from_leak_ptr};
 use crate::platform_types::{WireSyncReturnDco, WireSyncReturnSse};
-use crate::rust2dart::wire_sync_return_src::WireSyncReturnDcoSrc;
+use crate::rust2dart::wire_sync_return_src::{WireSyncReturnDcoSrc, WireSyncReturnSseSrc};
 pub use allo_isolate::*;
 use dart_sys::Dart_DeletePersistentHandle_DL;
 use dart_sys::Dart_Handle;
@@ -31,5 +31,5 @@ pub unsafe extern "C" fn free_wire_sync_return_dco(value: WireSyncReturnDco) {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn free_wire_sync_return_sse(value: WireSyncReturnSse) {
-    todo!()
+    let _ = WireSyncReturnSseSrc::from_raw(value);
 }

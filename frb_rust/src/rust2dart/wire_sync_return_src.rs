@@ -1,6 +1,10 @@
-use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
+use crate::for_generated::{
+    box_from_leak_ptr, into_leak_vec_ptr, new_leak_box_ptr, vec_from_leak_ptr,
+};
 use crate::generalized_isolate::IntoDart;
-use crate::platform_types::{DartAbi, WireSyncReturnDco};
+use crate::platform_types::{
+    DartAbi, WireSyncReturnDco, WireSyncReturnSse, WireSyncReturnSseStruct,
+};
 use crate::rust2dart::action::Rust2DartAction;
 
 /// An object that can be converted into `WireSyncReturn*`
@@ -29,9 +33,35 @@ impl WireSyncReturnSrc for WireSyncReturnDcoSrc {
         Self::new(box_from_leak_ptr(raw))
     }
 
-    fn into_raw(self) -> WireSyncReturnDco {
+    fn into_raw(self) -> Self::Target {
         #[cfg(not(wasm))]
         return new_leak_box_ptr(self.0);
+
+        #[cfg(wasm)]
+        return self.0;
+    }
+}
+
+pub struct WireSyncReturnSseSrc(Vec<u8>);
+
+impl WireSyncReturnSrc for WireSyncReturnSseSrc {
+    type Target = WireSyncReturnSse;
+
+    fn new(inner: DartAbi) -> Self {
+        Self(inner)
+    }
+
+    unsafe fn from_raw(raw: Self::Target) -> Self {
+        let WireSyncReturnSseStruct { ptr, len } = raw;
+        Self::new(vec_from_leak_ptr(ptr, len))
+    }
+
+    fn into_raw(self) -> Self::Target {
+        #[cfg(not(wasm))]
+        {
+            let (ptr, len) = into_leak_vec_ptr(self.0);
+            return WireSyncReturnSseStruct { ptr, len };
+        }
 
         #[cfg(wasm)]
         return self.0;
