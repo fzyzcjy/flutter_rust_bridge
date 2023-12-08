@@ -10,20 +10,28 @@ class RustVecU8 {
   ffi.Pointer<ffi.Uint8>? _ptr;
 
   /// {@macro flutter_rust_bridge.internal}
-  final int length;
+  int get length => _length;
+  int _length;
 
   /// {@macro flutter_rust_bridge.internal}
   final GeneralizedFrbRustBinding binding;
 
-  Uint8List? _typedListView;
+  Uint8List? _cachedTypedListView;
 
   /// {@macro flutter_rust_bridge.internal}
-  RustVecU8(this.length, this.binding) : _ptr = binding.rustVecU8New(length) {
-    _computeTypedListViewFromPtr();
+  RustVecU8(this._length, this.binding) : _ptr = binding.rustVecU8New(_length) {
+    _computeCachedTypedListView();
   }
 
-  void _computeTypedListViewFromPtr() {
-    _typedListView = _ptr!.asTypedList(length);
+  void _computeCachedTypedListView() {
+    _cachedTypedListView = _ptr!.asTypedList(length);
+  }
+
+  /// {@macro flutter_rust_bridge.internal}
+  void resize(int newLen) {
+    _ptr = binding.rustVecU8Resize(newLen);
+    _length = newLen;
+    _computeCachedTypedListView();
   }
 
   /// {@macro flutter_rust_bridge.internal}
@@ -32,7 +40,7 @@ class RustVecU8 {
     // double-free when error happens
     final ptr = _ptr!;
     _ptr = null;
-    _typedListView = null;
+    _cachedTypedListView = null;
 
     binding.rustVecU8Free(ptr, length);
   }
@@ -44,6 +52,6 @@ class RustVecU8 {
 
   /// {@macro flutter_rust_bridge.internal}
   void setRange(int start, int end, Uint8List data) {
-    _typedListView!.setRange(start, end, data);
+    _cachedTypedListView!.setRange(start, end, data);
   }
 }
