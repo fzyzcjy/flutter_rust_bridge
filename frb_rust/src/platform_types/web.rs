@@ -2,6 +2,9 @@ use crate::generalized_isolate::PortLike;
 use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
+/// cbindgen:ignore
+pub type WireSyncReturnDco = wasm_bindgen::JsValue;
+
 pub type MessagePort = crate::generalized_isolate::PortLike;
 
 pub type DartAbi = wasm_bindgen::JsValue;

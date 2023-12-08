@@ -1,16 +1,13 @@
 use super::BaseCodec;
 use crate::generalized_isolate::IntoDart;
-use crate::platform_types::DartAbi;
+use crate::platform_types::{DartAbi, WireSyncReturnDco};
 use crate::rust2dart::action::Rust2DartAction;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct DcoCodec;
 
 impl BaseCodec for DcoCodec {
-    #[cfg(wasm)]
-    type WireSyncReturn = wasm_bindgen::JsValue;
-    #[cfg(not(wasm))]
-    type WireSyncReturn = *mut allo_isolate::ffi::DartCObject;
+    type WireSyncReturn = WireSyncReturnDco;
 
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi {
         if result_code == Rust2DartAction::CloseStream {
