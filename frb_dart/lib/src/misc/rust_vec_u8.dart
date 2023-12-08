@@ -25,7 +25,7 @@ class RustVecU8 {
 
   /// {@macro flutter_rust_bridge.internal}
   void resize(int newLen) {
-    _ptr = binding.rustVecU8Resize(newLen);
+    _ptr = binding.rustVecU8Resize(_ptr!, _length, newLen);
     _length = newLen;
     _computeCachedView();
   }
