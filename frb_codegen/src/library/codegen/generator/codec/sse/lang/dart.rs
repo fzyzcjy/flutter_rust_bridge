@@ -1,5 +1,5 @@
-use crate::codegen::generator::codec::sse::lang::Lang;
+use crate::codegen::generator::codec::sse::lang::LangTrait;
 
 pub(crate) struct DartLang;
 
-impl Lang for DartLang {}
+impl LangTrait for DartLang {}

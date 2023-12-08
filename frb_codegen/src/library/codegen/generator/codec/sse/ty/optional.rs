@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
-    fn generate_encode(&self, lang: &impl Lang) -> String {
+    fn generate_encode(&self, lang: &Lang) -> String {
         let src_is_not_null = format!("src != {}", lang.null());
         format!(
             "
@@ -15,7 +15,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
         )
     }
 
-    fn generate_decode(&self, lang: &impl Lang) -> String {
+    fn generate_decode(&self, lang: &Lang) -> String {
         format!(
             "
             if ({}) {{

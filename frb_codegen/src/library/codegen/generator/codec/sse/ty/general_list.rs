@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
-    fn generate_encode(&self, lang: &impl Lang) -> String {
+    fn generate_encode(&self, lang: &Lang) -> String {
         lang.for_loop(
             "item",
             "src",
@@ -9,7 +9,7 @@ impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
         )
     }
 
-    fn generate_decode(&self, lang: &impl Lang) -> String {
+    fn generate_decode(&self, lang: &Lang) -> String {
         format!(
             "
             {var_decl} ans;

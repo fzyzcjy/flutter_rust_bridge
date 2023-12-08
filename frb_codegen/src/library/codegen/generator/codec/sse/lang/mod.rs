@@ -1,9 +1,19 @@
+use crate::codegen::generator::codec::sse::lang::dart::DartLang;
+use crate::codegen::generator::codec::sse::lang::rust::RustLang;
 use crate::codegen::ir::ty::IrType;
+use enum_dispatch::enum_dispatch;
 
 pub(crate) mod dart;
 pub(crate) mod rust;
 
-pub(crate) trait Lang {
+#[enum_dispatch]
+pub(crate) enum Lang {
+    DartLang,
+    RustLang,
+}
+
+#[enum_dispatch(Lang)]
+pub(crate) trait LangTrait {
     fn call_encode(&self, var_ty: &IrType, var_name: &str) -> String;
 
     fn call_decode(&self, var_ty: &IrType) -> String;

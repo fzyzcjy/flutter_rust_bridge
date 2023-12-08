@@ -2,7 +2,7 @@ use crate::codegen::generator::codec::sse::ty::*;
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {
-    fn generate_encode(&self, lang: &impl Lang) -> String {
+    fn generate_encode(&self, lang: &Lang) -> String {
         let st = self.ir.get(self.context.ir_pack);
         st.fields
             .iter()
@@ -15,7 +15,7 @@ impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {
             .join("")
     }
 
-    fn generate_decode(&self, lang: &impl Lang) -> String {
+    fn generate_decode(&self, lang: &Lang) -> String {
         let st = self.ir.get(self.context.ir_pack);
         let decode_fields = st
             .fields
