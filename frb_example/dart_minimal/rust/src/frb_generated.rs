@@ -93,11 +93,11 @@ impl CstDecode<i32> for i32 {
     }
 }
 pub trait SseDecode {
-    fn sse_decode(deserializer: SseDeserializer) -> T;
+    fn sse_decode(deserializer: flutter_rust_bridge::for_generated::SseDeserializer) -> Self;
 }
 
 impl SseDecode for i32 {
-    fn sse_decode(deserializer: SseDeserializer) -> Self {
+    fn sse_decode(deserializer: flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         return deserializer.buffer.getInt32();
     }
 }
@@ -105,11 +105,11 @@ impl SseDecode for i32 {
 // Section: rust2dart
 
 pub trait SseEncode {
-    fn sse_encode(self, serializer: SseSerializer);
+    fn sse_encode(self, serializer: flutter_rust_bridge::for_generated::SseSerializer);
 }
 
 impl SseEncode for i32 {
-    fn sse_encode(self, serializer: SseSerializer) {
+    fn sse_encode(self, serializer: flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.buffer.putInt32(self);
     }
 }
