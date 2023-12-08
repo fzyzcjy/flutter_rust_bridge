@@ -8,5 +8,9 @@ pub(crate) trait Lang {
 
     fn call_decode(&self, var_ty: &IrType) -> String;
 
+    fn call_constructor(&self, class_name: &str, field_names: &[String]) -> String;
+
     fn null(&self) -> String;
+
+    fn var_decl(&self) -> String;
 }
