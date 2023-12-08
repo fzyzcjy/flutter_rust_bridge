@@ -6,6 +6,6 @@ impl<'a> CodecSseTyTrait for BoxedCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &impl Lang) -> String {
-        lang.call_decode(&*self.ir.inner, "src")
+        format!("return {};", lang.call_decode(&*self.ir.inner))
     }
 }
