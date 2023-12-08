@@ -16,7 +16,8 @@ impl BaseCodec for SseCodec {
 
 // TODO maybe move
 pub struct SseDeserializer {
-    cursor: Cursor<Vec<u8>>,
+    // Only to be used for generated code
+    pub cursor: Cursor<Vec<u8>>,
     data_len: i32,
 }
 

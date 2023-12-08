@@ -106,7 +106,7 @@ pub trait SseDecode {
 
 impl SseDecode for i32 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return deserializer.buffer.getInt32();
+        return deserializer.cursor.getInt32();
     }
 }
 
