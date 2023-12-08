@@ -31,6 +31,11 @@ pub extern "C" fn frb_initialize_rust(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_hello(ptr_: *const u8, len_: i32) {
+    wire_hello_impl(port_, a, b)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
 }

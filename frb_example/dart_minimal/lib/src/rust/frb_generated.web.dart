@@ -28,6 +28,9 @@ class RustLibWire extends BaseWire {
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
 
+  void wire_hello(ffi.Pointer<ffi.Uint8> ptr_, int len_) =>
+      wasmModule.wire_hello(ptr_, len_);
+
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
 }
@@ -46,6 +49,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void frb_initialize_rust(
       NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
+
+  external void wire_hello(ffi.Pointer<ffi.Uint8> ptr_, int len_);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 }

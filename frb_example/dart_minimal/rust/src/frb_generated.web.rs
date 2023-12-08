@@ -37,6 +37,11 @@ pub fn frb_initialize_rust(
 }
 
 #[wasm_bindgen]
+pub fn wire_hello(ptr_: *const u8, len_: i32) {
+    wire_hello_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
 pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
 }

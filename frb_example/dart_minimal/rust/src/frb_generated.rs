@@ -39,6 +39,20 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 // Section: wire_funcs
 
+fn wire_hello_impl(ptr_: *const u8, len_: i32) {
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _, _, i32, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "hello",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                TODO_generate_func_call_decode;
+                move |context| Result::<_, ()>::Ok(crate::api::minimal::hello(api_a, api_b))
+            },
+        )
+}
 fn wire_minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl CstDecode<i32> + core::panic::UnwindSafe,
