@@ -20,6 +20,8 @@ pub(crate) trait LangTrait {
 
     fn call_constructor(&self, class_name: &str, field_names: &[String]) -> String;
 
+    fn throw_unimplemented(&self) -> String;
+
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String;
 
     fn null(&self) -> String;
