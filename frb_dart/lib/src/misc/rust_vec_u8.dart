@@ -16,7 +16,12 @@ class RustVecU8 {
   final GeneralizedFrbRustBinding binding;
 
   /// {@macro flutter_rust_bridge.internal}
-  RustVecU8(this.length, this.binding) : _ptr = binding.rustVecU8New(length);
+  factory RustVecU8(int length, GeneralizedFrbRustBinding binding) {
+    final ptr = binding.rustVecU8New(length);
+    return RustVecU8._(length, binding, ptr);
+  }
+
+  RustVecU8._(this.length, this.binding, this._ptr);
 
   /// {@macro flutter_rust_bridge.internal}
   void dispose() {
@@ -33,7 +38,7 @@ class RustVecU8 {
   }
 
   /// {@macro flutter_rust_bridge.internal}
-  void setRange(int start, int end, Iterable<E> iterable) {
+  void setRange(int start, int end, Uint8List data) {
     TODO;
   }
 }
