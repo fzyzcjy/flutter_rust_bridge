@@ -47,7 +47,7 @@ pub trait Handler {
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> WireSyncReturn
+    ) -> Rust2DartCodec::WireSyncReturn
     where
         SyncTaskFn: FnOnce() -> Result<DartCObject, DartCObject> + UnwindSafe,
         Rust2DartCodec: BaseCodec;

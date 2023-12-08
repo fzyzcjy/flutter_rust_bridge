@@ -10,7 +10,7 @@ use crate::rust2dart::action::Rust2DartAction;
 /// An object that can be converted into `WireSyncReturn*`
 /// This object is safe (no worries about memory leak, etc), while `WireSyncReturn` is not.
 /// That is why we have this intermediate object - we can safely play with this one.
-pub trait WireSyncReturnSrc {
+pub trait WireSyncReturnSrcTrait {
     type Target;
 
     fn new(inner: DartAbi) -> Self;
@@ -22,7 +22,7 @@ pub trait WireSyncReturnSrc {
 
 pub struct WireSyncReturnDcoSrc(DartAbi);
 
-impl WireSyncReturnSrc for WireSyncReturnDcoSrc {
+impl WireSyncReturnSrcTrait for WireSyncReturnDcoSrc {
     type Target = WireSyncReturnDco;
 
     fn new(inner: DartAbi) -> Self {
@@ -44,7 +44,7 @@ impl WireSyncReturnSrc for WireSyncReturnDcoSrc {
 
 pub struct WireSyncReturnSseSrc(Vec<u8>);
 
-impl WireSyncReturnSrc for WireSyncReturnSseSrc {
+impl WireSyncReturnSrcTrait for WireSyncReturnSseSrc {
     type Target = WireSyncReturnSse;
 
     fn new(inner: DartAbi) -> Self {

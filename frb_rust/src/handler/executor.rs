@@ -2,7 +2,6 @@ use crate::codec::BaseCodec;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::handler::{TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::misc::into_into_dart::IntoIntoDart;
-use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use std::future::Future;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
@@ -32,7 +31,7 @@ pub trait Executor: RefUnwindSafe {
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<WireSyncReturnSrc, Er>
+    ) -> Result<Rust2DartCodec::WireSyncReturnSrc, Er>
     where
         SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,

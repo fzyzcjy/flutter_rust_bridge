@@ -1,7 +1,6 @@
 use crate::codec::BaseCodec;
 use crate::handler::error::Error;
 use crate::platform_types::MessagePort;
-use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
 /// A handler model that sends back the error to a Dart `SendPort`.
@@ -16,7 +15,7 @@ pub(crate) trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'stati
         Rust2DartCodec: BaseCodec;
 
     /// Special handler only used for synchronous code.
-    fn handle_error_sync<Rust2DartCodec>(&self, error: Error) -> WireSyncReturnSrc
+    fn handle_error_sync<Rust2DartCodec>(&self, error: Error) -> Rust2DartCodec::WireSyncReturnSrc
     where
         Rust2DartCodec: BaseCodec;
 }
