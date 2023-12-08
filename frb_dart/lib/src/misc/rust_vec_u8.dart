@@ -44,6 +44,6 @@ class RustVecU8 {
 
   /// {@macro flutter_rust_bridge.internal}
   void setRange(int start, int end, Uint8List data) {
-    TODO;
+    _typedListView!.setRange(start, end, data);
   }
 }
