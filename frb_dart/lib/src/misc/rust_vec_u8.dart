@@ -23,10 +23,6 @@ class RustVecU8 {
     _computeCachedView();
   }
 
-  void _computeCachedView() {
-    _cachedView = _ptr!.asTypedList(length);
-  }
-
   /// {@macro flutter_rust_bridge.internal}
   void resize(int newLen) {
     _ptr = binding.rustVecU8Resize(newLen);
@@ -53,5 +49,9 @@ class RustVecU8 {
   /// {@macro flutter_rust_bridge.internal}
   void setRange(int start, int end, Uint8List data) {
     _cachedView!.setRange(start, end, data);
+  }
+
+  void _computeCachedView() {
+    _cachedView = _ptr!.asTypedList(length);
   }
 }
