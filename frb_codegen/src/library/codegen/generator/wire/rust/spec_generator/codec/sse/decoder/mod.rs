@@ -7,8 +7,6 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 
-pub(crate) mod ty;
-
 pub(crate) fn generate(
     context: WireRustCodecSseGeneratorContext,
     types: &[IrType],
