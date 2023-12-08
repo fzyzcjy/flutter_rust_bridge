@@ -62,16 +62,3 @@ pub(crate) trait BaseCodecEntrypointTrait<C, O> {
 
     fn generate_decode(&self, context: C, types: &[IrType]) -> Option<O>;
 }
-
-pub(crate) fn generate_codec_encode_decode<Codec, C, O>()
-where
-    Codec: From<CodecMode>,
-    Codec: BaseCodecEntrypointTrait<C, O>,
-{
-    for codec_mode in CodecMode::iter() {
-        let codec: Codec = codec_mode.into();
-        codec.generate_encode(context, types);
-        codec.generate_decode(context, types);
-        todo!()
-    }
-}
