@@ -25,7 +25,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
             }}
             ",
             lang.call_decode(&Primitive(IrTypePrimitive::Bool)),
-            lang.call_encode(&*self.ir.inner, "src"),
+            lang.call_decode(&*self.ir.inner),
             lang.null(),
         )
     }
