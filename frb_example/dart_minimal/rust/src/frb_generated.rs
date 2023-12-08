@@ -41,73 +41,70 @@ flutter_rust_bridge::for_generated::lazy_static! {
 // Section: wire_funcs
 
 fn wire_hello_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _, _, i32, _>(
-            flutter_rust_bridge::for_generated::TaskInfo {
-                debug_name: "hello",
-                port: Some(port_),
-                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-            },
-            move || {
-                let mut deserializer = unsafe {
-                    flutter_rust_bridge::for_generated::SseDeserializer::from_wire(
-                        ptr_,
-                        rust_vec_len_,
-                        data_len_,
-                    )
-                };
-                let api_a = i32::sse_decode(&mut deserializer);
-                let api_b = i32::sse_decode(&mut deserializer);
-                deserializer.end();
-                move |context| Result::<_, ()>::Ok(crate::api::minimal::hello(api_a, api_b))
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "hello",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let mut deserializer = unsafe {
+                flutter_rust_bridge::for_generated::SseDeserializer::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let api_a = i32::sse_decode(&mut deserializer);
+            let api_b = i32::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| Result::<_, ()>::Ok(crate::api::minimal::hello(api_a, api_b))
+        },
+    )
 }
 fn wire_hello_sync_impl(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _, _, _, _>(
-            flutter_rust_bridge::for_generated::TaskInfo {
-                debug_name: "hello_sync",
-                port: None,
-                mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-            },
-            move || {
-                let mut deserializer = unsafe {
-                    flutter_rust_bridge::for_generated::SseDeserializer::from_wire(
-                        ptr_,
-                        rust_vec_len_,
-                        data_len_,
-                    )
-                };
-                let api_a = i32::sse_decode(&mut deserializer);
-                let api_b = i32::sse_decode(&mut deserializer);
-                deserializer.end();
-                Result::<_, ()>::Ok(crate::api::minimal::hello_sync(api_a, api_b))
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "hello_sync",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let mut deserializer = unsafe {
+                flutter_rust_bridge::for_generated::SseDeserializer::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let api_a = i32::sse_decode(&mut deserializer);
+            let api_b = i32::sse_decode(&mut deserializer);
+            deserializer.end();
+            Result::<_, ()>::Ok(crate::api::minimal::hello_sync(api_a, api_b))
+        },
+    )
 }
 fn wire_minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl CstDecode<i32> + core::panic::UnwindSafe,
     b: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, i32, _>(
-            flutter_rust_bridge::for_generated::TaskInfo {
-                debug_name: "minimal_adder",
-                port: Some(port_),
-                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-            },
-            move || {
-                let api_a = a.cst_decode();
-                let api_b = b.cst_decode();
-                move |context| Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "minimal_adder",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.cst_decode();
+            let api_b = b.cst_decode();
+            move |context| Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
+        },
+    )
 }
 
 // Section: dart2rust

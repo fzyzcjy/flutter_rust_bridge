@@ -199,7 +199,7 @@ fn generate_handler_func_name(
     );
 
     match func.mode {
-        IrFuncMode::Sync => format!("wrap_sync::<{codec},_,_,_,_>"),
+        IrFuncMode::Sync => format!("wrap_sync::<{codec},_>"),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let name = if func.rust_async {
                 "wrap_async"
@@ -207,20 +207,20 @@ fn generate_handler_func_name(
                 "wrap_normal"
             };
 
-            let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
-                "()".to_owned()
-            } else {
-                WireRustCodecDcoGenerator::new(
-                    func.output.clone(),
-                    context.as_wire_rust_codec_dco_context(),
-                )
-                .intodart_type(ir_pack)
-            };
+            // let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
+            //     "()".to_owned()
+            // } else {
+            //     WireRustCodecDcoGenerator::new(
+            //         func.output.clone(),
+            //         context.as_wire_rust_codec_dco_context(),
+            //     )
+            //     .intodart_type(ir_pack)
+            // };
 
             let generic_args = if func.rust_async {
-                format!("<{codec},_,_,_,_,{output},_>")
+                format!("<{codec},_,_,_>")
             } else {
-                format!("<{codec},_,_,_,{output},_>")
+                format!("<{codec},_,_>")
             };
 
             format!("{name}::{generic_args}")
