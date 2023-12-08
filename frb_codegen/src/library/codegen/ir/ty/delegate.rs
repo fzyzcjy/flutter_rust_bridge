@@ -12,7 +12,7 @@ pub enum IrTypeDelegate {
     Array(IrTypeDelegateArray),
     String,
     // StringList,// TODO avoid this special case?
-    ZeroCopyBufferVecPrimitive(IrTypePrimitive),
+    // ZeroCopyBufferVecPrimitive(IrTypePrimitive),
     PrimitiveEnum(IrTypeDelegatePrimitiveEnum),
     Time(IrTypeDelegateTime),
     // TimeList(IrTypeDelegateTime),// TODO avoid this special case?
@@ -68,9 +68,9 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Array(array) => array.safe_ident(),
             IrTypeDelegate::String => "String".to_owned(),
             // IrTypeDelegate::StringList => "StringList".to_owned(),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                "ZeroCopyBuffer_".to_owned() + &self.get_delegate().safe_ident()
-            }
+            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            //     "ZeroCopyBuffer_".to_owned() + &self.get_delegate().safe_ident()
+            // }
             IrTypeDelegate::PrimitiveEnum(ir) => ir.ir.safe_ident(),
             IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir),
             // IrTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir),
@@ -88,12 +88,12 @@ impl IrTypeTrait for IrTypeDelegate {
             }
             IrTypeDelegate::String => "String".to_owned(),
             // IrTypeDelegate::StringList => "Vec<String>".to_owned(),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                format!(
-                    "flutter_rust_bridge::ZeroCopyBuffer<{}>",
-                    self.get_delegate().rust_api_type()
-                )
-            }
+            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            //     format!(
+            //         "flutter_rust_bridge::ZeroCopyBuffer<{}>",
+            //         self.get_delegate().rust_api_type()
+            //     )
+            // }
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
                 ir.rust_api_type()
             }
@@ -142,11 +142,11 @@ impl IrTypeDelegate {
             IrTypeDelegate::String => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
-                IrType::PrimitiveList(IrTypePrimitiveList {
-                    primitive: primitive.clone(),
-                })
-            }
+            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
+            //     IrType::PrimitiveList(IrTypePrimitiveList {
+            //         primitive: primitive.clone(),
+            //     })
+            // }
             // IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::PrimitiveEnum(inner) => IrType::Primitive(inner.repr.clone()),
             IrTypeDelegate::Time(_) => IrType::Primitive(IrTypePrimitive::I64),

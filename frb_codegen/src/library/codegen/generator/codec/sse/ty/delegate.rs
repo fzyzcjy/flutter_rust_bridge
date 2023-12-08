@@ -6,7 +6,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
         let inner_expr = match &self.ir {
             IrTypeDelegate::Array(inner) => TODO,
             IrTypeDelegate::String => "utf8.encoder.convert(src)",
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(inner) => {}
             IrTypeDelegate::PrimitiveEnum(inner) => {}
             IrTypeDelegate::Time(inner) => {}
             IrTypeDelegate::Uuid => {}
@@ -20,7 +19,6 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
         let wrapper_expr = match &self.ir {
             IrTypeDelegate::Array(inner) => TODO,
             IrTypeDelegate::String => "TODO",
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(inner) => {}
             IrTypeDelegate::PrimitiveEnum(inner) => {}
             IrTypeDelegate::Time(inner) => {}
             IrTypeDelegate::Uuid => {}

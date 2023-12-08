@@ -32,13 +32,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             ("DartOpaque", None) => DartOpaque(IrTypeDartOpaque {}),
 
-            (
-                "ZeroCopyBuffer",
-                Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),
-            ) => Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
-                primitive.clone(),
-            )),
-
+            // (
+            //     "ZeroCopyBuffer",
+            //     Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),
+            // ) => Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
+            //     primitive.clone(),
+            // )),
             ("Box", Some(Generic([inner]))) => Boxed(IrTypeBoxed {
                 exist_in_real_api: true,
                 inner: Box::new(inner.clone()),

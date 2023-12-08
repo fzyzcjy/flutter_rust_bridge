@@ -51,9 +51,9 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
             IrTypeDelegate::Array(array) => array.dart_api_type(self.context),
             IrTypeDelegate::String => "String".to_string(),
             // IrTypeDelegate::StringList => "List<String>".to_owned(),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                ApiDartGenerator::new(self.ir.get_delegate(), self.context).dart_api_type()
-            }
+            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            //     ApiDartGenerator::new(self.ir.get_delegate(), self.context).dart_api_type()
+            // }
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
                 ApiDartGenerator::new(IrType::EnumRef(ir.clone()), self.context).dart_api_type()
             }

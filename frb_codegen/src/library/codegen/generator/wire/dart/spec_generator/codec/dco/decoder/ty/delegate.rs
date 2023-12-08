@@ -28,17 +28,17 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
                 ),
             },
 
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(
-                IrTypePrimitive::I64 | IrTypePrimitive::U64,
-            ) => {
-                format!(
-                    "return _dco_decode_{}(raw);",
-                    self.ir.get_delegate().safe_ident()
-                )
-            }
+            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(
+            //     IrTypePrimitive::I64 | IrTypePrimitive::U64,
+            // ) => {
+            //     format!(
+            //         "return _dco_decode_{}(raw);",
+            //         self.ir.get_delegate().safe_ident()
+            //     )
+            // }
             IrTypeDelegate::String
             | IrTypeDelegate::Backtrace
-            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            /*| IrTypeDelegate::ZeroCopyBufferVecPrimitive(_)*/ => {
                 gen_decode_simple_type_cast(self.ir.clone().into(), self.context)
             }
             // IrTypeDelegate::StringList => {

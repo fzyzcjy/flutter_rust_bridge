@@ -48,15 +48,15 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 wasm: Some("return raw;".into()),
                 ..Default::default()
             },
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                // In this case, even though the body is the same, their types are different
-                // and must be split.
-                let body = format!(
-                    "return cst_encode_{}(raw);",
-                    self.ir.get_delegate().safe_ident()
-                );
-                Acc::distribute(Some(body))
-            }
+            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            //     // In this case, even though the body is the same, their types are different
+            //     // and must be split.
+            //     let body = format!(
+            //         "return cst_encode_{}(raw);",
+            //         self.ir.get_delegate().safe_ident()
+            //     );
+            //     Acc::distribute(Some(body))
+            // }
             // IrTypeDelegate::StringList => Acc {
             //     io: Some(
             //         "final ans = wire.cst_new_StringList(raw.length);

@@ -62,9 +62,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                     ..Default::default()
                 }
             },
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()))
-            },
+            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            //     Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()))
+            // },
             // IrTypeDelegate::StringList => general_list_impl_decode_body(),
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum{ ir, .. }) => {
                 let enu = ir.get(self.context.ir_pack);
@@ -137,9 +137,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 WireRustCodecCstGenerator::new(repr.clone(), self.context).rust_wire_type(Target::Wasm)
             )
                 .into(),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
-            }
+            // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            //     "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
+            // }
             IrTypeDelegate::Time(_) => "CstDecodable::<i64>::cst_decode(self).cst_decode()".into(),
             // IrTypeDelegate::TimeList(_) =>
             //     "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(CstDecodable::cst_decode).collect()".into(),
