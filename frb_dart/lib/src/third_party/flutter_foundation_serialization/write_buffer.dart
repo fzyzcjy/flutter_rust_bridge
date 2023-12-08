@@ -7,6 +7,8 @@ import 'dart:typed_data';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/misc/rust_vec_u8.dart';
 
+// NOTE MAIN MODIFICATION:
+// * Uint8List -> RustVecU8
 /// Write-only buffer for incrementally building a [ByteData] instance.
 ///
 /// A WriteBuffer instance can be used only once. Attempts to reuse will result
@@ -29,7 +31,6 @@ class WriteBuffer {
 
   WriteBuffer._(this._buffer, this._eightBytes, this._eightBytesAsList);
 
-  // NOTE MODIFIED: Uint8List -> RustVecU8
   RustVecU8 _buffer;
   int _currentSize = 0;
   bool _isDone = false;
@@ -67,7 +68,7 @@ class WriteBuffer {
   void _resize([int? requiredLength]) {
     final int doubleLength = _buffer.length * 2;
     final int newLength = math.max(requiredLength ?? 0, doubleLength);
-    final Uint8List newBuffer = Uint8List(newLength);
+    final RustVecU8 newBuffer = RustVecU8(newLength, _buffer.binding);
     newBuffer.setRange(0, _buffer.length, _buffer);
     _buffer.dispose();
     _buffer = newBuffer;
