@@ -48,8 +48,13 @@ fn wire_hello_impl(port_: i64, ptr_: *const u8, rust_vec_len_: i32, data_len_: i
                 mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
             },
             move || {
-                let mut deserializer =
-                    unsafe { flutter_rust_bridge::for_generated::SseDeserializer::from_wire() };
+                let mut deserializer = unsafe {
+                    flutter_rust_bridge::for_generated::SseDeserializer::from_wire(
+                        ptr_,
+                        rust_vec_len_,
+                        data_len_,
+                    )
+                };
                 let api_a = i32::sse_decode(&mut deserializer);
                 let api_b = i32::sse_decode(&mut deserializer);
                 move |context| Result::<_, ()>::Ok(crate::api::minimal::hello(api_a, api_b))
