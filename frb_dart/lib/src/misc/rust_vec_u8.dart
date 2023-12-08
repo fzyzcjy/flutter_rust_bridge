@@ -31,14 +31,26 @@ class RustVecU8 {
   }
 
   /// {@macro flutter_rust_bridge.internal}
+  (ffi.Pointer<ffi.Uint8>, int) intoRaw() {
+    final ptr = _ptr!;
+    final length = _length;
+    _forget();
+    return (ptr, length);
+  }
+
+  /// {@macro flutter_rust_bridge.internal}
   void dispose() {
     // Set ptr to null before calling free to avoid potential
     // double-free when error happens
     final ptr = _ptr!;
-    _ptr = null;
-    _cachedView = null;
-
+    _forget();
     binding.rustVecU8Free(ptr, length);
+  }
+
+  void _forget() {
+    _ptr = null;
+    _length = 0;
+    _cachedView = null;
   }
 
   /// {@macro flutter_rust_bridge.internal}
