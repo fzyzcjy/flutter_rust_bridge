@@ -148,6 +148,23 @@ impl SseDecode for i32 {
 
 // Section: rust2dart
 
+fn transform_result_sse_normal<T, E>(
+    raw: Result<T, E>,
+) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
+{
+    match raw {
+        Ok(raw) => Ok(TODO),
+        Err(raw) => Err(TODO),
+    }
+}
+
+fn transform_result_sse_sync<T, E>(raw: Result<T, E>) -> Result<TODO, TODO> {
+    match raw {
+        Ok(raw) => Ok(TODO),
+        Err(raw) => Err(TODO),
+    }
+}
+
 fn transform_result_dco_normal<T, T2, E>(
     raw: Result<T, E>,
 ) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
