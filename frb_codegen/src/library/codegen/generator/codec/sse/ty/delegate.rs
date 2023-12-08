@@ -9,8 +9,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
             IrTypeDelegate::PrimitiveEnum(_) => "src.index",
             IrTypeDelegate::Time(_) => "src.microsecondsSinceEpoch",
             IrTypeDelegate::Uuid => "src.toBytes()",
-            IrTypeDelegate::Backtrace => "NOT_USED",
-            IrTypeDelegate::Anyhow => "NOT_USED",
+            IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED",
         };
         simple_delegate_encode(lang, &self.ir.get_delegate(), inner_expr)
     }
@@ -24,8 +23,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
             IrTypeDelegate::PrimitiveEnum(_) => "TODO",
             IrTypeDelegate::Time(_) => "chrono::Duration::microseconds(self)",
             IrTypeDelegate::Uuid => "flutter_rust_bridge::for_generated::decode_uuid(inner)",
-            IrTypeDelegate::Backtrace => "NOT_USED",
-            IrTypeDelegate::Anyhow => "NOT_USED",
+            IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED",
         };
         simple_delegate_decode(lang, &self.ir.get_delegate(), wrapper_expr)
     }
