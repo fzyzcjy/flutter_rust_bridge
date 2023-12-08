@@ -16,7 +16,7 @@
 
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::SseSerializer;
-use flutter_rust_bridge::{Handler, IntoIntoDart};
+use flutter_rust_bridge::{Handler, IntoApple, IntoIntoDart};
 
 // Section: executor
 
@@ -119,6 +119,13 @@ fn wire_minimal_adder_impl(
 }
 
 // Section: dart2rust
+
+// TODO for temp expr
+fn f() {
+    flutter_rust_bridge::hi_function::<Orange>();
+}
+pub trait IntoOrange {}
+impl<T: IntoOrange> IntoApple for T {}
 
 pub trait CstDecode<T> {
     fn cst_decode(self) -> T;
