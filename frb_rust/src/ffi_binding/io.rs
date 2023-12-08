@@ -13,7 +13,7 @@ use std::ffi::c_uchar;
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut c_void) -> isize {
+pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> isize {
     Dart_InitializeApiDL(data)
 }
 
