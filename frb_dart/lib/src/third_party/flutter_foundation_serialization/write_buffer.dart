@@ -159,8 +159,17 @@ class WriteBuffer {
   //   }
   // }
 
-  // NOTE MODIFIED add
-  /// {@macro flutter_rust_bridge.internal}
+  /// NOTE: We do not call `resize()` to shrink the buffer (which makes the
+  /// API nicer since there is no need to pass around the extra size variable).
+  /// This is to avoid overhead.
+  ///
+  /// Details:
+  /// The internal implementation of `resize` (to shrink) contains a
+  /// call to the Rust `std::Vec::shrink_to_fit`.
+  /// By looking at source, we see it eventually calls `Allocator::shrink`.
+  /// The default implementation even do alloc-copy-dealloc which contains
+  /// a memory copy. Other implementations may be faster, but still
+  /// it is overhead.
   (RustVecU8, int) intoRaw() {
     if (_isDone) {
       throw StateError(
