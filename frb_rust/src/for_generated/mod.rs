@@ -16,7 +16,7 @@ pub use crate::misc::manual_impl::*;
 pub use crate::misc::rust_arc::{rust_arc_decrement_strong_count, rust_arc_increment_strong_count};
 pub use crate::misc::rust_auto_opaque::rust_auto_opaque_encode;
 pub use crate::platform_types::DartAbi;
-pub use crate::platform_types::MessagePort;
+pub use crate::platform_types::{MessagePort, WireSyncReturnDco, WireSyncReturnSse};
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 pub use crate::rust_opaque::dart2rust::cst_decode_rust_opaque;
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};

@@ -41,7 +41,7 @@ pub extern "C" fn wire_hello_sync(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
     wire_hello_sync_impl(ptr_, rust_vec_len_, data_len_)
 }
 
