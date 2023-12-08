@@ -7,4 +7,6 @@ pub(crate) trait Lang {
     fn call_encode(&self, var_ty: &IrType, var_name: &str) -> String;
 
     fn call_decode(&self, var_ty: &IrType, var_name: &str) -> String;
+
+    fn expr_is_not_null(&self, var_name: &str) -> String;
 }
