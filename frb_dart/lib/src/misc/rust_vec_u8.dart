@@ -16,22 +16,22 @@ class RustVecU8 {
   /// {@macro flutter_rust_bridge.internal}
   final GeneralizedFrbRustBinding binding;
 
-  Uint8List? _cachedTypedListView;
+  Uint8List? _cachedView;
 
   /// {@macro flutter_rust_bridge.internal}
   RustVecU8(this._length, this.binding) : _ptr = binding.rustVecU8New(_length) {
-    _computeCachedTypedListView();
+    _computeCachedView();
   }
 
-  void _computeCachedTypedListView() {
-    _cachedTypedListView = _ptr!.asTypedList(length);
+  void _computeCachedView() {
+    _cachedView = _ptr!.asTypedList(length);
   }
 
   /// {@macro flutter_rust_bridge.internal}
   void resize(int newLen) {
     _ptr = binding.rustVecU8Resize(newLen);
     _length = newLen;
-    _computeCachedTypedListView();
+    _computeCachedView();
   }
 
   /// {@macro flutter_rust_bridge.internal}
@@ -40,7 +40,7 @@ class RustVecU8 {
     // double-free when error happens
     final ptr = _ptr!;
     _ptr = null;
-    _cachedTypedListView = null;
+    _cachedView = null;
 
     binding.rustVecU8Free(ptr, length);
   }
@@ -52,6 +52,6 @@ class RustVecU8 {
 
   /// {@macro flutter_rust_bridge.internal}
   void setRange(int start, int end, Uint8List data) {
-    _cachedTypedListView!.setRange(start, end, data);
+    _cachedView!.setRange(start, end, data);
   }
 }
