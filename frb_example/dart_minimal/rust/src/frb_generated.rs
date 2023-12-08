@@ -58,7 +58,11 @@ fn wire_hello_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32
             let api_a = i32::sse_decode(&mut deserializer);
             let api_b = i32::sse_decode(&mut deserializer);
             deserializer.end();
-            move |context| Result::<_, ()>::Ok(crate::api::minimal::hello(api_a, api_b))
+            move |context| {
+                sse_transform_result(Result::<_, ()>::Ok(crate::api::minimal::hello(
+                    api_a, api_b,
+                )))
+            }
         },
     )
 }
@@ -84,7 +88,9 @@ fn wire_hello_sync_impl(
             let api_a = i32::sse_decode(&mut deserializer);
             let api_b = i32::sse_decode(&mut deserializer);
             deserializer.end();
-            Result::<_, ()>::Ok(crate::api::minimal::hello_sync(api_a, api_b))
+            sse_transform_result(Result::<_, ()>::Ok(crate::api::minimal::hello_sync(
+                api_a, api_b,
+            )))
         },
     )
 }
@@ -102,7 +108,11 @@ fn wire_minimal_adder_impl(
         move || {
             let api_a = a.cst_decode();
             let api_b = b.cst_decode();
-            move |context| Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
+            move |context| {
+                dco_transform_result(Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(
+                    api_a, api_b,
+                )))
+            }
         },
     )
 }

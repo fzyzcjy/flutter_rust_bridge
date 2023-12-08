@@ -185,6 +185,14 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
         ans = format!("Result::<_,{error_type}>::Ok({ans})");
     }
 
+    ans = format!(
+        "{}_transform_result({ans})",
+        func.codec_mode_pack
+            .rust2dart
+            .to_string()
+            .to_case(Case::Snake)
+    );
+
     ans
 }
 
