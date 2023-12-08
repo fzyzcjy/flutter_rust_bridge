@@ -96,7 +96,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 }
 
-// Section: encode_funcs
+// Section: dart2rust
 
 int cst_encode_i_32(int raw) {
   return raw;

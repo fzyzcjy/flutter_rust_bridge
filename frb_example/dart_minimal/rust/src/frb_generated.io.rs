@@ -6,7 +6,7 @@
 use super::*;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
-// Section: impl_new_with_nullptr
+// Section: dart2rust
 
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;

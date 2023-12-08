@@ -59,7 +59,7 @@ fn wire_minimal_adder_impl(
         )
 }
 
-// Section: impl_decode
+// Section: dart2rust
 
 pub trait CstDecodable<T> {
     fn cst_decode(self) -> T;
