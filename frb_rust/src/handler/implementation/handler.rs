@@ -19,6 +19,7 @@ use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 use crate::thread_pool::BaseThreadPool;
+use allo_isolate::ffi::DartCObject;
 use log::warn;
 use std::future::Future;
 use std::panic;
@@ -99,19 +100,16 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             .to_owned()
     }
 
-    fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<TaskRetDirect, Er>
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<DartCObject, DartCObject>
             + Send
             + UnwindSafe
             + 'static,
-        TaskRetDirect: IntoIntoDart<TaskRetData>,
-        TaskRetData: IntoDart,
-        Er: IntoDart + 'static,
         Rust2DartCodec: BaseCodec,
     {
         self.wrap_normal_or_async::<Rust2DartCodec, _, _, _, _>(
@@ -124,16 +122,13 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         )
     }
 
-    fn wrap_sync<Rust2DartCodec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_sync<Rust2DartCodec, SyncTaskFn>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturn
     where
-        SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
-        TaskRetDirect: IntoIntoDart<TaskRetData>,
-        TaskRetData: IntoDart,
-        Er: IntoDart + 'static,
+        SyncTaskFn: FnOnce() -> Result<DartCObject, DartCObject> + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
@@ -164,17 +159,15 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     }
 
     #[cfg(feature = "rust-async")]
-    fn wrap_async<Rust2DartCodec, PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_async<Rust2DartCodec, PrepareFn, TaskFn, TaskRetFut>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
-        TaskRetDirect: IntoIntoDart<TaskRetData>,
-        TaskRetData: IntoDart,
-        Er: IntoDart + 'static,
+        TaskRetFut:
+            Future<Output = Result<DartCObject, DartCObject>> + TaskRetFutTrait + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
         self.wrap_normal_or_async::<Rust2DartCodec, _, _, _, _>(

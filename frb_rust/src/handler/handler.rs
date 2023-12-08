@@ -7,6 +7,7 @@ use crate::platform_types::{message_port_to_handle, DartAbi};
 use crate::platform_types::{MessagePort, WireSyncReturn};
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::DartOpaque;
+use allo_isolate::ffi::DartCObject;
 use std::future::Future;
 use std::panic::UnwindSafe;
 
@@ -28,48 +29,40 @@ pub trait Handler {
     ///
     /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<TaskRetDirect, Er>
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<DartCObject, DartCObject>
             + Send
             + UnwindSafe
             + 'static,
-        TaskRetDirect: IntoIntoDart<TaskRetData>,
-        TaskRetData: IntoDart,
-        Er: IntoDart + 'static,
         Rust2DartCodec: BaseCodec;
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function will be called synchronously and
     /// need not implement [Send].
-    fn wrap_sync<Rust2DartCodec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_sync<Rust2DartCodec, SyncTaskFn>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturn
     where
-        SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
-        TaskRetDirect: IntoIntoDart<TaskRetData>,
-        TaskRetData: IntoDart,
-        Er: IntoDart + 'static,
+        SyncTaskFn: FnOnce() -> Result<DartCObject, DartCObject> + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 
     /// Same as [`wrap`][Handler::wrap], but for async Rust.
     #[cfg(feature = "rust-async")]
-    fn wrap_async<Rust2DartCodec, PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_async<Rust2DartCodec, PrepareFn, TaskFn, TaskRetFut>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
-        TaskRetDirect: IntoIntoDart<TaskRetData>,
-        TaskRetData: IntoDart,
-        Er: IntoDart + 'static,
+        TaskRetFut:
+            Future<Output = Result<DartCObject, DartCObject>> + TaskRetFutTrait + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret>;
