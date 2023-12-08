@@ -4,25 +4,39 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
         match self.ir {
             IrTypePrimitive::Unit => "".into(),
-            _ => format!(
-                "serializer.buffer.put{}(self);",
-                get_serializer_postfix(&self.ir)
-            ),
+            _ => match lang {
+                Lang::DartLang(_) => format!(
+                    "serializer.buffer.put{}(self);",
+                    get_serializer_dart_postfix(&self.ir)
+                ),
+                Lang::RustLang(_) => format!(
+                    "serializer.cursor.write_{}::<NativeEndian>(self);",
+                    self.ir.rust_api_type()
+                ),
+            },
         }
     }
 
     fn generate_decode(&self, lang: &Lang) -> String {
         match self.ir {
             IrTypePrimitive::Unit => "".into(),
-            _ => format!(
-                "return deserializer.buffer.get{}();",
-                get_serializer_postfix(&self.ir)
-            ),
+            _ => match lang {
+                Lang::DartLang(_) => format!(
+                    "return deserializer.buffer.get{}();",
+                    get_serializer_dart_postfix(&self.ir)
+                ),
+                Lang::RustLang(_) => {
+                    format!(
+                        "serializer.cursor.read_{}::<NativeEndian>()",
+                        self.ir.rust_api_type()
+                    )
+                }
+            },
         }
     }
 }
 
-fn get_serializer_postfix(prim: &IrTypePrimitive) -> &'static str {
+fn get_serializer_dart_postfix(prim: &IrTypePrimitive) -> &'static str {
     match prim {
         IrTypePrimitive::U8 => "Uint8",
         IrTypePrimitive::I8 => "Int8",
