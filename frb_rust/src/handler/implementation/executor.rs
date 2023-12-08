@@ -93,12 +93,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
             > + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
-        sync_task().map(|value| {
-            Rust2DartCodec::WireSyncReturnWrapper::new(Rust2DartCodec::encode(
-                value,
-                Rust2DartAction::Success,
-            ))
-        })
+        sync_task()
     }
 
     #[cfg(feature = "rust-async")]
