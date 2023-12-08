@@ -78,10 +78,6 @@ impl CstDecode<i32> for i32 {
         self
     }
 }
-pub trait SseEncode {
-    fn sse_encode(self, serializer: Serializer);
-}
-
 pub trait SseDecode {
     fn sse_decode(deserializer: Deserializer) -> T;
 }
@@ -96,10 +92,6 @@ impl SseDecode for i32 {
 
 pub trait SseEncode {
     fn sse_encode(self, serializer: Serializer);
-}
-
-pub trait SseDecode {
-    fn sse_decode(deserializer: Deserializer) -> T;
 }
 
 impl SseEncode for i32 {

@@ -16,23 +16,30 @@ pub(super) fn generate_encode_or_decode(
     mode: EncodeOrDecode,
 ) -> WireRustCodecOutputSpec {
     let mut inner = Default::default();
-    inner += generate_misc();
+    inner += generate_misc(mode);
     inner += (types.iter())
         .map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
         .collect();
     WireRustCodecOutputSpec { inner }
 }
 
-fn generate_misc() -> Acc<Vec<WireRustOutputCode>> {
-    Acc::new_common(vec![r#"
-        pub trait SseEncode {
-            fn sse_encode(self, serializer: Serializer);
+fn generate_misc(mode: EncodeOrDecode) -> Acc<Vec<WireRustOutputCode>> {
+    Acc::new_common(vec![match mode {
+        EncodeOrDecode::Encode => {
+            "
+            pub trait SseEncode {
+                fn sse_encode(self, serializer: Serializer);
+            }
+            "
         }
-
-        pub trait SseDecode {
-            fn sse_decode(deserializer: Deserializer) -> T;
+        EncodeOrDecode::Decode => {
+            "
+            pub trait SseDecode {
+                fn sse_decode(deserializer: Deserializer) -> T;
+            }
+            "
         }
-        "#
+    }
     .into()])
 }
 
