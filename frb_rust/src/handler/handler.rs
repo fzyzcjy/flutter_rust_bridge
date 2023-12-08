@@ -50,7 +50,10 @@ pub trait Handler {
         sync_task: SyncTaskFn,
     ) -> <Rust2DartCodec::WireSyncReturnWrapper as WireSyncReturnWrapperTrait>::WireType
     where
-        SyncTaskFn: FnOnce() -> Result<DartCObject, DartCObject> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<
+                Rust2DartCodec::WireSyncReturnWrapper,
+                Rust2DartCodec::WireSyncReturnWrapper,
+            > + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 
     /// Same as [`wrap`][Handler::wrap], but for async Rust.

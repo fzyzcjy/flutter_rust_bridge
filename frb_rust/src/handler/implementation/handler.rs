@@ -127,7 +127,10 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         sync_task: SyncTaskFn,
     ) -> <Rust2DartCodec::WireSyncReturnWrapper as WireSyncReturnWrapperTrait>::WireType
     where
-        SyncTaskFn: FnOnce() -> Result<DartCObject, DartCObject> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<
+                Rust2DartCodec::WireSyncReturnWrapper,
+                Rust2DartCodec::WireSyncReturnWrapper,
+            > + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
