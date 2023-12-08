@@ -22,7 +22,7 @@ pub struct SseDeserializer {
 }
 
 impl SseDeserializer {
-    pub unsafe fn from_wire(ptr: *const u8, rust_vec_len: i32, data_len: i32) -> Self {
+    pub unsafe fn from_wire(ptr: *mut u8, rust_vec_len: i32, data_len: i32) -> Self {
         let vec = vec_from_leak_ptr(ptr, rust_vec_len);
         Self {
             cursor: Cursor::new(vec),
