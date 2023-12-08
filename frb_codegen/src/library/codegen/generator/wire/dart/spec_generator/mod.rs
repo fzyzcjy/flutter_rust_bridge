@@ -57,7 +57,7 @@ pub(crate) fn generate(
             .collect(),
         dart2rust: CodecMode::iter()
             .map(WireDartCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate_decode(context, &cache.distinct_input_types))
+            .flat_map(|codec| codec.generate_encode(context, &cache.distinct_input_types))
             .collect(),
     })
 }

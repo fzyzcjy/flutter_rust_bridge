@@ -42,7 +42,7 @@ pub(super) fn generate(
         misc: misc::generate(context, &cache)?,
         rust2dart: CodecMode::iter()
             .map(WireRustCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate_decode(context, &cache.distinct_input_types))
+            .flat_map(|codec| codec.generate_encode(context, &cache.distinct_input_types))
             .collect(),
         dart2rust: CodecMode::iter()
             .map(WireRustCodecEntrypoint::from)
