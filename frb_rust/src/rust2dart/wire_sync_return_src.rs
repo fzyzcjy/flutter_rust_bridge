@@ -16,6 +16,8 @@ pub trait WireSyncReturnWrapperTrait {
 
     fn new(inner: Self::InnerType) -> Self;
 
+    fn simplest() -> Self;
+
     unsafe fn from_raw(raw: Self::WireType) -> Self;
 
     fn into_raw(self) -> Self::WireType;
@@ -28,6 +30,10 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnCstWrapper {
     type WireType = ();
 
     fn new(inner: Self::InnerType) -> Self {
+        unreachable!()
+    }
+
+    fn simplest() -> Self {
         unreachable!()
     }
 
@@ -48,6 +54,10 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnDcoWrapper {
 
     fn new(inner: Self::InnerType) -> Self {
         Self(inner)
+    }
+
+    fn simplest() -> Self {
+        Self(().into_dart())
     }
 
     unsafe fn from_raw(raw: Self::WireType) -> Self {
@@ -71,6 +81,10 @@ impl WireSyncReturnWrapperTrait for WireSyncReturnSseWrapper {
 
     fn new(inner: Self::InnerType) -> Self {
         Self(inner)
+    }
+
+    fn simplest() -> Self {
+        Self(vec![])
     }
 
     unsafe fn from_raw(raw: Self::WireType) -> Self {
