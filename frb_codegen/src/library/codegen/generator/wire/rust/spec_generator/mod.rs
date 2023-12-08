@@ -22,8 +22,8 @@ pub mod output_code;
 #[derive(Serialize)]
 pub(super) struct WireRustOutputSpec {
     pub(super) misc: WireRustOutputSpecMisc,
-    pub(super) rust2dart: WireRustCodecOutputSpec,
     pub(super) dart2rust: WireRustCodecOutputSpec,
+    pub(super) rust2dart: WireRustCodecOutputSpec,
 }
 
 pub(super) fn generate(
@@ -40,13 +40,13 @@ pub(super) fn generate(
 
     Ok(WireRustOutputSpec {
         misc: misc::generate(context, &cache)?,
-        rust2dart: CodecMode::iter()
-            .map(WireRustCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate_encode(context, &cache.distinct_input_types))
-            .collect(),
         dart2rust: CodecMode::iter()
             .map(WireRustCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate_decode(context, &cache.distinct_types))
+            .flat_map(|codec| codec.generate_decode(context, &cache.distinct_input_types))
+            .collect(),
+        rust2dart: CodecMode::iter()
+            .map(WireRustCodecEntrypoint::from)
+            .flat_map(|codec| codec.generate_encode(context, &cache.distinct_types))
             .collect(),
     })
 }
