@@ -17,6 +17,6 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
 
 #[repr(C)]
 pub struct WireSyncReturnSseStruct {
-    pub ptr: *const u8,
+    pub ptr: *mut u8,
     pub len: i32,
 }

@@ -30,7 +30,7 @@ impl WireSyncReturnSrcTrait for WireSyncReturnDcoSrc {
     }
 
     unsafe fn from_raw(raw: Self::Target) -> Self {
-        Self::new(box_from_leak_ptr(raw))
+        Self::new(*box_from_leak_ptr(raw))
     }
 
     fn into_raw(self) -> Self::Target {
@@ -48,12 +48,12 @@ impl WireSyncReturnSrcTrait for WireSyncReturnSseSrc {
     type Target = WireSyncReturnSse;
 
     fn new(inner: DartAbi) -> Self {
-        Self(inner)
+        todo!()
     }
 
     unsafe fn from_raw(raw: Self::Target) -> Self {
         let WireSyncReturnSseStruct { ptr, len } = raw;
-        Self::new(vec_from_leak_ptr(ptr, len))
+        Self(vec_from_leak_ptr(ptr, len))
     }
 
     fn into_raw(self) -> Self::Target {
