@@ -11,3 +11,8 @@ impl BaseCodec for SseCodec {
         todo!()
     }
 }
+
+// TODO maybe move
+pub struct SseDeserializer {}
+
+pub struct SseSerializer {}
