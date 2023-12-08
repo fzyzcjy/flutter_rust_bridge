@@ -8,7 +8,7 @@ pub(crate) struct RustLang;
 impl LangTrait for RustLang {
     fn call_encode(&self, var_ty: &IrType, var_name: &str) -> String {
         format!(
-            "_sse_encode_{}(serializer, {})",
+            "_sse_encode_{}({}, serializer)",
             var_ty.safe_ident(),
             var_name
         )

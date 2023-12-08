@@ -74,9 +74,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer();
-        serializer.serialize_TODO(port_);
-        _sse_encode_i_32(serializer, a);
-        _sse_encode_i_32(serializer, b);
+        sseEncodeNativePort(port_, serializer);
+        _sse_encode_i_32(a, serializer);
+        _sse_encode_i_32(b, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_hello(raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },

@@ -37,7 +37,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
     fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, wire_func_name: &str) -> String {
         let maybe_serialize_port = if has_port_argument(func.mode) {
-            "serializer.serialize_TODO(port_);"
+            "sseEncodeNativePort(port_, serializer);"
         } else {
             ""
         };
