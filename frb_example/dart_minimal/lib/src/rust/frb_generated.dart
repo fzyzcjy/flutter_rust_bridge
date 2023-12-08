@@ -73,7 +73,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> hello({required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        TODO_generate_dart2rust_func_stmt_prepare_args;
+        final serializer = SseSerializer();
+        serializer.serialize_TODO(port_);
+        serializer.serialize_TODO(a);
+        serializer.serialize_TODO(b);
         return wire.wire_hello(ptr_, len_);
       },
       codec: SseCodec(

@@ -9,6 +9,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::WireDartCodecSseGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::body::generate_encode_or_decode;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
 
@@ -33,7 +34,15 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 
 impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
-        vec!["TODO_generate_dart2rust_func_stmt_prepare_args;".into()]
+        let mut lines = vec![];
+        lines.push("final serializer = SseSerializer();".into());
+        if has_port_argument(func.mode) {
+            lines.push("serializer.serialize_TODO(port_);".into());
+        }
+        for input in func.inputs.iter() {
+            lines.push(format!("serializer.serialize_TODO({});", input.name));
+        }
+        lines
     }
 
     fn generate_dart2rust_func_wire_param_list(
