@@ -4,11 +4,11 @@ use crate::dart_fn::DartFnFuture;
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
-use crate::handler::error_handler::ErrorHandler;
+use crate::handler::error_handler::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::HandlerConfig;
 use crate::handler::handler::{Handler, TaskContext, TaskInfo, TaskRetFutTrait};
-use crate::handler::implementation::error_handler::NoOpErrorHandler;
+use crate::handler::implementation::error_handler::NoOpErrorListener;
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::message_port_to_handle;
@@ -27,13 +27,13 @@ use std::sync::Mutex;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler<TP> =
-    SimpleHandler<SimpleExecutor<NoOpErrorHandler, TP, SimpleAsyncRuntime>, NoOpErrorHandler>;
+    SimpleHandler<SimpleExecutor<NoOpErrorListener, TP, SimpleAsyncRuntime>, NoOpErrorListener>;
 
 impl<TP: BaseThreadPool> DefaultHandler<TP> {
     pub fn new_simple(thread_pool: TP) -> Self {
         Self::new(
-            SimpleExecutor::new(NoOpErrorHandler, thread_pool, Default::default()),
-            NoOpErrorHandler,
+            SimpleExecutor::new(NoOpErrorListener, thread_pool, Default::default()),
+            NoOpErrorListener,
         )
     }
 
@@ -43,13 +43,13 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
-pub struct SimpleHandler<E: Executor, EH: ErrorHandler> {
+pub struct SimpleHandler<E: Executor, EH: ErrorListener> {
     executor: E,
     error_handler: EH,
     config: Mutex<Option<HandlerConfig>>,
 }
 
-impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
+impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
     /// Create a new default handler.
     pub fn new(executor: E, error_handler: H) -> Self {
         SimpleHandler {
@@ -60,7 +60,7 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
     }
 }
 
-impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
+impl<E: Executor, EH: ErrorListener> Handler for SimpleHandler<E, EH> {
     fn initialize(&self, config: HandlerConfig) {
         // Again, as mentioned below, ensure panics never cross FFI boundary
         let _ = panic::catch_unwind(|| {
@@ -184,7 +184,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     }
 }
 
-impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
+impl<E: Executor, EH: ErrorListener> SimpleHandler<E, EH> {
     fn wrap_normal_or_async<Rust2DartCodec, PrepareFn, TaskFn, TaskFnRet, ExecuteFn>(
         &self,
         task_info: TaskInfo,

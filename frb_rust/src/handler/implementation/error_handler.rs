@@ -2,16 +2,16 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::handler::error::Error;
-use crate::handler::error_handler::ErrorHandler;
+use crate::handler::error_handler::ErrorListener;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::sender::Rust2DartSender;
 
-/// The default error handler used by generated code.
+/// The default one.
 #[derive(Clone, Copy)]
-pub struct NoOpErrorHandler;
+pub struct NoOpErrorListener;
 
-impl ErrorHandler for NoOpErrorHandler {
+impl ErrorListener for NoOpErrorListener {
     fn on_error(&self, error: Error) {
         // nothing
     }

@@ -2,7 +2,7 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::handler::error::Error;
-use crate::handler::error_handler::ErrorHandler;
+use crate::handler::error_handler::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::misc::into_into_dart::IntoIntoDart;
@@ -23,13 +23,13 @@ use std::panic::{AssertUnwindSafe, UnwindSafe};
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
 /// handled by a different thread.
-pub struct SimpleExecutor<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> {
+pub struct SimpleExecutor<EH: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> {
     error_handler: EH,
     thread_pool: TP,
     async_runtime: AR,
 }
 
-impl<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<EH, TP, AR> {
+impl<EH: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<EH, TP, AR> {
     /// Create a new executor backed by a thread pool.
     pub fn new(error_handler: EH, thread_pool: TP, async_runtime: AR) -> Self {
         SimpleExecutor {
@@ -44,7 +44,7 @@ impl<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<
     }
 }
 
-impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
+impl<EH: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
     for SimpleExecutor<EH, TP, AR>
 {
     fn execute_normal<Rust2DartCodec, TaskFn>(&self, task_info: TaskInfo, task: TaskFn)
@@ -141,7 +141,7 @@ impl ExecuteNormalOrAsyncUtils {
         eh: EH,
         port: MessagePort,
     ) where
-        EH: ErrorHandler + Sync,
+        EH: ErrorListener + Sync,
         Rust2DartCodec: BaseCodec,
     {
         match ret {
