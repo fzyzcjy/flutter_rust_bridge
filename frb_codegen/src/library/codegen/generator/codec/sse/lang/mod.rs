@@ -24,7 +24,7 @@ pub(crate) trait LangTrait {
 
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String;
 
-    fn null(&self) -> String;
+    fn null(&self) -> &'static str;
 
-    fn var_decl(&self) -> String;
+    fn var_decl(&self) -> &'static str;
 }
