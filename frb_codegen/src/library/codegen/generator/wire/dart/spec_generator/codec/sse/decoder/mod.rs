@@ -31,7 +31,7 @@ fn generate_for_type(
     Acc::new_common(
         format!(
             "
-            void _sse_encode_{safe_ident}(Serializer serializer, {dart_api_type} src) {{
+            {dart_api_type} _sse_decode_{safe_ident}(Serializer serializer) {{
                 {body}
             }}
             "
