@@ -15,6 +15,7 @@ use crate::platform_types::DartAbi;
 use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
 use crate::rust2dart::action::Rust2DartAction;
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrcTrait;
 use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 use crate::thread_pool::BaseThreadPool;
 use allo_isolate::ffi::DartCObject;

@@ -1,5 +1,6 @@
 use crate::for_generated::{box_from_leak_ptr, new_leak_vec_ptr, vec_from_leak_ptr};
 use crate::platform_types::{WireSyncReturnDco, WireSyncReturnSse};
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrcTrait;
 use crate::rust2dart::wire_sync_return_src::{WireSyncReturnDcoSrc, WireSyncReturnSseSrc};
 pub use allo_isolate::*;
 use dart_sys::Dart_DeletePersistentHandle_DL;
