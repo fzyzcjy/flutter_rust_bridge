@@ -30,15 +30,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 }
 
 impl WireDartCodecEntrypointTrait<'_> for DcoWireDartCodecEntrypoint {
-    fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
-        unreachable!()
-    }
-
-    fn generate_dart2rust_func_wire_param_list(
-        &self,
-        func: &IrFunc,
-        num_prepare_args: usize,
-    ) -> Vec<String> {
+    fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, wire_func_name: &str) -> String {
         unreachable!()
     }
 }

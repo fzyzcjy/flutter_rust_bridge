@@ -12,6 +12,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDart
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
+use itertools::Itertools;
 
 pub(crate) struct SseWireDartCodecEntrypoint {}
 
@@ -33,24 +34,23 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 }
 
 impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
-    fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
-        let mut lines = vec![];
-        lines.push("final serializer = SseSerializer();".into());
-        if has_port_argument(func.mode) {
-            lines.push("serializer.serialize_TODO(port_);".into());
-        }
-        for input in func.inputs.iter() {
-            lines.push(format!("serializer.serialize_TODO({});", input.name));
-        }
-        lines.push("final (ptr_, len_) = serializer.createLeakedNative();".into());
-        lines
-    }
-
-    fn generate_dart2rust_func_wire_param_list(
-        &self,
-        _func: &IrFunc,
-        _num_prepare_args: usize,
-    ) -> Vec<String> {
-        vec!["ptr_".into(), "len_".into()]
+    fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, wire_func_name: &str) -> String {
+        let maybe_serialize_port = if has_port_argument(func.mode) {
+            "serializer.serialize_TODO(port_);"
+        } else {
+            ""
+        };
+        let serialize_inputs = (func.inputs.iter())
+            .map(|input| format!("serializer.serialize_TODO({});", input.name))
+            .join("\n");
+        format!(
+            "
+            final serializer = SseSerializer();
+            {maybe_serialize_port}{serialize_inputs}
+            final (ptr_, len_) = serializer.createLeakedNative();
+            // TODO free pointer
+            return {wire_func_name}(ptr_, len_);
+            "
+        )
     }
 }

@@ -32,8 +32,9 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 }
 
 impl WireDartCodecEntrypointTrait<'_> for CstWireDartCodecEntrypoint {
-    fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
-        func.inputs
+    fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, wire_func_name: &str) -> String {
+        let prepare_stmts = func
+            .inputs
             .iter()
             .enumerate()
             .map(|(index, input)| {
@@ -43,24 +44,24 @@ impl WireDartCodecEntrypointTrait<'_> for CstWireDartCodecEntrypoint {
                     name = &input.name.dart_style()
                 )
             })
-            .collect_vec()
-    }
-
-    fn generate_dart2rust_func_wire_param_list(
-        &self,
-        func: &IrFunc,
-        num_prepare_args: usize,
-    ) -> Vec<String> {
-        [
+            .collect_vec();
+        let params = [
             if has_port_argument(func.mode) {
                 vec!["port_".to_owned()]
             } else {
                 vec![]
             },
-            (0..num_prepare_args)
+            (0..prepare_stmts.len())
                 .map(|index| format!("arg{index}"))
                 .collect_vec(),
         ]
-        .concat()
+        .concat();
+        format!(
+            "{}
+            return {wire_func_name}({});
+            ",
+            prepare_stmts.join("\n"),
+            params.join(", ")
+        )
     }
 }

@@ -18,11 +18,5 @@ codegen_codec_structs!(WireDartCodec, WireDartOutputCode);
 pub(crate) trait WireDartCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, WireDartCodecOutputSpec>
 {
-    fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String>;
-
-    fn generate_dart2rust_func_wire_param_list(
-        &self,
-        func: &IrFunc,
-        num_prepare_args: usize,
-    ) -> Vec<String>;
+    fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, wire_func_name: &str) -> String;
 }

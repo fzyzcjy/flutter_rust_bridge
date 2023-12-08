@@ -22,10 +22,9 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
 
-    let stmt_prepare_args = dart2rust_codec.generate_dart2rust_func_stmt_prepare_args(func);
-    let wire_param_list = dart2rust_codec
-        .generate_dart2rust_func_wire_param_list(func, stmt_prepare_args.len())
-        .join(", ");
+    let wire_func_name = wire_func_name(func);
+    let inner_func_stmt =
+        dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &format!("wire.{wire_func_name}"));
     let execute_func_name = generate_execute_func_name(func);
 
     let codec = generate_rust2dart_codec_object(func);
@@ -33,17 +32,14 @@ pub(crate) fn generate_api_impl_normal_function(
     let arg_values = generate_arg_values(func);
 
     let task_class = generate_task_class(func);
-    let wire_func_name = wire_func_name(func);
 
-    let stmt_prepare_args = stmt_prepare_args.join("\n");
     let func_expr = api_dart_func.func_expr;
 
     let function_implementation = format!(
         "@override {func_expr} {{
             return handler.{execute_func_name}({task_class}(
                 callFfi: ({call_ffi_args}) {{
-                  {stmt_prepare_args}
-                  return wire.{wire_func_name}({wire_param_list});
+                  {inner_func_stmt}
                 }},
                 codec: {codec},
                 constMeta: {const_meta_field_name},
