@@ -17,18 +17,18 @@ impl BaseCodec for SseCodec {
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
         let msg = error_to_string(error);
-        Self::encode(|serializer| TODO, Rust2DartAction::Panic)
+        Self::encode(Rust2DartAction::Panic, |serializer| TODO)
     }
 
     fn encode_close_stream() -> Self::Message {
-        Self::encode(|_| {}, Rust2DartAction::CloseStream)
+        Self::encode(Rust2DartAction::CloseStream, |_| {})
     }
 }
 
 impl SseCodec {
     pub fn encode(
-        data_fn: impl FnOnce(&mut SseSerializer),
         result_code: Rust2DartAction,
+        data_fn: impl FnOnce(&mut SseSerializer),
     ) -> Rust2DartMessageSse {
         let mut serializer = SseSerializer::new();
         serialize_reuslt_code;

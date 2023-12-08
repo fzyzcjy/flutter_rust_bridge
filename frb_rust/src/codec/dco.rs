@@ -14,7 +14,7 @@ impl BaseCodec for DcoCodec {
     type Message = Rust2DartMessageDco;
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
-        Self::encode(error_to_string(error), Rust2DartAction::Panic)
+        Self::encode(Rust2DartAction::Panic, error_to_string(error))
     }
 
     fn encode_close_stream() -> Self::Message {
@@ -23,7 +23,7 @@ impl BaseCodec for DcoCodec {
 }
 
 impl DcoCodec {
-    pub fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Rust2DartMessageDco {
+    pub fn encode<T: IntoDart>(result_code: Rust2DartAction, data: T) -> Rust2DartMessageDco {
         Rust2DartMessageDco(vec![result_code.into_dart(), data.into_dart()].into_dart())
     }
 }
@@ -64,9 +64,9 @@ where
 {
     match raw {
         Ok(raw) => Ok(DcoCodec::encode(
-            raw.into_into_dart(),
             Rust2DartAction::Success,
+            raw.into_into_dart(),
         )),
-        Err(raw) => Err(DcoCodec::encode(raw, Rust2DartAction::Error)),
+        Err(raw) => Err(DcoCodec::encode(Rust2DartAction::Error, raw)),
     }
 }
