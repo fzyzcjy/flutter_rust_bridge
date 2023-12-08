@@ -32,7 +32,7 @@ macro_rules! codegen_codec_structs {
     (@private $struct_name:ident ; $($name:ident),*,) => (
         paste::paste! {
             pub(crate) struct $struct_name<'a>(
-                pub Box<dyn [<$struct_name Trait>]<'a>>
+                Box<dyn [<$struct_name Trait>]<'a>>
             );
 
             impl<'a> $struct_name<'a> {
