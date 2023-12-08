@@ -21,18 +21,18 @@ use itertools::Itertools;
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<String> {
         match &self.ir {
-            ty @ IrTypeDelegate::StringList => Some(generate_class_from_fields(
-                self.ir.clone(),
-                self.context,
-                &[
-                    format!(
-                        "ptr: *mut *mut {}",
-                        WireRustCodecCstGenerator::new(ty.get_delegate(), self.context)
-                            .rust_wire_type(Target::Io)
-                    ),
-                    "len: i32".to_owned(),
-                ],
-            )),
+            // ty @ IrTypeDelegate::StringList => Some(generate_class_from_fields(
+            //     self.ir.clone(),
+            //     self.context,
+            //     &[
+            //         format!(
+            //             "ptr: *mut *mut {}",
+            //             WireRustCodecCstGenerator::new(ty.get_delegate(), self.context)
+            //                 .rust_wire_type(Target::Io)
+            //         ),
+            //         "len: i32".to_owned(),
+            //     ],
+            // )),
             _ => None,
         }
     }
@@ -65,7 +65,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()))
             },
-            IrTypeDelegate::StringList => general_list_impl_decode_body(),
+            // IrTypeDelegate::StringList => general_list_impl_decode_body(),
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum{ ir, .. }) => {
                 let enu = ir.get(self.context.ir_pack);
                 let variants =
@@ -106,23 +106,23 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                     ..Default::default()
                 }
             },
-            IrTypeDelegate::TimeList(_) => {
-                Acc::distribute(
-                    Some(
-                        "let vec: Vec<i64> = self.cst_decode(); vec.into_iter().map(CstDecodable::cst_decode).collect()".into()
-                    )
-                )
-            }
+            // IrTypeDelegate::TimeList(_) => {
+            //     Acc::distribute(
+            //         Some(
+            //             "let vec: Vec<i64> = self.cst_decode(); vec.into_iter().map(CstDecodable::cst_decode).collect()".into()
+            //         )
+            //     )
+            // }
             IrTypeDelegate::Uuid => Acc::distribute(
                 Some(
                     "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::cst_decode_uuid_ref(single.as_slice())".into(),
                 ),
             ),
-            IrTypeDelegate::Uuids => Acc::distribute(
-                Some(
-                    "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::cst_decode_uuids(multiple)".into(),
-                ),
-            ),
+            // IrTypeDelegate::Uuids => Acc::distribute(
+            //     Some(
+            //         "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::cst_decode_uuids(multiple)".into(),
+            //     ),
+            // ),
             IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "self.cst_decode()".into(),
         }
     }
@@ -141,9 +141,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
             }
             IrTypeDelegate::Time(_) => "CstDecodable::<i64>::cst_decode(self).cst_decode()".into(),
-            IrTypeDelegate::TimeList(_) =>
-                "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(CstDecodable::cst_decode).collect()".into(),
-            IrTypeDelegate::Uuid | IrTypeDelegate::Uuids => {
+            // IrTypeDelegate::TimeList(_) =>
+            //     "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(CstDecodable::cst_decode).collect()".into(),
+            IrTypeDelegate::Uuid /*| IrTypeDelegate::Uuids*/ => {
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
             }
@@ -158,16 +158,16 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
 
     fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
         match &self.ir {
-            list @ IrTypeDelegate::StringList => Acc {
-                io: generate_list_generate_allocate_func(
-                    &self.ir.safe_ident(),
-                    &IrType::Delegate(list.clone()),
-                    &list.get_delegate(),
-                    self.context,
-                )
-                .into(),
-                ..Default::default()
-            },
+            // list @ IrTypeDelegate::StringList => Acc {
+            //     io: generate_list_generate_allocate_func(
+            //         &self.ir.safe_ident(),
+            //         &IrType::Delegate(list.clone()),
+            //         &list.get_delegate(),
+            //         self.context,
+            //     )
+            //     .into(),
+            //     ..Default::default()
+            // },
             _ => Default::default(),
         }
     }
@@ -175,8 +175,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
     fn rust_wire_type(&self, target: Target) -> String {
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
-            (IrTypeDelegate::StringList, Target::Io) => "wire_cst_StringList".to_owned(),
-            (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
+            // (IrTypeDelegate::StringList, Target::Io) => "wire_cst_StringList".to_owned(),
+            // (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
             _ => WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context)
                 .rust_wire_type(target),
         }

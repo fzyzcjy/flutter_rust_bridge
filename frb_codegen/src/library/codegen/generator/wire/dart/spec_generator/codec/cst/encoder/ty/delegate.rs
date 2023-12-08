@@ -57,18 +57,18 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 );
                 Acc::distribute(Some(body))
             }
-            IrTypeDelegate::StringList => Acc {
-                io: Some(
-                    "final ans = wire.cst_new_StringList(raw.length);
-                    for (var i = 0; i < raw.length; i++){
-                        ans.ref.ptr[i] = cst_encode_String(raw[i]);
-                    }
-                    return ans;"
-                        .to_string(),
-                ),
-                wasm: Some("return raw;".into()),
-                ..Default::default()
-            },
+            // IrTypeDelegate::StringList => Acc {
+            //     io: Some(
+            //         "final ans = wire.cst_new_StringList(raw.length);
+            //         for (var i = 0; i < raw.length; i++){
+            //             ans.ref.ptr[i] = cst_encode_String(raw[i]);
+            //         }
+            //         return ans;"
+            //             .to_string(),
+            //     ),
+            //     wasm: Some("return raw;".into()),
+            //     ..Default::default()
+            // },
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ref repr, .. }) => {
                 format!("return cst_encode_{}(raw.index);", repr.safe_ident()).into()
             }
@@ -86,24 +86,24 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                     ..Default::default()
                 },
             },
-            IrTypeDelegate::TimeList(t) => Acc::distribute(Some(format!(
-                "final ans = Int64List(raw.length);
-                for (var i=0; i < raw.length; ++i) ans[i] = cst_encode_{}(raw[i]);
-                return cst_encode_list_prim_i_64(ans);",
-                IrTypeDelegate::Time(*t).safe_ident()
-            ))),
+            // IrTypeDelegate::TimeList(t) => Acc::distribute(Some(format!(
+            //     "final ans = Int64List(raw.length);
+            //     for (var i=0; i < raw.length; ++i) ans[i] = cst_encode_{}(raw[i]);
+            //     return cst_encode_list_prim_i_64(ans);",
+            //     IrTypeDelegate::Time(*t).safe_ident()
+            // ))),
             IrTypeDelegate::Uuid => Acc::distribute(Some(format!(
                 "return cst_encode_{}(raw.toBytes());",
                 uint8list_safe_ident()
             ))),
-            IrTypeDelegate::Uuids => Acc::distribute(Some(format!(
-                "final builder = BytesBuilder();
-                for (final element in raw) {{
-                  builder.add(element.toBytes());
-                }}
-                return cst_encode_{}(builder.toBytes());",
-                uint8list_safe_ident()
-            ))),
+            // IrTypeDelegate::Uuids => Acc::distribute(Some(format!(
+            //     "final builder = BytesBuilder();
+            //     for (final element in raw) {{
+            //       builder.add(element.toBytes());
+            //     }}
+            //     return cst_encode_{}(builder.toBytes());",
+            //     uint8list_safe_ident()
+            // ))),
             IrTypeDelegate::Backtrace => unimplemented!(),
             IrTypeDelegate::Anyhow => unimplemented!(),
         }
@@ -112,8 +112,8 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
     fn dart_wire_type(&self, target: Target) -> String {
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
-            (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
-            (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_cst_StringList>".to_owned(),
+            // (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
+            // (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_cst_StringList>".to_owned(),
             _ => WireDartCodecCstGenerator::new(self.ir.get_delegate(), self.context)
                 .dart_wire_type(target),
         }

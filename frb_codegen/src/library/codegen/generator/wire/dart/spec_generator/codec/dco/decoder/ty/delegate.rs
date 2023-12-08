@@ -41,9 +41,9 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 gen_decode_simple_type_cast(self.ir.clone().into(), self.context)
             }
-            IrTypeDelegate::StringList => {
-                "return (raw as List<dynamic>).cast<String>();".to_owned()
-            }
+            // IrTypeDelegate::StringList => {
+            //     "return (raw as List<dynamic>).cast<String>();".to_owned()
+            // }
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
                 format!(
                     "return {}.values[raw as int];",
@@ -61,24 +61,24 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
                     )
                 }
             }
-            IrTypeDelegate::TimeList(t) => {
-                format!(
-                    "return (raw as List<dynamic>).map(_dco_decode_{}).toList();",
-                    IrTypeDelegate::Time(*t).safe_ident()
-                )
-            }
+            // IrTypeDelegate::TimeList(t) => {
+            //     format!(
+            //         "return (raw as List<dynamic>).map(_dco_decode_{}).toList();",
+            //         IrTypeDelegate::Time(*t).safe_ident()
+            //     )
+            // }
             IrTypeDelegate::Uuid => {
                 "return UuidValue.fromByteList(_dco_decode_list_prim_u_8(raw));".to_owned()
             }
-            IrTypeDelegate::Uuids =>
-                "const kUuidSizeInBytes = 16;
-                final bytes = _dco_decode_list_prim_u_8(raw);
-                return List.generate(
-                  bytes.lengthInBytes ~/ kUuidSizeInBytes,
-                  (i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * kUuidSizeInBytes, kUuidSizeInBytes)),
-                  growable: false,
-                );
-                ".to_owned(),
+            // IrTypeDelegate::Uuids =>
+            //     "const kUuidSizeInBytes = 16;
+            //     final bytes = _dco_decode_list_prim_u_8(raw);
+            //     return List.generate(
+            //       bytes.lengthInBytes ~/ kUuidSizeInBytes,
+            //       (i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * kUuidSizeInBytes, kUuidSizeInBytes)),
+            //       growable: false,
+            //     );
+            //     ".to_owned(),
             IrTypeDelegate::Anyhow => "return AnyhowException(raw as String);".to_owned(),
         }
     }

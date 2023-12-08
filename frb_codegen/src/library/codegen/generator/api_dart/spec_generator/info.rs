@@ -50,7 +50,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
         match &self.ir {
             IrTypeDelegate::Array(array) => array.dart_api_type(self.context),
             IrTypeDelegate::String => "String".to_string(),
-            IrTypeDelegate::StringList => "List<String>".to_owned(),
+            // IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 ApiDartGenerator::new(self.ir.get_delegate(), self.context).dart_api_type()
             }
@@ -63,12 +63,12 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
                 }
                 IrTypeDelegateTime::Duration => "Duration".to_string(),
             },
-            IrTypeDelegate::TimeList(
-                IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive,
-            ) => "List<DateTime>".to_string(),
-            IrTypeDelegate::TimeList(IrTypeDelegateTime::Duration) => "List<Duration>".to_string(),
+            // IrTypeDelegate::TimeList(
+            //     IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive,
+            // ) => "List<DateTime>".to_string(),
+            // IrTypeDelegate::TimeList(IrTypeDelegateTime::Duration) => "List<Duration>".to_string(),
             IrTypeDelegate::Uuid => "UuidValue".to_owned(),
-            IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
+            // IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_string(),
             IrTypeDelegate::Anyhow => "AnyhowException".to_string(),
         }
@@ -76,7 +76,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
 
     fn dart_import(&self) -> Option<String> {
         match &self.ir {
-            IrTypeDelegate::Uuid | IrTypeDelegate::Uuids => {
+            IrTypeDelegate::Uuid /*| IrTypeDelegate::Uuids*/ => {
                 Some("import 'package:uuid/uuid.dart';".to_owned())
             }
             _ => None,

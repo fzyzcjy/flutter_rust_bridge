@@ -18,14 +18,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
-            ("Vec", Some(Generic([Delegate(IrTypeDelegate::String)]))) => {
-                Delegate(IrTypeDelegate::StringList)
-            }
-
-            ("Vec", Some(Generic([Delegate(IrTypeDelegate::Uuid)]))) => {
-                Delegate(IrTypeDelegate::Uuids)
-            }
-
+            // ("Vec", Some(Generic([Delegate(IrTypeDelegate::String)]))) => {
+            //     Delegate(IrTypeDelegate::StringList)
+            // }
+            //
+            // ("Vec", Some(Generic([Delegate(IrTypeDelegate::Uuid)]))) => {
+            //     Delegate(IrTypeDelegate::Uuids)
+            // }
             ("Vec", Some(Generic([Primitive(primitive)]))) => {
                 // Since Dart doesn't have a boolean primitive list like `Uint8List`,
                 // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
@@ -40,10 +39,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 }
             }
 
-            ("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))]))) => {
-                Delegate(IrTypeDelegate::TimeList(*time))
-            }
-
+            // ("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))]))) => {
+            //     Delegate(IrTypeDelegate::TimeList(*time))
+            // }
             ("Vec", Some(Generic([element]))) => GeneralList(IrTypeGeneralList {
                 inner: Box::new(element.clone()),
             }),
