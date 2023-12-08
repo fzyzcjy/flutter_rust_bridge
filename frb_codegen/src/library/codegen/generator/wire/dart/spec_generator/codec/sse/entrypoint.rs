@@ -16,7 +16,10 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
         context: WireDartGeneratorContext,
         types: &[IrType],
     ) -> Option<WireDartCodecOutputSpec> {
-        None // TODO
+        Some(super::encoder::generate(
+            context.as_wire_dart_codec_sse_context(),
+            types,
+        ))
     }
 
     fn generate_decode(
@@ -24,7 +27,10 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
         context: WireDartGeneratorContext,
         types: &[IrType],
     ) -> Option<WireDartCodecOutputSpec> {
-        None // TODO
+        Some(super::decoder::generate(
+            context.as_wire_dart_codec_sse_context(),
+            types,
+        ))
     }
 }
 
