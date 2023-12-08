@@ -109,3 +109,21 @@ fn generate_arg_values(func: &IrFunc) -> String {
         .map(|input| input.name.dart_style())
         .join(", ")
 }
+
+fn generate_rust2dart_codec_object(func: &IrFunc) -> String {
+    let parse_success_data = format!("_dco_decode_{}", func.output.safe_ident());
+    let parse_error_data = if let Some(error_output) = &func.error_output {
+        format!("_dco_decode_{}", error_output.safe_ident())
+    } else {
+        "null".to_string()
+    };
+    let codec_name = func.codec_mode_pack.rust2dart.to_string();
+    format!(
+        "
+        {codec_name}Codec(
+          parseSuccessData: {parse_success_data},
+          parseErrorData: {parse_error_data},
+        )
+        "
+    )
+}

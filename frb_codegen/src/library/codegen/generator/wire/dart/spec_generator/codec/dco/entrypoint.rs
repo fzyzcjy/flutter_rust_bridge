@@ -41,21 +41,4 @@ impl WireDartCodecEntrypointTrait<'_> for DcoWireDartCodecEntrypoint {
     ) -> Vec<String> {
         unreachable!()
     }
-
-    fn generate_rust2dart_codec_object(&self, func: &IrFunc) -> String {
-        let parse_success_data = format!("_dco_decode_{}", func.output.safe_ident());
-        let parse_error_data = if let Some(error_output) = &func.error_output {
-            format!("_dco_decode_{}", error_output.safe_ident())
-        } else {
-            "null".to_string()
-        };
-        format!(
-            "
-            DcoCodec(
-              parseSuccessData: {parse_success_data},
-              parseErrorData: {parse_error_data},
-            )
-            "
-        )
-    }
 }

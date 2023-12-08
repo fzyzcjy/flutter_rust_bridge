@@ -25,6 +25,4 @@ pub(crate) trait WireDartCodecEntrypointTrait<'a>:
         func: &IrFunc,
         num_prepare_args: usize,
     ) -> Vec<String>;
-
-    fn generate_rust2dart_codec_object(&self, func: &IrFunc) -> String;
 }

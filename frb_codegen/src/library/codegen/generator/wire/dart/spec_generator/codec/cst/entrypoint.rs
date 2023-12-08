@@ -63,8 +63,4 @@ impl WireDartCodecEntrypointTrait<'_> for CstWireDartCodecEntrypoint {
         ]
         .concat()
     }
-
-    fn generate_rust2dart_codec_object(&self, func: &IrFunc) -> String {
-        unreachable!()
-    }
 }
