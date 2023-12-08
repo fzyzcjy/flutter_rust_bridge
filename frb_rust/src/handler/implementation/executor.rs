@@ -23,15 +23,15 @@ use std::panic::{AssertUnwindSafe, UnwindSafe};
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
 /// handled by a different thread.
-pub struct SimpleExecutor<EH: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> {
-    error_listener: EH,
+pub struct SimpleExecutor<EL: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> {
+    error_listener: EL,
     thread_pool: TP,
     async_runtime: AR,
 }
 
-impl<EH: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<EH, TP, AR> {
+impl<EL: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<EL, TP, AR> {
     /// Create a new executor backed by a thread pool.
-    pub fn new(error_listener: EH, thread_pool: TP, async_runtime: AR) -> Self {
+    pub fn new(error_listener: EL, thread_pool: TP, async_runtime: AR) -> Self {
         SimpleExecutor {
             error_listener,
             thread_pool,
@@ -44,8 +44,8 @@ impl<EH: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor
     }
 }
 
-impl<EH: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
-    for SimpleExecutor<EH, TP, AR>
+impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
+    for SimpleExecutor<EL, TP, AR>
 {
     fn execute_normal<Rust2DartCodec, TaskFn>(&self, task_info: TaskInfo, task: TaskFn)
     where
@@ -71,12 +71,12 @@ impl<EH: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
                 let ret = task(task_context);
 
                 ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(
-                    ret, mode, sender, eh2, port2,
+                    ret, mode, sender, el2, port2,
                 );
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
+                el.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
             }
         }));
     }
@@ -118,14 +118,14 @@ impl<EH: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
                 let ret = task(task_context).await;
 
                 ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(
-                    ret, mode, sender, eh2, port2,
+                    ret, mode, sender, el2, port2,
                 );
             }
             .catch_unwind()
             .await;
 
             if let Err(error) = async_result {
-                eh.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
+                el.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
             }
         });
     }
@@ -134,14 +134,14 @@ impl<EH: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
 struct ExecuteNormalOrAsyncUtils;
 
 impl ExecuteNormalOrAsyncUtils {
-    fn handle_result<Rust2DartCodec, EH>(
+    fn handle_result<Rust2DartCodec, EL>(
         ret: Result<DartCObject, DartCObject>,
         mode: FfiCallMode,
         sender: Rust2DartSender,
-        eh: EH,
+        el: EL,
         port: MessagePort,
     ) where
-        EH: ErrorListener + Sync,
+        EL: ErrorListener + Sync,
         Rust2DartCodec: BaseCodec,
     {
         match ret {
@@ -157,7 +157,7 @@ impl ExecuteNormalOrAsyncUtils {
                 }
             }
             Err(error) => {
-                eh.handle_error::<Rust2DartCodec>(port, Error::CustomError);
+                el.handle_error::<Rust2DartCodec>(port, Error::CustomError);
             }
         };
     }

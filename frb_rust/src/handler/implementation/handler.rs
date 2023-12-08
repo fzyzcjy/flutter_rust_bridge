@@ -43,9 +43,9 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
-pub struct SimpleHandler<E: Executor, EH: ErrorListener> {
+pub struct SimpleHandler<E: Executor, EL: ErrorListener> {
     executor: E,
-    error_listener: EH,
+    error_listener: EL,
     config: Mutex<Option<HandlerConfig>>,
 }
 
@@ -60,7 +60,7 @@ impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
     }
 }
 
-impl<E: Executor, EH: ErrorListener> Handler for SimpleHandler<E, EH> {
+impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
     fn initialize(&self, config: HandlerConfig) {
         // Again, as mentioned below, ensure panics never cross FFI boundary
         let _ = panic::catch_unwind(|| {
@@ -184,7 +184,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     }
 }
 
-impl<E: Executor, EH: ErrorListener> SimpleHandler<E, EH> {
+impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
     fn wrap_normal_or_async<Rust2DartCodec, PrepareFn, TaskFn, TaskFnRet, ExecuteFn>(
         &self,
         task_info: TaskInfo,
