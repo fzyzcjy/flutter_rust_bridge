@@ -178,11 +178,7 @@ where
     T2: flutter_rust_bridge::IntoDart,
     E: flutter_rust_bridge::IntoDart,
 {
-    todo!()
-    // match raw {
-    //     Ok(raw) => Ok(raw.into_into_dart().into_dart()),
-    //     Err(raw) => Err(raw.into_dart()),
-    // }
+    flutter_rust_bridge::for_generated::transform_result_dco(raw)
 }
 
 pub trait SseEncode {

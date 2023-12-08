@@ -2,6 +2,7 @@ use super::{BaseCodec, Rust2DartMessageTrait};
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
+use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::{DartAbi, WireSyncReturnDco};
 use crate::rust2dart::action::Rust2DartAction;
 use std::any::Any;
@@ -22,7 +23,7 @@ impl BaseCodec for DcoCodec {
 }
 
 impl DcoCodec {
-    fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Rust2DartMessageDco {
+    pub fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Rust2DartMessageDco {
         Rust2DartMessageDco(vec![result_code.into_dart(), data.into_dart()].into_dart())
     }
 }
@@ -50,5 +51,19 @@ impl Rust2DartMessageTrait for Rust2DartMessageDco {
 
         #[cfg(wasm)]
         return self.0;
+    }
+}
+
+pub fn transform_result_dco<T, T2, E>(
+    raw: Result<T, E>,
+) -> Result<Rust2DartMessageDco, Rust2DartMessageDco>
+where
+    T: IntoIntoDart<T2>,
+    T2: IntoDart,
+    E: IntoDart,
+{
+    match raw {
+        Ok(raw) => Ok(Rust2DartMessageDco(raw.into_into_dart().into_dart())),
+        Err(raw) => Err(Rust2DartMessageDco(raw.into_dart())),
     }
 }
