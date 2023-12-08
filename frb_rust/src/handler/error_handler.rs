@@ -9,7 +9,6 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 /// you could implement your own handler that logs each error to stderr,
 /// or to an external logging service.
 pub(crate) trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
-    /// The default error handler.
     fn on_error<Rust2DartCodec>(&self, error: Error)
     where
         Rust2DartCodec: BaseCodec;

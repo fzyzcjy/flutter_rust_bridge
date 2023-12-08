@@ -8,7 +8,7 @@ use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
 use crate::handler::handler::HandlerConfig;
 use crate::handler::handler::{Handler, TaskContext, TaskInfo, TaskRetFutTrait};
-use crate::handler::implementation::error_handler::ReportDartErrorHandler;
+use crate::handler::implementation::error_handler::NoOpErrorHandler;
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::message_port_to_handle;
@@ -26,16 +26,14 @@ use std::panic::UnwindSafe;
 use std::sync::Mutex;
 
 /// The default handler used by the generated code.
-pub type DefaultHandler<TP> = SimpleHandler<
-    SimpleExecutor<ReportDartErrorHandler, TP, SimpleAsyncRuntime>,
-    ReportDartErrorHandler,
->;
+pub type DefaultHandler<TP> =
+    SimpleHandler<SimpleExecutor<NoOpErrorHandler, TP, SimpleAsyncRuntime>, NoOpErrorHandler>;
 
 impl<TP: BaseThreadPool> DefaultHandler<TP> {
     pub fn new_simple(thread_pool: TP) -> Self {
         Self::new(
-            SimpleExecutor::new(ReportDartErrorHandler, thread_pool, Default::default()),
-            ReportDartErrorHandler,
+            SimpleExecutor::new(NoOpErrorHandler, thread_pool, Default::default()),
+            NoOpErrorHandler,
         )
     }
 
