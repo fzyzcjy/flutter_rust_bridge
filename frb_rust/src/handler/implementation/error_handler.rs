@@ -1,11 +1,11 @@
 use crate::codec::BaseCodec;
+use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::sender::Rust2DartSender;
-use crate::rust2dart::wire_sync_return_src::Rust2DartMessageTrait;
 
 /// The default error handler used by generated code.
 #[derive(Clone, Copy)]

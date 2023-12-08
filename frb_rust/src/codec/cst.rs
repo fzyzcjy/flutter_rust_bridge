@@ -1,8 +1,7 @@
-use super::BaseCodec;
+use super::{BaseCodec, Rust2DartMessageTrait};
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
 use crate::rust2dart::action::Rust2DartAction;
-use crate::rust2dart::wire_sync_return_src::Rust2DartMessageCst;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct CstCodec;

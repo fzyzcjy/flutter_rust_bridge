@@ -1,9 +1,10 @@
-use super::BaseCodec;
+use super::{BaseCodec, Rust2DartMessageTrait};
+use crate::for_generated::into_leak_vec_ptr;
 use crate::for_generated::vec_from_leak_ptr;
 use crate::generalized_isolate::IntoDart;
+use crate::platform_types::WireSyncReturnSseStruct;
 use crate::platform_types::{DartAbi, WireSyncReturnSse};
 use crate::rust2dart::action::Rust2DartAction;
-use crate::rust2dart::wire_sync_return_src::Rust2DartMessageSse;
 use std::io::Cursor;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

@@ -1,8 +1,8 @@
 use crate::codec::BaseCodec;
+use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::handler::{TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::misc::into_into_dart::IntoIntoDart;
-use crate::rust2dart::wire_sync_return_src::Rust2DartMessageTrait;
 use allo_isolate::ffi::DartCObject;
 use std::future::Future;
 use std::panic::{RefUnwindSafe, UnwindSafe};

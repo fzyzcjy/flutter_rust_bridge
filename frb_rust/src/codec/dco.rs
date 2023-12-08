@@ -1,8 +1,8 @@
-use super::BaseCodec;
+use super::{BaseCodec, Rust2DartMessageTrait};
+use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::{DartAbi, WireSyncReturnDco};
 use crate::rust2dart::action::Rust2DartAction;
-use crate::rust2dart::wire_sync_return_src::Rust2DartMessageDco;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct DcoCodec;

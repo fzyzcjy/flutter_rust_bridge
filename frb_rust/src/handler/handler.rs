@@ -1,4 +1,5 @@
 use crate::codec::BaseCodec;
+use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::DartFnFuture;
 use crate::generalized_isolate::{channel_to_handle, IntoDart};
 use crate::misc::into_into_dart::IntoIntoDart;
@@ -6,7 +7,6 @@ use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
 use crate::platform_types::{message_port_to_handle, DartAbi};
 use crate::rust2dart::context::TaskRust2DartContext;
-use crate::rust2dart::wire_sync_return_src::Rust2DartMessageTrait;
 use crate::DartOpaque;
 use allo_isolate::ffi::DartCObject;
 use std::future::Future;
