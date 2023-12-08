@@ -3,13 +3,11 @@
 
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
+import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-import 'api/minimal.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -80,8 +78,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         serializer.serialize_TODO(a);
         serializer.serialize_TODO(b);
         final (ptr_, len_) = serializer.createLeakedNative();
-        // TODO free pointer
-        return wire.wire_hello(ptr_, len_);
+        try {
+          return wire.wire_hello(ptr_, len_);
+        } finally {
+          TODO;
+        }
       },
       codec: SseCodec(
         parseSuccessData: _sse_decode_i_32,
