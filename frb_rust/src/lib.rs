@@ -25,7 +25,3 @@ pub use crate::misc::into_into_dart::IntoIntoDart;
 pub use crate::rust2dart::stream_sink::StreamSink;
 pub use crate::rust_opaque::{DartSafe, RustOpaque};
 pub use flutter_rust_bridge_macros::frb;
-
-// TODO temp test
-pub fn hi_function<Ret: IntoApple>() {}
-pub trait IntoApple {}
