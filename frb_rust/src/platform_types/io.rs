@@ -20,3 +20,9 @@ pub struct WireSyncReturnSseStruct {
     pub ptr: *const u8,
     pub len: i32,
 }
+
+impl Drop for WireSyncReturnSseStruct {
+    fn drop(&mut self) {
+        todo!()
+    }
+}
