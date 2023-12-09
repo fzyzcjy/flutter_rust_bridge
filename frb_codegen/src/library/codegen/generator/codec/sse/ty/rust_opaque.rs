@@ -52,11 +52,12 @@ pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &
         Lang::RustLang(_) => {
             format!(
                 "
+                let (ptr, size) = self.sse_encode_raw();
                 {};
                 {};
                 ",
-                lang.call_encode(&IrTypeRustOpaque::DELEGATE_TYPE, "TODO"),
-                lang.call_encode(&EXTERNAL_SIZE_TYPE, "TODO"),
+                lang.call_encode(&IrTypeRustOpaque::DELEGATE_TYPE, "ptr"),
+                lang.call_encode(&EXTERNAL_SIZE_TYPE, "size"),
             )
         }
     }
