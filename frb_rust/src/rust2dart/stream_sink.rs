@@ -8,18 +8,16 @@ use std::marker::PhantomData;
 /// Represented as a Dart
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 #[derive(Clone)]
-pub struct StreamSink<T> {
+pub struct StreamSink<T, Rust2DartCodec: BaseCodec = DcoCodec> {
     sendable_channel_handle: SendableChannelHandle,
-    rust2dart_codec: Box<dyn BaseCodec>,
-    _phantom_data: PhantomData<T>,
+    _phantom_data: (PhantomData<T>, PhantomData<Rust2DartCodec>),
 }
 
-impl<T> StreamSink<T> {
+impl<T, Rust2DartCodec: BaseCodec> StreamSink<T, Rust2DartCodec> {
     /// Create a new sink from a port wrapper.
-    pub fn new(sender: Rust2DartSender, rust2dart_codec: Box<dyn BaseCodec>) -> Self {
+    pub fn new(sender: Rust2DartSender) -> Self {
         Self {
             sendable_channel_handle: channel_to_handle(&sender.channel),
-            rust2dart_codec,
             _phantom_data: Default::default(),
         }
     }
@@ -39,6 +37,6 @@ impl<T> StreamSink<T> {
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
         self.sender()
-            .send(self.rust2dart_codec.encode_close_stream().into_dart_abi())
+            .send(Rust2DartCodec::encode_close_stream().into_dart_abi())
     }
 }
