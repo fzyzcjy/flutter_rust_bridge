@@ -10,7 +10,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
         let encode_flag = lang.call_encode(&Primitive(IrTypePrimitive::Bool), &self_is_not_null);
         let encode_self = lang.call_encode(&*self.ir.inner, "self");
 
-        match lang {
+        Some(match lang {
             Lang::DartLang(_) => format!(
                 "
                 {encode_flag};
@@ -27,18 +27,7 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
                 }}
                 ",
             ),
-        }
-
-        Some(format!(
-            "
-            {};
-            if ({self_is_not_null}) {{
-                {};
-            }}
-            ",
-            lang.call_encode(&Primitive(IrTypePrimitive::Bool), &self_is_not_null),
-            lang.call_encode(&*self.ir.inner, "self"),
-        ))
+        })
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
