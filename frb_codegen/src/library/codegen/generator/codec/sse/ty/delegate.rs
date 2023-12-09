@@ -36,7 +36,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         let wrapper_expr = match lang {
             Lang::DartLang(_) => match &self.ir {
-                IrTypeDelegate::Array(_) => "inner".to_owned(),
+                IrTypeDelegate::Array(_) => format!(
+                    "{}(inner)",
+                    ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+                        .dart_api_type()
+                ),
                 IrTypeDelegate::String => "utf8.decoder.convert(inner)".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(inner) => {
                     format!(
