@@ -5,9 +5,35 @@ use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
+        let src = self.ir.get(self.context.ir_pack);
+
         match lang {
             Lang::DartLang(_) => format!("return TODO;"),
-            Lang::RustLang(_) => format!("return TODO;"),
+            Lang::RustLang(_) => generate_enum_encode_rust(src, "self", "Self", |idx, variant| {
+                let fields = match &variant.kind {
+                    IrVariantKind::Value => "".to_owned(),
+                    IrVariantKind::Struct(st) => {
+                        (st.fields.iter())
+                            .map(|field| {
+                                format!(
+                                    "{};\n",
+                                    lang.call_encode(&field.ty, field.name.rust_style())
+                                )
+                            })
+                            .join("");
+                    }
+                };
+
+                format!(
+                    "
+                    {{
+                        {};
+                        {fields}
+                    }}
+                    ",
+                    lang.call_encode(Primitive(IrTypePrimitive::I32), idx),
+                )
+            }),
         }
     }
 
