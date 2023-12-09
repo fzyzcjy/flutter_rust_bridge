@@ -3,11 +3,9 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import
 
+import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
-import '../frb_generated.dart';
-
 part 'minimal.freezed.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
@@ -19,32 +17,11 @@ Future<Hello> hello({required Hello a, dynamic hint}) =>
 @freezed
 sealed class Hello with _$Hello {
   const factory Hello.apple() = Hello_Apple;
-
   const factory Hello.orange(
     int field0,
   ) = Hello_Orange;
-
   const factory Hello.raspi({
     required int x,
     required int y,
   }) = Hello_Raspi;
-}
-
-// temp exp
-void f(Hello hello) {
-  switch (hello) {
-    case Hello_Apple():
-      print('apple');
-    case Hello_Orange(field0: final field0):
-      print('$field0');
-    case Hello_Raspi(x: final x, y: final y):
-      print('$x $y');
-  }
-}
-
-void g(int x) {
-  switch (x) {
-    case 1:
-      print('a');
-  }
 }

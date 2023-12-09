@@ -113,7 +113,23 @@ impl SseDecode for crate::api::minimal::Hello {
 
 impl SseDecode for crate::api::minimal::Hello {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return TODO;
+        let mut tag_ = _sse_decode_i_32(serializer);
+        match tag_ {
+            0 => {
+                return crate::api::minimal::Hello::Apple();
+            }
+            1 => {
+                let mut field0 = _sse_decode_i_32(serializer);
+
+                return Orange { field0: field0 };
+            }
+            2 => {
+                let mut x = _sse_decode_i_32(serializer);
+                let mut y = _sse_decode_i_32(serializer);
+
+                return Raspi { x: x, y: y };
+            }
+        }
     }
 }
 
@@ -128,13 +144,19 @@ impl SseDecode for i32 {
 impl flutter_rust_bridge::IntoDart for crate::api::minimal::Hello {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::Apple => vec![0.into_dart()],
-            Self::Orange(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
-            Self::Raspi { x, y } => vec![
-                2.into_dart(),
-                x.into_into_dart().into_dart(),
-                y.into_into_dart().into_dart(),
-            ],
+            Self::Apple => {
+                vec![0.into_dart()]
+            }
+            Self::Orange(field0) => {
+                vec![1.into_dart(), field0.into_into_dart().into_dart()]
+            }
+            Self::Raspi { x, y } => {
+                vec![
+                    2.into_dart(),
+                    x.into_into_dart().into_dart(),
+                    y.into_into_dart().into_dart(),
+                ]
+            }
         }
         .into_dart()
     }
@@ -180,7 +202,20 @@ impl SseEncode for crate::api::minimal::Hello {
 
 impl SseEncode for crate::api::minimal::Hello {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        return TODO;
+        match self {
+            Self::Apple => {
+                _sse_encode_i_32(0, serializer);
+            }
+            Self::Orange(field0) => {
+                _sse_encode_i_32(1, serializer);
+                _sse_encode_i_32(field0, serializer);
+            }
+            Self::Raspi { x, y } => {
+                _sse_encode_i_32(2, serializer);
+                _sse_encode_i_32(x, serializer);
+                _sse_encode_i_32(y, serializer);
+            }
+        }
     }
 }
 

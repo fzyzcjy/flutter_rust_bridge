@@ -146,7 +146,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 // Section: rust2dart
 
 Hello _sse_decode_hello(SseDeserializer deserializer) {
-  return TODO;
+  var tag_ = _sse_decode_i_32(deserializer);
+  switch (tag_) {
+    case 0:
+      return Hello_Apple();
+    case 1:
+      var field0 = _sse_decode_i_32(deserializer);
+
+      return Orange(field0: field0);
+    case 2:
+      var x = _sse_decode_i_32(deserializer);
+      var y = _sse_decode_i_32(deserializer);
+
+      return Raspi(x: x, y: y);
+  }
 }
 
 int _sse_decode_i_32(SseDeserializer deserializer) {
@@ -166,7 +179,23 @@ void _sse_encode_box_autoadd_hello(Hello self, SseSerializer serializer) {
 }
 
 void _sse_encode_hello(Hello self, SseSerializer serializer) {
-  return TODO;
+  switch (self) {
+    case Self_Apple():
+      {
+        _sse_encode_i_32(0, serializer);
+      }
+    case Self_Orange(field0: final field0):
+      {
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_i_32(field0, serializer);
+      }
+    case Self_Raspi(x: final x, y: final y):
+      {
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_i_32(x, serializer);
+        _sse_encode_i_32(y, serializer);
+      }
+  }
 }
 
 void _sse_encode_i_32(int self, SseSerializer serializer) {
