@@ -74,7 +74,10 @@ impl GeneralizedStructGenerator {
                 &(self.st.fields.iter())
                     .map(|x| x.name.dart_style().clone())
                     .collect_vec(),
-                self.st.is_fields_named,
+                match lang {
+                    Lang::DartLang(_) => true,
+                    Lang::RustLang(_) => self.st.is_fields_named,
+                },
             ),
             StructOrRecord::Record => format!(
                 "({})",
