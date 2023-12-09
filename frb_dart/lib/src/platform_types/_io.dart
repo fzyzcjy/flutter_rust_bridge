@@ -3,7 +3,7 @@ import 'dart:ffi' as ffi;
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 export 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart'
-    show WireSyncReturn;
+    show WireSyncReturnDco;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 ///
