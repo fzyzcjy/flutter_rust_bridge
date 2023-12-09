@@ -24698,260 +24698,260 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 // Section: rust2dart
 
 AnyhowException _sse_decode_AnyhowException(SseDeserializer deserializer) {
-  var inner = _sse_decode_String(serializer);
+  var inner = _sse_decode_String(deserializer);
   return TODO;
 }
 
 RwLockBoxFnStringString
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockBoxHelloTraitTwinNormal
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockBoxHelloTraitTwinSync
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockBoxMyTraitTwinNormal
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockBoxMyTraitTwinSync
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockNonCloneSimpleTwinNormal
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockNonCloneSimpleTwinSync
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockStructWithGoodAndOpaqueFieldTwinNormal
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockStructWithGoodAndOpaqueFieldTwinSync
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 Duration _sse_decode_Chrono_Duration(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_64(serializer);
+  var inner = _sse_decode_i_64(deserializer);
   return TODO;
 }
 
 DateTime _sse_decode_Chrono_Local(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_64(serializer);
+  var inner = _sse_decode_i_64(deserializer);
   return TODO;
 }
 
 DateTime _sse_decode_Chrono_Naive(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_64(serializer);
+  var inner = _sse_decode_i_64(deserializer);
   return TODO;
 }
 
 DateTime _sse_decode_Chrono_Utc(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_64(serializer);
+  var inner = _sse_decode_i_64(deserializer);
   return TODO;
 }
 
 Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 ObjectArray1 _sse_decode_DartOpaque_array_1(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_DartOpaque(serializer);
+  var inner = _sse_decode_list_DartOpaque(deserializer);
   return TODO;
 }
 
 MutexHideData _sse_decode_RustOpaque_MutexHideData(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockHideData _sse_decode_RustOpaque_RwLockHideData(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 BoxDartDebugTwinNormal _sse_decode_RustOpaque_box_dynDartDebugTwinNormal(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 BoxDartDebugTwinRustAsync _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 BoxDartDebugTwinSync _sse_decode_RustOpaque_box_dynDartDebugTwinSync(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 FrbOpaqueReturn _sse_decode_RustOpaque_frb_opaque_return(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 FrbOpaqueSyncReturn _sse_decode_RustOpaque_frb_opaque_sync_return(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 HideData _sse_decode_RustOpaque_hide_data(SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 HideDataArray2 _sse_decode_RustOpaque_hide_data_array_2(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_RustOpaque_hide_data(serializer);
+  var inner = _sse_decode_list_RustOpaque_hide_data(deserializer);
   return TODO;
 }
 
 I32 _sse_decode_RustOpaque_i_32(SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 NonCloneData _sse_decode_RustOpaque_non_clone_data(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 NonSendHideData _sse_decode_RustOpaque_non_send_hide_data(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockBoxFnStringString
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockBoxHelloTraitTwinNormal
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockBoxHelloTraitTwinSync
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockBoxMyTraitTwinNormal
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockBoxMyTraitTwinSync
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockNonCloneSimpleTwinNormal
     _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockNonCloneSimpleTwinSync
     _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockStructWithGoodAndOpaqueFieldTwinNormal
     _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 RwLockStructWithGoodAndOpaqueFieldTwinSync
     _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(serializer);
+  var inner = _sse_decode_usize(deserializer);
   return inner;
 }
 
 String _sse_decode_String(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(serializer);
+  var inner = _sse_decode_list_prim_u_8(deserializer);
   return TODO;
 }
 
 UuidValue _sse_decode_Uuid(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(serializer);
+  var inner = _sse_decode_list_prim_u_8(deserializer);
   return TODO;
 }
 
 ATwinNormal _sse_decode_a_twin_normal(SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return ATwinNormal(a: a);
 }
 
 ATwinRustAsync _sse_decode_a_twin_rust_async(SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return ATwinRustAsync(a: a);
 }
 
 ATwinSync _sse_decode_a_twin_sync(SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return ATwinSync(a: a);
 }
@@ -24970,42 +24970,42 @@ AbcTwinSync _sse_decode_abc_twin_sync(SseDeserializer deserializer) {
 
 AnotherMacroStructTwinNormal _sse_decode_another_macro_struct_twin_normal(
     SseDeserializer deserializer) {
-  var data = _sse_decode_i_32(serializer);
-  var nonFinalData = _sse_decode_i_32(serializer);
+  var data = _sse_decode_i_32(deserializer);
+  var nonFinalData = _sse_decode_i_32(deserializer);
 
   return AnotherMacroStructTwinNormal(data: data, nonFinalData: nonFinalData);
 }
 
 AnotherTwinNormal _sse_decode_another_twin_normal(
     SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return AnotherTwinNormal(a: a);
 }
 
 AnotherTwinRustAsync _sse_decode_another_twin_rust_async(
     SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return AnotherTwinRustAsync(a: a);
 }
 
 AnotherTwinSync _sse_decode_another_twin_sync(SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return AnotherTwinSync(a: a);
 }
 
 ApplicationEnv _sse_decode_application_env(SseDeserializer deserializer) {
-  var vars = _sse_decode_list_application_env_var(serializer);
+  var vars = _sse_decode_list_application_env_var(deserializer);
 
   return ApplicationEnv(vars: vars);
 }
 
 ApplicationEnvVar _sse_decode_application_env_var(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_String(serializer);
-  var field1 = _sse_decode_bool(serializer);
+  var field0 = _sse_decode_String(deserializer);
+  var field1 = _sse_decode_bool(deserializer);
 
   return ApplicationEnvVar(field0: field0, field1: field1);
 }
@@ -25016,17 +25016,17 @@ ApplicationMessage _sse_decode_application_message(
 }
 
 ApplicationMode _sse_decode_application_mode(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(serializer);
+  var inner = _sse_decode_i_32(deserializer);
   return TODO;
 }
 
 ApplicationSettings _sse_decode_application_settings(
     SseDeserializer deserializer) {
-  var name = _sse_decode_String(serializer);
-  var version = _sse_decode_String(serializer);
-  var mode = _sse_decode_application_mode(serializer);
-  var env = _sse_decode_box_application_env(serializer);
-  var envOptional = _sse_decode_opt_box_autoadd_application_env(serializer);
+  var name = _sse_decode_String(deserializer);
+  var version = _sse_decode_String(deserializer);
+  var mode = _sse_decode_application_mode(deserializer);
+  var env = _sse_decode_box_application_env(deserializer);
+  var envOptional = _sse_decode_opt_box_autoadd_application_env(deserializer);
 
   return ApplicationSettings(
       name: name,
@@ -25038,85 +25038,85 @@ ApplicationSettings _sse_decode_application_settings(
 
 AttributeTwinNormal _sse_decode_attribute_twin_normal(
     SseDeserializer deserializer) {
-  var key = _sse_decode_String(serializer);
-  var value = _sse_decode_String(serializer);
+  var key = _sse_decode_String(deserializer);
+  var value = _sse_decode_String(deserializer);
 
   return AttributeTwinNormal(key: key, value: value);
 }
 
 AttributeTwinRustAsync _sse_decode_attribute_twin_rust_async(
     SseDeserializer deserializer) {
-  var key = _sse_decode_String(serializer);
-  var value = _sse_decode_String(serializer);
+  var key = _sse_decode_String(deserializer);
+  var value = _sse_decode_String(deserializer);
 
   return AttributeTwinRustAsync(key: key, value: value);
 }
 
 AttributeTwinSync _sse_decode_attribute_twin_sync(
     SseDeserializer deserializer) {
-  var key = _sse_decode_String(serializer);
-  var value = _sse_decode_String(serializer);
+  var key = _sse_decode_String(deserializer);
+  var value = _sse_decode_String(deserializer);
 
   return AttributeTwinSync(key: key, value: value);
 }
 
 BTwinNormal _sse_decode_b_twin_normal(SseDeserializer deserializer) {
-  var b = _sse_decode_i_32(serializer);
+  var b = _sse_decode_i_32(deserializer);
 
   return BTwinNormal(b: b);
 }
 
 BTwinRustAsync _sse_decode_b_twin_rust_async(SseDeserializer deserializer) {
-  var b = _sse_decode_i_32(serializer);
+  var b = _sse_decode_i_32(deserializer);
 
   return BTwinRustAsync(b: b);
 }
 
 BTwinSync _sse_decode_b_twin_sync(SseDeserializer deserializer) {
-  var b = _sse_decode_i_32(serializer);
+  var b = _sse_decode_i_32(deserializer);
 
   return BTwinSync(b: b);
 }
 
 BigBuffersTwinNormal _sse_decode_big_buffers_twin_normal(
     SseDeserializer deserializer) {
-  var int64 = _sse_decode_list_prim_i_64(serializer);
-  var uint64 = _sse_decode_list_prim_u_64(serializer);
+  var int64 = _sse_decode_list_prim_i_64(deserializer);
+  var uint64 = _sse_decode_list_prim_u_64(deserializer);
 
   return BigBuffersTwinNormal(int64: int64, uint64: uint64);
 }
 
 BigBuffersTwinRustAsync _sse_decode_big_buffers_twin_rust_async(
     SseDeserializer deserializer) {
-  var int64 = _sse_decode_list_prim_i_64(serializer);
-  var uint64 = _sse_decode_list_prim_u_64(serializer);
+  var int64 = _sse_decode_list_prim_i_64(deserializer);
+  var uint64 = _sse_decode_list_prim_u_64(deserializer);
 
   return BigBuffersTwinRustAsync(int64: int64, uint64: uint64);
 }
 
 BigBuffersTwinSync _sse_decode_big_buffers_twin_sync(
     SseDeserializer deserializer) {
-  var int64 = _sse_decode_list_prim_i_64(serializer);
-  var uint64 = _sse_decode_list_prim_u_64(serializer);
+  var int64 = _sse_decode_list_prim_i_64(deserializer);
+  var uint64 = _sse_decode_list_prim_u_64(deserializer);
 
   return BigBuffersTwinSync(int64: int64, uint64: uint64);
 }
 
 BlobTwinNormal _sse_decode_blob_twin_normal(SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_1600(serializer);
+  var field0 = _sse_decode_u_8_array_1600(deserializer);
 
   return BlobTwinNormal(field0: field0);
 }
 
 BlobTwinRustAsync _sse_decode_blob_twin_rust_async(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_1600(serializer);
+  var field0 = _sse_decode_u_8_array_1600(deserializer);
 
   return BlobTwinRustAsync(field0: field0);
 }
 
 BlobTwinSync _sse_decode_blob_twin_sync(SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_1600(serializer);
+  var field0 = _sse_decode_u_8_array_1600(deserializer);
 
   return BlobTwinSync(field0: field0);
 }
@@ -25126,361 +25126,361 @@ bool _sse_decode_bool(SseDeserializer deserializer) {
 }
 
 ApplicationEnv _sse_decode_box_application_env(SseDeserializer deserializer) {
-  return _sse_decode_application_env(serializer);
+  return _sse_decode_application_env(deserializer);
 }
 
 Duration _sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer) {
-  return _sse_decode_Chrono_Duration(serializer);
+  return _sse_decode_Chrono_Duration(deserializer);
 }
 
 DateTime _sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer) {
-  return _sse_decode_Chrono_Naive(serializer);
+  return _sse_decode_Chrono_Naive(deserializer);
 }
 
 DateTime _sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer) {
-  return _sse_decode_Chrono_Utc(serializer);
+  return _sse_decode_Chrono_Utc(deserializer);
 }
 
 Object _sse_decode_box_autoadd_DartOpaque(SseDeserializer deserializer) {
-  return _sse_decode_DartOpaque(serializer);
+  return _sse_decode_DartOpaque(deserializer);
 }
 
 HideData _sse_decode_box_autoadd_RustOpaque_hide_data(
     SseDeserializer deserializer) {
-  return _sse_decode_RustOpaque_hide_data(serializer);
+  return _sse_decode_RustOpaque_hide_data(deserializer);
 }
 
 ATwinNormal _sse_decode_box_autoadd_a_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_a_twin_normal(serializer);
+  return _sse_decode_a_twin_normal(deserializer);
 }
 
 ATwinRustAsync _sse_decode_box_autoadd_a_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_a_twin_rust_async(serializer);
+  return _sse_decode_a_twin_rust_async(deserializer);
 }
 
 ATwinSync _sse_decode_box_autoadd_a_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_a_twin_sync(serializer);
+  return _sse_decode_a_twin_sync(deserializer);
 }
 
 ApplicationEnv _sse_decode_box_autoadd_application_env(
     SseDeserializer deserializer) {
-  return _sse_decode_application_env(serializer);
+  return _sse_decode_application_env(deserializer);
 }
 
 AttributeTwinNormal _sse_decode_box_autoadd_attribute_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_attribute_twin_normal(serializer);
+  return _sse_decode_attribute_twin_normal(deserializer);
 }
 
 AttributeTwinRustAsync _sse_decode_box_autoadd_attribute_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_attribute_twin_rust_async(serializer);
+  return _sse_decode_attribute_twin_rust_async(deserializer);
 }
 
 AttributeTwinSync _sse_decode_box_autoadd_attribute_twin_sync(
     SseDeserializer deserializer) {
-  return _sse_decode_attribute_twin_sync(serializer);
+  return _sse_decode_attribute_twin_sync(deserializer);
 }
 
 BTwinNormal _sse_decode_box_autoadd_b_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_b_twin_normal(serializer);
+  return _sse_decode_b_twin_normal(deserializer);
 }
 
 BTwinRustAsync _sse_decode_box_autoadd_b_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_b_twin_rust_async(serializer);
+  return _sse_decode_b_twin_rust_async(deserializer);
 }
 
 BTwinSync _sse_decode_box_autoadd_b_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_b_twin_sync(serializer);
+  return _sse_decode_b_twin_sync(deserializer);
 }
 
 bool _sse_decode_box_autoadd_bool(SseDeserializer deserializer) {
-  return _sse_decode_bool(serializer);
+  return _sse_decode_bool(deserializer);
 }
 
 CTwinNormal _sse_decode_box_autoadd_c_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_c_twin_normal(serializer);
+  return _sse_decode_c_twin_normal(deserializer);
 }
 
 CTwinRustAsync _sse_decode_box_autoadd_c_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_c_twin_rust_async(serializer);
+  return _sse_decode_c_twin_rust_async(deserializer);
 }
 
 CTwinSync _sse_decode_box_autoadd_c_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_c_twin_sync(serializer);
+  return _sse_decode_c_twin_sync(deserializer);
 }
 
 CustomNestedError2TwinNormal
     _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
         SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_2_twin_normal(serializer);
+  return _sse_decode_custom_nested_error_2_twin_normal(deserializer);
 }
 
 CustomNestedError2TwinRustAsync
     _sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async(
         SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_2_twin_rust_async(serializer);
+  return _sse_decode_custom_nested_error_2_twin_rust_async(deserializer);
 }
 
 CustomNestedError2TwinSync
     _sse_decode_box_autoadd_custom_nested_error_2_twin_sync(
         SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_2_twin_sync(serializer);
+  return _sse_decode_custom_nested_error_2_twin_sync(deserializer);
 }
 
 CustomNestedErrorInnerTwinNormal
     _sse_decode_box_autoadd_custom_nested_error_inner_twin_normal(
         SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_inner_twin_normal(serializer);
+  return _sse_decode_custom_nested_error_inner_twin_normal(deserializer);
 }
 
 CustomNestedErrorInnerTwinRustAsync
     _sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
         SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_inner_twin_rust_async(serializer);
+  return _sse_decode_custom_nested_error_inner_twin_rust_async(deserializer);
 }
 
 CustomNestedErrorInnerTwinSync
     _sse_decode_box_autoadd_custom_nested_error_inner_twin_sync(
         SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_inner_twin_sync(serializer);
+  return _sse_decode_custom_nested_error_inner_twin_sync(deserializer);
 }
 
 ElementTwinNormal _sse_decode_box_autoadd_element_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_element_twin_normal(serializer);
+  return _sse_decode_element_twin_normal(deserializer);
 }
 
 ElementTwinRustAsync _sse_decode_box_autoadd_element_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_element_twin_rust_async(serializer);
+  return _sse_decode_element_twin_rust_async(deserializer);
 }
 
 ElementTwinSync _sse_decode_box_autoadd_element_twin_sync(
     SseDeserializer deserializer) {
-  return _sse_decode_element_twin_sync(serializer);
+  return _sse_decode_element_twin_sync(deserializer);
 }
 
 ExoticOptionalsTwinNormal _sse_decode_box_autoadd_exotic_optionals_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_exotic_optionals_twin_normal(serializer);
+  return _sse_decode_exotic_optionals_twin_normal(deserializer);
 }
 
 ExoticOptionalsTwinRustAsync
     _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(
         SseDeserializer deserializer) {
-  return _sse_decode_exotic_optionals_twin_rust_async(serializer);
+  return _sse_decode_exotic_optionals_twin_rust_async(deserializer);
 }
 
 ExoticOptionalsTwinSync _sse_decode_box_autoadd_exotic_optionals_twin_sync(
     SseDeserializer deserializer) {
-  return _sse_decode_exotic_optionals_twin_sync(serializer);
+  return _sse_decode_exotic_optionals_twin_sync(deserializer);
 }
 
 double _sse_decode_box_autoadd_f_32(SseDeserializer deserializer) {
-  return _sse_decode_f_32(serializer);
+  return _sse_decode_f_32(deserializer);
 }
 
 double _sse_decode_box_autoadd_f_64(SseDeserializer deserializer) {
-  return _sse_decode_f_64(serializer);
+  return _sse_decode_f_64(deserializer);
 }
 
 int _sse_decode_box_autoadd_i_16(SseDeserializer deserializer) {
-  return _sse_decode_i_16(serializer);
+  return _sse_decode_i_16(deserializer);
 }
 
 int _sse_decode_box_autoadd_i_32(SseDeserializer deserializer) {
-  return _sse_decode_i_32(serializer);
+  return _sse_decode_i_32(deserializer);
 }
 
 int _sse_decode_box_autoadd_i_64(SseDeserializer deserializer) {
-  return _sse_decode_i_64(serializer);
+  return _sse_decode_i_64(deserializer);
 }
 
 int _sse_decode_box_autoadd_i_8(SseDeserializer deserializer) {
-  return _sse_decode_i_8(serializer);
+  return _sse_decode_i_8(deserializer);
 }
 
 ListOfNestedRawStringMirrored
     _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
         SseDeserializer deserializer) {
-  return _sse_decode_list_of_nested_raw_string_mirrored(serializer);
+  return _sse_decode_list_of_nested_raw_string_mirrored(deserializer);
 }
 
 MeasureTwinNormal _sse_decode_box_autoadd_measure_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_measure_twin_normal(serializer);
+  return _sse_decode_measure_twin_normal(deserializer);
 }
 
 MeasureTwinRustAsync _sse_decode_box_autoadd_measure_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_measure_twin_rust_async(serializer);
+  return _sse_decode_measure_twin_rust_async(deserializer);
 }
 
 MeasureTwinSync _sse_decode_box_autoadd_measure_twin_sync(
     SseDeserializer deserializer) {
-  return _sse_decode_measure_twin_sync(serializer);
+  return _sse_decode_measure_twin_sync(deserializer);
 }
 
 NestedRawStringMirrored _sse_decode_box_autoadd_nested_raw_string_mirrored(
     SseDeserializer deserializer) {
-  return _sse_decode_nested_raw_string_mirrored(serializer);
+  return _sse_decode_nested_raw_string_mirrored(deserializer);
 }
 
 NewTypeIntTwinNormal _sse_decode_box_autoadd_new_type_int_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_new_type_int_twin_normal(serializer);
+  return _sse_decode_new_type_int_twin_normal(deserializer);
 }
 
 NewTypeIntTwinRustAsync _sse_decode_box_autoadd_new_type_int_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_new_type_int_twin_rust_async(serializer);
+  return _sse_decode_new_type_int_twin_rust_async(deserializer);
 }
 
 NewTypeIntTwinSync _sse_decode_box_autoadd_new_type_int_twin_sync(
     SseDeserializer deserializer) {
-  return _sse_decode_new_type_int_twin_sync(serializer);
+  return _sse_decode_new_type_int_twin_sync(deserializer);
 }
 
 RawStringMirrored _sse_decode_box_autoadd_raw_string_mirrored(
     SseDeserializer deserializer) {
-  return _sse_decode_raw_string_mirrored(serializer);
+  return _sse_decode_raw_string_mirrored(deserializer);
 }
 
 int _sse_decode_box_autoadd_u_16(SseDeserializer deserializer) {
-  return _sse_decode_u_16(serializer);
+  return _sse_decode_u_16(deserializer);
 }
 
 int _sse_decode_box_autoadd_u_32(SseDeserializer deserializer) {
-  return _sse_decode_u_32(serializer);
+  return _sse_decode_u_32(deserializer);
 }
 
 int _sse_decode_box_autoadd_u_64(SseDeserializer deserializer) {
-  return _sse_decode_u_64(serializer);
+  return _sse_decode_u_64(deserializer);
 }
 
 int _sse_decode_box_autoadd_u_8(SseDeserializer deserializer) {
-  return _sse_decode_u_8(serializer);
+  return _sse_decode_u_8(deserializer);
 }
 
 WeekdaysTwinNormal _sse_decode_box_autoadd_weekdays_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_weekdays_twin_normal(serializer);
+  return _sse_decode_weekdays_twin_normal(deserializer);
 }
 
 WeekdaysTwinRustAsync _sse_decode_box_autoadd_weekdays_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_weekdays_twin_rust_async(serializer);
+  return _sse_decode_weekdays_twin_rust_async(deserializer);
 }
 
 WeekdaysTwinSync _sse_decode_box_autoadd_weekdays_twin_sync(
     SseDeserializer deserializer) {
-  return _sse_decode_weekdays_twin_sync(serializer);
+  return _sse_decode_weekdays_twin_sync(deserializer);
 }
 
 DistanceTwinNormal _sse_decode_box_distance_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_distance_twin_normal(serializer);
+  return _sse_decode_distance_twin_normal(deserializer);
 }
 
 DistanceTwinRustAsync _sse_decode_box_distance_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_distance_twin_rust_async(serializer);
+  return _sse_decode_distance_twin_rust_async(deserializer);
 }
 
 DistanceTwinSync _sse_decode_box_distance_twin_sync(
     SseDeserializer deserializer) {
-  return _sse_decode_distance_twin_sync(serializer);
+  return _sse_decode_distance_twin_sync(deserializer);
 }
 
 FeedIdTwinNormal _sse_decode_box_feed_id_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_feed_id_twin_normal(serializer);
+  return _sse_decode_feed_id_twin_normal(deserializer);
 }
 
 FeedIdTwinRustAsync _sse_decode_box_feed_id_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_feed_id_twin_rust_async(serializer);
+  return _sse_decode_feed_id_twin_rust_async(deserializer);
 }
 
 FeedIdTwinSync _sse_decode_box_feed_id_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_feed_id_twin_sync(serializer);
+  return _sse_decode_feed_id_twin_sync(deserializer);
 }
 
 KitchenSinkTwinNormal _sse_decode_box_kitchen_sink_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_kitchen_sink_twin_normal(serializer);
+  return _sse_decode_kitchen_sink_twin_normal(deserializer);
 }
 
 KitchenSinkTwinRustAsync _sse_decode_box_kitchen_sink_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_kitchen_sink_twin_rust_async(serializer);
+  return _sse_decode_kitchen_sink_twin_rust_async(deserializer);
 }
 
 KitchenSinkTwinSync _sse_decode_box_kitchen_sink_twin_sync(
     SseDeserializer deserializer) {
-  return _sse_decode_kitchen_sink_twin_sync(serializer);
+  return _sse_decode_kitchen_sink_twin_sync(deserializer);
 }
 
 SpeedTwinNormal _sse_decode_box_speed_twin_normal(
     SseDeserializer deserializer) {
-  return _sse_decode_speed_twin_normal(serializer);
+  return _sse_decode_speed_twin_normal(deserializer);
 }
 
 SpeedTwinRustAsync _sse_decode_box_speed_twin_rust_async(
     SseDeserializer deserializer) {
-  return _sse_decode_speed_twin_rust_async(serializer);
+  return _sse_decode_speed_twin_rust_async(deserializer);
 }
 
 SpeedTwinSync _sse_decode_box_speed_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_speed_twin_sync(serializer);
+  return _sse_decode_speed_twin_sync(deserializer);
 }
 
 U8Array8 _sse_decode_box_u_8_array_8(SseDeserializer deserializer) {
-  return _sse_decode_u_8_array_8(serializer);
+  return _sse_decode_u_8_array_8(deserializer);
 }
 
 CTwinNormal _sse_decode_c_twin_normal(SseDeserializer deserializer) {
-  var c = _sse_decode_bool(serializer);
+  var c = _sse_decode_bool(deserializer);
 
   return CTwinNormal(c: c);
 }
 
 CTwinRustAsync _sse_decode_c_twin_rust_async(SseDeserializer deserializer) {
-  var c = _sse_decode_bool(serializer);
+  var c = _sse_decode_bool(deserializer);
 
   return CTwinRustAsync(c: c);
 }
 
 CTwinSync _sse_decode_c_twin_sync(SseDeserializer deserializer) {
-  var c = _sse_decode_bool(serializer);
+  var c = _sse_decode_bool(deserializer);
 
   return CTwinSync(c: c);
 }
 
 ConcatenateWithTwinNormal _sse_decode_concatenate_with_twin_normal(
     SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return ConcatenateWithTwinNormal(a: a);
 }
 
 ConcatenateWithTwinRustAsync _sse_decode_concatenate_with_twin_rust_async(
     SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return ConcatenateWithTwinRustAsync(a: a);
 }
 
 ConcatenateWithTwinSync _sse_decode_concatenate_with_twin_sync(
     SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return ConcatenateWithTwinSync(a: a);
 }
@@ -25488,8 +25488,8 @@ ConcatenateWithTwinSync _sse_decode_concatenate_with_twin_sync(
 ContainsMirroredSubStructTwinNormal
     _sse_decode_contains_mirrored_sub_struct_twin_normal(
         SseDeserializer deserializer) {
-  var test = _sse_decode_raw_string_mirrored(serializer);
-  var test2 = _sse_decode_another_twin_normal(serializer);
+  var test = _sse_decode_raw_string_mirrored(deserializer);
+  var test2 = _sse_decode_another_twin_normal(deserializer);
 
   return ContainsMirroredSubStructTwinNormal(test: test, test2: test2);
 }
@@ -25497,8 +25497,8 @@ ContainsMirroredSubStructTwinNormal
 ContainsMirroredSubStructTwinRustAsync
     _sse_decode_contains_mirrored_sub_struct_twin_rust_async(
         SseDeserializer deserializer) {
-  var test = _sse_decode_raw_string_mirrored(serializer);
-  var test2 = _sse_decode_another_twin_rust_async(serializer);
+  var test = _sse_decode_raw_string_mirrored(deserializer);
+  var test2 = _sse_decode_another_twin_rust_async(deserializer);
 
   return ContainsMirroredSubStructTwinRustAsync(test: test, test2: test2);
 }
@@ -25506,8 +25506,8 @@ ContainsMirroredSubStructTwinRustAsync
 ContainsMirroredSubStructTwinSync
     _sse_decode_contains_mirrored_sub_struct_twin_sync(
         SseDeserializer deserializer) {
-  var test = _sse_decode_raw_string_mirrored(serializer);
-  var test2 = _sse_decode_another_twin_sync(serializer);
+  var test = _sse_decode_raw_string_mirrored(deserializer);
+  var test2 = _sse_decode_another_twin_sync(deserializer);
 
   return ContainsMirroredSubStructTwinSync(test: test, test2: test2);
 }
@@ -25611,7 +25611,7 @@ CustomNestedErrorOuterTwinSync _sse_decode_custom_nested_error_outer_twin_sync(
 CustomStructErrorAnotherTwinNormal
     _sse_decode_custom_struct_error_another_twin_normal(
         SseDeserializer deserializer) {
-  var message = _sse_decode_String(serializer);
+  var message = _sse_decode_String(deserializer);
 
   return CustomStructErrorAnotherTwinNormal(message: message);
 }
@@ -25619,7 +25619,7 @@ CustomStructErrorAnotherTwinNormal
 CustomStructErrorAnotherTwinRustAsync
     _sse_decode_custom_struct_error_another_twin_rust_async(
         SseDeserializer deserializer) {
-  var message = _sse_decode_String(serializer);
+  var message = _sse_decode_String(deserializer);
 
   return CustomStructErrorAnotherTwinRustAsync(message: message);
 }
@@ -25627,73 +25627,73 @@ CustomStructErrorAnotherTwinRustAsync
 CustomStructErrorAnotherTwinSync
     _sse_decode_custom_struct_error_another_twin_sync(
         SseDeserializer deserializer) {
-  var message = _sse_decode_String(serializer);
+  var message = _sse_decode_String(deserializer);
 
   return CustomStructErrorAnotherTwinSync(message: message);
 }
 
 CustomStructErrorTwinNormal _sse_decode_custom_struct_error_twin_normal(
     SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return CustomStructErrorTwinNormal(a: a);
 }
 
 CustomStructErrorTwinRustAsync _sse_decode_custom_struct_error_twin_rust_async(
     SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return CustomStructErrorTwinRustAsync(a: a);
 }
 
 CustomStructErrorTwinSync _sse_decode_custom_struct_error_twin_sync(
     SseDeserializer deserializer) {
-  var a = _sse_decode_String(serializer);
+  var a = _sse_decode_String(deserializer);
 
   return CustomStructErrorTwinSync(a: a);
 }
 
 CustomStructTwinNormal _sse_decode_custom_struct_twin_normal(
     SseDeserializer deserializer) {
-  var message = _sse_decode_String(serializer);
+  var message = _sse_decode_String(deserializer);
 
   return CustomStructTwinNormal(message: message);
 }
 
 CustomStructTwinRustAsync _sse_decode_custom_struct_twin_rust_async(
     SseDeserializer deserializer) {
-  var message = _sse_decode_String(serializer);
+  var message = _sse_decode_String(deserializer);
 
   return CustomStructTwinRustAsync(message: message);
 }
 
 CustomStructTwinSync _sse_decode_custom_struct_twin_sync(
     SseDeserializer deserializer) {
-  var message = _sse_decode_String(serializer);
+  var message = _sse_decode_String(deserializer);
 
   return CustomStructTwinSync(message: message);
 }
 
 DartOpaqueNestedTwinNormal _sse_decode_dart_opaque_nested_twin_normal(
     SseDeserializer deserializer) {
-  var first = _sse_decode_DartOpaque(serializer);
-  var second = _sse_decode_DartOpaque(serializer);
+  var first = _sse_decode_DartOpaque(deserializer);
+  var second = _sse_decode_DartOpaque(deserializer);
 
   return DartOpaqueNestedTwinNormal(first: first, second: second);
 }
 
 DartOpaqueNestedTwinRustAsync _sse_decode_dart_opaque_nested_twin_rust_async(
     SseDeserializer deserializer) {
-  var first = _sse_decode_DartOpaque(serializer);
-  var second = _sse_decode_DartOpaque(serializer);
+  var first = _sse_decode_DartOpaque(deserializer);
+  var second = _sse_decode_DartOpaque(deserializer);
 
   return DartOpaqueNestedTwinRustAsync(first: first, second: second);
 }
 
 DartOpaqueNestedTwinSync _sse_decode_dart_opaque_nested_twin_sync(
     SseDeserializer deserializer) {
-  var first = _sse_decode_DartOpaque(serializer);
-  var second = _sse_decode_DartOpaque(serializer);
+  var first = _sse_decode_DartOpaque(deserializer);
+  var second = _sse_decode_DartOpaque(deserializer);
 
   return DartOpaqueNestedTwinSync(first: first, second: second);
 }
@@ -25718,10 +25718,10 @@ DistanceTwinSync _sse_decode_distance_twin_sync(SseDeserializer deserializer) {
 
 ElementTwinNormal _sse_decode_element_twin_normal(
     SseDeserializer deserializer) {
-  var tag = _sse_decode_opt_String(serializer);
-  var text = _sse_decode_opt_String(serializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_normal(serializer);
-  var children = _sse_decode_opt_list_element_twin_normal(serializer);
+  var tag = _sse_decode_opt_String(deserializer);
+  var text = _sse_decode_opt_String(deserializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_normal(deserializer);
+  var children = _sse_decode_opt_list_element_twin_normal(deserializer);
 
   return ElementTwinNormal(
       tag: tag, text: text, attributes: attributes, children: children);
@@ -25729,20 +25729,20 @@ ElementTwinNormal _sse_decode_element_twin_normal(
 
 ElementTwinRustAsync _sse_decode_element_twin_rust_async(
     SseDeserializer deserializer) {
-  var tag = _sse_decode_opt_String(serializer);
-  var text = _sse_decode_opt_String(serializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_rust_async(serializer);
-  var children = _sse_decode_opt_list_element_twin_rust_async(serializer);
+  var tag = _sse_decode_opt_String(deserializer);
+  var text = _sse_decode_opt_String(deserializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_rust_async(deserializer);
+  var children = _sse_decode_opt_list_element_twin_rust_async(deserializer);
 
   return ElementTwinRustAsync(
       tag: tag, text: text, attributes: attributes, children: children);
 }
 
 ElementTwinSync _sse_decode_element_twin_sync(SseDeserializer deserializer) {
-  var tag = _sse_decode_opt_String(serializer);
-  var text = _sse_decode_opt_String(serializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_sync(serializer);
-  var children = _sse_decode_opt_list_element_twin_sync(serializer);
+  var tag = _sse_decode_opt_String(deserializer);
+  var text = _sse_decode_opt_String(deserializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
+  var children = _sse_decode_opt_list_element_twin_sync(deserializer);
 
   return ElementTwinSync(
       tag: tag, text: text, attributes: attributes, children: children);
@@ -25783,7 +25783,7 @@ EnumOpaqueTwinNormal _sse_decode_enum_opaque_twin_normal(
 
 EnumOpaqueTwinNormalArray5 _sse_decode_enum_opaque_twin_normal_array_5(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_enum_opaque_twin_normal(serializer);
+  var inner = _sse_decode_list_enum_opaque_twin_normal(deserializer);
   return TODO;
 }
 
@@ -25794,7 +25794,7 @@ EnumOpaqueTwinRustAsync _sse_decode_enum_opaque_twin_rust_async(
 
 EnumOpaqueTwinRustAsyncArray5 _sse_decode_enum_opaque_twin_rust_async_array_5(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_enum_opaque_twin_rust_async(serializer);
+  var inner = _sse_decode_list_enum_opaque_twin_rust_async(deserializer);
   return TODO;
 }
 
@@ -25805,25 +25805,25 @@ EnumOpaqueTwinSync _sse_decode_enum_opaque_twin_sync(
 
 EnumOpaqueTwinSyncArray5 _sse_decode_enum_opaque_twin_sync_array_5(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_enum_opaque_twin_sync(serializer);
+  var inner = _sse_decode_list_enum_opaque_twin_sync(deserializer);
   return TODO;
 }
 
 EnumSimpleTwinNormal _sse_decode_enum_simple_twin_normal(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(serializer);
+  var inner = _sse_decode_i_32(deserializer);
   return TODO;
 }
 
 EnumSimpleTwinRustAsync _sse_decode_enum_simple_twin_rust_async(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(serializer);
+  var inner = _sse_decode_i_32(deserializer);
   return TODO;
 }
 
 EnumSimpleTwinSync _sse_decode_enum_simple_twin_sync(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(serializer);
+  var inner = _sse_decode_i_32(deserializer);
   return TODO;
 }
 
@@ -25874,46 +25874,46 @@ EnumWithItemTupleTwinSync _sse_decode_enum_with_item_tuple_twin_sync(
 }
 
 EventTwinNormal _sse_decode_event_twin_normal(SseDeserializer deserializer) {
-  var address = _sse_decode_String(serializer);
-  var payload = _sse_decode_String(serializer);
+  var address = _sse_decode_String(deserializer);
+  var payload = _sse_decode_String(deserializer);
 
   return EventTwinNormal(address: address, payload: payload);
 }
 
 EventTwinRustAsync _sse_decode_event_twin_rust_async(
     SseDeserializer deserializer) {
-  var address = _sse_decode_String(serializer);
-  var payload = _sse_decode_String(serializer);
+  var address = _sse_decode_String(deserializer);
+  var payload = _sse_decode_String(deserializer);
 
   return EventTwinRustAsync(address: address, payload: payload);
 }
 
 EventTwinSync _sse_decode_event_twin_sync(SseDeserializer deserializer) {
-  var address = _sse_decode_String(serializer);
-  var payload = _sse_decode_String(serializer);
+  var address = _sse_decode_String(deserializer);
+  var payload = _sse_decode_String(deserializer);
 
   return EventTwinSync(address: address, payload: payload);
 }
 
 ExoticOptionalsTwinNormal _sse_decode_exotic_optionals_twin_normal(
     SseDeserializer deserializer) {
-  var int32 = _sse_decode_opt_box_autoadd_i_32(serializer);
-  var int64 = _sse_decode_opt_box_autoadd_i_64(serializer);
-  var float64 = _sse_decode_opt_box_autoadd_f_64(serializer);
-  var boolean = _sse_decode_opt_box_autoadd_bool(serializer);
-  var zerocopy = _sse_decode_opt_list_prim_u_8(serializer);
-  var int8List = _sse_decode_opt_list_prim_i_8(serializer);
-  var uint8List = _sse_decode_opt_list_prim_u_8(serializer);
-  var int32List = _sse_decode_opt_list_prim_i_32(serializer);
-  var float32List = _sse_decode_opt_list_prim_f_32(serializer);
-  var float64List = _sse_decode_opt_list_prim_f_64(serializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_normal(serializer);
+  var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+  var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+  var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+  var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+  var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+  var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+  var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+  var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+  var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+  var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_normal(deserializer);
   var attributesNullable =
-      _sse_decode_list_opt_box_autoadd_attribute_twin_normal(serializer);
+      _sse_decode_list_opt_box_autoadd_attribute_twin_normal(deserializer);
   var nullableAttributes =
-      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(serializer);
+      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(deserializer);
   var newtypeint =
-      _sse_decode_opt_box_autoadd_new_type_int_twin_normal(serializer);
+      _sse_decode_opt_box_autoadd_new_type_int_twin_normal(deserializer);
 
   return ExoticOptionalsTwinNormal(
       int32: int32,
@@ -25934,24 +25934,24 @@ ExoticOptionalsTwinNormal _sse_decode_exotic_optionals_twin_normal(
 
 ExoticOptionalsTwinRustAsync _sse_decode_exotic_optionals_twin_rust_async(
     SseDeserializer deserializer) {
-  var int32 = _sse_decode_opt_box_autoadd_i_32(serializer);
-  var int64 = _sse_decode_opt_box_autoadd_i_64(serializer);
-  var float64 = _sse_decode_opt_box_autoadd_f_64(serializer);
-  var boolean = _sse_decode_opt_box_autoadd_bool(serializer);
-  var zerocopy = _sse_decode_opt_list_prim_u_8(serializer);
-  var int8List = _sse_decode_opt_list_prim_i_8(serializer);
-  var uint8List = _sse_decode_opt_list_prim_u_8(serializer);
-  var int32List = _sse_decode_opt_list_prim_i_32(serializer);
-  var float32List = _sse_decode_opt_list_prim_f_32(serializer);
-  var float64List = _sse_decode_opt_list_prim_f_64(serializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_rust_async(serializer);
+  var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+  var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+  var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+  var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+  var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+  var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+  var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+  var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+  var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+  var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_rust_async(deserializer);
   var attributesNullable =
-      _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(serializer);
+      _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(deserializer);
   var nullableAttributes =
       _sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
-          serializer);
+          deserializer);
   var newtypeint =
-      _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(serializer);
+      _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(deserializer);
 
   return ExoticOptionalsTwinRustAsync(
       int32: int32,
@@ -25972,23 +25972,23 @@ ExoticOptionalsTwinRustAsync _sse_decode_exotic_optionals_twin_rust_async(
 
 ExoticOptionalsTwinSync _sse_decode_exotic_optionals_twin_sync(
     SseDeserializer deserializer) {
-  var int32 = _sse_decode_opt_box_autoadd_i_32(serializer);
-  var int64 = _sse_decode_opt_box_autoadd_i_64(serializer);
-  var float64 = _sse_decode_opt_box_autoadd_f_64(serializer);
-  var boolean = _sse_decode_opt_box_autoadd_bool(serializer);
-  var zerocopy = _sse_decode_opt_list_prim_u_8(serializer);
-  var int8List = _sse_decode_opt_list_prim_i_8(serializer);
-  var uint8List = _sse_decode_opt_list_prim_u_8(serializer);
-  var int32List = _sse_decode_opt_list_prim_i_32(serializer);
-  var float32List = _sse_decode_opt_list_prim_f_32(serializer);
-  var float64List = _sse_decode_opt_list_prim_f_64(serializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_sync(serializer);
+  var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+  var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+  var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+  var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+  var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+  var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+  var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+  var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+  var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+  var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
   var attributesNullable =
-      _sse_decode_list_opt_box_autoadd_attribute_twin_sync(serializer);
+      _sse_decode_list_opt_box_autoadd_attribute_twin_sync(deserializer);
   var nullableAttributes =
-      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(serializer);
+      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(deserializer);
   var newtypeint =
-      _sse_decode_opt_box_autoadd_new_type_int_twin_sync(serializer);
+      _sse_decode_opt_box_autoadd_new_type_int_twin_sync(deserializer);
 
   return ExoticOptionalsTwinSync(
       int32: int32,
@@ -26017,40 +26017,40 @@ double _sse_decode_f_64(SseDeserializer deserializer) {
 
 FeatureUuidTwinNormal _sse_decode_feature_uuid_twin_normal(
     SseDeserializer deserializer) {
-  var one = _sse_decode_Uuid(serializer);
+  var one = _sse_decode_Uuid(deserializer);
 
   return FeatureUuidTwinNormal(one: one);
 }
 
 FeatureUuidTwinRustAsync _sse_decode_feature_uuid_twin_rust_async(
     SseDeserializer deserializer) {
-  var one = _sse_decode_Uuid(serializer);
+  var one = _sse_decode_Uuid(deserializer);
 
   return FeatureUuidTwinRustAsync(one: one);
 }
 
 FeatureUuidTwinSync _sse_decode_feature_uuid_twin_sync(
     SseDeserializer deserializer) {
-  var one = _sse_decode_Uuid(serializer);
+  var one = _sse_decode_Uuid(deserializer);
 
   return FeatureUuidTwinSync(one: one);
 }
 
 FeedIdTwinNormal _sse_decode_feed_id_twin_normal(SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_8(serializer);
+  var field0 = _sse_decode_u_8_array_8(deserializer);
 
   return FeedIdTwinNormal(field0: field0);
 }
 
 FeedIdTwinRustAsync _sse_decode_feed_id_twin_rust_async(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_8(serializer);
+  var field0 = _sse_decode_u_8_array_8(deserializer);
 
   return FeedIdTwinRustAsync(field0: field0);
 }
 
 FeedIdTwinSync _sse_decode_feed_id_twin_sync(SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_8(serializer);
+  var field0 = _sse_decode_u_8_array_8(deserializer);
 
   return FeedIdTwinSync(field0: field0);
 }
@@ -26064,7 +26064,7 @@ int _sse_decode_i_32(SseDeserializer deserializer) {
 }
 
 I32Array2 _sse_decode_i_32_array_2(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_i_32(serializer);
+  var inner = _sse_decode_list_prim_i_32(deserializer);
   return TODO;
 }
 
@@ -26094,7 +26094,7 @@ KitchenSinkTwinSync _sse_decode_kitchen_sink_twin_sync(
 List<Duration> _sse_decode_list_Chrono_Duration(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_Chrono_Duration(serializer));
+    ans.push(_sse_decode_Chrono_Duration(deserializer));
   }
   return ans;
 }
@@ -26102,7 +26102,7 @@ List<Duration> _sse_decode_list_Chrono_Duration(SseDeserializer deserializer) {
 List<DateTime> _sse_decode_list_Chrono_Local(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_Chrono_Local(serializer));
+    ans.push(_sse_decode_Chrono_Local(deserializer));
   }
   return ans;
 }
@@ -26110,7 +26110,7 @@ List<DateTime> _sse_decode_list_Chrono_Local(SseDeserializer deserializer) {
 List<Object> _sse_decode_list_DartOpaque(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_DartOpaque(serializer));
+    ans.push(_sse_decode_DartOpaque(deserializer));
   }
   return ans;
 }
@@ -26119,7 +26119,7 @@ List<HideData> _sse_decode_list_RustOpaque_hide_data(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_RustOpaque_hide_data(serializer));
+    ans.push(_sse_decode_RustOpaque_hide_data(deserializer));
   }
   return ans;
 }
@@ -26127,7 +26127,7 @@ List<HideData> _sse_decode_list_RustOpaque_hide_data(
 List<String> _sse_decode_list_String(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_String(serializer));
+    ans.push(_sse_decode_String(deserializer));
   }
   return ans;
 }
@@ -26136,7 +26136,7 @@ List<ApplicationEnvVar> _sse_decode_list_application_env_var(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_application_env_var(serializer));
+    ans.push(_sse_decode_application_env_var(deserializer));
   }
   return ans;
 }
@@ -26145,7 +26145,7 @@ List<ApplicationSettings> _sse_decode_list_application_settings(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_application_settings(serializer));
+    ans.push(_sse_decode_application_settings(deserializer));
   }
   return ans;
 }
@@ -26154,7 +26154,7 @@ List<AttributeTwinNormal> _sse_decode_list_attribute_twin_normal(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_attribute_twin_normal(serializer));
+    ans.push(_sse_decode_attribute_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26163,7 +26163,7 @@ List<AttributeTwinRustAsync> _sse_decode_list_attribute_twin_rust_async(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_attribute_twin_rust_async(serializer));
+    ans.push(_sse_decode_attribute_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26172,7 +26172,7 @@ List<AttributeTwinSync> _sse_decode_list_attribute_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_attribute_twin_sync(serializer));
+    ans.push(_sse_decode_attribute_twin_sync(deserializer));
   }
   return ans;
 }
@@ -26180,7 +26180,7 @@ List<AttributeTwinSync> _sse_decode_list_attribute_twin_sync(
 List<bool> _sse_decode_list_bool(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_bool(serializer));
+    ans.push(_sse_decode_bool(deserializer));
   }
   return ans;
 }
@@ -26189,7 +26189,7 @@ List<ElementTwinNormal> _sse_decode_list_element_twin_normal(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_element_twin_normal(serializer));
+    ans.push(_sse_decode_element_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26198,7 +26198,7 @@ List<ElementTwinRustAsync> _sse_decode_list_element_twin_rust_async(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_element_twin_rust_async(serializer));
+    ans.push(_sse_decode_element_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26207,7 +26207,7 @@ List<ElementTwinSync> _sse_decode_list_element_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_element_twin_sync(serializer));
+    ans.push(_sse_decode_element_twin_sync(deserializer));
   }
   return ans;
 }
@@ -26216,7 +26216,7 @@ List<EnumOpaqueTwinNormal> _sse_decode_list_enum_opaque_twin_normal(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_enum_opaque_twin_normal(serializer));
+    ans.push(_sse_decode_enum_opaque_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26225,7 +26225,7 @@ List<EnumOpaqueTwinRustAsync> _sse_decode_list_enum_opaque_twin_rust_async(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_enum_opaque_twin_rust_async(serializer));
+    ans.push(_sse_decode_enum_opaque_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26234,7 +26234,7 @@ List<EnumOpaqueTwinSync> _sse_decode_list_enum_opaque_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_enum_opaque_twin_sync(serializer));
+    ans.push(_sse_decode_enum_opaque_twin_sync(deserializer));
   }
   return ans;
 }
@@ -26242,7 +26242,7 @@ List<EnumOpaqueTwinSync> _sse_decode_list_enum_opaque_twin_sync(
 List<MyEnum> _sse_decode_list_my_enum(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_my_enum(serializer));
+    ans.push(_sse_decode_my_enum(deserializer));
   }
   return ans;
 }
@@ -26250,7 +26250,7 @@ List<MyEnum> _sse_decode_list_my_enum(SseDeserializer deserializer) {
 List<MySize> _sse_decode_list_my_size(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_my_size(serializer));
+    ans.push(_sse_decode_my_size(deserializer));
   }
   return ans;
 }
@@ -26259,7 +26259,7 @@ List<MyTreeNodeTwinNormal> _sse_decode_list_my_tree_node_twin_normal(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_my_tree_node_twin_normal(serializer));
+    ans.push(_sse_decode_my_tree_node_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26268,7 +26268,7 @@ List<MyTreeNodeTwinRustAsync> _sse_decode_list_my_tree_node_twin_rust_async(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_my_tree_node_twin_rust_async(serializer));
+    ans.push(_sse_decode_my_tree_node_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26277,7 +26277,7 @@ List<MyTreeNodeTwinSync> _sse_decode_list_my_tree_node_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_my_tree_node_twin_sync(serializer));
+    ans.push(_sse_decode_my_tree_node_twin_sync(deserializer));
   }
   return ans;
 }
@@ -26286,14 +26286,14 @@ List<NestedRawStringMirrored> _sse_decode_list_nested_raw_string_mirrored(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_nested_raw_string_mirrored(serializer));
+    ans.push(_sse_decode_nested_raw_string_mirrored(deserializer));
   }
   return ans;
 }
 
 ListOfNestedRawStringMirrored _sse_decode_list_of_nested_raw_string_mirrored(
     SseDeserializer deserializer) {
-  var raw = _sse_decode_list_nested_raw_string_mirrored(serializer);
+  var raw = _sse_decode_list_nested_raw_string_mirrored(deserializer);
 
   return ListOfNestedRawStringMirrored(raw: raw);
 }
@@ -26301,7 +26301,7 @@ ListOfNestedRawStringMirrored _sse_decode_list_of_nested_raw_string_mirrored(
 List<String?> _sse_decode_list_opt_String(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_opt_String(serializer));
+    ans.push(_sse_decode_opt_String(deserializer));
   }
   return ans;
 }
@@ -26311,7 +26311,7 @@ List<AttributeTwinNormal?>
         SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_opt_box_autoadd_attribute_twin_normal(serializer));
+    ans.push(_sse_decode_opt_box_autoadd_attribute_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26321,7 +26321,8 @@ List<AttributeTwinRustAsync?>
         SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_opt_box_autoadd_attribute_twin_rust_async(serializer));
+    ans.push(
+        _sse_decode_opt_box_autoadd_attribute_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26330,7 +26331,7 @@ List<AttributeTwinSync?> _sse_decode_list_opt_box_autoadd_attribute_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_opt_box_autoadd_attribute_twin_sync(serializer));
+    ans.push(_sse_decode_opt_box_autoadd_attribute_twin_sync(deserializer));
   }
   return ans;
 }
@@ -26338,7 +26339,7 @@ List<AttributeTwinSync?> _sse_decode_list_opt_box_autoadd_attribute_twin_sync(
 List<int?> _sse_decode_list_opt_box_autoadd_i_32(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_opt_box_autoadd_i_32(serializer));
+    ans.push(_sse_decode_opt_box_autoadd_i_32(deserializer));
   }
   return ans;
 }
@@ -26347,7 +26348,7 @@ List<WeekdaysTwinNormal?> _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_opt_box_autoadd_weekdays_twin_normal(serializer));
+    ans.push(_sse_decode_opt_box_autoadd_weekdays_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26357,7 +26358,8 @@ List<WeekdaysTwinRustAsync?>
         SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_opt_box_autoadd_weekdays_twin_rust_async(serializer));
+    ans.push(
+        _sse_decode_opt_box_autoadd_weekdays_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26366,7 +26368,7 @@ List<WeekdaysTwinSync?> _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_opt_box_autoadd_weekdays_twin_sync(serializer));
+    ans.push(_sse_decode_opt_box_autoadd_weekdays_twin_sync(deserializer));
   }
   return ans;
 }
@@ -26375,7 +26377,7 @@ List<Int32List?> _sse_decode_list_opt_list_prim_i_32(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_opt_list_prim_i_32(serializer));
+    ans.push(_sse_decode_opt_list_prim_i_32(deserializer));
   }
   return ans;
 }
@@ -26384,7 +26386,7 @@ List<PointTwinNormal> _sse_decode_list_point_twin_normal(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_point_twin_normal(serializer));
+    ans.push(_sse_decode_point_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26393,7 +26395,7 @@ List<PointTwinRustAsync> _sse_decode_list_point_twin_rust_async(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_point_twin_rust_async(serializer));
+    ans.push(_sse_decode_point_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26402,7 +26404,7 @@ List<PointTwinSync> _sse_decode_list_point_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_point_twin_sync(serializer));
+    ans.push(_sse_decode_point_twin_sync(deserializer));
   }
   return ans;
 }
@@ -26451,7 +26453,7 @@ List<RawStringEnumMirrored> _sse_decode_list_raw_string_enum_mirrored(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_raw_string_enum_mirrored(serializer));
+    ans.push(_sse_decode_raw_string_enum_mirrored(deserializer));
   }
   return ans;
 }
@@ -26460,7 +26462,7 @@ List<RawStringMirrored> _sse_decode_list_raw_string_mirrored(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_raw_string_mirrored(serializer));
+    ans.push(_sse_decode_raw_string_mirrored(deserializer));
   }
   return ans;
 }
@@ -26469,7 +26471,7 @@ List<SumWithTwinNormal> _sse_decode_list_sum_with_twin_normal(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_sum_with_twin_normal(serializer));
+    ans.push(_sse_decode_sum_with_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26478,7 +26480,7 @@ List<SumWithTwinRustAsync> _sse_decode_list_sum_with_twin_rust_async(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_sum_with_twin_rust_async(serializer));
+    ans.push(_sse_decode_sum_with_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26487,7 +26489,7 @@ List<SumWithTwinSync> _sse_decode_list_sum_with_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_sum_with_twin_sync(serializer));
+    ans.push(_sse_decode_sum_with_twin_sync(deserializer));
   }
   return ans;
 }
@@ -26496,7 +26498,7 @@ List<TestIdTwinNormal> _sse_decode_list_test_id_twin_normal(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_test_id_twin_normal(serializer));
+    ans.push(_sse_decode_test_id_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26505,7 +26507,7 @@ List<TestIdTwinRustAsync> _sse_decode_list_test_id_twin_rust_async(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_test_id_twin_rust_async(serializer));
+    ans.push(_sse_decode_test_id_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26514,7 +26516,7 @@ List<TestIdTwinSync> _sse_decode_list_test_id_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_test_id_twin_sync(serializer));
+    ans.push(_sse_decode_test_id_twin_sync(deserializer));
   }
   return ans;
 }
@@ -26523,7 +26525,7 @@ List<WeekdaysTwinNormal> _sse_decode_list_weekdays_twin_normal(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_weekdays_twin_normal(serializer));
+    ans.push(_sse_decode_weekdays_twin_normal(deserializer));
   }
   return ans;
 }
@@ -26532,7 +26534,7 @@ List<WeekdaysTwinRustAsync> _sse_decode_list_weekdays_twin_rust_async(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_weekdays_twin_rust_async(serializer));
+    ans.push(_sse_decode_weekdays_twin_rust_async(deserializer));
   }
   return ans;
 }
@@ -26541,49 +26543,49 @@ List<WeekdaysTwinSync> _sse_decode_list_weekdays_twin_sync(
     SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
-    ans.push(_sse_decode_weekdays_twin_sync(serializer));
+    ans.push(_sse_decode_weekdays_twin_sync(deserializer));
   }
   return ans;
 }
 
 Log2TwinNormal _sse_decode_log_2_twin_normal(SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(serializer);
-  var value = _sse_decode_String(serializer);
+  var key = _sse_decode_u_32(deserializer);
+  var value = _sse_decode_String(deserializer);
 
   return Log2TwinNormal(key: key, value: value);
 }
 
 Log2TwinRustAsync _sse_decode_log_2_twin_rust_async(
     SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(serializer);
-  var value = _sse_decode_String(serializer);
+  var key = _sse_decode_u_32(deserializer);
+  var value = _sse_decode_String(deserializer);
 
   return Log2TwinRustAsync(key: key, value: value);
 }
 
 Log2TwinSync _sse_decode_log_2_twin_sync(SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(serializer);
-  var value = _sse_decode_String(serializer);
+  var key = _sse_decode_u_32(deserializer);
+  var value = _sse_decode_String(deserializer);
 
   return Log2TwinSync(key: key, value: value);
 }
 
 LogTwinNormal _sse_decode_log_twin_normal(SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(serializer);
-  var value = _sse_decode_u_32(serializer);
+  var key = _sse_decode_u_32(deserializer);
+  var value = _sse_decode_u_32(deserializer);
 
   return LogTwinNormal(key: key, value: value);
 }
 
 LogTwinRustAsync _sse_decode_log_twin_rust_async(SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(serializer);
-  var value = _sse_decode_u_32(serializer);
+  var key = _sse_decode_u_32(deserializer);
+  var value = _sse_decode_u_32(deserializer);
 
   return LogTwinRustAsync(key: key, value: value);
 }
 
 MacroStruct _sse_decode_macro_struct(SseDeserializer deserializer) {
-  var data = _sse_decode_i_32(serializer);
+  var data = _sse_decode_i_32(deserializer);
 
   return MacroStruct(data: data);
 }
@@ -26604,51 +26606,51 @@ MeasureTwinSync _sse_decode_measure_twin_sync(SseDeserializer deserializer) {
 
 MessageIdTwinNormal _sse_decode_message_id_twin_normal(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_32(serializer);
+  var field0 = _sse_decode_u_8_array_32(deserializer);
 
   return MessageIdTwinNormal(field0: field0);
 }
 
 MessageIdTwinRustAsync _sse_decode_message_id_twin_rust_async(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_32(serializer);
+  var field0 = _sse_decode_u_8_array_32(deserializer);
 
   return MessageIdTwinRustAsync(field0: field0);
 }
 
 MessageIdTwinSync _sse_decode_message_id_twin_sync(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_32(serializer);
+  var field0 = _sse_decode_u_8_array_32(deserializer);
 
   return MessageIdTwinSync(field0: field0);
 }
 
 MirrorStructTwinNormal _sse_decode_mirror_struct_twin_normal(
     SseDeserializer deserializer) {
-  var a = _sse_decode_application_settings(serializer);
-  var b = _sse_decode_my_struct(serializer);
-  var c = _sse_decode_list_my_enum(serializer);
-  var d = _sse_decode_list_application_settings(serializer);
+  var a = _sse_decode_application_settings(deserializer);
+  var b = _sse_decode_my_struct(deserializer);
+  var c = _sse_decode_list_my_enum(deserializer);
+  var d = _sse_decode_list_application_settings(deserializer);
 
   return MirrorStructTwinNormal(a: a, b: b, c: c, d: d);
 }
 
 MirrorStructTwinRustAsync _sse_decode_mirror_struct_twin_rust_async(
     SseDeserializer deserializer) {
-  var a = _sse_decode_application_settings(serializer);
-  var b = _sse_decode_my_struct(serializer);
-  var c = _sse_decode_list_my_enum(serializer);
-  var d = _sse_decode_list_application_settings(serializer);
+  var a = _sse_decode_application_settings(deserializer);
+  var b = _sse_decode_my_struct(deserializer);
+  var c = _sse_decode_list_my_enum(deserializer);
+  var d = _sse_decode_list_application_settings(deserializer);
 
   return MirrorStructTwinRustAsync(a: a, b: b, c: c, d: d);
 }
 
 MirrorStructTwinSync _sse_decode_mirror_struct_twin_sync(
     SseDeserializer deserializer) {
-  var a = _sse_decode_application_settings(serializer);
-  var b = _sse_decode_my_struct(serializer);
-  var c = _sse_decode_list_my_enum(serializer);
-  var d = _sse_decode_list_application_settings(serializer);
+  var a = _sse_decode_application_settings(deserializer);
+  var b = _sse_decode_my_struct(deserializer);
+  var c = _sse_decode_list_my_enum(deserializer);
+  var d = _sse_decode_list_application_settings(deserializer);
 
   return MirrorStructTwinSync(a: a, b: b, c: c, d: d);
 }
@@ -26656,10 +26658,10 @@ MirrorStructTwinSync _sse_decode_mirror_struct_twin_sync(
 MoreThanJustOneRawStringStructTwinNormal
     _sse_decode_more_than_just_one_raw_string_struct_twin_normal(
         SseDeserializer deserializer) {
-  var regular = _sse_decode_String(serializer);
-  var type = _sse_decode_String(serializer);
-  var async = _sse_decode_bool(serializer);
-  var another = _sse_decode_String(serializer);
+  var regular = _sse_decode_String(deserializer);
+  var type = _sse_decode_String(deserializer);
+  var async = _sse_decode_bool(deserializer);
+  var another = _sse_decode_String(deserializer);
 
   return MoreThanJustOneRawStringStructTwinNormal(
       regular: regular, type: type, async: async, another: another);
@@ -26668,10 +26670,10 @@ MoreThanJustOneRawStringStructTwinNormal
 MoreThanJustOneRawStringStructTwinRustAsync
     _sse_decode_more_than_just_one_raw_string_struct_twin_rust_async(
         SseDeserializer deserializer) {
-  var regular = _sse_decode_String(serializer);
-  var type = _sse_decode_String(serializer);
-  var async = _sse_decode_bool(serializer);
-  var another = _sse_decode_String(serializer);
+  var regular = _sse_decode_String(deserializer);
+  var type = _sse_decode_String(deserializer);
+  var async = _sse_decode_bool(deserializer);
+  var another = _sse_decode_String(deserializer);
 
   return MoreThanJustOneRawStringStructTwinRustAsync(
       regular: regular, type: type, async: async, another: another);
@@ -26680,77 +26682,77 @@ MoreThanJustOneRawStringStructTwinRustAsync
 MoreThanJustOneRawStringStructTwinSync
     _sse_decode_more_than_just_one_raw_string_struct_twin_sync(
         SseDeserializer deserializer) {
-  var regular = _sse_decode_String(serializer);
-  var type = _sse_decode_String(serializer);
-  var async = _sse_decode_bool(serializer);
-  var another = _sse_decode_String(serializer);
+  var regular = _sse_decode_String(deserializer);
+  var type = _sse_decode_String(deserializer);
+  var async = _sse_decode_bool(deserializer);
+  var another = _sse_decode_String(deserializer);
 
   return MoreThanJustOneRawStringStructTwinSync(
       regular: regular, type: type, async: async, another: another);
 }
 
 MyEnum _sse_decode_my_enum(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(serializer);
+  var inner = _sse_decode_i_32(deserializer);
   return TODO;
 }
 
 MyNestedStructTwinNormal _sse_decode_my_nested_struct_twin_normal(
     SseDeserializer deserializer) {
-  var treeNode = _sse_decode_my_tree_node_twin_normal(serializer);
-  var weekday = _sse_decode_weekdays_twin_normal(serializer);
+  var treeNode = _sse_decode_my_tree_node_twin_normal(deserializer);
+  var weekday = _sse_decode_weekdays_twin_normal(deserializer);
 
   return MyNestedStructTwinNormal(treeNode: treeNode, weekday: weekday);
 }
 
 MyNestedStructTwinRustAsync _sse_decode_my_nested_struct_twin_rust_async(
     SseDeserializer deserializer) {
-  var treeNode = _sse_decode_my_tree_node_twin_rust_async(serializer);
-  var weekday = _sse_decode_weekdays_twin_rust_async(serializer);
+  var treeNode = _sse_decode_my_tree_node_twin_rust_async(deserializer);
+  var weekday = _sse_decode_weekdays_twin_rust_async(deserializer);
 
   return MyNestedStructTwinRustAsync(treeNode: treeNode, weekday: weekday);
 }
 
 MyNestedStructTwinSync _sse_decode_my_nested_struct_twin_sync(
     SseDeserializer deserializer) {
-  var treeNode = _sse_decode_my_tree_node_twin_sync(serializer);
-  var weekday = _sse_decode_weekdays_twin_sync(serializer);
+  var treeNode = _sse_decode_my_tree_node_twin_sync(deserializer);
+  var weekday = _sse_decode_weekdays_twin_sync(deserializer);
 
   return MyNestedStructTwinSync(treeNode: treeNode, weekday: weekday);
 }
 
 MySize _sse_decode_my_size(SseDeserializer deserializer) {
-  var width = _sse_decode_i_32(serializer);
-  var height = _sse_decode_i_32(serializer);
+  var width = _sse_decode_i_32(deserializer);
+  var height = _sse_decode_i_32(deserializer);
 
   return MySize(width: width, height: height);
 }
 
 MyStreamEntryTwinNormal _sse_decode_my_stream_entry_twin_normal(
     SseDeserializer deserializer) {
-  var hello = _sse_decode_String(serializer);
+  var hello = _sse_decode_String(deserializer);
 
   return MyStreamEntryTwinNormal(hello: hello);
 }
 
 MyStreamEntryTwinRustAsync _sse_decode_my_stream_entry_twin_rust_async(
     SseDeserializer deserializer) {
-  var hello = _sse_decode_String(serializer);
+  var hello = _sse_decode_String(deserializer);
 
   return MyStreamEntryTwinRustAsync(hello: hello);
 }
 
 MyStruct _sse_decode_my_struct(SseDeserializer deserializer) {
-  var content = _sse_decode_bool(serializer);
+  var content = _sse_decode_bool(deserializer);
 
   return MyStruct(content: content);
 }
 
 MyTreeNodeTwinNormal _sse_decode_my_tree_node_twin_normal(
     SseDeserializer deserializer) {
-  var valueI32 = _sse_decode_i_32(serializer);
-  var valueVecU8 = _sse_decode_list_prim_u_8(serializer);
-  var valueBoolean = _sse_decode_bool(serializer);
-  var children = _sse_decode_list_my_tree_node_twin_normal(serializer);
+  var valueI32 = _sse_decode_i_32(deserializer);
+  var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+  var valueBoolean = _sse_decode_bool(deserializer);
+  var children = _sse_decode_list_my_tree_node_twin_normal(deserializer);
 
   return MyTreeNodeTwinNormal(
       valueI32: valueI32,
@@ -26761,10 +26763,10 @@ MyTreeNodeTwinNormal _sse_decode_my_tree_node_twin_normal(
 
 MyTreeNodeTwinRustAsync _sse_decode_my_tree_node_twin_rust_async(
     SseDeserializer deserializer) {
-  var valueI32 = _sse_decode_i_32(serializer);
-  var valueVecU8 = _sse_decode_list_prim_u_8(serializer);
-  var valueBoolean = _sse_decode_bool(serializer);
-  var children = _sse_decode_list_my_tree_node_twin_rust_async(serializer);
+  var valueI32 = _sse_decode_i_32(deserializer);
+  var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+  var valueBoolean = _sse_decode_bool(deserializer);
+  var children = _sse_decode_list_my_tree_node_twin_rust_async(deserializer);
 
   return MyTreeNodeTwinRustAsync(
       valueI32: valueI32,
@@ -26775,10 +26777,10 @@ MyTreeNodeTwinRustAsync _sse_decode_my_tree_node_twin_rust_async(
 
 MyTreeNodeTwinSync _sse_decode_my_tree_node_twin_sync(
     SseDeserializer deserializer) {
-  var valueI32 = _sse_decode_i_32(serializer);
-  var valueVecU8 = _sse_decode_list_prim_u_8(serializer);
-  var valueBoolean = _sse_decode_bool(serializer);
-  var children = _sse_decode_list_my_tree_node_twin_sync(serializer);
+  var valueI32 = _sse_decode_i_32(deserializer);
+  var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+  var valueBoolean = _sse_decode_bool(deserializer);
+  var children = _sse_decode_list_my_tree_node_twin_sync(deserializer);
 
   return MyTreeNodeTwinSync(
       valueI32: valueI32,
@@ -26789,77 +26791,77 @@ MyTreeNodeTwinSync _sse_decode_my_tree_node_twin_sync(
 
 NestedRawStringMirrored _sse_decode_nested_raw_string_mirrored(
     SseDeserializer deserializer) {
-  var raw = _sse_decode_raw_string_mirrored(serializer);
+  var raw = _sse_decode_raw_string_mirrored(deserializer);
 
   return NestedRawStringMirrored(raw: raw);
 }
 
 NewSimpleStruct _sse_decode_new_simple_struct(SseDeserializer deserializer) {
-  var field = _sse_decode_i_32(serializer);
+  var field = _sse_decode_i_32(deserializer);
 
   return NewSimpleStruct(field: field);
 }
 
 NewTypeIntTwinNormal _sse_decode_new_type_int_twin_normal(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_64(serializer);
+  var field0 = _sse_decode_i_64(deserializer);
 
   return NewTypeIntTwinNormal(field0: field0);
 }
 
 NewTypeIntTwinRustAsync _sse_decode_new_type_int_twin_rust_async(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_64(serializer);
+  var field0 = _sse_decode_i_64(deserializer);
 
   return NewTypeIntTwinRustAsync(field0: field0);
 }
 
 NewTypeIntTwinSync _sse_decode_new_type_int_twin_sync(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_64(serializer);
+  var field0 = _sse_decode_i_64(deserializer);
 
   return NewTypeIntTwinSync(field0: field0);
 }
 
 Numbers _sse_decode_numbers(SseDeserializer deserializer) {
-  var field0 = _sse_decode_list_prim_i_32(serializer);
+  var field0 = _sse_decode_list_prim_i_32(deserializer);
 
   return Numbers(field0: field0);
 }
 
 OldSimpleStruct _sse_decode_old_simple_struct(SseDeserializer deserializer) {
-  var field = _sse_decode_i_32(serializer);
+  var field = _sse_decode_i_32(deserializer);
 
   return OldSimpleStruct(field: field);
 }
 
 OpaqueNestedTwinNormal _sse_decode_opaque_nested_twin_normal(
     SseDeserializer deserializer) {
-  var first = _sse_decode_RustOpaque_hide_data(serializer);
-  var second = _sse_decode_RustOpaque_hide_data(serializer);
+  var first = _sse_decode_RustOpaque_hide_data(deserializer);
+  var second = _sse_decode_RustOpaque_hide_data(deserializer);
 
   return OpaqueNestedTwinNormal(first: first, second: second);
 }
 
 OpaqueNestedTwinRustAsync _sse_decode_opaque_nested_twin_rust_async(
     SseDeserializer deserializer) {
-  var first = _sse_decode_RustOpaque_hide_data(serializer);
-  var second = _sse_decode_RustOpaque_hide_data(serializer);
+  var first = _sse_decode_RustOpaque_hide_data(deserializer);
+  var second = _sse_decode_RustOpaque_hide_data(deserializer);
 
   return OpaqueNestedTwinRustAsync(first: first, second: second);
 }
 
 OpaqueNestedTwinSync _sse_decode_opaque_nested_twin_sync(
     SseDeserializer deserializer) {
-  var first = _sse_decode_RustOpaque_hide_data(serializer);
-  var second = _sse_decode_RustOpaque_hide_data(serializer);
+  var first = _sse_decode_RustOpaque_hide_data(deserializer);
+  var second = _sse_decode_RustOpaque_hide_data(deserializer);
 
   return OpaqueNestedTwinSync(first: first, second: second);
 }
 
 String? _sse_decode_opt_String(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_String(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_String(deserializer);
   } else {
     return null;
   }
@@ -26867,8 +26869,8 @@ String? _sse_decode_opt_String(SseDeserializer deserializer) {
 
 Duration? _sse_decode_opt_box_autoadd_Chrono_Duration(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_Chrono_Duration(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_Chrono_Duration(deserializer);
   } else {
     return null;
   }
@@ -26876,24 +26878,24 @@ Duration? _sse_decode_opt_box_autoadd_Chrono_Duration(
 
 DateTime? _sse_decode_opt_box_autoadd_Chrono_Naive(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_Chrono_Naive(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_Chrono_Naive(deserializer);
   } else {
     return null;
   }
 }
 
 DateTime? _sse_decode_opt_box_autoadd_Chrono_Utc(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_Chrono_Utc(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_Chrono_Utc(deserializer);
   } else {
     return null;
   }
 }
 
 Object? _sse_decode_opt_box_autoadd_DartOpaque(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_DartOpaque(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_DartOpaque(deserializer);
   } else {
     return null;
   }
@@ -26901,8 +26903,8 @@ Object? _sse_decode_opt_box_autoadd_DartOpaque(SseDeserializer deserializer) {
 
 HideData? _sse_decode_opt_box_autoadd_RustOpaque_hide_data(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_RustOpaque_hide_data(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_RustOpaque_hide_data(deserializer);
   } else {
     return null;
   }
@@ -26910,8 +26912,8 @@ HideData? _sse_decode_opt_box_autoadd_RustOpaque_hide_data(
 
 ApplicationEnv? _sse_decode_opt_box_autoadd_application_env(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_application_env(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_application_env(deserializer);
   } else {
     return null;
   }
@@ -26919,8 +26921,8 @@ ApplicationEnv? _sse_decode_opt_box_autoadd_application_env(
 
 AttributeTwinNormal? _sse_decode_opt_box_autoadd_attribute_twin_normal(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_attribute_twin_normal(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_attribute_twin_normal(deserializer);
   } else {
     return null;
   }
@@ -26928,8 +26930,8 @@ AttributeTwinNormal? _sse_decode_opt_box_autoadd_attribute_twin_normal(
 
 AttributeTwinRustAsync? _sse_decode_opt_box_autoadd_attribute_twin_rust_async(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_attribute_twin_rust_async(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_attribute_twin_rust_async(deserializer);
   } else {
     return null;
   }
@@ -26937,16 +26939,16 @@ AttributeTwinRustAsync? _sse_decode_opt_box_autoadd_attribute_twin_rust_async(
 
 AttributeTwinSync? _sse_decode_opt_box_autoadd_attribute_twin_sync(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_attribute_twin_sync(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_attribute_twin_sync(deserializer);
   } else {
     return null;
   }
 }
 
 bool? _sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_bool(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_bool(deserializer);
   } else {
     return null;
   }
@@ -26954,8 +26956,8 @@ bool? _sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer) {
 
 ElementTwinNormal? _sse_decode_opt_box_autoadd_element_twin_normal(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_element_twin_normal(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_element_twin_normal(deserializer);
   } else {
     return null;
   }
@@ -26963,8 +26965,8 @@ ElementTwinNormal? _sse_decode_opt_box_autoadd_element_twin_normal(
 
 ElementTwinRustAsync? _sse_decode_opt_box_autoadd_element_twin_rust_async(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_element_twin_rust_async(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_element_twin_rust_async(deserializer);
   } else {
     return null;
   }
@@ -26972,8 +26974,8 @@ ElementTwinRustAsync? _sse_decode_opt_box_autoadd_element_twin_rust_async(
 
 ElementTwinSync? _sse_decode_opt_box_autoadd_element_twin_sync(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_element_twin_sync(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_element_twin_sync(deserializer);
   } else {
     return null;
   }
@@ -26982,8 +26984,8 @@ ElementTwinSync? _sse_decode_opt_box_autoadd_element_twin_sync(
 ExoticOptionalsTwinNormal?
     _sse_decode_opt_box_autoadd_exotic_optionals_twin_normal(
         SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_exotic_optionals_twin_normal(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_exotic_optionals_twin_normal(deserializer);
   } else {
     return null;
   }
@@ -26992,8 +26994,9 @@ ExoticOptionalsTwinNormal?
 ExoticOptionalsTwinRustAsync?
     _sse_decode_opt_box_autoadd_exotic_optionals_twin_rust_async(
         SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(
+        deserializer);
   } else {
     return null;
   }
@@ -27001,56 +27004,56 @@ ExoticOptionalsTwinRustAsync?
 
 ExoticOptionalsTwinSync? _sse_decode_opt_box_autoadd_exotic_optionals_twin_sync(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_exotic_optionals_twin_sync(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_exotic_optionals_twin_sync(deserializer);
   } else {
     return null;
   }
 }
 
 double? _sse_decode_opt_box_autoadd_f_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_f_32(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_f_32(deserializer);
   } else {
     return null;
   }
 }
 
 double? _sse_decode_opt_box_autoadd_f_64(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_f_64(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_f_64(deserializer);
   } else {
     return null;
   }
 }
 
 int? _sse_decode_opt_box_autoadd_i_16(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_i_16(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_i_16(deserializer);
   } else {
     return null;
   }
 }
 
 int? _sse_decode_opt_box_autoadd_i_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_i_32(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_i_32(deserializer);
   } else {
     return null;
   }
 }
 
 int? _sse_decode_opt_box_autoadd_i_64(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_i_64(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_i_64(deserializer);
   } else {
     return null;
   }
 }
 
 int? _sse_decode_opt_box_autoadd_i_8(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_i_8(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_i_8(deserializer);
   } else {
     return null;
   }
@@ -27058,8 +27061,8 @@ int? _sse_decode_opt_box_autoadd_i_8(SseDeserializer deserializer) {
 
 MeasureTwinNormal? _sse_decode_opt_box_autoadd_measure_twin_normal(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_measure_twin_normal(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_measure_twin_normal(deserializer);
   } else {
     return null;
   }
@@ -27067,8 +27070,8 @@ MeasureTwinNormal? _sse_decode_opt_box_autoadd_measure_twin_normal(
 
 MeasureTwinRustAsync? _sse_decode_opt_box_autoadd_measure_twin_rust_async(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_measure_twin_rust_async(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_measure_twin_rust_async(deserializer);
   } else {
     return null;
   }
@@ -27076,8 +27079,8 @@ MeasureTwinRustAsync? _sse_decode_opt_box_autoadd_measure_twin_rust_async(
 
 MeasureTwinSync? _sse_decode_opt_box_autoadd_measure_twin_sync(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_measure_twin_sync(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_measure_twin_sync(deserializer);
   } else {
     return null;
   }
@@ -27085,8 +27088,8 @@ MeasureTwinSync? _sse_decode_opt_box_autoadd_measure_twin_sync(
 
 NewTypeIntTwinNormal? _sse_decode_opt_box_autoadd_new_type_int_twin_normal(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_new_type_int_twin_normal(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_new_type_int_twin_normal(deserializer);
   } else {
     return null;
   }
@@ -27095,8 +27098,8 @@ NewTypeIntTwinNormal? _sse_decode_opt_box_autoadd_new_type_int_twin_normal(
 NewTypeIntTwinRustAsync?
     _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(
         SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_new_type_int_twin_rust_async(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_new_type_int_twin_rust_async(deserializer);
   } else {
     return null;
   }
@@ -27104,40 +27107,40 @@ NewTypeIntTwinRustAsync?
 
 NewTypeIntTwinSync? _sse_decode_opt_box_autoadd_new_type_int_twin_sync(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_new_type_int_twin_sync(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_new_type_int_twin_sync(deserializer);
   } else {
     return null;
   }
 }
 
 int? _sse_decode_opt_box_autoadd_u_16(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_u_16(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_u_16(deserializer);
   } else {
     return null;
   }
 }
 
 int? _sse_decode_opt_box_autoadd_u_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_u_32(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_u_32(deserializer);
   } else {
     return null;
   }
 }
 
 int? _sse_decode_opt_box_autoadd_u_64(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_u_64(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_u_64(deserializer);
   } else {
     return null;
   }
 }
 
 int? _sse_decode_opt_box_autoadd_u_8(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_u_8(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_u_8(deserializer);
   } else {
     return null;
   }
@@ -27145,8 +27148,8 @@ int? _sse_decode_opt_box_autoadd_u_8(SseDeserializer deserializer) {
 
 WeekdaysTwinNormal? _sse_decode_opt_box_autoadd_weekdays_twin_normal(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_weekdays_twin_normal(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_weekdays_twin_normal(deserializer);
   } else {
     return null;
   }
@@ -27154,8 +27157,8 @@ WeekdaysTwinNormal? _sse_decode_opt_box_autoadd_weekdays_twin_normal(
 
 WeekdaysTwinRustAsync? _sse_decode_opt_box_autoadd_weekdays_twin_rust_async(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_weekdays_twin_rust_async(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_weekdays_twin_rust_async(deserializer);
   } else {
     return null;
   }
@@ -27163,8 +27166,8 @@ WeekdaysTwinRustAsync? _sse_decode_opt_box_autoadd_weekdays_twin_rust_async(
 
 WeekdaysTwinSync? _sse_decode_opt_box_autoadd_weekdays_twin_sync(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_box_autoadd_weekdays_twin_sync(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_box_autoadd_weekdays_twin_sync(deserializer);
   } else {
     return null;
   }
@@ -27172,8 +27175,8 @@ WeekdaysTwinSync? _sse_decode_opt_box_autoadd_weekdays_twin_sync(
 
 List<AttributeTwinNormal>? _sse_decode_opt_list_attribute_twin_normal(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_attribute_twin_normal(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_attribute_twin_normal(deserializer);
   } else {
     return null;
   }
@@ -27181,8 +27184,8 @@ List<AttributeTwinNormal>? _sse_decode_opt_list_attribute_twin_normal(
 
 List<AttributeTwinRustAsync>? _sse_decode_opt_list_attribute_twin_rust_async(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_attribute_twin_rust_async(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_attribute_twin_rust_async(deserializer);
   } else {
     return null;
   }
@@ -27190,8 +27193,8 @@ List<AttributeTwinRustAsync>? _sse_decode_opt_list_attribute_twin_rust_async(
 
 List<AttributeTwinSync>? _sse_decode_opt_list_attribute_twin_sync(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_attribute_twin_sync(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_attribute_twin_sync(deserializer);
   } else {
     return null;
   }
@@ -27199,8 +27202,8 @@ List<AttributeTwinSync>? _sse_decode_opt_list_attribute_twin_sync(
 
 List<ElementTwinNormal>? _sse_decode_opt_list_element_twin_normal(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_element_twin_normal(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_element_twin_normal(deserializer);
   } else {
     return null;
   }
@@ -27208,8 +27211,8 @@ List<ElementTwinNormal>? _sse_decode_opt_list_element_twin_normal(
 
 List<ElementTwinRustAsync>? _sse_decode_opt_list_element_twin_rust_async(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_element_twin_rust_async(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_element_twin_rust_async(deserializer);
   } else {
     return null;
   }
@@ -27217,8 +27220,8 @@ List<ElementTwinRustAsync>? _sse_decode_opt_list_element_twin_rust_async(
 
 List<ElementTwinSync>? _sse_decode_opt_list_element_twin_sync(
     SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_element_twin_sync(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_element_twin_sync(deserializer);
   } else {
     return null;
   }
@@ -27227,8 +27230,8 @@ List<ElementTwinSync>? _sse_decode_opt_list_element_twin_sync(
 List<AttributeTwinNormal?>?
     _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(
         SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_opt_box_autoadd_attribute_twin_normal(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_opt_box_autoadd_attribute_twin_normal(deserializer);
   } else {
     return null;
   }
@@ -27237,9 +27240,9 @@ List<AttributeTwinNormal?>?
 List<AttributeTwinRustAsync?>?
     _sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
         SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
+  if (_sse_decode_bool(deserializer)) {
     return _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
-        serializer);
+        deserializer);
   } else {
     return null;
   }
@@ -27248,48 +27251,48 @@ List<AttributeTwinRustAsync?>?
 List<AttributeTwinSync?>?
     _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(
         SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_opt_box_autoadd_attribute_twin_sync(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_opt_box_autoadd_attribute_twin_sync(deserializer);
   } else {
     return null;
   }
 }
 
 Float32List? _sse_decode_opt_list_prim_f_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_prim_f_32(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_prim_f_32(deserializer);
   } else {
     return null;
   }
 }
 
 Float64List? _sse_decode_opt_list_prim_f_64(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_prim_f_64(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_prim_f_64(deserializer);
   } else {
     return null;
   }
 }
 
 Int32List? _sse_decode_opt_list_prim_i_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_prim_i_32(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_prim_i_32(deserializer);
   } else {
     return null;
   }
 }
 
 Int8List? _sse_decode_opt_list_prim_i_8(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_prim_i_8(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_prim_i_8(deserializer);
   } else {
     return null;
   }
 }
 
 Uint8List? _sse_decode_opt_list_prim_u_8(SseDeserializer deserializer) {
-  if (_sse_decode_bool(serializer)) {
-    return _sse_decode_list_prim_u_8(serializer);
+  if (_sse_decode_bool(deserializer)) {
+    return _sse_decode_list_prim_u_8(deserializer);
   } else {
     return null;
   }
@@ -27297,10 +27300,11 @@ Uint8List? _sse_decode_opt_list_prim_u_8(SseDeserializer deserializer) {
 
 OptVecsTwinNormal _sse_decode_opt_vecs_twin_normal(
     SseDeserializer deserializer) {
-  var i32 = _sse_decode_list_opt_box_autoadd_i_32(serializer);
-  var enums = _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(serializer);
-  var strings = _sse_decode_list_opt_String(serializer);
-  var buffers = _sse_decode_list_opt_list_prim_i_32(serializer);
+  var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+  var enums =
+      _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(deserializer);
+  var strings = _sse_decode_list_opt_String(deserializer);
+  var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
 
   return OptVecsTwinNormal(
       i32: i32, enums: enums, strings: strings, buffers: buffers);
@@ -27308,63 +27312,63 @@ OptVecsTwinNormal _sse_decode_opt_vecs_twin_normal(
 
 OptVecsTwinRustAsync _sse_decode_opt_vecs_twin_rust_async(
     SseDeserializer deserializer) {
-  var i32 = _sse_decode_list_opt_box_autoadd_i_32(serializer);
+  var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
   var enums =
-      _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(serializer);
-  var strings = _sse_decode_list_opt_String(serializer);
-  var buffers = _sse_decode_list_opt_list_prim_i_32(serializer);
+      _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(deserializer);
+  var strings = _sse_decode_list_opt_String(deserializer);
+  var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
 
   return OptVecsTwinRustAsync(
       i32: i32, enums: enums, strings: strings, buffers: buffers);
 }
 
 OptVecsTwinSync _sse_decode_opt_vecs_twin_sync(SseDeserializer deserializer) {
-  var i32 = _sse_decode_list_opt_box_autoadd_i_32(serializer);
-  var enums = _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(serializer);
-  var strings = _sse_decode_list_opt_String(serializer);
-  var buffers = _sse_decode_list_opt_list_prim_i_32(serializer);
+  var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+  var enums = _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(deserializer);
+  var strings = _sse_decode_list_opt_String(deserializer);
+  var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
 
   return OptVecsTwinSync(
       i32: i32, enums: enums, strings: strings, buffers: buffers);
 }
 
 PointTwinNormal _sse_decode_point_twin_normal(SseDeserializer deserializer) {
-  var x = _sse_decode_f_32(serializer);
-  var y = _sse_decode_f_32(serializer);
+  var x = _sse_decode_f_32(deserializer);
+  var y = _sse_decode_f_32(deserializer);
 
   return PointTwinNormal(x: x, y: y);
 }
 
 PointTwinNormalArray2 _sse_decode_point_twin_normal_array_2(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_point_twin_normal(serializer);
+  var inner = _sse_decode_list_point_twin_normal(deserializer);
   return TODO;
 }
 
 PointTwinRustAsync _sse_decode_point_twin_rust_async(
     SseDeserializer deserializer) {
-  var x = _sse_decode_f_32(serializer);
-  var y = _sse_decode_f_32(serializer);
+  var x = _sse_decode_f_32(deserializer);
+  var y = _sse_decode_f_32(deserializer);
 
   return PointTwinRustAsync(x: x, y: y);
 }
 
 PointTwinRustAsyncArray2 _sse_decode_point_twin_rust_async_array_2(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_point_twin_rust_async(serializer);
+  var inner = _sse_decode_list_point_twin_rust_async(deserializer);
   return TODO;
 }
 
 PointTwinSync _sse_decode_point_twin_sync(SseDeserializer deserializer) {
-  var x = _sse_decode_f_32(serializer);
-  var y = _sse_decode_f_32(serializer);
+  var x = _sse_decode_f_32(deserializer);
+  var y = _sse_decode_f_32(deserializer);
 
   return PointTwinSync(x: x, y: y);
 }
 
 PointTwinSyncArray2 _sse_decode_point_twin_sync_array_2(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_point_twin_sync(serializer);
+  var inner = _sse_decode_list_point_twin_sync(deserializer);
   return TODO;
 }
 
@@ -27375,7 +27379,7 @@ RawStringEnumMirrored _sse_decode_raw_string_enum_mirrored(
 
 RawStringItemStructTwinNormal _sse_decode_raw_string_item_struct_twin_normal(
     SseDeserializer deserializer) {
-  var type = _sse_decode_String(serializer);
+  var type = _sse_decode_String(deserializer);
 
   return RawStringItemStructTwinNormal(type: type);
 }
@@ -27383,21 +27387,21 @@ RawStringItemStructTwinNormal _sse_decode_raw_string_item_struct_twin_normal(
 RawStringItemStructTwinRustAsync
     _sse_decode_raw_string_item_struct_twin_rust_async(
         SseDeserializer deserializer) {
-  var type = _sse_decode_String(serializer);
+  var type = _sse_decode_String(deserializer);
 
   return RawStringItemStructTwinRustAsync(type: type);
 }
 
 RawStringItemStructTwinSync _sse_decode_raw_string_item_struct_twin_sync(
     SseDeserializer deserializer) {
-  var type = _sse_decode_String(serializer);
+  var type = _sse_decode_String(deserializer);
 
   return RawStringItemStructTwinSync(type: type);
 }
 
 RawStringMirrored _sse_decode_raw_string_mirrored(
     SseDeserializer deserializer) {
-  var value = _sse_decode_String(serializer);
+  var value = _sse_decode_String(deserializer);
 
   return RawStringMirrored(value: value);
 }
@@ -27405,42 +27409,42 @@ RawStringMirrored _sse_decode_raw_string_mirrored(
 (ApplicationSettings, RawStringEnumMirrored)
     _sse_decode_record_application_settings_raw_string_enum_mirrored(
         SseDeserializer deserializer) {
-  var field0 = _sse_decode_application_settings(serializer);
-  var field1 = _sse_decode_raw_string_enum_mirrored(serializer);
+  var field0 = _sse_decode_application_settings(deserializer);
+  var field1 = _sse_decode_raw_string_enum_mirrored(deserializer);
 
   return (field0, field1);
 }
 
 (String, int) _sse_decode_record_string_i_32(SseDeserializer deserializer) {
-  var field0 = _sse_decode_String(serializer);
-  var field1 = _sse_decode_i_32(serializer);
+  var field0 = _sse_decode_String(deserializer);
+  var field1 = _sse_decode_i_32(deserializer);
 
   return (field0, field1);
 }
 
 Sequences _sse_decode_sequences(SseDeserializer deserializer) {
-  var field0 = _sse_decode_list_prim_i_32(serializer);
+  var field0 = _sse_decode_list_prim_i_32(deserializer);
 
   return Sequences(field0: field0);
 }
 
 SomeStructTwinNormal _sse_decode_some_struct_twin_normal(
     SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(serializer);
+  var value = _sse_decode_u_32(deserializer);
 
   return SomeStructTwinNormal(value: value);
 }
 
 SomeStructTwinRustAsync _sse_decode_some_struct_twin_rust_async(
     SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(serializer);
+  var value = _sse_decode_u_32(deserializer);
 
   return SomeStructTwinRustAsync(value: value);
 }
 
 SomeStructTwinSync _sse_decode_some_struct_twin_sync(
     SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(serializer);
+  var value = _sse_decode_u_32(deserializer);
 
   return SomeStructTwinSync(value: value);
 }
@@ -27460,31 +27464,31 @@ SpeedTwinSync _sse_decode_speed_twin_sync(SseDeserializer deserializer) {
 
 StructWithEnumTwinNormal _sse_decode_struct_with_enum_twin_normal(
     SseDeserializer deserializer) {
-  var abc1 = _sse_decode_abc_twin_normal(serializer);
-  var abc2 = _sse_decode_abc_twin_normal(serializer);
+  var abc1 = _sse_decode_abc_twin_normal(deserializer);
+  var abc2 = _sse_decode_abc_twin_normal(deserializer);
 
   return StructWithEnumTwinNormal(abc1: abc1, abc2: abc2);
 }
 
 StructWithEnumTwinRustAsync _sse_decode_struct_with_enum_twin_rust_async(
     SseDeserializer deserializer) {
-  var abc1 = _sse_decode_abc_twin_rust_async(serializer);
-  var abc2 = _sse_decode_abc_twin_rust_async(serializer);
+  var abc1 = _sse_decode_abc_twin_rust_async(deserializer);
+  var abc2 = _sse_decode_abc_twin_rust_async(deserializer);
 
   return StructWithEnumTwinRustAsync(abc1: abc1, abc2: abc2);
 }
 
 StructWithEnumTwinSync _sse_decode_struct_with_enum_twin_sync(
     SseDeserializer deserializer) {
-  var abc1 = _sse_decode_abc_twin_sync(serializer);
-  var abc2 = _sse_decode_abc_twin_sync(serializer);
+  var abc1 = _sse_decode_abc_twin_sync(deserializer);
+  var abc2 = _sse_decode_abc_twin_sync(deserializer);
 
   return StructWithEnumTwinSync(abc1: abc1, abc2: abc2);
 }
 
 StructWithOneFieldTwinNormal _sse_decode_struct_with_one_field_twin_normal(
     SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(serializer);
+  var a = _sse_decode_i_32(deserializer);
 
   return StructWithOneFieldTwinNormal(a: a);
 }
@@ -27492,22 +27496,22 @@ StructWithOneFieldTwinNormal _sse_decode_struct_with_one_field_twin_normal(
 StructWithOneFieldTwinRustAsync
     _sse_decode_struct_with_one_field_twin_rust_async(
         SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(serializer);
+  var a = _sse_decode_i_32(deserializer);
 
   return StructWithOneFieldTwinRustAsync(a: a);
 }
 
 StructWithOneFieldTwinSync _sse_decode_struct_with_one_field_twin_sync(
     SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(serializer);
+  var a = _sse_decode_i_32(deserializer);
 
   return StructWithOneFieldTwinSync(a: a);
 }
 
 StructWithTwoFieldTwinNormal _sse_decode_struct_with_two_field_twin_normal(
     SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(serializer);
-  var b = _sse_decode_i_32(serializer);
+  var a = _sse_decode_i_32(deserializer);
+  var b = _sse_decode_i_32(deserializer);
 
   return StructWithTwoFieldTwinNormal(a: a, b: b);
 }
@@ -27515,16 +27519,16 @@ StructWithTwoFieldTwinNormal _sse_decode_struct_with_two_field_twin_normal(
 StructWithTwoFieldTwinRustAsync
     _sse_decode_struct_with_two_field_twin_rust_async(
         SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(serializer);
-  var b = _sse_decode_i_32(serializer);
+  var a = _sse_decode_i_32(deserializer);
+  var b = _sse_decode_i_32(deserializer);
 
   return StructWithTwoFieldTwinRustAsync(a: a, b: b);
 }
 
 StructWithTwoFieldTwinSync _sse_decode_struct_with_two_field_twin_sync(
     SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(serializer);
-  var b = _sse_decode_i_32(serializer);
+  var a = _sse_decode_i_32(deserializer);
+  var b = _sse_decode_i_32(deserializer);
 
   return StructWithTwoFieldTwinSync(a: a, b: b);
 }
@@ -27547,112 +27551,112 @@ StructWithZeroFieldTwinSync _sse_decode_struct_with_zero_field_twin_sync(
 
 SumWithTwinNormal _sse_decode_sum_with_twin_normal(
     SseDeserializer deserializer) {
-  var x = _sse_decode_u_32(serializer);
+  var x = _sse_decode_u_32(deserializer);
 
   return SumWithTwinNormal(x: x);
 }
 
 SumWithTwinNormalArray3 _sse_decode_sum_with_twin_normal_array_3(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_sum_with_twin_normal(serializer);
+  var inner = _sse_decode_list_sum_with_twin_normal(deserializer);
   return TODO;
 }
 
 SumWithTwinRustAsync _sse_decode_sum_with_twin_rust_async(
     SseDeserializer deserializer) {
-  var x = _sse_decode_u_32(serializer);
+  var x = _sse_decode_u_32(deserializer);
 
   return SumWithTwinRustAsync(x: x);
 }
 
 SumWithTwinRustAsyncArray3 _sse_decode_sum_with_twin_rust_async_array_3(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_sum_with_twin_rust_async(serializer);
+  var inner = _sse_decode_list_sum_with_twin_rust_async(deserializer);
   return TODO;
 }
 
 SumWithTwinSync _sse_decode_sum_with_twin_sync(SseDeserializer deserializer) {
-  var x = _sse_decode_u_32(serializer);
+  var x = _sse_decode_u_32(deserializer);
 
   return SumWithTwinSync(x: x);
 }
 
 SumWithTwinSyncArray3 _sse_decode_sum_with_twin_sync_array_3(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_sum_with_twin_sync(serializer);
+  var inner = _sse_decode_list_sum_with_twin_sync(deserializer);
   return TODO;
 }
 
 TestChronoTwinNormal _sse_decode_test_chrono_twin_normal(
     SseDeserializer deserializer) {
-  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(serializer);
-  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(serializer);
-  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(serializer);
+  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
+  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
 
   return TestChronoTwinNormal(dt: dt, dt2: dt2, du: du);
 }
 
 TestChronoTwinRustAsync _sse_decode_test_chrono_twin_rust_async(
     SseDeserializer deserializer) {
-  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(serializer);
-  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(serializer);
-  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(serializer);
+  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
+  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
 
   return TestChronoTwinRustAsync(dt: dt, dt2: dt2, du: du);
 }
 
 TestChronoTwinSync _sse_decode_test_chrono_twin_sync(
     SseDeserializer deserializer) {
-  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(serializer);
-  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(serializer);
-  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(serializer);
+  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
+  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
 
   return TestChronoTwinSync(dt: dt, dt2: dt2, du: du);
 }
 
 TestIdTwinNormal _sse_decode_test_id_twin_normal(SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32_array_2(serializer);
+  var field0 = _sse_decode_i_32_array_2(deserializer);
 
   return TestIdTwinNormal(field0: field0);
 }
 
 TestIdTwinNormalArray2 _sse_decode_test_id_twin_normal_array_2(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_test_id_twin_normal(serializer);
+  var inner = _sse_decode_list_test_id_twin_normal(deserializer);
   return TODO;
 }
 
 TestIdTwinRustAsync _sse_decode_test_id_twin_rust_async(
     SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32_array_2(serializer);
+  var field0 = _sse_decode_i_32_array_2(deserializer);
 
   return TestIdTwinRustAsync(field0: field0);
 }
 
 TestIdTwinRustAsyncArray2 _sse_decode_test_id_twin_rust_async_array_2(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_test_id_twin_rust_async(serializer);
+  var inner = _sse_decode_list_test_id_twin_rust_async(deserializer);
   return TODO;
 }
 
 TestIdTwinSync _sse_decode_test_id_twin_sync(SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32_array_2(serializer);
+  var field0 = _sse_decode_i_32_array_2(deserializer);
 
   return TestIdTwinSync(field0: field0);
 }
 
 TestIdTwinSyncArray2 _sse_decode_test_id_twin_sync_array_2(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_list_test_id_twin_sync(serializer);
+  var inner = _sse_decode_list_test_id_twin_sync(deserializer);
   return TODO;
 }
 
 TestModelTwinNormal _sse_decode_test_model_twin_normal(
     SseDeserializer deserializer) {
-  var id = _sse_decode_u_64(serializer);
-  var name = _sse_decode_String(serializer);
-  var aliasEnum = _sse_decode_my_enum(serializer);
-  var aliasStruct = _sse_decode_my_struct(serializer);
+  var id = _sse_decode_u_64(deserializer);
+  var name = _sse_decode_String(deserializer);
+  var aliasEnum = _sse_decode_my_enum(deserializer);
+  var aliasStruct = _sse_decode_my_struct(deserializer);
 
   return TestModelTwinNormal(
       id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
@@ -27660,10 +27664,10 @@ TestModelTwinNormal _sse_decode_test_model_twin_normal(
 
 TestModelTwinRustAsync _sse_decode_test_model_twin_rust_async(
     SseDeserializer deserializer) {
-  var id = _sse_decode_u_64(serializer);
-  var name = _sse_decode_String(serializer);
-  var aliasEnum = _sse_decode_my_enum(serializer);
-  var aliasStruct = _sse_decode_my_struct(serializer);
+  var id = _sse_decode_u_64(deserializer);
+  var name = _sse_decode_String(deserializer);
+  var aliasEnum = _sse_decode_my_enum(deserializer);
+  var aliasStruct = _sse_decode_my_struct(deserializer);
 
   return TestModelTwinRustAsync(
       id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
@@ -27671,10 +27675,10 @@ TestModelTwinRustAsync _sse_decode_test_model_twin_rust_async(
 
 TestModelTwinSync _sse_decode_test_model_twin_sync(
     SseDeserializer deserializer) {
-  var id = _sse_decode_u_64(serializer);
-  var name = _sse_decode_String(serializer);
-  var aliasEnum = _sse_decode_my_enum(serializer);
-  var aliasStruct = _sse_decode_my_struct(serializer);
+  var id = _sse_decode_u_64(deserializer);
+  var name = _sse_decode_String(deserializer);
+  var aliasEnum = _sse_decode_my_enum(deserializer);
+  var aliasStruct = _sse_decode_my_struct(deserializer);
 
   return TestModelTwinSync(
       id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
@@ -27683,7 +27687,7 @@ TestModelTwinSync _sse_decode_test_model_twin_sync(
 TupleStructWithOneFieldTwinNormal
     _sse_decode_tuple_struct_with_one_field_twin_normal(
         SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(serializer);
+  var field0 = _sse_decode_i_32(deserializer);
 
   return TupleStructWithOneFieldTwinNormal(field0: field0);
 }
@@ -27691,7 +27695,7 @@ TupleStructWithOneFieldTwinNormal
 TupleStructWithOneFieldTwinRustAsync
     _sse_decode_tuple_struct_with_one_field_twin_rust_async(
         SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(serializer);
+  var field0 = _sse_decode_i_32(deserializer);
 
   return TupleStructWithOneFieldTwinRustAsync(field0: field0);
 }
@@ -27699,7 +27703,7 @@ TupleStructWithOneFieldTwinRustAsync
 TupleStructWithOneFieldTwinSync
     _sse_decode_tuple_struct_with_one_field_twin_sync(
         SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(serializer);
+  var field0 = _sse_decode_i_32(deserializer);
 
   return TupleStructWithOneFieldTwinSync(field0: field0);
 }
@@ -27707,8 +27711,8 @@ TupleStructWithOneFieldTwinSync
 TupleStructWithTwoFieldTwinNormal
     _sse_decode_tuple_struct_with_two_field_twin_normal(
         SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(serializer);
-  var field1 = _sse_decode_i_32(serializer);
+  var field0 = _sse_decode_i_32(deserializer);
+  var field1 = _sse_decode_i_32(deserializer);
 
   return TupleStructWithTwoFieldTwinNormal(field0: field0, field1: field1);
 }
@@ -27716,8 +27720,8 @@ TupleStructWithTwoFieldTwinNormal
 TupleStructWithTwoFieldTwinRustAsync
     _sse_decode_tuple_struct_with_two_field_twin_rust_async(
         SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(serializer);
-  var field1 = _sse_decode_i_32(serializer);
+  var field0 = _sse_decode_i_32(deserializer);
+  var field1 = _sse_decode_i_32(deserializer);
 
   return TupleStructWithTwoFieldTwinRustAsync(field0: field0, field1: field1);
 }
@@ -27725,8 +27729,8 @@ TupleStructWithTwoFieldTwinRustAsync
 TupleStructWithTwoFieldTwinSync
     _sse_decode_tuple_struct_with_two_field_twin_sync(
         SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(serializer);
-  var field1 = _sse_decode_i_32(serializer);
+  var field0 = _sse_decode_i_32(deserializer);
+  var field1 = _sse_decode_i_32(deserializer);
 
   return TupleStructWithTwoFieldTwinSync(field0: field0, field1: field1);
 }
@@ -27748,59 +27752,59 @@ int _sse_decode_u_8(SseDeserializer deserializer) {
 }
 
 U8Array1600 _sse_decode_u_8_array_1600(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(serializer);
+  var inner = _sse_decode_list_prim_u_8(deserializer);
   return TODO;
 }
 
 U8Array32 _sse_decode_u_8_array_32(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(serializer);
+  var inner = _sse_decode_list_prim_u_8(deserializer);
   return TODO;
 }
 
 U8Array5 _sse_decode_u_8_array_5(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(serializer);
+  var inner = _sse_decode_list_prim_u_8(deserializer);
   return TODO;
 }
 
 U8Array8 _sse_decode_u_8_array_8(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(serializer);
+  var inner = _sse_decode_list_prim_u_8(deserializer);
   return TODO;
 }
 
 void _sse_decode_unit(SseDeserializer deserializer) {}
 
 UserIdTwinNormal _sse_decode_user_id_twin_normal(SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(serializer);
+  var value = _sse_decode_u_32(deserializer);
 
   return UserIdTwinNormal(value: value);
 }
 
 UserIdTwinRustAsync _sse_decode_user_id_twin_rust_async(
     SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(serializer);
+  var value = _sse_decode_u_32(deserializer);
 
   return UserIdTwinRustAsync(value: value);
 }
 
 UserIdTwinSync _sse_decode_user_id_twin_sync(SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(serializer);
+  var value = _sse_decode_u_32(deserializer);
 
   return UserIdTwinSync(value: value);
 }
 
 VecOfPrimitivePackTwinNormal _sse_decode_vec_of_primitive_pack_twin_normal(
     SseDeserializer deserializer) {
-  var int8List = _sse_decode_list_prim_i_8(serializer);
-  var uint8List = _sse_decode_list_prim_u_8(serializer);
-  var int16List = _sse_decode_list_prim_i_16(serializer);
-  var uint16List = _sse_decode_list_prim_u_16(serializer);
-  var uint32List = _sse_decode_list_prim_u_32(serializer);
-  var int32List = _sse_decode_list_prim_i_32(serializer);
-  var uint64List = _sse_decode_list_prim_u_64(serializer);
-  var int64List = _sse_decode_list_prim_i_64(serializer);
-  var float32List = _sse_decode_list_prim_f_32(serializer);
-  var float64List = _sse_decode_list_prim_f_64(serializer);
-  var boolList = _sse_decode_list_bool(serializer);
+  var int8List = _sse_decode_list_prim_i_8(deserializer);
+  var uint8List = _sse_decode_list_prim_u_8(deserializer);
+  var int16List = _sse_decode_list_prim_i_16(deserializer);
+  var uint16List = _sse_decode_list_prim_u_16(deserializer);
+  var uint32List = _sse_decode_list_prim_u_32(deserializer);
+  var int32List = _sse_decode_list_prim_i_32(deserializer);
+  var uint64List = _sse_decode_list_prim_u_64(deserializer);
+  var int64List = _sse_decode_list_prim_i_64(deserializer);
+  var float32List = _sse_decode_list_prim_f_32(deserializer);
+  var float64List = _sse_decode_list_prim_f_64(deserializer);
+  var boolList = _sse_decode_list_bool(deserializer);
 
   return VecOfPrimitivePackTwinNormal(
       int8List: int8List,
@@ -27819,17 +27823,17 @@ VecOfPrimitivePackTwinNormal _sse_decode_vec_of_primitive_pack_twin_normal(
 VecOfPrimitivePackTwinRustAsync
     _sse_decode_vec_of_primitive_pack_twin_rust_async(
         SseDeserializer deserializer) {
-  var int8List = _sse_decode_list_prim_i_8(serializer);
-  var uint8List = _sse_decode_list_prim_u_8(serializer);
-  var int16List = _sse_decode_list_prim_i_16(serializer);
-  var uint16List = _sse_decode_list_prim_u_16(serializer);
-  var uint32List = _sse_decode_list_prim_u_32(serializer);
-  var int32List = _sse_decode_list_prim_i_32(serializer);
-  var uint64List = _sse_decode_list_prim_u_64(serializer);
-  var int64List = _sse_decode_list_prim_i_64(serializer);
-  var float32List = _sse_decode_list_prim_f_32(serializer);
-  var float64List = _sse_decode_list_prim_f_64(serializer);
-  var boolList = _sse_decode_list_bool(serializer);
+  var int8List = _sse_decode_list_prim_i_8(deserializer);
+  var uint8List = _sse_decode_list_prim_u_8(deserializer);
+  var int16List = _sse_decode_list_prim_i_16(deserializer);
+  var uint16List = _sse_decode_list_prim_u_16(deserializer);
+  var uint32List = _sse_decode_list_prim_u_32(deserializer);
+  var int32List = _sse_decode_list_prim_i_32(deserializer);
+  var uint64List = _sse_decode_list_prim_u_64(deserializer);
+  var int64List = _sse_decode_list_prim_i_64(deserializer);
+  var float32List = _sse_decode_list_prim_f_32(deserializer);
+  var float64List = _sse_decode_list_prim_f_64(deserializer);
+  var boolList = _sse_decode_list_bool(deserializer);
 
   return VecOfPrimitivePackTwinRustAsync(
       int8List: int8List,
@@ -27847,17 +27851,17 @@ VecOfPrimitivePackTwinRustAsync
 
 VecOfPrimitivePackTwinSync _sse_decode_vec_of_primitive_pack_twin_sync(
     SseDeserializer deserializer) {
-  var int8List = _sse_decode_list_prim_i_8(serializer);
-  var uint8List = _sse_decode_list_prim_u_8(serializer);
-  var int16List = _sse_decode_list_prim_i_16(serializer);
-  var uint16List = _sse_decode_list_prim_u_16(serializer);
-  var uint32List = _sse_decode_list_prim_u_32(serializer);
-  var int32List = _sse_decode_list_prim_i_32(serializer);
-  var uint64List = _sse_decode_list_prim_u_64(serializer);
-  var int64List = _sse_decode_list_prim_i_64(serializer);
-  var float32List = _sse_decode_list_prim_f_32(serializer);
-  var float64List = _sse_decode_list_prim_f_64(serializer);
-  var boolList = _sse_decode_list_bool(serializer);
+  var int8List = _sse_decode_list_prim_i_8(deserializer);
+  var uint8List = _sse_decode_list_prim_u_8(deserializer);
+  var int16List = _sse_decode_list_prim_i_16(deserializer);
+  var uint16List = _sse_decode_list_prim_u_16(deserializer);
+  var uint32List = _sse_decode_list_prim_u_32(deserializer);
+  var int32List = _sse_decode_list_prim_i_32(deserializer);
+  var uint64List = _sse_decode_list_prim_u_64(deserializer);
+  var int64List = _sse_decode_list_prim_i_64(deserializer);
+  var float32List = _sse_decode_list_prim_f_32(deserializer);
+  var float64List = _sse_decode_list_prim_f_64(deserializer);
+  var boolList = _sse_decode_list_bool(deserializer);
 
   return VecOfPrimitivePackTwinSync(
       int8List: int8List,
@@ -27875,18 +27879,18 @@ VecOfPrimitivePackTwinSync _sse_decode_vec_of_primitive_pack_twin_sync(
 
 WeekdaysTwinNormal _sse_decode_weekdays_twin_normal(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(serializer);
+  var inner = _sse_decode_i_32(deserializer);
   return TODO;
 }
 
 WeekdaysTwinRustAsync _sse_decode_weekdays_twin_rust_async(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(serializer);
+  var inner = _sse_decode_i_32(deserializer);
   return TODO;
 }
 
 WeekdaysTwinSync _sse_decode_weekdays_twin_sync(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(serializer);
+  var inner = _sse_decode_i_32(deserializer);
   return TODO;
 }
 

@@ -16,7 +16,7 @@ impl LangTrait for DartLang {
     }
 
     fn call_decode(&self, var_ty: &IrType) -> String {
-        format!("_sse_decode_{}(serializer)", var_ty.safe_ident(),)
+        format!("_sse_decode_{}(deserializer)", var_ty.safe_ident(),)
     }
 
     fn call_constructor(
