@@ -25,17 +25,12 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
 
         let body = generate_enum_encode_rust(src, &self_ref, &self_path, |idx, variant| {
             let tag = format!("{idx}.into_dart()");
-            match &variant.kind {
-                IrVariantKind::Value => format!("vec![{tag}]"),
-                IrVariantKind::Struct(st) => {
-                    let fields = (Some(tag).into_iter())
-                        .chain(st.fields.iter().map(|field| {
-                            format!("{}.into_into_dart().into_dart()", field.name.rust_style())
-                        }))
-                        .join(",");
-                    format!("vec![{fields}]")
-                }
-            }
+            let fields = (Some(tag).into_iter())
+                .chain(variant.kind.fields().iter().map(|field| {
+                    format!("{}.into_into_dart().into_dart()", field.name.rust_style())
+                }))
+                .join(",");
+            format!("vec![{fields}]")
         });
 
         let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);

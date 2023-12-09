@@ -10,19 +10,14 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
         match lang {
             Lang::DartLang(_) => format!("return TODO;"),
             Lang::RustLang(_) => generate_enum_encode_rust(src, "self", "Self", |idx, variant| {
-                let fields = match &variant.kind {
-                    IrVariantKind::Value => "".to_owned(),
-                    IrVariantKind::Struct(st) => {
-                        (st.fields.iter())
-                            .map(|field| {
-                                format!(
-                                    "{};\n",
-                                    lang.call_encode(&field.ty, field.name.rust_style())
-                                )
-                            })
-                            .join("");
-                    }
-                };
+                let fields = (variant.kind.fields().iter())
+                    .map(|field| {
+                        format!(
+                            "{};\n",
+                            lang.call_encode(&field.ty, field.name.rust_style())
+                        )
+                    })
+                    .join("");
 
                 format!(
                     "

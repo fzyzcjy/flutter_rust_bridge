@@ -1,6 +1,7 @@
 // Name "enumeration" not "enum", since the latter is a keyword
 
 use crate::codegen::ir::comment::IrComment;
+use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
@@ -82,6 +83,15 @@ impl IrTypeTrait for IrTypeEnumRef {
 impl IrEnum {
     pub fn variants(&self) -> &[IrVariant] {
         &self.variants
+    }
+}
+
+impl IrVariantKind {
+    pub(crate) fn fields(&self) -> Vec<IrField> {
+        match self {
+            IrVariantKind::Value => vec![],
+            IrVariantKind::Struct(st) => st.fields.clone(),
+        }
     }
 }
 
