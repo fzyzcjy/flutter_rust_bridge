@@ -141,62 +141,60 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _dco_decode_unit(dynamic raw) {
     return;
   }
-}
 
-// Section: rust2dart
+  Hello _sse_decode_hello(SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return Hello_Apple();
+      case 1:
+        var field0 = _sse_decode_i_32(deserializer);
+        return Hello_Orange(field0);
+      case 2:
+        var helloWorld = _sse_decode_i_32(deserializer);
+        var anotherField = _sse_decode_i_32(deserializer);
+        return Hello_Raspi(helloWorld: helloWorld, anotherField: anotherField);
+      default:
+        throw UnimplementedError('');
+    }
+  }
 
-Hello _sse_decode_hello(SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return Hello_Apple();
-    case 1:
-      var field0 = _sse_decode_i_32(deserializer);
-      return Hello_Orange(field0);
-    case 2:
-      var helloWorld = _sse_decode_i_32(deserializer);
-      var anotherField = _sse_decode_i_32(deserializer);
-      return Hello_Raspi(helloWorld: helloWorld, anotherField: anotherField);
-    default:
-      throw UnimplementedError('');
+  int _sse_decode_i_32(SseDeserializer deserializer) {
+    return deserializer.buffer.getInt32();
+  }
+
+  void _sse_decode_unit(SseDeserializer deserializer) {}
+
+  void _sse_encode_box_autoadd_hello(Hello self, SseSerializer serializer) {
+    _sse_encode_hello(self, serializer);
+  }
+
+  void _sse_encode_hello(Hello self, SseSerializer serializer) {
+    switch (self) {
+      case Hello_Apple():
+        _sse_encode_i_32(0, serializer);
+
+      case Hello_Orange(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_i_32(field0, serializer);
+
+      case Hello_Raspi(
+          helloWorld: final helloWorld,
+          anotherField: final anotherField
+        ):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_i_32(helloWorld, serializer);
+        _sse_encode_i_32(anotherField, serializer);
+    }
+  }
+
+  void _sse_encode_i_32(int self, SseSerializer serializer) {
+    serializer.buffer.putInt32(self);
   }
 }
-
-int _sse_decode_i_32(SseDeserializer deserializer) {
-  return deserializer.buffer.getInt32();
-}
-
-void _sse_decode_unit(SseDeserializer deserializer) {}
 
 // Section: dart2rust
 
 int cst_encode_i_32(int raw) {
   return raw;
-}
-
-void _sse_encode_box_autoadd_hello(Hello self, SseSerializer serializer) {
-  _sse_encode_hello(self, serializer);
-}
-
-void _sse_encode_hello(Hello self, SseSerializer serializer) {
-  switch (self) {
-    case Hello_Apple():
-      _sse_encode_i_32(0, serializer);
-
-    case Hello_Orange(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_i_32(field0, serializer);
-
-    case Hello_Raspi(
-        helloWorld: final helloWorld,
-        anotherField: final anotherField
-      ):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_i_32(helloWorld, serializer);
-      _sse_encode_i_32(anotherField, serializer);
-  }
-}
-
-void _sse_encode_i_32(int self, SseSerializer serializer) {
-  serializer.buffer.putInt32(self);
 }

@@ -18,6 +18,10 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, 
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
+// Section: boilerplate
+
+flutter_rust_bridge::frb_generated_boilerplate!();
+
 // Section: executor
 
 #[cfg(not(target_family = "wasm"))]
@@ -84,18 +88,6 @@ fn wire_minimal_adder_impl(
 
 // Section: dart2rust
 
-pub trait CstDecode<T> {
-    fn cst_decode(self) -> T;
-}
-
-impl<T, S> CstDecode<Option<T>> for *mut S
-where
-    *mut S: CstDecode<T>,
-{
-    fn cst_decode(self) -> Option<T> {
-        (!self.is_null()).then(|| self.cst_decode())
-    }
-}
 impl CstDecode<i32> for i32 {
     fn cst_decode(self) -> i32 {
         self
@@ -125,7 +117,7 @@ impl SseDecode for crate::api::minimal::Hello {
                 };
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
