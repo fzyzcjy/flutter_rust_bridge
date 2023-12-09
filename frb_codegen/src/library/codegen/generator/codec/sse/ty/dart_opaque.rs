@@ -8,7 +8,7 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
         Some(simple_delegate_encode(
             lang,
             &self.ir.get_delegate(),
-            "wire.dart_opaque_dart2rust_encode(self)",
+            "PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self))",
         ))
     }
 
