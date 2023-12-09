@@ -8,6 +8,8 @@ import 'dart:typed_data';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/misc/rust_vec_u8.dart';
 
+part 'write_buffer_auto_generated.dart';
+
 // NOTE MAIN MODIFICATION:
 // * Uint8List -> RustVecU8
 /// Write-only buffer for incrementally building a [ByteData] instance.
