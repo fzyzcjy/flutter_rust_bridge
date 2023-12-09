@@ -63,12 +63,15 @@ fn wire_hi_async_rust_opaque_impl(
         move || {
             let api_a = a.cst_decode();
             move |context| async move {
-                transform_result_dco((move || async move {
-                    let api_a = api_a.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(
-                        crate::api::minimal::hi_async_rust_opaque(api_a).await,
-                    )
-                })())
+                transform_result_dco(
+                    (move || async move {
+                        let api_a = api_a.rust_auto_opaque_decode_owned()?;
+                        Result::<_, anyhow::Error>::Ok(
+                            crate::api::minimal::hi_async_rust_opaque(api_a).await,
+                        )
+                    })()
+                    .await,
+                )
             }
         },
     )
