@@ -9,5 +9,26 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
 
-Stream<int> hiStream({dynamic hint}) =>
-    RustLib.instance.api.hiStream(hint: hint);
+Stream<int> hiStreamOne({dynamic hint}) =>
+    RustLib.instance.api.hiStreamOne(hint: hint);
+
+Future<void> hiStreamTwo({required StreamSink sink, dynamic hint}) =>
+    RustLib.instance.api.hiStreamTwo(sink: sink, hint: hint);
+
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::frb_generated::StreamSink>>
+@sealed
+class StreamSink extends RustOpaque {
+  StreamSink.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
+
+  StreamSink.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_StreamSink,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_StreamSink,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_StreamSinkPtr,
+  );
+}

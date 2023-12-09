@@ -17,6 +17,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StreamSinkPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSinkPtr;
 }
 
 // Section: wire_class
@@ -62,19 +65,36 @@ class RustLibWire implements BaseWire {
   late final _frb_initialize_rust =
       _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
 
-  void wire_hi_stream(
+  void wire_hi_stream_one(
     int port_,
   ) {
-    return _wire_hi_stream(
+    return _wire_hi_stream_one(
       port_,
     );
   }
 
-  late final _wire_hi_streamPtr =
+  late final _wire_hi_stream_onePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_hi_stream');
-  late final _wire_hi_stream =
-      _wire_hi_streamPtr.asFunction<void Function(int)>();
+          'wire_hi_stream_one');
+  late final _wire_hi_stream_one =
+      _wire_hi_stream_onePtr.asFunction<void Function(int)>();
+
+  void wire_hi_stream_two(
+    int port_,
+    ffi.Pointer<ffi.Void> sink,
+  ) {
+    return _wire_hi_stream_two(
+      port_,
+      sink,
+    );
+  }
+
+  late final _wire_hi_stream_twoPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_hi_stream_two');
+  late final _wire_hi_stream_two = _wire_hi_stream_twoPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_minimal_adder(
     int port_,
@@ -94,6 +114,38 @@ class RustLibWire implements BaseWire {
       'wire_minimal_adder');
   late final _wire_minimal_adder =
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSinkPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSinkPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSinkPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSinkPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();

@@ -16,6 +16,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StreamSinkPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink;
 }
 
 // Section: wire_class
@@ -28,10 +31,26 @@ class RustLibWire extends BaseWire {
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
 
-  void wire_hi_stream(NativePortType port_) => wasmModule.wire_hi_stream(port_);
+  void wire_hi_stream_one(NativePortType port_) =>
+      wasmModule.wire_hi_stream_one(port_);
+
+  void wire_hi_stream_two(NativePortType port_, Object sink) =>
+      wasmModule.wire_hi_stream_two(port_, sink);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+              ptr);
 }
 
 @JS('wasm_bindgen')
@@ -49,7 +68,17 @@ class RustLibWasmModule implements WasmModule {
   external void frb_initialize_rust(
       NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
 
-  external void wire_hi_stream(NativePortType port_);
+  external void wire_hi_stream_one(NativePortType port_);
+
+  external void wire_hi_stream_two(NativePortType port_, Object sink);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+          dynamic ptr);
 }

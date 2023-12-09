@@ -12,17 +12,26 @@ typedef struct _Dart_Handle* Dart_Handle;
 
 void frb_initialize_rust(MessagePort dart_opaque_drop_port, MessagePort dart_fn_invoke_port);
 
-void wire_hi_stream(int64_t port_);
+void wire_hi_stream_one(int64_t port_);
+
+void wire_hi_stream_two(int64_t port_, const void *sink);
 
 void wire_minimal_adder(int64_t port_, int32_t a, int32_t b);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(const void *ptr);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) frb_initialize_rust);
     dummy_var ^= ((int64_t) (void*) get_dart_object);
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
-    dummy_var ^= ((int64_t) (void*) wire_hi_stream);
+    dummy_var ^= ((int64_t) (void*) wire_hi_stream_one);
+    dummy_var ^= ((int64_t) (void*) wire_hi_stream_two);
     dummy_var ^= ((int64_t) (void*) wire_minimal_adder);
     return dummy_var;
 }

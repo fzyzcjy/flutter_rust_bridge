@@ -14,6 +14,7 @@
 
 // Section: imports
 
+use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -45,18 +46,41 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 // Section: wire_funcs
 
-fn wire_hi_stream_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
+fn wire_hi_stream_one_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "hi_stream",
+            debug_name: "hi_stream_one",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
         },
         move || {
             move |context| {
-                transform_result_dco(Result::<_, ()>::Ok(crate::api::minimal::hi_stream(
+                transform_result_dco(Result::<_, ()>::Ok(crate::api::minimal::hi_stream_one(
                     StreamSink::new(context.rust2dart_context().stream_sink::<_, i32>()),
                 )))
+            }
+        },
+    )
+}
+fn wire_hi_stream_two_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    sink: impl CstDecode<
+            flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::frb_generated::StreamSink>>,
+        > + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "hi_stream_two",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_sink = sink.cst_decode();
+            move |context| {
+                let api_sink = api_sink.rust_auto_opaque_decode_owned()?;
+                transform_result_dco(Result::<_, anyhow::Error>::Ok(
+                    crate::api::minimal::hi_stream_two(api_sink),
+                ))
             }
         },
     )
@@ -91,13 +115,43 @@ impl CstDecode<i32> for i32 {
         self
     }
 }
+impl CstDecode<usize> for usize {
+    fn cst_decode(self) -> usize {
+        self
+    }
+}
+impl SseDecode
+    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::frb_generated::StreamSink>>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner);
+    }
+}
+
 impl SseDecode for i32 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
     }
 }
 
+impl SseDecode for usize {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_usize::<NativeEndian>().unwrap()
+    }
+}
+
 // Section: rust2dart
+
+impl SseEncode
+    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::frb_generated::StreamSink>>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
 
 impl SseEncode for i32 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -107,6 +161,12 @@ impl SseEncode for i32 {
 
 impl SseEncode for () {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {}
+}
+
+impl SseEncode for usize {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_usize::<NativeEndian>(self).unwrap();
+    }
 }
 
 #[cfg(not(target_family = "wasm"))]

@@ -4,12 +4,22 @@
 // Section: imports
 
 use super::*;
+use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::frb_generated::StreamSink>>>
+    for *const std::ffi::c_void
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::frb_generated::StreamSink>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }
@@ -33,11 +43,38 @@ pub extern "C" fn frb_initialize_rust(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_hi_stream(port_: i64) {
-    wire_hi_stream_impl(port_)
+pub extern "C" fn wire_hi_stream_one(port_: i64) {
+    wire_hi_stream_one_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_hi_stream_two(port_: i64, sink: *const std::ffi::c_void) {
+    wire_hi_stream_two_impl(port_, sink)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<crate::frb_generated::StreamSink>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<crate::frb_generated::StreamSink>,
+        >(ptr);
+    }
 }
