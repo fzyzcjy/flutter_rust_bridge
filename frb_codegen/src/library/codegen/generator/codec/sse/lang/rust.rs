@@ -56,12 +56,19 @@ impl LangTrait for RustLang {
         fallback: Option<String>,
     ) -> String {
         let body = (variants.iter())
-            .map(|(lhs, rhs)| format!("{lhs} => {{ {rhs} }}"))
+            .map(|(lhs, rhs)| format!("{lhs} => {{ {rhs} }}\n"))
             .join("");
         let fallback = fallback
             .map(|expr| format!("_ => {{ {expr} }}"))
             .unwrap_or_default();
-        format!("match {value} {{ {body} {fallback} }}")
+        format!(
+            "
+            match {value} {{
+                {body}
+                {fallback}
+            }}
+            "
+        )
     }
 
     fn null(&self) -> &'static str {
