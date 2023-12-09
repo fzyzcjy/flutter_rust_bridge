@@ -15,7 +15,7 @@
 // Section: imports
 
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
-use flutter_rust_bridge::for_generated::{transform_result_dco, SseSerializer};
+use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: executor
@@ -149,7 +149,10 @@ impl SseDecode for i32 {
 
 // Section: rust2dart
 
-// TODO remove
+pub trait SseEncode {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
+}
+
 fn transform_result_sse<T, E>(
     raw: Result<T, E>,
 ) -> Result<
@@ -172,21 +175,14 @@ where
     }
 }
 
-// TODO put it there
-impl SseEncode for () {
-    fn sse_encode(self, serializer: &mut SseSerializer) {}
-}
-
-pub trait SseEncode {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
-}
-
-// TODO
-
 impl SseEncode for i32 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
     }
+}
+
+impl SseEncode for () {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {}
 }
 
 #[cfg(not(target_family = "wasm"))]

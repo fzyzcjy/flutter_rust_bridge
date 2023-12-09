@@ -150,6 +150,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
+
+  void _dco_decode_unit(dynamic raw) {
+    return;
+  }
 }
 
 // Section: rust2dart
@@ -157,6 +161,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 int _sse_decode_i_32(SseDeserializer deserializer) {
   return deserializer.buffer.getInt32();
 }
+
+void _sse_decode_unit(SseDeserializer deserializer) {}
 
 // Section: dart2rust
 

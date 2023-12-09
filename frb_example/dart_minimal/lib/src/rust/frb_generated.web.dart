@@ -32,7 +32,7 @@ class RustLibWire extends BaseWire {
           int data_len_) =>
       wasmModule.wire_hello(port_, ptr_, rust_vec_len_, data_len_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_hello_sync(
               ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_hello_sync(ptr_, rust_vec_len_, data_len_);
@@ -59,7 +59,7 @@ class RustLibWasmModule implements WasmModule {
   external void wire_hello(
       int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_hello_sync(
           ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
 
