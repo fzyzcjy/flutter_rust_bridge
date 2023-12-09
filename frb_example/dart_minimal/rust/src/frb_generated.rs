@@ -149,6 +149,7 @@ impl SseDecode for i32 {
 
 // Section: rust2dart
 
+// TODO remove
 fn transform_result_sse<T, E>(
     raw: Result<T, E>,
 ) -> Result<
