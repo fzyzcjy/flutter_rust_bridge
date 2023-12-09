@@ -1,6 +1,6 @@
 #[cfg(feature = "chrono")]
 #[inline]
-pub fn cst_decode_timestamp(ts: i64) -> Timestamp {
+pub fn decode_timestamp(ts: i64) -> Timestamp {
     #[cfg(wasm)]
     const PRECISION: i64 = 1_000;
     #[cfg(not(wasm))]
@@ -52,12 +52,12 @@ pub fn decode_uuid(id: Vec<u8>) -> uuid::Uuid {
 #[cfg(feature = "chrono")]
 mod tests {
     #[test]
-    fn test_cst_decode_timestamp() {
+    fn test_decode_timestamp() {
         #[cfg(not(wasm))]
         {
             // input in microseconds
             let input: i64 = 3_496_567_123;
-            let super::Timestamp { s, ns } = super::cst_decode_timestamp(input);
+            let super::Timestamp { s, ns } = super::decode_timestamp(input);
             assert_eq!(s, 3_496);
             assert_eq!(ns, 567_123_000);
         }
@@ -66,7 +66,7 @@ mod tests {
         {
             // input in milliseconds
             let input: i64 = 3_496_567;
-            let super::Timestamp { s, ns } = super::cst_decode_timestamp(input);
+            let super::Timestamp { s, ns } = super::decode_timestamp(input);
             assert_eq!(s, 3_496);
             assert_eq!(ns, 567_000_000);
         }
