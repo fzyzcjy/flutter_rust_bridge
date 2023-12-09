@@ -185,19 +185,6 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
         ans = format!("Result::<_,{error_type}>::Ok({ans})");
     }
 
-    ans = format!(
-        "transform_result_{codec}((move || {maybe_async_move} {{
-            {ans}
-        }})(){maybe_await})",
-        codec = func
-            .codec_mode_pack
-            .rust2dart
-            .to_string()
-            .to_case(Case::Snake),
-        maybe_async_move = if func.rust_async { "async move" } else { "" },
-        maybe_await = if func.rust_async { ".await" } else { "" },
-    );
-
     ans
 }
 
@@ -263,7 +250,17 @@ fn generate_code_closure(
         }
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
-            format!("{code_decode} move |context| {maybe_async_move} {{ {code_inner_decode} {code_call_inner_func_result} }}")
+            let maybe_await = if func.rust_async { ".await" } else { "" };
+            let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
+            format!(
+                "
+                {code_decode} move |context| {maybe_async_move} {{
+                    transform_result_{codec}((move || {maybe_async_move} {{
+                        {code_inner_decode} {code_call_inner_func_result}
+                    }})(){maybe_await})
+                }}
+                "
+            )
         }
     }
 }

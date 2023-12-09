@@ -116,9 +116,9 @@ fn wire_minimal_adder_impl(
             let api_a = a.cst_decode();
             let api_b = b.cst_decode();
             move |context| {
-                transform_result_dco(Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(
-                    api_a, api_b,
-                )))
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
+                })())
             }
         },
     )
