@@ -56,6 +56,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<void> hello({required List<String> a, dynamic hint});
+
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
 
@@ -66,6 +68,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @override
+  Future<void> hello({required List<String> a, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_String(a);
+        return wire.wire_hello(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kHelloConstMeta,
+      argValues: [a],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHelloConstMeta => const TaskConstMeta(
+        debugName: "hello",
+        argNames: ["a"],
+      );
 
   @override
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
@@ -114,6 +139,28 @@ int cst_encode_i_32(int raw) {
   return raw;
 }
 
+int cst_encode_u_8(int raw) {
+  return raw;
+}
+
+void _sse_encode_String(String self, SseSerializer serializer) {
+  _sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
+}
+
 void _sse_encode_i_32(int self, SseSerializer serializer) {
   serializer.buffer.putInt32(self);
+}
+
+void _sse_encode_list_String(List<String> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_String(item, serializer);
+  }
+}
+
+void _sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_u_8(int self, SseSerializer serializer) {
+  serializer.buffer.putUint8(self);
 }

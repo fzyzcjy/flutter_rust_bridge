@@ -41,6 +41,24 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 // Section: wire_funcs
 
+fn wire_hello_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: impl CstDecode<Vec<String>> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "hello",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.cst_decode();
+            move |context| {
+                transform_result_dco(Result::<_, ()>::Ok(crate::api::minimal::hello(api_a)))
+            }
+        },
+    )
+}
 fn wire_minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl CstDecode<i32> + core::panic::UnwindSafe,
@@ -83,13 +101,47 @@ impl CstDecode<i32> for i32 {
         self
     }
 }
+impl CstDecode<u8> for u8 {
+    fn cst_decode(self) -> u8 {
+        self
+    }
+}
 pub trait SseDecode {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self;
+}
+
+impl SseDecode for String {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = _sse_decode_list_prim_u_8(serializer);
+        return String::from_utf8(inner).unwrap();
+    }
 }
 
 impl SseDecode for i32 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
+    }
+}
+
+impl SseDecode for Vec<String> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
+        for item in self {
+            ans.push(_sse_decode_String(serializer));
+        }
+        return ans;
+    }
+}
+
+impl SseDecode for Vec<u8> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return TODO_depend_on_serializer;
+    }
+}
+
+impl SseDecode for u8 {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_u8::<NativeEndian>().unwrap()
     }
 }
 
@@ -121,9 +173,35 @@ where
     }
 }
 
+impl SseEncode for String {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        _sse_encode_list_prim_u_8(TODO, serializer);
+    }
+}
+
 impl SseEncode for i32 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode for Vec<String> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        for item in self {
+            _sse_encode_String(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for Vec<u8> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        return TODO_depend_on_serializer;
+    }
+}
+
+impl SseEncode for u8 {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_u8::<NativeEndian>(self).unwrap();
     }
 }
 

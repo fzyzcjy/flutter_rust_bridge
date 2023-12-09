@@ -17,6 +17,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_String(String raw) {
+    return cst_encode_list_prim_u_8(utf8.encoder.convert(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_String> cst_encode_list_String(List<String> raw) {
+    final ans = wire.cst_new_list_String(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _cst_api_fill_to_wire_String(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_list_prim_u_8(Uint8List raw) {
+    final ans = wire.cst_new_list_prim_u_8(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
 }
 
 // Section: wire_class
@@ -62,6 +83,23 @@ class RustLibWire implements BaseWire {
   late final _frb_initialize_rust =
       _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
 
+  void wire_hello(
+    int port_,
+    ffi.Pointer<wire_cst_list_String> a,
+  ) {
+    return _wire_hello(
+      port_,
+      a,
+    );
+  }
+
+  late final _wire_helloPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64, ffi.Pointer<wire_cst_list_String>)>>('wire_hello');
+  late final _wire_hello = _wire_helloPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_cst_list_String>)>();
+
   void wire_minimal_adder(
     int port_,
     int a,
@@ -81,6 +119,36 @@ class RustLibWire implements BaseWire {
   late final _wire_minimal_adder =
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
 
+  ffi.Pointer<wire_cst_list_String> cst_new_list_String(
+    int len,
+  ) {
+    return _cst_new_list_String(
+      len,
+    );
+  }
+
+  late final _cst_new_list_StringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_list_String> Function(
+              ffi.Int32)>>('cst_new_list_String');
+  late final _cst_new_list_String = _cst_new_list_StringPtr
+      .asFunction<ffi.Pointer<wire_cst_list_String> Function(int)>();
+
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_new_list_prim_u_8(
+    int len,
+  ) {
+    return _cst_new_list_prim_u_8(
+      len,
+    );
+  }
+
+  late final _cst_new_list_prim_u_8Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_list_prim_u_8> Function(
+              ffi.Int32)>>('cst_new_list_prim_u_8');
+  late final _cst_new_list_prim_u_8 = _cst_new_list_prim_u_8Ptr
+      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8> Function(int)>();
+
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
@@ -90,4 +158,18 @@ class RustLibWire implements BaseWire {
           'dummy_method_to_enforce_bundling');
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
+}
+
+final class wire_cst_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_list_String extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8>> ptr;
+
+  @ffi.Int32()
+  external int len;
 }

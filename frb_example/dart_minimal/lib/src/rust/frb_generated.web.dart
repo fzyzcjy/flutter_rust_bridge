@@ -16,6 +16,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @protected
+  String cst_encode_String(String raw) {
+    return raw;
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_String(List<String> raw) {
+    return raw.map(cst_encode_String).toList();
+  }
+
+  @protected
+  Uint8List cst_encode_list_prim_u_8(Uint8List raw) {
+    return raw;
+  }
 }
 
 // Section: wire_class
@@ -27,6 +42,9 @@ class RustLibWire extends BaseWire {
           NativePortType dart_fn_invoke_port) =>
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
+
+  void wire_hello(NativePortType port_, List<dynamic> a) =>
+      wasmModule.wire_hello(port_, a);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
@@ -46,6 +64,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void frb_initialize_rust(
       NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
+
+  external void wire_hello(NativePortType port_, List<dynamic> a);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 }
