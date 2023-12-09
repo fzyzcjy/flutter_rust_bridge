@@ -46,8 +46,7 @@ abstract class BaseTask<S, E extends Object, WireSyncType> {
 ///
 /// {@macro flutter_rust_bridge.not_manually_create}
 @immutable
-class NormalTask<S, E extends Object, WireSyncType>
-    extends BaseTask<S, E, WireSyncType> {
+class NormalTask<S, E extends Object> extends BaseTask<S, E, dynamic> {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
@@ -86,8 +85,7 @@ class SyncTask<S, E extends Object, WireSyncType>
 ///
 /// {@macro flutter_rust_bridge.not_manually_create}
 @immutable
-class StreamTask<S, E extends Object, WireSyncType>
-    extends BaseTask<S, E, WireSyncType> {
+class StreamTask<S, E extends Object> extends BaseTask<S, E, dynamic> {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
