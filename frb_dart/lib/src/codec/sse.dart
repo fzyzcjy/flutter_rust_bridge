@@ -29,6 +29,9 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
       _decode(raw.ptr.asTypedList(raw.len));
 
   S _decode(Uint8List bytes) {
+    final deserializer = SseDeserializer(bytes.buffer.asByteData());
+    TODO;
+    assert(!deserializer.buffer.hasRemaining);
     return TODO;
   }
 
@@ -57,5 +60,5 @@ class SseDeserializer {
   final ReadBuffer buffer;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  SseDeserializer(this.buffer);
+  SseDeserializer(ByteData data) : buffer = ReadBuffer(data);
 }
