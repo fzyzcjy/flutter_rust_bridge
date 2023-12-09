@@ -159,7 +159,16 @@ where
     T: SseEncode,
     E: SseEncode,
 {
-    flutter_rust_bridge::for_generated::SseCodec::encode(TODO)
+    use flutter_rust_bridge::for_generated::{Rust2DartAction, SseCodec};
+
+    match raw {
+        Ok(raw) => Ok(SseCodec::encode(Rust2DartAction::Success, |serializer| {
+            raw.sse_encode(serializer)
+        })),
+        Err(raw) => Err(SseCodec::encode(Rust2DartAction::Error, |serializer| {
+            raw.sse_encode(serializer)
+        })),
+    }
 }
 
 // TODO put it there
