@@ -241,25 +241,21 @@ fn generate_code_closure(
     match func.mode {
         IrFuncMode::Sync => {
             format!(
-                "
-                {code_decode}
+                "{code_decode}
                 transform_result_{codec}((move || {{
                     {code_inner_decode} {code_call_inner_func_result}
-                }})())
-                "
+                }})())"
             )
         }
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
             let maybe_await = if func.rust_async { ".await" } else { "" };
             format!(
-                "
-                {code_decode} move |context| {maybe_async_move} {{
+                "{code_decode} move |context| {maybe_async_move} {{
                     transform_result_{codec}((move || {maybe_async_move} {{
                         {code_inner_decode} {code_call_inner_func_result}
                     }})(){maybe_await})
-                }}
-                "
+                }}"
             )
         }
     }
