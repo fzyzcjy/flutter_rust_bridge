@@ -16,7 +16,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Array(_) => "self.inner".to_owned(),
                 IrTypeDelegate::String => "utf8.encoder.convert(self)".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(_) => "self.index".to_owned(),
-                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
+                IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
+                    "NOT_USED".to_owned()
+                }
                 _ => unreachable!(),
             },
             Lang::RustLang(_) => match &self.ir {
@@ -24,7 +26,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::String => "self.into_bytes()".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
                 IrTypeDelegate::Backtrace => "TODO_Backtrace".to_owned(),
-                IrTypeDelegate::Anyhow => "TODO_Anyhow".to_owned(),
+                IrTypeDelegate::AnyhowException => "TODO_Anyhow".to_owned(),
                 _ => unreachable!(),
             },
         };
@@ -56,7 +58,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     )
                 }
                 IrTypeDelegate::Backtrace => "inner".to_owned(),
-                IrTypeDelegate::Anyhow => "AnyhowException(inner)".to_owned(),
+                IrTypeDelegate::AnyhowException => "AnyhowException(inner)".to_owned(),
                 _ => unreachable!(),
             },
             Lang::RustLang(_) => match &self.ir {
@@ -67,7 +69,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::PrimitiveEnum(inner) => {
                     rust_decode_primitive_enum(inner, self.context.ir_pack, "inner")
                 }
-                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
+                IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
+                    "NOT_USED".to_owned()
+                }
                 _ => unreachable!(),
             },
         };

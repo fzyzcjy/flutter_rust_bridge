@@ -19,7 +19,7 @@ pub enum IrTypeDelegate {
     Uuid,
     // Uuids,// TODO avoid this special case?
     Backtrace,
-    Anyhow,
+    AnyhowException,
 }
 
 pub struct IrTypeDelegateArray {
@@ -77,7 +77,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
             // IrTypeDelegate::Uuids => "Uuids".to_owned(),
             IrTypeDelegate::Backtrace => "Backtrace".to_owned(),
-            IrTypeDelegate::Anyhow => "AnyhowException".to_owned(),
+            IrTypeDelegate::AnyhowException => "AnyhowException".to_owned(),
         }
     }
 
@@ -114,7 +114,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
             // IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_owned(),
-            IrTypeDelegate::Anyhow => "String".to_owned(),
+            IrTypeDelegate::AnyhowException => "String".to_owned(),
         }
     }
 
@@ -160,7 +160,7 @@ impl IrTypeDelegate {
             //     primitive: IrTypePrimitive::U8,
             // }),
             IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
-            IrTypeDelegate::Anyhow => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
         }
     }
 }

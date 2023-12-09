@@ -56,7 +56,7 @@ fn parse_fn_output_type_result(args: &[IrType]) -> anyhow::Result<FunctionPartia
         });
 
     let error_output = if is_anyhow {
-        Some(IrType::Delegate(IrTypeDelegate::Anyhow))
+        Some(IrType::Delegate(IrTypeDelegate::AnyhowException))
     } else {
         args.last().cloned()
     };

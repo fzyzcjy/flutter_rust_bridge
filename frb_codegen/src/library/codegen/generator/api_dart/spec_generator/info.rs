@@ -70,7 +70,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
             IrTypeDelegate::Uuid => "UuidValue".to_owned(),
             // IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_string(),
-            IrTypeDelegate::Anyhow => "AnyhowException".to_string(),
+            IrTypeDelegate::AnyhowException => "AnyhowException".to_string(),
         }
     }
 
