@@ -61,14 +61,7 @@ impl LangTrait for RustLang {
         let fallback = fallback
             .map(|expr| format!("_ => {{ {expr} }}"))
             .unwrap_or_default();
-        format!(
-            "
-            match {value} {{
-                {body}
-                {fallback}
-            }}
-            "
-        )
+        format!("match {value} {{ {body} {fallback} }}")
     }
 
     fn null(&self) -> &'static str {

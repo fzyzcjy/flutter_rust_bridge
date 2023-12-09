@@ -35,7 +35,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
                     .chain(variant.kind.fields().iter().map(|field| {
                         format!("{}.into_into_dart().into_dart()", field.name.rust_style())
                     }))
-                    .join(",");
+                    .join(",\n");
                 format!("vec![{fields}]")
             },
         );
