@@ -6,12 +6,12 @@ use std::sync::Arc;
 
 impl<T: DartSafe> RustOpaque<T> {
     pub fn sse_encode_raw(self) -> (usize, i32) {
-        let (ptr, size) = value.encode();
+        let (ptr, size) = self.encode();
         (ptr as _, size as _)
     }
 
     fn encode(self) -> (*const T, usize) {
-        let ptr = Arc::into_raw(value.arc);
+        let ptr = Arc::into_raw(self.arc);
         let size = mem::size_of::<T>();
         (ptr, size)
     }
