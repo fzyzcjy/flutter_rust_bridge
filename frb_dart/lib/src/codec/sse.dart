@@ -31,7 +31,7 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
   S _decode(Uint8List bytes) {
     final deserializer = SseDeserializer(bytes.buffer.asByteData());
     final action = deserializer.buffer.getUint8();
-    final ans = SimpleDecoder().decode(action);
+    final ans = _SseSimpleDecoder(this, deserializer).decode(action);
     assert(!deserializer.buffer.hasRemaining);
     return ans;
   }
@@ -40,6 +40,29 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
   void freeWireSyncReturn(WireSyncReturnSse raw,
           GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
       generalizedFrbRustBinding.freeWireSyncReturnSse(raw);
+}
+
+class _SseSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
+  final SseCodec<S, E> codec;
+  final SseDeserializer deserializer;
+
+  _SseSimpleDecoder(this.codec, this.deserializer);
+
+  @override
+  S decodeSuccess() => codec.decodeSuccessData(deserializer);
+
+  @override
+  E decodeError() {
+    final decodeErrorData = codec.decodeErrorData;
+    if (decodeErrorData == null) {
+      throw Exception(
+          'transformRust2DartMessage received error message, but no decodeErrorData to parse it.');
+    }
+    return decodeErrorData(deserializer);
+  }
+
+  @override
+  Object decodePanic() => sseDecodePanicError(deserializer);
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
