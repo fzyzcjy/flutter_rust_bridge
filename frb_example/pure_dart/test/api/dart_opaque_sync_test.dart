@@ -1,4 +1,4 @@
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "syncSse", "rustAsyncSse"]}
 
 @Skip('see https://github.com/dart-lang/sdk/issues/54263')
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';

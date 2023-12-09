@@ -15,7 +15,6 @@ pub mod dart_opaque_twin_sync;
 pub mod enumeration_twin_rust_async;
 pub mod enumeration_twin_sync;
 pub mod event_listener_twin_rust_async;
-pub mod event_listener_twin_sync;
 pub mod exception_twin_rust_async;
 pub mod exception_twin_sync;
 pub mod external_type_in_crate_twin_rust_async;

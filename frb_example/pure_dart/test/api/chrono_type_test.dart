@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sse", "syncSse", "rustAsyncSse"]}
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:frb_example_pure_dart/src/rust/api/chrono_type.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';

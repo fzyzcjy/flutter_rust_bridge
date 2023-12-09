@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "syncSse"]}
+
 // event listener test
 
 use crate::frb_generated::StreamSink;

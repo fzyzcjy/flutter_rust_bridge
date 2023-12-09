@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sse", "syncSse", "rustAsyncSse"]}
+
 #[derive(Debug, Clone)]
 pub struct FeatureUuidTwinNormal {
     pub one: uuid::Uuid,
