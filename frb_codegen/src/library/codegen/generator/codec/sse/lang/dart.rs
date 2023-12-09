@@ -46,11 +46,19 @@ impl LangTrait for DartLang {
         format!("for (final {lhs} in {rhs}) {{ {body} }}")
     }
 
-    fn switch_expr(&self, value: &str, variants: &[(String, String)]) -> String {
+    fn switch_expr(
+        &self,
+        value: &str,
+        variants: &[(String, String)],
+        fallback: Option<String>,
+    ) -> String {
         let body = (variants.iter())
             .map(|(lhs, rhs)| format!("case {lhs}: {rhs}"))
             .join("");
-        format!("switch ({value}) {{ {body} }}")
+        let fallback = fallback
+            .map(|expr| format!("default: {expr}"))
+            .unwrap_or_default();
+        format!("switch ({value}) {{ {body} {fallback} }}")
     }
 
     fn null(&self) -> &'static str {

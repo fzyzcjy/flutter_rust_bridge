@@ -31,7 +31,12 @@ pub(crate) trait LangTrait {
 
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String;
 
-    fn switch_expr(&self, value: &str, variants: &[(String, String)]) -> String;
+    fn switch_expr(
+        &self,
+        value: &str,
+        variants: &[(String, String)],
+        fallback: Option<String>,
+    ) -> String;
 
     fn null(&self) -> &'static str;
 

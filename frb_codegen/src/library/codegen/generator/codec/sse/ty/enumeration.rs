@@ -46,7 +46,11 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
             })
             .collect_vec();
 
-        let body = lang.switch_expr("tag_", &variants);
+        let body = lang.switch_expr(
+            "tag_",
+            &variants,
+            Some(format!("{};", lang.throw_unimplemented())),
+        );
 
         format!(
             "
@@ -92,7 +96,7 @@ pub(crate) fn generate_enum_encode_rust_general(
         })
         .collect_vec();
 
-    lang.switch_expr(self_ref, &variants)
+    lang.switch_expr(self_ref, &variants, None)
 }
 
 fn pattern_match_enum_variant(lang: &Lang, variant: &IrVariant) -> String {

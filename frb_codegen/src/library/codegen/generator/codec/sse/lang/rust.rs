@@ -43,11 +43,19 @@ impl LangTrait for RustLang {
         format!("for {lhs} in {rhs} {{ {body} }}")
     }
 
-    fn switch_expr(&self, value: &str, variants: &[(String, String)]) -> String {
+    fn switch_expr(
+        &self,
+        value: &str,
+        variants: &[(String, String)],
+        fallback: Option<String>,
+    ) -> String {
         let body = (variants.iter())
             .map(|(lhs, rhs)| format!("{lhs} => {{ {rhs} }}"))
             .join("");
-        format!("match {value} {{ {body} }}")
+        let fallback = fallback
+            .map(|expr| format!("_ => {{ {expr} }}"))
+            .unwrap_or_default();
+        format!("match {value} {{ {body} {fallback} }}")
     }
 
     fn null(&self) -> &'static str {
