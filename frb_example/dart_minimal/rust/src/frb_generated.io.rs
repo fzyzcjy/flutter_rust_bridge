@@ -49,6 +49,11 @@ pub extern "C" fn frb_initialize_rust(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_hi_async_rust_opaque(port_: i64, a: *const std::ffi::c_void) {
+    wire_hi_async_rust_opaque_impl(port_, a)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_hi_rust_opaque(port_: i64, a: *const std::ffi::c_void) {
     wire_hi_rust_opaque_impl(port_, a)
 }

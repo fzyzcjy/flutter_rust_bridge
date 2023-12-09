@@ -60,6 +60,14 @@ pub fn frb_initialize_rust(
 }
 
 #[wasm_bindgen]
+pub fn wire_hi_async_rust_opaque(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_hi_async_rust_opaque_impl(port_, a)
+}
+
+#[wasm_bindgen]
 pub fn wire_hi_rust_opaque(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,

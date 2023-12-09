@@ -46,6 +46,31 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 // Section: wire_funcs
 
+fn wire_hi_async_rust_opaque_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: impl CstDecode<
+            flutter_rust_bridge::RustOpaque<
+                std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
+            >,
+        > + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "hi_async_rust_opaque",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.cst_decode();
+            move |context| async move {
+                let api_a = api_a.rust_auto_opaque_decode_owned()?;
+                transform_result_dco(Result::<_, anyhow::Error>::Ok(
+                    crate::api::minimal::hi_async_rust_opaque(api_a).await,
+                ))
+            }
+        },
+    )
+}
 fn wire_hi_rust_opaque_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl CstDecode<
@@ -63,10 +88,10 @@ fn wire_hi_rust_opaque_impl(
         move || {
             let api_a = a.cst_decode();
             move |context| {
-                transform_result_dco((move || {
-                    let api_a = api_a.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(crate::api::minimal::hi_rust_opaque(api_a))
-                })())
+                let api_a = api_a.rust_auto_opaque_decode_owned()?;
+                transform_result_dco(Result::<_, anyhow::Error>::Ok(
+                    crate::api::minimal::hi_rust_opaque(api_a),
+                ))
             }
         },
     )

@@ -12,6 +12,8 @@ typedef struct _Dart_Handle* Dart_Handle;
 
 void frb_initialize_rust(MessagePort dart_opaque_drop_port, MessagePort dart_fn_invoke_port);
 
+void wire_hi_async_rust_opaque(int64_t port_, const void *a);
+
 void wire_hi_rust_opaque(int64_t port_, const void *a);
 
 void wire_minimal_adder(int64_t port_, int32_t a, int32_t b);
@@ -28,6 +30,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
+    dummy_var ^= ((int64_t) (void*) wire_hi_async_rust_opaque);
     dummy_var ^= ((int64_t) (void*) wire_hi_rust_opaque);
     dummy_var ^= ((int64_t) (void*) wire_minimal_adder);
     return dummy_var;

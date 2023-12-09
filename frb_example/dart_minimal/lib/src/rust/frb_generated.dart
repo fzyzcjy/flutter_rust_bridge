@@ -56,6 +56,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<void> hiAsyncRustOpaque({required RwLockBoxFn a, dynamic hint});
+
   Future<void> hiRustOpaque({required RwLockBoxFn a, dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
@@ -76,6 +78,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @override
+  Future<void> hiAsyncRustOpaque({required RwLockBoxFn a, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
+                a);
+        return wire.wire_hi_async_rust_opaque(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kHiAsyncRustOpaqueConstMeta,
+      argValues: [a],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHiAsyncRustOpaqueConstMeta => const TaskConstMeta(
+        debugName: "hi_async_rust_opaque",
+        argNames: ["a"],
+      );
 
   @override
   Future<void> hiRustOpaque({required RwLockBoxFn a, dynamic hint}) {

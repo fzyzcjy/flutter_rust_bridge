@@ -32,6 +32,9 @@ class RustLibWire extends BaseWire {
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
 
+  void wire_hi_async_rust_opaque(NativePortType port_, Object a) =>
+      wasmModule.wire_hi_async_rust_opaque(port_, a);
+
   void wire_hi_rust_opaque(NativePortType port_, Object a) =>
       wasmModule.wire_hi_rust_opaque(port_, a);
 
@@ -65,6 +68,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void frb_initialize_rust(
       NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
+
+  external void wire_hi_async_rust_opaque(NativePortType port_, Object a);
 
   external void wire_hi_rust_opaque(NativePortType port_, Object a);
 

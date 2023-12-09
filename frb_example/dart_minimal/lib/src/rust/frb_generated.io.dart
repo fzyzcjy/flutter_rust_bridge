@@ -66,6 +66,23 @@ class RustLibWire implements BaseWire {
   late final _frb_initialize_rust =
       _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
 
+  void wire_hi_async_rust_opaque(
+    int port_,
+    ffi.Pointer<ffi.Void> a,
+  ) {
+    return _wire_hi_async_rust_opaque(
+      port_,
+      a,
+    );
+  }
+
+  late final _wire_hi_async_rust_opaquePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_hi_async_rust_opaque');
+  late final _wire_hi_async_rust_opaque = _wire_hi_async_rust_opaquePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
   void wire_hi_rust_opaque(
     int port_,
     ffi.Pointer<ffi.Void> a,
