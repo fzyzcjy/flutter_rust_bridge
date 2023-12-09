@@ -2,11 +2,17 @@ use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
+        let cast = if matches!(self.ir, IrTypePrimitive::Bool) {
+            " ? 1 : 0"
+        } else {
+            ""
+        };
+
         Some(match self.ir {
             IrTypePrimitive::Unit => "".into(),
             _ => match lang {
                 Lang::DartLang(_) => format!(
-                    "serializer.buffer.put{}(self);",
+                    "serializer.buffer.put{}(self{cast});",
                     get_serializer_dart_postfix(&self.ir)
                 ),
                 Lang::RustLang(_) => format!(
@@ -18,16 +24,22 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        let cast = if matches!(self.ir, IrTypePrimitive::Bool) {
+            " != 0"
+        } else {
+            ""
+        };
+
         Some(match self.ir {
             IrTypePrimitive::Unit => "".into(),
             _ => match lang {
                 Lang::DartLang(_) => format!(
-                    "return deserializer.buffer.get{}();",
+                    "return deserializer.buffer.get{}(){cast};",
                     get_serializer_dart_postfix(&self.ir)
                 ),
                 Lang::RustLang(_) => {
                     format!(
-                        "deserializer.cursor.read_{}::<NativeEndian>().unwrap()",
+                        "deserializer.cursor.read_{}::<NativeEndian>().unwrap(){cast}",
                         self.ir.rust_api_type()
                     )
                 }
