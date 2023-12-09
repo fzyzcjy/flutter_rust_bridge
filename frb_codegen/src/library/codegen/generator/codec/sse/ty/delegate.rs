@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
 
@@ -12,23 +13,45 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Uuid => "self.toBytes()",
                 IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED",
             },
-            Lang::RustLang(_) => "TODO",
+            Lang::RustLang(_) => match &self.ir {
+                IrTypeDelegate::Array(_) => "self",
+                IrTypeDelegate::String => "self.into_bytes()",
+                IrTypeDelegate::PrimitiveEnum(_) => "self as _",
+                IrTypeDelegate::Time(_) => "self.microsecondsSinceEpoch",
+                IrTypeDelegate::Uuid => "self.toBytes()",
+                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "TODO",
+            },
         };
         simple_delegate_encode(lang, &self.ir.get_delegate(), inner_expr)
     }
 
     fn generate_decode(&self, lang: &Lang) -> String {
         let wrapper_expr = match lang {
-            Lang::DartLang(_) => "TODO",
+            Lang::DartLang(_) => match &self.ir {
+                IrTypeDelegate::Array(_) => "inner".to_owned(),
+                IrTypeDelegate::String => "utf8.decoder.convert(inner)".to_owned(),
+                IrTypeDelegate::PrimitiveEnum(inner) => {
+                    format!(
+                        "return {}.values[inner as int];",
+                        ApiDartGenerator::new(inner.ir.clone(), self.context.as_api_dart_context())
+                            .dart_api_type()
+                    )
+                }
+                IrTypeDelegate::Time(_) => "TODO".to_owned(),
+                IrTypeDelegate::Uuid => "TODO".to_owned(),
+                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "TODO".to_owned(),
+            },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
-                    "flutter_rust_bridge::for_generated::from_vec_to_array(inner)"
+                    "flutter_rust_bridge::for_generated::from_vec_to_array(inner)".to_owned()
                 }
-                IrTypeDelegate::String => "String::from_utf8(inner).unwrap()",
-                IrTypeDelegate::PrimitiveEnum(_) => "TODO",
-                IrTypeDelegate::Time(_) => "chrono::Duration::microseconds(self)",
-                IrTypeDelegate::Uuid => "flutter_rust_bridge::for_generated::decode_uuid(inner)",
-                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED",
+                IrTypeDelegate::String => "String::from_utf8(inner).unwrap()".to_owned(),
+                IrTypeDelegate::PrimitiveEnum(_) => "TODO".to_owned(),
+                IrTypeDelegate::Time(_) => "chrono::Duration::microseconds(self)".to_owned(),
+                IrTypeDelegate::Uuid => {
+                    "flutter_rust_bridge::for_generated::decode_uuid(inner)".to_owned()
+                }
+                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
             },
         };
         simple_delegate_decode(lang, &self.ir.get_delegate(), wrapper_expr)
