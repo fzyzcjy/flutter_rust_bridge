@@ -26344,8 +26344,8 @@ KitchenSinkTwinSync _sse_decode_kitchen_sink_twin_sync(
 List<Duration> _sse_decode_list_Chrono_Duration(SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <Duration>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_Chrono_Duration(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_Chrono_Duration(deserializer));
   }
   return ans_;
 }
@@ -26353,8 +26353,8 @@ List<Duration> _sse_decode_list_Chrono_Duration(SseDeserializer deserializer) {
 List<DateTime> _sse_decode_list_Chrono_Local(SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <DateTime>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_Chrono_Local(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_Chrono_Local(deserializer));
   }
   return ans_;
 }
@@ -26362,8 +26362,8 @@ List<DateTime> _sse_decode_list_Chrono_Local(SseDeserializer deserializer) {
 List<Object> _sse_decode_list_DartOpaque(SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <Object>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_DartOpaque(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_DartOpaque(deserializer));
   }
   return ans_;
 }
@@ -26372,8 +26372,8 @@ List<HideData> _sse_decode_list_RustOpaque_hide_data(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <HideData>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_RustOpaque_hide_data(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_RustOpaque_hide_data(deserializer));
   }
   return ans_;
 }
@@ -26381,8 +26381,8 @@ List<HideData> _sse_decode_list_RustOpaque_hide_data(
 List<String> _sse_decode_list_String(SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <String>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_String(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_String(deserializer));
   }
   return ans_;
 }
@@ -26391,8 +26391,8 @@ List<ApplicationEnvVar> _sse_decode_list_application_env_var(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <ApplicationEnvVar>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_application_env_var(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_application_env_var(deserializer));
   }
   return ans_;
 }
@@ -26401,8 +26401,8 @@ List<ApplicationSettings> _sse_decode_list_application_settings(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <ApplicationSettings>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_application_settings(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_application_settings(deserializer));
   }
   return ans_;
 }
@@ -26411,8 +26411,8 @@ List<AttributeTwinNormal> _sse_decode_list_attribute_twin_normal(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <AttributeTwinNormal>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_attribute_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_attribute_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26421,8 +26421,8 @@ List<AttributeTwinRustAsync> _sse_decode_list_attribute_twin_rust_async(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <AttributeTwinRustAsync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_attribute_twin_rust_async(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_attribute_twin_rust_async(deserializer));
   }
   return ans_;
 }
@@ -26431,8 +26431,8 @@ List<AttributeTwinSync> _sse_decode_list_attribute_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <AttributeTwinSync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_attribute_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_attribute_twin_sync(deserializer));
   }
   return ans_;
 }
@@ -26440,8 +26440,8 @@ List<AttributeTwinSync> _sse_decode_list_attribute_twin_sync(
 List<bool> _sse_decode_list_bool(SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <bool>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_bool(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_bool(deserializer));
   }
   return ans_;
 }
@@ -26450,8 +26450,8 @@ List<ElementTwinNormal> _sse_decode_list_element_twin_normal(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <ElementTwinNormal>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_element_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_element_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26460,8 +26460,8 @@ List<ElementTwinRustAsync> _sse_decode_list_element_twin_rust_async(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <ElementTwinRustAsync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_element_twin_rust_async(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_element_twin_rust_async(deserializer));
   }
   return ans_;
 }
@@ -26470,8 +26470,8 @@ List<ElementTwinSync> _sse_decode_list_element_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <ElementTwinSync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_element_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_element_twin_sync(deserializer));
   }
   return ans_;
 }
@@ -26480,8 +26480,8 @@ List<EnumOpaqueTwinNormal> _sse_decode_list_enum_opaque_twin_normal(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <EnumOpaqueTwinNormal>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_enum_opaque_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_enum_opaque_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26490,8 +26490,8 @@ List<EnumOpaqueTwinRustAsync> _sse_decode_list_enum_opaque_twin_rust_async(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <EnumOpaqueTwinRustAsync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_enum_opaque_twin_rust_async(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_enum_opaque_twin_rust_async(deserializer));
   }
   return ans_;
 }
@@ -26500,8 +26500,8 @@ List<EnumOpaqueTwinSync> _sse_decode_list_enum_opaque_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <EnumOpaqueTwinSync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_enum_opaque_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_enum_opaque_twin_sync(deserializer));
   }
   return ans_;
 }
@@ -26509,8 +26509,8 @@ List<EnumOpaqueTwinSync> _sse_decode_list_enum_opaque_twin_sync(
 List<MyEnum> _sse_decode_list_my_enum(SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <MyEnum>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_my_enum(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_my_enum(deserializer));
   }
   return ans_;
 }
@@ -26518,8 +26518,8 @@ List<MyEnum> _sse_decode_list_my_enum(SseDeserializer deserializer) {
 List<MySize> _sse_decode_list_my_size(SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <MySize>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_my_size(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_my_size(deserializer));
   }
   return ans_;
 }
@@ -26528,8 +26528,8 @@ List<MyTreeNodeTwinNormal> _sse_decode_list_my_tree_node_twin_normal(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <MyTreeNodeTwinNormal>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_my_tree_node_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_my_tree_node_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26538,8 +26538,8 @@ List<MyTreeNodeTwinRustAsync> _sse_decode_list_my_tree_node_twin_rust_async(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <MyTreeNodeTwinRustAsync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_my_tree_node_twin_rust_async(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_my_tree_node_twin_rust_async(deserializer));
   }
   return ans_;
 }
@@ -26548,8 +26548,8 @@ List<MyTreeNodeTwinSync> _sse_decode_list_my_tree_node_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <MyTreeNodeTwinSync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_my_tree_node_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_my_tree_node_twin_sync(deserializer));
   }
   return ans_;
 }
@@ -26558,8 +26558,8 @@ List<NestedRawStringMirrored> _sse_decode_list_nested_raw_string_mirrored(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <NestedRawStringMirrored>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_nested_raw_string_mirrored(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_nested_raw_string_mirrored(deserializer));
   }
   return ans_;
 }
@@ -26573,8 +26573,8 @@ ListOfNestedRawStringMirrored _sse_decode_list_of_nested_raw_string_mirrored(
 List<String?> _sse_decode_list_opt_String(SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <String?>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_opt_String(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_opt_String(deserializer));
   }
   return ans_;
 }
@@ -26584,8 +26584,8 @@ List<AttributeTwinNormal?>
         SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <AttributeTwinNormal?>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_opt_box_autoadd_attribute_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_opt_box_autoadd_attribute_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26595,8 +26595,8 @@ List<AttributeTwinRustAsync?>
         SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <AttributeTwinRustAsync?>[];
-  for (final item in self) {
-    ans_.push(
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(
         _sse_decode_opt_box_autoadd_attribute_twin_rust_async(deserializer));
   }
   return ans_;
@@ -26606,8 +26606,8 @@ List<AttributeTwinSync?> _sse_decode_list_opt_box_autoadd_attribute_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <AttributeTwinSync?>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_opt_box_autoadd_attribute_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_opt_box_autoadd_attribute_twin_sync(deserializer));
   }
   return ans_;
 }
@@ -26615,8 +26615,8 @@ List<AttributeTwinSync?> _sse_decode_list_opt_box_autoadd_attribute_twin_sync(
 List<int?> _sse_decode_list_opt_box_autoadd_i_32(SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <int?>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_opt_box_autoadd_i_32(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_opt_box_autoadd_i_32(deserializer));
   }
   return ans_;
 }
@@ -26625,8 +26625,8 @@ List<WeekdaysTwinNormal?> _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <WeekdaysTwinNormal?>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_opt_box_autoadd_weekdays_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_opt_box_autoadd_weekdays_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26636,8 +26636,8 @@ List<WeekdaysTwinRustAsync?>
         SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <WeekdaysTwinRustAsync?>[];
-  for (final item in self) {
-    ans_.push(
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(
         _sse_decode_opt_box_autoadd_weekdays_twin_rust_async(deserializer));
   }
   return ans_;
@@ -26647,8 +26647,8 @@ List<WeekdaysTwinSync?> _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <WeekdaysTwinSync?>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_opt_box_autoadd_weekdays_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_opt_box_autoadd_weekdays_twin_sync(deserializer));
   }
   return ans_;
 }
@@ -26657,8 +26657,8 @@ List<Int32List?> _sse_decode_list_opt_list_prim_i_32(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <Int32List?>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_opt_list_prim_i_32(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_opt_list_prim_i_32(deserializer));
   }
   return ans_;
 }
@@ -26667,8 +26667,8 @@ List<PointTwinNormal> _sse_decode_list_point_twin_normal(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <PointTwinNormal>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_point_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_point_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26677,8 +26677,8 @@ List<PointTwinRustAsync> _sse_decode_list_point_twin_rust_async(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <PointTwinRustAsync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_point_twin_rust_async(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_point_twin_rust_async(deserializer));
   }
   return ans_;
 }
@@ -26687,58 +26687,68 @@ List<PointTwinSync> _sse_decode_list_point_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <PointTwinSync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_point_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_point_twin_sync(deserializer));
   }
   return ans_;
 }
 
 Float32List _sse_decode_list_prim_f_32(SseDeserializer deserializer) {
-  return deserializer.buffer.getFloat32List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getFloat32List(len_);
 }
 
 Float64List _sse_decode_list_prim_f_64(SseDeserializer deserializer) {
-  return deserializer.buffer.getFloat64List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getFloat64List(len_);
 }
 
 Int16List _sse_decode_list_prim_i_16(SseDeserializer deserializer) {
-  return deserializer.buffer.getInt16List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getInt16List(len_);
 }
 
 Int32List _sse_decode_list_prim_i_32(SseDeserializer deserializer) {
-  return deserializer.buffer.getInt32List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getInt32List(len_);
 }
 
 Int64List _sse_decode_list_prim_i_64(SseDeserializer deserializer) {
-  return deserializer.buffer.getInt64List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getInt64List(len_);
 }
 
 Int8List _sse_decode_list_prim_i_8(SseDeserializer deserializer) {
-  return deserializer.buffer.getInt8List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getInt8List(len_);
 }
 
 Uint16List _sse_decode_list_prim_u_16(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint16List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getUint16List(len_);
 }
 
 Uint32List _sse_decode_list_prim_u_32(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint32List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getUint32List(len_);
 }
 
 Uint64List _sse_decode_list_prim_u_64(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint64List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getUint64List(len_);
 }
 
 Uint8List _sse_decode_list_prim_u_8(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint8List();
+  var len_ = _sse_decode_i_32(deserializer);
+  return deserializer.buffer.getUint8List(len_);
 }
 
 List<RawStringEnumMirrored> _sse_decode_list_raw_string_enum_mirrored(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <RawStringEnumMirrored>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_raw_string_enum_mirrored(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_raw_string_enum_mirrored(deserializer));
   }
   return ans_;
 }
@@ -26747,8 +26757,8 @@ List<RawStringMirrored> _sse_decode_list_raw_string_mirrored(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <RawStringMirrored>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_raw_string_mirrored(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_raw_string_mirrored(deserializer));
   }
   return ans_;
 }
@@ -26757,8 +26767,8 @@ List<SumWithTwinNormal> _sse_decode_list_sum_with_twin_normal(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <SumWithTwinNormal>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_sum_with_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_sum_with_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26767,8 +26777,8 @@ List<SumWithTwinRustAsync> _sse_decode_list_sum_with_twin_rust_async(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <SumWithTwinRustAsync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_sum_with_twin_rust_async(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_sum_with_twin_rust_async(deserializer));
   }
   return ans_;
 }
@@ -26777,8 +26787,8 @@ List<SumWithTwinSync> _sse_decode_list_sum_with_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <SumWithTwinSync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_sum_with_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_sum_with_twin_sync(deserializer));
   }
   return ans_;
 }
@@ -26787,8 +26797,8 @@ List<TestIdTwinNormal> _sse_decode_list_test_id_twin_normal(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <TestIdTwinNormal>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_test_id_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_test_id_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26797,8 +26807,8 @@ List<TestIdTwinRustAsync> _sse_decode_list_test_id_twin_rust_async(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <TestIdTwinRustAsync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_test_id_twin_rust_async(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_test_id_twin_rust_async(deserializer));
   }
   return ans_;
 }
@@ -26807,8 +26817,8 @@ List<TestIdTwinSync> _sse_decode_list_test_id_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <TestIdTwinSync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_test_id_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_test_id_twin_sync(deserializer));
   }
   return ans_;
 }
@@ -26817,8 +26827,8 @@ List<WeekdaysTwinNormal> _sse_decode_list_weekdays_twin_normal(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <WeekdaysTwinNormal>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_weekdays_twin_normal(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_weekdays_twin_normal(deserializer));
   }
   return ans_;
 }
@@ -26827,8 +26837,8 @@ List<WeekdaysTwinRustAsync> _sse_decode_list_weekdays_twin_rust_async(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <WeekdaysTwinRustAsync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_weekdays_twin_rust_async(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_weekdays_twin_rust_async(deserializer));
   }
   return ans_;
 }
@@ -26837,8 +26847,8 @@ List<WeekdaysTwinSync> _sse_decode_list_weekdays_twin_sync(
     SseDeserializer deserializer) {
   var len_ = _sse_decode_i_32(deserializer);
   var ans_ = <WeekdaysTwinSync>[];
-  for (final item in self) {
-    ans_.push(_sse_decode_weekdays_twin_sync(deserializer));
+  for (var idx_ = 0; idx_ < len_; ++idx_) {
+    ans_.add(_sse_decode_weekdays_twin_sync(deserializer));
   }
   return ans_;
 }
@@ -29986,42 +29996,52 @@ void _sse_encode_list_opt_list_prim_i_32(
 }
 
 void _sse_encode_list_prim_f_32(Float32List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putFloat32List(self);
 }
 
 void _sse_encode_list_prim_f_64(Float64List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putFloat64List(self);
 }
 
 void _sse_encode_list_prim_i_16(Int16List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putInt16List(self);
 }
 
 void _sse_encode_list_prim_i_32(Int32List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putInt32List(self);
 }
 
 void _sse_encode_list_prim_i_64(Int64List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putInt64List(self);
 }
 
 void _sse_encode_list_prim_i_8(Int8List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putInt8List(self);
 }
 
 void _sse_encode_list_prim_u_16(Uint16List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putUint16List(self);
 }
 
 void _sse_encode_list_prim_u_32(Uint32List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putUint32List(self);
 }
 
 void _sse_encode_list_prim_u_64(Uint64List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putUint64List(self);
 }
 
 void _sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
+  _sse_encode_i_32(self.length, serializer);
   serializer.buffer.putUint8List(self);
 }
 
