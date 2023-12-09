@@ -18581,7 +18581,10 @@ impl SseEncode
 
 impl SseEncode for flutter_rust_bridge::DartOpaque {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(wire.dart_opaque_dart2rust_encode(self), serializer);
+        <usize>::sse_encode(
+            PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
+            serializer,
+        );
     }
 }
 

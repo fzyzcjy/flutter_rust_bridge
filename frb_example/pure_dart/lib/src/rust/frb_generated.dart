@@ -24697,3753 +24697,6982 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   WeekdaysTwinSync _dco_decode_weekdays_twin_sync(dynamic raw) {
     return WeekdaysTwinSync.values[raw as int];
   }
-}
 
-// Section: rust2dart
-
-AnyhowException _sse_decode_AnyhowException(SseDeserializer deserializer) {
-  var inner = _sse_decode_String(deserializer);
-  return AnyhowException(inner);
-}
-
-RwLockBoxFnStringString
-    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-        SseDeserializer deserializer) {
-  return RwLockBoxFnStringString.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockBoxHelloTraitTwinNormal
-    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-        SseDeserializer deserializer) {
-  return RwLockBoxHelloTraitTwinNormal.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockBoxHelloTraitTwinSync
-    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-        SseDeserializer deserializer) {
-  return RwLockBoxHelloTraitTwinSync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockBoxMyTraitTwinNormal
-    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-        SseDeserializer deserializer) {
-  return RwLockBoxMyTraitTwinNormal.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockBoxMyTraitTwinSync
-    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-        SseDeserializer deserializer) {
-  return RwLockBoxMyTraitTwinSync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockNonCloneSimpleTwinNormal
-    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-        SseDeserializer deserializer) {
-  return RwLockNonCloneSimpleTwinNormal.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockNonCloneSimpleTwinSync
-    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-        SseDeserializer deserializer) {
-  return RwLockNonCloneSimpleTwinSync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockStructWithGoodAndOpaqueFieldTwinNormal
-    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-        SseDeserializer deserializer) {
-  return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockStructWithGoodAndOpaqueFieldTwinSync
-    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-        SseDeserializer deserializer) {
-  return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-Duration _sse_decode_Chrono_Duration(SseDeserializer deserializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-DateTime _sse_decode_Chrono_Local(SseDeserializer deserializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-DateTime _sse_decode_Chrono_Naive(SseDeserializer deserializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-DateTime _sse_decode_Chrono_Utc(SseDeserializer deserializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
-}
-
-ObjectArray1 _sse_decode_DartOpaque_array_1(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_DartOpaque(deserializer);
-  return ObjectArray1(inner);
-}
-
-MutexHideData _sse_decode_RustOpaque_MutexHideData(
-    SseDeserializer deserializer) {
-  return MutexHideData.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockHideData _sse_decode_RustOpaque_RwLockHideData(
-    SseDeserializer deserializer) {
-  return RwLockHideData.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-BoxDartDebugTwinNormal _sse_decode_RustOpaque_box_dynDartDebugTwinNormal(
-    SseDeserializer deserializer) {
-  return BoxDartDebugTwinNormal.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-BoxDartDebugTwinRustAsync _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
-    SseDeserializer deserializer) {
-  return BoxDartDebugTwinRustAsync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-BoxDartDebugTwinSync _sse_decode_RustOpaque_box_dynDartDebugTwinSync(
-    SseDeserializer deserializer) {
-  return BoxDartDebugTwinSync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-FrbOpaqueReturn _sse_decode_RustOpaque_frb_opaque_return(
-    SseDeserializer deserializer) {
-  return FrbOpaqueReturn.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-FrbOpaqueSyncReturn _sse_decode_RustOpaque_frb_opaque_sync_return(
-    SseDeserializer deserializer) {
-  return FrbOpaqueSyncReturn.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-HideData _sse_decode_RustOpaque_hide_data(SseDeserializer deserializer) {
-  return HideData.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-HideDataArray2 _sse_decode_RustOpaque_hide_data_array_2(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_RustOpaque_hide_data(deserializer);
-  return HideDataArray2(inner);
-}
-
-I32 _sse_decode_RustOpaque_i_32(SseDeserializer deserializer) {
-  return I32.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-NonCloneData _sse_decode_RustOpaque_non_clone_data(
-    SseDeserializer deserializer) {
-  return NonCloneData.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-NonSendHideData _sse_decode_RustOpaque_non_send_hide_data(
-    SseDeserializer deserializer) {
-  return NonSendHideData.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockBoxFnStringString
-    _sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-        SseDeserializer deserializer) {
-  return RwLockBoxFnStringString.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockBoxHelloTraitTwinNormal
-    _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-        SseDeserializer deserializer) {
-  return RwLockBoxHelloTraitTwinNormal.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockBoxHelloTraitTwinSync
-    _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-        SseDeserializer deserializer) {
-  return RwLockBoxHelloTraitTwinSync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockBoxMyTraitTwinNormal
-    _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-        SseDeserializer deserializer) {
-  return RwLockBoxMyTraitTwinNormal.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockBoxMyTraitTwinSync
-    _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-        SseDeserializer deserializer) {
-  return RwLockBoxMyTraitTwinSync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockNonCloneSimpleTwinNormal
-    _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-        SseDeserializer deserializer) {
-  return RwLockNonCloneSimpleTwinNormal.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockNonCloneSimpleTwinSync
-    _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-        SseDeserializer deserializer) {
-  return RwLockNonCloneSimpleTwinSync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockStructWithGoodAndOpaqueFieldTwinNormal
-    _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-        SseDeserializer deserializer) {
-  return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-RwLockStructWithGoodAndOpaqueFieldTwinSync
-    _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-        SseDeserializer deserializer) {
-  return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
-      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
-}
-
-String _sse_decode_String(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(deserializer);
-  return utf8.decoder.convert(inner);
-}
-
-UuidValue _sse_decode_Uuid(SseDeserializer deserializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-ATwinNormal _sse_decode_a_twin_normal(SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return ATwinNormal(a: a);
-}
-
-ATwinRustAsync _sse_decode_a_twin_rust_async(SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return ATwinRustAsync(a: a);
-}
-
-ATwinSync _sse_decode_a_twin_sync(SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return ATwinSync(a: a);
-}
-
-AbcTwinNormal _sse_decode_abc_twin_normal(SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_box_autoadd_a_twin_normal(deserializer);
-      return AbcTwinNormal_A(field0);
-    case 1:
-      var field0 = _sse_decode_box_autoadd_b_twin_normal(deserializer);
-      return AbcTwinNormal_B(field0);
-    case 2:
-      var field0 = _sse_decode_box_autoadd_c_twin_normal(deserializer);
-      return AbcTwinNormal_C(field0);
-    case 3:
-      var field0 = _sse_decode_i_32(deserializer);
-      return AbcTwinNormal_JustInt(field0);
-    default:
-      throw UnimplementedError('');
+  AnyhowException _sse_decode_AnyhowException(SseDeserializer deserializer) {
+    var inner = _sse_decode_String(deserializer);
+    return AnyhowException(inner);
   }
-}
 
-AbcTwinRustAsync _sse_decode_abc_twin_rust_async(SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_box_autoadd_a_twin_rust_async(deserializer);
-      return AbcTwinRustAsync_A(field0);
-    case 1:
-      var field0 = _sse_decode_box_autoadd_b_twin_rust_async(deserializer);
-      return AbcTwinRustAsync_B(field0);
-    case 2:
-      var field0 = _sse_decode_box_autoadd_c_twin_rust_async(deserializer);
-      return AbcTwinRustAsync_C(field0);
-    case 3:
-      var field0 = _sse_decode_i_32(deserializer);
-      return AbcTwinRustAsync_JustInt(field0);
-    default:
-      throw UnimplementedError('');
+  RwLockBoxFnStringString
+      _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          SseDeserializer deserializer) {
+    return RwLockBoxFnStringString.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
-}
 
-AbcTwinSync _sse_decode_abc_twin_sync(SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_box_autoadd_a_twin_sync(deserializer);
-      return AbcTwinSync_A(field0);
-    case 1:
-      var field0 = _sse_decode_box_autoadd_b_twin_sync(deserializer);
-      return AbcTwinSync_B(field0);
-    case 2:
-      var field0 = _sse_decode_box_autoadd_c_twin_sync(deserializer);
-      return AbcTwinSync_C(field0);
-    case 3:
-      var field0 = _sse_decode_i_32(deserializer);
-      return AbcTwinSync_JustInt(field0);
-    default:
-      throw UnimplementedError('');
+  RwLockBoxHelloTraitTwinNormal
+      _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
-}
 
-AnotherMacroStructTwinNormal _sse_decode_another_macro_struct_twin_normal(
-    SseDeserializer deserializer) {
-  var data = _sse_decode_i_32(deserializer);
-  var nonFinalData = _sse_decode_i_32(deserializer);
-  return AnotherMacroStructTwinNormal(data: data, nonFinalData: nonFinalData);
-}
-
-AnotherTwinNormal _sse_decode_another_twin_normal(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return AnotherTwinNormal(a: a);
-}
-
-AnotherTwinRustAsync _sse_decode_another_twin_rust_async(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return AnotherTwinRustAsync(a: a);
-}
-
-AnotherTwinSync _sse_decode_another_twin_sync(SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return AnotherTwinSync(a: a);
-}
-
-ApplicationEnv _sse_decode_application_env(SseDeserializer deserializer) {
-  var vars = _sse_decode_list_application_env_var(deserializer);
-  return ApplicationEnv(vars: vars);
-}
-
-ApplicationEnvVar _sse_decode_application_env_var(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_String(deserializer);
-  var field1 = _sse_decode_bool(deserializer);
-  return ApplicationEnvVar(field0: field0, field1: field1);
-}
-
-ApplicationMessage _sse_decode_application_message(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return ApplicationMessage_DisplayMessage(field0);
-    case 1:
-      var x = _sse_decode_i_32(deserializer);
-      var y = _sse_decode_i_32(deserializer);
-      return ApplicationMessage_RenderPixel(x: x, y: y);
-    case 2:
-      return ApplicationMessage_Exit();
-    default:
-      throw UnimplementedError('');
+  RwLockBoxHelloTraitTwinSync
+      _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
-}
 
-ApplicationMode _sse_decode_application_mode(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(deserializer);
-  return ApplicationMode.values[inner];
-}
-
-ApplicationSettings _sse_decode_application_settings(
-    SseDeserializer deserializer) {
-  var name = _sse_decode_String(deserializer);
-  var version = _sse_decode_String(deserializer);
-  var mode = _sse_decode_application_mode(deserializer);
-  var env = _sse_decode_box_application_env(deserializer);
-  var envOptional = _sse_decode_opt_box_autoadd_application_env(deserializer);
-  return ApplicationSettings(
-      name: name,
-      version: version,
-      mode: mode,
-      env: env,
-      envOptional: envOptional);
-}
-
-AttributeTwinNormal _sse_decode_attribute_twin_normal(
-    SseDeserializer deserializer) {
-  var key = _sse_decode_String(deserializer);
-  var value = _sse_decode_String(deserializer);
-  return AttributeTwinNormal(key: key, value: value);
-}
-
-AttributeTwinRustAsync _sse_decode_attribute_twin_rust_async(
-    SseDeserializer deserializer) {
-  var key = _sse_decode_String(deserializer);
-  var value = _sse_decode_String(deserializer);
-  return AttributeTwinRustAsync(key: key, value: value);
-}
-
-AttributeTwinSync _sse_decode_attribute_twin_sync(
-    SseDeserializer deserializer) {
-  var key = _sse_decode_String(deserializer);
-  var value = _sse_decode_String(deserializer);
-  return AttributeTwinSync(key: key, value: value);
-}
-
-BTwinNormal _sse_decode_b_twin_normal(SseDeserializer deserializer) {
-  var b = _sse_decode_i_32(deserializer);
-  return BTwinNormal(b: b);
-}
-
-BTwinRustAsync _sse_decode_b_twin_rust_async(SseDeserializer deserializer) {
-  var b = _sse_decode_i_32(deserializer);
-  return BTwinRustAsync(b: b);
-}
-
-BTwinSync _sse_decode_b_twin_sync(SseDeserializer deserializer) {
-  var b = _sse_decode_i_32(deserializer);
-  return BTwinSync(b: b);
-}
-
-BigBuffersTwinNormal _sse_decode_big_buffers_twin_normal(
-    SseDeserializer deserializer) {
-  var int64 = _sse_decode_list_prim_i_64(deserializer);
-  var uint64 = _sse_decode_list_prim_u_64(deserializer);
-  return BigBuffersTwinNormal(int64: int64, uint64: uint64);
-}
-
-BigBuffersTwinRustAsync _sse_decode_big_buffers_twin_rust_async(
-    SseDeserializer deserializer) {
-  var int64 = _sse_decode_list_prim_i_64(deserializer);
-  var uint64 = _sse_decode_list_prim_u_64(deserializer);
-  return BigBuffersTwinRustAsync(int64: int64, uint64: uint64);
-}
-
-BigBuffersTwinSync _sse_decode_big_buffers_twin_sync(
-    SseDeserializer deserializer) {
-  var int64 = _sse_decode_list_prim_i_64(deserializer);
-  var uint64 = _sse_decode_list_prim_u_64(deserializer);
-  return BigBuffersTwinSync(int64: int64, uint64: uint64);
-}
-
-BlobTwinNormal _sse_decode_blob_twin_normal(SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_1600(deserializer);
-  return BlobTwinNormal(field0: field0);
-}
-
-BlobTwinRustAsync _sse_decode_blob_twin_rust_async(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_1600(deserializer);
-  return BlobTwinRustAsync(field0: field0);
-}
-
-BlobTwinSync _sse_decode_blob_twin_sync(SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_1600(deserializer);
-  return BlobTwinSync(field0: field0);
-}
-
-bool _sse_decode_bool(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint8() != 0;
-}
-
-ApplicationEnv _sse_decode_box_application_env(SseDeserializer deserializer) {
-  return _sse_decode_application_env(deserializer);
-}
-
-Duration _sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer) {
-  return _sse_decode_Chrono_Duration(deserializer);
-}
-
-DateTime _sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer) {
-  return _sse_decode_Chrono_Naive(deserializer);
-}
-
-DateTime _sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer) {
-  return _sse_decode_Chrono_Utc(deserializer);
-}
-
-Object _sse_decode_box_autoadd_DartOpaque(SseDeserializer deserializer) {
-  return _sse_decode_DartOpaque(deserializer);
-}
-
-HideData _sse_decode_box_autoadd_RustOpaque_hide_data(
-    SseDeserializer deserializer) {
-  return _sse_decode_RustOpaque_hide_data(deserializer);
-}
-
-ATwinNormal _sse_decode_box_autoadd_a_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_a_twin_normal(deserializer);
-}
-
-ATwinRustAsync _sse_decode_box_autoadd_a_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_a_twin_rust_async(deserializer);
-}
-
-ATwinSync _sse_decode_box_autoadd_a_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_a_twin_sync(deserializer);
-}
-
-ApplicationEnv _sse_decode_box_autoadd_application_env(
-    SseDeserializer deserializer) {
-  return _sse_decode_application_env(deserializer);
-}
-
-AttributeTwinNormal _sse_decode_box_autoadd_attribute_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_attribute_twin_normal(deserializer);
-}
-
-AttributeTwinRustAsync _sse_decode_box_autoadd_attribute_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_attribute_twin_rust_async(deserializer);
-}
-
-AttributeTwinSync _sse_decode_box_autoadd_attribute_twin_sync(
-    SseDeserializer deserializer) {
-  return _sse_decode_attribute_twin_sync(deserializer);
-}
-
-BTwinNormal _sse_decode_box_autoadd_b_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_b_twin_normal(deserializer);
-}
-
-BTwinRustAsync _sse_decode_box_autoadd_b_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_b_twin_rust_async(deserializer);
-}
-
-BTwinSync _sse_decode_box_autoadd_b_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_b_twin_sync(deserializer);
-}
-
-bool _sse_decode_box_autoadd_bool(SseDeserializer deserializer) {
-  return _sse_decode_bool(deserializer);
-}
-
-CTwinNormal _sse_decode_box_autoadd_c_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_c_twin_normal(deserializer);
-}
-
-CTwinRustAsync _sse_decode_box_autoadd_c_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_c_twin_rust_async(deserializer);
-}
-
-CTwinSync _sse_decode_box_autoadd_c_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_c_twin_sync(deserializer);
-}
-
-CustomNestedError2TwinNormal
-    _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
-        SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_2_twin_normal(deserializer);
-}
-
-CustomNestedError2TwinRustAsync
-    _sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async(
-        SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_2_twin_rust_async(deserializer);
-}
-
-CustomNestedError2TwinSync
-    _sse_decode_box_autoadd_custom_nested_error_2_twin_sync(
-        SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_2_twin_sync(deserializer);
-}
-
-CustomNestedErrorInnerTwinNormal
-    _sse_decode_box_autoadd_custom_nested_error_inner_twin_normal(
-        SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_inner_twin_normal(deserializer);
-}
-
-CustomNestedErrorInnerTwinRustAsync
-    _sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
-        SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_inner_twin_rust_async(deserializer);
-}
-
-CustomNestedErrorInnerTwinSync
-    _sse_decode_box_autoadd_custom_nested_error_inner_twin_sync(
-        SseDeserializer deserializer) {
-  return _sse_decode_custom_nested_error_inner_twin_sync(deserializer);
-}
-
-ElementTwinNormal _sse_decode_box_autoadd_element_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_element_twin_normal(deserializer);
-}
-
-ElementTwinRustAsync _sse_decode_box_autoadd_element_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_element_twin_rust_async(deserializer);
-}
-
-ElementTwinSync _sse_decode_box_autoadd_element_twin_sync(
-    SseDeserializer deserializer) {
-  return _sse_decode_element_twin_sync(deserializer);
-}
-
-ExoticOptionalsTwinNormal _sse_decode_box_autoadd_exotic_optionals_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_exotic_optionals_twin_normal(deserializer);
-}
-
-ExoticOptionalsTwinRustAsync
-    _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(
-        SseDeserializer deserializer) {
-  return _sse_decode_exotic_optionals_twin_rust_async(deserializer);
-}
-
-ExoticOptionalsTwinSync _sse_decode_box_autoadd_exotic_optionals_twin_sync(
-    SseDeserializer deserializer) {
-  return _sse_decode_exotic_optionals_twin_sync(deserializer);
-}
-
-double _sse_decode_box_autoadd_f_32(SseDeserializer deserializer) {
-  return _sse_decode_f_32(deserializer);
-}
-
-double _sse_decode_box_autoadd_f_64(SseDeserializer deserializer) {
-  return _sse_decode_f_64(deserializer);
-}
-
-int _sse_decode_box_autoadd_i_16(SseDeserializer deserializer) {
-  return _sse_decode_i_16(deserializer);
-}
-
-int _sse_decode_box_autoadd_i_32(SseDeserializer deserializer) {
-  return _sse_decode_i_32(deserializer);
-}
-
-int _sse_decode_box_autoadd_i_64(SseDeserializer deserializer) {
-  return _sse_decode_i_64(deserializer);
-}
-
-int _sse_decode_box_autoadd_i_8(SseDeserializer deserializer) {
-  return _sse_decode_i_8(deserializer);
-}
-
-ListOfNestedRawStringMirrored
-    _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
-        SseDeserializer deserializer) {
-  return _sse_decode_list_of_nested_raw_string_mirrored(deserializer);
-}
-
-MeasureTwinNormal _sse_decode_box_autoadd_measure_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_measure_twin_normal(deserializer);
-}
-
-MeasureTwinRustAsync _sse_decode_box_autoadd_measure_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_measure_twin_rust_async(deserializer);
-}
-
-MeasureTwinSync _sse_decode_box_autoadd_measure_twin_sync(
-    SseDeserializer deserializer) {
-  return _sse_decode_measure_twin_sync(deserializer);
-}
-
-NestedRawStringMirrored _sse_decode_box_autoadd_nested_raw_string_mirrored(
-    SseDeserializer deserializer) {
-  return _sse_decode_nested_raw_string_mirrored(deserializer);
-}
-
-NewTypeIntTwinNormal _sse_decode_box_autoadd_new_type_int_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_new_type_int_twin_normal(deserializer);
-}
-
-NewTypeIntTwinRustAsync _sse_decode_box_autoadd_new_type_int_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_new_type_int_twin_rust_async(deserializer);
-}
-
-NewTypeIntTwinSync _sse_decode_box_autoadd_new_type_int_twin_sync(
-    SseDeserializer deserializer) {
-  return _sse_decode_new_type_int_twin_sync(deserializer);
-}
-
-RawStringMirrored _sse_decode_box_autoadd_raw_string_mirrored(
-    SseDeserializer deserializer) {
-  return _sse_decode_raw_string_mirrored(deserializer);
-}
-
-int _sse_decode_box_autoadd_u_16(SseDeserializer deserializer) {
-  return _sse_decode_u_16(deserializer);
-}
-
-int _sse_decode_box_autoadd_u_32(SseDeserializer deserializer) {
-  return _sse_decode_u_32(deserializer);
-}
-
-int _sse_decode_box_autoadd_u_64(SseDeserializer deserializer) {
-  return _sse_decode_u_64(deserializer);
-}
-
-int _sse_decode_box_autoadd_u_8(SseDeserializer deserializer) {
-  return _sse_decode_u_8(deserializer);
-}
-
-WeekdaysTwinNormal _sse_decode_box_autoadd_weekdays_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_weekdays_twin_normal(deserializer);
-}
-
-WeekdaysTwinRustAsync _sse_decode_box_autoadd_weekdays_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_weekdays_twin_rust_async(deserializer);
-}
-
-WeekdaysTwinSync _sse_decode_box_autoadd_weekdays_twin_sync(
-    SseDeserializer deserializer) {
-  return _sse_decode_weekdays_twin_sync(deserializer);
-}
-
-DistanceTwinNormal _sse_decode_box_distance_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_distance_twin_normal(deserializer);
-}
-
-DistanceTwinRustAsync _sse_decode_box_distance_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_distance_twin_rust_async(deserializer);
-}
-
-DistanceTwinSync _sse_decode_box_distance_twin_sync(
-    SseDeserializer deserializer) {
-  return _sse_decode_distance_twin_sync(deserializer);
-}
-
-FeedIdTwinNormal _sse_decode_box_feed_id_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_feed_id_twin_normal(deserializer);
-}
-
-FeedIdTwinRustAsync _sse_decode_box_feed_id_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_feed_id_twin_rust_async(deserializer);
-}
-
-FeedIdTwinSync _sse_decode_box_feed_id_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_feed_id_twin_sync(deserializer);
-}
-
-KitchenSinkTwinNormal _sse_decode_box_kitchen_sink_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_kitchen_sink_twin_normal(deserializer);
-}
-
-KitchenSinkTwinRustAsync _sse_decode_box_kitchen_sink_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_kitchen_sink_twin_rust_async(deserializer);
-}
-
-KitchenSinkTwinSync _sse_decode_box_kitchen_sink_twin_sync(
-    SseDeserializer deserializer) {
-  return _sse_decode_kitchen_sink_twin_sync(deserializer);
-}
-
-SpeedTwinNormal _sse_decode_box_speed_twin_normal(
-    SseDeserializer deserializer) {
-  return _sse_decode_speed_twin_normal(deserializer);
-}
-
-SpeedTwinRustAsync _sse_decode_box_speed_twin_rust_async(
-    SseDeserializer deserializer) {
-  return _sse_decode_speed_twin_rust_async(deserializer);
-}
-
-SpeedTwinSync _sse_decode_box_speed_twin_sync(SseDeserializer deserializer) {
-  return _sse_decode_speed_twin_sync(deserializer);
-}
-
-U8Array8 _sse_decode_box_u_8_array_8(SseDeserializer deserializer) {
-  return _sse_decode_u_8_array_8(deserializer);
-}
-
-CTwinNormal _sse_decode_c_twin_normal(SseDeserializer deserializer) {
-  var c = _sse_decode_bool(deserializer);
-  return CTwinNormal(c: c);
-}
-
-CTwinRustAsync _sse_decode_c_twin_rust_async(SseDeserializer deserializer) {
-  var c = _sse_decode_bool(deserializer);
-  return CTwinRustAsync(c: c);
-}
-
-CTwinSync _sse_decode_c_twin_sync(SseDeserializer deserializer) {
-  var c = _sse_decode_bool(deserializer);
-  return CTwinSync(c: c);
-}
-
-ConcatenateWithTwinNormal _sse_decode_concatenate_with_twin_normal(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return ConcatenateWithTwinNormal(a: a);
-}
-
-ConcatenateWithTwinRustAsync _sse_decode_concatenate_with_twin_rust_async(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return ConcatenateWithTwinRustAsync(a: a);
-}
-
-ConcatenateWithTwinSync _sse_decode_concatenate_with_twin_sync(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return ConcatenateWithTwinSync(a: a);
-}
-
-ContainsMirroredSubStructTwinNormal
-    _sse_decode_contains_mirrored_sub_struct_twin_normal(
-        SseDeserializer deserializer) {
-  var test = _sse_decode_raw_string_mirrored(deserializer);
-  var test2 = _sse_decode_another_twin_normal(deserializer);
-  return ContainsMirroredSubStructTwinNormal(test: test, test2: test2);
-}
-
-ContainsMirroredSubStructTwinRustAsync
-    _sse_decode_contains_mirrored_sub_struct_twin_rust_async(
-        SseDeserializer deserializer) {
-  var test = _sse_decode_raw_string_mirrored(deserializer);
-  var test2 = _sse_decode_another_twin_rust_async(deserializer);
-  return ContainsMirroredSubStructTwinRustAsync(test: test, test2: test2);
-}
-
-ContainsMirroredSubStructTwinSync
-    _sse_decode_contains_mirrored_sub_struct_twin_sync(
-        SseDeserializer deserializer) {
-  var test = _sse_decode_raw_string_mirrored(deserializer);
-  var test2 = _sse_decode_another_twin_sync(deserializer);
-  return ContainsMirroredSubStructTwinSync(test: test, test2: test2);
-}
-
-CustomEnumErrorTwinNormal _sse_decode_custom_enum_error_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var message = _sse_decode_String(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomEnumErrorTwinNormal_One(
-          message: message, backtrace: backtrace);
-    case 1:
-      var message = _sse_decode_u_32(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomEnumErrorTwinNormal_Two(
-          message: message, backtrace: backtrace);
-    default:
-      throw UnimplementedError('');
+  RwLockBoxMyTraitTwinNormal
+      _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          SseDeserializer deserializer) {
+    return RwLockBoxMyTraitTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
-}
 
-CustomEnumErrorTwinRustAsync _sse_decode_custom_enum_error_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var message = _sse_decode_String(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomEnumErrorTwinRustAsync_One(
-          message: message, backtrace: backtrace);
-    case 1:
-      var message = _sse_decode_u_32(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomEnumErrorTwinRustAsync_Two(
-          message: message, backtrace: backtrace);
-    default:
-      throw UnimplementedError('');
+  RwLockBoxMyTraitTwinSync
+      _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          SseDeserializer deserializer) {
+    return RwLockBoxMyTraitTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
-}
 
-CustomEnumErrorTwinSync _sse_decode_custom_enum_error_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var message = _sse_decode_String(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomEnumErrorTwinSync_One(
-          message: message, backtrace: backtrace);
-    case 1:
-      var message = _sse_decode_u_32(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomEnumErrorTwinSync_Two(
-          message: message, backtrace: backtrace);
-    default:
-      throw UnimplementedError('');
+  RwLockNonCloneSimpleTwinNormal
+      _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
-}
 
-CustomErrorTwinNormal _sse_decode_custom_error_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var e = _sse_decode_String(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomErrorTwinNormal_Error0(e: e, backtrace: backtrace);
-    case 1:
-      var e = _sse_decode_u_32(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomErrorTwinNormal_Error1(e: e, backtrace: backtrace);
-    default:
-      throw UnimplementedError('');
+  RwLockNonCloneSimpleTwinSync
+      _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
-}
 
-CustomErrorTwinRustAsync _sse_decode_custom_error_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var e = _sse_decode_String(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomErrorTwinRustAsync_Error0(e: e, backtrace: backtrace);
-    case 1:
-      var e = _sse_decode_u_32(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomErrorTwinRustAsync_Error1(e: e, backtrace: backtrace);
-    default:
-      throw UnimplementedError('');
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
-}
 
-CustomErrorTwinSync _sse_decode_custom_error_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var e = _sse_decode_String(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomErrorTwinSync_Error0(e: e, backtrace: backtrace);
-    case 1:
-      var e = _sse_decode_u_32(deserializer);
-      var backtrace = _sse_decode_String(deserializer);
-      return CustomErrorTwinSync_Error1(e: e, backtrace: backtrace);
-    default:
-      throw UnimplementedError('');
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
-}
 
-CustomNestedError1TwinNormal _sse_decode_custom_nested_error_1_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedError1TwinNormal_CustomNested1(field0);
-    case 1:
-      var field0 = _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
+  Duration _sse_decode_Chrono_Duration(SseDeserializer deserializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  DateTime _sse_decode_Chrono_Local(SseDeserializer deserializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  DateTime _sse_decode_Chrono_Naive(SseDeserializer deserializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  DateTime _sse_decode_Chrono_Utc(SseDeserializer deserializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
+    var inner = _sse_decode_usize(deserializer);
+    return inner;
+  }
+
+  ObjectArray1 _sse_decode_DartOpaque_array_1(SseDeserializer deserializer) {
+    var inner = _sse_decode_list_DartOpaque(deserializer);
+    return ObjectArray1(inner);
+  }
+
+  MutexHideData _sse_decode_RustOpaque_MutexHideData(
+      SseDeserializer deserializer) {
+    return MutexHideData.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockHideData _sse_decode_RustOpaque_RwLockHideData(
+      SseDeserializer deserializer) {
+    return RwLockHideData.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  BoxDartDebugTwinNormal _sse_decode_RustOpaque_box_dynDartDebugTwinNormal(
+      SseDeserializer deserializer) {
+    return BoxDartDebugTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  BoxDartDebugTwinRustAsync
+      _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
+          SseDeserializer deserializer) {
+    return BoxDartDebugTwinRustAsync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  BoxDartDebugTwinSync _sse_decode_RustOpaque_box_dynDartDebugTwinSync(
+      SseDeserializer deserializer) {
+    return BoxDartDebugTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  FrbOpaqueReturn _sse_decode_RustOpaque_frb_opaque_return(
+      SseDeserializer deserializer) {
+    return FrbOpaqueReturn.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  FrbOpaqueSyncReturn _sse_decode_RustOpaque_frb_opaque_sync_return(
+      SseDeserializer deserializer) {
+    return FrbOpaqueSyncReturn.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  HideData _sse_decode_RustOpaque_hide_data(SseDeserializer deserializer) {
+    return HideData.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  HideDataArray2 _sse_decode_RustOpaque_hide_data_array_2(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_RustOpaque_hide_data(deserializer);
+    return HideDataArray2(inner);
+  }
+
+  I32 _sse_decode_RustOpaque_i_32(SseDeserializer deserializer) {
+    return I32.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  NonCloneData _sse_decode_RustOpaque_non_clone_data(
+      SseDeserializer deserializer) {
+    return NonCloneData.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  NonSendHideData _sse_decode_RustOpaque_non_send_hide_data(
+      SseDeserializer deserializer) {
+    return NonSendHideData.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxFnStringString
+      _sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          SseDeserializer deserializer) {
+    return RwLockBoxFnStringString.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxHelloTraitTwinNormal
+      _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxHelloTraitTwinSync
+      _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxMyTraitTwinNormal
+      _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          SseDeserializer deserializer) {
+    return RwLockBoxMyTraitTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxMyTraitTwinSync
+      _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          SseDeserializer deserializer) {
+    return RwLockBoxMyTraitTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinNormal
+      _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinSync
+      _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  String _sse_decode_String(SseDeserializer deserializer) {
+    var inner = _sse_decode_list_prim_u_8(deserializer);
+    return utf8.decoder.convert(inner);
+  }
+
+  UuidValue _sse_decode_Uuid(SseDeserializer deserializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  ATwinNormal _sse_decode_a_twin_normal(SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return ATwinNormal(a: a);
+  }
+
+  ATwinRustAsync _sse_decode_a_twin_rust_async(SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return ATwinRustAsync(a: a);
+  }
+
+  ATwinSync _sse_decode_a_twin_sync(SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return ATwinSync(a: a);
+  }
+
+  AbcTwinNormal _sse_decode_abc_twin_normal(SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_box_autoadd_a_twin_normal(deserializer);
+        return AbcTwinNormal_A(field0);
+      case 1:
+        var field0 = _sse_decode_box_autoadd_b_twin_normal(deserializer);
+        return AbcTwinNormal_B(field0);
+      case 2:
+        var field0 = _sse_decode_box_autoadd_c_twin_normal(deserializer);
+        return AbcTwinNormal_C(field0);
+      case 3:
+        var field0 = _sse_decode_i_32(deserializer);
+        return AbcTwinNormal_JustInt(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  AbcTwinRustAsync _sse_decode_abc_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_box_autoadd_a_twin_rust_async(deserializer);
+        return AbcTwinRustAsync_A(field0);
+      case 1:
+        var field0 = _sse_decode_box_autoadd_b_twin_rust_async(deserializer);
+        return AbcTwinRustAsync_B(field0);
+      case 2:
+        var field0 = _sse_decode_box_autoadd_c_twin_rust_async(deserializer);
+        return AbcTwinRustAsync_C(field0);
+      case 3:
+        var field0 = _sse_decode_i_32(deserializer);
+        return AbcTwinRustAsync_JustInt(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  AbcTwinSync _sse_decode_abc_twin_sync(SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_box_autoadd_a_twin_sync(deserializer);
+        return AbcTwinSync_A(field0);
+      case 1:
+        var field0 = _sse_decode_box_autoadd_b_twin_sync(deserializer);
+        return AbcTwinSync_B(field0);
+      case 2:
+        var field0 = _sse_decode_box_autoadd_c_twin_sync(deserializer);
+        return AbcTwinSync_C(field0);
+      case 3:
+        var field0 = _sse_decode_i_32(deserializer);
+        return AbcTwinSync_JustInt(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  AnotherMacroStructTwinNormal _sse_decode_another_macro_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var data = _sse_decode_i_32(deserializer);
+    var nonFinalData = _sse_decode_i_32(deserializer);
+    return AnotherMacroStructTwinNormal(data: data, nonFinalData: nonFinalData);
+  }
+
+  AnotherTwinNormal _sse_decode_another_twin_normal(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return AnotherTwinNormal(a: a);
+  }
+
+  AnotherTwinRustAsync _sse_decode_another_twin_rust_async(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return AnotherTwinRustAsync(a: a);
+  }
+
+  AnotherTwinSync _sse_decode_another_twin_sync(SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return AnotherTwinSync(a: a);
+  }
+
+  ApplicationEnv _sse_decode_application_env(SseDeserializer deserializer) {
+    var vars = _sse_decode_list_application_env_var(deserializer);
+    return ApplicationEnv(vars: vars);
+  }
+
+  ApplicationEnvVar _sse_decode_application_env_var(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_String(deserializer);
+    var field1 = _sse_decode_bool(deserializer);
+    return ApplicationEnvVar(field0: field0, field1: field1);
+  }
+
+  ApplicationMessage _sse_decode_application_message(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return ApplicationMessage_DisplayMessage(field0);
+      case 1:
+        var x = _sse_decode_i_32(deserializer);
+        var y = _sse_decode_i_32(deserializer);
+        return ApplicationMessage_RenderPixel(x: x, y: y);
+      case 2:
+        return ApplicationMessage_Exit();
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  ApplicationMode _sse_decode_application_mode(SseDeserializer deserializer) {
+    var inner = _sse_decode_i_32(deserializer);
+    return ApplicationMode.values[inner];
+  }
+
+  ApplicationSettings _sse_decode_application_settings(
+      SseDeserializer deserializer) {
+    var name = _sse_decode_String(deserializer);
+    var version = _sse_decode_String(deserializer);
+    var mode = _sse_decode_application_mode(deserializer);
+    var env = _sse_decode_box_application_env(deserializer);
+    var envOptional = _sse_decode_opt_box_autoadd_application_env(deserializer);
+    return ApplicationSettings(
+        name: name,
+        version: version,
+        mode: mode,
+        env: env,
+        envOptional: envOptional);
+  }
+
+  AttributeTwinNormal _sse_decode_attribute_twin_normal(
+      SseDeserializer deserializer) {
+    var key = _sse_decode_String(deserializer);
+    var value = _sse_decode_String(deserializer);
+    return AttributeTwinNormal(key: key, value: value);
+  }
+
+  AttributeTwinRustAsync _sse_decode_attribute_twin_rust_async(
+      SseDeserializer deserializer) {
+    var key = _sse_decode_String(deserializer);
+    var value = _sse_decode_String(deserializer);
+    return AttributeTwinRustAsync(key: key, value: value);
+  }
+
+  AttributeTwinSync _sse_decode_attribute_twin_sync(
+      SseDeserializer deserializer) {
+    var key = _sse_decode_String(deserializer);
+    var value = _sse_decode_String(deserializer);
+    return AttributeTwinSync(key: key, value: value);
+  }
+
+  BTwinNormal _sse_decode_b_twin_normal(SseDeserializer deserializer) {
+    var b = _sse_decode_i_32(deserializer);
+    return BTwinNormal(b: b);
+  }
+
+  BTwinRustAsync _sse_decode_b_twin_rust_async(SseDeserializer deserializer) {
+    var b = _sse_decode_i_32(deserializer);
+    return BTwinRustAsync(b: b);
+  }
+
+  BTwinSync _sse_decode_b_twin_sync(SseDeserializer deserializer) {
+    var b = _sse_decode_i_32(deserializer);
+    return BTwinSync(b: b);
+  }
+
+  BigBuffersTwinNormal _sse_decode_big_buffers_twin_normal(
+      SseDeserializer deserializer) {
+    var int64 = _sse_decode_list_prim_i_64(deserializer);
+    var uint64 = _sse_decode_list_prim_u_64(deserializer);
+    return BigBuffersTwinNormal(int64: int64, uint64: uint64);
+  }
+
+  BigBuffersTwinRustAsync _sse_decode_big_buffers_twin_rust_async(
+      SseDeserializer deserializer) {
+    var int64 = _sse_decode_list_prim_i_64(deserializer);
+    var uint64 = _sse_decode_list_prim_u_64(deserializer);
+    return BigBuffersTwinRustAsync(int64: int64, uint64: uint64);
+  }
+
+  BigBuffersTwinSync _sse_decode_big_buffers_twin_sync(
+      SseDeserializer deserializer) {
+    var int64 = _sse_decode_list_prim_i_64(deserializer);
+    var uint64 = _sse_decode_list_prim_u_64(deserializer);
+    return BigBuffersTwinSync(int64: int64, uint64: uint64);
+  }
+
+  BlobTwinNormal _sse_decode_blob_twin_normal(SseDeserializer deserializer) {
+    var field0 = _sse_decode_u_8_array_1600(deserializer);
+    return BlobTwinNormal(field0: field0);
+  }
+
+  BlobTwinRustAsync _sse_decode_blob_twin_rust_async(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_u_8_array_1600(deserializer);
+    return BlobTwinRustAsync(field0: field0);
+  }
+
+  BlobTwinSync _sse_decode_blob_twin_sync(SseDeserializer deserializer) {
+    var field0 = _sse_decode_u_8_array_1600(deserializer);
+    return BlobTwinSync(field0: field0);
+  }
+
+  bool _sse_decode_bool(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint8() != 0;
+  }
+
+  ApplicationEnv _sse_decode_box_application_env(SseDeserializer deserializer) {
+    return _sse_decode_application_env(deserializer);
+  }
+
+  Duration _sse_decode_box_autoadd_Chrono_Duration(
+      SseDeserializer deserializer) {
+    return _sse_decode_Chrono_Duration(deserializer);
+  }
+
+  DateTime _sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer) {
+    return _sse_decode_Chrono_Naive(deserializer);
+  }
+
+  DateTime _sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer) {
+    return _sse_decode_Chrono_Utc(deserializer);
+  }
+
+  Object _sse_decode_box_autoadd_DartOpaque(SseDeserializer deserializer) {
+    return _sse_decode_DartOpaque(deserializer);
+  }
+
+  HideData _sse_decode_box_autoadd_RustOpaque_hide_data(
+      SseDeserializer deserializer) {
+    return _sse_decode_RustOpaque_hide_data(deserializer);
+  }
+
+  ATwinNormal _sse_decode_box_autoadd_a_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_a_twin_normal(deserializer);
+  }
+
+  ATwinRustAsync _sse_decode_box_autoadd_a_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_a_twin_rust_async(deserializer);
+  }
+
+  ATwinSync _sse_decode_box_autoadd_a_twin_sync(SseDeserializer deserializer) {
+    return _sse_decode_a_twin_sync(deserializer);
+  }
+
+  ApplicationEnv _sse_decode_box_autoadd_application_env(
+      SseDeserializer deserializer) {
+    return _sse_decode_application_env(deserializer);
+  }
+
+  AttributeTwinNormal _sse_decode_box_autoadd_attribute_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_attribute_twin_normal(deserializer);
+  }
+
+  AttributeTwinRustAsync _sse_decode_box_autoadd_attribute_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_attribute_twin_rust_async(deserializer);
+  }
+
+  AttributeTwinSync _sse_decode_box_autoadd_attribute_twin_sync(
+      SseDeserializer deserializer) {
+    return _sse_decode_attribute_twin_sync(deserializer);
+  }
+
+  BTwinNormal _sse_decode_box_autoadd_b_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_b_twin_normal(deserializer);
+  }
+
+  BTwinRustAsync _sse_decode_box_autoadd_b_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_b_twin_rust_async(deserializer);
+  }
+
+  BTwinSync _sse_decode_box_autoadd_b_twin_sync(SseDeserializer deserializer) {
+    return _sse_decode_b_twin_sync(deserializer);
+  }
+
+  bool _sse_decode_box_autoadd_bool(SseDeserializer deserializer) {
+    return _sse_decode_bool(deserializer);
+  }
+
+  CTwinNormal _sse_decode_box_autoadd_c_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_c_twin_normal(deserializer);
+  }
+
+  CTwinRustAsync _sse_decode_box_autoadd_c_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_c_twin_rust_async(deserializer);
+  }
+
+  CTwinSync _sse_decode_box_autoadd_c_twin_sync(SseDeserializer deserializer) {
+    return _sse_decode_c_twin_sync(deserializer);
+  }
+
+  CustomNestedError2TwinNormal
+      _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
+          SseDeserializer deserializer) {
+    return _sse_decode_custom_nested_error_2_twin_normal(deserializer);
+  }
+
+  CustomNestedError2TwinRustAsync
+      _sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async(
+          SseDeserializer deserializer) {
+    return _sse_decode_custom_nested_error_2_twin_rust_async(deserializer);
+  }
+
+  CustomNestedError2TwinSync
+      _sse_decode_box_autoadd_custom_nested_error_2_twin_sync(
+          SseDeserializer deserializer) {
+    return _sse_decode_custom_nested_error_2_twin_sync(deserializer);
+  }
+
+  CustomNestedErrorInnerTwinNormal
+      _sse_decode_box_autoadd_custom_nested_error_inner_twin_normal(
+          SseDeserializer deserializer) {
+    return _sse_decode_custom_nested_error_inner_twin_normal(deserializer);
+  }
+
+  CustomNestedErrorInnerTwinRustAsync
+      _sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+          SseDeserializer deserializer) {
+    return _sse_decode_custom_nested_error_inner_twin_rust_async(deserializer);
+  }
+
+  CustomNestedErrorInnerTwinSync
+      _sse_decode_box_autoadd_custom_nested_error_inner_twin_sync(
+          SseDeserializer deserializer) {
+    return _sse_decode_custom_nested_error_inner_twin_sync(deserializer);
+  }
+
+  ElementTwinNormal _sse_decode_box_autoadd_element_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_element_twin_normal(deserializer);
+  }
+
+  ElementTwinRustAsync _sse_decode_box_autoadd_element_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_element_twin_rust_async(deserializer);
+  }
+
+  ElementTwinSync _sse_decode_box_autoadd_element_twin_sync(
+      SseDeserializer deserializer) {
+    return _sse_decode_element_twin_sync(deserializer);
+  }
+
+  ExoticOptionalsTwinNormal
+      _sse_decode_box_autoadd_exotic_optionals_twin_normal(
+          SseDeserializer deserializer) {
+    return _sse_decode_exotic_optionals_twin_normal(deserializer);
+  }
+
+  ExoticOptionalsTwinRustAsync
+      _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(
+          SseDeserializer deserializer) {
+    return _sse_decode_exotic_optionals_twin_rust_async(deserializer);
+  }
+
+  ExoticOptionalsTwinSync _sse_decode_box_autoadd_exotic_optionals_twin_sync(
+      SseDeserializer deserializer) {
+    return _sse_decode_exotic_optionals_twin_sync(deserializer);
+  }
+
+  double _sse_decode_box_autoadd_f_32(SseDeserializer deserializer) {
+    return _sse_decode_f_32(deserializer);
+  }
+
+  double _sse_decode_box_autoadd_f_64(SseDeserializer deserializer) {
+    return _sse_decode_f_64(deserializer);
+  }
+
+  int _sse_decode_box_autoadd_i_16(SseDeserializer deserializer) {
+    return _sse_decode_i_16(deserializer);
+  }
+
+  int _sse_decode_box_autoadd_i_32(SseDeserializer deserializer) {
+    return _sse_decode_i_32(deserializer);
+  }
+
+  int _sse_decode_box_autoadd_i_64(SseDeserializer deserializer) {
+    return _sse_decode_i_64(deserializer);
+  }
+
+  int _sse_decode_box_autoadd_i_8(SseDeserializer deserializer) {
+    return _sse_decode_i_8(deserializer);
+  }
+
+  ListOfNestedRawStringMirrored
+      _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
+          SseDeserializer deserializer) {
+    return _sse_decode_list_of_nested_raw_string_mirrored(deserializer);
+  }
+
+  MeasureTwinNormal _sse_decode_box_autoadd_measure_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_measure_twin_normal(deserializer);
+  }
+
+  MeasureTwinRustAsync _sse_decode_box_autoadd_measure_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_measure_twin_rust_async(deserializer);
+  }
+
+  MeasureTwinSync _sse_decode_box_autoadd_measure_twin_sync(
+      SseDeserializer deserializer) {
+    return _sse_decode_measure_twin_sync(deserializer);
+  }
+
+  NestedRawStringMirrored _sse_decode_box_autoadd_nested_raw_string_mirrored(
+      SseDeserializer deserializer) {
+    return _sse_decode_nested_raw_string_mirrored(deserializer);
+  }
+
+  NewTypeIntTwinNormal _sse_decode_box_autoadd_new_type_int_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_new_type_int_twin_normal(deserializer);
+  }
+
+  NewTypeIntTwinRustAsync _sse_decode_box_autoadd_new_type_int_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_new_type_int_twin_rust_async(deserializer);
+  }
+
+  NewTypeIntTwinSync _sse_decode_box_autoadd_new_type_int_twin_sync(
+      SseDeserializer deserializer) {
+    return _sse_decode_new_type_int_twin_sync(deserializer);
+  }
+
+  RawStringMirrored _sse_decode_box_autoadd_raw_string_mirrored(
+      SseDeserializer deserializer) {
+    return _sse_decode_raw_string_mirrored(deserializer);
+  }
+
+  int _sse_decode_box_autoadd_u_16(SseDeserializer deserializer) {
+    return _sse_decode_u_16(deserializer);
+  }
+
+  int _sse_decode_box_autoadd_u_32(SseDeserializer deserializer) {
+    return _sse_decode_u_32(deserializer);
+  }
+
+  int _sse_decode_box_autoadd_u_64(SseDeserializer deserializer) {
+    return _sse_decode_u_64(deserializer);
+  }
+
+  int _sse_decode_box_autoadd_u_8(SseDeserializer deserializer) {
+    return _sse_decode_u_8(deserializer);
+  }
+
+  WeekdaysTwinNormal _sse_decode_box_autoadd_weekdays_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_weekdays_twin_normal(deserializer);
+  }
+
+  WeekdaysTwinRustAsync _sse_decode_box_autoadd_weekdays_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_weekdays_twin_rust_async(deserializer);
+  }
+
+  WeekdaysTwinSync _sse_decode_box_autoadd_weekdays_twin_sync(
+      SseDeserializer deserializer) {
+    return _sse_decode_weekdays_twin_sync(deserializer);
+  }
+
+  DistanceTwinNormal _sse_decode_box_distance_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_distance_twin_normal(deserializer);
+  }
+
+  DistanceTwinRustAsync _sse_decode_box_distance_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_distance_twin_rust_async(deserializer);
+  }
+
+  DistanceTwinSync _sse_decode_box_distance_twin_sync(
+      SseDeserializer deserializer) {
+    return _sse_decode_distance_twin_sync(deserializer);
+  }
+
+  FeedIdTwinNormal _sse_decode_box_feed_id_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_feed_id_twin_normal(deserializer);
+  }
+
+  FeedIdTwinRustAsync _sse_decode_box_feed_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_feed_id_twin_rust_async(deserializer);
+  }
+
+  FeedIdTwinSync _sse_decode_box_feed_id_twin_sync(
+      SseDeserializer deserializer) {
+    return _sse_decode_feed_id_twin_sync(deserializer);
+  }
+
+  KitchenSinkTwinNormal _sse_decode_box_kitchen_sink_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_kitchen_sink_twin_normal(deserializer);
+  }
+
+  KitchenSinkTwinRustAsync _sse_decode_box_kitchen_sink_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_kitchen_sink_twin_rust_async(deserializer);
+  }
+
+  KitchenSinkTwinSync _sse_decode_box_kitchen_sink_twin_sync(
+      SseDeserializer deserializer) {
+    return _sse_decode_kitchen_sink_twin_sync(deserializer);
+  }
+
+  SpeedTwinNormal _sse_decode_box_speed_twin_normal(
+      SseDeserializer deserializer) {
+    return _sse_decode_speed_twin_normal(deserializer);
+  }
+
+  SpeedTwinRustAsync _sse_decode_box_speed_twin_rust_async(
+      SseDeserializer deserializer) {
+    return _sse_decode_speed_twin_rust_async(deserializer);
+  }
+
+  SpeedTwinSync _sse_decode_box_speed_twin_sync(SseDeserializer deserializer) {
+    return _sse_decode_speed_twin_sync(deserializer);
+  }
+
+  U8Array8 _sse_decode_box_u_8_array_8(SseDeserializer deserializer) {
+    return _sse_decode_u_8_array_8(deserializer);
+  }
+
+  CTwinNormal _sse_decode_c_twin_normal(SseDeserializer deserializer) {
+    var c = _sse_decode_bool(deserializer);
+    return CTwinNormal(c: c);
+  }
+
+  CTwinRustAsync _sse_decode_c_twin_rust_async(SseDeserializer deserializer) {
+    var c = _sse_decode_bool(deserializer);
+    return CTwinRustAsync(c: c);
+  }
+
+  CTwinSync _sse_decode_c_twin_sync(SseDeserializer deserializer) {
+    var c = _sse_decode_bool(deserializer);
+    return CTwinSync(c: c);
+  }
+
+  ConcatenateWithTwinNormal _sse_decode_concatenate_with_twin_normal(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return ConcatenateWithTwinNormal(a: a);
+  }
+
+  ConcatenateWithTwinRustAsync _sse_decode_concatenate_with_twin_rust_async(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return ConcatenateWithTwinRustAsync(a: a);
+  }
+
+  ConcatenateWithTwinSync _sse_decode_concatenate_with_twin_sync(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return ConcatenateWithTwinSync(a: a);
+  }
+
+  ContainsMirroredSubStructTwinNormal
+      _sse_decode_contains_mirrored_sub_struct_twin_normal(
+          SseDeserializer deserializer) {
+    var test = _sse_decode_raw_string_mirrored(deserializer);
+    var test2 = _sse_decode_another_twin_normal(deserializer);
+    return ContainsMirroredSubStructTwinNormal(test: test, test2: test2);
+  }
+
+  ContainsMirroredSubStructTwinRustAsync
+      _sse_decode_contains_mirrored_sub_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    var test = _sse_decode_raw_string_mirrored(deserializer);
+    var test2 = _sse_decode_another_twin_rust_async(deserializer);
+    return ContainsMirroredSubStructTwinRustAsync(test: test, test2: test2);
+  }
+
+  ContainsMirroredSubStructTwinSync
+      _sse_decode_contains_mirrored_sub_struct_twin_sync(
+          SseDeserializer deserializer) {
+    var test = _sse_decode_raw_string_mirrored(deserializer);
+    var test2 = _sse_decode_another_twin_sync(deserializer);
+    return ContainsMirroredSubStructTwinSync(test: test, test2: test2);
+  }
+
+  CustomEnumErrorTwinNormal _sse_decode_custom_enum_error_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var message = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomEnumErrorTwinNormal_One(
+            message: message, backtrace: backtrace);
+      case 1:
+        var message = _sse_decode_u_32(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomEnumErrorTwinNormal_Two(
+            message: message, backtrace: backtrace);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomEnumErrorTwinRustAsync _sse_decode_custom_enum_error_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var message = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomEnumErrorTwinRustAsync_One(
+            message: message, backtrace: backtrace);
+      case 1:
+        var message = _sse_decode_u_32(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomEnumErrorTwinRustAsync_Two(
+            message: message, backtrace: backtrace);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomEnumErrorTwinSync _sse_decode_custom_enum_error_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var message = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomEnumErrorTwinSync_One(
+            message: message, backtrace: backtrace);
+      case 1:
+        var message = _sse_decode_u_32(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomEnumErrorTwinSync_Two(
+            message: message, backtrace: backtrace);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomErrorTwinNormal _sse_decode_custom_error_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var e = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomErrorTwinNormal_Error0(e: e, backtrace: backtrace);
+      case 1:
+        var e = _sse_decode_u_32(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomErrorTwinNormal_Error1(e: e, backtrace: backtrace);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomErrorTwinRustAsync _sse_decode_custom_error_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var e = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomErrorTwinRustAsync_Error0(e: e, backtrace: backtrace);
+      case 1:
+        var e = _sse_decode_u_32(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomErrorTwinRustAsync_Error1(e: e, backtrace: backtrace);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomErrorTwinSync _sse_decode_custom_error_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var e = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomErrorTwinSync_Error0(e: e, backtrace: backtrace);
+      case 1:
+        var e = _sse_decode_u_32(deserializer);
+        var backtrace = _sse_decode_String(deserializer);
+        return CustomErrorTwinSync_Error1(e: e, backtrace: backtrace);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedError1TwinNormal _sse_decode_custom_nested_error_1_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedError1TwinNormal_CustomNested1(field0);
+      case 1:
+        var field0 = _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
+            deserializer);
+        return CustomNestedError1TwinNormal_ErrorNested(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedError1TwinRustAsync
+      _sse_decode_custom_nested_error_1_twin_rust_async(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedError1TwinRustAsync_CustomNested1(field0);
+      case 1:
+        var field0 =
+            _sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async(
+                deserializer);
+        return CustomNestedError1TwinRustAsync_ErrorNested(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedError1TwinSync _sse_decode_custom_nested_error_1_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedError1TwinSync_CustomNested1(field0);
+      case 1:
+        var field0 = _sse_decode_box_autoadd_custom_nested_error_2_twin_sync(
+            deserializer);
+        return CustomNestedError1TwinSync_ErrorNested(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedError2TwinNormal _sse_decode_custom_nested_error_2_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedError2TwinNormal_CustomNested2(field0);
+      case 1:
+        var field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedError2TwinNormal_CustomNested2Number(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedError2TwinRustAsync
+      _sse_decode_custom_nested_error_2_twin_rust_async(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedError2TwinRustAsync_CustomNested2(field0);
+      case 1:
+        var field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedError2TwinRustAsync_CustomNested2Number(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedError2TwinSync _sse_decode_custom_nested_error_2_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedError2TwinSync_CustomNested2(field0);
+      case 1:
+        var field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedError2TwinSync_CustomNested2Number(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedErrorInnerTwinNormal
+      _sse_decode_custom_nested_error_inner_twin_normal(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorInnerTwinNormal_Three(field0);
+      case 1:
+        var field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedErrorInnerTwinNormal_Four(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedErrorInnerTwinRustAsync
+      _sse_decode_custom_nested_error_inner_twin_rust_async(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorInnerTwinRustAsync_Three(field0);
+      case 1:
+        var field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedErrorInnerTwinRustAsync_Four(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedErrorInnerTwinSync
+      _sse_decode_custom_nested_error_inner_twin_sync(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorInnerTwinSync_Three(field0);
+      case 1:
+        var field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedErrorInnerTwinSync_Four(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedErrorOuterTwinNormal
+      _sse_decode_custom_nested_error_outer_twin_normal(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorOuterTwinNormal_One(field0);
+      case 1:
+        var field0 =
+            _sse_decode_box_autoadd_custom_nested_error_inner_twin_normal(
+                deserializer);
+        return CustomNestedErrorOuterTwinNormal_Two(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedErrorOuterTwinRustAsync
+      _sse_decode_custom_nested_error_outer_twin_rust_async(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorOuterTwinRustAsync_One(field0);
+      case 1:
+        var field0 =
+            _sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+                deserializer);
+        return CustomNestedErrorOuterTwinRustAsync_Two(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomNestedErrorOuterTwinSync
+      _sse_decode_custom_nested_error_outer_twin_sync(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorOuterTwinSync_One(field0);
+      case 1:
+        var field0 =
+            _sse_decode_box_autoadd_custom_nested_error_inner_twin_sync(
+                deserializer);
+        return CustomNestedErrorOuterTwinSync_Two(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  CustomStructErrorAnotherTwinNormal
+      _sse_decode_custom_struct_error_another_twin_normal(
+          SseDeserializer deserializer) {
+    var message = _sse_decode_String(deserializer);
+    return CustomStructErrorAnotherTwinNormal(message: message);
+  }
+
+  CustomStructErrorAnotherTwinRustAsync
+      _sse_decode_custom_struct_error_another_twin_rust_async(
+          SseDeserializer deserializer) {
+    var message = _sse_decode_String(deserializer);
+    return CustomStructErrorAnotherTwinRustAsync(message: message);
+  }
+
+  CustomStructErrorAnotherTwinSync
+      _sse_decode_custom_struct_error_another_twin_sync(
+          SseDeserializer deserializer) {
+    var message = _sse_decode_String(deserializer);
+    return CustomStructErrorAnotherTwinSync(message: message);
+  }
+
+  CustomStructErrorTwinNormal _sse_decode_custom_struct_error_twin_normal(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return CustomStructErrorTwinNormal(a: a);
+  }
+
+  CustomStructErrorTwinRustAsync
+      _sse_decode_custom_struct_error_twin_rust_async(
+          SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return CustomStructErrorTwinRustAsync(a: a);
+  }
+
+  CustomStructErrorTwinSync _sse_decode_custom_struct_error_twin_sync(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_String(deserializer);
+    return CustomStructErrorTwinSync(a: a);
+  }
+
+  CustomStructTwinNormal _sse_decode_custom_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var message = _sse_decode_String(deserializer);
+    return CustomStructTwinNormal(message: message);
+  }
+
+  CustomStructTwinRustAsync _sse_decode_custom_struct_twin_rust_async(
+      SseDeserializer deserializer) {
+    var message = _sse_decode_String(deserializer);
+    return CustomStructTwinRustAsync(message: message);
+  }
+
+  CustomStructTwinSync _sse_decode_custom_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var message = _sse_decode_String(deserializer);
+    return CustomStructTwinSync(message: message);
+  }
+
+  DartOpaqueNestedTwinNormal _sse_decode_dart_opaque_nested_twin_normal(
+      SseDeserializer deserializer) {
+    var first = _sse_decode_DartOpaque(deserializer);
+    var second = _sse_decode_DartOpaque(deserializer);
+    return DartOpaqueNestedTwinNormal(first: first, second: second);
+  }
+
+  DartOpaqueNestedTwinRustAsync _sse_decode_dart_opaque_nested_twin_rust_async(
+      SseDeserializer deserializer) {
+    var first = _sse_decode_DartOpaque(deserializer);
+    var second = _sse_decode_DartOpaque(deserializer);
+    return DartOpaqueNestedTwinRustAsync(first: first, second: second);
+  }
+
+  DartOpaqueNestedTwinSync _sse_decode_dart_opaque_nested_twin_sync(
+      SseDeserializer deserializer) {
+    var first = _sse_decode_DartOpaque(deserializer);
+    var second = _sse_decode_DartOpaque(deserializer);
+    return DartOpaqueNestedTwinSync(first: first, second: second);
+  }
+
+  dynamic _sse_decode_dartabi(SseDeserializer deserializer) {
+    throw UnimplementedError('');
+  }
+
+  DistanceTwinNormal _sse_decode_distance_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return DistanceTwinNormal_Unknown();
+      case 1:
+        var field0 = _sse_decode_f_64(deserializer);
+        return DistanceTwinNormal_Map(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  DistanceTwinRustAsync _sse_decode_distance_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return DistanceTwinRustAsync_Unknown();
+      case 1:
+        var field0 = _sse_decode_f_64(deserializer);
+        return DistanceTwinRustAsync_Map(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  DistanceTwinSync _sse_decode_distance_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return DistanceTwinSync_Unknown();
+      case 1:
+        var field0 = _sse_decode_f_64(deserializer);
+        return DistanceTwinSync_Map(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  ElementTwinNormal _sse_decode_element_twin_normal(
+      SseDeserializer deserializer) {
+    var tag = _sse_decode_opt_String(deserializer);
+    var text = _sse_decode_opt_String(deserializer);
+    var attributes = _sse_decode_opt_list_attribute_twin_normal(deserializer);
+    var children = _sse_decode_opt_list_element_twin_normal(deserializer);
+    return ElementTwinNormal(
+        tag: tag, text: text, attributes: attributes, children: children);
+  }
+
+  ElementTwinRustAsync _sse_decode_element_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag = _sse_decode_opt_String(deserializer);
+    var text = _sse_decode_opt_String(deserializer);
+    var attributes =
+        _sse_decode_opt_list_attribute_twin_rust_async(deserializer);
+    var children = _sse_decode_opt_list_element_twin_rust_async(deserializer);
+    return ElementTwinRustAsync(
+        tag: tag, text: text, attributes: attributes, children: children);
+  }
+
+  ElementTwinSync _sse_decode_element_twin_sync(SseDeserializer deserializer) {
+    var tag = _sse_decode_opt_String(deserializer);
+    var text = _sse_decode_opt_String(deserializer);
+    var attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
+    var children = _sse_decode_opt_list_element_twin_sync(deserializer);
+    return ElementTwinSync(
+        tag: tag, text: text, attributes: attributes, children: children);
+  }
+
+  EmptyTwinNormal _sse_decode_empty_twin_normal(SseDeserializer deserializer) {
+    return EmptyTwinNormal();
+  }
+
+  EmptyTwinRustAsync _sse_decode_empty_twin_rust_async(
+      SseDeserializer deserializer) {
+    return EmptyTwinRustAsync();
+  }
+
+  EmptyTwinSync _sse_decode_empty_twin_sync(SseDeserializer deserializer) {
+    return EmptyTwinSync();
+  }
+
+  EnumDartOpaqueTwinNormal _sse_decode_enum_dart_opaque_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_i_32(deserializer);
+        return EnumDartOpaqueTwinNormal_Primitive(field0);
+      case 1:
+        var field0 = _sse_decode_DartOpaque(deserializer);
+        return EnumDartOpaqueTwinNormal_Opaque(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumDartOpaqueTwinRustAsync _sse_decode_enum_dart_opaque_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_i_32(deserializer);
+        return EnumDartOpaqueTwinRustAsync_Primitive(field0);
+      case 1:
+        var field0 = _sse_decode_DartOpaque(deserializer);
+        return EnumDartOpaqueTwinRustAsync_Opaque(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumDartOpaqueTwinSync _sse_decode_enum_dart_opaque_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_i_32(deserializer);
+        return EnumDartOpaqueTwinSync_Primitive(field0);
+      case 1:
+        var field0 = _sse_decode_DartOpaque(deserializer);
+        return EnumDartOpaqueTwinSync_Opaque(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumOpaqueTwinNormal _sse_decode_enum_opaque_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinNormal_Struct(field0);
+      case 1:
+        var field0 = _sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinNormal_Primitive(field0);
+      case 2:
+        var field0 =
+            _sse_decode_RustOpaque_box_dynDartDebugTwinNormal(deserializer);
+        return EnumOpaqueTwinNormal_TraitObj(field0);
+      case 3:
+        var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinNormal_Mutex(field0);
+      case 4:
+        var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinNormal_RwLock(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumOpaqueTwinNormalArray5 _sse_decode_enum_opaque_twin_normal_array_5(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_enum_opaque_twin_normal(deserializer);
+    return EnumOpaqueTwinNormalArray5(inner);
+  }
+
+  EnumOpaqueTwinRustAsync _sse_decode_enum_opaque_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinRustAsync_Struct(field0);
+      case 1:
+        var field0 = _sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinRustAsync_Primitive(field0);
+      case 2:
+        var field0 =
+            _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(deserializer);
+        return EnumOpaqueTwinRustAsync_TraitObj(field0);
+      case 3:
+        var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinRustAsync_Mutex(field0);
+      case 4:
+        var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinRustAsync_RwLock(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumOpaqueTwinRustAsyncArray5 _sse_decode_enum_opaque_twin_rust_async_array_5(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_enum_opaque_twin_rust_async(deserializer);
+    return EnumOpaqueTwinRustAsyncArray5(inner);
+  }
+
+  EnumOpaqueTwinSync _sse_decode_enum_opaque_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinSync_Struct(field0);
+      case 1:
+        var field0 = _sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinSync_Primitive(field0);
+      case 2:
+        var field0 =
+            _sse_decode_RustOpaque_box_dynDartDebugTwinSync(deserializer);
+        return EnumOpaqueTwinSync_TraitObj(field0);
+      case 3:
+        var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinSync_Mutex(field0);
+      case 4:
+        var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinSync_RwLock(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumOpaqueTwinSyncArray5 _sse_decode_enum_opaque_twin_sync_array_5(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_enum_opaque_twin_sync(deserializer);
+    return EnumOpaqueTwinSyncArray5(inner);
+  }
+
+  EnumSimpleTwinNormal _sse_decode_enum_simple_twin_normal(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_i_32(deserializer);
+    return EnumSimpleTwinNormal.values[inner];
+  }
+
+  EnumSimpleTwinRustAsync _sse_decode_enum_simple_twin_rust_async(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_i_32(deserializer);
+    return EnumSimpleTwinRustAsync.values[inner];
+  }
+
+  EnumSimpleTwinSync _sse_decode_enum_simple_twin_sync(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_i_32(deserializer);
+    return EnumSimpleTwinSync.values[inner];
+  }
+
+  EnumWithItemMixedTwinNormal _sse_decode_enum_with_item_mixed_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return EnumWithItemMixedTwinNormal_A();
+      case 1:
+        var field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemMixedTwinNormal_B(field0);
+      case 2:
+        var cField = _sse_decode_String(deserializer);
+        return EnumWithItemMixedTwinNormal_C(cField: cField);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumWithItemMixedTwinRustAsync
+      _sse_decode_enum_with_item_mixed_twin_rust_async(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return EnumWithItemMixedTwinRustAsync_A();
+      case 1:
+        var field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemMixedTwinRustAsync_B(field0);
+      case 2:
+        var cField = _sse_decode_String(deserializer);
+        return EnumWithItemMixedTwinRustAsync_C(cField: cField);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumWithItemMixedTwinSync _sse_decode_enum_with_item_mixed_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return EnumWithItemMixedTwinSync_A();
+      case 1:
+        var field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemMixedTwinSync_B(field0);
+      case 2:
+        var cField = _sse_decode_String(deserializer);
+        return EnumWithItemMixedTwinSync_C(cField: cField);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumWithItemStructTwinNormal _sse_decode_enum_with_item_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var aField = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemStructTwinNormal_A(aField: aField);
+      case 1:
+        var bField = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemStructTwinNormal_B(bField: bField);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumWithItemStructTwinRustAsync
+      _sse_decode_enum_with_item_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var aField = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemStructTwinRustAsync_A(aField: aField);
+      case 1:
+        var bField = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemStructTwinRustAsync_B(bField: bField);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumWithItemStructTwinSync _sse_decode_enum_with_item_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var aField = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemStructTwinSync_A(aField: aField);
+      case 1:
+        var bField = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemStructTwinSync_B(bField: bField);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumWithItemTupleTwinNormal _sse_decode_enum_with_item_tuple_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemTupleTwinNormal_A(field0);
+      case 1:
+        var field0 = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemTupleTwinNormal_B(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumWithItemTupleTwinRustAsync
+      _sse_decode_enum_with_item_tuple_twin_rust_async(
+          SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemTupleTwinRustAsync_A(field0);
+      case 1:
+        var field0 = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemTupleTwinRustAsync_B(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EnumWithItemTupleTwinSync _sse_decode_enum_with_item_tuple_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemTupleTwinSync_A(field0);
+      case 1:
+        var field0 = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemTupleTwinSync_B(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  EventTwinNormal _sse_decode_event_twin_normal(SseDeserializer deserializer) {
+    var address = _sse_decode_String(deserializer);
+    var payload = _sse_decode_String(deserializer);
+    return EventTwinNormal(address: address, payload: payload);
+  }
+
+  EventTwinRustAsync _sse_decode_event_twin_rust_async(
+      SseDeserializer deserializer) {
+    var address = _sse_decode_String(deserializer);
+    var payload = _sse_decode_String(deserializer);
+    return EventTwinRustAsync(address: address, payload: payload);
+  }
+
+  EventTwinSync _sse_decode_event_twin_sync(SseDeserializer deserializer) {
+    var address = _sse_decode_String(deserializer);
+    var payload = _sse_decode_String(deserializer);
+    return EventTwinSync(address: address, payload: payload);
+  }
+
+  ExoticOptionalsTwinNormal _sse_decode_exotic_optionals_twin_normal(
+      SseDeserializer deserializer) {
+    var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+    var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+    var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+    var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+    var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+    var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+    var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+    var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+    var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+    var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+    var attributes = _sse_decode_opt_list_attribute_twin_normal(deserializer);
+    var attributesNullable =
+        _sse_decode_list_opt_box_autoadd_attribute_twin_normal(deserializer);
+    var nullableAttributes =
+        _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(
+            deserializer);
+    var newtypeint =
+        _sse_decode_opt_box_autoadd_new_type_int_twin_normal(deserializer);
+    return ExoticOptionalsTwinNormal(
+        int32: int32,
+        int64: int64,
+        float64: float64,
+        boolean: boolean,
+        zerocopy: zerocopy,
+        int8List: int8List,
+        uint8List: uint8List,
+        int32List: int32List,
+        float32List: float32List,
+        float64List: float64List,
+        attributes: attributes,
+        attributesNullable: attributesNullable,
+        nullableAttributes: nullableAttributes,
+        newtypeint: newtypeint);
+  }
+
+  ExoticOptionalsTwinRustAsync _sse_decode_exotic_optionals_twin_rust_async(
+      SseDeserializer deserializer) {
+    var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+    var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+    var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+    var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+    var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+    var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+    var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+    var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+    var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+    var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+    var attributes =
+        _sse_decode_opt_list_attribute_twin_rust_async(deserializer);
+    var attributesNullable =
+        _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
+            deserializer);
+    var nullableAttributes =
+        _sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+            deserializer);
+    var newtypeint =
+        _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(deserializer);
+    return ExoticOptionalsTwinRustAsync(
+        int32: int32,
+        int64: int64,
+        float64: float64,
+        boolean: boolean,
+        zerocopy: zerocopy,
+        int8List: int8List,
+        uint8List: uint8List,
+        int32List: int32List,
+        float32List: float32List,
+        float64List: float64List,
+        attributes: attributes,
+        attributesNullable: attributesNullable,
+        nullableAttributes: nullableAttributes,
+        newtypeint: newtypeint);
+  }
+
+  ExoticOptionalsTwinSync _sse_decode_exotic_optionals_twin_sync(
+      SseDeserializer deserializer) {
+    var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+    var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+    var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+    var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+    var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+    var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+    var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+    var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+    var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+    var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+    var attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
+    var attributesNullable =
+        _sse_decode_list_opt_box_autoadd_attribute_twin_sync(deserializer);
+    var nullableAttributes =
+        _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(deserializer);
+    var newtypeint =
+        _sse_decode_opt_box_autoadd_new_type_int_twin_sync(deserializer);
+    return ExoticOptionalsTwinSync(
+        int32: int32,
+        int64: int64,
+        float64: float64,
+        boolean: boolean,
+        zerocopy: zerocopy,
+        int8List: int8List,
+        uint8List: uint8List,
+        int32List: int32List,
+        float32List: float32List,
+        float64List: float64List,
+        attributes: attributes,
+        attributesNullable: attributesNullable,
+        nullableAttributes: nullableAttributes,
+        newtypeint: newtypeint);
+  }
+
+  double _sse_decode_f_32(SseDeserializer deserializer) {
+    return deserializer.buffer.getFloat32();
+  }
+
+  double _sse_decode_f_64(SseDeserializer deserializer) {
+    return deserializer.buffer.getFloat64();
+  }
+
+  FeatureUuidTwinNormal _sse_decode_feature_uuid_twin_normal(
+      SseDeserializer deserializer) {
+    var one = _sse_decode_Uuid(deserializer);
+    return FeatureUuidTwinNormal(one: one);
+  }
+
+  FeatureUuidTwinRustAsync _sse_decode_feature_uuid_twin_rust_async(
+      SseDeserializer deserializer) {
+    var one = _sse_decode_Uuid(deserializer);
+    return FeatureUuidTwinRustAsync(one: one);
+  }
+
+  FeatureUuidTwinSync _sse_decode_feature_uuid_twin_sync(
+      SseDeserializer deserializer) {
+    var one = _sse_decode_Uuid(deserializer);
+    return FeatureUuidTwinSync(one: one);
+  }
+
+  FeedIdTwinNormal _sse_decode_feed_id_twin_normal(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_u_8_array_8(deserializer);
+    return FeedIdTwinNormal(field0: field0);
+  }
+
+  FeedIdTwinRustAsync _sse_decode_feed_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_u_8_array_8(deserializer);
+    return FeedIdTwinRustAsync(field0: field0);
+  }
+
+  FeedIdTwinSync _sse_decode_feed_id_twin_sync(SseDeserializer deserializer) {
+    var field0 = _sse_decode_u_8_array_8(deserializer);
+    return FeedIdTwinSync(field0: field0);
+  }
+
+  int _sse_decode_i_16(SseDeserializer deserializer) {
+    return deserializer.buffer.getInt16();
+  }
+
+  int _sse_decode_i_32(SseDeserializer deserializer) {
+    return deserializer.buffer.getInt32();
+  }
+
+  I32Array2 _sse_decode_i_32_array_2(SseDeserializer deserializer) {
+    var inner = _sse_decode_list_prim_i_32(deserializer);
+    return I32Array2(inner);
+  }
+
+  int _sse_decode_i_64(SseDeserializer deserializer) {
+    return deserializer.buffer.getInt64();
+  }
+
+  int _sse_decode_i_8(SseDeserializer deserializer) {
+    return deserializer.buffer.getInt8();
+  }
+
+  KitchenSinkTwinNormal _sse_decode_kitchen_sink_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return KitchenSinkTwinNormal_Empty();
+      case 1:
+        var int32 = _sse_decode_i_32(deserializer);
+        var float64 = _sse_decode_f_64(deserializer);
+        var boolean = _sse_decode_bool(deserializer);
+        return KitchenSinkTwinNormal_Primitives(
+            int32: int32, float64: float64, boolean: boolean);
+      case 2:
+        var field0 = _sse_decode_i_32(deserializer);
+        var field1 = _sse_decode_box_kitchen_sink_twin_normal(deserializer);
+        return KitchenSinkTwinNormal_Nested(field0, field1);
+      case 3:
+        var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        return KitchenSinkTwinNormal_Optional(field0, field1);
+      case 4:
+        var field0 = _sse_decode_list_prim_u_8(deserializer);
+        return KitchenSinkTwinNormal_Buffer(field0);
+      case 5:
+        var field0 = _sse_decode_weekdays_twin_normal(deserializer);
+        return KitchenSinkTwinNormal_Enums(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  KitchenSinkTwinRustAsync _sse_decode_kitchen_sink_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return KitchenSinkTwinRustAsync_Empty();
+      case 1:
+        var int32 = _sse_decode_i_32(deserializer);
+        var float64 = _sse_decode_f_64(deserializer);
+        var boolean = _sse_decode_bool(deserializer);
+        return KitchenSinkTwinRustAsync_Primitives(
+            int32: int32, float64: float64, boolean: boolean);
+      case 2:
+        var field0 = _sse_decode_i_32(deserializer);
+        var field1 = _sse_decode_box_kitchen_sink_twin_rust_async(deserializer);
+        return KitchenSinkTwinRustAsync_Nested(field0, field1);
+      case 3:
+        var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        return KitchenSinkTwinRustAsync_Optional(field0, field1);
+      case 4:
+        var field0 = _sse_decode_list_prim_u_8(deserializer);
+        return KitchenSinkTwinRustAsync_Buffer(field0);
+      case 5:
+        var field0 = _sse_decode_weekdays_twin_rust_async(deserializer);
+        return KitchenSinkTwinRustAsync_Enums(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  KitchenSinkTwinSync _sse_decode_kitchen_sink_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return KitchenSinkTwinSync_Empty();
+      case 1:
+        var int32 = _sse_decode_i_32(deserializer);
+        var float64 = _sse_decode_f_64(deserializer);
+        var boolean = _sse_decode_bool(deserializer);
+        return KitchenSinkTwinSync_Primitives(
+            int32: int32, float64: float64, boolean: boolean);
+      case 2:
+        var field0 = _sse_decode_i_32(deserializer);
+        var field1 = _sse_decode_box_kitchen_sink_twin_sync(deserializer);
+        return KitchenSinkTwinSync_Nested(field0, field1);
+      case 3:
+        var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        return KitchenSinkTwinSync_Optional(field0, field1);
+      case 4:
+        var field0 = _sse_decode_list_prim_u_8(deserializer);
+        return KitchenSinkTwinSync_Buffer(field0);
+      case 5:
+        var field0 = _sse_decode_weekdays_twin_sync(deserializer);
+        return KitchenSinkTwinSync_Enums(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  List<Duration> _sse_decode_list_Chrono_Duration(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <Duration>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_Chrono_Duration(deserializer));
+    }
+    return ans_;
+  }
+
+  List<DateTime> _sse_decode_list_Chrono_Local(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <DateTime>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_Chrono_Local(deserializer));
+    }
+    return ans_;
+  }
+
+  List<Object> _sse_decode_list_DartOpaque(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <Object>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_DartOpaque(deserializer));
+    }
+    return ans_;
+  }
+
+  List<HideData> _sse_decode_list_RustOpaque_hide_data(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <HideData>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_RustOpaque_hide_data(deserializer));
+    }
+    return ans_;
+  }
+
+  List<String> _sse_decode_list_String(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <String>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_String(deserializer));
+    }
+    return ans_;
+  }
+
+  List<ApplicationEnvVar> _sse_decode_list_application_env_var(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <ApplicationEnvVar>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_application_env_var(deserializer));
+    }
+    return ans_;
+  }
+
+  List<ApplicationSettings> _sse_decode_list_application_settings(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <ApplicationSettings>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_application_settings(deserializer));
+    }
+    return ans_;
+  }
+
+  List<AttributeTwinNormal> _sse_decode_list_attribute_twin_normal(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <AttributeTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_attribute_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<AttributeTwinRustAsync> _sse_decode_list_attribute_twin_rust_async(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <AttributeTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_attribute_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<AttributeTwinSync> _sse_decode_list_attribute_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <AttributeTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_attribute_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  List<bool> _sse_decode_list_bool(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <bool>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_bool(deserializer));
+    }
+    return ans_;
+  }
+
+  List<ElementTwinNormal> _sse_decode_list_element_twin_normal(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <ElementTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_element_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<ElementTwinRustAsync> _sse_decode_list_element_twin_rust_async(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <ElementTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_element_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<ElementTwinSync> _sse_decode_list_element_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <ElementTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_element_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  List<EnumOpaqueTwinNormal> _sse_decode_list_enum_opaque_twin_normal(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <EnumOpaqueTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_enum_opaque_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<EnumOpaqueTwinRustAsync> _sse_decode_list_enum_opaque_twin_rust_async(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <EnumOpaqueTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_enum_opaque_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<EnumOpaqueTwinSync> _sse_decode_list_enum_opaque_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <EnumOpaqueTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_enum_opaque_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  List<MyEnum> _sse_decode_list_my_enum(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <MyEnum>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_my_enum(deserializer));
+    }
+    return ans_;
+  }
+
+  List<MySize> _sse_decode_list_my_size(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <MySize>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_my_size(deserializer));
+    }
+    return ans_;
+  }
+
+  List<MyTreeNodeTwinNormal> _sse_decode_list_my_tree_node_twin_normal(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <MyTreeNodeTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_my_tree_node_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<MyTreeNodeTwinRustAsync> _sse_decode_list_my_tree_node_twin_rust_async(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <MyTreeNodeTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_my_tree_node_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<MyTreeNodeTwinSync> _sse_decode_list_my_tree_node_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <MyTreeNodeTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_my_tree_node_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  List<NestedRawStringMirrored> _sse_decode_list_nested_raw_string_mirrored(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <NestedRawStringMirrored>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_nested_raw_string_mirrored(deserializer));
+    }
+    return ans_;
+  }
+
+  ListOfNestedRawStringMirrored _sse_decode_list_of_nested_raw_string_mirrored(
+      SseDeserializer deserializer) {
+    var raw = _sse_decode_list_nested_raw_string_mirrored(deserializer);
+    return ListOfNestedRawStringMirrored(raw: raw);
+  }
+
+  List<String?> _sse_decode_list_opt_String(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <String?>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_opt_String(deserializer));
+    }
+    return ans_;
+  }
+
+  List<AttributeTwinNormal?>
+      _sse_decode_list_opt_box_autoadd_attribute_twin_normal(
+          SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <AttributeTwinNormal?>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_opt_box_autoadd_attribute_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<AttributeTwinRustAsync?>
+      _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <AttributeTwinRustAsync?>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          _sse_decode_opt_box_autoadd_attribute_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<AttributeTwinSync?> _sse_decode_list_opt_box_autoadd_attribute_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <AttributeTwinSync?>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_opt_box_autoadd_attribute_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  List<int?> _sse_decode_list_opt_box_autoadd_i_32(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <int?>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_opt_box_autoadd_i_32(deserializer));
+    }
+    return ans_;
+  }
+
+  List<WeekdaysTwinNormal?>
+      _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(
+          SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <WeekdaysTwinNormal?>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_opt_box_autoadd_weekdays_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<WeekdaysTwinRustAsync?>
+      _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <WeekdaysTwinRustAsync?>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          _sse_decode_opt_box_autoadd_weekdays_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<WeekdaysTwinSync?> _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <WeekdaysTwinSync?>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_opt_box_autoadd_weekdays_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  List<Int32List?> _sse_decode_list_opt_list_prim_i_32(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <Int32List?>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_opt_list_prim_i_32(deserializer));
+    }
+    return ans_;
+  }
+
+  List<PointTwinNormal> _sse_decode_list_point_twin_normal(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <PointTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_point_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<PointTwinRustAsync> _sse_decode_list_point_twin_rust_async(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <PointTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_point_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<PointTwinSync> _sse_decode_list_point_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <PointTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_point_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  Float32List _sse_decode_list_prim_f_32(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getFloat32List(len_);
+  }
+
+  Float64List _sse_decode_list_prim_f_64(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getFloat64List(len_);
+  }
+
+  Int16List _sse_decode_list_prim_i_16(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getInt16List(len_);
+  }
+
+  Int32List _sse_decode_list_prim_i_32(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getInt32List(len_);
+  }
+
+  Int64List _sse_decode_list_prim_i_64(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getInt64List(len_);
+  }
+
+  Int8List _sse_decode_list_prim_i_8(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getInt8List(len_);
+  }
+
+  Uint16List _sse_decode_list_prim_u_16(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint16List(len_);
+  }
+
+  Uint32List _sse_decode_list_prim_u_32(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint32List(len_);
+  }
+
+  Uint64List _sse_decode_list_prim_u_64(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint64List(len_);
+  }
+
+  Uint8List _sse_decode_list_prim_u_8(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint8List(len_);
+  }
+
+  List<RawStringEnumMirrored> _sse_decode_list_raw_string_enum_mirrored(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <RawStringEnumMirrored>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_raw_string_enum_mirrored(deserializer));
+    }
+    return ans_;
+  }
+
+  List<RawStringMirrored> _sse_decode_list_raw_string_mirrored(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <RawStringMirrored>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_raw_string_mirrored(deserializer));
+    }
+    return ans_;
+  }
+
+  List<SumWithTwinNormal> _sse_decode_list_sum_with_twin_normal(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <SumWithTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_sum_with_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<SumWithTwinRustAsync> _sse_decode_list_sum_with_twin_rust_async(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <SumWithTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_sum_with_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<SumWithTwinSync> _sse_decode_list_sum_with_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <SumWithTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_sum_with_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  List<TestIdTwinNormal> _sse_decode_list_test_id_twin_normal(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <TestIdTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_test_id_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<TestIdTwinRustAsync> _sse_decode_list_test_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <TestIdTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_test_id_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<TestIdTwinSync> _sse_decode_list_test_id_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <TestIdTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_test_id_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  List<WeekdaysTwinNormal> _sse_decode_list_weekdays_twin_normal(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <WeekdaysTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_weekdays_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  List<WeekdaysTwinRustAsync> _sse_decode_list_weekdays_twin_rust_async(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <WeekdaysTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_weekdays_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  List<WeekdaysTwinSync> _sse_decode_list_weekdays_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <WeekdaysTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_weekdays_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  Log2TwinNormal _sse_decode_log_2_twin_normal(SseDeserializer deserializer) {
+    var key = _sse_decode_u_32(deserializer);
+    var value = _sse_decode_String(deserializer);
+    return Log2TwinNormal(key: key, value: value);
+  }
+
+  Log2TwinRustAsync _sse_decode_log_2_twin_rust_async(
+      SseDeserializer deserializer) {
+    var key = _sse_decode_u_32(deserializer);
+    var value = _sse_decode_String(deserializer);
+    return Log2TwinRustAsync(key: key, value: value);
+  }
+
+  Log2TwinSync _sse_decode_log_2_twin_sync(SseDeserializer deserializer) {
+    var key = _sse_decode_u_32(deserializer);
+    var value = _sse_decode_String(deserializer);
+    return Log2TwinSync(key: key, value: value);
+  }
+
+  LogTwinNormal _sse_decode_log_twin_normal(SseDeserializer deserializer) {
+    var key = _sse_decode_u_32(deserializer);
+    var value = _sse_decode_u_32(deserializer);
+    return LogTwinNormal(key: key, value: value);
+  }
+
+  LogTwinRustAsync _sse_decode_log_twin_rust_async(
+      SseDeserializer deserializer) {
+    var key = _sse_decode_u_32(deserializer);
+    var value = _sse_decode_u_32(deserializer);
+    return LogTwinRustAsync(key: key, value: value);
+  }
+
+  MacroStruct _sse_decode_macro_struct(SseDeserializer deserializer) {
+    var data = _sse_decode_i_32(deserializer);
+    return MacroStruct(data: data);
+  }
+
+  MeasureTwinNormal _sse_decode_measure_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_box_speed_twin_normal(deserializer);
+        return MeasureTwinNormal_Speed(field0);
+      case 1:
+        var field0 = _sse_decode_box_distance_twin_normal(deserializer);
+        return MeasureTwinNormal_Distance(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  MeasureTwinRustAsync _sse_decode_measure_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_box_speed_twin_rust_async(deserializer);
+        return MeasureTwinRustAsync_Speed(field0);
+      case 1:
+        var field0 = _sse_decode_box_distance_twin_rust_async(deserializer);
+        return MeasureTwinRustAsync_Distance(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  MeasureTwinSync _sse_decode_measure_twin_sync(SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_box_speed_twin_sync(deserializer);
+        return MeasureTwinSync_Speed(field0);
+      case 1:
+        var field0 = _sse_decode_box_distance_twin_sync(deserializer);
+        return MeasureTwinSync_Distance(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  MessageIdTwinNormal _sse_decode_message_id_twin_normal(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_u_8_array_32(deserializer);
+    return MessageIdTwinNormal(field0: field0);
+  }
+
+  MessageIdTwinRustAsync _sse_decode_message_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_u_8_array_32(deserializer);
+    return MessageIdTwinRustAsync(field0: field0);
+  }
+
+  MessageIdTwinSync _sse_decode_message_id_twin_sync(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_u_8_array_32(deserializer);
+    return MessageIdTwinSync(field0: field0);
+  }
+
+  MirrorStructTwinNormal _sse_decode_mirror_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_application_settings(deserializer);
+    var b = _sse_decode_my_struct(deserializer);
+    var c = _sse_decode_list_my_enum(deserializer);
+    var d = _sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinNormal(a: a, b: b, c: c, d: d);
+  }
+
+  MirrorStructTwinRustAsync _sse_decode_mirror_struct_twin_rust_async(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_application_settings(deserializer);
+    var b = _sse_decode_my_struct(deserializer);
+    var c = _sse_decode_list_my_enum(deserializer);
+    var d = _sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinRustAsync(a: a, b: b, c: c, d: d);
+  }
+
+  MirrorStructTwinSync _sse_decode_mirror_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_application_settings(deserializer);
+    var b = _sse_decode_my_struct(deserializer);
+    var c = _sse_decode_list_my_enum(deserializer);
+    var d = _sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinSync(a: a, b: b, c: c, d: d);
+  }
+
+  MoreThanJustOneRawStringStructTwinNormal
+      _sse_decode_more_than_just_one_raw_string_struct_twin_normal(
+          SseDeserializer deserializer) {
+    var regular = _sse_decode_String(deserializer);
+    var type = _sse_decode_String(deserializer);
+    var async = _sse_decode_bool(deserializer);
+    var another = _sse_decode_String(deserializer);
+    return MoreThanJustOneRawStringStructTwinNormal(
+        regular: regular, type: type, async: async, another: another);
+  }
+
+  MoreThanJustOneRawStringStructTwinRustAsync
+      _sse_decode_more_than_just_one_raw_string_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    var regular = _sse_decode_String(deserializer);
+    var type = _sse_decode_String(deserializer);
+    var async = _sse_decode_bool(deserializer);
+    var another = _sse_decode_String(deserializer);
+    return MoreThanJustOneRawStringStructTwinRustAsync(
+        regular: regular, type: type, async: async, another: another);
+  }
+
+  MoreThanJustOneRawStringStructTwinSync
+      _sse_decode_more_than_just_one_raw_string_struct_twin_sync(
+          SseDeserializer deserializer) {
+    var regular = _sse_decode_String(deserializer);
+    var type = _sse_decode_String(deserializer);
+    var async = _sse_decode_bool(deserializer);
+    var another = _sse_decode_String(deserializer);
+    return MoreThanJustOneRawStringStructTwinSync(
+        regular: regular, type: type, async: async, another: another);
+  }
+
+  MyEnum _sse_decode_my_enum(SseDeserializer deserializer) {
+    var inner = _sse_decode_i_32(deserializer);
+    return MyEnum.values[inner];
+  }
+
+  MyNestedStructTwinNormal _sse_decode_my_nested_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var treeNode = _sse_decode_my_tree_node_twin_normal(deserializer);
+    var weekday = _sse_decode_weekdays_twin_normal(deserializer);
+    return MyNestedStructTwinNormal(treeNode: treeNode, weekday: weekday);
+  }
+
+  MyNestedStructTwinRustAsync _sse_decode_my_nested_struct_twin_rust_async(
+      SseDeserializer deserializer) {
+    var treeNode = _sse_decode_my_tree_node_twin_rust_async(deserializer);
+    var weekday = _sse_decode_weekdays_twin_rust_async(deserializer);
+    return MyNestedStructTwinRustAsync(treeNode: treeNode, weekday: weekday);
+  }
+
+  MyNestedStructTwinSync _sse_decode_my_nested_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var treeNode = _sse_decode_my_tree_node_twin_sync(deserializer);
+    var weekday = _sse_decode_weekdays_twin_sync(deserializer);
+    return MyNestedStructTwinSync(treeNode: treeNode, weekday: weekday);
+  }
+
+  MySize _sse_decode_my_size(SseDeserializer deserializer) {
+    var width = _sse_decode_i_32(deserializer);
+    var height = _sse_decode_i_32(deserializer);
+    return MySize(width: width, height: height);
+  }
+
+  MyStreamEntryTwinNormal _sse_decode_my_stream_entry_twin_normal(
+      SseDeserializer deserializer) {
+    var hello = _sse_decode_String(deserializer);
+    return MyStreamEntryTwinNormal(hello: hello);
+  }
+
+  MyStreamEntryTwinRustAsync _sse_decode_my_stream_entry_twin_rust_async(
+      SseDeserializer deserializer) {
+    var hello = _sse_decode_String(deserializer);
+    return MyStreamEntryTwinRustAsync(hello: hello);
+  }
+
+  MyStruct _sse_decode_my_struct(SseDeserializer deserializer) {
+    var content = _sse_decode_bool(deserializer);
+    return MyStruct(content: content);
+  }
+
+  MyTreeNodeTwinNormal _sse_decode_my_tree_node_twin_normal(
+      SseDeserializer deserializer) {
+    var valueI32 = _sse_decode_i_32(deserializer);
+    var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+    var valueBoolean = _sse_decode_bool(deserializer);
+    var children = _sse_decode_list_my_tree_node_twin_normal(deserializer);
+    return MyTreeNodeTwinNormal(
+        valueI32: valueI32,
+        valueVecU8: valueVecU8,
+        valueBoolean: valueBoolean,
+        children: children);
+  }
+
+  MyTreeNodeTwinRustAsync _sse_decode_my_tree_node_twin_rust_async(
+      SseDeserializer deserializer) {
+    var valueI32 = _sse_decode_i_32(deserializer);
+    var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+    var valueBoolean = _sse_decode_bool(deserializer);
+    var children = _sse_decode_list_my_tree_node_twin_rust_async(deserializer);
+    return MyTreeNodeTwinRustAsync(
+        valueI32: valueI32,
+        valueVecU8: valueVecU8,
+        valueBoolean: valueBoolean,
+        children: children);
+  }
+
+  MyTreeNodeTwinSync _sse_decode_my_tree_node_twin_sync(
+      SseDeserializer deserializer) {
+    var valueI32 = _sse_decode_i_32(deserializer);
+    var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+    var valueBoolean = _sse_decode_bool(deserializer);
+    var children = _sse_decode_list_my_tree_node_twin_sync(deserializer);
+    return MyTreeNodeTwinSync(
+        valueI32: valueI32,
+        valueVecU8: valueVecU8,
+        valueBoolean: valueBoolean,
+        children: children);
+  }
+
+  NestedRawStringMirrored _sse_decode_nested_raw_string_mirrored(
+      SseDeserializer deserializer) {
+    var raw = _sse_decode_raw_string_mirrored(deserializer);
+    return NestedRawStringMirrored(raw: raw);
+  }
+
+  NewSimpleStruct _sse_decode_new_simple_struct(SseDeserializer deserializer) {
+    var field = _sse_decode_i_32(deserializer);
+    return NewSimpleStruct(field: field);
+  }
+
+  NewTypeIntTwinNormal _sse_decode_new_type_int_twin_normal(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_64(deserializer);
+    return NewTypeIntTwinNormal(field0: field0);
+  }
+
+  NewTypeIntTwinRustAsync _sse_decode_new_type_int_twin_rust_async(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_64(deserializer);
+    return NewTypeIntTwinRustAsync(field0: field0);
+  }
+
+  NewTypeIntTwinSync _sse_decode_new_type_int_twin_sync(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_64(deserializer);
+    return NewTypeIntTwinSync(field0: field0);
+  }
+
+  Numbers _sse_decode_numbers(SseDeserializer deserializer) {
+    var field0 = _sse_decode_list_prim_i_32(deserializer);
+    return Numbers(field0: field0);
+  }
+
+  OldSimpleStruct _sse_decode_old_simple_struct(SseDeserializer deserializer) {
+    var field = _sse_decode_i_32(deserializer);
+    return OldSimpleStruct(field: field);
+  }
+
+  OpaqueNestedTwinNormal _sse_decode_opaque_nested_twin_normal(
+      SseDeserializer deserializer) {
+    var first = _sse_decode_RustOpaque_hide_data(deserializer);
+    var second = _sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinNormal(first: first, second: second);
+  }
+
+  OpaqueNestedTwinRustAsync _sse_decode_opaque_nested_twin_rust_async(
+      SseDeserializer deserializer) {
+    var first = _sse_decode_RustOpaque_hide_data(deserializer);
+    var second = _sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinRustAsync(first: first, second: second);
+  }
+
+  OpaqueNestedTwinSync _sse_decode_opaque_nested_twin_sync(
+      SseDeserializer deserializer) {
+    var first = _sse_decode_RustOpaque_hide_data(deserializer);
+    var second = _sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinSync(first: first, second: second);
+  }
+
+  String? _sse_decode_opt_String(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_String(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  Duration? _sse_decode_opt_box_autoadd_Chrono_Duration(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_Chrono_Duration(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  DateTime? _sse_decode_opt_box_autoadd_Chrono_Naive(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_Chrono_Naive(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  DateTime? _sse_decode_opt_box_autoadd_Chrono_Utc(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_Chrono_Utc(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  Object? _sse_decode_opt_box_autoadd_DartOpaque(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_DartOpaque(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  HideData? _sse_decode_opt_box_autoadd_RustOpaque_hide_data(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_RustOpaque_hide_data(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  ApplicationEnv? _sse_decode_opt_box_autoadd_application_env(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_application_env(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  AttributeTwinNormal? _sse_decode_opt_box_autoadd_attribute_twin_normal(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_attribute_twin_normal(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  AttributeTwinRustAsync? _sse_decode_opt_box_autoadd_attribute_twin_rust_async(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_attribute_twin_rust_async(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  AttributeTwinSync? _sse_decode_opt_box_autoadd_attribute_twin_sync(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_attribute_twin_sync(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  bool? _sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_bool(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  ElementTwinNormal? _sse_decode_opt_box_autoadd_element_twin_normal(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_element_twin_normal(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  ElementTwinRustAsync? _sse_decode_opt_box_autoadd_element_twin_rust_async(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_element_twin_rust_async(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  ElementTwinSync? _sse_decode_opt_box_autoadd_element_twin_sync(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_element_twin_sync(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  ExoticOptionalsTwinNormal?
+      _sse_decode_opt_box_autoadd_exotic_optionals_twin_normal(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_exotic_optionals_twin_normal(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  ExoticOptionalsTwinRustAsync?
+      _sse_decode_opt_box_autoadd_exotic_optionals_twin_rust_async(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(
           deserializer);
-      return CustomNestedError1TwinNormal_ErrorNested(field0);
-    default:
-      throw UnimplementedError('');
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedError1TwinRustAsync
-    _sse_decode_custom_nested_error_1_twin_rust_async(
-        SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedError1TwinRustAsync_CustomNested1(field0);
-    case 1:
-      var field0 =
-          _sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async(
-              deserializer);
-      return CustomNestedError1TwinRustAsync_ErrorNested(field0);
-    default:
-      throw UnimplementedError('');
+  ExoticOptionalsTwinSync?
+      _sse_decode_opt_box_autoadd_exotic_optionals_twin_sync(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_exotic_optionals_twin_sync(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedError1TwinSync _sse_decode_custom_nested_error_1_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedError1TwinSync_CustomNested1(field0);
-    case 1:
-      var field0 =
-          _sse_decode_box_autoadd_custom_nested_error_2_twin_sync(deserializer);
-      return CustomNestedError1TwinSync_ErrorNested(field0);
-    default:
-      throw UnimplementedError('');
+  double? _sse_decode_opt_box_autoadd_f_32(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_f_32(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedError2TwinNormal _sse_decode_custom_nested_error_2_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedError2TwinNormal_CustomNested2(field0);
-    case 1:
-      var field0 = _sse_decode_u_32(deserializer);
-      return CustomNestedError2TwinNormal_CustomNested2Number(field0);
-    default:
-      throw UnimplementedError('');
+  double? _sse_decode_opt_box_autoadd_f_64(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_f_64(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedError2TwinRustAsync
-    _sse_decode_custom_nested_error_2_twin_rust_async(
-        SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedError2TwinRustAsync_CustomNested2(field0);
-    case 1:
-      var field0 = _sse_decode_u_32(deserializer);
-      return CustomNestedError2TwinRustAsync_CustomNested2Number(field0);
-    default:
-      throw UnimplementedError('');
+  int? _sse_decode_opt_box_autoadd_i_16(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_i_16(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedError2TwinSync _sse_decode_custom_nested_error_2_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedError2TwinSync_CustomNested2(field0);
-    case 1:
-      var field0 = _sse_decode_u_32(deserializer);
-      return CustomNestedError2TwinSync_CustomNested2Number(field0);
-    default:
-      throw UnimplementedError('');
+  int? _sse_decode_opt_box_autoadd_i_32(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_i_32(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedErrorInnerTwinNormal
-    _sse_decode_custom_nested_error_inner_twin_normal(
-        SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedErrorInnerTwinNormal_Three(field0);
-    case 1:
-      var field0 = _sse_decode_u_32(deserializer);
-      return CustomNestedErrorInnerTwinNormal_Four(field0);
-    default:
-      throw UnimplementedError('');
+  int? _sse_decode_opt_box_autoadd_i_64(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_i_64(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedErrorInnerTwinRustAsync
-    _sse_decode_custom_nested_error_inner_twin_rust_async(
-        SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedErrorInnerTwinRustAsync_Three(field0);
-    case 1:
-      var field0 = _sse_decode_u_32(deserializer);
-      return CustomNestedErrorInnerTwinRustAsync_Four(field0);
-    default:
-      throw UnimplementedError('');
+  int? _sse_decode_opt_box_autoadd_i_8(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_i_8(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedErrorInnerTwinSync _sse_decode_custom_nested_error_inner_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedErrorInnerTwinSync_Three(field0);
-    case 1:
-      var field0 = _sse_decode_u_32(deserializer);
-      return CustomNestedErrorInnerTwinSync_Four(field0);
-    default:
-      throw UnimplementedError('');
+  MeasureTwinNormal? _sse_decode_opt_box_autoadd_measure_twin_normal(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_measure_twin_normal(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedErrorOuterTwinNormal
-    _sse_decode_custom_nested_error_outer_twin_normal(
-        SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedErrorOuterTwinNormal_One(field0);
-    case 1:
-      var field0 =
-          _sse_decode_box_autoadd_custom_nested_error_inner_twin_normal(
-              deserializer);
-      return CustomNestedErrorOuterTwinNormal_Two(field0);
-    default:
-      throw UnimplementedError('');
+  MeasureTwinRustAsync? _sse_decode_opt_box_autoadd_measure_twin_rust_async(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_measure_twin_rust_async(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedErrorOuterTwinRustAsync
-    _sse_decode_custom_nested_error_outer_twin_rust_async(
-        SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedErrorOuterTwinRustAsync_One(field0);
-    case 1:
-      var field0 =
-          _sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
-              deserializer);
-      return CustomNestedErrorOuterTwinRustAsync_Two(field0);
-    default:
-      throw UnimplementedError('');
+  MeasureTwinSync? _sse_decode_opt_box_autoadd_measure_twin_sync(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_measure_twin_sync(deserializer);
+    } else {
+      return null;
+    }
   }
-}
 
-CustomNestedErrorOuterTwinSync _sse_decode_custom_nested_error_outer_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_String(deserializer);
-      return CustomNestedErrorOuterTwinSync_One(field0);
-    case 1:
-      var field0 = _sse_decode_box_autoadd_custom_nested_error_inner_twin_sync(
+  NewTypeIntTwinNormal? _sse_decode_opt_box_autoadd_new_type_int_twin_normal(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_new_type_int_twin_normal(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  NewTypeIntTwinRustAsync?
+      _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_new_type_int_twin_rust_async(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  NewTypeIntTwinSync? _sse_decode_opt_box_autoadd_new_type_int_twin_sync(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_new_type_int_twin_sync(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  int? _sse_decode_opt_box_autoadd_u_16(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_u_16(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  int? _sse_decode_opt_box_autoadd_u_32(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_u_32(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  int? _sse_decode_opt_box_autoadd_u_64(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_u_64(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  int? _sse_decode_opt_box_autoadd_u_8(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_u_8(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  WeekdaysTwinNormal? _sse_decode_opt_box_autoadd_weekdays_twin_normal(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_weekdays_twin_normal(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  WeekdaysTwinRustAsync? _sse_decode_opt_box_autoadd_weekdays_twin_rust_async(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_weekdays_twin_rust_async(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  WeekdaysTwinSync? _sse_decode_opt_box_autoadd_weekdays_twin_sync(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_box_autoadd_weekdays_twin_sync(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  List<AttributeTwinNormal>? _sse_decode_opt_list_attribute_twin_normal(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_attribute_twin_normal(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  List<AttributeTwinRustAsync>? _sse_decode_opt_list_attribute_twin_rust_async(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_attribute_twin_rust_async(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  List<AttributeTwinSync>? _sse_decode_opt_list_attribute_twin_sync(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_attribute_twin_sync(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  List<ElementTwinNormal>? _sse_decode_opt_list_element_twin_normal(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_element_twin_normal(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  List<ElementTwinRustAsync>? _sse_decode_opt_list_element_twin_rust_async(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_element_twin_rust_async(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  List<ElementTwinSync>? _sse_decode_opt_list_element_twin_sync(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_element_twin_sync(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  List<AttributeTwinNormal?>?
+      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_opt_box_autoadd_attribute_twin_normal(
           deserializer);
-      return CustomNestedErrorOuterTwinSync_Two(field0);
-    default:
-      throw UnimplementedError('');
+    } else {
+      return null;
+    }
   }
-}
 
-CustomStructErrorAnotherTwinNormal
-    _sse_decode_custom_struct_error_another_twin_normal(
-        SseDeserializer deserializer) {
-  var message = _sse_decode_String(deserializer);
-  return CustomStructErrorAnotherTwinNormal(message: message);
-}
-
-CustomStructErrorAnotherTwinRustAsync
-    _sse_decode_custom_struct_error_another_twin_rust_async(
-        SseDeserializer deserializer) {
-  var message = _sse_decode_String(deserializer);
-  return CustomStructErrorAnotherTwinRustAsync(message: message);
-}
-
-CustomStructErrorAnotherTwinSync
-    _sse_decode_custom_struct_error_another_twin_sync(
-        SseDeserializer deserializer) {
-  var message = _sse_decode_String(deserializer);
-  return CustomStructErrorAnotherTwinSync(message: message);
-}
-
-CustomStructErrorTwinNormal _sse_decode_custom_struct_error_twin_normal(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return CustomStructErrorTwinNormal(a: a);
-}
-
-CustomStructErrorTwinRustAsync _sse_decode_custom_struct_error_twin_rust_async(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return CustomStructErrorTwinRustAsync(a: a);
-}
-
-CustomStructErrorTwinSync _sse_decode_custom_struct_error_twin_sync(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_String(deserializer);
-  return CustomStructErrorTwinSync(a: a);
-}
-
-CustomStructTwinNormal _sse_decode_custom_struct_twin_normal(
-    SseDeserializer deserializer) {
-  var message = _sse_decode_String(deserializer);
-  return CustomStructTwinNormal(message: message);
-}
-
-CustomStructTwinRustAsync _sse_decode_custom_struct_twin_rust_async(
-    SseDeserializer deserializer) {
-  var message = _sse_decode_String(deserializer);
-  return CustomStructTwinRustAsync(message: message);
-}
-
-CustomStructTwinSync _sse_decode_custom_struct_twin_sync(
-    SseDeserializer deserializer) {
-  var message = _sse_decode_String(deserializer);
-  return CustomStructTwinSync(message: message);
-}
-
-DartOpaqueNestedTwinNormal _sse_decode_dart_opaque_nested_twin_normal(
-    SseDeserializer deserializer) {
-  var first = _sse_decode_DartOpaque(deserializer);
-  var second = _sse_decode_DartOpaque(deserializer);
-  return DartOpaqueNestedTwinNormal(first: first, second: second);
-}
-
-DartOpaqueNestedTwinRustAsync _sse_decode_dart_opaque_nested_twin_rust_async(
-    SseDeserializer deserializer) {
-  var first = _sse_decode_DartOpaque(deserializer);
-  var second = _sse_decode_DartOpaque(deserializer);
-  return DartOpaqueNestedTwinRustAsync(first: first, second: second);
-}
-
-DartOpaqueNestedTwinSync _sse_decode_dart_opaque_nested_twin_sync(
-    SseDeserializer deserializer) {
-  var first = _sse_decode_DartOpaque(deserializer);
-  var second = _sse_decode_DartOpaque(deserializer);
-  return DartOpaqueNestedTwinSync(first: first, second: second);
-}
-
-dynamic _sse_decode_dartabi(SseDeserializer deserializer) {
-  throw UnimplementedError('');
-}
-
-DistanceTwinNormal _sse_decode_distance_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return DistanceTwinNormal_Unknown();
-    case 1:
-      var field0 = _sse_decode_f_64(deserializer);
-      return DistanceTwinNormal_Map(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-DistanceTwinRustAsync _sse_decode_distance_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return DistanceTwinRustAsync_Unknown();
-    case 1:
-      var field0 = _sse_decode_f_64(deserializer);
-      return DistanceTwinRustAsync_Map(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-DistanceTwinSync _sse_decode_distance_twin_sync(SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return DistanceTwinSync_Unknown();
-    case 1:
-      var field0 = _sse_decode_f_64(deserializer);
-      return DistanceTwinSync_Map(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-ElementTwinNormal _sse_decode_element_twin_normal(
-    SseDeserializer deserializer) {
-  var tag = _sse_decode_opt_String(deserializer);
-  var text = _sse_decode_opt_String(deserializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_normal(deserializer);
-  var children = _sse_decode_opt_list_element_twin_normal(deserializer);
-  return ElementTwinNormal(
-      tag: tag, text: text, attributes: attributes, children: children);
-}
-
-ElementTwinRustAsync _sse_decode_element_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag = _sse_decode_opt_String(deserializer);
-  var text = _sse_decode_opt_String(deserializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_rust_async(deserializer);
-  var children = _sse_decode_opt_list_element_twin_rust_async(deserializer);
-  return ElementTwinRustAsync(
-      tag: tag, text: text, attributes: attributes, children: children);
-}
-
-ElementTwinSync _sse_decode_element_twin_sync(SseDeserializer deserializer) {
-  var tag = _sse_decode_opt_String(deserializer);
-  var text = _sse_decode_opt_String(deserializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
-  var children = _sse_decode_opt_list_element_twin_sync(deserializer);
-  return ElementTwinSync(
-      tag: tag, text: text, attributes: attributes, children: children);
-}
-
-EmptyTwinNormal _sse_decode_empty_twin_normal(SseDeserializer deserializer) {
-  return EmptyTwinNormal();
-}
-
-EmptyTwinRustAsync _sse_decode_empty_twin_rust_async(
-    SseDeserializer deserializer) {
-  return EmptyTwinRustAsync();
-}
-
-EmptyTwinSync _sse_decode_empty_twin_sync(SseDeserializer deserializer) {
-  return EmptyTwinSync();
-}
-
-EnumDartOpaqueTwinNormal _sse_decode_enum_dart_opaque_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_i_32(deserializer);
-      return EnumDartOpaqueTwinNormal_Primitive(field0);
-    case 1:
-      var field0 = _sse_decode_DartOpaque(deserializer);
-      return EnumDartOpaqueTwinNormal_Opaque(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumDartOpaqueTwinRustAsync _sse_decode_enum_dart_opaque_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_i_32(deserializer);
-      return EnumDartOpaqueTwinRustAsync_Primitive(field0);
-    case 1:
-      var field0 = _sse_decode_DartOpaque(deserializer);
-      return EnumDartOpaqueTwinRustAsync_Opaque(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumDartOpaqueTwinSync _sse_decode_enum_dart_opaque_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_i_32(deserializer);
-      return EnumDartOpaqueTwinSync_Primitive(field0);
-    case 1:
-      var field0 = _sse_decode_DartOpaque(deserializer);
-      return EnumDartOpaqueTwinSync_Opaque(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumOpaqueTwinNormal _sse_decode_enum_opaque_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
-      return EnumOpaqueTwinNormal_Struct(field0);
-    case 1:
-      var field0 = _sse_decode_RustOpaque_i_32(deserializer);
-      return EnumOpaqueTwinNormal_Primitive(field0);
-    case 2:
-      var field0 =
-          _sse_decode_RustOpaque_box_dynDartDebugTwinNormal(deserializer);
-      return EnumOpaqueTwinNormal_TraitObj(field0);
-    case 3:
-      var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
-      return EnumOpaqueTwinNormal_Mutex(field0);
-    case 4:
-      var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
-      return EnumOpaqueTwinNormal_RwLock(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumOpaqueTwinNormalArray5 _sse_decode_enum_opaque_twin_normal_array_5(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_enum_opaque_twin_normal(deserializer);
-  return EnumOpaqueTwinNormalArray5(inner);
-}
-
-EnumOpaqueTwinRustAsync _sse_decode_enum_opaque_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
-      return EnumOpaqueTwinRustAsync_Struct(field0);
-    case 1:
-      var field0 = _sse_decode_RustOpaque_i_32(deserializer);
-      return EnumOpaqueTwinRustAsync_Primitive(field0);
-    case 2:
-      var field0 =
-          _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(deserializer);
-      return EnumOpaqueTwinRustAsync_TraitObj(field0);
-    case 3:
-      var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
-      return EnumOpaqueTwinRustAsync_Mutex(field0);
-    case 4:
-      var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
-      return EnumOpaqueTwinRustAsync_RwLock(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumOpaqueTwinRustAsyncArray5 _sse_decode_enum_opaque_twin_rust_async_array_5(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_enum_opaque_twin_rust_async(deserializer);
-  return EnumOpaqueTwinRustAsyncArray5(inner);
-}
-
-EnumOpaqueTwinSync _sse_decode_enum_opaque_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
-      return EnumOpaqueTwinSync_Struct(field0);
-    case 1:
-      var field0 = _sse_decode_RustOpaque_i_32(deserializer);
-      return EnumOpaqueTwinSync_Primitive(field0);
-    case 2:
-      var field0 =
-          _sse_decode_RustOpaque_box_dynDartDebugTwinSync(deserializer);
-      return EnumOpaqueTwinSync_TraitObj(field0);
-    case 3:
-      var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
-      return EnumOpaqueTwinSync_Mutex(field0);
-    case 4:
-      var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
-      return EnumOpaqueTwinSync_RwLock(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumOpaqueTwinSyncArray5 _sse_decode_enum_opaque_twin_sync_array_5(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_enum_opaque_twin_sync(deserializer);
-  return EnumOpaqueTwinSyncArray5(inner);
-}
-
-EnumSimpleTwinNormal _sse_decode_enum_simple_twin_normal(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(deserializer);
-  return EnumSimpleTwinNormal.values[inner];
-}
-
-EnumSimpleTwinRustAsync _sse_decode_enum_simple_twin_rust_async(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(deserializer);
-  return EnumSimpleTwinRustAsync.values[inner];
-}
-
-EnumSimpleTwinSync _sse_decode_enum_simple_twin_sync(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(deserializer);
-  return EnumSimpleTwinSync.values[inner];
-}
-
-EnumWithItemMixedTwinNormal _sse_decode_enum_with_item_mixed_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return EnumWithItemMixedTwinNormal_A();
-    case 1:
-      var field0 = _sse_decode_list_prim_u_8(deserializer);
-      return EnumWithItemMixedTwinNormal_B(field0);
-    case 2:
-      var cField = _sse_decode_String(deserializer);
-      return EnumWithItemMixedTwinNormal_C(cField: cField);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumWithItemMixedTwinRustAsync _sse_decode_enum_with_item_mixed_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return EnumWithItemMixedTwinRustAsync_A();
-    case 1:
-      var field0 = _sse_decode_list_prim_u_8(deserializer);
-      return EnumWithItemMixedTwinRustAsync_B(field0);
-    case 2:
-      var cField = _sse_decode_String(deserializer);
-      return EnumWithItemMixedTwinRustAsync_C(cField: cField);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumWithItemMixedTwinSync _sse_decode_enum_with_item_mixed_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return EnumWithItemMixedTwinSync_A();
-    case 1:
-      var field0 = _sse_decode_list_prim_u_8(deserializer);
-      return EnumWithItemMixedTwinSync_B(field0);
-    case 2:
-      var cField = _sse_decode_String(deserializer);
-      return EnumWithItemMixedTwinSync_C(cField: cField);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumWithItemStructTwinNormal _sse_decode_enum_with_item_struct_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var aField = _sse_decode_list_prim_u_8(deserializer);
-      return EnumWithItemStructTwinNormal_A(aField: aField);
-    case 1:
-      var bField = _sse_decode_list_prim_i_32(deserializer);
-      return EnumWithItemStructTwinNormal_B(bField: bField);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumWithItemStructTwinRustAsync
-    _sse_decode_enum_with_item_struct_twin_rust_async(
-        SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var aField = _sse_decode_list_prim_u_8(deserializer);
-      return EnumWithItemStructTwinRustAsync_A(aField: aField);
-    case 1:
-      var bField = _sse_decode_list_prim_i_32(deserializer);
-      return EnumWithItemStructTwinRustAsync_B(bField: bField);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumWithItemStructTwinSync _sse_decode_enum_with_item_struct_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var aField = _sse_decode_list_prim_u_8(deserializer);
-      return EnumWithItemStructTwinSync_A(aField: aField);
-    case 1:
-      var bField = _sse_decode_list_prim_i_32(deserializer);
-      return EnumWithItemStructTwinSync_B(bField: bField);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumWithItemTupleTwinNormal _sse_decode_enum_with_item_tuple_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_list_prim_u_8(deserializer);
-      return EnumWithItemTupleTwinNormal_A(field0);
-    case 1:
-      var field0 = _sse_decode_list_prim_i_32(deserializer);
-      return EnumWithItemTupleTwinNormal_B(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumWithItemTupleTwinRustAsync _sse_decode_enum_with_item_tuple_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_list_prim_u_8(deserializer);
-      return EnumWithItemTupleTwinRustAsync_A(field0);
-    case 1:
-      var field0 = _sse_decode_list_prim_i_32(deserializer);
-      return EnumWithItemTupleTwinRustAsync_B(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EnumWithItemTupleTwinSync _sse_decode_enum_with_item_tuple_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_list_prim_u_8(deserializer);
-      return EnumWithItemTupleTwinSync_A(field0);
-    case 1:
-      var field0 = _sse_decode_list_prim_i_32(deserializer);
-      return EnumWithItemTupleTwinSync_B(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-EventTwinNormal _sse_decode_event_twin_normal(SseDeserializer deserializer) {
-  var address = _sse_decode_String(deserializer);
-  var payload = _sse_decode_String(deserializer);
-  return EventTwinNormal(address: address, payload: payload);
-}
-
-EventTwinRustAsync _sse_decode_event_twin_rust_async(
-    SseDeserializer deserializer) {
-  var address = _sse_decode_String(deserializer);
-  var payload = _sse_decode_String(deserializer);
-  return EventTwinRustAsync(address: address, payload: payload);
-}
-
-EventTwinSync _sse_decode_event_twin_sync(SseDeserializer deserializer) {
-  var address = _sse_decode_String(deserializer);
-  var payload = _sse_decode_String(deserializer);
-  return EventTwinSync(address: address, payload: payload);
-}
-
-ExoticOptionalsTwinNormal _sse_decode_exotic_optionals_twin_normal(
-    SseDeserializer deserializer) {
-  var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-  var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
-  var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
-  var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
-  var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
-  var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
-  var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
-  var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
-  var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
-  var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_normal(deserializer);
-  var attributesNullable =
-      _sse_decode_list_opt_box_autoadd_attribute_twin_normal(deserializer);
-  var nullableAttributes =
-      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(deserializer);
-  var newtypeint =
-      _sse_decode_opt_box_autoadd_new_type_int_twin_normal(deserializer);
-  return ExoticOptionalsTwinNormal(
-      int32: int32,
-      int64: int64,
-      float64: float64,
-      boolean: boolean,
-      zerocopy: zerocopy,
-      int8List: int8List,
-      uint8List: uint8List,
-      int32List: int32List,
-      float32List: float32List,
-      float64List: float64List,
-      attributes: attributes,
-      attributesNullable: attributesNullable,
-      nullableAttributes: nullableAttributes,
-      newtypeint: newtypeint);
-}
-
-ExoticOptionalsTwinRustAsync _sse_decode_exotic_optionals_twin_rust_async(
-    SseDeserializer deserializer) {
-  var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-  var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
-  var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
-  var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
-  var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
-  var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
-  var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
-  var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
-  var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
-  var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_rust_async(deserializer);
-  var attributesNullable =
-      _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(deserializer);
-  var nullableAttributes =
+  List<AttributeTwinRustAsync?>?
       _sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
           deserializer);
-  var newtypeint =
-      _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(deserializer);
-  return ExoticOptionalsTwinRustAsync(
-      int32: int32,
-      int64: int64,
-      float64: float64,
-      boolean: boolean,
-      zerocopy: zerocopy,
-      int8List: int8List,
-      uint8List: uint8List,
-      int32List: int32List,
-      float32List: float32List,
-      float64List: float64List,
-      attributes: attributes,
-      attributesNullable: attributesNullable,
-      nullableAttributes: nullableAttributes,
-      newtypeint: newtypeint);
-}
-
-ExoticOptionalsTwinSync _sse_decode_exotic_optionals_twin_sync(
-    SseDeserializer deserializer) {
-  var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-  var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
-  var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
-  var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
-  var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
-  var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
-  var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
-  var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
-  var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
-  var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
-  var attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
-  var attributesNullable =
-      _sse_decode_list_opt_box_autoadd_attribute_twin_sync(deserializer);
-  var nullableAttributes =
-      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(deserializer);
-  var newtypeint =
-      _sse_decode_opt_box_autoadd_new_type_int_twin_sync(deserializer);
-  return ExoticOptionalsTwinSync(
-      int32: int32,
-      int64: int64,
-      float64: float64,
-      boolean: boolean,
-      zerocopy: zerocopy,
-      int8List: int8List,
-      uint8List: uint8List,
-      int32List: int32List,
-      float32List: float32List,
-      float64List: float64List,
-      attributes: attributes,
-      attributesNullable: attributesNullable,
-      nullableAttributes: nullableAttributes,
-      newtypeint: newtypeint);
-}
-
-double _sse_decode_f_32(SseDeserializer deserializer) {
-  return deserializer.buffer.getFloat32();
-}
-
-double _sse_decode_f_64(SseDeserializer deserializer) {
-  return deserializer.buffer.getFloat64();
-}
-
-FeatureUuidTwinNormal _sse_decode_feature_uuid_twin_normal(
-    SseDeserializer deserializer) {
-  var one = _sse_decode_Uuid(deserializer);
-  return FeatureUuidTwinNormal(one: one);
-}
-
-FeatureUuidTwinRustAsync _sse_decode_feature_uuid_twin_rust_async(
-    SseDeserializer deserializer) {
-  var one = _sse_decode_Uuid(deserializer);
-  return FeatureUuidTwinRustAsync(one: one);
-}
-
-FeatureUuidTwinSync _sse_decode_feature_uuid_twin_sync(
-    SseDeserializer deserializer) {
-  var one = _sse_decode_Uuid(deserializer);
-  return FeatureUuidTwinSync(one: one);
-}
-
-FeedIdTwinNormal _sse_decode_feed_id_twin_normal(SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_8(deserializer);
-  return FeedIdTwinNormal(field0: field0);
-}
-
-FeedIdTwinRustAsync _sse_decode_feed_id_twin_rust_async(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_8(deserializer);
-  return FeedIdTwinRustAsync(field0: field0);
-}
-
-FeedIdTwinSync _sse_decode_feed_id_twin_sync(SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_8(deserializer);
-  return FeedIdTwinSync(field0: field0);
-}
-
-int _sse_decode_i_16(SseDeserializer deserializer) {
-  return deserializer.buffer.getInt16();
-}
-
-int _sse_decode_i_32(SseDeserializer deserializer) {
-  return deserializer.buffer.getInt32();
-}
-
-I32Array2 _sse_decode_i_32_array_2(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_i_32(deserializer);
-  return I32Array2(inner);
-}
-
-int _sse_decode_i_64(SseDeserializer deserializer) {
-  return deserializer.buffer.getInt64();
-}
-
-int _sse_decode_i_8(SseDeserializer deserializer) {
-  return deserializer.buffer.getInt8();
-}
-
-KitchenSinkTwinNormal _sse_decode_kitchen_sink_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return KitchenSinkTwinNormal_Empty();
-    case 1:
-      var int32 = _sse_decode_i_32(deserializer);
-      var float64 = _sse_decode_f_64(deserializer);
-      var boolean = _sse_decode_bool(deserializer);
-      return KitchenSinkTwinNormal_Primitives(
-          int32: int32, float64: float64, boolean: boolean);
-    case 2:
-      var field0 = _sse_decode_i_32(deserializer);
-      var field1 = _sse_decode_box_kitchen_sink_twin_normal(deserializer);
-      return KitchenSinkTwinNormal_Nested(field0, field1);
-    case 3:
-      var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-      var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-      return KitchenSinkTwinNormal_Optional(field0, field1);
-    case 4:
-      var field0 = _sse_decode_list_prim_u_8(deserializer);
-      return KitchenSinkTwinNormal_Buffer(field0);
-    case 5:
-      var field0 = _sse_decode_weekdays_twin_normal(deserializer);
-      return KitchenSinkTwinNormal_Enums(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-KitchenSinkTwinRustAsync _sse_decode_kitchen_sink_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return KitchenSinkTwinRustAsync_Empty();
-    case 1:
-      var int32 = _sse_decode_i_32(deserializer);
-      var float64 = _sse_decode_f_64(deserializer);
-      var boolean = _sse_decode_bool(deserializer);
-      return KitchenSinkTwinRustAsync_Primitives(
-          int32: int32, float64: float64, boolean: boolean);
-    case 2:
-      var field0 = _sse_decode_i_32(deserializer);
-      var field1 = _sse_decode_box_kitchen_sink_twin_rust_async(deserializer);
-      return KitchenSinkTwinRustAsync_Nested(field0, field1);
-    case 3:
-      var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-      var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-      return KitchenSinkTwinRustAsync_Optional(field0, field1);
-    case 4:
-      var field0 = _sse_decode_list_prim_u_8(deserializer);
-      return KitchenSinkTwinRustAsync_Buffer(field0);
-    case 5:
-      var field0 = _sse_decode_weekdays_twin_rust_async(deserializer);
-      return KitchenSinkTwinRustAsync_Enums(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-KitchenSinkTwinSync _sse_decode_kitchen_sink_twin_sync(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return KitchenSinkTwinSync_Empty();
-    case 1:
-      var int32 = _sse_decode_i_32(deserializer);
-      var float64 = _sse_decode_f_64(deserializer);
-      var boolean = _sse_decode_bool(deserializer);
-      return KitchenSinkTwinSync_Primitives(
-          int32: int32, float64: float64, boolean: boolean);
-    case 2:
-      var field0 = _sse_decode_i_32(deserializer);
-      var field1 = _sse_decode_box_kitchen_sink_twin_sync(deserializer);
-      return KitchenSinkTwinSync_Nested(field0, field1);
-    case 3:
-      var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-      var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-      return KitchenSinkTwinSync_Optional(field0, field1);
-    case 4:
-      var field0 = _sse_decode_list_prim_u_8(deserializer);
-      return KitchenSinkTwinSync_Buffer(field0);
-    case 5:
-      var field0 = _sse_decode_weekdays_twin_sync(deserializer);
-      return KitchenSinkTwinSync_Enums(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-List<Duration> _sse_decode_list_Chrono_Duration(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <Duration>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_Chrono_Duration(deserializer));
-  }
-  return ans_;
-}
-
-List<DateTime> _sse_decode_list_Chrono_Local(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <DateTime>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_Chrono_Local(deserializer));
-  }
-  return ans_;
-}
-
-List<Object> _sse_decode_list_DartOpaque(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <Object>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_DartOpaque(deserializer));
-  }
-  return ans_;
-}
-
-List<HideData> _sse_decode_list_RustOpaque_hide_data(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <HideData>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_RustOpaque_hide_data(deserializer));
-  }
-  return ans_;
-}
-
-List<String> _sse_decode_list_String(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <String>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_String(deserializer));
-  }
-  return ans_;
-}
-
-List<ApplicationEnvVar> _sse_decode_list_application_env_var(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <ApplicationEnvVar>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_application_env_var(deserializer));
-  }
-  return ans_;
-}
-
-List<ApplicationSettings> _sse_decode_list_application_settings(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <ApplicationSettings>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_application_settings(deserializer));
-  }
-  return ans_;
-}
-
-List<AttributeTwinNormal> _sse_decode_list_attribute_twin_normal(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <AttributeTwinNormal>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_attribute_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<AttributeTwinRustAsync> _sse_decode_list_attribute_twin_rust_async(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <AttributeTwinRustAsync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_attribute_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<AttributeTwinSync> _sse_decode_list_attribute_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <AttributeTwinSync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_attribute_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-List<bool> _sse_decode_list_bool(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <bool>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_bool(deserializer));
-  }
-  return ans_;
-}
-
-List<ElementTwinNormal> _sse_decode_list_element_twin_normal(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <ElementTwinNormal>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_element_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<ElementTwinRustAsync> _sse_decode_list_element_twin_rust_async(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <ElementTwinRustAsync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_element_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<ElementTwinSync> _sse_decode_list_element_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <ElementTwinSync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_element_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-List<EnumOpaqueTwinNormal> _sse_decode_list_enum_opaque_twin_normal(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <EnumOpaqueTwinNormal>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_enum_opaque_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<EnumOpaqueTwinRustAsync> _sse_decode_list_enum_opaque_twin_rust_async(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <EnumOpaqueTwinRustAsync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_enum_opaque_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<EnumOpaqueTwinSync> _sse_decode_list_enum_opaque_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <EnumOpaqueTwinSync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_enum_opaque_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-List<MyEnum> _sse_decode_list_my_enum(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <MyEnum>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_my_enum(deserializer));
-  }
-  return ans_;
-}
-
-List<MySize> _sse_decode_list_my_size(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <MySize>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_my_size(deserializer));
-  }
-  return ans_;
-}
-
-List<MyTreeNodeTwinNormal> _sse_decode_list_my_tree_node_twin_normal(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <MyTreeNodeTwinNormal>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_my_tree_node_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<MyTreeNodeTwinRustAsync> _sse_decode_list_my_tree_node_twin_rust_async(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <MyTreeNodeTwinRustAsync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_my_tree_node_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<MyTreeNodeTwinSync> _sse_decode_list_my_tree_node_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <MyTreeNodeTwinSync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_my_tree_node_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-List<NestedRawStringMirrored> _sse_decode_list_nested_raw_string_mirrored(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <NestedRawStringMirrored>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_nested_raw_string_mirrored(deserializer));
-  }
-  return ans_;
-}
-
-ListOfNestedRawStringMirrored _sse_decode_list_of_nested_raw_string_mirrored(
-    SseDeserializer deserializer) {
-  var raw = _sse_decode_list_nested_raw_string_mirrored(deserializer);
-  return ListOfNestedRawStringMirrored(raw: raw);
-}
-
-List<String?> _sse_decode_list_opt_String(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <String?>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_opt_String(deserializer));
-  }
-  return ans_;
-}
-
-List<AttributeTwinNormal?>
-    _sse_decode_list_opt_box_autoadd_attribute_twin_normal(
-        SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <AttributeTwinNormal?>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_opt_box_autoadd_attribute_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<AttributeTwinRustAsync?>
-    _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
-        SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <AttributeTwinRustAsync?>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(
-        _sse_decode_opt_box_autoadd_attribute_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<AttributeTwinSync?> _sse_decode_list_opt_box_autoadd_attribute_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <AttributeTwinSync?>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_opt_box_autoadd_attribute_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-List<int?> _sse_decode_list_opt_box_autoadd_i_32(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <int?>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_opt_box_autoadd_i_32(deserializer));
-  }
-  return ans_;
-}
-
-List<WeekdaysTwinNormal?> _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <WeekdaysTwinNormal?>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_opt_box_autoadd_weekdays_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<WeekdaysTwinRustAsync?>
-    _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(
-        SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <WeekdaysTwinRustAsync?>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(
-        _sse_decode_opt_box_autoadd_weekdays_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<WeekdaysTwinSync?> _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <WeekdaysTwinSync?>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_opt_box_autoadd_weekdays_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-List<Int32List?> _sse_decode_list_opt_list_prim_i_32(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <Int32List?>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_opt_list_prim_i_32(deserializer));
-  }
-  return ans_;
-}
-
-List<PointTwinNormal> _sse_decode_list_point_twin_normal(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <PointTwinNormal>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_point_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<PointTwinRustAsync> _sse_decode_list_point_twin_rust_async(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <PointTwinRustAsync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_point_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<PointTwinSync> _sse_decode_list_point_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <PointTwinSync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_point_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-Float32List _sse_decode_list_prim_f_32(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getFloat32List(len_);
-}
-
-Float64List _sse_decode_list_prim_f_64(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getFloat64List(len_);
-}
-
-Int16List _sse_decode_list_prim_i_16(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getInt16List(len_);
-}
-
-Int32List _sse_decode_list_prim_i_32(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getInt32List(len_);
-}
-
-Int64List _sse_decode_list_prim_i_64(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getInt64List(len_);
-}
-
-Int8List _sse_decode_list_prim_i_8(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getInt8List(len_);
-}
-
-Uint16List _sse_decode_list_prim_u_16(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getUint16List(len_);
-}
-
-Uint32List _sse_decode_list_prim_u_32(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getUint32List(len_);
-}
-
-Uint64List _sse_decode_list_prim_u_64(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getUint64List(len_);
-}
-
-Uint8List _sse_decode_list_prim_u_8(SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  return deserializer.buffer.getUint8List(len_);
-}
-
-List<RawStringEnumMirrored> _sse_decode_list_raw_string_enum_mirrored(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <RawStringEnumMirrored>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_raw_string_enum_mirrored(deserializer));
-  }
-  return ans_;
-}
-
-List<RawStringMirrored> _sse_decode_list_raw_string_mirrored(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <RawStringMirrored>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_raw_string_mirrored(deserializer));
-  }
-  return ans_;
-}
-
-List<SumWithTwinNormal> _sse_decode_list_sum_with_twin_normal(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <SumWithTwinNormal>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_sum_with_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<SumWithTwinRustAsync> _sse_decode_list_sum_with_twin_rust_async(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <SumWithTwinRustAsync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_sum_with_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<SumWithTwinSync> _sse_decode_list_sum_with_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <SumWithTwinSync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_sum_with_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-List<TestIdTwinNormal> _sse_decode_list_test_id_twin_normal(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <TestIdTwinNormal>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_test_id_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<TestIdTwinRustAsync> _sse_decode_list_test_id_twin_rust_async(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <TestIdTwinRustAsync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_test_id_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<TestIdTwinSync> _sse_decode_list_test_id_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <TestIdTwinSync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_test_id_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-List<WeekdaysTwinNormal> _sse_decode_list_weekdays_twin_normal(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <WeekdaysTwinNormal>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_weekdays_twin_normal(deserializer));
-  }
-  return ans_;
-}
-
-List<WeekdaysTwinRustAsync> _sse_decode_list_weekdays_twin_rust_async(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <WeekdaysTwinRustAsync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_weekdays_twin_rust_async(deserializer));
-  }
-  return ans_;
-}
-
-List<WeekdaysTwinSync> _sse_decode_list_weekdays_twin_sync(
-    SseDeserializer deserializer) {
-  var len_ = _sse_decode_i_32(deserializer);
-  var ans_ = <WeekdaysTwinSync>[];
-  for (var idx_ = 0; idx_ < len_; ++idx_) {
-    ans_.add(_sse_decode_weekdays_twin_sync(deserializer));
-  }
-  return ans_;
-}
-
-Log2TwinNormal _sse_decode_log_2_twin_normal(SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(deserializer);
-  var value = _sse_decode_String(deserializer);
-  return Log2TwinNormal(key: key, value: value);
-}
-
-Log2TwinRustAsync _sse_decode_log_2_twin_rust_async(
-    SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(deserializer);
-  var value = _sse_decode_String(deserializer);
-  return Log2TwinRustAsync(key: key, value: value);
-}
-
-Log2TwinSync _sse_decode_log_2_twin_sync(SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(deserializer);
-  var value = _sse_decode_String(deserializer);
-  return Log2TwinSync(key: key, value: value);
-}
-
-LogTwinNormal _sse_decode_log_twin_normal(SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(deserializer);
-  var value = _sse_decode_u_32(deserializer);
-  return LogTwinNormal(key: key, value: value);
-}
-
-LogTwinRustAsync _sse_decode_log_twin_rust_async(SseDeserializer deserializer) {
-  var key = _sse_decode_u_32(deserializer);
-  var value = _sse_decode_u_32(deserializer);
-  return LogTwinRustAsync(key: key, value: value);
-}
-
-MacroStruct _sse_decode_macro_struct(SseDeserializer deserializer) {
-  var data = _sse_decode_i_32(deserializer);
-  return MacroStruct(data: data);
-}
-
-MeasureTwinNormal _sse_decode_measure_twin_normal(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_box_speed_twin_normal(deserializer);
-      return MeasureTwinNormal_Speed(field0);
-    case 1:
-      var field0 = _sse_decode_box_distance_twin_normal(deserializer);
-      return MeasureTwinNormal_Distance(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-MeasureTwinRustAsync _sse_decode_measure_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_box_speed_twin_rust_async(deserializer);
-      return MeasureTwinRustAsync_Speed(field0);
-    case 1:
-      var field0 = _sse_decode_box_distance_twin_rust_async(deserializer);
-      return MeasureTwinRustAsync_Distance(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-MeasureTwinSync _sse_decode_measure_twin_sync(SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_box_speed_twin_sync(deserializer);
-      return MeasureTwinSync_Speed(field0);
-    case 1:
-      var field0 = _sse_decode_box_distance_twin_sync(deserializer);
-      return MeasureTwinSync_Distance(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-MessageIdTwinNormal _sse_decode_message_id_twin_normal(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_32(deserializer);
-  return MessageIdTwinNormal(field0: field0);
-}
-
-MessageIdTwinRustAsync _sse_decode_message_id_twin_rust_async(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_32(deserializer);
-  return MessageIdTwinRustAsync(field0: field0);
-}
-
-MessageIdTwinSync _sse_decode_message_id_twin_sync(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_u_8_array_32(deserializer);
-  return MessageIdTwinSync(field0: field0);
-}
-
-MirrorStructTwinNormal _sse_decode_mirror_struct_twin_normal(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_application_settings(deserializer);
-  var b = _sse_decode_my_struct(deserializer);
-  var c = _sse_decode_list_my_enum(deserializer);
-  var d = _sse_decode_list_application_settings(deserializer);
-  return MirrorStructTwinNormal(a: a, b: b, c: c, d: d);
-}
-
-MirrorStructTwinRustAsync _sse_decode_mirror_struct_twin_rust_async(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_application_settings(deserializer);
-  var b = _sse_decode_my_struct(deserializer);
-  var c = _sse_decode_list_my_enum(deserializer);
-  var d = _sse_decode_list_application_settings(deserializer);
-  return MirrorStructTwinRustAsync(a: a, b: b, c: c, d: d);
-}
-
-MirrorStructTwinSync _sse_decode_mirror_struct_twin_sync(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_application_settings(deserializer);
-  var b = _sse_decode_my_struct(deserializer);
-  var c = _sse_decode_list_my_enum(deserializer);
-  var d = _sse_decode_list_application_settings(deserializer);
-  return MirrorStructTwinSync(a: a, b: b, c: c, d: d);
-}
-
-MoreThanJustOneRawStringStructTwinNormal
-    _sse_decode_more_than_just_one_raw_string_struct_twin_normal(
-        SseDeserializer deserializer) {
-  var regular = _sse_decode_String(deserializer);
-  var type = _sse_decode_String(deserializer);
-  var async = _sse_decode_bool(deserializer);
-  var another = _sse_decode_String(deserializer);
-  return MoreThanJustOneRawStringStructTwinNormal(
-      regular: regular, type: type, async: async, another: another);
-}
-
-MoreThanJustOneRawStringStructTwinRustAsync
-    _sse_decode_more_than_just_one_raw_string_struct_twin_rust_async(
-        SseDeserializer deserializer) {
-  var regular = _sse_decode_String(deserializer);
-  var type = _sse_decode_String(deserializer);
-  var async = _sse_decode_bool(deserializer);
-  var another = _sse_decode_String(deserializer);
-  return MoreThanJustOneRawStringStructTwinRustAsync(
-      regular: regular, type: type, async: async, another: another);
-}
-
-MoreThanJustOneRawStringStructTwinSync
-    _sse_decode_more_than_just_one_raw_string_struct_twin_sync(
-        SseDeserializer deserializer) {
-  var regular = _sse_decode_String(deserializer);
-  var type = _sse_decode_String(deserializer);
-  var async = _sse_decode_bool(deserializer);
-  var another = _sse_decode_String(deserializer);
-  return MoreThanJustOneRawStringStructTwinSync(
-      regular: regular, type: type, async: async, another: another);
-}
-
-MyEnum _sse_decode_my_enum(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(deserializer);
-  return MyEnum.values[inner];
-}
-
-MyNestedStructTwinNormal _sse_decode_my_nested_struct_twin_normal(
-    SseDeserializer deserializer) {
-  var treeNode = _sse_decode_my_tree_node_twin_normal(deserializer);
-  var weekday = _sse_decode_weekdays_twin_normal(deserializer);
-  return MyNestedStructTwinNormal(treeNode: treeNode, weekday: weekday);
-}
-
-MyNestedStructTwinRustAsync _sse_decode_my_nested_struct_twin_rust_async(
-    SseDeserializer deserializer) {
-  var treeNode = _sse_decode_my_tree_node_twin_rust_async(deserializer);
-  var weekday = _sse_decode_weekdays_twin_rust_async(deserializer);
-  return MyNestedStructTwinRustAsync(treeNode: treeNode, weekday: weekday);
-}
-
-MyNestedStructTwinSync _sse_decode_my_nested_struct_twin_sync(
-    SseDeserializer deserializer) {
-  var treeNode = _sse_decode_my_tree_node_twin_sync(deserializer);
-  var weekday = _sse_decode_weekdays_twin_sync(deserializer);
-  return MyNestedStructTwinSync(treeNode: treeNode, weekday: weekday);
-}
-
-MySize _sse_decode_my_size(SseDeserializer deserializer) {
-  var width = _sse_decode_i_32(deserializer);
-  var height = _sse_decode_i_32(deserializer);
-  return MySize(width: width, height: height);
-}
-
-MyStreamEntryTwinNormal _sse_decode_my_stream_entry_twin_normal(
-    SseDeserializer deserializer) {
-  var hello = _sse_decode_String(deserializer);
-  return MyStreamEntryTwinNormal(hello: hello);
-}
-
-MyStreamEntryTwinRustAsync _sse_decode_my_stream_entry_twin_rust_async(
-    SseDeserializer deserializer) {
-  var hello = _sse_decode_String(deserializer);
-  return MyStreamEntryTwinRustAsync(hello: hello);
-}
-
-MyStruct _sse_decode_my_struct(SseDeserializer deserializer) {
-  var content = _sse_decode_bool(deserializer);
-  return MyStruct(content: content);
-}
-
-MyTreeNodeTwinNormal _sse_decode_my_tree_node_twin_normal(
-    SseDeserializer deserializer) {
-  var valueI32 = _sse_decode_i_32(deserializer);
-  var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
-  var valueBoolean = _sse_decode_bool(deserializer);
-  var children = _sse_decode_list_my_tree_node_twin_normal(deserializer);
-  return MyTreeNodeTwinNormal(
-      valueI32: valueI32,
-      valueVecU8: valueVecU8,
-      valueBoolean: valueBoolean,
-      children: children);
-}
-
-MyTreeNodeTwinRustAsync _sse_decode_my_tree_node_twin_rust_async(
-    SseDeserializer deserializer) {
-  var valueI32 = _sse_decode_i_32(deserializer);
-  var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
-  var valueBoolean = _sse_decode_bool(deserializer);
-  var children = _sse_decode_list_my_tree_node_twin_rust_async(deserializer);
-  return MyTreeNodeTwinRustAsync(
-      valueI32: valueI32,
-      valueVecU8: valueVecU8,
-      valueBoolean: valueBoolean,
-      children: children);
-}
-
-MyTreeNodeTwinSync _sse_decode_my_tree_node_twin_sync(
-    SseDeserializer deserializer) {
-  var valueI32 = _sse_decode_i_32(deserializer);
-  var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
-  var valueBoolean = _sse_decode_bool(deserializer);
-  var children = _sse_decode_list_my_tree_node_twin_sync(deserializer);
-  return MyTreeNodeTwinSync(
-      valueI32: valueI32,
-      valueVecU8: valueVecU8,
-      valueBoolean: valueBoolean,
-      children: children);
-}
-
-NestedRawStringMirrored _sse_decode_nested_raw_string_mirrored(
-    SseDeserializer deserializer) {
-  var raw = _sse_decode_raw_string_mirrored(deserializer);
-  return NestedRawStringMirrored(raw: raw);
-}
-
-NewSimpleStruct _sse_decode_new_simple_struct(SseDeserializer deserializer) {
-  var field = _sse_decode_i_32(deserializer);
-  return NewSimpleStruct(field: field);
-}
-
-NewTypeIntTwinNormal _sse_decode_new_type_int_twin_normal(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_64(deserializer);
-  return NewTypeIntTwinNormal(field0: field0);
-}
-
-NewTypeIntTwinRustAsync _sse_decode_new_type_int_twin_rust_async(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_64(deserializer);
-  return NewTypeIntTwinRustAsync(field0: field0);
-}
-
-NewTypeIntTwinSync _sse_decode_new_type_int_twin_sync(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_64(deserializer);
-  return NewTypeIntTwinSync(field0: field0);
-}
-
-Numbers _sse_decode_numbers(SseDeserializer deserializer) {
-  var field0 = _sse_decode_list_prim_i_32(deserializer);
-  return Numbers(field0: field0);
-}
-
-OldSimpleStruct _sse_decode_old_simple_struct(SseDeserializer deserializer) {
-  var field = _sse_decode_i_32(deserializer);
-  return OldSimpleStruct(field: field);
-}
-
-OpaqueNestedTwinNormal _sse_decode_opaque_nested_twin_normal(
-    SseDeserializer deserializer) {
-  var first = _sse_decode_RustOpaque_hide_data(deserializer);
-  var second = _sse_decode_RustOpaque_hide_data(deserializer);
-  return OpaqueNestedTwinNormal(first: first, second: second);
-}
-
-OpaqueNestedTwinRustAsync _sse_decode_opaque_nested_twin_rust_async(
-    SseDeserializer deserializer) {
-  var first = _sse_decode_RustOpaque_hide_data(deserializer);
-  var second = _sse_decode_RustOpaque_hide_data(deserializer);
-  return OpaqueNestedTwinRustAsync(first: first, second: second);
-}
-
-OpaqueNestedTwinSync _sse_decode_opaque_nested_twin_sync(
-    SseDeserializer deserializer) {
-  var first = _sse_decode_RustOpaque_hide_data(deserializer);
-  var second = _sse_decode_RustOpaque_hide_data(deserializer);
-  return OpaqueNestedTwinSync(first: first, second: second);
-}
-
-String? _sse_decode_opt_String(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_String(deserializer);
-  } else {
-    return null;
-  }
-}
-
-Duration? _sse_decode_opt_box_autoadd_Chrono_Duration(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_Chrono_Duration(deserializer);
-  } else {
-    return null;
-  }
-}
-
-DateTime? _sse_decode_opt_box_autoadd_Chrono_Naive(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_Chrono_Naive(deserializer);
-  } else {
-    return null;
-  }
-}
-
-DateTime? _sse_decode_opt_box_autoadd_Chrono_Utc(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_Chrono_Utc(deserializer);
-  } else {
-    return null;
-  }
-}
-
-Object? _sse_decode_opt_box_autoadd_DartOpaque(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_DartOpaque(deserializer);
-  } else {
-    return null;
-  }
-}
-
-HideData? _sse_decode_opt_box_autoadd_RustOpaque_hide_data(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_RustOpaque_hide_data(deserializer);
-  } else {
-    return null;
-  }
-}
-
-ApplicationEnv? _sse_decode_opt_box_autoadd_application_env(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_application_env(deserializer);
-  } else {
-    return null;
-  }
-}
-
-AttributeTwinNormal? _sse_decode_opt_box_autoadd_attribute_twin_normal(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_attribute_twin_normal(deserializer);
-  } else {
-    return null;
-  }
-}
-
-AttributeTwinRustAsync? _sse_decode_opt_box_autoadd_attribute_twin_rust_async(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_attribute_twin_rust_async(deserializer);
-  } else {
-    return null;
-  }
-}
-
-AttributeTwinSync? _sse_decode_opt_box_autoadd_attribute_twin_sync(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_attribute_twin_sync(deserializer);
-  } else {
-    return null;
-  }
-}
-
-bool? _sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_bool(deserializer);
-  } else {
-    return null;
-  }
-}
-
-ElementTwinNormal? _sse_decode_opt_box_autoadd_element_twin_normal(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_element_twin_normal(deserializer);
-  } else {
-    return null;
-  }
-}
-
-ElementTwinRustAsync? _sse_decode_opt_box_autoadd_element_twin_rust_async(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_element_twin_rust_async(deserializer);
-  } else {
-    return null;
-  }
-}
-
-ElementTwinSync? _sse_decode_opt_box_autoadd_element_twin_sync(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_element_twin_sync(deserializer);
-  } else {
-    return null;
-  }
-}
-
-ExoticOptionalsTwinNormal?
-    _sse_decode_opt_box_autoadd_exotic_optionals_twin_normal(
-        SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_exotic_optionals_twin_normal(deserializer);
-  } else {
-    return null;
-  }
-}
-
-ExoticOptionalsTwinRustAsync?
-    _sse_decode_opt_box_autoadd_exotic_optionals_twin_rust_async(
-        SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(
-        deserializer);
-  } else {
-    return null;
-  }
-}
-
-ExoticOptionalsTwinSync? _sse_decode_opt_box_autoadd_exotic_optionals_twin_sync(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_exotic_optionals_twin_sync(deserializer);
-  } else {
-    return null;
-  }
-}
-
-double? _sse_decode_opt_box_autoadd_f_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_f_32(deserializer);
-  } else {
-    return null;
-  }
-}
-
-double? _sse_decode_opt_box_autoadd_f_64(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_f_64(deserializer);
-  } else {
-    return null;
-  }
-}
-
-int? _sse_decode_opt_box_autoadd_i_16(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_i_16(deserializer);
-  } else {
-    return null;
-  }
-}
-
-int? _sse_decode_opt_box_autoadd_i_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_i_32(deserializer);
-  } else {
-    return null;
-  }
-}
-
-int? _sse_decode_opt_box_autoadd_i_64(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_i_64(deserializer);
-  } else {
-    return null;
-  }
-}
-
-int? _sse_decode_opt_box_autoadd_i_8(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_i_8(deserializer);
-  } else {
-    return null;
-  }
-}
-
-MeasureTwinNormal? _sse_decode_opt_box_autoadd_measure_twin_normal(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_measure_twin_normal(deserializer);
-  } else {
-    return null;
-  }
-}
-
-MeasureTwinRustAsync? _sse_decode_opt_box_autoadd_measure_twin_rust_async(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_measure_twin_rust_async(deserializer);
-  } else {
-    return null;
-  }
-}
-
-MeasureTwinSync? _sse_decode_opt_box_autoadd_measure_twin_sync(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_measure_twin_sync(deserializer);
-  } else {
-    return null;
-  }
-}
-
-NewTypeIntTwinNormal? _sse_decode_opt_box_autoadd_new_type_int_twin_normal(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_new_type_int_twin_normal(deserializer);
-  } else {
-    return null;
-  }
-}
-
-NewTypeIntTwinRustAsync?
-    _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(
-        SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_new_type_int_twin_rust_async(deserializer);
-  } else {
-    return null;
-  }
-}
-
-NewTypeIntTwinSync? _sse_decode_opt_box_autoadd_new_type_int_twin_sync(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_new_type_int_twin_sync(deserializer);
-  } else {
-    return null;
-  }
-}
-
-int? _sse_decode_opt_box_autoadd_u_16(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_u_16(deserializer);
-  } else {
-    return null;
-  }
-}
-
-int? _sse_decode_opt_box_autoadd_u_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_u_32(deserializer);
-  } else {
-    return null;
-  }
-}
-
-int? _sse_decode_opt_box_autoadd_u_64(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_u_64(deserializer);
-  } else {
-    return null;
-  }
-}
-
-int? _sse_decode_opt_box_autoadd_u_8(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_u_8(deserializer);
-  } else {
-    return null;
-  }
-}
-
-WeekdaysTwinNormal? _sse_decode_opt_box_autoadd_weekdays_twin_normal(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_weekdays_twin_normal(deserializer);
-  } else {
-    return null;
-  }
-}
-
-WeekdaysTwinRustAsync? _sse_decode_opt_box_autoadd_weekdays_twin_rust_async(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_weekdays_twin_rust_async(deserializer);
-  } else {
-    return null;
-  }
-}
-
-WeekdaysTwinSync? _sse_decode_opt_box_autoadd_weekdays_twin_sync(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_box_autoadd_weekdays_twin_sync(deserializer);
-  } else {
-    return null;
-  }
-}
-
-List<AttributeTwinNormal>? _sse_decode_opt_list_attribute_twin_normal(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_attribute_twin_normal(deserializer);
-  } else {
-    return null;
-  }
-}
-
-List<AttributeTwinRustAsync>? _sse_decode_opt_list_attribute_twin_rust_async(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_attribute_twin_rust_async(deserializer);
-  } else {
-    return null;
-  }
-}
-
-List<AttributeTwinSync>? _sse_decode_opt_list_attribute_twin_sync(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_attribute_twin_sync(deserializer);
-  } else {
-    return null;
-  }
-}
-
-List<ElementTwinNormal>? _sse_decode_opt_list_element_twin_normal(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_element_twin_normal(deserializer);
-  } else {
-    return null;
-  }
-}
-
-List<ElementTwinRustAsync>? _sse_decode_opt_list_element_twin_rust_async(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_element_twin_rust_async(deserializer);
-  } else {
-    return null;
-  }
-}
-
-List<ElementTwinSync>? _sse_decode_opt_list_element_twin_sync(
-    SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_element_twin_sync(deserializer);
-  } else {
-    return null;
-  }
-}
-
-List<AttributeTwinNormal?>?
-    _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(
-        SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_opt_box_autoadd_attribute_twin_normal(deserializer);
-  } else {
-    return null;
-  }
-}
-
-List<AttributeTwinRustAsync?>?
-    _sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
-        SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
-        deserializer);
-  } else {
-    return null;
-  }
-}
-
-List<AttributeTwinSync?>?
-    _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(
-        SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_opt_box_autoadd_attribute_twin_sync(deserializer);
-  } else {
-    return null;
-  }
-}
-
-Float32List? _sse_decode_opt_list_prim_f_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_prim_f_32(deserializer);
-  } else {
-    return null;
-  }
-}
-
-Float64List? _sse_decode_opt_list_prim_f_64(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_prim_f_64(deserializer);
-  } else {
-    return null;
-  }
-}
-
-Int32List? _sse_decode_opt_list_prim_i_32(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_prim_i_32(deserializer);
-  } else {
-    return null;
-  }
-}
-
-Int8List? _sse_decode_opt_list_prim_i_8(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_prim_i_8(deserializer);
-  } else {
-    return null;
-  }
-}
-
-Uint8List? _sse_decode_opt_list_prim_u_8(SseDeserializer deserializer) {
-  if (_sse_decode_bool(deserializer)) {
-    return _sse_decode_list_prim_u_8(deserializer);
-  } else {
-    return null;
-  }
-}
-
-OptVecsTwinNormal _sse_decode_opt_vecs_twin_normal(
-    SseDeserializer deserializer) {
-  var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
-  var enums =
-      _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(deserializer);
-  var strings = _sse_decode_list_opt_String(deserializer);
-  var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
-  return OptVecsTwinNormal(
-      i32: i32, enums: enums, strings: strings, buffers: buffers);
-}
-
-OptVecsTwinRustAsync _sse_decode_opt_vecs_twin_rust_async(
-    SseDeserializer deserializer) {
-  var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
-  var enums =
-      _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(deserializer);
-  var strings = _sse_decode_list_opt_String(deserializer);
-  var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
-  return OptVecsTwinRustAsync(
-      i32: i32, enums: enums, strings: strings, buffers: buffers);
-}
-
-OptVecsTwinSync _sse_decode_opt_vecs_twin_sync(SseDeserializer deserializer) {
-  var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
-  var enums = _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(deserializer);
-  var strings = _sse_decode_list_opt_String(deserializer);
-  var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
-  return OptVecsTwinSync(
-      i32: i32, enums: enums, strings: strings, buffers: buffers);
-}
-
-PointTwinNormal _sse_decode_point_twin_normal(SseDeserializer deserializer) {
-  var x = _sse_decode_f_32(deserializer);
-  var y = _sse_decode_f_32(deserializer);
-  return PointTwinNormal(x: x, y: y);
-}
-
-PointTwinNormalArray2 _sse_decode_point_twin_normal_array_2(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_point_twin_normal(deserializer);
-  return PointTwinNormalArray2(inner);
-}
-
-PointTwinRustAsync _sse_decode_point_twin_rust_async(
-    SseDeserializer deserializer) {
-  var x = _sse_decode_f_32(deserializer);
-  var y = _sse_decode_f_32(deserializer);
-  return PointTwinRustAsync(x: x, y: y);
-}
-
-PointTwinRustAsyncArray2 _sse_decode_point_twin_rust_async_array_2(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_point_twin_rust_async(deserializer);
-  return PointTwinRustAsyncArray2(inner);
-}
-
-PointTwinSync _sse_decode_point_twin_sync(SseDeserializer deserializer) {
-  var x = _sse_decode_f_32(deserializer);
-  var y = _sse_decode_f_32(deserializer);
-  return PointTwinSync(x: x, y: y);
-}
-
-PointTwinSyncArray2 _sse_decode_point_twin_sync_array_2(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_point_twin_sync(deserializer);
-  return PointTwinSyncArray2(inner);
-}
-
-RawStringEnumMirrored _sse_decode_raw_string_enum_mirrored(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      var field0 = _sse_decode_box_autoadd_raw_string_mirrored(deserializer);
-      return RawStringEnumMirrored_Raw(field0);
-    case 1:
-      var field0 =
-          _sse_decode_box_autoadd_nested_raw_string_mirrored(deserializer);
-      return RawStringEnumMirrored_Nested(field0);
-    case 2:
-      var field0 = _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
-          deserializer);
-      return RawStringEnumMirrored_ListOfNested(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-RawStringItemStructTwinNormal _sse_decode_raw_string_item_struct_twin_normal(
-    SseDeserializer deserializer) {
-  var type = _sse_decode_String(deserializer);
-  return RawStringItemStructTwinNormal(type: type);
-}
-
-RawStringItemStructTwinRustAsync
-    _sse_decode_raw_string_item_struct_twin_rust_async(
-        SseDeserializer deserializer) {
-  var type = _sse_decode_String(deserializer);
-  return RawStringItemStructTwinRustAsync(type: type);
-}
-
-RawStringItemStructTwinSync _sse_decode_raw_string_item_struct_twin_sync(
-    SseDeserializer deserializer) {
-  var type = _sse_decode_String(deserializer);
-  return RawStringItemStructTwinSync(type: type);
-}
-
-RawStringMirrored _sse_decode_raw_string_mirrored(
-    SseDeserializer deserializer) {
-  var value = _sse_decode_String(deserializer);
-  return RawStringMirrored(value: value);
-}
-
-(ApplicationSettings, RawStringEnumMirrored)
-    _sse_decode_record_application_settings_raw_string_enum_mirrored(
-        SseDeserializer deserializer) {
-  var field0 = _sse_decode_application_settings(deserializer);
-  var field1 = _sse_decode_raw_string_enum_mirrored(deserializer);
-  return (field0, field1);
-}
-
-(String, int) _sse_decode_record_string_i_32(SseDeserializer deserializer) {
-  var field0 = _sse_decode_String(deserializer);
-  var field1 = _sse_decode_i_32(deserializer);
-  return (field0, field1);
-}
-
-Sequences _sse_decode_sequences(SseDeserializer deserializer) {
-  var field0 = _sse_decode_list_prim_i_32(deserializer);
-  return Sequences(field0: field0);
-}
-
-SomeStructTwinNormal _sse_decode_some_struct_twin_normal(
-    SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(deserializer);
-  return SomeStructTwinNormal(value: value);
-}
-
-SomeStructTwinRustAsync _sse_decode_some_struct_twin_rust_async(
-    SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(deserializer);
-  return SomeStructTwinRustAsync(value: value);
-}
-
-SomeStructTwinSync _sse_decode_some_struct_twin_sync(
-    SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(deserializer);
-  return SomeStructTwinSync(value: value);
-}
-
-SpeedTwinNormal _sse_decode_speed_twin_normal(SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return SpeedTwinNormal_Unknown();
-    case 1:
-      var field0 = _sse_decode_f_64(deserializer);
-      return SpeedTwinNormal_GPS(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-SpeedTwinRustAsync _sse_decode_speed_twin_rust_async(
-    SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return SpeedTwinRustAsync_Unknown();
-    case 1:
-      var field0 = _sse_decode_f_64(deserializer);
-      return SpeedTwinRustAsync_GPS(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-SpeedTwinSync _sse_decode_speed_twin_sync(SseDeserializer deserializer) {
-  var tag_ = _sse_decode_i_32(deserializer);
-  switch (tag_) {
-    case 0:
-      return SpeedTwinSync_Unknown();
-    case 1:
-      var field0 = _sse_decode_f_64(deserializer);
-      return SpeedTwinSync_GPS(field0);
-    default:
-      throw UnimplementedError('');
-  }
-}
-
-StructWithEnumTwinNormal _sse_decode_struct_with_enum_twin_normal(
-    SseDeserializer deserializer) {
-  var abc1 = _sse_decode_abc_twin_normal(deserializer);
-  var abc2 = _sse_decode_abc_twin_normal(deserializer);
-  return StructWithEnumTwinNormal(abc1: abc1, abc2: abc2);
-}
-
-StructWithEnumTwinRustAsync _sse_decode_struct_with_enum_twin_rust_async(
-    SseDeserializer deserializer) {
-  var abc1 = _sse_decode_abc_twin_rust_async(deserializer);
-  var abc2 = _sse_decode_abc_twin_rust_async(deserializer);
-  return StructWithEnumTwinRustAsync(abc1: abc1, abc2: abc2);
-}
-
-StructWithEnumTwinSync _sse_decode_struct_with_enum_twin_sync(
-    SseDeserializer deserializer) {
-  var abc1 = _sse_decode_abc_twin_sync(deserializer);
-  var abc2 = _sse_decode_abc_twin_sync(deserializer);
-  return StructWithEnumTwinSync(abc1: abc1, abc2: abc2);
-}
-
-StructWithOneFieldTwinNormal _sse_decode_struct_with_one_field_twin_normal(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(deserializer);
-  return StructWithOneFieldTwinNormal(a: a);
-}
-
-StructWithOneFieldTwinRustAsync
-    _sse_decode_struct_with_one_field_twin_rust_async(
-        SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(deserializer);
-  return StructWithOneFieldTwinRustAsync(a: a);
-}
-
-StructWithOneFieldTwinSync _sse_decode_struct_with_one_field_twin_sync(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(deserializer);
-  return StructWithOneFieldTwinSync(a: a);
-}
-
-StructWithTwoFieldTwinNormal _sse_decode_struct_with_two_field_twin_normal(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(deserializer);
-  var b = _sse_decode_i_32(deserializer);
-  return StructWithTwoFieldTwinNormal(a: a, b: b);
-}
-
-StructWithTwoFieldTwinRustAsync
-    _sse_decode_struct_with_two_field_twin_rust_async(
-        SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(deserializer);
-  var b = _sse_decode_i_32(deserializer);
-  return StructWithTwoFieldTwinRustAsync(a: a, b: b);
-}
-
-StructWithTwoFieldTwinSync _sse_decode_struct_with_two_field_twin_sync(
-    SseDeserializer deserializer) {
-  var a = _sse_decode_i_32(deserializer);
-  var b = _sse_decode_i_32(deserializer);
-  return StructWithTwoFieldTwinSync(a: a, b: b);
-}
-
-StructWithZeroFieldTwinNormal _sse_decode_struct_with_zero_field_twin_normal(
-    SseDeserializer deserializer) {
-  return StructWithZeroFieldTwinNormal();
-}
-
-StructWithZeroFieldTwinRustAsync
-    _sse_decode_struct_with_zero_field_twin_rust_async(
-        SseDeserializer deserializer) {
-  return StructWithZeroFieldTwinRustAsync();
-}
-
-StructWithZeroFieldTwinSync _sse_decode_struct_with_zero_field_twin_sync(
-    SseDeserializer deserializer) {
-  return StructWithZeroFieldTwinSync();
-}
-
-SumWithTwinNormal _sse_decode_sum_with_twin_normal(
-    SseDeserializer deserializer) {
-  var x = _sse_decode_u_32(deserializer);
-  return SumWithTwinNormal(x: x);
-}
-
-SumWithTwinNormalArray3 _sse_decode_sum_with_twin_normal_array_3(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_sum_with_twin_normal(deserializer);
-  return SumWithTwinNormalArray3(inner);
-}
-
-SumWithTwinRustAsync _sse_decode_sum_with_twin_rust_async(
-    SseDeserializer deserializer) {
-  var x = _sse_decode_u_32(deserializer);
-  return SumWithTwinRustAsync(x: x);
-}
-
-SumWithTwinRustAsyncArray3 _sse_decode_sum_with_twin_rust_async_array_3(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_sum_with_twin_rust_async(deserializer);
-  return SumWithTwinRustAsyncArray3(inner);
-}
-
-SumWithTwinSync _sse_decode_sum_with_twin_sync(SseDeserializer deserializer) {
-  var x = _sse_decode_u_32(deserializer);
-  return SumWithTwinSync(x: x);
-}
-
-SumWithTwinSyncArray3 _sse_decode_sum_with_twin_sync_array_3(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_sum_with_twin_sync(deserializer);
-  return SumWithTwinSyncArray3(inner);
-}
-
-TestChronoTwinNormal _sse_decode_test_chrono_twin_normal(
-    SseDeserializer deserializer) {
-  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
-  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
-  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
-  return TestChronoTwinNormal(dt: dt, dt2: dt2, du: du);
-}
-
-TestChronoTwinRustAsync _sse_decode_test_chrono_twin_rust_async(
-    SseDeserializer deserializer) {
-  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
-  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
-  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
-  return TestChronoTwinRustAsync(dt: dt, dt2: dt2, du: du);
-}
-
-TestChronoTwinSync _sse_decode_test_chrono_twin_sync(
-    SseDeserializer deserializer) {
-  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
-  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
-  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
-  return TestChronoTwinSync(dt: dt, dt2: dt2, du: du);
-}
-
-TestIdTwinNormal _sse_decode_test_id_twin_normal(SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32_array_2(deserializer);
-  return TestIdTwinNormal(field0: field0);
-}
-
-TestIdTwinNormalArray2 _sse_decode_test_id_twin_normal_array_2(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_test_id_twin_normal(deserializer);
-  return TestIdTwinNormalArray2(inner);
-}
-
-TestIdTwinRustAsync _sse_decode_test_id_twin_rust_async(
-    SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32_array_2(deserializer);
-  return TestIdTwinRustAsync(field0: field0);
-}
-
-TestIdTwinRustAsyncArray2 _sse_decode_test_id_twin_rust_async_array_2(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_test_id_twin_rust_async(deserializer);
-  return TestIdTwinRustAsyncArray2(inner);
-}
-
-TestIdTwinSync _sse_decode_test_id_twin_sync(SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32_array_2(deserializer);
-  return TestIdTwinSync(field0: field0);
-}
-
-TestIdTwinSyncArray2 _sse_decode_test_id_twin_sync_array_2(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_list_test_id_twin_sync(deserializer);
-  return TestIdTwinSyncArray2(inner);
-}
-
-TestModelTwinNormal _sse_decode_test_model_twin_normal(
-    SseDeserializer deserializer) {
-  var id = _sse_decode_u_64(deserializer);
-  var name = _sse_decode_String(deserializer);
-  var aliasEnum = _sse_decode_my_enum(deserializer);
-  var aliasStruct = _sse_decode_my_struct(deserializer);
-  return TestModelTwinNormal(
-      id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
-}
-
-TestModelTwinRustAsync _sse_decode_test_model_twin_rust_async(
-    SseDeserializer deserializer) {
-  var id = _sse_decode_u_64(deserializer);
-  var name = _sse_decode_String(deserializer);
-  var aliasEnum = _sse_decode_my_enum(deserializer);
-  var aliasStruct = _sse_decode_my_struct(deserializer);
-  return TestModelTwinRustAsync(
-      id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
-}
-
-TestModelTwinSync _sse_decode_test_model_twin_sync(
-    SseDeserializer deserializer) {
-  var id = _sse_decode_u_64(deserializer);
-  var name = _sse_decode_String(deserializer);
-  var aliasEnum = _sse_decode_my_enum(deserializer);
-  var aliasStruct = _sse_decode_my_struct(deserializer);
-  return TestModelTwinSync(
-      id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
-}
-
-TupleStructWithOneFieldTwinNormal
-    _sse_decode_tuple_struct_with_one_field_twin_normal(
-        SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(deserializer);
-  return TupleStructWithOneFieldTwinNormal(field0: field0);
-}
-
-TupleStructWithOneFieldTwinRustAsync
-    _sse_decode_tuple_struct_with_one_field_twin_rust_async(
-        SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(deserializer);
-  return TupleStructWithOneFieldTwinRustAsync(field0: field0);
-}
-
-TupleStructWithOneFieldTwinSync
-    _sse_decode_tuple_struct_with_one_field_twin_sync(
-        SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(deserializer);
-  return TupleStructWithOneFieldTwinSync(field0: field0);
-}
-
-TupleStructWithTwoFieldTwinNormal
-    _sse_decode_tuple_struct_with_two_field_twin_normal(
-        SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(deserializer);
-  var field1 = _sse_decode_i_32(deserializer);
-  return TupleStructWithTwoFieldTwinNormal(field0: field0, field1: field1);
-}
-
-TupleStructWithTwoFieldTwinRustAsync
-    _sse_decode_tuple_struct_with_two_field_twin_rust_async(
-        SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(deserializer);
-  var field1 = _sse_decode_i_32(deserializer);
-  return TupleStructWithTwoFieldTwinRustAsync(field0: field0, field1: field1);
-}
-
-TupleStructWithTwoFieldTwinSync
-    _sse_decode_tuple_struct_with_two_field_twin_sync(
-        SseDeserializer deserializer) {
-  var field0 = _sse_decode_i_32(deserializer);
-  var field1 = _sse_decode_i_32(deserializer);
-  return TupleStructWithTwoFieldTwinSync(field0: field0, field1: field1);
-}
-
-int _sse_decode_u_16(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint16();
-}
-
-int _sse_decode_u_32(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint32();
-}
-
-int _sse_decode_u_64(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint64();
-}
-
-int _sse_decode_u_8(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint8();
-}
-
-U8Array1600 _sse_decode_u_8_array_1600(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(deserializer);
-  return U8Array1600(inner);
-}
-
-U8Array32 _sse_decode_u_8_array_32(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(deserializer);
-  return U8Array32(inner);
-}
-
-U8Array5 _sse_decode_u_8_array_5(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(deserializer);
-  return U8Array5(inner);
-}
-
-U8Array8 _sse_decode_u_8_array_8(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(deserializer);
-  return U8Array8(inner);
-}
-
-void _sse_decode_unit(SseDeserializer deserializer) {}
-
-UserIdTwinNormal _sse_decode_user_id_twin_normal(SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(deserializer);
-  return UserIdTwinNormal(value: value);
-}
-
-UserIdTwinRustAsync _sse_decode_user_id_twin_rust_async(
-    SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(deserializer);
-  return UserIdTwinRustAsync(value: value);
-}
-
-UserIdTwinSync _sse_decode_user_id_twin_sync(SseDeserializer deserializer) {
-  var value = _sse_decode_u_32(deserializer);
-  return UserIdTwinSync(value: value);
-}
-
-int _sse_decode_usize(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint64();
-}
-
-VecOfPrimitivePackTwinNormal _sse_decode_vec_of_primitive_pack_twin_normal(
-    SseDeserializer deserializer) {
-  var int8List = _sse_decode_list_prim_i_8(deserializer);
-  var uint8List = _sse_decode_list_prim_u_8(deserializer);
-  var int16List = _sse_decode_list_prim_i_16(deserializer);
-  var uint16List = _sse_decode_list_prim_u_16(deserializer);
-  var uint32List = _sse_decode_list_prim_u_32(deserializer);
-  var int32List = _sse_decode_list_prim_i_32(deserializer);
-  var uint64List = _sse_decode_list_prim_u_64(deserializer);
-  var int64List = _sse_decode_list_prim_i_64(deserializer);
-  var float32List = _sse_decode_list_prim_f_32(deserializer);
-  var float64List = _sse_decode_list_prim_f_64(deserializer);
-  var boolList = _sse_decode_list_bool(deserializer);
-  return VecOfPrimitivePackTwinNormal(
-      int8List: int8List,
-      uint8List: uint8List,
-      int16List: int16List,
-      uint16List: uint16List,
-      uint32List: uint32List,
-      int32List: int32List,
-      uint64List: uint64List,
-      int64List: int64List,
-      float32List: float32List,
-      float64List: float64List,
-      boolList: boolList);
-}
-
-VecOfPrimitivePackTwinRustAsync
-    _sse_decode_vec_of_primitive_pack_twin_rust_async(
-        SseDeserializer deserializer) {
-  var int8List = _sse_decode_list_prim_i_8(deserializer);
-  var uint8List = _sse_decode_list_prim_u_8(deserializer);
-  var int16List = _sse_decode_list_prim_i_16(deserializer);
-  var uint16List = _sse_decode_list_prim_u_16(deserializer);
-  var uint32List = _sse_decode_list_prim_u_32(deserializer);
-  var int32List = _sse_decode_list_prim_i_32(deserializer);
-  var uint64List = _sse_decode_list_prim_u_64(deserializer);
-  var int64List = _sse_decode_list_prim_i_64(deserializer);
-  var float32List = _sse_decode_list_prim_f_32(deserializer);
-  var float64List = _sse_decode_list_prim_f_64(deserializer);
-  var boolList = _sse_decode_list_bool(deserializer);
-  return VecOfPrimitivePackTwinRustAsync(
-      int8List: int8List,
-      uint8List: uint8List,
-      int16List: int16List,
-      uint16List: uint16List,
-      uint32List: uint32List,
-      int32List: int32List,
-      uint64List: uint64List,
-      int64List: int64List,
-      float32List: float32List,
-      float64List: float64List,
-      boolList: boolList);
-}
-
-VecOfPrimitivePackTwinSync _sse_decode_vec_of_primitive_pack_twin_sync(
-    SseDeserializer deserializer) {
-  var int8List = _sse_decode_list_prim_i_8(deserializer);
-  var uint8List = _sse_decode_list_prim_u_8(deserializer);
-  var int16List = _sse_decode_list_prim_i_16(deserializer);
-  var uint16List = _sse_decode_list_prim_u_16(deserializer);
-  var uint32List = _sse_decode_list_prim_u_32(deserializer);
-  var int32List = _sse_decode_list_prim_i_32(deserializer);
-  var uint64List = _sse_decode_list_prim_u_64(deserializer);
-  var int64List = _sse_decode_list_prim_i_64(deserializer);
-  var float32List = _sse_decode_list_prim_f_32(deserializer);
-  var float64List = _sse_decode_list_prim_f_64(deserializer);
-  var boolList = _sse_decode_list_bool(deserializer);
-  return VecOfPrimitivePackTwinSync(
-      int8List: int8List,
-      uint8List: uint8List,
-      int16List: int16List,
-      uint16List: uint16List,
-      uint32List: uint32List,
-      int32List: int32List,
-      uint64List: uint64List,
-      int64List: int64List,
-      float32List: float32List,
-      float64List: float64List,
-      boolList: boolList);
-}
-
-WeekdaysTwinNormal _sse_decode_weekdays_twin_normal(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(deserializer);
-  return WeekdaysTwinNormal.values[inner];
-}
-
-WeekdaysTwinRustAsync _sse_decode_weekdays_twin_rust_async(
-    SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(deserializer);
-  return WeekdaysTwinRustAsync.values[inner];
-}
-
-WeekdaysTwinSync _sse_decode_weekdays_twin_sync(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_32(deserializer);
-  return WeekdaysTwinSync.values[inner];
+    } else {
+      return null;
+    }
+  }
+
+  List<AttributeTwinSync?>?
+      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_opt_box_autoadd_attribute_twin_sync(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  Float32List? _sse_decode_opt_list_prim_f_32(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_prim_f_32(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  Float64List? _sse_decode_opt_list_prim_f_64(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_prim_f_64(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  Int32List? _sse_decode_opt_list_prim_i_32(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_prim_i_32(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  Int8List? _sse_decode_opt_list_prim_i_8(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_prim_i_8(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  Uint8List? _sse_decode_opt_list_prim_u_8(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return _sse_decode_list_prim_u_8(deserializer);
+    } else {
+      return null;
+    }
+  }
+
+  OptVecsTwinNormal _sse_decode_opt_vecs_twin_normal(
+      SseDeserializer deserializer) {
+    var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+    var enums =
+        _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(deserializer);
+    var strings = _sse_decode_list_opt_String(deserializer);
+    var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
+    return OptVecsTwinNormal(
+        i32: i32, enums: enums, strings: strings, buffers: buffers);
+  }
+
+  OptVecsTwinRustAsync _sse_decode_opt_vecs_twin_rust_async(
+      SseDeserializer deserializer) {
+    var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+    var enums =
+        _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(deserializer);
+    var strings = _sse_decode_list_opt_String(deserializer);
+    var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
+    return OptVecsTwinRustAsync(
+        i32: i32, enums: enums, strings: strings, buffers: buffers);
+  }
+
+  OptVecsTwinSync _sse_decode_opt_vecs_twin_sync(SseDeserializer deserializer) {
+    var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+    var enums =
+        _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(deserializer);
+    var strings = _sse_decode_list_opt_String(deserializer);
+    var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
+    return OptVecsTwinSync(
+        i32: i32, enums: enums, strings: strings, buffers: buffers);
+  }
+
+  PointTwinNormal _sse_decode_point_twin_normal(SseDeserializer deserializer) {
+    var x = _sse_decode_f_32(deserializer);
+    var y = _sse_decode_f_32(deserializer);
+    return PointTwinNormal(x: x, y: y);
+  }
+
+  PointTwinNormalArray2 _sse_decode_point_twin_normal_array_2(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_point_twin_normal(deserializer);
+    return PointTwinNormalArray2(inner);
+  }
+
+  PointTwinRustAsync _sse_decode_point_twin_rust_async(
+      SseDeserializer deserializer) {
+    var x = _sse_decode_f_32(deserializer);
+    var y = _sse_decode_f_32(deserializer);
+    return PointTwinRustAsync(x: x, y: y);
+  }
+
+  PointTwinRustAsyncArray2 _sse_decode_point_twin_rust_async_array_2(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_point_twin_rust_async(deserializer);
+    return PointTwinRustAsyncArray2(inner);
+  }
+
+  PointTwinSync _sse_decode_point_twin_sync(SseDeserializer deserializer) {
+    var x = _sse_decode_f_32(deserializer);
+    var y = _sse_decode_f_32(deserializer);
+    return PointTwinSync(x: x, y: y);
+  }
+
+  PointTwinSyncArray2 _sse_decode_point_twin_sync_array_2(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_point_twin_sync(deserializer);
+    return PointTwinSyncArray2(inner);
+  }
+
+  RawStringEnumMirrored _sse_decode_raw_string_enum_mirrored(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var field0 = _sse_decode_box_autoadd_raw_string_mirrored(deserializer);
+        return RawStringEnumMirrored_Raw(field0);
+      case 1:
+        var field0 =
+            _sse_decode_box_autoadd_nested_raw_string_mirrored(deserializer);
+        return RawStringEnumMirrored_Nested(field0);
+      case 2:
+        var field0 = _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
+            deserializer);
+        return RawStringEnumMirrored_ListOfNested(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  RawStringItemStructTwinNormal _sse_decode_raw_string_item_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var type = _sse_decode_String(deserializer);
+    return RawStringItemStructTwinNormal(type: type);
+  }
+
+  RawStringItemStructTwinRustAsync
+      _sse_decode_raw_string_item_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    var type = _sse_decode_String(deserializer);
+    return RawStringItemStructTwinRustAsync(type: type);
+  }
+
+  RawStringItemStructTwinSync _sse_decode_raw_string_item_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var type = _sse_decode_String(deserializer);
+    return RawStringItemStructTwinSync(type: type);
+  }
+
+  RawStringMirrored _sse_decode_raw_string_mirrored(
+      SseDeserializer deserializer) {
+    var value = _sse_decode_String(deserializer);
+    return RawStringMirrored(value: value);
+  }
+
+  (ApplicationSettings, RawStringEnumMirrored)
+      _sse_decode_record_application_settings_raw_string_enum_mirrored(
+          SseDeserializer deserializer) {
+    var field0 = _sse_decode_application_settings(deserializer);
+    var field1 = _sse_decode_raw_string_enum_mirrored(deserializer);
+    return (field0, field1);
+  }
+
+  (String, int) _sse_decode_record_string_i_32(SseDeserializer deserializer) {
+    var field0 = _sse_decode_String(deserializer);
+    var field1 = _sse_decode_i_32(deserializer);
+    return (field0, field1);
+  }
+
+  Sequences _sse_decode_sequences(SseDeserializer deserializer) {
+    var field0 = _sse_decode_list_prim_i_32(deserializer);
+    return Sequences(field0: field0);
+  }
+
+  SomeStructTwinNormal _sse_decode_some_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var value = _sse_decode_u_32(deserializer);
+    return SomeStructTwinNormal(value: value);
+  }
+
+  SomeStructTwinRustAsync _sse_decode_some_struct_twin_rust_async(
+      SseDeserializer deserializer) {
+    var value = _sse_decode_u_32(deserializer);
+    return SomeStructTwinRustAsync(value: value);
+  }
+
+  SomeStructTwinSync _sse_decode_some_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var value = _sse_decode_u_32(deserializer);
+    return SomeStructTwinSync(value: value);
+  }
+
+  SpeedTwinNormal _sse_decode_speed_twin_normal(SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return SpeedTwinNormal_Unknown();
+      case 1:
+        var field0 = _sse_decode_f_64(deserializer);
+        return SpeedTwinNormal_GPS(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  SpeedTwinRustAsync _sse_decode_speed_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return SpeedTwinRustAsync_Unknown();
+      case 1:
+        var field0 = _sse_decode_f_64(deserializer);
+        return SpeedTwinRustAsync_GPS(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  SpeedTwinSync _sse_decode_speed_twin_sync(SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return SpeedTwinSync_Unknown();
+      case 1:
+        var field0 = _sse_decode_f_64(deserializer);
+        return SpeedTwinSync_GPS(field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  StructWithEnumTwinNormal _sse_decode_struct_with_enum_twin_normal(
+      SseDeserializer deserializer) {
+    var abc1 = _sse_decode_abc_twin_normal(deserializer);
+    var abc2 = _sse_decode_abc_twin_normal(deserializer);
+    return StructWithEnumTwinNormal(abc1: abc1, abc2: abc2);
+  }
+
+  StructWithEnumTwinRustAsync _sse_decode_struct_with_enum_twin_rust_async(
+      SseDeserializer deserializer) {
+    var abc1 = _sse_decode_abc_twin_rust_async(deserializer);
+    var abc2 = _sse_decode_abc_twin_rust_async(deserializer);
+    return StructWithEnumTwinRustAsync(abc1: abc1, abc2: abc2);
+  }
+
+  StructWithEnumTwinSync _sse_decode_struct_with_enum_twin_sync(
+      SseDeserializer deserializer) {
+    var abc1 = _sse_decode_abc_twin_sync(deserializer);
+    var abc2 = _sse_decode_abc_twin_sync(deserializer);
+    return StructWithEnumTwinSync(abc1: abc1, abc2: abc2);
+  }
+
+  StructWithOneFieldTwinNormal _sse_decode_struct_with_one_field_twin_normal(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_i_32(deserializer);
+    return StructWithOneFieldTwinNormal(a: a);
+  }
+
+  StructWithOneFieldTwinRustAsync
+      _sse_decode_struct_with_one_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    var a = _sse_decode_i_32(deserializer);
+    return StructWithOneFieldTwinRustAsync(a: a);
+  }
+
+  StructWithOneFieldTwinSync _sse_decode_struct_with_one_field_twin_sync(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_i_32(deserializer);
+    return StructWithOneFieldTwinSync(a: a);
+  }
+
+  StructWithTwoFieldTwinNormal _sse_decode_struct_with_two_field_twin_normal(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_i_32(deserializer);
+    var b = _sse_decode_i_32(deserializer);
+    return StructWithTwoFieldTwinNormal(a: a, b: b);
+  }
+
+  StructWithTwoFieldTwinRustAsync
+      _sse_decode_struct_with_two_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    var a = _sse_decode_i_32(deserializer);
+    var b = _sse_decode_i_32(deserializer);
+    return StructWithTwoFieldTwinRustAsync(a: a, b: b);
+  }
+
+  StructWithTwoFieldTwinSync _sse_decode_struct_with_two_field_twin_sync(
+      SseDeserializer deserializer) {
+    var a = _sse_decode_i_32(deserializer);
+    var b = _sse_decode_i_32(deserializer);
+    return StructWithTwoFieldTwinSync(a: a, b: b);
+  }
+
+  StructWithZeroFieldTwinNormal _sse_decode_struct_with_zero_field_twin_normal(
+      SseDeserializer deserializer) {
+    return StructWithZeroFieldTwinNormal();
+  }
+
+  StructWithZeroFieldTwinRustAsync
+      _sse_decode_struct_with_zero_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    return StructWithZeroFieldTwinRustAsync();
+  }
+
+  StructWithZeroFieldTwinSync _sse_decode_struct_with_zero_field_twin_sync(
+      SseDeserializer deserializer) {
+    return StructWithZeroFieldTwinSync();
+  }
+
+  SumWithTwinNormal _sse_decode_sum_with_twin_normal(
+      SseDeserializer deserializer) {
+    var x = _sse_decode_u_32(deserializer);
+    return SumWithTwinNormal(x: x);
+  }
+
+  SumWithTwinNormalArray3 _sse_decode_sum_with_twin_normal_array_3(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_sum_with_twin_normal(deserializer);
+    return SumWithTwinNormalArray3(inner);
+  }
+
+  SumWithTwinRustAsync _sse_decode_sum_with_twin_rust_async(
+      SseDeserializer deserializer) {
+    var x = _sse_decode_u_32(deserializer);
+    return SumWithTwinRustAsync(x: x);
+  }
+
+  SumWithTwinRustAsyncArray3 _sse_decode_sum_with_twin_rust_async_array_3(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_sum_with_twin_rust_async(deserializer);
+    return SumWithTwinRustAsyncArray3(inner);
+  }
+
+  SumWithTwinSync _sse_decode_sum_with_twin_sync(SseDeserializer deserializer) {
+    var x = _sse_decode_u_32(deserializer);
+    return SumWithTwinSync(x: x);
+  }
+
+  SumWithTwinSyncArray3 _sse_decode_sum_with_twin_sync_array_3(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_sum_with_twin_sync(deserializer);
+    return SumWithTwinSyncArray3(inner);
+  }
+
+  TestChronoTwinNormal _sse_decode_test_chrono_twin_normal(
+      SseDeserializer deserializer) {
+    var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
+    var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+    var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
+    return TestChronoTwinNormal(dt: dt, dt2: dt2, du: du);
+  }
+
+  TestChronoTwinRustAsync _sse_decode_test_chrono_twin_rust_async(
+      SseDeserializer deserializer) {
+    var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
+    var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+    var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
+    return TestChronoTwinRustAsync(dt: dt, dt2: dt2, du: du);
+  }
+
+  TestChronoTwinSync _sse_decode_test_chrono_twin_sync(
+      SseDeserializer deserializer) {
+    var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
+    var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+    var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
+    return TestChronoTwinSync(dt: dt, dt2: dt2, du: du);
+  }
+
+  TestIdTwinNormal _sse_decode_test_id_twin_normal(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_32_array_2(deserializer);
+    return TestIdTwinNormal(field0: field0);
+  }
+
+  TestIdTwinNormalArray2 _sse_decode_test_id_twin_normal_array_2(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_test_id_twin_normal(deserializer);
+    return TestIdTwinNormalArray2(inner);
+  }
+
+  TestIdTwinRustAsync _sse_decode_test_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_32_array_2(deserializer);
+    return TestIdTwinRustAsync(field0: field0);
+  }
+
+  TestIdTwinRustAsyncArray2 _sse_decode_test_id_twin_rust_async_array_2(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_test_id_twin_rust_async(deserializer);
+    return TestIdTwinRustAsyncArray2(inner);
+  }
+
+  TestIdTwinSync _sse_decode_test_id_twin_sync(SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_32_array_2(deserializer);
+    return TestIdTwinSync(field0: field0);
+  }
+
+  TestIdTwinSyncArray2 _sse_decode_test_id_twin_sync_array_2(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_test_id_twin_sync(deserializer);
+    return TestIdTwinSyncArray2(inner);
+  }
+
+  TestModelTwinNormal _sse_decode_test_model_twin_normal(
+      SseDeserializer deserializer) {
+    var id = _sse_decode_u_64(deserializer);
+    var name = _sse_decode_String(deserializer);
+    var aliasEnum = _sse_decode_my_enum(deserializer);
+    var aliasStruct = _sse_decode_my_struct(deserializer);
+    return TestModelTwinNormal(
+        id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+  }
+
+  TestModelTwinRustAsync _sse_decode_test_model_twin_rust_async(
+      SseDeserializer deserializer) {
+    var id = _sse_decode_u_64(deserializer);
+    var name = _sse_decode_String(deserializer);
+    var aliasEnum = _sse_decode_my_enum(deserializer);
+    var aliasStruct = _sse_decode_my_struct(deserializer);
+    return TestModelTwinRustAsync(
+        id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+  }
+
+  TestModelTwinSync _sse_decode_test_model_twin_sync(
+      SseDeserializer deserializer) {
+    var id = _sse_decode_u_64(deserializer);
+    var name = _sse_decode_String(deserializer);
+    var aliasEnum = _sse_decode_my_enum(deserializer);
+    var aliasStruct = _sse_decode_my_struct(deserializer);
+    return TestModelTwinSync(
+        id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+  }
+
+  TupleStructWithOneFieldTwinNormal
+      _sse_decode_tuple_struct_with_one_field_twin_normal(
+          SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_32(deserializer);
+    return TupleStructWithOneFieldTwinNormal(field0: field0);
+  }
+
+  TupleStructWithOneFieldTwinRustAsync
+      _sse_decode_tuple_struct_with_one_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_32(deserializer);
+    return TupleStructWithOneFieldTwinRustAsync(field0: field0);
+  }
+
+  TupleStructWithOneFieldTwinSync
+      _sse_decode_tuple_struct_with_one_field_twin_sync(
+          SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_32(deserializer);
+    return TupleStructWithOneFieldTwinSync(field0: field0);
+  }
+
+  TupleStructWithTwoFieldTwinNormal
+      _sse_decode_tuple_struct_with_two_field_twin_normal(
+          SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_32(deserializer);
+    var field1 = _sse_decode_i_32(deserializer);
+    return TupleStructWithTwoFieldTwinNormal(field0: field0, field1: field1);
+  }
+
+  TupleStructWithTwoFieldTwinRustAsync
+      _sse_decode_tuple_struct_with_two_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_32(deserializer);
+    var field1 = _sse_decode_i_32(deserializer);
+    return TupleStructWithTwoFieldTwinRustAsync(field0: field0, field1: field1);
+  }
+
+  TupleStructWithTwoFieldTwinSync
+      _sse_decode_tuple_struct_with_two_field_twin_sync(
+          SseDeserializer deserializer) {
+    var field0 = _sse_decode_i_32(deserializer);
+    var field1 = _sse_decode_i_32(deserializer);
+    return TupleStructWithTwoFieldTwinSync(field0: field0, field1: field1);
+  }
+
+  int _sse_decode_u_16(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint16();
+  }
+
+  int _sse_decode_u_32(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint32();
+  }
+
+  int _sse_decode_u_64(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint64();
+  }
+
+  int _sse_decode_u_8(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint8();
+  }
+
+  U8Array1600 _sse_decode_u_8_array_1600(SseDeserializer deserializer) {
+    var inner = _sse_decode_list_prim_u_8(deserializer);
+    return U8Array1600(inner);
+  }
+
+  U8Array32 _sse_decode_u_8_array_32(SseDeserializer deserializer) {
+    var inner = _sse_decode_list_prim_u_8(deserializer);
+    return U8Array32(inner);
+  }
+
+  U8Array5 _sse_decode_u_8_array_5(SseDeserializer deserializer) {
+    var inner = _sse_decode_list_prim_u_8(deserializer);
+    return U8Array5(inner);
+  }
+
+  U8Array8 _sse_decode_u_8_array_8(SseDeserializer deserializer) {
+    var inner = _sse_decode_list_prim_u_8(deserializer);
+    return U8Array8(inner);
+  }
+
+  void _sse_decode_unit(SseDeserializer deserializer) {}
+
+  UserIdTwinNormal _sse_decode_user_id_twin_normal(
+      SseDeserializer deserializer) {
+    var value = _sse_decode_u_32(deserializer);
+    return UserIdTwinNormal(value: value);
+  }
+
+  UserIdTwinRustAsync _sse_decode_user_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    var value = _sse_decode_u_32(deserializer);
+    return UserIdTwinRustAsync(value: value);
+  }
+
+  UserIdTwinSync _sse_decode_user_id_twin_sync(SseDeserializer deserializer) {
+    var value = _sse_decode_u_32(deserializer);
+    return UserIdTwinSync(value: value);
+  }
+
+  int _sse_decode_usize(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint64();
+  }
+
+  VecOfPrimitivePackTwinNormal _sse_decode_vec_of_primitive_pack_twin_normal(
+      SseDeserializer deserializer) {
+    var int8List = _sse_decode_list_prim_i_8(deserializer);
+    var uint8List = _sse_decode_list_prim_u_8(deserializer);
+    var int16List = _sse_decode_list_prim_i_16(deserializer);
+    var uint16List = _sse_decode_list_prim_u_16(deserializer);
+    var uint32List = _sse_decode_list_prim_u_32(deserializer);
+    var int32List = _sse_decode_list_prim_i_32(deserializer);
+    var uint64List = _sse_decode_list_prim_u_64(deserializer);
+    var int64List = _sse_decode_list_prim_i_64(deserializer);
+    var float32List = _sse_decode_list_prim_f_32(deserializer);
+    var float64List = _sse_decode_list_prim_f_64(deserializer);
+    var boolList = _sse_decode_list_bool(deserializer);
+    return VecOfPrimitivePackTwinNormal(
+        int8List: int8List,
+        uint8List: uint8List,
+        int16List: int16List,
+        uint16List: uint16List,
+        uint32List: uint32List,
+        int32List: int32List,
+        uint64List: uint64List,
+        int64List: int64List,
+        float32List: float32List,
+        float64List: float64List,
+        boolList: boolList);
+  }
+
+  VecOfPrimitivePackTwinRustAsync
+      _sse_decode_vec_of_primitive_pack_twin_rust_async(
+          SseDeserializer deserializer) {
+    var int8List = _sse_decode_list_prim_i_8(deserializer);
+    var uint8List = _sse_decode_list_prim_u_8(deserializer);
+    var int16List = _sse_decode_list_prim_i_16(deserializer);
+    var uint16List = _sse_decode_list_prim_u_16(deserializer);
+    var uint32List = _sse_decode_list_prim_u_32(deserializer);
+    var int32List = _sse_decode_list_prim_i_32(deserializer);
+    var uint64List = _sse_decode_list_prim_u_64(deserializer);
+    var int64List = _sse_decode_list_prim_i_64(deserializer);
+    var float32List = _sse_decode_list_prim_f_32(deserializer);
+    var float64List = _sse_decode_list_prim_f_64(deserializer);
+    var boolList = _sse_decode_list_bool(deserializer);
+    return VecOfPrimitivePackTwinRustAsync(
+        int8List: int8List,
+        uint8List: uint8List,
+        int16List: int16List,
+        uint16List: uint16List,
+        uint32List: uint32List,
+        int32List: int32List,
+        uint64List: uint64List,
+        int64List: int64List,
+        float32List: float32List,
+        float64List: float64List,
+        boolList: boolList);
+  }
+
+  VecOfPrimitivePackTwinSync _sse_decode_vec_of_primitive_pack_twin_sync(
+      SseDeserializer deserializer) {
+    var int8List = _sse_decode_list_prim_i_8(deserializer);
+    var uint8List = _sse_decode_list_prim_u_8(deserializer);
+    var int16List = _sse_decode_list_prim_i_16(deserializer);
+    var uint16List = _sse_decode_list_prim_u_16(deserializer);
+    var uint32List = _sse_decode_list_prim_u_32(deserializer);
+    var int32List = _sse_decode_list_prim_i_32(deserializer);
+    var uint64List = _sse_decode_list_prim_u_64(deserializer);
+    var int64List = _sse_decode_list_prim_i_64(deserializer);
+    var float32List = _sse_decode_list_prim_f_32(deserializer);
+    var float64List = _sse_decode_list_prim_f_64(deserializer);
+    var boolList = _sse_decode_list_bool(deserializer);
+    return VecOfPrimitivePackTwinSync(
+        int8List: int8List,
+        uint8List: uint8List,
+        int16List: int16List,
+        uint16List: uint16List,
+        uint32List: uint32List,
+        int32List: int32List,
+        uint64List: uint64List,
+        int64List: int64List,
+        float32List: float32List,
+        float64List: float64List,
+        boolList: boolList);
+  }
+
+  WeekdaysTwinNormal _sse_decode_weekdays_twin_normal(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_i_32(deserializer);
+    return WeekdaysTwinNormal.values[inner];
+  }
+
+  WeekdaysTwinRustAsync _sse_decode_weekdays_twin_rust_async(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_i_32(deserializer);
+    return WeekdaysTwinRustAsync.values[inner];
+  }
+
+  WeekdaysTwinSync _sse_decode_weekdays_twin_sync(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_i_32(deserializer);
+    return WeekdaysTwinSync.values[inner];
+  }
+
+  void
+      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          RwLockBoxFnStringString self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void
+      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void
+      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          RwLockBoxMyTraitTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void
+      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          RwLockBoxMyTraitTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void
+      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void
+      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+          SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void
+      _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void
+      _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void
+      _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+          SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void
+      _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void
+      _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+          SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  void _sse_encode_Chrono_Duration(Duration self, SseSerializer serializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  void _sse_encode_Chrono_Local(DateTime self, SseSerializer serializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  void _sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  void _sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  void _sse_encode_DartFn_Inputs__Output_unit(
+      void Function() self, SseSerializer serializer) {
+    _sse_encode_DartOpaque(self, serializer);
+  }
+
+  void _sse_encode_DartOpaque(Object self, SseSerializer serializer) {
+    _sse_encode_usize(
+        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
+        serializer);
+  }
+
+  void _sse_encode_DartOpaque_array_1(
+      ObjectArray1 self, SseSerializer serializer) {
+    _sse_encode_list_DartOpaque(self.inner, serializer);
+  }
+
+  void _sse_encode_RustOpaque_MutexHideData(
+      MutexHideData self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_RwLockHideData(
+      RwLockHideData self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_box_dynDartDebugTwinNormal(
+      BoxDartDebugTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
+      BoxDartDebugTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_box_dynDartDebugTwinSync(
+      BoxDartDebugTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_hide_data(
+      HideData self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_hide_data_array_2(
+      HideDataArray2 self, SseSerializer serializer) {
+    _sse_encode_list_RustOpaque_hide_data(self.inner, serializer);
+  }
+
+  void _sse_encode_RustOpaque_i_32(I32 self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_non_clone_data(
+      NonCloneData self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_non_send_hide_data(
+      NonSendHideData self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void
+      _sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          RwLockBoxFnStringString self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+      RwLockBoxMyTraitTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+      RwLockBoxMyTraitTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void
+      _sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+      RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+      SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_String(String self, SseSerializer serializer) {
+    _sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
+  }
+
+  void _sse_encode_Uuid(UuidValue self, SseSerializer serializer) {
+    throw UnimplementedError(
+        'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  void _sse_encode_a_twin_normal(ATwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_a_twin_rust_async(
+      ATwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_a_twin_sync(ATwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_abc_twin_normal(
+      AbcTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case AbcTwinNormal_A(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_box_autoadd_a_twin_normal(field0, serializer);
+
+      case AbcTwinNormal_B(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_b_twin_normal(field0, serializer);
+
+      case AbcTwinNormal_C(field0: final field0):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_box_autoadd_c_twin_normal(field0, serializer);
+
+      case AbcTwinNormal_JustInt(field0: final field0):
+        _sse_encode_i_32(3, serializer);
+        _sse_encode_i_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_abc_twin_rust_async(
+      AbcTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case AbcTwinRustAsync_A(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_box_autoadd_a_twin_rust_async(field0, serializer);
+
+      case AbcTwinRustAsync_B(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_b_twin_rust_async(field0, serializer);
+
+      case AbcTwinRustAsync_C(field0: final field0):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_box_autoadd_c_twin_rust_async(field0, serializer);
+
+      case AbcTwinRustAsync_JustInt(field0: final field0):
+        _sse_encode_i_32(3, serializer);
+        _sse_encode_i_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_abc_twin_sync(AbcTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case AbcTwinSync_A(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_box_autoadd_a_twin_sync(field0, serializer);
+
+      case AbcTwinSync_B(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_b_twin_sync(field0, serializer);
+
+      case AbcTwinSync_C(field0: final field0):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_box_autoadd_c_twin_sync(field0, serializer);
+
+      case AbcTwinSync_JustInt(field0: final field0):
+        _sse_encode_i_32(3, serializer);
+        _sse_encode_i_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_application_env(
+      ApplicationEnv self, SseSerializer serializer) {
+    _sse_encode_list_application_env_var(self.vars, serializer);
+  }
+
+  void _sse_encode_application_env_var(
+      ApplicationEnvVar self, SseSerializer serializer) {
+    _sse_encode_String(self.field0, serializer);
+    _sse_encode_bool(self.field1, serializer);
+  }
+
+  void _sse_encode_application_mode(
+      ApplicationMode self, SseSerializer serializer) {
+    _sse_encode_i_32(self.index, serializer);
+  }
+
+  void _sse_encode_application_settings(
+      ApplicationSettings self, SseSerializer serializer) {
+    _sse_encode_String(self.name, serializer);
+    _sse_encode_String(self.version, serializer);
+    _sse_encode_application_mode(self.mode, serializer);
+    _sse_encode_box_application_env(self.env, serializer);
+    _sse_encode_opt_box_autoadd_application_env(self.envOptional, serializer);
+  }
+
+  void _sse_encode_attribute_twin_normal(
+      AttributeTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.key, serializer);
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_attribute_twin_rust_async(
+      AttributeTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.key, serializer);
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_attribute_twin_sync(
+      AttributeTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.key, serializer);
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_b_twin_normal(BTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.b, serializer);
+  }
+
+  void _sse_encode_b_twin_rust_async(
+      BTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.b, serializer);
+  }
+
+  void _sse_encode_b_twin_sync(BTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.b, serializer);
+  }
+
+  void _sse_encode_blob_twin_normal(
+      BlobTwinNormal self, SseSerializer serializer) {
+    _sse_encode_u_8_array_1600(self.field0, serializer);
+  }
+
+  void _sse_encode_blob_twin_rust_async(
+      BlobTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_u_8_array_1600(self.field0, serializer);
+  }
+
+  void _sse_encode_blob_twin_sync(BlobTwinSync self, SseSerializer serializer) {
+    _sse_encode_u_8_array_1600(self.field0, serializer);
+  }
+
+  void _sse_encode_bool(bool self, SseSerializer serializer) {
+    serializer.buffer.putUint8(self ? 1 : 0);
+  }
+
+  void _sse_encode_box_application_env(
+      ApplicationEnv self, SseSerializer serializer) {
+    _sse_encode_application_env(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_Chrono_Utc(
+      DateTime self, SseSerializer serializer) {
+    _sse_encode_Chrono_Utc(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_DartOpaque(
+      Object self, SseSerializer serializer) {
+    _sse_encode_DartOpaque(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_RustOpaque_hide_data(
+      HideData self, SseSerializer serializer) {
+    _sse_encode_RustOpaque_hide_data(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_a_twin_normal(
+      ATwinNormal self, SseSerializer serializer) {
+    _sse_encode_a_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_a_twin_rust_async(
+      ATwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_a_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_a_twin_sync(
+      ATwinSync self, SseSerializer serializer) {
+    _sse_encode_a_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_abc_twin_normal(
+      AbcTwinNormal self, SseSerializer serializer) {
+    _sse_encode_abc_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_abc_twin_rust_async(
+      AbcTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_abc_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_abc_twin_sync(
+      AbcTwinSync self, SseSerializer serializer) {
+    _sse_encode_abc_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_application_env(
+      ApplicationEnv self, SseSerializer serializer) {
+    _sse_encode_application_env(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_application_settings(
+      ApplicationSettings self, SseSerializer serializer) {
+    _sse_encode_application_settings(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_attribute_twin_normal(
+      AttributeTwinNormal self, SseSerializer serializer) {
+    _sse_encode_attribute_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_attribute_twin_rust_async(
+      AttributeTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_attribute_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_attribute_twin_sync(
+      AttributeTwinSync self, SseSerializer serializer) {
+    _sse_encode_attribute_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_b_twin_normal(
+      BTwinNormal self, SseSerializer serializer) {
+    _sse_encode_b_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_b_twin_rust_async(
+      BTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_b_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_b_twin_sync(
+      BTwinSync self, SseSerializer serializer) {
+    _sse_encode_b_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_bool(bool self, SseSerializer serializer) {
+    _sse_encode_bool(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_c_twin_normal(
+      CTwinNormal self, SseSerializer serializer) {
+    _sse_encode_c_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_c_twin_rust_async(
+      CTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_c_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_c_twin_sync(
+      CTwinSync self, SseSerializer serializer) {
+    _sse_encode_c_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_concatenate_with_twin_normal(
+      ConcatenateWithTwinNormal self, SseSerializer serializer) {
+    _sse_encode_concatenate_with_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_concatenate_with_twin_rust_async(
+      ConcatenateWithTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_concatenate_with_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_concatenate_with_twin_sync(
+      ConcatenateWithTwinSync self, SseSerializer serializer) {
+    _sse_encode_concatenate_with_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(
+      CustomNestedErrorInnerTwinNormal self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_inner_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+      CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_inner_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(
+      CustomNestedErrorInnerTwinSync self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_inner_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_outer_twin_normal(
+      CustomNestedErrorOuterTwinNormal self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_outer_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+      CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_outer_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_outer_twin_sync(
+      CustomNestedErrorOuterTwinSync self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_outer_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_struct_error_twin_normal(
+      CustomStructErrorTwinNormal self, SseSerializer serializer) {
+    _sse_encode_custom_struct_error_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_struct_error_twin_rust_async(
+      CustomStructErrorTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_custom_struct_error_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_struct_error_twin_sync(
+      CustomStructErrorTwinSync self, SseSerializer serializer) {
+    _sse_encode_custom_struct_error_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_struct_twin_normal(
+      CustomStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_custom_struct_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_struct_twin_rust_async(
+      CustomStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_custom_struct_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_struct_twin_sync(
+      CustomStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_custom_struct_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_customized_twin_normal(
+      CustomizedTwinNormal self, SseSerializer serializer) {
+    _sse_encode_customized_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_customized_twin_rust_async(
+      CustomizedTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_customized_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_customized_twin_sync(
+      CustomizedTwinSync self, SseSerializer serializer) {
+    _sse_encode_customized_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_dart_opaque_nested_twin_normal(
+      DartOpaqueNestedTwinNormal self, SseSerializer serializer) {
+    _sse_encode_dart_opaque_nested_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
+      DartOpaqueNestedTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_dart_opaque_nested_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_dart_opaque_nested_twin_sync(
+      DartOpaqueNestedTwinSync self, SseSerializer serializer) {
+    _sse_encode_dart_opaque_nested_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_empty_twin_normal(
+      EmptyTwinNormal self, SseSerializer serializer) {
+    _sse_encode_empty_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_empty_twin_rust_async(
+      EmptyTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_empty_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_empty_twin_sync(
+      EmptyTwinSync self, SseSerializer serializer) {
+    _sse_encode_empty_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_dart_opaque_twin_normal(
+      EnumDartOpaqueTwinNormal self, SseSerializer serializer) {
+    _sse_encode_enum_dart_opaque_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
+      EnumDartOpaqueTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_enum_dart_opaque_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_dart_opaque_twin_sync(
+      EnumDartOpaqueTwinSync self, SseSerializer serializer) {
+    _sse_encode_enum_dart_opaque_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_opaque_twin_normal(
+      EnumOpaqueTwinNormal self, SseSerializer serializer) {
+    _sse_encode_enum_opaque_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_opaque_twin_rust_async(
+      EnumOpaqueTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_enum_opaque_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_opaque_twin_sync(
+      EnumOpaqueTwinSync self, SseSerializer serializer) {
+    _sse_encode_enum_opaque_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_with_item_mixed_twin_normal(
+      EnumWithItemMixedTwinNormal self, SseSerializer serializer) {
+    _sse_encode_enum_with_item_mixed_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
+      EnumWithItemMixedTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_enum_with_item_mixed_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_with_item_mixed_twin_sync(
+      EnumWithItemMixedTwinSync self, SseSerializer serializer) {
+    _sse_encode_enum_with_item_mixed_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_with_item_struct_twin_normal(
+      EnumWithItemStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_enum_with_item_struct_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_with_item_struct_twin_rust_async(
+      EnumWithItemStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_enum_with_item_struct_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_with_item_struct_twin_sync(
+      EnumWithItemStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_enum_with_item_struct_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_with_item_tuple_twin_normal(
+      EnumWithItemTupleTwinNormal self, SseSerializer serializer) {
+    _sse_encode_enum_with_item_tuple_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
+      EnumWithItemTupleTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_enum_with_item_tuple_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_enum_with_item_tuple_twin_sync(
+      EnumWithItemTupleTwinSync self, SseSerializer serializer) {
+    _sse_encode_enum_with_item_tuple_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_event_twin_normal(
+      EventTwinNormal self, SseSerializer serializer) {
+    _sse_encode_event_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_event_twin_rust_async(
+      EventTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_event_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_event_twin_sync(
+      EventTwinSync self, SseSerializer serializer) {
+    _sse_encode_event_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal self, SseSerializer serializer) {
+    _sse_encode_exotic_optionals_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_exotic_optionals_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync self, SseSerializer serializer) {
+    _sse_encode_exotic_optionals_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_f_32(double self, SseSerializer serializer) {
+    _sse_encode_f_32(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_f_64(double self, SseSerializer serializer) {
+    _sse_encode_f_64(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_feature_chrono_twin_normal(
+      FeatureChronoTwinNormal self, SseSerializer serializer) {
+    _sse_encode_feature_chrono_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_feature_chrono_twin_rust_async(
+      FeatureChronoTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_feature_chrono_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_feature_chrono_twin_sync(
+      FeatureChronoTwinSync self, SseSerializer serializer) {
+    _sse_encode_feature_chrono_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_feature_uuid_twin_normal(
+      FeatureUuidTwinNormal self, SseSerializer serializer) {
+    _sse_encode_feature_uuid_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_feature_uuid_twin_rust_async(
+      FeatureUuidTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_feature_uuid_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_feature_uuid_twin_sync(
+      FeatureUuidTwinSync self, SseSerializer serializer) {
+    _sse_encode_feature_uuid_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_feed_id_twin_normal(
+      FeedIdTwinNormal self, SseSerializer serializer) {
+    _sse_encode_feed_id_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_feed_id_twin_rust_async(
+      FeedIdTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_feed_id_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_feed_id_twin_sync(
+      FeedIdTwinSync self, SseSerializer serializer) {
+    _sse_encode_feed_id_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_i_16(int self, SseSerializer serializer) {
+    _sse_encode_i_16(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_i_32(int self, SseSerializer serializer) {
+    _sse_encode_i_32(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_i_64(int self, SseSerializer serializer) {
+    _sse_encode_i_64(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_i_8(int self, SseSerializer serializer) {
+    _sse_encode_i_8(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_kitchen_sink_twin_normal(
+      KitchenSinkTwinNormal self, SseSerializer serializer) {
+    _sse_encode_kitchen_sink_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_kitchen_sink_twin_rust_async(
+      KitchenSinkTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_kitchen_sink_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_kitchen_sink_twin_sync(
+      KitchenSinkTwinSync self, SseSerializer serializer) {
+    _sse_encode_kitchen_sink_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_macro_struct(
+      MacroStruct self, SseSerializer serializer) {
+    _sse_encode_macro_struct(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_measure_twin_normal(
+      MeasureTwinNormal self, SseSerializer serializer) {
+    _sse_encode_measure_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_measure_twin_rust_async(
+      MeasureTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_measure_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_measure_twin_sync(
+      MeasureTwinSync self, SseSerializer serializer) {
+    _sse_encode_measure_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_message_id_twin_normal(
+      MessageIdTwinNormal self, SseSerializer serializer) {
+    _sse_encode_message_id_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_message_id_twin_rust_async(
+      MessageIdTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_message_id_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_message_id_twin_sync(
+      MessageIdTwinSync self, SseSerializer serializer) {
+    _sse_encode_message_id_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_my_nested_struct_twin_normal(
+      MyNestedStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_my_nested_struct_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_my_nested_struct_twin_rust_async(
+      MyNestedStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_my_nested_struct_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_my_nested_struct_twin_sync(
+      MyNestedStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_my_nested_struct_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_my_size(MySize self, SseSerializer serializer) {
+    _sse_encode_my_size(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_my_struct(
+      MyStruct self, SseSerializer serializer) {
+    _sse_encode_my_struct(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_my_tree_node_twin_normal(
+      MyTreeNodeTwinNormal self, SseSerializer serializer) {
+    _sse_encode_my_tree_node_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_my_tree_node_twin_rust_async(
+      MyTreeNodeTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_my_tree_node_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_my_tree_node_twin_sync(
+      MyTreeNodeTwinSync self, SseSerializer serializer) {
+    _sse_encode_my_tree_node_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_new_type_int_twin_normal(
+      NewTypeIntTwinNormal self, SseSerializer serializer) {
+    _sse_encode_new_type_int_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_new_type_int_twin_rust_async(
+      NewTypeIntTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_new_type_int_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_new_type_int_twin_sync(
+      NewTypeIntTwinSync self, SseSerializer serializer) {
+    _sse_encode_new_type_int_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_note_twin_normal(
+      NoteTwinNormal self, SseSerializer serializer) {
+    _sse_encode_note_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_note_twin_rust_async(
+      NoteTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_note_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_note_twin_sync(
+      NoteTwinSync self, SseSerializer serializer) {
+    _sse_encode_note_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_numbers(Numbers self, SseSerializer serializer) {
+    _sse_encode_numbers(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_opaque_nested_twin_normal(
+      OpaqueNestedTwinNormal self, SseSerializer serializer) {
+    _sse_encode_opaque_nested_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_opaque_nested_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_opaque_nested_twin_sync(
+      OpaqueNestedTwinSync self, SseSerializer serializer) {
+    _sse_encode_opaque_nested_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_opt_vecs_twin_normal(
+      OptVecsTwinNormal self, SseSerializer serializer) {
+    _sse_encode_opt_vecs_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_opt_vecs_twin_rust_async(
+      OptVecsTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_opt_vecs_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_opt_vecs_twin_sync(
+      OptVecsTwinSync self, SseSerializer serializer) {
+    _sse_encode_opt_vecs_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_record_string_i_32(
+      (String, int) self, SseSerializer serializer) {
+    _sse_encode_record_string_i_32(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_sequences(
+      Sequences self, SseSerializer serializer) {
+    _sse_encode_sequences(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_some_struct_twin_normal(
+      SomeStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_some_struct_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_some_struct_twin_rust_async(
+      SomeStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_some_struct_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_some_struct_twin_sync(
+      SomeStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_some_struct_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_comments_twin_normal(
+      StructWithCommentsTwinNormal self, SseSerializer serializer) {
+    _sse_encode_struct_with_comments_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_comments_twin_rust_async(
+      StructWithCommentsTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_struct_with_comments_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_comments_twin_sync(
+      StructWithCommentsTwinSync self, SseSerializer serializer) {
+    _sse_encode_struct_with_comments_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_enum_twin_normal(
+      StructWithEnumTwinNormal self, SseSerializer serializer) {
+    _sse_encode_struct_with_enum_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_enum_twin_rust_async(
+      StructWithEnumTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_struct_with_enum_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_enum_twin_sync(
+      StructWithEnumTwinSync self, SseSerializer serializer) {
+    _sse_encode_struct_with_enum_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_one_field_twin_normal(
+      StructWithOneFieldTwinNormal self, SseSerializer serializer) {
+    _sse_encode_struct_with_one_field_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_one_field_twin_rust_async(
+      StructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_struct_with_one_field_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_one_field_twin_sync(
+      StructWithOneFieldTwinSync self, SseSerializer serializer) {
+    _sse_encode_struct_with_one_field_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_two_field_twin_normal(
+      StructWithTwoFieldTwinNormal self, SseSerializer serializer) {
+    _sse_encode_struct_with_two_field_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_two_field_twin_rust_async(
+      StructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_struct_with_two_field_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_two_field_twin_sync(
+      StructWithTwoFieldTwinSync self, SseSerializer serializer) {
+    _sse_encode_struct_with_two_field_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_zero_field_twin_normal(
+      StructWithZeroFieldTwinNormal self, SseSerializer serializer) {
+    _sse_encode_struct_with_zero_field_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
+      StructWithZeroFieldTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_struct_with_zero_field_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_struct_with_zero_field_twin_sync(
+      StructWithZeroFieldTwinSync self, SseSerializer serializer) {
+    _sse_encode_struct_with_zero_field_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_sum_with_twin_normal(
+      SumWithTwinNormal self, SseSerializer serializer) {
+    _sse_encode_sum_with_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_sum_with_twin_rust_async(
+      SumWithTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_sum_with_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_sum_with_twin_sync(
+      SumWithTwinSync self, SseSerializer serializer) {
+    _sse_encode_sum_with_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_test_id_twin_normal(
+      TestIdTwinNormal self, SseSerializer serializer) {
+    _sse_encode_test_id_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_test_id_twin_rust_async(
+      TestIdTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_test_id_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_test_id_twin_sync(
+      TestIdTwinSync self, SseSerializer serializer) {
+    _sse_encode_test_id_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+      TupleStructWithOneFieldTwinNormal self, SseSerializer serializer) {
+    _sse_encode_tuple_struct_with_one_field_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+      TupleStructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_tuple_struct_with_one_field_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
+      TupleStructWithOneFieldTwinSync self, SseSerializer serializer) {
+    _sse_encode_tuple_struct_with_one_field_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+      TupleStructWithTwoFieldTwinNormal self, SseSerializer serializer) {
+    _sse_encode_tuple_struct_with_two_field_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+      TupleStructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_tuple_struct_with_two_field_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
+      TupleStructWithTwoFieldTwinSync self, SseSerializer serializer) {
+    _sse_encode_tuple_struct_with_two_field_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_u_16(int self, SseSerializer serializer) {
+    _sse_encode_u_16(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_u_32(int self, SseSerializer serializer) {
+    _sse_encode_u_32(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_u_64(int self, SseSerializer serializer) {
+    _sse_encode_u_64(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_u_8(int self, SseSerializer serializer) {
+    _sse_encode_u_8(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_user_id_twin_normal(
+      UserIdTwinNormal self, SseSerializer serializer) {
+    _sse_encode_user_id_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_user_id_twin_rust_async(
+      UserIdTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_user_id_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_user_id_twin_sync(
+      UserIdTwinSync self, SseSerializer serializer) {
+    _sse_encode_user_id_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_weekdays_twin_normal(
+      WeekdaysTwinNormal self, SseSerializer serializer) {
+    _sse_encode_weekdays_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_weekdays_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_weekdays_twin_sync(
+      WeekdaysTwinSync self, SseSerializer serializer) {
+    _sse_encode_weekdays_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_blob_twin_normal(
+      BlobTwinNormal self, SseSerializer serializer) {
+    _sse_encode_blob_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_blob_twin_rust_async(
+      BlobTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_blob_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_blob_twin_sync(
+      BlobTwinSync self, SseSerializer serializer) {
+    _sse_encode_blob_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_bool(bool self, SseSerializer serializer) {
+    _sse_encode_bool(self, serializer);
+  }
+
+  void _sse_encode_box_distance_twin_normal(
+      DistanceTwinNormal self, SseSerializer serializer) {
+    _sse_encode_distance_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_distance_twin_rust_async(
+      DistanceTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_distance_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_distance_twin_sync(
+      DistanceTwinSync self, SseSerializer serializer) {
+    _sse_encode_distance_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal self, SseSerializer serializer) {
+    _sse_encode_exotic_optionals_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_exotic_optionals_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync self, SseSerializer serializer) {
+    _sse_encode_exotic_optionals_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_f_64(double self, SseSerializer serializer) {
+    _sse_encode_f_64(self, serializer);
+  }
+
+  void _sse_encode_box_i_32(int self, SseSerializer serializer) {
+    _sse_encode_i_32(self, serializer);
+  }
+
+  void _sse_encode_box_i_64(int self, SseSerializer serializer) {
+    _sse_encode_i_64(self, serializer);
+  }
+
+  void _sse_encode_box_i_8(int self, SseSerializer serializer) {
+    _sse_encode_i_8(self, serializer);
+  }
+
+  void _sse_encode_box_kitchen_sink_twin_normal(
+      KitchenSinkTwinNormal self, SseSerializer serializer) {
+    _sse_encode_kitchen_sink_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_kitchen_sink_twin_rust_async(
+      KitchenSinkTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_kitchen_sink_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_kitchen_sink_twin_sync(
+      KitchenSinkTwinSync self, SseSerializer serializer) {
+    _sse_encode_kitchen_sink_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_my_size(MySize self, SseSerializer serializer) {
+    _sse_encode_my_size(self, serializer);
+  }
+
+  void _sse_encode_box_speed_twin_normal(
+      SpeedTwinNormal self, SseSerializer serializer) {
+    _sse_encode_speed_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_speed_twin_rust_async(
+      SpeedTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_speed_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_speed_twin_sync(
+      SpeedTwinSync self, SseSerializer serializer) {
+    _sse_encode_speed_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_u_8(int self, SseSerializer serializer) {
+    _sse_encode_u_8(self, serializer);
+  }
+
+  void _sse_encode_box_u_8_array_1600(
+      U8Array1600 self, SseSerializer serializer) {
+    _sse_encode_u_8_array_1600(self, serializer);
+  }
+
+  void _sse_encode_box_weekdays_twin_normal(
+      WeekdaysTwinNormal self, SseSerializer serializer) {
+    _sse_encode_weekdays_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_weekdays_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_weekdays_twin_sync(
+      WeekdaysTwinSync self, SseSerializer serializer) {
+    _sse_encode_weekdays_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_c_twin_normal(CTwinNormal self, SseSerializer serializer) {
+    _sse_encode_bool(self.c, serializer);
+  }
+
+  void _sse_encode_c_twin_rust_async(
+      CTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_bool(self.c, serializer);
+  }
+
+  void _sse_encode_c_twin_sync(CTwinSync self, SseSerializer serializer) {
+    _sse_encode_bool(self.c, serializer);
+  }
+
+  void _sse_encode_concatenate_with_twin_normal(
+      ConcatenateWithTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_concatenate_with_twin_rust_async(
+      ConcatenateWithTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_concatenate_with_twin_sync(
+      ConcatenateWithTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_custom_nested_error_inner_twin_normal(
+      CustomNestedErrorInnerTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedErrorInnerTwinNormal_Three(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+
+      case CustomNestedErrorInnerTwinNormal_Four(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_inner_twin_rust_async(
+      CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedErrorInnerTwinRustAsync_Three(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+
+      case CustomNestedErrorInnerTwinRustAsync_Four(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_inner_twin_sync(
+      CustomNestedErrorInnerTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedErrorInnerTwinSync_Three(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+
+      case CustomNestedErrorInnerTwinSync_Four(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_outer_twin_normal(
+      CustomNestedErrorOuterTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedErrorOuterTwinNormal_One(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+
+      case CustomNestedErrorOuterTwinNormal_Two(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_outer_twin_rust_async(
+      CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedErrorOuterTwinRustAsync_One(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+
+      case CustomNestedErrorOuterTwinRustAsync_Two(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_outer_twin_sync(
+      CustomNestedErrorOuterTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedErrorOuterTwinSync_One(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+
+      case CustomNestedErrorOuterTwinSync_Two(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_struct_error_twin_normal(
+      CustomStructErrorTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_custom_struct_error_twin_rust_async(
+      CustomStructErrorTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_custom_struct_error_twin_sync(
+      CustomStructErrorTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_custom_struct_twin_normal(
+      CustomStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.message, serializer);
+  }
+
+  void _sse_encode_custom_struct_twin_rust_async(
+      CustomStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.message, serializer);
+  }
+
+  void _sse_encode_custom_struct_twin_sync(
+      CustomStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.message, serializer);
+  }
+
+  void _sse_encode_customized_twin_normal(
+      CustomizedTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.finalField, serializer);
+    _sse_encode_opt_String(self.nonFinalField, serializer);
+  }
+
+  void _sse_encode_customized_twin_rust_async(
+      CustomizedTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.finalField, serializer);
+    _sse_encode_opt_String(self.nonFinalField, serializer);
+  }
+
+  void _sse_encode_customized_twin_sync(
+      CustomizedTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.finalField, serializer);
+    _sse_encode_opt_String(self.nonFinalField, serializer);
+  }
+
+  void _sse_encode_dart_opaque_nested_twin_normal(
+      DartOpaqueNestedTwinNormal self, SseSerializer serializer) {
+    _sse_encode_DartOpaque(self.first, serializer);
+    _sse_encode_DartOpaque(self.second, serializer);
+  }
+
+  void _sse_encode_dart_opaque_nested_twin_rust_async(
+      DartOpaqueNestedTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_DartOpaque(self.first, serializer);
+    _sse_encode_DartOpaque(self.second, serializer);
+  }
+
+  void _sse_encode_dart_opaque_nested_twin_sync(
+      DartOpaqueNestedTwinSync self, SseSerializer serializer) {
+    _sse_encode_DartOpaque(self.first, serializer);
+    _sse_encode_DartOpaque(self.second, serializer);
+  }
+
+  void _sse_encode_distance_twin_normal(
+      DistanceTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case DistanceTwinNormal_Unknown():
+        _sse_encode_i_32(0, serializer);
+
+      case DistanceTwinNormal_Map(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_f_64(field0, serializer);
+    }
+  }
+
+  void _sse_encode_distance_twin_rust_async(
+      DistanceTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case DistanceTwinRustAsync_Unknown():
+        _sse_encode_i_32(0, serializer);
+
+      case DistanceTwinRustAsync_Map(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_f_64(field0, serializer);
+    }
+  }
+
+  void _sse_encode_distance_twin_sync(
+      DistanceTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case DistanceTwinSync_Unknown():
+        _sse_encode_i_32(0, serializer);
+
+      case DistanceTwinSync_Map(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_f_64(field0, serializer);
+    }
+  }
+
+  void _sse_encode_empty_twin_normal(
+      EmptyTwinNormal self, SseSerializer serializer) {}
+
+  void _sse_encode_empty_twin_rust_async(
+      EmptyTwinRustAsync self, SseSerializer serializer) {}
+
+  void _sse_encode_empty_twin_sync(
+      EmptyTwinSync self, SseSerializer serializer) {}
+
+  void _sse_encode_enum_dart_opaque_twin_normal(
+      EnumDartOpaqueTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case EnumDartOpaqueTwinNormal_Primitive(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_i_32(field0, serializer);
+
+      case EnumDartOpaqueTwinNormal_Opaque(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_DartOpaque(field0, serializer);
+    }
+  }
+
+  void _sse_encode_enum_dart_opaque_twin_rust_async(
+      EnumDartOpaqueTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumDartOpaqueTwinRustAsync_Primitive(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_i_32(field0, serializer);
+
+      case EnumDartOpaqueTwinRustAsync_Opaque(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_DartOpaque(field0, serializer);
+    }
+  }
+
+  void _sse_encode_enum_dart_opaque_twin_sync(
+      EnumDartOpaqueTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumDartOpaqueTwinSync_Primitive(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_i_32(field0, serializer);
+
+      case EnumDartOpaqueTwinSync_Opaque(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_DartOpaque(field0, serializer);
+    }
+  }
+
+  void _sse_encode_enum_opaque_twin_normal(
+      EnumOpaqueTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case EnumOpaqueTwinNormal_Struct(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_RustOpaque_hide_data(field0, serializer);
+
+      case EnumOpaqueTwinNormal_Primitive(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_RustOpaque_i_32(field0, serializer);
+
+      case EnumOpaqueTwinNormal_TraitObj(field0: final field0):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_RustOpaque_box_dynDartDebugTwinNormal(field0, serializer);
+
+      case EnumOpaqueTwinNormal_Mutex(field0: final field0):
+        _sse_encode_i_32(3, serializer);
+        _sse_encode_RustOpaque_MutexHideData(field0, serializer);
+
+      case EnumOpaqueTwinNormal_RwLock(field0: final field0):
+        _sse_encode_i_32(4, serializer);
+        _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+    }
+  }
+
+  void _sse_encode_enum_opaque_twin_rust_async(
+      EnumOpaqueTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumOpaqueTwinRustAsync_Struct(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_RustOpaque_hide_data(field0, serializer);
+
+      case EnumOpaqueTwinRustAsync_Primitive(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_RustOpaque_i_32(field0, serializer);
+
+      case EnumOpaqueTwinRustAsync_TraitObj(field0: final field0):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
+            field0, serializer);
+
+      case EnumOpaqueTwinRustAsync_Mutex(field0: final field0):
+        _sse_encode_i_32(3, serializer);
+        _sse_encode_RustOpaque_MutexHideData(field0, serializer);
+
+      case EnumOpaqueTwinRustAsync_RwLock(field0: final field0):
+        _sse_encode_i_32(4, serializer);
+        _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+    }
+  }
+
+  void _sse_encode_enum_opaque_twin_sync(
+      EnumOpaqueTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumOpaqueTwinSync_Struct(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_RustOpaque_hide_data(field0, serializer);
+
+      case EnumOpaqueTwinSync_Primitive(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_RustOpaque_i_32(field0, serializer);
+
+      case EnumOpaqueTwinSync_TraitObj(field0: final field0):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_RustOpaque_box_dynDartDebugTwinSync(field0, serializer);
+
+      case EnumOpaqueTwinSync_Mutex(field0: final field0):
+        _sse_encode_i_32(3, serializer);
+        _sse_encode_RustOpaque_MutexHideData(field0, serializer);
+
+      case EnumOpaqueTwinSync_RwLock(field0: final field0):
+        _sse_encode_i_32(4, serializer);
+        _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+    }
+  }
+
+  void _sse_encode_enum_simple_twin_normal(
+      EnumSimpleTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.index, serializer);
+  }
+
+  void _sse_encode_enum_simple_twin_rust_async(
+      EnumSimpleTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.index, serializer);
+  }
+
+  void _sse_encode_enum_simple_twin_sync(
+      EnumSimpleTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.index, serializer);
+  }
+
+  void _sse_encode_enum_with_item_mixed_twin_normal(
+      EnumWithItemMixedTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case EnumWithItemMixedTwinNormal_A():
+        _sse_encode_i_32(0, serializer);
+
+      case EnumWithItemMixedTwinNormal_B(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_list_prim_u_8(field0, serializer);
+
+      case EnumWithItemMixedTwinNormal_C(cField: final cField):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_String(cField, serializer);
+    }
+  }
+
+  void _sse_encode_enum_with_item_mixed_twin_rust_async(
+      EnumWithItemMixedTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumWithItemMixedTwinRustAsync_A():
+        _sse_encode_i_32(0, serializer);
+
+      case EnumWithItemMixedTwinRustAsync_B(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_list_prim_u_8(field0, serializer);
+
+      case EnumWithItemMixedTwinRustAsync_C(cField: final cField):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_String(cField, serializer);
+    }
+  }
+
+  void _sse_encode_enum_with_item_mixed_twin_sync(
+      EnumWithItemMixedTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumWithItemMixedTwinSync_A():
+        _sse_encode_i_32(0, serializer);
+
+      case EnumWithItemMixedTwinSync_B(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_list_prim_u_8(field0, serializer);
+
+      case EnumWithItemMixedTwinSync_C(cField: final cField):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_String(cField, serializer);
+    }
+  }
+
+  void _sse_encode_enum_with_item_struct_twin_normal(
+      EnumWithItemStructTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case EnumWithItemStructTwinNormal_A(aField: final aField):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_list_prim_u_8(aField, serializer);
+
+      case EnumWithItemStructTwinNormal_B(bField: final bField):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_list_prim_i_32(bField, serializer);
+    }
+  }
+
+  void _sse_encode_enum_with_item_struct_twin_rust_async(
+      EnumWithItemStructTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumWithItemStructTwinRustAsync_A(aField: final aField):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_list_prim_u_8(aField, serializer);
+
+      case EnumWithItemStructTwinRustAsync_B(bField: final bField):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_list_prim_i_32(bField, serializer);
+    }
+  }
+
+  void _sse_encode_enum_with_item_struct_twin_sync(
+      EnumWithItemStructTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumWithItemStructTwinSync_A(aField: final aField):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_list_prim_u_8(aField, serializer);
+
+      case EnumWithItemStructTwinSync_B(bField: final bField):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_list_prim_i_32(bField, serializer);
+    }
+  }
+
+  void _sse_encode_enum_with_item_tuple_twin_normal(
+      EnumWithItemTupleTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case EnumWithItemTupleTwinNormal_A(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_list_prim_u_8(field0, serializer);
+
+      case EnumWithItemTupleTwinNormal_B(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_list_prim_i_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_enum_with_item_tuple_twin_rust_async(
+      EnumWithItemTupleTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumWithItemTupleTwinRustAsync_A(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_list_prim_u_8(field0, serializer);
+
+      case EnumWithItemTupleTwinRustAsync_B(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_list_prim_i_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_enum_with_item_tuple_twin_sync(
+      EnumWithItemTupleTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case EnumWithItemTupleTwinSync_A(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_list_prim_u_8(field0, serializer);
+
+      case EnumWithItemTupleTwinSync_B(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_list_prim_i_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_event_twin_normal(
+      EventTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.address, serializer);
+    _sse_encode_String(self.payload, serializer);
+  }
+
+  void _sse_encode_event_twin_rust_async(
+      EventTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.address, serializer);
+    _sse_encode_String(self.payload, serializer);
+  }
+
+  void _sse_encode_event_twin_sync(
+      EventTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.address, serializer);
+    _sse_encode_String(self.payload, serializer);
+  }
+
+  void _sse_encode_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal self, SseSerializer serializer) {
+    _sse_encode_opt_box_autoadd_i_32(self.int32, serializer);
+    _sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
+    _sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
+    _sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
+    _sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+    _sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+    _sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+    _sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+    _sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+    _sse_encode_opt_list_prim_f_64(self.float64List, serializer);
+    _sse_encode_opt_list_attribute_twin_normal(self.attributes, serializer);
+    _sse_encode_list_opt_box_autoadd_attribute_twin_normal(
+        self.attributesNullable, serializer);
+    _sse_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
+        self.nullableAttributes, serializer);
+    _sse_encode_opt_box_autoadd_new_type_int_twin_normal(
+        self.newtypeint, serializer);
+  }
+
+  void _sse_encode_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_opt_box_autoadd_i_32(self.int32, serializer);
+    _sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
+    _sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
+    _sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
+    _sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+    _sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+    _sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+    _sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+    _sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+    _sse_encode_opt_list_prim_f_64(self.float64List, serializer);
+    _sse_encode_opt_list_attribute_twin_rust_async(self.attributes, serializer);
+    _sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
+        self.attributesNullable, serializer);
+    _sse_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+        self.nullableAttributes, serializer);
+    _sse_encode_opt_box_autoadd_new_type_int_twin_rust_async(
+        self.newtypeint, serializer);
+  }
+
+  void _sse_encode_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync self, SseSerializer serializer) {
+    _sse_encode_opt_box_autoadd_i_32(self.int32, serializer);
+    _sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
+    _sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
+    _sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
+    _sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+    _sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+    _sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+    _sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+    _sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+    _sse_encode_opt_list_prim_f_64(self.float64List, serializer);
+    _sse_encode_opt_list_attribute_twin_sync(self.attributes, serializer);
+    _sse_encode_list_opt_box_autoadd_attribute_twin_sync(
+        self.attributesNullable, serializer);
+    _sse_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
+        self.nullableAttributes, serializer);
+    _sse_encode_opt_box_autoadd_new_type_int_twin_sync(
+        self.newtypeint, serializer);
+  }
+
+  void _sse_encode_f_32(double self, SseSerializer serializer) {
+    serializer.buffer.putFloat32(self);
+  }
+
+  void _sse_encode_f_64(double self, SseSerializer serializer) {
+    serializer.buffer.putFloat64(self);
+  }
+
+  void _sse_encode_f_64_array_16(F64Array16 self, SseSerializer serializer) {
+    _sse_encode_list_prim_f_64(self.inner, serializer);
+  }
+
+  void _sse_encode_feature_chrono_twin_normal(
+      FeatureChronoTwinNormal self, SseSerializer serializer) {
+    _sse_encode_Chrono_Utc(self.utc, serializer);
+    _sse_encode_Chrono_Local(self.local, serializer);
+    _sse_encode_Chrono_Duration(self.duration, serializer);
+    _sse_encode_Chrono_Naive(self.naive, serializer);
+  }
+
+  void _sse_encode_feature_chrono_twin_rust_async(
+      FeatureChronoTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_Chrono_Utc(self.utc, serializer);
+    _sse_encode_Chrono_Local(self.local, serializer);
+    _sse_encode_Chrono_Duration(self.duration, serializer);
+    _sse_encode_Chrono_Naive(self.naive, serializer);
+  }
+
+  void _sse_encode_feature_chrono_twin_sync(
+      FeatureChronoTwinSync self, SseSerializer serializer) {
+    _sse_encode_Chrono_Utc(self.utc, serializer);
+    _sse_encode_Chrono_Local(self.local, serializer);
+    _sse_encode_Chrono_Duration(self.duration, serializer);
+    _sse_encode_Chrono_Naive(self.naive, serializer);
+  }
+
+  void _sse_encode_feature_uuid_twin_normal(
+      FeatureUuidTwinNormal self, SseSerializer serializer) {
+    _sse_encode_Uuid(self.one, serializer);
+  }
+
+  void _sse_encode_feature_uuid_twin_rust_async(
+      FeatureUuidTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_Uuid(self.one, serializer);
+  }
+
+  void _sse_encode_feature_uuid_twin_sync(
+      FeatureUuidTwinSync self, SseSerializer serializer) {
+    _sse_encode_Uuid(self.one, serializer);
+  }
+
+  void _sse_encode_feed_id_twin_normal(
+      FeedIdTwinNormal self, SseSerializer serializer) {
+    _sse_encode_u_8_array_8(self.field0, serializer);
+  }
+
+  void _sse_encode_feed_id_twin_rust_async(
+      FeedIdTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_u_8_array_8(self.field0, serializer);
+  }
+
+  void _sse_encode_feed_id_twin_sync(
+      FeedIdTwinSync self, SseSerializer serializer) {
+    _sse_encode_u_8_array_8(self.field0, serializer);
+  }
+
+  void _sse_encode_i_16(int self, SseSerializer serializer) {
+    serializer.buffer.putInt16(self);
+  }
+
+  void _sse_encode_i_32(int self, SseSerializer serializer) {
+    serializer.buffer.putInt32(self);
+  }
+
+  void _sse_encode_i_32_array_2(I32Array2 self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_32(self.inner, serializer);
+  }
+
+  void _sse_encode_i_64(int self, SseSerializer serializer) {
+    serializer.buffer.putInt64(self);
+  }
+
+  void _sse_encode_i_8(int self, SseSerializer serializer) {
+    serializer.buffer.putInt8(self);
+  }
+
+  void _sse_encode_kitchen_sink_twin_normal(
+      KitchenSinkTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case KitchenSinkTwinNormal_Empty():
+        _sse_encode_i_32(0, serializer);
+
+      case KitchenSinkTwinNormal_Primitives(
+          int32: final int32,
+          float64: final float64,
+          boolean: final boolean
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_i_32(int32, serializer);
+        _sse_encode_f_64(float64, serializer);
+        _sse_encode_bool(boolean, serializer);
+
+      case KitchenSinkTwinNormal_Nested(
+          field0: final field0,
+          field1: final field1
+        ):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_i_32(field0, serializer);
+        _sse_encode_box_kitchen_sink_twin_normal(field1, serializer);
+
+      case KitchenSinkTwinNormal_Optional(
+          field0: final field0,
+          field1: final field1
+        ):
+        _sse_encode_i_32(3, serializer);
+        _sse_encode_opt_box_autoadd_i_32(field0, serializer);
+        _sse_encode_opt_box_autoadd_i_32(field1, serializer);
+
+      case KitchenSinkTwinNormal_Buffer(field0: final field0):
+        _sse_encode_i_32(4, serializer);
+        _sse_encode_list_prim_u_8(field0, serializer);
+
+      case KitchenSinkTwinNormal_Enums(field0: final field0):
+        _sse_encode_i_32(5, serializer);
+        _sse_encode_weekdays_twin_normal(field0, serializer);
+    }
+  }
+
+  void _sse_encode_kitchen_sink_twin_rust_async(
+      KitchenSinkTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case KitchenSinkTwinRustAsync_Empty():
+        _sse_encode_i_32(0, serializer);
+
+      case KitchenSinkTwinRustAsync_Primitives(
+          int32: final int32,
+          float64: final float64,
+          boolean: final boolean
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_i_32(int32, serializer);
+        _sse_encode_f_64(float64, serializer);
+        _sse_encode_bool(boolean, serializer);
+
+      case KitchenSinkTwinRustAsync_Nested(
+          field0: final field0,
+          field1: final field1
+        ):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_i_32(field0, serializer);
+        _sse_encode_box_kitchen_sink_twin_rust_async(field1, serializer);
+
+      case KitchenSinkTwinRustAsync_Optional(
+          field0: final field0,
+          field1: final field1
+        ):
+        _sse_encode_i_32(3, serializer);
+        _sse_encode_opt_box_autoadd_i_32(field0, serializer);
+        _sse_encode_opt_box_autoadd_i_32(field1, serializer);
+
+      case KitchenSinkTwinRustAsync_Buffer(field0: final field0):
+        _sse_encode_i_32(4, serializer);
+        _sse_encode_list_prim_u_8(field0, serializer);
+
+      case KitchenSinkTwinRustAsync_Enums(field0: final field0):
+        _sse_encode_i_32(5, serializer);
+        _sse_encode_weekdays_twin_rust_async(field0, serializer);
+    }
+  }
+
+  void _sse_encode_kitchen_sink_twin_sync(
+      KitchenSinkTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case KitchenSinkTwinSync_Empty():
+        _sse_encode_i_32(0, serializer);
+
+      case KitchenSinkTwinSync_Primitives(
+          int32: final int32,
+          float64: final float64,
+          boolean: final boolean
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_i_32(int32, serializer);
+        _sse_encode_f_64(float64, serializer);
+        _sse_encode_bool(boolean, serializer);
+
+      case KitchenSinkTwinSync_Nested(
+          field0: final field0,
+          field1: final field1
+        ):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_i_32(field0, serializer);
+        _sse_encode_box_kitchen_sink_twin_sync(field1, serializer);
+
+      case KitchenSinkTwinSync_Optional(
+          field0: final field0,
+          field1: final field1
+        ):
+        _sse_encode_i_32(3, serializer);
+        _sse_encode_opt_box_autoadd_i_32(field0, serializer);
+        _sse_encode_opt_box_autoadd_i_32(field1, serializer);
+
+      case KitchenSinkTwinSync_Buffer(field0: final field0):
+        _sse_encode_i_32(4, serializer);
+        _sse_encode_list_prim_u_8(field0, serializer);
+
+      case KitchenSinkTwinSync_Enums(field0: final field0):
+        _sse_encode_i_32(5, serializer);
+        _sse_encode_weekdays_twin_sync(field0, serializer);
+    }
+  }
+
+  void _sse_encode_list_Chrono_Duration(
+      List<Duration> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_Chrono_Duration(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_Chrono_Naive(
+      List<DateTime> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_Chrono_Naive(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_DartOpaque(
+      List<Object> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_DartOpaque(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_RustOpaque_hide_data(
+      List<HideData> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_RustOpaque_hide_data(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_String(List<String> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_String(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_application_env_var(
+      List<ApplicationEnvVar> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_application_env_var(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_attribute_twin_normal(
+      List<AttributeTwinNormal> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_attribute_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_attribute_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_attribute_twin_sync(
+      List<AttributeTwinSync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_attribute_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_bool(List<bool> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_bool(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_my_size(List<MySize> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_my_size(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_my_tree_node_twin_normal(
+      List<MyTreeNodeTwinNormal> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_my_tree_node_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_my_tree_node_twin_rust_async(
+      List<MyTreeNodeTwinRustAsync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_my_tree_node_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_my_tree_node_twin_sync(
+      List<MyTreeNodeTwinSync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_my_tree_node_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_opt_String(
+      List<String?> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_opt_String(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_opt_box_autoadd_attribute_twin_normal(
+      List<AttributeTwinNormal?> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_opt_box_autoadd_attribute_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync?> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_opt_box_autoadd_attribute_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_opt_box_autoadd_attribute_twin_sync(
+      List<AttributeTwinSync?> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_opt_box_autoadd_attribute_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_opt_box_autoadd_i_32(
+      List<int?> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_opt_box_autoadd_i_32(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_opt_box_autoadd_weekdays_twin_normal(
+      List<WeekdaysTwinNormal?> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_opt_box_autoadd_weekdays_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
+      List<WeekdaysTwinRustAsync?> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_opt_box_autoadd_weekdays_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_opt_box_autoadd_weekdays_twin_sync(
+      List<WeekdaysTwinSync?> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_opt_box_autoadd_weekdays_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_opt_list_prim_i_32(
+      List<Int32List?> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_opt_list_prim_i_32(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_prim_f_32(Float32List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putFloat32List(self);
+  }
+
+  void _sse_encode_list_prim_f_64(Float64List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putFloat64List(self);
+  }
+
+  void _sse_encode_list_prim_i_16(Int16List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putInt16List(self);
+  }
+
+  void _sse_encode_list_prim_i_32(Int32List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putInt32List(self);
+  }
+
+  void _sse_encode_list_prim_i_64(Int64List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putInt64List(self);
+  }
+
+  void _sse_encode_list_prim_i_8(Int8List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putInt8List(self);
+  }
+
+  void _sse_encode_list_prim_u_16(Uint16List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint16List(self);
+  }
+
+  void _sse_encode_list_prim_u_32(Uint32List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint32List(self);
+  }
+
+  void _sse_encode_list_prim_u_64(Uint64List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint64List(self);
+  }
+
+  void _sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint8List(self);
+  }
+
+  void _sse_encode_list_record_string_i_32(
+      List<(String, int)> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_record_string_i_32(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_test_id_twin_normal(
+      List<TestIdTwinNormal> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_test_id_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_test_id_twin_rust_async(
+      List<TestIdTwinRustAsync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_test_id_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_test_id_twin_sync(
+      List<TestIdTwinSync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_test_id_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_weekdays_twin_normal(
+      List<WeekdaysTwinNormal> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_weekdays_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_weekdays_twin_rust_async(
+      List<WeekdaysTwinRustAsync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_weekdays_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_weekdays_twin_sync(
+      List<WeekdaysTwinSync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_weekdays_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_macro_struct(MacroStruct self, SseSerializer serializer) {
+    _sse_encode_i_32(self.data, serializer);
+  }
+
+  void _sse_encode_measure_twin_normal(
+      MeasureTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case MeasureTwinNormal_Speed(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_box_speed_twin_normal(field0, serializer);
+
+      case MeasureTwinNormal_Distance(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_distance_twin_normal(field0, serializer);
+    }
+  }
+
+  void _sse_encode_measure_twin_rust_async(
+      MeasureTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case MeasureTwinRustAsync_Speed(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_box_speed_twin_rust_async(field0, serializer);
+
+      case MeasureTwinRustAsync_Distance(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_distance_twin_rust_async(field0, serializer);
+    }
+  }
+
+  void _sse_encode_measure_twin_sync(
+      MeasureTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case MeasureTwinSync_Speed(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_box_speed_twin_sync(field0, serializer);
+
+      case MeasureTwinSync_Distance(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_distance_twin_sync(field0, serializer);
+    }
+  }
+
+  void _sse_encode_message_id_twin_normal(
+      MessageIdTwinNormal self, SseSerializer serializer) {
+    _sse_encode_u_8_array_32(self.field0, serializer);
+  }
+
+  void _sse_encode_message_id_twin_rust_async(
+      MessageIdTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_u_8_array_32(self.field0, serializer);
+  }
+
+  void _sse_encode_message_id_twin_sync(
+      MessageIdTwinSync self, SseSerializer serializer) {
+    _sse_encode_u_8_array_32(self.field0, serializer);
+  }
+
+  void _sse_encode_my_enum(MyEnum self, SseSerializer serializer) {
+    _sse_encode_i_32(self.index, serializer);
+  }
+
+  void _sse_encode_my_nested_struct_twin_normal(
+      MyNestedStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_my_tree_node_twin_normal(self.treeNode, serializer);
+    _sse_encode_weekdays_twin_normal(self.weekday, serializer);
+  }
+
+  void _sse_encode_my_nested_struct_twin_rust_async(
+      MyNestedStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_my_tree_node_twin_rust_async(self.treeNode, serializer);
+    _sse_encode_weekdays_twin_rust_async(self.weekday, serializer);
+  }
+
+  void _sse_encode_my_nested_struct_twin_sync(
+      MyNestedStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_my_tree_node_twin_sync(self.treeNode, serializer);
+    _sse_encode_weekdays_twin_sync(self.weekday, serializer);
+  }
+
+  void _sse_encode_my_size(MySize self, SseSerializer serializer) {
+    _sse_encode_i_32(self.width, serializer);
+    _sse_encode_i_32(self.height, serializer);
+  }
+
+  void _sse_encode_my_struct(MyStruct self, SseSerializer serializer) {
+    _sse_encode_bool(self.content, serializer);
+  }
+
+  void _sse_encode_my_tree_node_twin_normal(
+      MyTreeNodeTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.valueI32, serializer);
+    _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
+    _sse_encode_bool(self.valueBoolean, serializer);
+    _sse_encode_list_my_tree_node_twin_normal(self.children, serializer);
+  }
+
+  void _sse_encode_my_tree_node_twin_rust_async(
+      MyTreeNodeTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.valueI32, serializer);
+    _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
+    _sse_encode_bool(self.valueBoolean, serializer);
+    _sse_encode_list_my_tree_node_twin_rust_async(self.children, serializer);
+  }
+
+  void _sse_encode_my_tree_node_twin_sync(
+      MyTreeNodeTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.valueI32, serializer);
+    _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
+    _sse_encode_bool(self.valueBoolean, serializer);
+    _sse_encode_list_my_tree_node_twin_sync(self.children, serializer);
+  }
+
+  void _sse_encode_new_type_int_twin_normal(
+      NewTypeIntTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_64(self.field0, serializer);
+  }
+
+  void _sse_encode_new_type_int_twin_rust_async(
+      NewTypeIntTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_64(self.field0, serializer);
+  }
+
+  void _sse_encode_new_type_int_twin_sync(
+      NewTypeIntTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_64(self.field0, serializer);
+  }
+
+  void _sse_encode_note_twin_normal(
+      NoteTwinNormal self, SseSerializer serializer) {
+    _sse_encode_box_weekdays_twin_normal(self.day, serializer);
+    _sse_encode_String(self.body, serializer);
+  }
+
+  void _sse_encode_note_twin_rust_async(
+      NoteTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_box_weekdays_twin_rust_async(self.day, serializer);
+    _sse_encode_String(self.body, serializer);
+  }
+
+  void _sse_encode_note_twin_sync(NoteTwinSync self, SseSerializer serializer) {
+    _sse_encode_box_weekdays_twin_sync(self.day, serializer);
+    _sse_encode_String(self.body, serializer);
+  }
+
+  void _sse_encode_numbers(Numbers self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_32(self.field0, serializer);
+  }
+
+  void _sse_encode_opaque_nested_twin_normal(
+      OpaqueNestedTwinNormal self, SseSerializer serializer) {
+    _sse_encode_RustOpaque_hide_data(self.first, serializer);
+    _sse_encode_RustOpaque_hide_data(self.second, serializer);
+  }
+
+  void _sse_encode_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_RustOpaque_hide_data(self.first, serializer);
+    _sse_encode_RustOpaque_hide_data(self.second, serializer);
+  }
+
+  void _sse_encode_opaque_nested_twin_sync(
+      OpaqueNestedTwinSync self, SseSerializer serializer) {
+    _sse_encode_RustOpaque_hide_data(self.first, serializer);
+    _sse_encode_RustOpaque_hide_data(self.second, serializer);
+  }
+
+  void _sse_encode_opt_String(String? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_String(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_Chrono_Utc(
+      DateTime? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_Chrono_Utc(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_DartOpaque(
+      Object? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_DartOpaque(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_RustOpaque_hide_data(
+      HideData? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_RustOpaque_hide_data(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_application_env(
+      ApplicationEnv? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_application_env(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_attribute_twin_normal(
+      AttributeTwinNormal? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_attribute_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_attribute_twin_rust_async(
+      AttributeTwinRustAsync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_attribute_twin_rust_async(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_attribute_twin_sync(
+      AttributeTwinSync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_attribute_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_bool(bool? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_bool(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_exotic_optionals_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_exotic_optionals_twin_rust_async(
+          self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_exotic_optionals_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_f_32(
+      double? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_f_32(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_f_64(
+      double? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_f_64(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_i_16(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_i_16(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_i_32(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_i_32(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_i_64(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_i_64(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_i_8(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_i_8(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_new_type_int_twin_normal(
+      NewTypeIntTwinNormal? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_new_type_int_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_new_type_int_twin_rust_async(
+      NewTypeIntTwinRustAsync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_new_type_int_twin_rust_async(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_new_type_int_twin_sync(
+      NewTypeIntTwinSync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_new_type_int_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_record_string_i_32(
+      (String, int)? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_record_string_i_32(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_u_16(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_u_16(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_u_32(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_u_32(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_u_64(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_u_64(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_u_8(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_u_8(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_weekdays_twin_normal(
+      WeekdaysTwinNormal? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_weekdays_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_weekdays_twin_rust_async(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_weekdays_twin_sync(
+      WeekdaysTwinSync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_weekdays_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_bool(bool? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_bool(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_exotic_optionals_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_exotic_optionals_twin_rust_async(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_exotic_optionals_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_f_64(double? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_f_64(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_i_32(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_i_32(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_i_64(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_i_64(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_i_8(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_i_8(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_u_8(int? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_u_8(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_attribute_twin_normal(
+      List<AttributeTwinNormal>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_attribute_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_attribute_twin_rust_async(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_attribute_twin_sync(
+      List<AttributeTwinSync>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_attribute_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
+      List<AttributeTwinNormal?>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_opt_box_autoadd_attribute_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync?>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
+          self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
+      List<AttributeTwinSync?>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_opt_box_autoadd_attribute_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_prim_f_32(
+      Float32List? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_prim_f_32(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_prim_f_64(
+      Float64List? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_prim_f_64(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_prim_i_32(
+      Int32List? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_prim_i_32(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_prim_i_8(Int8List? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_prim_i_8(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_prim_u_8(
+      Uint8List? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_prim_u_8(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_vecs_twin_normal(
+      OptVecsTwinNormal self, SseSerializer serializer) {
+    _sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
+    _sse_encode_list_opt_box_autoadd_weekdays_twin_normal(
+        self.enums, serializer);
+    _sse_encode_list_opt_String(self.strings, serializer);
+    _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
+  }
+
+  void _sse_encode_opt_vecs_twin_rust_async(
+      OptVecsTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
+    _sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
+        self.enums, serializer);
+    _sse_encode_list_opt_String(self.strings, serializer);
+    _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
+  }
+
+  void _sse_encode_opt_vecs_twin_sync(
+      OptVecsTwinSync self, SseSerializer serializer) {
+    _sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
+    _sse_encode_list_opt_box_autoadd_weekdays_twin_sync(self.enums, serializer);
+    _sse_encode_list_opt_String(self.strings, serializer);
+    _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
+  }
+
+  void _sse_encode_record_string_i_32(
+      (String, int) self, SseSerializer serializer) {
+    _sse_encode_String(self.$1, serializer);
+    _sse_encode_i_32(self.$2, serializer);
+  }
+
+  void _sse_encode_sequences(Sequences self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_32(self.field0, serializer);
+  }
+
+  void _sse_encode_some_struct_twin_normal(
+      SomeStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_u_32(self.value, serializer);
+  }
+
+  void _sse_encode_some_struct_twin_rust_async(
+      SomeStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_u_32(self.value, serializer);
+  }
+
+  void _sse_encode_some_struct_twin_sync(
+      SomeStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_u_32(self.value, serializer);
+  }
+
+  void _sse_encode_speed_twin_normal(
+      SpeedTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case SpeedTwinNormal_Unknown():
+        _sse_encode_i_32(0, serializer);
+
+      case SpeedTwinNormal_GPS(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_f_64(field0, serializer);
+    }
+  }
+
+  void _sse_encode_speed_twin_rust_async(
+      SpeedTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case SpeedTwinRustAsync_Unknown():
+        _sse_encode_i_32(0, serializer);
+
+      case SpeedTwinRustAsync_GPS(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_f_64(field0, serializer);
+    }
+  }
+
+  void _sse_encode_speed_twin_sync(
+      SpeedTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case SpeedTwinSync_Unknown():
+        _sse_encode_i_32(0, serializer);
+
+      case SpeedTwinSync_GPS(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_f_64(field0, serializer);
+    }
+  }
+
+  void _sse_encode_struct_with_comments_twin_normal(
+      StructWithCommentsTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.fieldWithComments, serializer);
+  }
+
+  void _sse_encode_struct_with_comments_twin_rust_async(
+      StructWithCommentsTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.fieldWithComments, serializer);
+  }
+
+  void _sse_encode_struct_with_comments_twin_sync(
+      StructWithCommentsTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.fieldWithComments, serializer);
+  }
+
+  void _sse_encode_struct_with_enum_twin_normal(
+      StructWithEnumTwinNormal self, SseSerializer serializer) {
+    _sse_encode_abc_twin_normal(self.abc1, serializer);
+    _sse_encode_abc_twin_normal(self.abc2, serializer);
+  }
+
+  void _sse_encode_struct_with_enum_twin_rust_async(
+      StructWithEnumTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_abc_twin_rust_async(self.abc1, serializer);
+    _sse_encode_abc_twin_rust_async(self.abc2, serializer);
+  }
+
+  void _sse_encode_struct_with_enum_twin_sync(
+      StructWithEnumTwinSync self, SseSerializer serializer) {
+    _sse_encode_abc_twin_sync(self.abc1, serializer);
+    _sse_encode_abc_twin_sync(self.abc2, serializer);
+  }
+
+  void _sse_encode_struct_with_one_field_twin_normal(
+      StructWithOneFieldTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.a, serializer);
+  }
+
+  void _sse_encode_struct_with_one_field_twin_rust_async(
+      StructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.a, serializer);
+  }
+
+  void _sse_encode_struct_with_one_field_twin_sync(
+      StructWithOneFieldTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.a, serializer);
+  }
+
+  void _sse_encode_struct_with_two_field_twin_normal(
+      StructWithTwoFieldTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.a, serializer);
+    _sse_encode_i_32(self.b, serializer);
+  }
+
+  void _sse_encode_struct_with_two_field_twin_rust_async(
+      StructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.a, serializer);
+    _sse_encode_i_32(self.b, serializer);
+  }
+
+  void _sse_encode_struct_with_two_field_twin_sync(
+      StructWithTwoFieldTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.a, serializer);
+    _sse_encode_i_32(self.b, serializer);
+  }
+
+  void _sse_encode_struct_with_zero_field_twin_normal(
+      StructWithZeroFieldTwinNormal self, SseSerializer serializer) {}
+
+  void _sse_encode_struct_with_zero_field_twin_rust_async(
+      StructWithZeroFieldTwinRustAsync self, SseSerializer serializer) {}
+
+  void _sse_encode_struct_with_zero_field_twin_sync(
+      StructWithZeroFieldTwinSync self, SseSerializer serializer) {}
+
+  void _sse_encode_sum_with_twin_normal(
+      SumWithTwinNormal self, SseSerializer serializer) {
+    _sse_encode_u_32(self.x, serializer);
+  }
+
+  void _sse_encode_sum_with_twin_rust_async(
+      SumWithTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_u_32(self.x, serializer);
+  }
+
+  void _sse_encode_sum_with_twin_sync(
+      SumWithTwinSync self, SseSerializer serializer) {
+    _sse_encode_u_32(self.x, serializer);
+  }
+
+  void _sse_encode_test_id_twin_normal(
+      TestIdTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32_array_2(self.field0, serializer);
+  }
+
+  void _sse_encode_test_id_twin_normal_array_4(
+      TestIdTwinNormalArray4 self, SseSerializer serializer) {
+    _sse_encode_list_test_id_twin_normal(self.inner, serializer);
+  }
+
+  void _sse_encode_test_id_twin_rust_async(
+      TestIdTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32_array_2(self.field0, serializer);
+  }
+
+  void _sse_encode_test_id_twin_rust_async_array_4(
+      TestIdTwinRustAsyncArray4 self, SseSerializer serializer) {
+    _sse_encode_list_test_id_twin_rust_async(self.inner, serializer);
+  }
+
+  void _sse_encode_test_id_twin_sync(
+      TestIdTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32_array_2(self.field0, serializer);
+  }
+
+  void _sse_encode_test_id_twin_sync_array_4(
+      TestIdTwinSyncArray4 self, SseSerializer serializer) {
+    _sse_encode_list_test_id_twin_sync(self.inner, serializer);
+  }
+
+  void _sse_encode_tuple_struct_with_one_field_twin_normal(
+      TupleStructWithOneFieldTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.field0, serializer);
+  }
+
+  void _sse_encode_tuple_struct_with_one_field_twin_rust_async(
+      TupleStructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.field0, serializer);
+  }
+
+  void _sse_encode_tuple_struct_with_one_field_twin_sync(
+      TupleStructWithOneFieldTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.field0, serializer);
+  }
+
+  void _sse_encode_tuple_struct_with_two_field_twin_normal(
+      TupleStructWithTwoFieldTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.field0, serializer);
+    _sse_encode_i_32(self.field1, serializer);
+  }
+
+  void _sse_encode_tuple_struct_with_two_field_twin_rust_async(
+      TupleStructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.field0, serializer);
+    _sse_encode_i_32(self.field1, serializer);
+  }
+
+  void _sse_encode_tuple_struct_with_two_field_twin_sync(
+      TupleStructWithTwoFieldTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.field0, serializer);
+    _sse_encode_i_32(self.field1, serializer);
+  }
+
+  void _sse_encode_u_16(int self, SseSerializer serializer) {
+    serializer.buffer.putUint16(self);
+  }
+
+  void _sse_encode_u_32(int self, SseSerializer serializer) {
+    serializer.buffer.putUint32(self);
+  }
+
+  void _sse_encode_u_64(int self, SseSerializer serializer) {
+    serializer.buffer.putUint64(self);
+  }
+
+  void _sse_encode_u_8(int self, SseSerializer serializer) {
+    serializer.buffer.putUint8(self);
+  }
+
+  void _sse_encode_u_8_array_1600(U8Array1600 self, SseSerializer serializer) {
+    _sse_encode_list_prim_u_8(self.inner, serializer);
+  }
+
+  void _sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer) {
+    _sse_encode_list_prim_u_8(self.inner, serializer);
+  }
+
+  void _sse_encode_u_8_array_8(U8Array8 self, SseSerializer serializer) {
+    _sse_encode_list_prim_u_8(self.inner, serializer);
+  }
+
+  void _sse_encode_unit(void self, SseSerializer serializer) {}
+
+  void _sse_encode_user_id_twin_normal(
+      UserIdTwinNormal self, SseSerializer serializer) {
+    _sse_encode_u_32(self.value, serializer);
+  }
+
+  void _sse_encode_user_id_twin_rust_async(
+      UserIdTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_u_32(self.value, serializer);
+  }
+
+  void _sse_encode_user_id_twin_sync(
+      UserIdTwinSync self, SseSerializer serializer) {
+    _sse_encode_u_32(self.value, serializer);
+  }
+
+  void _sse_encode_usize(int self, SseSerializer serializer) {
+    serializer.buffer.putUint64(self);
+  }
+
+  void _sse_encode_weekdays_twin_normal(
+      WeekdaysTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.index, serializer);
+  }
+
+  void _sse_encode_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.index, serializer);
+  }
+
+  void _sse_encode_weekdays_twin_sync(
+      WeekdaysTwinSync self, SseSerializer serializer) {
+    _sse_encode_i_32(self.index, serializer);
+  }
 }
 
 // Section: dart2rust
@@ -28776,3184 +32005,4 @@ int cst_encode_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
 
 int cst_encode_weekdays_twin_sync(WeekdaysTwinSync raw) {
   return cst_encode_i_32(raw.index);
-}
-
-void
-    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-        RwLockBoxFnStringString self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: true), serializer);
-}
-
-void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-    RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: true), serializer);
-}
-
-void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-    RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: true), serializer);
-}
-
-void
-    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-        RwLockBoxMyTraitTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: true), serializer);
-}
-
-void
-    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-        RwLockBoxMyTraitTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: true), serializer);
-}
-
-void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-    RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: true), serializer);
-}
-
-void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-    RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: true), serializer);
-}
-
-void
-    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-        RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
-        SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: true), serializer);
-}
-
-void
-    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-        RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-        SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: true), serializer);
-}
-
-void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-    RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-    RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-    RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-    RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void
-    _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-        RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
-        SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void
-    _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-        RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-        SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-    RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-    RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-    RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-    RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void
-    _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-        RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
-        SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void
-    _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-        RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-        SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: false), serializer);
-}
-
-void _sse_encode_Chrono_Duration(Duration self, SseSerializer serializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-void _sse_encode_Chrono_Local(DateTime self, SseSerializer serializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-void _sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-void _sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-void _sse_encode_DartFn_Inputs__Output_unit(
-    void Function() self, SseSerializer serializer) {
-  _sse_encode_DartOpaque(self, serializer);
-}
-
-void _sse_encode_DartOpaque(Object self, SseSerializer serializer) {
-  _sse_encode_usize(wire.dart_opaque_dart2rust_encode(self), serializer);
-}
-
-void _sse_encode_DartOpaque_array_1(
-    ObjectArray1 self, SseSerializer serializer) {
-  _sse_encode_list_DartOpaque(self.inner, serializer);
-}
-
-void _sse_encode_RustOpaque_MutexHideData(
-    MutexHideData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_RwLockHideData(
-    RwLockHideData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_box_dynDartDebugTwinNormal(
-    BoxDartDebugTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
-    BoxDartDebugTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_box_dynDartDebugTwinSync(
-    BoxDartDebugTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_hide_data(HideData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_hide_data_array_2(
-    HideDataArray2 self, SseSerializer serializer) {
-  _sse_encode_list_RustOpaque_hide_data(self.inner, serializer);
-}
-
-void _sse_encode_RustOpaque_i_32(I32 self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_non_clone_data(
-    NonCloneData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_non_send_hide_data(
-    NonSendHideData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void
-    _sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-        RwLockBoxFnStringString self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-    RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-    RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-    RwLockBoxMyTraitTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-    RwLockBoxMyTraitTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-    RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-    RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-    RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
-    SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-    RwLockStructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(move: null), serializer);
-}
-
-void _sse_encode_String(String self, SseSerializer serializer) {
-  _sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
-}
-
-void _sse_encode_Uuid(UuidValue self, SseSerializer serializer) {
-  throw UnimplementedError(
-      'not yet supported in serialized mode, feel free to create an issue');
-}
-
-void _sse_encode_a_twin_normal(ATwinNormal self, SseSerializer serializer) {
-  _sse_encode_String(self.a, serializer);
-}
-
-void _sse_encode_a_twin_rust_async(
-    ATwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_String(self.a, serializer);
-}
-
-void _sse_encode_a_twin_sync(ATwinSync self, SseSerializer serializer) {
-  _sse_encode_String(self.a, serializer);
-}
-
-void _sse_encode_abc_twin_normal(AbcTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case AbcTwinNormal_A(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_box_autoadd_a_twin_normal(field0, serializer);
-
-    case AbcTwinNormal_B(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_box_autoadd_b_twin_normal(field0, serializer);
-
-    case AbcTwinNormal_C(field0: final field0):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_box_autoadd_c_twin_normal(field0, serializer);
-
-    case AbcTwinNormal_JustInt(field0: final field0):
-      _sse_encode_i_32(3, serializer);
-      _sse_encode_i_32(field0, serializer);
-  }
-}
-
-void _sse_encode_abc_twin_rust_async(
-    AbcTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case AbcTwinRustAsync_A(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_box_autoadd_a_twin_rust_async(field0, serializer);
-
-    case AbcTwinRustAsync_B(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_box_autoadd_b_twin_rust_async(field0, serializer);
-
-    case AbcTwinRustAsync_C(field0: final field0):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_box_autoadd_c_twin_rust_async(field0, serializer);
-
-    case AbcTwinRustAsync_JustInt(field0: final field0):
-      _sse_encode_i_32(3, serializer);
-      _sse_encode_i_32(field0, serializer);
-  }
-}
-
-void _sse_encode_abc_twin_sync(AbcTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case AbcTwinSync_A(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_box_autoadd_a_twin_sync(field0, serializer);
-
-    case AbcTwinSync_B(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_box_autoadd_b_twin_sync(field0, serializer);
-
-    case AbcTwinSync_C(field0: final field0):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_box_autoadd_c_twin_sync(field0, serializer);
-
-    case AbcTwinSync_JustInt(field0: final field0):
-      _sse_encode_i_32(3, serializer);
-      _sse_encode_i_32(field0, serializer);
-  }
-}
-
-void _sse_encode_application_env(
-    ApplicationEnv self, SseSerializer serializer) {
-  _sse_encode_list_application_env_var(self.vars, serializer);
-}
-
-void _sse_encode_application_env_var(
-    ApplicationEnvVar self, SseSerializer serializer) {
-  _sse_encode_String(self.field0, serializer);
-  _sse_encode_bool(self.field1, serializer);
-}
-
-void _sse_encode_application_mode(
-    ApplicationMode self, SseSerializer serializer) {
-  _sse_encode_i_32(self.index, serializer);
-}
-
-void _sse_encode_application_settings(
-    ApplicationSettings self, SseSerializer serializer) {
-  _sse_encode_String(self.name, serializer);
-  _sse_encode_String(self.version, serializer);
-  _sse_encode_application_mode(self.mode, serializer);
-  _sse_encode_box_application_env(self.env, serializer);
-  _sse_encode_opt_box_autoadd_application_env(self.envOptional, serializer);
-}
-
-void _sse_encode_attribute_twin_normal(
-    AttributeTwinNormal self, SseSerializer serializer) {
-  _sse_encode_String(self.key, serializer);
-  _sse_encode_String(self.value, serializer);
-}
-
-void _sse_encode_attribute_twin_rust_async(
-    AttributeTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_String(self.key, serializer);
-  _sse_encode_String(self.value, serializer);
-}
-
-void _sse_encode_attribute_twin_sync(
-    AttributeTwinSync self, SseSerializer serializer) {
-  _sse_encode_String(self.key, serializer);
-  _sse_encode_String(self.value, serializer);
-}
-
-void _sse_encode_b_twin_normal(BTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32(self.b, serializer);
-}
-
-void _sse_encode_b_twin_rust_async(
-    BTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.b, serializer);
-}
-
-void _sse_encode_b_twin_sync(BTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.b, serializer);
-}
-
-void _sse_encode_blob_twin_normal(
-    BlobTwinNormal self, SseSerializer serializer) {
-  _sse_encode_u_8_array_1600(self.field0, serializer);
-}
-
-void _sse_encode_blob_twin_rust_async(
-    BlobTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_u_8_array_1600(self.field0, serializer);
-}
-
-void _sse_encode_blob_twin_sync(BlobTwinSync self, SseSerializer serializer) {
-  _sse_encode_u_8_array_1600(self.field0, serializer);
-}
-
-void _sse_encode_bool(bool self, SseSerializer serializer) {
-  serializer.buffer.putUint8(self ? 1 : 0);
-}
-
-void _sse_encode_box_application_env(
-    ApplicationEnv self, SseSerializer serializer) {
-  _sse_encode_application_env(self, serializer);
-}
-
-void _sse_encode_box_autoadd_Chrono_Utc(
-    DateTime self, SseSerializer serializer) {
-  _sse_encode_Chrono_Utc(self, serializer);
-}
-
-void _sse_encode_box_autoadd_DartOpaque(Object self, SseSerializer serializer) {
-  _sse_encode_DartOpaque(self, serializer);
-}
-
-void _sse_encode_box_autoadd_RustOpaque_hide_data(
-    HideData self, SseSerializer serializer) {
-  _sse_encode_RustOpaque_hide_data(self, serializer);
-}
-
-void _sse_encode_box_autoadd_a_twin_normal(
-    ATwinNormal self, SseSerializer serializer) {
-  _sse_encode_a_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_a_twin_rust_async(
-    ATwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_a_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_a_twin_sync(
-    ATwinSync self, SseSerializer serializer) {
-  _sse_encode_a_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_abc_twin_normal(
-    AbcTwinNormal self, SseSerializer serializer) {
-  _sse_encode_abc_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_abc_twin_rust_async(
-    AbcTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_abc_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_abc_twin_sync(
-    AbcTwinSync self, SseSerializer serializer) {
-  _sse_encode_abc_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_application_env(
-    ApplicationEnv self, SseSerializer serializer) {
-  _sse_encode_application_env(self, serializer);
-}
-
-void _sse_encode_box_autoadd_application_settings(
-    ApplicationSettings self, SseSerializer serializer) {
-  _sse_encode_application_settings(self, serializer);
-}
-
-void _sse_encode_box_autoadd_attribute_twin_normal(
-    AttributeTwinNormal self, SseSerializer serializer) {
-  _sse_encode_attribute_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_attribute_twin_rust_async(
-    AttributeTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_attribute_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_attribute_twin_sync(
-    AttributeTwinSync self, SseSerializer serializer) {
-  _sse_encode_attribute_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_b_twin_normal(
-    BTwinNormal self, SseSerializer serializer) {
-  _sse_encode_b_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_b_twin_rust_async(
-    BTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_b_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_b_twin_sync(
-    BTwinSync self, SseSerializer serializer) {
-  _sse_encode_b_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_bool(bool self, SseSerializer serializer) {
-  _sse_encode_bool(self, serializer);
-}
-
-void _sse_encode_box_autoadd_c_twin_normal(
-    CTwinNormal self, SseSerializer serializer) {
-  _sse_encode_c_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_c_twin_rust_async(
-    CTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_c_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_c_twin_sync(
-    CTwinSync self, SseSerializer serializer) {
-  _sse_encode_c_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_concatenate_with_twin_normal(
-    ConcatenateWithTwinNormal self, SseSerializer serializer) {
-  _sse_encode_concatenate_with_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_concatenate_with_twin_rust_async(
-    ConcatenateWithTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_concatenate_with_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_concatenate_with_twin_sync(
-    ConcatenateWithTwinSync self, SseSerializer serializer) {
-  _sse_encode_concatenate_with_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(
-    CustomNestedErrorInnerTwinNormal self, SseSerializer serializer) {
-  _sse_encode_custom_nested_error_inner_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
-    CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_custom_nested_error_inner_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(
-    CustomNestedErrorInnerTwinSync self, SseSerializer serializer) {
-  _sse_encode_custom_nested_error_inner_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_nested_error_outer_twin_normal(
-    CustomNestedErrorOuterTwinNormal self, SseSerializer serializer) {
-  _sse_encode_custom_nested_error_outer_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
-    CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_custom_nested_error_outer_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_nested_error_outer_twin_sync(
-    CustomNestedErrorOuterTwinSync self, SseSerializer serializer) {
-  _sse_encode_custom_nested_error_outer_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_struct_error_twin_normal(
-    CustomStructErrorTwinNormal self, SseSerializer serializer) {
-  _sse_encode_custom_struct_error_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_struct_error_twin_rust_async(
-    CustomStructErrorTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_custom_struct_error_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_struct_error_twin_sync(
-    CustomStructErrorTwinSync self, SseSerializer serializer) {
-  _sse_encode_custom_struct_error_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_struct_twin_normal(
-    CustomStructTwinNormal self, SseSerializer serializer) {
-  _sse_encode_custom_struct_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_struct_twin_rust_async(
-    CustomStructTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_custom_struct_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_custom_struct_twin_sync(
-    CustomStructTwinSync self, SseSerializer serializer) {
-  _sse_encode_custom_struct_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_customized_twin_normal(
-    CustomizedTwinNormal self, SseSerializer serializer) {
-  _sse_encode_customized_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_customized_twin_rust_async(
-    CustomizedTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_customized_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_customized_twin_sync(
-    CustomizedTwinSync self, SseSerializer serializer) {
-  _sse_encode_customized_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_dart_opaque_nested_twin_normal(
-    DartOpaqueNestedTwinNormal self, SseSerializer serializer) {
-  _sse_encode_dart_opaque_nested_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
-    DartOpaqueNestedTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_dart_opaque_nested_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_dart_opaque_nested_twin_sync(
-    DartOpaqueNestedTwinSync self, SseSerializer serializer) {
-  _sse_encode_dart_opaque_nested_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_empty_twin_normal(
-    EmptyTwinNormal self, SseSerializer serializer) {
-  _sse_encode_empty_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_empty_twin_rust_async(
-    EmptyTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_empty_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_empty_twin_sync(
-    EmptyTwinSync self, SseSerializer serializer) {
-  _sse_encode_empty_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_dart_opaque_twin_normal(
-    EnumDartOpaqueTwinNormal self, SseSerializer serializer) {
-  _sse_encode_enum_dart_opaque_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
-    EnumDartOpaqueTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_enum_dart_opaque_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_dart_opaque_twin_sync(
-    EnumDartOpaqueTwinSync self, SseSerializer serializer) {
-  _sse_encode_enum_dart_opaque_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_opaque_twin_normal(
-    EnumOpaqueTwinNormal self, SseSerializer serializer) {
-  _sse_encode_enum_opaque_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_opaque_twin_rust_async(
-    EnumOpaqueTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_enum_opaque_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_opaque_twin_sync(
-    EnumOpaqueTwinSync self, SseSerializer serializer) {
-  _sse_encode_enum_opaque_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_with_item_mixed_twin_normal(
-    EnumWithItemMixedTwinNormal self, SseSerializer serializer) {
-  _sse_encode_enum_with_item_mixed_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
-    EnumWithItemMixedTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_enum_with_item_mixed_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_with_item_mixed_twin_sync(
-    EnumWithItemMixedTwinSync self, SseSerializer serializer) {
-  _sse_encode_enum_with_item_mixed_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_with_item_struct_twin_normal(
-    EnumWithItemStructTwinNormal self, SseSerializer serializer) {
-  _sse_encode_enum_with_item_struct_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_with_item_struct_twin_rust_async(
-    EnumWithItemStructTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_enum_with_item_struct_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_with_item_struct_twin_sync(
-    EnumWithItemStructTwinSync self, SseSerializer serializer) {
-  _sse_encode_enum_with_item_struct_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_with_item_tuple_twin_normal(
-    EnumWithItemTupleTwinNormal self, SseSerializer serializer) {
-  _sse_encode_enum_with_item_tuple_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
-    EnumWithItemTupleTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_enum_with_item_tuple_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_enum_with_item_tuple_twin_sync(
-    EnumWithItemTupleTwinSync self, SseSerializer serializer) {
-  _sse_encode_enum_with_item_tuple_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_event_twin_normal(
-    EventTwinNormal self, SseSerializer serializer) {
-  _sse_encode_event_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_event_twin_rust_async(
-    EventTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_event_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_event_twin_sync(
-    EventTwinSync self, SseSerializer serializer) {
-  _sse_encode_event_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_exotic_optionals_twin_normal(
-    ExoticOptionalsTwinNormal self, SseSerializer serializer) {
-  _sse_encode_exotic_optionals_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_exotic_optionals_twin_rust_async(
-    ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_exotic_optionals_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_exotic_optionals_twin_sync(
-    ExoticOptionalsTwinSync self, SseSerializer serializer) {
-  _sse_encode_exotic_optionals_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_f_32(double self, SseSerializer serializer) {
-  _sse_encode_f_32(self, serializer);
-}
-
-void _sse_encode_box_autoadd_f_64(double self, SseSerializer serializer) {
-  _sse_encode_f_64(self, serializer);
-}
-
-void _sse_encode_box_autoadd_feature_chrono_twin_normal(
-    FeatureChronoTwinNormal self, SseSerializer serializer) {
-  _sse_encode_feature_chrono_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_feature_chrono_twin_rust_async(
-    FeatureChronoTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_feature_chrono_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_feature_chrono_twin_sync(
-    FeatureChronoTwinSync self, SseSerializer serializer) {
-  _sse_encode_feature_chrono_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_feature_uuid_twin_normal(
-    FeatureUuidTwinNormal self, SseSerializer serializer) {
-  _sse_encode_feature_uuid_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_feature_uuid_twin_rust_async(
-    FeatureUuidTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_feature_uuid_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_feature_uuid_twin_sync(
-    FeatureUuidTwinSync self, SseSerializer serializer) {
-  _sse_encode_feature_uuid_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_feed_id_twin_normal(
-    FeedIdTwinNormal self, SseSerializer serializer) {
-  _sse_encode_feed_id_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_feed_id_twin_rust_async(
-    FeedIdTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_feed_id_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_feed_id_twin_sync(
-    FeedIdTwinSync self, SseSerializer serializer) {
-  _sse_encode_feed_id_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_i_16(int self, SseSerializer serializer) {
-  _sse_encode_i_16(self, serializer);
-}
-
-void _sse_encode_box_autoadd_i_32(int self, SseSerializer serializer) {
-  _sse_encode_i_32(self, serializer);
-}
-
-void _sse_encode_box_autoadd_i_64(int self, SseSerializer serializer) {
-  _sse_encode_i_64(self, serializer);
-}
-
-void _sse_encode_box_autoadd_i_8(int self, SseSerializer serializer) {
-  _sse_encode_i_8(self, serializer);
-}
-
-void _sse_encode_box_autoadd_kitchen_sink_twin_normal(
-    KitchenSinkTwinNormal self, SseSerializer serializer) {
-  _sse_encode_kitchen_sink_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_kitchen_sink_twin_rust_async(
-    KitchenSinkTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_kitchen_sink_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_kitchen_sink_twin_sync(
-    KitchenSinkTwinSync self, SseSerializer serializer) {
-  _sse_encode_kitchen_sink_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_macro_struct(
-    MacroStruct self, SseSerializer serializer) {
-  _sse_encode_macro_struct(self, serializer);
-}
-
-void _sse_encode_box_autoadd_measure_twin_normal(
-    MeasureTwinNormal self, SseSerializer serializer) {
-  _sse_encode_measure_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_measure_twin_rust_async(
-    MeasureTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_measure_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_measure_twin_sync(
-    MeasureTwinSync self, SseSerializer serializer) {
-  _sse_encode_measure_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_message_id_twin_normal(
-    MessageIdTwinNormal self, SseSerializer serializer) {
-  _sse_encode_message_id_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_message_id_twin_rust_async(
-    MessageIdTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_message_id_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_message_id_twin_sync(
-    MessageIdTwinSync self, SseSerializer serializer) {
-  _sse_encode_message_id_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_my_nested_struct_twin_normal(
-    MyNestedStructTwinNormal self, SseSerializer serializer) {
-  _sse_encode_my_nested_struct_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_my_nested_struct_twin_rust_async(
-    MyNestedStructTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_my_nested_struct_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_my_nested_struct_twin_sync(
-    MyNestedStructTwinSync self, SseSerializer serializer) {
-  _sse_encode_my_nested_struct_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_my_size(MySize self, SseSerializer serializer) {
-  _sse_encode_my_size(self, serializer);
-}
-
-void _sse_encode_box_autoadd_my_struct(
-    MyStruct self, SseSerializer serializer) {
-  _sse_encode_my_struct(self, serializer);
-}
-
-void _sse_encode_box_autoadd_my_tree_node_twin_normal(
-    MyTreeNodeTwinNormal self, SseSerializer serializer) {
-  _sse_encode_my_tree_node_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_my_tree_node_twin_rust_async(
-    MyTreeNodeTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_my_tree_node_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_my_tree_node_twin_sync(
-    MyTreeNodeTwinSync self, SseSerializer serializer) {
-  _sse_encode_my_tree_node_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_new_type_int_twin_normal(
-    NewTypeIntTwinNormal self, SseSerializer serializer) {
-  _sse_encode_new_type_int_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_new_type_int_twin_rust_async(
-    NewTypeIntTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_new_type_int_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_new_type_int_twin_sync(
-    NewTypeIntTwinSync self, SseSerializer serializer) {
-  _sse_encode_new_type_int_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_note_twin_normal(
-    NoteTwinNormal self, SseSerializer serializer) {
-  _sse_encode_note_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_note_twin_rust_async(
-    NoteTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_note_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_note_twin_sync(
-    NoteTwinSync self, SseSerializer serializer) {
-  _sse_encode_note_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_numbers(Numbers self, SseSerializer serializer) {
-  _sse_encode_numbers(self, serializer);
-}
-
-void _sse_encode_box_autoadd_opaque_nested_twin_normal(
-    OpaqueNestedTwinNormal self, SseSerializer serializer) {
-  _sse_encode_opaque_nested_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_opaque_nested_twin_rust_async(
-    OpaqueNestedTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_opaque_nested_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_opaque_nested_twin_sync(
-    OpaqueNestedTwinSync self, SseSerializer serializer) {
-  _sse_encode_opaque_nested_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_opt_vecs_twin_normal(
-    OptVecsTwinNormal self, SseSerializer serializer) {
-  _sse_encode_opt_vecs_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_opt_vecs_twin_rust_async(
-    OptVecsTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_opt_vecs_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_opt_vecs_twin_sync(
-    OptVecsTwinSync self, SseSerializer serializer) {
-  _sse_encode_opt_vecs_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_record_string_i_32(
-    (String, int) self, SseSerializer serializer) {
-  _sse_encode_record_string_i_32(self, serializer);
-}
-
-void _sse_encode_box_autoadd_sequences(
-    Sequences self, SseSerializer serializer) {
-  _sse_encode_sequences(self, serializer);
-}
-
-void _sse_encode_box_autoadd_some_struct_twin_normal(
-    SomeStructTwinNormal self, SseSerializer serializer) {
-  _sse_encode_some_struct_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_some_struct_twin_rust_async(
-    SomeStructTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_some_struct_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_some_struct_twin_sync(
-    SomeStructTwinSync self, SseSerializer serializer) {
-  _sse_encode_some_struct_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_comments_twin_normal(
-    StructWithCommentsTwinNormal self, SseSerializer serializer) {
-  _sse_encode_struct_with_comments_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_comments_twin_rust_async(
-    StructWithCommentsTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_struct_with_comments_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_comments_twin_sync(
-    StructWithCommentsTwinSync self, SseSerializer serializer) {
-  _sse_encode_struct_with_comments_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_enum_twin_normal(
-    StructWithEnumTwinNormal self, SseSerializer serializer) {
-  _sse_encode_struct_with_enum_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_enum_twin_rust_async(
-    StructWithEnumTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_struct_with_enum_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_enum_twin_sync(
-    StructWithEnumTwinSync self, SseSerializer serializer) {
-  _sse_encode_struct_with_enum_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_one_field_twin_normal(
-    StructWithOneFieldTwinNormal self, SseSerializer serializer) {
-  _sse_encode_struct_with_one_field_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_one_field_twin_rust_async(
-    StructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_struct_with_one_field_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_one_field_twin_sync(
-    StructWithOneFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_struct_with_one_field_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_two_field_twin_normal(
-    StructWithTwoFieldTwinNormal self, SseSerializer serializer) {
-  _sse_encode_struct_with_two_field_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_two_field_twin_rust_async(
-    StructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_struct_with_two_field_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_two_field_twin_sync(
-    StructWithTwoFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_struct_with_two_field_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_zero_field_twin_normal(
-    StructWithZeroFieldTwinNormal self, SseSerializer serializer) {
-  _sse_encode_struct_with_zero_field_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
-    StructWithZeroFieldTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_struct_with_zero_field_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_struct_with_zero_field_twin_sync(
-    StructWithZeroFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_struct_with_zero_field_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_sum_with_twin_normal(
-    SumWithTwinNormal self, SseSerializer serializer) {
-  _sse_encode_sum_with_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_sum_with_twin_rust_async(
-    SumWithTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_sum_with_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_sum_with_twin_sync(
-    SumWithTwinSync self, SseSerializer serializer) {
-  _sse_encode_sum_with_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_test_id_twin_normal(
-    TestIdTwinNormal self, SseSerializer serializer) {
-  _sse_encode_test_id_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_test_id_twin_rust_async(
-    TestIdTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_test_id_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_test_id_twin_sync(
-    TestIdTwinSync self, SseSerializer serializer) {
-  _sse_encode_test_id_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
-    TupleStructWithOneFieldTwinNormal self, SseSerializer serializer) {
-  _sse_encode_tuple_struct_with_one_field_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
-    TupleStructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_tuple_struct_with_one_field_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
-    TupleStructWithOneFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_tuple_struct_with_one_field_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
-    TupleStructWithTwoFieldTwinNormal self, SseSerializer serializer) {
-  _sse_encode_tuple_struct_with_two_field_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
-    TupleStructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_tuple_struct_with_two_field_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
-    TupleStructWithTwoFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_tuple_struct_with_two_field_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_u_16(int self, SseSerializer serializer) {
-  _sse_encode_u_16(self, serializer);
-}
-
-void _sse_encode_box_autoadd_u_32(int self, SseSerializer serializer) {
-  _sse_encode_u_32(self, serializer);
-}
-
-void _sse_encode_box_autoadd_u_64(int self, SseSerializer serializer) {
-  _sse_encode_u_64(self, serializer);
-}
-
-void _sse_encode_box_autoadd_u_8(int self, SseSerializer serializer) {
-  _sse_encode_u_8(self, serializer);
-}
-
-void _sse_encode_box_autoadd_user_id_twin_normal(
-    UserIdTwinNormal self, SseSerializer serializer) {
-  _sse_encode_user_id_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_user_id_twin_rust_async(
-    UserIdTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_user_id_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_user_id_twin_sync(
-    UserIdTwinSync self, SseSerializer serializer) {
-  _sse_encode_user_id_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_autoadd_weekdays_twin_normal(
-    WeekdaysTwinNormal self, SseSerializer serializer) {
-  _sse_encode_weekdays_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_autoadd_weekdays_twin_rust_async(
-    WeekdaysTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_weekdays_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_autoadd_weekdays_twin_sync(
-    WeekdaysTwinSync self, SseSerializer serializer) {
-  _sse_encode_weekdays_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_blob_twin_normal(
-    BlobTwinNormal self, SseSerializer serializer) {
-  _sse_encode_blob_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_blob_twin_rust_async(
-    BlobTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_blob_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_blob_twin_sync(
-    BlobTwinSync self, SseSerializer serializer) {
-  _sse_encode_blob_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_bool(bool self, SseSerializer serializer) {
-  _sse_encode_bool(self, serializer);
-}
-
-void _sse_encode_box_distance_twin_normal(
-    DistanceTwinNormal self, SseSerializer serializer) {
-  _sse_encode_distance_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_distance_twin_rust_async(
-    DistanceTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_distance_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_distance_twin_sync(
-    DistanceTwinSync self, SseSerializer serializer) {
-  _sse_encode_distance_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_exotic_optionals_twin_normal(
-    ExoticOptionalsTwinNormal self, SseSerializer serializer) {
-  _sse_encode_exotic_optionals_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_exotic_optionals_twin_rust_async(
-    ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_exotic_optionals_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_exotic_optionals_twin_sync(
-    ExoticOptionalsTwinSync self, SseSerializer serializer) {
-  _sse_encode_exotic_optionals_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_f_64(double self, SseSerializer serializer) {
-  _sse_encode_f_64(self, serializer);
-}
-
-void _sse_encode_box_i_32(int self, SseSerializer serializer) {
-  _sse_encode_i_32(self, serializer);
-}
-
-void _sse_encode_box_i_64(int self, SseSerializer serializer) {
-  _sse_encode_i_64(self, serializer);
-}
-
-void _sse_encode_box_i_8(int self, SseSerializer serializer) {
-  _sse_encode_i_8(self, serializer);
-}
-
-void _sse_encode_box_kitchen_sink_twin_normal(
-    KitchenSinkTwinNormal self, SseSerializer serializer) {
-  _sse_encode_kitchen_sink_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_kitchen_sink_twin_rust_async(
-    KitchenSinkTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_kitchen_sink_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_kitchen_sink_twin_sync(
-    KitchenSinkTwinSync self, SseSerializer serializer) {
-  _sse_encode_kitchen_sink_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_my_size(MySize self, SseSerializer serializer) {
-  _sse_encode_my_size(self, serializer);
-}
-
-void _sse_encode_box_speed_twin_normal(
-    SpeedTwinNormal self, SseSerializer serializer) {
-  _sse_encode_speed_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_speed_twin_rust_async(
-    SpeedTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_speed_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_speed_twin_sync(
-    SpeedTwinSync self, SseSerializer serializer) {
-  _sse_encode_speed_twin_sync(self, serializer);
-}
-
-void _sse_encode_box_u_8(int self, SseSerializer serializer) {
-  _sse_encode_u_8(self, serializer);
-}
-
-void _sse_encode_box_u_8_array_1600(
-    U8Array1600 self, SseSerializer serializer) {
-  _sse_encode_u_8_array_1600(self, serializer);
-}
-
-void _sse_encode_box_weekdays_twin_normal(
-    WeekdaysTwinNormal self, SseSerializer serializer) {
-  _sse_encode_weekdays_twin_normal(self, serializer);
-}
-
-void _sse_encode_box_weekdays_twin_rust_async(
-    WeekdaysTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_weekdays_twin_rust_async(self, serializer);
-}
-
-void _sse_encode_box_weekdays_twin_sync(
-    WeekdaysTwinSync self, SseSerializer serializer) {
-  _sse_encode_weekdays_twin_sync(self, serializer);
-}
-
-void _sse_encode_c_twin_normal(CTwinNormal self, SseSerializer serializer) {
-  _sse_encode_bool(self.c, serializer);
-}
-
-void _sse_encode_c_twin_rust_async(
-    CTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_bool(self.c, serializer);
-}
-
-void _sse_encode_c_twin_sync(CTwinSync self, SseSerializer serializer) {
-  _sse_encode_bool(self.c, serializer);
-}
-
-void _sse_encode_concatenate_with_twin_normal(
-    ConcatenateWithTwinNormal self, SseSerializer serializer) {
-  _sse_encode_String(self.a, serializer);
-}
-
-void _sse_encode_concatenate_with_twin_rust_async(
-    ConcatenateWithTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_String(self.a, serializer);
-}
-
-void _sse_encode_concatenate_with_twin_sync(
-    ConcatenateWithTwinSync self, SseSerializer serializer) {
-  _sse_encode_String(self.a, serializer);
-}
-
-void _sse_encode_custom_nested_error_inner_twin_normal(
-    CustomNestedErrorInnerTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case CustomNestedErrorInnerTwinNormal_Three(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_String(field0, serializer);
-
-    case CustomNestedErrorInnerTwinNormal_Four(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_u_32(field0, serializer);
-  }
-}
-
-void _sse_encode_custom_nested_error_inner_twin_rust_async(
-    CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case CustomNestedErrorInnerTwinRustAsync_Three(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_String(field0, serializer);
-
-    case CustomNestedErrorInnerTwinRustAsync_Four(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_u_32(field0, serializer);
-  }
-}
-
-void _sse_encode_custom_nested_error_inner_twin_sync(
-    CustomNestedErrorInnerTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case CustomNestedErrorInnerTwinSync_Three(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_String(field0, serializer);
-
-    case CustomNestedErrorInnerTwinSync_Four(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_u_32(field0, serializer);
-  }
-}
-
-void _sse_encode_custom_nested_error_outer_twin_normal(
-    CustomNestedErrorOuterTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case CustomNestedErrorOuterTwinNormal_One(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_String(field0, serializer);
-
-    case CustomNestedErrorOuterTwinNormal_Two(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(
-          field0, serializer);
-  }
-}
-
-void _sse_encode_custom_nested_error_outer_twin_rust_async(
-    CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case CustomNestedErrorOuterTwinRustAsync_One(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_String(field0, serializer);
-
-    case CustomNestedErrorOuterTwinRustAsync_Two(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
-          field0, serializer);
-  }
-}
-
-void _sse_encode_custom_nested_error_outer_twin_sync(
-    CustomNestedErrorOuterTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case CustomNestedErrorOuterTwinSync_One(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_String(field0, serializer);
-
-    case CustomNestedErrorOuterTwinSync_Two(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(
-          field0, serializer);
-  }
-}
-
-void _sse_encode_custom_struct_error_twin_normal(
-    CustomStructErrorTwinNormal self, SseSerializer serializer) {
-  _sse_encode_String(self.a, serializer);
-}
-
-void _sse_encode_custom_struct_error_twin_rust_async(
-    CustomStructErrorTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_String(self.a, serializer);
-}
-
-void _sse_encode_custom_struct_error_twin_sync(
-    CustomStructErrorTwinSync self, SseSerializer serializer) {
-  _sse_encode_String(self.a, serializer);
-}
-
-void _sse_encode_custom_struct_twin_normal(
-    CustomStructTwinNormal self, SseSerializer serializer) {
-  _sse_encode_String(self.message, serializer);
-}
-
-void _sse_encode_custom_struct_twin_rust_async(
-    CustomStructTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_String(self.message, serializer);
-}
-
-void _sse_encode_custom_struct_twin_sync(
-    CustomStructTwinSync self, SseSerializer serializer) {
-  _sse_encode_String(self.message, serializer);
-}
-
-void _sse_encode_customized_twin_normal(
-    CustomizedTwinNormal self, SseSerializer serializer) {
-  _sse_encode_String(self.finalField, serializer);
-  _sse_encode_opt_String(self.nonFinalField, serializer);
-}
-
-void _sse_encode_customized_twin_rust_async(
-    CustomizedTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_String(self.finalField, serializer);
-  _sse_encode_opt_String(self.nonFinalField, serializer);
-}
-
-void _sse_encode_customized_twin_sync(
-    CustomizedTwinSync self, SseSerializer serializer) {
-  _sse_encode_String(self.finalField, serializer);
-  _sse_encode_opt_String(self.nonFinalField, serializer);
-}
-
-void _sse_encode_dart_opaque_nested_twin_normal(
-    DartOpaqueNestedTwinNormal self, SseSerializer serializer) {
-  _sse_encode_DartOpaque(self.first, serializer);
-  _sse_encode_DartOpaque(self.second, serializer);
-}
-
-void _sse_encode_dart_opaque_nested_twin_rust_async(
-    DartOpaqueNestedTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_DartOpaque(self.first, serializer);
-  _sse_encode_DartOpaque(self.second, serializer);
-}
-
-void _sse_encode_dart_opaque_nested_twin_sync(
-    DartOpaqueNestedTwinSync self, SseSerializer serializer) {
-  _sse_encode_DartOpaque(self.first, serializer);
-  _sse_encode_DartOpaque(self.second, serializer);
-}
-
-void _sse_encode_distance_twin_normal(
-    DistanceTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case DistanceTwinNormal_Unknown():
-      _sse_encode_i_32(0, serializer);
-
-    case DistanceTwinNormal_Map(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_f_64(field0, serializer);
-  }
-}
-
-void _sse_encode_distance_twin_rust_async(
-    DistanceTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case DistanceTwinRustAsync_Unknown():
-      _sse_encode_i_32(0, serializer);
-
-    case DistanceTwinRustAsync_Map(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_f_64(field0, serializer);
-  }
-}
-
-void _sse_encode_distance_twin_sync(
-    DistanceTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case DistanceTwinSync_Unknown():
-      _sse_encode_i_32(0, serializer);
-
-    case DistanceTwinSync_Map(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_f_64(field0, serializer);
-  }
-}
-
-void _sse_encode_empty_twin_normal(
-    EmptyTwinNormal self, SseSerializer serializer) {}
-
-void _sse_encode_empty_twin_rust_async(
-    EmptyTwinRustAsync self, SseSerializer serializer) {}
-
-void _sse_encode_empty_twin_sync(
-    EmptyTwinSync self, SseSerializer serializer) {}
-
-void _sse_encode_enum_dart_opaque_twin_normal(
-    EnumDartOpaqueTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case EnumDartOpaqueTwinNormal_Primitive(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_i_32(field0, serializer);
-
-    case EnumDartOpaqueTwinNormal_Opaque(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_DartOpaque(field0, serializer);
-  }
-}
-
-void _sse_encode_enum_dart_opaque_twin_rust_async(
-    EnumDartOpaqueTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumDartOpaqueTwinRustAsync_Primitive(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_i_32(field0, serializer);
-
-    case EnumDartOpaqueTwinRustAsync_Opaque(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_DartOpaque(field0, serializer);
-  }
-}
-
-void _sse_encode_enum_dart_opaque_twin_sync(
-    EnumDartOpaqueTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumDartOpaqueTwinSync_Primitive(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_i_32(field0, serializer);
-
-    case EnumDartOpaqueTwinSync_Opaque(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_DartOpaque(field0, serializer);
-  }
-}
-
-void _sse_encode_enum_opaque_twin_normal(
-    EnumOpaqueTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case EnumOpaqueTwinNormal_Struct(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_RustOpaque_hide_data(field0, serializer);
-
-    case EnumOpaqueTwinNormal_Primitive(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_RustOpaque_i_32(field0, serializer);
-
-    case EnumOpaqueTwinNormal_TraitObj(field0: final field0):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_RustOpaque_box_dynDartDebugTwinNormal(field0, serializer);
-
-    case EnumOpaqueTwinNormal_Mutex(field0: final field0):
-      _sse_encode_i_32(3, serializer);
-      _sse_encode_RustOpaque_MutexHideData(field0, serializer);
-
-    case EnumOpaqueTwinNormal_RwLock(field0: final field0):
-      _sse_encode_i_32(4, serializer);
-      _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
-  }
-}
-
-void _sse_encode_enum_opaque_twin_rust_async(
-    EnumOpaqueTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumOpaqueTwinRustAsync_Struct(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_RustOpaque_hide_data(field0, serializer);
-
-    case EnumOpaqueTwinRustAsync_Primitive(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_RustOpaque_i_32(field0, serializer);
-
-    case EnumOpaqueTwinRustAsync_TraitObj(field0: final field0):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(field0, serializer);
-
-    case EnumOpaqueTwinRustAsync_Mutex(field0: final field0):
-      _sse_encode_i_32(3, serializer);
-      _sse_encode_RustOpaque_MutexHideData(field0, serializer);
-
-    case EnumOpaqueTwinRustAsync_RwLock(field0: final field0):
-      _sse_encode_i_32(4, serializer);
-      _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
-  }
-}
-
-void _sse_encode_enum_opaque_twin_sync(
-    EnumOpaqueTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumOpaqueTwinSync_Struct(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_RustOpaque_hide_data(field0, serializer);
-
-    case EnumOpaqueTwinSync_Primitive(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_RustOpaque_i_32(field0, serializer);
-
-    case EnumOpaqueTwinSync_TraitObj(field0: final field0):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_RustOpaque_box_dynDartDebugTwinSync(field0, serializer);
-
-    case EnumOpaqueTwinSync_Mutex(field0: final field0):
-      _sse_encode_i_32(3, serializer);
-      _sse_encode_RustOpaque_MutexHideData(field0, serializer);
-
-    case EnumOpaqueTwinSync_RwLock(field0: final field0):
-      _sse_encode_i_32(4, serializer);
-      _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
-  }
-}
-
-void _sse_encode_enum_simple_twin_normal(
-    EnumSimpleTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32(self.index, serializer);
-}
-
-void _sse_encode_enum_simple_twin_rust_async(
-    EnumSimpleTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.index, serializer);
-}
-
-void _sse_encode_enum_simple_twin_sync(
-    EnumSimpleTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.index, serializer);
-}
-
-void _sse_encode_enum_with_item_mixed_twin_normal(
-    EnumWithItemMixedTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case EnumWithItemMixedTwinNormal_A():
-      _sse_encode_i_32(0, serializer);
-
-    case EnumWithItemMixedTwinNormal_B(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_list_prim_u_8(field0, serializer);
-
-    case EnumWithItemMixedTwinNormal_C(cField: final cField):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_String(cField, serializer);
-  }
-}
-
-void _sse_encode_enum_with_item_mixed_twin_rust_async(
-    EnumWithItemMixedTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumWithItemMixedTwinRustAsync_A():
-      _sse_encode_i_32(0, serializer);
-
-    case EnumWithItemMixedTwinRustAsync_B(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_list_prim_u_8(field0, serializer);
-
-    case EnumWithItemMixedTwinRustAsync_C(cField: final cField):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_String(cField, serializer);
-  }
-}
-
-void _sse_encode_enum_with_item_mixed_twin_sync(
-    EnumWithItemMixedTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumWithItemMixedTwinSync_A():
-      _sse_encode_i_32(0, serializer);
-
-    case EnumWithItemMixedTwinSync_B(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_list_prim_u_8(field0, serializer);
-
-    case EnumWithItemMixedTwinSync_C(cField: final cField):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_String(cField, serializer);
-  }
-}
-
-void _sse_encode_enum_with_item_struct_twin_normal(
-    EnumWithItemStructTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case EnumWithItemStructTwinNormal_A(aField: final aField):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_list_prim_u_8(aField, serializer);
-
-    case EnumWithItemStructTwinNormal_B(bField: final bField):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_list_prim_i_32(bField, serializer);
-  }
-}
-
-void _sse_encode_enum_with_item_struct_twin_rust_async(
-    EnumWithItemStructTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumWithItemStructTwinRustAsync_A(aField: final aField):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_list_prim_u_8(aField, serializer);
-
-    case EnumWithItemStructTwinRustAsync_B(bField: final bField):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_list_prim_i_32(bField, serializer);
-  }
-}
-
-void _sse_encode_enum_with_item_struct_twin_sync(
-    EnumWithItemStructTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumWithItemStructTwinSync_A(aField: final aField):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_list_prim_u_8(aField, serializer);
-
-    case EnumWithItemStructTwinSync_B(bField: final bField):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_list_prim_i_32(bField, serializer);
-  }
-}
-
-void _sse_encode_enum_with_item_tuple_twin_normal(
-    EnumWithItemTupleTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case EnumWithItemTupleTwinNormal_A(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_list_prim_u_8(field0, serializer);
-
-    case EnumWithItemTupleTwinNormal_B(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_list_prim_i_32(field0, serializer);
-  }
-}
-
-void _sse_encode_enum_with_item_tuple_twin_rust_async(
-    EnumWithItemTupleTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumWithItemTupleTwinRustAsync_A(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_list_prim_u_8(field0, serializer);
-
-    case EnumWithItemTupleTwinRustAsync_B(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_list_prim_i_32(field0, serializer);
-  }
-}
-
-void _sse_encode_enum_with_item_tuple_twin_sync(
-    EnumWithItemTupleTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case EnumWithItemTupleTwinSync_A(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_list_prim_u_8(field0, serializer);
-
-    case EnumWithItemTupleTwinSync_B(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_list_prim_i_32(field0, serializer);
-  }
-}
-
-void _sse_encode_event_twin_normal(
-    EventTwinNormal self, SseSerializer serializer) {
-  _sse_encode_String(self.address, serializer);
-  _sse_encode_String(self.payload, serializer);
-}
-
-void _sse_encode_event_twin_rust_async(
-    EventTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_String(self.address, serializer);
-  _sse_encode_String(self.payload, serializer);
-}
-
-void _sse_encode_event_twin_sync(EventTwinSync self, SseSerializer serializer) {
-  _sse_encode_String(self.address, serializer);
-  _sse_encode_String(self.payload, serializer);
-}
-
-void _sse_encode_exotic_optionals_twin_normal(
-    ExoticOptionalsTwinNormal self, SseSerializer serializer) {
-  _sse_encode_opt_box_autoadd_i_32(self.int32, serializer);
-  _sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
-  _sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
-  _sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
-  _sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
-  _sse_encode_opt_list_prim_i_8(self.int8List, serializer);
-  _sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
-  _sse_encode_opt_list_prim_i_32(self.int32List, serializer);
-  _sse_encode_opt_list_prim_f_32(self.float32List, serializer);
-  _sse_encode_opt_list_prim_f_64(self.float64List, serializer);
-  _sse_encode_opt_list_attribute_twin_normal(self.attributes, serializer);
-  _sse_encode_list_opt_box_autoadd_attribute_twin_normal(
-      self.attributesNullable, serializer);
-  _sse_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
-      self.nullableAttributes, serializer);
-  _sse_encode_opt_box_autoadd_new_type_int_twin_normal(
-      self.newtypeint, serializer);
-}
-
-void _sse_encode_exotic_optionals_twin_rust_async(
-    ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_opt_box_autoadd_i_32(self.int32, serializer);
-  _sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
-  _sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
-  _sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
-  _sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
-  _sse_encode_opt_list_prim_i_8(self.int8List, serializer);
-  _sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
-  _sse_encode_opt_list_prim_i_32(self.int32List, serializer);
-  _sse_encode_opt_list_prim_f_32(self.float32List, serializer);
-  _sse_encode_opt_list_prim_f_64(self.float64List, serializer);
-  _sse_encode_opt_list_attribute_twin_rust_async(self.attributes, serializer);
-  _sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
-      self.attributesNullable, serializer);
-  _sse_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
-      self.nullableAttributes, serializer);
-  _sse_encode_opt_box_autoadd_new_type_int_twin_rust_async(
-      self.newtypeint, serializer);
-}
-
-void _sse_encode_exotic_optionals_twin_sync(
-    ExoticOptionalsTwinSync self, SseSerializer serializer) {
-  _sse_encode_opt_box_autoadd_i_32(self.int32, serializer);
-  _sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
-  _sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
-  _sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
-  _sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
-  _sse_encode_opt_list_prim_i_8(self.int8List, serializer);
-  _sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
-  _sse_encode_opt_list_prim_i_32(self.int32List, serializer);
-  _sse_encode_opt_list_prim_f_32(self.float32List, serializer);
-  _sse_encode_opt_list_prim_f_64(self.float64List, serializer);
-  _sse_encode_opt_list_attribute_twin_sync(self.attributes, serializer);
-  _sse_encode_list_opt_box_autoadd_attribute_twin_sync(
-      self.attributesNullable, serializer);
-  _sse_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
-      self.nullableAttributes, serializer);
-  _sse_encode_opt_box_autoadd_new_type_int_twin_sync(
-      self.newtypeint, serializer);
-}
-
-void _sse_encode_f_32(double self, SseSerializer serializer) {
-  serializer.buffer.putFloat32(self);
-}
-
-void _sse_encode_f_64(double self, SseSerializer serializer) {
-  serializer.buffer.putFloat64(self);
-}
-
-void _sse_encode_f_64_array_16(F64Array16 self, SseSerializer serializer) {
-  _sse_encode_list_prim_f_64(self.inner, serializer);
-}
-
-void _sse_encode_feature_chrono_twin_normal(
-    FeatureChronoTwinNormal self, SseSerializer serializer) {
-  _sse_encode_Chrono_Utc(self.utc, serializer);
-  _sse_encode_Chrono_Local(self.local, serializer);
-  _sse_encode_Chrono_Duration(self.duration, serializer);
-  _sse_encode_Chrono_Naive(self.naive, serializer);
-}
-
-void _sse_encode_feature_chrono_twin_rust_async(
-    FeatureChronoTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_Chrono_Utc(self.utc, serializer);
-  _sse_encode_Chrono_Local(self.local, serializer);
-  _sse_encode_Chrono_Duration(self.duration, serializer);
-  _sse_encode_Chrono_Naive(self.naive, serializer);
-}
-
-void _sse_encode_feature_chrono_twin_sync(
-    FeatureChronoTwinSync self, SseSerializer serializer) {
-  _sse_encode_Chrono_Utc(self.utc, serializer);
-  _sse_encode_Chrono_Local(self.local, serializer);
-  _sse_encode_Chrono_Duration(self.duration, serializer);
-  _sse_encode_Chrono_Naive(self.naive, serializer);
-}
-
-void _sse_encode_feature_uuid_twin_normal(
-    FeatureUuidTwinNormal self, SseSerializer serializer) {
-  _sse_encode_Uuid(self.one, serializer);
-}
-
-void _sse_encode_feature_uuid_twin_rust_async(
-    FeatureUuidTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_Uuid(self.one, serializer);
-}
-
-void _sse_encode_feature_uuid_twin_sync(
-    FeatureUuidTwinSync self, SseSerializer serializer) {
-  _sse_encode_Uuid(self.one, serializer);
-}
-
-void _sse_encode_feed_id_twin_normal(
-    FeedIdTwinNormal self, SseSerializer serializer) {
-  _sse_encode_u_8_array_8(self.field0, serializer);
-}
-
-void _sse_encode_feed_id_twin_rust_async(
-    FeedIdTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_u_8_array_8(self.field0, serializer);
-}
-
-void _sse_encode_feed_id_twin_sync(
-    FeedIdTwinSync self, SseSerializer serializer) {
-  _sse_encode_u_8_array_8(self.field0, serializer);
-}
-
-void _sse_encode_i_16(int self, SseSerializer serializer) {
-  serializer.buffer.putInt16(self);
-}
-
-void _sse_encode_i_32(int self, SseSerializer serializer) {
-  serializer.buffer.putInt32(self);
-}
-
-void _sse_encode_i_32_array_2(I32Array2 self, SseSerializer serializer) {
-  _sse_encode_list_prim_i_32(self.inner, serializer);
-}
-
-void _sse_encode_i_64(int self, SseSerializer serializer) {
-  serializer.buffer.putInt64(self);
-}
-
-void _sse_encode_i_8(int self, SseSerializer serializer) {
-  serializer.buffer.putInt8(self);
-}
-
-void _sse_encode_kitchen_sink_twin_normal(
-    KitchenSinkTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case KitchenSinkTwinNormal_Empty():
-      _sse_encode_i_32(0, serializer);
-
-    case KitchenSinkTwinNormal_Primitives(
-        int32: final int32,
-        float64: final float64,
-        boolean: final boolean
-      ):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_i_32(int32, serializer);
-      _sse_encode_f_64(float64, serializer);
-      _sse_encode_bool(boolean, serializer);
-
-    case KitchenSinkTwinNormal_Nested(
-        field0: final field0,
-        field1: final field1
-      ):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_i_32(field0, serializer);
-      _sse_encode_box_kitchen_sink_twin_normal(field1, serializer);
-
-    case KitchenSinkTwinNormal_Optional(
-        field0: final field0,
-        field1: final field1
-      ):
-      _sse_encode_i_32(3, serializer);
-      _sse_encode_opt_box_autoadd_i_32(field0, serializer);
-      _sse_encode_opt_box_autoadd_i_32(field1, serializer);
-
-    case KitchenSinkTwinNormal_Buffer(field0: final field0):
-      _sse_encode_i_32(4, serializer);
-      _sse_encode_list_prim_u_8(field0, serializer);
-
-    case KitchenSinkTwinNormal_Enums(field0: final field0):
-      _sse_encode_i_32(5, serializer);
-      _sse_encode_weekdays_twin_normal(field0, serializer);
-  }
-}
-
-void _sse_encode_kitchen_sink_twin_rust_async(
-    KitchenSinkTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case KitchenSinkTwinRustAsync_Empty():
-      _sse_encode_i_32(0, serializer);
-
-    case KitchenSinkTwinRustAsync_Primitives(
-        int32: final int32,
-        float64: final float64,
-        boolean: final boolean
-      ):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_i_32(int32, serializer);
-      _sse_encode_f_64(float64, serializer);
-      _sse_encode_bool(boolean, serializer);
-
-    case KitchenSinkTwinRustAsync_Nested(
-        field0: final field0,
-        field1: final field1
-      ):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_i_32(field0, serializer);
-      _sse_encode_box_kitchen_sink_twin_rust_async(field1, serializer);
-
-    case KitchenSinkTwinRustAsync_Optional(
-        field0: final field0,
-        field1: final field1
-      ):
-      _sse_encode_i_32(3, serializer);
-      _sse_encode_opt_box_autoadd_i_32(field0, serializer);
-      _sse_encode_opt_box_autoadd_i_32(field1, serializer);
-
-    case KitchenSinkTwinRustAsync_Buffer(field0: final field0):
-      _sse_encode_i_32(4, serializer);
-      _sse_encode_list_prim_u_8(field0, serializer);
-
-    case KitchenSinkTwinRustAsync_Enums(field0: final field0):
-      _sse_encode_i_32(5, serializer);
-      _sse_encode_weekdays_twin_rust_async(field0, serializer);
-  }
-}
-
-void _sse_encode_kitchen_sink_twin_sync(
-    KitchenSinkTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case KitchenSinkTwinSync_Empty():
-      _sse_encode_i_32(0, serializer);
-
-    case KitchenSinkTwinSync_Primitives(
-        int32: final int32,
-        float64: final float64,
-        boolean: final boolean
-      ):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_i_32(int32, serializer);
-      _sse_encode_f_64(float64, serializer);
-      _sse_encode_bool(boolean, serializer);
-
-    case KitchenSinkTwinSync_Nested(field0: final field0, field1: final field1):
-      _sse_encode_i_32(2, serializer);
-      _sse_encode_i_32(field0, serializer);
-      _sse_encode_box_kitchen_sink_twin_sync(field1, serializer);
-
-    case KitchenSinkTwinSync_Optional(
-        field0: final field0,
-        field1: final field1
-      ):
-      _sse_encode_i_32(3, serializer);
-      _sse_encode_opt_box_autoadd_i_32(field0, serializer);
-      _sse_encode_opt_box_autoadd_i_32(field1, serializer);
-
-    case KitchenSinkTwinSync_Buffer(field0: final field0):
-      _sse_encode_i_32(4, serializer);
-      _sse_encode_list_prim_u_8(field0, serializer);
-
-    case KitchenSinkTwinSync_Enums(field0: final field0):
-      _sse_encode_i_32(5, serializer);
-      _sse_encode_weekdays_twin_sync(field0, serializer);
-  }
-}
-
-void _sse_encode_list_Chrono_Duration(
-    List<Duration> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_Chrono_Duration(item, serializer);
-  }
-}
-
-void _sse_encode_list_Chrono_Naive(
-    List<DateTime> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_Chrono_Naive(item, serializer);
-  }
-}
-
-void _sse_encode_list_DartOpaque(List<Object> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_DartOpaque(item, serializer);
-  }
-}
-
-void _sse_encode_list_RustOpaque_hide_data(
-    List<HideData> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_RustOpaque_hide_data(item, serializer);
-  }
-}
-
-void _sse_encode_list_String(List<String> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_String(item, serializer);
-  }
-}
-
-void _sse_encode_list_application_env_var(
-    List<ApplicationEnvVar> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_application_env_var(item, serializer);
-  }
-}
-
-void _sse_encode_list_attribute_twin_normal(
-    List<AttributeTwinNormal> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_attribute_twin_normal(item, serializer);
-  }
-}
-
-void _sse_encode_list_attribute_twin_rust_async(
-    List<AttributeTwinRustAsync> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_attribute_twin_rust_async(item, serializer);
-  }
-}
-
-void _sse_encode_list_attribute_twin_sync(
-    List<AttributeTwinSync> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_attribute_twin_sync(item, serializer);
-  }
-}
-
-void _sse_encode_list_bool(List<bool> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_bool(item, serializer);
-  }
-}
-
-void _sse_encode_list_my_size(List<MySize> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_my_size(item, serializer);
-  }
-}
-
-void _sse_encode_list_my_tree_node_twin_normal(
-    List<MyTreeNodeTwinNormal> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_my_tree_node_twin_normal(item, serializer);
-  }
-}
-
-void _sse_encode_list_my_tree_node_twin_rust_async(
-    List<MyTreeNodeTwinRustAsync> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_my_tree_node_twin_rust_async(item, serializer);
-  }
-}
-
-void _sse_encode_list_my_tree_node_twin_sync(
-    List<MyTreeNodeTwinSync> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_my_tree_node_twin_sync(item, serializer);
-  }
-}
-
-void _sse_encode_list_opt_String(List<String?> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_opt_String(item, serializer);
-  }
-}
-
-void _sse_encode_list_opt_box_autoadd_attribute_twin_normal(
-    List<AttributeTwinNormal?> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_opt_box_autoadd_attribute_twin_normal(item, serializer);
-  }
-}
-
-void _sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
-    List<AttributeTwinRustAsync?> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_opt_box_autoadd_attribute_twin_rust_async(item, serializer);
-  }
-}
-
-void _sse_encode_list_opt_box_autoadd_attribute_twin_sync(
-    List<AttributeTwinSync?> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_opt_box_autoadd_attribute_twin_sync(item, serializer);
-  }
-}
-
-void _sse_encode_list_opt_box_autoadd_i_32(
-    List<int?> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_opt_box_autoadd_i_32(item, serializer);
-  }
-}
-
-void _sse_encode_list_opt_box_autoadd_weekdays_twin_normal(
-    List<WeekdaysTwinNormal?> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_opt_box_autoadd_weekdays_twin_normal(item, serializer);
-  }
-}
-
-void _sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
-    List<WeekdaysTwinRustAsync?> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_opt_box_autoadd_weekdays_twin_rust_async(item, serializer);
-  }
-}
-
-void _sse_encode_list_opt_box_autoadd_weekdays_twin_sync(
-    List<WeekdaysTwinSync?> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_opt_box_autoadd_weekdays_twin_sync(item, serializer);
-  }
-}
-
-void _sse_encode_list_opt_list_prim_i_32(
-    List<Int32List?> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_opt_list_prim_i_32(item, serializer);
-  }
-}
-
-void _sse_encode_list_prim_f_32(Float32List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putFloat32List(self);
-}
-
-void _sse_encode_list_prim_f_64(Float64List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putFloat64List(self);
-}
-
-void _sse_encode_list_prim_i_16(Int16List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putInt16List(self);
-}
-
-void _sse_encode_list_prim_i_32(Int32List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putInt32List(self);
-}
-
-void _sse_encode_list_prim_i_64(Int64List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putInt64List(self);
-}
-
-void _sse_encode_list_prim_i_8(Int8List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putInt8List(self);
-}
-
-void _sse_encode_list_prim_u_16(Uint16List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putUint16List(self);
-}
-
-void _sse_encode_list_prim_u_32(Uint32List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putUint32List(self);
-}
-
-void _sse_encode_list_prim_u_64(Uint64List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putUint64List(self);
-}
-
-void _sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  serializer.buffer.putUint8List(self);
-}
-
-void _sse_encode_list_record_string_i_32(
-    List<(String, int)> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_record_string_i_32(item, serializer);
-  }
-}
-
-void _sse_encode_list_test_id_twin_normal(
-    List<TestIdTwinNormal> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_test_id_twin_normal(item, serializer);
-  }
-}
-
-void _sse_encode_list_test_id_twin_rust_async(
-    List<TestIdTwinRustAsync> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_test_id_twin_rust_async(item, serializer);
-  }
-}
-
-void _sse_encode_list_test_id_twin_sync(
-    List<TestIdTwinSync> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_test_id_twin_sync(item, serializer);
-  }
-}
-
-void _sse_encode_list_weekdays_twin_normal(
-    List<WeekdaysTwinNormal> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_weekdays_twin_normal(item, serializer);
-  }
-}
-
-void _sse_encode_list_weekdays_twin_rust_async(
-    List<WeekdaysTwinRustAsync> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_weekdays_twin_rust_async(item, serializer);
-  }
-}
-
-void _sse_encode_list_weekdays_twin_sync(
-    List<WeekdaysTwinSync> self, SseSerializer serializer) {
-  _sse_encode_i_32(self.length, serializer);
-  for (final item in self) {
-    _sse_encode_weekdays_twin_sync(item, serializer);
-  }
-}
-
-void _sse_encode_macro_struct(MacroStruct self, SseSerializer serializer) {
-  _sse_encode_i_32(self.data, serializer);
-}
-
-void _sse_encode_measure_twin_normal(
-    MeasureTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case MeasureTwinNormal_Speed(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_box_speed_twin_normal(field0, serializer);
-
-    case MeasureTwinNormal_Distance(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_box_distance_twin_normal(field0, serializer);
-  }
-}
-
-void _sse_encode_measure_twin_rust_async(
-    MeasureTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case MeasureTwinRustAsync_Speed(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_box_speed_twin_rust_async(field0, serializer);
-
-    case MeasureTwinRustAsync_Distance(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_box_distance_twin_rust_async(field0, serializer);
-  }
-}
-
-void _sse_encode_measure_twin_sync(
-    MeasureTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case MeasureTwinSync_Speed(field0: final field0):
-      _sse_encode_i_32(0, serializer);
-      _sse_encode_box_speed_twin_sync(field0, serializer);
-
-    case MeasureTwinSync_Distance(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_box_distance_twin_sync(field0, serializer);
-  }
-}
-
-void _sse_encode_message_id_twin_normal(
-    MessageIdTwinNormal self, SseSerializer serializer) {
-  _sse_encode_u_8_array_32(self.field0, serializer);
-}
-
-void _sse_encode_message_id_twin_rust_async(
-    MessageIdTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_u_8_array_32(self.field0, serializer);
-}
-
-void _sse_encode_message_id_twin_sync(
-    MessageIdTwinSync self, SseSerializer serializer) {
-  _sse_encode_u_8_array_32(self.field0, serializer);
-}
-
-void _sse_encode_my_enum(MyEnum self, SseSerializer serializer) {
-  _sse_encode_i_32(self.index, serializer);
-}
-
-void _sse_encode_my_nested_struct_twin_normal(
-    MyNestedStructTwinNormal self, SseSerializer serializer) {
-  _sse_encode_my_tree_node_twin_normal(self.treeNode, serializer);
-  _sse_encode_weekdays_twin_normal(self.weekday, serializer);
-}
-
-void _sse_encode_my_nested_struct_twin_rust_async(
-    MyNestedStructTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_my_tree_node_twin_rust_async(self.treeNode, serializer);
-  _sse_encode_weekdays_twin_rust_async(self.weekday, serializer);
-}
-
-void _sse_encode_my_nested_struct_twin_sync(
-    MyNestedStructTwinSync self, SseSerializer serializer) {
-  _sse_encode_my_tree_node_twin_sync(self.treeNode, serializer);
-  _sse_encode_weekdays_twin_sync(self.weekday, serializer);
-}
-
-void _sse_encode_my_size(MySize self, SseSerializer serializer) {
-  _sse_encode_i_32(self.width, serializer);
-  _sse_encode_i_32(self.height, serializer);
-}
-
-void _sse_encode_my_struct(MyStruct self, SseSerializer serializer) {
-  _sse_encode_bool(self.content, serializer);
-}
-
-void _sse_encode_my_tree_node_twin_normal(
-    MyTreeNodeTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32(self.valueI32, serializer);
-  _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
-  _sse_encode_bool(self.valueBoolean, serializer);
-  _sse_encode_list_my_tree_node_twin_normal(self.children, serializer);
-}
-
-void _sse_encode_my_tree_node_twin_rust_async(
-    MyTreeNodeTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.valueI32, serializer);
-  _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
-  _sse_encode_bool(self.valueBoolean, serializer);
-  _sse_encode_list_my_tree_node_twin_rust_async(self.children, serializer);
-}
-
-void _sse_encode_my_tree_node_twin_sync(
-    MyTreeNodeTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.valueI32, serializer);
-  _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
-  _sse_encode_bool(self.valueBoolean, serializer);
-  _sse_encode_list_my_tree_node_twin_sync(self.children, serializer);
-}
-
-void _sse_encode_new_type_int_twin_normal(
-    NewTypeIntTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_64(self.field0, serializer);
-}
-
-void _sse_encode_new_type_int_twin_rust_async(
-    NewTypeIntTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_64(self.field0, serializer);
-}
-
-void _sse_encode_new_type_int_twin_sync(
-    NewTypeIntTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_64(self.field0, serializer);
-}
-
-void _sse_encode_note_twin_normal(
-    NoteTwinNormal self, SseSerializer serializer) {
-  _sse_encode_box_weekdays_twin_normal(self.day, serializer);
-  _sse_encode_String(self.body, serializer);
-}
-
-void _sse_encode_note_twin_rust_async(
-    NoteTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_box_weekdays_twin_rust_async(self.day, serializer);
-  _sse_encode_String(self.body, serializer);
-}
-
-void _sse_encode_note_twin_sync(NoteTwinSync self, SseSerializer serializer) {
-  _sse_encode_box_weekdays_twin_sync(self.day, serializer);
-  _sse_encode_String(self.body, serializer);
-}
-
-void _sse_encode_numbers(Numbers self, SseSerializer serializer) {
-  _sse_encode_list_prim_i_32(self.field0, serializer);
-}
-
-void _sse_encode_opaque_nested_twin_normal(
-    OpaqueNestedTwinNormal self, SseSerializer serializer) {
-  _sse_encode_RustOpaque_hide_data(self.first, serializer);
-  _sse_encode_RustOpaque_hide_data(self.second, serializer);
-}
-
-void _sse_encode_opaque_nested_twin_rust_async(
-    OpaqueNestedTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_RustOpaque_hide_data(self.first, serializer);
-  _sse_encode_RustOpaque_hide_data(self.second, serializer);
-}
-
-void _sse_encode_opaque_nested_twin_sync(
-    OpaqueNestedTwinSync self, SseSerializer serializer) {
-  _sse_encode_RustOpaque_hide_data(self.first, serializer);
-  _sse_encode_RustOpaque_hide_data(self.second, serializer);
-}
-
-void _sse_encode_opt_String(String? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_String(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_Chrono_Utc(
-    DateTime? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_Chrono_Utc(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_DartOpaque(
-    Object? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_DartOpaque(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_RustOpaque_hide_data(
-    HideData? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_RustOpaque_hide_data(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_application_env(
-    ApplicationEnv? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_application_env(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_attribute_twin_normal(
-    AttributeTwinNormal? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_attribute_twin_normal(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_attribute_twin_rust_async(
-    AttributeTwinRustAsync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_attribute_twin_rust_async(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_attribute_twin_sync(
-    AttributeTwinSync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_attribute_twin_sync(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_bool(bool? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_bool(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_exotic_optionals_twin_normal(
-    ExoticOptionalsTwinNormal? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_exotic_optionals_twin_normal(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(
-    ExoticOptionalsTwinRustAsync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_exotic_optionals_twin_rust_async(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_exotic_optionals_twin_sync(
-    ExoticOptionalsTwinSync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_exotic_optionals_twin_sync(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_f_32(double? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_f_32(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_f_64(double? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_f_64(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_i_16(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_i_16(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_i_32(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_i_32(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_i_64(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_i_64(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_i_8(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_i_8(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_new_type_int_twin_normal(
-    NewTypeIntTwinNormal? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_new_type_int_twin_normal(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_new_type_int_twin_rust_async(
-    NewTypeIntTwinRustAsync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_new_type_int_twin_rust_async(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_new_type_int_twin_sync(
-    NewTypeIntTwinSync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_new_type_int_twin_sync(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_record_string_i_32(
-    (String, int)? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_record_string_i_32(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_u_16(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_u_16(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_u_32(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_u_32(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_u_64(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_u_64(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_u_8(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_u_8(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_weekdays_twin_normal(
-    WeekdaysTwinNormal? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_weekdays_twin_normal(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_weekdays_twin_rust_async(
-    WeekdaysTwinRustAsync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_weekdays_twin_rust_async(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_autoadd_weekdays_twin_sync(
-    WeekdaysTwinSync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_autoadd_weekdays_twin_sync(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_bool(bool? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_bool(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_exotic_optionals_twin_normal(
-    ExoticOptionalsTwinNormal? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_exotic_optionals_twin_normal(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_exotic_optionals_twin_rust_async(
-    ExoticOptionalsTwinRustAsync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_exotic_optionals_twin_rust_async(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_exotic_optionals_twin_sync(
-    ExoticOptionalsTwinSync? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_exotic_optionals_twin_sync(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_f_64(double? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_f_64(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_i_32(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_i_32(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_i_64(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_i_64(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_i_8(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_i_8(self, serializer);
-  }
-}
-
-void _sse_encode_opt_box_u_8(int? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_box_u_8(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_attribute_twin_normal(
-    List<AttributeTwinNormal>? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_attribute_twin_normal(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_attribute_twin_rust_async(
-    List<AttributeTwinRustAsync>? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_attribute_twin_rust_async(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_attribute_twin_sync(
-    List<AttributeTwinSync>? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_attribute_twin_sync(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
-    List<AttributeTwinNormal?>? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_opt_box_autoadd_attribute_twin_normal(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
-    List<AttributeTwinRustAsync?>? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
-        self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
-    List<AttributeTwinSync?>? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_opt_box_autoadd_attribute_twin_sync(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_prim_f_32(
-    Float32List? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_prim_f_32(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_prim_f_64(
-    Float64List? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_prim_f_64(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_prim_i_32(Int32List? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_prim_i_32(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_prim_i_8(Int8List? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_prim_i_8(self, serializer);
-  }
-}
-
-void _sse_encode_opt_list_prim_u_8(Uint8List? self, SseSerializer serializer) {
-  _sse_encode_bool(self != null, serializer);
-  if (self != null) {
-    _sse_encode_list_prim_u_8(self, serializer);
-  }
-}
-
-void _sse_encode_opt_vecs_twin_normal(
-    OptVecsTwinNormal self, SseSerializer serializer) {
-  _sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
-  _sse_encode_list_opt_box_autoadd_weekdays_twin_normal(self.enums, serializer);
-  _sse_encode_list_opt_String(self.strings, serializer);
-  _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
-}
-
-void _sse_encode_opt_vecs_twin_rust_async(
-    OptVecsTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
-  _sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
-      self.enums, serializer);
-  _sse_encode_list_opt_String(self.strings, serializer);
-  _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
-}
-
-void _sse_encode_opt_vecs_twin_sync(
-    OptVecsTwinSync self, SseSerializer serializer) {
-  _sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
-  _sse_encode_list_opt_box_autoadd_weekdays_twin_sync(self.enums, serializer);
-  _sse_encode_list_opt_String(self.strings, serializer);
-  _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
-}
-
-void _sse_encode_record_string_i_32(
-    (String, int) self, SseSerializer serializer) {
-  _sse_encode_String(self.$1, serializer);
-  _sse_encode_i_32(self.$2, serializer);
-}
-
-void _sse_encode_sequences(Sequences self, SseSerializer serializer) {
-  _sse_encode_list_prim_i_32(self.field0, serializer);
-}
-
-void _sse_encode_some_struct_twin_normal(
-    SomeStructTwinNormal self, SseSerializer serializer) {
-  _sse_encode_u_32(self.value, serializer);
-}
-
-void _sse_encode_some_struct_twin_rust_async(
-    SomeStructTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_u_32(self.value, serializer);
-}
-
-void _sse_encode_some_struct_twin_sync(
-    SomeStructTwinSync self, SseSerializer serializer) {
-  _sse_encode_u_32(self.value, serializer);
-}
-
-void _sse_encode_speed_twin_normal(
-    SpeedTwinNormal self, SseSerializer serializer) {
-  switch (self) {
-    case SpeedTwinNormal_Unknown():
-      _sse_encode_i_32(0, serializer);
-
-    case SpeedTwinNormal_GPS(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_f_64(field0, serializer);
-  }
-}
-
-void _sse_encode_speed_twin_rust_async(
-    SpeedTwinRustAsync self, SseSerializer serializer) {
-  switch (self) {
-    case SpeedTwinRustAsync_Unknown():
-      _sse_encode_i_32(0, serializer);
-
-    case SpeedTwinRustAsync_GPS(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_f_64(field0, serializer);
-  }
-}
-
-void _sse_encode_speed_twin_sync(SpeedTwinSync self, SseSerializer serializer) {
-  switch (self) {
-    case SpeedTwinSync_Unknown():
-      _sse_encode_i_32(0, serializer);
-
-    case SpeedTwinSync_GPS(field0: final field0):
-      _sse_encode_i_32(1, serializer);
-      _sse_encode_f_64(field0, serializer);
-  }
-}
-
-void _sse_encode_struct_with_comments_twin_normal(
-    StructWithCommentsTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32(self.fieldWithComments, serializer);
-}
-
-void _sse_encode_struct_with_comments_twin_rust_async(
-    StructWithCommentsTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.fieldWithComments, serializer);
-}
-
-void _sse_encode_struct_with_comments_twin_sync(
-    StructWithCommentsTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.fieldWithComments, serializer);
-}
-
-void _sse_encode_struct_with_enum_twin_normal(
-    StructWithEnumTwinNormal self, SseSerializer serializer) {
-  _sse_encode_abc_twin_normal(self.abc1, serializer);
-  _sse_encode_abc_twin_normal(self.abc2, serializer);
-}
-
-void _sse_encode_struct_with_enum_twin_rust_async(
-    StructWithEnumTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_abc_twin_rust_async(self.abc1, serializer);
-  _sse_encode_abc_twin_rust_async(self.abc2, serializer);
-}
-
-void _sse_encode_struct_with_enum_twin_sync(
-    StructWithEnumTwinSync self, SseSerializer serializer) {
-  _sse_encode_abc_twin_sync(self.abc1, serializer);
-  _sse_encode_abc_twin_sync(self.abc2, serializer);
-}
-
-void _sse_encode_struct_with_one_field_twin_normal(
-    StructWithOneFieldTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32(self.a, serializer);
-}
-
-void _sse_encode_struct_with_one_field_twin_rust_async(
-    StructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.a, serializer);
-}
-
-void _sse_encode_struct_with_one_field_twin_sync(
-    StructWithOneFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.a, serializer);
-}
-
-void _sse_encode_struct_with_two_field_twin_normal(
-    StructWithTwoFieldTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32(self.a, serializer);
-  _sse_encode_i_32(self.b, serializer);
-}
-
-void _sse_encode_struct_with_two_field_twin_rust_async(
-    StructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.a, serializer);
-  _sse_encode_i_32(self.b, serializer);
-}
-
-void _sse_encode_struct_with_two_field_twin_sync(
-    StructWithTwoFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.a, serializer);
-  _sse_encode_i_32(self.b, serializer);
-}
-
-void _sse_encode_struct_with_zero_field_twin_normal(
-    StructWithZeroFieldTwinNormal self, SseSerializer serializer) {}
-
-void _sse_encode_struct_with_zero_field_twin_rust_async(
-    StructWithZeroFieldTwinRustAsync self, SseSerializer serializer) {}
-
-void _sse_encode_struct_with_zero_field_twin_sync(
-    StructWithZeroFieldTwinSync self, SseSerializer serializer) {}
-
-void _sse_encode_sum_with_twin_normal(
-    SumWithTwinNormal self, SseSerializer serializer) {
-  _sse_encode_u_32(self.x, serializer);
-}
-
-void _sse_encode_sum_with_twin_rust_async(
-    SumWithTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_u_32(self.x, serializer);
-}
-
-void _sse_encode_sum_with_twin_sync(
-    SumWithTwinSync self, SseSerializer serializer) {
-  _sse_encode_u_32(self.x, serializer);
-}
-
-void _sse_encode_test_id_twin_normal(
-    TestIdTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32_array_2(self.field0, serializer);
-}
-
-void _sse_encode_test_id_twin_normal_array_4(
-    TestIdTwinNormalArray4 self, SseSerializer serializer) {
-  _sse_encode_list_test_id_twin_normal(self.inner, serializer);
-}
-
-void _sse_encode_test_id_twin_rust_async(
-    TestIdTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32_array_2(self.field0, serializer);
-}
-
-void _sse_encode_test_id_twin_rust_async_array_4(
-    TestIdTwinRustAsyncArray4 self, SseSerializer serializer) {
-  _sse_encode_list_test_id_twin_rust_async(self.inner, serializer);
-}
-
-void _sse_encode_test_id_twin_sync(
-    TestIdTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32_array_2(self.field0, serializer);
-}
-
-void _sse_encode_test_id_twin_sync_array_4(
-    TestIdTwinSyncArray4 self, SseSerializer serializer) {
-  _sse_encode_list_test_id_twin_sync(self.inner, serializer);
-}
-
-void _sse_encode_tuple_struct_with_one_field_twin_normal(
-    TupleStructWithOneFieldTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32(self.field0, serializer);
-}
-
-void _sse_encode_tuple_struct_with_one_field_twin_rust_async(
-    TupleStructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.field0, serializer);
-}
-
-void _sse_encode_tuple_struct_with_one_field_twin_sync(
-    TupleStructWithOneFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.field0, serializer);
-}
-
-void _sse_encode_tuple_struct_with_two_field_twin_normal(
-    TupleStructWithTwoFieldTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32(self.field0, serializer);
-  _sse_encode_i_32(self.field1, serializer);
-}
-
-void _sse_encode_tuple_struct_with_two_field_twin_rust_async(
-    TupleStructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.field0, serializer);
-  _sse_encode_i_32(self.field1, serializer);
-}
-
-void _sse_encode_tuple_struct_with_two_field_twin_sync(
-    TupleStructWithTwoFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.field0, serializer);
-  _sse_encode_i_32(self.field1, serializer);
-}
-
-void _sse_encode_u_16(int self, SseSerializer serializer) {
-  serializer.buffer.putUint16(self);
-}
-
-void _sse_encode_u_32(int self, SseSerializer serializer) {
-  serializer.buffer.putUint32(self);
-}
-
-void _sse_encode_u_64(int self, SseSerializer serializer) {
-  serializer.buffer.putUint64(self);
-}
-
-void _sse_encode_u_8(int self, SseSerializer serializer) {
-  serializer.buffer.putUint8(self);
-}
-
-void _sse_encode_u_8_array_1600(U8Array1600 self, SseSerializer serializer) {
-  _sse_encode_list_prim_u_8(self.inner, serializer);
-}
-
-void _sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer) {
-  _sse_encode_list_prim_u_8(self.inner, serializer);
-}
-
-void _sse_encode_u_8_array_8(U8Array8 self, SseSerializer serializer) {
-  _sse_encode_list_prim_u_8(self.inner, serializer);
-}
-
-void _sse_encode_unit(void self, SseSerializer serializer) {}
-
-void _sse_encode_user_id_twin_normal(
-    UserIdTwinNormal self, SseSerializer serializer) {
-  _sse_encode_u_32(self.value, serializer);
-}
-
-void _sse_encode_user_id_twin_rust_async(
-    UserIdTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_u_32(self.value, serializer);
-}
-
-void _sse_encode_user_id_twin_sync(
-    UserIdTwinSync self, SseSerializer serializer) {
-  _sse_encode_u_32(self.value, serializer);
-}
-
-void _sse_encode_usize(int self, SseSerializer serializer) {
-  serializer.buffer.putUint64(self);
-}
-
-void _sse_encode_weekdays_twin_normal(
-    WeekdaysTwinNormal self, SseSerializer serializer) {
-  _sse_encode_i_32(self.index, serializer);
-}
-
-void _sse_encode_weekdays_twin_rust_async(
-    WeekdaysTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.index, serializer);
-}
-
-void _sse_encode_weekdays_twin_sync(
-    WeekdaysTwinSync self, SseSerializer serializer) {
-  _sse_encode_i_32(self.index, serializer);
 }
