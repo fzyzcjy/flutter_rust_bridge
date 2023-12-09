@@ -244,14 +244,14 @@ fn generate_code_closure(
     code_inner_decode: &str,
     code_call_inner_func_result: &str,
 ) -> String {
+    let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
     match func.mode {
         IrFuncMode::Sync => {
-            format!("{code_decode}{code_inner_decode}{code_call_inner_func_result}")
+            format!("{code_decode}{code_inner_decode} transform_result_{codec}({code_call_inner_func_result})")
         }
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
             let maybe_await = if func.rust_async { ".await" } else { "" };
-            let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
             format!(
                 "
                 {code_decode} move |context| {maybe_async_move} {{
