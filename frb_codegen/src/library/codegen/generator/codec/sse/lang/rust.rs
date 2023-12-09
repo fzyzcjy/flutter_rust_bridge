@@ -10,14 +10,14 @@ pub(crate) struct RustLang;
 impl LangTrait for RustLang {
     fn call_encode(&self, var_ty: &IrType, var_name: &str) -> String {
         format!(
-            "_sse_encode_{}({}, serializer)",
-            var_ty.safe_ident(),
+            "<{}>::sse_encode({}, serializer)",
+            var_ty.rust_api_type(),
             var_name
         )
     }
 
     fn call_decode(&self, var_ty: &IrType) -> String {
-        format!("_sse_decode_{}(serializer)", var_ty.safe_ident(),)
+        format!("<{}>::sse_decode(serializer)", var_ty.rust_api_type())
     }
 
     fn call_constructor(
