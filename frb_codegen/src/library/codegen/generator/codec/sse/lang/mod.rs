@@ -19,7 +19,12 @@ pub(crate) trait LangTrait {
 
     fn call_decode(&self, var_ty: &IrType) -> String;
 
-    fn call_constructor(&self, class_name: &str, field_names: &[String]) -> String;
+    fn call_constructor(
+        &self,
+        class_name: &str,
+        field_names: &[String],
+        var_names: &[String],
+    ) -> String;
 
     fn throw_unimplemented(&self) -> String;
 

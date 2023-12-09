@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::lang::LangTrait;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use itertools::Itertools;
+use itertools::{multizip, Itertools};
 
 pub(crate) struct DartLang;
 
@@ -18,10 +18,17 @@ impl LangTrait for DartLang {
         format!("_sse_decode_{}(serializer)", var_ty.safe_ident(),)
     }
 
-    fn call_constructor(&self, class_name: &str, field_names: &[String]) -> String {
+    fn call_constructor(
+        &self,
+        class_name: &str,
+        field_names: &[String],
+        var_names: &[String],
+    ) -> String {
         format!(
             "{class_name}({})",
-            field_names.iter().map(|x| format!("{x}: {x}")).join(", ")
+            multizip((field_names, var_names))
+                .map(|(x, y)| format!("{x}: {y}"))
+                .join(", ")
         )
     }
 
