@@ -22,6 +22,16 @@ abstract class RustOpaque {
           staticData: staticData,
         );
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  @internal
+  RustOpaque.sseDecode(
+      int ptr, int externalSizeOnNative, RustArcStaticData staticData)
+      : this._fromRaw(
+          ptr: ptr,
+          externalSizeOnNative: externalSizeOnNative,
+          staticData: staticData,
+        );
+
   RustOpaque._fromRaw({
     required int ptr,
     required int externalSizeOnNative,
