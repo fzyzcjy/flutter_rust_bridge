@@ -24,10 +24,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
                     .join("");
 
                 format!(
-                    "
-                        {};
-                        {fields}
-                    ",
+                    "{}; {fields}",
                     lang.call_encode(&TAG_TYPE, &format!("{idx}")),
                 )
             },
