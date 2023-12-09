@@ -21,7 +21,7 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
         Some(simple_delegate_decode(
             lang,
             &self.ir.get_delegate(),
-            "flutter_rust_bridge::for_generated::sse_decode_dart_opaque(inner)",
+            "unsafe { flutter_rust_bridge::for_generated::sse_decode_dart_opaque(inner) }",
         ))
     }
 }
