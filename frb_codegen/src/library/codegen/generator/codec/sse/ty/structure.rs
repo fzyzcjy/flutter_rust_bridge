@@ -62,18 +62,20 @@ impl<'a> GeneralizedStructGenerator<'a> {
                 )
             })
             .join("");
+
+        let ctor = lang.call_constructor(
+            &st.name.name,
+            &st.fields.iter().map(|x| x.name.raw.clone()).collect_vec(),
+            &(st.fields.iter())
+                .map(|x| x.name.dart_style().clone())
+                .collect_vec(),
+        );
+
         format!(
             "
             {decode_fields}
-            return {};
+            return {ctor};
             ",
-            lang.call_constructor(
-                &st.name.name,
-                &st.fields.iter().map(|x| x.name.raw.clone()).collect_vec(),
-                &(st.fields.iter())
-                    .map(|x| x.name.dart_style().clone())
-                    .collect_vec(),
-            )
         )
     }
 }
