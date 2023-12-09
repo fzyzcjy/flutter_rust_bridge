@@ -26,11 +26,11 @@ class SimpleDecoder<S> {
     switch (action) {
       case _Rust2DartAction.success:
         assert(rawList.length == 2);
-        return parseSuccessData(rawList[1]);
+        return decodeSuccessData(rawList[1]);
 
       case _Rust2DartAction.error:
         assert(rawList.length == 2);
-        final parseErrorData = this.parseErrorData;
+        final parseErrorData = this.decodeErrorData;
         if (parseErrorData == null) {
           throw Exception(
               'transformRust2DartMessage received error message, but no parseErrorData to parse it. '

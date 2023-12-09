@@ -10,15 +10,15 @@ import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serializa
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  final S Function(SseDeserializer deserializer) parseSuccessData;
+  final S Function(SseDeserializer deserializer) decodeSuccessData;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  final E Function(SseDeserializer deserializer)? parseErrorData;
+  final E Function(SseDeserializer deserializer)? decodeErrorData;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   const SseCodec({
-    required this.parseSuccessData,
-    required this.parseErrorData,
+    required this.decodeSuccessData,
+    required this.decodeErrorData,
   });
 
   @override
