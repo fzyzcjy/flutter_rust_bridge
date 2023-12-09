@@ -76,7 +76,7 @@ impl IrTypeTrait for IrTypeDelegate {
             // IrTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir),
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
             // IrTypeDelegate::Uuids => "Uuids".to_owned(),
-            IrTypeDelegate::Backtrace => "String".to_owned(),
+            IrTypeDelegate::Backtrace => "Backtrace".to_owned(),
             IrTypeDelegate::Anyhow => "AnyhowException".to_owned(),
         }
     }
