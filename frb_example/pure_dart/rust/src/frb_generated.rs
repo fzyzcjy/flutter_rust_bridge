@@ -7640,12 +7640,6 @@ fn wire_handle_uuid_twin_rust_async_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_uuid_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.cst_decode(); move |context| async move {  transform_result_dco(crate::api::pseudo_manual::uuid_type_twin_rust_async::handle_uuid_twin_rust_async(api_id).await) } })
 }
-fn wire_handle_uuids_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: impl CstDecode<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_uuids_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_ids = ids.cst_decode(); move |context| async move {  transform_result_dco(crate::api::pseudo_manual::uuid_type_twin_rust_async::handle_uuids_twin_rust_async(api_ids).await) } })
-}
 fn wire_handle_nested_uuids_twin_sync_impl(
     ids: impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync>
         + core::panic::UnwindSafe,
@@ -7679,23 +7673,6 @@ fn wire_handle_uuid_twin_sync_impl(
             let api_id = id.cst_decode();
             transform_result_dco(
                 crate::api::pseudo_manual::uuid_type_twin_sync::handle_uuid_twin_sync(api_id),
-            )
-        },
-    )
-}
-fn wire_handle_uuids_twin_sync_impl(
-    ids: impl CstDecode<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_uuids_twin_sync",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let api_ids = ids.cst_decode();
-            transform_result_dco(
-                crate::api::pseudo_manual::uuid_type_twin_sync::handle_uuids_twin_sync(api_ids),
             )
         },
     )
@@ -9012,24 +8989,6 @@ fn wire_handle_uuid_twin_normal_impl(
             let api_id = id.cst_decode();
             move |context| {
                 transform_result_dco(crate::api::uuid_type::handle_uuid_twin_normal(api_id))
-            }
-        },
-    )
-}
-fn wire_handle_uuids_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: impl CstDecode<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_uuids_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_ids = ids.cst_decode();
-            move |context| {
-                transform_result_dco(crate::api::uuid_type::handle_uuids_twin_normal(api_ids))
             }
         },
     )
@@ -11659,36 +11618,24 @@ impl SseDecode for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChro
 impl SseDecode for crate::api::uuid_type::FeatureUuidTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut one = _sse_decode_Uuid(serializer);
-        let mut many = _sse_decode_list_Uuid(serializer);
 
-        return FeatureUuidTwinNormal {
-            one: one,
-            many: many,
-        };
+        return FeatureUuidTwinNormal { one: one };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut one = _sse_decode_Uuid(serializer);
-        let mut many = _sse_decode_list_Uuid(serializer);
 
-        return FeatureUuidTwinRustAsync {
-            one: one,
-            many: many,
-        };
+        return FeatureUuidTwinRustAsync { one: one };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut one = _sse_decode_Uuid(serializer);
-        let mut many = _sse_decode_list_Uuid(serializer);
 
-        return FeatureUuidTwinSync {
-            one: one,
-            many: many,
-        };
+        return FeatureUuidTwinSync { one: one };
     }
 }
 
@@ -11812,16 +11759,6 @@ impl SseDecode for Vec<String> {
         let mut ans;
         for item in self {
             ans.push(_sse_decode_String(serializer));
-        }
-        return ans;
-    }
-}
-
-impl SseDecode for Vec<uuid::Uuid> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut ans;
-        for item in self {
-            ans.push(_sse_decode_Uuid(serializer));
         }
         return ans;
     }
@@ -15895,11 +15832,7 @@ impl
 }
 impl flutter_rust_bridge::IntoDart for crate::api::uuid_type::FeatureUuidTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        vec![
-            self.one.into_into_dart().into_dart(),
-            self.many.into_into_dart().into_dart(),
-        ]
-        .into_dart()
+        vec![self.one.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -15917,11 +15850,7 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        vec![
-            self.one.into_into_dart().into_dart(),
-            self.many.into_into_dart().into_dart(),
-        ]
-        .into_dart()
+        vec![self.one.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -15943,11 +15872,7 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        vec![
-            self.one.into_into_dart().into_dart(),
-            self.many.into_into_dart().into_dart(),
-        ]
-        .into_dart()
+        vec![self.one.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -20845,21 +20770,18 @@ impl SseEncode for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChro
 impl SseEncode for crate::api::uuid_type::FeatureUuidTwinNormal {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         _sse_encode_Uuid(self.one, serializer);
-        _sse_encode_list_Uuid(self.many, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         _sse_encode_Uuid(self.one, serializer);
-        _sse_encode_list_Uuid(self.many, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         _sse_encode_Uuid(self.one, serializer);
-        _sse_encode_list_Uuid(self.many, serializer);
     }
 }
 
@@ -20975,14 +20897,6 @@ impl SseEncode for Vec<String> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         for item in self {
             _sse_encode_String(item, serializer);
-        }
-    }
-}
-
-impl SseEncode for Vec<uuid::Uuid> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        for item in self {
-            _sse_encode_Uuid(item, serializer);
         }
     }
 }

@@ -5,7 +5,7 @@
 #[derive(Debug, Clone)]
 pub struct FeatureUuidTwinSync {
     pub one: uuid::Uuid,
-    pub many: Vec<uuid::Uuid>,
+    // pub many: Vec<uuid::Uuid>,
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -13,10 +13,10 @@ pub fn handle_uuid_twin_sync(id: uuid::Uuid) -> anyhow::Result<uuid::Uuid> {
     Ok(id)
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_uuids_twin_sync(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
-    Ok(ids)
-}
+// TODO: For simplicity, `Vec<Uuid>` is supported using SSE (serializer)
+// #[flutter_rust_bridge::frb(sync)] pub fn handle_uuids_twin_sync(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid::Uuid>> {
+//     Ok(ids)
+// }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn handle_nested_uuids_twin_sync(

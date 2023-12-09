@@ -1427,13 +1427,12 @@ impl CstDecode<crate::api::uuid_type::FeatureUuidTwinNormal>
             .unwrap();
         assert_eq!(
             self_.length(),
-            2,
-            "Expected 2 elements, got {}",
+            1,
+            "Expected 1 elements, got {}",
             self_.length()
         );
         crate::api::uuid_type::FeatureUuidTwinNormal {
             one: self_.get(0).cst_decode(),
-            many: self_.get(1).cst_decode(),
         }
     }
 }
@@ -1448,13 +1447,12 @@ impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuid
             .unwrap();
         assert_eq!(
             self_.length(),
-            2,
-            "Expected 2 elements, got {}",
+            1,
+            "Expected 1 elements, got {}",
             self_.length()
         );
         crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
             one: self_.get(0).cst_decode(),
-            many: self_.get(1).cst_decode(),
         }
     }
 }
@@ -1467,13 +1465,12 @@ impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSy
             .unwrap();
         assert_eq!(
             self_.length(),
-            2,
-            "Expected 2 elements, got {}",
+            1,
+            "Expected 1 elements, got {}",
             self_.length()
         );
         crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
             one: self_.get(0).cst_decode(),
-            many: self_.get(1).cst_decode(),
         }
     }
 }
@@ -1657,15 +1654,6 @@ impl CstDecode<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_type
 }
 impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Vec<String> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<uuid::Uuid>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<uuid::Uuid> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -8850,14 +8838,6 @@ pub fn wire_handle_uuid_twin_rust_async(
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_uuids_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_handle_uuids_twin_rust_async_impl(port_, ids)
-}
-
-#[wasm_bindgen]
 pub fn wire_handle_nested_uuids_twin_sync(
     ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
@@ -8869,13 +8849,6 @@ pub fn wire_handle_uuid_twin_sync(
     id: Box<[u8]>,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_uuid_twin_sync_impl(id)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_uuids_twin_sync(
-    ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
-    wire_handle_uuids_twin_sync_impl(ids)
 }
 
 #[wasm_bindgen]
@@ -9451,14 +9424,6 @@ pub fn wire_handle_uuid_twin_normal(
     id: Box<[u8]>,
 ) {
     wire_handle_uuid_twin_normal_impl(port_, id)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_uuids_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_handle_uuids_twin_normal_impl(port_, ids)
 }
 
 #[wasm_bindgen]

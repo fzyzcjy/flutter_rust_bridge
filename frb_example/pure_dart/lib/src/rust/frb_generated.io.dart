@@ -1798,15 +1798,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_cst_list_Uuid> cst_encode_list_Uuid(List<UuidValue> raw) {
-    final ans = wire.cst_new_list_Uuid(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      ans.ref.ptr[i] = cst_encode_Uuid(raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
   ffi.Pointer<wire_cst_list_application_env_var>
       cst_encode_list_application_env_var(List<ApplicationEnvVar> raw) {
     final ans = wire.cst_new_list_application_env_var(raw.length);
@@ -4372,20 +4363,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _cst_api_fill_to_wire_feature_uuid_twin_normal(
       FeatureUuidTwinNormal apiObj, wire_cst_feature_uuid_twin_normal wireObj) {
     wireObj.one = cst_encode_Uuid(apiObj.one);
-    wireObj.many = cst_encode_list_Uuid(apiObj.many);
   }
 
   void _cst_api_fill_to_wire_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync apiObj,
       wire_cst_feature_uuid_twin_rust_async wireObj) {
     wireObj.one = cst_encode_Uuid(apiObj.one);
-    wireObj.many = cst_encode_list_Uuid(apiObj.many);
   }
 
   void _cst_api_fill_to_wire_feature_uuid_twin_sync(
       FeatureUuidTwinSync apiObj, wire_cst_feature_uuid_twin_sync wireObj) {
     wireObj.one = cst_encode_Uuid(apiObj.one);
-    wireObj.many = cst_encode_list_Uuid(apiObj.many);
   }
 
   void _cst_api_fill_to_wire_feed_id_twin_normal(
@@ -16348,24 +16336,6 @@ class RustLibWire implements BaseWire {
       _wire_handle_uuid_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  void wire_handle_uuids_twin_rust_async(
-    int port_,
-    ffi.Pointer<wire_cst_list_Uuid> ids,
-  ) {
-    return _wire_handle_uuids_twin_rust_async(
-      port_,
-      ids,
-    );
-  }
-
-  late final _wire_handle_uuids_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_Uuid>)>>(
-      'wire_handle_uuids_twin_rust_async');
-  late final _wire_handle_uuids_twin_rust_async =
-      _wire_handle_uuids_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_list_Uuid>)>();
-
   WireSyncReturnDco wire_handle_nested_uuids_twin_sync(
     ffi.Pointer<wire_cst_feature_uuid_twin_sync> ids,
   ) {
@@ -16399,22 +16369,6 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_uuid_twin_sync =
       _wire_handle_uuid_twin_syncPtr.asFunction<
           WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
-
-  WireSyncReturnDco wire_handle_uuids_twin_sync(
-    ffi.Pointer<wire_cst_list_Uuid> ids,
-  ) {
-    return _wire_handle_uuids_twin_sync(
-      ids,
-    );
-  }
-
-  late final _wire_handle_uuids_twin_syncPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncReturnDco Function(
-              ffi.Pointer<wire_cst_list_Uuid>)>>('wire_handle_uuids_twin_sync');
-  late final _wire_handle_uuids_twin_sync =
-      _wire_handle_uuids_twin_syncPtr.asFunction<
-          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_Uuid>)>();
 
   void wire_test_more_than_just_one_raw_string_struct_twin_normal(
     int port_,
@@ -17740,23 +17694,6 @@ class RustLibWire implements BaseWire {
       'wire_handle_uuid_twin_normal');
   late final _wire_handle_uuid_twin_normal = _wire_handle_uuid_twin_normalPtr
       .asFunction<void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
-
-  void wire_handle_uuids_twin_normal(
-    int port_,
-    ffi.Pointer<wire_cst_list_Uuid> ids,
-  ) {
-    return _wire_handle_uuids_twin_normal(
-      port_,
-      ids,
-    );
-  }
-
-  late final _wire_handle_uuids_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_Uuid>)>>(
-      'wire_handle_uuids_twin_normal');
-  late final _wire_handle_uuids_twin_normal = _wire_handle_uuids_twin_normalPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_cst_list_Uuid>)>();
 
   ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
     Object handle,
@@ -20884,21 +20821,6 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('cst_new_list_String');
   late final _cst_new_list_String = _cst_new_list_StringPtr
       .asFunction<ffi.Pointer<wire_cst_list_String> Function(int)>();
-
-  ffi.Pointer<wire_cst_list_Uuid> cst_new_list_Uuid(
-    int len,
-  ) {
-    return _cst_new_list_Uuid(
-      len,
-    );
-  }
-
-  late final _cst_new_list_UuidPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<wire_cst_list_Uuid> Function(ffi.Int32)>>(
-      'cst_new_list_Uuid');
-  late final _cst_new_list_Uuid = _cst_new_list_UuidPtr
-      .asFunction<ffi.Pointer<wire_cst_list_Uuid> Function(int)>();
 
   ffi.Pointer<wire_cst_list_application_env_var>
       cst_new_list_application_env_var(
@@ -24492,23 +24414,12 @@ final class wire_cst_list_record_string_i_32 extends ffi.Struct {
   external int len;
 }
 
-final class wire_cst_list_Uuid extends ffi.Struct {
-  external ffi.Pointer<wire_cst_list_prim_u_8> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
 final class wire_cst_feature_uuid_twin_rust_async extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> one;
-
-  external ffi.Pointer<wire_cst_list_Uuid> many;
 }
 
 final class wire_cst_feature_uuid_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> one;
-
-  external ffi.Pointer<wire_cst_list_Uuid> many;
 }
 
 final class wire_cst_EnumOpaqueTwinNormal_Struct extends ffi.Struct {
@@ -24588,6 +24499,4 @@ final class wire_cst_tuple_struct_with_two_field_twin_normal
 
 final class wire_cst_feature_uuid_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> one;
-
-  external ffi.Pointer<wire_cst_list_Uuid> many;
 }

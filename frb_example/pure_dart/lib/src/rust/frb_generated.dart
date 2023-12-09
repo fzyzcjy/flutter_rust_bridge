@@ -1988,16 +1988,10 @@ abstract class RustLibApi extends BaseApi {
   Future<UuidValue> handleUuidTwinRustAsync(
       {required UuidValue id, dynamic hint});
 
-  Future<List<UuidValue>> handleUuidsTwinRustAsync(
-      {required List<UuidValue> ids, dynamic hint});
-
   FeatureUuidTwinSync handleNestedUuidsTwinSync(
       {required FeatureUuidTwinSync ids, dynamic hint});
 
   UuidValue handleUuidTwinSync({required UuidValue id, dynamic hint});
-
-  List<UuidValue> handleUuidsTwinSync(
-      {required List<UuidValue> ids, dynamic hint});
 
   Future<MoreThanJustOneRawStringStructTwinNormal>
       testMoreThanJustOneRawStringStructTwinNormal({dynamic hint});
@@ -2232,9 +2226,6 @@ abstract class RustLibApi extends BaseApi {
       {required FeatureUuidTwinNormal ids, dynamic hint});
 
   Future<UuidValue> handleUuidTwinNormal({required UuidValue id, dynamic hint});
-
-  Future<List<UuidValue>> handleUuidsTwinNormal(
-      {required List<UuidValue> ids, dynamic hint});
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData;
@@ -18804,30 +18795,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<UuidValue>> handleUuidsTwinRustAsync(
-      {required List<UuidValue> ids, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_Uuid(ids);
-        return wire.wire_handle_uuids_twin_rust_async(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_list_Uuid,
-        decodeErrorData: _dco_decode_AnyhowException,
-      ),
-      constMeta: kHandleUuidsTwinRustAsyncConstMeta,
-      argValues: [ids],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleUuidsTwinRustAsyncConstMeta => const TaskConstMeta(
-        debugName: "handle_uuids_twin_rust_async",
-        argNames: ["ids"],
-      );
-
-  @override
   FeatureUuidTwinSync handleNestedUuidsTwinSync(
       {required FeatureUuidTwinSync ids, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -18872,30 +18839,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleUuidTwinSyncConstMeta => const TaskConstMeta(
         debugName: "handle_uuid_twin_sync",
         argNames: ["id"],
-      );
-
-  @override
-  List<UuidValue> handleUuidsTwinSync(
-      {required List<UuidValue> ids, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_Uuid(ids);
-        return wire.wire_handle_uuids_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_list_Uuid,
-        decodeErrorData: _dco_decode_AnyhowException,
-      ),
-      constMeta: kHandleUuidsTwinSyncConstMeta,
-      argValues: [ids],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleUuidsTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "handle_uuids_twin_sync",
-        argNames: ["ids"],
       );
 
   @override
@@ -20894,30 +20837,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["id"],
       );
 
-  @override
-  Future<List<UuidValue>> handleUuidsTwinNormal(
-      {required List<UuidValue> ids, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_Uuid(ids);
-        return wire.wire_handle_uuids_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_list_Uuid,
-        decodeErrorData: _dco_decode_AnyhowException,
-      ),
-      constMeta: kHandleUuidsTwinNormalConstMeta,
-      argValues: [ids],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleUuidsTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "handle_uuids_twin_normal",
-        argNames: ["ids"],
-      );
-
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData =>
           wire.rust_arc_increment_strong_count_RustOpaque_MutexHideData;
@@ -22904,32 +22823,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   FeatureUuidTwinNormal _dco_decode_feature_uuid_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeatureUuidTwinNormal(
       one: _dco_decode_Uuid(arr[0]),
-      many: _dco_decode_list_Uuid(arr[1]),
     );
   }
 
   FeatureUuidTwinRustAsync _dco_decode_feature_uuid_twin_rust_async(
       dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeatureUuidTwinRustAsync(
       one: _dco_decode_Uuid(arr[0]),
-      many: _dco_decode_list_Uuid(arr[1]),
     );
   }
 
   FeatureUuidTwinSync _dco_decode_feature_uuid_twin_sync(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeatureUuidTwinSync(
       one: _dco_decode_Uuid(arr[0]),
-      many: _dco_decode_list_Uuid(arr[1]),
     );
   }
 
@@ -23100,10 +23016,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   List<String> _dco_decode_list_String(dynamic raw) {
     return (raw as List<dynamic>).map(_dco_decode_String).toList();
-  }
-
-  List<UuidValue> _dco_decode_list_Uuid(dynamic raw) {
-    return (raw as List<dynamic>).map(_dco_decode_Uuid).toList();
   }
 
   List<ApplicationEnvVar> _dco_decode_list_application_env_var(dynamic raw) {
@@ -26106,25 +26018,22 @@ double _sse_decode_f_64(SseDeserializer deserializer) {
 FeatureUuidTwinNormal _sse_decode_feature_uuid_twin_normal(
     SseDeserializer deserializer) {
   var one = _sse_decode_Uuid(serializer);
-  var many = _sse_decode_list_Uuid(serializer);
 
-  return FeatureUuidTwinNormal(one: one, many: many);
+  return FeatureUuidTwinNormal(one: one);
 }
 
 FeatureUuidTwinRustAsync _sse_decode_feature_uuid_twin_rust_async(
     SseDeserializer deserializer) {
   var one = _sse_decode_Uuid(serializer);
-  var many = _sse_decode_list_Uuid(serializer);
 
-  return FeatureUuidTwinRustAsync(one: one, many: many);
+  return FeatureUuidTwinRustAsync(one: one);
 }
 
 FeatureUuidTwinSync _sse_decode_feature_uuid_twin_sync(
     SseDeserializer deserializer) {
   var one = _sse_decode_Uuid(serializer);
-  var many = _sse_decode_list_Uuid(serializer);
 
-  return FeatureUuidTwinSync(one: one, many: many);
+  return FeatureUuidTwinSync(one: one);
 }
 
 FeedIdTwinNormal _sse_decode_feed_id_twin_normal(SseDeserializer deserializer) {
@@ -26219,14 +26128,6 @@ List<String> _sse_decode_list_String(SseDeserializer deserializer) {
   var ans;
   for (final item in self) {
     ans.push(_sse_decode_String(serializer));
-  }
-  return ans;
-}
-
-List<UuidValue> _sse_decode_list_Uuid(SseDeserializer deserializer) {
-  var ans;
-  for (final item in self) {
-    ans.push(_sse_decode_Uuid(serializer));
   }
   return ans;
 }
@@ -29915,19 +29816,16 @@ void _sse_encode_feature_chrono_twin_sync(
 void _sse_encode_feature_uuid_twin_normal(
     FeatureUuidTwinNormal self, SseSerializer serializer) {
   _sse_encode_Uuid(self.one, serializer);
-  _sse_encode_list_Uuid(self.many, serializer);
 }
 
 void _sse_encode_feature_uuid_twin_rust_async(
     FeatureUuidTwinRustAsync self, SseSerializer serializer) {
   _sse_encode_Uuid(self.one, serializer);
-  _sse_encode_list_Uuid(self.many, serializer);
 }
 
 void _sse_encode_feature_uuid_twin_sync(
     FeatureUuidTwinSync self, SseSerializer serializer) {
   _sse_encode_Uuid(self.one, serializer);
-  _sse_encode_list_Uuid(self.many, serializer);
 }
 
 void _sse_encode_feed_id_twin_normal(
@@ -30010,12 +29908,6 @@ void _sse_encode_list_RustOpaque_hide_data(
 void _sse_encode_list_String(List<String> self, SseSerializer serializer) {
   for (final item in self) {
     _sse_encode_String(item, serializer);
-  }
-}
-
-void _sse_encode_list_Uuid(List<UuidValue> self, SseSerializer serializer) {
-  for (final item in self) {
-    _sse_encode_Uuid(item, serializer);
   }
 }
 

@@ -1500,19 +1500,12 @@ typedef struct wire_cst_list_record_string_i_32 {
   int32_t len;
 } wire_cst_list_record_string_i_32;
 
-typedef struct wire_cst_list_Uuid {
-  struct wire_cst_list_prim_u_8 *ptr;
-  int32_t len;
-} wire_cst_list_Uuid;
-
 typedef struct wire_cst_feature_uuid_twin_rust_async {
   struct wire_cst_list_prim_u_8 *one;
-  struct wire_cst_list_Uuid *many;
 } wire_cst_feature_uuid_twin_rust_async;
 
 typedef struct wire_cst_feature_uuid_twin_sync {
   struct wire_cst_list_prim_u_8 *one;
-  struct wire_cst_list_Uuid *many;
 } wire_cst_feature_uuid_twin_sync;
 
 typedef struct wire_cst_EnumOpaqueTwinNormal_Struct {
@@ -1577,7 +1570,6 @@ typedef struct wire_cst_tuple_struct_with_two_field_twin_normal {
 
 typedef struct wire_cst_feature_uuid_twin_normal {
   struct wire_cst_list_prim_u_8 *one;
-  struct wire_cst_list_Uuid *many;
 } wire_cst_feature_uuid_twin_normal;
 
 void benchmark_raw_void_sync(void);
@@ -3091,13 +3083,9 @@ void wire_handle_nested_uuids_twin_rust_async(int64_t port_,
 
 void wire_handle_uuid_twin_rust_async(int64_t port_, struct wire_cst_list_prim_u_8 *id);
 
-void wire_handle_uuids_twin_rust_async(int64_t port_, struct wire_cst_list_Uuid *ids);
-
 WireSyncReturnDco wire_handle_nested_uuids_twin_sync(struct wire_cst_feature_uuid_twin_sync *ids);
 
 WireSyncReturnDco wire_handle_uuid_twin_sync(struct wire_cst_list_prim_u_8 *id);
-
-WireSyncReturnDco wire_handle_uuids_twin_sync(struct wire_cst_list_Uuid *ids);
 
 void wire_test_more_than_just_one_raw_string_struct_twin_normal(int64_t port_);
 
@@ -3279,8 +3267,6 @@ void wire_handle_nested_uuids_twin_normal(int64_t port_,
                                           struct wire_cst_feature_uuid_twin_normal *ids);
 
 void wire_handle_uuid_twin_normal(int64_t port_, struct wire_cst_list_prim_u_8 *id);
-
-void wire_handle_uuids_twin_normal(int64_t port_, struct wire_cst_list_Uuid *ids);
 
 const void *dart_opaque_dart2rust_encode(Dart_Handle handle);
 
@@ -3733,8 +3719,6 @@ struct wire_cst_list_DartOpaque *cst_new_list_DartOpaque(int32_t len);
 struct wire_cst_list_RustOpaque_hide_data *cst_new_list_RustOpaque_hide_data(int32_t len);
 
 struct wire_cst_list_String *cst_new_list_String(int32_t len);
-
-struct wire_cst_list_Uuid *cst_new_list_Uuid(int32_t len);
 
 struct wire_cst_list_application_env_var *cst_new_list_application_env_var(int32_t len);
 
@@ -4262,7 +4246,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_list_DartOpaque);
     dummy_var ^= ((int64_t) (void*) cst_new_list_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) cst_new_list_String);
-    dummy_var ^= ((int64_t) (void*) cst_new_list_Uuid);
     dummy_var ^= ((int64_t) (void*) cst_new_list_application_env_var);
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_rust_async);
@@ -4795,9 +4778,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_handle_uuids_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_handle_uuids_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_handle_uuids_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts_twin_sync);

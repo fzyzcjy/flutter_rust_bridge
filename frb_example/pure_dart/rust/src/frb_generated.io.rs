@@ -2979,7 +2979,6 @@ impl CstDecode<crate::api::uuid_type::FeatureUuidTwinNormal> for wire_cst_featur
     fn cst_decode(self) -> crate::api::uuid_type::FeatureUuidTwinNormal {
         crate::api::uuid_type::FeatureUuidTwinNormal {
             one: self.one.cst_decode(),
-            many: self.many.cst_decode(),
         }
     }
 }
@@ -2991,7 +2990,6 @@ impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuid
     ) -> crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
         crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
             one: self.one.cst_decode(),
-            many: self.many.cst_decode(),
         }
     }
 }
@@ -3001,7 +2999,6 @@ impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSy
     fn cst_decode(self) -> crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
         crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
             one: self.one.cst_decode(),
-            many: self.many.cst_decode(),
         }
     }
 }
@@ -3205,15 +3202,6 @@ impl CstDecode<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_type
 }
 impl CstDecode<Vec<String>> for *mut wire_cst_list_String {
     fn cst_decode(self) -> Vec<String> {
-        let vec = unsafe {
-            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
-            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(CstDecode::cst_decode).collect()
-    }
-}
-impl CstDecode<Vec<uuid::Uuid>> for *mut wire_cst_list_Uuid {
-    fn cst_decode(self) -> Vec<uuid::Uuid> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -5430,21 +5418,18 @@ pub struct wire_cst_feature_chrono_twin_sync {
 #[derive(Clone)]
 pub struct wire_cst_feature_uuid_twin_normal {
     one: *mut wire_cst_list_prim_u_8,
-    many: *mut wire_cst_list_Uuid,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feature_uuid_twin_rust_async {
     one: *mut wire_cst_list_prim_u_8,
-    many: *mut wire_cst_list_Uuid,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feature_uuid_twin_sync {
     one: *mut wire_cst_list_prim_u_8,
-    many: *mut wire_cst_list_Uuid,
 }
 
 #[repr(C)]
@@ -5658,13 +5643,6 @@ pub struct wire_cst_list_RustOpaque_hide_data {
 #[derive(Clone)]
 pub struct wire_cst_list_String {
     ptr: *mut *mut wire_cst_list_prim_u_8,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_cst_list_Uuid {
-    ptr: *mut wire_cst_list_prim_u_8,
     len: i32,
 }
 
@@ -7403,7 +7381,6 @@ impl NewWithNullPtr for wire_cst_feature_uuid_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
             one: core::ptr::null_mut(),
-            many: core::ptr::null_mut(),
         }
     }
 }
@@ -7416,7 +7393,6 @@ impl NewWithNullPtr for wire_cst_feature_uuid_twin_rust_async {
     fn new_with_null_ptr() -> Self {
         Self {
             one: core::ptr::null_mut(),
-            many: core::ptr::null_mut(),
         }
     }
 }
@@ -7429,7 +7405,6 @@ impl NewWithNullPtr for wire_cst_feature_uuid_twin_sync {
     fn new_with_null_ptr() -> Self {
         Self {
             one: core::ptr::null_mut(),
-            many: core::ptr::null_mut(),
         }
     }
 }
@@ -12683,11 +12658,6 @@ pub extern "C" fn wire_handle_uuid_twin_rust_async(port_: i64, id: *mut wire_cst
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_uuids_twin_rust_async(port_: i64, ids: *mut wire_cst_list_Uuid) {
-    wire_handle_uuids_twin_rust_async_impl(port_, ids)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_handle_nested_uuids_twin_sync(
     ids: *mut wire_cst_feature_uuid_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
@@ -12699,13 +12669,6 @@ pub extern "C" fn wire_handle_uuid_twin_sync(
     id: *mut wire_cst_list_prim_u_8,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_uuid_twin_sync_impl(id)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_handle_uuids_twin_sync(
-    ids: *mut wire_cst_list_Uuid,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
-    wire_handle_uuids_twin_sync_impl(ids)
 }
 
 #[no_mangle]
@@ -13206,11 +13169,6 @@ pub extern "C" fn wire_handle_nested_uuids_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_handle_uuid_twin_normal(port_: i64, id: *mut wire_cst_list_prim_u_8) {
     wire_handle_uuid_twin_normal_impl(port_, id)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_handle_uuids_twin_normal(port_: i64, ids: *mut wire_cst_list_Uuid) {
-    wire_handle_uuids_twin_normal_impl(port_, ids)
 }
 
 #[no_mangle]
@@ -14985,18 +14943,6 @@ pub extern "C" fn cst_new_list_String(len: i32) -> *mut wire_cst_list_String {
     let wrap = wire_cst_list_String {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
             <*mut wire_cst_list_prim_u_8>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn cst_new_list_Uuid(len: i32) -> *mut wire_cst_list_Uuid {
-    let wrap = wire_cst_list_Uuid {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <wire_cst_list_prim_u_8>::new_with_null_ptr(),
             len,
         ),
         len,

@@ -10,31 +10,24 @@ import 'package:uuid/uuid.dart';
 UuidValue handleUuidTwinSync({required UuidValue id, dynamic hint}) =>
     RustLib.instance.api.handleUuidTwinSync(id: id, hint: hint);
 
-List<UuidValue> handleUuidsTwinSync(
-        {required List<UuidValue> ids, dynamic hint}) =>
-    RustLib.instance.api.handleUuidsTwinSync(ids: ids, hint: hint);
-
 FeatureUuidTwinSync handleNestedUuidsTwinSync(
         {required FeatureUuidTwinSync ids, dynamic hint}) =>
     RustLib.instance.api.handleNestedUuidsTwinSync(ids: ids, hint: hint);
 
 class FeatureUuidTwinSync {
   final UuidValue one;
-  final List<UuidValue> many;
 
   const FeatureUuidTwinSync({
     required this.one,
-    required this.many,
   });
 
   @override
-  int get hashCode => one.hashCode ^ many.hashCode;
+  int get hashCode => one.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is FeatureUuidTwinSync &&
           runtimeType == other.runtimeType &&
-          one == other.one &&
-          many == other.many;
+          one == other.one;
 }

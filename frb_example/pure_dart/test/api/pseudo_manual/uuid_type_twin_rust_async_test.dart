@@ -17,22 +17,23 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(id, output);
   });
 
-  test('Vec<Uuid>', () async {
-    final uuid = Uuid();
-    final ids =
-        List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
-    final outputs = await handleUuidsTwinRustAsync(ids: ids);
-    expect(ids, outputs);
-  });
+  // TODO: For simplicity, `Vec<Uuid>` is supported using SSE (serializer)
+  // test('Vec<Uuid>', () async {
+  //   final uuid = Uuid();
+  //   final ids =
+  //       List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+  //   final outputs = await handleUuidsTwinRustAsync(ids: ids);
+  //   expect(ids, outputs);
+  // });
 
   test('nested uuid types', () async {
     final uuid = Uuid();
     final id = uuid.v4obj();
-    final ids =
-        List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
-    final wrapper = FeatureUuidTwinRustAsync(one: id, many: ids);
+    // final ids =
+    //     List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+    final wrapper = FeatureUuidTwinRustAsync(one: id);
     final outputs = await handleNestedUuidsTwinRustAsync(ids: wrapper);
     expect(wrapper.one, outputs.one);
-    expect(wrapper.many, outputs.many);
+    // expect(wrapper.many, outputs.many);
   });
 }

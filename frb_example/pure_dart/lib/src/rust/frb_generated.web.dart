@@ -2022,18 +2022,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
-    return [cst_encode_Uuid(raw.one), cst_encode_list_Uuid(raw.many)];
+    return [cst_encode_Uuid(raw.one)];
   }
 
   @protected
   List<dynamic> cst_encode_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync raw) {
-    return [cst_encode_Uuid(raw.one), cst_encode_list_Uuid(raw.many)];
+    return [cst_encode_Uuid(raw.one)];
   }
 
   @protected
   List<dynamic> cst_encode_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
-    return [cst_encode_Uuid(raw.one), cst_encode_list_Uuid(raw.many)];
+    return [cst_encode_Uuid(raw.one)];
   }
 
   @protected
@@ -2196,11 +2196,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_String(List<String> raw) {
     return raw.map(cst_encode_String).toList();
-  }
-
-  @protected
-  List<dynamic> cst_encode_list_Uuid(List<UuidValue> raw) {
-    return raw.map(cst_encode_Uuid).toList();
   }
 
   @protected
@@ -5909,10 +5904,6 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuid_twin_rust_async(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid_twin_rust_async(port_, id);
 
-  void wire_handle_uuids_twin_rust_async(
-          NativePortType port_, List<dynamic> ids) =>
-      wasmModule.wire_handle_uuids_twin_rust_async(port_, ids);
-
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_nested_uuids_twin_sync(List<dynamic> ids) =>
           wasmModule.wire_handle_nested_uuids_twin_sync(ids);
@@ -5920,10 +5911,6 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_uuid_twin_sync(Uint8List id) =>
           wasmModule.wire_handle_uuid_twin_sync(id);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
-      wire_handle_uuids_twin_sync(List<dynamic> ids) =>
-          wasmModule.wire_handle_uuids_twin_sync(ids);
 
   void wire_test_more_than_just_one_raw_string_struct_twin_normal(
           NativePortType port_) =>
@@ -6243,9 +6230,6 @@ class RustLibWire extends BaseWire {
 
   void wire_handle_uuid_twin_normal(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid_twin_normal(port_, id);
-
-  void wire_handle_uuids_twin_normal(NativePortType port_, List<dynamic> ids) =>
-      wasmModule.wire_handle_uuids_twin_normal(port_, ids);
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr);
@@ -8431,17 +8415,11 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_uuid_twin_rust_async(
       NativePortType port_, Uint8List id);
 
-  external void wire_handle_uuids_twin_rust_async(
-      NativePortType port_, List<dynamic> ids);
-
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_nested_uuids_twin_sync(List<dynamic> ids);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_uuid_twin_sync(Uint8List id);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
-      wire_handle_uuids_twin_sync(List<dynamic> ids);
 
   external void wire_test_more_than_just_one_raw_string_struct_twin_normal(
       NativePortType port_);
@@ -8668,9 +8646,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_uuid_twin_normal(
       NativePortType port_, Uint8List id);
-
-  external void wire_handle_uuids_twin_normal(
-      NativePortType port_, List<dynamic> ids);
 
   external void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);
