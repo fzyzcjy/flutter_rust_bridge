@@ -17,7 +17,6 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::{bail, Context};
 use itertools::concat;
 use log::debug;
-use quote::quote;
 use std::fmt::Debug;
 use std::path::Path;
 use syn::*;

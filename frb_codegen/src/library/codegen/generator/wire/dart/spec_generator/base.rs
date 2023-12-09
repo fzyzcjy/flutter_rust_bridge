@@ -4,7 +4,6 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::Wir
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::WireDartCodecDcoGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::WireDartCodecSseGeneratorContext;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
-use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::ty::IrType::*;
 use crate::codegen_generator_structs;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
@@ -28,15 +27,6 @@ pub(crate) struct WireDartGeneratorContext<'a> {
 
 // TODO duplicated with `WireDartCodecCstGeneratorContext`
 impl WireDartGeneratorContext<'_> {
-    pub(crate) fn as_wire_rust_context(&self) -> WireRustGeneratorContext {
-        WireRustGeneratorContext {
-            ir_pack: self.ir_pack,
-            config: self.wire_rust_config,
-            wire_dart_config: self.config,
-            api_dart_config: self.api_dart_config,
-        }
-    }
-
     pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
         ApiDartGeneratorContext {
             ir_pack: self.ir_pack,
@@ -56,7 +46,6 @@ impl WireDartGeneratorContext<'_> {
     pub(crate) fn as_wire_dart_codec_dco_context(&self) -> WireDartCodecDcoGeneratorContext {
         WireDartCodecDcoGeneratorContext {
             ir_pack: self.ir_pack,
-            config: self.config,
             api_dart_config: self.api_dart_config,
         }
     }

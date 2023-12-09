@@ -4,7 +4,6 @@ use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::generator::misc::StructOrRecord::Struct;
-use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_wasm;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;

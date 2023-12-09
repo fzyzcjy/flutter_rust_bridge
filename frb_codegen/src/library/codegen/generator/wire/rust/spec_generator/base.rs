@@ -1,6 +1,5 @@
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
-use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::WireRustCodecDcoGeneratorContext;

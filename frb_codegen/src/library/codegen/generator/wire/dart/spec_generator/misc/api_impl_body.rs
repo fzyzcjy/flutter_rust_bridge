@@ -4,7 +4,6 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDart
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
-use crate::library::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypointTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;

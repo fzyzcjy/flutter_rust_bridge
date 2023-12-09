@@ -3,7 +3,6 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::{bail, Context};
-use quote::__private::ext::RepToTokensExt;
 use syn::{
     AngleBracketedGenericArguments, GenericArgument, PathArguments, PathSegment, ReturnType, Type,
     TypeImplTrait, TypeParamBound, TypePath,
@@ -54,7 +53,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 }) = path.segments.first()
                 {
                     if &ident.to_string() == "DartFnFuture" {
-                        if let GenericArgument::Type(inner_ty) = (args.iter()).find(|arg| matches!(arg, GenericArgument::Type(_)))
+                        if let GenericArgument::Type(inner_ty) = (args.iter())
+                            .find(|arg| matches!(arg, GenericArgument::Type(_)))
                             .unwrap()
                         {
                             return self.parse_type(inner_ty);

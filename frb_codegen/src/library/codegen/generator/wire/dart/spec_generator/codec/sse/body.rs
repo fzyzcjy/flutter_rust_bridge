@@ -3,7 +3,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::dart::DartLang;
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::sse::ty::{CodecSseTy, CodecSseTyContext};
-use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
+use crate::codegen::generator::codec::structs::EncodeOrDecode;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecOutputSpec;
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::WireDartCodecSseGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;

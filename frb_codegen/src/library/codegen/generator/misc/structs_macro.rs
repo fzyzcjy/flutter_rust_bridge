@@ -61,6 +61,8 @@ macro_rules! codegen_generator_structs {
             }
 
             impl<'a> $generator_name<'a> {
+                // Because only some of them are used
+                #[allow(dead_code)]
                 pub(crate) fn new(ty: impl Into<IrType>, context: [<$generator_name Context>]<'a>) -> Self {
                     match ty.into() {
                         $(

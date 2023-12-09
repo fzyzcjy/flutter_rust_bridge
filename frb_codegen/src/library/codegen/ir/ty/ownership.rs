@@ -28,11 +28,7 @@ impl IrTypeTrait for IrTypeOwnership {
     }
 
     fn safe_ident(&self) -> String {
-        format!(
-            "Ownership{}_{}",
-            self.mode,
-            self.inner.safe_ident()
-        )
+        format!("Ownership{}_{}", self.mode, self.inner.safe_ident())
     }
 
     fn rust_api_type(&self) -> String {

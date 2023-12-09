@@ -19,7 +19,6 @@ use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartIntern
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::structs::EncodeOrDecode;
-use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
 use crate::codegen_generator_structs;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
