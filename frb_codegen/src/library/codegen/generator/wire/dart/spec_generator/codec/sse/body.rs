@@ -60,7 +60,10 @@ fn generate_encode_or_decode_for_type(
             ),
         };
 
-        Acc::new_common(code.into())
+        Acc::new_common(WireDartOutputCode {
+            api_impl_body: code,
+            ..Default::default()
+        })
     } else {
         Acc::default()
     }
