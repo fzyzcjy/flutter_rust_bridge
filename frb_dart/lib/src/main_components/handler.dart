@@ -19,8 +19,9 @@ class BaseHandler {
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
-  S executeSync<S, E extends Object, R>(SyncTask<S, E, R> task) {
-    final R syncReturn;
+  S executeSync<S, E extends Object, WireSyncType>(
+      SyncTask<S, E, WireSyncType> task) {
+    final WireSyncType syncReturn;
     try {
       syncReturn = task.callFfi();
     } catch (e, s) {
