@@ -16,26 +16,6 @@ impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
 
 const EXTERNAL_SIZE_TYPE: IrType = IrType::Primitive(IrTypePrimitive::I32);
 
-pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &str) -> String {
-    match lang {
-        Lang::DartLang(_) => simple_delegate_encode(
-            lang,
-            &IrTypeRustOpaque::DELEGATE_TYPE,
-            &format!("self.sseEncode(move: {needs_move})"),
-        ),
-        Lang::RustLang(_) => {
-            format!(
-                "
-                {};
-                {};
-                ",
-                lang.call_encode(&IrTypeRustOpaque::DELEGATE_TYPE, "TODO"),
-                lang.call_encode(&EXTERNAL_SIZE_TYPE, "TODO"),
-            )
-        }
-    }
-}
-
 pub(super) fn generate_generalized_rust_opaque_decode(lang: &Lang) -> String {
     let var_decl = lang.var_decl();
     match lang {
@@ -53,6 +33,26 @@ pub(super) fn generate_generalized_rust_opaque_decode(lang: &Lang) -> String {
         }
         Lang::RustLang(_) => {
             simple_delegate_decode(lang, &IrTypeRustOpaque::DELEGATE_TYPE, "inner")
+        }
+    }
+}
+
+pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &str) -> String {
+    match lang {
+        Lang::DartLang(_) => simple_delegate_encode(
+            lang,
+            &IrTypeRustOpaque::DELEGATE_TYPE,
+            &format!("self.sseEncode(move: {needs_move})"),
+        ),
+        Lang::RustLang(_) => {
+            format!(
+                "
+                {};
+                {};
+                ",
+                lang.call_encode(&IrTypeRustOpaque::DELEGATE_TYPE, "TODO"),
+                lang.call_encode(&EXTERNAL_SIZE_TYPE, "TODO"),
+            )
         }
     }
 }
