@@ -38,8 +38,13 @@ pub extern "C" fn wire_hi_stream_one(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_hi_stream_two(port_: i64) {
-    wire_hi_stream_two_impl(port_)
+pub extern "C" fn wire_hi_stream_two(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_hi_stream_two_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]

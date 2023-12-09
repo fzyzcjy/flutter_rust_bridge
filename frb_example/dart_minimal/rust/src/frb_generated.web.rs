@@ -44,8 +44,8 @@ pub fn wire_hi_stream_one(port_: flutter_rust_bridge::for_generated::MessagePort
 }
 
 #[wasm_bindgen]
-pub fn wire_hi_stream_two(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_hi_stream_two_impl(port_)
+pub fn wire_hi_stream_two(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+    wire_hi_stream_two_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

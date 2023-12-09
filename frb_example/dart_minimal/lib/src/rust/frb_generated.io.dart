@@ -78,17 +78,24 @@ class RustLibWire implements BaseWire {
 
   void wire_hi_stream_two(
     int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_hi_stream_two(
       port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
-  late final _wire_hi_stream_twoPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_hi_stream_two');
-  late final _wire_hi_stream_two =
-      _wire_hi_stream_twoPtr.asFunction<void Function(int)>();
+  late final _wire_hi_stream_twoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_hi_stream_two');
+  late final _wire_hi_stream_two = _wire_hi_stream_twoPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_minimal_adder(
     int port_,

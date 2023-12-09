@@ -61,16 +61,25 @@ fn wire_hi_stream_one_impl(port_: flutter_rust_bridge::for_generated::MessagePor
         },
     )
 }
-fn wire_hi_stream_two_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+fn wire_hi_stream_two_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "hi_stream_two",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
         },
         move || {
+            let mut deserializer = unsafe {
+                flutter_rust_bridge::for_generated::SseDeserializer::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+
+            deserializer.end();
             move |context| {
-                transform_result_dco(Result::<_, ()>::Ok(crate::api::minimal::hi_stream_two(
+                transform_result_sse(Result::<_, ()>::Ok(crate::api::minimal::hi_stream_two(
                     StreamSink::new(context.rust2dart_context().stream_sink::<_, i32>()),
                 )))
             }

@@ -31,8 +31,9 @@ class RustLibWire extends BaseWire {
   void wire_hi_stream_one(NativePortType port_) =>
       wasmModule.wire_hi_stream_one(port_);
 
-  void wire_hi_stream_two(NativePortType port_) =>
-      wasmModule.wire_hi_stream_two(port_);
+  void wire_hi_stream_two(int port_, ffi.Pointer<ffi.Uint8> ptr_,
+          int rust_vec_len_, int data_len_) =>
+      wasmModule.wire_hi_stream_two(port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
@@ -55,7 +56,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_hi_stream_one(NativePortType port_);
 
-  external void wire_hi_stream_two(NativePortType port_);
+  external void wire_hi_stream_two(
+      int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 }

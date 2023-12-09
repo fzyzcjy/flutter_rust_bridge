@@ -14,7 +14,7 @@ void frb_initialize_rust(MessagePort dart_opaque_drop_port, MessagePort dart_fn_
 
 void wire_hi_stream_one(int64_t port_);
 
-void wire_hi_stream_two(int64_t port_);
+void wire_hi_stream_two(int64_t port_, uint8_t *ptr_, int32_t rust_vec_len_, int32_t data_len_);
 
 void wire_minimal_adder(int64_t port_, int32_t a, int32_t b);
 static int64_t dummy_method_to_enforce_bundling(void) {

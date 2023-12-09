@@ -97,10 +97,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<int> hiStreamTwo({dynamic hint}) {
     return handler.executeStream(StreamTask(
       callFfi: (port_) {
-        return wire.wire_hi_stream_two(port_);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_hi_stream_two(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_i_32,
+      codec: SseCodec(
+        decodeSuccessData: _sse_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kHiStreamTwoConstMeta,
