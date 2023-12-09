@@ -13,9 +13,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     }
 }
 
-pub(crate) fn generate_enum_encode_rust(src: &IrEnum) -> String {
-    let self_ref = self.generate_access_object_core("self".to_owned());
-
+pub(crate) fn generate_enum_encode_rust(src: &IrEnum, self_ref: &str, self_path: &str) -> String {
     let variants = src
         .variants()
         .iter()
@@ -50,7 +48,7 @@ pub(crate) fn generate_enum_encode_rust(src: &IrEnum) -> String {
         "
         match {self_ref} {{
             {variants}
-        }}.into_dart()
+        }}
         "
     )
 }

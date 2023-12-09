@@ -20,14 +20,15 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
         let src = self.ir.get(self.context.ir_pack);
         let (name, self_path) =
             parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
+        let self_ref = self.generate_access_object_core("self".to_owned());
 
-        let body = generate_enum_encode_rust();
+        let body = generate_enum_encode_rust(src, &self_ref, &self_path);
 
         let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
         Some(format!(
             "impl flutter_rust_bridge::IntoDart for {name} {{
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
-                    {body}
+                    {body}.into_dart()
                 }}
             }}
             impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {name} {{}}
