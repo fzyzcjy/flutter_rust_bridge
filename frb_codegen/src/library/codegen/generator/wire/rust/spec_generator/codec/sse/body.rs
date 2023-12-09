@@ -71,7 +71,6 @@ fn generate_encode_or_decode_for_type(
     mode: EncodeOrDecode,
 ) -> Acc<WireRustOutputCode> {
     let rust_api_type = ty.rust_api_type();
-    let safe_ident = ty.safe_ident();
     let body = CodecSseTy::new(
         ty.clone(),
         CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
