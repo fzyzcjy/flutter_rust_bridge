@@ -56,7 +56,7 @@ fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang
 }
 
 fn generate_encode_rust(lang: &Lang, src: &IrEnum) -> String {
-    generate_enum_encode_rust_general(src, "self", "Self", |idx, variant| {
+    generate_enum_encode_rust_general(lang, src, "self", "Self", |idx, variant| {
         let fields = (variant.kind.fields().iter())
             .map(|field| {
                 format!(
@@ -79,6 +79,7 @@ fn generate_encode_rust(lang: &Lang, src: &IrEnum) -> String {
 }
 
 pub(crate) fn generate_enum_encode_rust_general(
+    lang: &Lang,
     src: &IrEnum,
     self_ref: &str,
     self_path: &str,
@@ -98,17 +99,11 @@ pub(crate) fn generate_enum_encode_rust_general(
                     format!("{left}{pattern}{right}")
                 }
             };
-            format!("{self_path}::{variant_name}{pattern} => {body},")
+            (format!("{self_path}::{variant_name}{pattern}"), body)
         })
-        .join("\n");
+        .collect_vec();
 
-    format!(
-        "
-        match {self_ref} {{
-            {variants}
-        }}
-        "
-    )
+    lang.switch_expr(self_ref, variants)
 }
 
 const TAG_TYPE: IrType = Primitive(IrTypePrimitive::I32);
