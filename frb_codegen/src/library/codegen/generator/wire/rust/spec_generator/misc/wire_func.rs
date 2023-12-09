@@ -186,11 +186,16 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
     }
 
     ans = format!(
-        "transform_result_{}({ans})",
-        func.codec_mode_pack
+        "transform_result_{codec}((move || {maybe_async_move} {{
+            {ans}
+        }})(){maybe_await})",
+        codec = func
+            .codec_mode_pack
             .rust2dart
             .to_string()
             .to_case(Case::Snake),
+        maybe_async_move = if func.rust_async { "async move" } else { "" },
+        maybe_await = if func.rust_async { ".await" } else { "" },
     );
 
     ans
