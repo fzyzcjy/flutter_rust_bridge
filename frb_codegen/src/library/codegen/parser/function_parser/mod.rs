@@ -191,8 +191,3 @@ fn merge_option<T: Debug>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T
     }
     Ok(a.or(b))
 }
-
-/// syn -> string https://github.com/dtolnay/syn/issues/294
-fn type_to_string(ty: &Type) -> String {
-    quote!(#ty).to_string().replace(' ', "")
-}
