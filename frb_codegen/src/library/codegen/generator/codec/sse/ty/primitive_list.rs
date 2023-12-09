@@ -9,7 +9,7 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(match lang {
             Lang::DartLang(_) => format!(
-                "{}
+                "{};
                 serializer.buffer.put{}List(self);",
                 lang.call_encode(&LEN_TYPE, &format!("self.{}", list_len_method(lang))),
                 get_serializer_dart_postfix(&self.ir.primitive)
@@ -25,7 +25,7 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
         let var_decl = lang.var_decl();
         Some(match lang {
             Lang::DartLang(_) => format!(
-                "{var_decl} len_ = {},
+                "{var_decl} len_ = {};
                 return deserializer.buffer.get{}List(len_);",
                 lang.call_decode(&LEN_TYPE),
                 get_serializer_dart_postfix(&self.ir.primitive)
