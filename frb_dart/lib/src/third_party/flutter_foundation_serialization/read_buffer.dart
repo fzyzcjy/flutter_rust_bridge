@@ -116,8 +116,8 @@ class ReadBuffer {
 
   /// Reads the given number of Uint64s from the buffer.
   Uint64List getUint64List(int length) {
-    final Uint64List list =
-        data.buffer.asUint64List(data.offsetInBytes + _position, length);
+    final Uint64List list = Uint64List.fromList(
+        data.buffer.asUint64List(data.offsetInBytes + _position, length));
     _position += 8 * length;
     return list;
   }
@@ -150,8 +150,8 @@ class ReadBuffer {
   /// Reads the given number of Int64s from the buffer.
   Int64List getInt64List(int length) {
     // _alignTo(8);
-    final Int64List list =
-        data.buffer.asInt64List(data.offsetInBytes + _position, length);
+    final Int64List list = Int64List.fromList(
+        data.buffer.asInt64List(data.offsetInBytes + _position, length));
     _position += 8 * length;
     return list;
   }
