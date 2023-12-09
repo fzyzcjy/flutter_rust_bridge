@@ -63,10 +63,12 @@ fn wire_hi_async_rust_opaque_impl(
         move || {
             let api_a = a.cst_decode();
             move |context| async move {
-                let api_a = api_a.rust_auto_opaque_decode_owned()?;
-                transform_result_dco(Result::<_, anyhow::Error>::Ok(
-                    crate::api::minimal::hi_async_rust_opaque(api_a).await,
-                ))
+                transform_result_dco((move || async move {
+                    let api_a = api_a.rust_auto_opaque_decode_owned()?;
+                    Result::<_, anyhow::Error>::Ok(
+                        crate::api::minimal::hi_async_rust_opaque(api_a).await,
+                    )
+                })())
             }
         },
     )
@@ -88,10 +90,10 @@ fn wire_hi_rust_opaque_impl(
         move || {
             let api_a = a.cst_decode();
             move |context| {
-                let api_a = api_a.rust_auto_opaque_decode_owned()?;
-                transform_result_dco(Result::<_, anyhow::Error>::Ok(
-                    crate::api::minimal::hi_rust_opaque(api_a),
-                ))
+                transform_result_dco((move || {
+                    let api_a = api_a.rust_auto_opaque_decode_owned()?;
+                    Result::<_, anyhow::Error>::Ok(crate::api::minimal::hi_rust_opaque(api_a))
+                })())
             }
         },
     )
