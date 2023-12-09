@@ -24,7 +24,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
             .map(|(idx, variant)| {
                 (
                     format!("{idx}"),
-                    generate_decode_rust_variant(variant, &src.name),
+                    generate_decode_variant(variant, &src.name, lang),
                 )
             })
             .collect_vec();
@@ -40,12 +40,17 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     }
 }
 
-fn generate_decode_rust_variant(variant: &IrVariant, enum_name: &NamespacedName) -> String {
+fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang: &Lang) -> String {
+    let sep = match lang {
+        Lang::DartLang(_) => "_",
+        Lang::RustLang(_) => "::",
+    };
+
     match &variant.kind {
-        IrVariantKind::Value => format!("{}::{}", enum_name.rust_style(), variant.name),
+        IrVariantKind::Value => format!("{}{sep}{}", enum_name.rust_style(), variant.name),
         IrVariantKind::Struct(st) => {
             GeneralizedStructGenerator::new(st.clone(), StructOrRecord::Struct)
-                .generate_decode(&Lang::RustLang(_))
+                .generate_decode(lang)
         }
     }
 }
