@@ -19,7 +19,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _",
                 IrTypeDelegate::Time(_) => "self.microsecondsSinceEpoch",
                 IrTypeDelegate::Uuid => "self.toBytes()",
-                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "TODO",
+                IrTypeDelegate::Backtrace => "TODO",
+                IrTypeDelegate::Anyhow => "TODO",
             },
         };
         simple_delegate_encode(lang, &self.ir.get_delegate(), inner_expr)
@@ -38,8 +39,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     )
                 }
                 IrTypeDelegate::Time(_) => "TODO".to_owned(),
-                IrTypeDelegate::Uuid => "TODO".to_owned(),
-                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "TODO".to_owned(),
+                IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
+                IrTypeDelegate::Backtrace => "inner".to_owned(),
+                IrTypeDelegate::Anyhow => "AnyhowException(inner)".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -54,7 +56,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
             },
         };
-        simple_delegate_decode(lang, &self.ir.get_delegate(), wrapper_expr)
+        simple_delegate_decode(lang, &self.ir.get_delegate(), &wrapper_expr)
     }
 }
 
