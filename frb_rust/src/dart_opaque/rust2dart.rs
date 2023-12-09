@@ -6,7 +6,13 @@ use wasm_bindgen::prelude::*;
 
 impl From<DartOpaque> for DartAbi {
     fn from(data: DartOpaque) -> Self {
-        (data.into_raw() as usize).into_dart()
+        data.encode().into_dart()
+    }
+}
+
+impl DartOpaque {
+    pub fn encode(self) -> usize {
+        self.into_raw() as usize
     }
 }
 
