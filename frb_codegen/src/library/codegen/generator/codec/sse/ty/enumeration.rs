@@ -22,9 +22,16 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 }
 
 fn generate_decode_rust(lang: &Lang, src: &IrEnum) -> String {
+    let var_decl = lang.var_decl();
+    let expr_decode_tag = lang.call_decode(&TAG_TYPE);
+
+    // TODO reuse things in `structure`?
+
     format!(
         "
-        TODO
+        {var_decl} tag_ = {expr_decode_tag};
+        match tag_ {{
+        }}
         "
     )
 }
@@ -47,7 +54,7 @@ fn generate_encode_rust(lang: &Lang, src: &IrEnum) -> String {
                 {fields}
             }}
             ",
-            lang.call_encode(Primitive(IrTypePrimitive::I32), idx),
+            lang.call_encode(&TAG_TYPE, idx),
         )
     })
 }
@@ -84,3 +91,5 @@ pub(crate) fn generate_enum_encode_rust_general(
         "
     )
 }
+
+const TAG_TYPE: IrType = Primitive(IrTypePrimitive::I32);
