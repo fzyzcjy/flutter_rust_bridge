@@ -49,7 +49,11 @@ abstract class BaseGenerator {
 
 enum DuplicatorMode {
   sync,
-  rustAsync;
+  rustAsync,
+  sse,
+  syncSse,
+  rustAsyncSse,
+  ;
 
   String get postfix => '_twin_${ReCase(name).snakeCase}';
 }
