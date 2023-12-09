@@ -4,10 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_metadata,
 };
-use crate::codegen::ir::func::{IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
-use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
-use itertools::Itertools;
 
 impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {

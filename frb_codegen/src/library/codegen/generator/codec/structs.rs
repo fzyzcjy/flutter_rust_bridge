@@ -1,6 +1,5 @@
 use crate::codegen::ir::ty::IrType;
 use serde::Serialize;
-use strum::IntoEnumIterator;
 use strum_macros::{Display, EnumIter};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash, Display, EnumIter)]
@@ -20,7 +19,7 @@ pub(crate) struct CodecModePack {
 #[macro_export]
 macro_rules! codegen_codec_structs {
     ($partial_name:ident, $code:ident) => (
-        crate::codegen_codec_structs!(
+        $crate::codegen_codec_structs!(
             @private
 
             $partial_name, $code;

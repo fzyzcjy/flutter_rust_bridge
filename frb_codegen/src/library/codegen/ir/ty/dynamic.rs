@@ -1,4 +1,3 @@
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {

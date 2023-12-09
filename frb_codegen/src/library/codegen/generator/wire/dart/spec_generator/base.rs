@@ -1,6 +1,4 @@
-use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::WireDartCodecCstGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::WireDartCodecDcoGeneratorContext;
@@ -11,7 +9,6 @@ use crate::codegen::ir::ty::IrType::*;
 use crate::codegen_generator_structs;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
 use enum_dispatch::enum_dispatch;
-use paste::paste;
 
 codegen_generator_structs!(
     #[enum_dispatch(WireDartGeneratorImplTrait)]

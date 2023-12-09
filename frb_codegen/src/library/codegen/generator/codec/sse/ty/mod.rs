@@ -18,7 +18,6 @@ mod unencodable;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
 use crate::codegen::generator::codec::sse::lang::Lang;
-use crate::codegen::generator::codec::sse::*;
 use crate::codegen::generator::codec::structs::EncodeOrDecode;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
 use crate::codegen_generator_structs;

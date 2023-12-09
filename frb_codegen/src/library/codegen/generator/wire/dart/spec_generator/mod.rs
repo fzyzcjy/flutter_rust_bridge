@@ -10,7 +10,6 @@ use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputS
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
-use itertools::Itertools;
 use serde::Serialize;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;

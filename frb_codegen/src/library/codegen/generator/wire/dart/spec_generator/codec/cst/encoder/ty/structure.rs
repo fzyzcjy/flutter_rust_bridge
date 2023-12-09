@@ -12,7 +12,6 @@ use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::structure::{IrStruct, IrTypeStructRef};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
-use StructOrRecord::Record;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {

@@ -4,7 +4,6 @@ use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use convert_case::{Case, Casing};

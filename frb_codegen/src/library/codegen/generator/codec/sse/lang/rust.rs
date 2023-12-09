@@ -3,7 +3,6 @@ use crate::codegen::ir::ty::structure::rust_brackets_pair;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::{multizip, Itertools};
-use std::env::var;
 
 #[derive(Clone, Copy, Debug)]
 pub(crate) struct RustLang;

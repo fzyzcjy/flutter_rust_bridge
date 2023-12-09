@@ -1,13 +1,11 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
-use crate::codegen::generator::wire::rust::spec_generator::base::*;
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 
 impl<'a> WireRustGeneratorMiscTrait for DartOpaqueWireRustGenerator<'a> {

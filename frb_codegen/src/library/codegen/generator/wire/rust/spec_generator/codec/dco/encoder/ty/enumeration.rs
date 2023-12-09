@@ -6,10 +6,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
-use std::env::var;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
@@ -21,7 +19,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
 
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
-        let (name, self_path) =
+        let (name, _self_path) =
             parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
         let self_ref = self.generate_access_object_core("self".to_owned());
 

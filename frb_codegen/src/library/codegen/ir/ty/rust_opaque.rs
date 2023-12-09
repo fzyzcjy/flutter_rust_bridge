@@ -1,6 +1,4 @@
-use crate::codegen::generator::codec::sse::ty::DelegateCodecSseTy;
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 

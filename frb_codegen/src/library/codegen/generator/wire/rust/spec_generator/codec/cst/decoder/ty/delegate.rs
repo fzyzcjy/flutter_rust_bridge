@@ -1,23 +1,15 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::sse::ty::delegate::rust_decode_primitive_enum;
 use crate::codegen::generator::misc::is_js_value;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::{
-    generate_class_from_fields, JS_VALUE,
-};
-use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::general_list::{
-    general_list_impl_decode_body, generate_list_generate_allocate_func,
-};
-use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
-use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use itertools::Itertools;
-use crate::codegen::generator::codec::sse::ty::delegate::rust_decode_primitive_enum;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<String> {

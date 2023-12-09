@@ -1,5 +1,4 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};

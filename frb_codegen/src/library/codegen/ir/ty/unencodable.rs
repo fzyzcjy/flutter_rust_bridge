@@ -1,5 +1,4 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use lazy_static::lazy_static;
 use regex::Regex;

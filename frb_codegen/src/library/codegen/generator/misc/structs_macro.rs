@@ -2,7 +2,7 @@
 #[macro_export]
 macro_rules! codegen_generator_structs {
     ($(#[$attribute:meta])* $generator_name:ident) => (
-        crate::codegen_generator_structs!(
+        $crate::codegen_generator_structs!(
             @private
 
             $(#[$attribute])*
@@ -45,7 +45,7 @@ macro_rules! codegen_generator_structs {
         use crate::codegen::ir::ty::structure::IrTypeStructRef;
         use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
         use crate::codegen::ir::ty::IrType;
-        use crate::codegen::ir::ty::IrType::*;
+
 
         paste::paste! {
             $(

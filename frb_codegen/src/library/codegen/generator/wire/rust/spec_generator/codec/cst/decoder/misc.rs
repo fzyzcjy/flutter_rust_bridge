@@ -1,5 +1,4 @@
 use crate::codegen::generator::misc::target::Target;
-use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
     WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
 };

@@ -1,5 +1,4 @@
 use crate::codegen::generator::api_dart;
-use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
@@ -15,7 +14,7 @@ pub(crate) fn generate_api_impl_normal_function(
     context: WireDartGeneratorContext,
 ) -> anyhow::Result<WireDartOutputCode> {
     let dart2rust_codec = WireDartCodecEntrypoint::from(func.codec_mode_pack.dart2rust);
-    let rust2dart_codec = WireDartCodecEntrypoint::from(func.codec_mode_pack.rust2dart);
+    let _rust2dart_codec = WireDartCodecEntrypoint::from(func.codec_mode_pack.rust2dart);
 
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;

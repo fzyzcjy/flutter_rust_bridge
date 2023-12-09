@@ -1,5 +1,4 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;

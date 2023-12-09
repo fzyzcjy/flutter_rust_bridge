@@ -1,20 +1,13 @@
 use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::Primitive;
-use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
-use anyhow::{bail, ensure, Context};
-use enum_iterator::next;
-use itertools::{unfold, Itertools};
+use anyhow::{bail, Context};
 use quote::__private::ext::RepToTokensExt;
 use syn::{
-    AngleBracketedGenericArguments, GenericArgument, Path, PathArguments, PathSegment, ReturnType,
-    Type, TypeBareFn, TypeImplTrait, TypeParamBound, TypePath,
+    AngleBracketedGenericArguments, GenericArgument, PathArguments, PathSegment, ReturnType, Type,
+    TypeImplTrait, TypeParamBound, TypePath,
 };
-use ArgsRefs::Generic;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_impl_trait_dart_fn(

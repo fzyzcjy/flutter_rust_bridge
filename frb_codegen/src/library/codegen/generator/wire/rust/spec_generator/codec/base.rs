@@ -8,7 +8,6 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen_codec_structs;
-use enum_dispatch::enum_dispatch;
 use serde::Serialize;
 
 codegen_codec_structs!(WireRustCodec, WireRustOutputCode);

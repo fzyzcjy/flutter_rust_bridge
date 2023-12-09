@@ -74,7 +74,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
     fn generate_func_call_decode(
         &self,
         func: &IrFunc,
-        context: WireRustGeneratorContext,
+        _context: WireRustGeneratorContext,
     ) -> String {
         let primary = (func.inputs.iter())
             .map(|field| {

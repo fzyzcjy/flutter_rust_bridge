@@ -3,10 +3,8 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
 };
-use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::WireDartCodecDcoGeneratorContext;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) struct DcoWireDartCodecEntrypoint {}
 
@@ -30,7 +28,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 }
 
 impl WireDartCodecEntrypointTrait<'_> for DcoWireDartCodecEntrypoint {
-    fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, wire_func_name: &str) -> String {
+    fn generate_dart2rust_inner_func_stmt(&self, _func: &IrFunc, _wire_func_name: &str) -> String {
         unreachable!()
     }
 }

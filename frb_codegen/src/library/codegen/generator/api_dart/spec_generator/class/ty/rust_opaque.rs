@@ -1,16 +1,13 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
-use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use convert_case::{Case, Casing};
 use lazy_static::lazy_static;
 use regex::Regex;
-use IrType::RustOpaque;
 
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
@@ -57,7 +54,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 
 fn compute_api_method_query_name(
     ir: &IrTypeRustOpaque,
-    context: ApiDartGeneratorContext,
+    _context: ApiDartGeneratorContext,
 ) -> String {
     lazy_static! {
         static ref FILTER: Regex = Regex::new(r"^std::sync::RwLock<(.*)>$").unwrap();

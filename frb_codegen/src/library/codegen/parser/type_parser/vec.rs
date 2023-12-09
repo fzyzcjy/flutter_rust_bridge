@@ -1,20 +1,17 @@
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{Delegate, GeneralList, Optional, Primitive, PrimitiveList};
+use crate::codegen::ir::ty::IrType::{GeneralList, Primitive, PrimitiveList};
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
-use anyhow::bail;
-use quote::ToTokens;
 use syn::TypePath;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_vec(
         &mut self,
-        type_path: &TypePath,
+        _type_path: &TypePath,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {

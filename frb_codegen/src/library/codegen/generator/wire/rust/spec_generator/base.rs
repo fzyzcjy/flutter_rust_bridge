@@ -8,7 +8,6 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::Wir
 use crate::codegen::ir::ty::IrType::*;
 use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
-use paste::paste;
 
 codegen_generator_structs!(
     #[enum_dispatch(WireRustGeneratorImplTrait)]

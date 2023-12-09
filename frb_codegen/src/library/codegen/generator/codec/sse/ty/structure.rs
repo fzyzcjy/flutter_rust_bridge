@@ -59,7 +59,7 @@ impl GeneralizedStructGenerator {
         dart_unconditionally_kwargs_ctor: bool,
     ) -> String {
         let decode_fields = (self.st.fields.iter().enumerate())
-            .map(|(index, field)| {
+            .map(|(_index, field)| {
                 format!(
                     "{} {} = {};\n",
                     lang.var_decl(),

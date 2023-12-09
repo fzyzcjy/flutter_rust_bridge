@@ -9,7 +9,6 @@ use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_i
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
-use itertools::Itertools;
 use serde::Serialize;
 use strum::IntoEnumIterator;
 

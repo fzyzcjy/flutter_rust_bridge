@@ -1,12 +1,8 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::codec::structs::CodecMode;
-use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
+use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
-use crate::codegen::generator::wire::rust::spec_generator::base::{
-    WireRustGenerator, WireRustGeneratorContext,
-};
+use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecEntrypoint;
-use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::WireRustCodecDcoGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
@@ -18,9 +14,7 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecEntrypointTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -190,8 +184,8 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
 
 fn generate_handler_func_name(
     func: &IrFunc,
-    ir_pack: &IrPack,
-    context: WireRustGeneratorContext,
+    _ir_pack: &IrPack,
+    _context: WireRustGeneratorContext,
 ) -> String {
     let codec = format!(
         "flutter_rust_bridge::for_generated::{}Codec",

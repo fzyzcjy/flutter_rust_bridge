@@ -1,7 +1,5 @@
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::pack::DistinctTypeGatherer;
-use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
-use crate::codegen::ir::ty::{IrContext, IrType};
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use itertools::Itertools;

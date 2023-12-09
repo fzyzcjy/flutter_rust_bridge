@@ -23,9 +23,7 @@ fn generate_wire_class(
     methods: &[MethodInfo],
 ) -> WireDartOutputCode {
     let DartOutputClassNamePack {
-        wire_class_name,
-        wasm_module_name,
-        ..
+        wire_class_name, ..
     } = &config.dart_output_class_name_pack;
 
     let body = (methods.iter())

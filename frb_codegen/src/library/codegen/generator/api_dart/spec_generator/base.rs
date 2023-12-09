@@ -2,7 +2,6 @@ use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartIntern
 use crate::codegen::ir::ty::IrType::*;
 use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
-use paste::paste;
 
 codegen_generator_structs!(
     #[enum_dispatch(ApiDartGeneratorInfoTrait)]

@@ -1,6 +1,3 @@
-use crate::codegen::generator::codec::sse::ty::delegate::{
-    simple_delegate_decode, simple_delegate_encode,
-};
 use crate::codegen::generator::codec::sse::ty::rust_opaque::{
     generate_generalized_rust_opaque_decode, generate_generalized_rust_opaque_encode,
 };

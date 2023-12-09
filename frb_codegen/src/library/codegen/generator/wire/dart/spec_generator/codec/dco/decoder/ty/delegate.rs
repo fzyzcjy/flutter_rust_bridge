@@ -5,7 +5,6 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;

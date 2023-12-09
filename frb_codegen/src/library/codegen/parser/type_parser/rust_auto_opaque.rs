@@ -1,20 +1,13 @@
-use crate::codegen::ir::func::IrFuncOwnerInfoMethod;
 use crate::codegen::ir::pack::DistinctTypeGatherer;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::RustOpaque;
 use crate::codegen::parser::type_parser::rust_opaque::SimpleParsedTypesParserInfo;
-use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
-use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use log::debug;
-use quote::ToTokens;
-use std::collections::HashMap;
-use syn::Type;
 use IrType::RustAutoOpaque;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
