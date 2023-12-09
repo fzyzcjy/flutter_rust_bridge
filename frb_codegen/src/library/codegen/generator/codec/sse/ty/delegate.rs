@@ -65,7 +65,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 IrTypeDelegate::String => "String::from_utf8(inner).unwrap()".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(inner) => {
-                    rust_decode_primitive_enum(inner, self.context.ir_pack)
+                    rust_decode_primitive_enum(inner, self.context.ir_pack, "inner")
                 }
                 IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
                 _ => unreachable!(),
@@ -108,6 +108,7 @@ pub(super) fn simple_delegate_decode(lang: &Lang, inner_ty: &IrType, wrapper_exp
 pub(crate) fn rust_decode_primitive_enum(
     inner: &IrTypeDelegatePrimitiveEnum,
     ir_pack: &IrPack,
+    var_name: &str,
 ) -> String {
     let enu = inner.ir.get(ir_pack);
     let variants = (enu.variants().iter().enumerate())
@@ -116,9 +117,9 @@ pub(crate) fn rust_decode_primitive_enum(
         .join("\n");
 
     format!(
-        "match inner {{
+        "match {var_name} {{
             {}
-            _ => unreachable!(\"Invalid variant for {}: {{}}\", inner),
+            _ => unreachable!(\"Invalid variant for {}: {{}}\", {var_name}),
         }}",
         variants, enu.name.name
     )
