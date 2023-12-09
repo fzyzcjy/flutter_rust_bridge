@@ -21002,55 +21002,55 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockBoxFnStringString
       _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw) {
-    return RwLockBoxFnStringString.fromWire(raw);
+    return RwLockBoxFnStringString.dcoDecode(raw);
   }
 
   RwLockBoxHelloTraitTwinNormal
       _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinNormal.fromWire(raw);
+    return RwLockBoxHelloTraitTwinNormal.dcoDecode(raw);
   }
 
   RwLockBoxHelloTraitTwinSync
       _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSync.fromWire(raw);
+    return RwLockBoxHelloTraitTwinSync.dcoDecode(raw);
   }
 
   RwLockBoxMyTraitTwinNormal
       _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinNormal.fromWire(raw);
+    return RwLockBoxMyTraitTwinNormal.dcoDecode(raw);
   }
 
   RwLockBoxMyTraitTwinSync
       _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinSync.fromWire(raw);
+    return RwLockBoxMyTraitTwinSync.dcoDecode(raw);
   }
 
   RwLockNonCloneSimpleTwinNormal
       _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinNormal.fromWire(raw);
+    return RwLockNonCloneSimpleTwinNormal.dcoDecode(raw);
   }
 
   RwLockNonCloneSimpleTwinSync
       _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSync.fromWire(raw);
+    return RwLockNonCloneSimpleTwinSync.dcoDecode(raw);
   }
 
   RwLockStructWithGoodAndOpaqueFieldTwinNormal
       _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
   }
 
   RwLockStructWithGoodAndOpaqueFieldTwinSync
       _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.fromWire(raw);
+    return RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
   }
 
   Duration _dco_decode_Chrono_Duration(dynamic raw) {
@@ -21079,39 +21079,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   MutexHideData _dco_decode_RustOpaque_MutexHideData(dynamic raw) {
-    return MutexHideData.fromWire(raw);
+    return MutexHideData.dcoDecode(raw);
   }
 
   RwLockHideData _dco_decode_RustOpaque_RwLockHideData(dynamic raw) {
-    return RwLockHideData.fromWire(raw);
+    return RwLockHideData.dcoDecode(raw);
   }
 
   BoxDartDebugTwinNormal _dco_decode_RustOpaque_box_dynDartDebugTwinNormal(
       dynamic raw) {
-    return BoxDartDebugTwinNormal.fromWire(raw);
+    return BoxDartDebugTwinNormal.dcoDecode(raw);
   }
 
   BoxDartDebugTwinRustAsync
       _dco_decode_RustOpaque_box_dynDartDebugTwinRustAsync(dynamic raw) {
-    return BoxDartDebugTwinRustAsync.fromWire(raw);
+    return BoxDartDebugTwinRustAsync.dcoDecode(raw);
   }
 
   BoxDartDebugTwinSync _dco_decode_RustOpaque_box_dynDartDebugTwinSync(
       dynamic raw) {
-    return BoxDartDebugTwinSync.fromWire(raw);
+    return BoxDartDebugTwinSync.dcoDecode(raw);
   }
 
   FrbOpaqueReturn _dco_decode_RustOpaque_frb_opaque_return(dynamic raw) {
-    return FrbOpaqueReturn.fromWire(raw);
+    return FrbOpaqueReturn.dcoDecode(raw);
   }
 
   FrbOpaqueSyncReturn _dco_decode_RustOpaque_frb_opaque_sync_return(
       dynamic raw) {
-    return FrbOpaqueSyncReturn.fromWire(raw);
+    return FrbOpaqueSyncReturn.dcoDecode(raw);
   }
 
   HideData _dco_decode_RustOpaque_hide_data(dynamic raw) {
-    return HideData.fromWire(raw);
+    return HideData.dcoDecode(raw);
   }
 
   HideDataArray2 _dco_decode_RustOpaque_hide_data_array_2(dynamic raw) {
@@ -21120,68 +21120,68 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   I32 _dco_decode_RustOpaque_i_32(dynamic raw) {
-    return I32.fromWire(raw);
+    return I32.dcoDecode(raw);
   }
 
   NonCloneData _dco_decode_RustOpaque_non_clone_data(dynamic raw) {
-    return NonCloneData.fromWire(raw);
+    return NonCloneData.dcoDecode(raw);
   }
 
   NonSendHideData _dco_decode_RustOpaque_non_send_hide_data(dynamic raw) {
-    return NonSendHideData.fromWire(raw);
+    return NonSendHideData.dcoDecode(raw);
   }
 
   RwLockBoxFnStringString
       _dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw) {
-    return RwLockBoxFnStringString.fromWire(raw);
+    return RwLockBoxFnStringString.dcoDecode(raw);
   }
 
   RwLockBoxHelloTraitTwinNormal
       _dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinNormal.fromWire(raw);
+    return RwLockBoxHelloTraitTwinNormal.dcoDecode(raw);
   }
 
   RwLockBoxHelloTraitTwinSync
       _dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSync.fromWire(raw);
+    return RwLockBoxHelloTraitTwinSync.dcoDecode(raw);
   }
 
   RwLockBoxMyTraitTwinNormal
       _dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinNormal.fromWire(raw);
+    return RwLockBoxMyTraitTwinNormal.dcoDecode(raw);
   }
 
   RwLockBoxMyTraitTwinSync
       _dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinSync.fromWire(raw);
+    return RwLockBoxMyTraitTwinSync.dcoDecode(raw);
   }
 
   RwLockNonCloneSimpleTwinNormal
       _dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinNormal.fromWire(raw);
+    return RwLockNonCloneSimpleTwinNormal.dcoDecode(raw);
   }
 
   RwLockNonCloneSimpleTwinSync
       _dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(dynamic raw) {
-    return RwLockNonCloneSimpleTwinSync.fromWire(raw);
+    return RwLockNonCloneSimpleTwinSync.dcoDecode(raw);
   }
 
   RwLockStructWithGoodAndOpaqueFieldTwinNormal
       _dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
   }
 
   RwLockStructWithGoodAndOpaqueFieldTwinSync
       _dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.fromWire(raw);
+    return RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
   }
 
   String _dco_decode_String(dynamic raw) {
@@ -24709,64 +24709,64 @@ AnyhowException _sse_decode_AnyhowException(SseDeserializer deserializer) {
 RwLockBoxFnStringString
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxFnStringString.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockBoxHelloTraitTwinNormal
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxHelloTraitTwinNormal.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockBoxHelloTraitTwinSync
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxHelloTraitTwinSync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockBoxMyTraitTwinNormal
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxMyTraitTwinNormal.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockBoxMyTraitTwinSync
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxMyTraitTwinSync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockNonCloneSimpleTwinNormal
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockNonCloneSimpleTwinNormal.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockNonCloneSimpleTwinSync
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockNonCloneSimpleTwinSync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockStructWithGoodAndOpaqueFieldTwinNormal
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockStructWithGoodAndOpaqueFieldTwinSync
     _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 Duration _sse_decode_Chrono_Duration(SseDeserializer deserializer) {
@@ -24801,49 +24801,49 @@ ObjectArray1 _sse_decode_DartOpaque_array_1(SseDeserializer deserializer) {
 
 MutexHideData _sse_decode_RustOpaque_MutexHideData(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return MutexHideData.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockHideData _sse_decode_RustOpaque_RwLockHideData(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockHideData.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 BoxDartDebugTwinNormal _sse_decode_RustOpaque_box_dynDartDebugTwinNormal(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return BoxDartDebugTwinNormal.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 BoxDartDebugTwinRustAsync _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return BoxDartDebugTwinRustAsync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 BoxDartDebugTwinSync _sse_decode_RustOpaque_box_dynDartDebugTwinSync(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return BoxDartDebugTwinSync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 FrbOpaqueReturn _sse_decode_RustOpaque_frb_opaque_return(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return FrbOpaqueReturn.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 FrbOpaqueSyncReturn _sse_decode_RustOpaque_frb_opaque_sync_return(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return FrbOpaqueSyncReturn.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 HideData _sse_decode_RustOpaque_hide_data(SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return HideData.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 HideDataArray2 _sse_decode_RustOpaque_hide_data_array_2(
@@ -24853,83 +24853,83 @@ HideDataArray2 _sse_decode_RustOpaque_hide_data_array_2(
 }
 
 I32 _sse_decode_RustOpaque_i_32(SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return I32.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 NonCloneData _sse_decode_RustOpaque_non_clone_data(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return NonCloneData.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 NonSendHideData _sse_decode_RustOpaque_non_send_hide_data(
     SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return NonSendHideData.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockBoxFnStringString
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxFnStringString.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockBoxHelloTraitTwinNormal
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxHelloTraitTwinNormal.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockBoxHelloTraitTwinSync
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxHelloTraitTwinSync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockBoxMyTraitTwinNormal
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxMyTraitTwinNormal.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockBoxMyTraitTwinSync
     _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockBoxMyTraitTwinSync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockNonCloneSimpleTwinNormal
     _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockNonCloneSimpleTwinNormal.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockNonCloneSimpleTwinSync
     _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockNonCloneSimpleTwinSync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockStructWithGoodAndOpaqueFieldTwinNormal
     _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 RwLockStructWithGoodAndOpaqueFieldTwinSync
     _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         SseDeserializer deserializer) {
-  var inner = _sse_decode_usize(deserializer);
-  return inner;
+  return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+      _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
 }
 
 String _sse_decode_String(SseDeserializer deserializer) {
@@ -28938,31 +28938,31 @@ void _sse_encode_DartOpaque_array_1(
 
 void _sse_encode_RustOpaque_MutexHideData(
     MutexHideData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_RwLockHideData(
     RwLockHideData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_box_dynDartDebugTwinNormal(
     BoxDartDebugTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
     BoxDartDebugTwinRustAsync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_box_dynDartDebugTwinSync(
     BoxDartDebugTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_hide_data(HideData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_hide_data_array_2(
@@ -28971,64 +28971,64 @@ void _sse_encode_RustOpaque_hide_data_array_2(
 }
 
 void _sse_encode_RustOpaque_i_32(I32 self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_non_clone_data(
     NonCloneData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_non_send_hide_data(
     NonSendHideData self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void
     _sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         RwLockBoxFnStringString self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
     RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
     RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
     RwLockBoxMyTraitTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
     RwLockBoxMyTraitTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
     RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
     RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
     RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
     SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
     RwLockStructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
-  _sse_encode_usize(self.sseEncode(), serializer);
+  _sse_encode_usize(self.sseEncode(move: null), serializer);
 }
 
 void _sse_encode_String(String self, SseSerializer serializer) {

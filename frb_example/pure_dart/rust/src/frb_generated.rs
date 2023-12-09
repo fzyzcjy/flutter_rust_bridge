@@ -18384,6 +18384,7 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18392,12 +18393,14 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18406,6 +18409,7 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18414,18 +18418,21 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18434,6 +18441,7 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18442,6 +18450,7 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18450,24 +18459,28 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18476,6 +18489,7 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18484,6 +18498,7 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18492,24 +18507,28 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18518,6 +18537,7 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18526,6 +18546,7 @@ impl SseEncode
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18577,31 +18598,36 @@ impl SseEncode for [flutter_rust_bridge::DartOpaque; 1] {
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<Mutex<HideData>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<RwLock<HideData>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18609,7 +18635,8 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18617,13 +18644,15 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18635,13 +18664,15 @@ impl SseEncode for [flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_typ
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<i32> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18649,7 +18680,8 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18659,7 +18691,8 @@ impl SseEncode
     >
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18667,13 +18700,15 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18681,7 +18716,8 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18689,19 +18725,22 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18709,7 +18748,8 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
@@ -18717,7 +18757,8 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.sseEncode(), serializer);
+        <usize>::sse_encode(TODO, serializer);
+        <i32>::sse_encode(TODO, serializer);
     }
 }
 
