@@ -50,7 +50,7 @@ impl GeneralizedStructGenerator {
         &self,
         lang: &Lang,
         name_prefix: &str,
-        ctor_named_args: bool,
+        ctor_keyword_args: bool,
     ) -> String {
         let decode_fields = (self.st.fields.iter().enumerate())
             .map(|(index, field)| {
@@ -75,7 +75,7 @@ impl GeneralizedStructGenerator {
                 &(self.st.fields.iter())
                     .map(|x| x.name.dart_style().clone())
                     .collect_vec(),
-                ctor_named_args,
+                ctor_keyword_args,
             ),
             StructOrRecord::Record => format!(
                 "({})",

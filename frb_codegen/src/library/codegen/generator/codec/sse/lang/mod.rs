@@ -24,7 +24,7 @@ pub(crate) trait LangTrait {
         class_name: &str,
         field_names: &[String],
         var_names: &[String],
-        named_args: bool,
+        keyword_args: bool,
     ) -> String;
 
     fn throw_unimplemented(&self) -> String;

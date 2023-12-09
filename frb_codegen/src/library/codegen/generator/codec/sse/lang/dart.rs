@@ -24,12 +24,12 @@ impl LangTrait for DartLang {
         class_name: &str,
         field_names: &[String],
         var_names: &[String],
-        named_args: bool,
+        keyword_args: bool,
     ) -> String {
         format!(
             "{class_name}({})",
             multizip((field_names, var_names))
-                .map(|(x, y)| if named_args {
+                .map(|(x, y)| if keyword_args {
                     format!("{x}: {y}")
                 } else {
                     format!("{y}")
