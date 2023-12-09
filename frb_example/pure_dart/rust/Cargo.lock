@@ -172,18 +172,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "enum_dispatch"
-version = "0.3.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8f33313078bb8d4d05a2733a94ac4c2d8a0df9a2b84424ebf4f33bfc224a890e"
-dependencies = [
- "once_cell",
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
 name = "errno"
 version = "0.3.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -213,7 +201,6 @@ dependencies = [
  "chrono",
  "console_error_panic_hook",
  "dart-sys",
- "enum_dispatch",
  "flutter_rust_bridge_macros",
  "futures",
  "js-sys",

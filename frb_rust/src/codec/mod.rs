@@ -1,23 +1,11 @@
 use crate::platform_types::DartAbi;
-use cst::CstCodec;
-use dco::DcoCodec;
-use enum_dispatch::enum_dispatch;
-use sse::SseCodec;
 use std::any::Any;
 
 pub(crate) mod cst;
 pub(crate) mod dco;
 pub(crate) mod sse;
 
-#[enum_dispatch]
-enum Codec {
-    CstCodec,
-    DcoCodec,
-    SseCodec,
-}
-
-#[enum_dispatch(Codec)]
-pub trait CodecTrait {
+pub trait CodecTrait: Clone + Copy {
     type Message: Rust2DartMessageTrait;
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message;
