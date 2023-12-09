@@ -21,9 +21,13 @@ class RustGenerator extends BaseGenerator {
 
   @override
   String generateDuplicateCode(String inputText, DuplicatorMode mode) {
+    const sse = '#[flutter_rust_bridge::frb(serialize)]';
     final prefix = switch (mode) {
       DuplicatorMode.sync => '#[flutter_rust_bridge::frb(sync)] pub fn',
       DuplicatorMode.rustAsync => 'pub async fn',
+      DuplicatorMode.sse => '$sse pub fn',
+      DuplicatorMode.syncSse => '$sse #[flutter_rust_bridge::frb(sync)] pub fn',
+      DuplicatorMode.rustAsyncSse => '$sse pub async fn',
     };
 
     return inputText
