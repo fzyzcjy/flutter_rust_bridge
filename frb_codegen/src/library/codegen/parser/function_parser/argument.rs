@@ -83,10 +83,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(if last_segment.ident == STREAM_SINK_IDENT {
             match &last_segment.arguments {
                 PathArguments::AngleBracketed(AngleBracketedGenericArguments { args, .. })
-                    if args.len() == 1 =>
+                    if args.len() >= 1 =>
                 {
-                    // Unwrap is safe here because args.len() == 1
-                    match args.last().unwrap() {
+                    // Unwrap is safe here because args.len() >= 1
+                    match args.first().unwrap() {
                         GenericArgument::Type(t) => Some(partial_info_for_stream_sink_type(
                             self.type_parser.parse_type(t, context)?,
                             argument_index,

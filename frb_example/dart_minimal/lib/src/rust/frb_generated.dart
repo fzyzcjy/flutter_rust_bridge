@@ -58,17 +58,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Stream<int> hiStreamOne({dynamic hint});
 
-  Future<void> hiStreamTwo({required StreamSink sink, dynamic hint});
+  Stream<int> hiStreamTwo({dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StreamSink;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StreamSink;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StreamSinkPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -102,20 +94,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> hiStreamTwo({required StreamSink sink, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
+  Stream<int> hiStreamTwo({dynamic hint}) {
+    return handler.executeStream(StreamTask(
       callFfi: (port_) {
-        var arg0 =
-            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
-                sink);
-        return wire.wire_hi_stream_two(port_, arg0);
+        return wire.wire_hi_stream_two(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: _dco_decode_unit,
+        decodeSuccessData: _dco_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kHiStreamTwoConstMeta,
-      argValues: [sink],
+      argValues: [],
       apiImpl: this,
       hint: hint,
     ));
@@ -123,7 +112,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kHiStreamTwoConstMeta => const TaskConstMeta(
         debugName: "hi_stream_two",
-        argNames: ["sink"],
+        argNames: [],
       );
 
   @override
@@ -150,14 +139,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StreamSink => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StreamSink => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink;
-
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
@@ -172,45 +153,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
 
-  void
-      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
-          StreamSink self, SseSerializer serializer) {
-    _sse_encode_usize(self.sseEncode(move: true), serializer);
-  }
-
-  void _sse_encode_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
-      StreamSink self, SseSerializer serializer) {
-    _sse_encode_usize(self.sseEncode(move: null), serializer);
-  }
-
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
-  }
-
-  void _sse_encode_usize(int self, SseSerializer serializer) {
-    serializer.buffer.putUint64(self);
   }
 }
 
 // Section: dart2rust
 
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
-        StreamSink raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockcratefrb_generatedStreamSink(
-    StreamSink raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
 int cst_encode_i_32(int raw) {
-  return raw;
-}
-
-int cst_encode_usize(int raw) {
   return raw;
 }
