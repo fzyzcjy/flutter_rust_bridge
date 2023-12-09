@@ -9323,200 +9323,27 @@ pub trait SseDecode {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self;
 }
 
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>,
-    >
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
 impl SseDecode for chrono::Duration {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
 impl SseDecode for chrono::DateTime<chrono::Local> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
 impl SseDecode for chrono::NaiveDateTime {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
 impl SseDecode for chrono::DateTime<chrono::Utc> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
@@ -9705,28 +9532,28 @@ impl SseDecode for String {
 
 impl SseDecode for uuid::Uuid {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
 impl SseDecode for crate::api::misc_example::ATwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <String>::sse_decode(deserializer);
-        return ATwinNormal { a };
+        return crate::api::misc_example::ATwinNormal { a };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <String>::sse_decode(deserializer);
-        return ATwinRustAsync { a };
+        return crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync { a };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <String>::sse_decode(deserializer);
-        return ATwinSync { a };
+        return crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync { a };
     }
 }
 
@@ -9751,7 +9578,7 @@ impl SseDecode for crate::api::misc_example::AbcTwinNormal {
                 return crate::api::misc_example::AbcTwinNormal::JustInt(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -9778,7 +9605,7 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_rust_async::AbcT
                 return crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::JustInt(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -9816,7 +9643,7 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSyn
                 );
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -9828,7 +9655,7 @@ impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv {
             <Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar>>::sse_decode(
                 deserializer,
             );
-        return ApplicationEnv { vars };
+        return crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv { vars };
     }
 }
 
@@ -9836,17 +9663,17 @@ impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVa
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <String>::sse_decode(deserializer);
         let mut field1 = <bool>::sse_decode(deserializer);
-        return ApplicationEnvVar { field0, field1 };
+        return crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar { field0, field1 };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i32>::sse_decode(deserializer);
-        return match self {
+        return match inner {
             0 => crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode::Standalone,
             1 => crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode::Embedded,
-            _ => unreachable!("Invalid variant for ApplicationMode: {}", self),
+            _ => unreachable!("Invalid variant for ApplicationMode: {}", inner),
         };
     }
 }
@@ -9866,7 +9693,7 @@ impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::ApplicationSetti
             <Option<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv>>::sse_decode(
                 deserializer,
             );
-        return ApplicationSettings {
+        return crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings {
             name,
             version,
             mode,
@@ -9880,7 +9707,7 @@ impl SseDecode for crate::api::optional::AttributeTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut key = <String>::sse_decode(deserializer);
         let mut value = <String>::sse_decode(deserializer);
-        return AttributeTwinNormal { key, value };
+        return crate::api::optional::AttributeTwinNormal { key, value };
     }
 }
 
@@ -9888,7 +9715,10 @@ impl SseDecode for crate::api::pseudo_manual::optional_twin_rust_async::Attribut
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut key = <String>::sse_decode(deserializer);
         let mut value = <String>::sse_decode(deserializer);
-        return AttributeTwinRustAsync { key, value };
+        return crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync {
+            key,
+            value,
+        };
     }
 }
 
@@ -9896,49 +9726,49 @@ impl SseDecode for crate::api::pseudo_manual::optional_twin_sync::AttributeTwinS
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut key = <String>::sse_decode(deserializer);
         let mut value = <String>::sse_decode(deserializer);
-        return AttributeTwinSync { key, value };
+        return crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync { key, value };
     }
 }
 
 impl SseDecode for crate::api::misc_example::BTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut b = <i32>::sse_decode(deserializer);
-        return BTwinNormal { b };
+        return crate::api::misc_example::BTwinNormal { b };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut b = <i32>::sse_decode(deserializer);
-        return BTwinRustAsync { b };
+        return crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync { b };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut b = <i32>::sse_decode(deserializer);
-        return BTwinSync { b };
+        return crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync { b };
     }
 }
 
 impl SseDecode for crate::api::array::BlobTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[u8; 1600]>::sse_decode(deserializer);
-        return BlobTwinNormal { field0 };
+        return crate::api::array::BlobTwinNormal { field0 };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[u8; 1600]>::sse_decode(deserializer);
-        return BlobTwinRustAsync { field0 };
+        return crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync { field0 };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[u8; 1600]>::sse_decode(deserializer);
-        return BlobTwinSync { field0 };
+        return crate::api::pseudo_manual::array_twin_sync::BlobTwinSync { field0 };
     }
 }
 
@@ -10135,42 +9965,44 @@ impl SseDecode for Box<crate::api::pseudo_manual::misc_example_twin_sync::Weekda
 impl SseDecode for crate::api::misc_example::CTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut c = <bool>::sse_decode(deserializer);
-        return CTwinNormal { c };
+        return crate::api::misc_example::CTwinNormal { c };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut c = <bool>::sse_decode(deserializer);
-        return CTwinRustAsync { c };
+        return crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync { c };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut c = <bool>::sse_decode(deserializer);
-        return CTwinSync { c };
+        return crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync { c };
     }
 }
 
 impl SseDecode for crate::api::method::ConcatenateWithTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <String>::sse_decode(deserializer);
-        return ConcatenateWithTwinNormal { a };
+        return crate::api::method::ConcatenateWithTwinNormal { a };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <String>::sse_decode(deserializer);
-        return ConcatenateWithTwinRustAsync { a };
+        return crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync {
+            a,
+        };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <String>::sse_decode(deserializer);
-        return ConcatenateWithTwinSync { a };
+        return crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync { a };
     }
 }
 
@@ -10187,7 +10019,7 @@ impl SseDecode for crate::api::exception::CustomNestedErrorInnerTwinNormal {
                 return crate::api::exception::CustomNestedErrorInnerTwinNormal::Four(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10208,7 +10040,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync::Four(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10227,7 +10059,7 @@ impl SseDecode for crate::api::pseudo_manual::exception_twin_sync::CustomNestedE
                 return crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Four(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10249,7 +10081,7 @@ impl SseDecode for crate::api::exception::CustomNestedErrorOuterTwinNormal {
                 return crate::api::exception::CustomNestedErrorOuterTwinNormal::Two(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10270,7 +10102,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync::Two(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10289,7 +10121,7 @@ impl SseDecode for crate::api::pseudo_manual::exception_twin_sync::CustomNestedE
                 return crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync::Two(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10298,7 +10130,7 @@ impl SseDecode for crate::api::pseudo_manual::exception_twin_sync::CustomNestedE
 impl SseDecode for crate::api::exception::CustomStructErrorTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <String>::sse_decode(deserializer);
-        return CustomStructErrorTwinNormal { a };
+        return crate::api::exception::CustomStructErrorTwinNormal { a };
     }
 }
 
@@ -10307,35 +10139,37 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <String>::sse_decode(deserializer);
-        return CustomStructErrorTwinRustAsync { a };
+        return crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync{a};
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <String>::sse_decode(deserializer);
-        return CustomStructErrorTwinSync { a };
+        return crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync { a };
     }
 }
 
 impl SseDecode for crate::api::exception::CustomStructTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut message = <String>::sse_decode(deserializer);
-        return CustomStructTwinNormal { message };
+        return crate::api::exception::CustomStructTwinNormal { message };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut message = <String>::sse_decode(deserializer);
-        return CustomStructTwinRustAsync { message };
+        return crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync {
+            message,
+        };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut message = <String>::sse_decode(deserializer);
-        return CustomStructTwinSync { message };
+        return crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync { message };
     }
 }
 
@@ -10343,7 +10177,7 @@ impl SseDecode for crate::api::attribute::CustomizedTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut finalField = <String>::sse_decode(deserializer);
         let mut nonFinalField = <Option<String>>::sse_decode(deserializer);
-        return CustomizedTwinNormal {
+        return crate::api::attribute::CustomizedTwinNormal {
             final_field: finalField,
             non_final_field: nonFinalField,
         };
@@ -10354,7 +10188,7 @@ impl SseDecode for crate::api::pseudo_manual::attribute_twin_rust_async::Customi
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut finalField = <String>::sse_decode(deserializer);
         let mut nonFinalField = <Option<String>>::sse_decode(deserializer);
-        return CustomizedTwinRustAsync {
+        return crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync {
             final_field: finalField,
             non_final_field: nonFinalField,
         };
@@ -10365,7 +10199,7 @@ impl SseDecode for crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwi
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut finalField = <String>::sse_decode(deserializer);
         let mut nonFinalField = <Option<String>>::sse_decode(deserializer);
-        return CustomizedTwinSync {
+        return crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync {
             final_field: finalField,
             non_final_field: nonFinalField,
         };
@@ -10376,7 +10210,7 @@ impl SseDecode for crate::api::dart_opaque::DartOpaqueNestedTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut first = <flutter_rust_bridge::DartOpaque>::sse_decode(deserializer);
         let mut second = <flutter_rust_bridge::DartOpaque>::sse_decode(deserializer);
-        return DartOpaqueNestedTwinNormal { first, second };
+        return crate::api::dart_opaque::DartOpaqueNestedTwinNormal { first, second };
     }
 }
 
@@ -10386,7 +10220,7 @@ impl SseDecode
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut first = <flutter_rust_bridge::DartOpaque>::sse_decode(deserializer);
         let mut second = <flutter_rust_bridge::DartOpaque>::sse_decode(deserializer);
-        return DartOpaqueNestedTwinRustAsync { first, second };
+        return crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync{first, second};
     }
 }
 
@@ -10394,7 +10228,10 @@ impl SseDecode for crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueN
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut first = <flutter_rust_bridge::DartOpaque>::sse_decode(deserializer);
         let mut second = <flutter_rust_bridge::DartOpaque>::sse_decode(deserializer);
-        return DartOpaqueNestedTwinSync { first, second };
+        return crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync {
+            first,
+            second,
+        };
     }
 }
 
@@ -10410,7 +10247,7 @@ impl SseDecode for crate::api::enumeration::DistanceTwinNormal {
                 return crate::api::enumeration::DistanceTwinNormal::Map(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10428,7 +10265,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_rust_async::Dista
                 return crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Map(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10448,7 +10285,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwi
                 );
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10456,19 +10293,19 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwi
 
 impl SseDecode for crate::api::misc_type::EmptyTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return EmptyTwinNormal {};
+        return crate::api::misc_type::EmptyTwinNormal {};
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return EmptyTwinRustAsync {};
+        return crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync {};
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return EmptyTwinSync {};
+        return crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync {};
     }
 }
 
@@ -10485,7 +10322,7 @@ impl SseDecode for crate::api::dart_opaque::EnumDartOpaqueTwinNormal {
                 return crate::api::dart_opaque::EnumDartOpaqueTwinNormal::Opaque(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10506,7 +10343,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync::Opaque(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10525,7 +10362,7 @@ impl SseDecode for crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpa
                 return crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync::Opaque(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10563,7 +10400,7 @@ impl SseDecode for crate::api::rust_opaque::EnumOpaqueTwinNormal {
                 return crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10601,7 +10438,7 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumO
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10641,7 +10478,7 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
                 return crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::RwLock(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10650,10 +10487,10 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
 impl SseDecode for crate::api::enumeration::EnumSimpleTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i32>::sse_decode(deserializer);
-        return match self {
+        return match inner {
             0 => crate::api::enumeration::EnumSimpleTwinNormal::A,
             1 => crate::api::enumeration::EnumSimpleTwinNormal::B,
-            _ => unreachable!("Invalid variant for EnumSimpleTwinNormal: {}", self),
+            _ => unreachable!("Invalid variant for EnumSimpleTwinNormal: {}", inner),
         };
     }
 }
@@ -10661,10 +10498,10 @@ impl SseDecode for crate::api::enumeration::EnumSimpleTwinNormal {
 impl SseDecode for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i32>::sse_decode(deserializer);
-        return match self {
+        return match inner {
             0 => crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync::A,
             1 => crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync::B,
-            _ => unreachable!("Invalid variant for EnumSimpleTwinRustAsync: {}", self),
+            _ => unreachable!("Invalid variant for EnumSimpleTwinRustAsync: {}", inner),
         };
     }
 }
@@ -10672,10 +10509,10 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumS
 impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i32>::sse_decode(deserializer);
-        return match self {
+        return match inner {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync::A,
             1 => crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync::B,
-            _ => unreachable!("Invalid variant for EnumSimpleTwinSync: {}", self),
+            _ => unreachable!("Invalid variant for EnumSimpleTwinSync: {}", inner),
         };
     }
 }
@@ -10696,7 +10533,7 @@ impl SseDecode for crate::api::enumeration::EnumWithItemMixedTwinNormal {
                 return crate::api::enumeration::EnumWithItemMixedTwinNormal::C { c_field: cField };
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10720,7 +10557,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::C{c_field: cField};
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10742,7 +10579,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithIte
                 return crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::C{c_field: cField};
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10765,7 +10602,7 @@ impl SseDecode for crate::api::enumeration::EnumWithItemStructTwinNormal {
                 };
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10786,7 +10623,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync::B{b_field: bField};
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10805,7 +10642,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithIte
                 return crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync::B{b_field: bField};
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10824,7 +10661,7 @@ impl SseDecode for crate::api::enumeration::EnumWithItemTupleTwinNormal {
                 return crate::api::enumeration::EnumWithItemTupleTwinNormal::B(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10845,7 +10682,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::B(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10864,7 +10701,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithIte
                 return crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::B(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -10874,7 +10711,7 @@ impl SseDecode for crate::api::event_listener::EventTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut address = <String>::sse_decode(deserializer);
         let mut payload = <String>::sse_decode(deserializer);
-        return EventTwinNormal { address, payload };
+        return crate::api::event_listener::EventTwinNormal { address, payload };
     }
 }
 
@@ -10882,7 +10719,10 @@ impl SseDecode for crate::api::pseudo_manual::event_listener_twin_rust_async::Ev
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut address = <String>::sse_decode(deserializer);
         let mut payload = <String>::sse_decode(deserializer);
-        return EventTwinRustAsync { address, payload };
+        return crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync {
+            address,
+            payload,
+        };
     }
 }
 
@@ -10890,7 +10730,10 @@ impl SseDecode for crate::api::pseudo_manual::event_listener_twin_sync::EventTwi
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut address = <String>::sse_decode(deserializer);
         let mut payload = <String>::sse_decode(deserializer);
-        return EventTwinSync { address, payload };
+        return crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync {
+            address,
+            payload,
+        };
     }
 }
 
@@ -10916,7 +10759,7 @@ impl SseDecode for crate::api::optional::ExoticOptionalsTwinNormal {
             );
         let mut newtypeint =
             <Option<crate::api::newtype_pattern::NewTypeIntTwinNormal>>::sse_decode(deserializer);
-        return ExoticOptionalsTwinNormal {
+        return crate::api::optional::ExoticOptionalsTwinNormal {
             int32,
             int64,
             float64,
@@ -10963,7 +10806,7 @@ impl SseDecode
         let mut newtypeint = <Option<
             crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync,
         >>::sse_decode(deserializer);
-        return ExoticOptionalsTwinRustAsync {
+        return crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync {
             int32,
             int64,
             float64,
@@ -11006,7 +10849,7 @@ impl SseDecode for crate::api::pseudo_manual::optional_twin_sync::ExoticOptional
         let mut newtypeint = <Option<
             crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync,
         >>::sse_decode(deserializer);
-        return ExoticOptionalsTwinSync {
+        return crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync {
             int32,
             int64,
             float64,
@@ -11050,7 +10893,7 @@ impl SseDecode for crate::api::chrono_type::FeatureChronoTwinNormal {
         let mut local = <chrono::DateTime<chrono::Local>>::sse_decode(deserializer);
         let mut duration = <chrono::Duration>::sse_decode(deserializer);
         let mut naive = <chrono::NaiveDateTime>::sse_decode(deserializer);
-        return FeatureChronoTwinNormal {
+        return crate::api::chrono_type::FeatureChronoTwinNormal {
             utc,
             local,
             duration,
@@ -11067,12 +10910,7 @@ impl SseDecode
         let mut local = <chrono::DateTime<chrono::Local>>::sse_decode(deserializer);
         let mut duration = <chrono::Duration>::sse_decode(deserializer);
         let mut naive = <chrono::NaiveDateTime>::sse_decode(deserializer);
-        return FeatureChronoTwinRustAsync {
-            utc,
-            local,
-            duration,
-            naive,
-        };
+        return crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync{utc, local, duration, naive};
     }
 }
 
@@ -11082,7 +10920,7 @@ impl SseDecode for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChro
         let mut local = <chrono::DateTime<chrono::Local>>::sse_decode(deserializer);
         let mut duration = <chrono::Duration>::sse_decode(deserializer);
         let mut naive = <chrono::NaiveDateTime>::sse_decode(deserializer);
-        return FeatureChronoTwinSync {
+        return crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
             utc,
             local,
             duration,
@@ -11094,42 +10932,44 @@ impl SseDecode for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChro
 impl SseDecode for crate::api::uuid_type::FeatureUuidTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut one = <uuid::Uuid>::sse_decode(deserializer);
-        return FeatureUuidTwinNormal { one };
+        return crate::api::uuid_type::FeatureUuidTwinNormal { one };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut one = <uuid::Uuid>::sse_decode(deserializer);
-        return FeatureUuidTwinRustAsync { one };
+        return crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
+            one,
+        };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut one = <uuid::Uuid>::sse_decode(deserializer);
-        return FeatureUuidTwinSync { one };
+        return crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync { one };
     }
 }
 
 impl SseDecode for crate::api::array::FeedIdTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[u8; 8]>::sse_decode(deserializer);
-        return FeedIdTwinNormal { field0 };
+        return crate::api::array::FeedIdTwinNormal { field0 };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[u8; 8]>::sse_decode(deserializer);
-        return FeedIdTwinRustAsync { field0 };
+        return crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync { field0 };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[u8; 8]>::sse_decode(deserializer);
-        return FeedIdTwinSync { field0 };
+        return crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync { field0 };
     }
 }
 
@@ -11202,7 +11042,7 @@ impl SseDecode for crate::api::enumeration::KitchenSinkTwinNormal {
                 return crate::api::enumeration::KitchenSinkTwinNormal::Enums(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -11242,7 +11082,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Enums(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -11282,7 +11122,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::KitchenSink
                 return crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Enums(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -11789,7 +11629,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::Weekda
 impl SseDecode for crate::api::inside_macro::MacroStruct {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut data = <i32>::sse_decode(deserializer);
-        return MacroStruct { data };
+        return crate::api::inside_macro::MacroStruct { data };
     }
 }
 
@@ -11808,7 +11648,7 @@ impl SseDecode for crate::api::enumeration::MeasureTwinNormal {
                 return crate::api::enumeration::MeasureTwinNormal::Distance(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -11831,7 +11671,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_rust_async::Measu
                 return crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync::Distance(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -11858,7 +11698,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwin
                 );
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -11867,31 +11707,31 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwin
 impl SseDecode for crate::api::array::MessageIdTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[u8; 32]>::sse_decode(deserializer);
-        return MessageIdTwinNormal { field0 };
+        return crate::api::array::MessageIdTwinNormal { field0 };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[u8; 32]>::sse_decode(deserializer);
-        return MessageIdTwinRustAsync { field0 };
+        return crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync { field0 };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[u8; 32]>::sse_decode(deserializer);
-        return MessageIdTwinSync { field0 };
+        return crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync { field0 };
     }
 }
 
 impl SseDecode for crate::auxiliary::sample_types::MyEnum {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i32>::sse_decode(deserializer);
-        return match self {
+        return match inner {
             0 => crate::auxiliary::sample_types::MyEnum::False,
             1 => crate::auxiliary::sample_types::MyEnum::True,
-            _ => unreachable!("Invalid variant for MyEnum: {}", self),
+            _ => unreachable!("Invalid variant for MyEnum: {}", inner),
         };
     }
 }
@@ -11901,7 +11741,7 @@ impl SseDecode for crate::api::misc_example::MyNestedStructTwinNormal {
         let mut treeNode =
             <crate::api::misc_example::MyTreeNodeTwinNormal>::sse_decode(deserializer);
         let mut weekday = <crate::api::misc_example::WeekdaysTwinNormal>::sse_decode(deserializer);
-        return MyNestedStructTwinNormal {
+        return crate::api::misc_example::MyNestedStructTwinNormal {
             tree_node: treeNode,
             weekday,
         };
@@ -11914,10 +11754,7 @@ impl SseDecode
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut treeNode = <crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>::sse_decode(deserializer);
         let mut weekday = <crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>::sse_decode(deserializer);
-        return MyNestedStructTwinRustAsync {
-            tree_node: treeNode,
-            weekday,
-        };
+        return crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync{tree_node: treeNode, weekday};
     }
 }
 
@@ -11931,7 +11768,7 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::MyNestedSt
             <crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>::sse_decode(
                 deserializer,
             );
-        return MyNestedStructTwinSync {
+        return crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync {
             tree_node: treeNode,
             weekday,
         };
@@ -11942,14 +11779,14 @@ impl SseDecode for crate::auxiliary::sample_types::MySize {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut width = <i32>::sse_decode(deserializer);
         let mut height = <i32>::sse_decode(deserializer);
-        return MySize { width, height };
+        return crate::auxiliary::sample_types::MySize { width, height };
     }
 }
 
 impl SseDecode for crate::auxiliary::sample_types::MyStruct {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut content = <bool>::sse_decode(deserializer);
-        return MyStruct { content };
+        return crate::auxiliary::sample_types::MyStruct { content };
     }
 }
 
@@ -11960,7 +11797,7 @@ impl SseDecode for crate::api::misc_example::MyTreeNodeTwinNormal {
         let mut valueBoolean = <bool>::sse_decode(deserializer);
         let mut children =
             <Vec<crate::api::misc_example::MyTreeNodeTwinNormal>>::sse_decode(deserializer);
-        return MyTreeNodeTwinNormal {
+        return crate::api::misc_example::MyTreeNodeTwinNormal {
             value_i32: valueI32,
             value_vec_u8: valueVecU8,
             value_boolean: valueBoolean,
@@ -11979,7 +11816,7 @@ impl SseDecode
         let mut children = <Vec<
             crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync,
         >>::sse_decode(deserializer);
-        return MyTreeNodeTwinRustAsync {
+        return crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync {
             value_i32: valueI32,
             value_vec_u8: valueVecU8,
             value_boolean: valueBoolean,
@@ -11996,7 +11833,7 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNode
         let mut children = <Vec<
             crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync,
         >>::sse_decode(deserializer);
-        return MyTreeNodeTwinSync {
+        return crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync {
             value_i32: valueI32,
             value_vec_u8: valueVecU8,
             value_boolean: valueBoolean,
@@ -12008,7 +11845,7 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNode
 impl SseDecode for crate::api::newtype_pattern::NewTypeIntTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <i64>::sse_decode(deserializer);
-        return NewTypeIntTwinNormal { field0 };
+        return crate::api::newtype_pattern::NewTypeIntTwinNormal { field0 };
     }
 }
 
@@ -12017,14 +11854,14 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <i64>::sse_decode(deserializer);
-        return NewTypeIntTwinRustAsync { field0 };
+        return crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync{field0};
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <i64>::sse_decode(deserializer);
-        return NewTypeIntTwinSync { field0 };
+        return crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync { field0 };
     }
 }
 
@@ -12032,7 +11869,7 @@ impl SseDecode for crate::api::enumeration::NoteTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut day = <Box<crate::api::misc_example::WeekdaysTwinNormal>>::sse_decode(deserializer);
         let mut body = <String>::sse_decode(deserializer);
-        return NoteTwinNormal { day, body };
+        return crate::api::enumeration::NoteTwinNormal { day, body };
     }
 }
 
@@ -12042,7 +11879,10 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_rust_async::NoteT
             crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync,
         >>::sse_decode(deserializer);
         let mut body = <String>::sse_decode(deserializer);
-        return NoteTwinRustAsync { day, body };
+        return crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync {
+            day,
+            body,
+        };
     }
 }
 
@@ -12053,14 +11893,14 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSyn
                 deserializer,
             );
         let mut body = <String>::sse_decode(deserializer);
-        return NoteTwinSync { day, body };
+        return crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync { day, body };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::Numbers {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <Vec<i32>>::sse_decode(deserializer);
-        return Numbers { field0 };
+        return crate::api::pseudo_manual::mirror_twin_sync::Numbers { field0 };
     }
 }
 
@@ -12074,7 +11914,7 @@ impl SseDecode for crate::api::rust_opaque::OpaqueNestedTwinNormal {
             <flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>::sse_decode(
                 deserializer,
             );
-        return OpaqueNestedTwinNormal { first, second };
+        return crate::api::rust_opaque::OpaqueNestedTwinNormal { first, second };
     }
 }
 
@@ -12090,7 +11930,10 @@ impl SseDecode
             <flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>::sse_decode(
                 deserializer,
             );
-        return OpaqueNestedTwinRustAsync { first, second };
+        return crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync {
+            first,
+            second,
+        };
     }
 }
 
@@ -12104,7 +11947,10 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNeste
             <flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>::sse_decode(
                 deserializer,
             );
-        return OpaqueNestedTwinSync { first, second };
+        return crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync {
+            first,
+            second,
+        };
     }
 }
 
@@ -12645,7 +12491,7 @@ impl SseDecode for crate::api::optional::OptVecsTwinNormal {
             <Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>>>::sse_decode(deserializer);
         let mut strings = <Vec<Option<String>>>::sse_decode(deserializer);
         let mut buffers = <Vec<Option<Vec<i32>>>>::sse_decode(deserializer);
-        return OptVecsTwinNormal {
+        return crate::api::optional::OptVecsTwinNormal {
             i32,
             enums,
             strings,
@@ -12662,7 +12508,7 @@ impl SseDecode for crate::api::pseudo_manual::optional_twin_rust_async::OptVecsT
         >>::sse_decode(deserializer);
         let mut strings = <Vec<Option<String>>>::sse_decode(deserializer);
         let mut buffers = <Vec<Option<Vec<i32>>>>::sse_decode(deserializer);
-        return OptVecsTwinRustAsync {
+        return crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync {
             i32,
             enums,
             strings,
@@ -12679,7 +12525,7 @@ impl SseDecode for crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSyn
         >>::sse_decode(deserializer);
         let mut strings = <Vec<Option<String>>>::sse_decode(deserializer);
         let mut buffers = <Vec<Option<Vec<i32>>>>::sse_decode(deserializer);
-        return OptVecsTwinSync {
+        return crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync {
             i32,
             enums,
             strings,
@@ -12699,28 +12545,30 @@ impl SseDecode for (String, i32) {
 impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync::Sequences {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <Vec<i32>>::sse_decode(deserializer);
-        return Sequences { field0 };
+        return crate::api::pseudo_manual::mirror_twin_sync::Sequences { field0 };
     }
 }
 
 impl SseDecode for crate::api::exception::SomeStructTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut value = <u32>::sse_decode(deserializer);
-        return SomeStructTwinNormal { value };
+        return crate::api::exception::SomeStructTwinNormal { value };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut value = <u32>::sse_decode(deserializer);
-        return SomeStructTwinRustAsync { value };
+        return crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync {
+            value,
+        };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut value = <u32>::sse_decode(deserializer);
-        return SomeStructTwinSync { value };
+        return crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync { value };
     }
 }
 
@@ -12736,7 +12584,7 @@ impl SseDecode for crate::api::enumeration::SpeedTwinNormal {
                 return crate::api::enumeration::SpeedTwinNormal::GPS(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -12754,7 +12602,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_rust_async::Speed
                 return crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync::GPS(field0);
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -12774,7 +12622,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSy
                 );
             }
             _ => {
-                unimplemented!();
+                unimplemented!("");
             }
         }
     }
@@ -12783,7 +12631,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSy
 impl SseDecode for crate::api::comment::StructWithCommentsTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut fieldWithComments = <i32>::sse_decode(deserializer);
-        return StructWithCommentsTwinNormal {
+        return crate::api::comment::StructWithCommentsTwinNormal {
             field_with_comments: fieldWithComments,
         };
     }
@@ -12794,16 +12642,14 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut fieldWithComments = <i32>::sse_decode(deserializer);
-        return StructWithCommentsTwinRustAsync {
-            field_with_comments: fieldWithComments,
-        };
+        return crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync{field_with_comments: fieldWithComments};
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut fieldWithComments = <i32>::sse_decode(deserializer);
-        return StructWithCommentsTwinSync {
+        return crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
             field_with_comments: fieldWithComments,
         };
     }
@@ -12813,7 +12659,7 @@ impl SseDecode for crate::api::misc_example::StructWithEnumTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut abc1 = <crate::api::misc_example::AbcTwinNormal>::sse_decode(deserializer);
         let mut abc2 = <crate::api::misc_example::AbcTwinNormal>::sse_decode(deserializer);
-        return StructWithEnumTwinNormal { abc1, abc2 };
+        return crate::api::misc_example::StructWithEnumTwinNormal { abc1, abc2 };
     }
 }
 
@@ -12829,7 +12675,7 @@ impl SseDecode
             <crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync>::sse_decode(
                 deserializer,
             );
-        return StructWithEnumTwinRustAsync { abc1, abc2 };
+        return crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync{abc1, abc2};
     }
 }
 
@@ -12841,14 +12687,17 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::StructWith
         let mut abc2 = <crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>::sse_decode(
             deserializer,
         );
-        return StructWithEnumTwinSync { abc1, abc2 };
+        return crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync {
+            abc1,
+            abc2,
+        };
     }
 }
 
 impl SseDecode for crate::api::structure::StructWithOneFieldTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <i32>::sse_decode(deserializer);
-        return StructWithOneFieldTwinNormal { a };
+        return crate::api::structure::StructWithOneFieldTwinNormal { a };
     }
 }
 
@@ -12857,14 +12706,14 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <i32>::sse_decode(deserializer);
-        return StructWithOneFieldTwinRustAsync { a };
+        return crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync{a};
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <i32>::sse_decode(deserializer);
-        return StructWithOneFieldTwinSync { a };
+        return crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync { a };
     }
 }
 
@@ -12872,7 +12721,7 @@ impl SseDecode for crate::api::structure::StructWithTwoFieldTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <i32>::sse_decode(deserializer);
         let mut b = <i32>::sse_decode(deserializer);
-        return StructWithTwoFieldTwinNormal { a, b };
+        return crate::api::structure::StructWithTwoFieldTwinNormal { a, b };
     }
 }
 
@@ -12882,7 +12731,7 @@ impl SseDecode
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <i32>::sse_decode(deserializer);
         let mut b = <i32>::sse_decode(deserializer);
-        return StructWithTwoFieldTwinRustAsync { a, b };
+        return crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync{a, b};
     }
 }
 
@@ -12890,13 +12739,13 @@ impl SseDecode for crate::api::pseudo_manual::structure_twin_sync::StructWithTwo
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut a = <i32>::sse_decode(deserializer);
         let mut b = <i32>::sse_decode(deserializer);
-        return StructWithTwoFieldTwinSync { a, b };
+        return crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync { a, b };
     }
 }
 
 impl SseDecode for crate::api::structure::StructWithZeroFieldTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return StructWithZeroFieldTwinNormal {};
+        return crate::api::structure::StructWithZeroFieldTwinNormal {};
     }
 }
 
@@ -12904,41 +12753,41 @@ impl SseDecode
     for crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return StructWithZeroFieldTwinRustAsync {};
+        return crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync{};
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return StructWithZeroFieldTwinSync {};
+        return crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {};
     }
 }
 
 impl SseDecode for crate::api::method::SumWithTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut x = <u32>::sse_decode(deserializer);
-        return SumWithTwinNormal { x };
+        return crate::api::method::SumWithTwinNormal { x };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut x = <u32>::sse_decode(deserializer);
-        return SumWithTwinRustAsync { x };
+        return crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync { x };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut x = <u32>::sse_decode(deserializer);
-        return SumWithTwinSync { x };
+        return crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync { x };
     }
 }
 
 impl SseDecode for crate::api::array::TestIdTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[i32; 2]>::sse_decode(deserializer);
-        return TestIdTwinNormal { field0 };
+        return crate::api::array::TestIdTwinNormal { field0 };
     }
 }
 
@@ -12952,7 +12801,7 @@ impl SseDecode for [crate::api::array::TestIdTwinNormal; 4] {
 impl SseDecode for crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[i32; 2]>::sse_decode(deserializer);
-        return TestIdTwinRustAsync { field0 };
+        return crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync { field0 };
     }
 }
 
@@ -12966,7 +12815,7 @@ impl SseDecode for [crate::api::pseudo_manual::array_twin_rust_async::TestIdTwin
 impl SseDecode for crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <[i32; 2]>::sse_decode(deserializer);
-        return TestIdTwinSync { field0 };
+        return crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync { field0 };
     }
 }
 
@@ -12983,7 +12832,7 @@ impl SseDecode for [crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 
 impl SseDecode for crate::api::structure::TupleStructWithOneFieldTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <i32>::sse_decode(deserializer);
-        return TupleStructWithOneFieldTwinNormal { field0 };
+        return crate::api::structure::TupleStructWithOneFieldTwinNormal { field0 };
     }
 }
 
@@ -12992,14 +12841,16 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <i32>::sse_decode(deserializer);
-        return TupleStructWithOneFieldTwinRustAsync { field0 };
+        return crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync{field0};
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <i32>::sse_decode(deserializer);
-        return TupleStructWithOneFieldTwinSync { field0 };
+        return crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync {
+            field0,
+        };
     }
 }
 
@@ -13007,7 +12858,7 @@ impl SseDecode for crate::api::structure::TupleStructWithTwoFieldTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <i32>::sse_decode(deserializer);
         let mut field1 = <i32>::sse_decode(deserializer);
-        return TupleStructWithTwoFieldTwinNormal { field0, field1 };
+        return crate::api::structure::TupleStructWithTwoFieldTwinNormal { field0, field1 };
     }
 }
 
@@ -13017,7 +12868,7 @@ impl SseDecode
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <i32>::sse_decode(deserializer);
         let mut field1 = <i32>::sse_decode(deserializer);
-        return TupleStructWithTwoFieldTwinRustAsync { field0, field1 };
+        return crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync{field0, field1};
     }
 }
 
@@ -13025,7 +12876,10 @@ impl SseDecode for crate::api::pseudo_manual::structure_twin_sync::TupleStructWi
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut field0 = <i32>::sse_decode(deserializer);
         let mut field1 = <i32>::sse_decode(deserializer);
-        return TupleStructWithTwoFieldTwinSync { field0, field1 };
+        return crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync {
+            field0,
+            field1,
+        };
     }
 }
 
@@ -13081,21 +12935,21 @@ impl SseDecode for () {
 impl SseDecode for crate::api::attribute::UserIdTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut value = <u32>::sse_decode(deserializer);
-        return UserIdTwinNormal { value };
+        return crate::api::attribute::UserIdTwinNormal { value };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut value = <u32>::sse_decode(deserializer);
-        return UserIdTwinRustAsync { value };
+        return crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync { value };
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut value = <u32>::sse_decode(deserializer);
-        return UserIdTwinSync { value };
+        return crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync { value };
     }
 }
 
@@ -13108,7 +12962,7 @@ impl SseDecode for usize {
 impl SseDecode for crate::api::misc_example::WeekdaysTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i32>::sse_decode(deserializer);
-        return match self {
+        return match inner {
             0 => crate::api::misc_example::WeekdaysTwinNormal::Monday,
             1 => crate::api::misc_example::WeekdaysTwinNormal::Tuesday,
             2 => crate::api::misc_example::WeekdaysTwinNormal::Wednesday,
@@ -13116,7 +12970,7 @@ impl SseDecode for crate::api::misc_example::WeekdaysTwinNormal {
             4 => crate::api::misc_example::WeekdaysTwinNormal::Friday,
             5 => crate::api::misc_example::WeekdaysTwinNormal::Saturday,
             6 => crate::api::misc_example::WeekdaysTwinNormal::Sunday,
-            _ => unreachable!("Invalid variant for WeekdaysTwinNormal: {}", self),
+            _ => unreachable!("Invalid variant for WeekdaysTwinNormal: {}", inner),
         };
     }
 }
@@ -13124,7 +12978,7 @@ impl SseDecode for crate::api::misc_example::WeekdaysTwinNormal {
 impl SseDecode for crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i32>::sse_decode(deserializer);
-        return match self {
+        return match inner {
             0 => crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync::Monday,
 1 => crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync::Tuesday,
 2 => crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync::Wednesday,
@@ -13132,7 +12986,7 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_rust_async::Week
 4 => crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync::Friday,
 5 => crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync::Saturday,
 6 => crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync::Sunday,
-            _ => unreachable!("Invalid variant for WeekdaysTwinRustAsync: {}", self),
+            _ => unreachable!("Invalid variant for WeekdaysTwinRustAsync: {}", inner),
         };
     }
 }
@@ -13140,7 +12994,7 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_rust_async::Week
 impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i32>::sse_decode(deserializer);
-        return match self {
+        return match inner {
             0 => crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync::Monday,
             1 => crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync::Tuesday,
             2 => crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync::Wednesday,
@@ -13148,7 +13002,7 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTw
             4 => crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync::Friday,
             5 => crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync::Saturday,
             6 => crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync::Sunday,
-            _ => unreachable!("Invalid variant for WeekdaysTwinSync: {}", self),
+            _ => unreachable!("Invalid variant for WeekdaysTwinSync: {}", inner),
         };
     }
 }
@@ -18372,200 +18226,27 @@ impl SseEncode for String {
     }
 }
 
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>,
-    >
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
-    }
-}
-
 impl SseEncode for chrono::Duration {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
 impl SseEncode for chrono::DateTime<chrono::Local> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
 impl SseEncode for chrono::NaiveDateTime {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
 impl SseEncode for chrono::DateTime<chrono::Utc> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
@@ -18596,36 +18277,41 @@ impl SseEncode for [flutter_rust_bridge::DartOpaque; 1] {
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<Mutex<HideData>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<RwLock<HideData>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18633,8 +18319,9 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18642,15 +18329,17 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18662,15 +18351,17 @@ impl SseEncode for [flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_typ
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<i32> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18678,8 +18369,9 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18689,8 +18381,9 @@ impl SseEncode
     >
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18698,15 +18391,17 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18714,8 +18409,9 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18723,22 +18419,25 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18746,8 +18445,9 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18755,8 +18455,9 @@ impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(TODO, serializer);
-        <i32>::sse_encode(TODO, serializer);
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
     }
 }
 
@@ -18768,7 +18469,7 @@ impl SseEncode for String {
 
 impl SseEncode for uuid::Uuid {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
@@ -19754,7 +19455,7 @@ impl SseEncode for crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueN
 
 impl SseEncode for flutter_rust_bridge::for_generated::DartAbi {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!();
+        unimplemented!("");
     }
 }
 
