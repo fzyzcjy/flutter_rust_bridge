@@ -120,7 +120,7 @@ impl StructOrRecord {
                         format!("{}", index)
                     }
                 }
-                StructOrRecord::Record => format!("{}", index + 1),
+                StructOrRecord::Record => format!("{}", index),
             },
         }
     }
