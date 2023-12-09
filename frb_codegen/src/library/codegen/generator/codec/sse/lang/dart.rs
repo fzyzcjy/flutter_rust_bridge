@@ -65,10 +65,6 @@ impl LangTrait for DartLang {
         format!("switch ({value}) {{ {body} {fallback} }}")
     }
 
-    fn null(&self) -> &'static str {
-        "null"
-    }
-
     fn var_decl(&self) -> &'static str {
         "var"
     }

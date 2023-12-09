@@ -68,10 +68,6 @@ impl LangTrait for RustLang {
         format!("match {value} {{ {body} {fallback} }}")
     }
 
-    fn null(&self) -> &'static str {
-        "None"
-    }
-
     fn var_decl(&self) -> &'static str {
         "let mut"
     }

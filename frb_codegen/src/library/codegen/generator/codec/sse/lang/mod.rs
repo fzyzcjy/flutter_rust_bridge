@@ -40,7 +40,5 @@ pub(crate) trait LangTrait {
         fallback: Option<String>,
     ) -> String;
 
-    fn null(&self) -> &'static str;
-
     fn var_decl(&self) -> &'static str;
 }
