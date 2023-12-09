@@ -36,9 +36,11 @@ pub(super) fn generate_generalized_rust_opaque_decode(
                 lang.call_decode(&EXTERNAL_SIZE_TYPE),
             )
         }
-        Lang::RustLang(_) => {
-            simple_delegate_decode(lang, &IrTypeRustOpaque::DELEGATE_TYPE, "inner")
-        }
+        Lang::RustLang(_) => simple_delegate_decode(
+            lang,
+            &IrTypeRustOpaque::DELEGATE_TYPE,
+            "flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner)",
+        ),
     }
 }
 
