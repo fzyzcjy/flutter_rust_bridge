@@ -1792,7 +1792,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_list_String> cst_encode_list_String(List<String> raw) {
     final ans = wire.cst_new_list_String(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_String(raw[i], ans.ref.ptr[i]);
+      ans.ref.ptr[i] = cst_encode_String(raw[i]);
     }
     return ans;
   }
@@ -1801,7 +1801,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_list_Uuid> cst_encode_list_Uuid(List<UuidValue> raw) {
     final ans = wire.cst_new_list_Uuid(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_Uuid(raw[i], ans.ref.ptr[i]);
+      ans.ref.ptr[i] = cst_encode_Uuid(raw[i]);
     }
     return ans;
   }
