@@ -24,14 +24,14 @@ where
 impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
-            std::sync::RwLock<Box<dyn Fn() + UnwindSafe + RefUnwindSafe>>,
+            std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
     ) -> flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<Box<dyn Fn() + UnwindSafe + RefUnwindSafe>>,
+        std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
     > {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
@@ -73,23 +73,23 @@ pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<Box<dyn Fn() + UnwindSafe + RefUnwindSafe>>,
+            std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
         >(ptr);
     }
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<Box<dyn Fn() + UnwindSafe + RefUnwindSafe>>,
+            std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
         >(ptr);
     }
 }

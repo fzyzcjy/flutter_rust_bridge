@@ -19,7 +19,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockBoxFnPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe;
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe;
 }
 
 // Section: wire_class
@@ -38,16 +38,16 @@ class RustLibWire extends BaseWire {
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
 
-  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
               ptr);
 
-  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
               ptr);
 }
 
@@ -71,10 +71,10 @@ class RustLibWasmModule implements WasmModule {
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
           dynamic ptr);
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
           dynamic ptr);
 }

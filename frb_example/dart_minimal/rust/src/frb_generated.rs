@@ -50,7 +50,7 @@ fn wire_hi_rust_opaque_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl CstDecode<
             flutter_rust_bridge::RustOpaque<
-                std::sync::RwLock<Box<dyn Fn() + UnwindSafe + RefUnwindSafe>>,
+                std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
             >,
         > + core::panic::UnwindSafe,
 ) {
@@ -63,10 +63,10 @@ fn wire_hi_rust_opaque_impl(
         move || {
             let api_a = a.cst_decode();
             move |context| {
-                transform_result_dco((move || {
-                    let api_a = api_a.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(crate::api::minimal::hi_rust_opaque(api_a))
-                })())
+                let api_a = api_a.rust_auto_opaque_decode_owned()?;
+                transform_result_dco(Result::<_, anyhow::Error>::Ok(
+                    crate::api::minimal::hi_rust_opaque(api_a),
+                ))
             }
         },
     )
@@ -108,7 +108,7 @@ impl CstDecode<usize> for usize {
 }
 impl SseDecode
     for flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<Box<dyn Fn() + UnwindSafe + RefUnwindSafe>>,
+        std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
     >
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -133,7 +133,7 @@ impl SseDecode for usize {
 
 impl SseEncode
     for flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<Box<dyn Fn() + UnwindSafe + RefUnwindSafe>>,
+        std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
     >
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {

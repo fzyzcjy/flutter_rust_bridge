@@ -20,7 +20,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockBoxFnPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafePtr;
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr;
 }
 
 // Section: wire_class
@@ -103,35 +103,35 @@ class RustLibWire implements BaseWire {
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
 
   void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
       ptr,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafePtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe');
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe =
-      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafePtr
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
       ptr,
     );
   }
 
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafePtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe');
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe =
-      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafePtr
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   int dummy_method_to_enforce_bundling() {

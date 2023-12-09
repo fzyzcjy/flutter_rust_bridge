@@ -82,7 +82,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
-            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
                 a);
         return wire.wire_hi_rust_opaque(port_, arg0);
       },
@@ -128,11 +128,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockBoxFn => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe;
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_RwLockBoxFn => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe;
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe;
 
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
@@ -149,13 +149,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_decode_unit(SseDeserializer deserializer) {}
 
   void
-      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
           RwLockBoxFn self, SseSerializer serializer) {
     _sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
-  void _sse_encode_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
-      RwLockBoxFn self, SseSerializer serializer) {
+  void
+      _sse_encode_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
+          RwLockBoxFn self, SseSerializer serializer) {
     _sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -171,14 +172,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 // Section: dart2rust
 
 PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
         RwLockBoxFn raw) {
   // ignore: invalid_use_of_internal_member
   return raw.cstEncode(move: true);
 }
 
 PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+    cst_encode_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
         RwLockBoxFn raw) {
   // ignore: invalid_use_of_internal_member
   return raw.cstEncode();

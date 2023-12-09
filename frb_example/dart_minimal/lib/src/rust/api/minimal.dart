@@ -12,7 +12,7 @@ Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
 Future<void> hiRustOpaque({required RwLockBoxFn a, dynamic hint}) =>
     RustLib.instance.api.hiRustOpaque(a: a, hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn () + UnwindSafe + RefUnwindSafe>>>
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn () + Send + Sync + UnwindSafe + RefUnwindSafe>>>
 @sealed
 class RwLockBoxFn extends RustOpaque {
   RwLockBoxFn.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
