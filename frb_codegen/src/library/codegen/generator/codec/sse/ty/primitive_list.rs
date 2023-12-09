@@ -1,4 +1,6 @@
-use crate::codegen::generator::codec::sse::ty::general_list::general_list_generate_decode;
+use crate::codegen::generator::codec::sse::ty::general_list::{
+    general_list_generate_decode, general_list_generate_encode,
+};
 use crate::codegen::generator::codec::sse::ty::primitive::get_serializer_dart_postfix;
 use crate::codegen::generator::codec::sse::ty::*;
 
@@ -9,10 +11,10 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                 "serializer.buffer.put{}List(self);",
                 get_serializer_dart_postfix(&self.ir.primitive)
             ),
-            Lang::RustLang(_) => format!(
-                "for item in self {{ serializer.cursor.write_{}::<NativeEndian>(item).unwrap(); }}",
-                self.ir.primitive.rust_api_type()
-            ),
+            Lang::RustLang(_) => {
+                // TODO do not use naive loop
+                general_list_generate_encode(lang, &IrType::Primitive(self.ir.primitive.clone()))
+            }
         })
     }
 
@@ -24,7 +26,11 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
             ),
             Lang::RustLang(_) => {
                 // TODO do not use naive loop
-                general_list_generate_decode(lang, &IrType::Primitive(self.ir.primitive.clone()))
+                general_list_generate_decode(
+                    lang,
+                    &IrType::Primitive(self.ir.primitive.clone()),
+                    self.context,
+                )
             }
         })
     }
