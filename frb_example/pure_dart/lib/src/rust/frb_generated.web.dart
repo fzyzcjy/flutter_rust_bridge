@@ -205,15 +205,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object /* BigInt64Array */ cst_encode_Chrono_DurationList(
-      List<Duration> raw) {
-    final ans = Int64List(raw.length);
-    for (var i = 0; i < raw.length; ++i)
-      ans[i] = cst_encode_Chrono_Duration(raw[i]);
-    return cst_encode_list_prim_i_64(ans);
-  }
-
-  @protected
   Object cst_encode_Chrono_Local(DateTime raw) {
     return cst_encode_i_64(raw.millisecondsSinceEpoch);
   }
@@ -221,14 +212,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object cst_encode_Chrono_Naive(DateTime raw) {
     return cst_encode_i_64(raw.millisecondsSinceEpoch);
-  }
-
-  @protected
-  Object /* BigInt64Array */ cst_encode_Chrono_NaiveList(List<DateTime> raw) {
-    final ans = Int64List(raw.length);
-    for (var i = 0; i < raw.length; ++i)
-      ans[i] = cst_encode_Chrono_Naive(raw[i]);
-    return cst_encode_list_prim_i_64(ans);
   }
 
   @protected
@@ -262,27 +245,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<String> cst_encode_StringList(List<String> raw) {
-    return raw;
-  }
-
-  @protected
   Uint8List cst_encode_Uuid(UuidValue raw) {
     return cst_encode_list_prim_u_8(raw.toBytes());
-  }
-
-  @protected
-  Uint8List cst_encode_Uuids(List<UuidValue> raw) {
-    final builder = BytesBuilder();
-    for (final element in raw) {
-      builder.add(element.toBytes());
-    }
-    return cst_encode_list_prim_u_8(builder.toBytes());
-  }
-
-  @protected
-  Uint8List cst_encode_ZeroCopyBuffer_list_prim_u_8(Uint8List raw) {
-    return cst_encode_list_prim_u_8(raw);
   }
 
   @protected
@@ -1958,7 +1922,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_opt_box_autoadd_i_64(raw.int64),
       cst_encode_opt_box_autoadd_f_64(raw.float64),
       cst_encode_opt_box_autoadd_bool(raw.boolean),
-      cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
+      cst_encode_opt_list_prim_u_8(raw.zerocopy),
       cst_encode_opt_list_prim_i_8(raw.int8List),
       cst_encode_opt_list_prim_u_8(raw.uint8List),
       cst_encode_opt_list_prim_i_32(raw.int32List),
@@ -1981,7 +1945,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_opt_box_autoadd_i_64(raw.int64),
       cst_encode_opt_box_autoadd_f_64(raw.float64),
       cst_encode_opt_box_autoadd_bool(raw.boolean),
-      cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
+      cst_encode_opt_list_prim_u_8(raw.zerocopy),
       cst_encode_opt_list_prim_i_8(raw.int8List),
       cst_encode_opt_list_prim_u_8(raw.uint8List),
       cst_encode_opt_list_prim_i_32(raw.int32List),
@@ -2004,7 +1968,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_opt_box_autoadd_i_64(raw.int64),
       cst_encode_opt_box_autoadd_f_64(raw.float64),
       cst_encode_opt_box_autoadd_bool(raw.boolean),
-      cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
+      cst_encode_opt_list_prim_u_8(raw.zerocopy),
       cst_encode_opt_list_prim_i_8(raw.int8List),
       cst_encode_opt_list_prim_u_8(raw.uint8List),
       cst_encode_opt_list_prim_i_32(raw.int32List),
@@ -2058,18 +2022,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
-    return [cst_encode_Uuid(raw.one), cst_encode_Uuids(raw.many)];
+    return [cst_encode_Uuid(raw.one), cst_encode_list_Uuid(raw.many)];
   }
 
   @protected
   List<dynamic> cst_encode_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync raw) {
-    return [cst_encode_Uuid(raw.one), cst_encode_Uuids(raw.many)];
+    return [cst_encode_Uuid(raw.one), cst_encode_list_Uuid(raw.many)];
   }
 
   @protected
   List<dynamic> cst_encode_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
-    return [cst_encode_Uuid(raw.one), cst_encode_Uuids(raw.many)];
+    return [cst_encode_Uuid(raw.one), cst_encode_list_Uuid(raw.many)];
   }
 
   @protected
@@ -2125,7 +2089,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ];
     }
     if (raw is KitchenSinkTwinNormal_Buffer) {
-      return [4, cst_encode_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
+      return [4, cst_encode_list_prim_u_8(raw.field0)];
     }
     if (raw is KitchenSinkTwinNormal_Enums) {
       return [5, cst_encode_weekdays_twin_normal(raw.field0)];
@@ -2163,7 +2127,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ];
     }
     if (raw is KitchenSinkTwinRustAsync_Buffer) {
-      return [4, cst_encode_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
+      return [4, cst_encode_list_prim_u_8(raw.field0)];
     }
     if (raw is KitchenSinkTwinRustAsync_Enums) {
       return [5, cst_encode_weekdays_twin_rust_async(raw.field0)];
@@ -2200,13 +2164,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ];
     }
     if (raw is KitchenSinkTwinSync_Buffer) {
-      return [4, cst_encode_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
+      return [4, cst_encode_list_prim_u_8(raw.field0)];
     }
     if (raw is KitchenSinkTwinSync_Enums) {
       return [5, cst_encode_weekdays_twin_sync(raw.field0)];
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_Chrono_Duration(List<Duration> raw) {
+    return raw.map(cst_encode_Chrono_Duration).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_Chrono_Naive(List<DateTime> raw) {
+    return raw.map(cst_encode_Chrono_Naive).toList();
   }
 
   @protected
@@ -2217,6 +2191,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_RustOpaque_hide_data(List<HideData> raw) {
     return raw.map(cst_encode_RustOpaque_hide_data).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_String(List<String> raw) {
+    return raw.map(cst_encode_String).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_Uuid(List<UuidValue> raw) {
+    return raw.map(cst_encode_Uuid).toList();
   }
 
   @protected
@@ -2614,11 +2598,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   String? cst_encode_opt_String(String? raw) {
     return raw == null ? null : cst_encode_String(raw);
-  }
-
-  @protected
-  Uint8List? cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(Uint8List? raw) {
-    return raw == null ? null : cst_encode_ZeroCopyBuffer_list_prim_u_8(raw);
   }
 
   @protected
@@ -3305,12 +3284,12 @@ class RustLibWire extends BaseWire {
   void wire_duration_twin_normal(NativePortType port_, Object d) =>
       wasmModule.wire_duration_twin_normal(port_, d);
 
-  void wire_handle_durations_twin_normal(NativePortType port_,
-          Object /* BigInt64Array */ durations, Object since) =>
+  void wire_handle_durations_twin_normal(
+          NativePortType port_, List<dynamic> durations, Object since) =>
       wasmModule.wire_handle_durations_twin_normal(port_, durations, since);
 
-  void wire_handle_timestamps_twin_normal(NativePortType port_,
-          Object /* BigInt64Array */ timestamps, Object epoch) =>
+  void wire_handle_timestamps_twin_normal(
+          NativePortType port_, List<dynamic> timestamps, Object epoch) =>
       wasmModule.wire_handle_timestamps_twin_normal(port_, timestamps, epoch);
 
   void wire_how_long_does_it_take_twin_normal(
@@ -3422,23 +3401,23 @@ class RustLibWire extends BaseWire {
           NativePortType port_, int id, Object opaque) =>
       wasmModule.wire_set_static_dart_opaque_twin_normal(port_, id, opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_accept_dart_opaque_twin_normal(Object opaque) =>
           wasmModule.wire_sync_accept_dart_opaque_twin_normal(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_loopback_twin_normal(Object opaque) =>
           wasmModule.wire_sync_loopback_twin_normal(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_option_dart_opaque_twin_normal(Object opaque) =>
           wasmModule.wire_sync_option_dart_opaque_twin_normal(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_option_loopback_twin_normal(Object? opaque) =>
           wasmModule.wire_sync_option_loopback_twin_normal(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_unwrap_dart_opaque_twin_normal(Object opaque) =>
           wasmModule.wire_unwrap_dart_opaque_twin_normal(opaque);
 
@@ -3793,7 +3772,7 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_handle_list_of_struct_twin_normal(port_, l);
 
   void wire_handle_string_list_twin_normal(
-          NativePortType port_, List<String> names) =>
+          NativePortType port_, List<dynamic> names) =>
       wasmModule.wire_handle_string_list_twin_normal(port_, names);
 
   void wire_handle_newtype_twin_normal(
@@ -3839,10 +3818,6 @@ class RustLibWire extends BaseWire {
 
   void wire_handle_vec_of_primitive_twin_normal(NativePortType port_, int n) =>
       wasmModule.wire_handle_vec_of_primitive_twin_normal(port_, n);
-
-  void wire_handle_zero_copy_vec_of_primitive_twin_normal(
-          NativePortType port_, int n) =>
-      wasmModule.wire_handle_zero_copy_vec_of_primitive_twin_normal(port_, n);
 
   void wire_primitive_types_twin_normal(NativePortType port_, int my_i32,
           Object my_i64, double my_f64, bool my_bool) =>
@@ -3890,46 +3865,46 @@ class RustLibWire extends BaseWire {
   void wire_use_msgid_twin_rust_async(NativePortType port_, List<dynamic> id) =>
       wasmModule.wire_use_msgid_twin_rust_async(port_, id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_boxed_blob_twin_sync(Uint8List blob) =>
           wasmModule.wire_boxed_blob_twin_sync(blob);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_test_id_twin_sync(List<dynamic> id) =>
           wasmModule.wire_func_test_id_twin_sync(id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_array_twin_sync() => wasmModule.wire_get_array_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_complex_array_twin_sync() =>
           wasmModule.wire_get_complex_array_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_last_number_twin_sync(Float64List array) =>
           wasmModule.wire_last_number_twin_sync(array);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_nested_id_twin_sync(List<dynamic> id) =>
           wasmModule.wire_nested_id_twin_sync(id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_new_msgid_twin_sync(Uint8List id) =>
           wasmModule.wire_new_msgid_twin_sync(id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_boxed_feed_id_twin_sync(Uint8List id) =>
           wasmModule.wire_return_boxed_feed_id_twin_sync(id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_boxed_raw_feed_id_twin_sync(List<dynamic> id) =>
           wasmModule.wire_return_boxed_raw_feed_id_twin_sync(id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_use_boxed_blob_twin_sync(List<dynamic> blob) =>
           wasmModule.wire_use_boxed_blob_twin_sync(blob);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_use_msgid_twin_sync(List<dynamic> id) =>
           wasmModule.wire_use_msgid_twin_sync(id);
 
@@ -3941,11 +3916,11 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic> user_id) =>
       wasmModule.wire_next_user_id_twin_rust_async(port_, user_id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_customized_struct_twin_sync(List<dynamic> val) =>
           wasmModule.wire_handle_customized_struct_twin_sync(val);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_next_user_id_twin_sync(List<dynamic> user_id) =>
           wasmModule.wire_next_user_id_twin_sync(user_id);
 
@@ -3960,15 +3935,15 @@ class RustLibWire extends BaseWire {
   void wire_benchmark_void_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_benchmark_void_twin_rust_async(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_benchmark_input_bytes_twin_sync(Uint8List bytes) =>
           wasmModule.wire_benchmark_input_bytes_twin_sync(bytes);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_benchmark_output_bytes_twin_sync(int size) =>
           wasmModule.wire_benchmark_output_bytes_twin_sync(size);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_benchmark_void_twin_sync() =>
           wasmModule.wire_benchmark_void_twin_sync();
 
@@ -3981,12 +3956,12 @@ class RustLibWire extends BaseWire {
   void wire_duration_twin_rust_async(NativePortType port_, Object d) =>
       wasmModule.wire_duration_twin_rust_async(port_, d);
 
-  void wire_handle_durations_twin_rust_async(NativePortType port_,
-          Object /* BigInt64Array */ durations, Object since) =>
+  void wire_handle_durations_twin_rust_async(
+          NativePortType port_, List<dynamic> durations, Object since) =>
       wasmModule.wire_handle_durations_twin_rust_async(port_, durations, since);
 
-  void wire_handle_timestamps_twin_rust_async(NativePortType port_,
-          Object /* BigInt64Array */ timestamps, Object epoch) =>
+  void wire_handle_timestamps_twin_rust_async(
+          NativePortType port_, List<dynamic> timestamps, Object epoch) =>
       wasmModule.wire_handle_timestamps_twin_rust_async(
           port_, timestamps, epoch);
 
@@ -4007,44 +3982,43 @@ class RustLibWire extends BaseWire {
   void wire_test_precise_chrono_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_test_precise_chrono_twin_rust_async(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_datetime_local_twin_sync(Object d) =>
           wasmModule.wire_datetime_local_twin_sync(d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_datetime_utc_twin_sync(Object d) =>
           wasmModule.wire_datetime_utc_twin_sync(d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_duration_twin_sync(Object d) =>
           wasmModule.wire_duration_twin_sync(d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_handle_durations_twin_sync(
-              Object /* BigInt64Array */ durations, Object since) =>
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
+      wire_handle_durations_twin_sync(List<dynamic> durations, Object since) =>
           wasmModule.wire_handle_durations_twin_sync(durations, since);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_timestamps_twin_sync(
-              Object /* BigInt64Array */ timestamps, Object epoch) =>
+              List<dynamic> timestamps, Object epoch) =>
           wasmModule.wire_handle_timestamps_twin_sync(timestamps, epoch);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_how_long_does_it_take_twin_sync(List<dynamic> mine) =>
           wasmModule.wire_how_long_does_it_take_twin_sync(mine);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_naivedatetime_twin_sync(Object d) =>
           wasmModule.wire_naivedatetime_twin_sync(d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_optional_empty_datetime_utc_twin_sync(Object? d) =>
           wasmModule.wire_optional_empty_datetime_utc_twin_sync(d);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_chrono_twin_sync() => wasmModule.wire_test_chrono_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_precise_chrono_twin_sync() =>
           wasmModule.wire_test_precise_chrono_twin_sync();
 
@@ -4077,26 +4051,26 @@ class RustLibWire extends BaseWire {
           .wire_function_with_comments_triple_slash_single_line_twin_rust_async(
               port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_StructWithCommentsTwinSync_instance_method_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire_StructWithCommentsTwinSync_instance_method_twin_sync(that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_StructWithCommentsTwinSync_static_method_twin_sync() =>
           wasmModule.wire_StructWithCommentsTwinSync_static_method_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_function_with_comments_slash_star_star_twin_sync() =>
           wasmModule.wire_function_with_comments_slash_star_star_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_function_with_comments_triple_slash_multi_line_twin_sync() =>
           wasmModule
               .wire_function_with_comments_triple_slash_multi_line_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_function_with_comments_triple_slash_single_line_twin_sync() =>
           wasmModule
               .wire_function_with_comments_triple_slash_single_line_twin_sync();
@@ -4104,7 +4078,7 @@ class RustLibWire extends BaseWire {
   void wire_return_dart_dynamic_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_return_dart_dynamic_twin_rust_async(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_dart_dynamic_twin_sync() =>
           wasmModule.wire_return_dart_dynamic_twin_sync();
 
@@ -4172,68 +4146,68 @@ class RustLibWire extends BaseWire {
           NativePortType port_, int id, Object opaque) =>
       wasmModule.wire_set_static_dart_opaque_twin_rust_async(port_, id, opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_async_accept_dart_opaque_twin_sync(Object opaque) =>
           wasmModule.wire_async_accept_dart_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_clone_dart_opaque_twin_sync(Object opaque) =>
           wasmModule.wire_clone_dart_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_enum_dart_opaque_twin_sync(Object opaque) =>
           wasmModule.wire_create_enum_dart_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_nested_dart_opaque_twin_sync(
               Object opaque1, Object opaque2) =>
           wasmModule.wire_create_nested_dart_opaque_twin_sync(opaque1, opaque2);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_drop_static_dart_opaque_twin_sync(int id) =>
           wasmModule.wire_drop_static_dart_opaque_twin_sync(id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_enum_dart_opaque_twin_sync(List<dynamic> opaque) =>
           wasmModule.wire_get_enum_dart_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_nested_dart_opaque_twin_sync(List<dynamic> opaque) =>
           wasmModule.wire_get_nested_dart_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_array_get_twin_sync(List<dynamic> opaque) =>
           wasmModule.wire_loop_back_array_get_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_array_twin_sync(Object opaque) =>
           wasmModule.wire_loop_back_array_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_option_get_twin_sync(Object? opaque) =>
           wasmModule.wire_loop_back_option_get_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_option_twin_sync(Object opaque) =>
           wasmModule.wire_loop_back_option_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_twin_sync(Object opaque) =>
           wasmModule.wire_loop_back_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_vec_get_twin_sync(List<dynamic> opaque) =>
           wasmModule.wire_loop_back_vec_get_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_vec_twin_sync(Object opaque) =>
           wasmModule.wire_loop_back_vec_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_panic_unwrap_dart_opaque_twin_sync(Object opaque) =>
           wasmModule.wire_panic_unwrap_dart_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_set_static_dart_opaque_twin_sync(int id, Object opaque) =>
           wasmModule.wire_set_static_dart_opaque_twin_sync(id, opaque);
 
@@ -4272,39 +4246,39 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic> note) =>
       wasmModule.wire_print_note_twin_rust_async(port_, note);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_enum_simple_twin_sync(int arg) =>
           wasmModule.wire_func_enum_simple_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_enum_with_item_mixed_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_enum_with_item_mixed_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_enum_with_item_struct_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_enum_with_item_struct_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_enum_with_item_tuple_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_enum_with_item_tuple_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_enum_parameter_twin_sync(int weekday) =>
           wasmModule.wire_handle_enum_parameter_twin_sync(weekday);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_enum_struct_twin_sync(List<dynamic> val) =>
           wasmModule.wire_handle_enum_struct_twin_sync(val);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_return_enum_twin_sync(String input) =>
           wasmModule.wire_handle_return_enum_twin_sync(input);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_multiply_by_ten_twin_sync(List<dynamic> measure) =>
           wasmModule.wire_multiply_by_ten_twin_sync(measure);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_print_note_twin_sync(List<dynamic> note) =>
           wasmModule.wire_print_note_twin_sync(note);
 
@@ -4322,15 +4296,15 @@ class RustLibWire extends BaseWire {
   void wire_register_event_listener_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_register_event_listener_twin_rust_async(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_EventTwinSync_as_string_twin_sync(List<dynamic> that) =>
           wasmModule.wire_EventTwinSync_as_string_twin_sync(that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_close_event_listener_twin_sync() =>
           wasmModule.wire_close_event_listener_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_event_twin_sync(String address, String payload) =>
           wasmModule.wire_create_event_twin_sync(address, payload);
 
@@ -4462,134 +4436,134 @@ class RustLibWire extends BaseWire {
   void wire_throw_anyhow_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_throw_anyhow_twin_rust_async(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_new_twin_sync(String message) =>
           wasmModule.wire_CustomStructTwinSync_new_twin_sync(message);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync() =>
           wasmModule
               .wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync() =>
           wasmModule
               .wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_new_twin_sync(int value) =>
           wasmModule.wire_SomeStructTwinSync_new_twin_sync(value);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
               List<dynamic> that) =>
           wasmModule
               .wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync() =>
           wasmModule
               .wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync() =>
           wasmModule
               .wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_enum_error_panic_twin_sync() =>
           wasmModule.wire_custom_enum_error_panic_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_enum_error_return_error_twin_sync() =>
           wasmModule.wire_custom_enum_error_return_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_enum_error_return_ok_twin_sync(int arg) =>
           wasmModule.wire_custom_enum_error_return_ok_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_nested_error_return_error_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_custom_nested_error_return_error_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_struct_error_return_error_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_custom_struct_error_return_error_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_return_error_twin_sync() =>
           wasmModule.wire_func_return_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_type_fallible_panic_twin_sync() =>
           wasmModule.wire_func_type_fallible_panic_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_type_infallible_panic_twin_sync() =>
           wasmModule.wire_func_type_infallible_panic_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_panic_with_custom_result_twin_sync() =>
           wasmModule.wire_panic_with_custom_result_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_nested_error_1_twin_sync() =>
           wasmModule.wire_return_custom_nested_error_1_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_nested_error_1_variant1_twin_sync() =>
           wasmModule.wire_return_custom_nested_error_1_variant1_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_nested_error_2_twin_sync() =>
           wasmModule.wire_return_custom_nested_error_2_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_struct_error_twin_sync() =>
           wasmModule.wire_return_custom_struct_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_struct_ok_twin_sync() =>
           wasmModule.wire_return_custom_struct_ok_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_err_custom_error_twin_sync() =>
           wasmModule.wire_return_err_custom_error_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_error_variant_twin_sync(int variant) =>
           wasmModule.wire_return_error_variant_twin_sync(variant);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_ok_custom_error_twin_sync() =>
           wasmModule.wire_return_ok_custom_error_twin_sync();
 
   void wire_stream_sink_throw_anyhow_twin_sync(NativePortType port_) =>
       wasmModule.wire_stream_sink_throw_anyhow_twin_sync(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_throw_anyhow_twin_sync() => wasmModule.wire_throw_anyhow_twin_sync();
 
   void wire_call_new_module_system_twin_rust_async(NativePortType port_) =>
@@ -4606,19 +4580,19 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic> my_struct) =>
       wasmModule.wire_use_imported_struct_twin_rust_async(port_, my_struct);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_call_new_module_system_twin_sync() =>
           wasmModule.wire_call_new_module_system_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_call_old_module_system_twin_sync() =>
           wasmModule.wire_call_old_module_system_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_use_imported_enum_twin_sync(int my_enum) =>
           wasmModule.wire_use_imported_enum_twin_sync(my_enum);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_use_imported_struct_twin_sync(List<dynamic> my_struct) =>
           wasmModule.wire_use_imported_struct_twin_sync(my_struct);
 
@@ -4674,13 +4648,13 @@ class RustLibWire extends BaseWire {
   void wire_get_sum_struct_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_get_sum_struct_twin_rust_async(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
               String a, String b) =>
           wasmModule.wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
               a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_ConcatenateWithTwinSync_concatenate_twin_sync(
               List<dynamic> that, String b) =>
           wasmModule.wire_ConcatenateWithTwinSync_concatenate_twin_sync(
@@ -4709,19 +4683,19 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync(
           port_, that, key, max);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_ConcatenateWithTwinSync_new_twin_sync(String a) =>
           wasmModule.wire_ConcatenateWithTwinSync_new_twin_sync(a);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SumWithTwinSync_sum_twin_sync(List<dynamic> that, int y, int z) =>
           wasmModule.wire_SumWithTwinSync_sum_twin_sync(that, y, z);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_sum_array_twin_sync(int a, int b, int c) =>
           wasmModule.wire_get_sum_array_twin_sync(a, b, c);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_sum_struct_twin_sync() =>
           wasmModule.wire_get_sum_struct_twin_sync();
 
@@ -4802,26 +4776,26 @@ class RustLibWire extends BaseWire {
   void wire_app_settings_vec_stream_twin_sync(NativePortType port_) =>
       wasmModule.wire_app_settings_vec_stream_twin_sync(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_first_number_twin_sync(List<dynamic> nums) =>
           wasmModule.wire_first_number_twin_sync(nums);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_first_sequence_twin_sync(List<dynamic> seqs) =>
           wasmModule.wire_first_sequence_twin_sync(seqs);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_app_settings_twin_sync() =>
           wasmModule.wire_get_app_settings_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_fallible_app_settings_twin_sync() =>
           wasmModule.wire_get_fallible_app_settings_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_message_twin_sync() => wasmModule.wire_get_message_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_is_app_embedded_twin_sync(List<dynamic> app_settings) =>
           wasmModule.wire_is_app_embedded_twin_sync(app_settings);
 
@@ -4831,39 +4805,39 @@ class RustLibWire extends BaseWire {
   void wire_mirror_tuple_stream_twin_sync(NativePortType port_) =>
       wasmModule.wire_mirror_tuple_stream_twin_sync(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_repeat_number_twin_sync(int num, int times) =>
           wasmModule.wire_repeat_number_twin_sync(num, times);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_repeat_sequence_twin_sync(int seq, int times) =>
           wasmModule.wire_repeat_sequence_twin_sync(seq, times);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_contains_mirrored_sub_struct_twin_sync() =>
           wasmModule.wire_test_contains_mirrored_sub_struct_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_fallible_of_raw_string_mirrored_twin_sync() =>
           wasmModule.wire_test_fallible_of_raw_string_mirrored_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_list_of_nested_enums_mirrored_twin_sync() =>
           wasmModule.wire_test_list_of_nested_enums_mirrored_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_list_of_raw_nested_string_mirrored_twin_sync() =>
           wasmModule.wire_test_list_of_raw_nested_string_mirrored_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_nested_raw_string_mirrored_twin_sync() =>
           wasmModule.wire_test_nested_raw_string_mirrored_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_raw_string_enum_mirrored_twin_sync(bool nested) =>
           wasmModule.wire_test_raw_string_enum_mirrored_twin_sync(nested);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_raw_string_mirrored_twin_sync() =>
           wasmModule.wire_test_raw_string_mirrored_twin_sync();
 
@@ -4900,39 +4874,39 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic> se) =>
       wasmModule.wire_test_struct_with_enum_twin_rust_async(port_, se);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_big_buffers_twin_sync() =>
           wasmModule.wire_handle_big_buffers_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_complex_struct_twin_sync(List<dynamic> s) =>
           wasmModule.wire_handle_complex_struct_twin_sync(s);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_nested_struct_twin_sync(List<dynamic> s) =>
           wasmModule.wire_handle_nested_struct_twin_sync(s);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_string_twin_sync(String s) =>
           wasmModule.wire_handle_string_twin_sync(s);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_struct_twin_sync(List<dynamic> arg, List<dynamic> boxed) =>
           wasmModule.wire_handle_struct_twin_sync(arg, boxed);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_vec_u8_twin_sync(Uint8List v) =>
           wasmModule.wire_handle_vec_u8_twin_sync(v);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_list_of_primitive_enums_twin_sync(List<dynamic> weekdays) =>
           wasmModule.wire_list_of_primitive_enums_twin_sync(weekdays);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_abc_enum_twin_sync(List<dynamic> abc) =>
           wasmModule.wire_test_abc_enum_twin_sync(abc);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_struct_with_enum_twin_sync(List<dynamic> se) =>
           wasmModule.wire_test_struct_with_enum_twin_sync(se);
 
@@ -4951,34 +4925,34 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_handle_list_of_struct_twin_rust_async(port_, l);
 
   void wire_handle_string_list_twin_rust_async(
-          NativePortType port_, List<String> names) =>
+          NativePortType port_, List<dynamic> names) =>
       wasmModule.wire_handle_string_list_twin_rust_async(port_, names);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_empty_struct_twin_sync(List<dynamic> empty) =>
           wasmModule.wire_empty_struct_twin_sync(empty);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_return_unit_twin_sync() =>
           wasmModule.wire_func_return_unit_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_string_twin_sync(String arg) =>
           wasmModule.wire_func_string_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_list_of_struct_twin_sync(List<dynamic> l) =>
           wasmModule.wire_handle_list_of_struct_twin_sync(l);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_handle_string_list_twin_sync(List<String> names) =>
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
+      wire_handle_string_list_twin_sync(List<dynamic> names) =>
           wasmModule.wire_handle_string_list_twin_sync(names);
 
   void wire_handle_newtype_twin_rust_async(
           NativePortType port_, List<dynamic> arg) =>
       wasmModule.wire_handle_newtype_twin_rust_async(port_, arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_newtype_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_handle_newtype_twin_sync(arg);
 
@@ -5042,7 +5016,7 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_primitive_optional_types_twin_rust_async(
           port_, my_i32, my_i64, my_f64, my_bool);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_primitive_optional_types_twin_sync(
               int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
           wasmModule.wire_primitive_optional_types_twin_sync(
@@ -5103,47 +5077,47 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_example_optional_primitive_type_u8_twin_rust_async(
           port_, arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_bool_twin_sync(bool? arg) =>
           wasmModule.wire_example_optional_primitive_type_bool_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_f32_twin_sync(double? arg) =>
           wasmModule.wire_example_optional_primitive_type_f32_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_f64_twin_sync(double? arg) =>
           wasmModule.wire_example_optional_primitive_type_f64_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_i16_twin_sync(int? arg) =>
           wasmModule.wire_example_optional_primitive_type_i16_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_i32_twin_sync(int? arg) =>
           wasmModule.wire_example_optional_primitive_type_i32_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_i64_twin_sync(Object? arg) =>
           wasmModule.wire_example_optional_primitive_type_i64_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_i8_twin_sync(int? arg) =>
           wasmModule.wire_example_optional_primitive_type_i8_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_u16_twin_sync(int? arg) =>
           wasmModule.wire_example_optional_primitive_type_u16_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_u32_twin_sync(int? arg) =>
           wasmModule.wire_example_optional_primitive_type_u32_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_u64_twin_sync(Object? arg) =>
           wasmModule.wire_example_optional_primitive_type_u64_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_u8_twin_sync(int? arg) =>
           wasmModule.wire_example_optional_primitive_type_u8_twin_sync(arg);
 
@@ -5181,11 +5155,11 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic> opt) =>
       wasmModule.wire_handle_vec_of_opts_twin_rust_async(port_, opt);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_increment_boxed_optional_twin_sync(double? opt) =>
           wasmModule.wire_handle_increment_boxed_optional_twin_sync(opt);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_option_box_arguments_twin_sync(
               int? i8box,
               int? u8box,
@@ -5197,19 +5171,19 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_handle_option_box_arguments_twin_sync(
               i8box, u8box, i32box, i64box, f64box, boolbox, structbox);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_optional_increment_twin_sync(List<dynamic>? opt) =>
           wasmModule.wire_handle_optional_increment_twin_sync(opt);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_optional_return_twin_sync(double left, double right) =>
           wasmModule.wire_handle_optional_return_twin_sync(left, right);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_optional_struct_twin_sync(String? document) =>
           wasmModule.wire_handle_optional_struct_twin_sync(document);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_vec_of_opts_twin_sync(List<dynamic> opt) =>
           wasmModule.wire_handle_vec_of_opts_twin_sync(opt);
 
@@ -5305,18 +5279,9 @@ class RustLibWire extends BaseWire {
           NativePortType port_, int n) =>
       wasmModule.wire_handle_vec_of_primitive_twin_rust_async(port_, n);
 
-  void wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
-          NativePortType port_, int n) =>
-      wasmModule.wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
-          port_, n);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_vec_of_primitive_twin_sync(int n) =>
           wasmModule.wire_handle_vec_of_primitive_twin_sync(n);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_handle_zero_copy_vec_of_primitive_twin_sync(int n) =>
-          wasmModule.wire_handle_zero_copy_vec_of_primitive_twin_sync(n);
 
   void wire_example_primitive_list_type_bool_twin_rust_async(
           NativePortType port_, List<dynamic> arg) =>
@@ -5373,49 +5338,49 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_example_primitive_list_type_u8_twin_rust_async(
           port_, arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_bool_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_example_primitive_list_type_bool_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_f32_twin_sync(Float32List arg) =>
           wasmModule.wire_example_primitive_list_type_f32_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_f64_twin_sync(Float64List arg) =>
           wasmModule.wire_example_primitive_list_type_f64_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_i16_twin_sync(Int16List arg) =>
           wasmModule.wire_example_primitive_list_type_i16_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_i32_twin_sync(Int32List arg) =>
           wasmModule.wire_example_primitive_list_type_i32_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_i64_twin_sync(
               Object /* BigInt64Array */ arg) =>
           wasmModule.wire_example_primitive_list_type_i64_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_i8_twin_sync(Int8List arg) =>
           wasmModule.wire_example_primitive_list_type_i8_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_u16_twin_sync(Uint16List arg) =>
           wasmModule.wire_example_primitive_list_type_u16_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_u32_twin_sync(Uint32List arg) =>
           wasmModule.wire_example_primitive_list_type_u32_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_u64_twin_sync(
               Object /* BigInt64Array */ arg) =>
           wasmModule.wire_example_primitive_list_type_u64_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_u8_twin_sync(Uint8List arg) =>
           wasmModule.wire_example_primitive_list_type_u8_twin_sync(arg);
 
@@ -5427,13 +5392,13 @@ class RustLibWire extends BaseWire {
   void wire_primitive_u32_twin_rust_async(NativePortType port_, int my_u32) =>
       wasmModule.wire_primitive_u32_twin_rust_async(port_, my_u32);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_primitive_types_twin_sync(
               int my_i32, Object my_i64, double my_f64, bool my_bool) =>
           wasmModule.wire_primitive_types_twin_sync(
               my_i32, my_i64, my_f64, my_bool);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_primitive_u32_twin_sync(int my_u32) =>
           wasmModule.wire_primitive_u32_twin_sync(my_u32);
 
@@ -5481,47 +5446,47 @@ class RustLibWire extends BaseWire {
           NativePortType port_, int arg) =>
       wasmModule.wire_example_primitive_type_u8_twin_rust_async(port_, arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_bool_twin_sync(bool arg) =>
           wasmModule.wire_example_primitive_type_bool_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_f32_twin_sync(double arg) =>
           wasmModule.wire_example_primitive_type_f32_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_f64_twin_sync(double arg) =>
           wasmModule.wire_example_primitive_type_f64_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_i16_twin_sync(int arg) =>
           wasmModule.wire_example_primitive_type_i16_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_i32_twin_sync(int arg) =>
           wasmModule.wire_example_primitive_type_i32_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_i64_twin_sync(Object arg) =>
           wasmModule.wire_example_primitive_type_i64_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_i8_twin_sync(int arg) =>
           wasmModule.wire_example_primitive_type_i8_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_u16_twin_sync(int arg) =>
           wasmModule.wire_example_primitive_type_u16_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_u32_twin_sync(int arg) =>
           wasmModule.wire_example_primitive_type_u32_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_u64_twin_sync(Object arg) =>
           wasmModule.wire_example_primitive_type_u64_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_u8_twin_sync(int arg) =>
           wasmModule.wire_example_primitive_type_u8_twin_sync(arg);
 
@@ -5533,175 +5498,175 @@ class RustLibWire extends BaseWire {
   void wire_test_raw_string_item_struct_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_test_raw_string_item_struct_twin_rust_async(port_);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_more_than_just_one_raw_string_struct_twin_sync() =>
           wasmModule.wire_test_more_than_just_one_raw_string_struct_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_raw_string_item_struct_twin_sync() =>
           wasmModule.wire_test_raw_string_item_struct_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
               Object that) =>
           wasmModule
               .wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
               Object that) =>
           wasmModule
               .wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
               Object that) =>
           wasmModule
               .wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
               Object that) =>
           wasmModule
               .wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
                   that);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync() =>
           wasmModule.wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_new_twin_sync() =>
           wasmModule.wire_NonCloneSimpleTwinSync_new_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
               Object arg) =>
           wasmModule
               .wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
               Object arg) =>
           wasmModule
               .wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(Object arg) =>
           wasmModule
               .wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync() =>
           wasmModule
               .wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_arg_borrow_twin_sync(Object arg, int expect) =>
           wasmModule.wire_rust_auto_opaque_arg_borrow_twin_sync(arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
               Object arg, int expect, int adder) =>
           wasmModule.wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
               arg, expect, adder);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(Object arg) =>
           wasmModule
               .wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_arg_own_twin_sync(Object arg, int expect) =>
           wasmModule.wire_rust_auto_opaque_arg_own_twin_sync(arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_callable_arg_twin_sync(Object arg) =>
           wasmModule.wire_rust_auto_opaque_callable_arg_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_callable_return_twin_sync() =>
           wasmModule.wire_rust_auto_opaque_callable_return_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
               Object a, String b) =>
           wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
               a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_plus_sign_arg_twin_sync(Object arg) =>
           wasmModule.wire_rust_auto_opaque_plus_sign_arg_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_plus_sign_return_twin_sync() =>
           wasmModule.wire_rust_auto_opaque_plus_sign_return_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_return_own_twin_sync(int initial) =>
           wasmModule.wire_rust_auto_opaque_return_own_twin_sync(initial);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
               Object arg) =>
           wasmModule
               .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
               Object arg) =>
           wasmModule
               .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
               Object arg) =>
           wasmModule
               .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
                   arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync() =>
           wasmModule
               .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
               Object arg, String expect) =>
           wasmModule.wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
               arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
               Object arg, String expect) =>
           wasmModule
               .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
                   arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
               Object arg, String expect) =>
           wasmModule.wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
               arg, expect);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_return_own_one_twin_sync() =>
           wasmModule
               .wire_rust_auto_opaque_trait_object_return_own_one_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_return_own_two_twin_sync() =>
           wasmModule
               .wire_rust_auto_opaque_trait_object_return_own_two_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_two_args_twin_sync(Object a, Object b) =>
           wasmModule.wire_rust_auto_opaque_two_args_twin_sync(a, b);
 
@@ -5760,72 +5725,72 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object opaque) =>
       wasmModule.wire_unwrap_rust_opaque_twin_rust_async(port_, opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_array_opaque_enum_twin_sync() =>
           wasmModule.wire_create_array_opaque_enum_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_nested_opaque_twin_sync() =>
           wasmModule.wire_create_nested_opaque_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_opaque_twin_sync() =>
           wasmModule.wire_create_opaque_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_option_opaque_twin_sync(Object? opaque) =>
           wasmModule.wire_create_option_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_sync_opaque_twin_sync() =>
           wasmModule.wire_create_sync_opaque_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_frb_generator_test_twin_sync() =>
           wasmModule.wire_frb_generator_test_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_opaque_array_run_twin_sync(List<dynamic> data) =>
           wasmModule.wire_opaque_array_run_twin_sync(data);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_opaque_array_twin_sync() => wasmModule.wire_opaque_array_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_opaque_vec_run_twin_sync(List<dynamic> data) =>
           wasmModule.wire_opaque_vec_run_twin_sync(data);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_opaque_vec_twin_sync() => wasmModule.wire_opaque_vec_twin_sync();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_enum_opaque_twin_sync(List<dynamic> opaque) =>
           wasmModule.wire_run_enum_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_nested_opaque_twin_sync(List<dynamic> opaque) =>
           wasmModule.wire_run_nested_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_non_clone_twin_sync(Object clone) =>
           wasmModule.wire_run_non_clone_twin_sync(clone);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_opaque_twin_sync(Object opaque) =>
           wasmModule.wire_run_opaque_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_opaque_with_delay_twin_sync(Object opaque) =>
           wasmModule.wire_run_opaque_with_delay_twin_sync(opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_unwrap_rust_opaque_twin_sync(Object opaque) =>
           wasmModule.wire_unwrap_rust_opaque_twin_sync(opaque);
 
   void wire_simple_adder_twin_rust_async(NativePortType port_, int a, int b) =>
       wasmModule.wire_simple_adder_twin_rust_async(port_, a, b);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_simple_adder_twin_sync(int a, int b) =>
           wasmModule.wire_simple_adder_twin_sync(a, b);
 
@@ -5877,23 +5842,23 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_func_tuple_struct_with_two_field_twin_rust_async(
           port_, arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_struct_with_one_field_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_struct_with_one_field_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_struct_with_two_field_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_struct_with_two_field_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_struct_with_zero_field_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_struct_with_zero_field_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_tuple_struct_with_one_field_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_tuple_struct_with_one_field_twin_sync(arg);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_tuple_struct_with_two_field_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_tuple_struct_with_two_field_twin_sync(arg);
 
@@ -5905,11 +5870,11 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic>? value) =>
       wasmModule.wire_test_tuple_twin_rust_async(port_, value);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_tuple_2_twin_sync(List<dynamic> value) =>
           wasmModule.wire_test_tuple_2_twin_sync(value);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_tuple_twin_sync(List<dynamic>? value) =>
           wasmModule.wire_test_tuple_twin_sync(value);
 
@@ -5925,15 +5890,15 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object input) =>
       wasmModule.wire_handle_type_nest_alias_id_twin_rust_async(port_, input);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_type_alias_id_twin_sync(Object input) =>
           wasmModule.wire_handle_type_alias_id_twin_sync(input);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_type_alias_model_twin_sync(Object input) =>
           wasmModule.wire_handle_type_alias_model_twin_sync(input);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_type_nest_alias_id_twin_sync(Object input) =>
           wasmModule.wire_handle_type_nest_alias_id_twin_sync(input);
 
@@ -5944,19 +5909,20 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuid_twin_rust_async(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid_twin_rust_async(port_, id);
 
-  void wire_handle_uuids_twin_rust_async(NativePortType port_, Uint8List ids) =>
+  void wire_handle_uuids_twin_rust_async(
+          NativePortType port_, List<dynamic> ids) =>
       wasmModule.wire_handle_uuids_twin_rust_async(port_, ids);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_nested_uuids_twin_sync(List<dynamic> ids) =>
           wasmModule.wire_handle_nested_uuids_twin_sync(ids);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_uuid_twin_sync(Uint8List id) =>
           wasmModule.wire_handle_uuid_twin_sync(id);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_handle_uuids_twin_sync(Uint8List ids) =>
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
+      wire_handle_uuids_twin_sync(List<dynamic> ids) =>
           wasmModule.wire_handle_uuids_twin_sync(ids);
 
   void wire_test_more_than_just_one_raw_string_struct_twin_normal(
@@ -6175,27 +6141,27 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object opaque) =>
       wasmModule.wire_unwrap_rust_opaque_twin_normal(port_, opaque);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_frb_sync_generator_test_twin_normal() =>
           wasmModule.wire_frb_sync_generator_test_twin_normal();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_create_non_clone_twin_normal() =>
           wasmModule.wire_sync_create_non_clone_twin_normal();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_create_opaque_twin_normal() =>
           wasmModule.wire_sync_create_opaque_twin_normal();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_create_sync_opaque_twin_normal() =>
           wasmModule.wire_sync_create_sync_opaque_twin_normal();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_option_rust_opaque_twin_normal() =>
           wasmModule.wire_sync_option_rust_opaque_twin_normal();
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_run_opaque_twin_normal(Object opaque) =>
           wasmModule.wire_sync_run_opaque_twin_normal(opaque);
 
@@ -6278,7 +6244,7 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuid_twin_normal(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid_twin_normal(port_, id);
 
-  void wire_handle_uuids_twin_normal(NativePortType port_, Uint8List ids) =>
+  void wire_handle_uuids_twin_normal(NativePortType port_, List<dynamic> ids) =>
       wasmModule.wire_handle_uuids_twin_normal(port_, ids);
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
@@ -6558,10 +6524,10 @@ class RustLibWasmModule implements WasmModule {
   external void wire_duration_twin_normal(NativePortType port_, Object d);
 
   external void wire_handle_durations_twin_normal(
-      NativePortType port_, Object /* BigInt64Array */ durations, Object since);
+      NativePortType port_, List<dynamic> durations, Object since);
 
-  external void wire_handle_timestamps_twin_normal(NativePortType port_,
-      Object /* BigInt64Array */ timestamps, Object epoch);
+  external void wire_handle_timestamps_twin_normal(
+      NativePortType port_, List<dynamic> timestamps, Object epoch);
 
   external void wire_how_long_does_it_take_twin_normal(
       NativePortType port_, List<dynamic> mine);
@@ -6643,19 +6609,19 @@ class RustLibWasmModule implements WasmModule {
   external void wire_set_static_dart_opaque_twin_normal(
       NativePortType port_, int id, Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_accept_dart_opaque_twin_normal(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_loopback_twin_normal(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_option_dart_opaque_twin_normal(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_option_loopback_twin_normal(Object? opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_unwrap_dart_opaque_twin_normal(Object opaque);
 
   external void wire_func_enum_simple_twin_normal(
@@ -6915,7 +6881,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> l);
 
   external void wire_handle_string_list_twin_normal(
-      NativePortType port_, List<String> names);
+      NativePortType port_, List<dynamic> names);
 
   external void wire_handle_newtype_twin_normal(
       NativePortType port_, List<dynamic> arg);
@@ -6949,9 +6915,6 @@ class RustLibWasmModule implements WasmModule {
       int? my_i32, Object? my_i64, double? my_f64, bool? my_bool);
 
   external void wire_handle_vec_of_primitive_twin_normal(
-      NativePortType port_, int n);
-
-  external void wire_handle_zero_copy_vec_of_primitive_twin_normal(
       NativePortType port_, int n);
 
   external void wire_primitive_types_twin_normal(NativePortType port_,
@@ -6991,37 +6954,37 @@ class RustLibWasmModule implements WasmModule {
   external void wire_use_msgid_twin_rust_async(
       NativePortType port_, List<dynamic> id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_boxed_blob_twin_sync(Uint8List blob);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_test_id_twin_sync(List<dynamic> id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_array_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_complex_array_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_last_number_twin_sync(Float64List array);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_nested_id_twin_sync(List<dynamic> id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_new_msgid_twin_sync(Uint8List id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_boxed_feed_id_twin_sync(Uint8List id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_boxed_raw_feed_id_twin_sync(List<dynamic> id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_use_boxed_blob_twin_sync(List<dynamic> blob);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_use_msgid_twin_sync(List<dynamic> id);
 
   external void wire_handle_customized_struct_twin_rust_async(
@@ -7030,10 +6993,10 @@ class RustLibWasmModule implements WasmModule {
   external void wire_next_user_id_twin_rust_async(
       NativePortType port_, List<dynamic> user_id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_customized_struct_twin_sync(List<dynamic> val);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_next_user_id_twin_sync(List<dynamic> user_id);
 
   external void wire_benchmark_input_bytes_twin_rust_async(
@@ -7044,13 +7007,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_benchmark_void_twin_rust_async(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_benchmark_input_bytes_twin_sync(Uint8List bytes);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_benchmark_output_bytes_twin_sync(int size);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_benchmark_void_twin_sync();
 
   external void wire_datetime_local_twin_rust_async(
@@ -7062,10 +7025,10 @@ class RustLibWasmModule implements WasmModule {
   external void wire_duration_twin_rust_async(NativePortType port_, Object d);
 
   external void wire_handle_durations_twin_rust_async(
-      NativePortType port_, Object /* BigInt64Array */ durations, Object since);
+      NativePortType port_, List<dynamic> durations, Object since);
 
-  external void wire_handle_timestamps_twin_rust_async(NativePortType port_,
-      Object /* BigInt64Array */ timestamps, Object epoch);
+  external void wire_handle_timestamps_twin_rust_async(
+      NativePortType port_, List<dynamic> timestamps, Object epoch);
 
   external void wire_how_long_does_it_take_twin_rust_async(
       NativePortType port_, List<dynamic> mine);
@@ -7080,36 +7043,34 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_test_precise_chrono_twin_rust_async(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_datetime_local_twin_sync(Object d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_datetime_utc_twin_sync(Object d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_duration_twin_sync(Object d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_handle_durations_twin_sync(
-          Object /* BigInt64Array */ durations, Object since);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
+      wire_handle_durations_twin_sync(List<dynamic> durations, Object since);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_handle_timestamps_twin_sync(
-          Object /* BigInt64Array */ timestamps, Object epoch);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
+      wire_handle_timestamps_twin_sync(List<dynamic> timestamps, Object epoch);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_how_long_does_it_take_twin_sync(List<dynamic> mine);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_naivedatetime_twin_sync(Object d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_optional_empty_datetime_utc_twin_sync(Object? d);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_chrono_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_precise_chrono_twin_sync();
 
   external void
@@ -7131,25 +7092,25 @@ class RustLibWasmModule implements WasmModule {
       wire_function_with_comments_triple_slash_single_line_twin_rust_async(
           NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_StructWithCommentsTwinSync_instance_method_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_StructWithCommentsTwinSync_static_method_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_function_with_comments_slash_star_star_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_function_with_comments_triple_slash_multi_line_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_function_with_comments_triple_slash_single_line_twin_sync();
 
   external void wire_return_dart_dynamic_twin_rust_async(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_dart_dynamic_twin_sync();
 
   external void wire_async_accept_dart_opaque_twin_rust_async(
@@ -7200,52 +7161,52 @@ class RustLibWasmModule implements WasmModule {
   external void wire_set_static_dart_opaque_twin_rust_async(
       NativePortType port_, int id, Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_async_accept_dart_opaque_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_clone_dart_opaque_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_enum_dart_opaque_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_nested_dart_opaque_twin_sync(Object opaque1, Object opaque2);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_drop_static_dart_opaque_twin_sync(int id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_enum_dart_opaque_twin_sync(List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_nested_dart_opaque_twin_sync(List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_array_get_twin_sync(List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_array_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_option_get_twin_sync(Object? opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_option_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_vec_get_twin_sync(List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_loop_back_vec_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_panic_unwrap_dart_opaque_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_set_static_dart_opaque_twin_sync(int id, Object opaque);
 
   external void wire_func_enum_simple_twin_rust_async(
@@ -7275,31 +7236,31 @@ class RustLibWasmModule implements WasmModule {
   external void wire_print_note_twin_rust_async(
       NativePortType port_, List<dynamic> note);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_enum_simple_twin_sync(int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_enum_with_item_mixed_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_enum_with_item_struct_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_enum_with_item_tuple_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_enum_parameter_twin_sync(int weekday);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_enum_struct_twin_sync(List<dynamic> val);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_return_enum_twin_sync(String input);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_multiply_by_ten_twin_sync(List<dynamic> measure);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_print_note_twin_sync(List<dynamic> note);
 
   external void wire_EventTwinRustAsync_as_string_twin_rust_async(
@@ -7313,13 +7274,13 @@ class RustLibWasmModule implements WasmModule {
   external void wire_register_event_listener_twin_rust_async(
       NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_EventTwinSync_as_string_twin_sync(List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_close_event_listener_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_event_twin_sync(String address, String payload);
 
   external void wire_register_event_listener_twin_sync(NativePortType port_);
@@ -7417,94 +7378,94 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_throw_anyhow_twin_rust_async(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_new_twin_sync(String message);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_new_twin_sync(int value);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
           List<dynamic> that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_enum_error_panic_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_enum_error_return_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_enum_error_return_ok_twin_sync(int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_nested_error_return_error_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_custom_struct_error_return_error_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_return_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_type_fallible_panic_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_type_infallible_panic_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_panic_with_custom_result_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_nested_error_1_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_nested_error_1_variant1_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_nested_error_2_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_struct_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_custom_struct_ok_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_err_custom_error_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_error_variant_twin_sync(int variant);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_ok_custom_error_twin_sync();
 
   external void wire_stream_sink_throw_anyhow_twin_sync(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_throw_anyhow_twin_sync();
 
   external void wire_call_new_module_system_twin_rust_async(
@@ -7519,16 +7480,16 @@ class RustLibWasmModule implements WasmModule {
   external void wire_use_imported_struct_twin_rust_async(
       NativePortType port_, List<dynamic> my_struct);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_call_new_module_system_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_call_old_module_system_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_use_imported_enum_twin_sync(int my_enum);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_use_imported_struct_twin_sync(List<dynamic> my_struct);
 
   external void
@@ -7565,11 +7526,11 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_get_sum_struct_twin_rust_async(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
           String a, String b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_ConcatenateWithTwinSync_concatenate_twin_sync(
           List<dynamic> that, String b);
 
@@ -7588,16 +7549,16 @@ class RustLibWasmModule implements WasmModule {
   external void wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync(
       NativePortType port_, List<dynamic> that, int key, int max);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_ConcatenateWithTwinSync_new_twin_sync(String a);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_SumWithTwinSync_sum_twin_sync(List<dynamic> that, int y, int z);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_sum_array_twin_sync(int a, int b, int c);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_sum_struct_twin_sync();
 
   external void wire_app_settings_stream_twin_rust_async(NativePortType port_);
@@ -7656,53 +7617,53 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_app_settings_vec_stream_twin_sync(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_first_number_twin_sync(List<dynamic> nums);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_first_sequence_twin_sync(List<dynamic> seqs);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_app_settings_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_fallible_app_settings_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_get_message_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_is_app_embedded_twin_sync(List<dynamic> app_settings);
 
   external void wire_mirror_struct_stream_twin_sync(NativePortType port_);
 
   external void wire_mirror_tuple_stream_twin_sync(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_repeat_number_twin_sync(int num, int times);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_repeat_sequence_twin_sync(int seq, int times);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_contains_mirrored_sub_struct_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_fallible_of_raw_string_mirrored_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_list_of_nested_enums_mirrored_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_list_of_raw_nested_string_mirrored_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_nested_raw_string_mirrored_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_raw_string_enum_mirrored_twin_sync(bool nested);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_raw_string_mirrored_twin_sync();
 
   external void wire_handle_big_buffers_twin_rust_async(NativePortType port_);
@@ -7731,31 +7692,31 @@ class RustLibWasmModule implements WasmModule {
   external void wire_test_struct_with_enum_twin_rust_async(
       NativePortType port_, List<dynamic> se);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_big_buffers_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_complex_struct_twin_sync(List<dynamic> s);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_nested_struct_twin_sync(List<dynamic> s);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_string_twin_sync(String s);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_struct_twin_sync(List<dynamic> arg, List<dynamic> boxed);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_vec_u8_twin_sync(Uint8List v);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_list_of_primitive_enums_twin_sync(List<dynamic> weekdays);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_abc_enum_twin_sync(List<dynamic> abc);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_struct_with_enum_twin_sync(List<dynamic> se);
 
   external void wire_empty_struct_twin_rust_async(
@@ -7770,27 +7731,27 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> l);
 
   external void wire_handle_string_list_twin_rust_async(
-      NativePortType port_, List<String> names);
+      NativePortType port_, List<dynamic> names);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_empty_struct_twin_sync(List<dynamic> empty);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_return_unit_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_string_twin_sync(String arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_list_of_struct_twin_sync(List<dynamic> l);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_handle_string_list_twin_sync(List<String> names);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
+      wire_handle_string_list_twin_sync(List<dynamic> names);
 
   external void wire_handle_newtype_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_newtype_twin_sync(List<dynamic> arg);
 
   external void wire_example_optional_primitive_type_bool_twin_normal(
@@ -7833,7 +7794,7 @@ class RustLibWasmModule implements WasmModule {
       double? my_f64,
       bool? my_bool);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_primitive_optional_types_twin_sync(
           int? my_i32, Object? my_i64, double? my_f64, bool? my_bool);
 
@@ -7870,37 +7831,37 @@ class RustLibWasmModule implements WasmModule {
   external void wire_example_optional_primitive_type_u8_twin_rust_async(
       NativePortType port_, int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_bool_twin_sync(bool? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_f32_twin_sync(double? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_f64_twin_sync(double? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_i16_twin_sync(int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_i32_twin_sync(int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_i64_twin_sync(Object? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_i8_twin_sync(int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_u16_twin_sync(int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_u32_twin_sync(int? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_u64_twin_sync(Object? arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_optional_primitive_type_u8_twin_sync(int? arg);
 
   external void wire_handle_increment_boxed_optional_twin_rust_async(
@@ -7928,10 +7889,10 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_vec_of_opts_twin_rust_async(
       NativePortType port_, List<dynamic> opt);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_increment_boxed_optional_twin_sync(double? opt);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_option_box_arguments_twin_sync(
           int? i8box,
           int? u8box,
@@ -7941,16 +7902,16 @@ class RustLibWasmModule implements WasmModule {
           bool? boolbox,
           List<dynamic>? structbox);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_optional_increment_twin_sync(List<dynamic>? opt);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_optional_return_twin_sync(double left, double right);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_optional_struct_twin_sync(String? document);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_vec_of_opts_twin_sync(List<dynamic> opt);
 
   external void wire_example_primitive_type_bool_twin_normal(
@@ -8022,14 +7983,8 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_vec_of_primitive_twin_rust_async(
       NativePortType port_, int n);
 
-  external void wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
-      NativePortType port_, int n);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_vec_of_primitive_twin_sync(int n);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_handle_zero_copy_vec_of_primitive_twin_sync(int n);
 
   external void wire_example_primitive_list_type_bool_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
@@ -8064,39 +8019,39 @@ class RustLibWasmModule implements WasmModule {
   external void wire_example_primitive_list_type_u8_twin_rust_async(
       NativePortType port_, Uint8List arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_bool_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_f32_twin_sync(Float32List arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_f64_twin_sync(Float64List arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_i16_twin_sync(Int16List arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_i32_twin_sync(Int32List arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_i64_twin_sync(
           Object /* BigInt64Array */ arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_i8_twin_sync(Int8List arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_u16_twin_sync(Uint16List arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_u32_twin_sync(Uint32List arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_u64_twin_sync(
           Object /* BigInt64Array */ arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_list_type_u8_twin_sync(Uint8List arg);
 
   external void wire_primitive_types_twin_rust_async(NativePortType port_,
@@ -8105,11 +8060,11 @@ class RustLibWasmModule implements WasmModule {
   external void wire_primitive_u32_twin_rust_async(
       NativePortType port_, int my_u32);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_primitive_types_twin_sync(
           int my_i32, Object my_i64, double my_f64, bool my_bool);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_primitive_u32_twin_sync(int my_u32);
 
   external void wire_example_primitive_type_bool_twin_rust_async(
@@ -8145,37 +8100,37 @@ class RustLibWasmModule implements WasmModule {
   external void wire_example_primitive_type_u8_twin_rust_async(
       NativePortType port_, int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_bool_twin_sync(bool arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_f32_twin_sync(double arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_f64_twin_sync(double arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_i16_twin_sync(int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_i32_twin_sync(int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_i64_twin_sync(Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_i8_twin_sync(int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_u16_twin_sync(int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_u32_twin_sync(int arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_u64_twin_sync(Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_u8_twin_sync(int arg);
 
   external void wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
@@ -8184,113 +8139,113 @@ class RustLibWasmModule implements WasmModule {
   external void wire_test_raw_string_item_struct_twin_rust_async(
       NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_more_than_just_one_raw_string_struct_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_raw_string_item_struct_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
           Object that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
           Object that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
           Object that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
           Object that);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_new_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
           Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
           Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_arg_borrow_twin_sync(Object arg, int expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
           Object arg, int expect, int adder);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_arg_own_twin_sync(Object arg, int expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_callable_arg_twin_sync(Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_callable_return_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(Object a, String b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_plus_sign_arg_twin_sync(Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_plus_sign_return_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_return_own_twin_sync(int initial);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
           Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
           Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
           Object arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
           Object arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
           Object arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
           Object arg, String expect);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_return_own_one_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_trait_object_return_own_two_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_rust_auto_opaque_two_args_twin_sync(Object a, Object b);
 
   external void wire_create_array_opaque_enum_twin_rust_async(
@@ -8335,58 +8290,58 @@ class RustLibWasmModule implements WasmModule {
   external void wire_unwrap_rust_opaque_twin_rust_async(
       NativePortType port_, Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_array_opaque_enum_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_nested_opaque_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_opaque_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_option_opaque_twin_sync(Object? opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_sync_opaque_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_frb_generator_test_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_opaque_array_run_twin_sync(List<dynamic> data);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_opaque_array_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_opaque_vec_run_twin_sync(List<dynamic> data);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_opaque_vec_twin_sync();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_enum_opaque_twin_sync(List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_nested_opaque_twin_sync(List<dynamic> opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_non_clone_twin_sync(Object clone);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_opaque_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_run_opaque_with_delay_twin_sync(Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_unwrap_rust_opaque_twin_sync(Object opaque);
 
   external void wire_simple_adder_twin_rust_async(
       NativePortType port_, int a, int b);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_simple_adder_twin_sync(int a, int b);
 
   external void wire_func_stream_return_error_twin_rust_async(
@@ -8425,19 +8380,19 @@ class RustLibWasmModule implements WasmModule {
   external void wire_func_tuple_struct_with_two_field_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_struct_with_one_field_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_struct_with_two_field_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_struct_with_zero_field_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_tuple_struct_with_one_field_twin_sync(List<dynamic> arg);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_tuple_struct_with_two_field_twin_sync(List<dynamic> arg);
 
   external void wire_test_tuple_2_twin_rust_async(
@@ -8446,10 +8401,10 @@ class RustLibWasmModule implements WasmModule {
   external void wire_test_tuple_twin_rust_async(
       NativePortType port_, List<dynamic>? value);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_tuple_2_twin_sync(List<dynamic> value);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_tuple_twin_sync(List<dynamic>? value);
 
   external void wire_handle_type_alias_id_twin_rust_async(
@@ -8461,13 +8416,13 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_type_nest_alias_id_twin_rust_async(
       NativePortType port_, Object input);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_type_alias_id_twin_sync(Object input);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_type_alias_model_twin_sync(Object input);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_type_nest_alias_id_twin_sync(Object input);
 
   external void wire_handle_nested_uuids_twin_rust_async(
@@ -8477,16 +8432,16 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, Uint8List id);
 
   external void wire_handle_uuids_twin_rust_async(
-      NativePortType port_, Uint8List ids);
+      NativePortType port_, List<dynamic> ids);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_nested_uuids_twin_sync(List<dynamic> ids);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_uuid_twin_sync(Uint8List id);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_handle_uuids_twin_sync(Uint8List ids);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
+      wire_handle_uuids_twin_sync(List<dynamic> ids);
 
   external void wire_test_more_than_just_one_raw_string_struct_twin_normal(
       NativePortType port_);
@@ -8636,22 +8591,22 @@ class RustLibWasmModule implements WasmModule {
   external void wire_unwrap_rust_opaque_twin_normal(
       NativePortType port_, Object opaque);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_frb_sync_generator_test_twin_normal();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_create_non_clone_twin_normal();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_create_opaque_twin_normal();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_create_sync_opaque_twin_normal();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_option_rust_opaque_twin_normal();
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_sync_run_opaque_twin_normal(Object opaque);
 
   external void wire_simple_adder_twin_normal(
@@ -8715,7 +8670,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, Uint8List id);
 
   external void wire_handle_uuids_twin_normal(
-      NativePortType port_, Uint8List ids);
+      NativePortType port_, List<dynamic> ids);
 
   external void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);

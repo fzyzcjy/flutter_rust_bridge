@@ -206,15 +206,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_cst_list_prim_i_64> cst_encode_Chrono_DurationList(
-      List<Duration> raw) {
-    final ans = Int64List(raw.length);
-    for (var i = 0; i < raw.length; ++i)
-      ans[i] = cst_encode_Chrono_Duration(raw[i]);
-    return cst_encode_list_prim_i_64(ans);
-  }
-
-  @protected
   int cst_encode_Chrono_Local(DateTime raw) {
     return cst_encode_i_64(raw.microsecondsSinceEpoch);
   }
@@ -222,15 +213,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Chrono_Naive(DateTime raw) {
     return cst_encode_i_64(raw.microsecondsSinceEpoch);
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_i_64> cst_encode_Chrono_NaiveList(
-      List<DateTime> raw) {
-    final ans = Int64List(raw.length);
-    for (var i = 0; i < raw.length; ++i)
-      ans[i] = cst_encode_Chrono_Naive(raw[i]);
-    return cst_encode_list_prim_i_64(ans);
   }
 
   @protected
@@ -266,32 +248,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_cst_StringList> cst_encode_StringList(List<String> raw) {
-    final ans = wire.cst_new_StringList(raw.length);
-    for (var i = 0; i < raw.length; i++) {
-      ans.ref.ptr[i] = cst_encode_String(raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
   ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_Uuid(UuidValue raw) {
     return cst_encode_list_prim_u_8(raw.toBytes());
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_Uuids(List<UuidValue> raw) {
-    final builder = BytesBuilder();
-    for (final element in raw) {
-      builder.add(element.toBytes());
-    }
-    return cst_encode_list_prim_u_8(builder.toBytes());
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_ZeroCopyBuffer_list_prim_u_8(
-      Uint8List raw) {
-    return cst_encode_list_prim_u_8(raw);
   }
 
   @protected
@@ -1791,6 +1749,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_list_Chrono_Duration> cst_encode_list_Chrono_Duration(
+      List<Duration> raw) {
+    final ans = wire.cst_new_list_Chrono_Duration(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = cst_encode_Chrono_Duration(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_Chrono_Naive> cst_encode_list_Chrono_Naive(
+      List<DateTime> raw) {
+    final ans = wire.cst_new_list_Chrono_Naive(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = cst_encode_Chrono_Naive(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_cst_list_DartOpaque> cst_encode_list_DartOpaque(
       List<Object> raw) {
     final ans = wire.cst_new_list_DartOpaque(raw.length);
@@ -1806,6 +1784,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.cst_new_list_RustOpaque_hide_data(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       ans.ref.ptr[i] = cst_encode_RustOpaque_hide_data(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_String> cst_encode_list_String(List<String> raw) {
+    final ans = wire.cst_new_list_String(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _cst_api_fill_to_wire_String(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_Uuid> cst_encode_list_Uuid(List<UuidValue> raw) {
+    final ans = wire.cst_new_list_Uuid(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _cst_api_fill_to_wire_Uuid(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -2157,14 +2153,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_opt_String(String? raw) {
     return raw == null ? ffi.nullptr : cst_encode_String(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8>
-      cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(Uint8List? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : cst_encode_ZeroCopyBuffer_list_prim_u_8(raw);
   }
 
   @protected
@@ -4286,8 +4274,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.int64 = cst_encode_opt_box_autoadd_i_64(apiObj.int64);
     wireObj.float64 = cst_encode_opt_box_autoadd_f_64(apiObj.float64);
     wireObj.boolean = cst_encode_opt_box_autoadd_bool(apiObj.boolean);
-    wireObj.zerocopy =
-        cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(apiObj.zerocopy);
+    wireObj.zerocopy = cst_encode_opt_list_prim_u_8(apiObj.zerocopy);
     wireObj.int8list = cst_encode_opt_list_prim_i_8(apiObj.int8List);
     wireObj.uint8list = cst_encode_opt_list_prim_u_8(apiObj.uint8List);
     wireObj.int32list = cst_encode_opt_list_prim_i_32(apiObj.int32List);
@@ -4312,8 +4299,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.int64 = cst_encode_opt_box_autoadd_i_64(apiObj.int64);
     wireObj.float64 = cst_encode_opt_box_autoadd_f_64(apiObj.float64);
     wireObj.boolean = cst_encode_opt_box_autoadd_bool(apiObj.boolean);
-    wireObj.zerocopy =
-        cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(apiObj.zerocopy);
+    wireObj.zerocopy = cst_encode_opt_list_prim_u_8(apiObj.zerocopy);
     wireObj.int8list = cst_encode_opt_list_prim_i_8(apiObj.int8List);
     wireObj.uint8list = cst_encode_opt_list_prim_u_8(apiObj.uint8List);
     wireObj.int32list = cst_encode_opt_list_prim_i_32(apiObj.int32List);
@@ -4339,8 +4325,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.int64 = cst_encode_opt_box_autoadd_i_64(apiObj.int64);
     wireObj.float64 = cst_encode_opt_box_autoadd_f_64(apiObj.float64);
     wireObj.boolean = cst_encode_opt_box_autoadd_bool(apiObj.boolean);
-    wireObj.zerocopy =
-        cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(apiObj.zerocopy);
+    wireObj.zerocopy = cst_encode_opt_list_prim_u_8(apiObj.zerocopy);
     wireObj.int8list = cst_encode_opt_list_prim_i_8(apiObj.int8List);
     wireObj.uint8list = cst_encode_opt_list_prim_u_8(apiObj.uint8List);
     wireObj.int32list = cst_encode_opt_list_prim_i_32(apiObj.int32List);
@@ -4387,20 +4372,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _cst_api_fill_to_wire_feature_uuid_twin_normal(
       FeatureUuidTwinNormal apiObj, wire_cst_feature_uuid_twin_normal wireObj) {
     wireObj.one = cst_encode_Uuid(apiObj.one);
-    wireObj.many = cst_encode_Uuids(apiObj.many);
+    wireObj.many = cst_encode_list_Uuid(apiObj.many);
   }
 
   void _cst_api_fill_to_wire_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync apiObj,
       wire_cst_feature_uuid_twin_rust_async wireObj) {
     wireObj.one = cst_encode_Uuid(apiObj.one);
-    wireObj.many = cst_encode_Uuids(apiObj.many);
+    wireObj.many = cst_encode_list_Uuid(apiObj.many);
   }
 
   void _cst_api_fill_to_wire_feature_uuid_twin_sync(
       FeatureUuidTwinSync apiObj, wire_cst_feature_uuid_twin_sync wireObj) {
     wireObj.one = cst_encode_Uuid(apiObj.one);
-    wireObj.many = cst_encode_Uuids(apiObj.many);
+    wireObj.many = cst_encode_list_Uuid(apiObj.many);
   }
 
   void _cst_api_fill_to_wire_feed_id_twin_normal(
@@ -4454,7 +4439,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is KitchenSinkTwinNormal_Buffer) {
-      var pre_field0 = cst_encode_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);
+      var pre_field0 = cst_encode_list_prim_u_8(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind = wire.cst_inflate_KitchenSinkTwinNormal_Buffer();
       wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
@@ -4507,7 +4492,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is KitchenSinkTwinRustAsync_Buffer) {
-      var pre_field0 = cst_encode_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);
+      var pre_field0 = cst_encode_list_prim_u_8(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind = wire.cst_inflate_KitchenSinkTwinRustAsync_Buffer();
       wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
@@ -4558,7 +4543,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is KitchenSinkTwinSync_Buffer) {
-      var pre_field0 = cst_encode_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);
+      var pre_field0 = cst_encode_list_prim_u_8(apiObj.field0);
       wireObj.tag = 4;
       wireObj.kind = wire.cst_inflate_KitchenSinkTwinSync_Buffer();
       wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
@@ -5505,7 +5490,7 @@ class RustLibWire implements BaseWire {
 
   void wire_handle_durations_twin_normal(
     int port_,
-    ffi.Pointer<wire_cst_list_prim_i_64> durations,
+    ffi.Pointer<wire_cst_list_Chrono_Duration> durations,
     int since,
   ) {
     return _wire_handle_durations_twin_normal(
@@ -5517,15 +5502,18 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_durations_twin_normalPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_prim_i_64>,
+          ffi.Void Function(
+              ffi.Int64,
+              ffi.Pointer<wire_cst_list_Chrono_Duration>,
               ffi.Int64)>>('wire_handle_durations_twin_normal');
   late final _wire_handle_durations_twin_normal =
       _wire_handle_durations_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_i_64>, int)>();
+          void Function(
+              int, ffi.Pointer<wire_cst_list_Chrono_Duration>, int)>();
 
   void wire_handle_timestamps_twin_normal(
     int port_,
-    ffi.Pointer<wire_cst_list_prim_i_64> timestamps,
+    ffi.Pointer<wire_cst_list_Chrono_Naive> timestamps,
     int epoch,
   ) {
     return _wire_handle_timestamps_twin_normal(
@@ -5537,11 +5525,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_timestamps_twin_normalPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_prim_i_64>,
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_Chrono_Naive>,
               ffi.Int64)>>('wire_handle_timestamps_twin_normal');
   late final _wire_handle_timestamps_twin_normal =
       _wire_handle_timestamps_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_i_64>, int)>();
+          void Function(int, ffi.Pointer<wire_cst_list_Chrono_Naive>, int)>();
 
   void wire_how_long_does_it_take_twin_normal(
     int port_,
@@ -6036,7 +6024,7 @@ class RustLibWire implements BaseWire {
       _wire_set_static_dart_opaque_twin_normalPtr
           .asFunction<void Function(int, int, ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_sync_accept_dart_opaque_twin_normal(
+  WireSyncReturnDco wire_sync_accept_dart_opaque_twin_normal(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_sync_accept_dart_opaque_twin_normal(
@@ -6045,13 +6033,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_sync_accept_dart_opaque_twin_normalPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_sync_accept_dart_opaque_twin_normal');
   late final _wire_sync_accept_dart_opaque_twin_normal =
       _wire_sync_accept_dart_opaque_twin_normalPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_sync_loopback_twin_normal(
+  WireSyncReturnDco wire_sync_loopback_twin_normal(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_sync_loopback_twin_normal(
@@ -6060,13 +6049,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_sync_loopback_twin_normalPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_sync_loopback_twin_normal');
   late final _wire_sync_loopback_twin_normal =
       _wire_sync_loopback_twin_normalPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_sync_option_dart_opaque_twin_normal(
+  WireSyncReturnDco wire_sync_option_dart_opaque_twin_normal(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_sync_option_dart_opaque_twin_normal(
@@ -6075,13 +6065,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_sync_option_dart_opaque_twin_normalPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_sync_option_dart_opaque_twin_normal');
   late final _wire_sync_option_dart_opaque_twin_normal =
       _wire_sync_option_dart_opaque_twin_normalPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_sync_option_loopback_twin_normal(
+  WireSyncReturnDco wire_sync_option_loopback_twin_normal(
     ffi.Pointer<ffi.Pointer<ffi.Void>> opaque,
   ) {
     return _wire_sync_option_loopback_twin_normal(
@@ -6091,13 +6082,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_sync_option_loopback_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
       'wire_sync_option_loopback_twin_normal');
   late final _wire_sync_option_loopback_twin_normal =
       _wire_sync_option_loopback_twin_normalPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+          WireSyncReturnDco Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
-  WireSyncReturn wire_unwrap_dart_opaque_twin_normal(
+  WireSyncReturnDco wire_unwrap_dart_opaque_twin_normal(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_unwrap_dart_opaque_twin_normal(
@@ -6106,11 +6097,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_unwrap_dart_opaque_twin_normalPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_unwrap_dart_opaque_twin_normal');
   late final _wire_unwrap_dart_opaque_twin_normal =
       _wire_unwrap_dart_opaque_twin_normalPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
   void wire_func_enum_simple_twin_normal(
     int port_,
@@ -7707,7 +7699,7 @@ class RustLibWire implements BaseWire {
 
   void wire_handle_string_list_twin_normal(
     int port_,
-    ffi.Pointer<wire_cst_StringList> names,
+    ffi.Pointer<wire_cst_list_String> names,
   ) {
     return _wire_handle_string_list_twin_normal(
       port_,
@@ -7717,11 +7709,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_string_list_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_StringList>)>>(
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_String>)>>(
       'wire_handle_string_list_twin_normal');
   late final _wire_handle_string_list_twin_normal =
       _wire_handle_string_list_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_StringList>)>();
+          .asFunction<void Function(int, ffi.Pointer<wire_cst_list_String>)>();
 
   void wire_handle_newtype_twin_normal(
     int port_,
@@ -7929,23 +7921,6 @@ class RustLibWire implements BaseWire {
           'wire_handle_vec_of_primitive_twin_normal');
   late final _wire_handle_vec_of_primitive_twin_normal =
       _wire_handle_vec_of_primitive_twin_normalPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_handle_zero_copy_vec_of_primitive_twin_normal(
-    int port_,
-    int n,
-  ) {
-    return _wire_handle_zero_copy_vec_of_primitive_twin_normal(
-      port_,
-      n,
-    );
-  }
-
-  late final _wire_handle_zero_copy_vec_of_primitive_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_handle_zero_copy_vec_of_primitive_twin_normal');
-  late final _wire_handle_zero_copy_vec_of_primitive_twin_normal =
-      _wire_handle_zero_copy_vec_of_primitive_twin_normalPtr
           .asFunction<void Function(int, int)>();
 
   void wire_primitive_types_twin_normal(
@@ -8190,7 +8165,7 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_message_id_twin_rust_async>)>();
 
-  WireSyncReturn wire_boxed_blob_twin_sync(
+  WireSyncReturnDco wire_boxed_blob_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> blob,
   ) {
     return _wire_boxed_blob_twin_sync(
@@ -8200,13 +8175,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_boxed_blob_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_boxed_blob_twin_sync');
   late final _wire_boxed_blob_twin_sync =
       _wire_boxed_blob_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_func_test_id_twin_sync(
+  WireSyncReturnDco wire_func_test_id_twin_sync(
     ffi.Pointer<wire_cst_test_id_twin_sync> id,
   ) {
     return _wire_func_test_id_twin_sync(
@@ -8216,35 +8191,36 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_test_id_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_test_id_twin_sync>)>>(
       'wire_func_test_id_twin_sync');
   late final _wire_func_test_id_twin_sync =
       _wire_func_test_id_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_test_id_twin_sync>)>();
+          WireSyncReturnDco Function(
+              ffi.Pointer<wire_cst_test_id_twin_sync>)>();
 
-  WireSyncReturn wire_get_array_twin_sync() {
+  WireSyncReturnDco wire_get_array_twin_sync() {
     return _wire_get_array_twin_sync();
   }
 
   late final _wire_get_array_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_get_array_twin_sync');
   late final _wire_get_array_twin_sync =
-      _wire_get_array_twin_syncPtr.asFunction<WireSyncReturn Function()>();
+      _wire_get_array_twin_syncPtr.asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_get_complex_array_twin_sync() {
+  WireSyncReturnDco wire_get_complex_array_twin_sync() {
     return _wire_get_complex_array_twin_sync();
   }
 
   late final _wire_get_complex_array_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_get_complex_array_twin_sync');
   late final _wire_get_complex_array_twin_sync =
       _wire_get_complex_array_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_last_number_twin_sync(
+  WireSyncReturnDco wire_last_number_twin_sync(
     ffi.Pointer<wire_cst_list_prim_f_64> array,
   ) {
     return _wire_last_number_twin_sync(
@@ -8254,13 +8230,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_last_number_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_f_64>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_prim_f_64>)>>(
       'wire_last_number_twin_sync');
   late final _wire_last_number_twin_sync =
       _wire_last_number_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_f_64>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_f_64>)>();
 
-  WireSyncReturn wire_nested_id_twin_sync(
+  WireSyncReturnDco wire_nested_id_twin_sync(
     ffi.Pointer<wire_cst_list_test_id_twin_sync> id,
   ) {
     return _wire_nested_id_twin_sync(
@@ -8270,15 +8247,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_nested_id_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_list_test_id_twin_sync>)>>(
       'wire_nested_id_twin_sync');
   late final _wire_nested_id_twin_sync =
       _wire_nested_id_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_list_test_id_twin_sync>)>();
 
-  WireSyncReturn wire_new_msgid_twin_sync(
+  WireSyncReturnDco wire_new_msgid_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> id,
   ) {
     return _wire_new_msgid_twin_sync(
@@ -8288,13 +8265,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_new_msgid_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_new_msgid_twin_sync');
   late final _wire_new_msgid_twin_sync =
       _wire_new_msgid_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_return_boxed_feed_id_twin_sync(
+  WireSyncReturnDco wire_return_boxed_feed_id_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> id,
   ) {
     return _wire_return_boxed_feed_id_twin_sync(
@@ -8304,13 +8281,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_return_boxed_feed_id_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_return_boxed_feed_id_twin_sync');
   late final _wire_return_boxed_feed_id_twin_sync =
       _wire_return_boxed_feed_id_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_return_boxed_raw_feed_id_twin_sync(
+  WireSyncReturnDco wire_return_boxed_raw_feed_id_twin_sync(
     ffi.Pointer<wire_cst_feed_id_twin_sync> id,
   ) {
     return _wire_return_boxed_raw_feed_id_twin_sync(
@@ -8320,14 +8297,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_return_boxed_raw_feed_id_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_feed_id_twin_sync>)>>(
       'wire_return_boxed_raw_feed_id_twin_sync');
   late final _wire_return_boxed_raw_feed_id_twin_sync =
       _wire_return_boxed_raw_feed_id_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_feed_id_twin_sync>)>();
+          WireSyncReturnDco Function(
+              ffi.Pointer<wire_cst_feed_id_twin_sync>)>();
 
-  WireSyncReturn wire_use_boxed_blob_twin_sync(
+  WireSyncReturnDco wire_use_boxed_blob_twin_sync(
     ffi.Pointer<wire_cst_blob_twin_sync> blob,
   ) {
     return _wire_use_boxed_blob_twin_sync(
@@ -8337,13 +8315,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_use_boxed_blob_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_blob_twin_sync>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_blob_twin_sync>)>>(
       'wire_use_boxed_blob_twin_sync');
   late final _wire_use_boxed_blob_twin_sync =
       _wire_use_boxed_blob_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_blob_twin_sync>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_blob_twin_sync>)>();
 
-  WireSyncReturn wire_use_msgid_twin_sync(
+  WireSyncReturnDco wire_use_msgid_twin_sync(
     ffi.Pointer<wire_cst_message_id_twin_sync> id,
   ) {
     return _wire_use_msgid_twin_sync(
@@ -8353,12 +8332,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_use_msgid_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_message_id_twin_sync>)>>(
       'wire_use_msgid_twin_sync');
   late final _wire_use_msgid_twin_sync =
       _wire_use_msgid_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_message_id_twin_sync>)>();
 
   void wire_handle_customized_struct_twin_rust_async(
@@ -8400,7 +8379,7 @@ class RustLibWire implements BaseWire {
       _wire_next_user_id_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_user_id_twin_rust_async>)>();
 
-  WireSyncReturn wire_handle_customized_struct_twin_sync(
+  WireSyncReturnDco wire_handle_customized_struct_twin_sync(
     ffi.Pointer<wire_cst_customized_twin_sync> val,
   ) {
     return _wire_handle_customized_struct_twin_sync(
@@ -8410,15 +8389,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_customized_struct_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_customized_twin_sync>)>>(
       'wire_handle_customized_struct_twin_sync');
   late final _wire_handle_customized_struct_twin_sync =
       _wire_handle_customized_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_customized_twin_sync>)>();
 
-  WireSyncReturn wire_next_user_id_twin_sync(
+  WireSyncReturnDco wire_next_user_id_twin_sync(
     ffi.Pointer<wire_cst_user_id_twin_sync> user_id,
   ) {
     return _wire_next_user_id_twin_sync(
@@ -8428,12 +8407,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_next_user_id_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_user_id_twin_sync>)>>(
       'wire_next_user_id_twin_sync');
   late final _wire_next_user_id_twin_sync =
       _wire_next_user_id_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_user_id_twin_sync>)>();
+          WireSyncReturnDco Function(
+              ffi.Pointer<wire_cst_user_id_twin_sync>)>();
 
   void wire_benchmark_input_bytes_twin_rust_async(
     int port_,
@@ -8485,7 +8465,7 @@ class RustLibWire implements BaseWire {
   late final _wire_benchmark_void_twin_rust_async =
       _wire_benchmark_void_twin_rust_asyncPtr.asFunction<void Function(int)>();
 
-  WireSyncReturn wire_benchmark_input_bytes_twin_sync(
+  WireSyncReturnDco wire_benchmark_input_bytes_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> bytes,
   ) {
     return _wire_benchmark_input_bytes_twin_sync(
@@ -8495,13 +8475,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_benchmark_input_bytes_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_benchmark_input_bytes_twin_sync');
   late final _wire_benchmark_input_bytes_twin_sync =
       _wire_benchmark_input_bytes_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_benchmark_output_bytes_twin_sync(
+  WireSyncReturnDco wire_benchmark_output_bytes_twin_sync(
     int size,
   ) {
     return _wire_benchmark_output_bytes_twin_sync(
@@ -8510,21 +8490,21 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_benchmark_output_bytes_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int32)>>(
           'wire_benchmark_output_bytes_twin_sync');
   late final _wire_benchmark_output_bytes_twin_sync =
       _wire_benchmark_output_bytes_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_benchmark_void_twin_sync() {
+  WireSyncReturnDco wire_benchmark_void_twin_sync() {
     return _wire_benchmark_void_twin_sync();
   }
 
   late final _wire_benchmark_void_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_benchmark_void_twin_sync');
-  late final _wire_benchmark_void_twin_sync =
-      _wire_benchmark_void_twin_syncPtr.asFunction<WireSyncReturn Function()>();
+  late final _wire_benchmark_void_twin_sync = _wire_benchmark_void_twin_syncPtr
+      .asFunction<WireSyncReturnDco Function()>();
 
   void wire_datetime_local_twin_rust_async(
     int port_,
@@ -8578,7 +8558,7 @@ class RustLibWire implements BaseWire {
 
   void wire_handle_durations_twin_rust_async(
     int port_,
-    ffi.Pointer<wire_cst_list_prim_i_64> durations,
+    ffi.Pointer<wire_cst_list_Chrono_Duration> durations,
     int since,
   ) {
     return _wire_handle_durations_twin_rust_async(
@@ -8590,15 +8570,18 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_durations_twin_rust_asyncPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_prim_i_64>,
+          ffi.Void Function(
+              ffi.Int64,
+              ffi.Pointer<wire_cst_list_Chrono_Duration>,
               ffi.Int64)>>('wire_handle_durations_twin_rust_async');
   late final _wire_handle_durations_twin_rust_async =
       _wire_handle_durations_twin_rust_asyncPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_i_64>, int)>();
+          void Function(
+              int, ffi.Pointer<wire_cst_list_Chrono_Duration>, int)>();
 
   void wire_handle_timestamps_twin_rust_async(
     int port_,
-    ffi.Pointer<wire_cst_list_prim_i_64> timestamps,
+    ffi.Pointer<wire_cst_list_Chrono_Naive> timestamps,
     int epoch,
   ) {
     return _wire_handle_timestamps_twin_rust_async(
@@ -8610,11 +8593,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_timestamps_twin_rust_asyncPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_prim_i_64>,
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_Chrono_Naive>,
               ffi.Int64)>>('wire_handle_timestamps_twin_rust_async');
   late final _wire_handle_timestamps_twin_rust_async =
       _wire_handle_timestamps_twin_rust_asyncPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_i_64>, int)>();
+          void Function(int, ffi.Pointer<wire_cst_list_Chrono_Naive>, int)>();
 
   void wire_how_long_does_it_take_twin_rust_async(
     int port_,
@@ -8700,7 +8683,7 @@ class RustLibWire implements BaseWire {
       _wire_test_precise_chrono_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
-  WireSyncReturn wire_datetime_local_twin_sync(
+  WireSyncReturnDco wire_datetime_local_twin_sync(
     int d,
   ) {
     return _wire_datetime_local_twin_sync(
@@ -8709,12 +8692,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_datetime_local_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int64)>>(
           'wire_datetime_local_twin_sync');
   late final _wire_datetime_local_twin_sync = _wire_datetime_local_twin_syncPtr
-      .asFunction<WireSyncReturn Function(int)>();
+      .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_datetime_utc_twin_sync(
+  WireSyncReturnDco wire_datetime_utc_twin_sync(
     int d,
   ) {
     return _wire_datetime_utc_twin_sync(
@@ -8723,12 +8706,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_datetime_utc_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int64)>>(
           'wire_datetime_utc_twin_sync');
   late final _wire_datetime_utc_twin_sync = _wire_datetime_utc_twin_syncPtr
-      .asFunction<WireSyncReturn Function(int)>();
+      .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_duration_twin_sync(
+  WireSyncReturnDco wire_duration_twin_sync(
     int d,
   ) {
     return _wire_duration_twin_sync(
@@ -8737,13 +8720,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_duration_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int64)>>(
           'wire_duration_twin_sync');
   late final _wire_duration_twin_sync =
-      _wire_duration_twin_syncPtr.asFunction<WireSyncReturn Function(int)>();
+      _wire_duration_twin_syncPtr.asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_handle_durations_twin_sync(
-    ffi.Pointer<wire_cst_list_prim_i_64> durations,
+  WireSyncReturnDco wire_handle_durations_twin_sync(
+    ffi.Pointer<wire_cst_list_Chrono_Duration> durations,
     int since,
   ) {
     return _wire_handle_durations_twin_sync(
@@ -8754,14 +8737,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_durations_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_64>,
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_Chrono_Duration>,
               ffi.Int64)>>('wire_handle_durations_twin_sync');
   late final _wire_handle_durations_twin_sync =
       _wire_handle_durations_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_64>, int)>();
+          WireSyncReturnDco Function(
+              ffi.Pointer<wire_cst_list_Chrono_Duration>, int)>();
 
-  WireSyncReturn wire_handle_timestamps_twin_sync(
-    ffi.Pointer<wire_cst_list_prim_i_64> timestamps,
+  WireSyncReturnDco wire_handle_timestamps_twin_sync(
+    ffi.Pointer<wire_cst_list_Chrono_Naive> timestamps,
     int epoch,
   ) {
     return _wire_handle_timestamps_twin_sync(
@@ -8772,13 +8756,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_timestamps_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_64>,
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_Chrono_Naive>,
               ffi.Int64)>>('wire_handle_timestamps_twin_sync');
   late final _wire_handle_timestamps_twin_sync =
       _wire_handle_timestamps_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_64>, int)>();
+          WireSyncReturnDco Function(
+              ffi.Pointer<wire_cst_list_Chrono_Naive>, int)>();
 
-  WireSyncReturn wire_how_long_does_it_take_twin_sync(
+  WireSyncReturnDco wire_how_long_does_it_take_twin_sync(
     ffi.Pointer<wire_cst_feature_chrono_twin_sync> mine,
   ) {
     return _wire_how_long_does_it_take_twin_sync(
@@ -8788,15 +8773,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_how_long_does_it_take_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_feature_chrono_twin_sync>)>>(
       'wire_how_long_does_it_take_twin_sync');
   late final _wire_how_long_does_it_take_twin_sync =
       _wire_how_long_does_it_take_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_feature_chrono_twin_sync>)>();
 
-  WireSyncReturn wire_naivedatetime_twin_sync(
+  WireSyncReturnDco wire_naivedatetime_twin_sync(
     int d,
   ) {
     return _wire_naivedatetime_twin_sync(
@@ -8805,12 +8790,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_naivedatetime_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int64)>>(
           'wire_naivedatetime_twin_sync');
   late final _wire_naivedatetime_twin_sync = _wire_naivedatetime_twin_syncPtr
-      .asFunction<WireSyncReturn Function(int)>();
+      .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_optional_empty_datetime_utc_twin_sync(
+  WireSyncReturnDco wire_optional_empty_datetime_utc_twin_sync(
     ffi.Pointer<ffi.Int64> d,
   ) {
     return _wire_optional_empty_datetime_utc_twin_sync(
@@ -8819,32 +8804,33 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_optional_empty_datetime_utc_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int64>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int64>)>>(
       'wire_optional_empty_datetime_utc_twin_sync');
   late final _wire_optional_empty_datetime_utc_twin_sync =
       _wire_optional_empty_datetime_utc_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int64>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int64>)>();
 
-  WireSyncReturn wire_test_chrono_twin_sync() {
+  WireSyncReturnDco wire_test_chrono_twin_sync() {
     return _wire_test_chrono_twin_sync();
   }
 
   late final _wire_test_chrono_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_chrono_twin_sync');
   late final _wire_test_chrono_twin_sync =
-      _wire_test_chrono_twin_syncPtr.asFunction<WireSyncReturn Function()>();
+      _wire_test_chrono_twin_syncPtr.asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_test_precise_chrono_twin_sync() {
+  WireSyncReturnDco wire_test_precise_chrono_twin_sync() {
     return _wire_test_precise_chrono_twin_sync();
   }
 
   late final _wire_test_precise_chrono_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_precise_chrono_twin_sync');
   late final _wire_test_precise_chrono_twin_sync =
       _wire_test_precise_chrono_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
   void wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
     int port_,
@@ -8932,7 +8918,7 @@ class RustLibWire implements BaseWire {
       _wire_function_with_comments_triple_slash_single_line_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
-  WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
+  WireSyncReturnDco wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     ffi.Pointer<wire_cst_struct_with_comments_twin_sync> that,
   ) {
     return _wire_StructWithCommentsTwinSync_instance_method_twin_sync(
@@ -8943,59 +8929,59 @@ class RustLibWire implements BaseWire {
   late final _wire_StructWithCommentsTwinSync_instance_method_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncReturn Function(
+                  WireSyncReturnDco Function(
                       ffi.Pointer<wire_cst_struct_with_comments_twin_sync>)>>(
           'wire_StructWithCommentsTwinSync_instance_method_twin_sync');
   late final _wire_StructWithCommentsTwinSync_instance_method_twin_sync =
       _wire_StructWithCommentsTwinSync_instance_method_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_struct_with_comments_twin_sync>)>();
 
-  WireSyncReturn wire_StructWithCommentsTwinSync_static_method_twin_sync() {
+  WireSyncReturnDco wire_StructWithCommentsTwinSync_static_method_twin_sync() {
     return _wire_StructWithCommentsTwinSync_static_method_twin_sync();
   }
 
   late final _wire_StructWithCommentsTwinSync_static_method_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_StructWithCommentsTwinSync_static_method_twin_sync');
   late final _wire_StructWithCommentsTwinSync_static_method_twin_sync =
       _wire_StructWithCommentsTwinSync_static_method_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_function_with_comments_slash_star_star_twin_sync() {
+  WireSyncReturnDco wire_function_with_comments_slash_star_star_twin_sync() {
     return _wire_function_with_comments_slash_star_star_twin_sync();
   }
 
   late final _wire_function_with_comments_slash_star_star_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_function_with_comments_slash_star_star_twin_sync');
   late final _wire_function_with_comments_slash_star_star_twin_sync =
       _wire_function_with_comments_slash_star_star_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_function_with_comments_triple_slash_multi_line_twin_sync() {
     return _wire_function_with_comments_triple_slash_multi_line_twin_sync();
   }
 
   late final _wire_function_with_comments_triple_slash_multi_line_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_function_with_comments_triple_slash_multi_line_twin_sync');
   late final _wire_function_with_comments_triple_slash_multi_line_twin_sync =
       _wire_function_with_comments_triple_slash_multi_line_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_function_with_comments_triple_slash_single_line_twin_sync() {
     return _wire_function_with_comments_triple_slash_single_line_twin_sync();
   }
 
   late final _wire_function_with_comments_triple_slash_single_line_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_function_with_comments_triple_slash_single_line_twin_sync');
   late final _wire_function_with_comments_triple_slash_single_line_twin_sync =
       _wire_function_with_comments_triple_slash_single_line_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
   void wire_return_dart_dynamic_twin_rust_async(
     int port_,
@@ -9012,16 +8998,16 @@ class RustLibWire implements BaseWire {
       _wire_return_dart_dynamic_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
-  WireSyncReturn wire_return_dart_dynamic_twin_sync() {
+  WireSyncReturnDco wire_return_dart_dynamic_twin_sync() {
     return _wire_return_dart_dynamic_twin_sync();
   }
 
   late final _wire_return_dart_dynamic_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_return_dart_dynamic_twin_sync');
   late final _wire_return_dart_dynamic_twin_sync =
       _wire_return_dart_dynamic_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
   void wire_async_accept_dart_opaque_twin_rust_async(
     int port_,
@@ -9322,7 +9308,7 @@ class RustLibWire implements BaseWire {
       _wire_set_static_dart_opaque_twin_rust_asyncPtr
           .asFunction<void Function(int, int, ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_async_accept_dart_opaque_twin_sync(
+  WireSyncReturnDco wire_async_accept_dart_opaque_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_async_accept_dart_opaque_twin_sync(
@@ -9331,13 +9317,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_async_accept_dart_opaque_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_async_accept_dart_opaque_twin_sync');
   late final _wire_async_accept_dart_opaque_twin_sync =
       _wire_async_accept_dart_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_clone_dart_opaque_twin_sync(
+  WireSyncReturnDco wire_clone_dart_opaque_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_clone_dart_opaque_twin_sync(
@@ -9346,13 +9333,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_clone_dart_opaque_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_clone_dart_opaque_twin_sync');
   late final _wire_clone_dart_opaque_twin_sync =
       _wire_clone_dart_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_create_enum_dart_opaque_twin_sync(
+  WireSyncReturnDco wire_create_enum_dart_opaque_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_create_enum_dart_opaque_twin_sync(
@@ -9361,13 +9349,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_create_enum_dart_opaque_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_create_enum_dart_opaque_twin_sync');
   late final _wire_create_enum_dart_opaque_twin_sync =
       _wire_create_enum_dart_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_create_nested_dart_opaque_twin_sync(
+  WireSyncReturnDco wire_create_nested_dart_opaque_twin_sync(
     ffi.Pointer<ffi.Void> opaque1,
     ffi.Pointer<ffi.Void> opaque2,
   ) {
@@ -9379,15 +9368,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_create_nested_dart_opaque_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
       'wire_create_nested_dart_opaque_twin_sync');
   late final _wire_create_nested_dart_opaque_twin_sync =
       _wire_create_nested_dart_opaque_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_drop_static_dart_opaque_twin_sync(
+  WireSyncReturnDco wire_drop_static_dart_opaque_twin_sync(
     int id,
   ) {
     return _wire_drop_static_dart_opaque_twin_sync(
@@ -9396,13 +9385,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_drop_static_dart_opaque_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int32)>>(
           'wire_drop_static_dart_opaque_twin_sync');
   late final _wire_drop_static_dart_opaque_twin_sync =
       _wire_drop_static_dart_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_get_enum_dart_opaque_twin_sync(
+  WireSyncReturnDco wire_get_enum_dart_opaque_twin_sync(
     ffi.Pointer<wire_cst_enum_dart_opaque_twin_sync> opaque,
   ) {
     return _wire_get_enum_dart_opaque_twin_sync(
@@ -9412,15 +9401,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_get_enum_dart_opaque_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_enum_dart_opaque_twin_sync>)>>(
       'wire_get_enum_dart_opaque_twin_sync');
   late final _wire_get_enum_dart_opaque_twin_sync =
       _wire_get_enum_dart_opaque_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_enum_dart_opaque_twin_sync>)>();
 
-  WireSyncReturn wire_get_nested_dart_opaque_twin_sync(
+  WireSyncReturnDco wire_get_nested_dart_opaque_twin_sync(
     ffi.Pointer<wire_cst_dart_opaque_nested_twin_sync> opaque,
   ) {
     return _wire_get_nested_dart_opaque_twin_sync(
@@ -9430,15 +9419,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_get_nested_dart_opaque_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_dart_opaque_nested_twin_sync>)>>(
       'wire_get_nested_dart_opaque_twin_sync');
   late final _wire_get_nested_dart_opaque_twin_sync =
       _wire_get_nested_dart_opaque_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_dart_opaque_nested_twin_sync>)>();
 
-  WireSyncReturn wire_loop_back_array_get_twin_sync(
+  WireSyncReturnDco wire_loop_back_array_get_twin_sync(
     ffi.Pointer<wire_cst_list_DartOpaque> opaque,
   ) {
     return _wire_loop_back_array_get_twin_sync(
@@ -9448,13 +9437,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_loop_back_array_get_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_DartOpaque>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_DartOpaque>)>>(
       'wire_loop_back_array_get_twin_sync');
   late final _wire_loop_back_array_get_twin_sync =
       _wire_loop_back_array_get_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_DartOpaque>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_DartOpaque>)>();
 
-  WireSyncReturn wire_loop_back_array_twin_sync(
+  WireSyncReturnDco wire_loop_back_array_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_loop_back_array_twin_sync(
@@ -9463,13 +9453,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_loop_back_array_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_loop_back_array_twin_sync');
   late final _wire_loop_back_array_twin_sync =
       _wire_loop_back_array_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_loop_back_option_get_twin_sync(
+  WireSyncReturnDco wire_loop_back_option_get_twin_sync(
     ffi.Pointer<ffi.Pointer<ffi.Void>> opaque,
   ) {
     return _wire_loop_back_option_get_twin_sync(
@@ -9479,13 +9470,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_loop_back_option_get_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
       'wire_loop_back_option_get_twin_sync');
   late final _wire_loop_back_option_get_twin_sync =
       _wire_loop_back_option_get_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+          WireSyncReturnDco Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
-  WireSyncReturn wire_loop_back_option_twin_sync(
+  WireSyncReturnDco wire_loop_back_option_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_loop_back_option_twin_sync(
@@ -9494,13 +9485,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_loop_back_option_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_loop_back_option_twin_sync');
   late final _wire_loop_back_option_twin_sync =
       _wire_loop_back_option_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_loop_back_twin_sync(
+  WireSyncReturnDco wire_loop_back_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_loop_back_twin_sync(
@@ -9509,12 +9501,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_loop_back_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_loop_back_twin_sync');
   late final _wire_loop_back_twin_sync = _wire_loop_back_twin_syncPtr
-      .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+      .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_loop_back_vec_get_twin_sync(
+  WireSyncReturnDco wire_loop_back_vec_get_twin_sync(
     ffi.Pointer<wire_cst_list_DartOpaque> opaque,
   ) {
     return _wire_loop_back_vec_get_twin_sync(
@@ -9524,13 +9517,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_loop_back_vec_get_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_DartOpaque>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_DartOpaque>)>>(
       'wire_loop_back_vec_get_twin_sync');
   late final _wire_loop_back_vec_get_twin_sync =
       _wire_loop_back_vec_get_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_DartOpaque>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_DartOpaque>)>();
 
-  WireSyncReturn wire_loop_back_vec_twin_sync(
+  WireSyncReturnDco wire_loop_back_vec_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_loop_back_vec_twin_sync(
@@ -9539,12 +9533,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_loop_back_vec_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_loop_back_vec_twin_sync');
   late final _wire_loop_back_vec_twin_sync = _wire_loop_back_vec_twin_syncPtr
-      .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+      .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_panic_unwrap_dart_opaque_twin_sync(
+  WireSyncReturnDco wire_panic_unwrap_dart_opaque_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_panic_unwrap_dart_opaque_twin_sync(
@@ -9553,13 +9548,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_panic_unwrap_dart_opaque_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_panic_unwrap_dart_opaque_twin_sync');
   late final _wire_panic_unwrap_dart_opaque_twin_sync =
       _wire_panic_unwrap_dart_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_set_static_dart_opaque_twin_sync(
+  WireSyncReturnDco wire_set_static_dart_opaque_twin_sync(
     int id,
     ffi.Pointer<ffi.Void> opaque,
   ) {
@@ -9571,11 +9567,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_set_static_dart_opaque_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Int32,
+          WireSyncReturnDco Function(ffi.Int32,
               ffi.Pointer<ffi.Void>)>>('wire_set_static_dart_opaque_twin_sync');
   late final _wire_set_static_dart_opaque_twin_sync =
       _wire_set_static_dart_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_func_enum_simple_twin_rust_async(
     int port_,
@@ -9750,7 +9746,7 @@ class RustLibWire implements BaseWire {
       _wire_print_note_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_note_twin_rust_async>)>();
 
-  WireSyncReturn wire_func_enum_simple_twin_sync(
+  WireSyncReturnDco wire_func_enum_simple_twin_sync(
     int arg,
   ) {
     return _wire_func_enum_simple_twin_sync(
@@ -9759,13 +9755,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_func_enum_simple_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int32)>>(
           'wire_func_enum_simple_twin_sync');
   late final _wire_func_enum_simple_twin_sync =
       _wire_func_enum_simple_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_func_enum_with_item_mixed_twin_sync(
+  WireSyncReturnDco wire_func_enum_with_item_mixed_twin_sync(
     ffi.Pointer<wire_cst_enum_with_item_mixed_twin_sync> arg,
   ) {
     return _wire_func_enum_with_item_mixed_twin_sync(
@@ -9775,15 +9771,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_enum_with_item_mixed_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_enum_with_item_mixed_twin_sync>)>>(
       'wire_func_enum_with_item_mixed_twin_sync');
   late final _wire_func_enum_with_item_mixed_twin_sync =
       _wire_func_enum_with_item_mixed_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_enum_with_item_mixed_twin_sync>)>();
 
-  WireSyncReturn wire_func_enum_with_item_struct_twin_sync(
+  WireSyncReturnDco wire_func_enum_with_item_struct_twin_sync(
     ffi.Pointer<wire_cst_enum_with_item_struct_twin_sync> arg,
   ) {
     return _wire_func_enum_with_item_struct_twin_sync(
@@ -9793,15 +9789,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_enum_with_item_struct_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_enum_with_item_struct_twin_sync>)>>(
       'wire_func_enum_with_item_struct_twin_sync');
   late final _wire_func_enum_with_item_struct_twin_sync =
       _wire_func_enum_with_item_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_enum_with_item_struct_twin_sync>)>();
 
-  WireSyncReturn wire_func_enum_with_item_tuple_twin_sync(
+  WireSyncReturnDco wire_func_enum_with_item_tuple_twin_sync(
     ffi.Pointer<wire_cst_enum_with_item_tuple_twin_sync> arg,
   ) {
     return _wire_func_enum_with_item_tuple_twin_sync(
@@ -9811,15 +9807,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_enum_with_item_tuple_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_enum_with_item_tuple_twin_sync>)>>(
       'wire_func_enum_with_item_tuple_twin_sync');
   late final _wire_func_enum_with_item_tuple_twin_sync =
       _wire_func_enum_with_item_tuple_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_enum_with_item_tuple_twin_sync>)>();
 
-  WireSyncReturn wire_handle_enum_parameter_twin_sync(
+  WireSyncReturnDco wire_handle_enum_parameter_twin_sync(
     int weekday,
   ) {
     return _wire_handle_enum_parameter_twin_sync(
@@ -9828,13 +9824,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_enum_parameter_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int32)>>(
           'wire_handle_enum_parameter_twin_sync');
   late final _wire_handle_enum_parameter_twin_sync =
       _wire_handle_enum_parameter_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_handle_enum_struct_twin_sync(
+  WireSyncReturnDco wire_handle_enum_struct_twin_sync(
     ffi.Pointer<wire_cst_kitchen_sink_twin_sync> val,
   ) {
     return _wire_handle_enum_struct_twin_sync(
@@ -9844,15 +9840,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_enum_struct_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_kitchen_sink_twin_sync>)>>(
       'wire_handle_enum_struct_twin_sync');
   late final _wire_handle_enum_struct_twin_sync =
       _wire_handle_enum_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_kitchen_sink_twin_sync>)>();
 
-  WireSyncReturn wire_handle_return_enum_twin_sync(
+  WireSyncReturnDco wire_handle_return_enum_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> input,
   ) {
     return _wire_handle_return_enum_twin_sync(
@@ -9862,13 +9858,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_return_enum_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_handle_return_enum_twin_sync');
   late final _wire_handle_return_enum_twin_sync =
       _wire_handle_return_enum_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_multiply_by_ten_twin_sync(
+  WireSyncReturnDco wire_multiply_by_ten_twin_sync(
     ffi.Pointer<wire_cst_measure_twin_sync> measure,
   ) {
     return _wire_multiply_by_ten_twin_sync(
@@ -9878,14 +9874,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_multiply_by_ten_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_measure_twin_sync>)>>(
       'wire_multiply_by_ten_twin_sync');
   late final _wire_multiply_by_ten_twin_sync =
       _wire_multiply_by_ten_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_measure_twin_sync>)>();
+          WireSyncReturnDco Function(
+              ffi.Pointer<wire_cst_measure_twin_sync>)>();
 
-  WireSyncReturn wire_print_note_twin_sync(
+  WireSyncReturnDco wire_print_note_twin_sync(
     ffi.Pointer<wire_cst_note_twin_sync> note,
   ) {
     return _wire_print_note_twin_sync(
@@ -9895,11 +9892,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_print_note_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_note_twin_sync>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_note_twin_sync>)>>(
       'wire_print_note_twin_sync');
   late final _wire_print_note_twin_sync =
       _wire_print_note_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_note_twin_sync>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_note_twin_sync>)>();
 
   void wire_EventTwinRustAsync_as_string_twin_rust_async(
     int port_,
@@ -9972,7 +9970,7 @@ class RustLibWire implements BaseWire {
       _wire_register_event_listener_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
-  WireSyncReturn wire_EventTwinSync_as_string_twin_sync(
+  WireSyncReturnDco wire_EventTwinSync_as_string_twin_sync(
     ffi.Pointer<wire_cst_event_twin_sync> that,
   ) {
     return _wire_EventTwinSync_as_string_twin_sync(
@@ -9982,24 +9980,25 @@ class RustLibWire implements BaseWire {
 
   late final _wire_EventTwinSync_as_string_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_event_twin_sync>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_event_twin_sync>)>>(
       'wire_EventTwinSync_as_string_twin_sync');
   late final _wire_EventTwinSync_as_string_twin_sync =
       _wire_EventTwinSync_as_string_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_event_twin_sync>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_event_twin_sync>)>();
 
-  WireSyncReturn wire_close_event_listener_twin_sync() {
+  WireSyncReturnDco wire_close_event_listener_twin_sync() {
     return _wire_close_event_listener_twin_sync();
   }
 
   late final _wire_close_event_listener_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_close_event_listener_twin_sync');
   late final _wire_close_event_listener_twin_sync =
       _wire_close_event_listener_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_create_event_twin_sync(
+  WireSyncReturnDco wire_create_event_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> address,
     ffi.Pointer<wire_cst_list_prim_u_8> payload,
   ) {
@@ -10011,12 +10010,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_create_event_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>,
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>,
                   ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_create_event_twin_sync');
   late final _wire_create_event_twin_sync =
       _wire_create_event_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>,
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>,
               ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
   void wire_register_event_listener_twin_sync(
@@ -10531,7 +10530,7 @@ class RustLibWire implements BaseWire {
   late final _wire_throw_anyhow_twin_rust_async =
       _wire_throw_anyhow_twin_rust_asyncPtr.asFunction<void Function(int)>();
 
-  WireSyncReturn wire_CustomStructTwinSync_new_twin_sync(
+  WireSyncReturnDco wire_CustomStructTwinSync_new_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> message,
   ) {
     return _wire_CustomStructTwinSync_new_twin_sync(
@@ -10541,13 +10540,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_CustomStructTwinSync_new_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_CustomStructTwinSync_new_twin_sync');
   late final _wire_CustomStructTwinSync_new_twin_sync =
       _wire_CustomStructTwinSync_new_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
     ffi.Pointer<wire_cst_custom_struct_twin_sync> that,
   ) {
@@ -10559,16 +10558,16 @@ class RustLibWire implements BaseWire {
   late final _wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncReturn Function(
+                  WireSyncReturnDco Function(
                       ffi.Pointer<wire_cst_custom_struct_twin_sync>)>>(
           'wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync');
   late final _wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync =
       _wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_syncPtr
           .asFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_custom_struct_twin_sync>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
     ffi.Pointer<wire_cst_custom_struct_twin_sync> that,
   ) {
@@ -10580,40 +10579,40 @@ class RustLibWire implements BaseWire {
   late final _wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncReturn Function(
+                  WireSyncReturnDco Function(
                       ffi.Pointer<wire_cst_custom_struct_twin_sync>)>>(
           'wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync');
   late final _wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync =
       _wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_syncPtr
           .asFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_custom_struct_twin_sync>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync() {
     return _wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync();
   }
 
   late final _wire_CustomStructTwinSync_static_return_custom_struct_error_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync');
   late final _wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync =
       _wire_CustomStructTwinSync_static_return_custom_struct_error_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync() {
     return _wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync();
   }
 
   late final _wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync');
   late final _wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync =
       _wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_SomeStructTwinSync_new_twin_sync(
+  WireSyncReturnDco wire_SomeStructTwinSync_new_twin_sync(
     int value,
   ) {
     return _wire_SomeStructTwinSync_new_twin_sync(
@@ -10622,13 +10621,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_SomeStructTwinSync_new_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint32)>>(
           'wire_SomeStructTwinSync_new_twin_sync');
   late final _wire_SomeStructTwinSync_new_twin_sync =
       _wire_SomeStructTwinSync_new_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
     ffi.Pointer<wire_cst_some_struct_twin_sync> that,
   ) {
@@ -10640,16 +10639,16 @@ class RustLibWire implements BaseWire {
   late final _wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncReturn Function(
+                  WireSyncReturnDco Function(
                       ffi.Pointer<wire_cst_some_struct_twin_sync>)>>(
           'wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync');
   late final _wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync =
       _wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_syncPtr
           .asFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_some_struct_twin_sync>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
     ffi.Pointer<wire_cst_some_struct_twin_sync> that,
   ) {
@@ -10661,62 +10660,62 @@ class RustLibWire implements BaseWire {
   late final _wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncReturn Function(
+                  WireSyncReturnDco Function(
                       ffi.Pointer<wire_cst_some_struct_twin_sync>)>>(
           'wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync');
   late final _wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync =
       _wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_syncPtr
           .asFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_some_struct_twin_sync>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync() {
     return _wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync();
   }
 
   late final _wire_SomeStructTwinSync_static_return_err_custom_error_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync');
   late final _wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync =
       _wire_SomeStructTwinSync_static_return_err_custom_error_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync() {
     return _wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync();
   }
 
   late final _wire_SomeStructTwinSync_static_return_ok_custom_error_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync');
   late final _wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync =
       _wire_SomeStructTwinSync_static_return_ok_custom_error_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_custom_enum_error_panic_twin_sync() {
+  WireSyncReturnDco wire_custom_enum_error_panic_twin_sync() {
     return _wire_custom_enum_error_panic_twin_sync();
   }
 
   late final _wire_custom_enum_error_panic_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_custom_enum_error_panic_twin_sync');
   late final _wire_custom_enum_error_panic_twin_sync =
       _wire_custom_enum_error_panic_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_custom_enum_error_return_error_twin_sync() {
+  WireSyncReturnDco wire_custom_enum_error_return_error_twin_sync() {
     return _wire_custom_enum_error_return_error_twin_sync();
   }
 
   late final _wire_custom_enum_error_return_error_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_custom_enum_error_return_error_twin_sync');
   late final _wire_custom_enum_error_return_error_twin_sync =
       _wire_custom_enum_error_return_error_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_custom_enum_error_return_ok_twin_sync(
+  WireSyncReturnDco wire_custom_enum_error_return_ok_twin_sync(
     int arg,
   ) {
     return _wire_custom_enum_error_return_ok_twin_sync(
@@ -10725,13 +10724,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_custom_enum_error_return_ok_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint32)>>(
           'wire_custom_enum_error_return_ok_twin_sync');
   late final _wire_custom_enum_error_return_ok_twin_sync =
       _wire_custom_enum_error_return_ok_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_custom_nested_error_return_error_twin_sync(
+  WireSyncReturnDco wire_custom_nested_error_return_error_twin_sync(
     ffi.Pointer<wire_cst_custom_nested_error_outer_twin_sync> arg,
   ) {
     return _wire_custom_nested_error_return_error_twin_sync(
@@ -10741,15 +10740,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_custom_nested_error_return_error_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_custom_nested_error_outer_twin_sync>)>>(
       'wire_custom_nested_error_return_error_twin_sync');
   late final _wire_custom_nested_error_return_error_twin_sync =
       _wire_custom_nested_error_return_error_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_custom_nested_error_outer_twin_sync>)>();
 
-  WireSyncReturn wire_custom_struct_error_return_error_twin_sync(
+  WireSyncReturnDco wire_custom_struct_error_return_error_twin_sync(
     ffi.Pointer<wire_cst_custom_struct_error_twin_sync> arg,
   ) {
     return _wire_custom_struct_error_return_error_twin_sync(
@@ -10759,125 +10758,125 @@ class RustLibWire implements BaseWire {
 
   late final _wire_custom_struct_error_return_error_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_custom_struct_error_twin_sync>)>>(
       'wire_custom_struct_error_return_error_twin_sync');
   late final _wire_custom_struct_error_return_error_twin_sync =
       _wire_custom_struct_error_return_error_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_custom_struct_error_twin_sync>)>();
 
-  WireSyncReturn wire_func_return_error_twin_sync() {
+  WireSyncReturnDco wire_func_return_error_twin_sync() {
     return _wire_func_return_error_twin_sync();
   }
 
   late final _wire_func_return_error_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_func_return_error_twin_sync');
   late final _wire_func_return_error_twin_sync =
       _wire_func_return_error_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_func_type_fallible_panic_twin_sync() {
+  WireSyncReturnDco wire_func_type_fallible_panic_twin_sync() {
     return _wire_func_type_fallible_panic_twin_sync();
   }
 
   late final _wire_func_type_fallible_panic_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_func_type_fallible_panic_twin_sync');
   late final _wire_func_type_fallible_panic_twin_sync =
       _wire_func_type_fallible_panic_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_func_type_infallible_panic_twin_sync() {
+  WireSyncReturnDco wire_func_type_infallible_panic_twin_sync() {
     return _wire_func_type_infallible_panic_twin_sync();
   }
 
   late final _wire_func_type_infallible_panic_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_func_type_infallible_panic_twin_sync');
   late final _wire_func_type_infallible_panic_twin_sync =
       _wire_func_type_infallible_panic_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_panic_with_custom_result_twin_sync() {
+  WireSyncReturnDco wire_panic_with_custom_result_twin_sync() {
     return _wire_panic_with_custom_result_twin_sync();
   }
 
   late final _wire_panic_with_custom_result_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_panic_with_custom_result_twin_sync');
   late final _wire_panic_with_custom_result_twin_sync =
       _wire_panic_with_custom_result_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_return_custom_nested_error_1_twin_sync() {
+  WireSyncReturnDco wire_return_custom_nested_error_1_twin_sync() {
     return _wire_return_custom_nested_error_1_twin_sync();
   }
 
   late final _wire_return_custom_nested_error_1_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_return_custom_nested_error_1_twin_sync');
   late final _wire_return_custom_nested_error_1_twin_sync =
       _wire_return_custom_nested_error_1_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_return_custom_nested_error_1_variant1_twin_sync() {
+  WireSyncReturnDco wire_return_custom_nested_error_1_variant1_twin_sync() {
     return _wire_return_custom_nested_error_1_variant1_twin_sync();
   }
 
   late final _wire_return_custom_nested_error_1_variant1_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_return_custom_nested_error_1_variant1_twin_sync');
   late final _wire_return_custom_nested_error_1_variant1_twin_sync =
       _wire_return_custom_nested_error_1_variant1_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_return_custom_nested_error_2_twin_sync() {
+  WireSyncReturnDco wire_return_custom_nested_error_2_twin_sync() {
     return _wire_return_custom_nested_error_2_twin_sync();
   }
 
   late final _wire_return_custom_nested_error_2_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_return_custom_nested_error_2_twin_sync');
   late final _wire_return_custom_nested_error_2_twin_sync =
       _wire_return_custom_nested_error_2_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_return_custom_struct_error_twin_sync() {
+  WireSyncReturnDco wire_return_custom_struct_error_twin_sync() {
     return _wire_return_custom_struct_error_twin_sync();
   }
 
   late final _wire_return_custom_struct_error_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_return_custom_struct_error_twin_sync');
   late final _wire_return_custom_struct_error_twin_sync =
       _wire_return_custom_struct_error_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_return_custom_struct_ok_twin_sync() {
+  WireSyncReturnDco wire_return_custom_struct_ok_twin_sync() {
     return _wire_return_custom_struct_ok_twin_sync();
   }
 
   late final _wire_return_custom_struct_ok_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_return_custom_struct_ok_twin_sync');
   late final _wire_return_custom_struct_ok_twin_sync =
       _wire_return_custom_struct_ok_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_return_err_custom_error_twin_sync() {
+  WireSyncReturnDco wire_return_err_custom_error_twin_sync() {
     return _wire_return_err_custom_error_twin_sync();
   }
 
   late final _wire_return_err_custom_error_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_return_err_custom_error_twin_sync');
   late final _wire_return_err_custom_error_twin_sync =
       _wire_return_err_custom_error_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_return_error_variant_twin_sync(
+  WireSyncReturnDco wire_return_error_variant_twin_sync(
     int variant,
   ) {
     return _wire_return_error_variant_twin_sync(
@@ -10886,22 +10885,22 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_return_error_variant_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint32)>>(
           'wire_return_error_variant_twin_sync');
   late final _wire_return_error_variant_twin_sync =
       _wire_return_error_variant_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_return_ok_custom_error_twin_sync() {
+  WireSyncReturnDco wire_return_ok_custom_error_twin_sync() {
     return _wire_return_ok_custom_error_twin_sync();
   }
 
   late final _wire_return_ok_custom_error_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_return_ok_custom_error_twin_sync');
   late final _wire_return_ok_custom_error_twin_sync =
       _wire_return_ok_custom_error_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
   void wire_stream_sink_throw_anyhow_twin_sync(
     int port_,
@@ -10918,15 +10917,15 @@ class RustLibWire implements BaseWire {
       _wire_stream_sink_throw_anyhow_twin_syncPtr
           .asFunction<void Function(int)>();
 
-  WireSyncReturn wire_throw_anyhow_twin_sync() {
+  WireSyncReturnDco wire_throw_anyhow_twin_sync() {
     return _wire_throw_anyhow_twin_sync();
   }
 
   late final _wire_throw_anyhow_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_throw_anyhow_twin_sync');
-  late final _wire_throw_anyhow_twin_sync =
-      _wire_throw_anyhow_twin_syncPtr.asFunction<WireSyncReturn Function()>();
+  late final _wire_throw_anyhow_twin_sync = _wire_throw_anyhow_twin_syncPtr
+      .asFunction<WireSyncReturnDco Function()>();
 
   void wire_call_new_module_system_twin_rust_async(
     int port_,
@@ -10993,29 +10992,29 @@ class RustLibWire implements BaseWire {
       _wire_use_imported_struct_twin_rust_asyncPtr
           .asFunction<void Function(int, ffi.Pointer<wire_cst_my_struct>)>();
 
-  WireSyncReturn wire_call_new_module_system_twin_sync() {
+  WireSyncReturnDco wire_call_new_module_system_twin_sync() {
     return _wire_call_new_module_system_twin_sync();
   }
 
   late final _wire_call_new_module_system_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_call_new_module_system_twin_sync');
   late final _wire_call_new_module_system_twin_sync =
       _wire_call_new_module_system_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_call_old_module_system_twin_sync() {
+  WireSyncReturnDco wire_call_old_module_system_twin_sync() {
     return _wire_call_old_module_system_twin_sync();
   }
 
   late final _wire_call_old_module_system_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_call_old_module_system_twin_sync');
   late final _wire_call_old_module_system_twin_sync =
       _wire_call_old_module_system_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_use_imported_enum_twin_sync(
+  WireSyncReturnDco wire_use_imported_enum_twin_sync(
     int my_enum,
   ) {
     return _wire_use_imported_enum_twin_sync(
@@ -11024,13 +11023,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_use_imported_enum_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int32)>>(
           'wire_use_imported_enum_twin_sync');
   late final _wire_use_imported_enum_twin_sync =
       _wire_use_imported_enum_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_use_imported_struct_twin_sync(
+  WireSyncReturnDco wire_use_imported_struct_twin_sync(
     ffi.Pointer<wire_cst_my_struct> my_struct,
   ) {
     return _wire_use_imported_struct_twin_sync(
@@ -11040,11 +11039,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_use_imported_struct_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_my_struct>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_my_struct>)>>(
       'wire_use_imported_struct_twin_sync');
   late final _wire_use_imported_struct_twin_sync =
       _wire_use_imported_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_my_struct>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_my_struct>)>();
 
   void wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
     int port_,
@@ -11276,7 +11275,7 @@ class RustLibWire implements BaseWire {
   late final _wire_get_sum_struct_twin_rust_async =
       _wire_get_sum_struct_twin_rust_asyncPtr.asFunction<void Function(int)>();
 
-  WireSyncReturn wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
+  WireSyncReturnDco wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> a,
     ffi.Pointer<wire_cst_list_prim_u_8> b,
   ) {
@@ -11289,15 +11288,16 @@ class RustLibWire implements BaseWire {
   late final _wire_ConcatenateWithTwinSync_concatenate_static_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>,
+                  WireSyncReturnDco Function(
+                      ffi.Pointer<wire_cst_list_prim_u_8>,
                       ffi.Pointer<wire_cst_list_prim_u_8>)>>(
           'wire_ConcatenateWithTwinSync_concatenate_static_twin_sync');
   late final _wire_ConcatenateWithTwinSync_concatenate_static_twin_sync =
       _wire_ConcatenateWithTwinSync_concatenate_static_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>,
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>,
               ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_ConcatenateWithTwinSync_concatenate_twin_sync(
+  WireSyncReturnDco wire_ConcatenateWithTwinSync_concatenate_twin_sync(
     ffi.Pointer<wire_cst_concatenate_with_twin_sync> that,
     ffi.Pointer<wire_cst_list_prim_u_8> b,
   ) {
@@ -11309,13 +11309,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_ConcatenateWithTwinSync_concatenate_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_concatenate_with_twin_sync>,
                   ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_ConcatenateWithTwinSync_concatenate_twin_sync');
   late final _wire_ConcatenateWithTwinSync_concatenate_twin_sync =
       _wire_ConcatenateWithTwinSync_concatenate_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_concatenate_with_twin_sync>,
               ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
@@ -11410,7 +11410,7 @@ class RustLibWire implements BaseWire {
                   int,
                   int)>();
 
-  WireSyncReturn wire_ConcatenateWithTwinSync_new_twin_sync(
+  WireSyncReturnDco wire_ConcatenateWithTwinSync_new_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> a,
   ) {
     return _wire_ConcatenateWithTwinSync_new_twin_sync(
@@ -11420,13 +11420,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_ConcatenateWithTwinSync_new_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_ConcatenateWithTwinSync_new_twin_sync');
   late final _wire_ConcatenateWithTwinSync_new_twin_sync =
       _wire_ConcatenateWithTwinSync_new_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_SumWithTwinSync_sum_twin_sync(
+  WireSyncReturnDco wire_SumWithTwinSync_sum_twin_sync(
     ffi.Pointer<wire_cst_sum_with_twin_sync> that,
     int y,
     int z,
@@ -11440,14 +11440,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_SumWithTwinSync_sum_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_sum_with_twin_sync>,
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_sum_with_twin_sync>,
               ffi.Uint32, ffi.Uint32)>>('wire_SumWithTwinSync_sum_twin_sync');
   late final _wire_SumWithTwinSync_sum_twin_sync =
       _wire_SumWithTwinSync_sum_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_sum_with_twin_sync>, int, int)>();
 
-  WireSyncReturn wire_get_sum_array_twin_sync(
+  WireSyncReturnDco wire_get_sum_array_twin_sync(
     int a,
     int b,
     int c,
@@ -11461,20 +11461,20 @@ class RustLibWire implements BaseWire {
 
   late final _wire_get_sum_array_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Uint32, ffi.Uint32,
+          WireSyncReturnDco Function(ffi.Uint32, ffi.Uint32,
               ffi.Uint32)>>('wire_get_sum_array_twin_sync');
   late final _wire_get_sum_array_twin_sync = _wire_get_sum_array_twin_syncPtr
-      .asFunction<WireSyncReturn Function(int, int, int)>();
+      .asFunction<WireSyncReturnDco Function(int, int, int)>();
 
-  WireSyncReturn wire_get_sum_struct_twin_sync() {
+  WireSyncReturnDco wire_get_sum_struct_twin_sync() {
     return _wire_get_sum_struct_twin_sync();
   }
 
   late final _wire_get_sum_struct_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_get_sum_struct_twin_sync');
-  late final _wire_get_sum_struct_twin_sync =
-      _wire_get_sum_struct_twin_syncPtr.asFunction<WireSyncReturn Function()>();
+  late final _wire_get_sum_struct_twin_sync = _wire_get_sum_struct_twin_syncPtr
+      .asFunction<WireSyncReturnDco Function()>();
 
   void wire_app_settings_stream_twin_rust_async(
     int port_,
@@ -11811,7 +11811,7 @@ class RustLibWire implements BaseWire {
       _wire_app_settings_vec_stream_twin_syncPtr
           .asFunction<void Function(int)>();
 
-  WireSyncReturn wire_first_number_twin_sync(
+  WireSyncReturnDco wire_first_number_twin_sync(
     ffi.Pointer<wire_cst_numbers> nums,
   ) {
     return _wire_first_number_twin_sync(
@@ -11821,12 +11821,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_first_number_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_numbers>)>>('wire_first_number_twin_sync');
   late final _wire_first_number_twin_sync = _wire_first_number_twin_syncPtr
-      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_cst_numbers>)>();
+      .asFunction<WireSyncReturnDco Function(ffi.Pointer<wire_cst_numbers>)>();
 
-  WireSyncReturn wire_first_sequence_twin_sync(
+  WireSyncReturnDco wire_first_sequence_twin_sync(
     ffi.Pointer<wire_cst_sequences> seqs,
   ) {
     return _wire_first_sequence_twin_sync(
@@ -11836,44 +11836,45 @@ class RustLibWire implements BaseWire {
 
   late final _wire_first_sequence_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_sequences>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_sequences>)>>(
       'wire_first_sequence_twin_sync');
-  late final _wire_first_sequence_twin_sync = _wire_first_sequence_twin_syncPtr
-      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_cst_sequences>)>();
+  late final _wire_first_sequence_twin_sync =
+      _wire_first_sequence_twin_syncPtr.asFunction<
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_sequences>)>();
 
-  WireSyncReturn wire_get_app_settings_twin_sync() {
+  WireSyncReturnDco wire_get_app_settings_twin_sync() {
     return _wire_get_app_settings_twin_sync();
   }
 
   late final _wire_get_app_settings_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_get_app_settings_twin_sync');
   late final _wire_get_app_settings_twin_sync =
       _wire_get_app_settings_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_get_fallible_app_settings_twin_sync() {
+  WireSyncReturnDco wire_get_fallible_app_settings_twin_sync() {
     return _wire_get_fallible_app_settings_twin_sync();
   }
 
   late final _wire_get_fallible_app_settings_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_get_fallible_app_settings_twin_sync');
   late final _wire_get_fallible_app_settings_twin_sync =
       _wire_get_fallible_app_settings_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_get_message_twin_sync() {
+  WireSyncReturnDco wire_get_message_twin_sync() {
     return _wire_get_message_twin_sync();
   }
 
   late final _wire_get_message_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_get_message_twin_sync');
   late final _wire_get_message_twin_sync =
-      _wire_get_message_twin_syncPtr.asFunction<WireSyncReturn Function()>();
+      _wire_get_message_twin_syncPtr.asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_is_app_embedded_twin_sync(
+  WireSyncReturnDco wire_is_app_embedded_twin_sync(
     ffi.Pointer<wire_cst_application_settings> app_settings,
   ) {
     return _wire_is_app_embedded_twin_sync(
@@ -11883,12 +11884,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_is_app_embedded_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_application_settings>)>>(
       'wire_is_app_embedded_twin_sync');
   late final _wire_is_app_embedded_twin_sync =
       _wire_is_app_embedded_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_application_settings>)>();
 
   void wire_mirror_struct_stream_twin_sync(
@@ -11919,7 +11920,7 @@ class RustLibWire implements BaseWire {
   late final _wire_mirror_tuple_stream_twin_sync =
       _wire_mirror_tuple_stream_twin_syncPtr.asFunction<void Function(int)>();
 
-  WireSyncReturn wire_repeat_number_twin_sync(
+  WireSyncReturnDco wire_repeat_number_twin_sync(
     int num,
     int times,
   ) {
@@ -11930,12 +11931,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_repeat_number_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.UintPtr)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Int32, ffi.UintPtr)>>(
       'wire_repeat_number_twin_sync');
   late final _wire_repeat_number_twin_sync = _wire_repeat_number_twin_syncPtr
-      .asFunction<WireSyncReturn Function(int, int)>();
+      .asFunction<WireSyncReturnDco Function(int, int)>();
 
-  WireSyncReturn wire_repeat_sequence_twin_sync(
+  WireSyncReturnDco wire_repeat_sequence_twin_sync(
     int seq,
     int times,
   ) {
@@ -11946,68 +11948,69 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_repeat_sequence_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.UintPtr)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Int32, ffi.UintPtr)>>(
       'wire_repeat_sequence_twin_sync');
   late final _wire_repeat_sequence_twin_sync =
       _wire_repeat_sequence_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int, int)>();
+          .asFunction<WireSyncReturnDco Function(int, int)>();
 
-  WireSyncReturn wire_test_contains_mirrored_sub_struct_twin_sync() {
+  WireSyncReturnDco wire_test_contains_mirrored_sub_struct_twin_sync() {
     return _wire_test_contains_mirrored_sub_struct_twin_sync();
   }
 
   late final _wire_test_contains_mirrored_sub_struct_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_contains_mirrored_sub_struct_twin_sync');
   late final _wire_test_contains_mirrored_sub_struct_twin_sync =
       _wire_test_contains_mirrored_sub_struct_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_test_fallible_of_raw_string_mirrored_twin_sync() {
+  WireSyncReturnDco wire_test_fallible_of_raw_string_mirrored_twin_sync() {
     return _wire_test_fallible_of_raw_string_mirrored_twin_sync();
   }
 
   late final _wire_test_fallible_of_raw_string_mirrored_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_fallible_of_raw_string_mirrored_twin_sync');
   late final _wire_test_fallible_of_raw_string_mirrored_twin_sync =
       _wire_test_fallible_of_raw_string_mirrored_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_test_list_of_nested_enums_mirrored_twin_sync() {
+  WireSyncReturnDco wire_test_list_of_nested_enums_mirrored_twin_sync() {
     return _wire_test_list_of_nested_enums_mirrored_twin_sync();
   }
 
   late final _wire_test_list_of_nested_enums_mirrored_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_list_of_nested_enums_mirrored_twin_sync');
   late final _wire_test_list_of_nested_enums_mirrored_twin_sync =
       _wire_test_list_of_nested_enums_mirrored_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_test_list_of_raw_nested_string_mirrored_twin_sync() {
+  WireSyncReturnDco wire_test_list_of_raw_nested_string_mirrored_twin_sync() {
     return _wire_test_list_of_raw_nested_string_mirrored_twin_sync();
   }
 
   late final _wire_test_list_of_raw_nested_string_mirrored_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_list_of_raw_nested_string_mirrored_twin_sync');
   late final _wire_test_list_of_raw_nested_string_mirrored_twin_sync =
       _wire_test_list_of_raw_nested_string_mirrored_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_test_nested_raw_string_mirrored_twin_sync() {
+  WireSyncReturnDco wire_test_nested_raw_string_mirrored_twin_sync() {
     return _wire_test_nested_raw_string_mirrored_twin_sync();
   }
 
   late final _wire_test_nested_raw_string_mirrored_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_nested_raw_string_mirrored_twin_sync');
   late final _wire_test_nested_raw_string_mirrored_twin_sync =
       _wire_test_nested_raw_string_mirrored_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_test_raw_string_enum_mirrored_twin_sync(
+  WireSyncReturnDco wire_test_raw_string_enum_mirrored_twin_sync(
     bool nested,
   ) {
     return _wire_test_raw_string_enum_mirrored_twin_sync(
@@ -12016,22 +12019,22 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_raw_string_enum_mirrored_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Bool)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Bool)>>(
           'wire_test_raw_string_enum_mirrored_twin_sync');
   late final _wire_test_raw_string_enum_mirrored_twin_sync =
       _wire_test_raw_string_enum_mirrored_twin_syncPtr
-          .asFunction<WireSyncReturn Function(bool)>();
+          .asFunction<WireSyncReturnDco Function(bool)>();
 
-  WireSyncReturn wire_test_raw_string_mirrored_twin_sync() {
+  WireSyncReturnDco wire_test_raw_string_mirrored_twin_sync() {
     return _wire_test_raw_string_mirrored_twin_sync();
   }
 
   late final _wire_test_raw_string_mirrored_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_raw_string_mirrored_twin_sync');
   late final _wire_test_raw_string_mirrored_twin_sync =
       _wire_test_raw_string_mirrored_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
   void wire_handle_big_buffers_twin_rust_async(
     int port_,
@@ -12207,18 +12210,18 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_struct_with_enum_twin_rust_async>)>();
 
-  WireSyncReturn wire_handle_big_buffers_twin_sync() {
+  WireSyncReturnDco wire_handle_big_buffers_twin_sync() {
     return _wire_handle_big_buffers_twin_sync();
   }
 
   late final _wire_handle_big_buffers_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_handle_big_buffers_twin_sync');
   late final _wire_handle_big_buffers_twin_sync =
       _wire_handle_big_buffers_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_handle_complex_struct_twin_sync(
+  WireSyncReturnDco wire_handle_complex_struct_twin_sync(
     ffi.Pointer<wire_cst_my_tree_node_twin_sync> s,
   ) {
     return _wire_handle_complex_struct_twin_sync(
@@ -12228,15 +12231,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_complex_struct_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_my_tree_node_twin_sync>)>>(
       'wire_handle_complex_struct_twin_sync');
   late final _wire_handle_complex_struct_twin_sync =
       _wire_handle_complex_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_my_tree_node_twin_sync>)>();
 
-  WireSyncReturn wire_handle_nested_struct_twin_sync(
+  WireSyncReturnDco wire_handle_nested_struct_twin_sync(
     ffi.Pointer<wire_cst_my_nested_struct_twin_sync> s,
   ) {
     return _wire_handle_nested_struct_twin_sync(
@@ -12246,15 +12249,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_nested_struct_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_my_nested_struct_twin_sync>)>>(
       'wire_handle_nested_struct_twin_sync');
   late final _wire_handle_nested_struct_twin_sync =
       _wire_handle_nested_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_my_nested_struct_twin_sync>)>();
 
-  WireSyncReturn wire_handle_string_twin_sync(
+  WireSyncReturnDco wire_handle_string_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> s,
   ) {
     return _wire_handle_string_twin_sync(
@@ -12264,13 +12267,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_string_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_handle_string_twin_sync');
   late final _wire_handle_string_twin_sync =
       _wire_handle_string_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_handle_struct_twin_sync(
+  WireSyncReturnDco wire_handle_struct_twin_sync(
     ffi.Pointer<wire_cst_my_size> arg,
     ffi.Pointer<wire_cst_my_size> boxed,
   ) {
@@ -12282,14 +12285,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_struct_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_my_size>,
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_my_size>,
               ffi.Pointer<wire_cst_my_size>)>>('wire_handle_struct_twin_sync');
   late final _wire_handle_struct_twin_sync =
       _wire_handle_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_my_size>, ffi.Pointer<wire_cst_my_size>)>();
 
-  WireSyncReturn wire_handle_vec_u8_twin_sync(
+  WireSyncReturnDco wire_handle_vec_u8_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> v,
   ) {
     return _wire_handle_vec_u8_twin_sync(
@@ -12299,13 +12302,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_vec_u8_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_handle_vec_u8_twin_sync');
   late final _wire_handle_vec_u8_twin_sync =
       _wire_handle_vec_u8_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_list_of_primitive_enums_twin_sync(
+  WireSyncReturnDco wire_list_of_primitive_enums_twin_sync(
     ffi.Pointer<wire_cst_list_weekdays_twin_sync> weekdays,
   ) {
     return _wire_list_of_primitive_enums_twin_sync(
@@ -12315,15 +12318,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_list_of_primitive_enums_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_list_weekdays_twin_sync>)>>(
       'wire_list_of_primitive_enums_twin_sync');
   late final _wire_list_of_primitive_enums_twin_sync =
       _wire_list_of_primitive_enums_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_list_weekdays_twin_sync>)>();
 
-  WireSyncReturn wire_test_abc_enum_twin_sync(
+  WireSyncReturnDco wire_test_abc_enum_twin_sync(
     ffi.Pointer<wire_cst_abc_twin_sync> abc,
   ) {
     return _wire_test_abc_enum_twin_sync(
@@ -12333,13 +12336,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_test_abc_enum_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_abc_twin_sync>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_abc_twin_sync>)>>(
       'wire_test_abc_enum_twin_sync');
   late final _wire_test_abc_enum_twin_sync =
       _wire_test_abc_enum_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_abc_twin_sync>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_abc_twin_sync>)>();
 
-  WireSyncReturn wire_test_struct_with_enum_twin_sync(
+  WireSyncReturnDco wire_test_struct_with_enum_twin_sync(
     ffi.Pointer<wire_cst_struct_with_enum_twin_sync> se,
   ) {
     return _wire_test_struct_with_enum_twin_sync(
@@ -12349,12 +12352,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_test_struct_with_enum_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_struct_with_enum_twin_sync>)>>(
       'wire_test_struct_with_enum_twin_sync');
   late final _wire_test_struct_with_enum_twin_sync =
       _wire_test_struct_with_enum_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_struct_with_enum_twin_sync>)>();
 
   void wire_empty_struct_twin_rust_async(
@@ -12431,7 +12434,7 @@ class RustLibWire implements BaseWire {
 
   void wire_handle_string_list_twin_rust_async(
     int port_,
-    ffi.Pointer<wire_cst_StringList> names,
+    ffi.Pointer<wire_cst_list_String> names,
   ) {
     return _wire_handle_string_list_twin_rust_async(
       port_,
@@ -12441,13 +12444,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_string_list_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_StringList>)>>(
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_String>)>>(
       'wire_handle_string_list_twin_rust_async');
   late final _wire_handle_string_list_twin_rust_async =
       _wire_handle_string_list_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_cst_StringList>)>();
+          .asFunction<void Function(int, ffi.Pointer<wire_cst_list_String>)>();
 
-  WireSyncReturn wire_empty_struct_twin_sync(
+  WireSyncReturnDco wire_empty_struct_twin_sync(
     ffi.Pointer<wire_cst_empty_twin_sync> empty,
   ) {
     return _wire_empty_struct_twin_sync(
@@ -12457,24 +12460,25 @@ class RustLibWire implements BaseWire {
 
   late final _wire_empty_struct_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_empty_twin_sync>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_empty_twin_sync>)>>(
       'wire_empty_struct_twin_sync');
   late final _wire_empty_struct_twin_sync =
       _wire_empty_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_empty_twin_sync>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_empty_twin_sync>)>();
 
-  WireSyncReturn wire_func_return_unit_twin_sync() {
+  WireSyncReturnDco wire_func_return_unit_twin_sync() {
     return _wire_func_return_unit_twin_sync();
   }
 
   late final _wire_func_return_unit_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_func_return_unit_twin_sync');
   late final _wire_func_return_unit_twin_sync =
       _wire_func_return_unit_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_func_string_twin_sync(
+  WireSyncReturnDco wire_func_string_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> arg,
   ) {
     return _wire_func_string_twin_sync(
@@ -12484,13 +12488,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_string_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_func_string_twin_sync');
   late final _wire_func_string_twin_sync =
       _wire_func_string_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_handle_list_of_struct_twin_sync(
+  WireSyncReturnDco wire_handle_list_of_struct_twin_sync(
     ffi.Pointer<wire_cst_list_my_size> l,
   ) {
     return _wire_handle_list_of_struct_twin_sync(
@@ -12500,14 +12504,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_list_of_struct_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_my_size>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_my_size>)>>(
       'wire_handle_list_of_struct_twin_sync');
   late final _wire_handle_list_of_struct_twin_sync =
       _wire_handle_list_of_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_my_size>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_my_size>)>();
 
-  WireSyncReturn wire_handle_string_list_twin_sync(
-    ffi.Pointer<wire_cst_StringList> names,
+  WireSyncReturnDco wire_handle_string_list_twin_sync(
+    ffi.Pointer<wire_cst_list_String> names,
   ) {
     return _wire_handle_string_list_twin_sync(
       names,
@@ -12516,11 +12520,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_string_list_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_StringList>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_String>)>>(
       'wire_handle_string_list_twin_sync');
   late final _wire_handle_string_list_twin_sync =
       _wire_handle_string_list_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_StringList>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_String>)>();
 
   void wire_handle_newtype_twin_rust_async(
     int port_,
@@ -12542,7 +12546,7 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_new_type_int_twin_rust_async>)>();
 
-  WireSyncReturn wire_handle_newtype_twin_sync(
+  WireSyncReturnDco wire_handle_newtype_twin_sync(
     ffi.Pointer<wire_cst_new_type_int_twin_sync> arg,
   ) {
     return _wire_handle_newtype_twin_sync(
@@ -12552,12 +12556,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_newtype_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_new_type_int_twin_sync>)>>(
       'wire_handle_newtype_twin_sync');
   late final _wire_handle_newtype_twin_sync =
       _wire_handle_newtype_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_new_type_int_twin_sync>)>();
 
   void wire_example_optional_primitive_type_bool_twin_normal(
@@ -12789,7 +12793,7 @@ class RustLibWire implements BaseWire {
           void Function(int, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
               ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>)>();
 
-  WireSyncReturn wire_primitive_optional_types_twin_sync(
+  WireSyncReturnDco wire_primitive_optional_types_twin_sync(
     ffi.Pointer<ffi.Int32> my_i32,
     ffi.Pointer<ffi.Int64> my_i64,
     ffi.Pointer<ffi.Double> my_f64,
@@ -12805,7 +12809,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_primitive_optional_types_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<ffi.Int32>,
                   ffi.Pointer<ffi.Int64>,
                   ffi.Pointer<ffi.Double>,
@@ -12813,7 +12817,7 @@ class RustLibWire implements BaseWire {
       'wire_primitive_optional_types_twin_sync');
   late final _wire_primitive_optional_types_twin_sync =
       _wire_primitive_optional_types_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<ffi.Int32>,
               ffi.Pointer<ffi.Int64>,
               ffi.Pointer<ffi.Double>,
@@ -13028,7 +13032,7 @@ class RustLibWire implements BaseWire {
       _wire_example_optional_primitive_type_u8_twin_rust_asyncPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_bool_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_bool_twin_sync(
     ffi.Pointer<ffi.Bool> arg,
   ) {
     return _wire_example_optional_primitive_type_bool_twin_sync(
@@ -13037,13 +13041,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_bool_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Bool>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Bool>)>>(
       'wire_example_optional_primitive_type_bool_twin_sync');
   late final _wire_example_optional_primitive_type_bool_twin_sync =
       _wire_example_optional_primitive_type_bool_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Bool>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Bool>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_f32_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_f32_twin_sync(
     ffi.Pointer<ffi.Float> arg,
   ) {
     return _wire_example_optional_primitive_type_f32_twin_sync(
@@ -13052,13 +13057,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_f32_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Float>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Float>)>>(
       'wire_example_optional_primitive_type_f32_twin_sync');
   late final _wire_example_optional_primitive_type_f32_twin_sync =
       _wire_example_optional_primitive_type_f32_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Float>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Float>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_f64_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_f64_twin_sync(
     ffi.Pointer<ffi.Double> arg,
   ) {
     return _wire_example_optional_primitive_type_f64_twin_sync(
@@ -13067,13 +13073,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_f64_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Double>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Double>)>>(
       'wire_example_optional_primitive_type_f64_twin_sync');
   late final _wire_example_optional_primitive_type_f64_twin_sync =
       _wire_example_optional_primitive_type_f64_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Double>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Double>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_i16_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_i16_twin_sync(
     ffi.Pointer<ffi.Int16> arg,
   ) {
     return _wire_example_optional_primitive_type_i16_twin_sync(
@@ -13082,13 +13089,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_i16_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int16>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int16>)>>(
       'wire_example_optional_primitive_type_i16_twin_sync');
   late final _wire_example_optional_primitive_type_i16_twin_sync =
       _wire_example_optional_primitive_type_i16_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int16>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int16>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_i32_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_i32_twin_sync(
     ffi.Pointer<ffi.Int32> arg,
   ) {
     return _wire_example_optional_primitive_type_i32_twin_sync(
@@ -13097,13 +13105,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_i32_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int32>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int32>)>>(
       'wire_example_optional_primitive_type_i32_twin_sync');
   late final _wire_example_optional_primitive_type_i32_twin_sync =
       _wire_example_optional_primitive_type_i32_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int32>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int32>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_i64_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_i64_twin_sync(
     ffi.Pointer<ffi.Int64> arg,
   ) {
     return _wire_example_optional_primitive_type_i64_twin_sync(
@@ -13112,13 +13121,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_i64_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int64>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int64>)>>(
       'wire_example_optional_primitive_type_i64_twin_sync');
   late final _wire_example_optional_primitive_type_i64_twin_sync =
       _wire_example_optional_primitive_type_i64_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int64>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int64>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_i8_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_i8_twin_sync(
     ffi.Pointer<ffi.Int8> arg,
   ) {
     return _wire_example_optional_primitive_type_i8_twin_sync(
@@ -13127,13 +13137,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_i8_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int8>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int8>)>>(
       'wire_example_optional_primitive_type_i8_twin_sync');
   late final _wire_example_optional_primitive_type_i8_twin_sync =
       _wire_example_optional_primitive_type_i8_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Int8>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Int8>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_u16_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_u16_twin_sync(
     ffi.Pointer<ffi.Uint16> arg,
   ) {
     return _wire_example_optional_primitive_type_u16_twin_sync(
@@ -13142,13 +13153,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_u16_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Uint16>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Uint16>)>>(
       'wire_example_optional_primitive_type_u16_twin_sync');
   late final _wire_example_optional_primitive_type_u16_twin_sync =
       _wire_example_optional_primitive_type_u16_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Uint16>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Uint16>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_u32_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_u32_twin_sync(
     ffi.Pointer<ffi.Uint32> arg,
   ) {
     return _wire_example_optional_primitive_type_u32_twin_sync(
@@ -13157,13 +13169,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_u32_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Uint32>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Uint32>)>>(
       'wire_example_optional_primitive_type_u32_twin_sync');
   late final _wire_example_optional_primitive_type_u32_twin_sync =
       _wire_example_optional_primitive_type_u32_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Uint32>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Uint32>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_u64_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_u64_twin_sync(
     ffi.Pointer<ffi.Uint64> arg,
   ) {
     return _wire_example_optional_primitive_type_u64_twin_sync(
@@ -13172,13 +13185,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_u64_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Uint64>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Uint64>)>>(
       'wire_example_optional_primitive_type_u64_twin_sync');
   late final _wire_example_optional_primitive_type_u64_twin_sync =
       _wire_example_optional_primitive_type_u64_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Uint64>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Uint64>)>();
 
-  WireSyncReturn wire_example_optional_primitive_type_u8_twin_sync(
+  WireSyncReturnDco wire_example_optional_primitive_type_u8_twin_sync(
     ffi.Pointer<ffi.Uint8> arg,
   ) {
     return _wire_example_optional_primitive_type_u8_twin_sync(
@@ -13187,11 +13201,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_u8_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Uint8>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Uint8>)>>(
       'wire_example_optional_primitive_type_u8_twin_sync');
   late final _wire_example_optional_primitive_type_u8_twin_sync =
       _wire_example_optional_primitive_type_u8_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Uint8>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Uint8>)>();
 
   void wire_handle_increment_boxed_optional_twin_rust_async(
     int port_,
@@ -13335,7 +13350,7 @@ class RustLibWire implements BaseWire {
       _wire_handle_vec_of_opts_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_opt_vecs_twin_rust_async>)>();
 
-  WireSyncReturn wire_handle_increment_boxed_optional_twin_sync(
+  WireSyncReturnDco wire_handle_increment_boxed_optional_twin_sync(
     ffi.Pointer<ffi.Double> opt,
   ) {
     return _wire_handle_increment_boxed_optional_twin_sync(
@@ -13344,13 +13359,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_increment_boxed_optional_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Double>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Double>)>>(
       'wire_handle_increment_boxed_optional_twin_sync');
   late final _wire_handle_increment_boxed_optional_twin_sync =
       _wire_handle_increment_boxed_optional_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Double>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Double>)>();
 
-  WireSyncReturn wire_handle_option_box_arguments_twin_sync(
+  WireSyncReturnDco wire_handle_option_box_arguments_twin_sync(
     ffi.Pointer<ffi.Int8> i8box,
     ffi.Pointer<ffi.Uint8> u8box,
     ffi.Pointer<ffi.Int32> i32box,
@@ -13372,7 +13388,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_option_box_arguments_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<ffi.Int8>,
                   ffi.Pointer<ffi.Uint8>,
                   ffi.Pointer<ffi.Int32>,
@@ -13383,7 +13399,7 @@ class RustLibWire implements BaseWire {
       'wire_handle_option_box_arguments_twin_sync');
   late final _wire_handle_option_box_arguments_twin_sync =
       _wire_handle_option_box_arguments_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<ffi.Int8>,
               ffi.Pointer<ffi.Uint8>,
               ffi.Pointer<ffi.Int32>,
@@ -13392,7 +13408,7 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<ffi.Bool>,
               ffi.Pointer<wire_cst_exotic_optionals_twin_sync>)>();
 
-  WireSyncReturn wire_handle_optional_increment_twin_sync(
+  WireSyncReturnDco wire_handle_optional_increment_twin_sync(
     ffi.Pointer<wire_cst_exotic_optionals_twin_sync> opt,
   ) {
     return _wire_handle_optional_increment_twin_sync(
@@ -13402,15 +13418,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_optional_increment_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_exotic_optionals_twin_sync>)>>(
       'wire_handle_optional_increment_twin_sync');
   late final _wire_handle_optional_increment_twin_sync =
       _wire_handle_optional_increment_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_exotic_optionals_twin_sync>)>();
 
-  WireSyncReturn wire_handle_optional_return_twin_sync(
+  WireSyncReturnDco wire_handle_optional_return_twin_sync(
     double left,
     double right,
   ) {
@@ -13421,13 +13437,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_optional_return_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Double, ffi.Double)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Double, ffi.Double)>>(
       'wire_handle_optional_return_twin_sync');
   late final _wire_handle_optional_return_twin_sync =
       _wire_handle_optional_return_twin_syncPtr
-          .asFunction<WireSyncReturn Function(double, double)>();
+          .asFunction<WireSyncReturnDco Function(double, double)>();
 
-  WireSyncReturn wire_handle_optional_struct_twin_sync(
+  WireSyncReturnDco wire_handle_optional_struct_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> document,
   ) {
     return _wire_handle_optional_struct_twin_sync(
@@ -13437,13 +13454,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_optional_struct_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_handle_optional_struct_twin_sync');
   late final _wire_handle_optional_struct_twin_sync =
       _wire_handle_optional_struct_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_handle_vec_of_opts_twin_sync(
+  WireSyncReturnDco wire_handle_vec_of_opts_twin_sync(
     ffi.Pointer<wire_cst_opt_vecs_twin_sync> opt,
   ) {
     return _wire_handle_vec_of_opts_twin_sync(
@@ -13453,12 +13470,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_vec_of_opts_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_opt_vecs_twin_sync>)>>(
       'wire_handle_vec_of_opts_twin_sync');
   late final _wire_handle_vec_of_opts_twin_sync =
       _wire_handle_vec_of_opts_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_opt_vecs_twin_sync>)>();
+          WireSyncReturnDco Function(
+              ffi.Pointer<wire_cst_opt_vecs_twin_sync>)>();
 
   void wire_example_primitive_type_bool_twin_normal(
     int port_,
@@ -13872,24 +13890,7 @@ class RustLibWire implements BaseWire {
       _wire_handle_vec_of_primitive_twin_rust_asyncPtr
           .asFunction<void Function(int, int)>();
 
-  void wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
-    int port_,
-    int n,
-  ) {
-    return _wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
-      port_,
-      n,
-    );
-  }
-
-  late final _wire_handle_zero_copy_vec_of_primitive_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_handle_zero_copy_vec_of_primitive_twin_rust_async');
-  late final _wire_handle_zero_copy_vec_of_primitive_twin_rust_async =
-      _wire_handle_zero_copy_vec_of_primitive_twin_rust_asyncPtr
-          .asFunction<void Function(int, int)>();
-
-  WireSyncReturn wire_handle_vec_of_primitive_twin_sync(
+  WireSyncReturnDco wire_handle_vec_of_primitive_twin_sync(
     int n,
   ) {
     return _wire_handle_vec_of_primitive_twin_sync(
@@ -13898,26 +13899,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_vec_of_primitive_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int32)>>(
           'wire_handle_vec_of_primitive_twin_sync');
   late final _wire_handle_vec_of_primitive_twin_sync =
       _wire_handle_vec_of_primitive_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
-
-  WireSyncReturn wire_handle_zero_copy_vec_of_primitive_twin_sync(
-    int n,
-  ) {
-    return _wire_handle_zero_copy_vec_of_primitive_twin_sync(
-      n,
-    );
-  }
-
-  late final _wire_handle_zero_copy_vec_of_primitive_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
-          'wire_handle_zero_copy_vec_of_primitive_twin_sync');
-  late final _wire_handle_zero_copy_vec_of_primitive_twin_sync =
-      _wire_handle_zero_copy_vec_of_primitive_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
   void wire_example_primitive_list_type_bool_twin_rust_async(
     int port_,
@@ -14129,7 +14115,7 @@ class RustLibWire implements BaseWire {
       _wire_example_primitive_list_type_u8_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_bool_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_bool_twin_sync(
     ffi.Pointer<wire_cst_list_bool> arg,
   ) {
     return _wire_example_primitive_list_type_bool_twin_sync(
@@ -14139,13 +14125,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_bool_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_bool>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_bool>)>>(
       'wire_example_primitive_list_type_bool_twin_sync');
   late final _wire_example_primitive_list_type_bool_twin_sync =
       _wire_example_primitive_list_type_bool_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_bool>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_bool>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_f32_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_f32_twin_sync(
     ffi.Pointer<wire_cst_list_prim_f_32> arg,
   ) {
     return _wire_example_primitive_list_type_f32_twin_sync(
@@ -14155,13 +14141,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_f32_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_f_32>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_prim_f_32>)>>(
       'wire_example_primitive_list_type_f32_twin_sync');
   late final _wire_example_primitive_list_type_f32_twin_sync =
       _wire_example_primitive_list_type_f32_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_f_32>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_f_32>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_f64_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_f64_twin_sync(
     ffi.Pointer<wire_cst_list_prim_f_64> arg,
   ) {
     return _wire_example_primitive_list_type_f64_twin_sync(
@@ -14171,13 +14158,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_f64_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_f_64>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_prim_f_64>)>>(
       'wire_example_primitive_list_type_f64_twin_sync');
   late final _wire_example_primitive_list_type_f64_twin_sync =
       _wire_example_primitive_list_type_f64_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_f_64>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_f_64>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_i16_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_i16_twin_sync(
     ffi.Pointer<wire_cst_list_prim_i_16> arg,
   ) {
     return _wire_example_primitive_list_type_i16_twin_sync(
@@ -14187,13 +14175,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_i16_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_16>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_prim_i_16>)>>(
       'wire_example_primitive_list_type_i16_twin_sync');
   late final _wire_example_primitive_list_type_i16_twin_sync =
       _wire_example_primitive_list_type_i16_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_16>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_i_16>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_i32_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_i32_twin_sync(
     ffi.Pointer<wire_cst_list_prim_i_32> arg,
   ) {
     return _wire_example_primitive_list_type_i32_twin_sync(
@@ -14203,13 +14192,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_i32_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_32>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_prim_i_32>)>>(
       'wire_example_primitive_list_type_i32_twin_sync');
   late final _wire_example_primitive_list_type_i32_twin_sync =
       _wire_example_primitive_list_type_i32_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_32>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_i_32>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_i64_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_i64_twin_sync(
     ffi.Pointer<wire_cst_list_prim_i_64> arg,
   ) {
     return _wire_example_primitive_list_type_i64_twin_sync(
@@ -14219,13 +14209,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_i64_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_64>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_prim_i_64>)>>(
       'wire_example_primitive_list_type_i64_twin_sync');
   late final _wire_example_primitive_list_type_i64_twin_sync =
       _wire_example_primitive_list_type_i64_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_64>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_i_64>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_i8_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_i8_twin_sync(
     ffi.Pointer<wire_cst_list_prim_i_8> arg,
   ) {
     return _wire_example_primitive_list_type_i8_twin_sync(
@@ -14235,13 +14226,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_i8_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_i_8>)>>(
       'wire_example_primitive_list_type_i8_twin_sync');
   late final _wire_example_primitive_list_type_i8_twin_sync =
       _wire_example_primitive_list_type_i8_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_i_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_i_8>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_u16_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_u16_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_16> arg,
   ) {
     return _wire_example_primitive_list_type_u16_twin_sync(
@@ -14251,13 +14242,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_u16_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_16>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_16>)>>(
       'wire_example_primitive_list_type_u16_twin_sync');
   late final _wire_example_primitive_list_type_u16_twin_sync =
       _wire_example_primitive_list_type_u16_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_16>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_16>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_u32_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_u32_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_32> arg,
   ) {
     return _wire_example_primitive_list_type_u32_twin_sync(
@@ -14267,13 +14259,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_u32_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_32>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_32>)>>(
       'wire_example_primitive_list_type_u32_twin_sync');
   late final _wire_example_primitive_list_type_u32_twin_sync =
       _wire_example_primitive_list_type_u32_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_32>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_32>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_u64_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_u64_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_64> arg,
   ) {
     return _wire_example_primitive_list_type_u64_twin_sync(
@@ -14283,13 +14276,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_u64_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_64>)>>(
+              WireSyncReturnDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_64>)>>(
       'wire_example_primitive_list_type_u64_twin_sync');
   late final _wire_example_primitive_list_type_u64_twin_sync =
       _wire_example_primitive_list_type_u64_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_64>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_64>)>();
 
-  WireSyncReturn wire_example_primitive_list_type_u8_twin_sync(
+  WireSyncReturnDco wire_example_primitive_list_type_u8_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> arg,
   ) {
     return _wire_example_primitive_list_type_u8_twin_sync(
@@ -14299,11 +14293,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_u8_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_example_primitive_list_type_u8_twin_sync');
   late final _wire_example_primitive_list_type_u8_twin_sync =
       _wire_example_primitive_list_type_u8_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
   void wire_primitive_types_twin_rust_async(
     int port_,
@@ -14346,7 +14340,7 @@ class RustLibWire implements BaseWire {
       _wire_primitive_u32_twin_rust_asyncPtr
           .asFunction<void Function(int, int)>();
 
-  WireSyncReturn wire_primitive_types_twin_sync(
+  WireSyncReturnDco wire_primitive_types_twin_sync(
     int my_i32,
     int my_i64,
     double my_f64,
@@ -14362,13 +14356,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_primitive_types_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Int32, ffi.Int64, ffi.Double,
+          WireSyncReturnDco Function(ffi.Int32, ffi.Int64, ffi.Double,
               ffi.Bool)>>('wire_primitive_types_twin_sync');
   late final _wire_primitive_types_twin_sync =
       _wire_primitive_types_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int, int, double, bool)>();
+          .asFunction<WireSyncReturnDco Function(int, int, double, bool)>();
 
-  WireSyncReturn wire_primitive_u32_twin_sync(
+  WireSyncReturnDco wire_primitive_u32_twin_sync(
     int my_u32,
   ) {
     return _wire_primitive_u32_twin_sync(
@@ -14377,10 +14371,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_primitive_u32_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint32)>>(
           'wire_primitive_u32_twin_sync');
   late final _wire_primitive_u32_twin_sync = _wire_primitive_u32_twin_syncPtr
-      .asFunction<WireSyncReturn Function(int)>();
+      .asFunction<WireSyncReturnDco Function(int)>();
 
   void wire_example_primitive_type_bool_twin_rust_async(
     int port_,
@@ -14569,7 +14563,7 @@ class RustLibWire implements BaseWire {
       _wire_example_primitive_type_u8_twin_rust_asyncPtr
           .asFunction<void Function(int, int)>();
 
-  WireSyncReturn wire_example_primitive_type_bool_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_bool_twin_sync(
     bool arg,
   ) {
     return _wire_example_primitive_type_bool_twin_sync(
@@ -14578,13 +14572,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_bool_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Bool)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Bool)>>(
           'wire_example_primitive_type_bool_twin_sync');
   late final _wire_example_primitive_type_bool_twin_sync =
       _wire_example_primitive_type_bool_twin_syncPtr
-          .asFunction<WireSyncReturn Function(bool)>();
+          .asFunction<WireSyncReturnDco Function(bool)>();
 
-  WireSyncReturn wire_example_primitive_type_f32_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_f32_twin_sync(
     double arg,
   ) {
     return _wire_example_primitive_type_f32_twin_sync(
@@ -14593,13 +14587,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_f32_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Float)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Float)>>(
           'wire_example_primitive_type_f32_twin_sync');
   late final _wire_example_primitive_type_f32_twin_sync =
       _wire_example_primitive_type_f32_twin_syncPtr
-          .asFunction<WireSyncReturn Function(double)>();
+          .asFunction<WireSyncReturnDco Function(double)>();
 
-  WireSyncReturn wire_example_primitive_type_f64_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_f64_twin_sync(
     double arg,
   ) {
     return _wire_example_primitive_type_f64_twin_sync(
@@ -14608,13 +14602,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_f64_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Double)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Double)>>(
           'wire_example_primitive_type_f64_twin_sync');
   late final _wire_example_primitive_type_f64_twin_sync =
       _wire_example_primitive_type_f64_twin_syncPtr
-          .asFunction<WireSyncReturn Function(double)>();
+          .asFunction<WireSyncReturnDco Function(double)>();
 
-  WireSyncReturn wire_example_primitive_type_i16_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_i16_twin_sync(
     int arg,
   ) {
     return _wire_example_primitive_type_i16_twin_sync(
@@ -14623,13 +14617,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_i16_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int16)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int16)>>(
           'wire_example_primitive_type_i16_twin_sync');
   late final _wire_example_primitive_type_i16_twin_sync =
       _wire_example_primitive_type_i16_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_example_primitive_type_i32_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_i32_twin_sync(
     int arg,
   ) {
     return _wire_example_primitive_type_i32_twin_sync(
@@ -14638,13 +14632,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_i32_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int32)>>(
           'wire_example_primitive_type_i32_twin_sync');
   late final _wire_example_primitive_type_i32_twin_sync =
       _wire_example_primitive_type_i32_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_example_primitive_type_i64_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_i64_twin_sync(
     int arg,
   ) {
     return _wire_example_primitive_type_i64_twin_sync(
@@ -14653,13 +14647,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_i64_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int64)>>(
           'wire_example_primitive_type_i64_twin_sync');
   late final _wire_example_primitive_type_i64_twin_sync =
       _wire_example_primitive_type_i64_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_example_primitive_type_i8_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_i8_twin_sync(
     int arg,
   ) {
     return _wire_example_primitive_type_i8_twin_sync(
@@ -14668,13 +14662,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_i8_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int8)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int8)>>(
           'wire_example_primitive_type_i8_twin_sync');
   late final _wire_example_primitive_type_i8_twin_sync =
       _wire_example_primitive_type_i8_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_example_primitive_type_u16_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_u16_twin_sync(
     int arg,
   ) {
     return _wire_example_primitive_type_u16_twin_sync(
@@ -14683,13 +14677,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_u16_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint16)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint16)>>(
           'wire_example_primitive_type_u16_twin_sync');
   late final _wire_example_primitive_type_u16_twin_sync =
       _wire_example_primitive_type_u16_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_example_primitive_type_u32_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_u32_twin_sync(
     int arg,
   ) {
     return _wire_example_primitive_type_u32_twin_sync(
@@ -14698,13 +14692,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_u32_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint32)>>(
           'wire_example_primitive_type_u32_twin_sync');
   late final _wire_example_primitive_type_u32_twin_sync =
       _wire_example_primitive_type_u32_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_example_primitive_type_u64_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_u64_twin_sync(
     int arg,
   ) {
     return _wire_example_primitive_type_u64_twin_sync(
@@ -14713,13 +14707,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_u64_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint64)>>(
           'wire_example_primitive_type_u64_twin_sync');
   late final _wire_example_primitive_type_u64_twin_sync =
       _wire_example_primitive_type_u64_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_example_primitive_type_u8_twin_sync(
+  WireSyncReturnDco wire_example_primitive_type_u8_twin_sync(
     int arg,
   ) {
     return _wire_example_primitive_type_u8_twin_sync(
@@ -14728,11 +14722,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_u8_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint8)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint8)>>(
           'wire_example_primitive_type_u8_twin_sync');
   late final _wire_example_primitive_type_u8_twin_sync =
       _wire_example_primitive_type_u8_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
   void wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
     int port_,
@@ -14764,29 +14758,29 @@ class RustLibWire implements BaseWire {
       _wire_test_raw_string_item_struct_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
-  WireSyncReturn wire_test_more_than_just_one_raw_string_struct_twin_sync() {
+  WireSyncReturnDco wire_test_more_than_just_one_raw_string_struct_twin_sync() {
     return _wire_test_more_than_just_one_raw_string_struct_twin_sync();
   }
 
   late final _wire_test_more_than_just_one_raw_string_struct_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_more_than_just_one_raw_string_struct_twin_sync');
   late final _wire_test_more_than_just_one_raw_string_struct_twin_sync =
       _wire_test_more_than_just_one_raw_string_struct_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_test_raw_string_item_struct_twin_sync() {
+  WireSyncReturnDco wire_test_raw_string_item_struct_twin_sync() {
     return _wire_test_raw_string_item_struct_twin_sync();
   }
 
   late final _wire_test_raw_string_item_struct_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_test_raw_string_item_struct_twin_sync');
   late final _wire_test_raw_string_item_struct_twin_sync =
       _wire_test_raw_string_item_struct_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
     ffi.Pointer<ffi.Void> that,
   ) {
@@ -14797,14 +14791,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync =
       _wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
     ffi.Pointer<ffi.Void> that,
   ) {
@@ -14815,14 +14809,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync =
       _wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
+  WireSyncReturnDco
+      wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
     ffi.Pointer<ffi.Void> that,
   ) {
     return _wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
@@ -14832,14 +14827,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync =
       _wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
     ffi.Pointer<ffi.Void> that,
   ) {
@@ -14850,36 +14845,37 @@ class RustLibWire implements BaseWire {
 
   late final _wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync =
       _wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync() {
+  WireSyncReturnDco wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync() {
     return _wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync();
   }
 
   late final _wire_NonCloneSimpleTwinSync_new_custom_name_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync =
       _wire_NonCloneSimpleTwinSync_new_custom_name_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_NonCloneSimpleTwinSync_new_twin_sync() {
+  WireSyncReturnDco wire_NonCloneSimpleTwinSync_new_twin_sync() {
     return _wire_NonCloneSimpleTwinSync_new_twin_sync();
   }
 
   late final _wire_NonCloneSimpleTwinSync_new_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_NonCloneSimpleTwinSync_new_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_new_twin_sync =
       _wire_NonCloneSimpleTwinSync_new_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
+  WireSyncReturnDco
+      wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
     ffi.Pointer<ffi.Void> arg,
   ) {
     return _wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
@@ -14889,14 +14885,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync =
       _wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
     ffi.Pointer<ffi.Void> arg,
   ) {
@@ -14907,14 +14903,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync =
       _wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
+  WireSyncReturnDco wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
     ffi.Pointer<ffi.Void> arg,
   ) {
     return _wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
@@ -14924,26 +14920,26 @@ class RustLibWire implements BaseWire {
 
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync =
       _wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync() {
     return _wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
   }
 
   late final _wire_NonCloneSimpleTwinSync_static_method_return_own_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync =
       _wire_NonCloneSimpleTwinSync_static_method_return_own_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_rust_auto_opaque_arg_borrow_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_arg_borrow_twin_sync(
     ffi.Pointer<ffi.Void> arg,
     int expect,
   ) {
@@ -14955,13 +14951,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_borrow_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Pointer<ffi.Void>,
+          WireSyncReturnDco Function(ffi.Pointer<ffi.Void>,
               ffi.Int32)>>('wire_rust_auto_opaque_arg_borrow_twin_sync');
   late final _wire_rust_auto_opaque_arg_borrow_twin_sync =
       _wire_rust_auto_opaque_arg_borrow_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>, int)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>, int)>();
 
-  WireSyncReturn wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
     ffi.Pointer<ffi.Void> arg,
     int expect,
     int adder,
@@ -14975,13 +14971,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Pointer<ffi.Void>, ffi.Int32,
+          WireSyncReturnDco Function(ffi.Pointer<ffi.Void>, ffi.Int32,
               ffi.Int32)>>('wire_rust_auto_opaque_arg_mut_borrow_twin_sync');
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_sync =
       _wire_rust_auto_opaque_arg_mut_borrow_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<ffi.Void>, int, int)>();
+          WireSyncReturnDco Function(ffi.Pointer<ffi.Void>, int, int)>();
 
-  WireSyncReturn wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
     ffi.Pointer<ffi.Void> arg,
   ) {
     return _wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
@@ -14991,14 +14987,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_rust_auto_opaque_arg_own_and_return_own_twin_sync');
   late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_sync =
       _wire_rust_auto_opaque_arg_own_and_return_own_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_rust_auto_opaque_arg_own_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_arg_own_twin_sync(
     ffi.Pointer<ffi.Void> arg,
     int expect,
   ) {
@@ -15010,13 +15006,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_own_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Pointer<ffi.Void>,
+          WireSyncReturnDco Function(ffi.Pointer<ffi.Void>,
               ffi.Int32)>>('wire_rust_auto_opaque_arg_own_twin_sync');
   late final _wire_rust_auto_opaque_arg_own_twin_sync =
       _wire_rust_auto_opaque_arg_own_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>, int)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>, int)>();
 
-  WireSyncReturn wire_rust_auto_opaque_callable_arg_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_callable_arg_twin_sync(
     ffi.Pointer<ffi.Void> arg,
   ) {
     return _wire_rust_auto_opaque_callable_arg_twin_sync(
@@ -15025,24 +15021,25 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_callable_arg_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_rust_auto_opaque_callable_arg_twin_sync');
   late final _wire_rust_auto_opaque_callable_arg_twin_sync =
       _wire_rust_auto_opaque_callable_arg_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_rust_auto_opaque_callable_return_twin_sync() {
+  WireSyncReturnDco wire_rust_auto_opaque_callable_return_twin_sync() {
     return _wire_rust_auto_opaque_callable_return_twin_sync();
   }
 
   late final _wire_rust_auto_opaque_callable_return_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_rust_auto_opaque_callable_return_twin_sync');
   late final _wire_rust_auto_opaque_callable_return_twin_sync =
       _wire_rust_auto_opaque_callable_return_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
     ffi.Pointer<ffi.Void> a,
     ffi.Pointer<wire_cst_list_prim_u_8> b,
   ) {
@@ -15055,15 +15052,15 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncReturn Function(ffi.Pointer<ffi.Void>,
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>,
                       ffi.Pointer<wire_cst_list_prim_u_8>)>>(
           'wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync');
   late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync =
       _wire_rust_auto_opaque_normal_and_opaque_arg_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_rust_auto_opaque_plus_sign_arg_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_plus_sign_arg_twin_sync(
     ffi.Pointer<ffi.Void> arg,
   ) {
     return _wire_rust_auto_opaque_plus_sign_arg_twin_sync(
@@ -15072,24 +15069,25 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_plus_sign_arg_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_rust_auto_opaque_plus_sign_arg_twin_sync');
   late final _wire_rust_auto_opaque_plus_sign_arg_twin_sync =
       _wire_rust_auto_opaque_plus_sign_arg_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_rust_auto_opaque_plus_sign_return_twin_sync() {
+  WireSyncReturnDco wire_rust_auto_opaque_plus_sign_return_twin_sync() {
     return _wire_rust_auto_opaque_plus_sign_return_twin_sync();
   }
 
   late final _wire_rust_auto_opaque_plus_sign_return_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_rust_auto_opaque_plus_sign_return_twin_sync');
   late final _wire_rust_auto_opaque_plus_sign_return_twin_sync =
       _wire_rust_auto_opaque_plus_sign_return_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_rust_auto_opaque_return_own_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_return_own_twin_sync(
     int initial,
   ) {
     return _wire_rust_auto_opaque_return_own_twin_sync(
@@ -15098,13 +15096,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_return_own_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int32)>>(
           'wire_rust_auto_opaque_return_own_twin_sync');
   late final _wire_rust_auto_opaque_return_own_twin_sync =
       _wire_rust_auto_opaque_return_own_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
     ffi.Pointer<ffi.Void> arg,
   ) {
@@ -15115,14 +15113,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
     ffi.Pointer<ffi.Void> arg,
   ) {
@@ -15133,14 +15131,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
     ffi.Pointer<ffi.Void> arg,
   ) {
@@ -15151,26 +15149,26 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_syncPtr =
       _lookup<
-              ffi
-              .NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+              ffi.NativeFunction<
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
           'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn
+  WireSyncReturnDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync() {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
     ffi.Pointer<ffi.Void> arg,
     ffi.Pointer<wire_cst_list_prim_u_8> expect,
   ) {
@@ -15183,15 +15181,15 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncReturn Function(ffi.Pointer<ffi.Void>,
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>,
                       ffi.Pointer<wire_cst_list_prim_u_8>)>>(
           'wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync');
   late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync =
       _wire_rust_auto_opaque_trait_object_arg_borrow_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
     ffi.Pointer<ffi.Void> arg,
     ffi.Pointer<wire_cst_list_prim_u_8> expect,
   ) {
@@ -15204,16 +15202,16 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncReturn Function(ffi.Pointer<ffi.Void>,
+                  WireSyncReturnDco Function(ffi.Pointer<ffi.Void>,
                       ffi.Pointer<wire_cst_list_prim_u_8>)>>(
           'wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync');
   late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync =
       _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_syncPtr
           .asFunction<
-              WireSyncReturn Function(ffi.Pointer<ffi.Void>,
+              WireSyncReturnDco Function(ffi.Pointer<ffi.Void>,
                   ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
     ffi.Pointer<ffi.Void> arg,
     ffi.Pointer<wire_cst_list_prim_u_8> expect,
   ) {
@@ -15225,37 +15223,39 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_trait_object_arg_own_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<ffi.Void>, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_rust_auto_opaque_trait_object_arg_own_twin_sync');
   late final _wire_rust_auto_opaque_trait_object_arg_own_twin_sync =
       _wire_rust_auto_opaque_trait_object_arg_own_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_rust_auto_opaque_trait_object_return_own_one_twin_sync() {
+  WireSyncReturnDco
+      wire_rust_auto_opaque_trait_object_return_own_one_twin_sync() {
     return _wire_rust_auto_opaque_trait_object_return_own_one_twin_sync();
   }
 
   late final _wire_rust_auto_opaque_trait_object_return_own_one_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_rust_auto_opaque_trait_object_return_own_one_twin_sync');
   late final _wire_rust_auto_opaque_trait_object_return_own_one_twin_sync =
       _wire_rust_auto_opaque_trait_object_return_own_one_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_rust_auto_opaque_trait_object_return_own_two_twin_sync() {
+  WireSyncReturnDco
+      wire_rust_auto_opaque_trait_object_return_own_two_twin_sync() {
     return _wire_rust_auto_opaque_trait_object_return_own_two_twin_sync();
   }
 
   late final _wire_rust_auto_opaque_trait_object_return_own_two_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_rust_auto_opaque_trait_object_return_own_two_twin_sync');
   late final _wire_rust_auto_opaque_trait_object_return_own_two_twin_sync =
       _wire_rust_auto_opaque_trait_object_return_own_two_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_rust_auto_opaque_two_args_twin_sync(
+  WireSyncReturnDco wire_rust_auto_opaque_two_args_twin_sync(
     ffi.Pointer<ffi.Void> a,
     ffi.Pointer<ffi.Void> b,
   ) {
@@ -15267,12 +15267,12 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_two_args_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
       'wire_rust_auto_opaque_two_args_twin_sync');
   late final _wire_rust_auto_opaque_two_args_twin_sync =
       _wire_rust_auto_opaque_two_args_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   void wire_create_array_opaque_enum_twin_rust_async(
@@ -15548,39 +15548,39 @@ class RustLibWire implements BaseWire {
       _wire_unwrap_rust_opaque_twin_rust_asyncPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_create_array_opaque_enum_twin_sync() {
+  WireSyncReturnDco wire_create_array_opaque_enum_twin_sync() {
     return _wire_create_array_opaque_enum_twin_sync();
   }
 
   late final _wire_create_array_opaque_enum_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_create_array_opaque_enum_twin_sync');
   late final _wire_create_array_opaque_enum_twin_sync =
       _wire_create_array_opaque_enum_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_create_nested_opaque_twin_sync() {
+  WireSyncReturnDco wire_create_nested_opaque_twin_sync() {
     return _wire_create_nested_opaque_twin_sync();
   }
 
   late final _wire_create_nested_opaque_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_create_nested_opaque_twin_sync');
   late final _wire_create_nested_opaque_twin_sync =
       _wire_create_nested_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_create_opaque_twin_sync() {
+  WireSyncReturnDco wire_create_opaque_twin_sync() {
     return _wire_create_opaque_twin_sync();
   }
 
   late final _wire_create_opaque_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_create_opaque_twin_sync');
-  late final _wire_create_opaque_twin_sync =
-      _wire_create_opaque_twin_syncPtr.asFunction<WireSyncReturn Function()>();
+  late final _wire_create_opaque_twin_sync = _wire_create_opaque_twin_syncPtr
+      .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_create_option_opaque_twin_sync(
+  WireSyncReturnDco wire_create_option_opaque_twin_sync(
     ffi.Pointer<ffi.Pointer<ffi.Void>> opaque,
   ) {
     return _wire_create_option_opaque_twin_sync(
@@ -15590,35 +15590,35 @@ class RustLibWire implements BaseWire {
 
   late final _wire_create_option_opaque_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
       'wire_create_option_opaque_twin_sync');
   late final _wire_create_option_opaque_twin_sync =
       _wire_create_option_opaque_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+          WireSyncReturnDco Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
-  WireSyncReturn wire_create_sync_opaque_twin_sync() {
+  WireSyncReturnDco wire_create_sync_opaque_twin_sync() {
     return _wire_create_sync_opaque_twin_sync();
   }
 
   late final _wire_create_sync_opaque_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_create_sync_opaque_twin_sync');
   late final _wire_create_sync_opaque_twin_sync =
       _wire_create_sync_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_frb_generator_test_twin_sync() {
+  WireSyncReturnDco wire_frb_generator_test_twin_sync() {
     return _wire_frb_generator_test_twin_sync();
   }
 
   late final _wire_frb_generator_test_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_frb_generator_test_twin_sync');
   late final _wire_frb_generator_test_twin_sync =
       _wire_frb_generator_test_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_opaque_array_run_twin_sync(
+  WireSyncReturnDco wire_opaque_array_run_twin_sync(
     ffi.Pointer<wire_cst_list_RustOpaque_hide_data> data,
   ) {
     return _wire_opaque_array_run_twin_sync(
@@ -15628,25 +15628,25 @@ class RustLibWire implements BaseWire {
 
   late final _wire_opaque_array_run_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_list_RustOpaque_hide_data>)>>(
       'wire_opaque_array_run_twin_sync');
   late final _wire_opaque_array_run_twin_sync =
       _wire_opaque_array_run_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_list_RustOpaque_hide_data>)>();
 
-  WireSyncReturn wire_opaque_array_twin_sync() {
+  WireSyncReturnDco wire_opaque_array_twin_sync() {
     return _wire_opaque_array_twin_sync();
   }
 
   late final _wire_opaque_array_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_opaque_array_twin_sync');
-  late final _wire_opaque_array_twin_sync =
-      _wire_opaque_array_twin_syncPtr.asFunction<WireSyncReturn Function()>();
+  late final _wire_opaque_array_twin_sync = _wire_opaque_array_twin_syncPtr
+      .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_opaque_vec_run_twin_sync(
+  WireSyncReturnDco wire_opaque_vec_run_twin_sync(
     ffi.Pointer<wire_cst_list_RustOpaque_hide_data> data,
   ) {
     return _wire_opaque_vec_run_twin_sync(
@@ -15656,25 +15656,25 @@ class RustLibWire implements BaseWire {
 
   late final _wire_opaque_vec_run_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_list_RustOpaque_hide_data>)>>(
       'wire_opaque_vec_run_twin_sync');
   late final _wire_opaque_vec_run_twin_sync =
       _wire_opaque_vec_run_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_list_RustOpaque_hide_data>)>();
 
-  WireSyncReturn wire_opaque_vec_twin_sync() {
+  WireSyncReturnDco wire_opaque_vec_twin_sync() {
     return _wire_opaque_vec_twin_sync();
   }
 
   late final _wire_opaque_vec_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_opaque_vec_twin_sync');
   late final _wire_opaque_vec_twin_sync =
-      _wire_opaque_vec_twin_syncPtr.asFunction<WireSyncReturn Function()>();
+      _wire_opaque_vec_twin_syncPtr.asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_run_enum_opaque_twin_sync(
+  WireSyncReturnDco wire_run_enum_opaque_twin_sync(
     ffi.Pointer<wire_cst_enum_opaque_twin_sync> opaque,
   ) {
     return _wire_run_enum_opaque_twin_sync(
@@ -15684,15 +15684,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_run_enum_opaque_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_enum_opaque_twin_sync>)>>(
       'wire_run_enum_opaque_twin_sync');
   late final _wire_run_enum_opaque_twin_sync =
       _wire_run_enum_opaque_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_enum_opaque_twin_sync>)>();
 
-  WireSyncReturn wire_run_nested_opaque_twin_sync(
+  WireSyncReturnDco wire_run_nested_opaque_twin_sync(
     ffi.Pointer<wire_cst_opaque_nested_twin_sync> opaque,
   ) {
     return _wire_run_nested_opaque_twin_sync(
@@ -15702,15 +15702,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_run_nested_opaque_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_opaque_nested_twin_sync>)>>(
       'wire_run_nested_opaque_twin_sync');
   late final _wire_run_nested_opaque_twin_sync =
       _wire_run_nested_opaque_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_opaque_nested_twin_sync>)>();
 
-  WireSyncReturn wire_run_non_clone_twin_sync(
+  WireSyncReturnDco wire_run_non_clone_twin_sync(
     ffi.Pointer<ffi.Void> clone,
   ) {
     return _wire_run_non_clone_twin_sync(
@@ -15719,12 +15719,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_non_clone_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_run_non_clone_twin_sync');
   late final _wire_run_non_clone_twin_sync = _wire_run_non_clone_twin_syncPtr
-      .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+      .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_run_opaque_twin_sync(
+  WireSyncReturnDco wire_run_opaque_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_run_opaque_twin_sync(
@@ -15733,12 +15734,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_run_opaque_twin_sync');
   late final _wire_run_opaque_twin_sync = _wire_run_opaque_twin_syncPtr
-      .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+      .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_run_opaque_with_delay_twin_sync(
+  WireSyncReturnDco wire_run_opaque_with_delay_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_run_opaque_with_delay_twin_sync(
@@ -15747,13 +15749,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_with_delay_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_run_opaque_with_delay_twin_sync');
   late final _wire_run_opaque_with_delay_twin_sync =
       _wire_run_opaque_with_delay_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_unwrap_rust_opaque_twin_sync(
+  WireSyncReturnDco wire_unwrap_rust_opaque_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_unwrap_rust_opaque_twin_sync(
@@ -15762,11 +15765,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_unwrap_rust_opaque_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_unwrap_rust_opaque_twin_sync');
   late final _wire_unwrap_rust_opaque_twin_sync =
       _wire_unwrap_rust_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
   void wire_simple_adder_twin_rust_async(
     int port_,
@@ -15788,7 +15792,7 @@ class RustLibWire implements BaseWire {
       _wire_simple_adder_twin_rust_asyncPtr
           .asFunction<void Function(int, int, int)>();
 
-  WireSyncReturn wire_simple_adder_twin_sync(
+  WireSyncReturnDco wire_simple_adder_twin_sync(
     int a,
     int b,
   ) {
@@ -15799,10 +15803,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_simple_adder_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>(
+          ffi.NativeFunction<WireSyncReturnDco Function(ffi.Int32, ffi.Int32)>>(
       'wire_simple_adder_twin_sync');
   late final _wire_simple_adder_twin_sync = _wire_simple_adder_twin_syncPtr
-      .asFunction<WireSyncReturn Function(int, int)>();
+      .asFunction<WireSyncReturnDco Function(int, int)>();
 
   void wire_func_stream_return_error_twin_rust_async(
     int port_,
@@ -16043,7 +16047,7 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<
                   wire_cst_tuple_struct_with_two_field_twin_rust_async>)>();
 
-  WireSyncReturn wire_func_struct_with_one_field_twin_sync(
+  WireSyncReturnDco wire_func_struct_with_one_field_twin_sync(
     ffi.Pointer<wire_cst_struct_with_one_field_twin_sync> arg,
   ) {
     return _wire_func_struct_with_one_field_twin_sync(
@@ -16053,15 +16057,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_struct_with_one_field_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_struct_with_one_field_twin_sync>)>>(
       'wire_func_struct_with_one_field_twin_sync');
   late final _wire_func_struct_with_one_field_twin_sync =
       _wire_func_struct_with_one_field_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_struct_with_one_field_twin_sync>)>();
 
-  WireSyncReturn wire_func_struct_with_two_field_twin_sync(
+  WireSyncReturnDco wire_func_struct_with_two_field_twin_sync(
     ffi.Pointer<wire_cst_struct_with_two_field_twin_sync> arg,
   ) {
     return _wire_func_struct_with_two_field_twin_sync(
@@ -16071,15 +16075,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_struct_with_two_field_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_struct_with_two_field_twin_sync>)>>(
       'wire_func_struct_with_two_field_twin_sync');
   late final _wire_func_struct_with_two_field_twin_sync =
       _wire_func_struct_with_two_field_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_struct_with_two_field_twin_sync>)>();
 
-  WireSyncReturn wire_func_struct_with_zero_field_twin_sync(
+  WireSyncReturnDco wire_func_struct_with_zero_field_twin_sync(
     ffi.Pointer<wire_cst_struct_with_zero_field_twin_sync> arg,
   ) {
     return _wire_func_struct_with_zero_field_twin_sync(
@@ -16089,15 +16093,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_struct_with_zero_field_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_struct_with_zero_field_twin_sync>)>>(
       'wire_func_struct_with_zero_field_twin_sync');
   late final _wire_func_struct_with_zero_field_twin_sync =
       _wire_func_struct_with_zero_field_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_struct_with_zero_field_twin_sync>)>();
 
-  WireSyncReturn wire_func_tuple_struct_with_one_field_twin_sync(
+  WireSyncReturnDco wire_func_tuple_struct_with_one_field_twin_sync(
     ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_sync> arg,
   ) {
     return _wire_func_tuple_struct_with_one_field_twin_sync(
@@ -16107,16 +16111,16 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_tuple_struct_with_one_field_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<
                       wire_cst_tuple_struct_with_one_field_twin_sync>)>>(
       'wire_func_tuple_struct_with_one_field_twin_sync');
   late final _wire_func_tuple_struct_with_one_field_twin_sync =
       _wire_func_tuple_struct_with_one_field_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_sync>)>();
 
-  WireSyncReturn wire_func_tuple_struct_with_two_field_twin_sync(
+  WireSyncReturnDco wire_func_tuple_struct_with_two_field_twin_sync(
     ffi.Pointer<wire_cst_tuple_struct_with_two_field_twin_sync> arg,
   ) {
     return _wire_func_tuple_struct_with_two_field_twin_sync(
@@ -16126,13 +16130,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_tuple_struct_with_two_field_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<
                       wire_cst_tuple_struct_with_two_field_twin_sync>)>>(
       'wire_func_tuple_struct_with_two_field_twin_sync');
   late final _wire_func_tuple_struct_with_two_field_twin_sync =
       _wire_func_tuple_struct_with_two_field_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_tuple_struct_with_two_field_twin_sync>)>();
 
   void wire_test_tuple_2_twin_rust_async(
@@ -16173,7 +16177,7 @@ class RustLibWire implements BaseWire {
       _wire_test_tuple_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_record_string_i_32>)>();
 
-  WireSyncReturn wire_test_tuple_2_twin_sync(
+  WireSyncReturnDco wire_test_tuple_2_twin_sync(
     ffi.Pointer<wire_cst_list_record_string_i_32> value,
   ) {
     return _wire_test_tuple_2_twin_sync(
@@ -16183,15 +16187,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_test_tuple_2_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_list_record_string_i_32>)>>(
       'wire_test_tuple_2_twin_sync');
   late final _wire_test_tuple_2_twin_sync =
       _wire_test_tuple_2_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_list_record_string_i_32>)>();
 
-  WireSyncReturn wire_test_tuple_twin_sync(
+  WireSyncReturnDco wire_test_tuple_twin_sync(
     ffi.Pointer<wire_cst_record_string_i_32> value,
   ) {
     return _wire_test_tuple_twin_sync(
@@ -16201,12 +16205,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_test_tuple_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_record_string_i_32>)>>(
       'wire_test_tuple_twin_sync');
   late final _wire_test_tuple_twin_sync =
       _wire_test_tuple_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_record_string_i_32>)>();
+          WireSyncReturnDco Function(
+              ffi.Pointer<wire_cst_record_string_i_32>)>();
 
   void wire_handle_type_alias_id_twin_rust_async(
     int port_,
@@ -16259,7 +16264,7 @@ class RustLibWire implements BaseWire {
       _wire_handle_type_nest_alias_id_twin_rust_asyncPtr
           .asFunction<void Function(int, int)>();
 
-  WireSyncReturn wire_handle_type_alias_id_twin_sync(
+  WireSyncReturnDco wire_handle_type_alias_id_twin_sync(
     int input,
   ) {
     return _wire_handle_type_alias_id_twin_sync(
@@ -16268,13 +16273,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_type_alias_id_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint64)>>(
           'wire_handle_type_alias_id_twin_sync');
   late final _wire_handle_type_alias_id_twin_sync =
       _wire_handle_type_alias_id_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_handle_type_alias_model_twin_sync(
+  WireSyncReturnDco wire_handle_type_alias_model_twin_sync(
     int input,
   ) {
     return _wire_handle_type_alias_model_twin_sync(
@@ -16283,13 +16288,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_type_alias_model_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint64)>>(
           'wire_handle_type_alias_model_twin_sync');
   late final _wire_handle_type_alias_model_twin_sync =
       _wire_handle_type_alias_model_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
-  WireSyncReturn wire_handle_type_nest_alias_id_twin_sync(
+  WireSyncReturnDco wire_handle_type_nest_alias_id_twin_sync(
     int input,
   ) {
     return _wire_handle_type_nest_alias_id_twin_sync(
@@ -16298,11 +16303,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_type_nest_alias_id_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function(ffi.Uint64)>>(
           'wire_handle_type_nest_alias_id_twin_sync');
   late final _wire_handle_type_nest_alias_id_twin_sync =
       _wire_handle_type_nest_alias_id_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
+          .asFunction<WireSyncReturnDco Function(int)>();
 
   void wire_handle_nested_uuids_twin_rust_async(
     int port_,
@@ -16345,7 +16350,7 @@ class RustLibWire implements BaseWire {
 
   void wire_handle_uuids_twin_rust_async(
     int port_,
-    ffi.Pointer<wire_cst_list_prim_u_8> ids,
+    ffi.Pointer<wire_cst_list_Uuid> ids,
   ) {
     return _wire_handle_uuids_twin_rust_async(
       port_,
@@ -16355,14 +16360,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_uuids_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_Uuid>)>>(
       'wire_handle_uuids_twin_rust_async');
   late final _wire_handle_uuids_twin_rust_async =
-      _wire_handle_uuids_twin_rust_asyncPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+      _wire_handle_uuids_twin_rust_asyncPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_cst_list_Uuid>)>();
 
-  WireSyncReturn wire_handle_nested_uuids_twin_sync(
+  WireSyncReturnDco wire_handle_nested_uuids_twin_sync(
     ffi.Pointer<wire_cst_feature_uuid_twin_sync> ids,
   ) {
     return _wire_handle_nested_uuids_twin_sync(
@@ -16372,15 +16376,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_nested_uuids_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(
+              WireSyncReturnDco Function(
                   ffi.Pointer<wire_cst_feature_uuid_twin_sync>)>>(
       'wire_handle_nested_uuids_twin_sync');
   late final _wire_handle_nested_uuids_twin_sync =
       _wire_handle_nested_uuids_twin_syncPtr.asFunction<
-          WireSyncReturn Function(
+          WireSyncReturnDco Function(
               ffi.Pointer<wire_cst_feature_uuid_twin_sync>)>();
 
-  WireSyncReturn wire_handle_uuid_twin_sync(
+  WireSyncReturnDco wire_handle_uuid_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> id,
   ) {
     return _wire_handle_uuid_twin_sync(
@@ -16390,14 +16394,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_uuid_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
       'wire_handle_uuid_twin_sync');
   late final _wire_handle_uuid_twin_sync =
       _wire_handle_uuid_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  WireSyncReturn wire_handle_uuids_twin_sync(
-    ffi.Pointer<wire_cst_list_prim_u_8> ids,
+  WireSyncReturnDco wire_handle_uuids_twin_sync(
+    ffi.Pointer<wire_cst_list_Uuid> ids,
   ) {
     return _wire_handle_uuids_twin_sync(
       ids,
@@ -16405,12 +16409,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_uuids_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-      'wire_handle_uuids_twin_sync');
+      ffi.NativeFunction<
+          WireSyncReturnDco Function(
+              ffi.Pointer<wire_cst_list_Uuid>)>>('wire_handle_uuids_twin_sync');
   late final _wire_handle_uuids_twin_sync =
       _wire_handle_uuids_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncReturnDco Function(ffi.Pointer<wire_cst_list_Uuid>)>();
 
   void wire_test_more_than_just_one_raw_string_struct_twin_normal(
     int port_,
@@ -17273,62 +17277,62 @@ class RustLibWire implements BaseWire {
       _wire_unwrap_rust_opaque_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_frb_sync_generator_test_twin_normal() {
+  WireSyncReturnDco wire_frb_sync_generator_test_twin_normal() {
     return _wire_frb_sync_generator_test_twin_normal();
   }
 
   late final _wire_frb_sync_generator_test_twin_normalPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_frb_sync_generator_test_twin_normal');
   late final _wire_frb_sync_generator_test_twin_normal =
       _wire_frb_sync_generator_test_twin_normalPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_sync_create_non_clone_twin_normal() {
+  WireSyncReturnDco wire_sync_create_non_clone_twin_normal() {
     return _wire_sync_create_non_clone_twin_normal();
   }
 
   late final _wire_sync_create_non_clone_twin_normalPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_sync_create_non_clone_twin_normal');
   late final _wire_sync_create_non_clone_twin_normal =
       _wire_sync_create_non_clone_twin_normalPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_sync_create_opaque_twin_normal() {
+  WireSyncReturnDco wire_sync_create_opaque_twin_normal() {
     return _wire_sync_create_opaque_twin_normal();
   }
 
   late final _wire_sync_create_opaque_twin_normalPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_sync_create_opaque_twin_normal');
   late final _wire_sync_create_opaque_twin_normal =
       _wire_sync_create_opaque_twin_normalPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_sync_create_sync_opaque_twin_normal() {
+  WireSyncReturnDco wire_sync_create_sync_opaque_twin_normal() {
     return _wire_sync_create_sync_opaque_twin_normal();
   }
 
   late final _wire_sync_create_sync_opaque_twin_normalPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_sync_create_sync_opaque_twin_normal');
   late final _wire_sync_create_sync_opaque_twin_normal =
       _wire_sync_create_sync_opaque_twin_normalPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_sync_option_rust_opaque_twin_normal() {
+  WireSyncReturnDco wire_sync_option_rust_opaque_twin_normal() {
     return _wire_sync_option_rust_opaque_twin_normal();
   }
 
   late final _wire_sync_option_rust_opaque_twin_normalPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturnDco Function()>>(
           'wire_sync_option_rust_opaque_twin_normal');
   late final _wire_sync_option_rust_opaque_twin_normal =
       _wire_sync_option_rust_opaque_twin_normalPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturnDco Function()>();
 
-  WireSyncReturn wire_sync_run_opaque_twin_normal(
+  WireSyncReturnDco wire_sync_run_opaque_twin_normal(
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_sync_run_opaque_twin_normal(
@@ -17337,11 +17341,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_sync_run_opaque_twin_normalPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+          ffi
+          .NativeFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>>(
       'wire_sync_run_opaque_twin_normal');
   late final _wire_sync_run_opaque_twin_normal =
       _wire_sync_run_opaque_twin_normalPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturnDco Function(ffi.Pointer<ffi.Void>)>();
 
   void wire_simple_adder_twin_normal(
     int port_,
@@ -17738,7 +17743,7 @@ class RustLibWire implements BaseWire {
 
   void wire_handle_uuids_twin_normal(
     int port_,
-    ffi.Pointer<wire_cst_list_prim_u_8> ids,
+    ffi.Pointer<wire_cst_list_Uuid> ids,
   ) {
     return _wire_handle_uuids_twin_normal(
       port_,
@@ -17748,11 +17753,10 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_uuids_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_Uuid>)>>(
       'wire_handle_uuids_twin_normal');
   late final _wire_handle_uuids_twin_normal = _wire_handle_uuids_twin_normalPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+      .asFunction<void Function(int, ffi.Pointer<wire_cst_list_Uuid>)>();
 
   ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
     Object handle,
@@ -18385,21 +18389,6 @@ class RustLibWire implements BaseWire {
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  ffi.Pointer<wire_cst_StringList> cst_new_StringList(
-    int len,
-  ) {
-    return _cst_new_StringList(
-      len,
-    );
-  }
-
-  late final _cst_new_StringListPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_cst_StringList> Function(
-              ffi.Int32)>>('cst_new_StringList');
-  late final _cst_new_StringList = _cst_new_StringListPtr
-      .asFunction<ffi.Pointer<wire_cst_StringList> Function(int)>();
 
   ffi.Pointer<wire_cst_application_env> cst_new_box_application_env() {
     return _cst_new_box_application_env();
@@ -20819,6 +20808,36 @@ class RustLibWire implements BaseWire {
       _cst_new_box_weekdays_twin_syncPtr
           .asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
 
+  ffi.Pointer<wire_cst_list_Chrono_Duration> cst_new_list_Chrono_Duration(
+    int len,
+  ) {
+    return _cst_new_list_Chrono_Duration(
+      len,
+    );
+  }
+
+  late final _cst_new_list_Chrono_DurationPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_list_Chrono_Duration> Function(
+              ffi.Int32)>>('cst_new_list_Chrono_Duration');
+  late final _cst_new_list_Chrono_Duration = _cst_new_list_Chrono_DurationPtr
+      .asFunction<ffi.Pointer<wire_cst_list_Chrono_Duration> Function(int)>();
+
+  ffi.Pointer<wire_cst_list_Chrono_Naive> cst_new_list_Chrono_Naive(
+    int len,
+  ) {
+    return _cst_new_list_Chrono_Naive(
+      len,
+    );
+  }
+
+  late final _cst_new_list_Chrono_NaivePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_list_Chrono_Naive> Function(
+              ffi.Int32)>>('cst_new_list_Chrono_Naive');
+  late final _cst_new_list_Chrono_Naive = _cst_new_list_Chrono_NaivePtr
+      .asFunction<ffi.Pointer<wire_cst_list_Chrono_Naive> Function(int)>();
+
   ffi.Pointer<wire_cst_list_DartOpaque> cst_new_list_DartOpaque(
     int len,
   ) {
@@ -20850,6 +20869,36 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_RustOpaque_hide_data =
       _cst_new_list_RustOpaque_hide_dataPtr.asFunction<
           ffi.Pointer<wire_cst_list_RustOpaque_hide_data> Function(int)>();
+
+  ffi.Pointer<wire_cst_list_String> cst_new_list_String(
+    int len,
+  ) {
+    return _cst_new_list_String(
+      len,
+    );
+  }
+
+  late final _cst_new_list_StringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_list_String> Function(
+              ffi.Int32)>>('cst_new_list_String');
+  late final _cst_new_list_String = _cst_new_list_StringPtr
+      .asFunction<ffi.Pointer<wire_cst_list_String> Function(int)>();
+
+  ffi.Pointer<wire_cst_list_Uuid> cst_new_list_Uuid(
+    int len,
+  ) {
+    return _cst_new_list_Uuid(
+      len,
+    );
+  }
+
+  late final _cst_new_list_UuidPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_cst_list_Uuid> Function(ffi.Int32)>>(
+      'cst_new_list_Uuid');
+  late final _cst_new_list_Uuid = _cst_new_list_UuidPtr
+      .asFunction<ffi.Pointer<wire_cst_list_Uuid> Function(int)>();
 
   ffi.Pointer<wire_cst_list_application_env_var>
       cst_new_list_application_env_var(
@@ -22606,7 +22655,14 @@ final class wire_cst_user_id_twin_normal extends ffi.Struct {
   external int value;
 }
 
-final class wire_cst_list_prim_i_64 extends ffi.Struct {
+final class wire_cst_list_Chrono_Duration extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_list_Chrono_Naive extends ffi.Struct {
   external ffi.Pointer<ffi.Int64> ptr;
 
   @ffi.Int32()
@@ -23081,7 +23137,7 @@ final class wire_cst_list_my_size extends ffi.Struct {
   external int len;
 }
 
-final class wire_cst_StringList extends ffi.Struct {
+final class wire_cst_list_String extends ffi.Struct {
   external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8>> ptr;
 
   @ffi.Int32()
@@ -24238,6 +24294,13 @@ final class wire_cst_list_prim_i_16 extends ffi.Struct {
   external int len;
 }
 
+final class wire_cst_list_prim_i_64 extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_list_prim_u_16 extends ffi.Struct {
   external ffi.Pointer<ffi.Uint16> ptr;
 
@@ -24429,16 +24492,23 @@ final class wire_cst_list_record_string_i_32 extends ffi.Struct {
   external int len;
 }
 
+final class wire_cst_list_Uuid extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_feature_uuid_twin_rust_async extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> one;
 
-  external ffi.Pointer<wire_cst_list_prim_u_8> many;
+  external ffi.Pointer<wire_cst_list_Uuid> many;
 }
 
 final class wire_cst_feature_uuid_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> one;
 
-  external ffi.Pointer<wire_cst_list_prim_u_8> many;
+  external ffi.Pointer<wire_cst_list_Uuid> many;
 }
 
 final class wire_cst_EnumOpaqueTwinNormal_Struct extends ffi.Struct {
@@ -24519,5 +24589,5 @@ final class wire_cst_tuple_struct_with_two_field_twin_normal
 final class wire_cst_feature_uuid_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> one;
 
-  external ffi.Pointer<wire_cst_list_prim_u_8> many;
+  external ffi.Pointer<wire_cst_list_Uuid> many;
 }

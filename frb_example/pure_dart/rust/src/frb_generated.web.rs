@@ -10,6 +10,8 @@ use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
 use crate::api::rust_auto_opaque::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
+use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
+use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::for_generated::wasm_bindgen;
 use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -29,18 +31,6 @@ impl CstDecode<chrono::Duration> for i64 {
         chrono::Duration::milliseconds(self)
     }
 }
-impl CstDecode<Vec<chrono::Duration>> for Box<[i64]> {
-    fn cst_decode(self) -> Vec<chrono::Duration> {
-        let vec: Vec<i64> = self.cst_decode();
-        vec.into_iter().map(CstDecode::cst_decode).collect()
-    }
-}
-impl CstDecode<Vec<chrono::NaiveDateTime>> for Box<[i64]> {
-    fn cst_decode(self) -> Vec<chrono::NaiveDateTime> {
-        let vec: Vec<i64> = self.cst_decode();
-        vec.into_iter().map(CstDecode::cst_decode).collect()
-    }
-}
 impl CstDecode<flutter_rust_bridge::DartOpaque>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -58,30 +48,10 @@ impl CstDecode<String> for String {
         self
     }
 }
-impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<String> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<uuid::Uuid> for Box<[u8]> {
     fn cst_decode(self) -> uuid::Uuid {
         let single: Vec<u8> = self.cst_decode();
-        flutter_rust_bridge::for_generated::cst_decode_uuid_ref(single.as_slice())
-    }
-}
-impl CstDecode<Vec<uuid::Uuid>> for Box<[u8]> {
-    fn cst_decode(self) -> Vec<uuid::Uuid> {
-        let multiple: Vec<u8> = self.cst_decode();
-        flutter_rust_bridge::for_generated::cst_decode_uuids(multiple)
-    }
-}
-impl CstDecode<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
-    fn cst_decode(self) -> flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>> {
-        flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())
+        flutter_rust_bridge::for_generated::decode_uuid(single)
     }
 }
 impl CstDecode<crate::api::misc_example::ATwinNormal>
@@ -1639,6 +1609,28 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwin
         }
     }
 }
+impl CstDecode<Vec<chrono::Duration>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<chrono::Duration> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<chrono::NaiveDateTime>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<chrono::NaiveDateTime> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -1656,6 +1648,24 @@ impl CstDecode<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_type
     fn cst_decode(
         self,
     ) -> Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> Vec<String> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<uuid::Uuid>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> Vec<uuid::Uuid> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -2474,11 +2484,6 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwi
 }
 impl CstDecode<Option<String>> for Option<String> {
     fn cst_decode(self) -> Option<String> {
-        self.map(CstDecode::cst_decode)
-    }
-}
-impl CstDecode<Option<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>>> for Option<Box<[u8]>> {
-    fn cst_decode(self) -> Option<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>> {
         self.map(CstDecode::cst_decode)
     }
 }
@@ -3303,17 +3308,6 @@ impl CstDecode<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bi
         CstDecode::<i64>::cst_decode(self).cst_decode()
     }
 }
-impl CstDecode<Vec<chrono::Duration>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<chrono::Duration> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>()
-            .to_vec()
-            .into_iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<chrono::DateTime<chrono::Local>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -3326,17 +3320,6 @@ impl CstDecode<chrono::NaiveDateTime>
 {
     fn cst_decode(self) -> chrono::NaiveDateTime {
         CstDecode::<i64>::cst_decode(self).cst_decode()
-    }
-}
-impl CstDecode<Vec<chrono::NaiveDateTime>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<chrono::NaiveDateTime> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>()
-            .to_vec()
-            .into_iter()
-            .map(CstDecode::cst_decode)
-            .collect()
     }
 }
 impl CstDecode<chrono::DateTime<chrono::Utc>>
@@ -3548,21 +3531,6 @@ impl CstDecode<uuid::Uuid> for flutter_rust_bridge::for_generated::wasm_bindgen:
             .to_vec()
             .into_boxed_slice()
             .cst_decode()
-    }
-}
-impl CstDecode<Vec<uuid::Uuid>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<uuid::Uuid> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
-            .to_vec()
-            .into_boxed_slice()
-            .cst_decode()
-    }
-}
-impl CstDecode<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>> {
-        flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())
     }
 }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode>
@@ -4196,7 +4164,7 @@ pub fn wire_duration_twin_normal(port_: flutter_rust_bridge::for_generated::Mess
 #[wasm_bindgen]
 pub fn wire_handle_durations_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    durations: Box<[i64]>,
+    durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     since: i64,
 ) {
     wire_handle_durations_twin_normal_impl(port_, durations, since)
@@ -4205,7 +4173,7 @@ pub fn wire_handle_durations_twin_normal(
 #[wasm_bindgen]
 pub fn wire_handle_timestamps_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    timestamps: Box<[i64]>,
+    timestamps: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     epoch: i64,
 ) {
     wire_handle_timestamps_twin_normal_impl(port_, timestamps, epoch)
@@ -4431,35 +4399,35 @@ pub fn wire_set_static_dart_opaque_twin_normal(
 #[wasm_bindgen]
 pub fn wire_sync_accept_dart_opaque_twin_normal(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_sync_accept_dart_opaque_twin_normal_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_loopback_twin_normal(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_sync_loopback_twin_normal_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_option_dart_opaque_twin_normal(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_sync_option_dart_opaque_twin_normal_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_option_loopback_twin_normal(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_sync_option_loopback_twin_normal_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_unwrap_dart_opaque_twin_normal(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_unwrap_dart_opaque_twin_normal_impl(opaque)
 }
 
@@ -5234,14 +5202,6 @@ pub fn wire_handle_vec_of_primitive_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_zero_copy_vec_of_primitive_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    n: i32,
-) {
-    wire_handle_zero_copy_vec_of_primitive_twin_normal_impl(port_, n)
-}
-
-#[wasm_bindgen]
 pub fn wire_primitive_types_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: i32,
@@ -5347,73 +5307,73 @@ pub fn wire_use_msgid_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_boxed_blob_twin_sync(
     blob: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_boxed_blob_twin_sync_impl(blob)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_test_id_twin_sync(
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_test_id_twin_sync_impl(id)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_array_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_get_array_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_get_array_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_get_complex_array_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_get_complex_array_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_get_complex_array_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_last_number_twin_sync(
     array: Box<[f64]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_last_number_twin_sync_impl(array)
 }
 
 #[wasm_bindgen]
 pub fn wire_nested_id_twin_sync(
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_nested_id_twin_sync_impl(id)
 }
 
 #[wasm_bindgen]
 pub fn wire_new_msgid_twin_sync(
     id: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_new_msgid_twin_sync_impl(id)
 }
 
 #[wasm_bindgen]
 pub fn wire_return_boxed_feed_id_twin_sync(
     id: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_boxed_feed_id_twin_sync_impl(id)
 }
 
 #[wasm_bindgen]
 pub fn wire_return_boxed_raw_feed_id_twin_sync(
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_boxed_raw_feed_id_twin_sync_impl(id)
 }
 
 #[wasm_bindgen]
 pub fn wire_use_boxed_blob_twin_sync(
     blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_use_boxed_blob_twin_sync_impl(blob)
 }
 
 #[wasm_bindgen]
 pub fn wire_use_msgid_twin_sync(
     id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_use_msgid_twin_sync_impl(id)
 }
 
@@ -5436,14 +5396,14 @@ pub fn wire_next_user_id_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_handle_customized_struct_twin_sync(
     val: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_customized_struct_twin_sync_impl(val)
 }
 
 #[wasm_bindgen]
 pub fn wire_next_user_id_twin_sync(
     user_id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_next_user_id_twin_sync_impl(user_id)
 }
 
@@ -5471,19 +5431,19 @@ pub fn wire_benchmark_void_twin_rust_async(port_: flutter_rust_bridge::for_gener
 #[wasm_bindgen]
 pub fn wire_benchmark_input_bytes_twin_sync(
     bytes: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_benchmark_input_bytes_twin_sync_impl(bytes)
 }
 
 #[wasm_bindgen]
 pub fn wire_benchmark_output_bytes_twin_sync(
     size: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_benchmark_output_bytes_twin_sync_impl(size)
 }
 
 #[wasm_bindgen]
-pub fn wire_benchmark_void_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_benchmark_void_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_benchmark_void_twin_sync_impl()
 }
 
@@ -5514,7 +5474,7 @@ pub fn wire_duration_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_handle_durations_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    durations: Box<[i64]>,
+    durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     since: i64,
 ) {
     wire_handle_durations_twin_rust_async_impl(port_, durations, since)
@@ -5523,7 +5483,7 @@ pub fn wire_handle_durations_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_handle_timestamps_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    timestamps: Box<[i64]>,
+    timestamps: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     epoch: i64,
 ) {
     wire_handle_timestamps_twin_rust_async_impl(port_, timestamps, epoch)
@@ -5566,62 +5526,69 @@ pub fn wire_test_precise_chrono_twin_rust_async(
 }
 
 #[wasm_bindgen]
-pub fn wire_datetime_local_twin_sync(d: i64) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_datetime_local_twin_sync(
+    d: i64,
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_datetime_local_twin_sync_impl(d)
 }
 
 #[wasm_bindgen]
-pub fn wire_datetime_utc_twin_sync(d: i64) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_datetime_utc_twin_sync(
+    d: i64,
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_datetime_utc_twin_sync_impl(d)
 }
 
 #[wasm_bindgen]
-pub fn wire_duration_twin_sync(d: i64) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_duration_twin_sync(d: i64) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_duration_twin_sync_impl(d)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_durations_twin_sync(
-    durations: Box<[i64]>,
+    durations: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     since: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_durations_twin_sync_impl(durations, since)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_timestamps_twin_sync(
-    timestamps: Box<[i64]>,
+    timestamps: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     epoch: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_timestamps_twin_sync_impl(timestamps, epoch)
 }
 
 #[wasm_bindgen]
 pub fn wire_how_long_does_it_take_twin_sync(
     mine: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_how_long_does_it_take_twin_sync_impl(mine)
 }
 
 #[wasm_bindgen]
-pub fn wire_naivedatetime_twin_sync(d: i64) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_naivedatetime_twin_sync(
+    d: i64,
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_naivedatetime_twin_sync_impl(d)
 }
 
 #[wasm_bindgen]
 pub fn wire_optional_empty_datetime_utc_twin_sync(
     d: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_optional_empty_datetime_utc_twin_sync_impl(d)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_chrono_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_test_chrono_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_chrono_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_test_precise_chrono_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_test_precise_chrono_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco
+{
     wire_test_precise_chrono_twin_sync_impl()
 }
 
@@ -5664,31 +5631,31 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinSync_static_method_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_StructWithCommentsTwinSync_static_method_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_function_with_comments_slash_star_star_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_function_with_comments_slash_star_star_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_function_with_comments_triple_slash_multi_line_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_function_with_comments_triple_slash_multi_line_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_function_with_comments_triple_slash_single_line_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_function_with_comments_triple_slash_single_line_twin_sync_impl()
 }
 
@@ -5700,7 +5667,8 @@ pub fn wire_return_dart_dynamic_twin_rust_async(
 }
 
 #[wasm_bindgen]
-pub fn wire_return_dart_dynamic_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_return_dart_dynamic_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco
+{
     wire_return_dart_dynamic_twin_sync_impl()
 }
 
@@ -5837,21 +5805,21 @@ pub fn wire_set_static_dart_opaque_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_async_accept_dart_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_async_accept_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_clone_dart_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_clone_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_create_enum_dart_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_create_enum_dart_opaque_twin_sync_impl(opaque)
 }
 
@@ -5859,84 +5827,84 @@ pub fn wire_create_enum_dart_opaque_twin_sync(
 pub fn wire_create_nested_dart_opaque_twin_sync(
     opaque1: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     opaque2: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_create_nested_dart_opaque_twin_sync_impl(opaque1, opaque2)
 }
 
 #[wasm_bindgen]
 pub fn wire_drop_static_dart_opaque_twin_sync(
     id: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_drop_static_dart_opaque_twin_sync_impl(id)
 }
 
 #[wasm_bindgen]
 pub fn wire_get_enum_dart_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_get_enum_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_get_nested_dart_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_get_nested_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_array_get_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_loop_back_array_get_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_array_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_loop_back_array_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_option_get_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_loop_back_option_get_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_option_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_loop_back_option_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_loop_back_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_vec_get_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_loop_back_vec_get_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_vec_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_loop_back_vec_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_panic_unwrap_dart_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_panic_unwrap_dart_opaque_twin_sync_impl(opaque)
 }
 
@@ -5944,7 +5912,7 @@ pub fn wire_panic_unwrap_dart_opaque_twin_sync(
 pub fn wire_set_static_dart_opaque_twin_sync(
     id: i32,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_set_static_dart_opaque_twin_sync_impl(id, opaque)
 }
 
@@ -6023,63 +5991,63 @@ pub fn wire_print_note_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_func_enum_simple_twin_sync(
     arg: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_enum_simple_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_mixed_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_enum_with_item_mixed_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_struct_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_enum_with_item_struct_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_tuple_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_enum_with_item_tuple_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_enum_parameter_twin_sync(
     weekday: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_enum_parameter_twin_sync_impl(weekday)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_enum_struct_twin_sync(
     val: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_enum_struct_twin_sync_impl(val)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_return_enum_twin_sync(
     input: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_return_enum_twin_sync_impl(input)
 }
 
 #[wasm_bindgen]
 pub fn wire_multiply_by_ten_twin_sync(
     measure: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_multiply_by_ten_twin_sync_impl(measure)
 }
 
 #[wasm_bindgen]
 pub fn wire_print_note_twin_sync(
     note: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_print_note_twin_sync_impl(note)
 }
 
@@ -6117,12 +6085,13 @@ pub fn wire_register_event_listener_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_EventTwinSync_as_string_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_EventTwinSync_as_string_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire_close_event_listener_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_close_event_listener_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco
+{
     wire_close_event_listener_twin_sync_impl()
 }
 
@@ -6130,7 +6099,7 @@ pub fn wire_close_event_listener_twin_sync() -> flutter_rust_bridge::for_generat
 pub fn wire_create_event_twin_sync(
     address: String,
     payload: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_create_event_twin_sync_impl(address, payload)
 }
 
@@ -6361,171 +6330,171 @@ pub fn wire_throw_anyhow_twin_rust_async(port_: flutter_rust_bridge::for_generat
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSync_new_twin_sync(
     message: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_CustomStructTwinSync_new_twin_sync_impl(message)
 }
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSync_new_twin_sync(
     value: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_SomeStructTwinSync_new_twin_sync_impl(value)
 }
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_enum_error_panic_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn
-{
+pub fn wire_custom_enum_error_panic_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_custom_enum_error_panic_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_custom_enum_error_return_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_custom_enum_error_return_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_custom_enum_error_return_ok_twin_sync(
     arg: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_custom_enum_error_return_ok_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_custom_nested_error_return_error_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_custom_nested_error_return_error_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_custom_struct_error_return_error_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_custom_struct_error_return_error_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_return_error_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_func_return_error_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_return_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_func_type_fallible_panic_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_type_fallible_panic_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_func_type_infallible_panic_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_type_infallible_panic_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_panic_with_custom_result_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_panic_with_custom_result_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_return_custom_nested_error_1_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_custom_nested_error_1_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_return_custom_nested_error_1_variant1_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_custom_nested_error_1_variant1_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_return_custom_nested_error_2_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_custom_nested_error_2_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_return_custom_struct_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_custom_struct_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_return_custom_struct_ok_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn
-{
+pub fn wire_return_custom_struct_ok_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_custom_struct_ok_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_return_err_custom_error_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn
-{
+pub fn wire_return_err_custom_error_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_err_custom_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_return_error_variant_twin_sync(
     variant: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_error_variant_twin_sync_impl(variant)
 }
 
 #[wasm_bindgen]
-pub fn wire_return_ok_custom_error_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn
-{
+pub fn wire_return_ok_custom_error_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_ok_custom_error_twin_sync_impl()
 }
 
@@ -6537,7 +6506,7 @@ pub fn wire_stream_sink_throw_anyhow_twin_sync(
 }
 
 #[wasm_bindgen]
-pub fn wire_throw_anyhow_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_throw_anyhow_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_throw_anyhow_twin_sync_impl()
 }
 
@@ -6572,28 +6541,28 @@ pub fn wire_use_imported_struct_twin_rust_async(
 }
 
 #[wasm_bindgen]
-pub fn wire_call_new_module_system_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn
-{
+pub fn wire_call_new_module_system_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_call_new_module_system_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_call_old_module_system_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn
-{
+pub fn wire_call_old_module_system_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_call_old_module_system_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_use_imported_enum_twin_sync(
     my_enum: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_use_imported_enum_twin_sync_impl(my_enum)
 }
 
 #[wasm_bindgen]
 pub fn wire_use_imported_struct_twin_sync(
     my_struct: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_use_imported_struct_twin_sync_impl(my_struct)
 }
 
@@ -6692,7 +6661,7 @@ pub fn wire_get_sum_struct_twin_rust_async(port_: flutter_rust_bridge::for_gener
 pub fn wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
     a: String,
     b: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_ConcatenateWithTwinSync_concatenate_static_twin_sync_impl(a, b)
 }
 
@@ -6700,7 +6669,7 @@ pub fn wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
 pub fn wire_ConcatenateWithTwinSync_concatenate_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_ConcatenateWithTwinSync_concatenate_twin_sync_impl(that, b)
 }
 
@@ -6741,7 +6710,7 @@ pub fn wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync(
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSync_new_twin_sync(
     a: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_ConcatenateWithTwinSync_new_twin_sync_impl(a)
 }
 
@@ -6750,7 +6719,7 @@ pub fn wire_SumWithTwinSync_sum_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     y: u32,
     z: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_SumWithTwinSync_sum_twin_sync_impl(that, y, z)
 }
 
@@ -6759,12 +6728,12 @@ pub fn wire_get_sum_array_twin_sync(
     a: u32,
     b: u32,
     c: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_get_sum_array_twin_sync_impl(a, b, c)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_sum_struct_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_get_sum_struct_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_get_sum_struct_twin_sync_impl()
 }
 
@@ -6922,37 +6891,37 @@ pub fn wire_app_settings_vec_stream_twin_sync(
 #[wasm_bindgen]
 pub fn wire_first_number_twin_sync(
     nums: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_first_number_twin_sync_impl(nums)
 }
 
 #[wasm_bindgen]
 pub fn wire_first_sequence_twin_sync(
     seqs: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_first_sequence_twin_sync_impl(seqs)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_app_settings_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_get_app_settings_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_get_app_settings_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_get_fallible_app_settings_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_get_fallible_app_settings_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_get_message_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_get_message_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_get_message_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_is_app_embedded_twin_sync(
     app_settings: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_is_app_embedded_twin_sync_impl(app_settings)
 }
 
@@ -6970,7 +6939,7 @@ pub fn wire_mirror_tuple_stream_twin_sync(port_: flutter_rust_bridge::for_genera
 pub fn wire_repeat_number_twin_sync(
     num: i32,
     times: usize,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_repeat_number_twin_sync_impl(num, times)
 }
 
@@ -6978,50 +6947,50 @@ pub fn wire_repeat_number_twin_sync(
 pub fn wire_repeat_sequence_twin_sync(
     seq: i32,
     times: usize,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_repeat_sequence_twin_sync_impl(seq, times)
 }
 
 #[wasm_bindgen]
 pub fn wire_test_contains_mirrored_sub_struct_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_contains_mirrored_sub_struct_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_test_fallible_of_raw_string_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_fallible_of_raw_string_mirrored_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_test_list_of_nested_enums_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_list_of_nested_enums_mirrored_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_test_list_of_raw_nested_string_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_list_of_raw_nested_string_mirrored_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_test_nested_raw_string_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_nested_raw_string_mirrored_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_test_raw_string_enum_mirrored_twin_sync(
     nested: bool,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_raw_string_enum_mirrored_twin_sync_impl(nested)
 }
 
 #[wasm_bindgen]
 pub fn wire_test_raw_string_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_raw_string_mirrored_twin_sync_impl()
 }
 
@@ -7098,28 +7067,29 @@ pub fn wire_test_struct_with_enum_twin_rust_async(
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_big_buffers_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_handle_big_buffers_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco
+{
     wire_handle_big_buffers_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_complex_struct_twin_sync(
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_complex_struct_twin_sync_impl(s)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_nested_struct_twin_sync(
     s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_nested_struct_twin_sync_impl(s)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_string_twin_sync(
     s: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_string_twin_sync_impl(s)
 }
 
@@ -7127,35 +7097,35 @@ pub fn wire_handle_string_twin_sync(
 pub fn wire_handle_struct_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     boxed: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_struct_twin_sync_impl(arg, boxed)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_vec_u8_twin_sync(
     v: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_vec_u8_twin_sync_impl(v)
 }
 
 #[wasm_bindgen]
 pub fn wire_list_of_primitive_enums_twin_sync(
     weekdays: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_list_of_primitive_enums_twin_sync_impl(weekdays)
 }
 
 #[wasm_bindgen]
 pub fn wire_test_abc_enum_twin_sync(
     abc: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_abc_enum_twin_sync_impl(abc)
 }
 
 #[wasm_bindgen]
 pub fn wire_test_struct_with_enum_twin_sync(
     se: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_struct_with_enum_twin_sync_impl(se)
 }
 
@@ -7201,33 +7171,33 @@ pub fn wire_handle_string_list_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_empty_struct_twin_sync(
     empty: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_empty_struct_twin_sync_impl(empty)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_return_unit_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_func_return_unit_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_return_unit_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_func_string_twin_sync(
     arg: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_string_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_list_of_struct_twin_sync(
     l: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_list_of_struct_twin_sync_impl(l)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_string_list_twin_sync(
     names: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_string_list_twin_sync_impl(names)
 }
 
@@ -7242,7 +7212,7 @@ pub fn wire_handle_newtype_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_handle_newtype_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_newtype_twin_sync_impl(arg)
 }
 
@@ -7351,7 +7321,7 @@ pub fn wire_primitive_optional_types_twin_sync(
     my_i64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_f64: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     my_bool: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_primitive_optional_types_twin_sync_impl(my_i32, my_i64, my_f64, my_bool)
 }
 
@@ -7446,77 +7416,77 @@ pub fn wire_example_optional_primitive_type_u8_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_bool_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_bool_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_f32_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_f32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_f64_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_f64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i16_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_i16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i32_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_i32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i64_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_i64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i8_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_i8_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u16_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_u16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u32_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_u32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u64_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_u64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u8_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_optional_primitive_type_u8_twin_sync_impl(arg)
 }
 
@@ -7580,7 +7550,7 @@ pub fn wire_handle_vec_of_opts_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_handle_increment_boxed_optional_twin_sync(
     opt: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_increment_boxed_optional_twin_sync_impl(opt)
 }
 
@@ -7593,7 +7563,7 @@ pub fn wire_handle_option_box_arguments_twin_sync(
     f64box: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     boolbox: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     structbox: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_option_box_arguments_twin_sync_impl(
         i8box, u8box, i32box, i64box, f64box, boolbox, structbox,
     )
@@ -7602,7 +7572,7 @@ pub fn wire_handle_option_box_arguments_twin_sync(
 #[wasm_bindgen]
 pub fn wire_handle_optional_increment_twin_sync(
     opt: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_optional_increment_twin_sync_impl(opt)
 }
 
@@ -7610,21 +7580,21 @@ pub fn wire_handle_optional_increment_twin_sync(
 pub fn wire_handle_optional_return_twin_sync(
     left: f64,
     right: f64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_optional_return_twin_sync_impl(left, right)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_optional_struct_twin_sync(
     document: Option<String>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_optional_struct_twin_sync_impl(document)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_vec_of_opts_twin_sync(
     opt: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_vec_of_opts_twin_sync_impl(opt)
 }
 
@@ -7813,25 +7783,10 @@ pub fn wire_handle_vec_of_primitive_twin_rust_async(
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    n: i32,
-) {
-    wire_handle_zero_copy_vec_of_primitive_twin_rust_async_impl(port_, n)
-}
-
-#[wasm_bindgen]
 pub fn wire_handle_vec_of_primitive_twin_sync(
     n: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_vec_of_primitive_twin_sync_impl(n)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_zero_copy_vec_of_primitive_twin_sync(
-    n: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
-    wire_handle_zero_copy_vec_of_primitive_twin_sync_impl(n)
 }
 
 #[wasm_bindgen]
@@ -7925,77 +7880,77 @@ pub fn wire_example_primitive_list_type_u8_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_bool_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_bool_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_f32_twin_sync(
     arg: Box<[f32]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_f32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_f64_twin_sync(
     arg: Box<[f64]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_f64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i16_twin_sync(
     arg: Box<[i16]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_i16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i32_twin_sync(
     arg: Box<[i32]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_i32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i64_twin_sync(
     arg: Box<[i64]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_i64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i8_twin_sync(
     arg: Box<[i8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_i8_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u16_twin_sync(
     arg: Box<[u16]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_u16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u32_twin_sync(
     arg: Box<[u32]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_u32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u64_twin_sync(
     arg: Box<[u64]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_u64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u8_twin_sync(
     arg: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_list_type_u8_twin_sync_impl(arg)
 }
 
@@ -8024,14 +7979,14 @@ pub fn wire_primitive_types_twin_sync(
     my_i64: i64,
     my_f64: f64,
     my_bool: bool,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_primitive_types_twin_sync_impl(my_i32, my_i64, my_f64, my_bool)
 }
 
 #[wasm_bindgen]
 pub fn wire_primitive_u32_twin_sync(
     my_u32: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_primitive_u32_twin_sync_impl(my_u32)
 }
 
@@ -8126,77 +8081,77 @@ pub fn wire_example_primitive_type_u8_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_bool_twin_sync(
     arg: bool,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_bool_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_f32_twin_sync(
     arg: f32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_f32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_f64_twin_sync(
     arg: f64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_f64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i16_twin_sync(
     arg: i16,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_i16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i32_twin_sync(
     arg: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_i32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i64_twin_sync(
     arg: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_i64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i8_twin_sync(
     arg: i8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_i8_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u16_twin_sync(
     arg: u16,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_u16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u32_twin_sync(
     arg: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_u32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u64_twin_sync(
     arg: u64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_u64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u8_twin_sync(
     arg: u8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_example_primitive_type_u8_twin_sync_impl(arg)
 }
 
@@ -8216,80 +8171,80 @@ pub fn wire_test_raw_string_item_struct_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_test_more_than_just_one_raw_string_struct_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_more_than_just_one_raw_string_struct_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_test_raw_string_item_struct_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_raw_string_item_struct_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_new_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_new_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync_impl()
 }
 
@@ -8297,7 +8252,7 @@ pub fn wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync(
 pub fn wire_rust_auto_opaque_arg_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_arg_borrow_twin_sync_impl(arg, expect)
 }
 
@@ -8306,14 +8261,14 @@ pub fn wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
     adder: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_arg_mut_borrow_twin_sync_impl(arg, expect, adder)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_impl(arg)
 }
 
@@ -8321,20 +8276,20 @@ pub fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
 pub fn wire_rust_auto_opaque_arg_own_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_arg_own_twin_sync_impl(arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_arg_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_callable_arg_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_return_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_callable_return_twin_sync_impl()
 }
 
@@ -8342,54 +8297,54 @@ pub fn wire_rust_auto_opaque_callable_return_twin_sync(
 pub fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_impl(a, b)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_plus_sign_arg_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_plus_sign_arg_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_plus_sign_return_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_plus_sign_return_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_return_own_twin_sync(
     initial: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_return_own_twin_sync_impl(initial)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_impl()
 }
 
@@ -8397,7 +8352,7 @@ pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_s
 pub fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_impl(arg, expect)
 }
 
@@ -8405,7 +8360,7 @@ pub fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
 pub fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_impl(arg, expect)
 }
 
@@ -8413,19 +8368,19 @@ pub fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
 pub fn wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_trait_object_arg_own_twin_sync_impl(arg, expect)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_trait_object_return_own_one_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_impl()
 }
 
@@ -8433,7 +8388,7 @@ pub fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(
 pub fn wire_rust_auto_opaque_two_args_twin_sync(
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_rust_auto_opaque_two_args_twin_sync_impl(a, b)
 }
 
@@ -8554,100 +8509,103 @@ pub fn wire_unwrap_rust_opaque_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_create_array_opaque_enum_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_create_array_opaque_enum_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_create_nested_opaque_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_create_nested_opaque_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco
+{
     wire_create_nested_opaque_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_create_opaque_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_create_opaque_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_create_opaque_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_create_option_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_create_option_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_create_sync_opaque_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_create_sync_opaque_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco
+{
     wire_create_sync_opaque_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_frb_generator_test_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_frb_generator_test_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco
+{
     wire_frb_generator_test_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_opaque_array_run_twin_sync(
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_opaque_array_run_twin_sync_impl(data)
 }
 
 #[wasm_bindgen]
-pub fn wire_opaque_array_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_opaque_array_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_opaque_array_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_opaque_vec_run_twin_sync(
     data: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_opaque_vec_run_twin_sync_impl(data)
 }
 
 #[wasm_bindgen]
-pub fn wire_opaque_vec_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_opaque_vec_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_opaque_vec_twin_sync_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_run_enum_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_run_enum_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_run_nested_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_run_nested_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_run_non_clone_twin_sync(
     clone: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_run_non_clone_twin_sync_impl(clone)
 }
 
 #[wasm_bindgen]
 pub fn wire_run_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_run_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_run_opaque_with_delay_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_run_opaque_with_delay_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_unwrap_rust_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_unwrap_rust_opaque_twin_sync_impl(opaque)
 }
 
@@ -8664,7 +8622,7 @@ pub fn wire_simple_adder_twin_rust_async(
 pub fn wire_simple_adder_twin_sync(
     a: i32,
     b: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_simple_adder_twin_sync_impl(a, b)
 }
 
@@ -8768,35 +8726,35 @@ pub fn wire_func_tuple_struct_with_two_field_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_func_struct_with_one_field_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_struct_with_one_field_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_struct_with_two_field_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_struct_with_two_field_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_struct_with_zero_field_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_struct_with_zero_field_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_tuple_struct_with_one_field_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_tuple_struct_with_one_field_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_tuple_struct_with_two_field_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_func_tuple_struct_with_two_field_twin_sync_impl(arg)
 }
 
@@ -8819,14 +8777,14 @@ pub fn wire_test_tuple_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_test_tuple_2_twin_sync(
     value: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_tuple_2_twin_sync_impl(value)
 }
 
 #[wasm_bindgen]
 pub fn wire_test_tuple_twin_sync(
     value: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_test_tuple_twin_sync_impl(value)
 }
 
@@ -8857,21 +8815,21 @@ pub fn wire_handle_type_nest_alias_id_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_handle_type_alias_id_twin_sync(
     input: u64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_type_alias_id_twin_sync_impl(input)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_type_alias_model_twin_sync(
     input: u64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_type_alias_model_twin_sync_impl(input)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_type_nest_alias_id_twin_sync(
     input: u64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_type_nest_alias_id_twin_sync_impl(input)
 }
 
@@ -8894,7 +8852,7 @@ pub fn wire_handle_uuid_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_handle_uuids_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: Box<[u8]>,
+    ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_handle_uuids_twin_rust_async_impl(port_, ids)
 }
@@ -8902,21 +8860,21 @@ pub fn wire_handle_uuids_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_handle_nested_uuids_twin_sync(
     ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_nested_uuids_twin_sync_impl(ids)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_uuid_twin_sync(
     id: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_uuid_twin_sync_impl(id)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_uuids_twin_sync(
-    ids: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_handle_uuids_twin_sync_impl(ids)
 }
 
@@ -9290,37 +9248,38 @@ pub fn wire_unwrap_rust_opaque_twin_normal(
 
 #[wasm_bindgen]
 pub fn wire_frb_sync_generator_test_twin_normal(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_frb_sync_generator_test_twin_normal_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_create_non_clone_twin_normal() -> flutter_rust_bridge::for_generated::WireSyncReturn
-{
+pub fn wire_sync_create_non_clone_twin_normal(
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_sync_create_non_clone_twin_normal_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_create_opaque_twin_normal() -> flutter_rust_bridge::for_generated::WireSyncReturn {
+pub fn wire_sync_create_opaque_twin_normal() -> flutter_rust_bridge::for_generated::WireSyncReturnDco
+{
     wire_sync_create_opaque_twin_normal_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_create_sync_opaque_twin_normal(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_sync_create_sync_opaque_twin_normal_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_option_rust_opaque_twin_normal(
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_sync_option_rust_opaque_twin_normal_impl()
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_run_opaque_twin_normal(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_sync_run_opaque_twin_normal_impl(opaque)
 }
 
@@ -9497,7 +9456,7 @@ pub fn wire_handle_uuid_twin_normal(
 #[wasm_bindgen]
 pub fn wire_handle_uuids_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    ids: Box<[u8]>,
+    ids: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_handle_uuids_twin_normal_impl(port_, ids)
 }

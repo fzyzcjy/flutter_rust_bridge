@@ -598,9 +598,6 @@ abstract class RustLibApi extends BaseApi {
   Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal(
       {required int n, dynamic hint});
 
-  Future<ZeroCopyVecOfPrimitivePackTwinNormal>
-      handleZeroCopyVecOfPrimitiveTwinNormal({required int n, dynamic hint});
-
   Future<int> primitiveTypesTwinNormal(
       {required int myI32,
       required int myI64,
@@ -1566,13 +1563,7 @@ abstract class RustLibApi extends BaseApi {
   Future<VecOfPrimitivePackTwinRustAsync> handleVecOfPrimitiveTwinRustAsync(
       {required int n, dynamic hint});
 
-  Future<ZeroCopyVecOfPrimitivePackTwinRustAsync>
-      handleZeroCopyVecOfPrimitiveTwinRustAsync({required int n, dynamic hint});
-
   VecOfPrimitivePackTwinSync handleVecOfPrimitiveTwinSync(
-      {required int n, dynamic hint});
-
-  ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveTwinSync(
       {required int n, dynamic hint});
 
   Future<List<bool>> examplePrimitiveListTypeBoolTwinRustAsync(
@@ -2438,8 +2429,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_boxed_blob_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_blob_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_blob_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kBoxedBlobTwinNormalConstMeta,
       argValues: [blob],
@@ -2462,8 +2453,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_test_id_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_id_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_id_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTestIdTwinNormalConstMeta,
       argValues: [id],
@@ -2484,8 +2475,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_array_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8_array_5,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8_array_5,
+        decodeErrorData: null,
       ),
       constMeta: kGetArrayTwinNormalConstMeta,
       argValues: [],
@@ -2506,8 +2497,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_complex_array_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_point_twin_normal_array_2,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_point_twin_normal_array_2,
+        decodeErrorData: null,
       ),
       constMeta: kGetComplexArrayTwinNormalConstMeta,
       argValues: [],
@@ -2530,8 +2521,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_last_number_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kLastNumberTwinNormalConstMeta,
       argValues: [array],
@@ -2554,8 +2545,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_nested_id_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_id_twin_normal_array_2,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_id_twin_normal_array_2,
+        decodeErrorData: null,
       ),
       constMeta: kNestedIdTwinNormalConstMeta,
       argValues: [id],
@@ -2578,8 +2569,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_new_msgid_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_message_id_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_message_id_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kNewMsgidTwinNormalConstMeta,
       argValues: [id],
@@ -2602,8 +2593,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_boxed_feed_id_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_box_feed_id_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_box_feed_id_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kReturnBoxedFeedIdTwinNormalConstMeta,
       argValues: [id],
@@ -2627,8 +2618,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_boxed_raw_feed_id_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_box_u_8_array_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_box_u_8_array_8,
+        decodeErrorData: null,
       ),
       constMeta: kReturnBoxedRawFeedIdTwinNormalConstMeta,
       argValues: [id],
@@ -2652,8 +2643,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_boxed_blob_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8_array_1600,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8_array_1600,
+        decodeErrorData: null,
       ),
       constMeta: kUseBoxedBlobTwinNormalConstMeta,
       argValues: [blob],
@@ -2676,8 +2667,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_msgid_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8_array_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8_array_32,
+        decodeErrorData: null,
       ),
       constMeta: kUseMsgidTwinNormalConstMeta,
       argValues: [id],
@@ -2701,8 +2692,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_async_simple_add(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFuncAsyncSimpleAddConstMeta,
       argValues: [a, b],
@@ -2723,8 +2714,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_async_void(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFuncAsyncVoidConstMeta,
       argValues: [],
@@ -2747,8 +2738,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_customized_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kHandleCustomizedStructTwinNormalConstMeta,
       argValues: [val],
@@ -2772,8 +2763,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_next_user_id_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_user_id_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_user_id_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kNextUserIdTwinNormalConstMeta,
       argValues: [userId],
@@ -2796,8 +2787,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_input_bytes_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kBenchmarkInputBytesTwinNormalConstMeta,
       argValues: [bytes],
@@ -2821,8 +2812,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_output_bytes_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kBenchmarkOutputBytesTwinNormalConstMeta,
       argValues: [size],
@@ -2844,8 +2835,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_void_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kBenchmarkVoidTwinNormalConstMeta,
       argValues: [],
@@ -2868,8 +2859,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_datetime_local_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Local,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Local,
+        decodeErrorData: null,
       ),
       constMeta: kDatetimeLocalTwinNormalConstMeta,
       argValues: [d],
@@ -2891,8 +2882,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_datetime_utc_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Utc,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Utc,
+        decodeErrorData: null,
       ),
       constMeta: kDatetimeUtcTwinNormalConstMeta,
       argValues: [d],
@@ -2914,8 +2905,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_duration_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Duration,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Duration,
+        decodeErrorData: null,
       ),
       constMeta: kDurationTwinNormalConstMeta,
       argValues: [d],
@@ -2936,13 +2927,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_Chrono_DurationList(durations);
+        var arg0 = cst_encode_list_Chrono_Duration(durations);
         var arg1 = cst_encode_Chrono_Local(since);
         return wire.wire_handle_durations_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_LocalList,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_Chrono_Local,
+        decodeErrorData: null,
       ),
       constMeta: kHandleDurationsTwinNormalConstMeta,
       argValues: [durations, since],
@@ -2963,13 +2954,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_Chrono_NaiveList(timestamps);
+        var arg0 = cst_encode_list_Chrono_Naive(timestamps);
         var arg1 = cst_encode_Chrono_Naive(epoch);
         return wire.wire_handle_timestamps_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_DurationList,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_Chrono_Duration,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTimestampsTwinNormalConstMeta,
       argValues: [timestamps, epoch],
@@ -2992,8 +2983,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_how_long_does_it_take_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Duration,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_Chrono_Duration,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHowLongDoesItTakeTwinNormalConstMeta,
       argValues: [mine],
@@ -3017,8 +3008,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_naivedatetime_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Naive,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Naive,
+        decodeErrorData: null,
       ),
       constMeta: kNaivedatetimeTwinNormalConstMeta,
       argValues: [d],
@@ -3041,8 +3032,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_optional_empty_datetime_utc_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
+        decodeErrorData: null,
       ),
       constMeta: kOptionalEmptyDatetimeUtcTwinNormalConstMeta,
       argValues: [d],
@@ -3064,8 +3055,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_chrono_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_chrono_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_chrono_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kTestChronoTwinNormalConstMeta,
       argValues: [],
@@ -3086,8 +3077,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_precise_chrono_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_chrono_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_chrono_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kTestPreciseChronoTwinNormalConstMeta,
       argValues: [],
@@ -3114,8 +3105,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kStructWithCommentsTwinNormalInstanceMethodTwinNormalConstMeta,
       argValues: [that],
@@ -3141,8 +3132,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kStructWithCommentsTwinNormalStaticMethodTwinNormalConstMeta,
       argValues: [],
@@ -3166,8 +3157,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_function_with_comments_slash_star_star_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFunctionWithCommentsSlashStarStarTwinNormalConstMeta,
       argValues: [],
@@ -3192,8 +3183,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinNormalConstMeta,
       argValues: [],
@@ -3220,8 +3211,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinNormalConstMeta,
       argValues: [],
@@ -3245,8 +3236,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_dart_dynamic_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_dartabi,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_dartabi,
+        decodeErrorData: null,
       ),
       constMeta: kReturnDartDynamicTwinNormalConstMeta,
       argValues: [],
@@ -3270,8 +3261,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_call_dart_simple(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustCallDartSimpleConstMeta,
       argValues: [callback],
@@ -3294,8 +3285,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_async_accept_dart_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kAsyncAcceptDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -3319,8 +3310,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_clone_dart_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kCloneDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -3343,8 +3334,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_enum_dart_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_dart_opaque_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_dart_opaque_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kCreateEnumDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -3370,8 +3361,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_dart_opaque_nested_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_dart_opaque_nested_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kCreateNestedDartOpaqueTwinNormalConstMeta,
       argValues: [opaque1, opaque2],
@@ -3394,8 +3385,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_drop_static_dart_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kDropStaticDartOpaqueTwinNormalConstMeta,
       argValues: [id],
@@ -3419,8 +3410,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_enum_dart_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kGetEnumDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -3445,8 +3436,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_nested_dart_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kGetNestedDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -3470,8 +3461,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_array_get_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackArrayGetTwinNormalConstMeta,
       argValues: [opaque],
@@ -3494,8 +3485,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_array_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_DartOpaque_array_1,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_DartOpaque_array_1,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackArrayTwinNormalConstMeta,
       argValues: [opaque],
@@ -3517,8 +3508,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_option_get_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackOptionGetTwinNormalConstMeta,
       argValues: [opaque],
@@ -3542,8 +3533,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_option_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackOptionTwinNormalConstMeta,
       argValues: [opaque],
@@ -3565,8 +3556,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackTwinNormalConstMeta,
       argValues: [opaque],
@@ -3589,8 +3580,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_vec_get_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackVecGetTwinNormalConstMeta,
       argValues: [opaque],
@@ -3613,8 +3604,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_vec_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackVecTwinNormalConstMeta,
       argValues: [opaque],
@@ -3637,8 +3628,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_panic_unwrap_dart_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kPanicUnwrapDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -3663,8 +3654,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_set_static_dart_opaque_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kSetStaticDartOpaqueTwinNormalConstMeta,
       argValues: [id, opaque],
@@ -3688,8 +3679,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_sync_accept_dart_opaque_twin_normal(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kSyncAcceptDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -3712,8 +3703,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_sync_loopback_twin_normal(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kSyncLoopbackTwinNormalConstMeta,
       argValues: [opaque],
@@ -3736,8 +3727,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_sync_option_dart_opaque_twin_normal(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kSyncOptionDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -3760,8 +3751,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_sync_option_loopback_twin_normal(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kSyncOptionLoopbackTwinNormalConstMeta,
       argValues: [opaque],
@@ -3784,8 +3775,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_unwrap_dart_opaque_twin_normal(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kUnwrapDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -3808,8 +3799,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_simple_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_simple_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_simple_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumSimpleTwinNormalConstMeta,
       argValues: [arg],
@@ -3832,8 +3823,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_with_item_mixed_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_with_item_mixed_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_with_item_mixed_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumWithItemMixedTwinNormalConstMeta,
       argValues: [arg],
@@ -3858,8 +3849,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_with_item_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_with_item_struct_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_with_item_struct_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumWithItemStructTwinNormalConstMeta,
       argValues: [arg],
@@ -3883,8 +3874,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_with_item_tuple_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_with_item_tuple_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_with_item_tuple_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumWithItemTupleTwinNormalConstMeta,
       argValues: [arg],
@@ -3908,8 +3899,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_enum_parameter_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_weekdays_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_weekdays_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleEnumParameterTwinNormalConstMeta,
       argValues: [weekday],
@@ -3933,8 +3924,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_enum_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_kitchen_sink_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_kitchen_sink_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleEnumStructTwinNormalConstMeta,
       argValues: [val],
@@ -3957,8 +3948,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_return_enum_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleReturnEnumTwinNormalConstMeta,
       argValues: [input],
@@ -3981,8 +3972,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_multiply_by_ten_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_measure_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kMultiplyByTenTwinNormalConstMeta,
       argValues: [measure],
@@ -4005,8 +3996,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_print_note_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kPrintNoteTwinNormalConstMeta,
       argValues: [note],
@@ -4029,8 +4020,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_EventTwinNormal_as_string_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kEventTwinNormalAsStringTwinNormalConstMeta,
       argValues: [that],
@@ -4052,8 +4043,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_close_event_listener_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kCloseEventListenerTwinNormalConstMeta,
       argValues: [],
@@ -4078,8 +4069,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_event_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kCreateEventTwinNormalConstMeta,
       argValues: [address, payload],
@@ -4100,8 +4091,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_register_event_listener_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_event_twin_normal,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_event_twin_normal,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kRegisterEventListenerTwinNormalConstMeta,
       argValues: [],
@@ -4125,8 +4116,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_CustomStructTwinNormal_new_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_custom_struct_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_custom_struct_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kCustomStructTwinNormalNewTwinNormalConstMeta,
       argValues: [message],
@@ -4152,8 +4143,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       ),
       constMeta:
           kCustomStructTwinNormalNonstaticReturnCustomStructErrorTwinNormalConstMeta,
@@ -4182,8 +4173,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       ),
       constMeta:
           kCustomStructTwinNormalNonstaticReturnCustomStructOkTwinNormalConstMeta,
@@ -4211,8 +4202,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       ),
       constMeta:
           kCustomStructTwinNormalStaticReturnCustomStructErrorTwinNormalConstMeta,
@@ -4240,8 +4231,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       ),
       constMeta:
           kCustomStructTwinNormalStaticReturnCustomStructOkTwinNormalConstMeta,
@@ -4268,8 +4259,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_SomeStructTwinNormal_new_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_some_struct_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_some_struct_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kSomeStructTwinNormalNewTwinNormalConstMeta,
       argValues: [value],
@@ -4295,8 +4286,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_normal,
       ),
       constMeta:
           kSomeStructTwinNormalNonStaticReturnErrCustomErrorTwinNormalConstMeta,
@@ -4325,8 +4316,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_normal,
       ),
       constMeta:
           kSomeStructTwinNormalNonStaticReturnOkCustomErrorTwinNormalConstMeta,
@@ -4354,8 +4345,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_normal,
       ),
       constMeta:
           kSomeStructTwinNormalStaticReturnErrCustomErrorTwinNormalConstMeta,
@@ -4383,8 +4374,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_normal,
       ),
       constMeta:
           kSomeStructTwinNormalStaticReturnOkCustomErrorTwinNormalConstMeta,
@@ -4409,8 +4400,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_enum_error_panic_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_enum_error_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_enum_error_twin_normal,
       ),
       constMeta: kCustomEnumErrorPanicTwinNormalConstMeta,
       argValues: [],
@@ -4432,8 +4423,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_enum_error_return_error_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_enum_error_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_enum_error_twin_normal,
       ),
       constMeta: kCustomEnumErrorReturnErrorTwinNormalConstMeta,
       argValues: [],
@@ -4457,8 +4448,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_enum_error_return_ok_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_enum_error_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_enum_error_twin_normal,
       ),
       constMeta: kCustomEnumErrorReturnOkTwinNormalConstMeta,
       argValues: [arg],
@@ -4484,8 +4475,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_outer_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_outer_twin_normal,
       ),
       constMeta: kCustomNestedErrorReturnErrorTwinNormalConstMeta,
       argValues: [arg],
@@ -4510,8 +4501,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_struct_error_twin_normal,
       ),
       constMeta: kCustomStructErrorReturnErrorTwinNormalConstMeta,
       argValues: [arg],
@@ -4533,8 +4524,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_return_error_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncReturnErrorTwinNormalConstMeta,
       argValues: [],
@@ -4555,8 +4546,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_type_fallible_panic_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncTypeFalliblePanicTwinNormalConstMeta,
       argValues: [],
@@ -4578,8 +4569,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_type_infallible_panic_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTypeInfalliblePanicTwinNormalConstMeta,
       argValues: [],
@@ -4601,8 +4592,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_panic_with_custom_result_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_error_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_error_twin_normal,
       ),
       constMeta: kPanicWithCustomResultTwinNormalConstMeta,
       argValues: [],
@@ -4624,8 +4615,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_nested_error_1_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_1_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_1_twin_normal,
       ),
       constMeta: kReturnCustomNestedError1TwinNormalConstMeta,
       argValues: [],
@@ -4648,8 +4639,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_return_custom_nested_error_1_variant1_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_1_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_1_twin_normal,
       ),
       constMeta: kReturnCustomNestedError1Variant1TwinNormalConstMeta,
       argValues: [],
@@ -4671,8 +4662,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_nested_error_2_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_2_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_2_twin_normal,
       ),
       constMeta: kReturnCustomNestedError2TwinNormalConstMeta,
       argValues: [],
@@ -4694,8 +4685,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_struct_error_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       ),
       constMeta: kReturnCustomStructErrorTwinNormalConstMeta,
       argValues: [],
@@ -4717,8 +4708,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_struct_ok_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       ),
       constMeta: kReturnCustomStructOkTwinNormalConstMeta,
       argValues: [],
@@ -4740,8 +4731,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_err_custom_error_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_normal,
       ),
       constMeta: kReturnErrCustomErrorTwinNormalConstMeta,
       argValues: [],
@@ -4765,8 +4756,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_error_variant_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_normal,
       ),
       constMeta: kReturnErrorVariantTwinNormalConstMeta,
       argValues: [variant],
@@ -4788,8 +4779,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_ok_custom_error_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_normal,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_normal,
       ),
       constMeta: kReturnOkCustomErrorTwinNormalConstMeta,
       argValues: [],
@@ -4811,8 +4802,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_stream_sink_throw_anyhow_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kStreamSinkThrowAnyhowTwinNormalConstMeta,
       argValues: [],
@@ -4834,8 +4825,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_throw_anyhow_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kThrowAnyhowTwinNormalConstMeta,
       argValues: [],
@@ -4856,8 +4847,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_call_new_module_system_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_new_simple_struct,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_new_simple_struct,
+        decodeErrorData: null,
       ),
       constMeta: kCallNewModuleSystemTwinNormalConstMeta,
       argValues: [],
@@ -4879,8 +4870,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_call_old_module_system_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_old_simple_struct,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_old_simple_struct,
+        decodeErrorData: null,
       ),
       constMeta: kCallOldModuleSystemTwinNormalConstMeta,
       argValues: [],
@@ -4904,8 +4895,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_imported_enum_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kUseImportedEnumTwinNormalConstMeta,
       argValues: [myEnum],
@@ -4928,8 +4919,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_imported_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kUseImportedStructTwinNormalConstMeta,
       argValues: [myStruct],
@@ -4952,8 +4943,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_another_macro_struct_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_another_macro_struct_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_another_macro_struct_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kAnotherMacroStructTwinNormalConstMeta,
       argValues: [],
@@ -4977,8 +4968,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_macro_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_macro_struct,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_macro_struct,
+        decodeErrorData: null,
       ),
       constMeta: kFuncMacroStructTwinNormalConstMeta,
       argValues: [arg],
@@ -5004,8 +4995,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinNormalConcatenateStaticTwinNormalConstMeta,
       argValues: [a, b],
@@ -5035,8 +5026,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinNormalConcatenateTwinNormalConstMeta,
       argValues: [that, b],
@@ -5062,8 +5053,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormalConstMeta,
@@ -5094,8 +5085,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_2_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_2_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormalConstMeta,
@@ -5124,8 +5115,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormalConstMeta,
@@ -5160,8 +5151,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_2_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_2_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStreamSinkTwinNormalConstMeta,
@@ -5188,8 +5179,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_ConcatenateWithTwinNormal_new_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_concatenate_with_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_concatenate_with_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinNormalNewTwinNormalConstMeta,
       argValues: [a],
@@ -5219,8 +5210,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kSumWithTwinNormalSumTwinNormalConstMeta,
       argValues: [that, y, z],
@@ -5246,8 +5237,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_sum_array_twin_normal(port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_sum_with_twin_normal_array_3,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_sum_with_twin_normal_array_3,
+        decodeErrorData: null,
       ),
       constMeta: kGetSumArrayTwinNormalConstMeta,
       argValues: [a, b, c],
@@ -5268,8 +5259,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_sum_struct_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_sum_with_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_sum_with_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kGetSumStructTwinNormalConstMeta,
       argValues: [],
@@ -5290,8 +5281,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_app_settings_stream_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_settings,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_application_settings,
+        decodeErrorData: null,
       ),
       constMeta: kAppSettingsStreamTwinNormalConstMeta,
       argValues: [],
@@ -5314,8 +5305,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_app_settings_vec_stream_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_application_settings,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_application_settings,
+        decodeErrorData: null,
       ),
       constMeta: kAppSettingsVecStreamTwinNormalConstMeta,
       argValues: [],
@@ -5338,8 +5329,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_first_number_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFirstNumberTwinNormalConstMeta,
       argValues: [nums],
@@ -5362,8 +5353,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_first_sequence_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFirstSequenceTwinNormalConstMeta,
       argValues: [seqs],
@@ -5384,8 +5375,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_app_settings_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_settings,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_application_settings,
+        decodeErrorData: null,
       ),
       constMeta: kGetAppSettingsTwinNormalConstMeta,
       argValues: [],
@@ -5406,8 +5397,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_fallible_app_settings_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_settings,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_application_settings,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kGetFallibleAppSettingsTwinNormalConstMeta,
       argValues: [],
@@ -5429,8 +5420,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_message_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_message,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_application_message,
+        decodeErrorData: null,
       ),
       constMeta: kGetMessageTwinNormalConstMeta,
       argValues: [],
@@ -5453,8 +5444,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_is_app_embedded_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kIsAppEmbeddedTwinNormalConstMeta,
       argValues: [appSettings],
@@ -5475,8 +5466,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_mirror_struct_stream_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_mirror_struct_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_mirror_struct_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kMirrorStructStreamTwinNormalConstMeta,
       argValues: [],
@@ -5499,9 +5490,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_mirror_tuple_stream_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_record_application_settings_raw_string_enum_mirrored,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kMirrorTupleStreamTwinNormalConstMeta,
       argValues: [],
@@ -5526,8 +5517,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_repeat_number_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_numbers,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_numbers,
+        decodeErrorData: null,
       ),
       constMeta: kRepeatNumberTwinNormalConstMeta,
       argValues: [num, times],
@@ -5551,8 +5542,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_repeat_sequence_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_sequences,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_sequences,
+        decodeErrorData: null,
       ),
       constMeta: kRepeatSequenceTwinNormalConstMeta,
       argValues: [seq, times],
@@ -5574,8 +5565,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_contains_mirrored_sub_struct_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kTestContainsMirroredSubStructTwinNormalConstMeta,
       argValues: [],
@@ -5599,8 +5590,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_test_fallible_of_raw_string_mirrored_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_raw_string_mirrored,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_list_raw_string_mirrored,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kTestFallibleOfRawStringMirroredTwinNormalConstMeta,
       argValues: [],
@@ -5623,8 +5614,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_list_of_nested_enums_mirrored_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_raw_string_enum_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestListOfNestedEnumsMirroredTwinNormalConstMeta,
       argValues: [],
@@ -5648,8 +5639,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_test_list_of_raw_nested_string_mirrored_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestListOfRawNestedStringMirroredTwinNormalConstMeta,
       argValues: [],
@@ -5672,8 +5663,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_nested_raw_string_mirrored_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_nested_raw_string_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_nested_raw_string_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestNestedRawStringMirroredTwinNormalConstMeta,
       argValues: [],
@@ -5697,8 +5688,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_raw_string_enum_mirrored_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_raw_string_enum_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_raw_string_enum_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestRawStringEnumMirroredTwinNormalConstMeta,
       argValues: [nested],
@@ -5720,8 +5711,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_raw_string_mirrored_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_raw_string_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_raw_string_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestRawStringMirroredTwinNormalConstMeta,
       argValues: [],
@@ -5743,8 +5734,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_big_buffers_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_big_buffers_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_big_buffers_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleBigBuffersTwinNormalConstMeta,
       argValues: [],
@@ -5767,8 +5758,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_complex_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_tree_node_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_tree_node_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleComplexStructTwinNormalConstMeta,
       argValues: [s],
@@ -5792,8 +5783,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_nested_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_nested_struct_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_nested_struct_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleNestedStructTwinNormalConstMeta,
       argValues: [s],
@@ -5816,8 +5807,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_string_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStringTwinNormalConstMeta,
       argValues: [s],
@@ -5841,8 +5832,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_struct_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_size,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_size,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStructTwinNormalConstMeta,
       argValues: [arg, boxed],
@@ -5865,8 +5856,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_vec_u8_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kHandleVecU8TwinNormalConstMeta,
       argValues: [v],
@@ -5889,8 +5880,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_list_of_primitive_enums_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_weekdays_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_weekdays_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kListOfPrimitiveEnumsTwinNormalConstMeta,
       argValues: [weekdays],
@@ -5914,8 +5905,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_abc_enum_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_abc_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_abc_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kTestAbcEnumTwinNormalConstMeta,
       argValues: [abc],
@@ -5938,8 +5929,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_struct_with_enum_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_enum_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_enum_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kTestStructWithEnumTwinNormalConstMeta,
       argValues: [se],
@@ -5963,8 +5954,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_empty_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_empty_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_empty_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kEmptyStructTwinNormalConstMeta,
       argValues: [empty],
@@ -5985,8 +5976,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_return_unit_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFuncReturnUnitTwinNormalConstMeta,
       argValues: [],
@@ -6008,8 +5999,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_string_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStringTwinNormalConstMeta,
       argValues: [arg],
@@ -6032,8 +6023,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_list_of_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_my_size,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_my_size,
+        decodeErrorData: null,
       ),
       constMeta: kHandleListOfStructTwinNormalConstMeta,
       argValues: [l],
@@ -6053,12 +6044,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<String> names, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_StringList(names);
+        var arg0 = cst_encode_list_String(names);
         return wire.wire_handle_string_list_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_StringList,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_String,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStringListTwinNormalConstMeta,
       argValues: [names],
@@ -6081,8 +6072,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_newtype_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_new_type_int_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_new_type_int_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleNewtypeTwinNormalConstMeta,
       argValues: [arg],
@@ -6106,8 +6097,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleIncrementBoxedOptionalTwinNormalConstMeta,
       argValues: [opt],
@@ -6145,8 +6136,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionBoxArgumentsTwinNormalConstMeta,
       argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
@@ -6178,9 +6169,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_optional_increment_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_opt_box_autoadd_exotic_optionals_twin_normal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionalIncrementTwinNormalConstMeta,
       argValues: [opt],
@@ -6205,8 +6196,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_optional_return_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionalReturnTwinNormalConstMeta,
       argValues: [left, right],
@@ -6230,8 +6221,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_optional_struct_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_element_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionalStructTwinNormalConstMeta,
       argValues: [document],
@@ -6255,8 +6246,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_vec_of_opts_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_vecs_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_vecs_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleVecOfOptsTwinNormalConstMeta,
       argValues: [opt],
@@ -6283,8 +6274,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kPrimitiveOptionalTypesTwinNormalConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
@@ -6308,8 +6299,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_vec_of_primitive_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_vec_of_primitive_pack_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleVecOfPrimitiveTwinNormalConstMeta,
       argValues: [n],
@@ -6321,33 +6312,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleVecOfPrimitiveTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "handle_vec_of_primitive_twin_normal",
-        argNames: ["n"],
-      );
-
-  @override
-  Future<ZeroCopyVecOfPrimitivePackTwinNormal>
-      handleZeroCopyVecOfPrimitiveTwinNormal({required int n, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_32(n);
-        return wire.wire_handle_zero_copy_vec_of_primitive_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        parseSuccessData:
-            _dco_decode_zero_copy_vec_of_primitive_pack_twin_normal,
-        parseErrorData: null,
-      ),
-      constMeta: kHandleZeroCopyVecOfPrimitiveTwinNormalConstMeta,
-      argValues: [n],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_zero_copy_vec_of_primitive_twin_normal",
         argNames: ["n"],
       );
 
@@ -6368,8 +6332,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kPrimitiveTypesTwinNormalConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
@@ -6391,8 +6355,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_primitive_u32_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kPrimitiveU32TwinNormalConstMeta,
       argValues: [myU32],
@@ -6415,8 +6379,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_boxed_blob_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_blob_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_blob_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kBoxedBlobTwinRustAsyncConstMeta,
       argValues: [blob],
@@ -6439,8 +6403,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_test_id_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_id_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_id_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTestIdTwinRustAsyncConstMeta,
       argValues: [id],
@@ -6461,8 +6425,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_array_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8_array_5,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8_array_5,
+        decodeErrorData: null,
       ),
       constMeta: kGetArrayTwinRustAsyncConstMeta,
       argValues: [],
@@ -6484,8 +6448,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_complex_array_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_point_twin_rust_async_array_2,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_point_twin_rust_async_array_2,
+        decodeErrorData: null,
       ),
       constMeta: kGetComplexArrayTwinRustAsyncConstMeta,
       argValues: [],
@@ -6509,8 +6473,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_last_number_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kLastNumberTwinRustAsyncConstMeta,
       argValues: [array],
@@ -6533,8 +6497,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_nested_id_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_id_twin_rust_async_array_2,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_id_twin_rust_async_array_2,
+        decodeErrorData: null,
       ),
       constMeta: kNestedIdTwinRustAsyncConstMeta,
       argValues: [id],
@@ -6557,8 +6521,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_new_msgid_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_message_id_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_message_id_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kNewMsgidTwinRustAsyncConstMeta,
       argValues: [id],
@@ -6581,8 +6545,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_boxed_feed_id_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_box_feed_id_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_box_feed_id_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kReturnBoxedFeedIdTwinRustAsyncConstMeta,
       argValues: [id],
@@ -6606,8 +6570,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_boxed_raw_feed_id_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_box_u_8_array_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_box_u_8_array_8,
+        decodeErrorData: null,
       ),
       constMeta: kReturnBoxedRawFeedIdTwinRustAsyncConstMeta,
       argValues: [id],
@@ -6631,8 +6595,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_boxed_blob_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8_array_1600,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8_array_1600,
+        decodeErrorData: null,
       ),
       constMeta: kUseBoxedBlobTwinRustAsyncConstMeta,
       argValues: [blob],
@@ -6655,8 +6619,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_msgid_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8_array_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8_array_32,
+        decodeErrorData: null,
       ),
       constMeta: kUseMsgidTwinRustAsyncConstMeta,
       argValues: [id],
@@ -6678,8 +6642,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_boxed_blob_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_blob_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_blob_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kBoxedBlobTwinSyncConstMeta,
       argValues: [blob],
@@ -6702,8 +6666,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_test_id_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_id_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_id_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTestIdTwinSyncConstMeta,
       argValues: [id],
@@ -6724,8 +6688,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_array_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8_array_5,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8_array_5,
+        decodeErrorData: null,
       ),
       constMeta: kGetArrayTwinSyncConstMeta,
       argValues: [],
@@ -6746,8 +6710,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_complex_array_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_point_twin_sync_array_2,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_point_twin_sync_array_2,
+        decodeErrorData: null,
       ),
       constMeta: kGetComplexArrayTwinSyncConstMeta,
       argValues: [],
@@ -6769,8 +6733,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_last_number_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kLastNumberTwinSyncConstMeta,
       argValues: [array],
@@ -6793,8 +6757,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_nested_id_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_id_twin_sync_array_2,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_id_twin_sync_array_2,
+        decodeErrorData: null,
       ),
       constMeta: kNestedIdTwinSyncConstMeta,
       argValues: [id],
@@ -6816,8 +6780,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_new_msgid_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_message_id_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_message_id_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kNewMsgidTwinSyncConstMeta,
       argValues: [id],
@@ -6840,8 +6804,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_boxed_feed_id_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_box_feed_id_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_box_feed_id_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kReturnBoxedFeedIdTwinSyncConstMeta,
       argValues: [id],
@@ -6864,8 +6828,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_boxed_raw_feed_id_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_box_u_8_array_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_box_u_8_array_8,
+        decodeErrorData: null,
       ),
       constMeta: kReturnBoxedRawFeedIdTwinSyncConstMeta,
       argValues: [id],
@@ -6888,8 +6852,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_boxed_blob_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8_array_1600,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8_array_1600,
+        decodeErrorData: null,
       ),
       constMeta: kUseBoxedBlobTwinSyncConstMeta,
       argValues: [blob],
@@ -6911,8 +6875,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_msgid_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8_array_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8_array_32,
+        decodeErrorData: null,
       ),
       constMeta: kUseMsgidTwinSyncConstMeta,
       argValues: [id],
@@ -6935,8 +6899,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_customized_struct_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kHandleCustomizedStructTwinRustAsyncConstMeta,
       argValues: [val],
@@ -6960,8 +6924,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_next_user_id_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_user_id_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_user_id_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kNextUserIdTwinRustAsyncConstMeta,
       argValues: [userId],
@@ -6984,8 +6948,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_customized_struct_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kHandleCustomizedStructTwinSyncConstMeta,
       argValues: [val],
@@ -7009,8 +6973,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_next_user_id_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_user_id_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_user_id_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kNextUserIdTwinSyncConstMeta,
       argValues: [userId],
@@ -7033,8 +6997,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_input_bytes_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kBenchmarkInputBytesTwinRustAsyncConstMeta,
       argValues: [bytes],
@@ -7058,8 +7022,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_output_bytes_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kBenchmarkOutputBytesTwinRustAsyncConstMeta,
       argValues: [size],
@@ -7081,8 +7045,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_void_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kBenchmarkVoidTwinRustAsyncConstMeta,
       argValues: [],
@@ -7104,8 +7068,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_input_bytes_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kBenchmarkInputBytesTwinSyncConstMeta,
       argValues: [bytes],
@@ -7128,8 +7092,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_output_bytes_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kBenchmarkOutputBytesTwinSyncConstMeta,
       argValues: [size],
@@ -7151,8 +7115,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_void_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kBenchmarkVoidTwinSyncConstMeta,
       argValues: [],
@@ -7175,8 +7139,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_datetime_local_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Local,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Local,
+        decodeErrorData: null,
       ),
       constMeta: kDatetimeLocalTwinRustAsyncConstMeta,
       argValues: [d],
@@ -7199,8 +7163,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_datetime_utc_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Utc,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Utc,
+        decodeErrorData: null,
       ),
       constMeta: kDatetimeUtcTwinRustAsyncConstMeta,
       argValues: [d],
@@ -7222,8 +7186,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_duration_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Duration,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Duration,
+        decodeErrorData: null,
       ),
       constMeta: kDurationTwinRustAsyncConstMeta,
       argValues: [d],
@@ -7244,13 +7208,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_Chrono_DurationList(durations);
+        var arg0 = cst_encode_list_Chrono_Duration(durations);
         var arg1 = cst_encode_Chrono_Local(since);
         return wire.wire_handle_durations_twin_rust_async(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_LocalList,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_Chrono_Local,
+        decodeErrorData: null,
       ),
       constMeta: kHandleDurationsTwinRustAsyncConstMeta,
       argValues: [durations, since],
@@ -7272,13 +7236,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_Chrono_NaiveList(timestamps);
+        var arg0 = cst_encode_list_Chrono_Naive(timestamps);
         var arg1 = cst_encode_Chrono_Naive(epoch);
         return wire.wire_handle_timestamps_twin_rust_async(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_DurationList,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_Chrono_Duration,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTimestampsTwinRustAsyncConstMeta,
       argValues: [timestamps, epoch],
@@ -7302,8 +7266,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_how_long_does_it_take_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Duration,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_Chrono_Duration,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHowLongDoesItTakeTwinRustAsyncConstMeta,
       argValues: [mine],
@@ -7327,8 +7291,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_naivedatetime_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Naive,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Naive,
+        decodeErrorData: null,
       ),
       constMeta: kNaivedatetimeTwinRustAsyncConstMeta,
       argValues: [d],
@@ -7352,8 +7316,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
+        decodeErrorData: null,
       ),
       constMeta: kOptionalEmptyDatetimeUtcTwinRustAsyncConstMeta,
       argValues: [d],
@@ -7375,8 +7339,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_chrono_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_chrono_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_chrono_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kTestChronoTwinRustAsyncConstMeta,
       argValues: [],
@@ -7398,8 +7362,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_precise_chrono_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_chrono_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_chrono_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kTestPreciseChronoTwinRustAsyncConstMeta,
       argValues: [],
@@ -7422,8 +7386,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_datetime_local_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Local,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Local,
+        decodeErrorData: null,
       ),
       constMeta: kDatetimeLocalTwinSyncConstMeta,
       argValues: [d],
@@ -7445,8 +7409,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_datetime_utc_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Utc,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Utc,
+        decodeErrorData: null,
       ),
       constMeta: kDatetimeUtcTwinSyncConstMeta,
       argValues: [d],
@@ -7468,8 +7432,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_duration_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Duration,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Duration,
+        decodeErrorData: null,
       ),
       constMeta: kDurationTwinSyncConstMeta,
       argValues: [d],
@@ -7490,13 +7454,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_Chrono_DurationList(durations);
+        var arg0 = cst_encode_list_Chrono_Duration(durations);
         var arg1 = cst_encode_Chrono_Local(since);
         return wire.wire_handle_durations_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_LocalList,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_Chrono_Local,
+        decodeErrorData: null,
       ),
       constMeta: kHandleDurationsTwinSyncConstMeta,
       argValues: [durations, since],
@@ -7517,13 +7481,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_Chrono_NaiveList(timestamps);
+        var arg0 = cst_encode_list_Chrono_Naive(timestamps);
         var arg1 = cst_encode_Chrono_Naive(epoch);
         return wire.wire_handle_timestamps_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_DurationList,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_Chrono_Duration,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTimestampsTwinSyncConstMeta,
       argValues: [timestamps, epoch],
@@ -7546,8 +7510,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_how_long_does_it_take_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Duration,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_Chrono_Duration,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHowLongDoesItTakeTwinSyncConstMeta,
       argValues: [mine],
@@ -7569,8 +7533,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_naivedatetime_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Chrono_Naive,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_Chrono_Naive,
+        decodeErrorData: null,
       ),
       constMeta: kNaivedatetimeTwinSyncConstMeta,
       argValues: [d],
@@ -7592,8 +7556,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_optional_empty_datetime_utc_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
+        decodeErrorData: null,
       ),
       constMeta: kOptionalEmptyDatetimeUtcTwinSyncConstMeta,
       argValues: [d],
@@ -7615,8 +7579,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_chrono_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_chrono_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_chrono_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kTestChronoTwinSyncConstMeta,
       argValues: [],
@@ -7637,8 +7601,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_precise_chrono_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_chrono_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_chrono_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kTestPreciseChronoTwinSyncConstMeta,
       argValues: [],
@@ -7664,8 +7628,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kStructWithCommentsTwinRustAsyncInstanceMethodTwinRustAsyncConstMeta,
@@ -7693,8 +7657,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kStructWithCommentsTwinRustAsyncStaticMethodTwinRustAsyncConstMeta,
@@ -7720,8 +7684,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_function_with_comments_slash_star_star_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFunctionWithCommentsSlashStarStarTwinRustAsyncConstMeta,
       argValues: [],
@@ -7746,8 +7710,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kFunctionWithCommentsTripleSlashMultiLineTwinRustAsyncConstMeta,
@@ -7775,8 +7739,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kFunctionWithCommentsTripleSlashSingleLineTwinRustAsyncConstMeta,
@@ -7804,8 +7768,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_StructWithCommentsTwinSync_instance_method_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta,
       argValues: [that],
@@ -7828,8 +7792,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_StructWithCommentsTwinSync_static_method_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta,
       argValues: [],
@@ -7851,8 +7815,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_function_with_comments_slash_star_star_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFunctionWithCommentsSlashStarStarTwinSyncConstMeta,
       argValues: [],
@@ -7875,8 +7839,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_function_with_comments_triple_slash_multi_line_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta,
       argValues: [],
@@ -7901,8 +7865,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_function_with_comments_triple_slash_single_line_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta,
       argValues: [],
@@ -7926,8 +7890,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_dart_dynamic_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_dartabi,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_dartabi,
+        decodeErrorData: null,
       ),
       constMeta: kReturnDartDynamicTwinRustAsyncConstMeta,
       argValues: [],
@@ -7949,8 +7913,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_dart_dynamic_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_dartabi,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_dartabi,
+        decodeErrorData: null,
       ),
       constMeta: kReturnDartDynamicTwinSyncConstMeta,
       argValues: [],
@@ -7973,8 +7937,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_async_accept_dart_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kAsyncAcceptDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -7998,8 +7962,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_clone_dart_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kCloneDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8023,8 +7987,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_enum_dart_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_dart_opaque_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_dart_opaque_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kCreateEnumDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8050,8 +8014,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_dart_opaque_nested_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_dart_opaque_nested_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kCreateNestedDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque1, opaque2],
@@ -8075,8 +8039,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_drop_static_dart_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kDropStaticDartOpaqueTwinRustAsyncConstMeta,
       argValues: [id],
@@ -8101,8 +8065,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_enum_dart_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kGetEnumDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8127,8 +8091,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_nested_dart_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kGetNestedDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8152,8 +8116,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_array_get_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackArrayGetTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8177,8 +8141,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_array_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_DartOpaque_array_1,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_DartOpaque_array_1,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackArrayTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8200,8 +8164,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_option_get_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackOptionGetTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8225,8 +8189,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_option_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackOptionTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8249,8 +8213,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8273,8 +8237,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_vec_get_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackVecGetTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8298,8 +8262,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_vec_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackVecTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8322,8 +8286,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_panic_unwrap_dart_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kPanicUnwrapDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -8349,8 +8313,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kSetStaticDartOpaqueTwinRustAsyncConstMeta,
       argValues: [id, opaque],
@@ -8373,8 +8337,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_async_accept_dart_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kAsyncAcceptDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -8397,8 +8361,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_clone_dart_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kCloneDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -8421,8 +8385,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_enum_dart_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_dart_opaque_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_dart_opaque_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kCreateEnumDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -8447,8 +8411,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_nested_dart_opaque_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_dart_opaque_nested_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_dart_opaque_nested_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kCreateNestedDartOpaqueTwinSyncConstMeta,
       argValues: [opaque1, opaque2],
@@ -8471,8 +8435,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_drop_static_dart_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kDropStaticDartOpaqueTwinSyncConstMeta,
       argValues: [id],
@@ -8496,8 +8460,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_enum_dart_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kGetEnumDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -8520,8 +8484,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_nested_dart_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kGetNestedDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -8544,8 +8508,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_array_get_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackArrayGetTwinSyncConstMeta,
       argValues: [opaque],
@@ -8567,8 +8531,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_array_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_DartOpaque_array_1,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_DartOpaque_array_1,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackArrayTwinSyncConstMeta,
       argValues: [opaque],
@@ -8590,8 +8554,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_option_get_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackOptionGetTwinSyncConstMeta,
       argValues: [opaque],
@@ -8613,8 +8577,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_option_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackOptionTwinSyncConstMeta,
       argValues: [opaque],
@@ -8636,8 +8600,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackTwinSyncConstMeta,
       argValues: [opaque],
@@ -8659,8 +8623,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_vec_get_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackVecGetTwinSyncConstMeta,
       argValues: [opaque],
@@ -8682,8 +8646,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_loop_back_vec_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_DartOpaque,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_DartOpaque,
+        decodeErrorData: null,
       ),
       constMeta: kLoopBackVecTwinSyncConstMeta,
       argValues: [opaque],
@@ -8705,8 +8669,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_panic_unwrap_dart_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kPanicUnwrapDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -8731,8 +8695,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_set_static_dart_opaque_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kSetStaticDartOpaqueTwinSyncConstMeta,
       argValues: [id, opaque],
@@ -8756,8 +8720,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_simple_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_simple_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_simple_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumSimpleTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -8782,8 +8746,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_with_item_mixed_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_with_item_mixed_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_with_item_mixed_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumWithItemMixedTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -8809,8 +8773,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_with_item_struct_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_with_item_struct_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumWithItemStructTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -8835,8 +8799,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_with_item_tuple_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_with_item_tuple_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_with_item_tuple_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumWithItemTupleTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -8860,8 +8824,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_enum_parameter_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_weekdays_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_weekdays_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleEnumParameterTwinRustAsyncConstMeta,
       argValues: [weekday],
@@ -8885,8 +8849,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_enum_struct_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_kitchen_sink_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_kitchen_sink_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleEnumStructTwinRustAsyncConstMeta,
       argValues: [val],
@@ -8910,8 +8874,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_return_enum_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleReturnEnumTwinRustAsyncConstMeta,
       argValues: [input],
@@ -8935,8 +8899,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_multiply_by_ten_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_measure_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kMultiplyByTenTwinRustAsyncConstMeta,
       argValues: [measure],
@@ -8959,8 +8923,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_print_note_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kPrintNoteTwinRustAsyncConstMeta,
       argValues: [note],
@@ -8983,8 +8947,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_simple_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_simple_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_simple_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumSimpleTwinSyncConstMeta,
       argValues: [arg],
@@ -9007,8 +8971,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_with_item_mixed_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_with_item_mixed_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_with_item_mixed_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumWithItemMixedTwinSyncConstMeta,
       argValues: [arg],
@@ -9032,8 +8996,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_with_item_struct_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_with_item_struct_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_with_item_struct_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumWithItemStructTwinSyncConstMeta,
       argValues: [arg],
@@ -9057,8 +9021,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_with_item_tuple_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_with_item_tuple_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_with_item_tuple_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncEnumWithItemTupleTwinSyncConstMeta,
       argValues: [arg],
@@ -9082,8 +9046,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_enum_parameter_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_weekdays_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_weekdays_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleEnumParameterTwinSyncConstMeta,
       argValues: [weekday],
@@ -9107,8 +9071,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_enum_struct_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_kitchen_sink_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_kitchen_sink_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleEnumStructTwinSyncConstMeta,
       argValues: [val],
@@ -9131,8 +9095,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_return_enum_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleReturnEnumTwinSyncConstMeta,
       argValues: [input],
@@ -9155,8 +9119,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_multiply_by_ten_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_measure_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kMultiplyByTenTwinSyncConstMeta,
       argValues: [measure],
@@ -9178,8 +9142,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_print_note_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kPrintNoteTwinSyncConstMeta,
       argValues: [note],
@@ -9203,8 +9167,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kEventTwinRustAsyncAsStringTwinRustAsyncConstMeta,
       argValues: [that],
@@ -9226,8 +9190,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_close_event_listener_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kCloseEventListenerTwinRustAsyncConstMeta,
       argValues: [],
@@ -9252,8 +9216,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_event_twin_rust_async(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kCreateEventTwinRustAsyncConstMeta,
       argValues: [address, payload],
@@ -9275,8 +9239,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_register_event_listener_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_event_twin_rust_async,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_event_twin_rust_async,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kRegisterEventListenerTwinRustAsyncConstMeta,
       argValues: [],
@@ -9300,8 +9264,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_EventTwinSync_as_string_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kEventTwinSyncAsStringTwinSyncConstMeta,
       argValues: [that],
@@ -9323,8 +9287,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_close_event_listener_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kCloseEventListenerTwinSyncConstMeta,
       argValues: [],
@@ -9348,8 +9312,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_event_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kCreateEventTwinSyncConstMeta,
       argValues: [address, payload],
@@ -9370,8 +9334,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_register_event_listener_twin_sync(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_event_twin_sync,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_event_twin_sync,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kRegisterEventListenerTwinSyncConstMeta,
       argValues: [],
@@ -9396,8 +9360,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_custom_struct_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_custom_struct_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kCustomStructTwinRustAsyncNewTwinRustAsyncConstMeta,
       argValues: [message],
@@ -9424,8 +9388,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData:
+            _dco_decode_custom_struct_error_another_twin_rust_async,
       ),
       constMeta:
           kCustomStructTwinRustAsyncNonstaticReturnCustomStructErrorTwinRustAsyncConstMeta,
@@ -9455,8 +9420,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData:
+            _dco_decode_custom_struct_error_another_twin_rust_async,
       ),
       constMeta:
           kCustomStructTwinRustAsyncNonstaticReturnCustomStructOkTwinRustAsyncConstMeta,
@@ -9485,8 +9451,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData:
+            _dco_decode_custom_struct_error_another_twin_rust_async,
       ),
       constMeta:
           kCustomStructTwinRustAsyncStaticReturnCustomStructErrorTwinRustAsyncConstMeta,
@@ -9514,8 +9481,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData:
+            _dco_decode_custom_struct_error_another_twin_rust_async,
       ),
       constMeta:
           kCustomStructTwinRustAsyncStaticReturnCustomStructOkTwinRustAsyncConstMeta,
@@ -9543,8 +9511,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_some_struct_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_some_struct_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kSomeStructTwinRustAsyncNewTwinRustAsyncConstMeta,
       argValues: [value],
@@ -9570,8 +9538,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_rust_async,
       ),
       constMeta:
           kSomeStructTwinRustAsyncNonStaticReturnErrCustomErrorTwinRustAsyncConstMeta,
@@ -9600,8 +9568,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_rust_async,
       ),
       constMeta:
           kSomeStructTwinRustAsyncNonStaticReturnOkCustomErrorTwinRustAsyncConstMeta,
@@ -9629,8 +9597,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_rust_async,
       ),
       constMeta:
           kSomeStructTwinRustAsyncStaticReturnErrCustomErrorTwinRustAsyncConstMeta,
@@ -9658,8 +9626,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_rust_async,
       ),
       constMeta:
           kSomeStructTwinRustAsyncStaticReturnOkCustomErrorTwinRustAsyncConstMeta,
@@ -9684,8 +9652,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_enum_error_panic_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_enum_error_twin_rust_async,
       ),
       constMeta: kCustomEnumErrorPanicTwinRustAsyncConstMeta,
       argValues: [],
@@ -9707,8 +9675,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_enum_error_return_error_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_enum_error_twin_rust_async,
       ),
       constMeta: kCustomEnumErrorReturnErrorTwinRustAsyncConstMeta,
       argValues: [],
@@ -9733,8 +9701,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_enum_error_twin_rust_async,
       ),
       constMeta: kCustomEnumErrorReturnOkTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -9761,8 +9729,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_outer_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_outer_twin_rust_async,
       ),
       constMeta: kCustomNestedErrorReturnErrorTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -9788,8 +9756,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_struct_error_twin_rust_async,
       ),
       constMeta: kCustomStructErrorReturnErrorTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -9811,8 +9779,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_return_error_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncReturnErrorTwinRustAsyncConstMeta,
       argValues: [],
@@ -9834,8 +9802,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_type_fallible_panic_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncTypeFalliblePanicTwinRustAsyncConstMeta,
       argValues: [],
@@ -9857,8 +9825,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_type_infallible_panic_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTypeInfalliblePanicTwinRustAsyncConstMeta,
       argValues: [],
@@ -9880,8 +9848,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_panic_with_custom_result_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_error_twin_rust_async,
       ),
       constMeta: kPanicWithCustomResultTwinRustAsyncConstMeta,
       argValues: [],
@@ -9903,8 +9871,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_nested_error_1_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
       ),
       constMeta: kReturnCustomNestedError1TwinRustAsyncConstMeta,
       argValues: [],
@@ -9927,8 +9895,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_return_custom_nested_error_1_variant1_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
       ),
       constMeta: kReturnCustomNestedError1Variant1TwinRustAsyncConstMeta,
       argValues: [],
@@ -9950,8 +9918,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_nested_error_2_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_2_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_2_twin_rust_async,
       ),
       constMeta: kReturnCustomNestedError2TwinRustAsyncConstMeta,
       argValues: [],
@@ -9973,8 +9941,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_struct_error_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData:
+            _dco_decode_custom_struct_error_another_twin_rust_async,
       ),
       constMeta: kReturnCustomStructErrorTwinRustAsyncConstMeta,
       argValues: [],
@@ -9996,8 +9965,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_struct_ok_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData:
+            _dco_decode_custom_struct_error_another_twin_rust_async,
       ),
       constMeta: kReturnCustomStructOkTwinRustAsyncConstMeta,
       argValues: [],
@@ -10019,8 +9989,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_err_custom_error_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_rust_async,
       ),
       constMeta: kReturnErrCustomErrorTwinRustAsyncConstMeta,
       argValues: [],
@@ -10044,8 +10014,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_error_variant_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_rust_async,
       ),
       constMeta: kReturnErrorVariantTwinRustAsyncConstMeta,
       argValues: [variant],
@@ -10067,8 +10037,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_ok_custom_error_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_rust_async,
       ),
       constMeta: kReturnOkCustomErrorTwinRustAsyncConstMeta,
       argValues: [],
@@ -10090,8 +10060,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_stream_sink_throw_anyhow_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kStreamSinkThrowAnyhowTwinRustAsyncConstMeta,
       argValues: [],
@@ -10113,8 +10083,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_throw_anyhow_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kThrowAnyhowTwinRustAsyncConstMeta,
       argValues: [],
@@ -10137,8 +10107,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_CustomStructTwinSync_new_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_custom_struct_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_custom_struct_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kCustomStructTwinSyncNewTwinSyncConstMeta,
       argValues: [message],
@@ -10164,8 +10134,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       ),
       constMeta:
           kCustomStructTwinSyncNonstaticReturnCustomStructErrorTwinSyncConstMeta,
@@ -10194,8 +10164,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       ),
       constMeta:
           kCustomStructTwinSyncNonstaticReturnCustomStructOkTwinSyncConstMeta,
@@ -10222,8 +10192,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       ),
       constMeta:
           kCustomStructTwinSyncStaticReturnCustomStructErrorTwinSyncConstMeta,
@@ -10249,8 +10219,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       ),
       constMeta:
           kCustomStructTwinSyncStaticReturnCustomStructOkTwinSyncConstMeta,
@@ -10277,8 +10247,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_SomeStructTwinSync_new_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_some_struct_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_some_struct_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kSomeStructTwinSyncNewTwinSyncConstMeta,
       argValues: [value],
@@ -10304,8 +10274,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_sync,
       ),
       constMeta:
           kSomeStructTwinSyncNonStaticReturnErrCustomErrorTwinSyncConstMeta,
@@ -10334,8 +10304,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_sync,
       ),
       constMeta:
           kSomeStructTwinSyncNonStaticReturnOkCustomErrorTwinSyncConstMeta,
@@ -10361,8 +10331,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_sync,
       ),
       constMeta: kSomeStructTwinSyncStaticReturnErrCustomErrorTwinSyncConstMeta,
       argValues: [],
@@ -10387,8 +10357,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_sync,
       ),
       constMeta: kSomeStructTwinSyncStaticReturnOkCustomErrorTwinSyncConstMeta,
       argValues: [],
@@ -10412,8 +10382,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_enum_error_panic_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_enum_error_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_enum_error_twin_sync,
       ),
       constMeta: kCustomEnumErrorPanicTwinSyncConstMeta,
       argValues: [],
@@ -10435,8 +10405,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_enum_error_return_error_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_enum_error_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_enum_error_twin_sync,
       ),
       constMeta: kCustomEnumErrorReturnErrorTwinSyncConstMeta,
       argValues: [],
@@ -10459,8 +10429,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_enum_error_return_ok_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_enum_error_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_enum_error_twin_sync,
       ),
       constMeta: kCustomEnumErrorReturnOkTwinSyncConstMeta,
       argValues: [arg],
@@ -10485,8 +10455,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_nested_error_return_error_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_outer_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_outer_twin_sync,
       ),
       constMeta: kCustomNestedErrorReturnErrorTwinSyncConstMeta,
       argValues: [arg],
@@ -10510,8 +10480,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_struct_error_return_error_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_struct_error_twin_sync,
       ),
       constMeta: kCustomStructErrorReturnErrorTwinSyncConstMeta,
       argValues: [arg],
@@ -10533,8 +10503,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_return_error_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncReturnErrorTwinSyncConstMeta,
       argValues: [],
@@ -10555,8 +10525,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_type_fallible_panic_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncTypeFalliblePanicTwinSyncConstMeta,
       argValues: [],
@@ -10578,8 +10548,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_type_infallible_panic_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTypeInfalliblePanicTwinSyncConstMeta,
       argValues: [],
@@ -10601,8 +10571,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_panic_with_custom_result_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_error_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_error_twin_sync,
       ),
       constMeta: kPanicWithCustomResultTwinSyncConstMeta,
       argValues: [],
@@ -10624,8 +10594,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_nested_error_1_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_1_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_1_twin_sync,
       ),
       constMeta: kReturnCustomNestedError1TwinSyncConstMeta,
       argValues: [],
@@ -10647,8 +10617,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_nested_error_1_variant1_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_1_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_1_twin_sync,
       ),
       constMeta: kReturnCustomNestedError1Variant1TwinSyncConstMeta,
       argValues: [],
@@ -10670,8 +10640,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_nested_error_2_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_nested_error_2_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_nested_error_2_twin_sync,
       ),
       constMeta: kReturnCustomNestedError2TwinSyncConstMeta,
       argValues: [],
@@ -10693,8 +10663,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_struct_error_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       ),
       constMeta: kReturnCustomStructErrorTwinSyncConstMeta,
       argValues: [],
@@ -10716,8 +10686,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_custom_struct_ok_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       ),
       constMeta: kReturnCustomStructOkTwinSyncConstMeta,
       argValues: [],
@@ -10739,8 +10709,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_err_custom_error_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_sync,
       ),
       constMeta: kReturnErrCustomErrorTwinSyncConstMeta,
       argValues: [],
@@ -10763,8 +10733,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_error_variant_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_sync,
       ),
       constMeta: kReturnErrorVariantTwinSyncConstMeta,
       argValues: [variant],
@@ -10785,8 +10755,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_return_ok_custom_error_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: _dco_decode_custom_error_twin_sync,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: _dco_decode_custom_error_twin_sync,
       ),
       constMeta: kReturnOkCustomErrorTwinSyncConstMeta,
       argValues: [],
@@ -10808,8 +10778,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_stream_sink_throw_anyhow_twin_sync(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kStreamSinkThrowAnyhowTwinSyncConstMeta,
       argValues: [],
@@ -10831,8 +10801,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_throw_anyhow_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kThrowAnyhowTwinSyncConstMeta,
       argValues: [],
@@ -10853,8 +10823,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_call_new_module_system_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_new_simple_struct,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_new_simple_struct,
+        decodeErrorData: null,
       ),
       constMeta: kCallNewModuleSystemTwinRustAsyncConstMeta,
       argValues: [],
@@ -10876,8 +10846,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_call_old_module_system_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_old_simple_struct,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_old_simple_struct,
+        decodeErrorData: null,
       ),
       constMeta: kCallOldModuleSystemTwinRustAsyncConstMeta,
       argValues: [],
@@ -10901,8 +10871,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_imported_enum_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kUseImportedEnumTwinRustAsyncConstMeta,
       argValues: [myEnum],
@@ -10926,8 +10896,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_imported_struct_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kUseImportedStructTwinRustAsyncConstMeta,
       argValues: [myStruct],
@@ -10949,8 +10919,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_call_new_module_system_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_new_simple_struct,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_new_simple_struct,
+        decodeErrorData: null,
       ),
       constMeta: kCallNewModuleSystemTwinSyncConstMeta,
       argValues: [],
@@ -10972,8 +10942,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_call_old_module_system_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_old_simple_struct,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_old_simple_struct,
+        decodeErrorData: null,
       ),
       constMeta: kCallOldModuleSystemTwinSyncConstMeta,
       argValues: [],
@@ -10996,8 +10966,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_imported_enum_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kUseImportedEnumTwinSyncConstMeta,
       argValues: [myEnum],
@@ -11019,8 +10989,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_use_imported_struct_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kUseImportedStructTwinSyncConstMeta,
       argValues: [myStruct],
@@ -11046,8 +11016,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinRustAsyncConcatenateStaticTwinRustAsyncConstMeta,
@@ -11080,8 +11050,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinRustAsyncConcatenateTwinRustAsyncConstMeta,
       argValues: [that, b],
@@ -11109,8 +11079,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStaticStreamSinkSingleArgTwinRustAsyncConstMeta,
@@ -11141,8 +11111,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_2_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_2_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsyncConstMeta,
@@ -11172,8 +11142,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsyncConstMeta,
@@ -11209,8 +11179,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_2_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_2_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStreamSinkTwinRustAsyncConstMeta,
@@ -11239,8 +11209,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_concatenate_with_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_concatenate_with_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinRustAsyncNewTwinRustAsyncConstMeta,
       argValues: [a],
@@ -11270,8 +11240,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kSumWithTwinRustAsyncSumTwinRustAsyncConstMeta,
       argValues: [that, y, z],
@@ -11297,8 +11267,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_sum_array_twin_rust_async(port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_sum_with_twin_rust_async_array_3,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_sum_with_twin_rust_async_array_3,
+        decodeErrorData: null,
       ),
       constMeta: kGetSumArrayTwinRustAsyncConstMeta,
       argValues: [a, b, c],
@@ -11319,8 +11289,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_sum_struct_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_sum_with_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_sum_with_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kGetSumStructTwinRustAsyncConstMeta,
       argValues: [],
@@ -11345,8 +11315,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinSyncConcatenateStaticTwinSyncConstMeta,
       argValues: [a, b],
@@ -11375,8 +11345,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinSyncConcatenateTwinSyncConstMeta,
       argValues: [that, b],
@@ -11402,8 +11372,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSyncConstMeta,
@@ -11434,8 +11404,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_2_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_2_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSyncConstMeta,
@@ -11464,8 +11434,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta:
           kConcatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSyncConstMeta,
@@ -11499,8 +11469,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_2_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_2_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinSyncHandleSomeStreamSinkTwinSyncConstMeta,
       argValues: [that, key, max],
@@ -11526,8 +11496,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_ConcatenateWithTwinSync_new_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_concatenate_with_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_concatenate_with_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kConcatenateWithTwinSyncNewTwinSyncConstMeta,
       argValues: [a],
@@ -11556,8 +11526,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_SumWithTwinSync_sum_twin_sync(arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kSumWithTwinSyncSumTwinSyncConstMeta,
       argValues: [that, y, z],
@@ -11582,8 +11552,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_sum_array_twin_sync(arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_sum_with_twin_sync_array_3,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_sum_with_twin_sync_array_3,
+        decodeErrorData: null,
       ),
       constMeta: kGetSumArrayTwinSyncConstMeta,
       argValues: [a, b, c],
@@ -11604,8 +11574,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_sum_struct_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_sum_with_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_sum_with_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kGetSumStructTwinSyncConstMeta,
       argValues: [],
@@ -11626,8 +11596,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_app_settings_stream_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_settings,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_application_settings,
+        decodeErrorData: null,
       ),
       constMeta: kAppSettingsStreamTwinRustAsyncConstMeta,
       argValues: [],
@@ -11650,8 +11620,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_app_settings_vec_stream_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_application_settings,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_application_settings,
+        decodeErrorData: null,
       ),
       constMeta: kAppSettingsVecStreamTwinRustAsyncConstMeta,
       argValues: [],
@@ -11674,8 +11644,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_first_number_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFirstNumberTwinRustAsyncConstMeta,
       argValues: [nums],
@@ -11698,8 +11668,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_first_sequence_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFirstSequenceTwinRustAsyncConstMeta,
       argValues: [seqs],
@@ -11720,8 +11690,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_app_settings_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_settings,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_application_settings,
+        decodeErrorData: null,
       ),
       constMeta: kGetAppSettingsTwinRustAsyncConstMeta,
       argValues: [],
@@ -11744,8 +11714,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_fallible_app_settings_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_settings,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_application_settings,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kGetFallibleAppSettingsTwinRustAsyncConstMeta,
       argValues: [],
@@ -11767,8 +11737,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_message_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_message,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_application_message,
+        decodeErrorData: null,
       ),
       constMeta: kGetMessageTwinRustAsyncConstMeta,
       argValues: [],
@@ -11791,8 +11761,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_is_app_embedded_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kIsAppEmbeddedTwinRustAsyncConstMeta,
       argValues: [appSettings],
@@ -11814,8 +11784,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_mirror_struct_stream_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_mirror_struct_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_mirror_struct_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kMirrorStructStreamTwinRustAsyncConstMeta,
       argValues: [],
@@ -11838,9 +11808,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_mirror_tuple_stream_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_record_application_settings_raw_string_enum_mirrored,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kMirrorTupleStreamTwinRustAsyncConstMeta,
       argValues: [],
@@ -11865,8 +11835,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_repeat_number_twin_rust_async(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_numbers,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_numbers,
+        decodeErrorData: null,
       ),
       constMeta: kRepeatNumberTwinRustAsyncConstMeta,
       argValues: [num, times],
@@ -11890,8 +11860,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_repeat_sequence_twin_rust_async(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_sequences,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_sequences,
+        decodeErrorData: null,
       ),
       constMeta: kRepeatSequenceTwinRustAsyncConstMeta,
       argValues: [seq, times],
@@ -11915,9 +11885,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_test_contains_mirrored_sub_struct_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_contains_mirrored_sub_struct_twin_rust_async,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kTestContainsMirroredSubStructTwinRustAsyncConstMeta,
       argValues: [],
@@ -11941,8 +11911,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_test_fallible_of_raw_string_mirrored_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_raw_string_mirrored,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_list_raw_string_mirrored,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kTestFallibleOfRawStringMirroredTwinRustAsyncConstMeta,
       argValues: [],
@@ -11966,8 +11936,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_test_list_of_nested_enums_mirrored_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_raw_string_enum_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestListOfNestedEnumsMirroredTwinRustAsyncConstMeta,
       argValues: [],
@@ -11992,8 +11962,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestListOfRawNestedStringMirroredTwinRustAsyncConstMeta,
       argValues: [],
@@ -12016,8 +11986,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_nested_raw_string_mirrored_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_nested_raw_string_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_nested_raw_string_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestNestedRawStringMirroredTwinRustAsyncConstMeta,
       argValues: [],
@@ -12042,8 +12012,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_raw_string_enum_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_raw_string_enum_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestRawStringEnumMirroredTwinRustAsyncConstMeta,
       argValues: [nested],
@@ -12065,8 +12035,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_raw_string_mirrored_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_raw_string_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_raw_string_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestRawStringMirroredTwinRustAsyncConstMeta,
       argValues: [],
@@ -12088,8 +12058,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_app_settings_stream_twin_sync(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_settings,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_application_settings,
+        decodeErrorData: null,
       ),
       constMeta: kAppSettingsStreamTwinSyncConstMeta,
       argValues: [],
@@ -12111,8 +12081,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_app_settings_vec_stream_twin_sync(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_application_settings,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_application_settings,
+        decodeErrorData: null,
       ),
       constMeta: kAppSettingsVecStreamTwinSyncConstMeta,
       argValues: [],
@@ -12135,8 +12105,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_first_number_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFirstNumberTwinSyncConstMeta,
       argValues: [nums],
@@ -12158,8 +12128,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_first_sequence_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kFirstSequenceTwinSyncConstMeta,
       argValues: [seqs],
@@ -12180,8 +12150,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_app_settings_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_settings,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_application_settings,
+        decodeErrorData: null,
       ),
       constMeta: kGetAppSettingsTwinSyncConstMeta,
       argValues: [],
@@ -12202,8 +12172,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_fallible_app_settings_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_settings,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_application_settings,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kGetFallibleAppSettingsTwinSyncConstMeta,
       argValues: [],
@@ -12225,8 +12195,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_get_message_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_application_message,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_application_message,
+        decodeErrorData: null,
       ),
       constMeta: kGetMessageTwinSyncConstMeta,
       argValues: [],
@@ -12249,8 +12219,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_is_app_embedded_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kIsAppEmbeddedTwinSyncConstMeta,
       argValues: [appSettings],
@@ -12271,8 +12241,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_mirror_struct_stream_twin_sync(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_mirror_struct_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_mirror_struct_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kMirrorStructStreamTwinSyncConstMeta,
       argValues: [],
@@ -12294,9 +12264,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_mirror_tuple_stream_twin_sync(port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_record_application_settings_raw_string_enum_mirrored,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kMirrorTupleStreamTwinSyncConstMeta,
       argValues: [],
@@ -12320,8 +12290,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_repeat_number_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_numbers,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_numbers,
+        decodeErrorData: null,
       ),
       constMeta: kRepeatNumberTwinSyncConstMeta,
       argValues: [num, times],
@@ -12345,8 +12315,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_repeat_sequence_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_sequences,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_sequences,
+        decodeErrorData: null,
       ),
       constMeta: kRepeatSequenceTwinSyncConstMeta,
       argValues: [seq, times],
@@ -12368,8 +12338,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_contains_mirrored_sub_struct_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kTestContainsMirroredSubStructTwinSyncConstMeta,
       argValues: [],
@@ -12392,8 +12362,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_fallible_of_raw_string_mirrored_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_raw_string_mirrored,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_list_raw_string_mirrored,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kTestFallibleOfRawStringMirroredTwinSyncConstMeta,
       argValues: [],
@@ -12416,8 +12386,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_list_of_nested_enums_mirrored_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_raw_string_enum_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestListOfNestedEnumsMirroredTwinSyncConstMeta,
       argValues: [],
@@ -12440,8 +12410,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_list_of_raw_nested_string_mirrored_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestListOfRawNestedStringMirroredTwinSyncConstMeta,
       argValues: [],
@@ -12463,8 +12433,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_nested_raw_string_mirrored_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_nested_raw_string_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_nested_raw_string_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestNestedRawStringMirroredTwinSyncConstMeta,
       argValues: [],
@@ -12488,8 +12458,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_raw_string_enum_mirrored_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_raw_string_enum_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_raw_string_enum_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestRawStringEnumMirroredTwinSyncConstMeta,
       argValues: [nested],
@@ -12511,8 +12481,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_raw_string_mirrored_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_raw_string_mirrored,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_raw_string_mirrored,
+        decodeErrorData: null,
       ),
       constMeta: kTestRawStringMirroredTwinSyncConstMeta,
       argValues: [],
@@ -12535,8 +12505,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_big_buffers_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_big_buffers_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_big_buffers_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleBigBuffersTwinRustAsyncConstMeta,
       argValues: [],
@@ -12560,8 +12530,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_complex_struct_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_tree_node_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_tree_node_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleComplexStructTwinRustAsyncConstMeta,
       argValues: [s],
@@ -12585,8 +12555,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_nested_struct_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_nested_struct_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_nested_struct_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleNestedStructTwinRustAsyncConstMeta,
       argValues: [s],
@@ -12609,8 +12579,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_string_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStringTwinRustAsyncConstMeta,
       argValues: [s],
@@ -12634,8 +12604,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_struct_twin_rust_async(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_size,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_size,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStructTwinRustAsyncConstMeta,
       argValues: [arg, boxed],
@@ -12658,8 +12628,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_vec_u8_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kHandleVecU8TwinRustAsyncConstMeta,
       argValues: [v],
@@ -12682,8 +12652,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_list_of_primitive_enums_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_weekdays_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_weekdays_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kListOfPrimitiveEnumsTwinRustAsyncConstMeta,
       argValues: [weekdays],
@@ -12707,8 +12677,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_abc_enum_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_abc_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_abc_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kTestAbcEnumTwinRustAsyncConstMeta,
       argValues: [abc],
@@ -12731,8 +12701,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_struct_with_enum_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_enum_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_enum_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kTestStructWithEnumTwinRustAsyncConstMeta,
       argValues: [se],
@@ -12754,8 +12724,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_big_buffers_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_big_buffers_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_big_buffers_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleBigBuffersTwinSyncConstMeta,
       argValues: [],
@@ -12778,8 +12748,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_complex_struct_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_tree_node_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_tree_node_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleComplexStructTwinSyncConstMeta,
       argValues: [s],
@@ -12803,8 +12773,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_nested_struct_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_nested_struct_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_nested_struct_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleNestedStructTwinSyncConstMeta,
       argValues: [s],
@@ -12826,8 +12796,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_string_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStringTwinSyncConstMeta,
       argValues: [s],
@@ -12851,8 +12821,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_struct_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_size,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_size,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStructTwinSyncConstMeta,
       argValues: [arg, boxed],
@@ -12874,8 +12844,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_vec_u8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kHandleVecU8TwinSyncConstMeta,
       argValues: [v],
@@ -12898,8 +12868,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_list_of_primitive_enums_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_weekdays_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_weekdays_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kListOfPrimitiveEnumsTwinSyncConstMeta,
       argValues: [weekdays],
@@ -12922,8 +12892,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_abc_enum_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_abc_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_abc_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kTestAbcEnumTwinSyncConstMeta,
       argValues: [abc],
@@ -12946,8 +12916,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_struct_with_enum_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_enum_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_enum_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kTestStructWithEnumTwinSyncConstMeta,
       argValues: [se],
@@ -12970,8 +12940,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_empty_struct_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_empty_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_empty_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kEmptyStructTwinRustAsyncConstMeta,
       argValues: [empty],
@@ -12992,8 +12962,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_return_unit_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFuncReturnUnitTwinRustAsyncConstMeta,
       argValues: [],
@@ -13016,8 +12986,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_string_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStringTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13040,8 +13010,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_list_of_struct_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_my_size,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_my_size,
+        decodeErrorData: null,
       ),
       constMeta: kHandleListOfStructTwinRustAsyncConstMeta,
       argValues: [l],
@@ -13061,12 +13031,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<String> names, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_StringList(names);
+        var arg0 = cst_encode_list_String(names);
         return wire.wire_handle_string_list_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_StringList,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_String,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStringListTwinRustAsyncConstMeta,
       argValues: [names],
@@ -13090,8 +13060,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_empty_struct_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_empty_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_empty_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kEmptyStructTwinSyncConstMeta,
       argValues: [empty],
@@ -13112,8 +13082,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_return_unit_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kFuncReturnUnitTwinSyncConstMeta,
       argValues: [],
@@ -13135,8 +13105,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_string_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStringTwinSyncConstMeta,
       argValues: [arg],
@@ -13159,8 +13129,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_list_of_struct_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_my_size,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_my_size,
+        decodeErrorData: null,
       ),
       constMeta: kHandleListOfStructTwinSyncConstMeta,
       argValues: [l],
@@ -13179,12 +13149,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<String> names, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_StringList(names);
+        var arg0 = cst_encode_list_String(names);
         return wire.wire_handle_string_list_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_StringList,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_String,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStringListTwinSyncConstMeta,
       argValues: [names],
@@ -13207,8 +13177,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_newtype_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_new_type_int_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_new_type_int_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleNewtypeTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13231,8 +13201,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_newtype_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_new_type_int_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_new_type_int_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleNewtypeTwinSyncConstMeta,
       argValues: [arg],
@@ -13256,8 +13226,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta,
       argValues: [arg],
@@ -13282,8 +13252,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta,
       argValues: [arg],
@@ -13308,8 +13278,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta,
       argValues: [arg],
@@ -13334,8 +13304,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta,
       argValues: [arg],
@@ -13360,8 +13330,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta,
       argValues: [arg],
@@ -13386,8 +13356,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta,
       argValues: [arg],
@@ -13412,8 +13382,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta,
       argValues: [arg],
@@ -13438,8 +13408,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta,
       argValues: [arg],
@@ -13464,8 +13434,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta,
       argValues: [arg],
@@ -13490,8 +13460,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta,
       argValues: [arg],
@@ -13516,8 +13486,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta,
       argValues: [arg],
@@ -13545,8 +13515,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kPrimitiveOptionalTypesTwinRustAsyncConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
@@ -13574,8 +13544,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kPrimitiveOptionalTypesTwinSyncConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
@@ -13600,8 +13570,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13626,8 +13596,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeF32TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13652,8 +13622,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeF64TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13678,8 +13648,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI16TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13704,8 +13674,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI32TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13730,8 +13700,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI64TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13756,8 +13726,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI8TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13782,8 +13752,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU16TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13808,8 +13778,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU32TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13834,8 +13804,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU64TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13860,8 +13830,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU8TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -13884,8 +13854,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_bool_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta,
       argValues: [arg],
@@ -13908,8 +13878,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_f32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta,
       argValues: [arg],
@@ -13932,8 +13902,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_f64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta,
       argValues: [arg],
@@ -13956,8 +13926,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i16_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta,
       argValues: [arg],
@@ -13980,8 +13950,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta,
       argValues: [arg],
@@ -14004,8 +13974,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta,
       argValues: [arg],
@@ -14028,8 +13998,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta,
       argValues: [arg],
@@ -14052,8 +14022,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u16_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta,
       argValues: [arg],
@@ -14076,8 +14046,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta,
       argValues: [arg],
@@ -14100,8 +14070,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta,
       argValues: [arg],
@@ -14124,8 +14094,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta,
       argValues: [arg],
@@ -14150,8 +14120,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleIncrementBoxedOptionalTwinRustAsyncConstMeta,
       argValues: [opt],
@@ -14190,8 +14160,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionBoxArgumentsTwinRustAsyncConstMeta,
       argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
@@ -14224,9 +14194,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_optional_increment_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionalIncrementTwinRustAsyncConstMeta,
       argValues: [opt],
@@ -14252,8 +14222,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionalReturnTwinRustAsyncConstMeta,
       argValues: [left, right],
@@ -14277,8 +14247,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_optional_struct_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_element_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionalStructTwinRustAsyncConstMeta,
       argValues: [document],
@@ -14302,8 +14272,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_vec_of_opts_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_vecs_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_vecs_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleVecOfOptsTwinRustAsyncConstMeta,
       argValues: [opt],
@@ -14326,8 +14296,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_increment_boxed_optional_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleIncrementBoxedOptionalTwinSyncConstMeta,
       argValues: [opt],
@@ -14365,8 +14335,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg0, arg1, arg2, arg3, arg4, arg5, arg6);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionBoxArgumentsTwinSyncConstMeta,
       argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
@@ -14398,9 +14368,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_optional_increment_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_opt_box_autoadd_exotic_optionals_twin_sync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionalIncrementTwinSyncConstMeta,
       argValues: [opt],
@@ -14425,8 +14395,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_optional_return_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionalReturnTwinSyncConstMeta,
       argValues: [left, right],
@@ -14450,8 +14420,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_optional_struct_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_element_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleOptionalStructTwinSyncConstMeta,
       argValues: [document],
@@ -14475,8 +14445,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_vec_of_opts_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_vecs_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_vecs_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleVecOfOptsTwinSyncConstMeta,
       argValues: [opt],
@@ -14499,8 +14469,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_bool_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeBoolTwinNormalConstMeta,
       argValues: [arg],
@@ -14524,8 +14494,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_f32_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeF32TwinNormalConstMeta,
       argValues: [arg],
@@ -14549,8 +14519,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_f64_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeF64TwinNormalConstMeta,
       argValues: [arg],
@@ -14574,8 +14544,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i16_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI16TwinNormalConstMeta,
       argValues: [arg],
@@ -14599,8 +14569,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i32_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI32TwinNormalConstMeta,
       argValues: [arg],
@@ -14624,8 +14594,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i64_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI64TwinNormalConstMeta,
       argValues: [arg],
@@ -14649,8 +14619,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i8_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI8TwinNormalConstMeta,
       argValues: [arg],
@@ -14674,8 +14644,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u16_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU16TwinNormalConstMeta,
       argValues: [arg],
@@ -14699,8 +14669,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u32_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU32TwinNormalConstMeta,
       argValues: [arg],
@@ -14724,8 +14694,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u64_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU64TwinNormalConstMeta,
       argValues: [arg],
@@ -14749,8 +14719,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u8_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU8TwinNormalConstMeta,
       argValues: [arg],
@@ -14775,8 +14745,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_bool,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeBoolTwinNormalConstMeta,
       argValues: [arg],
@@ -14801,8 +14771,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_f_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_f_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF32TwinNormalConstMeta,
       argValues: [arg],
@@ -14827,8 +14797,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF64TwinNormalConstMeta,
       argValues: [arg],
@@ -14853,8 +14823,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI16TwinNormalConstMeta,
       argValues: [arg],
@@ -14879,8 +14849,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI32TwinNormalConstMeta,
       argValues: [arg],
@@ -14905,8 +14875,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI64TwinNormalConstMeta,
       argValues: [arg],
@@ -14931,8 +14901,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI8TwinNormalConstMeta,
       argValues: [arg],
@@ -14957,8 +14927,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU16TwinNormalConstMeta,
       argValues: [arg],
@@ -14983,8 +14953,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU32TwinNormalConstMeta,
       argValues: [arg],
@@ -15009,8 +14979,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU64TwinNormalConstMeta,
       argValues: [arg],
@@ -15035,8 +15005,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU8TwinNormalConstMeta,
       argValues: [arg],
@@ -15060,8 +15030,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_vec_of_primitive_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_vec_of_primitive_pack_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleVecOfPrimitiveTwinRustAsyncConstMeta,
       argValues: [n],
@@ -15077,34 +15047,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<ZeroCopyVecOfPrimitivePackTwinRustAsync>
-      handleZeroCopyVecOfPrimitiveTwinRustAsync(
-          {required int n, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_32(n);
-        return wire.wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        parseSuccessData:
-            _dco_decode_zero_copy_vec_of_primitive_pack_twin_rust_async,
-        parseErrorData: null,
-      ),
-      constMeta: kHandleZeroCopyVecOfPrimitiveTwinRustAsyncConstMeta,
-      argValues: [n],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_zero_copy_vec_of_primitive_twin_rust_async",
-        argNames: ["n"],
-      );
-
-  @override
   VecOfPrimitivePackTwinSync handleVecOfPrimitiveTwinSync(
       {required int n, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -15113,8 +15055,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_vec_of_primitive_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_vec_of_primitive_pack_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleVecOfPrimitiveTwinSyncConstMeta,
       argValues: [n],
@@ -15130,31 +15072,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveTwinSync(
-      {required int n, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_i_32(n);
-        return wire.wire_handle_zero_copy_vec_of_primitive_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        parseSuccessData: _dco_decode_zero_copy_vec_of_primitive_pack_twin_sync,
-        parseErrorData: null,
-      ),
-      constMeta: kHandleZeroCopyVecOfPrimitiveTwinSyncConstMeta,
-      argValues: [n],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_zero_copy_vec_of_primitive_twin_sync",
-        argNames: ["n"],
-      );
-
-  @override
   Future<List<bool>> examplePrimitiveListTypeBoolTwinRustAsync(
       {required List<bool> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -15164,8 +15081,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_bool,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeBoolTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15190,8 +15107,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_f_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_f_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF32TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15216,8 +15133,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF64TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15242,8 +15159,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI16TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15268,8 +15185,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI32TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15294,8 +15211,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI64TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15320,8 +15237,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI8TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15346,8 +15263,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU16TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15372,8 +15289,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU32TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15398,8 +15315,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU64TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15424,8 +15341,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU8TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15449,8 +15366,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_bool_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_bool,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeBoolTwinSyncConstMeta,
       argValues: [arg],
@@ -15474,8 +15391,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_f32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_f_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_f_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF32TwinSyncConstMeta,
       argValues: [arg],
@@ -15499,8 +15416,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_f64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF64TwinSyncConstMeta,
       argValues: [arg],
@@ -15524,8 +15441,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i16_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI16TwinSyncConstMeta,
       argValues: [arg],
@@ -15549,8 +15466,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI32TwinSyncConstMeta,
       argValues: [arg],
@@ -15574,8 +15491,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI64TwinSyncConstMeta,
       argValues: [arg],
@@ -15599,8 +15516,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_i_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_i_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI8TwinSyncConstMeta,
       argValues: [arg],
@@ -15624,8 +15541,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u16_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU16TwinSyncConstMeta,
       argValues: [arg],
@@ -15649,8 +15566,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU32TwinSyncConstMeta,
       argValues: [arg],
@@ -15674,8 +15591,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU64TwinSyncConstMeta,
       argValues: [arg],
@@ -15699,8 +15616,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_prim_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_prim_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU8TwinSyncConstMeta,
       argValues: [arg],
@@ -15732,8 +15649,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kPrimitiveTypesTwinRustAsyncConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
@@ -15756,8 +15673,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_primitive_u32_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kPrimitiveU32TwinRustAsyncConstMeta,
       argValues: [myU32],
@@ -15787,8 +15704,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_primitive_types_twin_sync(arg0, arg1, arg2, arg3);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kPrimitiveTypesTwinSyncConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
@@ -15810,8 +15727,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_primitive_u32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kPrimitiveU32TwinSyncConstMeta,
       argValues: [myU32],
@@ -15835,8 +15752,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeBoolTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15861,8 +15778,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeF32TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15887,8 +15804,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeF64TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15913,8 +15830,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI16TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15939,8 +15856,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI32TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15965,8 +15882,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI64TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -15990,8 +15907,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i8_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI8TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -16016,8 +15933,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU16TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -16042,8 +15959,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU32TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -16068,8 +15985,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU64TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -16093,8 +16010,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u8_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU8TwinRustAsyncConstMeta,
       argValues: [arg],
@@ -16117,8 +16034,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_bool_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_bool,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_bool,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeBoolTwinSyncConstMeta,
       argValues: [arg],
@@ -16141,8 +16058,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_f32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeF32TwinSyncConstMeta,
       argValues: [arg],
@@ -16165,8 +16082,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_f64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_f_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_f_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeF64TwinSyncConstMeta,
       argValues: [arg],
@@ -16189,8 +16106,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i16_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI16TwinSyncConstMeta,
       argValues: [arg],
@@ -16213,8 +16130,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI32TwinSyncConstMeta,
       argValues: [arg],
@@ -16237,8 +16154,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI64TwinSyncConstMeta,
       argValues: [arg],
@@ -16261,8 +16178,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeI8TwinSyncConstMeta,
       argValues: [arg],
@@ -16285,8 +16202,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u16_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_16,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_16,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU16TwinSyncConstMeta,
       argValues: [arg],
@@ -16309,8 +16226,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU32TwinSyncConstMeta,
       argValues: [arg],
@@ -16333,8 +16250,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU64TwinSyncConstMeta,
       argValues: [arg],
@@ -16357,8 +16274,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_8,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_8,
+        decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveTypeU8TwinSyncConstMeta,
       argValues: [arg],
@@ -16383,9 +16300,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_more_than_just_one_raw_string_struct_twin_rust_async,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kTestMoreThanJustOneRawStringStructTwinRustAsyncConstMeta,
       argValues: [],
@@ -16408,8 +16325,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_raw_string_item_struct_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_raw_string_item_struct_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_raw_string_item_struct_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kTestRawStringItemStructTwinRustAsyncConstMeta,
       argValues: [],
@@ -16432,9 +16349,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_more_than_just_one_raw_string_struct_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_more_than_just_one_raw_string_struct_twin_sync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kTestMoreThanJustOneRawStringStructTwinSyncConstMeta,
       argValues: [],
@@ -16456,8 +16373,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_raw_string_item_struct_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_raw_string_item_struct_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_raw_string_item_struct_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kTestRawStringItemStructTwinSyncConstMeta,
       argValues: [],
@@ -16485,8 +16402,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSyncConstMeta,
@@ -16517,8 +16434,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinSyncInstanceMethodArgMutBorrowTwinSyncConstMeta,
@@ -16549,8 +16466,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kNonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSyncConstMeta,
       argValues: [that],
@@ -16581,9 +16498,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSyncConstMeta,
@@ -16609,9 +16526,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kNonCloneSimpleTwinSyncNewCustomNameTwinSyncConstMeta,
       argValues: [],
@@ -16634,9 +16551,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_NonCloneSimpleTwinSync_new_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kNonCloneSimpleTwinSyncNewTwinSyncConstMeta,
       argValues: [],
@@ -16664,8 +16581,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kNonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSyncConstMeta,
       argValues: [arg],
@@ -16695,8 +16612,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinSyncStaticMethodArgMutBorrowTwinSyncConstMeta,
@@ -16726,8 +16643,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kNonCloneSimpleTwinSyncStaticMethodArgOwnTwinSyncConstMeta,
       argValues: [arg],
@@ -16752,9 +16669,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kNonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSyncConstMeta,
       argValues: [],
@@ -16785,8 +16702,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_arg_borrow_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueArgBorrowTwinSyncConstMeta,
       argValues: [arg, expect],
@@ -16818,8 +16735,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueArgMutBorrowTwinSyncConstMeta,
       argValues: [arg, expect, adder],
@@ -16846,9 +16763,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinSyncConstMeta,
       argValues: [arg],
@@ -16877,8 +16794,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_arg_own_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueArgOwnTwinSyncConstMeta,
       argValues: [arg, expect],
@@ -16904,8 +16821,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_callable_arg_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueCallableArgTwinSyncConstMeta,
       argValues: [arg],
@@ -16927,9 +16844,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_callable_return_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueCallableReturnTwinSyncConstMeta,
       argValues: [],
@@ -16959,8 +16876,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinSyncConstMeta,
       argValues: [a, b],
@@ -16986,8 +16903,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_plus_sign_arg_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaquePlusSignArgTwinSyncConstMeta,
       argValues: [arg],
@@ -17010,9 +16927,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_plus_sign_return_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaquePlusSignReturnTwinSyncConstMeta,
       argValues: [],
@@ -17036,9 +16953,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_return_own_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueReturnOwnTwinSyncConstMeta,
       argValues: [initial],
@@ -17066,8 +16983,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncConstMeta,
@@ -17098,8 +17015,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncConstMeta,
@@ -17130,8 +17047,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncConstMeta,
@@ -17159,9 +17076,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncConstMeta,
@@ -17194,8 +17111,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinSyncConstMeta,
       argValues: [arg, expect],
@@ -17225,8 +17142,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncConstMeta,
       argValues: [arg, expect],
@@ -17256,8 +17173,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinSyncConstMeta,
       argValues: [arg, expect],
@@ -17281,9 +17198,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_trait_object_return_own_one_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncConstMeta,
       argValues: [],
@@ -17307,9 +17224,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_trait_object_return_own_two_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncConstMeta,
       argValues: [],
@@ -17340,8 +17257,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_two_args_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTwoArgsTwinSyncConstMeta,
       argValues: [a, b],
@@ -17364,8 +17281,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_array_opaque_enum_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_opaque_twin_rust_async_array_5,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_opaque_twin_rust_async_array_5,
+        decodeErrorData: null,
       ),
       constMeta: kCreateArrayOpaqueEnumTwinRustAsyncConstMeta,
       argValues: [],
@@ -17388,8 +17305,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_nested_opaque_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opaque_nested_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opaque_nested_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kCreateNestedOpaqueTwinRustAsyncConstMeta,
       argValues: [],
@@ -17411,8 +17328,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_opaque_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinRustAsyncConstMeta,
       argValues: [],
@@ -17435,8 +17352,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_option_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -17458,8 +17375,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_sync_opaque_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinRustAsyncConstMeta,
       argValues: [],
@@ -17481,8 +17398,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_frb_generator_test_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
+        decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinRustAsyncConstMeta,
       argValues: [],
@@ -17506,8 +17423,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_array_run_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayRunTwinRustAsyncConstMeta,
       argValues: [data],
@@ -17529,8 +17446,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_array_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinRustAsyncConstMeta,
       argValues: [],
@@ -17553,8 +17470,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_vec_run_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueVecRunTwinRustAsyncConstMeta,
       argValues: [data],
@@ -17575,8 +17492,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_vec_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinRustAsyncConstMeta,
       argValues: [],
@@ -17599,8 +17516,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_enum_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunEnumOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -17623,8 +17540,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_nested_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRunNestedOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -17648,8 +17565,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_non_clone_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunNonCloneTwinRustAsyncConstMeta,
       argValues: [clone],
@@ -17672,8 +17589,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -17696,8 +17613,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_opaque_with_delay_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunOpaqueWithDelayTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -17721,8 +17638,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_unwrap_rust_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kUnwrapRustOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
@@ -17744,8 +17661,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_array_opaque_enum_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_opaque_twin_sync_array_5,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_opaque_twin_sync_array_5,
+        decodeErrorData: null,
       ),
       constMeta: kCreateArrayOpaqueEnumTwinSyncConstMeta,
       argValues: [],
@@ -17767,8 +17684,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_nested_opaque_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opaque_nested_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opaque_nested_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kCreateNestedOpaqueTwinSyncConstMeta,
       argValues: [],
@@ -17789,8 +17706,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_opaque_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinSyncConstMeta,
       argValues: [],
@@ -17812,8 +17729,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_option_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -17834,8 +17751,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_sync_opaque_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinSyncConstMeta,
       argValues: [],
@@ -17856,8 +17773,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_frb_generator_test_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
+        decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinSyncConstMeta,
       argValues: [],
@@ -17879,8 +17796,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_array_run_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayRunTwinSyncConstMeta,
       argValues: [data],
@@ -17901,8 +17818,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_array_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinSyncConstMeta,
       argValues: [],
@@ -17924,8 +17841,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_vec_run_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueVecRunTwinSyncConstMeta,
       argValues: [data],
@@ -17946,8 +17863,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_vec_twin_sync();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinSyncConstMeta,
       argValues: [],
@@ -17970,8 +17887,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_enum_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunEnumOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -17994,8 +17911,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_nested_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRunNestedOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -18017,8 +17934,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_non_clone_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunNonCloneTwinSyncConstMeta,
       argValues: [clone],
@@ -18040,8 +17957,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -18063,8 +17980,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_opaque_with_delay_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunOpaqueWithDelayTwinSyncConstMeta,
       argValues: [opaque],
@@ -18086,8 +18003,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_unwrap_rust_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kUnwrapRustOpaqueTwinSyncConstMeta,
       argValues: [opaque],
@@ -18111,8 +18028,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_simple_adder_twin_rust_async(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kSimpleAdderTwinRustAsyncConstMeta,
       argValues: [a, b],
@@ -18135,8 +18052,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_simple_adder_twin_sync(arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kSimpleAdderTwinSyncConstMeta,
       argValues: [a, b],
@@ -18157,8 +18074,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_stream_return_error_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncStreamReturnErrorTwinRustAsyncConstMeta,
       argValues: [],
@@ -18180,8 +18097,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_stream_return_panic_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncStreamReturnPanicTwinRustAsyncConstMeta,
       argValues: [],
@@ -18207,8 +18124,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStreamSinkArgPositionTwinRustAsyncConstMeta,
       argValues: [a, b],
@@ -18231,8 +18148,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_stream_of_struct_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_stream_entry_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_stream_entry_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStreamOfStructTwinRustAsyncConstMeta,
       argValues: [],
@@ -18258,8 +18175,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt1TwinRustAsyncConstMeta,
       argValues: [key, max],
@@ -18285,8 +18202,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt2TwinRustAsyncConstMeta,
       argValues: [key, max],
@@ -18312,8 +18229,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt3TwinRustAsyncConstMeta,
       argValues: [key, max],
@@ -18339,8 +18256,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_one_field_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_one_field_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStructWithOneFieldTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -18366,8 +18283,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_two_field_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_two_field_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStructWithTwoFieldTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -18393,8 +18310,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_zero_field_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_zero_field_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStructWithZeroFieldTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -18422,9 +18339,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_tuple_struct_with_one_field_twin_rust_async,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTupleStructWithOneFieldTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -18452,9 +18369,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_tuple_struct_with_two_field_twin_rust_async,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTupleStructWithTwoFieldTwinRustAsyncConstMeta,
       argValues: [arg],
@@ -18478,8 +18395,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_struct_with_one_field_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_one_field_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_one_field_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStructWithOneFieldTwinSyncConstMeta,
       argValues: [arg],
@@ -18503,8 +18420,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_struct_with_two_field_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_two_field_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_two_field_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStructWithTwoFieldTwinSyncConstMeta,
       argValues: [arg],
@@ -18528,8 +18445,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_struct_with_zero_field_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_zero_field_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_zero_field_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStructWithZeroFieldTwinSyncConstMeta,
       argValues: [arg],
@@ -18554,8 +18471,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_tuple_struct_with_one_field_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_tuple_struct_with_one_field_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTupleStructWithOneFieldTwinSyncConstMeta,
       argValues: [arg],
@@ -18580,8 +18497,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_tuple_struct_with_two_field_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_tuple_struct_with_two_field_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTupleStructWithTwoFieldTwinSyncConstMeta,
       argValues: [arg],
@@ -18605,8 +18522,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_tuple_2_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kTestTuple2TwinRustAsyncConstMeta,
       argValues: [value],
@@ -18629,8 +18546,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_tuple_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_record_string_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_record_string_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kTestTupleTwinRustAsyncConstMeta,
       argValues: [value],
@@ -18652,8 +18569,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_tuple_2_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kTestTuple2TwinSyncConstMeta,
       argValues: [value],
@@ -18675,8 +18592,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_tuple_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_record_string_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_record_string_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kTestTupleTwinSyncConstMeta,
       argValues: [value],
@@ -18699,8 +18616,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_type_alias_id_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTypeAliasIdTwinRustAsyncConstMeta,
       argValues: [input],
@@ -18724,8 +18641,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_type_alias_model_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_model_twin_rust_async,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_model_twin_rust_async,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTypeAliasModelTwinRustAsyncConstMeta,
       argValues: [input],
@@ -18749,8 +18666,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_type_nest_alias_id_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTypeNestAliasIdTwinRustAsyncConstMeta,
       argValues: [input],
@@ -18773,8 +18690,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_type_alias_id_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTypeAliasIdTwinSyncConstMeta,
       argValues: [input],
@@ -18797,8 +18714,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_type_alias_model_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_model_twin_sync,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_model_twin_sync,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTypeAliasModelTwinSyncConstMeta,
       argValues: [input],
@@ -18821,8 +18738,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_type_nest_alias_id_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTypeNestAliasIdTwinSyncConstMeta,
       argValues: [input],
@@ -18846,8 +18763,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_nested_uuids_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_feature_uuid_twin_rust_async,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_feature_uuid_twin_rust_async,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHandleNestedUuidsTwinRustAsyncConstMeta,
       argValues: [ids],
@@ -18871,8 +18788,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_uuid_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Uuid,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_Uuid,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHandleUuidTwinRustAsyncConstMeta,
       argValues: [id],
@@ -18891,12 +18808,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<UuidValue> ids, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_Uuids(ids);
+        var arg0 = cst_encode_list_Uuid(ids);
         return wire.wire_handle_uuids_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Uuids,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_list_Uuid,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHandleUuidsTwinRustAsyncConstMeta,
       argValues: [ids],
@@ -18919,8 +18836,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_nested_uuids_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_feature_uuid_twin_sync,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_feature_uuid_twin_sync,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHandleNestedUuidsTwinSyncConstMeta,
       argValues: [ids],
@@ -18942,8 +18859,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_uuid_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Uuid,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_Uuid,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHandleUuidTwinSyncConstMeta,
       argValues: [id],
@@ -18962,12 +18879,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<UuidValue> ids, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_Uuids(ids);
+        var arg0 = cst_encode_list_Uuid(ids);
         return wire.wire_handle_uuids_twin_sync(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Uuids,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_list_Uuid,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHandleUuidsTwinSyncConstMeta,
       argValues: [ids],
@@ -18990,9 +18907,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_test_more_than_just_one_raw_string_struct_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_more_than_just_one_raw_string_struct_twin_normal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kTestMoreThanJustOneRawStringStructTwinNormalConstMeta,
       argValues: [],
@@ -19015,8 +18932,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_raw_string_item_struct_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_raw_string_item_struct_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_raw_string_item_struct_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kTestRawStringItemStructTwinNormalConstMeta,
       argValues: [],
@@ -19044,8 +18961,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormalConstMeta,
@@ -19076,8 +18993,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormalConstMeta,
@@ -19108,8 +19025,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormalConstMeta,
@@ -19141,9 +19058,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormalConstMeta,
@@ -19170,9 +19087,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kNonCloneSimpleTwinNormalNewCustomNameTwinNormalConstMeta,
       argValues: [],
@@ -19195,9 +19112,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_NonCloneSimpleTwinNormal_new_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kNonCloneSimpleTwinNormalNewTwinNormalConstMeta,
       argValues: [],
@@ -19225,8 +19142,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormalConstMeta,
@@ -19257,8 +19174,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormalConstMeta,
@@ -19289,8 +19206,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kNonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormalConstMeta,
       argValues: [arg],
@@ -19317,9 +19234,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta:
           kNonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormalConstMeta,
@@ -19352,8 +19269,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueArgBorrowTwinNormalConstMeta,
       argValues: [arg, expect],
@@ -19385,8 +19302,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueArgMutBorrowTwinNormalConstMeta,
       argValues: [arg, expect, adder],
@@ -19414,9 +19331,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinNormalConstMeta,
       argValues: [arg],
@@ -19446,8 +19363,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueArgOwnTwinNormalConstMeta,
       argValues: [arg, expect],
@@ -19473,8 +19390,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_callable_arg_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueCallableArgTwinNormalConstMeta,
       argValues: [arg],
@@ -19497,9 +19414,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_callable_return_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueCallableReturnTwinNormalConstMeta,
       argValues: [],
@@ -19529,8 +19446,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinNormalConstMeta,
       argValues: [a, b],
@@ -19557,8 +19474,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaquePlusSignArgTwinNormalConstMeta,
       argValues: [arg],
@@ -19581,9 +19498,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_plus_sign_return_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaquePlusSignReturnTwinNormalConstMeta,
       argValues: [],
@@ -19607,9 +19524,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_return_own_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueReturnOwnTwinNormalConstMeta,
       argValues: [initial],
@@ -19638,8 +19555,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormalConstMeta,
@@ -19671,8 +19588,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormalConstMeta,
@@ -19704,8 +19621,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormalConstMeta,
@@ -19734,9 +19651,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormalConstMeta,
@@ -19769,8 +19686,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinNormalConstMeta,
       argValues: [arg, expect],
@@ -19801,8 +19718,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinNormalConstMeta,
       argValues: [arg, expect],
@@ -19832,8 +19749,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinNormalConstMeta,
       argValues: [arg, expect],
@@ -19858,9 +19775,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneTwinNormalConstMeta,
       argValues: [],
@@ -19885,9 +19802,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_);
       },
       codec: DcoCodec(
-        parseSuccessData:
+        decodeSuccessData:
             _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
-        parseErrorData: null,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoTwinNormalConstMeta,
       argValues: [],
@@ -19919,8 +19836,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueTwoArgsTwinNormalConstMeta,
       argValues: [a, b],
@@ -19943,8 +19860,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_array_opaque_enum_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_enum_opaque_twin_normal_array_5,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_enum_opaque_twin_normal_array_5,
+        decodeErrorData: null,
       ),
       constMeta: kCreateArrayOpaqueEnumTwinNormalConstMeta,
       argValues: [],
@@ -19966,8 +19883,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_nested_opaque_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opaque_nested_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opaque_nested_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kCreateNestedOpaqueTwinNormalConstMeta,
       argValues: [],
@@ -19989,8 +19906,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_opaque_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinNormalConstMeta,
       argValues: [],
@@ -20013,8 +19930,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_option_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -20036,8 +19953,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_sync_opaque_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinNormalConstMeta,
       argValues: [],
@@ -20058,8 +19975,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_frb_generator_test_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
+        decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinNormalConstMeta,
       argValues: [],
@@ -20082,8 +19999,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_array_run_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayRunTwinNormalConstMeta,
       argValues: [data],
@@ -20104,8 +20021,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_array_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinNormalConstMeta,
       argValues: [],
@@ -20128,8 +20045,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_vec_run_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueVecRunTwinNormalConstMeta,
       argValues: [data],
@@ -20150,8 +20067,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_opaque_vec_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_list_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinNormalConstMeta,
       argValues: [],
@@ -20174,8 +20091,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_enum_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunEnumOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -20198,8 +20115,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_nested_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kRunNestedOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -20222,8 +20139,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_non_clone_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunNonCloneTwinNormalConstMeta,
       argValues: [clone],
@@ -20245,8 +20162,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -20269,8 +20186,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_run_opaque_with_delay_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kRunOpaqueWithDelayTwinNormalConstMeta,
       argValues: [opaque],
@@ -20294,8 +20211,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_unwrap_rust_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kUnwrapRustOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -20316,8 +20233,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_frb_sync_generator_test_twin_normal();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_frb_opaque_sync_return,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_frb_opaque_sync_return,
+        decodeErrorData: null,
       ),
       constMeta: kFrbSyncGeneratorTestTwinNormalConstMeta,
       argValues: [],
@@ -20339,8 +20256,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_sync_create_non_clone_twin_normal();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_non_clone_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_non_clone_data,
+        decodeErrorData: null,
       ),
       constMeta: kSyncCreateNonCloneTwinNormalConstMeta,
       argValues: [],
@@ -20362,8 +20279,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_sync_create_opaque_twin_normal();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kSyncCreateOpaqueTwinNormalConstMeta,
       argValues: [],
@@ -20384,8 +20301,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_sync_create_sync_opaque_twin_normal();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
       ),
       constMeta: kSyncCreateSyncOpaqueTwinNormalConstMeta,
       argValues: [],
@@ -20407,8 +20324,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_sync_option_rust_opaque_twin_normal();
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kSyncOptionRustOpaqueTwinNormalConstMeta,
       argValues: [],
@@ -20432,8 +20349,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_sync_run_opaque_twin_normal(arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kSyncRunOpaqueTwinNormalConstMeta,
       argValues: [opaque],
@@ -20457,8 +20374,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_simple_adder_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kSimpleAdderTwinNormalConstMeta,
       argValues: [a, b],
@@ -20479,8 +20396,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_stream_return_error_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncStreamReturnErrorTwinNormalConstMeta,
       argValues: [],
@@ -20502,8 +20419,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_stream_return_panic_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kFuncStreamReturnPanicTwinNormalConstMeta,
       argValues: [],
@@ -20529,8 +20446,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_32,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStreamSinkArgPositionTwinNormalConstMeta,
       argValues: [a, b],
@@ -20553,8 +20470,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_stream_of_struct_twin_normal(port_);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_my_stream_entry_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_my_stream_entry_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStreamOfStructTwinNormalConstMeta,
       argValues: [],
@@ -20579,8 +20496,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_stream_sink_at_1_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt1TwinNormalConstMeta,
       argValues: [key, max],
@@ -20605,8 +20522,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_stream_sink_at_2_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt2TwinNormalConstMeta,
       argValues: [key, max],
@@ -20631,8 +20548,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_stream_sink_at_3_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_log_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_log_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleStreamSinkAt3TwinNormalConstMeta,
       argValues: [key, max],
@@ -20656,8 +20573,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_stream_realistic_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_String,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_String,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStreamRealisticTwinNormalConstMeta,
       argValues: [arg],
@@ -20682,8 +20599,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_struct_with_one_field_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_one_field_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_one_field_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStructWithOneFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -20708,8 +20625,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_struct_with_two_field_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_two_field_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_two_field_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStructWithTwoFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -20734,8 +20651,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_struct_with_zero_field_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_struct_with_zero_field_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_struct_with_zero_field_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncStructWithZeroFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -20762,8 +20679,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_tuple_struct_with_one_field_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTupleStructWithOneFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -20790,8 +20707,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_tuple_struct_with_two_field_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kFuncTupleStructWithTwoFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -20815,8 +20732,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_tuple_2_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_unit,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kTestTuple2TwinNormalConstMeta,
       argValues: [value],
@@ -20839,8 +20756,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_tuple_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_record_string_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_record_string_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kTestTupleTwinNormalConstMeta,
       argValues: [value],
@@ -20862,8 +20779,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_type_alias_id_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTypeAliasIdTwinNormalConstMeta,
       argValues: [input],
@@ -20887,8 +20804,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_type_alias_model_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_test_model_twin_normal,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_test_model_twin_normal,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTypeAliasModelTwinNormalConstMeta,
       argValues: [input],
@@ -20912,8 +20829,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_type_nest_alias_id_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_u_64,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_u_64,
+        decodeErrorData: null,
       ),
       constMeta: kHandleTypeNestAliasIdTwinNormalConstMeta,
       argValues: [input],
@@ -20937,8 +20854,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_nested_uuids_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_feature_uuid_twin_normal,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_feature_uuid_twin_normal,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHandleNestedUuidsTwinNormalConstMeta,
       argValues: [ids],
@@ -20962,8 +20879,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_uuid_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Uuid,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_Uuid,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHandleUuidTwinNormalConstMeta,
       argValues: [id],
@@ -20982,12 +20899,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<UuidValue> ids, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_Uuids(ids);
+        var arg0 = cst_encode_list_Uuid(ids);
         return wire.wire_handle_uuids_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_Uuids,
-        parseErrorData: _dco_decode_AnyhowException,
+        decodeSuccessData: _dco_decode_list_Uuid,
+        decodeErrorData: _dco_decode_AnyhowException,
       ),
       constMeta: kHandleUuidsTwinNormalConstMeta,
       argValues: [ids],
@@ -21221,16 +21138,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return dcoDecodeDuration(_dco_decode_i_64(raw).toInt());
   }
 
-  List<Duration> _dco_decode_Chrono_DurationList(dynamic raw) {
-    return (raw as List<dynamic>).map(_dco_decode_Chrono_Duration).toList();
-  }
-
   DateTime _dco_decode_Chrono_Local(dynamic raw) {
     return dcoDecodeTimestamp(ts: _dco_decode_i_64(raw).toInt(), isUtc: false);
-  }
-
-  List<DateTime> _dco_decode_Chrono_LocalList(dynamic raw) {
-    return (raw as List<dynamic>).map(_dco_decode_Chrono_Local).toList();
   }
 
   DateTime _dco_decode_Chrono_Naive(dynamic raw) {
@@ -21360,63 +21269,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as String;
   }
 
-  List<String> _dco_decode_StringList(dynamic raw) {
-    return (raw as List<dynamic>).cast<String>();
-  }
-
   UuidValue _dco_decode_Uuid(dynamic raw) {
     return UuidValue.fromByteList(_dco_decode_list_prim_u_8(raw));
-  }
-
-  List<UuidValue> _dco_decode_Uuids(dynamic raw) {
-    const kUuidSizeInBytes = 16;
-    final bytes = _dco_decode_list_prim_u_8(raw);
-    return List.generate(
-      bytes.lengthInBytes ~/ kUuidSizeInBytes,
-      (i) => UuidValue.fromByteList(
-          Uint8List.view(bytes.buffer, i * kUuidSizeInBytes, kUuidSizeInBytes)),
-      growable: false,
-    );
-  }
-
-  Float32List _dco_decode_ZeroCopyBuffer_list_prim_f_32(dynamic raw) {
-    return raw as Float32List;
-  }
-
-  Float64List _dco_decode_ZeroCopyBuffer_list_prim_f_64(dynamic raw) {
-    return raw as Float64List;
-  }
-
-  Int16List _dco_decode_ZeroCopyBuffer_list_prim_i_16(dynamic raw) {
-    return raw as Int16List;
-  }
-
-  Int32List _dco_decode_ZeroCopyBuffer_list_prim_i_32(dynamic raw) {
-    return raw as Int32List;
-  }
-
-  Int64List _dco_decode_ZeroCopyBuffer_list_prim_i_64(dynamic raw) {
-    return _dco_decode_list_prim_i_64(raw);
-  }
-
-  Int8List _dco_decode_ZeroCopyBuffer_list_prim_i_8(dynamic raw) {
-    return raw as Int8List;
-  }
-
-  Uint16List _dco_decode_ZeroCopyBuffer_list_prim_u_16(dynamic raw) {
-    return raw as Uint16List;
-  }
-
-  Uint32List _dco_decode_ZeroCopyBuffer_list_prim_u_32(dynamic raw) {
-    return raw as Uint32List;
-  }
-
-  Uint64List _dco_decode_ZeroCopyBuffer_list_prim_u_64(dynamic raw) {
-    return _dco_decode_list_prim_u_64(raw);
-  }
-
-  Uint8List _dco_decode_ZeroCopyBuffer_list_prim_u_8(dynamic raw) {
-    return raw as Uint8List;
   }
 
   ATwinNormal _dco_decode_a_twin_normal(dynamic raw) {
@@ -22974,7 +22828,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int64: _dco_decode_opt_box_autoadd_i_64(arr[1]),
       float64: _dco_decode_opt_box_autoadd_f_64(arr[2]),
       boolean: _dco_decode_opt_box_autoadd_bool(arr[3]),
-      zerocopy: _dco_decode_opt_ZeroCopyBuffer_list_prim_u_8(arr[4]),
+      zerocopy: _dco_decode_opt_list_prim_u_8(arr[4]),
       int8List: _dco_decode_opt_list_prim_i_8(arr[5]),
       uint8List: _dco_decode_opt_list_prim_u_8(arr[6]),
       int32List: _dco_decode_opt_list_prim_i_32(arr[7]),
@@ -22999,7 +22853,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int64: _dco_decode_opt_box_autoadd_i_64(arr[1]),
       float64: _dco_decode_opt_box_autoadd_f_64(arr[2]),
       boolean: _dco_decode_opt_box_autoadd_bool(arr[3]),
-      zerocopy: _dco_decode_opt_ZeroCopyBuffer_list_prim_u_8(arr[4]),
+      zerocopy: _dco_decode_opt_list_prim_u_8(arr[4]),
       int8List: _dco_decode_opt_list_prim_i_8(arr[5]),
       uint8List: _dco_decode_opt_list_prim_u_8(arr[6]),
       int32List: _dco_decode_opt_list_prim_i_32(arr[7]),
@@ -23025,7 +22879,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int64: _dco_decode_opt_box_autoadd_i_64(arr[1]),
       float64: _dco_decode_opt_box_autoadd_f_64(arr[2]),
       boolean: _dco_decode_opt_box_autoadd_bool(arr[3]),
-      zerocopy: _dco_decode_opt_ZeroCopyBuffer_list_prim_u_8(arr[4]),
+      zerocopy: _dco_decode_opt_list_prim_u_8(arr[4]),
       int8List: _dco_decode_opt_list_prim_i_8(arr[5]),
       uint8List: _dco_decode_opt_list_prim_u_8(arr[6]),
       int32List: _dco_decode_opt_list_prim_i_32(arr[7]),
@@ -23054,7 +22908,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return FeatureUuidTwinNormal(
       one: _dco_decode_Uuid(arr[0]),
-      many: _dco_decode_Uuids(arr[1]),
+      many: _dco_decode_list_Uuid(arr[1]),
     );
   }
 
@@ -23065,7 +22919,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return FeatureUuidTwinRustAsync(
       one: _dco_decode_Uuid(arr[0]),
-      many: _dco_decode_Uuids(arr[1]),
+      many: _dco_decode_list_Uuid(arr[1]),
     );
   }
 
@@ -23075,7 +22929,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return FeatureUuidTwinSync(
       one: _dco_decode_Uuid(arr[0]),
-      many: _dco_decode_Uuids(arr[1]),
+      many: _dco_decode_list_Uuid(arr[1]),
     );
   }
 
@@ -23148,7 +23002,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 4:
         return KitchenSinkTwinNormal_Buffer(
-          _dco_decode_ZeroCopyBuffer_list_prim_u_8(raw[1]),
+          _dco_decode_list_prim_u_8(raw[1]),
         );
       case 5:
         return KitchenSinkTwinNormal_Enums(
@@ -23182,7 +23036,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 4:
         return KitchenSinkTwinRustAsync_Buffer(
-          _dco_decode_ZeroCopyBuffer_list_prim_u_8(raw[1]),
+          _dco_decode_list_prim_u_8(raw[1]),
         );
       case 5:
         return KitchenSinkTwinRustAsync_Enums(
@@ -23215,7 +23069,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 4:
         return KitchenSinkTwinSync_Buffer(
-          _dco_decode_ZeroCopyBuffer_list_prim_u_8(raw[1]),
+          _dco_decode_list_prim_u_8(raw[1]),
         );
       case 5:
         return KitchenSinkTwinSync_Enums(
@@ -23226,6 +23080,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  List<Duration> _dco_decode_list_Chrono_Duration(dynamic raw) {
+    return (raw as List<dynamic>).map(_dco_decode_Chrono_Duration).toList();
+  }
+
+  List<DateTime> _dco_decode_list_Chrono_Local(dynamic raw) {
+    return (raw as List<dynamic>).map(_dco_decode_Chrono_Local).toList();
+  }
+
   List<Object> _dco_decode_list_DartOpaque(dynamic raw) {
     return (raw as List<dynamic>).map(_dco_decode_DartOpaque).toList();
   }
@@ -23234,6 +23096,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (raw as List<dynamic>)
         .map(_dco_decode_RustOpaque_hide_data)
         .toList();
+  }
+
+  List<String> _dco_decode_list_String(dynamic raw) {
+    return (raw as List<dynamic>).map(_dco_decode_String).toList();
+  }
+
+  List<UuidValue> _dco_decode_list_Uuid(dynamic raw) {
+    return (raw as List<dynamic>).map(_dco_decode_Uuid).toList();
   }
 
   List<ApplicationEnvVar> _dco_decode_list_application_env_var(dynamic raw) {
@@ -23936,10 +23806,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   String? _dco_decode_opt_String(dynamic raw) {
     return raw == null ? null : _dco_decode_String(raw);
-  }
-
-  Uint8List? _dco_decode_opt_ZeroCopyBuffer_list_prim_u_8(dynamic raw) {
-    return raw == null ? null : _dco_decode_ZeroCopyBuffer_list_prim_u_8(raw);
   }
 
   Duration? _dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw) {
@@ -24915,63 +24781,3212 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   WeekdaysTwinSync _dco_decode_weekdays_twin_sync(dynamic raw) {
     return WeekdaysTwinSync.values[raw as int];
   }
+}
 
-  ZeroCopyVecOfPrimitivePackTwinNormal
-      _dco_decode_zero_copy_vec_of_primitive_pack_twin_normal(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 10)
-      throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
-    return ZeroCopyVecOfPrimitivePackTwinNormal(
-      int8List: _dco_decode_ZeroCopyBuffer_list_prim_i_8(arr[0]),
-      uint8List: _dco_decode_ZeroCopyBuffer_list_prim_u_8(arr[1]),
-      int16List: _dco_decode_ZeroCopyBuffer_list_prim_i_16(arr[2]),
-      uint16List: _dco_decode_ZeroCopyBuffer_list_prim_u_16(arr[3]),
-      uint32List: _dco_decode_ZeroCopyBuffer_list_prim_u_32(arr[4]),
-      int32List: _dco_decode_ZeroCopyBuffer_list_prim_i_32(arr[5]),
-      uint64List: _dco_decode_ZeroCopyBuffer_list_prim_u_64(arr[6]),
-      int64List: _dco_decode_ZeroCopyBuffer_list_prim_i_64(arr[7]),
-      float32List: _dco_decode_ZeroCopyBuffer_list_prim_f_32(arr[8]),
-      float64List: _dco_decode_ZeroCopyBuffer_list_prim_f_64(arr[9]),
-    );
-  }
+// Section: rust2dart
 
-  ZeroCopyVecOfPrimitivePackTwinRustAsync
-      _dco_decode_zero_copy_vec_of_primitive_pack_twin_rust_async(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 10)
-      throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
-    return ZeroCopyVecOfPrimitivePackTwinRustAsync(
-      int8List: _dco_decode_ZeroCopyBuffer_list_prim_i_8(arr[0]),
-      uint8List: _dco_decode_ZeroCopyBuffer_list_prim_u_8(arr[1]),
-      int16List: _dco_decode_ZeroCopyBuffer_list_prim_i_16(arr[2]),
-      uint16List: _dco_decode_ZeroCopyBuffer_list_prim_u_16(arr[3]),
-      uint32List: _dco_decode_ZeroCopyBuffer_list_prim_u_32(arr[4]),
-      int32List: _dco_decode_ZeroCopyBuffer_list_prim_i_32(arr[5]),
-      uint64List: _dco_decode_ZeroCopyBuffer_list_prim_u_64(arr[6]),
-      int64List: _dco_decode_ZeroCopyBuffer_list_prim_i_64(arr[7]),
-      float32List: _dco_decode_ZeroCopyBuffer_list_prim_f_32(arr[8]),
-      float64List: _dco_decode_ZeroCopyBuffer_list_prim_f_64(arr[9]),
-    );
-  }
+AnyhowException _sse_decode_AnyhowException(SseDeserializer deserializer) {
+  var inner = _sse_decode_String(serializer);
+  return TODO;
+}
 
-  ZeroCopyVecOfPrimitivePackTwinSync
-      _dco_decode_zero_copy_vec_of_primitive_pack_twin_sync(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 10)
-      throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
-    return ZeroCopyVecOfPrimitivePackTwinSync(
-      int8List: _dco_decode_ZeroCopyBuffer_list_prim_i_8(arr[0]),
-      uint8List: _dco_decode_ZeroCopyBuffer_list_prim_u_8(arr[1]),
-      int16List: _dco_decode_ZeroCopyBuffer_list_prim_i_16(arr[2]),
-      uint16List: _dco_decode_ZeroCopyBuffer_list_prim_u_16(arr[3]),
-      uint32List: _dco_decode_ZeroCopyBuffer_list_prim_u_32(arr[4]),
-      int32List: _dco_decode_ZeroCopyBuffer_list_prim_i_32(arr[5]),
-      uint64List: _dco_decode_ZeroCopyBuffer_list_prim_u_64(arr[6]),
-      int64List: _dco_decode_ZeroCopyBuffer_list_prim_i_64(arr[7]),
-      float32List: _dco_decode_ZeroCopyBuffer_list_prim_f_32(arr[8]),
-      float64List: _dco_decode_ZeroCopyBuffer_list_prim_f_64(arr[9]),
-    );
+RwLockBoxFnStringString
+    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockBoxHelloTraitTwinNormal
+    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockBoxHelloTraitTwinSync
+    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockBoxMyTraitTwinNormal
+    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockBoxMyTraitTwinSync
+    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockNonCloneSimpleTwinNormal
+    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockNonCloneSimpleTwinSync
+    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockStructWithGoodAndOpaqueFieldTwinNormal
+    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockStructWithGoodAndOpaqueFieldTwinSync
+    _sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+Duration _sse_decode_Chrono_Duration(SseDeserializer deserializer) {
+  var inner = _sse_decode_i_64(serializer);
+  return TODO;
+}
+
+DateTime _sse_decode_Chrono_Local(SseDeserializer deserializer) {
+  var inner = _sse_decode_i_64(serializer);
+  return TODO;
+}
+
+DateTime _sse_decode_Chrono_Naive(SseDeserializer deserializer) {
+  var inner = _sse_decode_i_64(serializer);
+  return TODO;
+}
+
+DateTime _sse_decode_Chrono_Utc(SseDeserializer deserializer) {
+  var inner = _sse_decode_i_64(serializer);
+  return TODO;
+}
+
+Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+ObjectArray1 _sse_decode_DartOpaque_array_1(SseDeserializer deserializer) {
+  var inner = _sse_decode_list_DartOpaque(serializer);
+  return TODO;
+}
+
+MutexHideData _sse_decode_RustOpaque_MutexHideData(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockHideData _sse_decode_RustOpaque_RwLockHideData(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+BoxDartDebugTwinNormal _sse_decode_RustOpaque_box_dynDartDebugTwinNormal(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+BoxDartDebugTwinRustAsync _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+BoxDartDebugTwinSync _sse_decode_RustOpaque_box_dynDartDebugTwinSync(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+FrbOpaqueReturn _sse_decode_RustOpaque_frb_opaque_return(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+FrbOpaqueSyncReturn _sse_decode_RustOpaque_frb_opaque_sync_return(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+HideData _sse_decode_RustOpaque_hide_data(SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+HideDataArray2 _sse_decode_RustOpaque_hide_data_array_2(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_RustOpaque_hide_data(serializer);
+  return TODO;
+}
+
+I32 _sse_decode_RustOpaque_i_32(SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+NonCloneData _sse_decode_RustOpaque_non_clone_data(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+NonSendHideData _sse_decode_RustOpaque_non_send_hide_data(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockBoxFnStringString
+    _sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockBoxHelloTraitTwinNormal
+    _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockBoxHelloTraitTwinSync
+    _sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockBoxMyTraitTwinNormal
+    _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockBoxMyTraitTwinSync
+    _sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockNonCloneSimpleTwinNormal
+    _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockNonCloneSimpleTwinSync
+    _sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockStructWithGoodAndOpaqueFieldTwinNormal
+    _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+RwLockStructWithGoodAndOpaqueFieldTwinSync
+    _sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+        SseDeserializer deserializer) {
+  var inner = _sse_decode_usize(serializer);
+  return inner;
+}
+
+String _sse_decode_String(SseDeserializer deserializer) {
+  var inner = _sse_decode_list_prim_u_8(serializer);
+  return TODO;
+}
+
+UuidValue _sse_decode_Uuid(SseDeserializer deserializer) {
+  var inner = _sse_decode_list_prim_u_8(serializer);
+  return TODO;
+}
+
+ATwinNormal _sse_decode_a_twin_normal(SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return ATwinNormal(a: a);
+}
+
+ATwinRustAsync _sse_decode_a_twin_rust_async(SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return ATwinRustAsync(a: a);
+}
+
+ATwinSync _sse_decode_a_twin_sync(SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return ATwinSync(a: a);
+}
+
+AbcTwinNormal _sse_decode_abc_twin_normal(SseDeserializer deserializer) {
+  return TODO;
+}
+
+AbcTwinRustAsync _sse_decode_abc_twin_rust_async(SseDeserializer deserializer) {
+  return TODO;
+}
+
+AbcTwinSync _sse_decode_abc_twin_sync(SseDeserializer deserializer) {
+  return TODO;
+}
+
+AnotherMacroStructTwinNormal _sse_decode_another_macro_struct_twin_normal(
+    SseDeserializer deserializer) {
+  var data = _sse_decode_i_32(serializer);
+  var nonFinalData = _sse_decode_i_32(serializer);
+
+  return AnotherMacroStructTwinNormal(data: data, nonFinalData: nonFinalData);
+}
+
+AnotherTwinNormal _sse_decode_another_twin_normal(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return AnotherTwinNormal(a: a);
+}
+
+AnotherTwinRustAsync _sse_decode_another_twin_rust_async(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return AnotherTwinRustAsync(a: a);
+}
+
+AnotherTwinSync _sse_decode_another_twin_sync(SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return AnotherTwinSync(a: a);
+}
+
+ApplicationEnv _sse_decode_application_env(SseDeserializer deserializer) {
+  var vars = _sse_decode_list_application_env_var(serializer);
+
+  return ApplicationEnv(vars: vars);
+}
+
+ApplicationEnvVar _sse_decode_application_env_var(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_String(serializer);
+  var field1 = _sse_decode_bool(serializer);
+
+  return ApplicationEnvVar(field0: field0, field1: field1);
+}
+
+ApplicationMessage _sse_decode_application_message(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+ApplicationMode _sse_decode_application_mode(SseDeserializer deserializer) {
+  var inner = _sse_decode_i_32(serializer);
+  return TODO;
+}
+
+ApplicationSettings _sse_decode_application_settings(
+    SseDeserializer deserializer) {
+  var name = _sse_decode_String(serializer);
+  var version = _sse_decode_String(serializer);
+  var mode = _sse_decode_application_mode(serializer);
+  var env = _sse_decode_box_application_env(serializer);
+  var envOptional = _sse_decode_opt_box_autoadd_application_env(serializer);
+
+  return ApplicationSettings(
+      name: name,
+      version: version,
+      mode: mode,
+      env: env,
+      envOptional: envOptional);
+}
+
+AttributeTwinNormal _sse_decode_attribute_twin_normal(
+    SseDeserializer deserializer) {
+  var key = _sse_decode_String(serializer);
+  var value = _sse_decode_String(serializer);
+
+  return AttributeTwinNormal(key: key, value: value);
+}
+
+AttributeTwinRustAsync _sse_decode_attribute_twin_rust_async(
+    SseDeserializer deserializer) {
+  var key = _sse_decode_String(serializer);
+  var value = _sse_decode_String(serializer);
+
+  return AttributeTwinRustAsync(key: key, value: value);
+}
+
+AttributeTwinSync _sse_decode_attribute_twin_sync(
+    SseDeserializer deserializer) {
+  var key = _sse_decode_String(serializer);
+  var value = _sse_decode_String(serializer);
+
+  return AttributeTwinSync(key: key, value: value);
+}
+
+BTwinNormal _sse_decode_b_twin_normal(SseDeserializer deserializer) {
+  var b = _sse_decode_i_32(serializer);
+
+  return BTwinNormal(b: b);
+}
+
+BTwinRustAsync _sse_decode_b_twin_rust_async(SseDeserializer deserializer) {
+  var b = _sse_decode_i_32(serializer);
+
+  return BTwinRustAsync(b: b);
+}
+
+BTwinSync _sse_decode_b_twin_sync(SseDeserializer deserializer) {
+  var b = _sse_decode_i_32(serializer);
+
+  return BTwinSync(b: b);
+}
+
+BigBuffersTwinNormal _sse_decode_big_buffers_twin_normal(
+    SseDeserializer deserializer) {
+  var int64 = _sse_decode_list_prim_i_64(serializer);
+  var uint64 = _sse_decode_list_prim_u_64(serializer);
+
+  return BigBuffersTwinNormal(int64: int64, uint64: uint64);
+}
+
+BigBuffersTwinRustAsync _sse_decode_big_buffers_twin_rust_async(
+    SseDeserializer deserializer) {
+  var int64 = _sse_decode_list_prim_i_64(serializer);
+  var uint64 = _sse_decode_list_prim_u_64(serializer);
+
+  return BigBuffersTwinRustAsync(int64: int64, uint64: uint64);
+}
+
+BigBuffersTwinSync _sse_decode_big_buffers_twin_sync(
+    SseDeserializer deserializer) {
+  var int64 = _sse_decode_list_prim_i_64(serializer);
+  var uint64 = _sse_decode_list_prim_u_64(serializer);
+
+  return BigBuffersTwinSync(int64: int64, uint64: uint64);
+}
+
+BlobTwinNormal _sse_decode_blob_twin_normal(SseDeserializer deserializer) {
+  var field0 = _sse_decode_u_8_array_1600(serializer);
+
+  return BlobTwinNormal(field0: field0);
+}
+
+BlobTwinRustAsync _sse_decode_blob_twin_rust_async(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_u_8_array_1600(serializer);
+
+  return BlobTwinRustAsync(field0: field0);
+}
+
+BlobTwinSync _sse_decode_blob_twin_sync(SseDeserializer deserializer) {
+  var field0 = _sse_decode_u_8_array_1600(serializer);
+
+  return BlobTwinSync(field0: field0);
+}
+
+bool _sse_decode_bool(SseDeserializer deserializer) {
+  return deserializer.buffer.getUint8();
+}
+
+ApplicationEnv _sse_decode_box_application_env(SseDeserializer deserializer) {
+  return _sse_decode_application_env(serializer);
+}
+
+Duration _sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer) {
+  return _sse_decode_Chrono_Duration(serializer);
+}
+
+DateTime _sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer) {
+  return _sse_decode_Chrono_Naive(serializer);
+}
+
+DateTime _sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer) {
+  return _sse_decode_Chrono_Utc(serializer);
+}
+
+Object _sse_decode_box_autoadd_DartOpaque(SseDeserializer deserializer) {
+  return _sse_decode_DartOpaque(serializer);
+}
+
+HideData _sse_decode_box_autoadd_RustOpaque_hide_data(
+    SseDeserializer deserializer) {
+  return _sse_decode_RustOpaque_hide_data(serializer);
+}
+
+ATwinNormal _sse_decode_box_autoadd_a_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_a_twin_normal(serializer);
+}
+
+ATwinRustAsync _sse_decode_box_autoadd_a_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_a_twin_rust_async(serializer);
+}
+
+ATwinSync _sse_decode_box_autoadd_a_twin_sync(SseDeserializer deserializer) {
+  return _sse_decode_a_twin_sync(serializer);
+}
+
+ApplicationEnv _sse_decode_box_autoadd_application_env(
+    SseDeserializer deserializer) {
+  return _sse_decode_application_env(serializer);
+}
+
+AttributeTwinNormal _sse_decode_box_autoadd_attribute_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_attribute_twin_normal(serializer);
+}
+
+AttributeTwinRustAsync _sse_decode_box_autoadd_attribute_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_attribute_twin_rust_async(serializer);
+}
+
+AttributeTwinSync _sse_decode_box_autoadd_attribute_twin_sync(
+    SseDeserializer deserializer) {
+  return _sse_decode_attribute_twin_sync(serializer);
+}
+
+BTwinNormal _sse_decode_box_autoadd_b_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_b_twin_normal(serializer);
+}
+
+BTwinRustAsync _sse_decode_box_autoadd_b_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_b_twin_rust_async(serializer);
+}
+
+BTwinSync _sse_decode_box_autoadd_b_twin_sync(SseDeserializer deserializer) {
+  return _sse_decode_b_twin_sync(serializer);
+}
+
+bool _sse_decode_box_autoadd_bool(SseDeserializer deserializer) {
+  return _sse_decode_bool(serializer);
+}
+
+CTwinNormal _sse_decode_box_autoadd_c_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_c_twin_normal(serializer);
+}
+
+CTwinRustAsync _sse_decode_box_autoadd_c_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_c_twin_rust_async(serializer);
+}
+
+CTwinSync _sse_decode_box_autoadd_c_twin_sync(SseDeserializer deserializer) {
+  return _sse_decode_c_twin_sync(serializer);
+}
+
+CustomNestedError2TwinNormal
+    _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
+        SseDeserializer deserializer) {
+  return _sse_decode_custom_nested_error_2_twin_normal(serializer);
+}
+
+CustomNestedError2TwinRustAsync
+    _sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async(
+        SseDeserializer deserializer) {
+  return _sse_decode_custom_nested_error_2_twin_rust_async(serializer);
+}
+
+CustomNestedError2TwinSync
+    _sse_decode_box_autoadd_custom_nested_error_2_twin_sync(
+        SseDeserializer deserializer) {
+  return _sse_decode_custom_nested_error_2_twin_sync(serializer);
+}
+
+CustomNestedErrorInnerTwinNormal
+    _sse_decode_box_autoadd_custom_nested_error_inner_twin_normal(
+        SseDeserializer deserializer) {
+  return _sse_decode_custom_nested_error_inner_twin_normal(serializer);
+}
+
+CustomNestedErrorInnerTwinRustAsync
+    _sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+        SseDeserializer deserializer) {
+  return _sse_decode_custom_nested_error_inner_twin_rust_async(serializer);
+}
+
+CustomNestedErrorInnerTwinSync
+    _sse_decode_box_autoadd_custom_nested_error_inner_twin_sync(
+        SseDeserializer deserializer) {
+  return _sse_decode_custom_nested_error_inner_twin_sync(serializer);
+}
+
+ElementTwinNormal _sse_decode_box_autoadd_element_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_element_twin_normal(serializer);
+}
+
+ElementTwinRustAsync _sse_decode_box_autoadd_element_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_element_twin_rust_async(serializer);
+}
+
+ElementTwinSync _sse_decode_box_autoadd_element_twin_sync(
+    SseDeserializer deserializer) {
+  return _sse_decode_element_twin_sync(serializer);
+}
+
+ExoticOptionalsTwinNormal _sse_decode_box_autoadd_exotic_optionals_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_exotic_optionals_twin_normal(serializer);
+}
+
+ExoticOptionalsTwinRustAsync
+    _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(
+        SseDeserializer deserializer) {
+  return _sse_decode_exotic_optionals_twin_rust_async(serializer);
+}
+
+ExoticOptionalsTwinSync _sse_decode_box_autoadd_exotic_optionals_twin_sync(
+    SseDeserializer deserializer) {
+  return _sse_decode_exotic_optionals_twin_sync(serializer);
+}
+
+double _sse_decode_box_autoadd_f_32(SseDeserializer deserializer) {
+  return _sse_decode_f_32(serializer);
+}
+
+double _sse_decode_box_autoadd_f_64(SseDeserializer deserializer) {
+  return _sse_decode_f_64(serializer);
+}
+
+int _sse_decode_box_autoadd_i_16(SseDeserializer deserializer) {
+  return _sse_decode_i_16(serializer);
+}
+
+int _sse_decode_box_autoadd_i_32(SseDeserializer deserializer) {
+  return _sse_decode_i_32(serializer);
+}
+
+int _sse_decode_box_autoadd_i_64(SseDeserializer deserializer) {
+  return _sse_decode_i_64(serializer);
+}
+
+int _sse_decode_box_autoadd_i_8(SseDeserializer deserializer) {
+  return _sse_decode_i_8(serializer);
+}
+
+ListOfNestedRawStringMirrored
+    _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
+        SseDeserializer deserializer) {
+  return _sse_decode_list_of_nested_raw_string_mirrored(serializer);
+}
+
+MeasureTwinNormal _sse_decode_box_autoadd_measure_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_measure_twin_normal(serializer);
+}
+
+MeasureTwinRustAsync _sse_decode_box_autoadd_measure_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_measure_twin_rust_async(serializer);
+}
+
+MeasureTwinSync _sse_decode_box_autoadd_measure_twin_sync(
+    SseDeserializer deserializer) {
+  return _sse_decode_measure_twin_sync(serializer);
+}
+
+NestedRawStringMirrored _sse_decode_box_autoadd_nested_raw_string_mirrored(
+    SseDeserializer deserializer) {
+  return _sse_decode_nested_raw_string_mirrored(serializer);
+}
+
+NewTypeIntTwinNormal _sse_decode_box_autoadd_new_type_int_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_new_type_int_twin_normal(serializer);
+}
+
+NewTypeIntTwinRustAsync _sse_decode_box_autoadd_new_type_int_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_new_type_int_twin_rust_async(serializer);
+}
+
+NewTypeIntTwinSync _sse_decode_box_autoadd_new_type_int_twin_sync(
+    SseDeserializer deserializer) {
+  return _sse_decode_new_type_int_twin_sync(serializer);
+}
+
+RawStringMirrored _sse_decode_box_autoadd_raw_string_mirrored(
+    SseDeserializer deserializer) {
+  return _sse_decode_raw_string_mirrored(serializer);
+}
+
+int _sse_decode_box_autoadd_u_16(SseDeserializer deserializer) {
+  return _sse_decode_u_16(serializer);
+}
+
+int _sse_decode_box_autoadd_u_32(SseDeserializer deserializer) {
+  return _sse_decode_u_32(serializer);
+}
+
+int _sse_decode_box_autoadd_u_64(SseDeserializer deserializer) {
+  return _sse_decode_u_64(serializer);
+}
+
+int _sse_decode_box_autoadd_u_8(SseDeserializer deserializer) {
+  return _sse_decode_u_8(serializer);
+}
+
+WeekdaysTwinNormal _sse_decode_box_autoadd_weekdays_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_weekdays_twin_normal(serializer);
+}
+
+WeekdaysTwinRustAsync _sse_decode_box_autoadd_weekdays_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_weekdays_twin_rust_async(serializer);
+}
+
+WeekdaysTwinSync _sse_decode_box_autoadd_weekdays_twin_sync(
+    SseDeserializer deserializer) {
+  return _sse_decode_weekdays_twin_sync(serializer);
+}
+
+DistanceTwinNormal _sse_decode_box_distance_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_distance_twin_normal(serializer);
+}
+
+DistanceTwinRustAsync _sse_decode_box_distance_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_distance_twin_rust_async(serializer);
+}
+
+DistanceTwinSync _sse_decode_box_distance_twin_sync(
+    SseDeserializer deserializer) {
+  return _sse_decode_distance_twin_sync(serializer);
+}
+
+FeedIdTwinNormal _sse_decode_box_feed_id_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_feed_id_twin_normal(serializer);
+}
+
+FeedIdTwinRustAsync _sse_decode_box_feed_id_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_feed_id_twin_rust_async(serializer);
+}
+
+FeedIdTwinSync _sse_decode_box_feed_id_twin_sync(SseDeserializer deserializer) {
+  return _sse_decode_feed_id_twin_sync(serializer);
+}
+
+KitchenSinkTwinNormal _sse_decode_box_kitchen_sink_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_kitchen_sink_twin_normal(serializer);
+}
+
+KitchenSinkTwinRustAsync _sse_decode_box_kitchen_sink_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_kitchen_sink_twin_rust_async(serializer);
+}
+
+KitchenSinkTwinSync _sse_decode_box_kitchen_sink_twin_sync(
+    SseDeserializer deserializer) {
+  return _sse_decode_kitchen_sink_twin_sync(serializer);
+}
+
+SpeedTwinNormal _sse_decode_box_speed_twin_normal(
+    SseDeserializer deserializer) {
+  return _sse_decode_speed_twin_normal(serializer);
+}
+
+SpeedTwinRustAsync _sse_decode_box_speed_twin_rust_async(
+    SseDeserializer deserializer) {
+  return _sse_decode_speed_twin_rust_async(serializer);
+}
+
+SpeedTwinSync _sse_decode_box_speed_twin_sync(SseDeserializer deserializer) {
+  return _sse_decode_speed_twin_sync(serializer);
+}
+
+U8Array8 _sse_decode_box_u_8_array_8(SseDeserializer deserializer) {
+  return _sse_decode_u_8_array_8(serializer);
+}
+
+CTwinNormal _sse_decode_c_twin_normal(SseDeserializer deserializer) {
+  var c = _sse_decode_bool(serializer);
+
+  return CTwinNormal(c: c);
+}
+
+CTwinRustAsync _sse_decode_c_twin_rust_async(SseDeserializer deserializer) {
+  var c = _sse_decode_bool(serializer);
+
+  return CTwinRustAsync(c: c);
+}
+
+CTwinSync _sse_decode_c_twin_sync(SseDeserializer deserializer) {
+  var c = _sse_decode_bool(serializer);
+
+  return CTwinSync(c: c);
+}
+
+ConcatenateWithTwinNormal _sse_decode_concatenate_with_twin_normal(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return ConcatenateWithTwinNormal(a: a);
+}
+
+ConcatenateWithTwinRustAsync _sse_decode_concatenate_with_twin_rust_async(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return ConcatenateWithTwinRustAsync(a: a);
+}
+
+ConcatenateWithTwinSync _sse_decode_concatenate_with_twin_sync(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return ConcatenateWithTwinSync(a: a);
+}
+
+ContainsMirroredSubStructTwinNormal
+    _sse_decode_contains_mirrored_sub_struct_twin_normal(
+        SseDeserializer deserializer) {
+  var test = _sse_decode_raw_string_mirrored(serializer);
+  var test2 = _sse_decode_another_twin_normal(serializer);
+
+  return ContainsMirroredSubStructTwinNormal(test: test, test2: test2);
+}
+
+ContainsMirroredSubStructTwinRustAsync
+    _sse_decode_contains_mirrored_sub_struct_twin_rust_async(
+        SseDeserializer deserializer) {
+  var test = _sse_decode_raw_string_mirrored(serializer);
+  var test2 = _sse_decode_another_twin_rust_async(serializer);
+
+  return ContainsMirroredSubStructTwinRustAsync(test: test, test2: test2);
+}
+
+ContainsMirroredSubStructTwinSync
+    _sse_decode_contains_mirrored_sub_struct_twin_sync(
+        SseDeserializer deserializer) {
+  var test = _sse_decode_raw_string_mirrored(serializer);
+  var test2 = _sse_decode_another_twin_sync(serializer);
+
+  return ContainsMirroredSubStructTwinSync(test: test, test2: test2);
+}
+
+CustomEnumErrorTwinNormal _sse_decode_custom_enum_error_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomEnumErrorTwinRustAsync _sse_decode_custom_enum_error_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomEnumErrorTwinSync _sse_decode_custom_enum_error_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomErrorTwinNormal _sse_decode_custom_error_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomErrorTwinRustAsync _sse_decode_custom_error_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomErrorTwinSync _sse_decode_custom_error_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedError1TwinNormal _sse_decode_custom_nested_error_1_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedError1TwinRustAsync
+    _sse_decode_custom_nested_error_1_twin_rust_async(
+        SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedError1TwinSync _sse_decode_custom_nested_error_1_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedError2TwinNormal _sse_decode_custom_nested_error_2_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedError2TwinRustAsync
+    _sse_decode_custom_nested_error_2_twin_rust_async(
+        SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedError2TwinSync _sse_decode_custom_nested_error_2_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedErrorInnerTwinNormal
+    _sse_decode_custom_nested_error_inner_twin_normal(
+        SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedErrorInnerTwinRustAsync
+    _sse_decode_custom_nested_error_inner_twin_rust_async(
+        SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedErrorInnerTwinSync _sse_decode_custom_nested_error_inner_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedErrorOuterTwinNormal
+    _sse_decode_custom_nested_error_outer_twin_normal(
+        SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedErrorOuterTwinRustAsync
+    _sse_decode_custom_nested_error_outer_twin_rust_async(
+        SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomNestedErrorOuterTwinSync _sse_decode_custom_nested_error_outer_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+CustomStructErrorAnotherTwinNormal
+    _sse_decode_custom_struct_error_another_twin_normal(
+        SseDeserializer deserializer) {
+  var message = _sse_decode_String(serializer);
+
+  return CustomStructErrorAnotherTwinNormal(message: message);
+}
+
+CustomStructErrorAnotherTwinRustAsync
+    _sse_decode_custom_struct_error_another_twin_rust_async(
+        SseDeserializer deserializer) {
+  var message = _sse_decode_String(serializer);
+
+  return CustomStructErrorAnotherTwinRustAsync(message: message);
+}
+
+CustomStructErrorAnotherTwinSync
+    _sse_decode_custom_struct_error_another_twin_sync(
+        SseDeserializer deserializer) {
+  var message = _sse_decode_String(serializer);
+
+  return CustomStructErrorAnotherTwinSync(message: message);
+}
+
+CustomStructErrorTwinNormal _sse_decode_custom_struct_error_twin_normal(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return CustomStructErrorTwinNormal(a: a);
+}
+
+CustomStructErrorTwinRustAsync _sse_decode_custom_struct_error_twin_rust_async(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return CustomStructErrorTwinRustAsync(a: a);
+}
+
+CustomStructErrorTwinSync _sse_decode_custom_struct_error_twin_sync(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_String(serializer);
+
+  return CustomStructErrorTwinSync(a: a);
+}
+
+CustomStructTwinNormal _sse_decode_custom_struct_twin_normal(
+    SseDeserializer deserializer) {
+  var message = _sse_decode_String(serializer);
+
+  return CustomStructTwinNormal(message: message);
+}
+
+CustomStructTwinRustAsync _sse_decode_custom_struct_twin_rust_async(
+    SseDeserializer deserializer) {
+  var message = _sse_decode_String(serializer);
+
+  return CustomStructTwinRustAsync(message: message);
+}
+
+CustomStructTwinSync _sse_decode_custom_struct_twin_sync(
+    SseDeserializer deserializer) {
+  var message = _sse_decode_String(serializer);
+
+  return CustomStructTwinSync(message: message);
+}
+
+DartOpaqueNestedTwinNormal _sse_decode_dart_opaque_nested_twin_normal(
+    SseDeserializer deserializer) {
+  var first = _sse_decode_DartOpaque(serializer);
+  var second = _sse_decode_DartOpaque(serializer);
+
+  return DartOpaqueNestedTwinNormal(first: first, second: second);
+}
+
+DartOpaqueNestedTwinRustAsync _sse_decode_dart_opaque_nested_twin_rust_async(
+    SseDeserializer deserializer) {
+  var first = _sse_decode_DartOpaque(serializer);
+  var second = _sse_decode_DartOpaque(serializer);
+
+  return DartOpaqueNestedTwinRustAsync(first: first, second: second);
+}
+
+DartOpaqueNestedTwinSync _sse_decode_dart_opaque_nested_twin_sync(
+    SseDeserializer deserializer) {
+  var first = _sse_decode_DartOpaque(serializer);
+  var second = _sse_decode_DartOpaque(serializer);
+
+  return DartOpaqueNestedTwinSync(first: first, second: second);
+}
+
+dynamic _sse_decode_dartabi(SseDeserializer deserializer) {
+  throw UnimplementedError('');
+}
+
+DistanceTwinNormal _sse_decode_distance_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+DistanceTwinRustAsync _sse_decode_distance_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+DistanceTwinSync _sse_decode_distance_twin_sync(SseDeserializer deserializer) {
+  return TODO;
+}
+
+ElementTwinNormal _sse_decode_element_twin_normal(
+    SseDeserializer deserializer) {
+  var tag = _sse_decode_opt_String(serializer);
+  var text = _sse_decode_opt_String(serializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_normal(serializer);
+  var children = _sse_decode_opt_list_element_twin_normal(serializer);
+
+  return ElementTwinNormal(
+      tag: tag, text: text, attributes: attributes, children: children);
+}
+
+ElementTwinRustAsync _sse_decode_element_twin_rust_async(
+    SseDeserializer deserializer) {
+  var tag = _sse_decode_opt_String(serializer);
+  var text = _sse_decode_opt_String(serializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_rust_async(serializer);
+  var children = _sse_decode_opt_list_element_twin_rust_async(serializer);
+
+  return ElementTwinRustAsync(
+      tag: tag, text: text, attributes: attributes, children: children);
+}
+
+ElementTwinSync _sse_decode_element_twin_sync(SseDeserializer deserializer) {
+  var tag = _sse_decode_opt_String(serializer);
+  var text = _sse_decode_opt_String(serializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_sync(serializer);
+  var children = _sse_decode_opt_list_element_twin_sync(serializer);
+
+  return ElementTwinSync(
+      tag: tag, text: text, attributes: attributes, children: children);
+}
+
+EmptyTwinNormal _sse_decode_empty_twin_normal(SseDeserializer deserializer) {
+  return EmptyTwinNormal();
+}
+
+EmptyTwinRustAsync _sse_decode_empty_twin_rust_async(
+    SseDeserializer deserializer) {
+  return EmptyTwinRustAsync();
+}
+
+EmptyTwinSync _sse_decode_empty_twin_sync(SseDeserializer deserializer) {
+  return EmptyTwinSync();
+}
+
+EnumDartOpaqueTwinNormal _sse_decode_enum_dart_opaque_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumDartOpaqueTwinRustAsync _sse_decode_enum_dart_opaque_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumDartOpaqueTwinSync _sse_decode_enum_dart_opaque_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumOpaqueTwinNormal _sse_decode_enum_opaque_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumOpaqueTwinNormalArray5 _sse_decode_enum_opaque_twin_normal_array_5(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_enum_opaque_twin_normal(serializer);
+  return TODO;
+}
+
+EnumOpaqueTwinRustAsync _sse_decode_enum_opaque_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumOpaqueTwinRustAsyncArray5 _sse_decode_enum_opaque_twin_rust_async_array_5(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_enum_opaque_twin_rust_async(serializer);
+  return TODO;
+}
+
+EnumOpaqueTwinSync _sse_decode_enum_opaque_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumOpaqueTwinSyncArray5 _sse_decode_enum_opaque_twin_sync_array_5(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_enum_opaque_twin_sync(serializer);
+  return TODO;
+}
+
+EnumSimpleTwinNormal _sse_decode_enum_simple_twin_normal(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_i_32(serializer);
+  return TODO;
+}
+
+EnumSimpleTwinRustAsync _sse_decode_enum_simple_twin_rust_async(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_i_32(serializer);
+  return TODO;
+}
+
+EnumSimpleTwinSync _sse_decode_enum_simple_twin_sync(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_i_32(serializer);
+  return TODO;
+}
+
+EnumWithItemMixedTwinNormal _sse_decode_enum_with_item_mixed_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumWithItemMixedTwinRustAsync _sse_decode_enum_with_item_mixed_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumWithItemMixedTwinSync _sse_decode_enum_with_item_mixed_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumWithItemStructTwinNormal _sse_decode_enum_with_item_struct_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumWithItemStructTwinRustAsync
+    _sse_decode_enum_with_item_struct_twin_rust_async(
+        SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumWithItemStructTwinSync _sse_decode_enum_with_item_struct_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumWithItemTupleTwinNormal _sse_decode_enum_with_item_tuple_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumWithItemTupleTwinRustAsync _sse_decode_enum_with_item_tuple_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EnumWithItemTupleTwinSync _sse_decode_enum_with_item_tuple_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+EventTwinNormal _sse_decode_event_twin_normal(SseDeserializer deserializer) {
+  var address = _sse_decode_String(serializer);
+  var payload = _sse_decode_String(serializer);
+
+  return EventTwinNormal(address: address, payload: payload);
+}
+
+EventTwinRustAsync _sse_decode_event_twin_rust_async(
+    SseDeserializer deserializer) {
+  var address = _sse_decode_String(serializer);
+  var payload = _sse_decode_String(serializer);
+
+  return EventTwinRustAsync(address: address, payload: payload);
+}
+
+EventTwinSync _sse_decode_event_twin_sync(SseDeserializer deserializer) {
+  var address = _sse_decode_String(serializer);
+  var payload = _sse_decode_String(serializer);
+
+  return EventTwinSync(address: address, payload: payload);
+}
+
+ExoticOptionalsTwinNormal _sse_decode_exotic_optionals_twin_normal(
+    SseDeserializer deserializer) {
+  var int32 = _sse_decode_opt_box_autoadd_i_32(serializer);
+  var int64 = _sse_decode_opt_box_autoadd_i_64(serializer);
+  var float64 = _sse_decode_opt_box_autoadd_f_64(serializer);
+  var boolean = _sse_decode_opt_box_autoadd_bool(serializer);
+  var zerocopy = _sse_decode_opt_list_prim_u_8(serializer);
+  var int8List = _sse_decode_opt_list_prim_i_8(serializer);
+  var uint8List = _sse_decode_opt_list_prim_u_8(serializer);
+  var int32List = _sse_decode_opt_list_prim_i_32(serializer);
+  var float32List = _sse_decode_opt_list_prim_f_32(serializer);
+  var float64List = _sse_decode_opt_list_prim_f_64(serializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_normal(serializer);
+  var attributesNullable =
+      _sse_decode_list_opt_box_autoadd_attribute_twin_normal(serializer);
+  var nullableAttributes =
+      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(serializer);
+  var newtypeint =
+      _sse_decode_opt_box_autoadd_new_type_int_twin_normal(serializer);
+
+  return ExoticOptionalsTwinNormal(
+      int32: int32,
+      int64: int64,
+      float64: float64,
+      boolean: boolean,
+      zerocopy: zerocopy,
+      int8List: int8List,
+      uint8List: uint8List,
+      int32List: int32List,
+      float32List: float32List,
+      float64List: float64List,
+      attributes: attributes,
+      attributesNullable: attributesNullable,
+      nullableAttributes: nullableAttributes,
+      newtypeint: newtypeint);
+}
+
+ExoticOptionalsTwinRustAsync _sse_decode_exotic_optionals_twin_rust_async(
+    SseDeserializer deserializer) {
+  var int32 = _sse_decode_opt_box_autoadd_i_32(serializer);
+  var int64 = _sse_decode_opt_box_autoadd_i_64(serializer);
+  var float64 = _sse_decode_opt_box_autoadd_f_64(serializer);
+  var boolean = _sse_decode_opt_box_autoadd_bool(serializer);
+  var zerocopy = _sse_decode_opt_list_prim_u_8(serializer);
+  var int8List = _sse_decode_opt_list_prim_i_8(serializer);
+  var uint8List = _sse_decode_opt_list_prim_u_8(serializer);
+  var int32List = _sse_decode_opt_list_prim_i_32(serializer);
+  var float32List = _sse_decode_opt_list_prim_f_32(serializer);
+  var float64List = _sse_decode_opt_list_prim_f_64(serializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_rust_async(serializer);
+  var attributesNullable =
+      _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(serializer);
+  var nullableAttributes =
+      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+          serializer);
+  var newtypeint =
+      _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(serializer);
+
+  return ExoticOptionalsTwinRustAsync(
+      int32: int32,
+      int64: int64,
+      float64: float64,
+      boolean: boolean,
+      zerocopy: zerocopy,
+      int8List: int8List,
+      uint8List: uint8List,
+      int32List: int32List,
+      float32List: float32List,
+      float64List: float64List,
+      attributes: attributes,
+      attributesNullable: attributesNullable,
+      nullableAttributes: nullableAttributes,
+      newtypeint: newtypeint);
+}
+
+ExoticOptionalsTwinSync _sse_decode_exotic_optionals_twin_sync(
+    SseDeserializer deserializer) {
+  var int32 = _sse_decode_opt_box_autoadd_i_32(serializer);
+  var int64 = _sse_decode_opt_box_autoadd_i_64(serializer);
+  var float64 = _sse_decode_opt_box_autoadd_f_64(serializer);
+  var boolean = _sse_decode_opt_box_autoadd_bool(serializer);
+  var zerocopy = _sse_decode_opt_list_prim_u_8(serializer);
+  var int8List = _sse_decode_opt_list_prim_i_8(serializer);
+  var uint8List = _sse_decode_opt_list_prim_u_8(serializer);
+  var int32List = _sse_decode_opt_list_prim_i_32(serializer);
+  var float32List = _sse_decode_opt_list_prim_f_32(serializer);
+  var float64List = _sse_decode_opt_list_prim_f_64(serializer);
+  var attributes = _sse_decode_opt_list_attribute_twin_sync(serializer);
+  var attributesNullable =
+      _sse_decode_list_opt_box_autoadd_attribute_twin_sync(serializer);
+  var nullableAttributes =
+      _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(serializer);
+  var newtypeint =
+      _sse_decode_opt_box_autoadd_new_type_int_twin_sync(serializer);
+
+  return ExoticOptionalsTwinSync(
+      int32: int32,
+      int64: int64,
+      float64: float64,
+      boolean: boolean,
+      zerocopy: zerocopy,
+      int8List: int8List,
+      uint8List: uint8List,
+      int32List: int32List,
+      float32List: float32List,
+      float64List: float64List,
+      attributes: attributes,
+      attributesNullable: attributesNullable,
+      nullableAttributes: nullableAttributes,
+      newtypeint: newtypeint);
+}
+
+double _sse_decode_f_32(SseDeserializer deserializer) {
+  return deserializer.buffer.getFloat32();
+}
+
+double _sse_decode_f_64(SseDeserializer deserializer) {
+  return deserializer.buffer.getFloat64();
+}
+
+FeatureUuidTwinNormal _sse_decode_feature_uuid_twin_normal(
+    SseDeserializer deserializer) {
+  var one = _sse_decode_Uuid(serializer);
+  var many = _sse_decode_list_Uuid(serializer);
+
+  return FeatureUuidTwinNormal(one: one, many: many);
+}
+
+FeatureUuidTwinRustAsync _sse_decode_feature_uuid_twin_rust_async(
+    SseDeserializer deserializer) {
+  var one = _sse_decode_Uuid(serializer);
+  var many = _sse_decode_list_Uuid(serializer);
+
+  return FeatureUuidTwinRustAsync(one: one, many: many);
+}
+
+FeatureUuidTwinSync _sse_decode_feature_uuid_twin_sync(
+    SseDeserializer deserializer) {
+  var one = _sse_decode_Uuid(serializer);
+  var many = _sse_decode_list_Uuid(serializer);
+
+  return FeatureUuidTwinSync(one: one, many: many);
+}
+
+FeedIdTwinNormal _sse_decode_feed_id_twin_normal(SseDeserializer deserializer) {
+  var field0 = _sse_decode_u_8_array_8(serializer);
+
+  return FeedIdTwinNormal(field0: field0);
+}
+
+FeedIdTwinRustAsync _sse_decode_feed_id_twin_rust_async(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_u_8_array_8(serializer);
+
+  return FeedIdTwinRustAsync(field0: field0);
+}
+
+FeedIdTwinSync _sse_decode_feed_id_twin_sync(SseDeserializer deserializer) {
+  var field0 = _sse_decode_u_8_array_8(serializer);
+
+  return FeedIdTwinSync(field0: field0);
+}
+
+int _sse_decode_i_16(SseDeserializer deserializer) {
+  return deserializer.buffer.getInt16();
+}
+
+int _sse_decode_i_32(SseDeserializer deserializer) {
+  return deserializer.buffer.getInt32();
+}
+
+I32Array2 _sse_decode_i_32_array_2(SseDeserializer deserializer) {
+  var inner = _sse_decode_list_prim_i_32(serializer);
+  return TODO;
+}
+
+int _sse_decode_i_64(SseDeserializer deserializer) {
+  return deserializer.buffer.getInt64();
+}
+
+int _sse_decode_i_8(SseDeserializer deserializer) {
+  return deserializer.buffer.getInt8();
+}
+
+KitchenSinkTwinNormal _sse_decode_kitchen_sink_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+KitchenSinkTwinRustAsync _sse_decode_kitchen_sink_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+KitchenSinkTwinSync _sse_decode_kitchen_sink_twin_sync(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+List<Duration> _sse_decode_list_Chrono_Duration(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_Chrono_Duration(serializer));
   }
+  return ans;
+}
+
+List<DateTime> _sse_decode_list_Chrono_Local(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_Chrono_Local(serializer));
+  }
+  return ans;
+}
+
+List<Object> _sse_decode_list_DartOpaque(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_DartOpaque(serializer));
+  }
+  return ans;
+}
+
+List<HideData> _sse_decode_list_RustOpaque_hide_data(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_RustOpaque_hide_data(serializer));
+  }
+  return ans;
+}
+
+List<String> _sse_decode_list_String(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_String(serializer));
+  }
+  return ans;
+}
+
+List<UuidValue> _sse_decode_list_Uuid(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_Uuid(serializer));
+  }
+  return ans;
+}
+
+List<ApplicationEnvVar> _sse_decode_list_application_env_var(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_application_env_var(serializer));
+  }
+  return ans;
+}
+
+List<ApplicationSettings> _sse_decode_list_application_settings(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_application_settings(serializer));
+  }
+  return ans;
+}
+
+List<AttributeTwinNormal> _sse_decode_list_attribute_twin_normal(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_attribute_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<AttributeTwinRustAsync> _sse_decode_list_attribute_twin_rust_async(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_attribute_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<AttributeTwinSync> _sse_decode_list_attribute_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_attribute_twin_sync(serializer));
+  }
+  return ans;
+}
+
+List<bool> _sse_decode_list_bool(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_bool(serializer));
+  }
+  return ans;
+}
+
+List<ElementTwinNormal> _sse_decode_list_element_twin_normal(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_element_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<ElementTwinRustAsync> _sse_decode_list_element_twin_rust_async(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_element_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<ElementTwinSync> _sse_decode_list_element_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_element_twin_sync(serializer));
+  }
+  return ans;
+}
+
+List<EnumOpaqueTwinNormal> _sse_decode_list_enum_opaque_twin_normal(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_enum_opaque_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<EnumOpaqueTwinRustAsync> _sse_decode_list_enum_opaque_twin_rust_async(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_enum_opaque_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<EnumOpaqueTwinSync> _sse_decode_list_enum_opaque_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_enum_opaque_twin_sync(serializer));
+  }
+  return ans;
+}
+
+List<MyEnum> _sse_decode_list_my_enum(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_my_enum(serializer));
+  }
+  return ans;
+}
+
+List<MySize> _sse_decode_list_my_size(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_my_size(serializer));
+  }
+  return ans;
+}
+
+List<MyTreeNodeTwinNormal> _sse_decode_list_my_tree_node_twin_normal(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_my_tree_node_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<MyTreeNodeTwinRustAsync> _sse_decode_list_my_tree_node_twin_rust_async(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_my_tree_node_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<MyTreeNodeTwinSync> _sse_decode_list_my_tree_node_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_my_tree_node_twin_sync(serializer));
+  }
+  return ans;
+}
+
+List<NestedRawStringMirrored> _sse_decode_list_nested_raw_string_mirrored(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_nested_raw_string_mirrored(serializer));
+  }
+  return ans;
+}
+
+ListOfNestedRawStringMirrored _sse_decode_list_of_nested_raw_string_mirrored(
+    SseDeserializer deserializer) {
+  var raw = _sse_decode_list_nested_raw_string_mirrored(serializer);
+
+  return ListOfNestedRawStringMirrored(raw: raw);
+}
+
+List<String?> _sse_decode_list_opt_String(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_opt_String(serializer));
+  }
+  return ans;
+}
+
+List<AttributeTwinNormal?>
+    _sse_decode_list_opt_box_autoadd_attribute_twin_normal(
+        SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_opt_box_autoadd_attribute_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<AttributeTwinRustAsync?>
+    _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
+        SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_opt_box_autoadd_attribute_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<AttributeTwinSync?> _sse_decode_list_opt_box_autoadd_attribute_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_opt_box_autoadd_attribute_twin_sync(serializer));
+  }
+  return ans;
+}
+
+List<int?> _sse_decode_list_opt_box_autoadd_i_32(SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_opt_box_autoadd_i_32(serializer));
+  }
+  return ans;
+}
+
+List<WeekdaysTwinNormal?> _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_opt_box_autoadd_weekdays_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<WeekdaysTwinRustAsync?>
+    _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(
+        SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_opt_box_autoadd_weekdays_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<WeekdaysTwinSync?> _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_opt_box_autoadd_weekdays_twin_sync(serializer));
+  }
+  return ans;
+}
+
+List<Int32List?> _sse_decode_list_opt_list_prim_i_32(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_opt_list_prim_i_32(serializer));
+  }
+  return ans;
+}
+
+List<PointTwinNormal> _sse_decode_list_point_twin_normal(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_point_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<PointTwinRustAsync> _sse_decode_list_point_twin_rust_async(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_point_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<PointTwinSync> _sse_decode_list_point_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_point_twin_sync(serializer));
+  }
+  return ans;
+}
+
+Float32List _sse_decode_list_prim_f_32(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+Float64List _sse_decode_list_prim_f_64(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+Int16List _sse_decode_list_prim_i_16(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+Int32List _sse_decode_list_prim_i_32(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+Int64List _sse_decode_list_prim_i_64(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+Int8List _sse_decode_list_prim_i_8(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+Uint16List _sse_decode_list_prim_u_16(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+Uint32List _sse_decode_list_prim_u_32(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+Uint64List _sse_decode_list_prim_u_64(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+Uint8List _sse_decode_list_prim_u_8(SseDeserializer deserializer) {
+  return TODO_depend_on_serializer;
+}
+
+List<RawStringEnumMirrored> _sse_decode_list_raw_string_enum_mirrored(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_raw_string_enum_mirrored(serializer));
+  }
+  return ans;
+}
+
+List<RawStringMirrored> _sse_decode_list_raw_string_mirrored(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_raw_string_mirrored(serializer));
+  }
+  return ans;
+}
+
+List<SumWithTwinNormal> _sse_decode_list_sum_with_twin_normal(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_sum_with_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<SumWithTwinRustAsync> _sse_decode_list_sum_with_twin_rust_async(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_sum_with_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<SumWithTwinSync> _sse_decode_list_sum_with_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_sum_with_twin_sync(serializer));
+  }
+  return ans;
+}
+
+List<TestIdTwinNormal> _sse_decode_list_test_id_twin_normal(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_test_id_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<TestIdTwinRustAsync> _sse_decode_list_test_id_twin_rust_async(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_test_id_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<TestIdTwinSync> _sse_decode_list_test_id_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_test_id_twin_sync(serializer));
+  }
+  return ans;
+}
+
+List<WeekdaysTwinNormal> _sse_decode_list_weekdays_twin_normal(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_weekdays_twin_normal(serializer));
+  }
+  return ans;
+}
+
+List<WeekdaysTwinRustAsync> _sse_decode_list_weekdays_twin_rust_async(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_weekdays_twin_rust_async(serializer));
+  }
+  return ans;
+}
+
+List<WeekdaysTwinSync> _sse_decode_list_weekdays_twin_sync(
+    SseDeserializer deserializer) {
+  var ans;
+  for (final item in self) {
+    ans.push(_sse_decode_weekdays_twin_sync(serializer));
+  }
+  return ans;
+}
+
+Log2TwinNormal _sse_decode_log_2_twin_normal(SseDeserializer deserializer) {
+  var key = _sse_decode_u_32(serializer);
+  var value = _sse_decode_String(serializer);
+
+  return Log2TwinNormal(key: key, value: value);
+}
+
+Log2TwinRustAsync _sse_decode_log_2_twin_rust_async(
+    SseDeserializer deserializer) {
+  var key = _sse_decode_u_32(serializer);
+  var value = _sse_decode_String(serializer);
+
+  return Log2TwinRustAsync(key: key, value: value);
+}
+
+Log2TwinSync _sse_decode_log_2_twin_sync(SseDeserializer deserializer) {
+  var key = _sse_decode_u_32(serializer);
+  var value = _sse_decode_String(serializer);
+
+  return Log2TwinSync(key: key, value: value);
+}
+
+LogTwinNormal _sse_decode_log_twin_normal(SseDeserializer deserializer) {
+  var key = _sse_decode_u_32(serializer);
+  var value = _sse_decode_u_32(serializer);
+
+  return LogTwinNormal(key: key, value: value);
+}
+
+LogTwinRustAsync _sse_decode_log_twin_rust_async(SseDeserializer deserializer) {
+  var key = _sse_decode_u_32(serializer);
+  var value = _sse_decode_u_32(serializer);
+
+  return LogTwinRustAsync(key: key, value: value);
+}
+
+MacroStruct _sse_decode_macro_struct(SseDeserializer deserializer) {
+  var data = _sse_decode_i_32(serializer);
+
+  return MacroStruct(data: data);
+}
+
+MeasureTwinNormal _sse_decode_measure_twin_normal(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+MeasureTwinRustAsync _sse_decode_measure_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+MeasureTwinSync _sse_decode_measure_twin_sync(SseDeserializer deserializer) {
+  return TODO;
+}
+
+MessageIdTwinNormal _sse_decode_message_id_twin_normal(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_u_8_array_32(serializer);
+
+  return MessageIdTwinNormal(field0: field0);
+}
+
+MessageIdTwinRustAsync _sse_decode_message_id_twin_rust_async(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_u_8_array_32(serializer);
+
+  return MessageIdTwinRustAsync(field0: field0);
+}
+
+MessageIdTwinSync _sse_decode_message_id_twin_sync(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_u_8_array_32(serializer);
+
+  return MessageIdTwinSync(field0: field0);
+}
+
+MirrorStructTwinNormal _sse_decode_mirror_struct_twin_normal(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_application_settings(serializer);
+  var b = _sse_decode_my_struct(serializer);
+  var c = _sse_decode_list_my_enum(serializer);
+  var d = _sse_decode_list_application_settings(serializer);
+
+  return MirrorStructTwinNormal(a: a, b: b, c: c, d: d);
+}
+
+MirrorStructTwinRustAsync _sse_decode_mirror_struct_twin_rust_async(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_application_settings(serializer);
+  var b = _sse_decode_my_struct(serializer);
+  var c = _sse_decode_list_my_enum(serializer);
+  var d = _sse_decode_list_application_settings(serializer);
+
+  return MirrorStructTwinRustAsync(a: a, b: b, c: c, d: d);
+}
+
+MirrorStructTwinSync _sse_decode_mirror_struct_twin_sync(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_application_settings(serializer);
+  var b = _sse_decode_my_struct(serializer);
+  var c = _sse_decode_list_my_enum(serializer);
+  var d = _sse_decode_list_application_settings(serializer);
+
+  return MirrorStructTwinSync(a: a, b: b, c: c, d: d);
+}
+
+MoreThanJustOneRawStringStructTwinNormal
+    _sse_decode_more_than_just_one_raw_string_struct_twin_normal(
+        SseDeserializer deserializer) {
+  var regular = _sse_decode_String(serializer);
+  var type = _sse_decode_String(serializer);
+  var async = _sse_decode_bool(serializer);
+  var another = _sse_decode_String(serializer);
+
+  return MoreThanJustOneRawStringStructTwinNormal(
+      regular: regular, type: type, async: async, another: another);
+}
+
+MoreThanJustOneRawStringStructTwinRustAsync
+    _sse_decode_more_than_just_one_raw_string_struct_twin_rust_async(
+        SseDeserializer deserializer) {
+  var regular = _sse_decode_String(serializer);
+  var type = _sse_decode_String(serializer);
+  var async = _sse_decode_bool(serializer);
+  var another = _sse_decode_String(serializer);
+
+  return MoreThanJustOneRawStringStructTwinRustAsync(
+      regular: regular, type: type, async: async, another: another);
+}
+
+MoreThanJustOneRawStringStructTwinSync
+    _sse_decode_more_than_just_one_raw_string_struct_twin_sync(
+        SseDeserializer deserializer) {
+  var regular = _sse_decode_String(serializer);
+  var type = _sse_decode_String(serializer);
+  var async = _sse_decode_bool(serializer);
+  var another = _sse_decode_String(serializer);
+
+  return MoreThanJustOneRawStringStructTwinSync(
+      regular: regular, type: type, async: async, another: another);
+}
+
+MyEnum _sse_decode_my_enum(SseDeserializer deserializer) {
+  var inner = _sse_decode_i_32(serializer);
+  return TODO;
+}
+
+MyNestedStructTwinNormal _sse_decode_my_nested_struct_twin_normal(
+    SseDeserializer deserializer) {
+  var treeNode = _sse_decode_my_tree_node_twin_normal(serializer);
+  var weekday = _sse_decode_weekdays_twin_normal(serializer);
+
+  return MyNestedStructTwinNormal(treeNode: treeNode, weekday: weekday);
+}
+
+MyNestedStructTwinRustAsync _sse_decode_my_nested_struct_twin_rust_async(
+    SseDeserializer deserializer) {
+  var treeNode = _sse_decode_my_tree_node_twin_rust_async(serializer);
+  var weekday = _sse_decode_weekdays_twin_rust_async(serializer);
+
+  return MyNestedStructTwinRustAsync(treeNode: treeNode, weekday: weekday);
+}
+
+MyNestedStructTwinSync _sse_decode_my_nested_struct_twin_sync(
+    SseDeserializer deserializer) {
+  var treeNode = _sse_decode_my_tree_node_twin_sync(serializer);
+  var weekday = _sse_decode_weekdays_twin_sync(serializer);
+
+  return MyNestedStructTwinSync(treeNode: treeNode, weekday: weekday);
+}
+
+MySize _sse_decode_my_size(SseDeserializer deserializer) {
+  var width = _sse_decode_i_32(serializer);
+  var height = _sse_decode_i_32(serializer);
+
+  return MySize(width: width, height: height);
+}
+
+MyStreamEntryTwinNormal _sse_decode_my_stream_entry_twin_normal(
+    SseDeserializer deserializer) {
+  var hello = _sse_decode_String(serializer);
+
+  return MyStreamEntryTwinNormal(hello: hello);
+}
+
+MyStreamEntryTwinRustAsync _sse_decode_my_stream_entry_twin_rust_async(
+    SseDeserializer deserializer) {
+  var hello = _sse_decode_String(serializer);
+
+  return MyStreamEntryTwinRustAsync(hello: hello);
+}
+
+MyStruct _sse_decode_my_struct(SseDeserializer deserializer) {
+  var content = _sse_decode_bool(serializer);
+
+  return MyStruct(content: content);
+}
+
+MyTreeNodeTwinNormal _sse_decode_my_tree_node_twin_normal(
+    SseDeserializer deserializer) {
+  var valueI32 = _sse_decode_i_32(serializer);
+  var valueVecU8 = _sse_decode_list_prim_u_8(serializer);
+  var valueBoolean = _sse_decode_bool(serializer);
+  var children = _sse_decode_list_my_tree_node_twin_normal(serializer);
+
+  return MyTreeNodeTwinNormal(
+      valueI32: valueI32,
+      valueVecU8: valueVecU8,
+      valueBoolean: valueBoolean,
+      children: children);
+}
+
+MyTreeNodeTwinRustAsync _sse_decode_my_tree_node_twin_rust_async(
+    SseDeserializer deserializer) {
+  var valueI32 = _sse_decode_i_32(serializer);
+  var valueVecU8 = _sse_decode_list_prim_u_8(serializer);
+  var valueBoolean = _sse_decode_bool(serializer);
+  var children = _sse_decode_list_my_tree_node_twin_rust_async(serializer);
+
+  return MyTreeNodeTwinRustAsync(
+      valueI32: valueI32,
+      valueVecU8: valueVecU8,
+      valueBoolean: valueBoolean,
+      children: children);
+}
+
+MyTreeNodeTwinSync _sse_decode_my_tree_node_twin_sync(
+    SseDeserializer deserializer) {
+  var valueI32 = _sse_decode_i_32(serializer);
+  var valueVecU8 = _sse_decode_list_prim_u_8(serializer);
+  var valueBoolean = _sse_decode_bool(serializer);
+  var children = _sse_decode_list_my_tree_node_twin_sync(serializer);
+
+  return MyTreeNodeTwinSync(
+      valueI32: valueI32,
+      valueVecU8: valueVecU8,
+      valueBoolean: valueBoolean,
+      children: children);
+}
+
+NestedRawStringMirrored _sse_decode_nested_raw_string_mirrored(
+    SseDeserializer deserializer) {
+  var raw = _sse_decode_raw_string_mirrored(serializer);
+
+  return NestedRawStringMirrored(raw: raw);
+}
+
+NewSimpleStruct _sse_decode_new_simple_struct(SseDeserializer deserializer) {
+  var field = _sse_decode_i_32(serializer);
+
+  return NewSimpleStruct(field: field);
+}
+
+NewTypeIntTwinNormal _sse_decode_new_type_int_twin_normal(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_64(serializer);
+
+  return NewTypeIntTwinNormal(field0: field0);
+}
+
+NewTypeIntTwinRustAsync _sse_decode_new_type_int_twin_rust_async(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_64(serializer);
+
+  return NewTypeIntTwinRustAsync(field0: field0);
+}
+
+NewTypeIntTwinSync _sse_decode_new_type_int_twin_sync(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_64(serializer);
+
+  return NewTypeIntTwinSync(field0: field0);
+}
+
+Numbers _sse_decode_numbers(SseDeserializer deserializer) {
+  var field0 = _sse_decode_list_prim_i_32(serializer);
+
+  return Numbers(field0: field0);
+}
+
+OldSimpleStruct _sse_decode_old_simple_struct(SseDeserializer deserializer) {
+  var field = _sse_decode_i_32(serializer);
+
+  return OldSimpleStruct(field: field);
+}
+
+OpaqueNestedTwinNormal _sse_decode_opaque_nested_twin_normal(
+    SseDeserializer deserializer) {
+  var first = _sse_decode_RustOpaque_hide_data(serializer);
+  var second = _sse_decode_RustOpaque_hide_data(serializer);
+
+  return OpaqueNestedTwinNormal(first: first, second: second);
+}
+
+OpaqueNestedTwinRustAsync _sse_decode_opaque_nested_twin_rust_async(
+    SseDeserializer deserializer) {
+  var first = _sse_decode_RustOpaque_hide_data(serializer);
+  var second = _sse_decode_RustOpaque_hide_data(serializer);
+
+  return OpaqueNestedTwinRustAsync(first: first, second: second);
+}
+
+OpaqueNestedTwinSync _sse_decode_opaque_nested_twin_sync(
+    SseDeserializer deserializer) {
+  var first = _sse_decode_RustOpaque_hide_data(serializer);
+  var second = _sse_decode_RustOpaque_hide_data(serializer);
+
+  return OpaqueNestedTwinSync(first: first, second: second);
+}
+
+String? _sse_decode_opt_String(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_String(serializer);
+  } else {
+    return null;
+  }
+}
+
+Duration? _sse_decode_opt_box_autoadd_Chrono_Duration(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_Chrono_Duration(serializer);
+  } else {
+    return null;
+  }
+}
+
+DateTime? _sse_decode_opt_box_autoadd_Chrono_Naive(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_Chrono_Naive(serializer);
+  } else {
+    return null;
+  }
+}
+
+DateTime? _sse_decode_opt_box_autoadd_Chrono_Utc(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_Chrono_Utc(serializer);
+  } else {
+    return null;
+  }
+}
+
+Object? _sse_decode_opt_box_autoadd_DartOpaque(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_DartOpaque(serializer);
+  } else {
+    return null;
+  }
+}
+
+HideData? _sse_decode_opt_box_autoadd_RustOpaque_hide_data(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_RustOpaque_hide_data(serializer);
+  } else {
+    return null;
+  }
+}
+
+ApplicationEnv? _sse_decode_opt_box_autoadd_application_env(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_application_env(serializer);
+  } else {
+    return null;
+  }
+}
+
+AttributeTwinNormal? _sse_decode_opt_box_autoadd_attribute_twin_normal(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_attribute_twin_normal(serializer);
+  } else {
+    return null;
+  }
+}
+
+AttributeTwinRustAsync? _sse_decode_opt_box_autoadd_attribute_twin_rust_async(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_attribute_twin_rust_async(serializer);
+  } else {
+    return null;
+  }
+}
+
+AttributeTwinSync? _sse_decode_opt_box_autoadd_attribute_twin_sync(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_attribute_twin_sync(serializer);
+  } else {
+    return null;
+  }
+}
+
+bool? _sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_bool(serializer);
+  } else {
+    return null;
+  }
+}
+
+ElementTwinNormal? _sse_decode_opt_box_autoadd_element_twin_normal(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_element_twin_normal(serializer);
+  } else {
+    return null;
+  }
+}
+
+ElementTwinRustAsync? _sse_decode_opt_box_autoadd_element_twin_rust_async(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_element_twin_rust_async(serializer);
+  } else {
+    return null;
+  }
+}
+
+ElementTwinSync? _sse_decode_opt_box_autoadd_element_twin_sync(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_element_twin_sync(serializer);
+  } else {
+    return null;
+  }
+}
+
+ExoticOptionalsTwinNormal?
+    _sse_decode_opt_box_autoadd_exotic_optionals_twin_normal(
+        SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_exotic_optionals_twin_normal(serializer);
+  } else {
+    return null;
+  }
+}
+
+ExoticOptionalsTwinRustAsync?
+    _sse_decode_opt_box_autoadd_exotic_optionals_twin_rust_async(
+        SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(serializer);
+  } else {
+    return null;
+  }
+}
+
+ExoticOptionalsTwinSync? _sse_decode_opt_box_autoadd_exotic_optionals_twin_sync(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_exotic_optionals_twin_sync(serializer);
+  } else {
+    return null;
+  }
+}
+
+double? _sse_decode_opt_box_autoadd_f_32(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_f_32(serializer);
+  } else {
+    return null;
+  }
+}
+
+double? _sse_decode_opt_box_autoadd_f_64(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_f_64(serializer);
+  } else {
+    return null;
+  }
+}
+
+int? _sse_decode_opt_box_autoadd_i_16(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_i_16(serializer);
+  } else {
+    return null;
+  }
+}
+
+int? _sse_decode_opt_box_autoadd_i_32(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_i_32(serializer);
+  } else {
+    return null;
+  }
+}
+
+int? _sse_decode_opt_box_autoadd_i_64(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_i_64(serializer);
+  } else {
+    return null;
+  }
+}
+
+int? _sse_decode_opt_box_autoadd_i_8(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_i_8(serializer);
+  } else {
+    return null;
+  }
+}
+
+MeasureTwinNormal? _sse_decode_opt_box_autoadd_measure_twin_normal(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_measure_twin_normal(serializer);
+  } else {
+    return null;
+  }
+}
+
+MeasureTwinRustAsync? _sse_decode_opt_box_autoadd_measure_twin_rust_async(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_measure_twin_rust_async(serializer);
+  } else {
+    return null;
+  }
+}
+
+MeasureTwinSync? _sse_decode_opt_box_autoadd_measure_twin_sync(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_measure_twin_sync(serializer);
+  } else {
+    return null;
+  }
+}
+
+NewTypeIntTwinNormal? _sse_decode_opt_box_autoadd_new_type_int_twin_normal(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_new_type_int_twin_normal(serializer);
+  } else {
+    return null;
+  }
+}
+
+NewTypeIntTwinRustAsync?
+    _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(
+        SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_new_type_int_twin_rust_async(serializer);
+  } else {
+    return null;
+  }
+}
+
+NewTypeIntTwinSync? _sse_decode_opt_box_autoadd_new_type_int_twin_sync(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_new_type_int_twin_sync(serializer);
+  } else {
+    return null;
+  }
+}
+
+int? _sse_decode_opt_box_autoadd_u_16(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_u_16(serializer);
+  } else {
+    return null;
+  }
+}
+
+int? _sse_decode_opt_box_autoadd_u_32(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_u_32(serializer);
+  } else {
+    return null;
+  }
+}
+
+int? _sse_decode_opt_box_autoadd_u_64(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_u_64(serializer);
+  } else {
+    return null;
+  }
+}
+
+int? _sse_decode_opt_box_autoadd_u_8(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_u_8(serializer);
+  } else {
+    return null;
+  }
+}
+
+WeekdaysTwinNormal? _sse_decode_opt_box_autoadd_weekdays_twin_normal(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_weekdays_twin_normal(serializer);
+  } else {
+    return null;
+  }
+}
+
+WeekdaysTwinRustAsync? _sse_decode_opt_box_autoadd_weekdays_twin_rust_async(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_weekdays_twin_rust_async(serializer);
+  } else {
+    return null;
+  }
+}
+
+WeekdaysTwinSync? _sse_decode_opt_box_autoadd_weekdays_twin_sync(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_box_autoadd_weekdays_twin_sync(serializer);
+  } else {
+    return null;
+  }
+}
+
+List<AttributeTwinNormal>? _sse_decode_opt_list_attribute_twin_normal(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_attribute_twin_normal(serializer);
+  } else {
+    return null;
+  }
+}
+
+List<AttributeTwinRustAsync>? _sse_decode_opt_list_attribute_twin_rust_async(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_attribute_twin_rust_async(serializer);
+  } else {
+    return null;
+  }
+}
+
+List<AttributeTwinSync>? _sse_decode_opt_list_attribute_twin_sync(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_attribute_twin_sync(serializer);
+  } else {
+    return null;
+  }
+}
+
+List<ElementTwinNormal>? _sse_decode_opt_list_element_twin_normal(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_element_twin_normal(serializer);
+  } else {
+    return null;
+  }
+}
+
+List<ElementTwinRustAsync>? _sse_decode_opt_list_element_twin_rust_async(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_element_twin_rust_async(serializer);
+  } else {
+    return null;
+  }
+}
+
+List<ElementTwinSync>? _sse_decode_opt_list_element_twin_sync(
+    SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_element_twin_sync(serializer);
+  } else {
+    return null;
+  }
+}
+
+List<AttributeTwinNormal?>?
+    _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(
+        SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_opt_box_autoadd_attribute_twin_normal(serializer);
+  } else {
+    return null;
+  }
+}
+
+List<AttributeTwinRustAsync?>?
+    _sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+        SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
+        serializer);
+  } else {
+    return null;
+  }
+}
+
+List<AttributeTwinSync?>?
+    _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(
+        SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_opt_box_autoadd_attribute_twin_sync(serializer);
+  } else {
+    return null;
+  }
+}
+
+Float32List? _sse_decode_opt_list_prim_f_32(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_prim_f_32(serializer);
+  } else {
+    return null;
+  }
+}
+
+Float64List? _sse_decode_opt_list_prim_f_64(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_prim_f_64(serializer);
+  } else {
+    return null;
+  }
+}
+
+Int32List? _sse_decode_opt_list_prim_i_32(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_prim_i_32(serializer);
+  } else {
+    return null;
+  }
+}
+
+Int8List? _sse_decode_opt_list_prim_i_8(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_prim_i_8(serializer);
+  } else {
+    return null;
+  }
+}
+
+Uint8List? _sse_decode_opt_list_prim_u_8(SseDeserializer deserializer) {
+  if (_sse_decode_bool(serializer)) {
+    return _sse_decode_list_prim_u_8(serializer);
+  } else {
+    return null;
+  }
+}
+
+OptVecsTwinNormal _sse_decode_opt_vecs_twin_normal(
+    SseDeserializer deserializer) {
+  var i32 = _sse_decode_list_opt_box_autoadd_i_32(serializer);
+  var enums = _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(serializer);
+  var strings = _sse_decode_list_opt_String(serializer);
+  var buffers = _sse_decode_list_opt_list_prim_i_32(serializer);
+
+  return OptVecsTwinNormal(
+      i32: i32, enums: enums, strings: strings, buffers: buffers);
+}
+
+OptVecsTwinRustAsync _sse_decode_opt_vecs_twin_rust_async(
+    SseDeserializer deserializer) {
+  var i32 = _sse_decode_list_opt_box_autoadd_i_32(serializer);
+  var enums =
+      _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(serializer);
+  var strings = _sse_decode_list_opt_String(serializer);
+  var buffers = _sse_decode_list_opt_list_prim_i_32(serializer);
+
+  return OptVecsTwinRustAsync(
+      i32: i32, enums: enums, strings: strings, buffers: buffers);
+}
+
+OptVecsTwinSync _sse_decode_opt_vecs_twin_sync(SseDeserializer deserializer) {
+  var i32 = _sse_decode_list_opt_box_autoadd_i_32(serializer);
+  var enums = _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(serializer);
+  var strings = _sse_decode_list_opt_String(serializer);
+  var buffers = _sse_decode_list_opt_list_prim_i_32(serializer);
+
+  return OptVecsTwinSync(
+      i32: i32, enums: enums, strings: strings, buffers: buffers);
+}
+
+PointTwinNormal _sse_decode_point_twin_normal(SseDeserializer deserializer) {
+  var x = _sse_decode_f_32(serializer);
+  var y = _sse_decode_f_32(serializer);
+
+  return PointTwinNormal(x: x, y: y);
+}
+
+PointTwinNormalArray2 _sse_decode_point_twin_normal_array_2(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_point_twin_normal(serializer);
+  return TODO;
+}
+
+PointTwinRustAsync _sse_decode_point_twin_rust_async(
+    SseDeserializer deserializer) {
+  var x = _sse_decode_f_32(serializer);
+  var y = _sse_decode_f_32(serializer);
+
+  return PointTwinRustAsync(x: x, y: y);
+}
+
+PointTwinRustAsyncArray2 _sse_decode_point_twin_rust_async_array_2(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_point_twin_rust_async(serializer);
+  return TODO;
+}
+
+PointTwinSync _sse_decode_point_twin_sync(SseDeserializer deserializer) {
+  var x = _sse_decode_f_32(serializer);
+  var y = _sse_decode_f_32(serializer);
+
+  return PointTwinSync(x: x, y: y);
+}
+
+PointTwinSyncArray2 _sse_decode_point_twin_sync_array_2(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_point_twin_sync(serializer);
+  return TODO;
+}
+
+RawStringEnumMirrored _sse_decode_raw_string_enum_mirrored(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+RawStringItemStructTwinNormal _sse_decode_raw_string_item_struct_twin_normal(
+    SseDeserializer deserializer) {
+  var type = _sse_decode_String(serializer);
+
+  return RawStringItemStructTwinNormal(type: type);
+}
+
+RawStringItemStructTwinRustAsync
+    _sse_decode_raw_string_item_struct_twin_rust_async(
+        SseDeserializer deserializer) {
+  var type = _sse_decode_String(serializer);
+
+  return RawStringItemStructTwinRustAsync(type: type);
+}
+
+RawStringItemStructTwinSync _sse_decode_raw_string_item_struct_twin_sync(
+    SseDeserializer deserializer) {
+  var type = _sse_decode_String(serializer);
+
+  return RawStringItemStructTwinSync(type: type);
+}
+
+RawStringMirrored _sse_decode_raw_string_mirrored(
+    SseDeserializer deserializer) {
+  var value = _sse_decode_String(serializer);
+
+  return RawStringMirrored(value: value);
+}
+
+(ApplicationSettings, RawStringEnumMirrored)
+    _sse_decode_record_application_settings_raw_string_enum_mirrored(
+        SseDeserializer deserializer) {
+  var field0 = _sse_decode_application_settings(serializer);
+  var field1 = _sse_decode_raw_string_enum_mirrored(serializer);
+
+  return (field0, field1);
+}
+
+(String, int) _sse_decode_record_string_i_32(SseDeserializer deserializer) {
+  var field0 = _sse_decode_String(serializer);
+  var field1 = _sse_decode_i_32(serializer);
+
+  return (field0, field1);
+}
+
+Sequences _sse_decode_sequences(SseDeserializer deserializer) {
+  var field0 = _sse_decode_list_prim_i_32(serializer);
+
+  return Sequences(field0: field0);
+}
+
+SomeStructTwinNormal _sse_decode_some_struct_twin_normal(
+    SseDeserializer deserializer) {
+  var value = _sse_decode_u_32(serializer);
+
+  return SomeStructTwinNormal(value: value);
+}
+
+SomeStructTwinRustAsync _sse_decode_some_struct_twin_rust_async(
+    SseDeserializer deserializer) {
+  var value = _sse_decode_u_32(serializer);
+
+  return SomeStructTwinRustAsync(value: value);
+}
+
+SomeStructTwinSync _sse_decode_some_struct_twin_sync(
+    SseDeserializer deserializer) {
+  var value = _sse_decode_u_32(serializer);
+
+  return SomeStructTwinSync(value: value);
+}
+
+SpeedTwinNormal _sse_decode_speed_twin_normal(SseDeserializer deserializer) {
+  return TODO;
+}
+
+SpeedTwinRustAsync _sse_decode_speed_twin_rust_async(
+    SseDeserializer deserializer) {
+  return TODO;
+}
+
+SpeedTwinSync _sse_decode_speed_twin_sync(SseDeserializer deserializer) {
+  return TODO;
+}
+
+StructWithEnumTwinNormal _sse_decode_struct_with_enum_twin_normal(
+    SseDeserializer deserializer) {
+  var abc1 = _sse_decode_abc_twin_normal(serializer);
+  var abc2 = _sse_decode_abc_twin_normal(serializer);
+
+  return StructWithEnumTwinNormal(abc1: abc1, abc2: abc2);
+}
+
+StructWithEnumTwinRustAsync _sse_decode_struct_with_enum_twin_rust_async(
+    SseDeserializer deserializer) {
+  var abc1 = _sse_decode_abc_twin_rust_async(serializer);
+  var abc2 = _sse_decode_abc_twin_rust_async(serializer);
+
+  return StructWithEnumTwinRustAsync(abc1: abc1, abc2: abc2);
+}
+
+StructWithEnumTwinSync _sse_decode_struct_with_enum_twin_sync(
+    SseDeserializer deserializer) {
+  var abc1 = _sse_decode_abc_twin_sync(serializer);
+  var abc2 = _sse_decode_abc_twin_sync(serializer);
+
+  return StructWithEnumTwinSync(abc1: abc1, abc2: abc2);
+}
+
+StructWithOneFieldTwinNormal _sse_decode_struct_with_one_field_twin_normal(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_i_32(serializer);
+
+  return StructWithOneFieldTwinNormal(a: a);
+}
+
+StructWithOneFieldTwinRustAsync
+    _sse_decode_struct_with_one_field_twin_rust_async(
+        SseDeserializer deserializer) {
+  var a = _sse_decode_i_32(serializer);
+
+  return StructWithOneFieldTwinRustAsync(a: a);
+}
+
+StructWithOneFieldTwinSync _sse_decode_struct_with_one_field_twin_sync(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_i_32(serializer);
+
+  return StructWithOneFieldTwinSync(a: a);
+}
+
+StructWithTwoFieldTwinNormal _sse_decode_struct_with_two_field_twin_normal(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_i_32(serializer);
+  var b = _sse_decode_i_32(serializer);
+
+  return StructWithTwoFieldTwinNormal(a: a, b: b);
+}
+
+StructWithTwoFieldTwinRustAsync
+    _sse_decode_struct_with_two_field_twin_rust_async(
+        SseDeserializer deserializer) {
+  var a = _sse_decode_i_32(serializer);
+  var b = _sse_decode_i_32(serializer);
+
+  return StructWithTwoFieldTwinRustAsync(a: a, b: b);
+}
+
+StructWithTwoFieldTwinSync _sse_decode_struct_with_two_field_twin_sync(
+    SseDeserializer deserializer) {
+  var a = _sse_decode_i_32(serializer);
+  var b = _sse_decode_i_32(serializer);
+
+  return StructWithTwoFieldTwinSync(a: a, b: b);
+}
+
+StructWithZeroFieldTwinNormal _sse_decode_struct_with_zero_field_twin_normal(
+    SseDeserializer deserializer) {
+  return StructWithZeroFieldTwinNormal();
+}
+
+StructWithZeroFieldTwinRustAsync
+    _sse_decode_struct_with_zero_field_twin_rust_async(
+        SseDeserializer deserializer) {
+  return StructWithZeroFieldTwinRustAsync();
+}
+
+StructWithZeroFieldTwinSync _sse_decode_struct_with_zero_field_twin_sync(
+    SseDeserializer deserializer) {
+  return StructWithZeroFieldTwinSync();
+}
+
+SumWithTwinNormal _sse_decode_sum_with_twin_normal(
+    SseDeserializer deserializer) {
+  var x = _sse_decode_u_32(serializer);
+
+  return SumWithTwinNormal(x: x);
+}
+
+SumWithTwinNormalArray3 _sse_decode_sum_with_twin_normal_array_3(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_sum_with_twin_normal(serializer);
+  return TODO;
+}
+
+SumWithTwinRustAsync _sse_decode_sum_with_twin_rust_async(
+    SseDeserializer deserializer) {
+  var x = _sse_decode_u_32(serializer);
+
+  return SumWithTwinRustAsync(x: x);
+}
+
+SumWithTwinRustAsyncArray3 _sse_decode_sum_with_twin_rust_async_array_3(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_sum_with_twin_rust_async(serializer);
+  return TODO;
+}
+
+SumWithTwinSync _sse_decode_sum_with_twin_sync(SseDeserializer deserializer) {
+  var x = _sse_decode_u_32(serializer);
+
+  return SumWithTwinSync(x: x);
+}
+
+SumWithTwinSyncArray3 _sse_decode_sum_with_twin_sync_array_3(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_sum_with_twin_sync(serializer);
+  return TODO;
+}
+
+TestChronoTwinNormal _sse_decode_test_chrono_twin_normal(
+    SseDeserializer deserializer) {
+  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(serializer);
+  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(serializer);
+  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(serializer);
+
+  return TestChronoTwinNormal(dt: dt, dt2: dt2, du: du);
+}
+
+TestChronoTwinRustAsync _sse_decode_test_chrono_twin_rust_async(
+    SseDeserializer deserializer) {
+  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(serializer);
+  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(serializer);
+  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(serializer);
+
+  return TestChronoTwinRustAsync(dt: dt, dt2: dt2, du: du);
+}
+
+TestChronoTwinSync _sse_decode_test_chrono_twin_sync(
+    SseDeserializer deserializer) {
+  var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(serializer);
+  var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(serializer);
+  var du = _sse_decode_opt_box_autoadd_Chrono_Duration(serializer);
+
+  return TestChronoTwinSync(dt: dt, dt2: dt2, du: du);
+}
+
+TestIdTwinNormal _sse_decode_test_id_twin_normal(SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_32_array_2(serializer);
+
+  return TestIdTwinNormal(field0: field0);
+}
+
+TestIdTwinNormalArray2 _sse_decode_test_id_twin_normal_array_2(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_test_id_twin_normal(serializer);
+  return TODO;
+}
+
+TestIdTwinRustAsync _sse_decode_test_id_twin_rust_async(
+    SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_32_array_2(serializer);
+
+  return TestIdTwinRustAsync(field0: field0);
+}
+
+TestIdTwinRustAsyncArray2 _sse_decode_test_id_twin_rust_async_array_2(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_test_id_twin_rust_async(serializer);
+  return TODO;
+}
+
+TestIdTwinSync _sse_decode_test_id_twin_sync(SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_32_array_2(serializer);
+
+  return TestIdTwinSync(field0: field0);
+}
+
+TestIdTwinSyncArray2 _sse_decode_test_id_twin_sync_array_2(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_list_test_id_twin_sync(serializer);
+  return TODO;
+}
+
+TestModelTwinNormal _sse_decode_test_model_twin_normal(
+    SseDeserializer deserializer) {
+  var id = _sse_decode_u_64(serializer);
+  var name = _sse_decode_String(serializer);
+  var aliasEnum = _sse_decode_my_enum(serializer);
+  var aliasStruct = _sse_decode_my_struct(serializer);
+
+  return TestModelTwinNormal(
+      id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+}
+
+TestModelTwinRustAsync _sse_decode_test_model_twin_rust_async(
+    SseDeserializer deserializer) {
+  var id = _sse_decode_u_64(serializer);
+  var name = _sse_decode_String(serializer);
+  var aliasEnum = _sse_decode_my_enum(serializer);
+  var aliasStruct = _sse_decode_my_struct(serializer);
+
+  return TestModelTwinRustAsync(
+      id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+}
+
+TestModelTwinSync _sse_decode_test_model_twin_sync(
+    SseDeserializer deserializer) {
+  var id = _sse_decode_u_64(serializer);
+  var name = _sse_decode_String(serializer);
+  var aliasEnum = _sse_decode_my_enum(serializer);
+  var aliasStruct = _sse_decode_my_struct(serializer);
+
+  return TestModelTwinSync(
+      id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+}
+
+TupleStructWithOneFieldTwinNormal
+    _sse_decode_tuple_struct_with_one_field_twin_normal(
+        SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_32(serializer);
+
+  return TupleStructWithOneFieldTwinNormal(field0: field0);
+}
+
+TupleStructWithOneFieldTwinRustAsync
+    _sse_decode_tuple_struct_with_one_field_twin_rust_async(
+        SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_32(serializer);
+
+  return TupleStructWithOneFieldTwinRustAsync(field0: field0);
+}
+
+TupleStructWithOneFieldTwinSync
+    _sse_decode_tuple_struct_with_one_field_twin_sync(
+        SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_32(serializer);
+
+  return TupleStructWithOneFieldTwinSync(field0: field0);
+}
+
+TupleStructWithTwoFieldTwinNormal
+    _sse_decode_tuple_struct_with_two_field_twin_normal(
+        SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_32(serializer);
+  var field1 = _sse_decode_i_32(serializer);
+
+  return TupleStructWithTwoFieldTwinNormal(field0: field0, field1: field1);
+}
+
+TupleStructWithTwoFieldTwinRustAsync
+    _sse_decode_tuple_struct_with_two_field_twin_rust_async(
+        SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_32(serializer);
+  var field1 = _sse_decode_i_32(serializer);
+
+  return TupleStructWithTwoFieldTwinRustAsync(field0: field0, field1: field1);
+}
+
+TupleStructWithTwoFieldTwinSync
+    _sse_decode_tuple_struct_with_two_field_twin_sync(
+        SseDeserializer deserializer) {
+  var field0 = _sse_decode_i_32(serializer);
+  var field1 = _sse_decode_i_32(serializer);
+
+  return TupleStructWithTwoFieldTwinSync(field0: field0, field1: field1);
+}
+
+int _sse_decode_u_16(SseDeserializer deserializer) {
+  return deserializer.buffer.getUint16();
+}
+
+int _sse_decode_u_32(SseDeserializer deserializer) {
+  return deserializer.buffer.getUint32();
+}
+
+int _sse_decode_u_64(SseDeserializer deserializer) {
+  return deserializer.buffer.getUint64();
+}
+
+int _sse_decode_u_8(SseDeserializer deserializer) {
+  return deserializer.buffer.getUint8();
+}
+
+U8Array1600 _sse_decode_u_8_array_1600(SseDeserializer deserializer) {
+  var inner = _sse_decode_list_prim_u_8(serializer);
+  return TODO;
+}
+
+U8Array32 _sse_decode_u_8_array_32(SseDeserializer deserializer) {
+  var inner = _sse_decode_list_prim_u_8(serializer);
+  return TODO;
+}
+
+U8Array5 _sse_decode_u_8_array_5(SseDeserializer deserializer) {
+  var inner = _sse_decode_list_prim_u_8(serializer);
+  return TODO;
+}
+
+U8Array8 _sse_decode_u_8_array_8(SseDeserializer deserializer) {
+  var inner = _sse_decode_list_prim_u_8(serializer);
+  return TODO;
+}
+
+void _sse_decode_unit(SseDeserializer deserializer) {}
+
+UserIdTwinNormal _sse_decode_user_id_twin_normal(SseDeserializer deserializer) {
+  var value = _sse_decode_u_32(serializer);
+
+  return UserIdTwinNormal(value: value);
+}
+
+UserIdTwinRustAsync _sse_decode_user_id_twin_rust_async(
+    SseDeserializer deserializer) {
+  var value = _sse_decode_u_32(serializer);
+
+  return UserIdTwinRustAsync(value: value);
+}
+
+UserIdTwinSync _sse_decode_user_id_twin_sync(SseDeserializer deserializer) {
+  var value = _sse_decode_u_32(serializer);
+
+  return UserIdTwinSync(value: value);
+}
+
+VecOfPrimitivePackTwinNormal _sse_decode_vec_of_primitive_pack_twin_normal(
+    SseDeserializer deserializer) {
+  var int8List = _sse_decode_list_prim_i_8(serializer);
+  var uint8List = _sse_decode_list_prim_u_8(serializer);
+  var int16List = _sse_decode_list_prim_i_16(serializer);
+  var uint16List = _sse_decode_list_prim_u_16(serializer);
+  var uint32List = _sse_decode_list_prim_u_32(serializer);
+  var int32List = _sse_decode_list_prim_i_32(serializer);
+  var uint64List = _sse_decode_list_prim_u_64(serializer);
+  var int64List = _sse_decode_list_prim_i_64(serializer);
+  var float32List = _sse_decode_list_prim_f_32(serializer);
+  var float64List = _sse_decode_list_prim_f_64(serializer);
+  var boolList = _sse_decode_list_bool(serializer);
+
+  return VecOfPrimitivePackTwinNormal(
+      int8List: int8List,
+      uint8List: uint8List,
+      int16List: int16List,
+      uint16List: uint16List,
+      uint32List: uint32List,
+      int32List: int32List,
+      uint64List: uint64List,
+      int64List: int64List,
+      float32List: float32List,
+      float64List: float64List,
+      boolList: boolList);
+}
+
+VecOfPrimitivePackTwinRustAsync
+    _sse_decode_vec_of_primitive_pack_twin_rust_async(
+        SseDeserializer deserializer) {
+  var int8List = _sse_decode_list_prim_i_8(serializer);
+  var uint8List = _sse_decode_list_prim_u_8(serializer);
+  var int16List = _sse_decode_list_prim_i_16(serializer);
+  var uint16List = _sse_decode_list_prim_u_16(serializer);
+  var uint32List = _sse_decode_list_prim_u_32(serializer);
+  var int32List = _sse_decode_list_prim_i_32(serializer);
+  var uint64List = _sse_decode_list_prim_u_64(serializer);
+  var int64List = _sse_decode_list_prim_i_64(serializer);
+  var float32List = _sse_decode_list_prim_f_32(serializer);
+  var float64List = _sse_decode_list_prim_f_64(serializer);
+  var boolList = _sse_decode_list_bool(serializer);
+
+  return VecOfPrimitivePackTwinRustAsync(
+      int8List: int8List,
+      uint8List: uint8List,
+      int16List: int16List,
+      uint16List: uint16List,
+      uint32List: uint32List,
+      int32List: int32List,
+      uint64List: uint64List,
+      int64List: int64List,
+      float32List: float32List,
+      float64List: float64List,
+      boolList: boolList);
+}
+
+VecOfPrimitivePackTwinSync _sse_decode_vec_of_primitive_pack_twin_sync(
+    SseDeserializer deserializer) {
+  var int8List = _sse_decode_list_prim_i_8(serializer);
+  var uint8List = _sse_decode_list_prim_u_8(serializer);
+  var int16List = _sse_decode_list_prim_i_16(serializer);
+  var uint16List = _sse_decode_list_prim_u_16(serializer);
+  var uint32List = _sse_decode_list_prim_u_32(serializer);
+  var int32List = _sse_decode_list_prim_i_32(serializer);
+  var uint64List = _sse_decode_list_prim_u_64(serializer);
+  var int64List = _sse_decode_list_prim_i_64(serializer);
+  var float32List = _sse_decode_list_prim_f_32(serializer);
+  var float64List = _sse_decode_list_prim_f_64(serializer);
+  var boolList = _sse_decode_list_bool(serializer);
+
+  return VecOfPrimitivePackTwinSync(
+      int8List: int8List,
+      uint8List: uint8List,
+      int16List: int16List,
+      uint16List: uint16List,
+      uint32List: uint32List,
+      int32List: int32List,
+      uint64List: uint64List,
+      int64List: int64List,
+      float32List: float32List,
+      float64List: float64List,
+      boolList: boolList);
+}
+
+WeekdaysTwinNormal _sse_decode_weekdays_twin_normal(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_i_32(serializer);
+  return TODO;
+}
+
+WeekdaysTwinRustAsync _sse_decode_weekdays_twin_rust_async(
+    SseDeserializer deserializer) {
+  var inner = _sse_decode_i_32(serializer);
+  return TODO;
+}
+
+WeekdaysTwinSync _sse_decode_weekdays_twin_sync(SseDeserializer deserializer) {
+  var inner = _sse_decode_i_32(serializer);
+  return TODO;
 }
 
 // Section: dart2rust
@@ -25304,4 +28319,2710 @@ int cst_encode_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
 
 int cst_encode_weekdays_twin_sync(WeekdaysTwinSync raw) {
   return cst_encode_i_32(raw.index);
+}
+
+void
+    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+        RwLockBoxFnStringString self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: true), serializer);
+}
+
+void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+    RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: true), serializer);
+}
+
+void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+    RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: true), serializer);
+}
+
+void
+    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+        RwLockBoxMyTraitTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: true), serializer);
+}
+
+void
+    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+        RwLockBoxMyTraitTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: true), serializer);
+}
+
+void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: true), serializer);
+}
+
+void _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+    RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: true), serializer);
+}
+
+void
+    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+        RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+        SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: true), serializer);
+}
+
+void
+    _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+        RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+        SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: true), serializer);
+}
+
+void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+    RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+    RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+    RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void
+    _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+        RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+        SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void
+    _sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+        RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+        SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+    RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+    RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+    RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void
+    _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+        RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+        SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void
+    _sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+        RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+        SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(move: false), serializer);
+}
+
+void _sse_encode_Chrono_Duration(Duration self, SseSerializer serializer) {
+  _sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+}
+
+void _sse_encode_Chrono_Local(DateTime self, SseSerializer serializer) {
+  _sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+}
+
+void _sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer) {
+  _sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+}
+
+void _sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer) {
+  _sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+}
+
+void _sse_encode_DartFn_Inputs__Output_unit(
+    void Function() self, SseSerializer serializer) {
+  _sse_encode_DartOpaque(self, serializer);
+}
+
+void _sse_encode_DartOpaque(Object self, SseSerializer serializer) {
+  _sse_encode_usize(wire.dart_opaque_dart2rust_encode(self), serializer);
+}
+
+void _sse_encode_DartOpaque_array_1(
+    ObjectArray1 self, SseSerializer serializer) {
+  _sse_encode_list_DartOpaque(self, serializer);
+}
+
+void _sse_encode_RustOpaque_MutexHideData(
+    MutexHideData self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_RwLockHideData(
+    RwLockHideData self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_box_dynDartDebugTwinNormal(
+    BoxDartDebugTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
+    BoxDartDebugTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_box_dynDartDebugTwinSync(
+    BoxDartDebugTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_hide_data(HideData self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_hide_data_array_2(
+    HideDataArray2 self, SseSerializer serializer) {
+  _sse_encode_list_RustOpaque_hide_data(self, serializer);
+}
+
+void _sse_encode_RustOpaque_i_32(I32 self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_non_clone_data(
+    NonCloneData self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_non_send_hide_data(
+    NonSendHideData self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void
+    _sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+        RwLockBoxFnStringString self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+    RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+    RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+    RwLockBoxMyTraitTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+    RwLockBoxMyTraitTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+    RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+    RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+    SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+    RwLockStructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_usize(self.sseEncode(), serializer);
+}
+
+void _sse_encode_String(String self, SseSerializer serializer) {
+  _sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
+}
+
+void _sse_encode_Uuid(UuidValue self, SseSerializer serializer) {
+  _sse_encode_list_prim_u_8(self.toBytes(), serializer);
+}
+
+void _sse_encode_a_twin_normal(ATwinNormal self, SseSerializer serializer) {
+  _sse_encode_String(self.a, serializer);
+}
+
+void _sse_encode_a_twin_rust_async(
+    ATwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_String(self.a, serializer);
+}
+
+void _sse_encode_a_twin_sync(ATwinSync self, SseSerializer serializer) {
+  _sse_encode_String(self.a, serializer);
+}
+
+void _sse_encode_abc_twin_normal(AbcTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_abc_twin_rust_async(
+    AbcTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_abc_twin_sync(AbcTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_application_env(
+    ApplicationEnv self, SseSerializer serializer) {
+  _sse_encode_list_application_env_var(self.vars, serializer);
+}
+
+void _sse_encode_application_env_var(
+    ApplicationEnvVar self, SseSerializer serializer) {
+  _sse_encode_String(self.field0, serializer);
+  _sse_encode_bool(self.field1, serializer);
+}
+
+void _sse_encode_application_mode(
+    ApplicationMode self, SseSerializer serializer) {
+  _sse_encode_i_32(self.index, serializer);
+}
+
+void _sse_encode_application_settings(
+    ApplicationSettings self, SseSerializer serializer) {
+  _sse_encode_String(self.name, serializer);
+  _sse_encode_String(self.version, serializer);
+  _sse_encode_application_mode(self.mode, serializer);
+  _sse_encode_box_application_env(self.env, serializer);
+  _sse_encode_opt_box_autoadd_application_env(self.envOptional, serializer);
+}
+
+void _sse_encode_attribute_twin_normal(
+    AttributeTwinNormal self, SseSerializer serializer) {
+  _sse_encode_String(self.key, serializer);
+  _sse_encode_String(self.value, serializer);
+}
+
+void _sse_encode_attribute_twin_rust_async(
+    AttributeTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_String(self.key, serializer);
+  _sse_encode_String(self.value, serializer);
+}
+
+void _sse_encode_attribute_twin_sync(
+    AttributeTwinSync self, SseSerializer serializer) {
+  _sse_encode_String(self.key, serializer);
+  _sse_encode_String(self.value, serializer);
+}
+
+void _sse_encode_b_twin_normal(BTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32(self.b, serializer);
+}
+
+void _sse_encode_b_twin_rust_async(
+    BTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.b, serializer);
+}
+
+void _sse_encode_b_twin_sync(BTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.b, serializer);
+}
+
+void _sse_encode_blob_twin_normal(
+    BlobTwinNormal self, SseSerializer serializer) {
+  _sse_encode_u_8_array_1600(self.field0, serializer);
+}
+
+void _sse_encode_blob_twin_rust_async(
+    BlobTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_u_8_array_1600(self.field0, serializer);
+}
+
+void _sse_encode_blob_twin_sync(BlobTwinSync self, SseSerializer serializer) {
+  _sse_encode_u_8_array_1600(self.field0, serializer);
+}
+
+void _sse_encode_bool(bool self, SseSerializer serializer) {
+  serializer.buffer.putUint8(self);
+}
+
+void _sse_encode_box_application_env(
+    ApplicationEnv self, SseSerializer serializer) {
+  _sse_encode_application_env(self, serializer);
+}
+
+void _sse_encode_box_autoadd_Chrono_Utc(
+    DateTime self, SseSerializer serializer) {
+  _sse_encode_Chrono_Utc(self, serializer);
+}
+
+void _sse_encode_box_autoadd_DartOpaque(Object self, SseSerializer serializer) {
+  _sse_encode_DartOpaque(self, serializer);
+}
+
+void _sse_encode_box_autoadd_RustOpaque_hide_data(
+    HideData self, SseSerializer serializer) {
+  _sse_encode_RustOpaque_hide_data(self, serializer);
+}
+
+void _sse_encode_box_autoadd_a_twin_normal(
+    ATwinNormal self, SseSerializer serializer) {
+  _sse_encode_a_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_a_twin_rust_async(
+    ATwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_a_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_a_twin_sync(
+    ATwinSync self, SseSerializer serializer) {
+  _sse_encode_a_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_abc_twin_normal(
+    AbcTwinNormal self, SseSerializer serializer) {
+  _sse_encode_abc_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_abc_twin_rust_async(
+    AbcTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_abc_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_abc_twin_sync(
+    AbcTwinSync self, SseSerializer serializer) {
+  _sse_encode_abc_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_application_env(
+    ApplicationEnv self, SseSerializer serializer) {
+  _sse_encode_application_env(self, serializer);
+}
+
+void _sse_encode_box_autoadd_application_settings(
+    ApplicationSettings self, SseSerializer serializer) {
+  _sse_encode_application_settings(self, serializer);
+}
+
+void _sse_encode_box_autoadd_attribute_twin_normal(
+    AttributeTwinNormal self, SseSerializer serializer) {
+  _sse_encode_attribute_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_attribute_twin_rust_async(
+    AttributeTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_attribute_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_attribute_twin_sync(
+    AttributeTwinSync self, SseSerializer serializer) {
+  _sse_encode_attribute_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_b_twin_normal(
+    BTwinNormal self, SseSerializer serializer) {
+  _sse_encode_b_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_b_twin_rust_async(
+    BTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_b_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_b_twin_sync(
+    BTwinSync self, SseSerializer serializer) {
+  _sse_encode_b_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_bool(bool self, SseSerializer serializer) {
+  _sse_encode_bool(self, serializer);
+}
+
+void _sse_encode_box_autoadd_c_twin_normal(
+    CTwinNormal self, SseSerializer serializer) {
+  _sse_encode_c_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_c_twin_rust_async(
+    CTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_c_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_c_twin_sync(
+    CTwinSync self, SseSerializer serializer) {
+  _sse_encode_c_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_concatenate_with_twin_normal(
+    ConcatenateWithTwinNormal self, SseSerializer serializer) {
+  _sse_encode_concatenate_with_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_concatenate_with_twin_rust_async(
+    ConcatenateWithTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_concatenate_with_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_concatenate_with_twin_sync(
+    ConcatenateWithTwinSync self, SseSerializer serializer) {
+  _sse_encode_concatenate_with_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(
+    CustomNestedErrorInnerTwinNormal self, SseSerializer serializer) {
+  _sse_encode_custom_nested_error_inner_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+    CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_custom_nested_error_inner_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(
+    CustomNestedErrorInnerTwinSync self, SseSerializer serializer) {
+  _sse_encode_custom_nested_error_inner_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_nested_error_outer_twin_normal(
+    CustomNestedErrorOuterTwinNormal self, SseSerializer serializer) {
+  _sse_encode_custom_nested_error_outer_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+    CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_custom_nested_error_outer_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_nested_error_outer_twin_sync(
+    CustomNestedErrorOuterTwinSync self, SseSerializer serializer) {
+  _sse_encode_custom_nested_error_outer_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_struct_error_twin_normal(
+    CustomStructErrorTwinNormal self, SseSerializer serializer) {
+  _sse_encode_custom_struct_error_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_struct_error_twin_rust_async(
+    CustomStructErrorTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_custom_struct_error_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_struct_error_twin_sync(
+    CustomStructErrorTwinSync self, SseSerializer serializer) {
+  _sse_encode_custom_struct_error_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_struct_twin_normal(
+    CustomStructTwinNormal self, SseSerializer serializer) {
+  _sse_encode_custom_struct_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_struct_twin_rust_async(
+    CustomStructTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_custom_struct_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_custom_struct_twin_sync(
+    CustomStructTwinSync self, SseSerializer serializer) {
+  _sse_encode_custom_struct_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_customized_twin_normal(
+    CustomizedTwinNormal self, SseSerializer serializer) {
+  _sse_encode_customized_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_customized_twin_rust_async(
+    CustomizedTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_customized_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_customized_twin_sync(
+    CustomizedTwinSync self, SseSerializer serializer) {
+  _sse_encode_customized_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_dart_opaque_nested_twin_normal(
+    DartOpaqueNestedTwinNormal self, SseSerializer serializer) {
+  _sse_encode_dart_opaque_nested_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
+    DartOpaqueNestedTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_dart_opaque_nested_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_dart_opaque_nested_twin_sync(
+    DartOpaqueNestedTwinSync self, SseSerializer serializer) {
+  _sse_encode_dart_opaque_nested_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_empty_twin_normal(
+    EmptyTwinNormal self, SseSerializer serializer) {
+  _sse_encode_empty_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_empty_twin_rust_async(
+    EmptyTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_empty_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_empty_twin_sync(
+    EmptyTwinSync self, SseSerializer serializer) {
+  _sse_encode_empty_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_dart_opaque_twin_normal(
+    EnumDartOpaqueTwinNormal self, SseSerializer serializer) {
+  _sse_encode_enum_dart_opaque_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
+    EnumDartOpaqueTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_enum_dart_opaque_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_dart_opaque_twin_sync(
+    EnumDartOpaqueTwinSync self, SseSerializer serializer) {
+  _sse_encode_enum_dart_opaque_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_opaque_twin_normal(
+    EnumOpaqueTwinNormal self, SseSerializer serializer) {
+  _sse_encode_enum_opaque_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_opaque_twin_rust_async(
+    EnumOpaqueTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_enum_opaque_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_opaque_twin_sync(
+    EnumOpaqueTwinSync self, SseSerializer serializer) {
+  _sse_encode_enum_opaque_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_with_item_mixed_twin_normal(
+    EnumWithItemMixedTwinNormal self, SseSerializer serializer) {
+  _sse_encode_enum_with_item_mixed_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
+    EnumWithItemMixedTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_enum_with_item_mixed_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_with_item_mixed_twin_sync(
+    EnumWithItemMixedTwinSync self, SseSerializer serializer) {
+  _sse_encode_enum_with_item_mixed_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_with_item_struct_twin_normal(
+    EnumWithItemStructTwinNormal self, SseSerializer serializer) {
+  _sse_encode_enum_with_item_struct_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_with_item_struct_twin_rust_async(
+    EnumWithItemStructTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_enum_with_item_struct_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_with_item_struct_twin_sync(
+    EnumWithItemStructTwinSync self, SseSerializer serializer) {
+  _sse_encode_enum_with_item_struct_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_with_item_tuple_twin_normal(
+    EnumWithItemTupleTwinNormal self, SseSerializer serializer) {
+  _sse_encode_enum_with_item_tuple_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
+    EnumWithItemTupleTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_enum_with_item_tuple_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_enum_with_item_tuple_twin_sync(
+    EnumWithItemTupleTwinSync self, SseSerializer serializer) {
+  _sse_encode_enum_with_item_tuple_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_event_twin_normal(
+    EventTwinNormal self, SseSerializer serializer) {
+  _sse_encode_event_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_event_twin_rust_async(
+    EventTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_event_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_event_twin_sync(
+    EventTwinSync self, SseSerializer serializer) {
+  _sse_encode_event_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_exotic_optionals_twin_normal(
+    ExoticOptionalsTwinNormal self, SseSerializer serializer) {
+  _sse_encode_exotic_optionals_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_exotic_optionals_twin_rust_async(
+    ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_exotic_optionals_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_exotic_optionals_twin_sync(
+    ExoticOptionalsTwinSync self, SseSerializer serializer) {
+  _sse_encode_exotic_optionals_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_f_32(double self, SseSerializer serializer) {
+  _sse_encode_f_32(self, serializer);
+}
+
+void _sse_encode_box_autoadd_f_64(double self, SseSerializer serializer) {
+  _sse_encode_f_64(self, serializer);
+}
+
+void _sse_encode_box_autoadd_feature_chrono_twin_normal(
+    FeatureChronoTwinNormal self, SseSerializer serializer) {
+  _sse_encode_feature_chrono_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_feature_chrono_twin_rust_async(
+    FeatureChronoTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_feature_chrono_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_feature_chrono_twin_sync(
+    FeatureChronoTwinSync self, SseSerializer serializer) {
+  _sse_encode_feature_chrono_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_feature_uuid_twin_normal(
+    FeatureUuidTwinNormal self, SseSerializer serializer) {
+  _sse_encode_feature_uuid_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_feature_uuid_twin_rust_async(
+    FeatureUuidTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_feature_uuid_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_feature_uuid_twin_sync(
+    FeatureUuidTwinSync self, SseSerializer serializer) {
+  _sse_encode_feature_uuid_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_feed_id_twin_normal(
+    FeedIdTwinNormal self, SseSerializer serializer) {
+  _sse_encode_feed_id_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_feed_id_twin_rust_async(
+    FeedIdTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_feed_id_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_feed_id_twin_sync(
+    FeedIdTwinSync self, SseSerializer serializer) {
+  _sse_encode_feed_id_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_i_16(int self, SseSerializer serializer) {
+  _sse_encode_i_16(self, serializer);
+}
+
+void _sse_encode_box_autoadd_i_32(int self, SseSerializer serializer) {
+  _sse_encode_i_32(self, serializer);
+}
+
+void _sse_encode_box_autoadd_i_64(int self, SseSerializer serializer) {
+  _sse_encode_i_64(self, serializer);
+}
+
+void _sse_encode_box_autoadd_i_8(int self, SseSerializer serializer) {
+  _sse_encode_i_8(self, serializer);
+}
+
+void _sse_encode_box_autoadd_kitchen_sink_twin_normal(
+    KitchenSinkTwinNormal self, SseSerializer serializer) {
+  _sse_encode_kitchen_sink_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_kitchen_sink_twin_rust_async(
+    KitchenSinkTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_kitchen_sink_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_kitchen_sink_twin_sync(
+    KitchenSinkTwinSync self, SseSerializer serializer) {
+  _sse_encode_kitchen_sink_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_macro_struct(
+    MacroStruct self, SseSerializer serializer) {
+  _sse_encode_macro_struct(self, serializer);
+}
+
+void _sse_encode_box_autoadd_measure_twin_normal(
+    MeasureTwinNormal self, SseSerializer serializer) {
+  _sse_encode_measure_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_measure_twin_rust_async(
+    MeasureTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_measure_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_measure_twin_sync(
+    MeasureTwinSync self, SseSerializer serializer) {
+  _sse_encode_measure_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_message_id_twin_normal(
+    MessageIdTwinNormal self, SseSerializer serializer) {
+  _sse_encode_message_id_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_message_id_twin_rust_async(
+    MessageIdTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_message_id_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_message_id_twin_sync(
+    MessageIdTwinSync self, SseSerializer serializer) {
+  _sse_encode_message_id_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_my_nested_struct_twin_normal(
+    MyNestedStructTwinNormal self, SseSerializer serializer) {
+  _sse_encode_my_nested_struct_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_my_nested_struct_twin_rust_async(
+    MyNestedStructTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_my_nested_struct_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_my_nested_struct_twin_sync(
+    MyNestedStructTwinSync self, SseSerializer serializer) {
+  _sse_encode_my_nested_struct_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_my_size(MySize self, SseSerializer serializer) {
+  _sse_encode_my_size(self, serializer);
+}
+
+void _sse_encode_box_autoadd_my_struct(
+    MyStruct self, SseSerializer serializer) {
+  _sse_encode_my_struct(self, serializer);
+}
+
+void _sse_encode_box_autoadd_my_tree_node_twin_normal(
+    MyTreeNodeTwinNormal self, SseSerializer serializer) {
+  _sse_encode_my_tree_node_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_my_tree_node_twin_rust_async(
+    MyTreeNodeTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_my_tree_node_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_my_tree_node_twin_sync(
+    MyTreeNodeTwinSync self, SseSerializer serializer) {
+  _sse_encode_my_tree_node_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_new_type_int_twin_normal(
+    NewTypeIntTwinNormal self, SseSerializer serializer) {
+  _sse_encode_new_type_int_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_new_type_int_twin_rust_async(
+    NewTypeIntTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_new_type_int_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_new_type_int_twin_sync(
+    NewTypeIntTwinSync self, SseSerializer serializer) {
+  _sse_encode_new_type_int_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_note_twin_normal(
+    NoteTwinNormal self, SseSerializer serializer) {
+  _sse_encode_note_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_note_twin_rust_async(
+    NoteTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_note_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_note_twin_sync(
+    NoteTwinSync self, SseSerializer serializer) {
+  _sse_encode_note_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_numbers(Numbers self, SseSerializer serializer) {
+  _sse_encode_numbers(self, serializer);
+}
+
+void _sse_encode_box_autoadd_opaque_nested_twin_normal(
+    OpaqueNestedTwinNormal self, SseSerializer serializer) {
+  _sse_encode_opaque_nested_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_opaque_nested_twin_rust_async(
+    OpaqueNestedTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_opaque_nested_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_opaque_nested_twin_sync(
+    OpaqueNestedTwinSync self, SseSerializer serializer) {
+  _sse_encode_opaque_nested_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_opt_vecs_twin_normal(
+    OptVecsTwinNormal self, SseSerializer serializer) {
+  _sse_encode_opt_vecs_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_opt_vecs_twin_rust_async(
+    OptVecsTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_opt_vecs_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_opt_vecs_twin_sync(
+    OptVecsTwinSync self, SseSerializer serializer) {
+  _sse_encode_opt_vecs_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_record_string_i_32(
+    (String, int) self, SseSerializer serializer) {
+  _sse_encode_record_string_i_32(self, serializer);
+}
+
+void _sse_encode_box_autoadd_sequences(
+    Sequences self, SseSerializer serializer) {
+  _sse_encode_sequences(self, serializer);
+}
+
+void _sse_encode_box_autoadd_some_struct_twin_normal(
+    SomeStructTwinNormal self, SseSerializer serializer) {
+  _sse_encode_some_struct_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_some_struct_twin_rust_async(
+    SomeStructTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_some_struct_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_some_struct_twin_sync(
+    SomeStructTwinSync self, SseSerializer serializer) {
+  _sse_encode_some_struct_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_comments_twin_normal(
+    StructWithCommentsTwinNormal self, SseSerializer serializer) {
+  _sse_encode_struct_with_comments_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_comments_twin_rust_async(
+    StructWithCommentsTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_struct_with_comments_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_comments_twin_sync(
+    StructWithCommentsTwinSync self, SseSerializer serializer) {
+  _sse_encode_struct_with_comments_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_enum_twin_normal(
+    StructWithEnumTwinNormal self, SseSerializer serializer) {
+  _sse_encode_struct_with_enum_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_enum_twin_rust_async(
+    StructWithEnumTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_struct_with_enum_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_enum_twin_sync(
+    StructWithEnumTwinSync self, SseSerializer serializer) {
+  _sse_encode_struct_with_enum_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_one_field_twin_normal(
+    StructWithOneFieldTwinNormal self, SseSerializer serializer) {
+  _sse_encode_struct_with_one_field_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_one_field_twin_rust_async(
+    StructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_struct_with_one_field_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_one_field_twin_sync(
+    StructWithOneFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_struct_with_one_field_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_two_field_twin_normal(
+    StructWithTwoFieldTwinNormal self, SseSerializer serializer) {
+  _sse_encode_struct_with_two_field_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_two_field_twin_rust_async(
+    StructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_struct_with_two_field_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_two_field_twin_sync(
+    StructWithTwoFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_struct_with_two_field_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_zero_field_twin_normal(
+    StructWithZeroFieldTwinNormal self, SseSerializer serializer) {
+  _sse_encode_struct_with_zero_field_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
+    StructWithZeroFieldTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_struct_with_zero_field_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_struct_with_zero_field_twin_sync(
+    StructWithZeroFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_struct_with_zero_field_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_sum_with_twin_normal(
+    SumWithTwinNormal self, SseSerializer serializer) {
+  _sse_encode_sum_with_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_sum_with_twin_rust_async(
+    SumWithTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_sum_with_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_sum_with_twin_sync(
+    SumWithTwinSync self, SseSerializer serializer) {
+  _sse_encode_sum_with_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_test_id_twin_normal(
+    TestIdTwinNormal self, SseSerializer serializer) {
+  _sse_encode_test_id_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_test_id_twin_rust_async(
+    TestIdTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_test_id_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_test_id_twin_sync(
+    TestIdTwinSync self, SseSerializer serializer) {
+  _sse_encode_test_id_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+    TupleStructWithOneFieldTwinNormal self, SseSerializer serializer) {
+  _sse_encode_tuple_struct_with_one_field_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+    TupleStructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_tuple_struct_with_one_field_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
+    TupleStructWithOneFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_tuple_struct_with_one_field_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+    TupleStructWithTwoFieldTwinNormal self, SseSerializer serializer) {
+  _sse_encode_tuple_struct_with_two_field_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+    TupleStructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_tuple_struct_with_two_field_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
+    TupleStructWithTwoFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_tuple_struct_with_two_field_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_u_16(int self, SseSerializer serializer) {
+  _sse_encode_u_16(self, serializer);
+}
+
+void _sse_encode_box_autoadd_u_32(int self, SseSerializer serializer) {
+  _sse_encode_u_32(self, serializer);
+}
+
+void _sse_encode_box_autoadd_u_64(int self, SseSerializer serializer) {
+  _sse_encode_u_64(self, serializer);
+}
+
+void _sse_encode_box_autoadd_u_8(int self, SseSerializer serializer) {
+  _sse_encode_u_8(self, serializer);
+}
+
+void _sse_encode_box_autoadd_user_id_twin_normal(
+    UserIdTwinNormal self, SseSerializer serializer) {
+  _sse_encode_user_id_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_user_id_twin_rust_async(
+    UserIdTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_user_id_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_user_id_twin_sync(
+    UserIdTwinSync self, SseSerializer serializer) {
+  _sse_encode_user_id_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_autoadd_weekdays_twin_normal(
+    WeekdaysTwinNormal self, SseSerializer serializer) {
+  _sse_encode_weekdays_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_autoadd_weekdays_twin_rust_async(
+    WeekdaysTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_weekdays_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_autoadd_weekdays_twin_sync(
+    WeekdaysTwinSync self, SseSerializer serializer) {
+  _sse_encode_weekdays_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_blob_twin_normal(
+    BlobTwinNormal self, SseSerializer serializer) {
+  _sse_encode_blob_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_blob_twin_rust_async(
+    BlobTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_blob_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_blob_twin_sync(
+    BlobTwinSync self, SseSerializer serializer) {
+  _sse_encode_blob_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_bool(bool self, SseSerializer serializer) {
+  _sse_encode_bool(self, serializer);
+}
+
+void _sse_encode_box_distance_twin_normal(
+    DistanceTwinNormal self, SseSerializer serializer) {
+  _sse_encode_distance_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_distance_twin_rust_async(
+    DistanceTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_distance_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_distance_twin_sync(
+    DistanceTwinSync self, SseSerializer serializer) {
+  _sse_encode_distance_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_exotic_optionals_twin_normal(
+    ExoticOptionalsTwinNormal self, SseSerializer serializer) {
+  _sse_encode_exotic_optionals_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_exotic_optionals_twin_rust_async(
+    ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_exotic_optionals_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_exotic_optionals_twin_sync(
+    ExoticOptionalsTwinSync self, SseSerializer serializer) {
+  _sse_encode_exotic_optionals_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_f_64(double self, SseSerializer serializer) {
+  _sse_encode_f_64(self, serializer);
+}
+
+void _sse_encode_box_i_32(int self, SseSerializer serializer) {
+  _sse_encode_i_32(self, serializer);
+}
+
+void _sse_encode_box_i_64(int self, SseSerializer serializer) {
+  _sse_encode_i_64(self, serializer);
+}
+
+void _sse_encode_box_i_8(int self, SseSerializer serializer) {
+  _sse_encode_i_8(self, serializer);
+}
+
+void _sse_encode_box_kitchen_sink_twin_normal(
+    KitchenSinkTwinNormal self, SseSerializer serializer) {
+  _sse_encode_kitchen_sink_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_kitchen_sink_twin_rust_async(
+    KitchenSinkTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_kitchen_sink_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_kitchen_sink_twin_sync(
+    KitchenSinkTwinSync self, SseSerializer serializer) {
+  _sse_encode_kitchen_sink_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_my_size(MySize self, SseSerializer serializer) {
+  _sse_encode_my_size(self, serializer);
+}
+
+void _sse_encode_box_speed_twin_normal(
+    SpeedTwinNormal self, SseSerializer serializer) {
+  _sse_encode_speed_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_speed_twin_rust_async(
+    SpeedTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_speed_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_speed_twin_sync(
+    SpeedTwinSync self, SseSerializer serializer) {
+  _sse_encode_speed_twin_sync(self, serializer);
+}
+
+void _sse_encode_box_u_8(int self, SseSerializer serializer) {
+  _sse_encode_u_8(self, serializer);
+}
+
+void _sse_encode_box_u_8_array_1600(
+    U8Array1600 self, SseSerializer serializer) {
+  _sse_encode_u_8_array_1600(self, serializer);
+}
+
+void _sse_encode_box_weekdays_twin_normal(
+    WeekdaysTwinNormal self, SseSerializer serializer) {
+  _sse_encode_weekdays_twin_normal(self, serializer);
+}
+
+void _sse_encode_box_weekdays_twin_rust_async(
+    WeekdaysTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_weekdays_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_box_weekdays_twin_sync(
+    WeekdaysTwinSync self, SseSerializer serializer) {
+  _sse_encode_weekdays_twin_sync(self, serializer);
+}
+
+void _sse_encode_c_twin_normal(CTwinNormal self, SseSerializer serializer) {
+  _sse_encode_bool(self.c, serializer);
+}
+
+void _sse_encode_c_twin_rust_async(
+    CTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_bool(self.c, serializer);
+}
+
+void _sse_encode_c_twin_sync(CTwinSync self, SseSerializer serializer) {
+  _sse_encode_bool(self.c, serializer);
+}
+
+void _sse_encode_concatenate_with_twin_normal(
+    ConcatenateWithTwinNormal self, SseSerializer serializer) {
+  _sse_encode_String(self.a, serializer);
+}
+
+void _sse_encode_concatenate_with_twin_rust_async(
+    ConcatenateWithTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_String(self.a, serializer);
+}
+
+void _sse_encode_concatenate_with_twin_sync(
+    ConcatenateWithTwinSync self, SseSerializer serializer) {
+  _sse_encode_String(self.a, serializer);
+}
+
+void _sse_encode_custom_nested_error_inner_twin_normal(
+    CustomNestedErrorInnerTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_custom_nested_error_inner_twin_rust_async(
+    CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_custom_nested_error_inner_twin_sync(
+    CustomNestedErrorInnerTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_custom_nested_error_outer_twin_normal(
+    CustomNestedErrorOuterTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_custom_nested_error_outer_twin_rust_async(
+    CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_custom_nested_error_outer_twin_sync(
+    CustomNestedErrorOuterTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_custom_struct_error_twin_normal(
+    CustomStructErrorTwinNormal self, SseSerializer serializer) {
+  _sse_encode_String(self.a, serializer);
+}
+
+void _sse_encode_custom_struct_error_twin_rust_async(
+    CustomStructErrorTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_String(self.a, serializer);
+}
+
+void _sse_encode_custom_struct_error_twin_sync(
+    CustomStructErrorTwinSync self, SseSerializer serializer) {
+  _sse_encode_String(self.a, serializer);
+}
+
+void _sse_encode_custom_struct_twin_normal(
+    CustomStructTwinNormal self, SseSerializer serializer) {
+  _sse_encode_String(self.message, serializer);
+}
+
+void _sse_encode_custom_struct_twin_rust_async(
+    CustomStructTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_String(self.message, serializer);
+}
+
+void _sse_encode_custom_struct_twin_sync(
+    CustomStructTwinSync self, SseSerializer serializer) {
+  _sse_encode_String(self.message, serializer);
+}
+
+void _sse_encode_customized_twin_normal(
+    CustomizedTwinNormal self, SseSerializer serializer) {
+  _sse_encode_String(self.finalField, serializer);
+  _sse_encode_opt_String(self.nonFinalField, serializer);
+}
+
+void _sse_encode_customized_twin_rust_async(
+    CustomizedTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_String(self.finalField, serializer);
+  _sse_encode_opt_String(self.nonFinalField, serializer);
+}
+
+void _sse_encode_customized_twin_sync(
+    CustomizedTwinSync self, SseSerializer serializer) {
+  _sse_encode_String(self.finalField, serializer);
+  _sse_encode_opt_String(self.nonFinalField, serializer);
+}
+
+void _sse_encode_dart_opaque_nested_twin_normal(
+    DartOpaqueNestedTwinNormal self, SseSerializer serializer) {
+  _sse_encode_DartOpaque(self.first, serializer);
+  _sse_encode_DartOpaque(self.second, serializer);
+}
+
+void _sse_encode_dart_opaque_nested_twin_rust_async(
+    DartOpaqueNestedTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_DartOpaque(self.first, serializer);
+  _sse_encode_DartOpaque(self.second, serializer);
+}
+
+void _sse_encode_dart_opaque_nested_twin_sync(
+    DartOpaqueNestedTwinSync self, SseSerializer serializer) {
+  _sse_encode_DartOpaque(self.first, serializer);
+  _sse_encode_DartOpaque(self.second, serializer);
+}
+
+void _sse_encode_distance_twin_normal(
+    DistanceTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_distance_twin_rust_async(
+    DistanceTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_distance_twin_sync(
+    DistanceTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_empty_twin_normal(
+    EmptyTwinNormal self, SseSerializer serializer) {}
+
+void _sse_encode_empty_twin_rust_async(
+    EmptyTwinRustAsync self, SseSerializer serializer) {}
+
+void _sse_encode_empty_twin_sync(
+    EmptyTwinSync self, SseSerializer serializer) {}
+
+void _sse_encode_enum_dart_opaque_twin_normal(
+    EnumDartOpaqueTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_dart_opaque_twin_rust_async(
+    EnumDartOpaqueTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_dart_opaque_twin_sync(
+    EnumDartOpaqueTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_opaque_twin_normal(
+    EnumOpaqueTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_opaque_twin_rust_async(
+    EnumOpaqueTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_opaque_twin_sync(
+    EnumOpaqueTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_simple_twin_normal(
+    EnumSimpleTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32(self.index, serializer);
+}
+
+void _sse_encode_enum_simple_twin_rust_async(
+    EnumSimpleTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.index, serializer);
+}
+
+void _sse_encode_enum_simple_twin_sync(
+    EnumSimpleTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.index, serializer);
+}
+
+void _sse_encode_enum_with_item_mixed_twin_normal(
+    EnumWithItemMixedTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_with_item_mixed_twin_rust_async(
+    EnumWithItemMixedTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_with_item_mixed_twin_sync(
+    EnumWithItemMixedTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_with_item_struct_twin_normal(
+    EnumWithItemStructTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_with_item_struct_twin_rust_async(
+    EnumWithItemStructTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_with_item_struct_twin_sync(
+    EnumWithItemStructTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_with_item_tuple_twin_normal(
+    EnumWithItemTupleTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_with_item_tuple_twin_rust_async(
+    EnumWithItemTupleTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_enum_with_item_tuple_twin_sync(
+    EnumWithItemTupleTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_event_twin_normal(
+    EventTwinNormal self, SseSerializer serializer) {
+  _sse_encode_String(self.address, serializer);
+  _sse_encode_String(self.payload, serializer);
+}
+
+void _sse_encode_event_twin_rust_async(
+    EventTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_String(self.address, serializer);
+  _sse_encode_String(self.payload, serializer);
+}
+
+void _sse_encode_event_twin_sync(EventTwinSync self, SseSerializer serializer) {
+  _sse_encode_String(self.address, serializer);
+  _sse_encode_String(self.payload, serializer);
+}
+
+void _sse_encode_exotic_optionals_twin_normal(
+    ExoticOptionalsTwinNormal self, SseSerializer serializer) {
+  _sse_encode_opt_box_autoadd_i_32(self.int32, serializer);
+  _sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
+  _sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
+  _sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
+  _sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+  _sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+  _sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+  _sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+  _sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+  _sse_encode_opt_list_prim_f_64(self.float64List, serializer);
+  _sse_encode_opt_list_attribute_twin_normal(self.attributes, serializer);
+  _sse_encode_list_opt_box_autoadd_attribute_twin_normal(
+      self.attributesNullable, serializer);
+  _sse_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
+      self.nullableAttributes, serializer);
+  _sse_encode_opt_box_autoadd_new_type_int_twin_normal(
+      self.newtypeint, serializer);
+}
+
+void _sse_encode_exotic_optionals_twin_rust_async(
+    ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_opt_box_autoadd_i_32(self.int32, serializer);
+  _sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
+  _sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
+  _sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
+  _sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+  _sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+  _sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+  _sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+  _sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+  _sse_encode_opt_list_prim_f_64(self.float64List, serializer);
+  _sse_encode_opt_list_attribute_twin_rust_async(self.attributes, serializer);
+  _sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
+      self.attributesNullable, serializer);
+  _sse_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+      self.nullableAttributes, serializer);
+  _sse_encode_opt_box_autoadd_new_type_int_twin_rust_async(
+      self.newtypeint, serializer);
+}
+
+void _sse_encode_exotic_optionals_twin_sync(
+    ExoticOptionalsTwinSync self, SseSerializer serializer) {
+  _sse_encode_opt_box_autoadd_i_32(self.int32, serializer);
+  _sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
+  _sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
+  _sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
+  _sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+  _sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+  _sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+  _sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+  _sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+  _sse_encode_opt_list_prim_f_64(self.float64List, serializer);
+  _sse_encode_opt_list_attribute_twin_sync(self.attributes, serializer);
+  _sse_encode_list_opt_box_autoadd_attribute_twin_sync(
+      self.attributesNullable, serializer);
+  _sse_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
+      self.nullableAttributes, serializer);
+  _sse_encode_opt_box_autoadd_new_type_int_twin_sync(
+      self.newtypeint, serializer);
+}
+
+void _sse_encode_f_32(double self, SseSerializer serializer) {
+  serializer.buffer.putFloat32(self);
+}
+
+void _sse_encode_f_64(double self, SseSerializer serializer) {
+  serializer.buffer.putFloat64(self);
+}
+
+void _sse_encode_f_64_array_16(F64Array16 self, SseSerializer serializer) {
+  _sse_encode_list_prim_f_64(self, serializer);
+}
+
+void _sse_encode_feature_chrono_twin_normal(
+    FeatureChronoTwinNormal self, SseSerializer serializer) {
+  _sse_encode_Chrono_Utc(self.utc, serializer);
+  _sse_encode_Chrono_Local(self.local, serializer);
+  _sse_encode_Chrono_Duration(self.duration, serializer);
+  _sse_encode_Chrono_Naive(self.naive, serializer);
+}
+
+void _sse_encode_feature_chrono_twin_rust_async(
+    FeatureChronoTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_Chrono_Utc(self.utc, serializer);
+  _sse_encode_Chrono_Local(self.local, serializer);
+  _sse_encode_Chrono_Duration(self.duration, serializer);
+  _sse_encode_Chrono_Naive(self.naive, serializer);
+}
+
+void _sse_encode_feature_chrono_twin_sync(
+    FeatureChronoTwinSync self, SseSerializer serializer) {
+  _sse_encode_Chrono_Utc(self.utc, serializer);
+  _sse_encode_Chrono_Local(self.local, serializer);
+  _sse_encode_Chrono_Duration(self.duration, serializer);
+  _sse_encode_Chrono_Naive(self.naive, serializer);
+}
+
+void _sse_encode_feature_uuid_twin_normal(
+    FeatureUuidTwinNormal self, SseSerializer serializer) {
+  _sse_encode_Uuid(self.one, serializer);
+  _sse_encode_list_Uuid(self.many, serializer);
+}
+
+void _sse_encode_feature_uuid_twin_rust_async(
+    FeatureUuidTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_Uuid(self.one, serializer);
+  _sse_encode_list_Uuid(self.many, serializer);
+}
+
+void _sse_encode_feature_uuid_twin_sync(
+    FeatureUuidTwinSync self, SseSerializer serializer) {
+  _sse_encode_Uuid(self.one, serializer);
+  _sse_encode_list_Uuid(self.many, serializer);
+}
+
+void _sse_encode_feed_id_twin_normal(
+    FeedIdTwinNormal self, SseSerializer serializer) {
+  _sse_encode_u_8_array_8(self.field0, serializer);
+}
+
+void _sse_encode_feed_id_twin_rust_async(
+    FeedIdTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_u_8_array_8(self.field0, serializer);
+}
+
+void _sse_encode_feed_id_twin_sync(
+    FeedIdTwinSync self, SseSerializer serializer) {
+  _sse_encode_u_8_array_8(self.field0, serializer);
+}
+
+void _sse_encode_i_16(int self, SseSerializer serializer) {
+  serializer.buffer.putInt16(self);
+}
+
+void _sse_encode_i_32(int self, SseSerializer serializer) {
+  serializer.buffer.putInt32(self);
+}
+
+void _sse_encode_i_32_array_2(I32Array2 self, SseSerializer serializer) {
+  _sse_encode_list_prim_i_32(self, serializer);
+}
+
+void _sse_encode_i_64(int self, SseSerializer serializer) {
+  serializer.buffer.putInt64(self);
+}
+
+void _sse_encode_i_8(int self, SseSerializer serializer) {
+  serializer.buffer.putInt8(self);
+}
+
+void _sse_encode_kitchen_sink_twin_normal(
+    KitchenSinkTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_kitchen_sink_twin_rust_async(
+    KitchenSinkTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_kitchen_sink_twin_sync(
+    KitchenSinkTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_list_Chrono_Duration(
+    List<Duration> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_Chrono_Duration(item, serializer);
+  }
+}
+
+void _sse_encode_list_Chrono_Naive(
+    List<DateTime> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_Chrono_Naive(item, serializer);
+  }
+}
+
+void _sse_encode_list_DartOpaque(List<Object> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_DartOpaque(item, serializer);
+  }
+}
+
+void _sse_encode_list_RustOpaque_hide_data(
+    List<HideData> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_RustOpaque_hide_data(item, serializer);
+  }
+}
+
+void _sse_encode_list_String(List<String> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_String(item, serializer);
+  }
+}
+
+void _sse_encode_list_Uuid(List<UuidValue> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_Uuid(item, serializer);
+  }
+}
+
+void _sse_encode_list_application_env_var(
+    List<ApplicationEnvVar> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_application_env_var(item, serializer);
+  }
+}
+
+void _sse_encode_list_attribute_twin_normal(
+    List<AttributeTwinNormal> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_attribute_twin_normal(item, serializer);
+  }
+}
+
+void _sse_encode_list_attribute_twin_rust_async(
+    List<AttributeTwinRustAsync> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_attribute_twin_rust_async(item, serializer);
+  }
+}
+
+void _sse_encode_list_attribute_twin_sync(
+    List<AttributeTwinSync> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_attribute_twin_sync(item, serializer);
+  }
+}
+
+void _sse_encode_list_bool(List<bool> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_bool(item, serializer);
+  }
+}
+
+void _sse_encode_list_my_size(List<MySize> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_my_size(item, serializer);
+  }
+}
+
+void _sse_encode_list_my_tree_node_twin_normal(
+    List<MyTreeNodeTwinNormal> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_my_tree_node_twin_normal(item, serializer);
+  }
+}
+
+void _sse_encode_list_my_tree_node_twin_rust_async(
+    List<MyTreeNodeTwinRustAsync> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_my_tree_node_twin_rust_async(item, serializer);
+  }
+}
+
+void _sse_encode_list_my_tree_node_twin_sync(
+    List<MyTreeNodeTwinSync> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_my_tree_node_twin_sync(item, serializer);
+  }
+}
+
+void _sse_encode_list_opt_String(List<String?> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_opt_String(item, serializer);
+  }
+}
+
+void _sse_encode_list_opt_box_autoadd_attribute_twin_normal(
+    List<AttributeTwinNormal?> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_opt_box_autoadd_attribute_twin_normal(item, serializer);
+  }
+}
+
+void _sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
+    List<AttributeTwinRustAsync?> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_opt_box_autoadd_attribute_twin_rust_async(item, serializer);
+  }
+}
+
+void _sse_encode_list_opt_box_autoadd_attribute_twin_sync(
+    List<AttributeTwinSync?> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_opt_box_autoadd_attribute_twin_sync(item, serializer);
+  }
+}
+
+void _sse_encode_list_opt_box_autoadd_i_32(
+    List<int?> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_opt_box_autoadd_i_32(item, serializer);
+  }
+}
+
+void _sse_encode_list_opt_box_autoadd_weekdays_twin_normal(
+    List<WeekdaysTwinNormal?> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_opt_box_autoadd_weekdays_twin_normal(item, serializer);
+  }
+}
+
+void _sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
+    List<WeekdaysTwinRustAsync?> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_opt_box_autoadd_weekdays_twin_rust_async(item, serializer);
+  }
+}
+
+void _sse_encode_list_opt_box_autoadd_weekdays_twin_sync(
+    List<WeekdaysTwinSync?> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_opt_box_autoadd_weekdays_twin_sync(item, serializer);
+  }
+}
+
+void _sse_encode_list_opt_list_prim_i_32(
+    List<Int32List?> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_opt_list_prim_i_32(item, serializer);
+  }
+}
+
+void _sse_encode_list_prim_f_32(Float32List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_prim_f_64(Float64List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_prim_i_16(Int16List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_prim_i_32(Int32List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_prim_i_64(Int64List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_prim_i_8(Int8List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_prim_u_16(Uint16List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_prim_u_32(Uint32List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_prim_u_64(Uint64List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
+  return TODO_depend_on_serializer;
+}
+
+void _sse_encode_list_record_string_i_32(
+    List<(String, int)> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_record_string_i_32(item, serializer);
+  }
+}
+
+void _sse_encode_list_test_id_twin_normal(
+    List<TestIdTwinNormal> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_test_id_twin_normal(item, serializer);
+  }
+}
+
+void _sse_encode_list_test_id_twin_rust_async(
+    List<TestIdTwinRustAsync> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_test_id_twin_rust_async(item, serializer);
+  }
+}
+
+void _sse_encode_list_test_id_twin_sync(
+    List<TestIdTwinSync> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_test_id_twin_sync(item, serializer);
+  }
+}
+
+void _sse_encode_list_weekdays_twin_normal(
+    List<WeekdaysTwinNormal> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_weekdays_twin_normal(item, serializer);
+  }
+}
+
+void _sse_encode_list_weekdays_twin_rust_async(
+    List<WeekdaysTwinRustAsync> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_weekdays_twin_rust_async(item, serializer);
+  }
+}
+
+void _sse_encode_list_weekdays_twin_sync(
+    List<WeekdaysTwinSync> self, SseSerializer serializer) {
+  for (final item in self) {
+    _sse_encode_weekdays_twin_sync(item, serializer);
+  }
+}
+
+void _sse_encode_macro_struct(MacroStruct self, SseSerializer serializer) {
+  _sse_encode_i_32(self.data, serializer);
+}
+
+void _sse_encode_measure_twin_normal(
+    MeasureTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_measure_twin_rust_async(
+    MeasureTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_measure_twin_sync(
+    MeasureTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_message_id_twin_normal(
+    MessageIdTwinNormal self, SseSerializer serializer) {
+  _sse_encode_u_8_array_32(self.field0, serializer);
+}
+
+void _sse_encode_message_id_twin_rust_async(
+    MessageIdTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_u_8_array_32(self.field0, serializer);
+}
+
+void _sse_encode_message_id_twin_sync(
+    MessageIdTwinSync self, SseSerializer serializer) {
+  _sse_encode_u_8_array_32(self.field0, serializer);
+}
+
+void _sse_encode_my_enum(MyEnum self, SseSerializer serializer) {
+  _sse_encode_i_32(self.index, serializer);
+}
+
+void _sse_encode_my_nested_struct_twin_normal(
+    MyNestedStructTwinNormal self, SseSerializer serializer) {
+  _sse_encode_my_tree_node_twin_normal(self.treeNode, serializer);
+  _sse_encode_weekdays_twin_normal(self.weekday, serializer);
+}
+
+void _sse_encode_my_nested_struct_twin_rust_async(
+    MyNestedStructTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_my_tree_node_twin_rust_async(self.treeNode, serializer);
+  _sse_encode_weekdays_twin_rust_async(self.weekday, serializer);
+}
+
+void _sse_encode_my_nested_struct_twin_sync(
+    MyNestedStructTwinSync self, SseSerializer serializer) {
+  _sse_encode_my_tree_node_twin_sync(self.treeNode, serializer);
+  _sse_encode_weekdays_twin_sync(self.weekday, serializer);
+}
+
+void _sse_encode_my_size(MySize self, SseSerializer serializer) {
+  _sse_encode_i_32(self.width, serializer);
+  _sse_encode_i_32(self.height, serializer);
+}
+
+void _sse_encode_my_struct(MyStruct self, SseSerializer serializer) {
+  _sse_encode_bool(self.content, serializer);
+}
+
+void _sse_encode_my_tree_node_twin_normal(
+    MyTreeNodeTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32(self.valueI32, serializer);
+  _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
+  _sse_encode_bool(self.valueBoolean, serializer);
+  _sse_encode_list_my_tree_node_twin_normal(self.children, serializer);
+}
+
+void _sse_encode_my_tree_node_twin_rust_async(
+    MyTreeNodeTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.valueI32, serializer);
+  _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
+  _sse_encode_bool(self.valueBoolean, serializer);
+  _sse_encode_list_my_tree_node_twin_rust_async(self.children, serializer);
+}
+
+void _sse_encode_my_tree_node_twin_sync(
+    MyTreeNodeTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.valueI32, serializer);
+  _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
+  _sse_encode_bool(self.valueBoolean, serializer);
+  _sse_encode_list_my_tree_node_twin_sync(self.children, serializer);
+}
+
+void _sse_encode_new_type_int_twin_normal(
+    NewTypeIntTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_64(self.field0, serializer);
+}
+
+void _sse_encode_new_type_int_twin_rust_async(
+    NewTypeIntTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_64(self.field0, serializer);
+}
+
+void _sse_encode_new_type_int_twin_sync(
+    NewTypeIntTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_64(self.field0, serializer);
+}
+
+void _sse_encode_note_twin_normal(
+    NoteTwinNormal self, SseSerializer serializer) {
+  _sse_encode_box_weekdays_twin_normal(self.day, serializer);
+  _sse_encode_String(self.body, serializer);
+}
+
+void _sse_encode_note_twin_rust_async(
+    NoteTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_box_weekdays_twin_rust_async(self.day, serializer);
+  _sse_encode_String(self.body, serializer);
+}
+
+void _sse_encode_note_twin_sync(NoteTwinSync self, SseSerializer serializer) {
+  _sse_encode_box_weekdays_twin_sync(self.day, serializer);
+  _sse_encode_String(self.body, serializer);
+}
+
+void _sse_encode_numbers(Numbers self, SseSerializer serializer) {
+  _sse_encode_list_prim_i_32(self.field0, serializer);
+}
+
+void _sse_encode_opaque_nested_twin_normal(
+    OpaqueNestedTwinNormal self, SseSerializer serializer) {
+  _sse_encode_RustOpaque_hide_data(self.first, serializer);
+  _sse_encode_RustOpaque_hide_data(self.second, serializer);
+}
+
+void _sse_encode_opaque_nested_twin_rust_async(
+    OpaqueNestedTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_RustOpaque_hide_data(self.first, serializer);
+  _sse_encode_RustOpaque_hide_data(self.second, serializer);
+}
+
+void _sse_encode_opaque_nested_twin_sync(
+    OpaqueNestedTwinSync self, SseSerializer serializer) {
+  _sse_encode_RustOpaque_hide_data(self.first, serializer);
+  _sse_encode_RustOpaque_hide_data(self.second, serializer);
+}
+
+void _sse_encode_opt_String(String? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_String(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_Chrono_Utc(
+    DateTime? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_Chrono_Utc(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_DartOpaque(
+    Object? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_DartOpaque(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_RustOpaque_hide_data(
+    HideData? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_RustOpaque_hide_data(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_application_env(
+    ApplicationEnv? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_application_env(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_attribute_twin_normal(
+    AttributeTwinNormal? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_attribute_twin_normal(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_attribute_twin_rust_async(
+    AttributeTwinRustAsync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_attribute_twin_rust_async(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_attribute_twin_sync(
+    AttributeTwinSync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_attribute_twin_sync(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_bool(bool? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_bool(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_exotic_optionals_twin_normal(
+    ExoticOptionalsTwinNormal? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_exotic_optionals_twin_normal(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(
+    ExoticOptionalsTwinRustAsync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_exotic_optionals_twin_rust_async(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_exotic_optionals_twin_sync(
+    ExoticOptionalsTwinSync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_exotic_optionals_twin_sync(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_f_32(double? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_f_32(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_f_64(double? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_f_64(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_i_16(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_i_16(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_i_32(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_i_32(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_i_64(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_i_64(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_i_8(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_i_8(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_new_type_int_twin_normal(
+    NewTypeIntTwinNormal? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_new_type_int_twin_normal(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_new_type_int_twin_rust_async(
+    NewTypeIntTwinRustAsync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_new_type_int_twin_rust_async(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_new_type_int_twin_sync(
+    NewTypeIntTwinSync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_new_type_int_twin_sync(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_record_string_i_32(
+    (String, int)? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_record_string_i_32(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_u_16(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_u_16(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_u_32(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_u_32(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_u_64(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_u_64(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_u_8(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_u_8(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_weekdays_twin_normal(
+    WeekdaysTwinNormal? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_weekdays_twin_normal(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_weekdays_twin_rust_async(
+    WeekdaysTwinRustAsync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_weekdays_twin_rust_async(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_autoadd_weekdays_twin_sync(
+    WeekdaysTwinSync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_autoadd_weekdays_twin_sync(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_bool(bool? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_bool(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_exotic_optionals_twin_normal(
+    ExoticOptionalsTwinNormal? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_exotic_optionals_twin_normal(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_exotic_optionals_twin_rust_async(
+    ExoticOptionalsTwinRustAsync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_exotic_optionals_twin_rust_async(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_exotic_optionals_twin_sync(
+    ExoticOptionalsTwinSync? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_exotic_optionals_twin_sync(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_f_64(double? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_f_64(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_i_32(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_i_32(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_i_64(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_i_64(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_i_8(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_i_8(self, serializer);
+  }
+}
+
+void _sse_encode_opt_box_u_8(int? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_box_u_8(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_attribute_twin_normal(
+    List<AttributeTwinNormal>? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_attribute_twin_normal(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_attribute_twin_rust_async(
+    List<AttributeTwinRustAsync>? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_attribute_twin_rust_async(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_attribute_twin_sync(
+    List<AttributeTwinSync>? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_attribute_twin_sync(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
+    List<AttributeTwinNormal?>? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_opt_box_autoadd_attribute_twin_normal(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+    List<AttributeTwinRustAsync?>? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
+        self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
+    List<AttributeTwinSync?>? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_opt_box_autoadd_attribute_twin_sync(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_prim_f_32(
+    Float32List? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_prim_f_32(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_prim_f_64(
+    Float64List? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_prim_f_64(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_prim_i_32(Int32List? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_prim_i_32(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_prim_i_8(Int8List? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_prim_i_8(self, serializer);
+  }
+}
+
+void _sse_encode_opt_list_prim_u_8(Uint8List? self, SseSerializer serializer) {
+  _sse_encode_bool(self != null, serializer);
+  if (self != null) {
+    _sse_encode_list_prim_u_8(self, serializer);
+  }
+}
+
+void _sse_encode_opt_vecs_twin_normal(
+    OptVecsTwinNormal self, SseSerializer serializer) {
+  _sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
+  _sse_encode_list_opt_box_autoadd_weekdays_twin_normal(self.enums, serializer);
+  _sse_encode_list_opt_String(self.strings, serializer);
+  _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
+}
+
+void _sse_encode_opt_vecs_twin_rust_async(
+    OptVecsTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
+  _sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
+      self.enums, serializer);
+  _sse_encode_list_opt_String(self.strings, serializer);
+  _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
+}
+
+void _sse_encode_opt_vecs_twin_sync(
+    OptVecsTwinSync self, SseSerializer serializer) {
+  _sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
+  _sse_encode_list_opt_box_autoadd_weekdays_twin_sync(self.enums, serializer);
+  _sse_encode_list_opt_String(self.strings, serializer);
+  _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
+}
+
+void _sse_encode_record_string_i_32(
+    (String, int) self, SseSerializer serializer) {
+  _sse_encode_String(self.$1, serializer);
+  _sse_encode_i_32(self.$2, serializer);
+}
+
+void _sse_encode_sequences(Sequences self, SseSerializer serializer) {
+  _sse_encode_list_prim_i_32(self.field0, serializer);
+}
+
+void _sse_encode_some_struct_twin_normal(
+    SomeStructTwinNormal self, SseSerializer serializer) {
+  _sse_encode_u_32(self.value, serializer);
+}
+
+void _sse_encode_some_struct_twin_rust_async(
+    SomeStructTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_u_32(self.value, serializer);
+}
+
+void _sse_encode_some_struct_twin_sync(
+    SomeStructTwinSync self, SseSerializer serializer) {
+  _sse_encode_u_32(self.value, serializer);
+}
+
+void _sse_encode_speed_twin_normal(
+    SpeedTwinNormal self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_speed_twin_rust_async(
+    SpeedTwinRustAsync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_speed_twin_sync(SpeedTwinSync self, SseSerializer serializer) {
+  return TODO;
+}
+
+void _sse_encode_struct_with_comments_twin_normal(
+    StructWithCommentsTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32(self.fieldWithComments, serializer);
+}
+
+void _sse_encode_struct_with_comments_twin_rust_async(
+    StructWithCommentsTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.fieldWithComments, serializer);
+}
+
+void _sse_encode_struct_with_comments_twin_sync(
+    StructWithCommentsTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.fieldWithComments, serializer);
+}
+
+void _sse_encode_struct_with_enum_twin_normal(
+    StructWithEnumTwinNormal self, SseSerializer serializer) {
+  _sse_encode_abc_twin_normal(self.abc1, serializer);
+  _sse_encode_abc_twin_normal(self.abc2, serializer);
+}
+
+void _sse_encode_struct_with_enum_twin_rust_async(
+    StructWithEnumTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_abc_twin_rust_async(self.abc1, serializer);
+  _sse_encode_abc_twin_rust_async(self.abc2, serializer);
+}
+
+void _sse_encode_struct_with_enum_twin_sync(
+    StructWithEnumTwinSync self, SseSerializer serializer) {
+  _sse_encode_abc_twin_sync(self.abc1, serializer);
+  _sse_encode_abc_twin_sync(self.abc2, serializer);
+}
+
+void _sse_encode_struct_with_one_field_twin_normal(
+    StructWithOneFieldTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32(self.a, serializer);
+}
+
+void _sse_encode_struct_with_one_field_twin_rust_async(
+    StructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.a, serializer);
+}
+
+void _sse_encode_struct_with_one_field_twin_sync(
+    StructWithOneFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.a, serializer);
+}
+
+void _sse_encode_struct_with_two_field_twin_normal(
+    StructWithTwoFieldTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32(self.a, serializer);
+  _sse_encode_i_32(self.b, serializer);
+}
+
+void _sse_encode_struct_with_two_field_twin_rust_async(
+    StructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.a, serializer);
+  _sse_encode_i_32(self.b, serializer);
+}
+
+void _sse_encode_struct_with_two_field_twin_sync(
+    StructWithTwoFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.a, serializer);
+  _sse_encode_i_32(self.b, serializer);
+}
+
+void _sse_encode_struct_with_zero_field_twin_normal(
+    StructWithZeroFieldTwinNormal self, SseSerializer serializer) {}
+
+void _sse_encode_struct_with_zero_field_twin_rust_async(
+    StructWithZeroFieldTwinRustAsync self, SseSerializer serializer) {}
+
+void _sse_encode_struct_with_zero_field_twin_sync(
+    StructWithZeroFieldTwinSync self, SseSerializer serializer) {}
+
+void _sse_encode_sum_with_twin_normal(
+    SumWithTwinNormal self, SseSerializer serializer) {
+  _sse_encode_u_32(self.x, serializer);
+}
+
+void _sse_encode_sum_with_twin_rust_async(
+    SumWithTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_u_32(self.x, serializer);
+}
+
+void _sse_encode_sum_with_twin_sync(
+    SumWithTwinSync self, SseSerializer serializer) {
+  _sse_encode_u_32(self.x, serializer);
+}
+
+void _sse_encode_test_id_twin_normal(
+    TestIdTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32_array_2(self.field0, serializer);
+}
+
+void _sse_encode_test_id_twin_normal_array_4(
+    TestIdTwinNormalArray4 self, SseSerializer serializer) {
+  _sse_encode_list_test_id_twin_normal(self, serializer);
+}
+
+void _sse_encode_test_id_twin_rust_async(
+    TestIdTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32_array_2(self.field0, serializer);
+}
+
+void _sse_encode_test_id_twin_rust_async_array_4(
+    TestIdTwinRustAsyncArray4 self, SseSerializer serializer) {
+  _sse_encode_list_test_id_twin_rust_async(self, serializer);
+}
+
+void _sse_encode_test_id_twin_sync(
+    TestIdTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32_array_2(self.field0, serializer);
+}
+
+void _sse_encode_test_id_twin_sync_array_4(
+    TestIdTwinSyncArray4 self, SseSerializer serializer) {
+  _sse_encode_list_test_id_twin_sync(self, serializer);
+}
+
+void _sse_encode_tuple_struct_with_one_field_twin_normal(
+    TupleStructWithOneFieldTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32(self.field0, serializer);
+}
+
+void _sse_encode_tuple_struct_with_one_field_twin_rust_async(
+    TupleStructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.field0, serializer);
+}
+
+void _sse_encode_tuple_struct_with_one_field_twin_sync(
+    TupleStructWithOneFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.field0, serializer);
+}
+
+void _sse_encode_tuple_struct_with_two_field_twin_normal(
+    TupleStructWithTwoFieldTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32(self.field0, serializer);
+  _sse_encode_i_32(self.field1, serializer);
+}
+
+void _sse_encode_tuple_struct_with_two_field_twin_rust_async(
+    TupleStructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.field0, serializer);
+  _sse_encode_i_32(self.field1, serializer);
+}
+
+void _sse_encode_tuple_struct_with_two_field_twin_sync(
+    TupleStructWithTwoFieldTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.field0, serializer);
+  _sse_encode_i_32(self.field1, serializer);
+}
+
+void _sse_encode_u_16(int self, SseSerializer serializer) {
+  serializer.buffer.putUint16(self);
+}
+
+void _sse_encode_u_32(int self, SseSerializer serializer) {
+  serializer.buffer.putUint32(self);
+}
+
+void _sse_encode_u_64(int self, SseSerializer serializer) {
+  serializer.buffer.putUint64(self);
+}
+
+void _sse_encode_u_8(int self, SseSerializer serializer) {
+  serializer.buffer.putUint8(self);
+}
+
+void _sse_encode_u_8_array_1600(U8Array1600 self, SseSerializer serializer) {
+  _sse_encode_list_prim_u_8(self, serializer);
+}
+
+void _sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer) {
+  _sse_encode_list_prim_u_8(self, serializer);
+}
+
+void _sse_encode_u_8_array_8(U8Array8 self, SseSerializer serializer) {
+  _sse_encode_list_prim_u_8(self, serializer);
+}
+
+void _sse_encode_unit(void self, SseSerializer serializer) {}
+
+void _sse_encode_user_id_twin_normal(
+    UserIdTwinNormal self, SseSerializer serializer) {
+  _sse_encode_u_32(self.value, serializer);
+}
+
+void _sse_encode_user_id_twin_rust_async(
+    UserIdTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_u_32(self.value, serializer);
+}
+
+void _sse_encode_user_id_twin_sync(
+    UserIdTwinSync self, SseSerializer serializer) {
+  _sse_encode_u_32(self.value, serializer);
+}
+
+void _sse_encode_usize(int self, SseSerializer serializer) {
+  serializer.buffer.putUint64(self);
+}
+
+void _sse_encode_weekdays_twin_normal(
+    WeekdaysTwinNormal self, SseSerializer serializer) {
+  _sse_encode_i_32(self.index, serializer);
+}
+
+void _sse_encode_weekdays_twin_rust_async(
+    WeekdaysTwinRustAsync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.index, serializer);
+}
+
+void _sse_encode_weekdays_twin_sync(
+    WeekdaysTwinSync self, SseSerializer serializer) {
+  _sse_encode_i_32(self.index, serializer);
 }
