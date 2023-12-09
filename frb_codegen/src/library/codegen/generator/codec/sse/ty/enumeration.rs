@@ -8,10 +8,26 @@ use itertools::Itertools;
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
         let src = self.ir.get(self.context.ir_pack);
-        match lang {
-            Lang::DartLang(_) => format!("return TODO;"),
-            Lang::RustLang(_) => generate_encode_rust(lang, src),
-        }
+        generate_enum_encode_rust_general(lang, src, "self", "Self", |idx, variant| {
+            let fields = (variant.kind.fields().iter())
+                .map(|field| {
+                    format!(
+                        "{};\n",
+                        lang.call_encode(&field.ty, field.name.rust_style())
+                    )
+                })
+                .join("");
+
+            format!(
+                "
+            {{
+                {};
+                {fields}
+            }}
+            ",
+                lang.call_encode(&TAG_TYPE, idx),
+            )
+        })
     }
 
     fn generate_decode(&self, lang: &Lang) -> String {
@@ -49,29 +65,6 @@ fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang
                 .generate_decode(lang)
         }
     }
-}
-
-fn generate_encode_rust(lang: &Lang, src: &IrEnum) -> String {
-    generate_enum_encode_rust_general(lang, src, "self", "Self", |idx, variant| {
-        let fields = (variant.kind.fields().iter())
-            .map(|field| {
-                format!(
-                    "{};\n",
-                    lang.call_encode(&field.ty, field.name.rust_style())
-                )
-            })
-            .join("");
-
-        format!(
-            "
-            {{
-                {};
-                {fields}
-            }}
-            ",
-            lang.call_encode(&TAG_TYPE, idx),
-        )
-    })
 }
 
 pub(crate) fn generate_enum_encode_rust_general(
