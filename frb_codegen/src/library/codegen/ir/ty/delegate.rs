@@ -113,8 +113,8 @@ impl IrTypeTrait for IrTypeDelegate {
             // .to_owned(),
             IrTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
             // IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
-            IrTypeDelegate::Backtrace => "String".to_owned(),
-            IrTypeDelegate::AnyhowException => "String".to_owned(),
+            IrTypeDelegate::Backtrace => "backtrace::Backtrace".to_owned(),
+            IrTypeDelegate::AnyhowException => "anyhow::Error".to_owned(),
         }
     }
 
