@@ -52,7 +52,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
         let body = lang.switch_expr(
             "tag_",
             &variants,
-            Some(format!("{};", lang.throw_unimplemented())),
+            Some(format!("{};", lang.throw_unimplemented(""))),
         );
 
         Some(format!(

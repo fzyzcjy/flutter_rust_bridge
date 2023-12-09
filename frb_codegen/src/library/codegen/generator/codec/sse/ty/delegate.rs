@@ -9,20 +9,20 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let inner_expr = match lang {
             Lang::DartLang(_) => match &self.ir {
-                IrTypeDelegate::Array(_) => "self.inner",
-                IrTypeDelegate::String => "utf8.encoder.convert(self)",
-                IrTypeDelegate::PrimitiveEnum(_) => "self.index",
-                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED",
+                IrTypeDelegate::Array(_) => "self.inner".to_owned(),
+                IrTypeDelegate::String => "utf8.encoder.convert(self)".to_owned(),
+                IrTypeDelegate::PrimitiveEnum(_) => "self.index".to_owned(),
+                IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
                 IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
                     lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                 }
             },
             Lang::RustLang(_) => match &self.ir {
-                IrTypeDelegate::Array(_) => "self",
-                IrTypeDelegate::String => "self.into_bytes()",
-                IrTypeDelegate::PrimitiveEnum(_) => "self as _",
-                IrTypeDelegate::Backtrace => "TODO",
-                IrTypeDelegate::Anyhow => "TODO",
+                IrTypeDelegate::Array(_) => "self".to_owned(),
+                IrTypeDelegate::String => "self.into_bytes()".to_owned(),
+                IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
+                IrTypeDelegate::Backtrace => "TODO".to_owned(),
+                IrTypeDelegate::Anyhow => "TODO".to_owned(),
                 IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
                     lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                 }
@@ -31,7 +31,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
         Some(simple_delegate_encode(
             lang,
             &self.ir.get_delegate(),
-            inner_expr,
+            &inner_expr,
         ))
     }
 
