@@ -24622,6 +24622,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  int _dco_decode_usize(dynamic raw) {
+    return dcoDecodeI64OrU64(raw);
+  }
+
   VecOfPrimitivePackTwinNormal _dco_decode_vec_of_primitive_pack_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -24792,7 +24796,7 @@ Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
 
 ObjectArray1 _sse_decode_DartOpaque_array_1(SseDeserializer deserializer) {
   var inner = _sse_decode_list_DartOpaque(deserializer);
-  return inner;
+  return ObjectArray1(inner);
 }
 
 MutexHideData _sse_decode_RustOpaque_MutexHideData(
@@ -24845,7 +24849,7 @@ HideData _sse_decode_RustOpaque_hide_data(SseDeserializer deserializer) {
 HideDataArray2 _sse_decode_RustOpaque_hide_data_array_2(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_RustOpaque_hide_data(deserializer);
-  return inner;
+  return HideDataArray2(inner);
 }
 
 I32 _sse_decode_RustOpaque_i_32(SseDeserializer deserializer) {
@@ -25829,7 +25833,7 @@ EnumOpaqueTwinNormal _sse_decode_enum_opaque_twin_normal(
 EnumOpaqueTwinNormalArray5 _sse_decode_enum_opaque_twin_normal_array_5(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_enum_opaque_twin_normal(deserializer);
-  return inner;
+  return EnumOpaqueTwinNormalArray5(inner);
 }
 
 EnumOpaqueTwinRustAsync _sse_decode_enum_opaque_twin_rust_async(
@@ -25860,7 +25864,7 @@ EnumOpaqueTwinRustAsync _sse_decode_enum_opaque_twin_rust_async(
 EnumOpaqueTwinRustAsyncArray5 _sse_decode_enum_opaque_twin_rust_async_array_5(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_enum_opaque_twin_rust_async(deserializer);
-  return inner;
+  return EnumOpaqueTwinRustAsyncArray5(inner);
 }
 
 EnumOpaqueTwinSync _sse_decode_enum_opaque_twin_sync(
@@ -25891,7 +25895,7 @@ EnumOpaqueTwinSync _sse_decode_enum_opaque_twin_sync(
 EnumOpaqueTwinSyncArray5 _sse_decode_enum_opaque_twin_sync_array_5(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_enum_opaque_twin_sync(deserializer);
-  return inner;
+  return EnumOpaqueTwinSyncArray5(inner);
 }
 
 EnumSimpleTwinNormal _sse_decode_enum_simple_twin_normal(
@@ -26237,7 +26241,7 @@ int _sse_decode_i_32(SseDeserializer deserializer) {
 
 I32Array2 _sse_decode_i_32_array_2(SseDeserializer deserializer) {
   var inner = _sse_decode_list_prim_i_32(deserializer);
-  return inner;
+  return I32Array2(inner);
 }
 
 int _sse_decode_i_64(SseDeserializer deserializer) {
@@ -27639,7 +27643,7 @@ PointTwinNormal _sse_decode_point_twin_normal(SseDeserializer deserializer) {
 PointTwinNormalArray2 _sse_decode_point_twin_normal_array_2(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_point_twin_normal(deserializer);
-  return inner;
+  return PointTwinNormalArray2(inner);
 }
 
 PointTwinRustAsync _sse_decode_point_twin_rust_async(
@@ -27652,7 +27656,7 @@ PointTwinRustAsync _sse_decode_point_twin_rust_async(
 PointTwinRustAsyncArray2 _sse_decode_point_twin_rust_async_array_2(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_point_twin_rust_async(deserializer);
-  return inner;
+  return PointTwinRustAsyncArray2(inner);
 }
 
 PointTwinSync _sse_decode_point_twin_sync(SseDeserializer deserializer) {
@@ -27664,7 +27668,7 @@ PointTwinSync _sse_decode_point_twin_sync(SseDeserializer deserializer) {
 PointTwinSyncArray2 _sse_decode_point_twin_sync_array_2(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_point_twin_sync(deserializer);
-  return inner;
+  return PointTwinSyncArray2(inner);
 }
 
 RawStringEnumMirrored _sse_decode_raw_string_enum_mirrored(
@@ -27876,7 +27880,7 @@ SumWithTwinNormal _sse_decode_sum_with_twin_normal(
 SumWithTwinNormalArray3 _sse_decode_sum_with_twin_normal_array_3(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_sum_with_twin_normal(deserializer);
-  return inner;
+  return SumWithTwinNormalArray3(inner);
 }
 
 SumWithTwinRustAsync _sse_decode_sum_with_twin_rust_async(
@@ -27888,7 +27892,7 @@ SumWithTwinRustAsync _sse_decode_sum_with_twin_rust_async(
 SumWithTwinRustAsyncArray3 _sse_decode_sum_with_twin_rust_async_array_3(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_sum_with_twin_rust_async(deserializer);
-  return inner;
+  return SumWithTwinRustAsyncArray3(inner);
 }
 
 SumWithTwinSync _sse_decode_sum_with_twin_sync(SseDeserializer deserializer) {
@@ -27899,7 +27903,7 @@ SumWithTwinSync _sse_decode_sum_with_twin_sync(SseDeserializer deserializer) {
 SumWithTwinSyncArray3 _sse_decode_sum_with_twin_sync_array_3(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_sum_with_twin_sync(deserializer);
-  return inner;
+  return SumWithTwinSyncArray3(inner);
 }
 
 TestChronoTwinNormal _sse_decode_test_chrono_twin_normal(
@@ -27934,7 +27938,7 @@ TestIdTwinNormal _sse_decode_test_id_twin_normal(SseDeserializer deserializer) {
 TestIdTwinNormalArray2 _sse_decode_test_id_twin_normal_array_2(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_test_id_twin_normal(deserializer);
-  return inner;
+  return TestIdTwinNormalArray2(inner);
 }
 
 TestIdTwinRustAsync _sse_decode_test_id_twin_rust_async(
@@ -27946,7 +27950,7 @@ TestIdTwinRustAsync _sse_decode_test_id_twin_rust_async(
 TestIdTwinRustAsyncArray2 _sse_decode_test_id_twin_rust_async_array_2(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_test_id_twin_rust_async(deserializer);
-  return inner;
+  return TestIdTwinRustAsyncArray2(inner);
 }
 
 TestIdTwinSync _sse_decode_test_id_twin_sync(SseDeserializer deserializer) {
@@ -27957,7 +27961,7 @@ TestIdTwinSync _sse_decode_test_id_twin_sync(SseDeserializer deserializer) {
 TestIdTwinSyncArray2 _sse_decode_test_id_twin_sync_array_2(
     SseDeserializer deserializer) {
   var inner = _sse_decode_list_test_id_twin_sync(deserializer);
-  return inner;
+  return TestIdTwinSyncArray2(inner);
 }
 
 TestModelTwinNormal _sse_decode_test_model_twin_normal(
@@ -28053,22 +28057,22 @@ int _sse_decode_u_8(SseDeserializer deserializer) {
 
 U8Array1600 _sse_decode_u_8_array_1600(SseDeserializer deserializer) {
   var inner = _sse_decode_list_prim_u_8(deserializer);
-  return inner;
+  return U8Array1600(inner);
 }
 
 U8Array32 _sse_decode_u_8_array_32(SseDeserializer deserializer) {
   var inner = _sse_decode_list_prim_u_8(deserializer);
-  return inner;
+  return U8Array32(inner);
 }
 
 U8Array5 _sse_decode_u_8_array_5(SseDeserializer deserializer) {
   var inner = _sse_decode_list_prim_u_8(deserializer);
-  return inner;
+  return U8Array5(inner);
 }
 
 U8Array8 _sse_decode_u_8_array_8(SseDeserializer deserializer) {
   var inner = _sse_decode_list_prim_u_8(deserializer);
-  return inner;
+  return U8Array8(inner);
 }
 
 void _sse_decode_unit(SseDeserializer deserializer) {}
@@ -28087,6 +28091,10 @@ UserIdTwinRustAsync _sse_decode_user_id_twin_rust_async(
 UserIdTwinSync _sse_decode_user_id_twin_sync(SseDeserializer deserializer) {
   var value = _sse_decode_u_32(deserializer);
   return UserIdTwinSync(value: value);
+}
+
+int _sse_decode_usize(SseDeserializer deserializer) {
+  return deserializer.buffer.getUint64();
 }
 
 VecOfPrimitivePackTwinNormal _sse_decode_vec_of_primitive_pack_twin_normal(
