@@ -18,7 +18,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
                     .map(|field| {
                         format!(
                             "{};\n",
-                            lang.call_encode(&field.ty, field.name.rust_style())
+                            lang.call_encode(&field.ty, &field.name.style(lang))
                         )
                     })
                     .join("");

@@ -188,8 +188,8 @@ void _sse_encode_hello(Hello self, SseSerializer serializer) {
         anotherField: final anotherField
       ):
       _sse_encode_i_32(2, serializer);
-      _sse_encode_i_32(hello_world, serializer);
-      _sse_encode_i_32(another_field, serializer);
+      _sse_encode_i_32(helloWorld, serializer);
+      _sse_encode_i_32(anotherField, serializer);
   }
 }
 
