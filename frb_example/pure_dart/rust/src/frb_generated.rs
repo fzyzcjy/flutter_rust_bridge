@@ -9498,29 +9498,25 @@ impl SseDecode
 
 impl SseDecode for chrono::Duration {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <i64>::sse_decode(deserializer);
-        return chrono::Duration::microseconds(self);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 
 impl SseDecode for chrono::DateTime<chrono::Local> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <i64>::sse_decode(deserializer);
-        return chrono::Duration::microseconds(self);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 
 impl SseDecode for chrono::NaiveDateTime {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <i64>::sse_decode(deserializer);
-        return chrono::Duration::microseconds(self);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 
 impl SseDecode for chrono::DateTime<chrono::Utc> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <i64>::sse_decode(deserializer);
-        return chrono::Duration::microseconds(self);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 
@@ -9709,8 +9705,7 @@ impl SseDecode for String {
 
 impl SseDecode for uuid::Uuid {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <Vec<u8>>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::decode_uuid(inner);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 
@@ -9949,7 +9944,7 @@ impl SseDecode for crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
 
 impl SseDecode for bool {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_bool::<NativeEndian>().unwrap()
+        deserializer.cursor.read_bool::<NativeEndian>().unwrap() != 0
     }
 }
 
@@ -18552,25 +18547,25 @@ impl SseEncode
 
 impl SseEncode for chrono::Duration {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i64>::sse_encode(self.microsecondsSinceEpoch, serializer);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 
 impl SseEncode for chrono::DateTime<chrono::Local> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i64>::sse_encode(self.microsecondsSinceEpoch, serializer);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 
 impl SseEncode for chrono::NaiveDateTime {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i64>::sse_encode(self.microsecondsSinceEpoch, serializer);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 
 impl SseEncode for chrono::DateTime<chrono::Utc> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i64>::sse_encode(self.microsecondsSinceEpoch, serializer);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 
@@ -18770,7 +18765,7 @@ impl SseEncode for String {
 
 impl SseEncode for uuid::Uuid {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Vec<u8>>::sse_encode(self.toBytes(), serializer);
+        unimplemented!(not yet supported in serialized mode, feel free to create an issue);
     }
 }
 

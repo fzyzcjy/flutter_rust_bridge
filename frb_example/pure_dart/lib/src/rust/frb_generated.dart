@@ -24770,23 +24770,23 @@ RwLockStructWithGoodAndOpaqueFieldTwinSync
 }
 
 Duration _sse_decode_Chrono_Duration(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_64(deserializer);
-  return TODO;
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 DateTime _sse_decode_Chrono_Local(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_64(deserializer);
-  return TODO;
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 DateTime _sse_decode_Chrono_Naive(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_64(deserializer);
-  return TODO;
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 DateTime _sse_decode_Chrono_Utc(SseDeserializer deserializer) {
-  var inner = _sse_decode_i_64(deserializer);
-  return TODO;
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
@@ -24938,8 +24938,8 @@ String _sse_decode_String(SseDeserializer deserializer) {
 }
 
 UuidValue _sse_decode_Uuid(SseDeserializer deserializer) {
-  var inner = _sse_decode_list_prim_u_8(deserializer);
-  return UuidValue.fromByteList(inner);
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 ATwinNormal _sse_decode_a_twin_normal(SseDeserializer deserializer) {
@@ -25074,7 +25074,6 @@ ApplicationMessage _sse_decode_application_message(
 ApplicationMode _sse_decode_application_mode(SseDeserializer deserializer) {
   var inner = _sse_decode_i_32(deserializer);
   return ApplicationMode.values[inner];
-  ;
 }
 
 ApplicationSettings _sse_decode_application_settings(
@@ -25166,7 +25165,7 @@ BlobTwinSync _sse_decode_blob_twin_sync(SseDeserializer deserializer) {
 }
 
 bool _sse_decode_bool(SseDeserializer deserializer) {
-  return deserializer.buffer.getUint8();
+  return deserializer.buffer.getUint8() != 0;
 }
 
 ApplicationEnv _sse_decode_box_application_env(SseDeserializer deserializer) {
@@ -26157,21 +26156,18 @@ EnumSimpleTwinNormal _sse_decode_enum_simple_twin_normal(
     SseDeserializer deserializer) {
   var inner = _sse_decode_i_32(deserializer);
   return EnumSimpleTwinNormal.values[inner];
-  ;
 }
 
 EnumSimpleTwinRustAsync _sse_decode_enum_simple_twin_rust_async(
     SseDeserializer deserializer) {
   var inner = _sse_decode_i_32(deserializer);
   return EnumSimpleTwinRustAsync.values[inner];
-  ;
 }
 
 EnumSimpleTwinSync _sse_decode_enum_simple_twin_sync(
     SseDeserializer deserializer) {
   var inner = _sse_decode_i_32(deserializer);
   return EnumSimpleTwinSync.values[inner];
-  ;
 }
 
 EnumWithItemMixedTwinNormal _sse_decode_enum_with_item_mixed_twin_normal(
@@ -27273,7 +27269,6 @@ MoreThanJustOneRawStringStructTwinSync
 MyEnum _sse_decode_my_enum(SseDeserializer deserializer) {
   var inner = _sse_decode_i_32(deserializer);
   return MyEnum.values[inner];
-  ;
 }
 
 MyNestedStructTwinNormal _sse_decode_my_nested_struct_twin_normal(
@@ -28438,20 +28433,17 @@ WeekdaysTwinNormal _sse_decode_weekdays_twin_normal(
     SseDeserializer deserializer) {
   var inner = _sse_decode_i_32(deserializer);
   return WeekdaysTwinNormal.values[inner];
-  ;
 }
 
 WeekdaysTwinRustAsync _sse_decode_weekdays_twin_rust_async(
     SseDeserializer deserializer) {
   var inner = _sse_decode_i_32(deserializer);
   return WeekdaysTwinRustAsync.values[inner];
-  ;
 }
 
 WeekdaysTwinSync _sse_decode_weekdays_twin_sync(SseDeserializer deserializer) {
   var inner = _sse_decode_i_32(deserializer);
   return WeekdaysTwinSync.values[inner];
-  ;
 }
 
 // Section: dart2rust
@@ -28907,19 +28899,23 @@ void
 }
 
 void _sse_encode_Chrono_Duration(Duration self, SseSerializer serializer) {
-  _sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 void _sse_encode_Chrono_Local(DateTime self, SseSerializer serializer) {
-  _sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 void _sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer) {
-  _sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 void _sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer) {
-  _sse_encode_i_64(self.microsecondsSinceEpoch, serializer);
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 void _sse_encode_DartFn_Inputs__Output_unit(
@@ -29036,7 +29032,8 @@ void _sse_encode_String(String self, SseSerializer serializer) {
 }
 
 void _sse_encode_Uuid(UuidValue self, SseSerializer serializer) {
-  _sse_encode_list_prim_u_8(self.toBytes(), serializer);
+  throw UnimplementedError(
+      'not yet supported in serialized mode, feel free to create an issue');
 }
 
 void _sse_encode_a_twin_normal(ATwinNormal self, SseSerializer serializer) {
@@ -29184,7 +29181,7 @@ void _sse_encode_blob_twin_sync(BlobTwinSync self, SseSerializer serializer) {
 }
 
 void _sse_encode_bool(bool self, SseSerializer serializer) {
-  serializer.buffer.putUint8(self);
+  serializer.buffer.putUint8(self ? 1 : 0);
 }
 
 void _sse_encode_box_application_env(
