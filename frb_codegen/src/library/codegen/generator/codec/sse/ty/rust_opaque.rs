@@ -2,6 +2,7 @@ use crate::codegen::generator::codec::sse::ty::delegate::{
     simple_delegate_decode, simple_delegate_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
