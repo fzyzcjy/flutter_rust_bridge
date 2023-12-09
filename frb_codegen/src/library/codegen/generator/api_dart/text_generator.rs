@@ -52,7 +52,7 @@ fn generate_end_api_text(
 
     let mut header = DartBasicHeaderCode {
         file_top: generate_code_header()
-            + "\n\n// ignore_for_file: invalid_use_of_internal_member, unused_import\n",
+            + "\n\n// ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import\n",
         import: format!(
             "
             import '{path_frb_generated}';
