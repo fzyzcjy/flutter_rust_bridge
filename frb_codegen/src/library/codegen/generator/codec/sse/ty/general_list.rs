@@ -18,21 +18,23 @@ impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
 }
 
 pub(super) fn general_list_generate_encode(lang: &Lang, ir_inner: &IrType) -> String {
-    let len_func = match lang {
-        Lang::DartLang(_) => "length",
-        Lang::RustLang(_) => "len()",
-    };
-
     format!(
         "{};
         {}",
-        lang.call_encode(&LEN_TYPE, &format!("self.{}", len_func)),
+        lang.call_encode(&LEN_TYPE, &format!("self.{}", list_len_method(lang))),
         lang.for_loop(
             "item",
             "self",
             &format!("{};", lang.call_encode(ir_inner, "item")),
         )
     )
+}
+
+pub(super) fn list_len_method(lang: &Lang) -> &'static str {
+    match lang {
+        Lang::DartLang(_) => "length",
+        Lang::RustLang(_) => "len()",
+    }
 }
 
 pub(super) fn general_list_generate_decode(
@@ -50,7 +52,7 @@ pub(super) fn general_list_generate_decode(
         Lang::RustLang(_) => "vec![]".to_owned(),
     };
     let list_push = match lang {
-        Lang::DartLang(_) => "append",
+        Lang::DartLang(_) => "add",
         Lang::RustLang(_) => "push",
     };
 
@@ -70,4 +72,4 @@ pub(super) fn general_list_generate_decode(
     )
 }
 
-const LEN_TYPE: IrType = Primitive(IrTypePrimitive::I32);
+pub(super) const LEN_TYPE: IrType = Primitive(IrTypePrimitive::I32);

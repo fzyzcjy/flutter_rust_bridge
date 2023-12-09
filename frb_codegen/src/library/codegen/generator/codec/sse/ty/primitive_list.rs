@@ -1,14 +1,17 @@
 use crate::codegen::generator::codec::sse::ty::general_list::{
-    general_list_generate_decode, general_list_generate_encode,
+    general_list_generate_decode, general_list_generate_encode, list_len_method, LEN_TYPE,
 };
 use crate::codegen::generator::codec::sse::ty::primitive::get_serializer_dart_postfix;
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(match lang {
             Lang::DartLang(_) => format!(
-                "serializer.buffer.put{}List(self);",
+                "{}
+                serializer.buffer.put{}List(self);",
+                lang.call_encode(&LEN_TYPE, &format!("self.{}", list_len_method(lang))),
                 get_serializer_dart_postfix(&self.ir.primitive)
             ),
             Lang::RustLang(_) => {
@@ -19,9 +22,12 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        let var_decl = lang.var_decl();
         Some(match lang {
             Lang::DartLang(_) => format!(
-                "return deserializer.buffer.get{}List();",
+                "{var_decl} len_ = {},
+                return deserializer.buffer.get{}List(len_);",
+                lang.call_decode(&LEN_TYPE),
                 get_serializer_dart_postfix(&self.ir.primitive)
             ),
             Lang::RustLang(_) => {
