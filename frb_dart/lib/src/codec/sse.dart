@@ -30,9 +30,10 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
 
   S _decode(Uint8List bytes) {
     final deserializer = SseDeserializer(bytes.buffer.asByteData());
-    TODO;
+    final action = deserializer.buffer.getUint8();
+    final ans = SimpleDecoder().decode(action);
     assert(!deserializer.buffer.hasRemaining);
-    return TODO;
+    return ans;
   }
 
   @override

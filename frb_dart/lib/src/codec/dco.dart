@@ -21,32 +21,7 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
   @override
   S decodeObject(dynamic raw) {
     final rawList = raw as List<dynamic>;
-    switch (rawList[0]) {
-      case _Rust2DartAction.success:
-        assert(rawList.length == 2);
-        return parseSuccessData(rawList[1]);
-
-      case _Rust2DartAction.error:
-        assert(rawList.length == 2);
-        final parseErrorData = this.parseErrorData;
-        if (parseErrorData == null) {
-          throw Exception(
-              'transformRust2DartMessage received error message, but no parseErrorData to parse it. '
-              'Raw data: $raw');
-        }
-        throw parseErrorData(rawList[1]);
-
-      case _Rust2DartAction.panic:
-        assert(rawList.length == 2);
-        throw dcoDecodePanicError(rawList[1]);
-
-      case _Rust2DartAction.closeStream:
-        assert(rawList.length == 1);
-        throw CloseStreamException();
-
-      default:
-        throw Exception('Unsupported message (raw=$raw)');
-    }
+    return SimpleDecoder().decode(rawList[0]);
   }
 
   @override
@@ -57,13 +32,4 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
   void freeWireSyncReturn(WireSyncReturnDco raw,
           GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
       generalizedFrbRustBinding.freeWireSyncReturnDco(raw);
-}
-
-/// NOTE: Please keep in sync with the Rust side
-class _Rust2DartAction {
-  // Do not use enum, but use raw integers, to avoid extra overhead
-  static const success = 0;
-  static const error = 1;
-  static const closeStream = 2;
-  static const panic = 3;
 }
