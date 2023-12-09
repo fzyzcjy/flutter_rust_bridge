@@ -45,6 +45,9 @@ macro_rules! codegen_generator_structs {
         use crate::codegen::ir::ty::structure::IrTypeStructRef;
         use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
         use crate::codegen::ir::ty::IrType;
+        // cargo fix wrongly removes this import
+        #[allow(unused_imports)]
+        use crate::codegen::ir::ty::IrType::*;
 
 
         paste::paste! {
