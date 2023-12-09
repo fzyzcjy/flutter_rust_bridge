@@ -21,7 +21,7 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
   @override
   S decodeObject(dynamic raw) {
     final rawList = raw as List<dynamic>;
-    return SimpleDecoder().decode(rawList[0]);
+    return _DcoSimpleDecoder(this, rawList).decode(rawList[0]);
   }
 
   @override
@@ -32,4 +32,35 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
   void freeWireSyncReturn(WireSyncReturnDco raw,
           GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
       generalizedFrbRustBinding.freeWireSyncReturnDco(raw);
+}
+
+class _DcoSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
+  final DcoCodec<S, E> codec;
+  final List<dynamic> rawList;
+
+  _DcoSimpleDecoder(this.codec, this.rawList);
+
+  @override
+  S decodeSuccess() {
+    assert(rawList.length == 2);
+    return codec.decodeSuccessData(rawList[1]);
+  }
+
+  @override
+  E decodeError() {
+    assert(rawList.length == 2);
+    final decodeErrorData = codec.decodeErrorData;
+    if (decodeErrorData == null) {
+      throw Exception(
+          'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
+          'Raw data: $rawList');
+    }
+    return decodeErrorData(rawList[1]);
+  }
+
+  @override
+  Object decodePanic() {
+    assert(rawList.length == 2);
+    return dcoDecodePanicError(rawList[1]);
+  }
 }

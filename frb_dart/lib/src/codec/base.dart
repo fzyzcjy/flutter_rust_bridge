@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/_io.dart';
+import 'package:meta/meta.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 abstract class BaseCodec<S, E extends Object, WireSyncType> {
@@ -20,36 +21,38 @@ abstract class BaseCodec<S, E extends Object, WireSyncType> {
 class CloseStreamException implements Exception {}
 
 /// {@macro flutter_rust_bridge.internal}
-class SimpleDecoder<S> {
+abstract class SimpleDecoder<S, E extends Object> {
   /// {@macro flutter_rust_bridge.internal}
   S decode(int action) {
     switch (action) {
       case _Rust2DartAction.success:
-        assert(rawList.length == 2);
-        return decodeSuccessData(rawList[1]);
+        return decodeSuccess();
 
       case _Rust2DartAction.error:
-        assert(rawList.length == 2);
-        final parseErrorData = this.decodeErrorData;
-        if (parseErrorData == null) {
-          throw Exception(
-              'transformRust2DartMessage received error message, but no parseErrorData to parse it. '
-              'Raw data: $raw');
-        }
-        throw parseErrorData(rawList[1]);
+        throw decodeError();
 
       case _Rust2DartAction.panic:
-        assert(rawList.length == 2);
-        throw dcoDecodePanicError(rawList[1]);
+        throw decodePanic();
 
       case _Rust2DartAction.closeStream:
-        assert(rawList.length == 1);
         throw CloseStreamException();
 
       default:
         throw Exception('Unsupported message (action=$action)');
     }
   }
+
+  /// {@macro flutter_rust_bridge.internal}
+  @protected
+  S decodeSuccess();
+
+  /// {@macro flutter_rust_bridge.internal}
+  @protected
+  E decodeError();
+
+  /// {@macro flutter_rust_bridge.internal}
+  @protected
+  Object decodePanic();
 }
 
 /// NOTE: Please keep in sync with the Rust side
