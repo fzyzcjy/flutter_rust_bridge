@@ -13,12 +13,10 @@ typedef Dart_Handle GeneralizedDartHandle;
 
 typedef Dart_CObject *WireSyncReturnDco;
 
-typedef struct WireSyncReturnSseStruct {
+typedef struct WireSyncReturnSse {
   uint8_t *ptr;
   int32_t len;
-} WireSyncReturnSseStruct;
-
-typedef struct WireSyncReturnSseStruct WireSyncReturnSse;
+} WireSyncReturnSse;
 
 extern struct Result_JsValue post_message(const PortLike *this_, const JsValue *value);
 
@@ -55,4 +53,4 @@ void free_wire_sync_return_dco(WireSyncReturnDco value);
  *
  * This function should never be called manually.
  */
-void free_wire_sync_return_sse(WireSyncReturnSse value);
+void free_wire_sync_return_sse(struct WireSyncReturnSse value);

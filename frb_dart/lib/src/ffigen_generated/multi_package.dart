@@ -570,7 +570,7 @@ typedef DartDartPort = int;
 
 final class Result_JsValue extends ffi.Opaque {}
 
-final class WireSyncReturnSseStruct extends ffi.Struct {
+final class WireSyncReturnSse extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
   @ffi.Int32()
@@ -580,4 +580,3 @@ final class WireSyncReturnSseStruct extends ffi.Struct {
 typedef GeneralizedDartHandle = ffi.Int;
 typedef DartGeneralizedDartHandle = int;
 typedef WireSyncReturnDco = ffi.Pointer<Dart_CObject>;
-typedef WireSyncReturnSse = WireSyncReturnSseStruct;

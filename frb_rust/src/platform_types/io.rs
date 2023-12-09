@@ -1,5 +1,10 @@
 pub type WireSyncReturnDco = *mut allo_isolate::ffi::DartCObject;
-pub type WireSyncReturnSse = WireSyncReturnSseStruct;
+
+#[repr(C)]
+pub struct WireSyncReturnSse {
+    pub ptr: *mut u8,
+    pub len: i32,
+}
 
 pub type MessagePort = i64;
 
@@ -13,10 +18,4 @@ pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
 
 pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort {
     *handle
-}
-
-#[repr(C)]
-pub struct WireSyncReturnSseStruct {
-    pub ptr: *mut u8,
-    pub len: i32,
 }
