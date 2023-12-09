@@ -29,3 +29,15 @@ sealed class Hello with _$Hello {
     required int y,
   }) = Hello_Raspi;
 }
+
+// temp exp
+void f(Hello hello) {
+  switch (hello) {
+    case Hello_Apple():
+      print('apple');
+    case Hello_Orange(field0: final field0):
+      print('$field0');
+    case Hello_Raspi(x: final x, y: final y):
+      print('$x $y');
+  }
+}
