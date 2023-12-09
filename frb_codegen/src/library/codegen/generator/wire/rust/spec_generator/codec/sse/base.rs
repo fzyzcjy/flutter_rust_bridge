@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 
@@ -11,4 +12,5 @@ codegen_generator_structs!(
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct WireRustCodecSseGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
+    pub(crate) api_dart_config: &'a GeneratorApiDartInternalConfig,
 }

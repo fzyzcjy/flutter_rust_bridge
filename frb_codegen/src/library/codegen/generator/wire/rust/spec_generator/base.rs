@@ -54,6 +54,7 @@ impl WireRustGeneratorContext<'_> {
     pub(crate) fn as_wire_rust_codec_sse_context(&self) -> WireRustCodecSseGeneratorContext {
         WireRustCodecSseGeneratorContext {
             ir_pack: self.ir_pack,
+            api_dart_config: self.api_dart_config,
         }
     }
 }

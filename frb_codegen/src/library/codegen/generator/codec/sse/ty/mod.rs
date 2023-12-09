@@ -15,6 +15,8 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
+use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::sse::*;
 use crate::codegen::generator::codec::structs::EncodeOrDecode;
@@ -31,11 +33,22 @@ codegen_generator_structs!(
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct CodecSseTyContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
+    pub(crate) api_dart_config: &'a GeneratorApiDartInternalConfig,
 }
 
 impl<'a> CodecSseTyContext<'a> {
-    pub fn new(ir_pack: &'a IrPack) -> Self {
-        Self { ir_pack }
+    pub fn new(ir_pack: &'a IrPack, api_dart_config: &'a GeneratorApiDartInternalConfig) -> Self {
+        Self {
+            ir_pack,
+            api_dart_config,
+        }
+    }
+
+    pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
+        ApiDartGeneratorContext {
+            ir_pack: self.ir_pack,
+            config: self.api_dart_config,
+        }
     }
 }
 

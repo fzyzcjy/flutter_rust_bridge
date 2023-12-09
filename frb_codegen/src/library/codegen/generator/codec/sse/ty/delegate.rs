@@ -2,6 +2,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::ty::delegate::IrTypeDelegatePrimitiveEnum;
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
@@ -77,7 +78,10 @@ pub(super) fn simple_delegate_decode(lang: &Lang, inner_ty: &IrType, wrapper_exp
     )
 }
 
-pub(crate) fn rust_decode_primitive_enum(inner: &IrTypeDelegatePrimitiveEnum, ir_pack: &IrPack) {
+pub(crate) fn rust_decode_primitive_enum(
+    inner: &IrTypeDelegatePrimitiveEnum,
+    ir_pack: &IrPack,
+) -> String {
     let enu = inner.ir.get(ir_pack);
     let variants = (enu.variants().iter().enumerate())
         .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name.rust_style(), variant.name))
@@ -91,5 +95,4 @@ pub(crate) fn rust_decode_primitive_enum(inner: &IrTypeDelegatePrimitiveEnum, ir
         }}",
         variants, enu.name.name
     )
-    .into()
 }

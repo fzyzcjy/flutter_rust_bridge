@@ -36,8 +36,11 @@ fn generate_encode_or_decode_for_type(
     let dart_api_type =
         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
     let safe_ident = ty.safe_ident();
-    let body = CodecSseTy::new(ty.clone(), CodecSseTyContext::new(context.ir_pack))
-        .generate(&Lang::DartLang(DartLang), mode);
+    let body = CodecSseTy::new(
+        ty.clone(),
+        CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
+    )
+    .generate(&Lang::DartLang(DartLang), mode);
 
     let code = match mode {
         EncodeOrDecode::Encode => format!(
