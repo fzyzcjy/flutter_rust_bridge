@@ -7,6 +7,7 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
+use std::env::var;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
@@ -22,7 +23,21 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
             parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
         let self_ref = self.generate_access_object_core("self".to_owned());
 
-        let body = generate_enum_encode_rust(src, &self_ref, &self_path);
+        let body = generate_enum_encode_rust(src, &self_ref, &self_path, |idx, variant| {
+            let tag = format!("{idx}.into_dart()");
+            match variant.kind {
+                IrVariantKind::Value => format!("vec![{tag}]"),
+                IrVariantKind::Struct(st) => {
+                    let fields = Some(tag)
+                        .into_iter()
+                        .chain(st.fields.iter().map(|field| {
+                            format!("{}.into_into_dart().into_dart()", field.name.rust_style())
+                        }))
+                        .join(",");
+                    format!("vec![{fields}]")
+                }
+            }
+        });
 
         let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
         Some(format!(

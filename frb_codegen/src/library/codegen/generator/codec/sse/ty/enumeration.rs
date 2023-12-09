@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariantKind};
+use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
@@ -13,31 +13,27 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     }
 }
 
-pub(crate) fn generate_enum_encode_rust(src: &IrEnum, self_ref: &str, self_path: &str) -> String {
+pub(crate) fn generate_enum_encode_rust(
+    src: &IrEnum,
+    self_ref: &str,
+    self_path: &str,
+    generate_branch: impl Fn(usize, &IrVariant) -> String,
+) -> String {
     let variants = (src.variants().iter().enumerate())
         .map(|(idx, variant)| {
-            let tag = format!("{idx}.into_dart()");
-            match &variant.kind {
-                IrVariantKind::Value => {
-                    format!("{self_path}::{} => vec![{tag}],", variant.name)
-                }
+            let variant_name = &variant.name;
+            let body = generate_branch(idx, variant);
+            let pattern = match &variant.kind {
+                IrVariantKind::Value => "".to_owned(),
                 IrVariantKind::Struct(st) => {
-                    let fields = Some(tag)
-                        .into_iter()
-                        .chain(st.fields.iter().map(|field| {
-                            format!("{}.into_into_dart().into_dart()", field.name.rust_style())
-                        }))
-                        .join(",");
-                    let pattern = st
-                        .fields
-                        .iter()
+                    let pattern = (st.fields.iter())
                         .map(|field| field.name.rust_style().to_owned())
                         .join(",");
                     let (left, right) = st.brackets_pair();
-                    let variant_name = &variant.name;
-                    format!("{self_path}::{variant_name}{left}{pattern}{right} => vec![{fields}],",)
+                    format!("{left}{pattern}{right}")
                 }
-            }
+            };
+            format!("{self_path}::{variant_name}{pattern} => {body},")
         })
         .join("\n");
 
