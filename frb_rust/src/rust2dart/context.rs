@@ -21,11 +21,11 @@ impl<Rust2DartCodec: BaseCodec> TaskRust2DartContext<Rust2DartCodec> {
     }
 
     /// Create a new [StreamSink] of the specified type.
-    pub fn stream_sink<T, D>(&self) -> StreamSink<T, Rust2DartCodec>
+    pub fn stream_sink<T, D>(&self) -> StreamSink<T>
     where
         T: IntoIntoDart<D>,
         D: IntoDart,
     {
-        StreamSink::<T, Rust2DartCodec>::new(self.sender.clone())
+        StreamSink::<T>::new(self.sender.clone(), Rust2DartCodec::new())
     }
 }
