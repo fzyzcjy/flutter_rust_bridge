@@ -1,5 +1,6 @@
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
