@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::sse::lang::LangTrait;
+use crate::codegen::ir::ty::structure::rust_brackets_pair;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::{multizip, Itertools};
@@ -27,10 +28,15 @@ impl LangTrait for RustLang {
         var_names: &[String],
         keyword_args: bool,
     ) -> String {
+        let (left, right) = rust_brackets_pair(keyword_args);
         format!(
-            "{class_name} {{ {} }}",
+            "{class_name}{left}{}{right}",
             multizip((field_names, var_names))
-                .map(|(x, y)| format!("{x}: {y}"))
+                .map(|(x, y)| if keyword_args && x != y {
+                    format!("{x}: {y}")
+                } else {
+                    format!("{y}")
+                })
                 .join(", ")
         )
     }

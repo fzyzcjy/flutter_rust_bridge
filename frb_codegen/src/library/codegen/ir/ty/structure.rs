@@ -66,16 +66,20 @@ impl IrStruct {
     }
 
     pub fn brackets_pair(&self) -> (char, char) {
-        if self.is_fields_named {
-            ('{', '}')
-        } else {
-            ('(', ')')
-        }
+        rust_brackets_pair(self.is_fields_named)
     }
 }
 
 impl From<NamespacedName> for IrStructIdent {
     fn from(value: NamespacedName) -> Self {
         Self(value)
+    }
+}
+
+pub fn rust_brackets_pair(keyword_arg: bool) -> (char, char) {
+    if keyword_arg {
+        ('{', '}')
+    } else {
+        ('(', ')')
     }
 }
