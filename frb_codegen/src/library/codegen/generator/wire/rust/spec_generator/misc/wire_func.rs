@@ -238,7 +238,10 @@ fn generate_handler_func_name(
 
 fn generate_return_type(func: &IrFunc) -> Option<String> {
     match func.mode {
-        IrFuncMode::Sync => Some("flutter_rust_bridge::for_generated::WireSyncReturn".to_owned()),
+        IrFuncMode::Sync => Some(format!(
+            "flutter_rust_bridge::for_generated::WireSyncReturn{}",
+            func.codec_mode_pack.rust2dart.to_string(),
+        )),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => None,
     }
 }

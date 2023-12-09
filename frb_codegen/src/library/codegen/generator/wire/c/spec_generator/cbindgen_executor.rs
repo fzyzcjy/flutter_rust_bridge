@@ -22,7 +22,7 @@ pub(crate) fn execute(
         rust_crate_dir: &config.rust_crate_dir,
         c_struct_names: extern_struct_names,
         exclude_symbols: vec![],
-        after_includes: "typedef struct DartCObject *WireSyncReturn;\n".to_owned(),
+        after_includes: "typedef struct DartCObject *WireSyncReturnDco;\n".to_owned(),
     })?;
 
     drop(changed_file_handles); // do not drop too early
