@@ -152,13 +152,13 @@ Hello _sse_decode_hello(SseDeserializer deserializer) {
       return Hello_Apple();
     case 1:
       var field0 = _sse_decode_i_32(deserializer);
-
-      return Orange(field0: field0);
+      return Hello_Orange(field0);
     case 2:
       var x = _sse_decode_i_32(deserializer);
       var y = _sse_decode_i_32(deserializer);
-
-      return Raspi(x: x, y: y);
+      return Hello_Raspi(x: x, y: y);
+    default:
+      throw UnimplementedError('');
   }
 }
 
@@ -180,16 +180,16 @@ void _sse_encode_box_autoadd_hello(Hello self, SseSerializer serializer) {
 
 void _sse_encode_hello(Hello self, SseSerializer serializer) {
   switch (self) {
-    case Self_Apple():
+    case Hello_Apple():
       {
         _sse_encode_i_32(0, serializer);
       }
-    case Self_Orange(field0: final field0):
+    case Hello_Orange(field0: final field0):
       {
         _sse_encode_i_32(1, serializer);
         _sse_encode_i_32(field0, serializer);
       }
-    case Self_Raspi(x: final x, y: final y):
+    case Hello_Raspi(x: final x, y: final y):
       {
         _sse_encode_i_32(2, serializer);
         _sse_encode_i_32(x, serializer);
