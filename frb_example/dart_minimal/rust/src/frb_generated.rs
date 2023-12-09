@@ -41,6 +41,24 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 // Section: wire_funcs
 
+fn wire_hello_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: impl CstDecode<crate::api::minimal::Hello> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "hello",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.cst_decode();
+            move |context| {
+                transform_result_dco(Result::<_, ()>::Ok(crate::api::minimal::hello(api_a)))
+            }
+        },
+    )
+}
 fn wire_minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl CstDecode<i32> + core::panic::UnwindSafe,
@@ -87,6 +105,18 @@ pub trait SseDecode {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self;
 }
 
+impl SseDecode for crate::api::minimal::Hello {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return _sse_decode_hello(serializer);
+    }
+}
+
+impl SseDecode for crate::api::minimal::Hello {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return TODO;
+    }
+}
+
 impl SseDecode for i32 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
@@ -94,6 +124,27 @@ impl SseDecode for i32 {
 }
 
 // Section: rust2dart
+
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::Hello {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            Self::Apple => vec![0.into_dart()],
+            Self::Orange(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Raspi { x, y } => vec![
+                2.into_dart(),
+                x.into_into_dart().into_dart(),
+                y.into_into_dart().into_dart(),
+            ],
+        }
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::minimal::Hello {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::Hello> for crate::api::minimal::Hello {
+    fn into_into_dart(self) -> crate::api::minimal::Hello {
+        self
+    }
+}
 
 pub trait SseEncode {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
@@ -118,6 +169,18 @@ where
         Err(raw) => Err(SseCodec::encode(Rust2DartAction::Error, |serializer| {
             raw.sse_encode(serializer)
         })),
+    }
+}
+
+impl SseEncode for crate::api::minimal::Hello {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        _sse_encode_hello(self, serializer);
+    }
+}
+
+impl SseEncode for crate::api::minimal::Hello {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        return TODO;
     }
 }
 

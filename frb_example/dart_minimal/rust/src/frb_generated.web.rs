@@ -20,6 +20,22 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
+impl CstDecode<crate::api::minimal::Hello>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::minimal::Hello {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::minimal::Hello::Apple,
+            1 => crate::api::minimal::Hello::Orange(self_.get(1).cst_decode()),
+            2 => crate::api::minimal::Hello::Raspi {
+                x: self_.get(1).cst_decode(),
+                y: self_.get(2).cst_decode(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> i32 {
         self.unchecked_into_f64() as _
@@ -36,6 +52,14 @@ pub fn frb_initialize_rust(
         dart_opaque_drop_port,
         dart_fn_invoke_port,
     )
+}
+
+#[wasm_bindgen]
+pub fn wire_hello(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_hello_impl(port_, a)
 }
 
 #[wasm_bindgen]

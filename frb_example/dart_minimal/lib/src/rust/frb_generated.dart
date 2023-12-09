@@ -56,6 +56,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<Hello> hello({required Hello a, dynamic hint});
+
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
 
@@ -66,6 +68,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @override
+  Future<Hello> hello({required Hello a, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_hello(a);
+        return wire.wire_hello(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: _dco_decode_hello,
+        decodeErrorData: null,
+      ),
+      constMeta: kHelloConstMeta,
+      argValues: [a],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHelloConstMeta => const TaskConstMeta(
+        debugName: "hello",
+        argNames: ["a"],
+      );
 
   @override
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
@@ -91,6 +116,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  Hello _dco_decode_hello(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return Hello_Apple();
+      case 1:
+        return Hello_Orange(
+          _dco_decode_i_32(raw[1]),
+        );
+      case 2:
+        return Hello_Raspi(
+          x: _dco_decode_i_32(raw[1]),
+          y: _dco_decode_i_32(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
@@ -102,6 +145,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 // Section: rust2dart
 
+Hello _sse_decode_hello(SseDeserializer deserializer) {
+  return TODO;
+}
+
 int _sse_decode_i_32(SseDeserializer deserializer) {
   return deserializer.buffer.getInt32();
 }
@@ -112,6 +159,14 @@ void _sse_decode_unit(SseDeserializer deserializer) {}
 
 int cst_encode_i_32(int raw) {
   return raw;
+}
+
+void _sse_encode_box_autoadd_hello(Hello self, SseSerializer serializer) {
+  _sse_encode_hello(self, serializer);
+}
+
+void _sse_encode_hello(Hello self, SseSerializer serializer) {
+  return TODO;
 }
 
 void _sse_encode_i_32(int self, SseSerializer serializer) {

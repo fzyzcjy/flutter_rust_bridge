@@ -5,6 +5,23 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'minimal.freezed.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
+
+Future<Hello> hello({required Hello a, dynamic hint}) =>
+    RustLib.instance.api.hello(a: a, hint: hint);
+
+@freezed
+sealed class Hello with _$Hello {
+  const factory Hello.apple() = Hello_Apple;
+  const factory Hello.orange(
+    int field0,
+  ) = Hello_Orange;
+  const factory Hello.raspi({
+    required int x,
+    required int y,
+  }) = Hello_Raspi;
+}
