@@ -16,6 +16,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxFnPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe;
 }
 
 // Section: wire_class
@@ -28,15 +32,23 @@ class RustLibWire extends BaseWire {
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
 
-  void wire_hi_stream_one(NativePortType port_) =>
-      wasmModule.wire_hi_stream_one(port_);
-
-  void wire_hi_stream_two(int port_, ffi.Pointer<ffi.Uint8> ptr_,
-          int rust_vec_len_, int data_len_) =>
-      wasmModule.wire_hi_stream_two(port_, ptr_, rust_vec_len_, data_len_);
+  void wire_hi_rust_opaque(NativePortType port_, Object a) =>
+      wasmModule.wire_hi_rust_opaque(port_, a);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+              ptr);
 }
 
 @JS('wasm_bindgen')
@@ -54,10 +66,15 @@ class RustLibWasmModule implements WasmModule {
   external void frb_initialize_rust(
       NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
 
-  external void wire_hi_stream_one(NativePortType port_);
-
-  external void wire_hi_stream_two(
-      int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+  external void wire_hi_rust_opaque(NativePortType port_, Object a);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+          dynamic ptr);
 }

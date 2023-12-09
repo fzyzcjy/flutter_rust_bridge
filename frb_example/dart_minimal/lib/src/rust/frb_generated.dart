@@ -56,11 +56,17 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Stream<int> hiStreamOne({dynamic hint});
-
-  Stream<int> hiStreamTwo({dynamic hint});
+  Future<void> hiRustOpaque({required RwLockBoxFn a, dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockBoxFn;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockBoxFn;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockBoxFnPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -72,51 +78,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Stream<int> hiStreamOne({dynamic hint}) {
-    return handler.executeStream(StreamTask(
+  Future<void> hiRustOpaque({required RwLockBoxFn a, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_hi_stream_one(port_);
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+                a);
+        return wire.wire_hi_rust_opaque(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: _dco_decode_i_32,
+        decodeSuccessData: _dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kHiStreamOneConstMeta,
-      argValues: [],
+      constMeta: kHiRustOpaqueConstMeta,
+      argValues: [a],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHiStreamOneConstMeta => const TaskConstMeta(
-        debugName: "hi_stream_one",
-        argNames: [],
-      );
-
-  @override
-  Stream<int> hiStreamTwo({dynamic hint}) {
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-
-        final raw_ = serializer.intoRaw();
-        return wire.wire_hi_stream_two(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: _sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kHiStreamTwoConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHiStreamTwoConstMeta => const TaskConstMeta(
-        debugName: "hi_stream_two",
-        argNames: [],
+  TaskConstMeta get kHiRustOpaqueConstMeta => const TaskConstMeta(
+        debugName: "hi_rust_opaque",
+        argNames: ["a"],
       );
 
   @override
@@ -143,6 +126,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockBoxFn => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockBoxFn => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe;
+
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
@@ -157,13 +148,46 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
 
+  void
+      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+          RwLockBoxFn self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  void _sse_encode_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+      RwLockBoxFn self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
+  }
+
+  void _sse_encode_usize(int self, SseSerializer serializer) {
+    serializer.buffer.putUint64(self);
   }
 }
 
 // Section: dart2rust
 
+PlatformPointer
+    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+        RwLockBoxFn raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.cstEncode(move: true);
+}
+
+PlatformPointer
+    cst_encode_RustOpaque_stdsyncRwLockBoxdynFnUnwindSafeRefUnwindSafe(
+        RwLockBoxFn raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.cstEncode();
+}
+
 int cst_encode_i_32(int raw) {
+  return raw;
+}
+
+int cst_encode_usize(int raw) {
   return raw;
 }
