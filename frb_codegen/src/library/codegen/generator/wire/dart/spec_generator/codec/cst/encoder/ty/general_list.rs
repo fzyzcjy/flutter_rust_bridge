@@ -3,6 +3,7 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenerator<'a> {
@@ -22,12 +23,14 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
                 if self.ir.inner.is_primitive()
                     || matches!(
                         *self.ir.inner,
-                        IrType::Optional(_) | IrType::RustOpaque(_) | IrType::DartOpaque(_)
+                        IrType::Optional(_)
+                            | IrType::RustOpaque(_)
+                            | IrType::DartOpaque(_)
+                            | IrType::Delegate(IrTypeDelegate::String)
+                            | IrType::Delegate(IrTypeDelegate::Time(_))
+                            | IrType::Delegate(IrTypeDelegate::Uuid)
                     )
                 {
-                    // Handle primitive enums list.
-                    // This is similar to `StringList` in
-                    // `frb_codegen/src/generator/dart/ty_delegate.rs`
                     format!("ans.ref.ptr[i] = cst_encode_{inner}(raw[i]);")
                 } else {
                     format!("_cst_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
