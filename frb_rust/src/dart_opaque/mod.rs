@@ -1,8 +1,5 @@
-use crate::generalized_isolate::{Channel, IntoDart};
-use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
-use log::warn;
+use crate::platform_types::SendableMessagePortHandle;
 use std::sync::Arc;
-use std::thread::ThreadId;
 
 #[cfg(wasm)]
 mod web;
@@ -11,8 +8,7 @@ pub use web::*;
 
 #[cfg(not(wasm))]
 mod io;
-use crate::dart_opaque::thread_box::ThreadBox;
-use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
+
 #[cfg(not(wasm))]
 pub use io::*;
 
@@ -42,7 +38,7 @@ impl DartOpaque {
         }
     }
 
-    pub fn into_inner(mut self) -> Result<GeneralizedAutoDropDartPersistentHandle, Self> {
+    pub fn into_inner(self) -> Result<GeneralizedAutoDropDartPersistentHandle, Self> {
         let inner = Arc::try_unwrap(self.arc).map_err(|x| Self { arc: x })?;
         Ok(inner.into_inner())
     }

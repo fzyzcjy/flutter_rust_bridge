@@ -1,6 +1,5 @@
 use crate::{DartSafe, RustOpaque};
 use anyhow::{anyhow, Context, Result};
-use std::ops::Deref;
 use std::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 
 impl<T: DartSafe> RustOpaque<RwLock<T>> {

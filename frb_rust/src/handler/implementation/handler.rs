@@ -1,8 +1,6 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::DartFnFuture;
-use crate::dart_opaque::DartOpaque;
-use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -12,15 +10,10 @@ use crate::handler::implementation::error_listener::{
     handle_non_sync_panic_error, NoOpErrorListener,
 };
 use crate::handler::implementation::executor::SimpleExecutor;
-use crate::misc::into_into_dart::IntoIntoDart;
-use crate::platform_types::message_port_to_handle;
 use crate::platform_types::DartAbi;
-use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
-use crate::rust2dart::action::Rust2DartAction;
-use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
+use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
-use allo_isolate::ffi::DartCObject;
 use log::warn;
 use std::future::Future;
 use std::panic;
@@ -176,7 +169,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         )
     }
 
-    fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
+    fn dart_fn_invoke<Ret>(&self, _dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
         todo!()
     }
 }

@@ -1,16 +1,9 @@
 use crate::codec::dco::Rust2DartMessageDco;
 use crate::codec::sse::Rust2DartMessageSse;
 use crate::codec::Rust2DartMessageTrait;
-use crate::for_generated::{box_from_leak_ptr, new_leak_vec_ptr, vec_from_leak_ptr};
 use crate::platform_types::{WireSyncReturnDco, WireSyncReturnSse};
 pub use allo_isolate::*;
-use dart_sys::Dart_DeletePersistentHandle_DL;
-use dart_sys::Dart_Handle;
-use dart_sys::Dart_HandleFromPersistent_DL;
 use dart_sys::Dart_InitializeApiDL;
-use dart_sys::Dart_NewPersistentHandle_DL;
-use dart_sys::Dart_PersistentHandle;
-use std::ffi::c_uchar;
 
 /// # Safety
 ///

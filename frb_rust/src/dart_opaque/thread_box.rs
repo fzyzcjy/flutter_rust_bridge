@@ -1,4 +1,3 @@
-use log::warn;
 use std::fmt::Debug;
 use std::thread::ThreadId;
 

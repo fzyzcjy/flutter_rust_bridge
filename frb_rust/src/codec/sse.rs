@@ -5,7 +5,7 @@ use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
 use crate::platform_types::{DartAbi, WireSyncReturnSse};
 use crate::rust2dart::action::Rust2DartAction;
-use byteorder::{NativeEndian, WriteBytesExt};
+use byteorder::WriteBytesExt;
 use std::any::Any;
 use std::io::Cursor;
 
@@ -16,8 +16,8 @@ impl BaseCodec for SseCodec {
     type Message = Rust2DartMessageSse;
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
-        let msg = error_to_string(error);
-        Self::encode(Rust2DartAction::Panic, |serializer| todo!())
+        let _msg = error_to_string(error);
+        Self::encode(Rust2DartAction::Panic, |_serializer| todo!())
     }
 
     fn encode_close_stream() -> Self::Message {
@@ -59,7 +59,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
         #[cfg(not(wasm))]
         {
             let (ptr, len) = into_leak_vec_ptr(self.0);
-            return WireSyncReturnSse { ptr, len };
+            WireSyncReturnSse { ptr, len }
         }
 
         #[cfg(wasm)]
@@ -90,6 +90,12 @@ impl SseDeserializer {
 
 pub struct SseSerializer {
     pub cursor: Cursor<Vec<u8>>,
+}
+
+impl Default for SseSerializer {
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 impl SseSerializer {

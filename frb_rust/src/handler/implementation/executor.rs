@@ -1,25 +1,21 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::{Channel, IntoDart};
+use crate::generalized_isolate::Channel;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_listener::handle_non_sync_panic_error;
-use crate::misc::into_into_dart::IntoIntoDart;
-use crate::platform_types::{DartAbi, MessagePort};
-use crate::rust2dart::action::Rust2DartAction;
+use crate::platform_types::MessagePort;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
-use crate::{rust_async, transfer};
-use allo_isolate::ffi::DartCObject;
+use crate::transfer;
 use futures::FutureExt;
-use parking_lot::Mutex;
 use std::future::Future;
 use std::panic;
-use std::panic::{AssertUnwindSafe, UnwindSafe};
+use std::panic::UnwindSafe;
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
@@ -65,7 +61,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let port = port.unwrap();
 
         self.thread_pool.execute(transfer!(|port: MessagePort| {
-            let port2 = port.clone();
+            let port2 = port;
             let thread_result = panic::catch_unwind(|| {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
@@ -118,7 +114,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         self.async_runtime.spawn(async move {
             let TaskInfo { port, mode, .. } = task_info;
             let port = port.unwrap();
-            let port2 = port.clone();
+            let port2 = port;
 
             let async_result = async {
                 #[allow(clippy::clone_on_copy)]
@@ -149,7 +145,7 @@ impl ExecuteNormalOrAsyncUtils {
         mode: FfiCallMode,
         sender: Rust2DartSender,
         el: EL,
-        port: MessagePort,
+        _port: MessagePort,
     ) where
         EL: ErrorListener + Sync,
         Rust2DartCodec: BaseCodec,

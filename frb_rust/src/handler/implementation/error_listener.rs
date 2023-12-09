@@ -1,10 +1,9 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::{Channel, IntoDart};
+use crate::generalized_isolate::Channel;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::platform_types::MessagePort;
-use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::sender::Rust2DartSender;
 use std::any::Any;
 
@@ -13,7 +12,7 @@ use std::any::Any;
 pub struct NoOpErrorListener;
 
 impl ErrorListener for NoOpErrorListener {
-    fn on_error(&self, error: Error) {
+    fn on_error(&self, _error: Error) {
         // nothing
     }
 }

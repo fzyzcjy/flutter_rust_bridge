@@ -1,5 +1,3 @@
-use crate::platform_types::MessagePort;
-
 #[cfg(target_family = "wasm")]
 pub(crate) mod transfer;
 #[cfg(target_family = "wasm")]

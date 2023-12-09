@@ -1,6 +1,4 @@
-use crate::codec::BaseCodec;
 use crate::handler::error::Error;
-use crate::platform_types::MessagePort;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
 /// Listens when error happens

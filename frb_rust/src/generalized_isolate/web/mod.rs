@@ -1,10 +1,10 @@
+mod channel;
 mod into_dart;
 mod port_like;
-mod channel;
 
+pub use channel::*;
 pub use into_dart::*;
 pub use port_like::*;
-pub use channel::*;
 
 #[derive(Debug)]
 pub struct ZeroCopyBuffer<T>(pub T);

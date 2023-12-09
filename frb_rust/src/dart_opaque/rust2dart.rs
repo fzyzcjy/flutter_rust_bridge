@@ -1,9 +1,6 @@
 use super::{DartOpaque, GeneralizedDartHandle};
-use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
-use crate::generalized_isolate::{Channel, IntoDart};
-use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
-use log::warn;
-use std::thread::ThreadId;
+use crate::generalized_isolate::IntoDart;
+use crate::platform_types::DartAbi;
 #[cfg(wasm)]
 use wasm_bindgen::prelude::*;
 

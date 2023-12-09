@@ -2,11 +2,8 @@ pub(crate) mod dart2rust;
 pub(crate) mod rust2dart;
 pub(crate) mod utils;
 
-use crate::generalized_isolate::IntoDart;
-use crate::platform_types::DartAbi;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 use std::sync::Arc;
-use std::{mem, ops};
 
 /// A wrapper to transfer ownership of T to Dart.
 ///

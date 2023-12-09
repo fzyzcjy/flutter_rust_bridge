@@ -1,10 +1,6 @@
 use crate::codec::{BaseCodec, Rust2DartMessageTrait};
 use crate::for_generated::DcoCodec;
-use crate::generalized_isolate::{
-    channel_to_handle, handle_to_channel, IntoDart, SendableChannelHandle,
-};
-use crate::misc::into_into_dart::IntoIntoDart;
-use crate::rust2dart::action::Rust2DartAction;
+use crate::generalized_isolate::{channel_to_handle, handle_to_channel, SendableChannelHandle};
 use crate::rust2dart::sender::Rust2DartSender;
 use std::marker::PhantomData;
 

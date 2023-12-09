@@ -1,10 +1,5 @@
-use super::{DartOpaque, GeneralizedDartHandle};
-use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
-use crate::generalized_isolate::{Channel, IntoDart};
-use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
+use super::DartOpaque;
 use crate::Handler;
-use log::warn;
-use std::thread::ThreadId;
 
 #[cfg(wasm)]
 pub unsafe fn cst_decode_dart_opaque<H: Handler>(
