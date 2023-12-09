@@ -10,7 +10,10 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
         simple_delegate_encode(
             lang,
             &RUST_OPAQUE_WIRE_TYPE,
-            &format!("self.sseEncode(move: {needs_move})"),
+            &match lang {
+                Lang::DartLang(_) => format!("self.sseEncode(move: {needs_move})"),
+                Lang::RustLang(_) => "TODO".to_owned(),
+            },
         )
     }
 
