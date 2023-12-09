@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::sse::lang::Lang;
 use convert_case::{Case, Casing};
 crate::ir! {
 #[serde(transparent)]
@@ -21,6 +22,13 @@ impl IrIdent {
             .unwrap_or(self.raw.as_str())
             .to_string()
             .to_case(Case::Camel)
+    }
+
+    pub fn style(&self, lang: &Lang) -> String {
+        match lang {
+            Lang::DartLang(_) => self.dart_style(),
+            Lang::RustLang(_) => self.rust_style().to_string(),
+        }
     }
 }
 
