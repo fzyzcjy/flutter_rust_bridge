@@ -6,11 +6,9 @@ use crate::codegen::generator::codec::structs::EncodeOrDecode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecOutputSpec;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::WireRustCodecSseGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::codec::sse::ty::CodecSseTyTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use itertools::Itertools;
 
 pub(super) fn generate_encode_or_decode(
     context: WireRustCodecSseGeneratorContext,
@@ -19,20 +17,10 @@ pub(super) fn generate_encode_or_decode(
 ) -> WireRustCodecOutputSpec {
     let mut inner = Default::default();
     inner += generate_misc(mode);
-    inner += (compute_effective_types(types).iter())
+    inner += (types.iter())
         .map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
         .collect();
     WireRustCodecOutputSpec { inner }
-}
-
-fn compute_effective_types(types: &[IrType]) -> Vec<IrType> {
-    [
-        types,
-        // For infallible functions, the result error type is unit
-        IrType::Primitive(IrTypePrimitive::Unit),
-    ]
-    .concat()
-    .deduplicateit()
 }
 
 fn generate_misc(mode: EncodeOrDecode) -> Acc<Vec<WireRustOutputCode>> {
