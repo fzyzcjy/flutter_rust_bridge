@@ -11974,7 +11974,7 @@ impl SseDecode for crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
 
 impl SseDecode for bool {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_bool::<NativeEndian>().unwrap()
+        deserializer.cursor.read_u8::<NativeEndian>().unwrap() as _
     }
 }
 
@@ -13228,7 +13228,7 @@ impl SseDecode for i64 {
 
 impl SseDecode for i8 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_i8::<NativeEndian>().unwrap()
+        deserializer.cursor.read_i8().unwrap()
     }
 }
 
@@ -15158,7 +15158,7 @@ impl SseDecode for u64 {
 
 impl SseDecode for u8 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_u8::<NativeEndian>().unwrap()
+        deserializer.cursor.read_u8().unwrap()
     }
 }
 
@@ -20971,7 +20971,10 @@ impl SseEncode for crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
 
 impl SseEncode for bool {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_bool::<NativeEndian>(self).unwrap();
+        serializer
+            .cursor
+            .write_u8::<NativeEndian>(self as _)
+            .unwrap();
     }
 }
 
@@ -22371,7 +22374,7 @@ impl SseEncode for i64 {
 
 impl SseEncode for i8 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_i8::<NativeEndian>(self).unwrap();
+        serializer.cursor.write_i8(self).unwrap();
     }
 }
 
@@ -24656,7 +24659,7 @@ impl SseEncode for u64 {
 
 impl SseEncode for u8 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_u8::<NativeEndian>(self).unwrap();
+        serializer.cursor.write_u8(self).unwrap();
     }
 }
 

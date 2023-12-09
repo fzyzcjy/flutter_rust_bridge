@@ -29,11 +29,12 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         let dart_cast = match self.ir {
-            IrTypePrimitive::Bool => " ? 1 : 0",
+            IrTypePrimitive::Bool => " != 0",
             _ => "",
         };
         let rust_cast = match self.ir {
-            IrTypePrimitive::Bool | IrTypePrimitive::Usize | IrTypePrimitive::Isize => " as _",
+            IrTypePrimitive::Bool => " != 0",
+            IrTypePrimitive::Usize | IrTypePrimitive::Isize => " as _",
             _ => "",
         };
 
@@ -87,7 +88,7 @@ pub(super) fn get_serializer_rust_type(prim: &IrTypePrimitive) -> String {
 
 fn maybe_endian(ty: &IrTypePrimitive) -> &'static str {
     match ty {
-        IrTypePrimitive::U8 | IrTypePrimitive::I8 => "",
+        IrTypePrimitive::U8 | IrTypePrimitive::I8 | IrTypePrimitive::Bool => "",
         _ => "::<NativeEndian>",
     }
 }
