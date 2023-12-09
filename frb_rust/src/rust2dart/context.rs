@@ -26,6 +26,6 @@ impl<Rust2DartCodec: BaseCodec> TaskRust2DartContext<Rust2DartCodec> {
         T: IntoIntoDart<D>,
         D: IntoDart,
     {
-        StreamSink::<T, Rust2DartCodec>::new(self.sender.clone(), todo!())
+        StreamSink::<T, Rust2DartCodec>::new(self.sender.clone())
     }
 }
