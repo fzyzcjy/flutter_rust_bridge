@@ -26,15 +26,6 @@ pub(crate) struct WireRustGeneratorContext<'a> {
 }
 
 impl WireRustGeneratorContext<'_> {
-    pub(crate) fn as_wire_dart_context(&self) -> WireDartGeneratorContext {
-        WireDartGeneratorContext {
-            ir_pack: self.ir_pack,
-            config: self.wire_dart_config,
-            wire_rust_config: self.config,
-            api_dart_config: self.api_dart_config,
-        }
-    }
-
     pub(crate) fn as_wire_rust_codec_cst_context(&self) -> WireRustCodecCstGeneratorContext {
         WireRustCodecCstGeneratorContext {
             ir_pack: self.ir_pack,
