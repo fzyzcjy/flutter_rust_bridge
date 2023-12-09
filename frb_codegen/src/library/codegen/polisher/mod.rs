@@ -26,11 +26,13 @@ pub(super) fn polish(
         execute_build_runner(needs_freezed, config),
         "execute_build_runner",
     );
-    ok &= warn_if_fail(
+
+    // Even if formatting generated code fails, it is not a big problem, and our codegen should not fail.
+    warn_if_fail(
         execute_dart_format(config, output_paths),
         "execute_dart_format",
     );
-    ok &= warn_if_fail(execute_rust_format(output_paths), "execute_rust_format");
+    warn_if_fail(execute_rust_format(output_paths), "execute_rust_format");
 
     if !ok {
         bail!("Some errors occurred, see logs above for more details");
