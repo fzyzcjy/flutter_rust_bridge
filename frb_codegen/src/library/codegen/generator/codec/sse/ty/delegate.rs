@@ -8,7 +8,7 @@ use itertools::Itertools;
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         if let Some(value) = self.skip_unimplemented(lang) {
-            return value;
+            return Some(value);
         }
 
         let inner_expr = match lang {
@@ -37,7 +37,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         if let Some(value) = self.skip_unimplemented(lang) {
-            return value;
+            return Some(value);
         }
 
         let wrapper_expr = match lang {
@@ -81,17 +81,14 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
 }
 
 impl<'a> DelegateCodecSseTy<'a> {
-    fn skip_unimplemented(&self, lang: &Lang) -> Option<Option<String>> {
+    fn skip_unimplemented(&self, lang: &Lang) -> Option<String> {
         match &self.ir {
-            IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
-                return Some(Some(format!(
-                    "{};",
-                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
-                )));
-            }
-            _ => {}
+            IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => Some(format!(
+                "{};",
+                lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+            )),
+            _ => None,
         }
-        None
     }
 }
 
