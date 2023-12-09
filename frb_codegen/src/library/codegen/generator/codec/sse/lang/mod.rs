@@ -31,6 +31,8 @@ pub(crate) trait LangTrait {
 
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String;
 
+    fn for_range_loop(&self, var: &str, limit: &str, body: &str) -> String;
+
     fn switch_expr(
         &self,
         value: &str,

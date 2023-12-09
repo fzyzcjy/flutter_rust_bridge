@@ -46,6 +46,10 @@ impl LangTrait for DartLang {
         format!("for (final {lhs} in {rhs}) {{ {body} }}")
     }
 
+    fn for_range_loop(&self, var: &str, limit: &str, body: &str) -> String {
+        format!("for (var {var} = 0; {var} < {limit}; ++{var}) {{ {body} }}")
+    }
+
     fn switch_expr(
         &self,
         value: &str,

@@ -49,6 +49,10 @@ impl LangTrait for RustLang {
         format!("for {lhs} in {rhs} {{ {body} }}")
     }
 
+    fn for_range_loop(&self, var: &str, limit: &str, body: &str) -> String {
+        format!("for {var} in 0..{limit} {{ {body} }}")
+    }
+
     fn switch_expr(
         &self,
         value: &str,

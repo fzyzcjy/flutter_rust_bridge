@@ -49,6 +49,10 @@ pub(super) fn general_list_generate_decode(
         ),
         Lang::RustLang(_) => "vec![]".to_owned(),
     };
+    let list_push = match lang {
+        Lang::DartLang(_) => "append",
+        Lang::RustLang(_) => "push",
+    };
 
     format!(
         "
@@ -58,10 +62,10 @@ pub(super) fn general_list_generate_decode(
         return ans_;
         ",
         lang.call_decode(&LEN_TYPE),
-        lang.for_loop(
-            "item",
-            "self",
-            &format!("ans_.push({});", lang.call_decode(ir_inner))
+        lang.for_range_loop(
+            "idx_",
+            "len_",
+            &format!("ans_.{list_push}({});", lang.call_decode(ir_inner))
         ),
     )
 }
