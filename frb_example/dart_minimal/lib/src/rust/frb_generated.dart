@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<Hello> hello({required Hello a, dynamic hint});
+  Stream<int> hiStream({dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
@@ -70,26 +70,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<Hello> hello({required Hello a, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
+  Stream<int> hiStream({dynamic hint}) {
+    return handler.executeStream(StreamTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_box_autoadd_hello(a);
-        return wire.wire_hello(port_, arg0);
+        return wire.wire_hi_stream(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: _dco_decode_hello,
+        decodeSuccessData: _dco_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kHelloConstMeta,
-      argValues: [a],
+      constMeta: kHiStreamConstMeta,
+      argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHelloConstMeta => const TaskConstMeta(
-        debugName: "hello",
-        argNames: ["a"],
+  TaskConstMeta get kHiStreamConstMeta => const TaskConstMeta(
+        debugName: "hi_stream",
+        argNames: [],
       );
 
   @override
@@ -116,24 +115,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  Hello _dco_decode_hello(dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return Hello_Apple();
-      case 1:
-        return Hello_Orange(
-          _dco_decode_i_32(raw[1]),
-        );
-      case 2:
-        return Hello_Raspi(
-          helloWorld: _dco_decode_i_32(raw[1]),
-          anotherField: _dco_decode_i_32(raw[2]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
@@ -142,51 +123,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return;
   }
 
-  Hello _sse_decode_hello(SseDeserializer deserializer) {
-    var tag_ = _sse_decode_i_32(deserializer);
-    switch (tag_) {
-      case 0:
-        return Hello_Apple();
-      case 1:
-        var field0 = _sse_decode_i_32(deserializer);
-        return Hello_Orange(field0);
-      case 2:
-        var helloWorld = _sse_decode_i_32(deserializer);
-        var anotherField = _sse_decode_i_32(deserializer);
-        return Hello_Raspi(helloWorld: helloWorld, anotherField: anotherField);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
   int _sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
-
-  void _sse_encode_box_autoadd_hello(Hello self, SseSerializer serializer) {
-    _sse_encode_hello(self, serializer);
-  }
-
-  void _sse_encode_hello(Hello self, SseSerializer serializer) {
-    switch (self) {
-      case Hello_Apple():
-        _sse_encode_i_32(0, serializer);
-
-      case Hello_Orange(field0: final field0):
-        _sse_encode_i_32(1, serializer);
-        _sse_encode_i_32(field0, serializer);
-
-      case Hello_Raspi(
-          helloWorld: final helloWorld,
-          anotherField: final anotherField
-        ):
-        _sse_encode_i_32(2, serializer);
-        _sse_encode_i_32(helloWorld, serializer);
-        _sse_encode_i_32(anotherField, serializer);
-    }
-  }
 
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);

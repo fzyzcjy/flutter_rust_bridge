@@ -16,30 +16,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  @protected
-  List<dynamic> cst_encode_box_autoadd_hello(Hello raw) {
-    return cst_encode_hello(raw);
-  }
-
-  @protected
-  List<dynamic> cst_encode_hello(Hello raw) {
-    if (raw is Hello_Apple) {
-      return [0];
-    }
-    if (raw is Hello_Orange) {
-      return [1, cst_encode_i_32(raw.field0)];
-    }
-    if (raw is Hello_Raspi) {
-      return [
-        2,
-        cst_encode_i_32(raw.helloWorld),
-        cst_encode_i_32(raw.anotherField)
-      ];
-    }
-
-    throw Exception('unreachable');
-  }
 }
 
 // Section: wire_class
@@ -52,8 +28,7 @@ class RustLibWire extends BaseWire {
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
 
-  void wire_hello(NativePortType port_, List<dynamic> a) =>
-      wasmModule.wire_hello(port_, a);
+  void wire_hi_stream(NativePortType port_) => wasmModule.wire_hi_stream(port_);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
@@ -74,7 +49,7 @@ class RustLibWasmModule implements WasmModule {
   external void frb_initialize_rust(
       NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
 
-  external void wire_hello(NativePortType port_, List<dynamic> a);
+  external void wire_hi_stream(NativePortType port_);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 }

@@ -17,41 +17,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  @protected
-  ffi.Pointer<wire_cst_hello> cst_encode_box_autoadd_hello(Hello raw) {
-    final ptr = wire.cst_new_box_autoadd_hello();
-    _cst_api_fill_to_wire_hello(raw, ptr.ref);
-    return ptr;
-  }
-
-  void _cst_api_fill_to_wire_box_autoadd_hello(
-      Hello apiObj, ffi.Pointer<wire_cst_hello> wireObj) {
-    _cst_api_fill_to_wire_hello(apiObj, wireObj.ref);
-  }
-
-  void _cst_api_fill_to_wire_hello(Hello apiObj, wire_cst_hello wireObj) {
-    if (apiObj is Hello_Apple) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is Hello_Orange) {
-      var pre_field0 = cst_encode_i_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.cst_inflate_Hello_Orange();
-      wireObj.kind.ref.Orange.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is Hello_Raspi) {
-      var pre_hello_world = cst_encode_i_32(apiObj.helloWorld);
-      var pre_another_field = cst_encode_i_32(apiObj.anotherField);
-      wireObj.tag = 2;
-      wireObj.kind = wire.cst_inflate_Hello_Raspi();
-      wireObj.kind.ref.Raspi.ref.hello_world = pre_hello_world;
-      wireObj.kind.ref.Raspi.ref.another_field = pre_another_field;
-      return;
-    }
-  }
 }
 
 // Section: wire_class
@@ -97,22 +62,19 @@ class RustLibWire implements BaseWire {
   late final _frb_initialize_rust =
       _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
 
-  void wire_hello(
+  void wire_hi_stream(
     int port_,
-    ffi.Pointer<wire_cst_hello> a,
   ) {
-    return _wire_hello(
+    return _wire_hi_stream(
       port_,
-      a,
     );
   }
 
-  late final _wire_helloPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_cst_hello>)>>('wire_hello');
-  late final _wire_hello = _wire_helloPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_cst_hello>)>();
+  late final _wire_hi_streamPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_hi_stream');
+  late final _wire_hi_stream =
+      _wire_hi_streamPtr.asFunction<void Function(int)>();
 
   void wire_minimal_adder(
     int port_,
@@ -133,36 +95,6 @@ class RustLibWire implements BaseWire {
   late final _wire_minimal_adder =
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
 
-  ffi.Pointer<wire_cst_hello> cst_new_box_autoadd_hello() {
-    return _cst_new_box_autoadd_hello();
-  }
-
-  late final _cst_new_box_autoadd_helloPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_hello> Function()>>(
-          'cst_new_box_autoadd_hello');
-  late final _cst_new_box_autoadd_hello = _cst_new_box_autoadd_helloPtr
-      .asFunction<ffi.Pointer<wire_cst_hello> Function()>();
-
-  ffi.Pointer<HelloKind> cst_inflate_Hello_Orange() {
-    return _cst_inflate_Hello_Orange();
-  }
-
-  late final _cst_inflate_Hello_OrangePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<HelloKind> Function()>>(
-          'cst_inflate_Hello_Orange');
-  late final _cst_inflate_Hello_Orange = _cst_inflate_Hello_OrangePtr
-      .asFunction<ffi.Pointer<HelloKind> Function()>();
-
-  ffi.Pointer<HelloKind> cst_inflate_Hello_Raspi() {
-    return _cst_inflate_Hello_Raspi();
-  }
-
-  late final _cst_inflate_Hello_RaspiPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<HelloKind> Function()>>(
-          'cst_inflate_Hello_Raspi');
-  late final _cst_inflate_Hello_Raspi = _cst_inflate_Hello_RaspiPtr
-      .asFunction<ffi.Pointer<HelloKind> Function()>();
-
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
@@ -172,34 +104,4 @@ class RustLibWire implements BaseWire {
           'dummy_method_to_enforce_bundling');
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
-}
-
-final class wire_cst_Hello_Apple extends ffi.Opaque {}
-
-final class wire_cst_Hello_Orange extends ffi.Struct {
-  @ffi.Int32()
-  external int field0;
-}
-
-final class wire_cst_Hello_Raspi extends ffi.Struct {
-  @ffi.Int32()
-  external int hello_world;
-
-  @ffi.Int32()
-  external int another_field;
-}
-
-final class HelloKind extends ffi.Union {
-  external ffi.Pointer<wire_cst_Hello_Apple> Apple;
-
-  external ffi.Pointer<wire_cst_Hello_Orange> Orange;
-
-  external ffi.Pointer<wire_cst_Hello_Raspi> Raspi;
-}
-
-final class wire_cst_hello extends ffi.Struct {
-  @ffi.Int32()
-  external int tag;
-
-  external ffi.Pointer<HelloKind> kind;
 }

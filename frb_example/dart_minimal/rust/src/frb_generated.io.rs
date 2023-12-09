@@ -10,63 +10,6 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl CstDecode<crate::api::minimal::Hello> for *mut wire_cst_hello {
-    fn cst_decode(self) -> crate::api::minimal::Hello {
-        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::minimal::Hello>::cst_decode(*wrap).into()
-    }
-}
-impl CstDecode<crate::api::minimal::Hello> for wire_cst_hello {
-    fn cst_decode(self) -> crate::api::minimal::Hello {
-        match self.tag {
-            0 => crate::api::minimal::Hello::Apple,
-            1 => unsafe {
-                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
-                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Orange);
-                crate::api::minimal::Hello::Orange(ans.field0.cst_decode())
-            },
-            2 => unsafe {
-                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
-                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Raspi);
-                crate::api::minimal::Hello::Raspi {
-                    hello_world: ans.hello_world.cst_decode(),
-                    another_field: ans.another_field.cst_decode(),
-                }
-            },
-            _ => unreachable!(),
-        }
-    }
-}
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_cst_hello {
-    tag: i32,
-    kind: *mut HelloKind,
-}
-
-#[repr(C)]
-pub union HelloKind {
-    Apple: *mut wire_cst_Hello_Apple,
-    Orange: *mut wire_cst_Hello_Orange,
-    Raspi: *mut wire_cst_Hello_Raspi,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_cst_Hello_Apple {}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_cst_Hello_Orange {
-    field0: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_cst_Hello_Raspi {
-    hello_world: i32,
-    another_field: i32,
-}
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }
@@ -74,19 +17,6 @@ pub trait NewWithNullPtr {
 impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
-    }
-}
-impl NewWithNullPtr for wire_cst_hello {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            tag: -1,
-            kind: core::ptr::null_mut(),
-        }
-    }
-}
-impl Default for wire_cst_hello {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
     }
 }
 
@@ -103,35 +33,11 @@ pub extern "C" fn frb_initialize_rust(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_hello(port_: i64, a: *mut wire_cst_hello) {
-    wire_hello_impl(port_, a)
+pub extern "C" fn wire_hi_stream(port_: i64) {
+    wire_hi_stream_impl(port_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
-}
-
-#[no_mangle]
-pub extern "C" fn cst_new_box_autoadd_hello() -> *mut wire_cst_hello {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_hello::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn cst_inflate_Hello_Orange() -> *mut HelloKind {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(HelloKind {
-        Orange: flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_Hello_Orange {
-            field0: Default::default(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn cst_inflate_Hello_Raspi() -> *mut HelloKind {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(HelloKind {
-        Raspi: flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_Hello_Raspi {
-            hello_world: Default::default(),
-            another_field: Default::default(),
-        }),
-    })
 }

@@ -45,20 +45,18 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 // Section: wire_funcs
 
-fn wire_hello_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<crate::api::minimal::Hello> + core::panic::UnwindSafe,
-) {
+fn wire_hi_stream_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "hello",
+            debug_name: "hi_stream",
             port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream,
         },
         move || {
-            let api_a = a.cst_decode();
             move |context| {
-                transform_result_dco(Result::<_, ()>::Ok(crate::api::minimal::hello(api_a)))
+                transform_result_dco(Result::<_, ()>::Ok(crate::api::minimal::hi_stream(
+                    context.rust2dart_context().stream_sink::<_, i32>(),
+                )))
             }
         },
     )
@@ -93,32 +91,6 @@ impl CstDecode<i32> for i32 {
         self
     }
 }
-impl SseDecode for crate::api::minimal::Hello {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(deserializer);
-        match tag_ {
-            0 => {
-                return crate::api::minimal::Hello::Apple;
-            }
-            1 => {
-                let mut field0 = <i32>::sse_decode(deserializer);
-                return crate::api::minimal::Hello::Orange(field0);
-            }
-            2 => {
-                let mut helloWorld = <i32>::sse_decode(deserializer);
-                let mut anotherField = <i32>::sse_decode(deserializer);
-                return crate::api::minimal::Hello::Raspi {
-                    hello_world: helloWorld,
-                    another_field: anotherField,
-                };
-            }
-            _ => {
-                unimplemented!("");
-            }
-        }
-    }
-}
-
 impl SseDecode for i32 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
@@ -126,58 +98,6 @@ impl SseDecode for i32 {
 }
 
 // Section: rust2dart
-
-impl flutter_rust_bridge::IntoDart for crate::api::minimal::Hello {
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {
-            crate::api::minimal::Hello::Apple => {
-                vec![0.into_dart()]
-            }
-            crate::api::minimal::Hello::Orange(field0) => {
-                vec![1.into_dart(), field0.into_into_dart().into_dart()]
-            }
-            crate::api::minimal::Hello::Raspi {
-                hello_world,
-                another_field,
-            } => {
-                vec![
-                    2.into_dart(),
-                    hello_world.into_into_dart().into_dart(),
-                    another_field.into_into_dart().into_dart(),
-                ]
-            }
-        }
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::minimal::Hello {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::Hello> for crate::api::minimal::Hello {
-    fn into_into_dart(self) -> crate::api::minimal::Hello {
-        self
-    }
-}
-
-impl SseEncode for crate::api::minimal::Hello {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {
-            crate::api::minimal::Hello::Apple => {
-                <i32>::sse_encode(0, serializer);
-            }
-            crate::api::minimal::Hello::Orange(field0) => {
-                <i32>::sse_encode(1, serializer);
-                <i32>::sse_encode(field0, serializer);
-            }
-            crate::api::minimal::Hello::Raspi {
-                hello_world,
-                another_field,
-            } => {
-                <i32>::sse_encode(2, serializer);
-                <i32>::sse_encode(hello_world, serializer);
-                <i32>::sse_encode(another_field, serializer);
-            }
-        }
-    }
-}
 
 impl SseEncode for i32 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
