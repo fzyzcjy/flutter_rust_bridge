@@ -80,7 +80,7 @@ pub(super) fn get_serializer_rust_type(prim: &IrTypePrimitive) -> String {
         // TODO make it adapt to 32/64bit platform
         IrTypePrimitive::Usize => "u64".to_owned(),
         IrTypePrimitive::Isize => "i64".to_owned(),
-        IrTypePrimitive::bool => "u8".to_owned(),
+        IrTypePrimitive::Bool => "u8".to_owned(),
         _ => prim.rust_api_type(),
     }
 }
