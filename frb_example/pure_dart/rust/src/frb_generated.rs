@@ -11561,7 +11561,7 @@ impl SseDecode for chrono::DateTime<chrono::Utc> {
 impl SseDecode for flutter_rust_bridge::DartOpaque {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::sse_decode_dart_opaque(inner);
+        return unsafe { flutter_rust_bridge::for_generated::sse_decode_dart_opaque(inner) };
     }
 }
 
@@ -11974,7 +11974,7 @@ impl SseDecode for crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
 
 impl SseDecode for bool {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_u8::<NativeEndian>().unwrap() as _
+        deserializer.cursor.read_u8().unwrap() != 0
     }
 }
 
@@ -20971,10 +20971,7 @@ impl SseEncode for crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
 
 impl SseEncode for bool {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer
-            .cursor
-            .write_u8::<NativeEndian>(self as _)
-            .unwrap();
+        serializer.cursor.write_u8(self as _).unwrap();
     }
 }
 
