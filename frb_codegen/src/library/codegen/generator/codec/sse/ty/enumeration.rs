@@ -1,4 +1,6 @@
+use crate::codegen::generator::codec::sse::ty::structure::GeneralizedStructGenerator;
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
 use itertools::Itertools;
@@ -41,8 +43,13 @@ fn generate_decode_rust(lang: &Lang, src: &IrEnum) -> String {
 }
 
 fn generate_decode_rust_variant(variant: &IrVariant) -> String {
-    // TODO reuse things in `structure`?
-    todo!()
+    match &variant.kind {
+        IrVariantKind::Value => TODO,
+        IrVariantKind::Struct(st) => {
+            GeneralizedStructGenerator::new(st.clone(), StructOrRecord::Struct)
+                .generate_decode(&Lang::RustLang(_))
+        }
+    }
 }
 
 fn generate_encode_rust(lang: &Lang, src: &IrEnum) -> String {
