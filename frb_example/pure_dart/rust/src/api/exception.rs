@@ -1,6 +1,6 @@
+use crate::frb_generated::StreamSink;
 use anyhow::{anyhow, Result};
 use backtrace::Backtrace;
-use flutter_rust_bridge::StreamSink;
 
 // ------------------------------ built-in errors ----------------------------------
 

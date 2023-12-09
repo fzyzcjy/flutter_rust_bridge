@@ -4,7 +4,8 @@
 
 // To use an external type with mirroring, it MUST be imported publicly (aka. re-export)
 use crate::auxiliary::sample_types::{MyEnum, MyStruct};
-use flutter_rust_bridge::{frb, StreamSink};
+use crate::frb_generated::StreamSink;
+use flutter_rust_bridge::frb;
 pub use frb_example_pure_dart_exapmle_external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
     ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers, RawStringEnumMirrored,

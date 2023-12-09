@@ -1,8 +1,9 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync"]}
 
+use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::{transfer, StreamSink};
+use flutter_rust_bridge::transfer;
 use log::info;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;

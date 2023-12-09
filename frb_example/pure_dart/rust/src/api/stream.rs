@@ -1,9 +1,10 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
 
+use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::{transfer, StreamSink};
+use flutter_rust_bridge::transfer;
 
 pub fn func_stream_return_error_twin_normal(_sink: StreamSink<String>) -> anyhow::Result<()> {
     Err(anyhow!("deliberate error"))
