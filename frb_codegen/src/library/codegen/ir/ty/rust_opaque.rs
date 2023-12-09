@@ -1,7 +1,9 @@
+use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::sse::ty::DelegateCodecSseTy;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
@@ -19,11 +21,15 @@ impl IrTypeRustOpaque {
         }
     }
 
-    pub(crate) fn get_delegate(&self) -> IrType {
-        Self::DELEGATE_TYPE.clone()
+    pub(crate) fn get_delegate(lang: &Lang) -> IrType {
+        match lang {
+            Lang::DartLang(_) => IrType::Record(IrTypeRecord {
+                inner: IrTypeStructRef {},
+                values: Box::new([]),
+            }),
+            Lang::RustLang(_) => IrType::Primitive(IrTypePrimitive::Usize),
+        }
     }
-
-    pub(crate) const DELEGATE_TYPE: IrType = IrType::Primitive(IrTypePrimitive::Usize);
 }
 
 impl IrTypeTrait for IrTypeRustOpaque {
