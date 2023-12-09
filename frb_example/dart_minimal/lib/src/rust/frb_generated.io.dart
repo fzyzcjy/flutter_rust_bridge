@@ -83,7 +83,7 @@ class RustLibWire implements BaseWire {
   late final _wire_hello = _wire_helloPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  int wire_hello_sync(
+  WireSyncReturnSse wire_hello_sync(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
@@ -97,10 +97,10 @@ class RustLibWire implements BaseWire {
 
   late final _wire_hello_syncPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+          WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
               ffi.Int32)>>('wire_hello_sync');
-  late final _wire_hello_sync = _wire_hello_syncPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+  late final _wire_hello_sync = _wire_hello_syncPtr.asFunction<
+      WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_minimal_adder(
     int port_,

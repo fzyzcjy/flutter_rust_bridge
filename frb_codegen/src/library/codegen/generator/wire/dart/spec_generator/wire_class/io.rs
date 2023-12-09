@@ -4,6 +4,8 @@ use crate::codegen::generator::wire::dart::internal_config::{
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 use anyhow::ensure;
+use lazy_static::lazy_static;
+use regex::Regex;
 
 pub(crate) fn generate(
     config: &GeneratorWireDartInternalConfig,
@@ -32,11 +34,16 @@ fn postpare_modify(
     content_raw: &str,
     dart_output_class_name_pack: &DartOutputClassNamePack,
 ) -> String {
+    lazy_static! {
+        static ref FILTER: Regex =
+            Regex::new(r#"(?s)final class WireSyncReturnSse extends ffi.Struct \{.*?\}"#).unwrap();
+    }
+
     let DartOutputClassNamePack {
         wire_class_name, ..
     } = &dart_output_class_name_pack;
 
-    content_raw
+    let ans = content_raw
         .replace(
             &format!("class {wire_class_name} {{"),
             &format!(
@@ -49,7 +56,9 @@ fn postpare_modify(
         )
         .replace("final class DartCObject extends ffi.Opaque {}", "")
         .replace("final class _Dart_Handle extends ffi.Opaque {}", "")
-        .replace("typedef WireSyncReturnDco = ffi.Pointer<DartCObject>;", "")
+        .replace("typedef WireSyncReturnDco = ffi.Pointer<DartCObject>;", "");
+    let ans = FILTER.replace_all(&ans, "").to_string();
+    ans
 }
 
 fn sanity_check(

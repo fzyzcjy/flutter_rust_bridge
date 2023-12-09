@@ -1,7 +1,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+// EXTRA BEGIN
 typedef struct DartCObject *WireSyncReturnDco;
+typedef struct WireSyncReturnSse {
+  uint8_t *ptr;
+  int32_t len;
+} WireSyncReturnSse;
+// EXTRA END
 typedef struct _Dart_Handle* Dart_Handle;
 
 void frb_initialize_rust(MessagePort dart_opaque_drop_port, MessagePort dart_fn_invoke_port);
