@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt::{Display, Formatter};
@@ -88,6 +89,13 @@ impl NamespacedName {
 
     pub fn rust_style(&self) -> String {
         format!("{}::{}", self.namespace, self.name)
+    }
+
+    pub fn style(&self, lang: &Lang) -> String {
+        match lang {
+            Lang::DartLang(_) => self.name.clone(),
+            Lang::RustLang(_) => self.rust_style(),
+        }
     }
 }
 

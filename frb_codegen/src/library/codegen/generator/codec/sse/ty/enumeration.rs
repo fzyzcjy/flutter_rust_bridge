@@ -60,7 +60,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang: &Lang) -> String {
     let enum_sep = enum_sep(lang);
     match &variant.kind {
-        IrVariantKind::Value => format!("{}{enum_sep}{}", enum_name.rust_style(), variant.name),
+        IrVariantKind::Value => format!("{}{enum_sep}{}", enum_name.style(lang), variant.name),
         IrVariantKind::Struct(st) => {
             GeneralizedStructGenerator::new(st.clone(), StructOrRecord::Struct)
                 .generate_decode(lang)
