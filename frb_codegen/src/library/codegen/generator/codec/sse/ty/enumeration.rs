@@ -3,6 +3,7 @@ use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
+use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
@@ -25,7 +26,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
                 {fields}
             }}
             ",
-                lang.call_encode(&TAG_TYPE, idx),
+                lang.call_encode(&TAG_TYPE, format!("{idx}")),
             )
         })
     }
@@ -45,7 +46,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
             })
             .collect_vec();
 
-        let body = lang.switch_expr("tag_", variants);
+        let body = lang.switch_expr("tag_", &variants);
 
         format!(
             "
@@ -96,7 +97,7 @@ pub(crate) fn generate_enum_encode_rust_general(
         })
         .collect_vec();
 
-    lang.switch_expr(self_ref, variants)
+    lang.switch_expr(self_ref, &variants)
 }
 
 fn enum_sep(lang: &Lang) -> &'static str {

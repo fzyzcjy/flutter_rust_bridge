@@ -21,12 +21,12 @@ impl<'a> StructRefCodecSseTy<'a> {
     }
 }
 
-pub(crate) struct GeneralizedStructGenerator<'a> {
+pub(crate) struct GeneralizedStructGenerator {
     st: IrStruct,
     mode: StructOrRecord,
 }
 
-impl<'a> GeneralizedStructGenerator<'a> {
+impl GeneralizedStructGenerator {
     pub(crate) fn new(st: IrStruct, mode: StructOrRecord) -> Self {
         Self { st, mode }
     }
