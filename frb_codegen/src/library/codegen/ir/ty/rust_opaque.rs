@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::sse::ty::DelegateCodecSseTy;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -19,16 +20,19 @@ impl IrTypeRustOpaque {
     }
 
     pub(crate) fn get_delegate(&self) -> IrType {
-        IrType::Primitive(IrTypePrimitive::Usize)
+        Self::DELEGATE_TYPE.clone()
     }
+
+    pub(crate) const DELEGATE_TYPE: IrType = IrType::Primitive(IrTypePrimitive::Usize);
 }
 
 impl IrTypeTrait for IrTypeRustOpaque {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(
         &self,
-        _f: &mut F,
-        _ir_context: &impl IrContext,
+        f: &mut F,
+        ir_context: &impl IrContext,
     ) {
+        self.get_delegate().visit_types(f, ir_context)
     }
 
     fn safe_ident(&self) -> String {

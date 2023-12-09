@@ -9,10 +9,10 @@ pub struct IrTypeDartOpaque;
 impl IrTypeTrait for IrTypeDartOpaque {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(
         &self,
-        _f: &mut F,
-        _ir_context: &impl IrContext,
+        f: &mut F,
+        ir_context: &impl IrContext,
     ) {
-        // do nothing.
+        self.get_delegate().visit_types(f, ir_context)
     }
 
     fn safe_ident(&self) -> String {
