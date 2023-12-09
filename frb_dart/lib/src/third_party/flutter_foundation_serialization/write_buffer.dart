@@ -6,6 +6,7 @@ import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
 import 'package:flutter_rust_bridge/src/misc/rust_vec_u8.dart';
 
 // NOTE MAIN MODIFICATION:

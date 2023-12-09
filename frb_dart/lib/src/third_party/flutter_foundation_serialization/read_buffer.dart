@@ -3,6 +3,8 @@ library;
 
 import 'dart:typed_data';
 
+import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
+
 /// Read-only buffer for reading sequentially from a [ByteData] instance.
 ///
 /// The byte order used is [Endian.host] throughout.
