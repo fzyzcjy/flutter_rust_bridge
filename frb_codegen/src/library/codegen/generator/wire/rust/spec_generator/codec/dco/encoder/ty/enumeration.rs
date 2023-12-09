@@ -51,23 +51,20 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
                     }
                 }
             })
-            .collect_vec();
+            .join("\n");
 
         let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
         Some(format!(
-            "impl flutter_rust_bridge::IntoDart for {} {{
+            "impl flutter_rust_bridge::IntoDart for {name} {{
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
-                    match {} {{
-                        {}
+                    match {self_ref} {{
+                        {variants}
                     }}.into_dart()
                 }}
             }}
-            impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {0} {{}}
+            impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {name} {{}}
             {into_into_dart}
             ",
-            name,
-            self_ref,
-            variants.join("\n")
         ))
     }
 

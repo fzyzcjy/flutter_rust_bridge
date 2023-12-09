@@ -3,7 +3,7 @@ mod dart_fn;
 mod dart_opaque;
 pub(crate) mod delegate;
 mod dynamic;
-mod enumeration;
+pub(crate) mod enumeration;
 mod general_list;
 mod optional;
 mod ownership;
