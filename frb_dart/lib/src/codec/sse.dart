@@ -25,7 +25,8 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
   S decodeObject(dynamic raw) => _decode(raw as Uint8List);
 
   @override
-  S decodeWireSyncType(WireSyncReturnSse raw) => _decode(TODO);
+  S decodeWireSyncType(WireSyncReturnSse raw) =>
+      _decode(raw.ptr.asTypedList(raw.len));
 
   S _decode(Uint8List bytes) {
     return TODO;
