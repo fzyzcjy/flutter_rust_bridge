@@ -103,11 +103,17 @@ sealed class EnumOpaqueTwinSync with _$EnumOpaqueTwinSync {
 
 class EnumOpaqueTwinSyncArray5 extends NonGrowableListView<EnumOpaqueTwinSync> {
   static const arraySize = 5;
-  EnumOpaqueTwinSyncArray5(List<EnumOpaqueTwinSync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  EnumOpaqueTwinSyncArray5.unchecked(List<EnumOpaqueTwinSync> inner)
-      : super(inner);
+
+  @internal
+  List<EnumOpaqueTwinSync> get inner => _inner;
+  final List<EnumOpaqueTwinSync> _inner;
+
+  EnumOpaqueTwinSyncArray5(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  EnumOpaqueTwinSyncArray5.init() : this(List<EnumOpaqueTwinSync>(arraySize));
+
   EnumOpaqueTwinSyncArray5.init(EnumOpaqueTwinSync fill)
       : super(List<EnumOpaqueTwinSync>.filled(arraySize, fill));
 }

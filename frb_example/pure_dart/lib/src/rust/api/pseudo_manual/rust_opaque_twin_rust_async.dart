@@ -168,10 +168,17 @@ class HideData extends RustOpaque {
 
 class HideDataArray2 extends NonGrowableListView<HideData> {
   static const arraySize = 2;
-  HideDataArray2(List<HideData> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  HideDataArray2.unchecked(List<HideData> inner) : super(inner);
+
+  @internal
+  List<HideData> get inner => _inner;
+  final List<HideData> _inner;
+
+  HideDataArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  HideDataArray2.init() : this(List<HideData>(arraySize));
+
   HideDataArray2.init(HideData fill)
       : super(List<HideData>.filled(arraySize, fill));
 }
@@ -252,11 +259,18 @@ sealed class EnumOpaqueTwinRustAsync with _$EnumOpaqueTwinRustAsync {
 class EnumOpaqueTwinRustAsyncArray5
     extends NonGrowableListView<EnumOpaqueTwinRustAsync> {
   static const arraySize = 5;
-  EnumOpaqueTwinRustAsyncArray5(List<EnumOpaqueTwinRustAsync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  EnumOpaqueTwinRustAsyncArray5.unchecked(List<EnumOpaqueTwinRustAsync> inner)
-      : super(inner);
+
+  @internal
+  List<EnumOpaqueTwinRustAsync> get inner => _inner;
+  final List<EnumOpaqueTwinRustAsync> _inner;
+
+  EnumOpaqueTwinRustAsyncArray5(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  EnumOpaqueTwinRustAsyncArray5.init()
+      : this(List<EnumOpaqueTwinRustAsync>(arraySize));
+
   EnumOpaqueTwinRustAsyncArray5.init(EnumOpaqueTwinRustAsync fill)
       : super(List<EnumOpaqueTwinRustAsync>.filled(arraySize, fill));
 }

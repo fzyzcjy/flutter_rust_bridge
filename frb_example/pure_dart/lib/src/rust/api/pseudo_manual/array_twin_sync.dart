@@ -121,10 +121,17 @@ class PointTwinSync {
 
 class PointTwinSyncArray2 extends NonGrowableListView<PointTwinSync> {
   static const arraySize = 2;
-  PointTwinSyncArray2(List<PointTwinSync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  PointTwinSyncArray2.unchecked(List<PointTwinSync> inner) : super(inner);
+
+  @internal
+  List<PointTwinSync> get inner => _inner;
+  final List<PointTwinSync> _inner;
+
+  PointTwinSyncArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  PointTwinSyncArray2.init() : this(List<PointTwinSync>(arraySize));
+
   PointTwinSyncArray2.init(PointTwinSync fill)
       : super(List<PointTwinSync>.filled(arraySize, fill));
 }
@@ -149,20 +156,34 @@ class TestIdTwinSync {
 
 class TestIdTwinSyncArray2 extends NonGrowableListView<TestIdTwinSync> {
   static const arraySize = 2;
-  TestIdTwinSyncArray2(List<TestIdTwinSync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  TestIdTwinSyncArray2.unchecked(List<TestIdTwinSync> inner) : super(inner);
+
+  @internal
+  List<TestIdTwinSync> get inner => _inner;
+  final List<TestIdTwinSync> _inner;
+
+  TestIdTwinSyncArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  TestIdTwinSyncArray2.init() : this(List<TestIdTwinSync>(arraySize));
+
   TestIdTwinSyncArray2.init(TestIdTwinSync fill)
       : super(List<TestIdTwinSync>.filled(arraySize, fill));
 }
 
 class TestIdTwinSyncArray4 extends NonGrowableListView<TestIdTwinSync> {
   static const arraySize = 4;
-  TestIdTwinSyncArray4(List<TestIdTwinSync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  TestIdTwinSyncArray4.unchecked(List<TestIdTwinSync> inner) : super(inner);
+
+  @internal
+  List<TestIdTwinSync> get inner => _inner;
+  final List<TestIdTwinSync> _inner;
+
+  TestIdTwinSyncArray4(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  TestIdTwinSyncArray4.init() : this(List<TestIdTwinSync>(arraySize));
+
   TestIdTwinSyncArray4.init(TestIdTwinSync fill)
       : super(List<TestIdTwinSync>.filled(arraySize, fill));
 }

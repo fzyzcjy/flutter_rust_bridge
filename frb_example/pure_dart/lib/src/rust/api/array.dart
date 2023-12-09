@@ -3,10 +3,9 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import
 
+import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-import '../frb_generated.dart';
 
 Future<U8Array5> getArrayTwinNormal({dynamic hint}) =>
     RustLib.instance.api.getArrayTwinNormal(hint: hint);
@@ -71,11 +70,15 @@ class BlobTwinNormal {
 class F64Array16 extends NonGrowableListView<double> {
   static const arraySize = 16;
 
-  F64Array16(Float64List inner)
-      : assert(inner.length == arraySize),
-        super(inner);
+  @internal
+  Float64List get inner => _inner;
+  final Float64List _inner;
 
-  F64Array16.unchecked(Float64List inner) : super(inner);
+  F64Array16(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  F64Array16.init() : this(Float64List(arraySize));
 
   F64Array16.init() : super(Float64List(arraySize));
 }
@@ -101,11 +104,15 @@ class FeedIdTwinNormal {
 class I32Array2 extends NonGrowableListView<int> {
   static const arraySize = 2;
 
-  I32Array2(Int32List inner)
-      : assert(inner.length == arraySize),
-        super(inner);
+  @internal
+  Int32List get inner => _inner;
+  final Int32List _inner;
 
-  I32Array2.unchecked(Int32List inner) : super(inner);
+  I32Array2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  I32Array2.init() : this(Int32List(arraySize));
 
   I32Array2.init() : super(Int32List(arraySize));
 }
@@ -152,11 +159,15 @@ class PointTwinNormal {
 class PointTwinNormalArray2 extends NonGrowableListView<PointTwinNormal> {
   static const arraySize = 2;
 
-  PointTwinNormalArray2(List<PointTwinNormal> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
+  @internal
+  List<PointTwinNormal> get inner => _inner;
+  final List<PointTwinNormal> _inner;
 
-  PointTwinNormalArray2.unchecked(List<PointTwinNormal> inner) : super(inner);
+  PointTwinNormalArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  PointTwinNormalArray2.init() : this(List<PointTwinNormal>(arraySize));
 
   PointTwinNormalArray2.init(PointTwinNormal fill)
       : super(List<PointTwinNormal>.filled(arraySize, fill));
@@ -183,11 +194,15 @@ class TestIdTwinNormal {
 class TestIdTwinNormalArray2 extends NonGrowableListView<TestIdTwinNormal> {
   static const arraySize = 2;
 
-  TestIdTwinNormalArray2(List<TestIdTwinNormal> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
+  @internal
+  List<TestIdTwinNormal> get inner => _inner;
+  final List<TestIdTwinNormal> _inner;
 
-  TestIdTwinNormalArray2.unchecked(List<TestIdTwinNormal> inner) : super(inner);
+  TestIdTwinNormalArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  TestIdTwinNormalArray2.init() : this(List<TestIdTwinNormal>(arraySize));
 
   TestIdTwinNormalArray2.init(TestIdTwinNormal fill)
       : super(List<TestIdTwinNormal>.filled(arraySize, fill));
@@ -196,11 +211,15 @@ class TestIdTwinNormalArray2 extends NonGrowableListView<TestIdTwinNormal> {
 class TestIdTwinNormalArray4 extends NonGrowableListView<TestIdTwinNormal> {
   static const arraySize = 4;
 
-  TestIdTwinNormalArray4(List<TestIdTwinNormal> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
+  @internal
+  List<TestIdTwinNormal> get inner => _inner;
+  final List<TestIdTwinNormal> _inner;
 
-  TestIdTwinNormalArray4.unchecked(List<TestIdTwinNormal> inner) : super(inner);
+  TestIdTwinNormalArray4(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  TestIdTwinNormalArray4.init() : this(List<TestIdTwinNormal>(arraySize));
 
   TestIdTwinNormalArray4.init(TestIdTwinNormal fill)
       : super(List<TestIdTwinNormal>.filled(arraySize, fill));
@@ -209,11 +228,15 @@ class TestIdTwinNormalArray4 extends NonGrowableListView<TestIdTwinNormal> {
 class U8Array1600 extends NonGrowableListView<int> {
   static const arraySize = 1600;
 
-  U8Array1600(Uint8List inner)
-      : assert(inner.length == arraySize),
-        super(inner);
+  @internal
+  Uint8List get inner => _inner;
+  final Uint8List _inner;
 
-  U8Array1600.unchecked(Uint8List inner) : super(inner);
+  U8Array1600(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  U8Array1600.init() : this(Uint8List(arraySize));
 
   U8Array1600.init() : super(Uint8List(arraySize));
 }
@@ -230,16 +253,22 @@ class U8Array32 extends NonGrowableListView<int> {
         super(_inner);
 
   U8Array32.init() : this(Uint8List(arraySize));
+
+  U8Array32.init() : super(Uint8List(arraySize));
 }
 
 class U8Array5 extends NonGrowableListView<int> {
   static const arraySize = 5;
 
-  U8Array5(Uint8List inner)
-      : assert(inner.length == arraySize),
-        super(inner);
+  @internal
+  Uint8List get inner => _inner;
+  final Uint8List _inner;
 
-  U8Array5.unchecked(Uint8List inner) : super(inner);
+  U8Array5(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  U8Array5.init() : this(Uint8List(arraySize));
 
   U8Array5.init() : super(Uint8List(arraySize));
 }
@@ -247,11 +276,15 @@ class U8Array5 extends NonGrowableListView<int> {
 class U8Array8 extends NonGrowableListView<int> {
   static const arraySize = 8;
 
-  U8Array8(Uint8List inner)
-      : assert(inner.length == arraySize),
-        super(inner);
+  @internal
+  Uint8List get inner => _inner;
+  final Uint8List _inner;
 
-  U8Array8.unchecked(Uint8List inner) : super(inner);
+  U8Array8(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  U8Array8.init() : this(Uint8List(arraySize));
 
   U8Array8.init() : super(Uint8List(arraySize));
 }

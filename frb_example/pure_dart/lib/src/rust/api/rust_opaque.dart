@@ -113,11 +113,18 @@ sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
 class EnumOpaqueTwinNormalArray5
     extends NonGrowableListView<EnumOpaqueTwinNormal> {
   static const arraySize = 5;
-  EnumOpaqueTwinNormalArray5(List<EnumOpaqueTwinNormal> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  EnumOpaqueTwinNormalArray5.unchecked(List<EnumOpaqueTwinNormal> inner)
-      : super(inner);
+
+  @internal
+  List<EnumOpaqueTwinNormal> get inner => _inner;
+  final List<EnumOpaqueTwinNormal> _inner;
+
+  EnumOpaqueTwinNormalArray5(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  EnumOpaqueTwinNormalArray5.init()
+      : this(List<EnumOpaqueTwinNormal>(arraySize));
+
   EnumOpaqueTwinNormalArray5.init(EnumOpaqueTwinNormal fill)
       : super(List<EnumOpaqueTwinNormal>.filled(arraySize, fill));
 }

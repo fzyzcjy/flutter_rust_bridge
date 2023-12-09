@@ -123,11 +123,17 @@ class SumWithTwinNormal {
 
 class SumWithTwinNormalArray3 extends NonGrowableListView<SumWithTwinNormal> {
   static const arraySize = 3;
-  SumWithTwinNormalArray3(List<SumWithTwinNormal> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  SumWithTwinNormalArray3.unchecked(List<SumWithTwinNormal> inner)
-      : super(inner);
+
+  @internal
+  List<SumWithTwinNormal> get inner => _inner;
+  final List<SumWithTwinNormal> _inner;
+
+  SumWithTwinNormalArray3(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  SumWithTwinNormalArray3.init() : this(List<SumWithTwinNormal>(arraySize));
+
   SumWithTwinNormalArray3.init(SumWithTwinNormal fill)
       : super(List<SumWithTwinNormal>.filled(arraySize, fill));
 }

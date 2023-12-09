@@ -82,10 +82,17 @@ Future<List<Object>> cloneDartOpaqueTwinNormal(
 
 class ObjectArray1 extends NonGrowableListView<Object> {
   static const arraySize = 1;
-  ObjectArray1(List<Object> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  ObjectArray1.unchecked(List<Object> inner) : super(inner);
+
+  @internal
+  List<Object> get inner => _inner;
+  final List<Object> _inner;
+
+  ObjectArray1(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  ObjectArray1.init() : this(List<Object>(arraySize));
+
   ObjectArray1.init(Object fill) : super(List<Object>.filled(arraySize, fill));
 }
 

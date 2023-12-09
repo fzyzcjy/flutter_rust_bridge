@@ -121,10 +121,17 @@ class SumWithTwinSync {
 
 class SumWithTwinSyncArray3 extends NonGrowableListView<SumWithTwinSync> {
   static const arraySize = 3;
-  SumWithTwinSyncArray3(List<SumWithTwinSync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  SumWithTwinSyncArray3.unchecked(List<SumWithTwinSync> inner) : super(inner);
+
+  @internal
+  List<SumWithTwinSync> get inner => _inner;
+  final List<SumWithTwinSync> _inner;
+
+  SumWithTwinSyncArray3(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  SumWithTwinSyncArray3.init() : this(List<SumWithTwinSync>(arraySize));
+
   SumWithTwinSyncArray3.init(SumWithTwinSync fill)
       : super(List<SumWithTwinSync>.filled(arraySize, fill));
 }

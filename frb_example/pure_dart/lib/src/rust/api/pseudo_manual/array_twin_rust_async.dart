@@ -127,11 +127,17 @@ class PointTwinRustAsync {
 
 class PointTwinRustAsyncArray2 extends NonGrowableListView<PointTwinRustAsync> {
   static const arraySize = 2;
-  PointTwinRustAsyncArray2(List<PointTwinRustAsync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  PointTwinRustAsyncArray2.unchecked(List<PointTwinRustAsync> inner)
-      : super(inner);
+
+  @internal
+  List<PointTwinRustAsync> get inner => _inner;
+  final List<PointTwinRustAsync> _inner;
+
+  PointTwinRustAsyncArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  PointTwinRustAsyncArray2.init() : this(List<PointTwinRustAsync>(arraySize));
+
   PointTwinRustAsyncArray2.init(PointTwinRustAsync fill)
       : super(List<PointTwinRustAsync>.filled(arraySize, fill));
 }
@@ -157,11 +163,17 @@ class TestIdTwinRustAsync {
 class TestIdTwinRustAsyncArray2
     extends NonGrowableListView<TestIdTwinRustAsync> {
   static const arraySize = 2;
-  TestIdTwinRustAsyncArray2(List<TestIdTwinRustAsync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  TestIdTwinRustAsyncArray2.unchecked(List<TestIdTwinRustAsync> inner)
-      : super(inner);
+
+  @internal
+  List<TestIdTwinRustAsync> get inner => _inner;
+  final List<TestIdTwinRustAsync> _inner;
+
+  TestIdTwinRustAsyncArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  TestIdTwinRustAsyncArray2.init() : this(List<TestIdTwinRustAsync>(arraySize));
+
   TestIdTwinRustAsyncArray2.init(TestIdTwinRustAsync fill)
       : super(List<TestIdTwinRustAsync>.filled(arraySize, fill));
 }
@@ -169,11 +181,17 @@ class TestIdTwinRustAsyncArray2
 class TestIdTwinRustAsyncArray4
     extends NonGrowableListView<TestIdTwinRustAsync> {
   static const arraySize = 4;
-  TestIdTwinRustAsyncArray4(List<TestIdTwinRustAsync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  TestIdTwinRustAsyncArray4.unchecked(List<TestIdTwinRustAsync> inner)
-      : super(inner);
+
+  @internal
+  List<TestIdTwinRustAsync> get inner => _inner;
+  final List<TestIdTwinRustAsync> _inner;
+
+  TestIdTwinRustAsyncArray4(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  TestIdTwinRustAsyncArray4.init() : this(List<TestIdTwinRustAsync>(arraySize));
+
   TestIdTwinRustAsyncArray4.init(TestIdTwinRustAsync fill)
       : super(List<TestIdTwinRustAsync>.filled(arraySize, fill));
 }

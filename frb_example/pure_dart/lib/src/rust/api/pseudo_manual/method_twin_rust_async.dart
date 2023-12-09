@@ -126,11 +126,18 @@ class SumWithTwinRustAsync {
 class SumWithTwinRustAsyncArray3
     extends NonGrowableListView<SumWithTwinRustAsync> {
   static const arraySize = 3;
-  SumWithTwinRustAsyncArray3(List<SumWithTwinRustAsync> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  SumWithTwinRustAsyncArray3.unchecked(List<SumWithTwinRustAsync> inner)
-      : super(inner);
+
+  @internal
+  List<SumWithTwinRustAsync> get inner => _inner;
+  final List<SumWithTwinRustAsync> _inner;
+
+  SumWithTwinRustAsyncArray3(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  SumWithTwinRustAsyncArray3.init()
+      : this(List<SumWithTwinRustAsync>(arraySize));
+
   SumWithTwinRustAsyncArray3.init(SumWithTwinRustAsync fill)
       : super(List<SumWithTwinRustAsync>.filled(arraySize, fill));
 }
