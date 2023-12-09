@@ -7,7 +7,7 @@ impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(simple_delegate_encode(
             lang,
-            &RUST_OPAQUE_WIRE_TYPE,
+            &self.ir.get_delegate(),
             "self.sseEncode()",
         ))
     }
@@ -15,10 +15,8 @@ impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         Some(simple_delegate_decode(
             lang,
-            &RUST_OPAQUE_WIRE_TYPE,
+            &self.ir.get_delegate(),
             "inner",
         ))
     }
 }
-
-pub(super) const RUST_OPAQUE_WIRE_TYPE: IrType = Primitive(IrTypePrimitive::Usize);

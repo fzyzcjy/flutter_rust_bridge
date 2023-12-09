@@ -1,4 +1,5 @@
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
@@ -20,5 +21,11 @@ impl IrTypeTrait for IrTypeDartOpaque {
 
     fn rust_api_type(&self) -> String {
         "flutter_rust_bridge::DartOpaque".to_owned()
+    }
+}
+
+impl IrTypeDartOpaque {
+    pub(crate) fn get_delegate(&self) -> IrType {
+        IrType::Primitive(IrTypePrimitive::Usize)
     }
 }

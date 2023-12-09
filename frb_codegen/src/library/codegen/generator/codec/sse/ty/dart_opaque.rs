@@ -7,7 +7,7 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(simple_delegate_encode(
             lang,
-            &DART_OPAQUE_WIRE_TYPE,
+            &self.ir.get_delegate(),
             "wire.dart_opaque_dart2rust_encode(self)",
         ))
     }
@@ -15,10 +15,8 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         Some(simple_delegate_decode(
             lang,
-            &DART_OPAQUE_WIRE_TYPE,
+            &self.ir.get_delegate(),
             "inner",
         ))
     }
 }
-
-pub(super) const DART_OPAQUE_WIRE_TYPE: IrType = Primitive(IrTypePrimitive::Usize);

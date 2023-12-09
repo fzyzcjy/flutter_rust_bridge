@@ -1,5 +1,6 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
@@ -15,6 +16,10 @@ impl IrTypeRustOpaque {
             namespace,
             inner: Box::new(inner),
         }
+    }
+
+    pub(crate) fn get_delegate(&self) -> IrType {
+        IrType::Primitive(IrTypePrimitive::Usize)
     }
 }
 
