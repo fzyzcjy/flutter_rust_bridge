@@ -11563,81 +11563,101 @@ impl SseDecode for Vec<Option<Vec<i32>>> {
 
 impl SseDecode for Vec<f32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_f32::<NativeEndian>().unwrap()
+            ans.push(<f32>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
 impl SseDecode for Vec<f64> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_f64::<NativeEndian>().unwrap()
+            ans.push(<f64>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
 impl SseDecode for Vec<i16> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_i16::<NativeEndian>().unwrap()
+            ans.push(<i16>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
 impl SseDecode for Vec<i32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_i32::<NativeEndian>().unwrap()
+            ans.push(<i32>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
 impl SseDecode for Vec<i64> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_i64::<NativeEndian>().unwrap()
+            ans.push(<i64>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
 impl SseDecode for Vec<i8> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_i8::<NativeEndian>().unwrap()
+            ans.push(<i8>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
 impl SseDecode for Vec<u16> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_u16::<NativeEndian>().unwrap()
+            ans.push(<u16>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
 impl SseDecode for Vec<u32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_u32::<NativeEndian>().unwrap()
+            ans.push(<u32>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
 impl SseDecode for Vec<u64> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_u64::<NativeEndian>().unwrap()
+            ans.push(<u64>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
 impl SseDecode for Vec<u8> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut ans;
         for item in self {
-            deserializer.cursor.read_u8::<NativeEndian>().unwrap()
+            ans.push(<u8>::sse_decode(deserializer));
         }
+        return ans;
     }
 }
 
