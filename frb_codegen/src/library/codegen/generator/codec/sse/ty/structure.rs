@@ -63,13 +63,21 @@ impl<'a> GeneralizedStructGenerator<'a> {
             })
             .join("");
 
-        let ctor = lang.call_constructor(
-            &st.name.name,
-            &st.fields.iter().map(|x| x.name.raw.clone()).collect_vec(),
-            &(st.fields.iter())
-                .map(|x| x.name.dart_style().clone())
-                .collect_vec(),
-        );
+        let ctor = match self.mode {
+            Struct => lang.call_constructor(
+                &st.name.name,
+                &st.fields.iter().map(|x| x.name.raw.clone()).collect_vec(),
+                &(st.fields.iter())
+                    .map(|x| x.name.dart_style().clone())
+                    .collect_vec(),
+            ),
+            StructOrRecord::Record => format!(
+                "({})",
+                (st.fields.iter())
+                    .map(|x| x.name.dart_style().clone())
+                    .join(", ")
+            ),
+        };
 
         format!(
             "
