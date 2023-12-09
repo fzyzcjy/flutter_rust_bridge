@@ -19,8 +19,9 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
                     get_serializer_dart_postfix(&self.ir)
                 ),
                 Lang::RustLang(_) => format!(
-                    "serializer.cursor.write_{}::<NativeEndian>(self{rust_cast}).unwrap();",
-                    get_serializer_rust_type(&self.ir)
+                    "serializer.cursor.write_{}{}(self{rust_cast}).unwrap();",
+                    get_serializer_rust_type(&self.ir),
+                    maybe_endian(&self.ir),
                 ),
             },
         })
@@ -45,8 +46,9 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
                 ),
                 Lang::RustLang(_) => {
                     format!(
-                        "deserializer.cursor.read_{}::<NativeEndian>().unwrap(){rust_cast}",
-                        get_serializer_rust_type(&self.ir)
+                        "deserializer.cursor.read_{}{}().unwrap(){rust_cast}",
+                        get_serializer_rust_type(&self.ir),
+                        maybe_endian(&self.ir),
                     )
                 }
             },
@@ -79,5 +81,12 @@ pub(super) fn get_serializer_rust_type(prim: &IrTypePrimitive) -> String {
         IrTypePrimitive::Usize => "u64".to_owned(),
         IrTypePrimitive::Isize => "i64".to_owned(),
         _ => prim.rust_api_type(),
+    }
+}
+
+fn maybe_endian(ty: &IrTypePrimitive) -> &'static str {
+    match ty {
+        IrTypePrimitive::U8 | IrTypePrimitive::I8 => "",
+        _ => "::<NativeEndian>",
     }
 }
