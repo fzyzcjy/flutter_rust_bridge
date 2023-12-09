@@ -21,26 +21,24 @@ macro_rules! frb_generated_boilerplate {
         // -------------------------- SseCodec ------------------------
 
         pub trait SseDecode {
-            fn sse_decode(
-                deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
-            ) -> Self;
+            fn sse_decode(deserializer: &mut $crate::for_generated::SseDeserializer) -> Self;
         }
 
         pub trait SseEncode {
-            fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
+            fn sse_encode(self, serializer: &mut $crate::for_generated::SseSerializer);
         }
 
         fn transform_result_sse<T, E>(
             raw: Result<T, E>,
         ) -> Result<
-            flutter_rust_bridge::for_generated::Rust2DartMessageSse,
-            flutter_rust_bridge::for_generated::Rust2DartMessageSse,
+            $crate::for_generated::Rust2DartMessageSse,
+            $crate::for_generated::Rust2DartMessageSse,
         >
         where
             T: SseEncode,
             E: SseEncode,
         {
-            use flutter_rust_bridge::for_generated::{Rust2DartAction, SseCodec};
+            use $crate::for_generated::{Rust2DartAction, SseCodec};
 
             match raw {
                 Ok(raw) => Ok(SseCodec::encode(Rust2DartAction::Success, |serializer| {
@@ -54,21 +52,32 @@ macro_rules! frb_generated_boilerplate {
 
         // -------------------------- StreamSink ------------------------
 
-        pub struct StreamSink<T, Rust2DartCodec: flutter_rust_bridge::for_generated::BaseCodec = flutter_rust_bridge::for_generated::DcoCodec> {
-            base: flutter_rust_bridge::for_generated::StreamSinkBase<T, Rust2DartCodec>,
+        pub struct StreamSink<
+            T,
+            Rust2DartCodec: $crate::for_generated::BaseCodec = $crate::for_generated::DcoCodec,
+        > {
+            base: $crate::for_generated::StreamSinkBase<T, Rust2DartCodec>,
         }
 
-        impl<T, Rust2DartCodec: flutter_rust_bridge::for_generated::BaseCodec> StreamSink<T, Rust2DartCodec> {
-            pub fn new(base: flutter_rust_bridge::for_generated::StreamSinkBase<T, Rust2DartCodec>) -> Self {
+        impl<T, Rust2DartCodec: $crate::for_generated::BaseCodec> StreamSink<T, Rust2DartCodec> {
+            pub fn new(base: $crate::for_generated::StreamSinkBase<T, Rust2DartCodec>) -> Self {
                 Self { base }
-            }
-
-            pub fn add(&self, value: T) -> bool {
-                self.base.add(value)
             }
 
             pub fn close(&self) -> bool {
                 self.base.close()
+            }
+        }
+
+        impl<T> StreamSink<T, $crate::for_generated::DcoCodec>
+        where
+            T: $crate::IntoDart,
+        {
+            pub fn add(&self, value: T) -> bool {
+                self.base.add($crate::for_generated::DcoCodec::encode(
+                    $crate::for_generated::Rust2DartAction::Success,
+                    value,
+                ))
             }
         }
     };
