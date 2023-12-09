@@ -14,11 +14,4 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
-
-  test('hello', () async {
-    expect(await hello(a: 100, b: 200), 300);
-  });
-  test('helloSync', () async {
-    expect(helloSync(a: 100, b: 200), 300);
-  });
 }

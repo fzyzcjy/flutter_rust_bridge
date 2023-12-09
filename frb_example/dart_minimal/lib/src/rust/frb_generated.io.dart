@@ -62,46 +62,6 @@ class RustLibWire implements BaseWire {
   late final _frb_initialize_rust =
       _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
 
-  void wire_hello(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_hello(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_helloPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_hello');
-  late final _wire_hello = _wire_helloPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  WireSyncReturnSse wire_hello_sync(
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_hello_sync(
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_hello_syncPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_hello_sync');
-  late final _wire_hello_sync = _wire_hello_syncPtr.asFunction<
-      WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
-
   void wire_minimal_adder(
     int port_,
     int a,
