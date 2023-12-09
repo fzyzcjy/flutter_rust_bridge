@@ -116,16 +116,16 @@ impl SseDecode for crate::api::minimal::Hello {
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                return crate::api::minimal::Hello::Apple();
+                return crate::api::minimal::Hello::Apple;
             }
             1 => {
                 let mut field0 = <i32>::sse_decode(deserializer);
-                return crate::api::minimal::Hello::Orange { field0: field0 };
+                return crate::api::minimal::Hello::Orange(field0);
             }
             2 => {
                 let mut x = <i32>::sse_decode(deserializer);
                 let mut y = <i32>::sse_decode(deserializer);
-                return crate::api::minimal::Hello::Raspi { x: x, y: y };
+                return crate::api::minimal::Hello::Raspi { x, y };
             }
             _ => {
                 unimplemented!();
