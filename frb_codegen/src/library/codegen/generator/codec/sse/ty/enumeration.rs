@@ -25,12 +25,17 @@ fn generate_decode_rust(lang: &Lang, src: &IrEnum) -> String {
     let var_decl = lang.var_decl();
     let expr_decode_tag = lang.call_decode(&TAG_TYPE);
 
+    let variants = (src.variants().iter().enumerate())
+        .map(|(idx, variant)| format!("{idx} => {TODO}"))
+        .join("\n");
+
     // TODO reuse things in `structure`?
 
     format!(
         "
         {var_decl} tag_ = {expr_decode_tag};
         match tag_ {{
+            {variants}
         }}
         "
     )
