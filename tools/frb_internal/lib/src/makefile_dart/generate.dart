@@ -4,6 +4,8 @@ import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_dart_generator/generator.dart'
+    as frb_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
@@ -66,11 +68,18 @@ class GeneratePackageConfig implements GenerateConfig {
 }
 
 Future<void> generateInternal(GenerateConfig config) async {
+  await generateInternalFrbDart(config);
   await generateInternalFrbExamplePureDart(config);
   await generateInternalRust(config);
   await generateInternalBookHelp(config);
   await generateInternalDartSource(config);
   await generateInternalBuildRunner(config);
+}
+
+Future<void> generateInternalFrbDart(GenerateConfig config) async {
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    await frb_dart_generator.generate();
+  });
 }
 
 Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
