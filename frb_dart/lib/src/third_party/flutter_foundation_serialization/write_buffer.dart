@@ -169,7 +169,9 @@ class WriteBuffer {
   /// Write all the values from an [Uint64List] into the buffer.
   void putUint64List(Uint64List list) {
     assert(!_isDone);
-    _append(list.buffer.asUint8List(list.offsetInBytes, 8 * list.length));
+    for (final value in list) {
+      putUint64(value.toInt());
+    }
   }
 
   /// Write all the values from an [Int8List] into the buffer.
@@ -195,7 +197,9 @@ class WriteBuffer {
   void putInt64List(Int64List list) {
     assert(!_isDone);
     // _alignTo(8);
-    _append(list.buffer.asUint8List(list.offsetInBytes, 8 * list.length));
+    for (final value in list) {
+      putInt64(value.toInt());
+    }
   }
 
   /// Write all the values from a [Float32List] into the buffer.
