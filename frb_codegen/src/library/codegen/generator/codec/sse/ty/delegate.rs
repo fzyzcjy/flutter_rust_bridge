@@ -116,9 +116,9 @@ pub(crate) fn rust_decode_primitive_enum(
         .join("\n");
 
     format!(
-        "match self {{
+        "match inner {{
             {}
-            _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
+            _ => unreachable!(\"Invalid variant for {}: {{}}\", inner),
         }}",
         variants, enu.name.name
     )
