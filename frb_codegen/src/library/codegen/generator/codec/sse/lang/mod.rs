@@ -27,7 +27,7 @@ pub(crate) trait LangTrait {
         keyword_args: bool,
     ) -> String;
 
-    fn throw_unimplemented(&self) -> String;
+    fn throw_unimplemented(&self, message: &str) -> String;
 
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String;
 

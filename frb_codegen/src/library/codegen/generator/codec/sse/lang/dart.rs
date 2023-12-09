@@ -38,8 +38,8 @@ impl LangTrait for DartLang {
         )
     }
 
-    fn throw_unimplemented(&self) -> String {
-        "throw UnimplementedError('')".into()
+    fn throw_unimplemented(&self, message: &str) -> String {
+        format!("throw UnimplementedError('{message}')")
     }
 
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String {

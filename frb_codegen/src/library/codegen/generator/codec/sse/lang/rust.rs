@@ -41,8 +41,8 @@ impl LangTrait for RustLang {
         )
     }
 
-    fn throw_unimplemented(&self) -> String {
-        "unimplemented!()".into()
+    fn throw_unimplemented(&self, message: &str) -> String {
+        format!("unimplemented!({message})")
     }
 
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String {
