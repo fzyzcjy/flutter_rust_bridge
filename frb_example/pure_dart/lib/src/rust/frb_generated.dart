@@ -23976,271 +23976,271 @@ return BlobTwinSync(field0);
             }
             
             ApplicationEnv _sse_decode_box_application_env(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_application_env(deserializer));
+                return (_sse_decode_application_env(deserializer));
             }
             
             Duration _sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_Chrono_Duration(deserializer));
+                return (_sse_decode_Chrono_Duration(deserializer));
             }
             
             DateTime _sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_Chrono_Naive(deserializer));
+                return (_sse_decode_Chrono_Naive(deserializer));
             }
             
             DateTime _sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_Chrono_Utc(deserializer));
+                return (_sse_decode_Chrono_Utc(deserializer));
             }
             
             Object _sse_decode_box_autoadd_DartOpaque(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_DartOpaque(deserializer));
+                return (_sse_decode_DartOpaque(deserializer));
             }
             
             HideData _sse_decode_box_autoadd_RustOpaque_hide_data(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_RustOpaque_hide_data(deserializer));
+                return (_sse_decode_RustOpaque_hide_data(deserializer));
             }
             
             ATwinNormal _sse_decode_box_autoadd_a_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_a_twin_normal(deserializer));
+                return (_sse_decode_a_twin_normal(deserializer));
             }
             
             ATwinRustAsync _sse_decode_box_autoadd_a_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_a_twin_rust_async(deserializer));
+                return (_sse_decode_a_twin_rust_async(deserializer));
             }
             
             ATwinSync _sse_decode_box_autoadd_a_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_a_twin_sync(deserializer));
+                return (_sse_decode_a_twin_sync(deserializer));
             }
             
             ApplicationEnv _sse_decode_box_autoadd_application_env(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_application_env(deserializer));
+                return (_sse_decode_application_env(deserializer));
             }
             
             AttributeTwinNormal _sse_decode_box_autoadd_attribute_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_attribute_twin_normal(deserializer));
+                return (_sse_decode_attribute_twin_normal(deserializer));
             }
             
             AttributeTwinRustAsync _sse_decode_box_autoadd_attribute_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_attribute_twin_rust_async(deserializer));
+                return (_sse_decode_attribute_twin_rust_async(deserializer));
             }
             
             AttributeTwinSync _sse_decode_box_autoadd_attribute_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_attribute_twin_sync(deserializer));
+                return (_sse_decode_attribute_twin_sync(deserializer));
             }
             
             BTwinNormal _sse_decode_box_autoadd_b_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_b_twin_normal(deserializer));
+                return (_sse_decode_b_twin_normal(deserializer));
             }
             
             BTwinRustAsync _sse_decode_box_autoadd_b_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_b_twin_rust_async(deserializer));
+                return (_sse_decode_b_twin_rust_async(deserializer));
             }
             
             BTwinSync _sse_decode_box_autoadd_b_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_b_twin_sync(deserializer));
+                return (_sse_decode_b_twin_sync(deserializer));
             }
             
             bool _sse_decode_box_autoadd_bool(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_bool(deserializer));
+                return (_sse_decode_bool(deserializer));
             }
             
             CTwinNormal _sse_decode_box_autoadd_c_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_c_twin_normal(deserializer));
+                return (_sse_decode_c_twin_normal(deserializer));
             }
             
             CTwinRustAsync _sse_decode_box_autoadd_c_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_c_twin_rust_async(deserializer));
+                return (_sse_decode_c_twin_rust_async(deserializer));
             }
             
             CTwinSync _sse_decode_box_autoadd_c_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_c_twin_sync(deserializer));
+                return (_sse_decode_c_twin_sync(deserializer));
             }
             
             CustomNestedError2TwinNormal _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_custom_nested_error_2_twin_normal(deserializer));
+                return (_sse_decode_custom_nested_error_2_twin_normal(deserializer));
             }
             
             CustomNestedError2TwinRustAsync _sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_custom_nested_error_2_twin_rust_async(deserializer));
+                return (_sse_decode_custom_nested_error_2_twin_rust_async(deserializer));
             }
             
             CustomNestedError2TwinSync _sse_decode_box_autoadd_custom_nested_error_2_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_custom_nested_error_2_twin_sync(deserializer));
+                return (_sse_decode_custom_nested_error_2_twin_sync(deserializer));
             }
             
             CustomNestedErrorInnerTwinNormal _sse_decode_box_autoadd_custom_nested_error_inner_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_custom_nested_error_inner_twin_normal(deserializer));
+                return (_sse_decode_custom_nested_error_inner_twin_normal(deserializer));
             }
             
             CustomNestedErrorInnerTwinRustAsync _sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_custom_nested_error_inner_twin_rust_async(deserializer));
+                return (_sse_decode_custom_nested_error_inner_twin_rust_async(deserializer));
             }
             
             CustomNestedErrorInnerTwinSync _sse_decode_box_autoadd_custom_nested_error_inner_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_custom_nested_error_inner_twin_sync(deserializer));
+                return (_sse_decode_custom_nested_error_inner_twin_sync(deserializer));
             }
             
             ElementTwinNormal _sse_decode_box_autoadd_element_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_element_twin_normal(deserializer));
+                return (_sse_decode_element_twin_normal(deserializer));
             }
             
             ElementTwinRustAsync _sse_decode_box_autoadd_element_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_element_twin_rust_async(deserializer));
+                return (_sse_decode_element_twin_rust_async(deserializer));
             }
             
             ElementTwinSync _sse_decode_box_autoadd_element_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_element_twin_sync(deserializer));
+                return (_sse_decode_element_twin_sync(deserializer));
             }
             
             ExoticOptionalsTwinNormal _sse_decode_box_autoadd_exotic_optionals_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_exotic_optionals_twin_normal(deserializer));
+                return (_sse_decode_exotic_optionals_twin_normal(deserializer));
             }
             
             ExoticOptionalsTwinRustAsync _sse_decode_box_autoadd_exotic_optionals_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_exotic_optionals_twin_rust_async(deserializer));
+                return (_sse_decode_exotic_optionals_twin_rust_async(deserializer));
             }
             
             ExoticOptionalsTwinSync _sse_decode_box_autoadd_exotic_optionals_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_exotic_optionals_twin_sync(deserializer));
+                return (_sse_decode_exotic_optionals_twin_sync(deserializer));
             }
             
             double _sse_decode_box_autoadd_f_32(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_f_32(deserializer));
+                return (_sse_decode_f_32(deserializer));
             }
             
             double _sse_decode_box_autoadd_f_64(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_f_64(deserializer));
+                return (_sse_decode_f_64(deserializer));
             }
             
             int _sse_decode_box_autoadd_i_16(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_i_16(deserializer));
+                return (_sse_decode_i_16(deserializer));
             }
             
             int _sse_decode_box_autoadd_i_32(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_i_32(deserializer));
+                return (_sse_decode_i_32(deserializer));
             }
             
             int _sse_decode_box_autoadd_i_64(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_i_64(deserializer));
+                return (_sse_decode_i_64(deserializer));
             }
             
             int _sse_decode_box_autoadd_i_8(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_i_8(deserializer));
+                return (_sse_decode_i_8(deserializer));
             }
             
             ListOfNestedRawStringMirrored _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_list_of_nested_raw_string_mirrored(deserializer));
+                return (_sse_decode_list_of_nested_raw_string_mirrored(deserializer));
             }
             
             MeasureTwinNormal _sse_decode_box_autoadd_measure_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_measure_twin_normal(deserializer));
+                return (_sse_decode_measure_twin_normal(deserializer));
             }
             
             MeasureTwinRustAsync _sse_decode_box_autoadd_measure_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_measure_twin_rust_async(deserializer));
+                return (_sse_decode_measure_twin_rust_async(deserializer));
             }
             
             MeasureTwinSync _sse_decode_box_autoadd_measure_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_measure_twin_sync(deserializer));
+                return (_sse_decode_measure_twin_sync(deserializer));
             }
             
             NestedRawStringMirrored _sse_decode_box_autoadd_nested_raw_string_mirrored(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_nested_raw_string_mirrored(deserializer));
+                return (_sse_decode_nested_raw_string_mirrored(deserializer));
             }
             
             NewTypeIntTwinNormal _sse_decode_box_autoadd_new_type_int_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_new_type_int_twin_normal(deserializer));
+                return (_sse_decode_new_type_int_twin_normal(deserializer));
             }
             
             NewTypeIntTwinRustAsync _sse_decode_box_autoadd_new_type_int_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_new_type_int_twin_rust_async(deserializer));
+                return (_sse_decode_new_type_int_twin_rust_async(deserializer));
             }
             
             NewTypeIntTwinSync _sse_decode_box_autoadd_new_type_int_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_new_type_int_twin_sync(deserializer));
+                return (_sse_decode_new_type_int_twin_sync(deserializer));
             }
             
             RawStringMirrored _sse_decode_box_autoadd_raw_string_mirrored(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_raw_string_mirrored(deserializer));
+                return (_sse_decode_raw_string_mirrored(deserializer));
             }
             
             int _sse_decode_box_autoadd_u_16(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_u_16(deserializer));
+                return (_sse_decode_u_16(deserializer));
             }
             
             int _sse_decode_box_autoadd_u_32(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_u_32(deserializer));
+                return (_sse_decode_u_32(deserializer));
             }
             
             int _sse_decode_box_autoadd_u_64(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_u_64(deserializer));
+                return (_sse_decode_u_64(deserializer));
             }
             
             int _sse_decode_box_autoadd_u_8(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_u_8(deserializer));
+                return (_sse_decode_u_8(deserializer));
             }
             
             WeekdaysTwinNormal _sse_decode_box_autoadd_weekdays_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_weekdays_twin_normal(deserializer));
+                return (_sse_decode_weekdays_twin_normal(deserializer));
             }
             
             WeekdaysTwinRustAsync _sse_decode_box_autoadd_weekdays_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_weekdays_twin_rust_async(deserializer));
+                return (_sse_decode_weekdays_twin_rust_async(deserializer));
             }
             
             WeekdaysTwinSync _sse_decode_box_autoadd_weekdays_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_weekdays_twin_sync(deserializer));
+                return (_sse_decode_weekdays_twin_sync(deserializer));
             }
             
             DistanceTwinNormal _sse_decode_box_distance_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_distance_twin_normal(deserializer));
+                return (_sse_decode_distance_twin_normal(deserializer));
             }
             
             DistanceTwinRustAsync _sse_decode_box_distance_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_distance_twin_rust_async(deserializer));
+                return (_sse_decode_distance_twin_rust_async(deserializer));
             }
             
             DistanceTwinSync _sse_decode_box_distance_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_distance_twin_sync(deserializer));
+                return (_sse_decode_distance_twin_sync(deserializer));
             }
             
             FeedIdTwinNormal _sse_decode_box_feed_id_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_feed_id_twin_normal(deserializer));
+                return (_sse_decode_feed_id_twin_normal(deserializer));
             }
             
             FeedIdTwinRustAsync _sse_decode_box_feed_id_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_feed_id_twin_rust_async(deserializer));
+                return (_sse_decode_feed_id_twin_rust_async(deserializer));
             }
             
             FeedIdTwinSync _sse_decode_box_feed_id_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_feed_id_twin_sync(deserializer));
+                return (_sse_decode_feed_id_twin_sync(deserializer));
             }
             
             KitchenSinkTwinNormal _sse_decode_box_kitchen_sink_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_kitchen_sink_twin_normal(deserializer));
+                return (_sse_decode_kitchen_sink_twin_normal(deserializer));
             }
             
             KitchenSinkTwinRustAsync _sse_decode_box_kitchen_sink_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_kitchen_sink_twin_rust_async(deserializer));
+                return (_sse_decode_kitchen_sink_twin_rust_async(deserializer));
             }
             
             KitchenSinkTwinSync _sse_decode_box_kitchen_sink_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_kitchen_sink_twin_sync(deserializer));
+                return (_sse_decode_kitchen_sink_twin_sync(deserializer));
             }
             
             SpeedTwinNormal _sse_decode_box_speed_twin_normal(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_speed_twin_normal(deserializer));
+                return (_sse_decode_speed_twin_normal(deserializer));
             }
             
             SpeedTwinRustAsync _sse_decode_box_speed_twin_rust_async(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_speed_twin_rust_async(deserializer));
+                return (_sse_decode_speed_twin_rust_async(deserializer));
             }
             
             SpeedTwinSync _sse_decode_box_speed_twin_sync(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_speed_twin_sync(deserializer));
+                return (_sse_decode_speed_twin_sync(deserializer));
             }
             
             U8Array8 _sse_decode_box_u_8_array_8(SseDeserializer deserializer) {
-                return Box::new(_sse_decode_u_8_array_8(deserializer));
+                return (_sse_decode_u_8_array_8(deserializer));
             }
             
             CTwinNormal _sse_decode_c_twin_normal(SseDeserializer deserializer) {
@@ -26971,727 +26971,727 @@ _sse_encode_String(self.value, serializer);
             }
             
             void _sse_encode_box_application_env(ApplicationEnv self, SseSerializer serializer) {
-                _sse_encode_application_env(*self, serializer);
+                _sse_encode_application_env(self, serializer);
             }
             
             void _sse_encode_box_autoadd_Chrono_Utc(DateTime self, SseSerializer serializer) {
-                _sse_encode_Chrono_Utc(*self, serializer);
+                _sse_encode_Chrono_Utc(self, serializer);
             }
             
             void _sse_encode_box_autoadd_DartOpaque(Object self, SseSerializer serializer) {
-                _sse_encode_DartOpaque(*self, serializer);
+                _sse_encode_DartOpaque(self, serializer);
             }
             
             void _sse_encode_box_autoadd_RustOpaque_hide_data(HideData self, SseSerializer serializer) {
-                _sse_encode_RustOpaque_hide_data(*self, serializer);
+                _sse_encode_RustOpaque_hide_data(self, serializer);
             }
             
             void _sse_encode_box_autoadd_a_twin_normal(ATwinNormal self, SseSerializer serializer) {
-                _sse_encode_a_twin_normal(*self, serializer);
+                _sse_encode_a_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_a_twin_rust_async(ATwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_a_twin_rust_async(*self, serializer);
+                _sse_encode_a_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_a_twin_sync(ATwinSync self, SseSerializer serializer) {
-                _sse_encode_a_twin_sync(*self, serializer);
+                _sse_encode_a_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_abc_twin_normal(AbcTwinNormal self, SseSerializer serializer) {
-                _sse_encode_abc_twin_normal(*self, serializer);
+                _sse_encode_abc_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_abc_twin_rust_async(AbcTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_abc_twin_rust_async(*self, serializer);
+                _sse_encode_abc_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_abc_twin_sync(AbcTwinSync self, SseSerializer serializer) {
-                _sse_encode_abc_twin_sync(*self, serializer);
+                _sse_encode_abc_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_application_env(ApplicationEnv self, SseSerializer serializer) {
-                _sse_encode_application_env(*self, serializer);
+                _sse_encode_application_env(self, serializer);
             }
             
             void _sse_encode_box_autoadd_application_settings(ApplicationSettings self, SseSerializer serializer) {
-                _sse_encode_application_settings(*self, serializer);
+                _sse_encode_application_settings(self, serializer);
             }
             
             void _sse_encode_box_autoadd_attribute_twin_normal(AttributeTwinNormal self, SseSerializer serializer) {
-                _sse_encode_attribute_twin_normal(*self, serializer);
+                _sse_encode_attribute_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_attribute_twin_rust_async(AttributeTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_attribute_twin_rust_async(*self, serializer);
+                _sse_encode_attribute_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_attribute_twin_sync(AttributeTwinSync self, SseSerializer serializer) {
-                _sse_encode_attribute_twin_sync(*self, serializer);
+                _sse_encode_attribute_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_b_twin_normal(BTwinNormal self, SseSerializer serializer) {
-                _sse_encode_b_twin_normal(*self, serializer);
+                _sse_encode_b_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_b_twin_rust_async(BTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_b_twin_rust_async(*self, serializer);
+                _sse_encode_b_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_b_twin_sync(BTwinSync self, SseSerializer serializer) {
-                _sse_encode_b_twin_sync(*self, serializer);
+                _sse_encode_b_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_bool(bool self, SseSerializer serializer) {
-                _sse_encode_bool(*self, serializer);
+                _sse_encode_bool(self, serializer);
             }
             
             void _sse_encode_box_autoadd_c_twin_normal(CTwinNormal self, SseSerializer serializer) {
-                _sse_encode_c_twin_normal(*self, serializer);
+                _sse_encode_c_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_c_twin_rust_async(CTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_c_twin_rust_async(*self, serializer);
+                _sse_encode_c_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_c_twin_sync(CTwinSync self, SseSerializer serializer) {
-                _sse_encode_c_twin_sync(*self, serializer);
+                _sse_encode_c_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_concatenate_with_twin_normal(ConcatenateWithTwinNormal self, SseSerializer serializer) {
-                _sse_encode_concatenate_with_twin_normal(*self, serializer);
+                _sse_encode_concatenate_with_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_concatenate_with_twin_rust_async(ConcatenateWithTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_concatenate_with_twin_rust_async(*self, serializer);
+                _sse_encode_concatenate_with_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_concatenate_with_twin_sync(ConcatenateWithTwinSync self, SseSerializer serializer) {
-                _sse_encode_concatenate_with_twin_sync(*self, serializer);
+                _sse_encode_concatenate_with_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(CustomNestedErrorInnerTwinNormal self, SseSerializer serializer) {
-                _sse_encode_custom_nested_error_inner_twin_normal(*self, serializer);
+                _sse_encode_custom_nested_error_inner_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_custom_nested_error_inner_twin_rust_async(*self, serializer);
+                _sse_encode_custom_nested_error_inner_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(CustomNestedErrorInnerTwinSync self, SseSerializer serializer) {
-                _sse_encode_custom_nested_error_inner_twin_sync(*self, serializer);
+                _sse_encode_custom_nested_error_inner_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_nested_error_outer_twin_normal(CustomNestedErrorOuterTwinNormal self, SseSerializer serializer) {
-                _sse_encode_custom_nested_error_outer_twin_normal(*self, serializer);
+                _sse_encode_custom_nested_error_outer_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_custom_nested_error_outer_twin_rust_async(*self, serializer);
+                _sse_encode_custom_nested_error_outer_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_nested_error_outer_twin_sync(CustomNestedErrorOuterTwinSync self, SseSerializer serializer) {
-                _sse_encode_custom_nested_error_outer_twin_sync(*self, serializer);
+                _sse_encode_custom_nested_error_outer_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_struct_error_twin_normal(CustomStructErrorTwinNormal self, SseSerializer serializer) {
-                _sse_encode_custom_struct_error_twin_normal(*self, serializer);
+                _sse_encode_custom_struct_error_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_struct_error_twin_rust_async(CustomStructErrorTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_custom_struct_error_twin_rust_async(*self, serializer);
+                _sse_encode_custom_struct_error_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_struct_error_twin_sync(CustomStructErrorTwinSync self, SseSerializer serializer) {
-                _sse_encode_custom_struct_error_twin_sync(*self, serializer);
+                _sse_encode_custom_struct_error_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_struct_twin_normal(CustomStructTwinNormal self, SseSerializer serializer) {
-                _sse_encode_custom_struct_twin_normal(*self, serializer);
+                _sse_encode_custom_struct_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_struct_twin_rust_async(CustomStructTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_custom_struct_twin_rust_async(*self, serializer);
+                _sse_encode_custom_struct_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_custom_struct_twin_sync(CustomStructTwinSync self, SseSerializer serializer) {
-                _sse_encode_custom_struct_twin_sync(*self, serializer);
+                _sse_encode_custom_struct_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_customized_twin_normal(CustomizedTwinNormal self, SseSerializer serializer) {
-                _sse_encode_customized_twin_normal(*self, serializer);
+                _sse_encode_customized_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_customized_twin_rust_async(CustomizedTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_customized_twin_rust_async(*self, serializer);
+                _sse_encode_customized_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_customized_twin_sync(CustomizedTwinSync self, SseSerializer serializer) {
-                _sse_encode_customized_twin_sync(*self, serializer);
+                _sse_encode_customized_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_dart_opaque_nested_twin_normal(DartOpaqueNestedTwinNormal self, SseSerializer serializer) {
-                _sse_encode_dart_opaque_nested_twin_normal(*self, serializer);
+                _sse_encode_dart_opaque_nested_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_dart_opaque_nested_twin_rust_async(DartOpaqueNestedTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_dart_opaque_nested_twin_rust_async(*self, serializer);
+                _sse_encode_dart_opaque_nested_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_dart_opaque_nested_twin_sync(DartOpaqueNestedTwinSync self, SseSerializer serializer) {
-                _sse_encode_dart_opaque_nested_twin_sync(*self, serializer);
+                _sse_encode_dart_opaque_nested_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_empty_twin_normal(EmptyTwinNormal self, SseSerializer serializer) {
-                _sse_encode_empty_twin_normal(*self, serializer);
+                _sse_encode_empty_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_empty_twin_rust_async(EmptyTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_empty_twin_rust_async(*self, serializer);
+                _sse_encode_empty_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_empty_twin_sync(EmptyTwinSync self, SseSerializer serializer) {
-                _sse_encode_empty_twin_sync(*self, serializer);
+                _sse_encode_empty_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_dart_opaque_twin_normal(EnumDartOpaqueTwinNormal self, SseSerializer serializer) {
-                _sse_encode_enum_dart_opaque_twin_normal(*self, serializer);
+                _sse_encode_enum_dart_opaque_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_dart_opaque_twin_rust_async(EnumDartOpaqueTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_enum_dart_opaque_twin_rust_async(*self, serializer);
+                _sse_encode_enum_dart_opaque_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_dart_opaque_twin_sync(EnumDartOpaqueTwinSync self, SseSerializer serializer) {
-                _sse_encode_enum_dart_opaque_twin_sync(*self, serializer);
+                _sse_encode_enum_dart_opaque_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_opaque_twin_normal(EnumOpaqueTwinNormal self, SseSerializer serializer) {
-                _sse_encode_enum_opaque_twin_normal(*self, serializer);
+                _sse_encode_enum_opaque_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_opaque_twin_rust_async(EnumOpaqueTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_enum_opaque_twin_rust_async(*self, serializer);
+                _sse_encode_enum_opaque_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_opaque_twin_sync(EnumOpaqueTwinSync self, SseSerializer serializer) {
-                _sse_encode_enum_opaque_twin_sync(*self, serializer);
+                _sse_encode_enum_opaque_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_with_item_mixed_twin_normal(EnumWithItemMixedTwinNormal self, SseSerializer serializer) {
-                _sse_encode_enum_with_item_mixed_twin_normal(*self, serializer);
+                _sse_encode_enum_with_item_mixed_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(EnumWithItemMixedTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_enum_with_item_mixed_twin_rust_async(*self, serializer);
+                _sse_encode_enum_with_item_mixed_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_with_item_mixed_twin_sync(EnumWithItemMixedTwinSync self, SseSerializer serializer) {
-                _sse_encode_enum_with_item_mixed_twin_sync(*self, serializer);
+                _sse_encode_enum_with_item_mixed_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_with_item_struct_twin_normal(EnumWithItemStructTwinNormal self, SseSerializer serializer) {
-                _sse_encode_enum_with_item_struct_twin_normal(*self, serializer);
+                _sse_encode_enum_with_item_struct_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_with_item_struct_twin_rust_async(EnumWithItemStructTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_enum_with_item_struct_twin_rust_async(*self, serializer);
+                _sse_encode_enum_with_item_struct_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_with_item_struct_twin_sync(EnumWithItemStructTwinSync self, SseSerializer serializer) {
-                _sse_encode_enum_with_item_struct_twin_sync(*self, serializer);
+                _sse_encode_enum_with_item_struct_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_with_item_tuple_twin_normal(EnumWithItemTupleTwinNormal self, SseSerializer serializer) {
-                _sse_encode_enum_with_item_tuple_twin_normal(*self, serializer);
+                _sse_encode_enum_with_item_tuple_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(EnumWithItemTupleTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_enum_with_item_tuple_twin_rust_async(*self, serializer);
+                _sse_encode_enum_with_item_tuple_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_enum_with_item_tuple_twin_sync(EnumWithItemTupleTwinSync self, SseSerializer serializer) {
-                _sse_encode_enum_with_item_tuple_twin_sync(*self, serializer);
+                _sse_encode_enum_with_item_tuple_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_event_twin_normal(EventTwinNormal self, SseSerializer serializer) {
-                _sse_encode_event_twin_normal(*self, serializer);
+                _sse_encode_event_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_event_twin_rust_async(EventTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_event_twin_rust_async(*self, serializer);
+                _sse_encode_event_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_event_twin_sync(EventTwinSync self, SseSerializer serializer) {
-                _sse_encode_event_twin_sync(*self, serializer);
+                _sse_encode_event_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal self, SseSerializer serializer) {
-                _sse_encode_exotic_optionals_twin_normal(*self, serializer);
+                _sse_encode_exotic_optionals_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_exotic_optionals_twin_rust_async(ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_exotic_optionals_twin_rust_async(*self, serializer);
+                _sse_encode_exotic_optionals_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_exotic_optionals_twin_sync(ExoticOptionalsTwinSync self, SseSerializer serializer) {
-                _sse_encode_exotic_optionals_twin_sync(*self, serializer);
+                _sse_encode_exotic_optionals_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_f_32(double self, SseSerializer serializer) {
-                _sse_encode_f_32(*self, serializer);
+                _sse_encode_f_32(self, serializer);
             }
             
             void _sse_encode_box_autoadd_f_64(double self, SseSerializer serializer) {
-                _sse_encode_f_64(*self, serializer);
+                _sse_encode_f_64(self, serializer);
             }
             
             void _sse_encode_box_autoadd_feature_chrono_twin_normal(FeatureChronoTwinNormal self, SseSerializer serializer) {
-                _sse_encode_feature_chrono_twin_normal(*self, serializer);
+                _sse_encode_feature_chrono_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_feature_chrono_twin_rust_async(FeatureChronoTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_feature_chrono_twin_rust_async(*self, serializer);
+                _sse_encode_feature_chrono_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_feature_chrono_twin_sync(FeatureChronoTwinSync self, SseSerializer serializer) {
-                _sse_encode_feature_chrono_twin_sync(*self, serializer);
+                _sse_encode_feature_chrono_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_feature_uuid_twin_normal(FeatureUuidTwinNormal self, SseSerializer serializer) {
-                _sse_encode_feature_uuid_twin_normal(*self, serializer);
+                _sse_encode_feature_uuid_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_feature_uuid_twin_rust_async(FeatureUuidTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_feature_uuid_twin_rust_async(*self, serializer);
+                _sse_encode_feature_uuid_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_feature_uuid_twin_sync(FeatureUuidTwinSync self, SseSerializer serializer) {
-                _sse_encode_feature_uuid_twin_sync(*self, serializer);
+                _sse_encode_feature_uuid_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_feed_id_twin_normal(FeedIdTwinNormal self, SseSerializer serializer) {
-                _sse_encode_feed_id_twin_normal(*self, serializer);
+                _sse_encode_feed_id_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_feed_id_twin_rust_async(FeedIdTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_feed_id_twin_rust_async(*self, serializer);
+                _sse_encode_feed_id_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_feed_id_twin_sync(FeedIdTwinSync self, SseSerializer serializer) {
-                _sse_encode_feed_id_twin_sync(*self, serializer);
+                _sse_encode_feed_id_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_i_16(int self, SseSerializer serializer) {
-                _sse_encode_i_16(*self, serializer);
+                _sse_encode_i_16(self, serializer);
             }
             
             void _sse_encode_box_autoadd_i_32(int self, SseSerializer serializer) {
-                _sse_encode_i_32(*self, serializer);
+                _sse_encode_i_32(self, serializer);
             }
             
             void _sse_encode_box_autoadd_i_64(int self, SseSerializer serializer) {
-                _sse_encode_i_64(*self, serializer);
+                _sse_encode_i_64(self, serializer);
             }
             
             void _sse_encode_box_autoadd_i_8(int self, SseSerializer serializer) {
-                _sse_encode_i_8(*self, serializer);
+                _sse_encode_i_8(self, serializer);
             }
             
             void _sse_encode_box_autoadd_kitchen_sink_twin_normal(KitchenSinkTwinNormal self, SseSerializer serializer) {
-                _sse_encode_kitchen_sink_twin_normal(*self, serializer);
+                _sse_encode_kitchen_sink_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_kitchen_sink_twin_rust_async(*self, serializer);
+                _sse_encode_kitchen_sink_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_kitchen_sink_twin_sync(KitchenSinkTwinSync self, SseSerializer serializer) {
-                _sse_encode_kitchen_sink_twin_sync(*self, serializer);
+                _sse_encode_kitchen_sink_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_macro_struct(MacroStruct self, SseSerializer serializer) {
-                _sse_encode_macro_struct(*self, serializer);
+                _sse_encode_macro_struct(self, serializer);
             }
             
             void _sse_encode_box_autoadd_measure_twin_normal(MeasureTwinNormal self, SseSerializer serializer) {
-                _sse_encode_measure_twin_normal(*self, serializer);
+                _sse_encode_measure_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_measure_twin_rust_async(MeasureTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_measure_twin_rust_async(*self, serializer);
+                _sse_encode_measure_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_measure_twin_sync(MeasureTwinSync self, SseSerializer serializer) {
-                _sse_encode_measure_twin_sync(*self, serializer);
+                _sse_encode_measure_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_message_id_twin_normal(MessageIdTwinNormal self, SseSerializer serializer) {
-                _sse_encode_message_id_twin_normal(*self, serializer);
+                _sse_encode_message_id_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_message_id_twin_rust_async(MessageIdTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_message_id_twin_rust_async(*self, serializer);
+                _sse_encode_message_id_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_message_id_twin_sync(MessageIdTwinSync self, SseSerializer serializer) {
-                _sse_encode_message_id_twin_sync(*self, serializer);
+                _sse_encode_message_id_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_my_nested_struct_twin_normal(MyNestedStructTwinNormal self, SseSerializer serializer) {
-                _sse_encode_my_nested_struct_twin_normal(*self, serializer);
+                _sse_encode_my_nested_struct_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_my_nested_struct_twin_rust_async(MyNestedStructTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_my_nested_struct_twin_rust_async(*self, serializer);
+                _sse_encode_my_nested_struct_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_my_nested_struct_twin_sync(MyNestedStructTwinSync self, SseSerializer serializer) {
-                _sse_encode_my_nested_struct_twin_sync(*self, serializer);
+                _sse_encode_my_nested_struct_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_my_size(MySize self, SseSerializer serializer) {
-                _sse_encode_my_size(*self, serializer);
+                _sse_encode_my_size(self, serializer);
             }
             
             void _sse_encode_box_autoadd_my_struct(MyStruct self, SseSerializer serializer) {
-                _sse_encode_my_struct(*self, serializer);
+                _sse_encode_my_struct(self, serializer);
             }
             
             void _sse_encode_box_autoadd_my_tree_node_twin_normal(MyTreeNodeTwinNormal self, SseSerializer serializer) {
-                _sse_encode_my_tree_node_twin_normal(*self, serializer);
+                _sse_encode_my_tree_node_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_my_tree_node_twin_rust_async(MyTreeNodeTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_my_tree_node_twin_rust_async(*self, serializer);
+                _sse_encode_my_tree_node_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_my_tree_node_twin_sync(MyTreeNodeTwinSync self, SseSerializer serializer) {
-                _sse_encode_my_tree_node_twin_sync(*self, serializer);
+                _sse_encode_my_tree_node_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_new_type_int_twin_normal(NewTypeIntTwinNormal self, SseSerializer serializer) {
-                _sse_encode_new_type_int_twin_normal(*self, serializer);
+                _sse_encode_new_type_int_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_new_type_int_twin_rust_async(NewTypeIntTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_new_type_int_twin_rust_async(*self, serializer);
+                _sse_encode_new_type_int_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_new_type_int_twin_sync(NewTypeIntTwinSync self, SseSerializer serializer) {
-                _sse_encode_new_type_int_twin_sync(*self, serializer);
+                _sse_encode_new_type_int_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_note_twin_normal(NoteTwinNormal self, SseSerializer serializer) {
-                _sse_encode_note_twin_normal(*self, serializer);
+                _sse_encode_note_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_note_twin_rust_async(NoteTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_note_twin_rust_async(*self, serializer);
+                _sse_encode_note_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_note_twin_sync(NoteTwinSync self, SseSerializer serializer) {
-                _sse_encode_note_twin_sync(*self, serializer);
+                _sse_encode_note_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_numbers(Numbers self, SseSerializer serializer) {
-                _sse_encode_numbers(*self, serializer);
+                _sse_encode_numbers(self, serializer);
             }
             
             void _sse_encode_box_autoadd_opaque_nested_twin_normal(OpaqueNestedTwinNormal self, SseSerializer serializer) {
-                _sse_encode_opaque_nested_twin_normal(*self, serializer);
+                _sse_encode_opaque_nested_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_opaque_nested_twin_rust_async(OpaqueNestedTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_opaque_nested_twin_rust_async(*self, serializer);
+                _sse_encode_opaque_nested_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_opaque_nested_twin_sync(OpaqueNestedTwinSync self, SseSerializer serializer) {
-                _sse_encode_opaque_nested_twin_sync(*self, serializer);
+                _sse_encode_opaque_nested_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_opt_vecs_twin_normal(OptVecsTwinNormal self, SseSerializer serializer) {
-                _sse_encode_opt_vecs_twin_normal(*self, serializer);
+                _sse_encode_opt_vecs_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_opt_vecs_twin_rust_async(OptVecsTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_opt_vecs_twin_rust_async(*self, serializer);
+                _sse_encode_opt_vecs_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_opt_vecs_twin_sync(OptVecsTwinSync self, SseSerializer serializer) {
-                _sse_encode_opt_vecs_twin_sync(*self, serializer);
+                _sse_encode_opt_vecs_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_record_string_i_32((String,int) self, SseSerializer serializer) {
-                _sse_encode_record_string_i_32(*self, serializer);
+                _sse_encode_record_string_i_32(self, serializer);
             }
             
             void _sse_encode_box_autoadd_sequences(Sequences self, SseSerializer serializer) {
-                _sse_encode_sequences(*self, serializer);
+                _sse_encode_sequences(self, serializer);
             }
             
             void _sse_encode_box_autoadd_some_struct_twin_normal(SomeStructTwinNormal self, SseSerializer serializer) {
-                _sse_encode_some_struct_twin_normal(*self, serializer);
+                _sse_encode_some_struct_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_some_struct_twin_rust_async(SomeStructTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_some_struct_twin_rust_async(*self, serializer);
+                _sse_encode_some_struct_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_some_struct_twin_sync(SomeStructTwinSync self, SseSerializer serializer) {
-                _sse_encode_some_struct_twin_sync(*self, serializer);
+                _sse_encode_some_struct_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_comments_twin_normal(StructWithCommentsTwinNormal self, SseSerializer serializer) {
-                _sse_encode_struct_with_comments_twin_normal(*self, serializer);
+                _sse_encode_struct_with_comments_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_comments_twin_rust_async(StructWithCommentsTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_struct_with_comments_twin_rust_async(*self, serializer);
+                _sse_encode_struct_with_comments_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_comments_twin_sync(StructWithCommentsTwinSync self, SseSerializer serializer) {
-                _sse_encode_struct_with_comments_twin_sync(*self, serializer);
+                _sse_encode_struct_with_comments_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_enum_twin_normal(StructWithEnumTwinNormal self, SseSerializer serializer) {
-                _sse_encode_struct_with_enum_twin_normal(*self, serializer);
+                _sse_encode_struct_with_enum_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_enum_twin_rust_async(StructWithEnumTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_struct_with_enum_twin_rust_async(*self, serializer);
+                _sse_encode_struct_with_enum_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_enum_twin_sync(StructWithEnumTwinSync self, SseSerializer serializer) {
-                _sse_encode_struct_with_enum_twin_sync(*self, serializer);
+                _sse_encode_struct_with_enum_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_one_field_twin_normal(StructWithOneFieldTwinNormal self, SseSerializer serializer) {
-                _sse_encode_struct_with_one_field_twin_normal(*self, serializer);
+                _sse_encode_struct_with_one_field_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_one_field_twin_rust_async(StructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_struct_with_one_field_twin_rust_async(*self, serializer);
+                _sse_encode_struct_with_one_field_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_one_field_twin_sync(StructWithOneFieldTwinSync self, SseSerializer serializer) {
-                _sse_encode_struct_with_one_field_twin_sync(*self, serializer);
+                _sse_encode_struct_with_one_field_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_two_field_twin_normal(StructWithTwoFieldTwinNormal self, SseSerializer serializer) {
-                _sse_encode_struct_with_two_field_twin_normal(*self, serializer);
+                _sse_encode_struct_with_two_field_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_two_field_twin_rust_async(StructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_struct_with_two_field_twin_rust_async(*self, serializer);
+                _sse_encode_struct_with_two_field_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_two_field_twin_sync(StructWithTwoFieldTwinSync self, SseSerializer serializer) {
-                _sse_encode_struct_with_two_field_twin_sync(*self, serializer);
+                _sse_encode_struct_with_two_field_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_zero_field_twin_normal(StructWithZeroFieldTwinNormal self, SseSerializer serializer) {
-                _sse_encode_struct_with_zero_field_twin_normal(*self, serializer);
+                _sse_encode_struct_with_zero_field_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_zero_field_twin_rust_async(StructWithZeroFieldTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_struct_with_zero_field_twin_rust_async(*self, serializer);
+                _sse_encode_struct_with_zero_field_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_struct_with_zero_field_twin_sync(StructWithZeroFieldTwinSync self, SseSerializer serializer) {
-                _sse_encode_struct_with_zero_field_twin_sync(*self, serializer);
+                _sse_encode_struct_with_zero_field_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_sum_with_twin_normal(SumWithTwinNormal self, SseSerializer serializer) {
-                _sse_encode_sum_with_twin_normal(*self, serializer);
+                _sse_encode_sum_with_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_sum_with_twin_rust_async(SumWithTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_sum_with_twin_rust_async(*self, serializer);
+                _sse_encode_sum_with_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_sum_with_twin_sync(SumWithTwinSync self, SseSerializer serializer) {
-                _sse_encode_sum_with_twin_sync(*self, serializer);
+                _sse_encode_sum_with_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_test_id_twin_normal(TestIdTwinNormal self, SseSerializer serializer) {
-                _sse_encode_test_id_twin_normal(*self, serializer);
+                _sse_encode_test_id_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_test_id_twin_rust_async(TestIdTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_test_id_twin_rust_async(*self, serializer);
+                _sse_encode_test_id_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_test_id_twin_sync(TestIdTwinSync self, SseSerializer serializer) {
-                _sse_encode_test_id_twin_sync(*self, serializer);
+                _sse_encode_test_id_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(TupleStructWithOneFieldTwinNormal self, SseSerializer serializer) {
-                _sse_encode_tuple_struct_with_one_field_twin_normal(*self, serializer);
+                _sse_encode_tuple_struct_with_one_field_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(TupleStructWithOneFieldTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_tuple_struct_with_one_field_twin_rust_async(*self, serializer);
+                _sse_encode_tuple_struct_with_one_field_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(TupleStructWithOneFieldTwinSync self, SseSerializer serializer) {
-                _sse_encode_tuple_struct_with_one_field_twin_sync(*self, serializer);
+                _sse_encode_tuple_struct_with_one_field_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(TupleStructWithTwoFieldTwinNormal self, SseSerializer serializer) {
-                _sse_encode_tuple_struct_with_two_field_twin_normal(*self, serializer);
+                _sse_encode_tuple_struct_with_two_field_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(TupleStructWithTwoFieldTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_tuple_struct_with_two_field_twin_rust_async(*self, serializer);
+                _sse_encode_tuple_struct_with_two_field_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(TupleStructWithTwoFieldTwinSync self, SseSerializer serializer) {
-                _sse_encode_tuple_struct_with_two_field_twin_sync(*self, serializer);
+                _sse_encode_tuple_struct_with_two_field_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_u_16(int self, SseSerializer serializer) {
-                _sse_encode_u_16(*self, serializer);
+                _sse_encode_u_16(self, serializer);
             }
             
             void _sse_encode_box_autoadd_u_32(int self, SseSerializer serializer) {
-                _sse_encode_u_32(*self, serializer);
+                _sse_encode_u_32(self, serializer);
             }
             
             void _sse_encode_box_autoadd_u_64(int self, SseSerializer serializer) {
-                _sse_encode_u_64(*self, serializer);
+                _sse_encode_u_64(self, serializer);
             }
             
             void _sse_encode_box_autoadd_u_8(int self, SseSerializer serializer) {
-                _sse_encode_u_8(*self, serializer);
+                _sse_encode_u_8(self, serializer);
             }
             
             void _sse_encode_box_autoadd_user_id_twin_normal(UserIdTwinNormal self, SseSerializer serializer) {
-                _sse_encode_user_id_twin_normal(*self, serializer);
+                _sse_encode_user_id_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_user_id_twin_rust_async(UserIdTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_user_id_twin_rust_async(*self, serializer);
+                _sse_encode_user_id_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_user_id_twin_sync(UserIdTwinSync self, SseSerializer serializer) {
-                _sse_encode_user_id_twin_sync(*self, serializer);
+                _sse_encode_user_id_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_autoadd_weekdays_twin_normal(WeekdaysTwinNormal self, SseSerializer serializer) {
-                _sse_encode_weekdays_twin_normal(*self, serializer);
+                _sse_encode_weekdays_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_autoadd_weekdays_twin_rust_async(WeekdaysTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_weekdays_twin_rust_async(*self, serializer);
+                _sse_encode_weekdays_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_autoadd_weekdays_twin_sync(WeekdaysTwinSync self, SseSerializer serializer) {
-                _sse_encode_weekdays_twin_sync(*self, serializer);
+                _sse_encode_weekdays_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_blob_twin_normal(BlobTwinNormal self, SseSerializer serializer) {
-                _sse_encode_blob_twin_normal(*self, serializer);
+                _sse_encode_blob_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_blob_twin_rust_async(BlobTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_blob_twin_rust_async(*self, serializer);
+                _sse_encode_blob_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_blob_twin_sync(BlobTwinSync self, SseSerializer serializer) {
-                _sse_encode_blob_twin_sync(*self, serializer);
+                _sse_encode_blob_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_bool(bool self, SseSerializer serializer) {
-                _sse_encode_bool(*self, serializer);
+                _sse_encode_bool(self, serializer);
             }
             
             void _sse_encode_box_distance_twin_normal(DistanceTwinNormal self, SseSerializer serializer) {
-                _sse_encode_distance_twin_normal(*self, serializer);
+                _sse_encode_distance_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_distance_twin_rust_async(DistanceTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_distance_twin_rust_async(*self, serializer);
+                _sse_encode_distance_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_distance_twin_sync(DistanceTwinSync self, SseSerializer serializer) {
-                _sse_encode_distance_twin_sync(*self, serializer);
+                _sse_encode_distance_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal self, SseSerializer serializer) {
-                _sse_encode_exotic_optionals_twin_normal(*self, serializer);
+                _sse_encode_exotic_optionals_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_exotic_optionals_twin_rust_async(ExoticOptionalsTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_exotic_optionals_twin_rust_async(*self, serializer);
+                _sse_encode_exotic_optionals_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_exotic_optionals_twin_sync(ExoticOptionalsTwinSync self, SseSerializer serializer) {
-                _sse_encode_exotic_optionals_twin_sync(*self, serializer);
+                _sse_encode_exotic_optionals_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_f_64(double self, SseSerializer serializer) {
-                _sse_encode_f_64(*self, serializer);
+                _sse_encode_f_64(self, serializer);
             }
             
             void _sse_encode_box_i_32(int self, SseSerializer serializer) {
-                _sse_encode_i_32(*self, serializer);
+                _sse_encode_i_32(self, serializer);
             }
             
             void _sse_encode_box_i_64(int self, SseSerializer serializer) {
-                _sse_encode_i_64(*self, serializer);
+                _sse_encode_i_64(self, serializer);
             }
             
             void _sse_encode_box_i_8(int self, SseSerializer serializer) {
-                _sse_encode_i_8(*self, serializer);
+                _sse_encode_i_8(self, serializer);
             }
             
             void _sse_encode_box_kitchen_sink_twin_normal(KitchenSinkTwinNormal self, SseSerializer serializer) {
-                _sse_encode_kitchen_sink_twin_normal(*self, serializer);
+                _sse_encode_kitchen_sink_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_kitchen_sink_twin_rust_async(*self, serializer);
+                _sse_encode_kitchen_sink_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_kitchen_sink_twin_sync(KitchenSinkTwinSync self, SseSerializer serializer) {
-                _sse_encode_kitchen_sink_twin_sync(*self, serializer);
+                _sse_encode_kitchen_sink_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_my_size(MySize self, SseSerializer serializer) {
-                _sse_encode_my_size(*self, serializer);
+                _sse_encode_my_size(self, serializer);
             }
             
             void _sse_encode_box_speed_twin_normal(SpeedTwinNormal self, SseSerializer serializer) {
-                _sse_encode_speed_twin_normal(*self, serializer);
+                _sse_encode_speed_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_speed_twin_rust_async(SpeedTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_speed_twin_rust_async(*self, serializer);
+                _sse_encode_speed_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_speed_twin_sync(SpeedTwinSync self, SseSerializer serializer) {
-                _sse_encode_speed_twin_sync(*self, serializer);
+                _sse_encode_speed_twin_sync(self, serializer);
             }
             
             void _sse_encode_box_u_8(int self, SseSerializer serializer) {
-                _sse_encode_u_8(*self, serializer);
+                _sse_encode_u_8(self, serializer);
             }
             
             void _sse_encode_box_u_8_array_1600(U8Array1600 self, SseSerializer serializer) {
-                _sse_encode_u_8_array_1600(*self, serializer);
+                _sse_encode_u_8_array_1600(self, serializer);
             }
             
             void _sse_encode_box_weekdays_twin_normal(WeekdaysTwinNormal self, SseSerializer serializer) {
-                _sse_encode_weekdays_twin_normal(*self, serializer);
+                _sse_encode_weekdays_twin_normal(self, serializer);
             }
             
             void _sse_encode_box_weekdays_twin_rust_async(WeekdaysTwinRustAsync self, SseSerializer serializer) {
-                _sse_encode_weekdays_twin_rust_async(*self, serializer);
+                _sse_encode_weekdays_twin_rust_async(self, serializer);
             }
             
             void _sse_encode_box_weekdays_twin_sync(WeekdaysTwinSync self, SseSerializer serializer) {
-                _sse_encode_weekdays_twin_sync(*self, serializer);
+                _sse_encode_weekdays_twin_sync(self, serializer);
             }
             
             void _sse_encode_c_twin_normal(CTwinNormal self, SseSerializer serializer) {
