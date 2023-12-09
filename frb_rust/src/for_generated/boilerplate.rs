@@ -52,6 +52,7 @@ macro_rules! frb_generated_boilerplate {
 
         // -------------------------- StreamSink ------------------------
 
+        #[derive(Clone)]
         pub struct StreamSink<
             T,
             Rust2DartCodec: $crate::for_generated::BaseCodec = $crate::for_generated::DcoCodec,
