@@ -29,7 +29,6 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
             &Lang::RustLang(RustLang),
             src,
             &self_ref,
-            &self_path,
             |idx, variant| {
                 let tag = format!("{idx}.into_dart()");
                 let fields = (Some(tag).into_iter())

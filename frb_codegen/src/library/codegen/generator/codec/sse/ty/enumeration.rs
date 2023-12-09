@@ -9,7 +9,7 @@ use itertools::Itertools;
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
         let src = self.ir.get(self.context.ir_pack);
-        generate_enum_encode_rust_general(lang, src, "self", "Self", |idx, variant| {
+        generate_enum_encode_rust_general(lang, src, "self", |idx, variant| {
             let fields = (variant.kind.fields().iter())
                 .map(|field| {
                     format!(
@@ -58,8 +58,8 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 }
 
 fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang: &Lang) -> String {
-    let enum_sep = enum_sep(lang);
     let enum_name_str = enum_name.style(lang);
+    let enum_sep = enum_sep(lang);
     match &variant.kind {
         IrVariantKind::Value => format!("return {enum_name_str}{enum_sep}{}();", variant.name),
         IrVariantKind::Struct(st) => {
@@ -73,9 +73,9 @@ pub(crate) fn generate_enum_encode_rust_general(
     lang: &Lang,
     src: &IrEnum,
     self_ref: &str,
-    self_path: &str,
     generate_branch: impl Fn(usize, &IrVariant) -> String,
 ) -> String {
+    let enum_name_str = src.name.style(lang);
     let enum_sep = enum_sep(lang);
     let variants = (src.variants().iter().enumerate())
         .map(|(idx, variant)| {
@@ -83,7 +83,7 @@ pub(crate) fn generate_enum_encode_rust_general(
             let pattern = pattern_match_enum_variant(lang, variant);
             let body = generate_branch(idx, variant);
             (
-                format!("{self_path}{enum_sep}{variant_name}{pattern}"),
+                format!("{enum_name_str}{enum_sep}{variant_name}{pattern}"),
                 body,
             )
         })
