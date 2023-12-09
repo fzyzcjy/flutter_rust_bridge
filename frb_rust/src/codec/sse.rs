@@ -3,7 +3,6 @@ use crate::for_generated::into_leak_vec_ptr;
 use crate::for_generated::vec_from_leak_ptr;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
-use crate::platform_types::WireSyncReturnSse;
 use crate::platform_types::{DartAbi, WireSyncReturnSse};
 use crate::rust2dart::action::Rust2DartAction;
 use byteorder::{NativeEndian, WriteBytesExt};
