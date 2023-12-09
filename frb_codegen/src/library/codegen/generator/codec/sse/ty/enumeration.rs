@@ -59,15 +59,12 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 
 fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang: &Lang) -> String {
     let enum_sep = enum_sep(lang);
+    let enum_name_str = enum_name.style(lang);
     match &variant.kind {
-        IrVariantKind::Value => format!(
-            "return {}{enum_sep}{}();",
-            enum_name.style(lang),
-            variant.name
-        ),
+        IrVariantKind::Value => format!("return {enum_name_str}{enum_sep}{}();", variant.name),
         IrVariantKind::Struct(st) => {
             GeneralizedStructGenerator::new(st.clone(), StructOrRecord::Struct)
-                .generate_decode(lang)
+                .generate_decode(lang, &format!("{enum_name_str}{enum_sep}"))
         }
     }
 }
