@@ -15,6 +15,10 @@ pub struct SseCodec;
 impl BaseCodec for SseCodec {
     type Message = Rust2DartMessageSse;
 
+    fn new() -> Self {
+        Self
+    }
+
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
         let _msg = error_to_string(error);
         Self::encode(Rust2DartAction::Panic, |_serializer| todo!())

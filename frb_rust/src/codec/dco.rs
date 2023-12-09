@@ -13,6 +13,10 @@ pub struct DcoCodec;
 impl BaseCodec for DcoCodec {
     type Message = Rust2DartMessageDco;
 
+    fn new() -> Self {
+        Self
+    }
+
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
         Self::encode(Rust2DartAction::Panic, error_to_string(error))
     }
