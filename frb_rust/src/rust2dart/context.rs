@@ -2,7 +2,7 @@ use crate::codec::BaseCodec;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::sender::Rust2DartSender;
-use crate::rust2dart::stream_sink::StreamSink;
+use crate::rust2dart::stream_sink::StreamSinkBase;
 use std::marker::PhantomData;
 
 /// A context for task execution related to Rust2Dart
@@ -20,12 +20,12 @@ impl<Rust2DartCodec: BaseCodec> TaskRust2DartContext<Rust2DartCodec> {
         }
     }
 
-    /// Create a new [StreamSink] of the specified type.
-    pub fn stream_sink<T, D>(&self) -> StreamSink<T, Rust2DartCodec>
+    /// Create a new [StreamSinkBase] of the specified type.
+    pub fn stream_sink<T, D>(&self) -> StreamSinkBase<T, Rust2DartCodec>
     where
         T: IntoIntoDart<D>,
         D: IntoDart,
     {
-        StreamSink::<T, Rust2DartCodec>::new(self.sender.clone())
+        StreamSinkBase::<T, Rust2DartCodec>::new(self.sender.clone())
     }
 }
