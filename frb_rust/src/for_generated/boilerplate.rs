@@ -55,11 +55,11 @@ macro_rules! frb_generated_boilerplate {
         // -------------------------- StreamSink ------------------------
 
         pub struct StreamSink<T, Rust2DartCodec: flutter_rust_bridge::for_generated::BaseCodec = flutter_rust_bridge::for_generated::DcoCodec> {
-            base: flutter_rust_bridge::for_generated::StreamSinkBase,
+            base: flutter_rust_bridge::for_generated::StreamSinkBase<T, Rust2DartCodec>,
         }
 
-        impl<T, Rust2DartCodec: flutter_rust_bridge::for_generated::BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
-            pub fn new(base: flutter_rust_bridge::for_generated::StreamSinkBase) -> Self {
+        impl<T, Rust2DartCodec: flutter_rust_bridge::for_generated::BaseCodec> StreamSink<T, Rust2DartCodec> {
+            pub fn new(base: flutter_rust_bridge::for_generated::StreamSinkBase<T, Rust2DartCodec>) -> Self {
                 Self { base }
             }
 
