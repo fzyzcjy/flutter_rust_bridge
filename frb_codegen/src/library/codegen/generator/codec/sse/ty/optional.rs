@@ -8,24 +8,25 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
             Lang::RustLang(_) => "self.is_some()",
         };
         let encode_flag = lang.call_encode(&Primitive(IrTypePrimitive::Bool), &self_is_not_null);
-        let encode_self = lang.call_encode(&*self.ir.inner, "self");
 
         Some(match lang {
             Lang::DartLang(_) => format!(
                 "
                 {encode_flag};
                 if (self != null) {{
-                    {encode_self};
+                    {};
                 }}
                 ",
+                lang.call_encode(&*self.ir.inner, "self"),
             ),
             Lang::RustLang(_) => format!(
                 "
                 {encode_flag};
-                if let Some(self) = self {{
-                    {encode_self};
+                if let Some(value) = self {{
+                    {};
                 }}
                 ",
+                lang.call_encode(&*self.ir.inner, "value"),
             ),
         })
     }
