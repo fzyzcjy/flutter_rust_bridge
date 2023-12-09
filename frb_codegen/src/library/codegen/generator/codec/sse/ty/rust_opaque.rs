@@ -39,7 +39,7 @@ pub(super) fn generate_generalized_rust_opaque_decode(
         Lang::RustLang(_) => simple_delegate_decode(
             lang,
             &IrTypeRustOpaque::DELEGATE_TYPE,
-            "flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner)",
+            "unsafe { flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner) }",
         ),
     }
 }

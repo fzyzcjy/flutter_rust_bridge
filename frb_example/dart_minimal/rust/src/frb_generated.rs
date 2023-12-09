@@ -143,7 +143,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
-        return flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner);
+        return unsafe { flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner) };
     }
 }
 
