@@ -1,7 +1,9 @@
+use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::ty::delegate::{
     simple_delegate_decode, simple_delegate_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
@@ -10,20 +12,28 @@ impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
-        Some(generate_generalized_rust_opaque_decode(lang))
+        Some(generate_generalized_rust_opaque_decode(
+            lang,
+            self.ir.clone().into(),
+            self.context,
+        ))
     }
 }
 
 const EXTERNAL_SIZE_TYPE: IrType = IrType::Primitive(IrTypePrimitive::I32);
 
-pub(super) fn generate_generalized_rust_opaque_decode(lang: &Lang) -> String {
+pub(super) fn generate_generalized_rust_opaque_decode(
+    lang: &Lang,
+    ir: IrType,
+    context: CodecSseTyContext,
+) -> String {
     match lang {
         Lang::DartLang(_) => {
             format!(
                 "return {}.sseDecode({}, {});",
+                ApiDartGenerator::new(ir, context.as_api_dart_context()).dart_api_type(),
                 lang.call_decode(&IrTypeRustOpaque::DELEGATE_TYPE),
                 lang.call_decode(&EXTERNAL_SIZE_TYPE),
-                lang.null(),
             )
         }
         Lang::RustLang(_) => {
