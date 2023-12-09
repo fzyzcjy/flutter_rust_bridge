@@ -21,7 +21,7 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
   @override
   S decodeObject(dynamic raw) {
     final rawList = raw as List<dynamic>;
-    switch (_Rust2DartAction.values[rawList[0]]) {
+    switch (rawList[0]) {
       case _Rust2DartAction.success:
         assert(rawList.length == 2);
         return parseSuccessData(rawList[1]);
@@ -60,4 +60,10 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
 }
 
 /// NOTE: Please keep in sync with the Rust side
-enum _Rust2DartAction { success, error, closeStream, panic }
+class _Rust2DartAction {
+  // Do not use enum, but use raw integers, to avoid extra overhead
+  static const success = 0;
+  static const error = 1;
+  static const closeStream = 2;
+  static const panic = 3;
+}
