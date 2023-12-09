@@ -15,10 +15,20 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  RustOpaque.fromWire(List<dynamic> wire, RustArcStaticData staticData)
-      : _arc = RustArc.fromRaw(
+  RustOpaque.dcoDecode(List<dynamic> wire, RustArcStaticData staticData)
+      : this._fromRaw(
           ptr: wire[0],
           externalSizeOnNative: wire[1],
+          staticData: staticData,
+        );
+
+  RustOpaque._fromRaw({
+    required int ptr,
+    required int externalSizeOnNative,
+    required RustArcStaticData staticData,
+  }) : _arc = RustArc.fromRaw(
+          ptr: ptr,
+          externalSizeOnNative: externalSizeOnNative,
           staticData: staticData,
         );
 
