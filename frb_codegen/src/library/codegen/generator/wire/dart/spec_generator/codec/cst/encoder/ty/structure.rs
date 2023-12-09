@@ -9,7 +9,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_wasm;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ty::structure::IrTypeStructRef;
+use crate::codegen::ir::ty::structure::{IrStruct, IrTypeStructRef};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use StructOrRecord::Record;
@@ -52,18 +52,18 @@ impl<'a> GeneralizedStructGenerator<'a> {
     pub(crate) fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: self.context.config.wasm_enabled.then(|| {
-                let values = self
-                    .ir
-                    .get(self.context.ir_pack)
-                    .fields
-                    .iter()
-                    .enumerate()
+                let st = self.ir.get(self.context.ir_pack);
+                let values = (st.fields.iter().enumerate())
                     .map(|(index, field)| {
                         format!(
                             "cst_encode_{}(raw.{})",
                             field.ty.safe_ident(),
-                            self.mode
-                                .field_name(index, field, &Lang::DartLang(DartLang))
+                            self.mode.field_name(
+                                index,
+                                field,
+                                st.is_fields_named,
+                                &Lang::DartLang(DartLang)
+                            )
                         )
                     })
                     .join(",");
@@ -80,16 +80,22 @@ impl<'a> GeneralizedStructGenerator<'a> {
                 .iter()
                 .enumerate()
                 .map(|(index, field)| {
-                    self.generate_api_fill_to_wire_body_struct_field(index, field)
+                    self.generate_api_fill_to_wire_body_struct_field(index, field, st)
                 })
                 .collect_vec()
                 .join("\n"),
         )
     }
 
-    fn generate_api_fill_to_wire_body_struct_field(&self, index: usize, field: &IrField) -> String {
+    fn generate_api_fill_to_wire_body_struct_field(
+        &self,
+        index: usize,
+        field: &IrField,
+        st: &IrStruct,
+    ) -> String {
         let safe_ident = field.ty.safe_ident();
-        let dart_style = (self.mode).field_name(index, field, &Lang::DartLang(DartLang));
+        let dart_style =
+            (self.mode).field_name(index, field, st.is_fields_named, &Lang::DartLang(DartLang));
         let rust_style = field.name.rust_style();
 
         if field.ty.is_struct_or_enum_or_record() {

@@ -41,7 +41,11 @@ impl GeneralizedStructGenerator {
                     "{};\n",
                     lang.call_encode(
                         &field.ty,
-                        &format!("self.{}", self.mode.field_name(index, field, lang))
+                        &format!(
+                            "self.{}",
+                            self.mode
+                                .field_name(index, field, self.st.is_fields_named, lang)
+                        )
                     )
                 )
             })
