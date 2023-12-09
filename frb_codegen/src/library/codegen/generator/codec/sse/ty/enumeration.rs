@@ -34,6 +34,7 @@ fn generate_decode_rust(lang: &Lang, src: &IrEnum) -> String {
         {var_decl} tag_ = {expr_decode_tag};
         match tag_ {{
             {variants}
+            _ => unreachable!()
         }}
         "
     )
