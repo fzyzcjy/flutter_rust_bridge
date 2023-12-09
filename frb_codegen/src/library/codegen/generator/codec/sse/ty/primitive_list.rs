@@ -22,7 +22,9 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                 "return deserializer.buffer.get{}List();",
                 get_serializer_dart_postfix(&self.ir.primitive)
             ),
-            Lang::RustLang(_) => general_list_generate_decode(lang, &self.ir.primitive),
+            Lang::RustLang(_) => {
+                general_list_generate_decode(lang, &IrType::Primitive(self.ir.primitive.clone()))
+            }
         })
     }
 }
