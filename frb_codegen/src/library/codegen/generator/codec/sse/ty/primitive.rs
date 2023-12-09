@@ -17,7 +17,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
                 ),
                 Lang::RustLang(_) => format!(
                     "serializer.cursor.write_{}::<NativeEndian>(self).unwrap();",
-                    self.ir.rust_api_type()
+                    get_serializer_rust_type(&self.ir)
                 ),
             },
         })
@@ -40,7 +40,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
                 Lang::RustLang(_) => {
                     format!(
                         "deserializer.cursor.read_{}::<NativeEndian>().unwrap(){cast}",
-                        self.ir.rust_api_type()
+                        get_serializer_rust_type(&self.ir)
                     )
                 }
             },
@@ -64,5 +64,14 @@ pub(super) fn get_serializer_dart_postfix(prim: &IrTypePrimitive) -> &'static st
         IrTypePrimitive::F64 => "Float64",
         IrTypePrimitive::Bool => "Uint8",
         IrTypePrimitive::Unit => unreachable!(),
+    }
+}
+
+pub(super) fn get_serializer_rust_type(prim: &IrTypePrimitive) -> &'static str {
+    match prim {
+        // TODO make it adapt to 32/64bit platform
+        IrTypePrimitive::Usize => "u64",
+        IrTypePrimitive::Isize => "i64",
+        _ => prim.rust_api_type(),
     }
 }
