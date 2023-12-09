@@ -7,15 +7,17 @@ use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
+        if let Some(value) = self.skip_unimplemented(lang) {
+            return value;
+        }
+
         let inner_expr = match lang {
             Lang::DartLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => "self.inner".to_owned(),
                 IrTypeDelegate::String => "utf8.encoder.convert(self)".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(_) => "self.index".to_owned(),
                 IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
-                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
-                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
-                }
+                _ => unreachable!(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => "self".to_owned(),
@@ -23,9 +25,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
                 IrTypeDelegate::Backtrace => "TODO".to_owned(),
                 IrTypeDelegate::Anyhow => "TODO".to_owned(),
-                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
-                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
-                }
+                _ => unreachable!(),
             },
         };
         Some(simple_delegate_encode(
@@ -36,6 +36,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        if let Some(value) = self.skip_unimplemented(lang) {
+            return value;
+        }
+
         let wrapper_expr = match lang {
             Lang::DartLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => format!(
@@ -52,10 +56,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     )
                 }
                 IrTypeDelegate::Backtrace => "inner".to_owned(),
-                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
-                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
-                }
                 IrTypeDelegate::Anyhow => "AnyhowException(inner)".to_owned(),
+                _ => unreachable!(),
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -66,16 +68,30 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     rust_decode_primitive_enum(inner, self.context.ir_pack)
                 }
                 IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
-                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
-                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
-                }
+                _ => unreachable!(),
             },
         };
+
         Some(simple_delegate_decode(
             lang,
             &self.ir.get_delegate(),
             &wrapper_expr,
         ))
+    }
+}
+
+impl<'a> DelegateCodecSseTy<'a> {
+    fn skip_unimplemented(&self, lang: &Lang) -> Option<Option<String>> {
+        match &self.ir {
+            IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
+                return Some(Some(format!(
+                    "{};",
+                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                )));
+            }
+            _ => {}
+        }
+        None
     }
 }
 
