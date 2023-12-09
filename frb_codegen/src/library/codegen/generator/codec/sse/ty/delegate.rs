@@ -44,7 +44,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::String => "utf8.decoder.convert(inner)".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(inner) => {
                     format!(
-                        "{}.values[inner];",
+                        "{}.values[inner]",
                         ApiDartGenerator::new(inner.ir.clone(), self.context.as_api_dart_context())
                             .dart_api_type()
                     )
