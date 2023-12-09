@@ -16,35 +16,28 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 
     fn generate_decode(&self, lang: &Lang) -> String {
         let src = self.ir.get(self.context.ir_pack);
-        match lang {
-            Lang::DartLang(_) => format!("return TODO;"),
-            Lang::RustLang(_) => generate_decode_rust(lang, src),
-        }
+
+        let var_decl = lang.var_decl();
+        let expr_decode_tag = lang.call_decode(&TAG_TYPE);
+
+        let variants = (src.variants().iter().enumerate())
+            .map(|(idx, variant)| {
+                (
+                    format!("{idx}"),
+                    generate_decode_rust_variant(variant, &src.name),
+                )
+            })
+            .collect_vec();
+
+        let body = lang.switch_expr("tag_", variants);
+
+        format!(
+            "
+            {var_decl} tag_ = {expr_decode_tag};
+            {body}
+            "
+        )
     }
-}
-
-fn generate_decode_rust(lang: &Lang, src: &IrEnum) -> String {
-    let var_decl = lang.var_decl();
-    let expr_decode_tag = lang.call_decode(&TAG_TYPE);
-
-    let variants = (src.variants().iter().enumerate())
-        .map(|(idx, variant)| {
-            format!(
-                "{idx} => {}",
-                generate_decode_rust_variant(variant, &src.name)
-            )
-        })
-        .join("\n");
-
-    format!(
-        "
-        {var_decl} tag_ = {expr_decode_tag};
-        match tag_ {{
-            {variants}
-            _ => unreachable!()
-        }}
-        "
-    )
 }
 
 fn generate_decode_rust_variant(variant: &IrVariant, enum_name: &NamespacedName) -> String {
