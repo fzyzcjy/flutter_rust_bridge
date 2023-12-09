@@ -79,8 +79,6 @@ class F64Array16 extends NonGrowableListView<double> {
         super(_inner);
 
   F64Array16.init() : this(Float64List(arraySize));
-
-  F64Array16.init() : super(Float64List(arraySize));
 }
 
 class FeedIdTwinNormal {
@@ -113,8 +111,6 @@ class I32Array2 extends NonGrowableListView<int> {
         super(_inner);
 
   I32Array2.init() : this(Int32List(arraySize));
-
-  I32Array2.init() : super(Int32List(arraySize));
 }
 
 class MessageIdTwinNormal {
@@ -167,10 +163,8 @@ class PointTwinNormalArray2 extends NonGrowableListView<PointTwinNormal> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  PointTwinNormalArray2.init() : this(List<PointTwinNormal>(arraySize));
-
   PointTwinNormalArray2.init(PointTwinNormal fill)
-      : super(List<PointTwinNormal>.filled(arraySize, fill));
+      : this(List<PointTwinNormal>.filled(arraySize, fill));
 }
 
 class TestIdTwinNormal {
@@ -202,10 +196,8 @@ class TestIdTwinNormalArray2 extends NonGrowableListView<TestIdTwinNormal> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  TestIdTwinNormalArray2.init() : this(List<TestIdTwinNormal>(arraySize));
-
   TestIdTwinNormalArray2.init(TestIdTwinNormal fill)
-      : super(List<TestIdTwinNormal>.filled(arraySize, fill));
+      : this(List<TestIdTwinNormal>.filled(arraySize, fill));
 }
 
 class TestIdTwinNormalArray4 extends NonGrowableListView<TestIdTwinNormal> {
@@ -219,10 +211,8 @@ class TestIdTwinNormalArray4 extends NonGrowableListView<TestIdTwinNormal> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  TestIdTwinNormalArray4.init() : this(List<TestIdTwinNormal>(arraySize));
-
   TestIdTwinNormalArray4.init(TestIdTwinNormal fill)
-      : super(List<TestIdTwinNormal>.filled(arraySize, fill));
+      : this(List<TestIdTwinNormal>.filled(arraySize, fill));
 }
 
 class U8Array1600 extends NonGrowableListView<int> {
@@ -237,8 +227,6 @@ class U8Array1600 extends NonGrowableListView<int> {
         super(_inner);
 
   U8Array1600.init() : this(Uint8List(arraySize));
-
-  U8Array1600.init() : super(Uint8List(arraySize));
 }
 
 class U8Array32 extends NonGrowableListView<int> {
@@ -253,8 +241,6 @@ class U8Array32 extends NonGrowableListView<int> {
         super(_inner);
 
   U8Array32.init() : this(Uint8List(arraySize));
-
-  U8Array32.init() : super(Uint8List(arraySize));
 }
 
 class U8Array5 extends NonGrowableListView<int> {
@@ -269,8 +255,6 @@ class U8Array5 extends NonGrowableListView<int> {
         super(_inner);
 
   U8Array5.init() : this(Uint8List(arraySize));
-
-  U8Array5.init() : super(Uint8List(arraySize));
 }
 
 class U8Array8 extends NonGrowableListView<int> {
@@ -285,6 +269,4 @@ class U8Array8 extends NonGrowableListView<int> {
         super(_inner);
 
   U8Array8.init() : this(Uint8List(arraySize));
-
-  U8Array8.init() : super(Uint8List(arraySize));
 }

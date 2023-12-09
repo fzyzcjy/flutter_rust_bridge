@@ -130,10 +130,8 @@ class PointTwinSyncArray2 extends NonGrowableListView<PointTwinSync> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  PointTwinSyncArray2.init() : this(List<PointTwinSync>(arraySize));
-
   PointTwinSyncArray2.init(PointTwinSync fill)
-      : super(List<PointTwinSync>.filled(arraySize, fill));
+      : this(List<PointTwinSync>.filled(arraySize, fill));
 }
 
 class TestIdTwinSync {
@@ -165,10 +163,8 @@ class TestIdTwinSyncArray2 extends NonGrowableListView<TestIdTwinSync> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  TestIdTwinSyncArray2.init() : this(List<TestIdTwinSync>(arraySize));
-
   TestIdTwinSyncArray2.init(TestIdTwinSync fill)
-      : super(List<TestIdTwinSync>.filled(arraySize, fill));
+      : this(List<TestIdTwinSync>.filled(arraySize, fill));
 }
 
 class TestIdTwinSyncArray4 extends NonGrowableListView<TestIdTwinSync> {
@@ -182,8 +178,6 @@ class TestIdTwinSyncArray4 extends NonGrowableListView<TestIdTwinSync> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  TestIdTwinSyncArray4.init() : this(List<TestIdTwinSync>(arraySize));
-
   TestIdTwinSyncArray4.init(TestIdTwinSync fill)
-      : super(List<TestIdTwinSync>.filled(arraySize, fill));
+      : this(List<TestIdTwinSync>.filled(arraySize, fill));
 }

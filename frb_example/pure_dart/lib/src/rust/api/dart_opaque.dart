@@ -91,9 +91,7 @@ class ObjectArray1 extends NonGrowableListView<Object> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  ObjectArray1.init() : this(List<Object>(arraySize));
-
-  ObjectArray1.init(Object fill) : super(List<Object>.filled(arraySize, fill));
+  ObjectArray1.init(Object fill) : this(List<Object>.filled(arraySize, fill));
 }
 
 class DartOpaqueNestedTwinNormal {

@@ -122,11 +122,8 @@ class EnumOpaqueTwinNormalArray5
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  EnumOpaqueTwinNormalArray5.init()
-      : this(List<EnumOpaqueTwinNormal>(arraySize));
-
   EnumOpaqueTwinNormalArray5.init(EnumOpaqueTwinNormal fill)
-      : super(List<EnumOpaqueTwinNormal>.filled(arraySize, fill));
+      : this(List<EnumOpaqueTwinNormal>.filled(arraySize, fill));
 }
 
 /// [`HideData`] has private fields.

@@ -135,9 +135,6 @@ class SumWithTwinRustAsyncArray3
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  SumWithTwinRustAsyncArray3.init()
-      : this(List<SumWithTwinRustAsync>(arraySize));
-
   SumWithTwinRustAsyncArray3.init(SumWithTwinRustAsync fill)
-      : super(List<SumWithTwinRustAsync>.filled(arraySize, fill));
+      : this(List<SumWithTwinRustAsync>.filled(arraySize, fill));
 }

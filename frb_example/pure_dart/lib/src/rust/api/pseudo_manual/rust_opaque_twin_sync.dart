@@ -112,10 +112,8 @@ class EnumOpaqueTwinSyncArray5 extends NonGrowableListView<EnumOpaqueTwinSync> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  EnumOpaqueTwinSyncArray5.init() : this(List<EnumOpaqueTwinSync>(arraySize));
-
   EnumOpaqueTwinSyncArray5.init(EnumOpaqueTwinSync fill)
-      : super(List<EnumOpaqueTwinSync>.filled(arraySize, fill));
+      : this(List<EnumOpaqueTwinSync>.filled(arraySize, fill));
 }
 
 /// [`HideData`] has private fields.

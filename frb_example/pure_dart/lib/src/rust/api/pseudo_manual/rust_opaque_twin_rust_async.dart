@@ -177,10 +177,8 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  HideDataArray2.init() : this(List<HideData>(arraySize));
-
   HideDataArray2.init(HideData fill)
-      : super(List<HideData>.filled(arraySize, fill));
+      : this(List<HideData>.filled(arraySize, fill));
 }
 
 // Rust type: flutter_rust_bridge::RustOpaque<i32>
@@ -268,11 +266,8 @@ class EnumOpaqueTwinRustAsyncArray5
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  EnumOpaqueTwinRustAsyncArray5.init()
-      : this(List<EnumOpaqueTwinRustAsync>(arraySize));
-
   EnumOpaqueTwinRustAsyncArray5.init(EnumOpaqueTwinRustAsync fill)
-      : super(List<EnumOpaqueTwinRustAsync>.filled(arraySize, fill));
+      : this(List<EnumOpaqueTwinRustAsync>.filled(arraySize, fill));
 }
 
 /// [`HideData`] has private fields.

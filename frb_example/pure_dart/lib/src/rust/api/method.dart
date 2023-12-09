@@ -132,8 +132,6 @@ class SumWithTwinNormalArray3 extends NonGrowableListView<SumWithTwinNormal> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  SumWithTwinNormalArray3.init() : this(List<SumWithTwinNormal>(arraySize));
-
   SumWithTwinNormalArray3.init(SumWithTwinNormal fill)
-      : super(List<SumWithTwinNormal>.filled(arraySize, fill));
+      : this(List<SumWithTwinNormal>.filled(arraySize, fill));
 }

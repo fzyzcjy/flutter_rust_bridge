@@ -130,8 +130,6 @@ class SumWithTwinSyncArray3 extends NonGrowableListView<SumWithTwinSync> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  SumWithTwinSyncArray3.init() : this(List<SumWithTwinSync>(arraySize));
-
   SumWithTwinSyncArray3.init(SumWithTwinSync fill)
-      : super(List<SumWithTwinSync>.filled(arraySize, fill));
+      : this(List<SumWithTwinSync>.filled(arraySize, fill));
 }

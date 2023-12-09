@@ -32,10 +32,10 @@ fn generate_array(
 
     let dart_init_method = match array.mode {
             IrTypeDelegateArrayMode::General(..) => format!(
-                "{self_dart_api_type}.init({inner_dart_api_type} fill): super(List<{inner_dart_api_type}>.filled(arraySize,fill));",
+                "{self_dart_api_type}.init({inner_dart_api_type} fill): this(List<{inner_dart_api_type}>.filled(arraySize,fill));",
             ),
             IrTypeDelegateArrayMode::Primitive(..) => format!(
-                "{self_dart_api_type}.init(): super({delegate_dart_api_type}(arraySize));",
+                "{self_dart_api_type}.init(): this({delegate_dart_api_type}(arraySize));",
             ),
         };
 
@@ -58,8 +58,6 @@ fn generate_array(
                     : assert(_inner.length == arraySize),
                       super(_inner);
   
-                {self_dart_api_type}.init() : this({delegate_dart_api_type}(arraySize));
-
                 {dart_init_method}
               }}
             "

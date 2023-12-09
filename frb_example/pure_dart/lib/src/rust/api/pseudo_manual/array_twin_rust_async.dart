@@ -136,10 +136,8 @@ class PointTwinRustAsyncArray2 extends NonGrowableListView<PointTwinRustAsync> {
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  PointTwinRustAsyncArray2.init() : this(List<PointTwinRustAsync>(arraySize));
-
   PointTwinRustAsyncArray2.init(PointTwinRustAsync fill)
-      : super(List<PointTwinRustAsync>.filled(arraySize, fill));
+      : this(List<PointTwinRustAsync>.filled(arraySize, fill));
 }
 
 class TestIdTwinRustAsync {
@@ -172,10 +170,8 @@ class TestIdTwinRustAsyncArray2
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  TestIdTwinRustAsyncArray2.init() : this(List<TestIdTwinRustAsync>(arraySize));
-
   TestIdTwinRustAsyncArray2.init(TestIdTwinRustAsync fill)
-      : super(List<TestIdTwinRustAsync>.filled(arraySize, fill));
+      : this(List<TestIdTwinRustAsync>.filled(arraySize, fill));
 }
 
 class TestIdTwinRustAsyncArray4
@@ -190,8 +186,6 @@ class TestIdTwinRustAsyncArray4
       : assert(_inner.length == arraySize),
         super(_inner);
 
-  TestIdTwinRustAsyncArray4.init() : this(List<TestIdTwinRustAsync>(arraySize));
-
   TestIdTwinRustAsyncArray4.init(TestIdTwinRustAsync fill)
-      : super(List<TestIdTwinRustAsync>.filled(arraySize, fill));
+      : this(List<TestIdTwinRustAsync>.filled(arraySize, fill));
 }
