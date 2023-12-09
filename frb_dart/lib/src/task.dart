@@ -65,9 +65,9 @@ class NormalTask<S, E extends Object> extends BaseTask<S, E> {
 ///
 /// {@macro flutter_rust_bridge.not_manually_create}
 @immutable
-class SyncTask<S, E extends Object> extends BaseTask<S, E> {
+class SyncTask<S, E extends Object, WireSyncType> extends BaseTask<S, E> {
   /// The underlying function to call FFI function, usually the generated wire function
-  final WireSyncReturn Function() callFfi;
+  final WireSyncType Function() callFfi;
 
   /// Create a new task.
   const SyncTask({

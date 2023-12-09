@@ -4,7 +4,6 @@ import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
-import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
@@ -20,8 +19,8 @@ class BaseHandler {
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
-  S executeSync<S, E extends Object>(SyncTask<S, E> task) {
-    final WireSyncReturn syncReturn;
+  S executeSync<S, E extends Object, R>(SyncTask<S, E, R> task) {
+    final R syncReturn;
     try {
       syncReturn = task.callFfi();
     } catch (e, s) {
