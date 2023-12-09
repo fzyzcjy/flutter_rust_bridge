@@ -10,42 +10,6 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl CstDecode<String> for *mut wire_cst_list_prim_u_8 {
-    fn cst_decode(self) -> String {
-        let vec: Vec<u8> = self.cst_decode();
-        String::from_utf8(vec).unwrap()
-    }
-}
-impl CstDecode<Vec<String>> for *mut wire_cst_list_String {
-    fn cst_decode(self) -> Vec<String> {
-        let vec = unsafe {
-            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
-            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(CstDecode::cst_decode).collect()
-    }
-}
-impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8 {
-    fn cst_decode(self) -> Vec<u8> {
-        unsafe {
-            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
-            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
-    }
-}
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_cst_list_String {
-    ptr: *mut *mut wire_cst_list_prim_u_8,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_cst_list_prim_u_8 {
-    ptr: *mut u8,
-    len: i32,
-}
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }
@@ -69,32 +33,6 @@ pub extern "C" fn frb_initialize_rust(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_hello(port_: i64, a: *mut wire_cst_list_String) {
-    wire_hello_impl(port_, a)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
-}
-
-#[no_mangle]
-pub extern "C" fn cst_new_list_String(len: i32) -> *mut wire_cst_list_String {
-    let wrap = wire_cst_list_String {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <*mut wire_cst_list_prim_u_8>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn cst_new_list_prim_u_8(len: i32) -> *mut wire_cst_list_prim_u_8 {
-    let ans = wire_cst_list_prim_u_8 {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
 }
