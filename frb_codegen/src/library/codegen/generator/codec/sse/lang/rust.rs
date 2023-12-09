@@ -2,6 +2,7 @@ use crate::codegen::generator::codec::sse::lang::LangTrait;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::{multizip, Itertools};
+use std::env::var;
 
 #[derive(Clone, Copy, Debug)]
 pub(crate) struct RustLang;
@@ -39,6 +40,13 @@ impl LangTrait for RustLang {
 
     fn for_loop(&self, lhs: &str, rhs: &str, body: &str) -> String {
         format!("for {lhs} in {rhs} {{ {body} }}")
+    }
+
+    fn switch_expr(&self, value: &str, variants: &[(String, String)]) -> String {
+        let body = (variants.iter())
+            .map(|(lhs, rhs)| format!("{lhs} => {{ {rhs} }}"))
+            .join("");
+        format!("match {value} {{ {body} }}")
     }
 
     fn null(&self) -> &'static str {

@@ -41,3 +41,10 @@ void f(Hello hello) {
       print('$x $y');
   }
 }
+
+void g(int x) {
+  switch (x) {
+    case 1:
+      print('a');
+  }
+}
