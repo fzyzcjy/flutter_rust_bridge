@@ -1,6 +1,7 @@
 //! Utilities to support the auto-generated Rust code.
 //! These functions are usually *not* meant to be used by humans directly.
 
+mod boilerplate;
 mod cast;
 mod pointer;
 

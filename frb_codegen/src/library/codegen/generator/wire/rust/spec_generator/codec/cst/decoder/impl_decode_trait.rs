@@ -28,21 +28,7 @@ pub(crate) fn generate_impl_decode(
 
 fn generate_impl_decode_misc() -> Acc<WireRustOutputCode> {
     Acc {
-        common: r#"
-            pub trait CstDecode<T> {
-                fn cst_decode(self) -> T;
-            }
-
-            impl<T, S> CstDecode<Option<T>> for *mut S
-            where
-                *mut S: CstDecode<T>
-            {
-                fn cst_decode(self) -> Option<T> {
-                    (!self.is_null()).then(|| self.cst_decode())
-                }
-            }
-        "#
-        .into(),
+        common: "".into(),
         io: "".into(),
         wasm: r#"
             impl<T> CstDecode<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue where JsValue: CstDecode<T> {
