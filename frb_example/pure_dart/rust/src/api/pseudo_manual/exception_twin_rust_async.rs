@@ -2,9 +2,9 @@
 // and is auto-generated from `exception.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
+use crate::frb_generated::StreamSink;
 use anyhow::{anyhow, Result};
 use backtrace::Backtrace;
-use flutter_rust_bridge::StreamSink;
 
 // ------------------------------ built-in errors ----------------------------------
 

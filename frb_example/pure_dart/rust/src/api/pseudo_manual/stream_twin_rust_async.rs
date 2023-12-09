@@ -4,10 +4,11 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
 
+use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::{transfer, StreamSink};
+use flutter_rust_bridge::transfer;
 
 pub async fn func_stream_return_error_twin_rust_async(
     _sink: StreamSink<String>,

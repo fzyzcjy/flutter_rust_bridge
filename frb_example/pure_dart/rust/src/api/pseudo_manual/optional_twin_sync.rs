@@ -110,7 +110,7 @@ pub fn handle_optional_increment_twin_sync(
         },
         zerocopy: Some({
             let mut list = opt.zerocopy.unwrap_or_else(|| vec![]);
-            list.0.push(0);
+            list.push(0);
             list
         }),
     })
