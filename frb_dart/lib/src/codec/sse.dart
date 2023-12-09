@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/read_buffer.dart';
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/write_buffer.dart';

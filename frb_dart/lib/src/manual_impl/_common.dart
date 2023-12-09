@@ -1,9 +1,7 @@
-import 'package:flutter_rust_bridge/src/codec/sse.dart';
 import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
-import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
-// ------------------------------------- dco decode -------------------------------------------
+// ------------------------------------- decode -------------------------------------------
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 PanicException dcoDecodePanicError(dynamic raw) =>
@@ -24,3 +22,6 @@ Duration dcoDecodeDuration(int ts) {
   }
   return Duration(microseconds: ts);
 }
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+PanicException sseDecodePanicError(dynamic raw) => throw UnimplementedError();
