@@ -12,18 +12,20 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Array(_) => "self.inner",
                 IrTypeDelegate::String => "utf8.encoder.convert(self)",
                 IrTypeDelegate::PrimitiveEnum(_) => "self.index",
-                IrTypeDelegate::Time(_) => "self.microsecondsSinceEpoch",
-                IrTypeDelegate::Uuid => "self.toBytes()",
                 IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED",
+                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
+                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                }
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => "self",
                 IrTypeDelegate::String => "self.into_bytes()",
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _",
-                IrTypeDelegate::Time(_) => "self.microsecondsSinceEpoch",
-                IrTypeDelegate::Uuid => "self.toBytes()",
                 IrTypeDelegate::Backtrace => "TODO",
                 IrTypeDelegate::Anyhow => "TODO",
+                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
+                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                }
             },
         };
         Some(simple_delegate_encode(
@@ -49,9 +51,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                             .dart_api_type()
                     )
                 }
-                IrTypeDelegate::Time(_) => "TODO".to_owned(),
-                IrTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
                 IrTypeDelegate::Backtrace => "inner".to_owned(),
+                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
+                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                }
                 IrTypeDelegate::Anyhow => "AnyhowException(inner)".to_owned(),
             },
             Lang::RustLang(_) => match &self.ir {
@@ -62,11 +65,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::PrimitiveEnum(inner) => {
                     rust_decode_primitive_enum(inner, self.context.ir_pack)
                 }
-                IrTypeDelegate::Time(_) => "chrono::Duration::microseconds(self)".to_owned(),
-                IrTypeDelegate::Uuid => {
-                    "flutter_rust_bridge::for_generated::decode_uuid(inner)".to_owned()
-                }
                 IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
+                IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => {
+                    lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                }
             },
         };
         Some(simple_delegate_decode(
@@ -108,3 +110,6 @@ pub(crate) fn rust_decode_primitive_enum(
         variants, enu.name.name
     )
 }
+
+const UNIMPLEMENTED_MESSAGE: &str =
+    "not yet supported in serialized mode, feel free to create an issue";
