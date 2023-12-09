@@ -107,24 +107,24 @@ pub trait SseDecode {
 
 impl SseDecode for crate::api::minimal::Hello {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return <crate::api::minimal::Hello>::sse_decode(serializer);
+        return <crate::api::minimal::Hello>::sse_decode(deserializer);
     }
 }
 
 impl SseDecode for crate::api::minimal::Hello {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut tag_ = <i32>::sse_decode(serializer);
+        let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
                 return crate::api::minimal::Hello::Apple();
             }
             1 => {
-                let mut field0 = <i32>::sse_decode(serializer);
+                let mut field0 = <i32>::sse_decode(deserializer);
                 return crate::api::minimal::Hello::Orange { field0: field0 };
             }
             2 => {
-                let mut x = <i32>::sse_decode(serializer);
-                let mut y = <i32>::sse_decode(serializer);
+                let mut x = <i32>::sse_decode(deserializer);
+                let mut y = <i32>::sse_decode(deserializer);
                 return crate::api::minimal::Hello::Raspi { x: x, y: y };
             }
             _ => {
