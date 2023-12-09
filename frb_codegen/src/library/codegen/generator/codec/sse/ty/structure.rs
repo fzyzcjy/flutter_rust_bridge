@@ -13,7 +13,7 @@ impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         Some(
             self.new_generalized_generator()
-                .generate_decode(lang, "", true),
+                .generate_decode(lang, None, true),
         )
     }
 }
@@ -51,7 +51,7 @@ impl GeneralizedStructGenerator {
     pub(super) fn generate_decode(
         &self,
         lang: &Lang,
-        name_prefix: &str,
+        override_struct_name: Option<String>,
         ctor_keyword_args: bool,
     ) -> String {
         let decode_fields = (self.st.fields.iter().enumerate())
@@ -67,7 +67,7 @@ impl GeneralizedStructGenerator {
 
         let ctor = match self.mode {
             Struct => lang.call_constructor(
-                &format!("{name_prefix}{}", self.st.name.style(lang)),
+                &override_struct_name.unwrap_or_else(|| self.st.name.style(lang)),
                 &(self.st.fields.iter())
                     .map(|x| x.name.style(lang))
                     .collect_vec(),
