@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
@@ -99,10 +100,16 @@ pub(crate) enum StructOrRecord {
 }
 
 impl StructOrRecord {
-    pub(crate) fn field_name_dart_style(&self, index: usize, field: &IrField) -> String {
-        match self {
-            StructOrRecord::Struct => field.name.dart_style(),
-            StructOrRecord::Record => format!("${}", index + 1),
+    pub(crate) fn field_name(&self, index: usize, field: &IrField, lang: &Lang) -> String {
+        match lang {
+            Lang::DartLang(_) => match self {
+                StructOrRecord::Struct => field.name.dart_style(),
+                StructOrRecord::Record => format!("${}", index + 1),
+            },
+            Lang::RustLang(_) => match self {
+                StructOrRecord::Struct => field.name.rust_style(),
+                StructOrRecord::Record => format!("{}", index + 1),
+            },
         }
     }
 }

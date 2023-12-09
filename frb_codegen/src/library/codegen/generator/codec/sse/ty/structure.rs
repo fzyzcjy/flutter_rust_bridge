@@ -43,7 +43,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
                     "{};\n",
                     lang.call_encode(
                         &field.ty,
-                        &format!("self.{}", self.mode.field_name_dart_style(index, field))
+                        &format!("self.{}", self.mode.field_name(index, field, lang))
                     )
                 )
             })
@@ -57,7 +57,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
                 format!(
                     "{} {} = {};\n",
                     lang.var_decl(),
-                    self.mode.field_name_dart_style(index, field),
+                    self.mode.field_name(index, field, lang),
                     lang.call_decode(&field.ty)
                 )
             })

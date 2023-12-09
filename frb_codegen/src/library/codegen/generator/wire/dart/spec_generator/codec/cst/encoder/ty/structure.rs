@@ -1,4 +1,6 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::sse::lang::dart::DartLang;
+use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::generator::misc::StructOrRecord::Struct;
@@ -60,7 +62,8 @@ impl<'a> GeneralizedStructGenerator<'a> {
                         format!(
                             "cst_encode_{}(raw.{})",
                             field.ty.safe_ident(),
-                            self.mode.field_name_dart_style(index, field)
+                            self.mode
+                                .field_name(index, field, &Lang::DartLang(DartLang))
                         )
                     })
                     .join(",");
@@ -86,7 +89,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
 
     fn generate_api_fill_to_wire_body_struct_field(&self, index: usize, field: &IrField) -> String {
         let safe_ident = field.ty.safe_ident();
-        let dart_style = self.mode.field_name_dart_style(index, field);
+        let dart_style = (self.mode).field_name(index, field, &Lang::DartLang(DartLang));
         let rust_style = field.name.rust_style();
 
         if field.ty.is_struct_or_enum_or_record() {
