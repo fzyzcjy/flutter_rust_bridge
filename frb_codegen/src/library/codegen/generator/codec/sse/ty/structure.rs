@@ -68,10 +68,7 @@ impl GeneralizedStructGenerator {
         let ctor = match self.mode {
             Struct => lang.call_constructor(
                 &format!("{name_prefix}{}", self.st.name.name),
-                &self
-                    .st
-                    .fields
-                    .iter()
+                &(self.st.fields.iter())
                     .map(|x| x.name.style(lang))
                     .collect_vec(),
                 &(self.st.fields.iter())
