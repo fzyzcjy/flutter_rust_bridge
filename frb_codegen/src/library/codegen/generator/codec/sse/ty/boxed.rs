@@ -3,13 +3,25 @@ use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for BoxedCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        self.should_generate(lang)
-            .then(|| format!("{};", lang.call_encode(&*self.ir.inner, "*self")))
+        let wrapper = match lang {
+            Lang::DartLang(_) => "",
+            Lang::RustLang(_) => "*",
+        };
+        self.should_generate(lang).then(|| {
+            format!(
+                "{};",
+                lang.call_encode(&*self.ir.inner, format!("{wrapper}self"))
+            )
+        })
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        let wrapper = match lang {
+            Lang::DartLang(_) => "",
+            Lang::RustLang(_) => "Box::new",
+        };
         self.should_generate(lang)
-            .then(|| format!("return Box::new({});", lang.call_decode(&*self.ir.inner)))
+            .then(|| format!("return {wrapper}({});", lang.call_decode(&*self.ir.inner)))
     }
 }
 
