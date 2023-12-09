@@ -1,4 +1,4 @@
-use crate::codec::BaseCodec;
+use crate::codec::CodecTrait;
 use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::Channel;
 use crate::handler::error::Error;
@@ -17,7 +17,7 @@ impl ErrorListener for NoOpErrorListener {
     }
 }
 
-pub(crate) fn handle_non_sync_panic_error<Rust2DartCodec: BaseCodec>(
+pub(crate) fn handle_non_sync_panic_error<Rust2DartCodec: CodecTrait>(
     error_listener: impl ErrorListener,
     port: MessagePort,
     error: Box<dyn Any + Send>,

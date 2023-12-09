@@ -1,11 +1,11 @@
-use super::{BaseCodec, Rust2DartMessageTrait};
+use super::{CodecTrait, Rust2DartMessageTrait};
 use crate::platform_types::DartAbi;
 use std::any::Any;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct CstCodec;
 
-impl BaseCodec for CstCodec {
+impl CodecTrait for CstCodec {
     type Message = Rust2DartMessageCst;
 
     fn encode_panic(_error: &Box<dyn Any + Send>) -> Self::Message {

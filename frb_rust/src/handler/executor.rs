@@ -1,4 +1,4 @@
-use crate::codec::BaseCodec;
+use crate::codec::CodecTrait;
 use crate::handler::handler::{TaskContext, TaskInfo, TaskRetFutTrait};
 use std::future::Future;
 use std::panic::{RefUnwindSafe, UnwindSafe};
@@ -18,7 +18,7 @@ pub trait Executor: RefUnwindSafe {
             + Send
             + UnwindSafe
             + 'static,
-        Rust2DartCodec: BaseCodec;
+        Rust2DartCodec: CodecTrait;
 
     /// Executes a synchronous Rust function
     fn execute_sync<Rust2DartCodec, SyncTaskFn>(
@@ -29,7 +29,7 @@ pub trait Executor: RefUnwindSafe {
     where
         SyncTaskFn:
             FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
-        Rust2DartCodec: BaseCodec;
+        Rust2DartCodec: CodecTrait;
 
     #[cfg(feature = "rust-async")]
     fn execute_async<Rust2DartCodec, TaskFn, TaskRetFut>(&self, task_info: TaskInfo, task: TaskFn)
@@ -38,5 +38,5 @@ pub trait Executor: RefUnwindSafe {
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait
             + UnwindSafe,
-        Rust2DartCodec: BaseCodec;
+        Rust2DartCodec: CodecTrait;
 }

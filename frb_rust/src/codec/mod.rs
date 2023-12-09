@@ -5,7 +5,7 @@ pub(crate) mod cst;
 pub(crate) mod dco;
 pub(crate) mod sse;
 
-pub trait BaseCodec: Clone + Copy {
+pub trait CodecTrait: Clone + Copy {
     type Message: Rust2DartMessageTrait;
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message;

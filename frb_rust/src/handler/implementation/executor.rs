@@ -1,4 +1,4 @@
-use crate::codec::BaseCodec;
+use crate::codec::CodecTrait;
 use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::Channel;
 use crate::handler::error::Error;
@@ -52,7 +52,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             + Send
             + UnwindSafe
             + 'static,
-        Rust2DartCodec: BaseCodec,
+        Rust2DartCodec: CodecTrait,
     {
         let el = self.error_listener;
         let el2 = self.error_listener;
@@ -88,7 +88,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
     where
         SyncTaskFn:
             FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
-        Rust2DartCodec: BaseCodec,
+        Rust2DartCodec: CodecTrait,
     {
         match sync_task() {
             Ok(data) => data,
@@ -106,7 +106,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait
             + UnwindSafe,
-        Rust2DartCodec: BaseCodec,
+        Rust2DartCodec: CodecTrait,
     {
         let el = self.error_listener;
         let el2 = self.error_listener;
@@ -148,7 +148,7 @@ impl ExecuteNormalOrAsyncUtils {
         _port: MessagePort,
     ) where
         EL: ErrorListener + Sync,
-        Rust2DartCodec: BaseCodec,
+        Rust2DartCodec: CodecTrait,
     {
         match ret {
             Ok(result) => {

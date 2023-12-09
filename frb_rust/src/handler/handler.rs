@@ -1,4 +1,4 @@
-use crate::codec::BaseCodec;
+use crate::codec::CodecTrait;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::DartFnFuture;
 use crate::platform_types::MessagePort;
@@ -38,7 +38,7 @@ pub trait Handler {
             + Send
             + UnwindSafe
             + 'static,
-        Rust2DartCodec: BaseCodec;
+        Rust2DartCodec: CodecTrait;
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function will be called synchronously and
     /// need not implement [Send].
@@ -50,7 +50,7 @@ pub trait Handler {
     where
         SyncTaskFn:
             FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
-        Rust2DartCodec: BaseCodec;
+        Rust2DartCodec: CodecTrait;
 
     /// Same as [`wrap`][Handler::wrap], but for async Rust.
     #[cfg(feature = "rust-async")]
@@ -64,7 +64,7 @@ pub trait Handler {
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait
             + UnwindSafe,
-        Rust2DartCodec: BaseCodec;
+        Rust2DartCodec: CodecTrait;
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret>;
 }
@@ -108,11 +108,11 @@ pub trait TaskRetFutTrait {}
 impl<T> TaskRetFutTrait for T {}
 
 /// A context for task execution
-pub struct TaskContext<Rust2DartCodec: BaseCodec> {
+pub struct TaskContext<Rust2DartCodec: CodecTrait> {
     rust2dart_context: TaskRust2DartContext<Rust2DartCodec>,
 }
 
-impl<Rust2DartCodec: BaseCodec> TaskContext<Rust2DartCodec> {
+impl<Rust2DartCodec: CodecTrait> TaskContext<Rust2DartCodec> {
     pub fn new(rust2dart_context: TaskRust2DartContext<Rust2DartCodec>) -> Self {
         Self { rust2dart_context }
     }

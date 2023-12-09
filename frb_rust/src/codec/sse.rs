@@ -1,4 +1,4 @@
-use super::{BaseCodec, Rust2DartMessageTrait};
+use super::{CodecTrait, Rust2DartMessageTrait};
 use crate::for_generated::into_leak_vec_ptr;
 use crate::for_generated::vec_from_leak_ptr;
 use crate::generalized_isolate::IntoDart;
@@ -12,7 +12,7 @@ use std::io::Cursor;
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct SseCodec;
 
-impl BaseCodec for SseCodec {
+impl CodecTrait for SseCodec {
     type Message = Rust2DartMessageSse;
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
