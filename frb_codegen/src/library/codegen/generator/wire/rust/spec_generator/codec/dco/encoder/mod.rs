@@ -20,7 +20,7 @@ pub(crate) fn generate(
     types: &[IrType],
 ) -> WireRustCodecOutputSpec {
     let mut inner = Default::default();
-    inner += generate_misc();
+    // inner += generate_misc();
     inner += (types.iter())
         .filter_map(|ty| {
             WireRustCodecDcoGenerator::new(ty.clone(), context).generate_impl_into_dart()
@@ -28,39 +28,4 @@ pub(crate) fn generate(
         .map(|x| Acc::<WireRustOutputCode>::new_common(x.into()))
         .collect();
     WireRustCodecOutputSpec { inner }
-}
-
-fn generate_misc() -> Acc<Vec<WireRustOutputCode>> {
-    let generate = |name, body| -> WireRustOutputCode {
-        format!(
-            "
-            fn {name}<T, T2, E>(
-                raw: Result<T, E>,
-            ) -> Result<flutter_rust_bridge::for_generated::DartAbi, flutter_rust_bridge::for_generated::DartAbi>
-            where
-                T: flutter_rust_bridge::IntoIntoDart<T2>,
-                T2: flutter_rust_bridge::IntoDart,
-                E: flutter_rust_bridge::IntoDart,
-            {{
-                {body}
-            }}
-            "
-        ).into()
-    };
-
-    Acc::new_common(vec![
-        generate(
-            "transform_result_dco_normal",
-            "
-                match raw {
-                    Ok(raw) => Ok(raw.into_into_dart().into_dart()),
-                    Err(raw) => Err(raw.into_dart()),
-                }
-            ",
-        ),
-        generate(
-            "transform_result_dco_sync",
-            "transform_result_dco_normal(raw)",
-        ),
-    ])
 }

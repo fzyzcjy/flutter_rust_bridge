@@ -186,16 +186,11 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
     }
 
     ans = format!(
-        "transform_result_{}_{}({ans})",
+        "transform_result_{}({ans})",
         func.codec_mode_pack
             .rust2dart
             .to_string()
             .to_case(Case::Snake),
-        if func.mode == IrFuncMode::Sync {
-            "sync"
-        } else {
-            "normal"
-        }
     );
 
     ans
