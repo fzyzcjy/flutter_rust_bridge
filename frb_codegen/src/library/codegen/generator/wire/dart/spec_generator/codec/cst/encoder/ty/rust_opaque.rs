@@ -5,10 +5,8 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustOpaqueWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
-        Acc::new_common(Some(format!(
-            "// ignore: invalid_use_of_internal_member
-            return raw.cstEncode();",
-        )))
+        Acc::new_common(Some("// ignore: invalid_use_of_internal_member
+            return raw.cstEncode();".to_string()))
     }
 
     fn dart_wire_type(&self, target: Target) -> String {

@@ -32,7 +32,7 @@ impl LangTrait for DartLang {
                 .map(|(x, y)| if keyword_args {
                     format!("{x}: {y}")
                 } else {
-                    format!("{y}")
+                    y.to_string()
                 })
                 .join(", ")
         )

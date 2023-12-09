@@ -83,7 +83,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(if last_segment.ident == STREAM_SINK_IDENT {
             match &last_segment.arguments {
                 PathArguments::AngleBracketed(AngleBracketedGenericArguments { args, .. })
-                    if args.len() >= 1 =>
+                    if !args.is_empty() =>
                 {
                     // Unwrap is safe here because args.len() >= 1
                     match args.first().unwrap() {

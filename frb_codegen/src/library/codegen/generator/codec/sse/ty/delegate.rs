@@ -106,7 +106,7 @@ pub(super) fn simple_delegate_decode(lang: &Lang, inner_ty: &IrType, wrapper_exp
     format!(
         "{var_decl} inner = {};
         return {wrapper_expr};",
-        lang.call_decode(&inner_ty),
+        lang.call_decode(inner_ty),
         var_decl = lang.var_decl()
     )
 }

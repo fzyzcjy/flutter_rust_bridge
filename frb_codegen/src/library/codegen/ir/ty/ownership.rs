@@ -30,7 +30,7 @@ impl IrTypeTrait for IrTypeOwnership {
     fn safe_ident(&self) -> String {
         format!(
             "Ownership{}_{}",
-            self.mode.to_string(),
+            self.mode,
             self.inner.safe_ident()
         )
     }

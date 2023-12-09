@@ -25,7 +25,7 @@ pub(crate) fn generate(
     inner += (types.iter())
         .map(|ty| WireRustCodecCstGenerator::new(ty.clone(), context).generate_allocate_funcs())
         .collect();
-    inner += generate_impl_decode(&types, context);
+    inner += generate_impl_decode(types, context);
     inner += Acc::new_io(
         (types.iter())
             .filter_map(|ty| {

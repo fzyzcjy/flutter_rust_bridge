@@ -226,7 +226,7 @@ fn generate_return_type(func: &IrFunc) -> Option<String> {
     match func.mode {
         IrFuncMode::Sync => Some(format!(
             "flutter_rust_bridge::for_generated::WireSyncReturn{}",
-            func.codec_mode_pack.rust2dart.to_string(),
+            func.codec_mode_pack.rust2dart,
         )),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => None,
     }

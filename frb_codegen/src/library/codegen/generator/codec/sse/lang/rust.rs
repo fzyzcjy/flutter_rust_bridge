@@ -34,7 +34,7 @@ impl LangTrait for RustLang {
                 .map(|(x, y)| if keyword_args && x != y {
                     format!("{x}: {y}")
                 } else {
-                    format!("{y}")
+                    y.to_string()
                 })
                 .join(", ")
         )

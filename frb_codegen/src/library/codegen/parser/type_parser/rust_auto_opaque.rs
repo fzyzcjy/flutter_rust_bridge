@@ -13,7 +13,7 @@ use IrType::RustAutoOpaque;
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn transform_type_rust_auto_opaque(&mut self, ty_raw: &IrType) -> IrType {
         if self.check_candidate_rust_auto_opaque(ty_raw) {
-            let ty_ans = self.parse_rust_auto_opaque(&ty_raw);
+            let ty_ans = self.parse_rust_auto_opaque(ty_raw);
             debug!("transform_type_rust_auto_opaque convert {ty_raw:?} -> {ty_ans:?}");
             return ty_ans;
         }

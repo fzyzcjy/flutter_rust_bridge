@@ -15,7 +15,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         Ok(IrType::Ownership(IrTypeOwnership {
             mode,
-            inner: Box::new(self.parse_type(&*type_reference.elem)?),
+            inner: Box::new(self.parse_type(&type_reference.elem)?),
         }))
     }
 }

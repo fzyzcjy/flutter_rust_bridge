@@ -13,21 +13,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<String> {
-        match &self.ir {
-            // ty @ IrTypeDelegate::StringList => Some(generate_class_from_fields(
-            //     self.ir.clone(),
-            //     self.context,
-            //     &[
-            //         format!(
-            //             "ptr: *mut *mut {}",
-            //             WireRustCodecCstGenerator::new(ty.get_delegate(), self.context)
-            //                 .rust_wire_type(Target::Io)
-            //         ),
-            //         "len: i32".to_owned(),
-            //     ],
-            // )),
-            _ => None,
-        }
+        None
     }
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
@@ -135,19 +121,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
     }
 
     fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
-        match &self.ir {
-            // list @ IrTypeDelegate::StringList => Acc {
-            //     io: generate_list_generate_allocate_func(
-            //         &self.ir.safe_ident(),
-            //         &IrType::Delegate(list.clone()),
-            //         &list.get_delegate(),
-            //         self.context,
-            //     )
-            //     .into(),
-            //     ..Default::default()
-            // },
-            _ => Default::default(),
-        }
+        Default::default()
     }
 
     fn rust_wire_type(&self, target: Target) -> String {

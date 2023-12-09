@@ -10,7 +10,7 @@ impl<'a> CodecSseTyTrait for BoxedCodecSseTy<'a> {
         self.should_generate(lang).then(|| {
             format!(
                 "{};",
-                lang.call_encode(&*self.ir.inner, &format!("{wrapper}self"))
+                lang.call_encode(&self.ir.inner, &format!("{wrapper}self"))
             )
         })
     }
@@ -21,7 +21,7 @@ impl<'a> CodecSseTyTrait for BoxedCodecSseTy<'a> {
             Lang::RustLang(_) => "Box::new",
         };
         self.should_generate(lang)
-            .then(|| format!("return {wrapper}({});", lang.call_decode(&*self.ir.inner)))
+            .then(|| format!("return {wrapper}({});", lang.call_decode(&self.ir.inner)))
     }
 }
 

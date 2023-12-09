@@ -16,7 +16,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
-        generate_rust_arc_functions(self.ir.clone().into(), &*self.ir.inner)
+        generate_rust_arc_functions(self.ir.clone().into(), &self.ir.inner)
     }
 }
 
