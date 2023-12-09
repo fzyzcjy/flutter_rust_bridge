@@ -22,7 +22,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 _ => unreachable!(),
             },
             Lang::RustLang(_) => match &self.ir {
-                IrTypeDelegate::Array(_) => "self".to_owned(),
+                IrTypeDelegate::Array(_) => "Box::new(self).into_vec()".to_owned(),
                 IrTypeDelegate::String => "self.into_bytes()".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
                 IrTypeDelegate::Backtrace => r#"format!("{:?}", self)"#.to_owned(),
