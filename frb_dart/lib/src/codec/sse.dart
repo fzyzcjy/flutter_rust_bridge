@@ -26,7 +26,7 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
   }
 
   @override
-  void freeWireSync(WireSyncReturnSse raw,
+  void freeWireSyncReturn(WireSyncReturnSse raw,
           GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
       generalizedFrbRustBinding.freeWireSyncReturnSse(raw);
 }

@@ -50,7 +50,7 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
   }
 
   @override
-  void freeWireSync(WireSyncReturnDco raw,
+  void freeWireSyncReturn(WireSyncReturnDco raw,
           GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
       generalizedFrbRustBinding.freeWireSyncReturnDco(raw);
 }

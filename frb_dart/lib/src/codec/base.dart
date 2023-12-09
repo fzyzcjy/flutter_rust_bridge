@@ -10,7 +10,7 @@ abstract class BaseCodec<S, E extends Object, WireSyncType> {
   S decode(WireSyncType raw);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void freeWireSync(
+  void freeWireSyncReturn(
       WireSyncType raw, GeneralizedFrbRustBinding generalizedFrbRustBinding);
 }
 

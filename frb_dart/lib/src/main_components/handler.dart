@@ -34,8 +34,8 @@ class BaseHandler {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
       return task.codec.decode(syncReturnAsDartObject);
     } finally {
-      task.codec
-          .freeWireSync(syncReturn, task.apiImpl.generalizedFrbRustBinding);
+      task.codec.freeWireSyncReturn(
+          syncReturn, task.apiImpl.generalizedFrbRustBinding);
     }
   }
 
