@@ -33,7 +33,7 @@ pub(super) fn general_list_generate_encode(lang: &Lang, ir_inner: &IrType) -> St
 pub(super) fn list_len_method(lang: &Lang) -> &'static str {
     match lang {
         Lang::DartLang(_) => "length",
-        Lang::RustLang(_) => "len()",
+        Lang::RustLang(_) => "len() as _",
     }
 }
 
