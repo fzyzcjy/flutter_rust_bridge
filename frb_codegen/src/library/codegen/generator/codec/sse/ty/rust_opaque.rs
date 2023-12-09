@@ -17,15 +17,10 @@ impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
 const EXTERNAL_SIZE_TYPE: IrType = IrType::Primitive(IrTypePrimitive::I32);
 
 pub(super) fn generate_generalized_rust_opaque_decode(lang: &Lang) -> String {
-    let var_decl = lang.var_decl();
     match lang {
         Lang::DartLang(_) => {
             format!(
-                "
-                    {var_decl} ptr = {};
-                    {var_decl} externalSizeOnNative = {};
-                    return {}.sseDecode(ptr, externalSizeOnNative);
-                    ",
+                "return {}.sseDecode({}, {});",
                 lang.call_decode(&IrTypeRustOpaque::DELEGATE_TYPE),
                 lang.call_decode(&EXTERNAL_SIZE_TYPE),
                 lang.null(),
