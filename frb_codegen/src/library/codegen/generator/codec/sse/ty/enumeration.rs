@@ -65,7 +65,16 @@ fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang
     let enum_name_str = enum_name.style(lang);
     let enum_sep = enum_sep(lang);
     match &variant.kind {
-        IrVariantKind::Value => format!("return {enum_name_str}{enum_sep}{}();", variant.name),
+        IrVariantKind::Value => {
+            format!(
+                "return {enum_name_str}{enum_sep}{}{};",
+                variant.name,
+                match lang {
+                    Lang::DartLang(_) => "{}",
+                    Lang::RustLang(_) => "",
+                }
+            )
+        }
         IrVariantKind::Struct(st) => {
             GeneralizedStructGenerator::new(st.clone(), StructOrRecord::Struct).generate_decode(
                 lang,
