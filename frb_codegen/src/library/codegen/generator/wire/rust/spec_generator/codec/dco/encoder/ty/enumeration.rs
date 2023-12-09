@@ -1,4 +1,4 @@
-use crate::codegen::generator::codec::sse::ty::enumeration::generate_enum_encode_rust;
+use crate::codegen::generator::codec::sse::ty::enumeration::generate_enum_encode_rust_general;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::generate_impl_into_into_dart;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
@@ -23,7 +23,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
             parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
         let self_ref = self.generate_access_object_core("self".to_owned());
 
-        let body = generate_enum_encode_rust(src, &self_ref, &self_path, |idx, variant| {
+        let body = generate_enum_encode_rust_general(src, &self_ref, &self_path, |idx, variant| {
             let tag = format!("{idx}.into_dart()");
             let fields = (Some(tag).into_iter())
                 .chain(variant.kind.fields().iter().map(|field| {

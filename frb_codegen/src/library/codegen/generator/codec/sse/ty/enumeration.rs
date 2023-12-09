@@ -9,26 +9,28 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 
         match lang {
             Lang::DartLang(_) => format!("return TODO;"),
-            Lang::RustLang(_) => generate_enum_encode_rust(src, "self", "Self", |idx, variant| {
-                let fields = (variant.kind.fields().iter())
-                    .map(|field| {
-                        format!(
-                            "{};\n",
-                            lang.call_encode(&field.ty, field.name.rust_style())
-                        )
-                    })
-                    .join("");
+            Lang::RustLang(_) => {
+                generate_enum_encode_rust_general(src, "self", "Self", |idx, variant| {
+                    let fields = (variant.kind.fields().iter())
+                        .map(|field| {
+                            format!(
+                                "{};\n",
+                                lang.call_encode(&field.ty, field.name.rust_style())
+                            )
+                        })
+                        .join("");
 
-                format!(
-                    "
+                    format!(
+                        "
                     {{
                         {};
                         {fields}
                     }}
                     ",
-                    lang.call_encode(Primitive(IrTypePrimitive::I32), idx),
-                )
-            }),
+                        lang.call_encode(Primitive(IrTypePrimitive::I32), idx),
+                    )
+                })
+            }
         }
     }
 
@@ -40,7 +42,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     }
 }
 
-pub(crate) fn generate_enum_encode_rust(
+pub(crate) fn generate_enum_encode_rust_general(
     src: &IrEnum,
     self_ref: &str,
     self_path: &str,
