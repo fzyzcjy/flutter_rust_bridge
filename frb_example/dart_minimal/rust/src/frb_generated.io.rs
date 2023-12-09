@@ -29,8 +29,8 @@ impl CstDecode<crate::api::minimal::Hello> for wire_cst_hello {
                 let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Raspi);
                 crate::api::minimal::Hello::Raspi {
-                    x: ans.x.cst_decode(),
-                    y: ans.y.cst_decode(),
+                    hello_world: ans.hello_world.cst_decode(),
+                    another_field: ans.another_field.cst_decode(),
                 }
             },
             _ => unreachable!(),
@@ -64,8 +64,8 @@ pub struct wire_cst_Hello_Orange {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_Hello_Raspi {
-    x: i32,
-    y: i32,
+    hello_world: i32,
+    another_field: i32,
 }
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
@@ -130,8 +130,8 @@ pub extern "C" fn cst_inflate_Hello_Orange() -> *mut HelloKind {
 pub extern "C" fn cst_inflate_Hello_Raspi() -> *mut HelloKind {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(HelloKind {
         Raspi: flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_Hello_Raspi {
-            x: Default::default(),
-            y: Default::default(),
+            hello_world: Default::default(),
+            another_field: Default::default(),
         }),
     })
 }

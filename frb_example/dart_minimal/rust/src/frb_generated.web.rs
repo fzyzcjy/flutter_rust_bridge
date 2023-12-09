@@ -29,8 +29,8 @@ impl CstDecode<crate::api::minimal::Hello>
             0 => crate::api::minimal::Hello::Apple,
             1 => crate::api::minimal::Hello::Orange(self_.get(1).cst_decode()),
             2 => crate::api::minimal::Hello::Raspi {
-                x: self_.get(1).cst_decode(),
-                y: self_.get(2).cst_decode(),
+                hello_world: self_.get(1).cst_decode(),
+                another_field: self_.get(2).cst_decode(),
             },
             _ => unreachable!(),
         }

@@ -6,9 +6,11 @@ pub enum Hello {
     Apple,
     Orange(i32),
     Raspi {
-        x: i32,
-        y: i32,
+        hello_world: i32,
+        another_field: i32,
     },
 }
 
-pub fn hello(a: Hello) -> Hello { a }
+pub fn hello(a: Hello) -> Hello {
+    a
+}

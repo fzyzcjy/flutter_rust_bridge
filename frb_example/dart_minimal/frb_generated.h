@@ -19,8 +19,8 @@ typedef struct wire_cst_Hello_Orange {
 } wire_cst_Hello_Orange;
 
 typedef struct wire_cst_Hello_Raspi {
-  int32_t x;
-  int32_t y;
+  int32_t hello_world;
+  int32_t another_field;
 } wire_cst_Hello_Raspi;
 
 typedef union HelloKind {

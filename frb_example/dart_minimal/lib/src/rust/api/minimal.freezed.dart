@@ -20,21 +20,21 @@ mixin _$Hello {
   TResult when<TResult extends Object?>({
     required TResult Function() apple,
     required TResult Function(int field0) orange,
-    required TResult Function(int x, int y) raspi,
+    required TResult Function(int helloWorld, int anotherField) raspi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? apple,
     TResult? Function(int field0)? orange,
-    TResult? Function(int x, int y)? raspi,
+    TResult? Function(int helloWorld, int anotherField)? raspi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? apple,
     TResult Function(int field0)? orange,
-    TResult Function(int x, int y)? raspi,
+    TResult Function(int helloWorld, int anotherField)? raspi,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +119,7 @@ class _$Hello_AppleImpl implements Hello_Apple {
   TResult when<TResult extends Object?>({
     required TResult Function() apple,
     required TResult Function(int field0) orange,
-    required TResult Function(int x, int y) raspi,
+    required TResult Function(int helloWorld, int anotherField) raspi,
   }) {
     return apple();
   }
@@ -129,7 +129,7 @@ class _$Hello_AppleImpl implements Hello_Apple {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? apple,
     TResult? Function(int field0)? orange,
-    TResult? Function(int x, int y)? raspi,
+    TResult? Function(int helloWorld, int anotherField)? raspi,
   }) {
     return apple?.call();
   }
@@ -139,7 +139,7 @@ class _$Hello_AppleImpl implements Hello_Apple {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? apple,
     TResult Function(int field0)? orange,
-    TResult Function(int x, int y)? raspi,
+    TResult Function(int helloWorld, int anotherField)? raspi,
     required TResult orElse(),
   }) {
     if (apple != null) {
@@ -253,7 +253,7 @@ class _$Hello_OrangeImpl implements Hello_Orange {
   TResult when<TResult extends Object?>({
     required TResult Function() apple,
     required TResult Function(int field0) orange,
-    required TResult Function(int x, int y) raspi,
+    required TResult Function(int helloWorld, int anotherField) raspi,
   }) {
     return orange(field0);
   }
@@ -263,7 +263,7 @@ class _$Hello_OrangeImpl implements Hello_Orange {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? apple,
     TResult? Function(int field0)? orange,
-    TResult? Function(int x, int y)? raspi,
+    TResult? Function(int helloWorld, int anotherField)? raspi,
   }) {
     return orange?.call(field0);
   }
@@ -273,7 +273,7 @@ class _$Hello_OrangeImpl implements Hello_Orange {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? apple,
     TResult Function(int field0)? orange,
-    TResult Function(int x, int y)? raspi,
+    TResult Function(int helloWorld, int anotherField)? raspi,
     required TResult orElse(),
   }) {
     if (orange != null) {
@@ -332,7 +332,7 @@ abstract class _$$Hello_RaspiImplCopyWith<$Res> {
           _$Hello_RaspiImpl value, $Res Function(_$Hello_RaspiImpl) then) =
       __$$Hello_RaspiImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int x, int y});
+  $Res call({int helloWorld, int anotherField});
 }
 
 /// @nodoc
@@ -346,17 +346,17 @@ class __$$Hello_RaspiImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? x = null,
-    Object? y = null,
+    Object? helloWorld = null,
+    Object? anotherField = null,
   }) {
     return _then(_$Hello_RaspiImpl(
-      x: null == x
-          ? _value.x
-          : x // ignore: cast_nullable_to_non_nullable
+      helloWorld: null == helloWorld
+          ? _value.helloWorld
+          : helloWorld // ignore: cast_nullable_to_non_nullable
               as int,
-      y: null == y
-          ? _value.y
-          : y // ignore: cast_nullable_to_non_nullable
+      anotherField: null == anotherField
+          ? _value.anotherField
+          : anotherField // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -365,16 +365,17 @@ class __$$Hello_RaspiImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Hello_RaspiImpl implements Hello_Raspi {
-  const _$Hello_RaspiImpl({required this.x, required this.y});
+  const _$Hello_RaspiImpl(
+      {required this.helloWorld, required this.anotherField});
 
   @override
-  final int x;
+  final int helloWorld;
   @override
-  final int y;
+  final int anotherField;
 
   @override
   String toString() {
-    return 'Hello.raspi(x: $x, y: $y)';
+    return 'Hello.raspi(helloWorld: $helloWorld, anotherField: $anotherField)';
   }
 
   @override
@@ -382,12 +383,14 @@ class _$Hello_RaspiImpl implements Hello_Raspi {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Hello_RaspiImpl &&
-            (identical(other.x, x) || other.x == x) &&
-            (identical(other.y, y) || other.y == y));
+            (identical(other.helloWorld, helloWorld) ||
+                other.helloWorld == helloWorld) &&
+            (identical(other.anotherField, anotherField) ||
+                other.anotherField == anotherField));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, x, y);
+  int get hashCode => Object.hash(runtimeType, helloWorld, anotherField);
 
   @JsonKey(ignore: true)
   @override
@@ -400,9 +403,9 @@ class _$Hello_RaspiImpl implements Hello_Raspi {
   TResult when<TResult extends Object?>({
     required TResult Function() apple,
     required TResult Function(int field0) orange,
-    required TResult Function(int x, int y) raspi,
+    required TResult Function(int helloWorld, int anotherField) raspi,
   }) {
-    return raspi(x, y);
+    return raspi(helloWorld, anotherField);
   }
 
   @override
@@ -410,9 +413,9 @@ class _$Hello_RaspiImpl implements Hello_Raspi {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? apple,
     TResult? Function(int field0)? orange,
-    TResult? Function(int x, int y)? raspi,
+    TResult? Function(int helloWorld, int anotherField)? raspi,
   }) {
-    return raspi?.call(x, y);
+    return raspi?.call(helloWorld, anotherField);
   }
 
   @override
@@ -420,11 +423,11 @@ class _$Hello_RaspiImpl implements Hello_Raspi {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? apple,
     TResult Function(int field0)? orange,
-    TResult Function(int x, int y)? raspi,
+    TResult Function(int helloWorld, int anotherField)? raspi,
     required TResult orElse(),
   }) {
     if (raspi != null) {
-      return raspi(x, y);
+      return raspi(helloWorld, anotherField);
     }
     return orElse();
   }
@@ -465,11 +468,12 @@ class _$Hello_RaspiImpl implements Hello_Raspi {
 }
 
 abstract class Hello_Raspi implements Hello {
-  const factory Hello_Raspi({required final int x, required final int y}) =
-      _$Hello_RaspiImpl;
+  const factory Hello_Raspi(
+      {required final int helloWorld,
+      required final int anotherField}) = _$Hello_RaspiImpl;
 
-  int get x;
-  int get y;
+  int get helloWorld;
+  int get anotherField;
   @JsonKey(ignore: true)
   _$$Hello_RaspiImplCopyWith<_$Hello_RaspiImpl> get copyWith =>
       throw _privateConstructorUsedError;

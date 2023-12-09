@@ -31,7 +31,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [1, cst_encode_i_32(raw.field0)];
     }
     if (raw is Hello_Raspi) {
-      return [2, cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)];
+      return [
+        2,
+        cst_encode_i_32(raw.helloWorld),
+        cst_encode_i_32(raw.anotherField)
+      ];
     }
 
     throw Exception('unreachable');

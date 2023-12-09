@@ -126,8 +126,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 2:
         return Hello_Raspi(
-          x: _dco_decode_i_32(raw[1]),
-          y: _dco_decode_i_32(raw[2]),
+          helloWorld: _dco_decode_i_32(raw[1]),
+          anotherField: _dco_decode_i_32(raw[2]),
         );
       default:
         throw Exception("unreachable");
@@ -154,9 +154,9 @@ Hello _sse_decode_hello(SseDeserializer deserializer) {
       var field0 = _sse_decode_i_32(deserializer);
       return Hello_Orange(field0);
     case 2:
-      var x = _sse_decode_i_32(deserializer);
-      var y = _sse_decode_i_32(deserializer);
-      return Hello_Raspi(x: x, y: y);
+      var helloWorld = _sse_decode_i_32(deserializer);
+      var anotherField = _sse_decode_i_32(deserializer);
+      return Hello_Raspi(helloWorld: helloWorld, anotherField: anotherField);
     default:
       throw UnimplementedError('');
   }
@@ -177,20 +177,19 @@ int cst_encode_i_32(int raw) {
 void _sse_encode_hello(Hello self, SseSerializer serializer) {
   switch (self) {
     case Hello_Apple():
-      {
-        _sse_encode_i_32(0, serializer);
-      }
+      _sse_encode_i_32(0, serializer);
+
     case Hello_Orange(field0: final field0):
-      {
-        _sse_encode_i_32(1, serializer);
-        _sse_encode_i_32(field0, serializer);
-      }
-    case Hello_Raspi(x: final x, y: final y):
-      {
-        _sse_encode_i_32(2, serializer);
-        _sse_encode_i_32(x, serializer);
-        _sse_encode_i_32(y, serializer);
-      }
+      _sse_encode_i_32(1, serializer);
+      _sse_encode_i_32(field0, serializer);
+
+    case Hello_Raspi(
+        helloWorld: final helloWorld,
+        anotherField: final anotherField
+      ):
+      _sse_encode_i_32(2, serializer);
+      _sse_encode_i_32(hello_world, serializer);
+      _sse_encode_i_32(another_field, serializer);
   }
 }
 

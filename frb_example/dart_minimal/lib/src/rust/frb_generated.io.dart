@@ -43,12 +43,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is Hello_Raspi) {
-      var pre_x = cst_encode_i_32(apiObj.x);
-      var pre_y = cst_encode_i_32(apiObj.y);
+      var pre_hello_world = cst_encode_i_32(apiObj.helloWorld);
+      var pre_another_field = cst_encode_i_32(apiObj.anotherField);
       wireObj.tag = 2;
       wireObj.kind = wire.cst_inflate_Hello_Raspi();
-      wireObj.kind.ref.Raspi.ref.x = pre_x;
-      wireObj.kind.ref.Raspi.ref.y = pre_y;
+      wireObj.kind.ref.Raspi.ref.hello_world = pre_hello_world;
+      wireObj.kind.ref.Raspi.ref.another_field = pre_another_field;
       return;
     }
   }
@@ -183,10 +183,10 @@ final class wire_cst_Hello_Orange extends ffi.Struct {
 
 final class wire_cst_Hello_Raspi extends ffi.Struct {
   @ffi.Int32()
-  external int x;
+  external int hello_world;
 
   @ffi.Int32()
-  external int y;
+  external int another_field;
 }
 
 final class HelloKind extends ffi.Union {

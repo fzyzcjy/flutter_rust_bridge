@@ -117,9 +117,12 @@ impl SseDecode for crate::api::minimal::Hello {
                 return crate::api::minimal::Hello::Orange(field0);
             }
             2 => {
-                let mut x = <i32>::sse_decode(deserializer);
-                let mut y = <i32>::sse_decode(deserializer);
-                return crate::api::minimal::Hello::Raspi { x, y };
+                let mut helloWorld = <i32>::sse_decode(deserializer);
+                let mut anotherField = <i32>::sse_decode(deserializer);
+                return crate::api::minimal::Hello::Raspi {
+                    hello_world: helloWorld,
+                    another_field: anotherField,
+                };
             }
             _ => {
                 unimplemented!();
@@ -145,11 +148,14 @@ impl flutter_rust_bridge::IntoDart for crate::api::minimal::Hello {
             crate::api::minimal::Hello::Orange(field0) => {
                 vec![1.into_dart(), field0.into_into_dart().into_dart()]
             }
-            crate::api::minimal::Hello::Raspi { x, y } => {
+            crate::api::minimal::Hello::Raspi {
+                hello_world,
+                another_field,
+            } => {
                 vec![
                     2.into_dart(),
-                    x.into_into_dart().into_dart(),
-                    y.into_into_dart().into_dart(),
+                    hello_world.into_into_dart().into_dart(),
+                    another_field.into_into_dart().into_dart(),
                 ]
             }
         }
@@ -199,10 +205,13 @@ impl SseEncode for crate::api::minimal::Hello {
                 <i32>::sse_encode(1, serializer);
                 <i32>::sse_encode(field0, serializer);
             }
-            crate::api::minimal::Hello::Raspi { x, y } => {
+            crate::api::minimal::Hello::Raspi {
+                hello_world,
+                another_field,
+            } => {
                 <i32>::sse_encode(2, serializer);
-                <i32>::sse_encode(x, serializer);
-                <i32>::sse_encode(y, serializer);
+                <i32>::sse_encode(hello_world, serializer);
+                <i32>::sse_encode(another_field, serializer);
             }
         }
     }

@@ -21,7 +21,7 @@ sealed class Hello with _$Hello {
     int field0,
   ) = Hello_Orange;
   const factory Hello.raspi({
-    required int x,
-    required int y,
+    required int helloWorld,
+    required int anotherField,
   }) = Hello_Raspi;
 }
