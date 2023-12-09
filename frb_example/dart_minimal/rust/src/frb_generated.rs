@@ -55,7 +55,7 @@ fn wire_hi_stream_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
         move || {
             move |context| {
                 transform_result_dco(Result::<_, ()>::Ok(crate::api::minimal::hi_stream(
-                    context.rust2dart_context().stream_sink::<_, i32>(),
+                    StreamSink::new(context.rust2dart_context().stream_sink::<_, i32>()),
                 )))
             }
         },

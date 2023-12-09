@@ -104,7 +104,7 @@ fn generate_inner_func_args(
         ans.insert(
             argument_index,
             format!(
-                "context.rust2dart_context().stream_sink::<_,{}>()",
+                "StreamSink::new(context.rust2dart_context().stream_sink::<_,{}>())",
                 WireRustCodecDcoGenerator::new(
                     func.output.clone(),
                     context.as_wire_rust_codec_dco_context()
