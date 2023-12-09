@@ -2,21 +2,24 @@ use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        let cast = if matches!(self.ir, IrTypePrimitive::Bool) {
-            " ? 1 : 0"
-        } else {
-            ""
+        let dart_cast = match self.ir {
+            IrTypePrimitive::Bool => " ? 1 : 0",
+            _ => "",
+        };
+        let rust_cast = match self.ir {
+            IrTypePrimitive::Usize | IrTypePrimitive::Isize => "as _",
+            _ => "",
         };
 
         Some(match self.ir {
             IrTypePrimitive::Unit => "".into(),
             _ => match lang {
                 Lang::DartLang(_) => format!(
-                    "serializer.buffer.put{}(self{cast});",
+                    "serializer.buffer.put{}(self{dart_cast});",
                     get_serializer_dart_postfix(&self.ir)
                 ),
                 Lang::RustLang(_) => format!(
-                    "serializer.cursor.write_{}::<NativeEndian>(self).unwrap();",
+                    "serializer.cursor.write_{}::<NativeEndian>(self{rust_cast}).unwrap();",
                     get_serializer_rust_type(&self.ir)
                 ),
             },
@@ -24,22 +27,25 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
-        let cast = if matches!(self.ir, IrTypePrimitive::Bool) {
-            " != 0"
-        } else {
-            ""
+        let dart_cast = match self.ir {
+            IrTypePrimitive::Bool => " ? 1 : 0",
+            _ => "",
+        };
+        let rust_cast = match self.ir {
+            IrTypePrimitive::Usize | IrTypePrimitive::Isize => "as _",
+            _ => "",
         };
 
         Some(match self.ir {
             IrTypePrimitive::Unit => "".into(),
             _ => match lang {
                 Lang::DartLang(_) => format!(
-                    "return deserializer.buffer.get{}(){cast};",
+                    "return deserializer.buffer.get{}(){dart_cast};",
                     get_serializer_dart_postfix(&self.ir)
                 ),
                 Lang::RustLang(_) => {
                     format!(
-                        "deserializer.cursor.read_{}::<NativeEndian>().unwrap(){cast}",
+                        "deserializer.cursor.read_{}::<NativeEndian>().unwrap(){rust_cast}",
                         get_serializer_rust_type(&self.ir)
                     )
                 }
