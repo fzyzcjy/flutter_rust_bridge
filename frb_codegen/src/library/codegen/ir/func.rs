@@ -3,6 +3,7 @@ use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType};
 
 crate::ir! {
@@ -67,9 +68,10 @@ impl IrFunc {
         }
         if include_output {
             self.output.visit_types(f, ir_context);
-            if let Some(error_output) = &self.error_output {
-                error_output.visit_types(f, ir_context);
-            }
+
+            let error_output = (self.error_output.as_ref().cloned())
+                .unwrap_or(IrType::Primitive(IrTypePrimitive::Unit));
+            error_output.visit_types(f, ir_context);
         }
     }
 }
