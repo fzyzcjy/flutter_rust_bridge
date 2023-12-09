@@ -2,6 +2,8 @@
 // and is auto-generated from `event_listener.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "syncSse"]}
+
 // event listener test
 
 use crate::frb_generated::StreamSink;
