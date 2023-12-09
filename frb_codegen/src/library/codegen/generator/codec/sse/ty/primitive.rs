@@ -7,7 +7,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
             _ => "",
         };
         let rust_cast = match self.ir {
-            IrTypePrimitive::Usize | IrTypePrimitive::Isize => "as _",
+            IrTypePrimitive::Usize | IrTypePrimitive::Isize => " as _",
             _ => "",
         };
 
@@ -32,7 +32,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
             _ => "",
         };
         let rust_cast = match self.ir {
-            IrTypePrimitive::Usize | IrTypePrimitive::Isize => "as _",
+            IrTypePrimitive::Usize | IrTypePrimitive::Isize => " as _",
             _ => "",
         };
 
