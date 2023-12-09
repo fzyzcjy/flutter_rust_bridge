@@ -8,7 +8,8 @@ impl<'a> CodecSseTyTrait for RecordCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> String {
-        self.new_generalized_generator().generate_decode(lang, "")
+        self.new_generalized_generator()
+            .generate_decode(lang, "", true)
     }
 }
 

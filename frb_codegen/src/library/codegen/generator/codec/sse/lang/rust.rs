@@ -25,6 +25,7 @@ impl LangTrait for RustLang {
         class_name: &str,
         field_names: &[String],
         var_names: &[String],
+        _named_args: bool,
     ) -> String {
         format!(
             "{class_name} {{ {} }}",
