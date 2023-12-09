@@ -51,5 +51,21 @@ macro_rules! frb_generated_boilerplate {
                 })),
             }
         }
+
+        // -------------------------- StreamSink ------------------------
+
+        pub struct StreamSink<T, Rust2DartCodec: flutter_rust_bridge::for_generate::BaseCodec = flutter_rust_bridge::for_generate::DcoCodec> {
+            base: flutter_rust_bridge::for_generate::StreamSinkBase,
+        }
+
+        impl<T, Rust2DartCodec: flutter_rust_bridge::for_generate::BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
+            pub fn add(&self, value: T) -> bool {
+                self.base.add(value) // TODO
+            }
+
+            pub fn close(&self) -> bool {
+                self.base.close()
+            }
+        }
     };
 }
