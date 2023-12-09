@@ -332,19 +332,36 @@ class MultiPackageCBinding {
   /// # Safety
   ///
   /// This function should never be called manually.
-  void free_wire_sync_return(
-    WireSyncReturn ptr,
+  void free_wire_sync_return_dco(
+    WireSyncReturnDco value,
   ) {
-    return _free_wire_sync_return(
-      ptr,
+    return _free_wire_sync_return_dco(
+      value,
     );
   }
 
-  late final _free_wire_sync_returnPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>(
-          'free_wire_sync_return');
-  late final _free_wire_sync_return =
-      _free_wire_sync_returnPtr.asFunction<void Function(WireSyncReturn)>();
+  late final _free_wire_sync_return_dcoPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnDco)>>(
+          'free_wire_sync_return_dco');
+  late final _free_wire_sync_return_dco = _free_wire_sync_return_dcoPtr
+      .asFunction<void Function(WireSyncReturnDco)>();
+
+  /// # Safety
+  ///
+  /// This function should never be called manually.
+  void free_wire_sync_return_sse(
+    WireSyncReturnSse value,
+  ) {
+    return _free_wire_sync_return_sse(
+      value,
+    );
+  }
+
+  late final _free_wire_sync_return_ssePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnSse)>>(
+          'free_wire_sync_return_sse');
+  late final _free_wire_sync_return_sse = _free_wire_sync_return_ssePtr
+      .asFunction<void Function(WireSyncReturnSse)>();
 }
 
 /// A Dart_CObject is used for representing Dart objects as native C
@@ -553,6 +570,14 @@ typedef DartDartPort = int;
 
 final class Result_JsValue extends ffi.Opaque {}
 
+final class WireSyncReturnSseStruct extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 typedef GeneralizedDartHandle = ffi.Int;
 typedef DartGeneralizedDartHandle = int;
-typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
+typedef WireSyncReturnDco = ffi.Pointer<Dart_CObject>;
+typedef WireSyncReturnSse = WireSyncReturnSseStruct;
