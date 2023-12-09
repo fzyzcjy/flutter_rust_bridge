@@ -26753,86 +26753,62 @@ PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStri
             
             void _sse_encode_abc_twin_normal(AbcTwinNormal self, SseSerializer serializer) {
                 switch (self) { case AbcTwinNormal_A(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_box_autoadd_a_twin_normal(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_box_autoadd_a_twin_normal(field0, serializer);
 
-            }
-            case AbcTwinNormal_B(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_box_autoadd_b_twin_normal(field0, serializer);
+                    case AbcTwinNormal_B(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_box_autoadd_b_twin_normal(field0, serializer);
 
-            }
-            case AbcTwinNormal_C(field0: final field0): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_box_autoadd_c_twin_normal(field0, serializer);
+                    case AbcTwinNormal_C(field0: final field0): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_box_autoadd_c_twin_normal(field0, serializer);
 
-            }
-            case AbcTwinNormal_JustInt(field0: final field0): 
-            {
-                _sse_encode_i_32(3, serializer);
-                _sse_encode_i_32(field0, serializer);
+                    case AbcTwinNormal_JustInt(field0: final field0): 
+                        _sse_encode_i_32(3, serializer);
+                        _sse_encode_i_32(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_abc_twin_rust_async(AbcTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case AbcTwinRustAsync_A(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_box_autoadd_a_twin_rust_async(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_box_autoadd_a_twin_rust_async(field0, serializer);
 
-            }
-            case AbcTwinRustAsync_B(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_box_autoadd_b_twin_rust_async(field0, serializer);
+                    case AbcTwinRustAsync_B(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_box_autoadd_b_twin_rust_async(field0, serializer);
 
-            }
-            case AbcTwinRustAsync_C(field0: final field0): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_box_autoadd_c_twin_rust_async(field0, serializer);
+                    case AbcTwinRustAsync_C(field0: final field0): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_box_autoadd_c_twin_rust_async(field0, serializer);
 
-            }
-            case AbcTwinRustAsync_JustInt(field0: final field0): 
-            {
-                _sse_encode_i_32(3, serializer);
-                _sse_encode_i_32(field0, serializer);
+                    case AbcTwinRustAsync_JustInt(field0: final field0): 
+                        _sse_encode_i_32(3, serializer);
+                        _sse_encode_i_32(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_abc_twin_sync(AbcTwinSync self, SseSerializer serializer) {
                 switch (self) { case AbcTwinSync_A(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_box_autoadd_a_twin_sync(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_box_autoadd_a_twin_sync(field0, serializer);
 
-            }
-            case AbcTwinSync_B(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_box_autoadd_b_twin_sync(field0, serializer);
+                    case AbcTwinSync_B(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_box_autoadd_b_twin_sync(field0, serializer);
 
-            }
-            case AbcTwinSync_C(field0: final field0): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_box_autoadd_c_twin_sync(field0, serializer);
+                    case AbcTwinSync_C(field0: final field0): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_box_autoadd_c_twin_sync(field0, serializer);
 
-            }
-            case AbcTwinSync_JustInt(field0: final field0): 
-            {
-                _sse_encode_i_32(3, serializer);
-                _sse_encode_i_32(field0, serializer);
+                    case AbcTwinSync_JustInt(field0: final field0): 
+                        _sse_encode_i_32(3, serializer);
+                        _sse_encode_i_32(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_application_env(ApplicationEnv self, SseSerializer serializer) {
@@ -27051,98 +27027,74 @@ _sse_encode_String(self.value, serializer);
             
             void _sse_encode_custom_nested_error_inner_twin_normal(CustomNestedErrorInnerTwinNormal self, SseSerializer serializer) {
                 switch (self) { case CustomNestedErrorInnerTwinNormal_Three(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_String(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_String(field0, serializer);
 
-            }
-            case CustomNestedErrorInnerTwinNormal_Four(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_u_32(field0, serializer);
+                    case CustomNestedErrorInnerTwinNormal_Four(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_u_32(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_custom_nested_error_inner_twin_rust_async(CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case CustomNestedErrorInnerTwinRustAsync_Three(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_String(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_String(field0, serializer);
 
-            }
-            case CustomNestedErrorInnerTwinRustAsync_Four(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_u_32(field0, serializer);
+                    case CustomNestedErrorInnerTwinRustAsync_Four(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_u_32(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_custom_nested_error_inner_twin_sync(CustomNestedErrorInnerTwinSync self, SseSerializer serializer) {
                 switch (self) { case CustomNestedErrorInnerTwinSync_Three(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_String(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_String(field0, serializer);
 
-            }
-            case CustomNestedErrorInnerTwinSync_Four(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_u_32(field0, serializer);
+                    case CustomNestedErrorInnerTwinSync_Four(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_u_32(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_custom_nested_error_outer_twin_normal(CustomNestedErrorOuterTwinNormal self, SseSerializer serializer) {
                 switch (self) { case CustomNestedErrorOuterTwinNormal_One(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_String(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_String(field0, serializer);
 
-            }
-            case CustomNestedErrorOuterTwinNormal_Two(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(field0, serializer);
+                    case CustomNestedErrorOuterTwinNormal_Two(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_custom_nested_error_outer_twin_rust_async(CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case CustomNestedErrorOuterTwinRustAsync_One(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_String(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_String(field0, serializer);
 
-            }
-            case CustomNestedErrorOuterTwinRustAsync_Two(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(field0, serializer);
+                    case CustomNestedErrorOuterTwinRustAsync_Two(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_custom_nested_error_outer_twin_sync(CustomNestedErrorOuterTwinSync self, SseSerializer serializer) {
                 switch (self) { case CustomNestedErrorOuterTwinSync_One(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_String(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_String(field0, serializer);
 
-            }
-            case CustomNestedErrorOuterTwinSync_Two(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(field0, serializer);
+                    case CustomNestedErrorOuterTwinSync_Two(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_custom_struct_error_twin_normal(CustomStructErrorTwinNormal self, SseSerializer serializer) {
@@ -27213,47 +27165,35 @@ _sse_encode_DartOpaque(self.second, serializer);
             
             void _sse_encode_distance_twin_normal(DistanceTwinNormal self, SseSerializer serializer) {
                 switch (self) { case DistanceTwinNormal_Unknown(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case DistanceTwinNormal_Map(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_f_64(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case DistanceTwinNormal_Map(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_f_64(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_distance_twin_rust_async(DistanceTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case DistanceTwinRustAsync_Unknown(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case DistanceTwinRustAsync_Map(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_f_64(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case DistanceTwinRustAsync_Map(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_f_64(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_distance_twin_sync(DistanceTwinSync self, SseSerializer serializer) {
                 switch (self) { case DistanceTwinSync_Unknown(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case DistanceTwinSync_Map(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_f_64(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case DistanceTwinSync_Map(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_f_64(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_empty_twin_normal(EmptyTwinNormal self, SseSerializer serializer) {
@@ -27270,152 +27210,110 @@ _sse_encode_DartOpaque(self.second, serializer);
             
             void _sse_encode_enum_dart_opaque_twin_normal(EnumDartOpaqueTwinNormal self, SseSerializer serializer) {
                 switch (self) { case EnumDartOpaqueTwinNormal_Primitive(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_i_32(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_i_32(field0, serializer);
 
-            }
-            case EnumDartOpaqueTwinNormal_Opaque(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_DartOpaque(field0, serializer);
+                    case EnumDartOpaqueTwinNormal_Opaque(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_DartOpaque(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_dart_opaque_twin_rust_async(EnumDartOpaqueTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case EnumDartOpaqueTwinRustAsync_Primitive(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_i_32(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_i_32(field0, serializer);
 
-            }
-            case EnumDartOpaqueTwinRustAsync_Opaque(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_DartOpaque(field0, serializer);
+                    case EnumDartOpaqueTwinRustAsync_Opaque(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_DartOpaque(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_dart_opaque_twin_sync(EnumDartOpaqueTwinSync self, SseSerializer serializer) {
                 switch (self) { case EnumDartOpaqueTwinSync_Primitive(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_i_32(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_i_32(field0, serializer);
 
-            }
-            case EnumDartOpaqueTwinSync_Opaque(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_DartOpaque(field0, serializer);
+                    case EnumDartOpaqueTwinSync_Opaque(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_DartOpaque(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_opaque_twin_normal(EnumOpaqueTwinNormal self, SseSerializer serializer) {
                 switch (self) { case EnumOpaqueTwinNormal_Struct(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_RustOpaque_hide_data(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_RustOpaque_hide_data(field0, serializer);
 
-            }
-            case EnumOpaqueTwinNormal_Primitive(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_RustOpaque_i_32(field0, serializer);
+                    case EnumOpaqueTwinNormal_Primitive(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_RustOpaque_i_32(field0, serializer);
 
-            }
-            case EnumOpaqueTwinNormal_TraitObj(field0: final field0): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_RustOpaque_box_dynDartDebugTwinNormal(field0, serializer);
+                    case EnumOpaqueTwinNormal_TraitObj(field0: final field0): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_RustOpaque_box_dynDartDebugTwinNormal(field0, serializer);
 
-            }
-            case EnumOpaqueTwinNormal_Mutex(field0: final field0): 
-            {
-                _sse_encode_i_32(3, serializer);
-                _sse_encode_RustOpaque_MutexHideData(field0, serializer);
+                    case EnumOpaqueTwinNormal_Mutex(field0: final field0): 
+                        _sse_encode_i_32(3, serializer);
+                        _sse_encode_RustOpaque_MutexHideData(field0, serializer);
 
-            }
-            case EnumOpaqueTwinNormal_RwLock(field0: final field0): 
-            {
-                _sse_encode_i_32(4, serializer);
-                _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+                    case EnumOpaqueTwinNormal_RwLock(field0: final field0): 
+                        _sse_encode_i_32(4, serializer);
+                        _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_opaque_twin_rust_async(EnumOpaqueTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case EnumOpaqueTwinRustAsync_Struct(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_RustOpaque_hide_data(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_RustOpaque_hide_data(field0, serializer);
 
-            }
-            case EnumOpaqueTwinRustAsync_Primitive(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_RustOpaque_i_32(field0, serializer);
+                    case EnumOpaqueTwinRustAsync_Primitive(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_RustOpaque_i_32(field0, serializer);
 
-            }
-            case EnumOpaqueTwinRustAsync_TraitObj(field0: final field0): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(field0, serializer);
+                    case EnumOpaqueTwinRustAsync_TraitObj(field0: final field0): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(field0, serializer);
 
-            }
-            case EnumOpaqueTwinRustAsync_Mutex(field0: final field0): 
-            {
-                _sse_encode_i_32(3, serializer);
-                _sse_encode_RustOpaque_MutexHideData(field0, serializer);
+                    case EnumOpaqueTwinRustAsync_Mutex(field0: final field0): 
+                        _sse_encode_i_32(3, serializer);
+                        _sse_encode_RustOpaque_MutexHideData(field0, serializer);
 
-            }
-            case EnumOpaqueTwinRustAsync_RwLock(field0: final field0): 
-            {
-                _sse_encode_i_32(4, serializer);
-                _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+                    case EnumOpaqueTwinRustAsync_RwLock(field0: final field0): 
+                        _sse_encode_i_32(4, serializer);
+                        _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_opaque_twin_sync(EnumOpaqueTwinSync self, SseSerializer serializer) {
                 switch (self) { case EnumOpaqueTwinSync_Struct(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_RustOpaque_hide_data(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_RustOpaque_hide_data(field0, serializer);
 
-            }
-            case EnumOpaqueTwinSync_Primitive(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_RustOpaque_i_32(field0, serializer);
+                    case EnumOpaqueTwinSync_Primitive(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_RustOpaque_i_32(field0, serializer);
 
-            }
-            case EnumOpaqueTwinSync_TraitObj(field0: final field0): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_RustOpaque_box_dynDartDebugTwinSync(field0, serializer);
+                    case EnumOpaqueTwinSync_TraitObj(field0: final field0): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_RustOpaque_box_dynDartDebugTwinSync(field0, serializer);
 
-            }
-            case EnumOpaqueTwinSync_Mutex(field0: final field0): 
-            {
-                _sse_encode_i_32(3, serializer);
-                _sse_encode_RustOpaque_MutexHideData(field0, serializer);
+                    case EnumOpaqueTwinSync_Mutex(field0: final field0): 
+                        _sse_encode_i_32(3, serializer);
+                        _sse_encode_RustOpaque_MutexHideData(field0, serializer);
 
-            }
-            case EnumOpaqueTwinSync_RwLock(field0: final field0): 
-            {
-                _sse_encode_i_32(4, serializer);
-                _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+                    case EnumOpaqueTwinSync_RwLock(field0: final field0): 
+                        _sse_encode_i_32(4, serializer);
+                        _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_simple_twin_normal(EnumSimpleTwinNormal self, SseSerializer serializer) {
@@ -27432,161 +27330,119 @@ _sse_encode_DartOpaque(self.second, serializer);
             
             void _sse_encode_enum_with_item_mixed_twin_normal(EnumWithItemMixedTwinNormal self, SseSerializer serializer) {
                 switch (self) { case EnumWithItemMixedTwinNormal_A(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case EnumWithItemMixedTwinNormal_B(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_list_prim_u_8(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case EnumWithItemMixedTwinNormal_B(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_list_prim_u_8(field0, serializer);
 
-            }
-            case EnumWithItemMixedTwinNormal_C(cField: final cField): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_String(c_field, serializer);
+                    case EnumWithItemMixedTwinNormal_C(cField: final cField): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_String(c_field, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_with_item_mixed_twin_rust_async(EnumWithItemMixedTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case EnumWithItemMixedTwinRustAsync_A(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case EnumWithItemMixedTwinRustAsync_B(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_list_prim_u_8(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case EnumWithItemMixedTwinRustAsync_B(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_list_prim_u_8(field0, serializer);
 
-            }
-            case EnumWithItemMixedTwinRustAsync_C(cField: final cField): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_String(c_field, serializer);
+                    case EnumWithItemMixedTwinRustAsync_C(cField: final cField): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_String(c_field, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_with_item_mixed_twin_sync(EnumWithItemMixedTwinSync self, SseSerializer serializer) {
                 switch (self) { case EnumWithItemMixedTwinSync_A(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case EnumWithItemMixedTwinSync_B(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_list_prim_u_8(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case EnumWithItemMixedTwinSync_B(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_list_prim_u_8(field0, serializer);
 
-            }
-            case EnumWithItemMixedTwinSync_C(cField: final cField): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_String(c_field, serializer);
+                    case EnumWithItemMixedTwinSync_C(cField: final cField): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_String(c_field, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_with_item_struct_twin_normal(EnumWithItemStructTwinNormal self, SseSerializer serializer) {
                 switch (self) { case EnumWithItemStructTwinNormal_A(aField: final aField): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_list_prim_u_8(a_field, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_list_prim_u_8(a_field, serializer);
 
-            }
-            case EnumWithItemStructTwinNormal_B(bField: final bField): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_list_prim_i_32(b_field, serializer);
+                    case EnumWithItemStructTwinNormal_B(bField: final bField): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_list_prim_i_32(b_field, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_with_item_struct_twin_rust_async(EnumWithItemStructTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case EnumWithItemStructTwinRustAsync_A(aField: final aField): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_list_prim_u_8(a_field, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_list_prim_u_8(a_field, serializer);
 
-            }
-            case EnumWithItemStructTwinRustAsync_B(bField: final bField): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_list_prim_i_32(b_field, serializer);
+                    case EnumWithItemStructTwinRustAsync_B(bField: final bField): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_list_prim_i_32(b_field, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_with_item_struct_twin_sync(EnumWithItemStructTwinSync self, SseSerializer serializer) {
                 switch (self) { case EnumWithItemStructTwinSync_A(aField: final aField): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_list_prim_u_8(a_field, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_list_prim_u_8(a_field, serializer);
 
-            }
-            case EnumWithItemStructTwinSync_B(bField: final bField): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_list_prim_i_32(b_field, serializer);
+                    case EnumWithItemStructTwinSync_B(bField: final bField): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_list_prim_i_32(b_field, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_with_item_tuple_twin_normal(EnumWithItemTupleTwinNormal self, SseSerializer serializer) {
                 switch (self) { case EnumWithItemTupleTwinNormal_A(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_list_prim_u_8(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_list_prim_u_8(field0, serializer);
 
-            }
-            case EnumWithItemTupleTwinNormal_B(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_list_prim_i_32(field0, serializer);
+                    case EnumWithItemTupleTwinNormal_B(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_list_prim_i_32(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_with_item_tuple_twin_rust_async(EnumWithItemTupleTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case EnumWithItemTupleTwinRustAsync_A(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_list_prim_u_8(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_list_prim_u_8(field0, serializer);
 
-            }
-            case EnumWithItemTupleTwinRustAsync_B(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_list_prim_i_32(field0, serializer);
+                    case EnumWithItemTupleTwinRustAsync_B(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_list_prim_i_32(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_enum_with_item_tuple_twin_sync(EnumWithItemTupleTwinSync self, SseSerializer serializer) {
                 switch (self) { case EnumWithItemTupleTwinSync_A(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_list_prim_u_8(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_list_prim_u_8(field0, serializer);
 
-            }
-            case EnumWithItemTupleTwinSync_B(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_list_prim_i_32(field0, serializer);
+                    case EnumWithItemTupleTwinSync_B(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_list_prim_i_32(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_event_twin_normal(EventTwinNormal self, SseSerializer serializer) {
@@ -27749,131 +27605,95 @@ _sse_encode_Chrono_Naive(self.naive, serializer);
             
             void _sse_encode_kitchen_sink_twin_normal(KitchenSinkTwinNormal self, SseSerializer serializer) {
                 switch (self) { case KitchenSinkTwinNormal_Empty(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case KitchenSinkTwinNormal_Primitives(int32: final int32,float64: final float64,boolean: final boolean): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_i_32(int32, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case KitchenSinkTwinNormal_Primitives(int32: final int32,float64: final float64,boolean: final boolean): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_i_32(int32, serializer);
 _sse_encode_f_64(float64, serializer);
 _sse_encode_bool(boolean, serializer);
 
-            }
-            case KitchenSinkTwinNormal_Nested(field0: final field0,field1: final field1): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_i_32(field0, serializer);
+                    case KitchenSinkTwinNormal_Nested(field0: final field0,field1: final field1): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_i_32(field0, serializer);
 _sse_encode_box_kitchen_sink_twin_normal(field1, serializer);
 
-            }
-            case KitchenSinkTwinNormal_Optional(field0: final field0,field1: final field1): 
-            {
-                _sse_encode_i_32(3, serializer);
-                _sse_encode_opt_box_autoadd_i_32(field0, serializer);
+                    case KitchenSinkTwinNormal_Optional(field0: final field0,field1: final field1): 
+                        _sse_encode_i_32(3, serializer);
+                        _sse_encode_opt_box_autoadd_i_32(field0, serializer);
 _sse_encode_opt_box_autoadd_i_32(field1, serializer);
 
-            }
-            case KitchenSinkTwinNormal_Buffer(field0: final field0): 
-            {
-                _sse_encode_i_32(4, serializer);
-                _sse_encode_list_prim_u_8(field0, serializer);
+                    case KitchenSinkTwinNormal_Buffer(field0: final field0): 
+                        _sse_encode_i_32(4, serializer);
+                        _sse_encode_list_prim_u_8(field0, serializer);
 
-            }
-            case KitchenSinkTwinNormal_Enums(field0: final field0): 
-            {
-                _sse_encode_i_32(5, serializer);
-                _sse_encode_weekdays_twin_normal(field0, serializer);
+                    case KitchenSinkTwinNormal_Enums(field0: final field0): 
+                        _sse_encode_i_32(5, serializer);
+                        _sse_encode_weekdays_twin_normal(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case KitchenSinkTwinRustAsync_Empty(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case KitchenSinkTwinRustAsync_Primitives(int32: final int32,float64: final float64,boolean: final boolean): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_i_32(int32, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case KitchenSinkTwinRustAsync_Primitives(int32: final int32,float64: final float64,boolean: final boolean): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_i_32(int32, serializer);
 _sse_encode_f_64(float64, serializer);
 _sse_encode_bool(boolean, serializer);
 
-            }
-            case KitchenSinkTwinRustAsync_Nested(field0: final field0,field1: final field1): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_i_32(field0, serializer);
+                    case KitchenSinkTwinRustAsync_Nested(field0: final field0,field1: final field1): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_i_32(field0, serializer);
 _sse_encode_box_kitchen_sink_twin_rust_async(field1, serializer);
 
-            }
-            case KitchenSinkTwinRustAsync_Optional(field0: final field0,field1: final field1): 
-            {
-                _sse_encode_i_32(3, serializer);
-                _sse_encode_opt_box_autoadd_i_32(field0, serializer);
+                    case KitchenSinkTwinRustAsync_Optional(field0: final field0,field1: final field1): 
+                        _sse_encode_i_32(3, serializer);
+                        _sse_encode_opt_box_autoadd_i_32(field0, serializer);
 _sse_encode_opt_box_autoadd_i_32(field1, serializer);
 
-            }
-            case KitchenSinkTwinRustAsync_Buffer(field0: final field0): 
-            {
-                _sse_encode_i_32(4, serializer);
-                _sse_encode_list_prim_u_8(field0, serializer);
+                    case KitchenSinkTwinRustAsync_Buffer(field0: final field0): 
+                        _sse_encode_i_32(4, serializer);
+                        _sse_encode_list_prim_u_8(field0, serializer);
 
-            }
-            case KitchenSinkTwinRustAsync_Enums(field0: final field0): 
-            {
-                _sse_encode_i_32(5, serializer);
-                _sse_encode_weekdays_twin_rust_async(field0, serializer);
+                    case KitchenSinkTwinRustAsync_Enums(field0: final field0): 
+                        _sse_encode_i_32(5, serializer);
+                        _sse_encode_weekdays_twin_rust_async(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_kitchen_sink_twin_sync(KitchenSinkTwinSync self, SseSerializer serializer) {
                 switch (self) { case KitchenSinkTwinSync_Empty(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case KitchenSinkTwinSync_Primitives(int32: final int32,float64: final float64,boolean: final boolean): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_i_32(int32, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case KitchenSinkTwinSync_Primitives(int32: final int32,float64: final float64,boolean: final boolean): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_i_32(int32, serializer);
 _sse_encode_f_64(float64, serializer);
 _sse_encode_bool(boolean, serializer);
 
-            }
-            case KitchenSinkTwinSync_Nested(field0: final field0,field1: final field1): 
-            {
-                _sse_encode_i_32(2, serializer);
-                _sse_encode_i_32(field0, serializer);
+                    case KitchenSinkTwinSync_Nested(field0: final field0,field1: final field1): 
+                        _sse_encode_i_32(2, serializer);
+                        _sse_encode_i_32(field0, serializer);
 _sse_encode_box_kitchen_sink_twin_sync(field1, serializer);
 
-            }
-            case KitchenSinkTwinSync_Optional(field0: final field0,field1: final field1): 
-            {
-                _sse_encode_i_32(3, serializer);
-                _sse_encode_opt_box_autoadd_i_32(field0, serializer);
+                    case KitchenSinkTwinSync_Optional(field0: final field0,field1: final field1): 
+                        _sse_encode_i_32(3, serializer);
+                        _sse_encode_opt_box_autoadd_i_32(field0, serializer);
 _sse_encode_opt_box_autoadd_i_32(field1, serializer);
 
-            }
-            case KitchenSinkTwinSync_Buffer(field0: final field0): 
-            {
-                _sse_encode_i_32(4, serializer);
-                _sse_encode_list_prim_u_8(field0, serializer);
+                    case KitchenSinkTwinSync_Buffer(field0: final field0): 
+                        _sse_encode_i_32(4, serializer);
+                        _sse_encode_list_prim_u_8(field0, serializer);
 
-            }
-            case KitchenSinkTwinSync_Enums(field0: final field0): 
-            {
-                _sse_encode_i_32(5, serializer);
-                _sse_encode_weekdays_twin_sync(field0, serializer);
+                    case KitchenSinkTwinSync_Enums(field0: final field0): 
+                        _sse_encode_i_32(5, serializer);
+                        _sse_encode_weekdays_twin_sync(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_list_Chrono_Duration(List<Duration> self, SseSerializer serializer) {
@@ -28043,50 +27863,38 @@ _sse_encode_opt_box_autoadd_i_32(field1, serializer);
             
             void _sse_encode_measure_twin_normal(MeasureTwinNormal self, SseSerializer serializer) {
                 switch (self) { case MeasureTwinNormal_Speed(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_box_speed_twin_normal(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_box_speed_twin_normal(field0, serializer);
 
-            }
-            case MeasureTwinNormal_Distance(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_box_distance_twin_normal(field0, serializer);
+                    case MeasureTwinNormal_Distance(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_box_distance_twin_normal(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_measure_twin_rust_async(MeasureTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case MeasureTwinRustAsync_Speed(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_box_speed_twin_rust_async(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_box_speed_twin_rust_async(field0, serializer);
 
-            }
-            case MeasureTwinRustAsync_Distance(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_box_distance_twin_rust_async(field0, serializer);
+                    case MeasureTwinRustAsync_Distance(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_box_distance_twin_rust_async(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_measure_twin_sync(MeasureTwinSync self, SseSerializer serializer) {
                 switch (self) { case MeasureTwinSync_Speed(field0: final field0): 
-            {
-                _sse_encode_i_32(0, serializer);
-                _sse_encode_box_speed_twin_sync(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        _sse_encode_box_speed_twin_sync(field0, serializer);
 
-            }
-            case MeasureTwinSync_Distance(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_box_distance_twin_sync(field0, serializer);
+                    case MeasureTwinSync_Distance(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_box_distance_twin_sync(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_message_id_twin_normal(MessageIdTwinNormal self, SseSerializer serializer) {
@@ -28710,47 +28518,35 @@ _sse_encode_i_32(self.$2, serializer);
             
             void _sse_encode_speed_twin_normal(SpeedTwinNormal self, SseSerializer serializer) {
                 switch (self) { case SpeedTwinNormal_Unknown(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case SpeedTwinNormal_GPS(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_f_64(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case SpeedTwinNormal_GPS(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_f_64(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_speed_twin_rust_async(SpeedTwinRustAsync self, SseSerializer serializer) {
                 switch (self) { case SpeedTwinRustAsync_Unknown(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case SpeedTwinRustAsync_GPS(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_f_64(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case SpeedTwinRustAsync_GPS(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_f_64(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_speed_twin_sync(SpeedTwinSync self, SseSerializer serializer) {
                 switch (self) { case SpeedTwinSync_Unknown(): 
-            {
-                _sse_encode_i_32(0, serializer);
-                
-            }
-            case SpeedTwinSync_GPS(field0: final field0): 
-            {
-                _sse_encode_i_32(1, serializer);
-                _sse_encode_f_64(field0, serializer);
+                        _sse_encode_i_32(0, serializer);
+                        
+                    case SpeedTwinSync_GPS(field0: final field0): 
+                        _sse_encode_i_32(1, serializer);
+                        _sse_encode_f_64(field0, serializer);
 
-            }
-              }
+                      }
             }
             
             void _sse_encode_struct_with_comments_twin_normal(StructWithCommentsTwinNormal self, SseSerializer serializer) {
