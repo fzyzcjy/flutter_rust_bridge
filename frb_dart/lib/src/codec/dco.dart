@@ -1,8 +1,10 @@
 import 'package:flutter_rust_bridge/src/codec/base.dart';
+import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/_io.dart';
 import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
+import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-class DcoCodec<S, E extends Object> extends BaseCodec<S, E> {
+class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   final S Function(dynamic) parseSuccessData;
 
@@ -46,6 +48,11 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E> {
         throw Exception('Unsupported message (raw=$raw)');
     }
   }
+
+  @override
+  void freeWireSync(WireSyncReturnDco raw,
+          GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
+      generalizedFrbRustBinding.freeWireSyncReturnDco(raw);
 }
 
 /// NOTE: Please keep in sync with the Rust side

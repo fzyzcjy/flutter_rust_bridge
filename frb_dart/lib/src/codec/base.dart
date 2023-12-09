@@ -1,10 +1,17 @@
+import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/_io.dart';
+
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-abstract class BaseCodec<S, E extends Object, Raw> {
+abstract class BaseCodec<S, E extends Object, WireSyncType> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   const BaseCodec();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  S decode(Raw raw);
+  // TODO wrong type
+  S decode(WireSyncType raw);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void freeWireSync(
+      WireSyncType raw, GeneralizedFrbRustBinding generalizedFrbRustBinding);
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

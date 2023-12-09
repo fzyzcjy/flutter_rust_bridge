@@ -10,9 +10,9 @@ import 'package:meta/meta.dart';
 /// it is generated automatically by the codegen.
 /// {@endtemplate}
 @immutable
-abstract class BaseTask<S, E extends Object, RawRetType> {
+abstract class BaseTask<S, E extends Object, WireSyncType> {
   /// Parse the returned data from the underlying function
-  final BaseCodec<S, E, RawRetType> codec;
+  final BaseCodec<S, E, WireSyncType> codec;
 
   /// Metadata that does not change across different method calls.
   final TaskConstMeta constMeta;
@@ -46,7 +46,8 @@ abstract class BaseTask<S, E extends Object, RawRetType> {
 ///
 /// {@macro flutter_rust_bridge.not_manually_create}
 @immutable
-class NormalTask<S, E extends Object> extends BaseTask<S, E, dynamic> {
+class NormalTask<S, E extends Object, WireSyncType>
+    extends BaseTask<S, E, WireSyncType> {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
@@ -85,7 +86,8 @@ class SyncTask<S, E extends Object, WireSyncType>
 ///
 /// {@macro flutter_rust_bridge.not_manually_create}
 @immutable
-class StreamTask<S, E extends Object> extends BaseTask<S, E, dynamic> {
+class StreamTask<S, E extends Object, WireSyncType>
+    extends BaseTask<S, E, WireSyncType> {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
