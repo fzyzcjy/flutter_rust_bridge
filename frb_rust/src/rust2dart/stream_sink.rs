@@ -10,7 +10,7 @@ use std::marker::PhantomData;
 #[derive(Clone)]
 pub struct StreamSink<T, Rust2DartCodec: BaseCodec = DcoCodec> {
     sendable_channel_handle: SendableChannelHandle,
-    serializer: Box<dyn Fn(T) -> Rust2DartCodec::Message + Clone>,
+    serializer: Box<dyn Fn(T) -> Rust2DartCodec::Message>,
     _phantom_data: (PhantomData<T>, PhantomData<Rust2DartCodec>),
 }
 
