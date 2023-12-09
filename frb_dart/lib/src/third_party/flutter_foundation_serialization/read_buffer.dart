@@ -3,8 +3,6 @@ library;
 
 import 'dart:typed_data';
 
-part 'read_buffer_auto_generated.dart';
-
 /// Read-only buffer for reading sequentially from a [ByteData] instance.
 ///
 /// The byte order used is [Endian.host] throughout.
