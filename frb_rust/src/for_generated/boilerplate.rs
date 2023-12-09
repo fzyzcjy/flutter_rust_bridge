@@ -69,14 +69,15 @@ macro_rules! frb_generated_boilerplate {
             }
         }
 
-        impl<T> StreamSink<T, $crate::for_generated::DcoCodec>
-        where
-            T: $crate::IntoDart,
-        {
-            pub fn add(&self, value: T) -> bool {
+        impl<T> StreamSink<T, $crate::for_generated::DcoCodec> {
+            pub fn add<T2>(&self, value: T) -> bool
+            where
+                T: $crate::IntoIntoDart<T2>,
+                T2: $crate::IntoDart,
+            {
                 self.base.add($crate::for_generated::DcoCodec::encode(
                     $crate::for_generated::Rust2DartAction::Success,
-                    value,
+                    value.into_into_dart(),
                 ))
             }
         }
