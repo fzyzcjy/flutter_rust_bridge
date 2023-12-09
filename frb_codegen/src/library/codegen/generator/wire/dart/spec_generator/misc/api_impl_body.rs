@@ -121,8 +121,8 @@ fn generate_rust2dart_codec_object(func: &IrFunc) -> String {
     format!(
         "
         {codec_name_pascal}Codec(
-          parseSuccessData: {parse_success_data},
-          parseErrorData: {parse_error_data},
+          decodeSuccessData: {parse_success_data},
+          decodeErrorData: {parse_error_data},
         )
         "
     )

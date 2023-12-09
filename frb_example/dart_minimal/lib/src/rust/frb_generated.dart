@@ -82,8 +82,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_hello(port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        parseSuccessData: _sse_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _sse_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kHelloConstMeta,
       argValues: [a, b],
@@ -108,8 +108,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_hello_sync(raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        parseSuccessData: _sse_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _sse_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kHelloSyncConstMeta,
       argValues: [a, b],
@@ -132,8 +132,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_minimal_adder(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        parseSuccessData: _dco_decode_i_32,
-        parseErrorData: null,
+        decodeSuccessData: _dco_decode_i_32,
+        decodeErrorData: null,
       ),
       constMeta: kMinimalAdderConstMeta,
       argValues: [a, b],
