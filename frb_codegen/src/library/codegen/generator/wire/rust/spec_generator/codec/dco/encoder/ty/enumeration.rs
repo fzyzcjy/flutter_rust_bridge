@@ -37,21 +37,16 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
                             .chain(st.fields.iter().map(|field| {
                                 format!("{}.into_into_dart().into_dart()", field.name.rust_style())
                             }))
-                            .collect_vec();
+                            .join(",");
                         let pattern = st
                             .fields
                             .iter()
                             .map(|field| field.name.rust_style().to_owned())
-                            .collect_vec();
+                            .join(",");
                         let (left, right) = st.brackets_pair();
+                        let variant_name = &variant.name;
                         format!(
-                            "{}::{}{}{}{} => vec![{}],",
-                            self_path,
-                            variant.name,
-                            left,
-                            pattern.join(","),
-                            right,
-                            fields.join(",")
+                            "{self_path}::{variant_name}{left}{pattern}{right} => vec![{fields}],",
                         )
                     }
                 }
