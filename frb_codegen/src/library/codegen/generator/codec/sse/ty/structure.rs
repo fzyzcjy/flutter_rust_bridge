@@ -78,11 +78,6 @@ impl GeneralizedStructGenerator {
             ),
         };
 
-        format!(
-            "
-            {decode_fields}
-            return {ctor};
-            ",
-        )
+        format!("{decode_fields}return {ctor};")
     }
 }
