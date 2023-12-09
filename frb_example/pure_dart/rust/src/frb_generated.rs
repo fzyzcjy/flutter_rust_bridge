@@ -9347,17 +9347,6 @@ impl SseDecode for chrono::DateTime<chrono::Utc> {
     }
 }
 
-impl SseDecode
-    for flutter_rust_bridge::DartFn<
-        fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
-    >
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <flutter_rust_bridge::DartOpaque>::sse_decode(deserializer);
-        return inner;
-    }
-}
-
 impl SseDecode for flutter_rust_bridge::DartOpaque {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
@@ -18220,9 +18209,15 @@ where
     }
 }
 
-impl SseEncode for String {
+impl SseEncode for anyhow::Error {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(TODO, serializer);
+        <String>::sse_encode(format!("{:?}", self), serializer);
+    }
+}
+
+impl SseEncode for backtrace::Backtrace {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(format!("{:?}", self), serializer);
     }
 }
 
@@ -18250,22 +18245,9 @@ impl SseEncode for chrono::DateTime<chrono::Utc> {
     }
 }
 
-impl SseEncode
-    for flutter_rust_bridge::DartFn<
-        fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
-    >
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <flutter_rust_bridge::DartOpaque>::sse_encode(self, serializer);
-    }
-}
-
 impl SseEncode for flutter_rust_bridge::DartOpaque {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(
-            PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
-            serializer,
-        );
+        <usize>::sse_encode(self.encode(), serializer);
     }
 }
 
@@ -19034,12 +19016,12 @@ impl SseEncode for crate::api::exception::CustomEnumErrorTwinNormal {
             crate::api::exception::CustomEnumErrorTwinNormal::One { message, backtrace } => {
                 <i32>::sse_encode(0, serializer);
                 <String>::sse_encode(message, serializer);
-                <String>::sse_encode(backtrace, serializer);
+                <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
             crate::api::exception::CustomEnumErrorTwinNormal::Two { message, backtrace } => {
                 <i32>::sse_encode(1, serializer);
                 <u32>::sse_encode(message, serializer);
-                <String>::sse_encode(backtrace, serializer);
+                <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
         }
     }
@@ -19052,13 +19034,13 @@ impl SseEncode
         match self { crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::One{message,backtrace} => { 
                         <i32>::sse_encode(0, serializer);
                         <String>::sse_encode(message, serializer);
-<String>::sse_encode(backtrace, serializer);
+<backtrace::Backtrace>::sse_encode(backtrace, serializer);
 
                      }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::Two{message,backtrace} => { 
                         <i32>::sse_encode(1, serializer);
                         <u32>::sse_encode(message, serializer);
-<String>::sse_encode(backtrace, serializer);
+<backtrace::Backtrace>::sse_encode(backtrace, serializer);
 
                      }
   }
@@ -19074,7 +19056,7 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomEnumErr
             } => {
                 <i32>::sse_encode(0, serializer);
                 <String>::sse_encode(message, serializer);
-                <String>::sse_encode(backtrace, serializer);
+                <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
             crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync::Two {
                 message,
@@ -19082,7 +19064,7 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomEnumErr
             } => {
                 <i32>::sse_encode(1, serializer);
                 <u32>::sse_encode(message, serializer);
-                <String>::sse_encode(backtrace, serializer);
+                <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
         }
     }
@@ -19094,12 +19076,12 @@ impl SseEncode for crate::api::exception::CustomErrorTwinNormal {
             crate::api::exception::CustomErrorTwinNormal::Error0 { e, backtrace } => {
                 <i32>::sse_encode(0, serializer);
                 <String>::sse_encode(e, serializer);
-                <String>::sse_encode(backtrace, serializer);
+                <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
             crate::api::exception::CustomErrorTwinNormal::Error1 { e, backtrace } => {
                 <i32>::sse_encode(1, serializer);
                 <u32>::sse_encode(e, serializer);
-                <String>::sse_encode(backtrace, serializer);
+                <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
         }
     }
@@ -19110,13 +19092,13 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_rust_async::CustomE
         match self { crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error0{e,backtrace} => { 
                         <i32>::sse_encode(0, serializer);
                         <String>::sse_encode(e, serializer);
-<String>::sse_encode(backtrace, serializer);
+<backtrace::Backtrace>::sse_encode(backtrace, serializer);
 
                      }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error1{e,backtrace} => { 
                         <i32>::sse_encode(1, serializer);
                         <u32>::sse_encode(e, serializer);
-<String>::sse_encode(backtrace, serializer);
+<backtrace::Backtrace>::sse_encode(backtrace, serializer);
 
                      }
   }
@@ -19132,7 +19114,7 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomErrorTw
             } => {
                 <i32>::sse_encode(0, serializer);
                 <String>::sse_encode(e, serializer);
-                <String>::sse_encode(backtrace, serializer);
+                <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
             crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync::Error1 {
                 e,
@@ -19140,7 +19122,7 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomErrorTw
             } => {
                 <i32>::sse_encode(1, serializer);
                 <u32>::sse_encode(e, serializer);
-                <String>::sse_encode(backtrace, serializer);
+                <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
         }
     }

@@ -21053,6 +21053,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
   }
 
+  String _dco_decode_Backtrace(dynamic raw) {
+    return raw as String;
+  }
+
   Duration _dco_decode_Chrono_Duration(dynamic raw) {
     return dcoDecodeDuration(_dco_decode_i_64(raw).toInt());
   }
@@ -21884,12 +21888,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return CustomEnumErrorTwinNormal_One(
           message: _dco_decode_String(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       case 1:
         return CustomEnumErrorTwinNormal_Two(
           message: _dco_decode_u_32(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       default:
         throw Exception("unreachable");
@@ -21902,12 +21906,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return CustomEnumErrorTwinRustAsync_One(
           message: _dco_decode_String(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       case 1:
         return CustomEnumErrorTwinRustAsync_Two(
           message: _dco_decode_u_32(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       default:
         throw Exception("unreachable");
@@ -21919,12 +21923,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return CustomEnumErrorTwinSync_One(
           message: _dco_decode_String(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       case 1:
         return CustomEnumErrorTwinSync_Two(
           message: _dco_decode_u_32(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       default:
         throw Exception("unreachable");
@@ -21936,12 +21940,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return CustomErrorTwinNormal_Error0(
           e: _dco_decode_String(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       case 1:
         return CustomErrorTwinNormal_Error1(
           e: _dco_decode_u_32(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       default:
         throw Exception("unreachable");
@@ -21954,12 +21958,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return CustomErrorTwinRustAsync_Error0(
           e: _dco_decode_String(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       case 1:
         return CustomErrorTwinRustAsync_Error1(
           e: _dco_decode_u_32(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       default:
         throw Exception("unreachable");
@@ -21971,12 +21975,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return CustomErrorTwinSync_Error0(
           e: _dco_decode_String(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       case 1:
         return CustomErrorTwinSync_Error1(
           e: _dco_decode_u_32(raw[1]),
-          backtrace: _dco_decode_String(raw[2]),
+          backtrace: _dco_decode_Backtrace(raw[2]),
         );
       default:
         throw Exception("unreachable");
@@ -24766,6 +24770,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
 
+  String _sse_decode_Backtrace(SseDeserializer deserializer) {
+    var inner = _sse_decode_String(deserializer);
+    return inner;
+  }
+
   Duration _sse_decode_Chrono_Duration(SseDeserializer deserializer) {
     throw UnimplementedError(
         'not yet supported in serialized mode, feel free to create an issue');
@@ -25554,12 +25563,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (tag_) {
       case 0:
         var message = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinNormal_One(
             message: message, backtrace: backtrace);
       case 1:
         var message = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinNormal_Two(
             message: message, backtrace: backtrace);
       default:
@@ -25573,12 +25582,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (tag_) {
       case 0:
         var message = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinRustAsync_One(
             message: message, backtrace: backtrace);
       case 1:
         var message = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinRustAsync_Two(
             message: message, backtrace: backtrace);
       default:
@@ -25592,12 +25601,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (tag_) {
       case 0:
         var message = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinSync_One(
             message: message, backtrace: backtrace);
       case 1:
         var message = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinSync_Two(
             message: message, backtrace: backtrace);
       default:
@@ -25611,11 +25620,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (tag_) {
       case 0:
         var e = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomErrorTwinNormal_Error0(e: e, backtrace: backtrace);
       case 1:
         var e = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomErrorTwinNormal_Error1(e: e, backtrace: backtrace);
       default:
         throw UnimplementedError('');
@@ -25628,11 +25637,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (tag_) {
       case 0:
         var e = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomErrorTwinRustAsync_Error0(e: e, backtrace: backtrace);
       case 1:
         var e = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomErrorTwinRustAsync_Error1(e: e, backtrace: backtrace);
       default:
         throw UnimplementedError('');
@@ -25645,11 +25654,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (tag_) {
       case 0:
         var e = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomErrorTwinSync_Error0(e: e, backtrace: backtrace);
       case 1:
         var e = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_String(deserializer);
+        var backtrace = _sse_decode_Backtrace(deserializer);
         return CustomErrorTwinSync_Error1(e: e, backtrace: backtrace);
       default:
         throw UnimplementedError('');
