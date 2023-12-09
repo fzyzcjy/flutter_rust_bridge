@@ -6,7 +6,6 @@ use itertools::Itertools;
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
         let src = self.ir.get(self.context.ir_pack);
-
         match lang {
             Lang::DartLang(_) => format!("return TODO;"),
             Lang::RustLang(_) => generate_encode_rust(lang, src),
@@ -14,11 +13,20 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> String {
+        let src = self.ir.get(self.context.ir_pack);
         match lang {
             Lang::DartLang(_) => format!("return TODO;"),
-            Lang::RustLang(_) => format!("return TODO;"),
+            Lang::RustLang(_) => generate_decode_rust(lang, src),
         }
     }
+}
+
+fn generate_decode_rust(lang: &Lang, src: &IrEnum) -> String {
+    format!(
+        "
+        TODO
+        "
+    )
 }
 
 fn generate_encode_rust(lang: &Lang, src: &IrEnum) -> String {
