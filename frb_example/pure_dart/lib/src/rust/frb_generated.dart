@@ -28768,15 +28768,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case AbcTwinNormal_A(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_box_autoadd_a_twin_normal(field0, serializer);
-
       case AbcTwinNormal_B(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_box_autoadd_b_twin_normal(field0, serializer);
-
       case AbcTwinNormal_C(field0: final field0):
         _sse_encode_i_32(2, serializer);
         _sse_encode_box_autoadd_c_twin_normal(field0, serializer);
-
       case AbcTwinNormal_JustInt(field0: final field0):
         _sse_encode_i_32(3, serializer);
         _sse_encode_i_32(field0, serializer);
@@ -28789,15 +28786,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case AbcTwinRustAsync_A(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_box_autoadd_a_twin_rust_async(field0, serializer);
-
       case AbcTwinRustAsync_B(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_box_autoadd_b_twin_rust_async(field0, serializer);
-
       case AbcTwinRustAsync_C(field0: final field0):
         _sse_encode_i_32(2, serializer);
         _sse_encode_box_autoadd_c_twin_rust_async(field0, serializer);
-
       case AbcTwinRustAsync_JustInt(field0: final field0):
         _sse_encode_i_32(3, serializer);
         _sse_encode_i_32(field0, serializer);
@@ -28809,15 +28803,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case AbcTwinSync_A(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_box_autoadd_a_twin_sync(field0, serializer);
-
       case AbcTwinSync_B(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_box_autoadd_b_twin_sync(field0, serializer);
-
       case AbcTwinSync_C(field0: final field0):
         _sse_encode_i_32(2, serializer);
         _sse_encode_box_autoadd_c_twin_sync(field0, serializer);
-
       case AbcTwinSync_JustInt(field0: final field0):
         _sse_encode_i_32(3, serializer);
         _sse_encode_i_32(field0, serializer);
@@ -29817,7 +29808,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedErrorInnerTwinNormal_Three(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_String(field0, serializer);
-
       case CustomNestedErrorInnerTwinNormal_Four(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_u_32(field0, serializer);
@@ -29830,7 +29820,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedErrorInnerTwinRustAsync_Three(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_String(field0, serializer);
-
       case CustomNestedErrorInnerTwinRustAsync_Four(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_u_32(field0, serializer);
@@ -29843,7 +29832,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedErrorInnerTwinSync_Three(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_String(field0, serializer);
-
       case CustomNestedErrorInnerTwinSync_Four(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_u_32(field0, serializer);
@@ -29856,7 +29844,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedErrorOuterTwinNormal_One(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_String(field0, serializer);
-
       case CustomNestedErrorOuterTwinNormal_Two(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(
@@ -29870,7 +29857,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedErrorOuterTwinRustAsync_One(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_String(field0, serializer);
-
       case CustomNestedErrorOuterTwinRustAsync_Two(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
@@ -29884,7 +29870,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case CustomNestedErrorOuterTwinSync_One(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_String(field0, serializer);
-
       case CustomNestedErrorOuterTwinSync_Two(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(
@@ -29963,7 +29948,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case DistanceTwinNormal_Unknown():
         _sse_encode_i_32(0, serializer);
-
       case DistanceTwinNormal_Map(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_f_64(field0, serializer);
@@ -29975,7 +29959,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case DistanceTwinRustAsync_Unknown():
         _sse_encode_i_32(0, serializer);
-
       case DistanceTwinRustAsync_Map(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_f_64(field0, serializer);
@@ -29987,7 +29970,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case DistanceTwinSync_Unknown():
         _sse_encode_i_32(0, serializer);
-
       case DistanceTwinSync_Map(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_f_64(field0, serializer);
@@ -30009,7 +29991,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumDartOpaqueTwinNormal_Primitive(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_i_32(field0, serializer);
-
       case EnumDartOpaqueTwinNormal_Opaque(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_DartOpaque(field0, serializer);
@@ -30022,7 +30003,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumDartOpaqueTwinRustAsync_Primitive(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_i_32(field0, serializer);
-
       case EnumDartOpaqueTwinRustAsync_Opaque(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_DartOpaque(field0, serializer);
@@ -30035,7 +30015,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumDartOpaqueTwinSync_Primitive(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_i_32(field0, serializer);
-
       case EnumDartOpaqueTwinSync_Opaque(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_DartOpaque(field0, serializer);
@@ -30048,19 +30027,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumOpaqueTwinNormal_Struct(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_RustOpaque_hide_data(field0, serializer);
-
       case EnumOpaqueTwinNormal_Primitive(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_RustOpaque_i_32(field0, serializer);
-
       case EnumOpaqueTwinNormal_TraitObj(field0: final field0):
         _sse_encode_i_32(2, serializer);
         _sse_encode_RustOpaque_box_dynDartDebugTwinNormal(field0, serializer);
-
       case EnumOpaqueTwinNormal_Mutex(field0: final field0):
         _sse_encode_i_32(3, serializer);
         _sse_encode_RustOpaque_MutexHideData(field0, serializer);
-
       case EnumOpaqueTwinNormal_RwLock(field0: final field0):
         _sse_encode_i_32(4, serializer);
         _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
@@ -30073,20 +30048,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumOpaqueTwinRustAsync_Struct(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_RustOpaque_hide_data(field0, serializer);
-
       case EnumOpaqueTwinRustAsync_Primitive(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_RustOpaque_i_32(field0, serializer);
-
       case EnumOpaqueTwinRustAsync_TraitObj(field0: final field0):
         _sse_encode_i_32(2, serializer);
         _sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
             field0, serializer);
-
       case EnumOpaqueTwinRustAsync_Mutex(field0: final field0):
         _sse_encode_i_32(3, serializer);
         _sse_encode_RustOpaque_MutexHideData(field0, serializer);
-
       case EnumOpaqueTwinRustAsync_RwLock(field0: final field0):
         _sse_encode_i_32(4, serializer);
         _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
@@ -30099,19 +30070,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumOpaqueTwinSync_Struct(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_RustOpaque_hide_data(field0, serializer);
-
       case EnumOpaqueTwinSync_Primitive(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_RustOpaque_i_32(field0, serializer);
-
       case EnumOpaqueTwinSync_TraitObj(field0: final field0):
         _sse_encode_i_32(2, serializer);
         _sse_encode_RustOpaque_box_dynDartDebugTwinSync(field0, serializer);
-
       case EnumOpaqueTwinSync_Mutex(field0: final field0):
         _sse_encode_i_32(3, serializer);
         _sse_encode_RustOpaque_MutexHideData(field0, serializer);
-
       case EnumOpaqueTwinSync_RwLock(field0: final field0):
         _sse_encode_i_32(4, serializer);
         _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
@@ -30138,11 +30105,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemMixedTwinNormal_A():
         _sse_encode_i_32(0, serializer);
-
       case EnumWithItemMixedTwinNormal_B(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_list_prim_u_8(field0, serializer);
-
       case EnumWithItemMixedTwinNormal_C(cField: final cField):
         _sse_encode_i_32(2, serializer);
         _sse_encode_String(cField, serializer);
@@ -30154,11 +30119,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemMixedTwinRustAsync_A():
         _sse_encode_i_32(0, serializer);
-
       case EnumWithItemMixedTwinRustAsync_B(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_list_prim_u_8(field0, serializer);
-
       case EnumWithItemMixedTwinRustAsync_C(cField: final cField):
         _sse_encode_i_32(2, serializer);
         _sse_encode_String(cField, serializer);
@@ -30170,11 +30133,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemMixedTwinSync_A():
         _sse_encode_i_32(0, serializer);
-
       case EnumWithItemMixedTwinSync_B(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_list_prim_u_8(field0, serializer);
-
       case EnumWithItemMixedTwinSync_C(cField: final cField):
         _sse_encode_i_32(2, serializer);
         _sse_encode_String(cField, serializer);
@@ -30187,7 +30148,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemStructTwinNormal_A(aField: final aField):
         _sse_encode_i_32(0, serializer);
         _sse_encode_list_prim_u_8(aField, serializer);
-
       case EnumWithItemStructTwinNormal_B(bField: final bField):
         _sse_encode_i_32(1, serializer);
         _sse_encode_list_prim_i_32(bField, serializer);
@@ -30200,7 +30160,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemStructTwinRustAsync_A(aField: final aField):
         _sse_encode_i_32(0, serializer);
         _sse_encode_list_prim_u_8(aField, serializer);
-
       case EnumWithItemStructTwinRustAsync_B(bField: final bField):
         _sse_encode_i_32(1, serializer);
         _sse_encode_list_prim_i_32(bField, serializer);
@@ -30213,7 +30172,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemStructTwinSync_A(aField: final aField):
         _sse_encode_i_32(0, serializer);
         _sse_encode_list_prim_u_8(aField, serializer);
-
       case EnumWithItemStructTwinSync_B(bField: final bField):
         _sse_encode_i_32(1, serializer);
         _sse_encode_list_prim_i_32(bField, serializer);
@@ -30226,7 +30184,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemTupleTwinNormal_A(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_list_prim_u_8(field0, serializer);
-
       case EnumWithItemTupleTwinNormal_B(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_list_prim_i_32(field0, serializer);
@@ -30239,7 +30196,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemTupleTwinRustAsync_A(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_list_prim_u_8(field0, serializer);
-
       case EnumWithItemTupleTwinRustAsync_B(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_list_prim_i_32(field0, serializer);
@@ -30252,7 +30208,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case EnumWithItemTupleTwinSync_A(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_list_prim_u_8(field0, serializer);
-
       case EnumWithItemTupleTwinSync_B(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_list_prim_i_32(field0, serializer);
@@ -30431,7 +30386,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case KitchenSinkTwinNormal_Empty():
         _sse_encode_i_32(0, serializer);
-
       case KitchenSinkTwinNormal_Primitives(
           int32: final int32,
           float64: final float64,
@@ -30441,7 +30395,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(int32, serializer);
         _sse_encode_f_64(float64, serializer);
         _sse_encode_bool(boolean, serializer);
-
       case KitchenSinkTwinNormal_Nested(
           field0: final field0,
           field1: final field1
@@ -30449,7 +30402,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(2, serializer);
         _sse_encode_i_32(field0, serializer);
         _sse_encode_box_kitchen_sink_twin_normal(field1, serializer);
-
       case KitchenSinkTwinNormal_Optional(
           field0: final field0,
           field1: final field1
@@ -30457,11 +30409,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(3, serializer);
         _sse_encode_opt_box_autoadd_i_32(field0, serializer);
         _sse_encode_opt_box_autoadd_i_32(field1, serializer);
-
       case KitchenSinkTwinNormal_Buffer(field0: final field0):
         _sse_encode_i_32(4, serializer);
         _sse_encode_list_prim_u_8(field0, serializer);
-
       case KitchenSinkTwinNormal_Enums(field0: final field0):
         _sse_encode_i_32(5, serializer);
         _sse_encode_weekdays_twin_normal(field0, serializer);
@@ -30473,7 +30423,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case KitchenSinkTwinRustAsync_Empty():
         _sse_encode_i_32(0, serializer);
-
       case KitchenSinkTwinRustAsync_Primitives(
           int32: final int32,
           float64: final float64,
@@ -30483,7 +30432,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(int32, serializer);
         _sse_encode_f_64(float64, serializer);
         _sse_encode_bool(boolean, serializer);
-
       case KitchenSinkTwinRustAsync_Nested(
           field0: final field0,
           field1: final field1
@@ -30491,7 +30439,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(2, serializer);
         _sse_encode_i_32(field0, serializer);
         _sse_encode_box_kitchen_sink_twin_rust_async(field1, serializer);
-
       case KitchenSinkTwinRustAsync_Optional(
           field0: final field0,
           field1: final field1
@@ -30499,11 +30446,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(3, serializer);
         _sse_encode_opt_box_autoadd_i_32(field0, serializer);
         _sse_encode_opt_box_autoadd_i_32(field1, serializer);
-
       case KitchenSinkTwinRustAsync_Buffer(field0: final field0):
         _sse_encode_i_32(4, serializer);
         _sse_encode_list_prim_u_8(field0, serializer);
-
       case KitchenSinkTwinRustAsync_Enums(field0: final field0):
         _sse_encode_i_32(5, serializer);
         _sse_encode_weekdays_twin_rust_async(field0, serializer);
@@ -30515,7 +30460,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case KitchenSinkTwinSync_Empty():
         _sse_encode_i_32(0, serializer);
-
       case KitchenSinkTwinSync_Primitives(
           int32: final int32,
           float64: final float64,
@@ -30525,7 +30469,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(int32, serializer);
         _sse_encode_f_64(float64, serializer);
         _sse_encode_bool(boolean, serializer);
-
       case KitchenSinkTwinSync_Nested(
           field0: final field0,
           field1: final field1
@@ -30533,7 +30476,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(2, serializer);
         _sse_encode_i_32(field0, serializer);
         _sse_encode_box_kitchen_sink_twin_sync(field1, serializer);
-
       case KitchenSinkTwinSync_Optional(
           field0: final field0,
           field1: final field1
@@ -30541,11 +30483,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(3, serializer);
         _sse_encode_opt_box_autoadd_i_32(field0, serializer);
         _sse_encode_opt_box_autoadd_i_32(field1, serializer);
-
       case KitchenSinkTwinSync_Buffer(field0: final field0):
         _sse_encode_i_32(4, serializer);
         _sse_encode_list_prim_u_8(field0, serializer);
-
       case KitchenSinkTwinSync_Enums(field0: final field0):
         _sse_encode_i_32(5, serializer);
         _sse_encode_weekdays_twin_sync(field0, serializer);
@@ -30849,7 +30789,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case MeasureTwinNormal_Speed(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_box_speed_twin_normal(field0, serializer);
-
       case MeasureTwinNormal_Distance(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_box_distance_twin_normal(field0, serializer);
@@ -30862,7 +30801,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case MeasureTwinRustAsync_Speed(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_box_speed_twin_rust_async(field0, serializer);
-
       case MeasureTwinRustAsync_Distance(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_box_distance_twin_rust_async(field0, serializer);
@@ -30875,7 +30813,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case MeasureTwinSync_Speed(field0: final field0):
         _sse_encode_i_32(0, serializer);
         _sse_encode_box_speed_twin_sync(field0, serializer);
-
       case MeasureTwinSync_Distance(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_box_distance_twin_sync(field0, serializer);
@@ -31439,7 +31376,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case SpeedTwinNormal_Unknown():
         _sse_encode_i_32(0, serializer);
-
       case SpeedTwinNormal_GPS(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_f_64(field0, serializer);
@@ -31451,7 +31387,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case SpeedTwinRustAsync_Unknown():
         _sse_encode_i_32(0, serializer);
-
       case SpeedTwinRustAsync_GPS(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_f_64(field0, serializer);
@@ -31463,7 +31398,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case SpeedTwinSync_Unknown():
         _sse_encode_i_32(0, serializer);
-
       case SpeedTwinSync_GPS(field0: final field0):
         _sse_encode_i_32(1, serializer);
         _sse_encode_f_64(field0, serializer);
