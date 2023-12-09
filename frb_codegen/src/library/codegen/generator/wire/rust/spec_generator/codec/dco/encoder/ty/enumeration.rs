@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::sse::ty::enumeration::generate_enum_encode_rust;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::generate_impl_into_into_dart;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
@@ -20,46 +21,13 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
         let (name, self_path) =
             parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
 
-        let self_ref = self.generate_access_object_core("self".to_owned());
-        let variants = src
-            .variants()
-            .iter()
-            .enumerate()
-            .map(|(idx, variant)| {
-                let tag = format!("{idx}.into_dart()");
-                match &variant.kind {
-                    IrVariantKind::Value => {
-                        format!("{self_path}::{} => vec![{tag}],", variant.name)
-                    }
-                    IrVariantKind::Struct(st) => {
-                        let fields = Some(tag)
-                            .into_iter()
-                            .chain(st.fields.iter().map(|field| {
-                                format!("{}.into_into_dart().into_dart()", field.name.rust_style())
-                            }))
-                            .join(",");
-                        let pattern = st
-                            .fields
-                            .iter()
-                            .map(|field| field.name.rust_style().to_owned())
-                            .join(",");
-                        let (left, right) = st.brackets_pair();
-                        let variant_name = &variant.name;
-                        format!(
-                            "{self_path}::{variant_name}{left}{pattern}{right} => vec![{fields}],",
-                        )
-                    }
-                }
-            })
-            .join("\n");
+        let body = generate_enum_encode_rust();
 
         let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
         Some(format!(
             "impl flutter_rust_bridge::IntoDart for {name} {{
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
-                    match {self_ref} {{
-                        {variants}
-                    }}.into_dart()
+                    {body}
                 }}
             }}
             impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {name} {{}}
