@@ -7,6 +7,27 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
             Lang::DartLang(_) => "self != null",
             Lang::RustLang(_) => "self.is_some()",
         };
+        let encode_flag = lang.call_encode(&Primitive(IrTypePrimitive::Bool), &self_is_not_null);
+        let encode_self = lang.call_encode(&*self.ir.inner, "self");
+
+        match lang {
+            Lang::DartLang(_) => format!(
+                "
+                {encode_flag};
+                if (self != null) {{
+                    {encode_self};
+                }}
+                ",
+            ),
+            Lang::RustLang(_) => format!(
+                "
+                {encode_flag};
+                if let Some(self) = self {{
+                    {encode_self};
+                }}
+                ",
+            ),
+        }
 
         Some(format!(
             "
@@ -21,14 +42,19 @@ impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        let wrapper = match lang {
+            Lang::DartLang(_) => "",
+            Lang::RustLang(_) => "Some",
+        };
         let null = match lang {
             Lang::DartLang(_) => "null",
             Lang::RustLang(_) => "None",
         };
+
         Some(format!(
             "
             if ({}) {{
-                return {};
+                return {wrapper}({});
             }} else {{
                 return {null};
             }}
