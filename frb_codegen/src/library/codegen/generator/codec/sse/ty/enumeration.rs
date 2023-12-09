@@ -28,7 +28,12 @@ fn generate_decode_rust(lang: &Lang, src: &IrEnum) -> String {
     let expr_decode_tag = lang.call_decode(&TAG_TYPE);
 
     let variants = (src.variants().iter().enumerate())
-        .map(|(idx, variant)| format!("{idx} => {}", generate_decode_rust_variant(variant)))
+        .map(|(idx, variant)| {
+            format!(
+                "{idx} => {}",
+                generate_decode_rust_variant(variant, &src.name)
+            )
+        })
         .join("\n");
 
     format!(
@@ -42,9 +47,9 @@ fn generate_decode_rust(lang: &Lang, src: &IrEnum) -> String {
     )
 }
 
-fn generate_decode_rust_variant(variant: &IrVariant) -> String {
+fn generate_decode_rust_variant(variant: &IrVariant, enum_name: &NamespacedName) -> String {
     match &variant.kind {
-        IrVariantKind::Value => TODO,
+        IrVariantKind::Value => format!("{}::{}", enum_name.rust_style(), variant.name),
         IrVariantKind::Struct(st) => {
             GeneralizedStructGenerator::new(st.clone(), StructOrRecord::Struct)
                 .generate_decode(&Lang::RustLang(_))
