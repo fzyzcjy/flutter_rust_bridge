@@ -27,7 +27,10 @@ class GeneralizedFrbRustBinding {
       throw UnimplementedError();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void freeWireSyncReturn(WireSyncReturn raw) {}
+  void freeWireSyncReturnDco(WireSyncReturnDco raw) {}
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void freeWireSyncReturnSse(WireSyncReturnDco raw) {}
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

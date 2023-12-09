@@ -37,8 +37,12 @@ class GeneralizedFrbRustBinding {
       _binding.dart_opaque_drop_thread_box_persistent_handle(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void freeWireSyncReturn(WireSyncReturn val) =>
-      _binding.free_wire_sync_return(val);
+  void freeWireSyncReturnDco(WireSyncReturnDco val) =>
+      _binding.free_wire_sync_return_dco(val);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void freeWireSyncReturnSse(WireSyncReturnSse val) =>
+      _binding.free_wire_sync_return_sse(val);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   ffi.Pointer<ffi.Uint8> rustVecU8New(int len) => _binding.rust_vec_u8_new(len);
