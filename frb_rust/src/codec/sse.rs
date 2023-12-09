@@ -18,7 +18,7 @@ impl BaseCodec for SseCodec {
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
         let msg = error_to_string(error);
-        Self::encode(Rust2DartAction::Panic, |serializer| TODO)
+        Self::encode(Rust2DartAction::Panic, |serializer| todo!())
     }
 
     fn encode_close_stream() -> Self::Message {
