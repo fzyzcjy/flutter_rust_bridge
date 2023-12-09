@@ -17,6 +17,7 @@ use crate::codegen::ir::ty::delegate::{
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
+use crate::codegen::generator::codec::sse::ty::delegate::rust_decode_primitive_enum;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<String> {
@@ -66,22 +67,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             //     Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()))
             // },
             // IrTypeDelegate::StringList => general_list_impl_decode_body(),
-            IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum{ ir, .. }) => {
-                let enu = ir.get(self.context.ir_pack);
-                let variants =
-                    (enu.variants().iter().enumerate())
-                        .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name.rust_style(), variant.name))
-                        .collect_vec()
-                        .join("\n");
-                format!(
-                    "match self {{
-                        {}
-                        _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
-                    }}",
-                    variants,
-                    enu.name.name
-                ).into()
-            },
+            IrTypeDelegate::PrimitiveEnum (inner) => rust_decode_primitive_enum(inner, self.context.ir_pack),
             IrTypeDelegate::Time(ir) => {
                 if ir == &IrTypeDelegateTime::Duration {
                     return Acc {

@@ -1,6 +1,8 @@
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::codegen::ir::ty::delegate::IrTypeDelegatePrimitiveEnum;
+use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> String {
@@ -48,7 +50,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     "flutter_rust_bridge::for_generated::from_vec_to_array(inner)".to_owned()
                 }
                 IrTypeDelegate::String => "String::from_utf8(inner).unwrap()".to_owned(),
-                IrTypeDelegate::PrimitiveEnum(_) => "TODO".to_owned(),
+                IrTypeDelegate::PrimitiveEnum(inner) => {
+                    rust_decode_primitive_enum(inner, self.context.ir_pack)
+                }
                 IrTypeDelegate::Time(_) => "chrono::Duration::microseconds(self)".to_owned(),
                 IrTypeDelegate::Uuid => {
                     "flutter_rust_bridge::for_generated::decode_uuid(inner)".to_owned()
@@ -71,4 +75,21 @@ pub(super) fn simple_delegate_decode(lang: &Lang, inner_ty: &IrType, wrapper_exp
         lang.call_decode(&inner_ty),
         var_decl = lang.var_decl()
     )
+}
+
+pub(crate) fn rust_decode_primitive_enum(inner: &IrTypeDelegatePrimitiveEnum, ir_pack: &IrPack) {
+    let enu = inner.ir.get(ir_pack);
+    let variants = (enu.variants().iter().enumerate())
+        .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name.rust_style(), variant.name))
+        .collect_vec()
+        .join("\n");
+
+    format!(
+        "match self {{
+            {}
+            _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
+        }}",
+        variants, enu.name.name
+    )
+    .into()
 }

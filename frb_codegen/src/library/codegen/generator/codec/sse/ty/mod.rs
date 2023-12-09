@@ -1,7 +1,7 @@
 mod boxed;
 mod dart_fn;
 mod dart_opaque;
-mod delegate;
+pub(crate) mod delegate;
 mod dynamic;
 mod enumeration;
 mod general_list;
