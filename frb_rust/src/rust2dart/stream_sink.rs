@@ -10,14 +10,19 @@ use std::marker::PhantomData;
 #[derive(Clone)]
 pub struct StreamSink<T, Rust2DartCodec: BaseCodec = DcoCodec> {
     sendable_channel_handle: SendableChannelHandle,
+    serializer: Box<dyn Fn(T) -> Rust2DartCodec::Message>,
     _phantom_data: (PhantomData<T>, PhantomData<Rust2DartCodec>),
 }
 
 impl<T, Rust2DartCodec: BaseCodec> StreamSink<T, Rust2DartCodec> {
     /// Create a new sink from a port wrapper.
-    pub fn new(sender: Rust2DartSender) -> Self {
+    pub fn new(
+        sender: Rust2DartSender,
+        serializer: Box<dyn Fn(T) -> Rust2DartCodec::Message>,
+    ) -> Self {
         Self {
             sendable_channel_handle: channel_to_handle(&sender.channel),
+            serializer,
             _phantom_data: Default::default(),
         }
     }
@@ -26,11 +31,10 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSink<T, Rust2DartCodec> {
         Rust2DartSender::new(handle_to_channel(&self.sendable_channel_handle))
     }
 
-    // TODO about StreamSink vs StreamSinkRaw
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
-    pub fn add(&self, value: Rust2DartCodec::Message) -> bool {
-        self.sender().send(value.into_dart_abi())
+    pub fn add(&self, value: T) -> bool {
+        self.sender().send(self.serializer(value).into_dart_abi())
     }
 
     /// Close the stream and ignore further messages. Returns false when
