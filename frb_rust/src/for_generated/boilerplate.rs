@@ -64,7 +64,7 @@ macro_rules! frb_generated_boilerplate {
             }
 
             pub fn add(&self, value: T) -> bool {
-                self.base.add(todo!())
+                self.base.add(value)
             }
 
             pub fn close(&self) -> bool {
