@@ -93,10 +93,6 @@ impl CstDecode<i32> for i32 {
         self
     }
 }
-pub trait SseDecode {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self;
-}
-
 impl SseDecode for crate::api::minimal::Hello {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut tag_ = <i32>::sse_decode(deserializer);
@@ -158,32 +154,6 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api:
 impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::Hello> for crate::api::minimal::Hello {
     fn into_into_dart(self) -> crate::api::minimal::Hello {
         self
-    }
-}
-
-pub trait SseEncode {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer);
-}
-
-fn transform_result_sse<T, E>(
-    raw: Result<T, E>,
-) -> Result<
-    flutter_rust_bridge::for_generated::Rust2DartMessageSse,
-    flutter_rust_bridge::for_generated::Rust2DartMessageSse,
->
-where
-    T: SseEncode,
-    E: SseEncode,
-{
-    use flutter_rust_bridge::for_generated::{Rust2DartAction, SseCodec};
-
-    match raw {
-        Ok(raw) => Ok(SseCodec::encode(Rust2DartAction::Success, |serializer| {
-            raw.sse_encode(serializer)
-        })),
-        Err(raw) => Err(SseCodec::encode(Rust2DartAction::Error, |serializer| {
-            raw.sse_encode(serializer)
-        })),
     }
 }
 
