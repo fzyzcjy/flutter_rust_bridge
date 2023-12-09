@@ -9,7 +9,7 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let inner_expr = match lang {
             Lang::DartLang(_) => match &self.ir {
-                IrTypeDelegate::Array(_) => "self",
+                IrTypeDelegate::Array(_) => "self.inner",
                 IrTypeDelegate::String => "utf8.encoder.convert(self)",
                 IrTypeDelegate::PrimitiveEnum(_) => "self.index",
                 IrTypeDelegate::Time(_) => "self.microsecondsSinceEpoch",

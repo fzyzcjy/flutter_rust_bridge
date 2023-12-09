@@ -49,11 +49,17 @@ fn generate_array(
             "
             class {self_dart_api_type} extends NonGrowableListView<{inner_dart_api_type}> {{
                 static const arraySize = {array_length};
-                {self_dart_api_type}({delegate_dart_api_type} inner)
-                    : assert(inner.length == arraySize),
-                      super(inner);
-                {self_dart_api_type}.unchecked({delegate_dart_api_type} inner)
-                    : super(inner);
+
+                @internal
+                {delegate_dart_api_type} get inner => _inner;
+                final {delegate_dart_api_type} _inner;
+
+                {self_dart_api_type}(this._inner)
+                    : assert(_inner.length == arraySize),
+                      super(_inner);
+  
+                {self_dart_api_type}.init() : this({delegate_dart_api_type}(arraySize));
+
                 {dart_init_method}
               }}
             "
