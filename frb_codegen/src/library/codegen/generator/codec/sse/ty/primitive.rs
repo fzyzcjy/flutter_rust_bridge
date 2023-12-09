@@ -67,11 +67,11 @@ pub(super) fn get_serializer_dart_postfix(prim: &IrTypePrimitive) -> &'static st
     }
 }
 
-pub(super) fn get_serializer_rust_type(prim: &IrTypePrimitive) -> &'static str {
+pub(super) fn get_serializer_rust_type(prim: &IrTypePrimitive) -> String {
     match prim {
         // TODO make it adapt to 32/64bit platform
-        IrTypePrimitive::Usize => "u64",
-        IrTypePrimitive::Isize => "i64",
+        IrTypePrimitive::Usize => "u64".to_owned(),
+        IrTypePrimitive::Isize => "i64".to_owned(),
         _ => prim.rust_api_type(),
     }
 }
