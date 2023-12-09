@@ -36,7 +36,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
     }
 }
 
-fn get_serializer_dart_postfix(prim: &IrTypePrimitive) -> &'static str {
+pub(super) fn get_serializer_dart_postfix(prim: &IrTypePrimitive) -> &'static str {
     match prim {
         IrTypePrimitive::U8 => "Uint8",
         IrTypePrimitive::I8 => "Int8",
