@@ -13,10 +13,21 @@ impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
-        Some(simple_delegate_decode(
-            lang,
-            &self.ir.get_delegate(),
-            "inner",
-        ))
+        let var_decl = lang.var_decl();
+        Some(match lang {
+            Lang::DartLang(_) => {
+                format!(
+                    "
+                    {var_decl} ptr = {};
+                    {var_decl} externalSizeOnNative = {};
+                    return {}.sseDecode(ptr, externalSizeOnNative);
+                    ",
+                    lang.call_decode(&Primitive(IrTypePrimitive::Bool)),
+                    lang.call_decode(&*self.ir.inner),
+                    lang.null(),
+                )
+            }
+            Lang::RustLang(_) => simple_delegate_decode(lang, &self.ir.get_delegate(), "inner"),
+        })
     }
 }
