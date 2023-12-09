@@ -38,6 +38,19 @@ class ReadBuffer {
     return value;
   }
 
+  // NOTE ADD some of these functions
+  /// Reads an Int8 from the buffer.
+  int getInt8({Endian? endian}) {
+    return data.getInt8(_position++);
+  }
+
+  /// Reads an Int16 from the buffer.
+  int getInt16({Endian? endian}) {
+    final int value = data.getInt16(_position, endian ?? Endian.host);
+    _position += 2;
+    return value;
+  }
+
   /// Reads an Int32 from the buffer.
   int getInt32({Endian? endian}) {
     final int value = data.getInt32(_position, endian ?? Endian.host);
@@ -52,7 +65,6 @@ class ReadBuffer {
     return value;
   }
 
-  // NOTE ADD by mimic the 64bit counterpart
   /// Reads a Float32 from the buffer.
   double getFloat32({Endian? endian}) {
     // _alignTo(4);
