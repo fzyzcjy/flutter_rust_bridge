@@ -11,7 +11,10 @@ impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
-        Some(self.new_generalized_generator().generate_decode(lang, None))
+        Some(
+            self.new_generalized_generator()
+                .generate_decode(lang, None, true),
+        )
     }
 }
 
@@ -53,6 +56,7 @@ impl GeneralizedStructGenerator {
         &self,
         lang: &Lang,
         override_struct_name: Option<String>,
+        dart_unconditionally_kwargs_ctor: bool,
     ) -> String {
         let decode_fields = (self.st.fields.iter().enumerate())
             .map(|(index, field)| {
@@ -74,10 +78,8 @@ impl GeneralizedStructGenerator {
                 &(self.st.fields.iter())
                     .map(|x| x.name.dart_style().clone())
                     .collect_vec(),
-                match lang {
-                    Lang::DartLang(_) => true,
-                    Lang::RustLang(_) => self.st.is_fields_named,
-                },
+                (matches!(lang, Lang::DartLang(_)) && dart_unconditionally_kwargs_ctor)
+                    || self.st.is_fields_named,
             ),
             StructOrRecord::Record => format!(
                 "({})",

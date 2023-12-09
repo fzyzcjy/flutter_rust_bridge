@@ -82,6 +82,7 @@ fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang
             GeneralizedStructGenerator::new(st.clone(), StructOrRecord::Struct).generate_decode(
                 lang,
                 Some(format!("{enum_name_str}{enum_sep}{}", st.name.name)),
+                false,
             )
         }
     }
