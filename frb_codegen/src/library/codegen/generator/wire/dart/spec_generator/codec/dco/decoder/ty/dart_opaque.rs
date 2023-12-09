@@ -3,6 +3,6 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DartOpaqueWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
-        "return dcoDecodeDartOpaque(raw, generalizedFrbRustBinding);".into()
+        "return decodeDartOpaque(raw, generalizedFrbRustBinding);".into()
     }
 }
