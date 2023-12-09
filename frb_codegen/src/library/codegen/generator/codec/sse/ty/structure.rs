@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::generator::misc::StructOrRecord::Struct;
+use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;
 
@@ -16,28 +17,22 @@ impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {
 
 impl<'a> StructRefCodecSseTy<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
-        GeneralizedStructGenerator::new(self.ir.clone(), self.context, Struct)
+        GeneralizedStructGenerator::new(self.ir.get(self.context.ir_pack).clone(), Struct)
     }
 }
 
 pub(crate) struct GeneralizedStructGenerator<'a> {
-    ir: IrTypeStructRef,
-    context: CodecSseTyContext<'a>,
+    st: IrStruct,
     mode: StructOrRecord,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
-    pub(crate) fn new(
-        ir: IrTypeStructRef,
-        context: CodecSseTyContext<'a>,
-        mode: StructOrRecord,
-    ) -> Self {
-        Self { ir, context, mode }
+    pub(crate) fn new(st: IrStruct, mode: StructOrRecord) -> Self {
+        Self { st, mode }
     }
 
     pub(super) fn generate_encode(&self, lang: &Lang) -> String {
-        let st = self.ir.get(self.context.ir_pack);
-        (st.fields.iter().enumerate())
+        (self.st.fields.iter().enumerate())
             .map(|(index, field)| {
                 format!(
                     "{};\n",
@@ -51,8 +46,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
     }
 
     pub(super) fn generate_decode(&self, lang: &Lang) -> String {
-        let st = self.ir.get(self.context.ir_pack);
-        let decode_fields = (st.fields.iter().enumerate())
+        let decode_fields = (self.st.fields.iter().enumerate())
             .map(|(index, field)| {
                 format!(
                     "{} {} = {};\n",
@@ -65,15 +59,20 @@ impl<'a> GeneralizedStructGenerator<'a> {
 
         let ctor = match self.mode {
             Struct => lang.call_constructor(
-                &st.name.name,
-                &st.fields.iter().map(|x| x.name.style(lang)).collect_vec(),
-                &(st.fields.iter())
+                &self.st.name.name,
+                &self
+                    .st
+                    .fields
+                    .iter()
+                    .map(|x| x.name.style(lang))
+                    .collect_vec(),
+                &(self.st.fields.iter())
                     .map(|x| x.name.dart_style().clone())
                     .collect_vec(),
             ),
             StructOrRecord::Record => format!(
                 "({})",
-                (st.fields.iter())
+                (self.st.fields.iter())
                     .map(|x| x.name.dart_style().clone())
                     .join(", ")
             ),
