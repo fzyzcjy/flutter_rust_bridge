@@ -40,6 +40,13 @@ class ReadBuffer {
     return value;
   }
 
+  /// Reads a Uint64 from the buffer.
+  int getUint64({Endian? endian}) {
+    final int value = data.getUint64(_position, endian ?? Endian.host);
+    _position += 8;
+    return value;
+  }
+
   // NOTE ADD some of these functions
   /// Reads an Int8 from the buffer.
   int getInt8({Endian? endian}) {
@@ -88,6 +95,46 @@ class ReadBuffer {
     final Uint8List list =
         data.buffer.asUint8List(data.offsetInBytes + _position, length);
     _position += length;
+    return list;
+  }
+
+  /// Reads the given number of Uint16s from the buffer.
+  Uint16List getUint16List(int length) {
+    final Uint16List list =
+        data.buffer.asUint16List(data.offsetInBytes + _position, length);
+    _position += 2 * length;
+    return list;
+  }
+
+  /// Reads the given number of Uint32s from the buffer.
+  Uint32List getUint32List(int length) {
+    final Uint32List list =
+        data.buffer.asUint32List(data.offsetInBytes + _position, length);
+    _position += 4 * length;
+    return list;
+  }
+
+  /// Reads the given number of Uint64s from the buffer.
+  Uint64List getUint64List(int length) {
+    final Uint64List list =
+        data.buffer.asUint64List(data.offsetInBytes + _position, length);
+    _position += 8 * length;
+    return list;
+  }
+
+  /// Reads the given number of Int8s from the buffer.
+  Int8List getInt8List(int length) {
+    final Int8List list =
+        data.buffer.asInt8List(data.offsetInBytes + _position, length);
+    _position += 1 * length;
+    return list;
+  }
+
+  /// Reads the given number of Int16s from the buffer.
+  Int16List getInt16List(int length) {
+    final Int16List list =
+        data.buffer.asInt16List(data.offsetInBytes + _position, length);
+    _position += 2 * length;
     return list;
   }
 

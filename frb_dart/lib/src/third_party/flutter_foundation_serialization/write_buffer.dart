@@ -97,6 +97,27 @@ class WriteBuffer {
     _addAll(_eightBytesAsList, 0, 4);
   }
 
+  /// Write a Uint64 into the buffer.
+  void putUint64(int value, {Endian? endian}) {
+    assert(!_isDone);
+    _eightBytes.setUint64(0, value, endian ?? Endian.host);
+    _addAll(_eightBytesAsList, 0, 8);
+  }
+
+  /// Write an Int8 into the buffer.
+  void putInt8(int value) {
+    assert(!_isDone);
+    _eightBytes.setInt8(0, value);
+    _addAll(_eightBytesAsList, 0, 1);
+  }
+
+  /// Write an Int16 into the buffer.
+  void putInt16(int value, {Endian? endian}) {
+    assert(!_isDone);
+    _eightBytes.setInt16(0, value, endian ?? Endian.host);
+    _addAll(_eightBytesAsList, 0, 2);
+  }
+
   /// Write an Int32 into the buffer.
   void putInt32(int value, {Endian? endian}) {
     assert(!_isDone);
@@ -132,6 +153,36 @@ class WriteBuffer {
   void putUint8List(Uint8List list) {
     assert(!_isDone);
     _append(list);
+  }
+
+  /// Write all the values from an [Uint16List] into the buffer.
+  void putUint16List(Uint16List list) {
+    assert(!_isDone);
+    _append(list.buffer.asUint8List(list.offsetInBytes, 2 * list.length));
+  }
+
+  /// Write all the values from an [Uint32List] into the buffer.
+  void putUint32List(Uint32List list) {
+    assert(!_isDone);
+    _append(list.buffer.asUint8List(list.offsetInBytes, 4 * list.length));
+  }
+
+  /// Write all the values from an [Uint64List] into the buffer.
+  void putUint64List(Uint64List list) {
+    assert(!_isDone);
+    _append(list.buffer.asUint8List(list.offsetInBytes, 8 * list.length));
+  }
+
+  /// Write all the values from an [Int8List] into the buffer.
+  void putInt8List(Int8List list) {
+    assert(!_isDone);
+    _append(list.buffer.asUint8List(list.offsetInBytes, 1 * list.length));
+  }
+
+  /// Write all the values from an [Int16List] into the buffer.
+  void putInt16List(Int16List list) {
+    assert(!_isDone);
+    _append(list.buffer.asUint8List(list.offsetInBytes, 2 * list.length));
   }
 
   /// Write all the values from an [Int32List] into the buffer.
