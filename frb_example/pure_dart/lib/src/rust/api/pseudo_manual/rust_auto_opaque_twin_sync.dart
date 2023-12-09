@@ -130,8 +130,11 @@ RwLockStructWithGoodAndOpaqueFieldTwinSync
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>>
 @sealed
 class RwLockBoxFnStringString extends RustOpaque {
-  RwLockBoxFnStringString.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
+  RwLockBoxFnStringString.dcoDecode(dynamic wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  RwLockBoxFnStringString.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
@@ -146,8 +149,11 @@ class RwLockBoxFnStringString extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>
 @sealed
 class RwLockBoxHelloTraitTwinSync extends RustOpaque {
-  RwLockBoxHelloTraitTwinSync.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
+  RwLockBoxHelloTraitTwinSync.dcoDecode(dynamic wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  RwLockBoxHelloTraitTwinSync.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -162,8 +168,11 @@ class RwLockBoxHelloTraitTwinSync extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>>
 @sealed
 class RwLockBoxMyTraitTwinSync extends RustOpaque {
-  RwLockBoxMyTraitTwinSync.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
+  RwLockBoxMyTraitTwinSync.dcoDecode(dynamic wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  RwLockBoxMyTraitTwinSync.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
@@ -178,8 +187,11 @@ class RwLockBoxMyTraitTwinSync extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>
 @sealed
 class RwLockNonCloneSimpleTwinSync extends RustOpaque {
-  RwLockNonCloneSimpleTwinSync.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
+  RwLockNonCloneSimpleTwinSync.dcoDecode(dynamic wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  RwLockNonCloneSimpleTwinSync.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
@@ -247,8 +259,12 @@ class RwLockNonCloneSimpleTwinSync extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
 @sealed
 class RwLockStructWithGoodAndOpaqueFieldTwinSync extends RustOpaque {
-  RwLockStructWithGoodAndOpaqueFieldTwinSync.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
+  RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(dynamic wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api

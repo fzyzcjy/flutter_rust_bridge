@@ -32,8 +32,11 @@ FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
 // Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>
 @sealed
 class FrbOpaqueSyncReturn extends RustOpaque {
-  FrbOpaqueSyncReturn.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
+  FrbOpaqueSyncReturn.dcoDecode(dynamic wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  FrbOpaqueSyncReturn.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib

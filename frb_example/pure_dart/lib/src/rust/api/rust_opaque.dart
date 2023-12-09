@@ -75,8 +75,11 @@ Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint}) =>
 // Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>>
 @sealed
 class BoxDartDebugTwinNormal extends RustOpaque {
-  BoxDartDebugTwinNormal.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
+  BoxDartDebugTwinNormal.dcoDecode(dynamic wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  BoxDartDebugTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
