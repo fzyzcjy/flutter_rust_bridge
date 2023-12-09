@@ -1,4 +1,4 @@
-use crate::codec::CodecTrait;
+use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::DartFnFuture;
 use crate::handler::error::Error;
@@ -104,7 +104,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             + Send
             + UnwindSafe
             + 'static,
-        Rust2DartCodec: CodecTrait,
+        Rust2DartCodec: BaseCodec,
     {
         self.wrap_normal_or_async::<Rust2DartCodec, _, _, _, _>(
             task_info,
@@ -124,7 +124,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     where
         SyncTaskFn:
             FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
-        Rust2DartCodec: CodecTrait,
+        Rust2DartCodec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
@@ -157,7 +157,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
             + TaskRetFutTrait
             + UnwindSafe,
-        Rust2DartCodec: CodecTrait,
+        Rust2DartCodec: BaseCodec,
     {
         self.wrap_normal_or_async::<Rust2DartCodec, _, _, _, _>(
             task_info,
@@ -184,7 +184,7 @@ impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskFnRet,
         ExecuteFn: FnOnce(TaskInfo, TaskFn) + UnwindSafe,
-        Rust2DartCodec: CodecTrait,
+        Rust2DartCodec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).

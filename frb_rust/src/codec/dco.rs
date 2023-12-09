@@ -1,4 +1,4 @@
-use super::{CodecTrait, Rust2DartMessageTrait};
+use super::{BaseCodec, Rust2DartMessageTrait};
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
@@ -10,7 +10,7 @@ use std::any::Any;
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct DcoCodec;
 
-impl CodecTrait for DcoCodec {
+impl BaseCodec for DcoCodec {
     type Message = Rust2DartMessageDco;
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
