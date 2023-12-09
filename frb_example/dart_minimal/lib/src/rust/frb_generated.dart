@@ -174,10 +174,6 @@ int cst_encode_i_32(int raw) {
   return raw;
 }
 
-void _sse_encode_box_autoadd_hello(Hello self, SseSerializer serializer) {
-  _sse_encode_hello(self, serializer);
-}
-
 void _sse_encode_hello(Hello self, SseSerializer serializer) {
   switch (self) {
     case Hello_Apple():

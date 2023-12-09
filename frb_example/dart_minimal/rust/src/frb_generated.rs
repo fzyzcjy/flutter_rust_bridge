@@ -107,12 +107,6 @@ pub trait SseDecode {
 
 impl SseDecode for crate::api::minimal::Hello {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return <crate::api::minimal::Hello>::sse_decode(deserializer);
-    }
-}
-
-impl SseDecode for crate::api::minimal::Hello {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
@@ -192,12 +186,6 @@ where
         Err(raw) => Err(SseCodec::encode(Rust2DartAction::Error, |serializer| {
             raw.sse_encode(serializer)
         })),
-    }
-}
-
-impl SseEncode for crate::api::minimal::Hello {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <crate::api::minimal::Hello>::sse_encode(self, serializer);
     }
 }
 
