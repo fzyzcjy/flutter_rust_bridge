@@ -7,9 +7,9 @@ mod pointer;
 pub use crate::codec::dco::{transform_result_dco, Rust2DartMessageDco};
 pub use crate::codec::sse::{Rust2DartMessageSse, SseDeserializer, SseSerializer};
 pub use crate::codec::{cst::CstCodec, dco::DcoCodec, sse::SseCodec};
-pub use crate::dart_opaque::dart2rust::cst_decode_dart_opaque;
 #[cfg(not(wasm))]
 pub use crate::dart_opaque::dart2rust::dart_opaque_dart2rust_encode;
+pub use crate::dart_opaque::dart2rust::{cst_decode_dart_opaque, sse_decode_dart_opaque};
 pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{handler_initialize, FfiCallMode, TaskInfo};

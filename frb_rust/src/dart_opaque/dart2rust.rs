@@ -16,6 +16,11 @@ pub unsafe fn cst_decode_dart_opaque(raw: *const std::ffi::c_void) -> DartOpaque
 }
 
 #[cfg(not(wasm))]
+pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
+    DartOpaque::from_raw(raw as _)
+}
+
+#[cfg(not(wasm))]
 pub unsafe fn dart_opaque_dart2rust_encode<H: Handler>(
     handler: &H,
     handle: dart_sys::Dart_Handle,
