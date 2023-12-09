@@ -23,6 +23,7 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                 get_serializer_dart_postfix(&self.ir.primitive)
             ),
             Lang::RustLang(_) => {
+                // TODO do not use naive loop
                 general_list_generate_decode(lang, &IrType::Primitive(self.ir.primitive.clone()))
             }
         })
