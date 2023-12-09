@@ -8,8 +8,6 @@ pub(crate) mod sse;
 pub trait BaseCodec: Clone + Copy {
     type Message: Rust2DartMessageTrait;
 
-    fn new() -> Self;
-
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message;
 
     fn encode_close_stream() -> Self::Message;

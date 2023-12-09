@@ -8,10 +8,6 @@ pub struct CstCodec;
 impl BaseCodec for CstCodec {
     type Message = Rust2DartMessageCst;
 
-    fn new() -> Self {
-        Self
-    }
-
     fn encode_panic(_error: &Box<dyn Any + Send>) -> Self::Message {
         unreachable!()
     }
