@@ -4,16 +4,20 @@ use crate::codegen::generator::codec::sse::ty::delegate::{
 use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
-    fn generate_encode(&self, lang: &Lang) -> String {
-        simple_delegate_encode(
+    fn generate_encode(&self, lang: &Lang) -> Option<String> {
+        Some(simple_delegate_encode(
             lang,
             &DART_OPAQUE_WIRE_TYPE,
             "wire.dart_opaque_dart2rust_encode(self)",
-        )
+        ))
     }
 
-    fn generate_decode(&self, lang: &Lang) -> String {
-        simple_delegate_decode(lang, &DART_OPAQUE_WIRE_TYPE, "inner")
+    fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        Some(simple_delegate_decode(
+            lang,
+            &DART_OPAQUE_WIRE_TYPE,
+            "inner",
+        ))
     }
 }
 

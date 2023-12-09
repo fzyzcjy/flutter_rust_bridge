@@ -3,13 +3,15 @@ use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::StructOrRecord;
 
 impl<'a> CodecSseTyTrait for RecordCodecSseTy<'a> {
-    fn generate_encode(&self, lang: &Lang) -> String {
-        self.new_generalized_generator().generate_encode(lang)
+    fn generate_encode(&self, lang: &Lang) -> Option<String> {
+        Some(self.new_generalized_generator().generate_encode(lang))
     }
 
-    fn generate_decode(&self, lang: &Lang) -> String {
-        self.new_generalized_generator()
-            .generate_decode(lang, "", true)
+    fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        Some(
+            self.new_generalized_generator()
+                .generate_decode(lang, "", true),
+        )
     }
 }
 

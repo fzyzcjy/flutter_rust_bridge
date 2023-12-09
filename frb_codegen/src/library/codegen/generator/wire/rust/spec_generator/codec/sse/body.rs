@@ -77,26 +77,30 @@ fn generate_encode_or_decode_for_type(
     )
     .generate(&Lang::RustLang(RustLang), mode);
 
-    let code = match mode {
-        EncodeOrDecode::Encode => format!(
-            "
-            impl SseEncode for {rust_api_type} {{
-                fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {{
-                    {body}
+    if let Some(body) = body {
+        let code  = match mode {
+            EncodeOrDecode::Encode => format!(
+                "
+                impl SseEncode for {rust_api_type} {{
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {{
+                        {body}
+                    }}
                 }}
-            }}
-            "
-        ),
-        EncodeOrDecode::Decode => format!(
-            "
-            impl SseDecode for {rust_api_type} {{
-                fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {{
-                    {body}
+                "
+            ),
+            EncodeOrDecode::Decode => format!(
+                "
+                impl SseDecode for {rust_api_type} {{
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {{
+                        {body}
+                    }}
                 }}
-            }}
-            "
-        ),
-    };
+                "
+            ),
+        };
 
-    Acc::new_common(code.into())
+        Acc::new_common(code.into())
+    } else {
+        Acc::default()
+    }
 }

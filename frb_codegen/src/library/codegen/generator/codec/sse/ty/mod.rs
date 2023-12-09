@@ -54,14 +54,14 @@ impl<'a> CodecSseTyContext<'a> {
 
 #[enum_dispatch]
 pub(crate) trait CodecSseTyTrait {
-    fn generate(&self, lang: &Lang, mode: EncodeOrDecode) -> String {
+    fn generate(&self, lang: &Lang, mode: EncodeOrDecode) -> Option<String> {
         match mode {
             EncodeOrDecode::Encode => self.generate_encode(lang),
             EncodeOrDecode::Decode => self.generate_decode(lang),
         }
     }
 
-    fn generate_encode(&self, lang: &Lang) -> String;
+    fn generate_encode(&self, lang: &Lang) -> Option<String>;
 
-    fn generate_decode(&self, lang: &Lang) -> String;
+    fn generate_decode(&self, lang: &Lang) -> Option<String>;
 }

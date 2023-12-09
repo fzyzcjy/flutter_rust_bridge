@@ -4,11 +4,19 @@ use crate::codegen::generator::codec::sse::ty::delegate::{
 use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for DartFnCodecSseTy<'a> {
-    fn generate_encode(&self, lang: &Lang) -> String {
-        simple_delegate_encode(lang, &self.ir.get_delegate(), "self")
+    fn generate_encode(&self, lang: &Lang) -> Option<String> {
+        Some(simple_delegate_encode(
+            lang,
+            &self.ir.get_delegate(),
+            "self",
+        ))
     }
 
-    fn generate_decode(&self, lang: &Lang) -> String {
-        simple_delegate_decode(lang, &self.ir.get_delegate(), "inner")
+    fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        Some(simple_delegate_decode(
+            lang,
+            &self.ir.get_delegate(),
+            "inner",
+        ))
     }
 }

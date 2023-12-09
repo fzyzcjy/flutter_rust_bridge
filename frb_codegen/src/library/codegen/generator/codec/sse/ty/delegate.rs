@@ -6,7 +6,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
-    fn generate_encode(&self, lang: &Lang) -> String {
+    fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let inner_expr = match lang {
             Lang::DartLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => "self",
@@ -26,10 +26,14 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Anyhow => "TODO",
             },
         };
-        simple_delegate_encode(lang, &self.ir.get_delegate(), inner_expr)
+        Some(simple_delegate_encode(
+            lang,
+            &self.ir.get_delegate(),
+            inner_expr,
+        ))
     }
 
-    fn generate_decode(&self, lang: &Lang) -> String {
+    fn generate_decode(&self, lang: &Lang) -> Option<String> {
         let wrapper_expr = match lang {
             Lang::DartLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => "inner".to_owned(),
@@ -61,7 +65,11 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "NOT_USED".to_owned(),
             },
         };
-        simple_delegate_decode(lang, &self.ir.get_delegate(), &wrapper_expr)
+        Some(simple_delegate_decode(
+            lang,
+            &self.ir.get_delegate(),
+            &wrapper_expr,
+        ))
     }
 }
 

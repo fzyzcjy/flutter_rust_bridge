@@ -7,31 +7,36 @@ use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
-    fn generate_encode(&self, lang: &Lang) -> String {
+    fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
-        generate_enum_encode_rust_general(lang, src, "self", |idx, variant| {
-            let fields = (variant.kind.fields().iter())
-                .map(|field| {
-                    format!(
-                        "{};\n",
-                        lang.call_encode(&field.ty, field.name.rust_style())
-                    )
-                })
-                .join("");
+        Some(generate_enum_encode_rust_general(
+            lang,
+            src,
+            "self",
+            |idx, variant| {
+                let fields = (variant.kind.fields().iter())
+                    .map(|field| {
+                        format!(
+                            "{};\n",
+                            lang.call_encode(&field.ty, field.name.rust_style())
+                        )
+                    })
+                    .join("");
 
-            format!(
-                "
+                format!(
+                    "
             {{
                 {};
                 {fields}
             }}
             ",
-                lang.call_encode(&TAG_TYPE, &format!("{idx}")),
-            )
-        })
+                    lang.call_encode(&TAG_TYPE, &format!("{idx}")),
+                )
+            },
+        ))
     }
 
-    fn generate_decode(&self, lang: &Lang) -> String {
+    fn generate_decode(&self, lang: &Lang) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
 
         let var_decl = lang.var_decl();
@@ -52,12 +57,12 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
             Some(format!("{};", lang.throw_unimplemented())),
         );
 
-        format!(
+        Some(format!(
             "
             {var_decl} tag_ = {expr_decode_tag};
             {body}
             "
-        )
+        ))
     }
 }
 

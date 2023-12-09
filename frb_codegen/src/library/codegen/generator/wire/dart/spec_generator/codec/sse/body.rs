@@ -42,22 +42,26 @@ fn generate_encode_or_decode_for_type(
     )
     .generate(&Lang::DartLang(DartLang), mode);
 
-    let code = match mode {
-        EncodeOrDecode::Encode => format!(
-            "
+    if let Some(body) = body {
+        let code = match mode {
+            EncodeOrDecode::Encode => format!(
+                "
             void _sse_encode_{safe_ident}({dart_api_type} self, SseSerializer serializer) {{
                 {body}
             }}
             "
-        ),
-        EncodeOrDecode::Decode => format!(
-            "
+            ),
+            EncodeOrDecode::Decode => format!(
+                "
             {dart_api_type} _sse_decode_{safe_ident}(SseDeserializer deserializer) {{
                 {body}
             }}
             "
-        ),
-    };
+            ),
+        };
 
-    Acc::new_common(code.into())
+        Acc::new_common(code.into())
+    } else {
+        Acc::default()
+    }
 }

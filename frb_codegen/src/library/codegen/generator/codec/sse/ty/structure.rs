@@ -6,13 +6,15 @@ use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use itertools::Itertools;
 
 impl<'a> CodecSseTyTrait for StructRefCodecSseTy<'a> {
-    fn generate_encode(&self, lang: &Lang) -> String {
-        self.new_generalized_generator().generate_encode(lang)
+    fn generate_encode(&self, lang: &Lang) -> Option<String> {
+        Some(self.new_generalized_generator().generate_encode(lang))
     }
 
-    fn generate_decode(&self, lang: &Lang) -> String {
-        self.new_generalized_generator()
-            .generate_decode(lang, "", true)
+    fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        Some(
+            self.new_generalized_generator()
+                .generate_decode(lang, "", true),
+        )
     }
 }
 
