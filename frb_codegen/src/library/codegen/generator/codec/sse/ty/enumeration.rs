@@ -41,13 +41,9 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 }
 
 fn generate_decode_variant(variant: &IrVariant, enum_name: &NamespacedName, lang: &Lang) -> String {
-    let sep = match lang {
-        Lang::DartLang(_) => "_",
-        Lang::RustLang(_) => "::",
-    };
-
+    let enum_sep = enum_sep(lang);
     match &variant.kind {
-        IrVariantKind::Value => format!("{}{sep}{}", enum_name.rust_style(), variant.name),
+        IrVariantKind::Value => format!("{}{enum_sep}{}", enum_name.rust_style(), variant.name),
         IrVariantKind::Struct(st) => {
             GeneralizedStructGenerator::new(st.clone(), StructOrRecord::Struct)
                 .generate_decode(lang)
@@ -85,6 +81,7 @@ pub(crate) fn generate_enum_encode_rust_general(
     self_path: &str,
     generate_branch: impl Fn(usize, &IrVariant) -> String,
 ) -> String {
+    let enum_sep = enum_sep(lang);
     let variants = (src.variants().iter().enumerate())
         .map(|(idx, variant)| {
             let variant_name = &variant.name;
@@ -99,11 +96,21 @@ pub(crate) fn generate_enum_encode_rust_general(
                     format!("{left}{pattern}{right}")
                 }
             };
-            (format!("{self_path}::{variant_name}{pattern}"), body)
+            (
+                format!("{self_path}{enum_sep}{variant_name}{pattern}"),
+                body,
+            )
         })
         .collect_vec();
 
     lang.switch_expr(self_ref, variants)
+}
+
+fn enum_sep(lang: &Lang) -> &'static str {
+    match lang {
+        Lang::DartLang(_) => "_",
+        Lang::RustLang(_) => "::",
+    }
 }
 
 const TAG_TYPE: IrType = Primitive(IrTypePrimitive::I32);
