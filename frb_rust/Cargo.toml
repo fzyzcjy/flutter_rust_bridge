@@ -12,6 +12,7 @@ categories.workspace = true
 bytemuck = "1.11.0"
 anyhow = { workspace = true }
 chrono = { workspace = true, optional = true }
+enum_dispatch = "0.3.8"
 threadpool = "1.8.1"
 lazy_static = { workspace = true }
 parking_lot = "0.12.1"
