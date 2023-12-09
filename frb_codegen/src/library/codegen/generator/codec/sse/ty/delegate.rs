@@ -23,8 +23,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Array(_) => "self".to_owned(),
                 IrTypeDelegate::String => "self.into_bytes()".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
-                IrTypeDelegate::Backtrace => "TODO".to_owned(),
-                IrTypeDelegate::Anyhow => "TODO".to_owned(),
+                IrTypeDelegate::Backtrace => "TODO_Backtrace".to_owned(),
+                IrTypeDelegate::Anyhow => "TODO_Anyhow".to_owned(),
                 _ => unreachable!(),
             },
         };
