@@ -14,10 +14,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
 }
 
 pub(crate) fn generate_enum_encode_rust(src: &IrEnum, self_ref: &str, self_path: &str) -> String {
-    let variants = src
-        .variants()
-        .iter()
-        .enumerate()
+    let variants = (src.variants().iter().enumerate())
         .map(|(idx, variant)| {
             let tag = format!("{idx}.into_dart()");
             match &variant.kind {
