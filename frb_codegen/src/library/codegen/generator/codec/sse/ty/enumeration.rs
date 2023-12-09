@@ -26,7 +26,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
                 {fields}
             }}
             ",
-                lang.call_encode(&TAG_TYPE, format!("{idx}")),
+                lang.call_encode(&TAG_TYPE, &format!("{idx}")),
             )
         })
     }
