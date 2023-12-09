@@ -4,7 +4,6 @@
 
 use crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync;
 use crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync;
-use flutter_rust_bridge::ZeroCopyBuffer;
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn handle_optional_return_twin_sync(left: f64, right: f64) -> Option<f64> {
@@ -55,7 +54,7 @@ pub struct ExoticOptionalsTwinSync {
     pub int64: Option<i64>,
     pub float64: Option<f64>,
     pub boolean: Option<bool>,
-    pub zerocopy: Option<ZeroCopyBuffer<Vec<u8>>>,
+    pub zerocopy: Option<Vec<u8>>,
     pub int8list: Option<Vec<i8>>,
     pub uint8list: Option<Vec<u8>>,
     pub int32list: Option<Vec<i32>>,
@@ -110,7 +109,7 @@ pub fn handle_optional_increment_twin_sync(
             opt.attributes_nullable
         },
         zerocopy: Some({
-            let mut list = opt.zerocopy.unwrap_or_else(|| ZeroCopyBuffer(vec![]));
+            let mut list = opt.zerocopy.unwrap_or_else(|| vec![]);
             list.0.push(0);
             list
         }),

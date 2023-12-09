@@ -3,7 +3,7 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync;
-use flutter_rust_bridge::{frb, ZeroCopyBuffer};
+use flutter_rust_bridge::frb;
 use log::info;
 
 pub enum EnumSimpleTwinRustAsync {
@@ -59,9 +59,9 @@ pub struct NoteTwinRustAsync {
     pub body: String,
 }
 
-pub async fn print_note_twin_rust_async(note: NoteTwinRustAsync) -> ZeroCopyBuffer<Vec<u8>> {
+pub async fn print_note_twin_rust_async(note: NoteTwinRustAsync) -> Vec<u8> {
     info!("{:#?}", note);
-    ZeroCopyBuffer(vec![1, 2, 3])
+    vec![1, 2, 3]
 }
 
 pub async fn handle_return_enum_twin_rust_async(input: String) -> Option<WeekdaysTwinRustAsync> {
@@ -144,7 +144,7 @@ pub enum KitchenSinkTwinRustAsync {
         Option<i32>,
         Option<i32>,
     ),
-    Buffer(ZeroCopyBuffer<Vec<u8>>),
+    Buffer(Vec<u8>),
     Enums(#[frb(default = "WeekdaysTwinRustAsync.Sunday")] WeekdaysTwinRustAsync),
 }
 
@@ -166,9 +166,9 @@ pub async fn handle_enum_struct_twin_rust_async(
         },
         Nested(val, _nested) => Nested(inc(val), Box::new(KitchenSinkTwinRustAsync::Empty)),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),
-        Buffer(ZeroCopyBuffer(mut buf)) => {
+        Buffer(mut buf) => {
             buf.push(1);
-            Buffer(ZeroCopyBuffer(buf))
+            Buffer(buf)
         }
         Enums(day) => Enums(match day {
             Monday => Tuesday,

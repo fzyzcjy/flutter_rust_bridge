@@ -1,5 +1,5 @@
 use crate::api::misc_example::WeekdaysTwinNormal;
-use flutter_rust_bridge::{frb, ZeroCopyBuffer};
+use flutter_rust_bridge::frb;
 use log::info;
 
 pub enum EnumSimpleTwinNormal {
@@ -53,9 +53,9 @@ pub struct NoteTwinNormal {
     pub body: String,
 }
 
-pub fn print_note_twin_normal(note: NoteTwinNormal) -> ZeroCopyBuffer<Vec<u8>> {
+pub fn print_note_twin_normal(note: NoteTwinNormal) -> Vec<u8> {
     info!("{:#?}", note);
-    ZeroCopyBuffer(vec![1, 2, 3])
+    vec![1, 2, 3]
 }
 
 pub fn handle_return_enum_twin_normal(input: String) -> Option<WeekdaysTwinNormal> {
@@ -134,7 +134,7 @@ pub enum KitchenSinkTwinNormal {
         Option<i32>,
         Option<i32>,
     ),
-    Buffer(ZeroCopyBuffer<Vec<u8>>),
+    Buffer(Vec<u8>),
     Enums(#[frb(default = "WeekdaysTwinNormal.Sunday")] WeekdaysTwinNormal),
 }
 
@@ -154,9 +154,9 @@ pub fn handle_enum_struct_twin_normal(val: KitchenSinkTwinNormal) -> KitchenSink
         },
         Nested(val, _nested) => Nested(inc(val), Box::new(KitchenSinkTwinNormal::Empty)),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),
-        Buffer(ZeroCopyBuffer(mut buf)) => {
+        Buffer(mut buf) => {
             buf.push(1);
-            Buffer(ZeroCopyBuffer(buf))
+            Buffer(buf)
         }
         Enums(day) => Enums(match day {
             Monday => Tuesday,

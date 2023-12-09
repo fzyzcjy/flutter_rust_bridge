@@ -1,6 +1,5 @@
 use crate::api::misc_example::WeekdaysTwinNormal;
 use crate::api::newtype_pattern::NewTypeIntTwinNormal;
-use flutter_rust_bridge::ZeroCopyBuffer;
 
 pub fn handle_optional_return_twin_normal(left: f64, right: f64) -> Option<f64> {
     if right == 0. {
@@ -49,7 +48,7 @@ pub struct ExoticOptionalsTwinNormal {
     pub int64: Option<i64>,
     pub float64: Option<f64>,
     pub boolean: Option<bool>,
-    pub zerocopy: Option<ZeroCopyBuffer<Vec<u8>>>,
+    pub zerocopy: Option<Vec<u8>>,
     pub int8list: Option<Vec<i8>>,
     pub uint8list: Option<Vec<u8>>,
     pub int32list: Option<Vec<i32>>,
@@ -103,7 +102,7 @@ pub fn handle_optional_increment_twin_normal(
             opt.attributes_nullable
         },
         zerocopy: Some({
-            let mut list = opt.zerocopy.unwrap_or_else(|| ZeroCopyBuffer(vec![]));
+            let mut list = opt.zerocopy.unwrap_or_else(|| vec![]);
             list.0.push(0);
             list
         }),
