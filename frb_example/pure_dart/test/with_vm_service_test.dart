@@ -39,8 +39,9 @@ Future<void> main() async {
       );
       addTearDown(() => debugOnExternalTypedDataFinalizer = null);
 
-      ZeroCopyVecOfPrimitivePackTwinSync? primitivePack =
-          handleZeroCopyVecOfPrimitiveTwinSync(n: n);
+      // it is auto zero-copied
+      VecOfPrimitivePackTwinSync? primitivePack =
+          handleVecOfPrimitiveTwinSync(n: n);
       await vmService.gc();
       await Future<void>.delayed(const Duration(milliseconds: 10));
       expect(primitivePack, isNotNull);
