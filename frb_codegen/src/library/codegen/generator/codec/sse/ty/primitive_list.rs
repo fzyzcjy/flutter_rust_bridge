@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::sse::ty::general_list::general_list_generate_decode;
 use crate::codegen::generator::codec::sse::ty::primitive::get_serializer_dart_postfix;
 use crate::codegen::generator::codec::sse::ty::*;
 
@@ -21,12 +22,7 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                 "return deserializer.buffer.get{}List();",
                 get_serializer_dart_postfix(&self.ir.primitive)
             ),
-            Lang::RustLang(_) => {
-                format!(
-                    "for item in self {{ deserializer.cursor.read_{}::<NativeEndian>().unwrap() }}",
-                    self.ir.primitive.rust_api_type()
-                )
-            }
+            Lang::RustLang(_) => general_list_generate_decode(lang, &self.ir.primitive),
         })
     }
 }

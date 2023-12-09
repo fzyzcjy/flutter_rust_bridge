@@ -11,18 +11,22 @@ impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
-        Some(format!(
-            "
-            {var_decl} ans;
-            {}
-            return ans;
-            ",
-            lang.for_loop(
-                "item",
-                "self",
-                &format!("ans.push({});", lang.call_decode(&self.ir.inner))
-            ),
-            var_decl = lang.var_decl(),
-        ))
+        Some(general_list_generate_decode(lang, &self.ir.inner))
     }
+}
+
+pub(super) fn general_list_generate_decode(lang: &Lang, ir_inner: &IrType) -> String {
+    format!(
+        "
+        {var_decl} ans;
+        {}
+        return ans;
+        ",
+        lang.for_loop(
+            "item",
+            "self",
+            &format!("ans.push({});", lang.call_decode(ir_inner))
+        ),
+        var_decl = lang.var_decl(),
+    )
 }
