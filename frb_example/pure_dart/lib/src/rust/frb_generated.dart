@@ -23972,7 +23972,7 @@ return BlobTwinSync(field0);
             }
             
             bool _sse_decode_bool(SseDeserializer deserializer) {
-                return deserializer.buffer.getUint8() != 0;
+                return deserializer.buffer.getUint8() ? 1 : 0;
             }
             
             ApplicationEnv _sse_decode_box_application_env(SseDeserializer deserializer) {
