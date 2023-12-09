@@ -1,4 +1,5 @@
 import 'dart:ffi' as ffi;
+import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
@@ -21,7 +22,12 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
   });
 
   @override
-  S decode(dynamic raw) {
+  S decodeObject(dynamic raw) => _decode(raw as Uint8List);
+
+  @override
+  S decodeWireSyncType(WireSyncReturnSse raw) => _decode(TODO);
+
+  S _decode(Uint8List bytes) {
     return TODO;
   }
 

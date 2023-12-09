@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
-import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
@@ -15,7 +14,7 @@ class BaseHandler {
     final completer = Completer<dynamic>();
     final SendPort sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
-    return completer.future.then(task.codec.decode);
+    return completer.future.then(task.codec.decodeObject);
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -32,8 +31,7 @@ class BaseHandler {
       throw PanicException('EXECUTE_SYNC_ABORT $e $s');
     }
     try {
-      final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
-      return task.codec.decode(syncReturnAsDartObject);
+      return task.codec.decodeWireSyncType(syncReturn);
     } finally {
       task.codec.freeWireSyncReturn(
           syncReturn, task.apiImpl.generalizedFrbRustBinding);
@@ -50,7 +48,7 @@ class BaseHandler {
 
     await for (final raw in receivePort) {
       try {
-        yield task.codec.decode(raw);
+        yield task.codec.decodeObject(raw);
       } on CloseStreamException {
         receivePort.close();
         break;

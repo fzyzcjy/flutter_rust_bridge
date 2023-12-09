@@ -19,7 +19,7 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @override
-  S decode(dynamic raw) {
+  S decodeObject(dynamic raw) {
     final rawList = raw as List<dynamic>;
     switch (_Rust2DartAction.values[rawList[0]]) {
       case _Rust2DartAction.success:
@@ -48,6 +48,10 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnDco> {
         throw Exception('Unsupported message (raw=$raw)');
     }
   }
+
+  @override
+  S decodeWireSyncType(WireSyncReturnDco raw) =>
+      decodeObject(wireSyncReturnIntoDart(raw));
 
   @override
   void freeWireSyncReturn(WireSyncReturnDco raw,

@@ -6,8 +6,10 @@ abstract class BaseCodec<S, E extends Object, WireSyncType> {
   const BaseCodec();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  // TODO wrong type
-  S decode(WireSyncType raw);
+  S decodeObject(dynamic raw);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  S decodeWireSyncType(WireSyncType raw);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncReturn(
