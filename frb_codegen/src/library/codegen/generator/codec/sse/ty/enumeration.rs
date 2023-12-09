@@ -83,17 +83,8 @@ pub(crate) fn generate_enum_encode_rust_general(
     let variants = (src.variants().iter().enumerate())
         .map(|(idx, variant)| {
             let variant_name = &variant.name;
+            let pattern = pattern_match_enum_variant(lang, variant);
             let body = generate_branch(idx, variant);
-            let pattern = match &variant.kind {
-                IrVariantKind::Value => "".to_owned(),
-                IrVariantKind::Struct(st) => {
-                    let pattern = (st.fields.iter())
-                        .map(|field| field.name.rust_style().to_owned())
-                        .join(",");
-                    let (left, right) = st.brackets_pair();
-                    format!("{left}{pattern}{right}")
-                }
-            };
             (
                 format!("{self_path}{enum_sep}{variant_name}{pattern}"),
                 body,
@@ -102,6 +93,30 @@ pub(crate) fn generate_enum_encode_rust_general(
         .collect_vec();
 
     lang.switch_expr(self_ref, &variants)
+}
+
+fn pattern_match_enum_variant(lang: &Lang, variant: &IrVariant) -> String {
+    match &variant.kind {
+        IrVariantKind::Value => match lang {
+            Lang::DartLang(_) => "()".to_owned(),
+            Lang::RustLang(_) => "".to_owned(),
+        },
+        IrVariantKind::Struct(st) => match lang {
+            Lang::DartLang(_) => {
+                let pattern = (st.fields.iter())
+                    .map(|field| format!("{name}: final {name}", name = field.name.dart_style()))
+                    .join(",");
+                format!("({pattern})")
+            }
+            Lang::RustLang(_) => {
+                let pattern = (st.fields.iter())
+                    .map(|field| field.name.rust_style().to_owned())
+                    .join(",");
+                let (left, right) = st.brackets_pair();
+                format!("{left}{pattern}{right}")
+            }
+        },
+    }
 }
 
 fn enum_sep(lang: &Lang) -> &'static str {
