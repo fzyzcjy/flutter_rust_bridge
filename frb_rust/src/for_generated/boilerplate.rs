@@ -59,6 +59,10 @@ macro_rules! frb_generated_boilerplate {
         }
 
         impl<T, Rust2DartCodec: flutter_rust_bridge::for_generate::BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
+            pub fn new(base: flutter_rust_bridge::for_generate::StreamSinkBase) -> Self {
+                Self { base }
+            }
+
             pub fn add(&self, value: T) -> bool {
                 self.base.add(value) // TODO
             }
