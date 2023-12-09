@@ -3,6 +3,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::{multizip, Itertools};
 
+#[derive(Clone, Copy, Debug)]
 pub(crate) struct DartLang;
 
 impl LangTrait for DartLang {

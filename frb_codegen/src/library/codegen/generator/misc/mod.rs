@@ -107,7 +107,7 @@ impl StructOrRecord {
                 StructOrRecord::Record => format!("${}", index + 1),
             },
             Lang::RustLang(_) => match self {
-                StructOrRecord::Struct => field.name.rust_style(),
+                StructOrRecord::Struct => field.name.rust_style().to_owned(),
                 StructOrRecord::Record => format!("{}", index + 1),
             },
         }
