@@ -40,8 +40,9 @@ extension ExtByteData on ByteData {
   /// {@macro flutter_rust_bridge.internal}
   void generalizedSetInt64(int byteOffset, int value, Endian endian) {
     // Quite hacky, should improve if used frequently in the future
-    final lo = value & 0xffffffff;
-    final hi = TODO;
+    final valueBig = BigInt.from(value);
+    final lo = (valueBig & BigInt.from(0xffffffff)).toInt();
+    final hi = (valueBig >> 32).toInt();
     if (endian == Endian.little) {
       setInt32(byteOffset, lo, endian);
       setInt32(byteOffset + 4, hi, endian);
