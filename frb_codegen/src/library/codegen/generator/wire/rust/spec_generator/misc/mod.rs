@@ -144,38 +144,43 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
 
 fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
     Acc::new(|target| match target {
-        TargetOrCommon::Io | TargetOrCommon::Wasm => vec![ExternFunc {
-            func_name: "frb_initialize_rust".into(),
-            params: vec![
-                ExternFuncParam {
-                    name: "dart_opaque_drop_port".to_owned(),
-                    rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
-                    dart_type: "NativePortType".to_owned(),
-                },
-                ExternFuncParam {
-                    name: "dart_fn_invoke_port".to_owned(),
-                    rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
-                    dart_type: "NativePortType".to_owned(),
-                },
-            ],
-            return_type: None,
-            body: format!(
-                "
+        TargetOrCommon::Io | TargetOrCommon::Wasm => {
+            vec![generate_boilerplate_frb_initialize_rust(target).into()]
+        }
+        TargetOrCommon::Common => vec!["
+            flutter_rust_bridge::frb_generated_boilerplate!();
+            "
+        .into()],
+    })
+}
+
+fn generate_boilerplate_frb_initialize_rust(target: TargetOrCommon) -> ExternFunc {
+    ExternFunc {
+        func_name: "frb_initialize_rust".into(),
+        params: vec![
+            ExternFuncParam {
+                name: "dart_opaque_drop_port".to_owned(),
+                rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
+                dart_type: "NativePortType".to_owned(),
+            },
+            ExternFuncParam {
+                name: "dart_fn_invoke_port".to_owned(),
+                rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
+                dart_type: "NativePortType".to_owned(),
+            },
+        ],
+        return_type: None,
+        body: format!(
+            "
                 flutter_rust_bridge::for_generated::handler_initialize(
                     &*{HANDLER_NAME},
                     dart_opaque_drop_port,
                     dart_fn_invoke_port,
                 )
                 "
-            ),
-            target: target.try_into().unwrap(),
-        }
-        .into()],
-        TargetOrCommon::Common => vec!["
-            flutter_rust_bridge::frb_generated_boilerplate!();
-            "
-        .into()],
-    })
+        ),
+        target: target.try_into().unwrap(),
+    }
 }
 
 fn generate_executor(ir_pack: &IrPack) -> String {
