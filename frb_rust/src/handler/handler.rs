@@ -1,15 +1,18 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::DartFnFuture;
-use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
 use crate::platform_types::{message_port_to_handle, DartAbi};
+use crate::platform_types::{MessagePort, PlatformGeneralizedUint8ListPtr};
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::DartOpaque;
 use std::future::Future;
 use std::panic::UnwindSafe;
 
 /// Provide your own handler to customize how to execute your function calls, etc.
+///
+/// This API is not guaranteed to be stable following semver (since things are going to be
+/// added, and for every addition/change, it is a breaking change for this trait).
 pub trait Handler {
     fn initialize(&self, config: HandlerConfig);
 
