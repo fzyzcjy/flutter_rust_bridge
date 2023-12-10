@@ -42,7 +42,11 @@ impl Rust2DartMessageTrait for Rust2DartMessageDco {
     }
 
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
-        Self(*box_from_leak_ptr(raw))
+        #[cfg(not(wasm))]
+        return Self(*box_from_leak_ptr(raw));
+
+        #[cfg(wasm)]
+        return Self(raw);
     }
 
     fn into_raw_wire_sync(self) -> Self::WireSyncType {
