@@ -7,6 +7,7 @@ use futures::channel::oneshot::Sender;
 use log::warn;
 use std::collections::HashMap;
 use std::panic;
+use std::pin::Pin;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Mutex;
 
@@ -23,11 +24,11 @@ impl DartFnHandler {
         }
     }
 
-    pub(crate) fn invoke<Ret>(
+    pub(crate) fn invoke(
         &self,
         dart_fn_and_args: Vec<DartAbi>,
         invoke_port: SendableMessagePortHandle,
-    ) -> DartFnFuture<Ret> {
+    ) -> DartFnFuture<()> {
         let call_id = self.next_call_id.fetch_add(1, Ordering::Relaxed);
         let (sender, receiver) = oneshot::channel::<()>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
@@ -35,7 +36,7 @@ impl DartFnHandler {
         let sender = Rust2DartSender::new(Channel::new(invoke_port));
         sender.send(dart_fn_and_args);
 
-        Box::new(receiver)
+        Box::pin(receiver)
     }
 
     pub(crate) fn handle_output(&self, call_id: i32) {

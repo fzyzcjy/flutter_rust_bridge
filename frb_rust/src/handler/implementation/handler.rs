@@ -176,7 +176,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         )
     }
 
-    fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
+    fn dart_fn_invoke(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<()> {
         self.dart_fn_handler
             .invoke(dart_fn_and_args, self.dart_fn_invoke_port())
     }
