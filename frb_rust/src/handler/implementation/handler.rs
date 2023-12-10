@@ -2,6 +2,7 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::handler::DartFnHandler;
 use crate::dart_fn::DartFnFuture;
+use crate::for_generated::SseDeserializer;
 use crate::generalized_isolate::Channel;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
@@ -177,7 +178,11 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         )
     }
 
-    fn dart_fn_invoke(&self, dart_fn: DartOpaque, args: Vec<DartAbi>) -> DartFnFuture<()> {
+    fn dart_fn_invoke(
+        &self,
+        dart_fn: DartOpaque,
+        args: Vec<DartAbi>,
+    ) -> DartFnFuture<SseDeserializer> {
         self.dart_fn_handler
             .invoke(dart_fn, args, self.dart_fn_invoke_port())
     }

@@ -17,7 +17,8 @@ use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Mutex;
 
 pub(crate) struct DartFnHandler {
-    completers: Mutex<HashMap<i32, Sender<()>>>,
+    // TODO it should be a (safe) struct, instead of a "serializer"
+    completers: Mutex<HashMap<i32, Sender<SseDeserializer>>>,
     next_call_id: AtomicI32,
 }
 
@@ -34,9 +35,9 @@ impl DartFnHandler {
         dart_fn: DartOpaque,
         args: Vec<DartAbi>,
         invoke_port: SendableMessagePortHandle,
-    ) -> DartFnFuture<()> {
+    ) -> DartFnFuture<SseDeserializer> {
         let call_id = self.next_call_id.fetch_add(1, Ordering::Relaxed);
-        let (sender, receiver) = oneshot::channel::<()>();
+        let (sender, receiver) = oneshot::channel::<SseDeserializer>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
 
         let sender = Rust2DartSender::new(Channel::new(invoke_port));
@@ -67,7 +68,7 @@ impl DartFnHandler {
                 };
 
                 if let Some(completer) = (self.completers.lock().unwrap()).remove(&call_id) {
-                    completer.send(());
+                    completer.send(output_deserializer);
                 }
             });
             if let Err(err) = catch_unwind_result {

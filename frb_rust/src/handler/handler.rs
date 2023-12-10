@@ -71,7 +71,11 @@ pub trait Handler {
             + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 
-    fn dart_fn_invoke(&self, dart_fn: DartOpaque, args: Vec<DartAbi>) -> DartFnFuture<()>;
+    fn dart_fn_invoke(
+        &self,
+        dart_fn: DartOpaque,
+        args: Vec<DartAbi>,
+    ) -> DartFnFuture<SseDeserializer>;
 
     fn dart_fn_handle_output(
         &self,
