@@ -1,8 +1,10 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
@@ -12,7 +14,9 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let parameter_names = (0..num_params).map(|i| format!("arg{i}")).join(", ");
         let repeated_dynamics = (0..num_params).map(|i| format!("dynamic")).join(", ");
         let parameter_types = (self.ir.inputs.iter())
-            .map(|x| x.dart_api_type())
+            .map(|x| {
+                ApiDartGenerator::new(x.clone(), self.context.as_api_dart_context()).dart_api_type()
+            })
             .join(", ");
         let decode_block = (self.ir.inputs.iter().enumerate())
             .map(|(i, ty)| {
@@ -23,7 +27,9 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
             })
             .join("");
         let ir_safe_ident = self.ir.safe_ident();
-        let return_type_dart = self.ir.output.dart_api_type();
+        let return_type_dart =
+            ApiDartGenerator::new(self.ir.output.clone(), self.context.as_api_dart_context())
+                .dart_api_type();
         let return_type_safe_ident = self.ir.output.safe_ident();
 
         let api_impl_body = format!(
