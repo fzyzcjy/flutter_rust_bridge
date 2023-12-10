@@ -87,7 +87,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleString with nul-containing string', () async {
     expect(await handleStringTwinNormal(s: "Hello\u0000world!"),
-        kIsWeb ? "Hello\u0000world!Hello\u0000world!" : "");
+        (kIsWeb || TODO) ? "Hello\u0000world!Hello\u0000world!" : "");
   });
 
   test('dart call handleVecU8', () async {
