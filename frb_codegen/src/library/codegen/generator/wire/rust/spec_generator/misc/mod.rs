@@ -192,7 +192,7 @@ fn generate_boilerplate_dart_fn_deliver_output(target: TargetOrCommon) -> Extern
         params: vec![
             ExternFuncParam {
                 name: "call_id".to_owned(),
-                rust_type: "i64".to_owned(),
+                rust_type: "i32".to_owned(),
                 dart_type: "int".to_owned(),
             },
             // TODO concrete output data

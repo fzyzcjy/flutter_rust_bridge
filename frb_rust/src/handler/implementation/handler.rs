@@ -46,7 +46,7 @@ pub struct SimpleHandler<E: Executor, EL: ErrorListener> {
     executor: E,
     error_listener: EL,
     config: Mutex<Option<HandlerConfig>>,
-    dart_fn_completers: Mutex<HashMap<i64, Sender<()>>>,
+    dart_fn_completers: Mutex<HashMap<i32, Sender<()>>>,
 }
 
 impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
@@ -186,7 +186,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         receiver
     }
 
-    fn dart_fn_handle_output(&self, call_id: i64) {
+    fn dart_fn_handle_output(&self, call_id: i32) {
         // NOTE This [catch_unwind] should also be put outside **ALL** code, see comments above for reasonk
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
