@@ -1,4 +1,5 @@
 import 'dart:ffi' as ffi;
+import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
@@ -16,6 +17,10 @@ typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
+
+/// {@macro flutter_rust_bridge.internal}
+Uint8List wireSyncReturnSseAsUint8ListView(WireSyncReturnSse raw) =>
+    raw.ptr.asTypedList(raw.len);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class ExternalLibrary extends BaseExternalLibrary {

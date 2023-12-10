@@ -11,6 +11,9 @@ typedef WireSyncReturnDco = List<dynamic>;
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef WireSyncReturnSse = Uint8List;
 
+/// {@macro flutter_rust_bridge.internal}
+Uint8List wireSyncReturnSseAsUint8ListView(WireSyncReturnSse raw) => raw;
+
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef PlatformPointer = int;
 
