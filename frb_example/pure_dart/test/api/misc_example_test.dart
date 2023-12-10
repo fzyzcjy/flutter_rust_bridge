@@ -84,6 +84,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await handleStringTwinNormal(s: "Hello, world!"),
         "Hello, world!Hello, world!");
   });
+
   test('dart call handleString with nul-containing string', () async {
     expect(await handleStringTwinNormal(s: "Hello\u0000world!"),
         kIsWeb ? "Hello\u0000world!Hello\u0000world!" : "");
