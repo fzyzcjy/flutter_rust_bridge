@@ -172,6 +172,10 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     fn dart_fn_invoke<Ret>(&self, _dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
         todo!()
     }
+
+    fn dart_fn_handle_output(&self, call_id: i64) {
+        todo!()
+    }
 }
 
 impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
