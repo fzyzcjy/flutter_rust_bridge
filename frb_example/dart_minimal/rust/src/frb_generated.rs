@@ -46,7 +46,7 @@ flutter_rust_bridge::for_generated::lazy_static! {
 // Section: wire_funcs
 
 fn wire_example_primitive_list_type_u8_twin_sync_sse_impl(
-    ptr_: *mut u8,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
