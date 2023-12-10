@@ -89,6 +89,7 @@ void main() {
           ),
           TODO_usebigint_and_test_more_ranges,
           TODO_about_reader,
+          TODO_loopback_test,
         ]) {
           test('$info', () => _body(getFunction, info));
         }
