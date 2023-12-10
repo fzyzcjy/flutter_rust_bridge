@@ -8,6 +8,7 @@ use futures::FutureExt;
 use log::warn;
 use std::collections::HashMap;
 use std::panic;
+use std::panic::AssertUnwindSafe;
 use std::pin::Pin;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Mutex;
@@ -37,7 +38,7 @@ impl DartFnHandler {
         let sender = Rust2DartSender::new(Channel::new(invoke_port));
         sender.send(dart_fn_and_args);
 
-        Box::pin(receiver.then(|x| async { x.unwrap() }))
+        Box::pin(AssertUnwindSafe(receiver.then(|x| async { x.unwrap() })))
     }
 
     pub(crate) fn handle_output(&self, call_id: i32) {
