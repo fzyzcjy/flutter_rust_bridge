@@ -87,9 +87,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await handleStringTwinSse(s: "Hello, world!"),
         "Hello, world!Hello, world!");
   });
+
   test('dart call handleString with nul-containing string', () async {
+    // The string will be replaced when generating pseudo-manual tests.
+    // Thus we use this hack to check whether we are using SSE codec
+    final modeSse = 'TwinSse'.toLowerCase().contains('sse');
     expect(await handleStringTwinSse(s: "Hello\u0000world!"),
-        kIsWeb ? "Hello\u0000world!Hello\u0000world!" : "");
+        (kIsWeb || modeSse) ? "Hello\u0000world!Hello\u0000world!" : "");
   });
 
   test('dart call handleVecU8', () async {
