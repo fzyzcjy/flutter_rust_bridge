@@ -16,21 +16,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  @protected
-  List<dynamic> cst_encode_box_autoadd_the_enum(TheEnum raw) {
-    return cst_encode_the_enum(raw);
-  }
-
-  @protected
-  List<dynamic> cst_encode_the_enum(TheEnum raw) {
-    if (raw is TheEnum_TheVariant) {
-      return [0, cst_encode_i_32(raw.field0)];
-    }
-
-    throw Exception('unreachable');
-  }
 }
+
+typedef _ApiImplPlatformClass = RustLibApiImplPlatform;
 
 // Section: wire_class
 
@@ -75,4 +63,21 @@ class RustLibWasmModule implements WasmModule {
   external void wire_hi(NativePortType port_, List<dynamic> a);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
+}
+
+// Section: dart2rust
+
+@internal
+List<dynamic> cst_encode_box_autoadd_the_enum(
+    _ApiImplPlatformClass apiImpl, TheEnum raw) {
+  return cst_encode_the_enum(raw);
+}
+
+@internal
+List<dynamic> cst_encode_the_enum(_ApiImplPlatformClass apiImpl, TheEnum raw) {
+  if (raw is TheEnum_TheVariant) {
+    return [0, cst_encode_i_32(raw.field0)];
+  }
+
+  throw Exception('unreachable');
 }
