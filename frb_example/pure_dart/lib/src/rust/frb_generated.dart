@@ -10036,8 +10036,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_user_id_twin_rust_async_sse(
-            user_id, serializer);
+        _sse_encode_box_autoadd_user_id_twin_rust_async_sse(userId, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_next_user_id_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -10092,7 +10091,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_user_id_twin_sse(user_id, serializer);
+        _sse_encode_box_autoadd_user_id_twin_sse(userId, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_next_user_id_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -10196,7 +10195,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_user_id_twin_sync_sse(user_id, serializer);
+        _sse_encode_box_autoadd_user_id_twin_sync_sse(userId, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_next_user_id_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -19825,7 +19824,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_my_enum(my_enum, serializer);
+        _sse_encode_my_enum(myEnum, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_use_imported_enum_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -19853,7 +19852,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_my_struct(my_struct, serializer);
+        _sse_encode_box_autoadd_my_struct(myStruct, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_use_imported_struct_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -19932,7 +19931,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_my_enum(my_enum, serializer);
+        _sse_encode_my_enum(myEnum, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_use_imported_enum_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -19959,7 +19958,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_my_struct(my_struct, serializer);
+        _sse_encode_box_autoadd_my_struct(myStruct, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_use_imported_struct_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -20131,7 +20130,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_my_enum(my_enum, serializer);
+        _sse_encode_my_enum(myEnum, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_use_imported_enum_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -20158,7 +20157,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_my_struct(my_struct, serializer);
+        _sse_encode_box_autoadd_my_struct(myStruct, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_use_imported_struct_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -22384,7 +22383,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_application_settings(app_settings, serializer);
+        _sse_encode_box_autoadd_application_settings(appSettings, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_is_app_embedded_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -22913,7 +22912,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_application_settings(app_settings, serializer);
+        _sse_encode_box_autoadd_application_settings(appSettings, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_is_app_embedded_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -23877,7 +23876,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_application_settings(app_settings, serializer);
+        _sse_encode_box_autoadd_application_settings(appSettings, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_is_app_embedded_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -26479,10 +26478,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_opt_box_autoadd_i_32(my_i32, serializer);
-        _sse_encode_opt_box_autoadd_i_64(my_i64, serializer);
-        _sse_encode_opt_box_autoadd_f_64(my_f64, serializer);
-        _sse_encode_opt_box_autoadd_bool(my_bool, serializer);
+        _sse_encode_opt_box_autoadd_i_32(myI32, serializer);
+        _sse_encode_opt_box_autoadd_i_64(myI64, serializer);
+        _sse_encode_opt_box_autoadd_f_64(myF64, serializer);
+        _sse_encode_opt_box_autoadd_bool(myBool, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_primitive_optional_types_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -26510,10 +26509,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_opt_box_autoadd_i_32(my_i32, serializer);
-        _sse_encode_opt_box_autoadd_i_64(my_i64, serializer);
-        _sse_encode_opt_box_autoadd_f_64(my_f64, serializer);
-        _sse_encode_opt_box_autoadd_bool(my_bool, serializer);
+        _sse_encode_opt_box_autoadd_i_32(myI32, serializer);
+        _sse_encode_opt_box_autoadd_i_64(myI64, serializer);
+        _sse_encode_opt_box_autoadd_f_64(myF64, serializer);
+        _sse_encode_opt_box_autoadd_bool(myBool, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_primitive_optional_types_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -26570,10 +26569,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_opt_box_autoadd_i_32(my_i32, serializer);
-        _sse_encode_opt_box_autoadd_i_64(my_i64, serializer);
-        _sse_encode_opt_box_autoadd_f_64(my_f64, serializer);
-        _sse_encode_opt_box_autoadd_bool(my_bool, serializer);
+        _sse_encode_opt_box_autoadd_i_32(myI32, serializer);
+        _sse_encode_opt_box_autoadd_i_64(myI64, serializer);
+        _sse_encode_opt_box_autoadd_f_64(myF64, serializer);
+        _sse_encode_opt_box_autoadd_bool(myBool, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_primitive_optional_types_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -28288,11 +28287,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_opt_box_i_8(i8box, serializer);
-        _sse_encode_opt_box_u_8(u8box, serializer);
-        _sse_encode_opt_box_i_32(i32box, serializer);
-        _sse_encode_opt_box_i_64(i64box, serializer);
-        _sse_encode_opt_box_f_64(f64box, serializer);
+        _sse_encode_opt_box_i_8(i8Box, serializer);
+        _sse_encode_opt_box_u_8(u8Box, serializer);
+        _sse_encode_opt_box_i_32(i32Box, serializer);
+        _sse_encode_opt_box_i_64(i64Box, serializer);
+        _sse_encode_opt_box_f_64(f64Box, serializer);
         _sse_encode_opt_box_bool(boolbox, serializer);
         _sse_encode_opt_box_exotic_optionals_twin_rust_async_sse(
             structbox, serializer);
@@ -28483,11 +28482,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_opt_box_i_8(i8box, serializer);
-        _sse_encode_opt_box_u_8(u8box, serializer);
-        _sse_encode_opt_box_i_32(i32box, serializer);
-        _sse_encode_opt_box_i_64(i64box, serializer);
-        _sse_encode_opt_box_f_64(f64box, serializer);
+        _sse_encode_opt_box_i_8(i8Box, serializer);
+        _sse_encode_opt_box_u_8(u8Box, serializer);
+        _sse_encode_opt_box_i_32(i32Box, serializer);
+        _sse_encode_opt_box_i_64(i64Box, serializer);
+        _sse_encode_opt_box_f_64(f64Box, serializer);
         _sse_encode_opt_box_bool(boolbox, serializer);
         _sse_encode_opt_box_exotic_optionals_twin_sse(structbox, serializer);
         final raw_ = serializer.intoRaw();
@@ -28844,11 +28843,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_opt_box_i_8(i8box, serializer);
-        _sse_encode_opt_box_u_8(u8box, serializer);
-        _sse_encode_opt_box_i_32(i32box, serializer);
-        _sse_encode_opt_box_i_64(i64box, serializer);
-        _sse_encode_opt_box_f_64(f64box, serializer);
+        _sse_encode_opt_box_i_8(i8Box, serializer);
+        _sse_encode_opt_box_u_8(u8Box, serializer);
+        _sse_encode_opt_box_i_32(i32Box, serializer);
+        _sse_encode_opt_box_i_64(i64Box, serializer);
+        _sse_encode_opt_box_f_64(f64Box, serializer);
         _sse_encode_opt_box_bool(boolbox, serializer);
         _sse_encode_opt_box_exotic_optionals_twin_sync_sse(
             structbox, serializer);
@@ -31242,10 +31241,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_i_32(my_i32, serializer);
-        _sse_encode_i_64(my_i64, serializer);
-        _sse_encode_f_64(my_f64, serializer);
-        _sse_encode_bool(my_bool, serializer);
+        _sse_encode_i_32(myI32, serializer);
+        _sse_encode_i_64(myI64, serializer);
+        _sse_encode_f_64(myF64, serializer);
+        _sse_encode_bool(myBool, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_primitive_types_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -31272,7 +31271,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_u_32(my_u32, serializer);
+        _sse_encode_u_32(myU32, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_primitive_u32_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -31304,10 +31303,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_i_32(my_i32, serializer);
-        _sse_encode_i_64(my_i64, serializer);
-        _sse_encode_f_64(my_f64, serializer);
-        _sse_encode_bool(my_bool, serializer);
+        _sse_encode_i_32(myI32, serializer);
+        _sse_encode_i_64(myI64, serializer);
+        _sse_encode_f_64(myF64, serializer);
+        _sse_encode_bool(myBool, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_primitive_types_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -31333,7 +31332,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_u_32(my_u32, serializer);
+        _sse_encode_u_32(myU32, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_primitive_u32_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -31418,10 +31417,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_i_32(my_i32, serializer);
-        _sse_encode_i_64(my_i64, serializer);
-        _sse_encode_f_64(my_f64, serializer);
-        _sse_encode_bool(my_bool, serializer);
+        _sse_encode_i_32(myI32, serializer);
+        _sse_encode_i_64(myI64, serializer);
+        _sse_encode_f_64(myF64, serializer);
+        _sse_encode_bool(myBool, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_primitive_types_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -31447,7 +31446,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_u_32(my_u32, serializer);
+        _sse_encode_u_32(myU32, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_primitive_u32_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
