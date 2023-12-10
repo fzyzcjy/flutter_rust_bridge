@@ -29,7 +29,6 @@ pub fn example_primitive_list_type_i64_twin_sync_sse(arg: Vec<i64>) -> Vec<i64> 
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_primitive_list_type_u8_twin_sync_sse(arg: Vec<u8>) -> Vec<u8> {
-    println!("hi example_primitive_list_type_u8_twin_sync_sse arg={arg:?}");
     arg
 }
 #[flutter_rust_bridge::frb(serialize)]

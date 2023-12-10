@@ -30,7 +30,6 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
       _decode(raw.ptr.asTypedList(raw.len));
 
   S _decode(Uint8List bytes) {
-    print('hi $runtimeType._decode bytes=$bytes');
     final deserializer = SseDeserializer(bytes.buffer.asByteData());
     final action = deserializer.buffer.getUint8();
     final ans = _SseSimpleDecoder(this, deserializer).decode(action);
@@ -40,10 +39,8 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncReturnSse> {
 
   @override
   void freeWireSyncReturn(WireSyncReturnSse raw,
-      GeneralizedFrbRustBinding generalizedFrbRustBinding) {
-    print('hi $runtimeType.freeWireSyncReturn');
-    generalizedFrbRustBinding.freeWireSyncReturnSse(raw);
-  }
+          GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
+      generalizedFrbRustBinding.freeWireSyncReturnSse(raw);
 }
 
 class _SseSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
