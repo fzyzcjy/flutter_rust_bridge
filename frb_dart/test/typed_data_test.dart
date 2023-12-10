@@ -99,7 +99,7 @@ void main() {
 }
 
 typedef _Setter = void Function(
-    ByteData byteData, int byteOffset, int value, Endian endian);
+    ByteData byteData, int byteOffset, BigInt value, Endian endian);
 
 void _body(_Setter setter, _Info info) {
   final byteData = ByteData(60);
@@ -112,7 +112,7 @@ void _body(_Setter setter, _Info info) {
 }
 
 class _Info {
-  final int setValue;
+  final BigInt setValue;
   final List<int> expectLittleEndian;
   final List<int> expectBigEndian;
 

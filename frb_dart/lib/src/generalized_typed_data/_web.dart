@@ -179,24 +179,23 @@ class Uint64List extends _TypedList<BigInt> {
 
 /// {@macro flutter_rust_bridge.internal}
 void byteDataSetUint64(
-        ByteData byteData, int byteOffset, int value, Endian endian) =>
+        ByteData byteData, int byteOffset, BigInt value, Endian endian) =>
     byteDataSetInt64(byteData, byteOffset, value, endian);
 
 /// {@macro flutter_rust_bridge.internal}
 void byteDataSetInt64(
-    ByteData byteData, int byteOffset, int value, Endian endian) {
+    ByteData byteData, int byteOffset, BigInt value, Endian endian) {
   // Quite hacky, should improve if used frequently in the future
   // Or use `fixnum` https://pub.dev/documentation/fixnum/latest/fixnum/Int64/toBytes.html
   // Related: https://github.com/dart-lang/sdk/issues/10275
-  final valueBig = BigInt.from(value);
-  final lo = (valueBig & BigInt.from(0xffffffff)).toInt();
-  final hi = (valueBig >> 32).toInt();
+  final lo = (value & BigInt.from(0xffffffff)).toInt();
+  final hi = (value >> 32).toInt();
   if (endian == Endian.little) {
     byteData.setInt32(byteOffset, lo, endian);
-    byteDat.setInt32(byteOffset + 4, hi, endian);
+    byteData.setInt32(byteOffset + 4, hi, endian);
   } else if (endian == Endian.big) {
-    byteDat.setInt32(byteOffset, hi, endian);
-    byteDat.setInt32(byteOffset + 4, lo, endian);
+    byteData.setInt32(byteOffset, hi, endian);
+    byteData.setInt32(byteOffset + 4, lo, endian);
   } else {
     throw UnimplementedError("Unknown endian");
   }
