@@ -47,8 +47,8 @@ fn generate_rust_arc_modify_strong_count(
 
     Acc {
         common: WireDartOutputCode {
-            api_body: format!("{definition};\n\n"),
-            api_impl_body: format!(
+            api_class_body: format!("{definition};\n\n"),
+            api_impl_class_body: format!(
                 "{definition} => wire.rust_arc_{op_name}_strong_count_{safe_ident};\n\n"
             ),
             ..Default::default()
@@ -67,13 +67,15 @@ fn generate_rust_arc_function_pointer(
     let getter_name = format!("rust_arc_decrement_strong_count_{ty_dart_api_type}Ptr");
 
     let generate_platform_impl = |ptr_name: &str| WireDartOutputCode {
-        api_impl_body: format!("CrossPlatformFinalizerArg get {getter_name} => {ptr_name};\n\n",),
+        api_impl_class_body: format!(
+            "CrossPlatformFinalizerArg get {getter_name} => {ptr_name};\n\n",
+        ),
         ..Default::default()
     };
 
     Acc {
         common: WireDartOutputCode {
-            api_body: format!("CrossPlatformFinalizerArg get {getter_name};\n\n"),
+            api_class_body: format!("CrossPlatformFinalizerArg get {getter_name};\n\n"),
             ..Default::default()
         },
         io: generate_platform_impl(&format!(

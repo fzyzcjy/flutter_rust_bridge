@@ -51,7 +51,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
             ",
         );
         Some(Acc::new_common(WireDartOutputCode {
-            api_impl_body,
+            api_impl_class_body: api_impl_body,
             ..Default::default()
         }))
     }

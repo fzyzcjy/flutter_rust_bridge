@@ -9,8 +9,8 @@ use std::ops::AddAssign;
 pub(crate) struct WireDartOutputCode {
     pub header: DartBasicHeaderCode,
     pub body_top: String,
-    pub api_body: String,
-    pub api_impl_body: String,
+    pub api_class_body: String,
+    pub api_impl_class_body: String,
     pub body: String,
 }
 
@@ -21,8 +21,8 @@ impl AddAssign for WireDartOutputCode {
     fn add_assign(&mut self, rhs: Self) {
         self.header += rhs.header;
         self.body_top += &rhs.body_top;
-        self.api_body += &rhs.api_body;
-        self.api_impl_body += &rhs.api_impl_body;
+        self.api_class_body += &rhs.api_class_body;
+        self.api_impl_class_body += &rhs.api_impl_class_body;
         self.body += &rhs.body;
     }
 }
@@ -61,8 +61,8 @@ impl WireDartOutputCode {
             ..
         } = &dart_output_class_name_pack;
         let WireDartOutputCode {
-            api_body,
-            api_impl_body,
+            api_class_body: api_body,
+            api_impl_class_body: api_impl_body,
             ..
         } = &self;
 
