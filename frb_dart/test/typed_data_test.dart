@@ -47,42 +47,42 @@ void main() {
       group(name, () {
         for (final info in [
           _Info(
-            setValue: BigInt.parse('0'),
+            integer: BigInt.parse('0'),
             expectLittleEndian: [0, 0, 0, 0, 0, 0, 0, 0],
             expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 0],
           ),
           _Info(
-            setValue: BigInt.parse('2'),
+            integer: BigInt.parse('2'),
             expectLittleEndian: [2, 0, 0, 0, 0, 0, 0, 0],
             expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 2],
           ),
           _Info(
-            setValue: BigInt.parse('-2'),
+            integer: BigInt.parse('-2'),
             expectLittleEndian: [254, 255, 255, 255, 255, 255, 255, 255],
             expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 254],
           ),
           _Info(
-            setValue: BigInt.parse('2023'),
+            integer: BigInt.parse('2023'),
             expectLittleEndian: [231, 7, 0, 0, 0, 0, 0, 0],
             expectBigEndian: [0, 0, 0, 0, 0, 0, 7, 231],
           ),
           _Info(
-            setValue: BigInt.parse('0x112233445566'),
+            integer: BigInt.parse('0x112233445566'),
             expectLittleEndian: [0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0, 0],
             expectBigEndian: [0, 0, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66],
           ),
           _Info(
-            setValue: BigInt.parse('-0x112233445566'),
+            integer: BigInt.parse('-0x112233445566'),
             expectLittleEndian: [154, 170, 187, 204, 221, 238, 255, 255],
             expectBigEndian: [255, 255, 238, 221, 204, 187, 170, 154],
           ),
           _Info(
-            setValue: BigInt.parse('0x110000000000'),
+            integer: BigInt.parse('0x110000000000'),
             expectLittleEndian: [0, 0, 0, 0, 0, 0x11, 0, 0],
             expectBigEndian: [0, 0, 0x11, 0, 0, 0, 0, 0],
           ),
           _Info(
-            setValue: BigInt.parse('-0x110000000000'),
+            integer: BigInt.parse('-0x110000000000'),
             expectLittleEndian: [0, 0, 0, 0, 0, 239, 255, 255],
             expectBigEndian: [255, 255, 239, 0, 0, 0, 0, 0],
           ),
@@ -106,27 +106,27 @@ void _body(_Setter setter, _Getter getter, _Info info) {
   final byteData = ByteData(60);
   const byteOffset = 40;
 
-  setter(byteData, byteOffset, info.setValue, Endian.little);
+  setter(byteData, byteOffset, info.integer, Endian.little);
   expect(byteData.buffer.asUint8List(byteOffset, 8), info.expectLittleEndian);
-  expect(getter(byteData, byteOffset, Endian.little), info.setValue);
+  expect(getter(byteData, byteOffset, Endian.little), info.integer);
 
-  setter(byteData, byteOffset, info.setValue, Endian.big);
+  setter(byteData, byteOffset, info.integer, Endian.big);
   expect(byteData.buffer.asUint8List(byteOffset, 8), info.expectBigEndian);
-  expect(getter(byteData, byteOffset, Endian.big), info.setValue);
+  expect(getter(byteData, byteOffset, Endian.big), info.integer);
 }
 
 class _Info {
-  final BigInt setValue;
+  final BigInt integer;
   final List<int> expectLittleEndian;
   final List<int> expectBigEndian;
 
   const _Info({
-    required this.setValue,
+    required this.integer,
     required this.expectLittleEndian,
     required this.expectBigEndian,
   });
 
   @override
   String toString() =>
-      '_Info{setValue: $setValue, expectLittleEndian: $expectLittleEndian, expectBigEndian: $expectBigEndian}';
+      '_Info{integer: $integer, expectLittleEndian: $expectLittleEndian, expectBigEndian: $expectBigEndian}';
 }
