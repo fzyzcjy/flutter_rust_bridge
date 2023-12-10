@@ -86,6 +86,7 @@ fn generate_impl_decode_jsvalue_for_type(
 }
 
 fn generate_impl_decode_code_block(api: &str, wire: &str, body: &str) -> String {
+    let body = body.trim();
     format!(
         "impl CstDecode<{api}> for {wire} {{
             fn cst_decode(self) -> {api} {{
