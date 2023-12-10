@@ -84,7 +84,7 @@ impl GeneralizedStructGenerator {
             StructOrRecord::Record => format!(
                 "({})",
                 (self.st.fields.iter())
-                    .map(|x| x.name.dart_style().clone())
+                    .map(|x| format!("var_{}", x.name.dart_style().clone()))
                     .join(", ")
             ),
         };
