@@ -64,7 +64,8 @@ class _SseSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
     final decodeErrorData = codec.decodeErrorData;
     if (decodeErrorData == null) {
       throw Exception(
-          'transformRust2DartMessage received error message, but no decodeErrorData to parse it.');
+          'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
+          'Raw data: ${deserializer.buffer.data.buffer.asUint8List()}');
     }
     return decodeErrorData(deserializer);
   }
