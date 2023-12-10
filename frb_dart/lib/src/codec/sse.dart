@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/codec/base.dart';
+import 'package:flutter_rust_bridge/src/codec/dco.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
@@ -24,8 +25,11 @@ class SseCodec<S, E extends Object>
 
   @override
   S decodeObject(dynamic raw) {
-    print('hi $runtimeType.decodeObject raw=$raw');
-    return _decode(raw as Uint8List);
+    if (raw is! Uint8List) {
+      return _decodeObjectOfOtherType(raw);
+    }
+
+    return _decode(raw);
   }
 
   @override
@@ -90,3 +94,14 @@ class SseDeserializer {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   SseDeserializer(ByteData data) : buffer = ReadBuffer(data);
 }
+
+S _decodeObjectOfOtherType(dynamic raw) {
+  // Temporary workaround before Rust panic=unwind is implemented.
+  // Then, when panic happens, the Rust side WorkerPool will use JavaScript
+  // to inform the error. Thus we have to use a simple JS implementable protocol.
+  const decoder = DcoCodec(
+      decodeSuccessData: _unimplementedFunction, decodeErrorData: null);
+  return decoder.decodeObject(raw);
+}
+
+dynamic _unimplementedFunction(dynamic arg) => throw UnimplementedError();

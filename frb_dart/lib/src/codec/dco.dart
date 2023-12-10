@@ -4,7 +4,8 @@ import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncRust2DartDco> {
+class DcoCodec<S, E extends Object>
+    extends BaseCodec<S, E, WireSyncRust2DartDco> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   final S Function(dynamic) decodeSuccessData;
 
