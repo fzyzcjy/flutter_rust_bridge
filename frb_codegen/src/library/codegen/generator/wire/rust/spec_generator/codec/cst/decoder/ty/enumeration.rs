@@ -70,8 +70,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
                 .join("\n");
 
             Some(format!(
-                "{}
-                match self{} {{
+                "{}match self{} {{
                     {}
                     _ => unreachable!(),
                 }}",
