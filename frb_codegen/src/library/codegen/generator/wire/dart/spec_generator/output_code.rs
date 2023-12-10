@@ -113,8 +113,10 @@ impl WireDartOutputCode {
                   }});
 
                   {api_impl_class_body}
+                }}
 
-                  {api_impl_extension_body}
+                extension ExtPlatform{api_impl_class_name} on {api_impl_platform_class_name} {{
+                    {api_impl_extension_body}
                 }}
                 ",
             )
