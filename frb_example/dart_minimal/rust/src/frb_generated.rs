@@ -94,12 +94,20 @@ fn wire_rust_call_dart_simple_impl(
                 use flutter_rust_bridge::IntoDart;
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
 
-                move |arg0, arg1| {
-                    FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_invoke(vec![
-                        dart_opaque.clone().into_into_dart().into_dart(),
-                        arg0.into_into_dart().into_dart(),
-                        arg1.into_into_dart().into_dart(),
-                    ])
+                move |arg0, arg1| async {
+                    // TODO manual tweak
+                    let mut deserializer = FLUTTER_RUST_BRIDGE_HANDLER
+                        .dart_fn_invoke(
+                            dart_opaque.clone(),
+                            vec![
+                                arg0.into_into_dart().into_dart(),
+                                arg1.into_into_dart().into_dart(),
+                            ],
+                        )
+                        .await;
+                    let output = <String>::sse_decode(&mut deserializer);
+                    deserializer.end();
+                    output
                 }
             };
             move |context| async move {
