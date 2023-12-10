@@ -18,9 +18,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxFnPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr;
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_list_prim_u_8(Uint8List raw) {
+    final ans = wire.cst_new_list_prim_u_8(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
 }
 
 // Section: wire_class
@@ -66,39 +69,25 @@ class RustLibWire implements BaseWire {
   late final _frb_initialize_rust =
       _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
 
-  void wire_hi_async_rust_opaque(
-    int port_,
-    ffi.Pointer<ffi.Void> a,
+  WireSyncReturnSse wire_example_primitive_list_type_u8_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
-    return _wire_hi_async_rust_opaque(
-      port_,
-      a,
+    return _wire_example_primitive_list_type_u8_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
-  late final _wire_hi_async_rust_opaquePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_hi_async_rust_opaque');
-  late final _wire_hi_async_rust_opaque = _wire_hi_async_rust_opaquePtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
-
-  void wire_hi_rust_opaque(
-    int port_,
-    ffi.Pointer<ffi.Void> a,
-  ) {
-    return _wire_hi_rust_opaque(
-      port_,
-      a,
-    );
-  }
-
-  late final _wire_hi_rust_opaquePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_hi_rust_opaque');
-  late final _wire_hi_rust_opaque = _wire_hi_rust_opaquePtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+  late final _wire_example_primitive_list_type_u8_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_example_primitive_list_type_u8_twin_sync_sse');
+  late final _wire_example_primitive_list_type_u8_twin_sync_sse =
+      _wire_example_primitive_list_type_u8_twin_sync_ssePtr.asFunction<
+          WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_minimal_adder(
     int port_,
@@ -119,37 +108,20 @@ class RustLibWire implements BaseWire {
   late final _wire_minimal_adder =
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
 
-  void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-    ffi.Pointer<ffi.Void> ptr,
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_new_list_prim_u_8(
+    int len,
   ) {
-    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-      ptr,
+    return _cst_new_list_prim_u_8(
+      len,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe');
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe =
-      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe');
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe =
-      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+  late final _cst_new_list_prim_u_8Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_list_prim_u_8> Function(
+              ffi.Int32)>>('cst_new_list_prim_u_8');
+  late final _cst_new_list_prim_u_8 = _cst_new_list_prim_u_8Ptr
+      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8> Function(int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
@@ -160,4 +132,11 @@ class RustLibWire implements BaseWire {
           'dummy_method_to_enforce_bundling');
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
+}
+
+final class wire_cst_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
 }

@@ -56,19 +56,10 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> hiAsyncRustOpaque({required RwLockBoxFn a, dynamic hint});
-
-  Future<void> hiRustOpaque({required RwLockBoxFn a, dynamic hint});
+  Uint8List examplePrimitiveListTypeU8TwinSyncSse(
+      {required Uint8List arg, dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxFn;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxFn;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockBoxFnPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -80,53 +71,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<void> hiAsyncRustOpaque({required RwLockBoxFn a, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 =
-            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-                a);
-        return wire.wire_hi_async_rust_opaque(port_, arg0);
+  Uint8List examplePrimitiveListTypeU8TwinSyncSse(
+      {required Uint8List arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        _sse_encode_list_prim_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_primitive_list_type_u8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: _sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
-      constMeta: kHiAsyncRustOpaqueConstMeta,
-      argValues: [a],
+      constMeta: kExamplePrimitiveListTypeU8TwinSyncSseConstMeta,
+      argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHiAsyncRustOpaqueConstMeta => const TaskConstMeta(
-        debugName: "hi_async_rust_opaque",
-        argNames: ["a"],
-      );
-
-  @override
-  Future<void> hiRustOpaque({required RwLockBoxFn a, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 =
-            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-                a);
-        return wire.wire_hi_rust_opaque(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kHiRustOpaqueConstMeta,
-      argValues: [a],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHiRustOpaqueConstMeta => const TaskConstMeta(
-        debugName: "hi_rust_opaque",
-        argNames: ["a"],
+  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u8_twin_sync_sse",
+        argNames: ["arg"],
       );
 
   @override
@@ -153,15 +122,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxFn => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxFn => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe;
-
   int _dco_decode_i_32(dynamic raw) {
+    return raw as int;
+  }
+
+  Uint8List _dco_decode_list_prim_u_8(dynamic raw) {
+    return raw as Uint8List;
+  }
+
+  int _dco_decode_u_8(dynamic raw) {
     return raw as int;
   }
 
@@ -173,49 +142,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return deserializer.buffer.getInt32();
   }
 
+  Uint8List _sse_decode_list_prim_u_8(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint8List(len_);
+  }
+
+  int _sse_decode_u_8(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint8();
+  }
+
   void _sse_decode_unit(SseDeserializer deserializer) {}
-
-  void
-      _sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFn self, SseSerializer serializer) {
-    _sse_encode_usize(self.sseEncode(move: true), serializer);
-  }
-
-  void
-      _sse_encode_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFn self, SseSerializer serializer) {
-    _sse_encode_usize(self.sseEncode(move: null), serializer);
-  }
 
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
-  void _sse_encode_usize(int self, SseSerializer serializer) {
-    serializer.buffer.putUint64(self);
+  void _sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint8List(self);
+  }
+
+  void _sse_encode_u_8(int self, SseSerializer serializer) {
+    serializer.buffer.putUint8(self);
   }
 }
 
 // Section: dart2rust
 
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-        RwLockBoxFn raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-        RwLockBoxFn raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
 int cst_encode_i_32(int raw) {
   return raw;
 }
 
-int cst_encode_usize(int raw) {
+int cst_encode_u_8(int raw) {
   return raw;
 }

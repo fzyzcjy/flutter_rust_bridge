@@ -17,9 +17,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxFnPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe;
+  @protected
+  Uint8List cst_encode_list_prim_u_8(Uint8List raw) {
+    return raw;
+  }
 }
 
 // Section: wire_class
@@ -32,26 +33,14 @@ class RustLibWire extends BaseWire {
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
 
-  void wire_hi_async_rust_opaque(NativePortType port_, Object a) =>
-      wasmModule.wire_hi_async_rust_opaque(port_, a);
-
-  void wire_hi_rust_opaque(NativePortType port_, Object a) =>
-      wasmModule.wire_hi_rust_opaque(port_, a);
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
+      wire_example_primitive_list_type_u8_twin_sync_sse(
+              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_example_primitive_list_type_u8_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
-
-  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-              ptr);
 }
 
 @JS('wasm_bindgen')
@@ -69,17 +58,9 @@ class RustLibWasmModule implements WasmModule {
   external void frb_initialize_rust(
       NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
 
-  external void wire_hi_async_rust_opaque(NativePortType port_, Object a);
-
-  external void wire_hi_rust_opaque(NativePortType port_, Object a);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
+      wire_example_primitive_list_type_u8_twin_sync_sse(
+          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-          dynamic ptr);
 }

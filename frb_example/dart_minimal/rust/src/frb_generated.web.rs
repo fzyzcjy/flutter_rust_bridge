@@ -4,7 +4,6 @@
 // Section: imports
 
 use super::*;
-use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::for_generated::wasm_bindgen;
@@ -21,19 +20,9 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
-    > {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+impl CstDecode<Vec<u8>> for Box<[u8]> {
+    fn cst_decode(self) -> Vec<u8> {
+        self.into_vec()
     }
 }
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -41,8 +30,15 @@ impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
         self.unchecked_into_f64() as _
     }
 }
-impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> usize {
+impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> Vec<u8> {
+        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
+            .to_vec()
+            .into()
+    }
+}
+impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> u8 {
         self.unchecked_into_f64() as _
     }
 }
@@ -60,44 +56,15 @@ pub fn frb_initialize_rust(
 }
 
 #[wasm_bindgen]
-pub fn wire_hi_async_rust_opaque(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_hi_async_rust_opaque_impl(port_, a)
-}
-
-#[wasm_bindgen]
-pub fn wire_hi_rust_opaque(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_hi_rust_opaque_impl(port_, a)
+pub fn wire_example_primitive_list_type_u8_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+    wire_example_primitive_list_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnSendSyncUnwindSafeRefUnwindSafe(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<Box<dyn Fn() + Send + Sync + UnwindSafe + RefUnwindSafe>>,
-        >(ptr);
-    }
 }
