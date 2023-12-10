@@ -10,8 +10,7 @@ impl<'a> CodecSseTyTrait for DartFnCodecSseTy<'a> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
-        self.should_generate(lang)
-            .then(|| simple_delegate_decode(lang, &self.ir.get_delegate(), "inner"))
+        None
     }
 }
 
