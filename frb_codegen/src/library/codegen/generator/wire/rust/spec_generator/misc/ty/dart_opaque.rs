@@ -21,7 +21,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartOpaqueWireRustGenerator<'a> {
                                 Target::Io => "flutter_rust_bridge::for_generated::dart_sys::Dart_Handle",
                                 Target::Wasm => "flutter_rust_bridge::for_generated::wasm_bindgen::JsValue",
                             }.into(),
-                            dart_type: "int".into(),
+                            dart_type: "Object".into(),
                         }],
                         return_type: Some(match target {
                             Target::Io => "*const std::ffi::c_void",
