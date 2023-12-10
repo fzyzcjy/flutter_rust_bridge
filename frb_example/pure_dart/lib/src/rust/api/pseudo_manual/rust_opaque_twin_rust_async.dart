@@ -7,6 +7,7 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'rust_opaque_sync_twin_sse.dart';
 part 'rust_opaque_twin_rust_async.freezed.dart';
 
 Future<HideData> createOpaqueTwinRustAsync({dynamic hint}) =>
@@ -148,24 +149,6 @@ class FrbOpaqueReturn extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>
-@sealed
-class HideData extends RustOpaque {
-  HideData.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
-
-  HideData.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_HideData,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_HideData,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataPtr,
-  );
-}
-
 class HideDataArray2 extends NonGrowableListView<HideData> {
   static const arraySize = 2;
 
@@ -196,42 +179,6 @@ class I32 extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_I32,
     rustArcDecrementStrongCountPtr:
         RustLib.instance.api.rust_arc_decrement_strong_count_I32Ptr,
-  );
-}
-
-// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>
-@sealed
-class NonCloneData extends RustOpaque {
-  NonCloneData.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
-
-  NonCloneData.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_NonCloneData,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_NonCloneData,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_NonCloneDataPtr,
-  );
-}
-
-// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>
-@sealed
-class NonSendHideData extends RustOpaque {
-  NonSendHideData.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
-
-  NonSendHideData.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_NonSendHideData,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_NonSendHideData,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_NonSendHideDataPtr,
   );
 }
 

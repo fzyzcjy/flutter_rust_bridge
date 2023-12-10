@@ -6,7 +6,7 @@
 import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'pseudo_manual/mirror_twin_sync.dart';
+import 'pseudo_manual/mirror_twin_sync_sse.dart';
 
 Future<ApplicationSettings> getAppSettingsTwinNormal({dynamic hint}) =>
     RustLib.instance.api.getAppSettingsTwinNormal(hint: hint);

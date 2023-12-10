@@ -5,6 +5,7 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'rust_auto_opaque_twin_sse.dart';
 
 void rustAutoOpaqueArgOwnTwinSync(
         {required RwLockNonCloneSimpleTwinSync arg,
@@ -126,25 +127,6 @@ RwLockStructWithGoodAndOpaqueFieldTwinSync
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync(
                 hint: hint);
-
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>>
-@sealed
-class RwLockBoxFnStringString extends RustOpaque {
-  RwLockBoxFnStringString.dcoDecode(dynamic wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  RwLockBoxFnStringString.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_RwLockBoxFnStringString,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RwLockBoxFnStringString,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr,
-  );
-}
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>
 @sealed

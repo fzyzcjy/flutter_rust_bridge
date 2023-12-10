@@ -5,7 +5,7 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'pseudo_manual/rust_opaque_twin_rust_async.dart';
+import 'pseudo_manual/rust_opaque_sync_twin_sse.dart';
 
 HideData? syncOptionRustOpaqueTwinNormal({dynamic hint}) =>
     RustLib.instance.api.syncOptionRustOpaqueTwinNormal(hint: hint);
@@ -28,22 +28,3 @@ String syncRunOpaqueTwinNormal(
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
 FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
     RustLib.instance.api.frbSyncGeneratorTestTwinNormal(hint: hint);
-
-// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>
-@sealed
-class FrbOpaqueSyncReturn extends RustOpaque {
-  FrbOpaqueSyncReturn.dcoDecode(dynamic wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  FrbOpaqueSyncReturn.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_FrbOpaqueSyncReturn,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueSyncReturn,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueSyncReturnPtr,
-  );
-}

@@ -980,11 +980,6 @@ typedef struct wire_cst_event_twin_rust_async {
   struct wire_cst_list_prim_u_8 *payload;
 } wire_cst_event_twin_rust_async;
 
-typedef struct wire_cst_event_twin_sync {
-  struct wire_cst_list_prim_u_8 *address;
-  struct wire_cst_list_prim_u_8 *payload;
-} wire_cst_event_twin_sync;
-
 typedef struct wire_cst_custom_struct_twin_rust_async {
   struct wire_cst_list_prim_u_8 *message;
 } wire_cst_custom_struct_twin_rust_async;
@@ -1572,6 +1567,1372 @@ typedef struct wire_cst_feature_uuid_twin_normal {
   struct wire_cst_list_prim_u_8 *one;
 } wire_cst_feature_uuid_twin_normal;
 
+typedef struct wire_cst_a_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_a_twin_rust_async_sse;
+
+typedef struct wire_cst_a_twin_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_a_twin_sse;
+
+typedef struct wire_cst_a_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_a_twin_sync_sse;
+
+typedef struct wire_cst_AbcTwinRustAsyncSse_A {
+  struct wire_cst_a_twin_rust_async_sse *field0;
+} wire_cst_AbcTwinRustAsyncSse_A;
+
+typedef struct wire_cst_b_twin_rust_async_sse {
+  int32_t b;
+} wire_cst_b_twin_rust_async_sse;
+
+typedef struct wire_cst_AbcTwinRustAsyncSse_B {
+  struct wire_cst_b_twin_rust_async_sse *field0;
+} wire_cst_AbcTwinRustAsyncSse_B;
+
+typedef struct wire_cst_c_twin_rust_async_sse {
+  bool c;
+} wire_cst_c_twin_rust_async_sse;
+
+typedef struct wire_cst_AbcTwinRustAsyncSse_C {
+  struct wire_cst_c_twin_rust_async_sse *field0;
+} wire_cst_AbcTwinRustAsyncSse_C;
+
+typedef struct wire_cst_AbcTwinRustAsyncSse_JustInt {
+  int32_t field0;
+} wire_cst_AbcTwinRustAsyncSse_JustInt;
+
+typedef union AbcTwinRustAsyncSseKind {
+  struct wire_cst_AbcTwinRustAsyncSse_A *A;
+  struct wire_cst_AbcTwinRustAsyncSse_B *B;
+  struct wire_cst_AbcTwinRustAsyncSse_C *C;
+  struct wire_cst_AbcTwinRustAsyncSse_JustInt *JustInt;
+} AbcTwinRustAsyncSseKind;
+
+typedef struct wire_cst_abc_twin_rust_async_sse {
+  int32_t tag;
+  union AbcTwinRustAsyncSseKind *kind;
+} wire_cst_abc_twin_rust_async_sse;
+
+typedef struct wire_cst_AbcTwinSse_A {
+  struct wire_cst_a_twin_sse *field0;
+} wire_cst_AbcTwinSse_A;
+
+typedef struct wire_cst_b_twin_sse {
+  int32_t b;
+} wire_cst_b_twin_sse;
+
+typedef struct wire_cst_AbcTwinSse_B {
+  struct wire_cst_b_twin_sse *field0;
+} wire_cst_AbcTwinSse_B;
+
+typedef struct wire_cst_c_twin_sse {
+  bool c;
+} wire_cst_c_twin_sse;
+
+typedef struct wire_cst_AbcTwinSse_C {
+  struct wire_cst_c_twin_sse *field0;
+} wire_cst_AbcTwinSse_C;
+
+typedef struct wire_cst_AbcTwinSse_JustInt {
+  int32_t field0;
+} wire_cst_AbcTwinSse_JustInt;
+
+typedef union AbcTwinSseKind {
+  struct wire_cst_AbcTwinSse_A *A;
+  struct wire_cst_AbcTwinSse_B *B;
+  struct wire_cst_AbcTwinSse_C *C;
+  struct wire_cst_AbcTwinSse_JustInt *JustInt;
+} AbcTwinSseKind;
+
+typedef struct wire_cst_abc_twin_sse {
+  int32_t tag;
+  union AbcTwinSseKind *kind;
+} wire_cst_abc_twin_sse;
+
+typedef struct wire_cst_AbcTwinSyncSse_A {
+  struct wire_cst_a_twin_sync_sse *field0;
+} wire_cst_AbcTwinSyncSse_A;
+
+typedef struct wire_cst_b_twin_sync_sse {
+  int32_t b;
+} wire_cst_b_twin_sync_sse;
+
+typedef struct wire_cst_AbcTwinSyncSse_B {
+  struct wire_cst_b_twin_sync_sse *field0;
+} wire_cst_AbcTwinSyncSse_B;
+
+typedef struct wire_cst_c_twin_sync_sse {
+  bool c;
+} wire_cst_c_twin_sync_sse;
+
+typedef struct wire_cst_AbcTwinSyncSse_C {
+  struct wire_cst_c_twin_sync_sse *field0;
+} wire_cst_AbcTwinSyncSse_C;
+
+typedef struct wire_cst_AbcTwinSyncSse_JustInt {
+  int32_t field0;
+} wire_cst_AbcTwinSyncSse_JustInt;
+
+typedef union AbcTwinSyncSseKind {
+  struct wire_cst_AbcTwinSyncSse_A *A;
+  struct wire_cst_AbcTwinSyncSse_B *B;
+  struct wire_cst_AbcTwinSyncSse_C *C;
+  struct wire_cst_AbcTwinSyncSse_JustInt *JustInt;
+} AbcTwinSyncSseKind;
+
+typedef struct wire_cst_abc_twin_sync_sse {
+  int32_t tag;
+  union AbcTwinSyncSseKind *kind;
+} wire_cst_abc_twin_sync_sse;
+
+typedef struct wire_cst_attribute_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *key;
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_attribute_twin_rust_async_sse;
+
+typedef struct wire_cst_attribute_twin_sse {
+  struct wire_cst_list_prim_u_8 *key;
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_attribute_twin_sse;
+
+typedef struct wire_cst_attribute_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *key;
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_attribute_twin_sync_sse;
+
+typedef struct wire_cst_concatenate_with_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_concatenate_with_twin_rust_async_sse;
+
+typedef struct wire_cst_concatenate_with_twin_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_concatenate_with_twin_sse;
+
+typedef struct wire_cst_concatenate_with_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_concatenate_with_twin_sync_sse;
+
+typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three;
+
+typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four {
+  uint32_t field0;
+} wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four;
+
+typedef union CustomNestedErrorInnerTwinRustAsyncSseKind {
+  struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three *Three;
+  struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four *Four;
+} CustomNestedErrorInnerTwinRustAsyncSseKind;
+
+typedef struct wire_cst_custom_nested_error_inner_twin_rust_async_sse {
+  int32_t tag;
+  union CustomNestedErrorInnerTwinRustAsyncSseKind *kind;
+} wire_cst_custom_nested_error_inner_twin_rust_async_sse;
+
+typedef struct wire_cst_CustomNestedErrorInnerTwinSse_Three {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedErrorInnerTwinSse_Three;
+
+typedef struct wire_cst_CustomNestedErrorInnerTwinSse_Four {
+  uint32_t field0;
+} wire_cst_CustomNestedErrorInnerTwinSse_Four;
+
+typedef union CustomNestedErrorInnerTwinSseKind {
+  struct wire_cst_CustomNestedErrorInnerTwinSse_Three *Three;
+  struct wire_cst_CustomNestedErrorInnerTwinSse_Four *Four;
+} CustomNestedErrorInnerTwinSseKind;
+
+typedef struct wire_cst_custom_nested_error_inner_twin_sse {
+  int32_t tag;
+  union CustomNestedErrorInnerTwinSseKind *kind;
+} wire_cst_custom_nested_error_inner_twin_sse;
+
+typedef struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Three {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedErrorInnerTwinSyncSse_Three;
+
+typedef struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Four {
+  uint32_t field0;
+} wire_cst_CustomNestedErrorInnerTwinSyncSse_Four;
+
+typedef union CustomNestedErrorInnerTwinSyncSseKind {
+  struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Three *Three;
+  struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Four *Four;
+} CustomNestedErrorInnerTwinSyncSseKind;
+
+typedef struct wire_cst_custom_nested_error_inner_twin_sync_sse {
+  int32_t tag;
+  union CustomNestedErrorInnerTwinSyncSseKind *kind;
+} wire_cst_custom_nested_error_inner_twin_sync_sse;
+
+typedef struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One;
+
+typedef struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two {
+  struct wire_cst_custom_nested_error_inner_twin_rust_async_sse *field0;
+} wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two;
+
+typedef union CustomNestedErrorOuterTwinRustAsyncSseKind {
+  struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One *One;
+  struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two *Two;
+} CustomNestedErrorOuterTwinRustAsyncSseKind;
+
+typedef struct wire_cst_custom_nested_error_outer_twin_rust_async_sse {
+  int32_t tag;
+  union CustomNestedErrorOuterTwinRustAsyncSseKind *kind;
+} wire_cst_custom_nested_error_outer_twin_rust_async_sse;
+
+typedef struct wire_cst_CustomNestedErrorOuterTwinSse_One {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedErrorOuterTwinSse_One;
+
+typedef struct wire_cst_CustomNestedErrorOuterTwinSse_Two {
+  struct wire_cst_custom_nested_error_inner_twin_sse *field0;
+} wire_cst_CustomNestedErrorOuterTwinSse_Two;
+
+typedef union CustomNestedErrorOuterTwinSseKind {
+  struct wire_cst_CustomNestedErrorOuterTwinSse_One *One;
+  struct wire_cst_CustomNestedErrorOuterTwinSse_Two *Two;
+} CustomNestedErrorOuterTwinSseKind;
+
+typedef struct wire_cst_custom_nested_error_outer_twin_sse {
+  int32_t tag;
+  union CustomNestedErrorOuterTwinSseKind *kind;
+} wire_cst_custom_nested_error_outer_twin_sse;
+
+typedef struct wire_cst_CustomNestedErrorOuterTwinSyncSse_One {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedErrorOuterTwinSyncSse_One;
+
+typedef struct wire_cst_CustomNestedErrorOuterTwinSyncSse_Two {
+  struct wire_cst_custom_nested_error_inner_twin_sync_sse *field0;
+} wire_cst_CustomNestedErrorOuterTwinSyncSse_Two;
+
+typedef union CustomNestedErrorOuterTwinSyncSseKind {
+  struct wire_cst_CustomNestedErrorOuterTwinSyncSse_One *One;
+  struct wire_cst_CustomNestedErrorOuterTwinSyncSse_Two *Two;
+} CustomNestedErrorOuterTwinSyncSseKind;
+
+typedef struct wire_cst_custom_nested_error_outer_twin_sync_sse {
+  int32_t tag;
+  union CustomNestedErrorOuterTwinSyncSseKind *kind;
+} wire_cst_custom_nested_error_outer_twin_sync_sse;
+
+typedef struct wire_cst_custom_struct_error_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_custom_struct_error_twin_rust_async_sse;
+
+typedef struct wire_cst_custom_struct_error_twin_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_custom_struct_error_twin_sse;
+
+typedef struct wire_cst_custom_struct_error_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_custom_struct_error_twin_sync_sse;
+
+typedef struct wire_cst_custom_struct_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *message;
+} wire_cst_custom_struct_twin_rust_async_sse;
+
+typedef struct wire_cst_custom_struct_twin_sse {
+  struct wire_cst_list_prim_u_8 *message;
+} wire_cst_custom_struct_twin_sse;
+
+typedef struct wire_cst_custom_struct_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *message;
+} wire_cst_custom_struct_twin_sync_sse;
+
+typedef struct wire_cst_customized_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *final_field;
+  struct wire_cst_list_prim_u_8 *non_final_field;
+} wire_cst_customized_twin_rust_async_sse;
+
+typedef struct wire_cst_customized_twin_sse {
+  struct wire_cst_list_prim_u_8 *final_field;
+  struct wire_cst_list_prim_u_8 *non_final_field;
+} wire_cst_customized_twin_sse;
+
+typedef struct wire_cst_customized_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *final_field;
+  struct wire_cst_list_prim_u_8 *non_final_field;
+} wire_cst_customized_twin_sync_sse;
+
+typedef struct wire_cst_dart_opaque_nested_twin_rust_async_sse {
+  const void *first;
+  const void *second;
+} wire_cst_dart_opaque_nested_twin_rust_async_sse;
+
+typedef struct wire_cst_dart_opaque_nested_twin_sse {
+  const void *first;
+  const void *second;
+} wire_cst_dart_opaque_nested_twin_sse;
+
+typedef struct wire_cst_dart_opaque_nested_twin_sync_sse {
+  const void *first;
+  const void *second;
+} wire_cst_dart_opaque_nested_twin_sync_sse;
+
+typedef struct wire_cst_empty_twin_rust_async_sse {
+
+} wire_cst_empty_twin_rust_async_sse;
+
+typedef struct wire_cst_empty_twin_sse {
+
+} wire_cst_empty_twin_sse;
+
+typedef struct wire_cst_empty_twin_sync_sse {
+
+} wire_cst_empty_twin_sync_sse;
+
+typedef struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Primitive {
+  int32_t field0;
+} wire_cst_EnumDartOpaqueTwinRustAsyncSse_Primitive;
+
+typedef struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Opaque {
+  const void *field0;
+} wire_cst_EnumDartOpaqueTwinRustAsyncSse_Opaque;
+
+typedef union EnumDartOpaqueTwinRustAsyncSseKind {
+  struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Primitive *Primitive;
+  struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Opaque *Opaque;
+} EnumDartOpaqueTwinRustAsyncSseKind;
+
+typedef struct wire_cst_enum_dart_opaque_twin_rust_async_sse {
+  int32_t tag;
+  union EnumDartOpaqueTwinRustAsyncSseKind *kind;
+} wire_cst_enum_dart_opaque_twin_rust_async_sse;
+
+typedef struct wire_cst_EnumDartOpaqueTwinSse_Primitive {
+  int32_t field0;
+} wire_cst_EnumDartOpaqueTwinSse_Primitive;
+
+typedef struct wire_cst_EnumDartOpaqueTwinSse_Opaque {
+  const void *field0;
+} wire_cst_EnumDartOpaqueTwinSse_Opaque;
+
+typedef union EnumDartOpaqueTwinSseKind {
+  struct wire_cst_EnumDartOpaqueTwinSse_Primitive *Primitive;
+  struct wire_cst_EnumDartOpaqueTwinSse_Opaque *Opaque;
+} EnumDartOpaqueTwinSseKind;
+
+typedef struct wire_cst_enum_dart_opaque_twin_sse {
+  int32_t tag;
+  union EnumDartOpaqueTwinSseKind *kind;
+} wire_cst_enum_dart_opaque_twin_sse;
+
+typedef struct wire_cst_EnumDartOpaqueTwinSyncSse_Primitive {
+  int32_t field0;
+} wire_cst_EnumDartOpaqueTwinSyncSse_Primitive;
+
+typedef struct wire_cst_EnumDartOpaqueTwinSyncSse_Opaque {
+  const void *field0;
+} wire_cst_EnumDartOpaqueTwinSyncSse_Opaque;
+
+typedef union EnumDartOpaqueTwinSyncSseKind {
+  struct wire_cst_EnumDartOpaqueTwinSyncSse_Primitive *Primitive;
+  struct wire_cst_EnumDartOpaqueTwinSyncSse_Opaque *Opaque;
+} EnumDartOpaqueTwinSyncSseKind;
+
+typedef struct wire_cst_enum_dart_opaque_twin_sync_sse {
+  int32_t tag;
+  union EnumDartOpaqueTwinSyncSseKind *kind;
+} wire_cst_enum_dart_opaque_twin_sync_sse;
+
+typedef struct wire_cst_EnumOpaqueTwinRustAsyncSse_Struct {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinRustAsyncSse_Struct;
+
+typedef struct wire_cst_EnumOpaqueTwinRustAsyncSse_Primitive {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinRustAsyncSse_Primitive;
+
+typedef struct wire_cst_EnumOpaqueTwinRustAsyncSse_TraitObj {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinRustAsyncSse_TraitObj;
+
+typedef struct wire_cst_EnumOpaqueTwinRustAsyncSse_Mutex {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinRustAsyncSse_Mutex;
+
+typedef struct wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock;
+
+typedef union EnumOpaqueTwinRustAsyncSseKind {
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_Struct *Struct;
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_Primitive *Primitive;
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_TraitObj *TraitObj;
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_Mutex *Mutex;
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock *RwLock;
+} EnumOpaqueTwinRustAsyncSseKind;
+
+typedef struct wire_cst_enum_opaque_twin_rust_async_sse {
+  int32_t tag;
+  union EnumOpaqueTwinRustAsyncSseKind *kind;
+} wire_cst_enum_opaque_twin_rust_async_sse;
+
+typedef struct wire_cst_EnumOpaqueTwinSse_Struct {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSse_Struct;
+
+typedef struct wire_cst_EnumOpaqueTwinSse_Primitive {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSse_Primitive;
+
+typedef struct wire_cst_EnumOpaqueTwinSse_TraitObj {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSse_TraitObj;
+
+typedef struct wire_cst_EnumOpaqueTwinSse_Mutex {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSse_Mutex;
+
+typedef struct wire_cst_EnumOpaqueTwinSse_RwLock {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSse_RwLock;
+
+typedef union EnumOpaqueTwinSseKind {
+  struct wire_cst_EnumOpaqueTwinSse_Struct *Struct;
+  struct wire_cst_EnumOpaqueTwinSse_Primitive *Primitive;
+  struct wire_cst_EnumOpaqueTwinSse_TraitObj *TraitObj;
+  struct wire_cst_EnumOpaqueTwinSse_Mutex *Mutex;
+  struct wire_cst_EnumOpaqueTwinSse_RwLock *RwLock;
+} EnumOpaqueTwinSseKind;
+
+typedef struct wire_cst_enum_opaque_twin_sse {
+  int32_t tag;
+  union EnumOpaqueTwinSseKind *kind;
+} wire_cst_enum_opaque_twin_sse;
+
+typedef struct wire_cst_EnumOpaqueTwinSyncSse_Struct {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSyncSse_Struct;
+
+typedef struct wire_cst_EnumOpaqueTwinSyncSse_Primitive {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSyncSse_Primitive;
+
+typedef struct wire_cst_EnumOpaqueTwinSyncSse_TraitObj {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSyncSse_TraitObj;
+
+typedef struct wire_cst_EnumOpaqueTwinSyncSse_Mutex {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSyncSse_Mutex;
+
+typedef struct wire_cst_EnumOpaqueTwinSyncSse_RwLock {
+  const void *field0;
+} wire_cst_EnumOpaqueTwinSyncSse_RwLock;
+
+typedef union EnumOpaqueTwinSyncSseKind {
+  struct wire_cst_EnumOpaqueTwinSyncSse_Struct *Struct;
+  struct wire_cst_EnumOpaqueTwinSyncSse_Primitive *Primitive;
+  struct wire_cst_EnumOpaqueTwinSyncSse_TraitObj *TraitObj;
+  struct wire_cst_EnumOpaqueTwinSyncSse_Mutex *Mutex;
+  struct wire_cst_EnumOpaqueTwinSyncSse_RwLock *RwLock;
+} EnumOpaqueTwinSyncSseKind;
+
+typedef struct wire_cst_enum_opaque_twin_sync_sse {
+  int32_t tag;
+  union EnumOpaqueTwinSyncSseKind *kind;
+} wire_cst_enum_opaque_twin_sync_sse;
+
+typedef struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_A {
+
+} wire_cst_EnumWithItemMixedTwinRustAsyncSse_A;
+
+typedef struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_B {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_EnumWithItemMixedTwinRustAsyncSse_B;
+
+typedef struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_C {
+  struct wire_cst_list_prim_u_8 *c_field;
+} wire_cst_EnumWithItemMixedTwinRustAsyncSse_C;
+
+typedef union EnumWithItemMixedTwinRustAsyncSseKind {
+  struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_A *A;
+  struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_B *B;
+  struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_C *C;
+} EnumWithItemMixedTwinRustAsyncSseKind;
+
+typedef struct wire_cst_enum_with_item_mixed_twin_rust_async_sse {
+  int32_t tag;
+  union EnumWithItemMixedTwinRustAsyncSseKind *kind;
+} wire_cst_enum_with_item_mixed_twin_rust_async_sse;
+
+typedef struct wire_cst_EnumWithItemMixedTwinSse_A {
+
+} wire_cst_EnumWithItemMixedTwinSse_A;
+
+typedef struct wire_cst_EnumWithItemMixedTwinSse_B {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_EnumWithItemMixedTwinSse_B;
+
+typedef struct wire_cst_EnumWithItemMixedTwinSse_C {
+  struct wire_cst_list_prim_u_8 *c_field;
+} wire_cst_EnumWithItemMixedTwinSse_C;
+
+typedef union EnumWithItemMixedTwinSseKind {
+  struct wire_cst_EnumWithItemMixedTwinSse_A *A;
+  struct wire_cst_EnumWithItemMixedTwinSse_B *B;
+  struct wire_cst_EnumWithItemMixedTwinSse_C *C;
+} EnumWithItemMixedTwinSseKind;
+
+typedef struct wire_cst_enum_with_item_mixed_twin_sse {
+  int32_t tag;
+  union EnumWithItemMixedTwinSseKind *kind;
+} wire_cst_enum_with_item_mixed_twin_sse;
+
+typedef struct wire_cst_EnumWithItemMixedTwinSyncSse_A {
+
+} wire_cst_EnumWithItemMixedTwinSyncSse_A;
+
+typedef struct wire_cst_EnumWithItemMixedTwinSyncSse_B {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_EnumWithItemMixedTwinSyncSse_B;
+
+typedef struct wire_cst_EnumWithItemMixedTwinSyncSse_C {
+  struct wire_cst_list_prim_u_8 *c_field;
+} wire_cst_EnumWithItemMixedTwinSyncSse_C;
+
+typedef union EnumWithItemMixedTwinSyncSseKind {
+  struct wire_cst_EnumWithItemMixedTwinSyncSse_A *A;
+  struct wire_cst_EnumWithItemMixedTwinSyncSse_B *B;
+  struct wire_cst_EnumWithItemMixedTwinSyncSse_C *C;
+} EnumWithItemMixedTwinSyncSseKind;
+
+typedef struct wire_cst_enum_with_item_mixed_twin_sync_sse {
+  int32_t tag;
+  union EnumWithItemMixedTwinSyncSseKind *kind;
+} wire_cst_enum_with_item_mixed_twin_sync_sse;
+
+typedef struct wire_cst_EnumWithItemStructTwinRustAsyncSse_A {
+  struct wire_cst_list_prim_u_8 *a_field;
+} wire_cst_EnumWithItemStructTwinRustAsyncSse_A;
+
+typedef struct wire_cst_EnumWithItemStructTwinRustAsyncSse_B {
+  struct wire_cst_list_prim_i_32 *b_field;
+} wire_cst_EnumWithItemStructTwinRustAsyncSse_B;
+
+typedef union EnumWithItemStructTwinRustAsyncSseKind {
+  struct wire_cst_EnumWithItemStructTwinRustAsyncSse_A *A;
+  struct wire_cst_EnumWithItemStructTwinRustAsyncSse_B *B;
+} EnumWithItemStructTwinRustAsyncSseKind;
+
+typedef struct wire_cst_enum_with_item_struct_twin_rust_async_sse {
+  int32_t tag;
+  union EnumWithItemStructTwinRustAsyncSseKind *kind;
+} wire_cst_enum_with_item_struct_twin_rust_async_sse;
+
+typedef struct wire_cst_EnumWithItemStructTwinSse_A {
+  struct wire_cst_list_prim_u_8 *a_field;
+} wire_cst_EnumWithItemStructTwinSse_A;
+
+typedef struct wire_cst_EnumWithItemStructTwinSse_B {
+  struct wire_cst_list_prim_i_32 *b_field;
+} wire_cst_EnumWithItemStructTwinSse_B;
+
+typedef union EnumWithItemStructTwinSseKind {
+  struct wire_cst_EnumWithItemStructTwinSse_A *A;
+  struct wire_cst_EnumWithItemStructTwinSse_B *B;
+} EnumWithItemStructTwinSseKind;
+
+typedef struct wire_cst_enum_with_item_struct_twin_sse {
+  int32_t tag;
+  union EnumWithItemStructTwinSseKind *kind;
+} wire_cst_enum_with_item_struct_twin_sse;
+
+typedef struct wire_cst_EnumWithItemStructTwinSyncSse_A {
+  struct wire_cst_list_prim_u_8 *a_field;
+} wire_cst_EnumWithItemStructTwinSyncSse_A;
+
+typedef struct wire_cst_EnumWithItemStructTwinSyncSse_B {
+  struct wire_cst_list_prim_i_32 *b_field;
+} wire_cst_EnumWithItemStructTwinSyncSse_B;
+
+typedef union EnumWithItemStructTwinSyncSseKind {
+  struct wire_cst_EnumWithItemStructTwinSyncSse_A *A;
+  struct wire_cst_EnumWithItemStructTwinSyncSse_B *B;
+} EnumWithItemStructTwinSyncSseKind;
+
+typedef struct wire_cst_enum_with_item_struct_twin_sync_sse {
+  int32_t tag;
+  union EnumWithItemStructTwinSyncSseKind *kind;
+} wire_cst_enum_with_item_struct_twin_sync_sse;
+
+typedef struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_A {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_EnumWithItemTupleTwinRustAsyncSse_A;
+
+typedef struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_B {
+  struct wire_cst_list_prim_i_32 *field0;
+} wire_cst_EnumWithItemTupleTwinRustAsyncSse_B;
+
+typedef union EnumWithItemTupleTwinRustAsyncSseKind {
+  struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_A *A;
+  struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_B *B;
+} EnumWithItemTupleTwinRustAsyncSseKind;
+
+typedef struct wire_cst_enum_with_item_tuple_twin_rust_async_sse {
+  int32_t tag;
+  union EnumWithItemTupleTwinRustAsyncSseKind *kind;
+} wire_cst_enum_with_item_tuple_twin_rust_async_sse;
+
+typedef struct wire_cst_EnumWithItemTupleTwinSse_A {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_EnumWithItemTupleTwinSse_A;
+
+typedef struct wire_cst_EnumWithItemTupleTwinSse_B {
+  struct wire_cst_list_prim_i_32 *field0;
+} wire_cst_EnumWithItemTupleTwinSse_B;
+
+typedef union EnumWithItemTupleTwinSseKind {
+  struct wire_cst_EnumWithItemTupleTwinSse_A *A;
+  struct wire_cst_EnumWithItemTupleTwinSse_B *B;
+} EnumWithItemTupleTwinSseKind;
+
+typedef struct wire_cst_enum_with_item_tuple_twin_sse {
+  int32_t tag;
+  union EnumWithItemTupleTwinSseKind *kind;
+} wire_cst_enum_with_item_tuple_twin_sse;
+
+typedef struct wire_cst_EnumWithItemTupleTwinSyncSse_A {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_EnumWithItemTupleTwinSyncSse_A;
+
+typedef struct wire_cst_EnumWithItemTupleTwinSyncSse_B {
+  struct wire_cst_list_prim_i_32 *field0;
+} wire_cst_EnumWithItemTupleTwinSyncSse_B;
+
+typedef union EnumWithItemTupleTwinSyncSseKind {
+  struct wire_cst_EnumWithItemTupleTwinSyncSse_A *A;
+  struct wire_cst_EnumWithItemTupleTwinSyncSse_B *B;
+} EnumWithItemTupleTwinSyncSseKind;
+
+typedef struct wire_cst_enum_with_item_tuple_twin_sync_sse {
+  int32_t tag;
+  union EnumWithItemTupleTwinSyncSseKind *kind;
+} wire_cst_enum_with_item_tuple_twin_sync_sse;
+
+typedef struct wire_cst_event_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *address;
+  struct wire_cst_list_prim_u_8 *payload;
+} wire_cst_event_twin_rust_async_sse;
+
+typedef struct wire_cst_event_twin_sse {
+  struct wire_cst_list_prim_u_8 *address;
+  struct wire_cst_list_prim_u_8 *payload;
+} wire_cst_event_twin_sse;
+
+typedef struct wire_cst_list_attribute_twin_rust_async_sse {
+  struct wire_cst_attribute_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_attribute_twin_rust_async_sse;
+
+typedef struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse {
+  struct wire_cst_attribute_twin_rust_async_sse **ptr;
+  int32_t len;
+} wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse;
+
+typedef struct wire_cst_new_type_int_twin_rust_async_sse {
+  int64_t field0;
+} wire_cst_new_type_int_twin_rust_async_sse;
+
+typedef struct wire_cst_exotic_optionals_twin_rust_async_sse {
+  int32_t *int32;
+  int64_t *int64;
+  double *float64;
+  bool *boolean;
+  struct wire_cst_list_prim_u_8 *zerocopy;
+  struct wire_cst_list_prim_i_8 *int8list;
+  struct wire_cst_list_prim_u_8 *uint8list;
+  struct wire_cst_list_prim_i_32 *int32list;
+  struct wire_cst_list_prim_f_32 *float32list;
+  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_attribute_twin_rust_async_sse *attributes;
+  struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse *attributes_nullable;
+  struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse *nullable_attributes;
+  struct wire_cst_new_type_int_twin_rust_async_sse *newtypeint;
+} wire_cst_exotic_optionals_twin_rust_async_sse;
+
+typedef struct wire_cst_list_attribute_twin_sse {
+  struct wire_cst_attribute_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_attribute_twin_sse;
+
+typedef struct wire_cst_list_opt_box_autoadd_attribute_twin_sse {
+  struct wire_cst_attribute_twin_sse **ptr;
+  int32_t len;
+} wire_cst_list_opt_box_autoadd_attribute_twin_sse;
+
+typedef struct wire_cst_new_type_int_twin_sse {
+  int64_t field0;
+} wire_cst_new_type_int_twin_sse;
+
+typedef struct wire_cst_exotic_optionals_twin_sse {
+  int32_t *int32;
+  int64_t *int64;
+  double *float64;
+  bool *boolean;
+  struct wire_cst_list_prim_u_8 *zerocopy;
+  struct wire_cst_list_prim_i_8 *int8list;
+  struct wire_cst_list_prim_u_8 *uint8list;
+  struct wire_cst_list_prim_i_32 *int32list;
+  struct wire_cst_list_prim_f_32 *float32list;
+  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_attribute_twin_sse *attributes;
+  struct wire_cst_list_opt_box_autoadd_attribute_twin_sse *attributes_nullable;
+  struct wire_cst_list_opt_box_autoadd_attribute_twin_sse *nullable_attributes;
+  struct wire_cst_new_type_int_twin_sse *newtypeint;
+} wire_cst_exotic_optionals_twin_sse;
+
+typedef struct wire_cst_list_attribute_twin_sync_sse {
+  struct wire_cst_attribute_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_attribute_twin_sync_sse;
+
+typedef struct wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse {
+  struct wire_cst_attribute_twin_sync_sse **ptr;
+  int32_t len;
+} wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse;
+
+typedef struct wire_cst_new_type_int_twin_sync_sse {
+  int64_t field0;
+} wire_cst_new_type_int_twin_sync_sse;
+
+typedef struct wire_cst_exotic_optionals_twin_sync_sse {
+  int32_t *int32;
+  int64_t *int64;
+  double *float64;
+  bool *boolean;
+  struct wire_cst_list_prim_u_8 *zerocopy;
+  struct wire_cst_list_prim_i_8 *int8list;
+  struct wire_cst_list_prim_u_8 *uint8list;
+  struct wire_cst_list_prim_i_32 *int32list;
+  struct wire_cst_list_prim_f_32 *float32list;
+  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_attribute_twin_sync_sse *attributes;
+  struct wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse *attributes_nullable;
+  struct wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse *nullable_attributes;
+  struct wire_cst_new_type_int_twin_sync_sse *newtypeint;
+} wire_cst_exotic_optionals_twin_sync_sse;
+
+typedef struct wire_cst_feed_id_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_feed_id_twin_rust_async_sse;
+
+typedef struct wire_cst_feed_id_twin_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_feed_id_twin_sse;
+
+typedef struct wire_cst_feed_id_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_feed_id_twin_sync_sse;
+
+typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Empty {
+
+} wire_cst_KitchenSinkTwinRustAsyncSse_Empty;
+
+typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Primitives {
+  int32_t int32;
+  double float64;
+  bool boolean;
+} wire_cst_KitchenSinkTwinRustAsyncSse_Primitives;
+
+typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Nested {
+  int32_t field0;
+  struct wire_cst_kitchen_sink_twin_rust_async_sse *field1;
+} wire_cst_KitchenSinkTwinRustAsyncSse_Nested;
+
+typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Optional {
+  int32_t *field0;
+  int32_t *field1;
+} wire_cst_KitchenSinkTwinRustAsyncSse_Optional;
+
+typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Buffer {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_KitchenSinkTwinRustAsyncSse_Buffer;
+
+typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Enums {
+  int32_t field0;
+} wire_cst_KitchenSinkTwinRustAsyncSse_Enums;
+
+typedef union KitchenSinkTwinRustAsyncSseKind {
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Empty *Empty;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Primitives *Primitives;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Nested *Nested;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Optional *Optional;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Buffer *Buffer;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Enums *Enums;
+} KitchenSinkTwinRustAsyncSseKind;
+
+typedef struct wire_cst_kitchen_sink_twin_rust_async_sse {
+  int32_t tag;
+  union KitchenSinkTwinRustAsyncSseKind *kind;
+} wire_cst_kitchen_sink_twin_rust_async_sse;
+
+typedef struct wire_cst_KitchenSinkTwinSse_Empty {
+
+} wire_cst_KitchenSinkTwinSse_Empty;
+
+typedef struct wire_cst_KitchenSinkTwinSse_Primitives {
+  int32_t int32;
+  double float64;
+  bool boolean;
+} wire_cst_KitchenSinkTwinSse_Primitives;
+
+typedef struct wire_cst_KitchenSinkTwinSse_Nested {
+  int32_t field0;
+  struct wire_cst_kitchen_sink_twin_sse *field1;
+} wire_cst_KitchenSinkTwinSse_Nested;
+
+typedef struct wire_cst_KitchenSinkTwinSse_Optional {
+  int32_t *field0;
+  int32_t *field1;
+} wire_cst_KitchenSinkTwinSse_Optional;
+
+typedef struct wire_cst_KitchenSinkTwinSse_Buffer {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_KitchenSinkTwinSse_Buffer;
+
+typedef struct wire_cst_KitchenSinkTwinSse_Enums {
+  int32_t field0;
+} wire_cst_KitchenSinkTwinSse_Enums;
+
+typedef union KitchenSinkTwinSseKind {
+  struct wire_cst_KitchenSinkTwinSse_Empty *Empty;
+  struct wire_cst_KitchenSinkTwinSse_Primitives *Primitives;
+  struct wire_cst_KitchenSinkTwinSse_Nested *Nested;
+  struct wire_cst_KitchenSinkTwinSse_Optional *Optional;
+  struct wire_cst_KitchenSinkTwinSse_Buffer *Buffer;
+  struct wire_cst_KitchenSinkTwinSse_Enums *Enums;
+} KitchenSinkTwinSseKind;
+
+typedef struct wire_cst_kitchen_sink_twin_sse {
+  int32_t tag;
+  union KitchenSinkTwinSseKind *kind;
+} wire_cst_kitchen_sink_twin_sse;
+
+typedef struct wire_cst_KitchenSinkTwinSyncSse_Empty {
+
+} wire_cst_KitchenSinkTwinSyncSse_Empty;
+
+typedef struct wire_cst_KitchenSinkTwinSyncSse_Primitives {
+  int32_t int32;
+  double float64;
+  bool boolean;
+} wire_cst_KitchenSinkTwinSyncSse_Primitives;
+
+typedef struct wire_cst_KitchenSinkTwinSyncSse_Nested {
+  int32_t field0;
+  struct wire_cst_kitchen_sink_twin_sync_sse *field1;
+} wire_cst_KitchenSinkTwinSyncSse_Nested;
+
+typedef struct wire_cst_KitchenSinkTwinSyncSse_Optional {
+  int32_t *field0;
+  int32_t *field1;
+} wire_cst_KitchenSinkTwinSyncSse_Optional;
+
+typedef struct wire_cst_KitchenSinkTwinSyncSse_Buffer {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_KitchenSinkTwinSyncSse_Buffer;
+
+typedef struct wire_cst_KitchenSinkTwinSyncSse_Enums {
+  int32_t field0;
+} wire_cst_KitchenSinkTwinSyncSse_Enums;
+
+typedef union KitchenSinkTwinSyncSseKind {
+  struct wire_cst_KitchenSinkTwinSyncSse_Empty *Empty;
+  struct wire_cst_KitchenSinkTwinSyncSse_Primitives *Primitives;
+  struct wire_cst_KitchenSinkTwinSyncSse_Nested *Nested;
+  struct wire_cst_KitchenSinkTwinSyncSse_Optional *Optional;
+  struct wire_cst_KitchenSinkTwinSyncSse_Buffer *Buffer;
+  struct wire_cst_KitchenSinkTwinSyncSse_Enums *Enums;
+} KitchenSinkTwinSyncSseKind;
+
+typedef struct wire_cst_kitchen_sink_twin_sync_sse {
+  int32_t tag;
+  union KitchenSinkTwinSyncSseKind *kind;
+} wire_cst_kitchen_sink_twin_sync_sse;
+
+typedef struct wire_cst_SpeedTwinRustAsyncSse_Unknown {
+
+} wire_cst_SpeedTwinRustAsyncSse_Unknown;
+
+typedef struct wire_cst_SpeedTwinRustAsyncSse_GPS {
+  double field0;
+} wire_cst_SpeedTwinRustAsyncSse_GPS;
+
+typedef union SpeedTwinRustAsyncSseKind {
+  struct wire_cst_SpeedTwinRustAsyncSse_Unknown *Unknown;
+  struct wire_cst_SpeedTwinRustAsyncSse_GPS *GPS;
+} SpeedTwinRustAsyncSseKind;
+
+typedef struct wire_cst_speed_twin_rust_async_sse {
+  int32_t tag;
+  union SpeedTwinRustAsyncSseKind *kind;
+} wire_cst_speed_twin_rust_async_sse;
+
+typedef struct wire_cst_MeasureTwinRustAsyncSse_Speed {
+  struct wire_cst_speed_twin_rust_async_sse *field0;
+} wire_cst_MeasureTwinRustAsyncSse_Speed;
+
+typedef struct wire_cst_DistanceTwinRustAsyncSse_Unknown {
+
+} wire_cst_DistanceTwinRustAsyncSse_Unknown;
+
+typedef struct wire_cst_DistanceTwinRustAsyncSse_Map {
+  double field0;
+} wire_cst_DistanceTwinRustAsyncSse_Map;
+
+typedef union DistanceTwinRustAsyncSseKind {
+  struct wire_cst_DistanceTwinRustAsyncSse_Unknown *Unknown;
+  struct wire_cst_DistanceTwinRustAsyncSse_Map *Map;
+} DistanceTwinRustAsyncSseKind;
+
+typedef struct wire_cst_distance_twin_rust_async_sse {
+  int32_t tag;
+  union DistanceTwinRustAsyncSseKind *kind;
+} wire_cst_distance_twin_rust_async_sse;
+
+typedef struct wire_cst_MeasureTwinRustAsyncSse_Distance {
+  struct wire_cst_distance_twin_rust_async_sse *field0;
+} wire_cst_MeasureTwinRustAsyncSse_Distance;
+
+typedef union MeasureTwinRustAsyncSseKind {
+  struct wire_cst_MeasureTwinRustAsyncSse_Speed *Speed;
+  struct wire_cst_MeasureTwinRustAsyncSse_Distance *Distance;
+} MeasureTwinRustAsyncSseKind;
+
+typedef struct wire_cst_measure_twin_rust_async_sse {
+  int32_t tag;
+  union MeasureTwinRustAsyncSseKind *kind;
+} wire_cst_measure_twin_rust_async_sse;
+
+typedef struct wire_cst_SpeedTwinSse_Unknown {
+
+} wire_cst_SpeedTwinSse_Unknown;
+
+typedef struct wire_cst_SpeedTwinSse_GPS {
+  double field0;
+} wire_cst_SpeedTwinSse_GPS;
+
+typedef union SpeedTwinSseKind {
+  struct wire_cst_SpeedTwinSse_Unknown *Unknown;
+  struct wire_cst_SpeedTwinSse_GPS *GPS;
+} SpeedTwinSseKind;
+
+typedef struct wire_cst_speed_twin_sse {
+  int32_t tag;
+  union SpeedTwinSseKind *kind;
+} wire_cst_speed_twin_sse;
+
+typedef struct wire_cst_MeasureTwinSse_Speed {
+  struct wire_cst_speed_twin_sse *field0;
+} wire_cst_MeasureTwinSse_Speed;
+
+typedef struct wire_cst_DistanceTwinSse_Unknown {
+
+} wire_cst_DistanceTwinSse_Unknown;
+
+typedef struct wire_cst_DistanceTwinSse_Map {
+  double field0;
+} wire_cst_DistanceTwinSse_Map;
+
+typedef union DistanceTwinSseKind {
+  struct wire_cst_DistanceTwinSse_Unknown *Unknown;
+  struct wire_cst_DistanceTwinSse_Map *Map;
+} DistanceTwinSseKind;
+
+typedef struct wire_cst_distance_twin_sse {
+  int32_t tag;
+  union DistanceTwinSseKind *kind;
+} wire_cst_distance_twin_sse;
+
+typedef struct wire_cst_MeasureTwinSse_Distance {
+  struct wire_cst_distance_twin_sse *field0;
+} wire_cst_MeasureTwinSse_Distance;
+
+typedef union MeasureTwinSseKind {
+  struct wire_cst_MeasureTwinSse_Speed *Speed;
+  struct wire_cst_MeasureTwinSse_Distance *Distance;
+} MeasureTwinSseKind;
+
+typedef struct wire_cst_measure_twin_sse {
+  int32_t tag;
+  union MeasureTwinSseKind *kind;
+} wire_cst_measure_twin_sse;
+
+typedef struct wire_cst_SpeedTwinSyncSse_Unknown {
+
+} wire_cst_SpeedTwinSyncSse_Unknown;
+
+typedef struct wire_cst_SpeedTwinSyncSse_GPS {
+  double field0;
+} wire_cst_SpeedTwinSyncSse_GPS;
+
+typedef union SpeedTwinSyncSseKind {
+  struct wire_cst_SpeedTwinSyncSse_Unknown *Unknown;
+  struct wire_cst_SpeedTwinSyncSse_GPS *GPS;
+} SpeedTwinSyncSseKind;
+
+typedef struct wire_cst_speed_twin_sync_sse {
+  int32_t tag;
+  union SpeedTwinSyncSseKind *kind;
+} wire_cst_speed_twin_sync_sse;
+
+typedef struct wire_cst_MeasureTwinSyncSse_Speed {
+  struct wire_cst_speed_twin_sync_sse *field0;
+} wire_cst_MeasureTwinSyncSse_Speed;
+
+typedef struct wire_cst_DistanceTwinSyncSse_Unknown {
+
+} wire_cst_DistanceTwinSyncSse_Unknown;
+
+typedef struct wire_cst_DistanceTwinSyncSse_Map {
+  double field0;
+} wire_cst_DistanceTwinSyncSse_Map;
+
+typedef union DistanceTwinSyncSseKind {
+  struct wire_cst_DistanceTwinSyncSse_Unknown *Unknown;
+  struct wire_cst_DistanceTwinSyncSse_Map *Map;
+} DistanceTwinSyncSseKind;
+
+typedef struct wire_cst_distance_twin_sync_sse {
+  int32_t tag;
+  union DistanceTwinSyncSseKind *kind;
+} wire_cst_distance_twin_sync_sse;
+
+typedef struct wire_cst_MeasureTwinSyncSse_Distance {
+  struct wire_cst_distance_twin_sync_sse *field0;
+} wire_cst_MeasureTwinSyncSse_Distance;
+
+typedef union MeasureTwinSyncSseKind {
+  struct wire_cst_MeasureTwinSyncSse_Speed *Speed;
+  struct wire_cst_MeasureTwinSyncSse_Distance *Distance;
+} MeasureTwinSyncSseKind;
+
+typedef struct wire_cst_measure_twin_sync_sse {
+  int32_t tag;
+  union MeasureTwinSyncSseKind *kind;
+} wire_cst_measure_twin_sync_sse;
+
+typedef struct wire_cst_message_id_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_message_id_twin_rust_async_sse;
+
+typedef struct wire_cst_message_id_twin_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_message_id_twin_sse;
+
+typedef struct wire_cst_message_id_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_message_id_twin_sync_sse;
+
+typedef struct wire_cst_list_my_tree_node_twin_rust_async_sse {
+  struct wire_cst_my_tree_node_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_my_tree_node_twin_rust_async_sse;
+
+typedef struct wire_cst_my_tree_node_twin_rust_async_sse {
+  int32_t value_i32;
+  struct wire_cst_list_prim_u_8 *value_vec_u8;
+  bool value_boolean;
+  struct wire_cst_list_my_tree_node_twin_rust_async_sse *children;
+} wire_cst_my_tree_node_twin_rust_async_sse;
+
+typedef struct wire_cst_my_nested_struct_twin_rust_async_sse {
+  struct wire_cst_my_tree_node_twin_rust_async_sse tree_node;
+  int32_t weekday;
+} wire_cst_my_nested_struct_twin_rust_async_sse;
+
+typedef struct wire_cst_list_my_tree_node_twin_sse {
+  struct wire_cst_my_tree_node_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_my_tree_node_twin_sse;
+
+typedef struct wire_cst_my_tree_node_twin_sse {
+  int32_t value_i32;
+  struct wire_cst_list_prim_u_8 *value_vec_u8;
+  bool value_boolean;
+  struct wire_cst_list_my_tree_node_twin_sse *children;
+} wire_cst_my_tree_node_twin_sse;
+
+typedef struct wire_cst_my_nested_struct_twin_sse {
+  struct wire_cst_my_tree_node_twin_sse tree_node;
+  int32_t weekday;
+} wire_cst_my_nested_struct_twin_sse;
+
+typedef struct wire_cst_list_my_tree_node_twin_sync_sse {
+  struct wire_cst_my_tree_node_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_my_tree_node_twin_sync_sse;
+
+typedef struct wire_cst_my_tree_node_twin_sync_sse {
+  int32_t value_i32;
+  struct wire_cst_list_prim_u_8 *value_vec_u8;
+  bool value_boolean;
+  struct wire_cst_list_my_tree_node_twin_sync_sse *children;
+} wire_cst_my_tree_node_twin_sync_sse;
+
+typedef struct wire_cst_my_nested_struct_twin_sync_sse {
+  struct wire_cst_my_tree_node_twin_sync_sse tree_node;
+  int32_t weekday;
+} wire_cst_my_nested_struct_twin_sync_sse;
+
+typedef struct wire_cst_note_twin_rust_async_sse {
+  int32_t *day;
+  struct wire_cst_list_prim_u_8 *body;
+} wire_cst_note_twin_rust_async_sse;
+
+typedef struct wire_cst_note_twin_sse {
+  int32_t *day;
+  struct wire_cst_list_prim_u_8 *body;
+} wire_cst_note_twin_sse;
+
+typedef struct wire_cst_note_twin_sync_sse {
+  int32_t *day;
+  struct wire_cst_list_prim_u_8 *body;
+} wire_cst_note_twin_sync_sse;
+
+typedef struct wire_cst_opaque_nested_twin_rust_async_sse {
+  const void *first;
+  const void *second;
+} wire_cst_opaque_nested_twin_rust_async_sse;
+
+typedef struct wire_cst_opaque_nested_twin_sse {
+  const void *first;
+  const void *second;
+} wire_cst_opaque_nested_twin_sse;
+
+typedef struct wire_cst_opaque_nested_twin_sync_sse {
+  const void *first;
+  const void *second;
+} wire_cst_opaque_nested_twin_sync_sse;
+
+typedef struct wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async_sse {
+  int32_t **ptr;
+  int32_t len;
+} wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async_sse;
+
+typedef struct wire_cst_opt_vecs_twin_rust_async_sse {
+  struct wire_cst_list_opt_box_autoadd_i_32 *i32;
+  struct wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async_sse *enums;
+  struct wire_cst_list_opt_String *strings;
+  struct wire_cst_list_opt_list_prim_i_32 *buffers;
+} wire_cst_opt_vecs_twin_rust_async_sse;
+
+typedef struct wire_cst_list_opt_box_autoadd_weekdays_twin_sse {
+  int32_t **ptr;
+  int32_t len;
+} wire_cst_list_opt_box_autoadd_weekdays_twin_sse;
+
+typedef struct wire_cst_opt_vecs_twin_sse {
+  struct wire_cst_list_opt_box_autoadd_i_32 *i32;
+  struct wire_cst_list_opt_box_autoadd_weekdays_twin_sse *enums;
+  struct wire_cst_list_opt_String *strings;
+  struct wire_cst_list_opt_list_prim_i_32 *buffers;
+} wire_cst_opt_vecs_twin_sse;
+
+typedef struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse {
+  int32_t **ptr;
+  int32_t len;
+} wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse;
+
+typedef struct wire_cst_opt_vecs_twin_sync_sse {
+  struct wire_cst_list_opt_box_autoadd_i_32 *i32;
+  struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse *enums;
+  struct wire_cst_list_opt_String *strings;
+  struct wire_cst_list_opt_list_prim_i_32 *buffers;
+} wire_cst_opt_vecs_twin_sync_sse;
+
+typedef struct wire_cst_some_struct_twin_rust_async_sse {
+  uint32_t value;
+} wire_cst_some_struct_twin_rust_async_sse;
+
+typedef struct wire_cst_some_struct_twin_sse {
+  uint32_t value;
+} wire_cst_some_struct_twin_sse;
+
+typedef struct wire_cst_some_struct_twin_sync_sse {
+  uint32_t value;
+} wire_cst_some_struct_twin_sync_sse;
+
+typedef struct wire_cst_struct_with_comments_twin_rust_async_sse {
+  int32_t field_with_comments;
+} wire_cst_struct_with_comments_twin_rust_async_sse;
+
+typedef struct wire_cst_struct_with_comments_twin_sse {
+  int32_t field_with_comments;
+} wire_cst_struct_with_comments_twin_sse;
+
+typedef struct wire_cst_struct_with_comments_twin_sync_sse {
+  int32_t field_with_comments;
+} wire_cst_struct_with_comments_twin_sync_sse;
+
+typedef struct wire_cst_struct_with_enum_twin_rust_async_sse {
+  struct wire_cst_abc_twin_rust_async_sse abc1;
+  struct wire_cst_abc_twin_rust_async_sse abc2;
+} wire_cst_struct_with_enum_twin_rust_async_sse;
+
+typedef struct wire_cst_struct_with_enum_twin_sse {
+  struct wire_cst_abc_twin_sse abc1;
+  struct wire_cst_abc_twin_sse abc2;
+} wire_cst_struct_with_enum_twin_sse;
+
+typedef struct wire_cst_struct_with_enum_twin_sync_sse {
+  struct wire_cst_abc_twin_sync_sse abc1;
+  struct wire_cst_abc_twin_sync_sse abc2;
+} wire_cst_struct_with_enum_twin_sync_sse;
+
+typedef struct wire_cst_struct_with_one_field_twin_rust_async_sse {
+  int32_t a;
+} wire_cst_struct_with_one_field_twin_rust_async_sse;
+
+typedef struct wire_cst_struct_with_one_field_twin_sse {
+  int32_t a;
+} wire_cst_struct_with_one_field_twin_sse;
+
+typedef struct wire_cst_struct_with_one_field_twin_sync_sse {
+  int32_t a;
+} wire_cst_struct_with_one_field_twin_sync_sse;
+
+typedef struct wire_cst_struct_with_two_field_twin_rust_async_sse {
+  int32_t a;
+  int32_t b;
+} wire_cst_struct_with_two_field_twin_rust_async_sse;
+
+typedef struct wire_cst_struct_with_two_field_twin_sse {
+  int32_t a;
+  int32_t b;
+} wire_cst_struct_with_two_field_twin_sse;
+
+typedef struct wire_cst_struct_with_two_field_twin_sync_sse {
+  int32_t a;
+  int32_t b;
+} wire_cst_struct_with_two_field_twin_sync_sse;
+
+typedef struct wire_cst_struct_with_zero_field_twin_rust_async_sse {
+
+} wire_cst_struct_with_zero_field_twin_rust_async_sse;
+
+typedef struct wire_cst_struct_with_zero_field_twin_sse {
+
+} wire_cst_struct_with_zero_field_twin_sse;
+
+typedef struct wire_cst_struct_with_zero_field_twin_sync_sse {
+
+} wire_cst_struct_with_zero_field_twin_sync_sse;
+
+typedef struct wire_cst_sum_with_twin_rust_async_sse {
+  uint32_t x;
+} wire_cst_sum_with_twin_rust_async_sse;
+
+typedef struct wire_cst_sum_with_twin_sse {
+  uint32_t x;
+} wire_cst_sum_with_twin_sse;
+
+typedef struct wire_cst_sum_with_twin_sync_sse {
+  uint32_t x;
+} wire_cst_sum_with_twin_sync_sse;
+
+typedef struct wire_cst_test_id_twin_rust_async_sse {
+  struct wire_cst_list_prim_i_32 *field0;
+} wire_cst_test_id_twin_rust_async_sse;
+
+typedef struct wire_cst_test_id_twin_sse {
+  struct wire_cst_list_prim_i_32 *field0;
+} wire_cst_test_id_twin_sse;
+
+typedef struct wire_cst_test_id_twin_sync_sse {
+  struct wire_cst_list_prim_i_32 *field0;
+} wire_cst_test_id_twin_sync_sse;
+
+typedef struct wire_cst_tuple_struct_with_one_field_twin_rust_async_sse {
+  int32_t field0;
+} wire_cst_tuple_struct_with_one_field_twin_rust_async_sse;
+
+typedef struct wire_cst_tuple_struct_with_one_field_twin_sse {
+  int32_t field0;
+} wire_cst_tuple_struct_with_one_field_twin_sse;
+
+typedef struct wire_cst_tuple_struct_with_one_field_twin_sync_sse {
+  int32_t field0;
+} wire_cst_tuple_struct_with_one_field_twin_sync_sse;
+
+typedef struct wire_cst_tuple_struct_with_two_field_twin_rust_async_sse {
+  int32_t field0;
+  int32_t field1;
+} wire_cst_tuple_struct_with_two_field_twin_rust_async_sse;
+
+typedef struct wire_cst_tuple_struct_with_two_field_twin_sse {
+  int32_t field0;
+  int32_t field1;
+} wire_cst_tuple_struct_with_two_field_twin_sse;
+
+typedef struct wire_cst_tuple_struct_with_two_field_twin_sync_sse {
+  int32_t field0;
+  int32_t field1;
+} wire_cst_tuple_struct_with_two_field_twin_sync_sse;
+
+typedef struct wire_cst_user_id_twin_rust_async_sse {
+  uint32_t value;
+} wire_cst_user_id_twin_rust_async_sse;
+
+typedef struct wire_cst_user_id_twin_sse {
+  uint32_t value;
+} wire_cst_user_id_twin_sse;
+
+typedef struct wire_cst_user_id_twin_sync_sse {
+  uint32_t value;
+} wire_cst_user_id_twin_sync_sse;
+
+typedef struct wire_cst_blob_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_blob_twin_rust_async_sse;
+
+typedef struct wire_cst_blob_twin_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_blob_twin_sse;
+
+typedef struct wire_cst_blob_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_blob_twin_sync_sse;
+
+typedef struct wire_cst_list_test_id_twin_rust_async_sse {
+  struct wire_cst_test_id_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_test_id_twin_rust_async_sse;
+
+typedef struct wire_cst_list_test_id_twin_sse {
+  struct wire_cst_test_id_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_test_id_twin_sse;
+
+typedef struct wire_cst_list_test_id_twin_sync_sse {
+  struct wire_cst_test_id_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_test_id_twin_sync_sse;
+
+typedef struct wire_cst_list_weekdays_twin_rust_async_sse {
+  int32_t *ptr;
+  int32_t len;
+} wire_cst_list_weekdays_twin_rust_async_sse;
+
+typedef struct wire_cst_list_weekdays_twin_sse {
+  int32_t *ptr;
+  int32_t len;
+} wire_cst_list_weekdays_twin_sse;
+
+typedef struct wire_cst_list_weekdays_twin_sync_sse {
+  int32_t *ptr;
+  int32_t len;
+} wire_cst_list_weekdays_twin_sync_sse;
+
 void benchmark_raw_void_sync(void);
 
 struct benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(int32_t len);
@@ -1986,6 +3347,116 @@ void wire_use_boxed_blob_twin_rust_async(int64_t port_, struct wire_cst_blob_twi
 
 void wire_use_msgid_twin_rust_async(int64_t port_, struct wire_cst_message_id_twin_rust_async *id);
 
+void wire_boxed_blob_twin_rust_async_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_func_test_id_twin_rust_async_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_get_array_twin_rust_async_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_get_complex_array_twin_rust_async_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+void wire_last_number_twin_rust_async_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_nested_id_twin_rust_async_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_new_msgid_twin_rust_async_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_return_boxed_feed_id_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_return_boxed_raw_feed_id_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_use_boxed_blob_twin_rust_async_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_use_msgid_twin_rust_async_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_boxed_blob_twin_sse(int64_t port_,
+                              uint8_t *ptr_,
+                              int32_t rust_vec_len_,
+                              int32_t data_len_);
+
+void wire_func_test_id_twin_sse(int64_t port_,
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
+
+void wire_get_array_twin_sse(int64_t port_,
+                             uint8_t *ptr_,
+                             int32_t rust_vec_len_,
+                             int32_t data_len_);
+
+void wire_get_complex_array_twin_sse(int64_t port_,
+                                     uint8_t *ptr_,
+                                     int32_t rust_vec_len_,
+                                     int32_t data_len_);
+
+void wire_last_number_twin_sse(int64_t port_,
+                               uint8_t *ptr_,
+                               int32_t rust_vec_len_,
+                               int32_t data_len_);
+
+void wire_nested_id_twin_sse(int64_t port_,
+                             uint8_t *ptr_,
+                             int32_t rust_vec_len_,
+                             int32_t data_len_);
+
+void wire_new_msgid_twin_sse(int64_t port_,
+                             uint8_t *ptr_,
+                             int32_t rust_vec_len_,
+                             int32_t data_len_);
+
+void wire_return_boxed_feed_id_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_return_boxed_raw_feed_id_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_use_boxed_blob_twin_sse(int64_t port_,
+                                  uint8_t *ptr_,
+                                  int32_t rust_vec_len_,
+                                  int32_t data_len_);
+
+void wire_use_msgid_twin_sse(int64_t port_,
+                             uint8_t *ptr_,
+                             int32_t rust_vec_len_,
+                             int32_t data_len_);
+
 WireSyncReturnDco wire_boxed_blob_twin_sync(struct wire_cst_list_prim_u_8 *blob);
 
 WireSyncReturnDco wire_func_test_id_twin_sync(struct wire_cst_test_id_twin_sync *id);
@@ -2008,15 +3479,91 @@ WireSyncReturnDco wire_use_boxed_blob_twin_sync(struct wire_cst_blob_twin_sync *
 
 WireSyncReturnDco wire_use_msgid_twin_sync(struct wire_cst_message_id_twin_sync *id);
 
+WireSyncReturnSse wire_boxed_blob_twin_sync_sse(uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+WireSyncReturnSse wire_func_test_id_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_get_array_twin_sync_sse(uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+WireSyncReturnSse wire_get_complex_array_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_last_number_twin_sync_sse(uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_nested_id_twin_sync_sse(uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+WireSyncReturnSse wire_new_msgid_twin_sync_sse(uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+WireSyncReturnSse wire_return_boxed_feed_id_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_return_boxed_raw_feed_id_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_use_boxed_blob_twin_sync_sse(uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+WireSyncReturnSse wire_use_msgid_twin_sync_sse(uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_func_async_simple_add(int64_t port_, int32_t a, int32_t b);
+
+void wire_func_async_void(int64_t port_);
+
 void wire_handle_customized_struct_twin_rust_async(int64_t port_,
                                                    struct wire_cst_customized_twin_rust_async *val);
 
 void wire_next_user_id_twin_rust_async(int64_t port_,
                                        struct wire_cst_user_id_twin_rust_async *user_id);
 
+void wire_handle_customized_struct_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_next_user_id_twin_rust_async_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_handle_customized_struct_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_next_user_id_twin_sse(int64_t port_,
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
+
 WireSyncReturnDco wire_handle_customized_struct_twin_sync(struct wire_cst_customized_twin_sync *val);
 
 WireSyncReturnDco wire_next_user_id_twin_sync(struct wire_cst_user_id_twin_sync *user_id);
+
+WireSyncReturnSse wire_handle_customized_struct_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_next_user_id_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
 
 void wire_benchmark_input_bytes_twin_rust_async(int64_t port_,
                                                 struct wire_cst_list_prim_u_8 *bytes);
@@ -2025,11 +3572,53 @@ void wire_benchmark_output_bytes_twin_rust_async(int64_t port_, int32_t size);
 
 void wire_benchmark_void_twin_rust_async(int64_t port_);
 
+void wire_benchmark_input_bytes_twin_rust_async_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_benchmark_output_bytes_twin_rust_async_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_benchmark_void_twin_rust_async_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_benchmark_input_bytes_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_benchmark_output_bytes_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_benchmark_void_twin_sse(int64_t port_,
+                                  uint8_t *ptr_,
+                                  int32_t rust_vec_len_,
+                                  int32_t data_len_);
+
 WireSyncReturnDco wire_benchmark_input_bytes_twin_sync(struct wire_cst_list_prim_u_8 *bytes);
 
 WireSyncReturnDco wire_benchmark_output_bytes_twin_sync(int32_t size);
 
 WireSyncReturnDco wire_benchmark_void_twin_sync(void);
+
+WireSyncReturnSse wire_benchmark_input_bytes_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncReturnSse wire_benchmark_output_bytes_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_benchmark_void_twin_sync_sse(uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
 
 void wire_datetime_local_twin_rust_async(int64_t port_, int64_t d);
 
@@ -2089,6 +3678,56 @@ void wire_function_with_comments_triple_slash_multi_line_twin_rust_async(int64_t
 
 void wire_function_with_comments_triple_slash_single_line_twin_rust_async(int64_t port_);
 
+void wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_sse(int64_t port_,
+                                                                                 uint8_t *ptr_,
+                                                                                 int32_t rust_vec_len_,
+                                                                                 int32_t data_len_);
+
+void wire_StructWithCommentsTwinRustAsyncSse_static_method_twin_rust_async_sse(int64_t port_,
+                                                                               uint8_t *ptr_,
+                                                                               int32_t rust_vec_len_,
+                                                                               int32_t data_len_);
+
+void wire_function_with_comments_slash_star_star_twin_rust_async_sse(int64_t port_,
+                                                                     uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+void wire_function_with_comments_triple_slash_multi_line_twin_rust_async_sse(int64_t port_,
+                                                                             uint8_t *ptr_,
+                                                                             int32_t rust_vec_len_,
+                                                                             int32_t data_len_);
+
+void wire_function_with_comments_triple_slash_single_line_twin_rust_async_sse(int64_t port_,
+                                                                              uint8_t *ptr_,
+                                                                              int32_t rust_vec_len_,
+                                                                              int32_t data_len_);
+
+void wire_StructWithCommentsTwinSse_instance_method_twin_sse(int64_t port_,
+                                                             uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+void wire_StructWithCommentsTwinSse_static_method_twin_sse(int64_t port_,
+                                                           uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+void wire_function_with_comments_slash_star_star_twin_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+void wire_function_with_comments_triple_slash_multi_line_twin_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_function_with_comments_triple_slash_single_line_twin_sse(int64_t port_,
+                                                                   uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
 WireSyncReturnDco wire_StructWithCommentsTwinSync_instance_method_twin_sync(struct wire_cst_struct_with_comments_twin_sync *that);
 
 WireSyncReturnDco wire_StructWithCommentsTwinSync_static_method_twin_sync(void);
@@ -2099,9 +3738,65 @@ WireSyncReturnDco wire_function_with_comments_triple_slash_multi_line_twin_sync(
 
 WireSyncReturnDco wire_function_with_comments_triple_slash_single_line_twin_sync(void);
 
+WireSyncReturnSse wire_StructWithCommentsTwinSyncSse_instance_method_twin_sync_sse(uint8_t *ptr_,
+                                                                                   int32_t rust_vec_len_,
+                                                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_StructWithCommentsTwinSyncSse_static_method_twin_sync_sse(uint8_t *ptr_,
+                                                                                 int32_t rust_vec_len_,
+                                                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_function_with_comments_slash_star_star_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_function_with_comments_triple_slash_multi_line_twin_sync_sse(uint8_t *ptr_,
+                                                                                    int32_t rust_vec_len_,
+                                                                                    int32_t data_len_);
+
+WireSyncReturnSse wire_function_with_comments_triple_slash_single_line_twin_sync_sse(uint8_t *ptr_,
+                                                                                     int32_t rust_vec_len_,
+                                                                                     int32_t data_len_);
+
 void wire_return_dart_dynamic_twin_rust_async(int64_t port_);
 
+void wire_return_dart_dynamic_twin_rust_async_sse(int64_t port_,
+                                                  uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+void wire_return_dart_dynamic_twin_sse(int64_t port_,
+                                       uint8_t *ptr_,
+                                       int32_t rust_vec_len_,
+                                       int32_t data_len_);
+
 WireSyncReturnDco wire_return_dart_dynamic_twin_sync(void);
+
+WireSyncReturnSse wire_return_dart_dynamic_twin_sync_sse(uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_rust_call_dart_simple(int64_t port_, const void *callback);
+
+WireSyncReturnSse wire_sync_accept_dart_opaque_twin_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_sync_loopback_twin_sse(uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+WireSyncReturnSse wire_sync_option_dart_opaque_twin_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_sync_option_loopback_twin_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_unwrap_dart_opaque_twin_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
 
 void wire_async_accept_dart_opaque_twin_rust_async(int64_t port_, const void *opaque);
 
@@ -2140,6 +3835,166 @@ void wire_panic_unwrap_dart_opaque_twin_rust_async(int64_t port_, const void *op
 
 void wire_set_static_dart_opaque_twin_rust_async(int64_t port_, int32_t id, const void *opaque);
 
+void wire_async_accept_dart_opaque_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_clone_dart_opaque_twin_rust_async_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+void wire_create_enum_dart_opaque_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_create_nested_dart_opaque_twin_rust_async_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_drop_static_dart_opaque_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_get_enum_dart_opaque_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_get_nested_dart_opaque_twin_rust_async_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_loop_back_array_get_twin_rust_async_sse(int64_t port_,
+                                                  uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+void wire_loop_back_array_twin_rust_async_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_loop_back_option_get_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_loop_back_option_twin_rust_async_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_loop_back_twin_rust_async_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_loop_back_vec_get_twin_rust_async_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+void wire_loop_back_vec_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_panic_unwrap_dart_opaque_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_set_static_dart_opaque_twin_rust_async_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_async_accept_dart_opaque_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_clone_dart_opaque_twin_sse(int64_t port_,
+                                     uint8_t *ptr_,
+                                     int32_t rust_vec_len_,
+                                     int32_t data_len_);
+
+void wire_create_enum_dart_opaque_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_create_nested_dart_opaque_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_drop_static_dart_opaque_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_get_enum_dart_opaque_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_get_nested_dart_opaque_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_loop_back_array_get_twin_sse(int64_t port_,
+                                       uint8_t *ptr_,
+                                       int32_t rust_vec_len_,
+                                       int32_t data_len_);
+
+void wire_loop_back_array_twin_sse(int64_t port_,
+                                   uint8_t *ptr_,
+                                   int32_t rust_vec_len_,
+                                   int32_t data_len_);
+
+void wire_loop_back_option_get_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_loop_back_option_twin_sse(int64_t port_,
+                                    uint8_t *ptr_,
+                                    int32_t rust_vec_len_,
+                                    int32_t data_len_);
+
+void wire_loop_back_twin_sse(int64_t port_,
+                             uint8_t *ptr_,
+                             int32_t rust_vec_len_,
+                             int32_t data_len_);
+
+void wire_loop_back_vec_get_twin_sse(int64_t port_,
+                                     uint8_t *ptr_,
+                                     int32_t rust_vec_len_,
+                                     int32_t data_len_);
+
+void wire_loop_back_vec_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
+void wire_panic_unwrap_dart_opaque_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_set_static_dart_opaque_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
 WireSyncReturnDco wire_async_accept_dart_opaque_twin_sync(const void *opaque);
 
 WireSyncReturnDco wire_clone_dart_opaque_twin_sync(const void *opaque);
@@ -2173,6 +4028,70 @@ WireSyncReturnDco wire_panic_unwrap_dart_opaque_twin_sync(const void *opaque);
 
 WireSyncReturnDco wire_set_static_dart_opaque_twin_sync(int32_t id, const void *opaque);
 
+WireSyncReturnSse wire_async_accept_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_clone_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_create_enum_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_create_nested_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_drop_static_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_get_enum_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_get_nested_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_loop_back_array_get_twin_sync_sse(uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_loop_back_array_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_loop_back_option_get_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_loop_back_option_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_loop_back_twin_sync_sse(uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+WireSyncReturnSse wire_loop_back_vec_get_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_loop_back_vec_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_panic_unwrap_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_set_static_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
 void wire_func_enum_simple_twin_rust_async(int64_t port_, int32_t arg);
 
 void wire_func_enum_with_item_mixed_twin_rust_async(int64_t port_,
@@ -2196,6 +4115,96 @@ void wire_multiply_by_ten_twin_rust_async(int64_t port_,
 
 void wire_print_note_twin_rust_async(int64_t port_, struct wire_cst_note_twin_rust_async *note);
 
+void wire_func_enum_simple_twin_rust_async_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_func_enum_with_item_mixed_twin_rust_async_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_func_enum_with_item_struct_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_func_enum_with_item_tuple_twin_rust_async_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_handle_enum_parameter_twin_rust_async_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_handle_enum_struct_twin_rust_async_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_handle_return_enum_twin_rust_async_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_multiply_by_ten_twin_rust_async_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_print_note_twin_rust_async_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_func_enum_simple_twin_sse(int64_t port_,
+                                    uint8_t *ptr_,
+                                    int32_t rust_vec_len_,
+                                    int32_t data_len_);
+
+void wire_func_enum_with_item_mixed_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_func_enum_with_item_struct_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_func_enum_with_item_tuple_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_handle_enum_parameter_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_handle_enum_struct_twin_sse(int64_t port_,
+                                      uint8_t *ptr_,
+                                      int32_t rust_vec_len_,
+                                      int32_t data_len_);
+
+void wire_handle_return_enum_twin_sse(int64_t port_,
+                                      uint8_t *ptr_,
+                                      int32_t rust_vec_len_,
+                                      int32_t data_len_);
+
+void wire_multiply_by_ten_twin_sse(int64_t port_,
+                                   uint8_t *ptr_,
+                                   int32_t rust_vec_len_,
+                                   int32_t data_len_);
+
+void wire_print_note_twin_sse(int64_t port_,
+                              uint8_t *ptr_,
+                              int32_t rust_vec_len_,
+                              int32_t data_len_);
+
 WireSyncReturnDco wire_func_enum_simple_twin_sync(int32_t arg);
 
 WireSyncReturnDco wire_func_enum_with_item_mixed_twin_sync(struct wire_cst_enum_with_item_mixed_twin_sync *arg);
@@ -2214,6 +4223,42 @@ WireSyncReturnDco wire_multiply_by_ten_twin_sync(struct wire_cst_measure_twin_sy
 
 WireSyncReturnDco wire_print_note_twin_sync(struct wire_cst_note_twin_sync *note);
 
+WireSyncReturnSse wire_func_enum_simple_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_func_enum_with_item_mixed_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_func_enum_with_item_struct_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_func_enum_with_item_tuple_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_handle_enum_parameter_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncReturnSse wire_handle_enum_struct_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_handle_return_enum_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_multiply_by_ten_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_print_note_twin_sync_sse(uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
 void wire_EventTwinRustAsync_as_string_twin_rust_async(int64_t port_,
                                                        struct wire_cst_event_twin_rust_async *that);
 
@@ -2225,14 +4270,45 @@ void wire_create_event_twin_rust_async(int64_t port_,
 
 void wire_register_event_listener_twin_rust_async(int64_t port_);
 
-WireSyncReturnDco wire_EventTwinSync_as_string_twin_sync(struct wire_cst_event_twin_sync *that);
+void wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
 
-WireSyncReturnDco wire_close_event_listener_twin_sync(void);
+void wire_close_event_listener_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
 
-WireSyncReturnDco wire_create_event_twin_sync(struct wire_cst_list_prim_u_8 *address,
-                                              struct wire_cst_list_prim_u_8 *payload);
+void wire_create_event_twin_rust_async_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
 
-void wire_register_event_listener_twin_sync(int64_t port_);
+void wire_register_event_listener_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_EventTwinSse_as_string_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_close_event_listener_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_create_event_twin_sse(int64_t port_,
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
+
+void wire_register_event_listener_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
 
 void wire_CustomStructTwinRustAsync_new_twin_rust_async(int64_t port_,
                                                         struct wire_cst_list_prim_u_8 *message);
@@ -2299,6 +4375,296 @@ void wire_stream_sink_throw_anyhow_twin_rust_async(int64_t port_);
 
 void wire_throw_anyhow_twin_rust_async(int64_t port_);
 
+void wire_CustomStructTwinRustAsyncSse_new_twin_rust_async_sse(int64_t port_,
+                                                               uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+void wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_error_twin_rust_async_sse(int64_t port_,
+                                                                                                uint8_t *ptr_,
+                                                                                                int32_t rust_vec_len_,
+                                                                                                int32_t data_len_);
+
+void wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_ok_twin_rust_async_sse(int64_t port_,
+                                                                                             uint8_t *ptr_,
+                                                                                             int32_t rust_vec_len_,
+                                                                                             int32_t data_len_);
+
+void wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_error_twin_rust_async_sse(int64_t port_,
+                                                                                             uint8_t *ptr_,
+                                                                                             int32_t rust_vec_len_,
+                                                                                             int32_t data_len_);
+
+void wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_ok_twin_rust_async_sse(int64_t port_,
+                                                                                          uint8_t *ptr_,
+                                                                                          int32_t rust_vec_len_,
+                                                                                          int32_t data_len_);
+
+void wire_SomeStructTwinRustAsyncSse_new_twin_rust_async_sse(int64_t port_,
+                                                             uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+void wire_SomeStructTwinRustAsyncSse_non_static_return_err_custom_error_twin_rust_async_sse(int64_t port_,
+                                                                                            uint8_t *ptr_,
+                                                                                            int32_t rust_vec_len_,
+                                                                                            int32_t data_len_);
+
+void wire_SomeStructTwinRustAsyncSse_non_static_return_ok_custom_error_twin_rust_async_sse(int64_t port_,
+                                                                                           uint8_t *ptr_,
+                                                                                           int32_t rust_vec_len_,
+                                                                                           int32_t data_len_);
+
+void wire_SomeStructTwinRustAsyncSse_static_return_err_custom_error_twin_rust_async_sse(int64_t port_,
+                                                                                        uint8_t *ptr_,
+                                                                                        int32_t rust_vec_len_,
+                                                                                        int32_t data_len_);
+
+void wire_SomeStructTwinRustAsyncSse_static_return_ok_custom_error_twin_rust_async_sse(int64_t port_,
+                                                                                       uint8_t *ptr_,
+                                                                                       int32_t rust_vec_len_,
+                                                                                       int32_t data_len_);
+
+void wire_custom_enum_error_panic_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_custom_enum_error_return_error_twin_rust_async_sse(int64_t port_,
+                                                             uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+void wire_custom_enum_error_return_ok_twin_rust_async_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+void wire_custom_nested_error_return_error_twin_rust_async_sse(int64_t port_,
+                                                               uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+void wire_custom_struct_error_return_error_twin_rust_async_sse(int64_t port_,
+                                                               uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+void wire_func_return_error_twin_rust_async_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+void wire_func_type_fallible_panic_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_func_type_infallible_panic_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_panic_with_custom_result_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_return_custom_nested_error_1_twin_rust_async_sse(int64_t port_,
+                                                           uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+void wire_return_custom_nested_error_1_variant1_twin_rust_async_sse(int64_t port_,
+                                                                    uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+void wire_return_custom_nested_error_2_twin_rust_async_sse(int64_t port_,
+                                                           uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+void wire_return_custom_struct_error_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_return_custom_struct_ok_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_return_err_custom_error_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_return_error_variant_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_return_ok_custom_error_twin_rust_async_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_stream_sink_throw_anyhow_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_throw_anyhow_twin_rust_async_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_CustomStructTwinSse_new_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_CustomStructTwinSse_nonstatic_return_custom_struct_error_twin_sse(int64_t port_,
+                                                                            uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
+
+void wire_CustomStructTwinSse_nonstatic_return_custom_struct_ok_twin_sse(int64_t port_,
+                                                                         uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+void wire_CustomStructTwinSse_static_return_custom_struct_error_twin_sse(int64_t port_,
+                                                                         uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+void wire_CustomStructTwinSse_static_return_custom_struct_ok_twin_sse(int64_t port_,
+                                                                      uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+void wire_SomeStructTwinSse_new_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_SomeStructTwinSse_non_static_return_err_custom_error_twin_sse(int64_t port_,
+                                                                        uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
+
+void wire_SomeStructTwinSse_non_static_return_ok_custom_error_twin_sse(int64_t port_,
+                                                                       uint8_t *ptr_,
+                                                                       int32_t rust_vec_len_,
+                                                                       int32_t data_len_);
+
+void wire_SomeStructTwinSse_static_return_err_custom_error_twin_sse(int64_t port_,
+                                                                    uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+void wire_SomeStructTwinSse_static_return_ok_custom_error_twin_sse(int64_t port_,
+                                                                   uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
+void wire_custom_enum_error_panic_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_custom_enum_error_return_error_twin_sse(int64_t port_,
+                                                  uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+void wire_custom_enum_error_return_ok_twin_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_custom_nested_error_return_error_twin_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_custom_struct_error_return_error_twin_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_func_return_error_twin_sse(int64_t port_,
+                                     uint8_t *ptr_,
+                                     int32_t rust_vec_len_,
+                                     int32_t data_len_);
+
+void wire_func_type_fallible_panic_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_func_type_infallible_panic_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_panic_with_custom_result_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_return_custom_nested_error_1_twin_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+void wire_return_custom_nested_error_1_variant1_twin_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_return_custom_nested_error_2_twin_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+void wire_return_custom_struct_error_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_return_custom_struct_ok_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_return_err_custom_error_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_return_error_variant_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_return_ok_custom_error_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_stream_sink_throw_anyhow_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_throw_anyhow_twin_sse(int64_t port_,
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
+
 WireSyncReturnDco wire_CustomStructTwinSync_new_twin_sync(struct wire_cst_list_prim_u_8 *message);
 
 WireSyncReturnDco wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(struct wire_cst_custom_struct_twin_sync *that);
@@ -2357,6 +4723,123 @@ void wire_stream_sink_throw_anyhow_twin_sync(int64_t port_);
 
 WireSyncReturnDco wire_throw_anyhow_twin_sync(void);
 
+WireSyncReturnSse wire_CustomStructTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                                  int32_t rust_vec_len_,
+                                                                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_ok_twin_sync_sse(uint8_t *ptr_,
+                                                                                               int32_t rust_vec_len_,
+                                                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_CustomStructTwinSyncSse_static_return_custom_struct_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                               int32_t rust_vec_len_,
+                                                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_CustomStructTwinSyncSse_static_return_custom_struct_ok_twin_sync_sse(uint8_t *ptr_,
+                                                                                            int32_t rust_vec_len_,
+                                                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_SomeStructTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_SomeStructTwinSyncSse_non_static_return_err_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                              int32_t rust_vec_len_,
+                                                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_SomeStructTwinSyncSse_non_static_return_ok_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                             int32_t rust_vec_len_,
+                                                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_SomeStructTwinSyncSse_static_return_err_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                          int32_t rust_vec_len_,
+                                                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_SomeStructTwinSyncSse_static_return_ok_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                         int32_t rust_vec_len_,
+                                                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_custom_enum_error_panic_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_custom_enum_error_return_error_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+WireSyncReturnSse wire_custom_enum_error_return_ok_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_custom_nested_error_return_error_twin_sync_sse(uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_custom_struct_error_return_error_twin_sync_sse(uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_func_return_error_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_func_type_fallible_panic_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_func_type_infallible_panic_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_panic_with_custom_result_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_return_custom_nested_error_1_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_return_custom_nested_error_1_variant1_twin_sync_sse(uint8_t *ptr_,
+                                                                           int32_t rust_vec_len_,
+                                                                           int32_t data_len_);
+
+WireSyncReturnSse wire_return_custom_nested_error_2_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_return_custom_struct_error_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_return_custom_struct_ok_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_return_err_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_return_error_variant_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_return_ok_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+void wire_stream_sink_throw_anyhow_twin_sync_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_throw_anyhow_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
 void wire_call_new_module_system_twin_rust_async(int64_t port_);
 
 void wire_call_old_module_system_twin_rust_async(int64_t port_);
@@ -2365,6 +4848,46 @@ void wire_use_imported_enum_twin_rust_async(int64_t port_, int32_t my_enum);
 
 void wire_use_imported_struct_twin_rust_async(int64_t port_, struct wire_cst_my_struct *my_struct);
 
+void wire_call_new_module_system_twin_rust_async_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_call_old_module_system_twin_rust_async_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_use_imported_enum_twin_rust_async_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+void wire_use_imported_struct_twin_rust_async_sse(int64_t port_,
+                                                  uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+void wire_call_new_module_system_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_call_old_module_system_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_use_imported_enum_twin_sse(int64_t port_,
+                                     uint8_t *ptr_,
+                                     int32_t rust_vec_len_,
+                                     int32_t data_len_);
+
+void wire_use_imported_struct_twin_sse(int64_t port_,
+                                       uint8_t *ptr_,
+                                       int32_t rust_vec_len_,
+                                       int32_t data_len_);
+
 WireSyncReturnDco wire_call_new_module_system_twin_sync(void);
 
 WireSyncReturnDco wire_call_old_module_system_twin_sync(void);
@@ -2372,6 +4895,32 @@ WireSyncReturnDco wire_call_old_module_system_twin_sync(void);
 WireSyncReturnDco wire_use_imported_enum_twin_sync(int32_t my_enum);
 
 WireSyncReturnDco wire_use_imported_struct_twin_sync(struct wire_cst_my_struct *my_struct);
+
+WireSyncReturnSse wire_call_new_module_system_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_call_old_module_system_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_use_imported_enum_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_use_imported_struct_twin_sync_sse(uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_another_macro_struct_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_func_macro_struct_twin_sse(int64_t port_,
+                                     uint8_t *ptr_,
+                                     int32_t rust_vec_len_,
+                                     int32_t data_len_);
 
 void wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(int64_t port_,
                                                                           struct wire_cst_list_prim_u_8 *a,
@@ -2407,6 +4956,106 @@ void wire_get_sum_array_twin_rust_async(int64_t port_, uint32_t a, uint32_t b, u
 
 void wire_get_sum_struct_twin_rust_async(int64_t port_);
 
+void wire_ConcatenateWithTwinRustAsyncSse_concatenate_static_twin_rust_async_sse(int64_t port_,
+                                                                                 uint8_t *ptr_,
+                                                                                 int32_t rust_vec_len_,
+                                                                                 int32_t data_len_);
+
+void wire_ConcatenateWithTwinRustAsyncSse_concatenate_twin_rust_async_sse(int64_t port_,
+                                                                          uint8_t *ptr_,
+                                                                          int32_t rust_vec_len_,
+                                                                          int32_t data_len_);
+
+void wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_single_arg_twin_rust_async_sse(int64_t port_,
+                                                                                                        uint8_t *ptr_,
+                                                                                                        int32_t rust_vec_len_,
+                                                                                                        int32_t data_len_);
+
+void wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_twin_rust_async_sse(int64_t port_,
+                                                                                             uint8_t *ptr_,
+                                                                                             int32_t rust_vec_len_,
+                                                                                             int32_t data_len_);
+
+void wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_at_1_twin_rust_async_sse(int64_t port_,
+                                                                                           uint8_t *ptr_,
+                                                                                           int32_t rust_vec_len_,
+                                                                                           int32_t data_len_);
+
+void wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_twin_rust_async_sse(int64_t port_,
+                                                                                      uint8_t *ptr_,
+                                                                                      int32_t rust_vec_len_,
+                                                                                      int32_t data_len_);
+
+void wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+void wire_get_sum_array_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_get_sum_struct_twin_rust_async_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_ConcatenateWithTwinSse_concatenate_static_twin_sse(int64_t port_,
+                                                             uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+void wire_ConcatenateWithTwinSse_concatenate_twin_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_single_arg_twin_sse(int64_t port_,
+                                                                                    uint8_t *ptr_,
+                                                                                    int32_t rust_vec_len_,
+                                                                                    int32_t data_len_);
+
+void wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_twin_sse(int64_t port_,
+                                                                         uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+void wire_ConcatenateWithTwinSse_handle_some_stream_sink_at_1_twin_sse(int64_t port_,
+                                                                       uint8_t *ptr_,
+                                                                       int32_t rust_vec_len_,
+                                                                       int32_t data_len_);
+
+void wire_ConcatenateWithTwinSse_handle_some_stream_sink_twin_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_ConcatenateWithTwinSse_new_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_SumWithTwinSse_sum_twin_sse(int64_t port_,
+                                      uint8_t *ptr_,
+                                      int32_t rust_vec_len_,
+                                      int32_t data_len_);
+
+void wire_get_sum_array_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
+void wire_get_sum_struct_twin_sse(int64_t port_,
+                                  uint8_t *ptr_,
+                                  int32_t rust_vec_len_,
+                                  int32_t data_len_);
+
 WireSyncReturnDco wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(struct wire_cst_list_prim_u_8 *a,
                                                                             struct wire_cst_list_prim_u_8 *b);
 
@@ -2436,6 +5085,50 @@ WireSyncReturnDco wire_SumWithTwinSync_sum_twin_sync(struct wire_cst_sum_with_tw
 WireSyncReturnDco wire_get_sum_array_twin_sync(uint32_t a, uint32_t b, uint32_t c);
 
 WireSyncReturnDco wire_get_sum_struct_twin_sync(void);
+
+WireSyncReturnSse wire_ConcatenateWithTwinSyncSse_concatenate_static_twin_sync_sse(uint8_t *ptr_,
+                                                                                   int32_t rust_vec_len_,
+                                                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
+
+void wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_single_arg_twin_sync_sse(int64_t port_,
+                                                                                             uint8_t *ptr_,
+                                                                                             int32_t rust_vec_len_,
+                                                                                             int32_t data_len_);
+
+void wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_twin_sync_sse(int64_t port_,
+                                                                                  uint8_t *ptr_,
+                                                                                  int32_t rust_vec_len_,
+                                                                                  int32_t data_len_);
+
+void wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_at_1_twin_sync_sse(int64_t port_,
+                                                                                uint8_t *ptr_,
+                                                                                int32_t rust_vec_len_,
+                                                                                int32_t data_len_);
+
+void wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_twin_sync_sse(int64_t port_,
+                                                                           uint8_t *ptr_,
+                                                                           int32_t rust_vec_len_,
+                                                                           int32_t data_len_);
+
+WireSyncReturnSse wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+WireSyncReturnSse wire_SumWithTwinSyncSse_sum_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_get_sum_array_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_get_sum_struct_twin_sync_sse(uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
 
 void wire_app_settings_stream_twin_rust_async(int64_t port_);
 
@@ -2476,6 +5169,196 @@ void wire_test_raw_string_enum_mirrored_twin_rust_async(int64_t port_, bool nest
 
 void wire_test_raw_string_mirrored_twin_rust_async(int64_t port_);
 
+void wire_app_settings_stream_twin_rust_async_sse(int64_t port_,
+                                                  uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+void wire_app_settings_vec_stream_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_first_number_twin_rust_async_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_first_sequence_twin_rust_async_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_get_app_settings_twin_rust_async_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_get_fallible_app_settings_twin_rust_async_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_get_message_twin_rust_async_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_is_app_embedded_twin_rust_async_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_mirror_struct_stream_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_mirror_tuple_stream_twin_rust_async_sse(int64_t port_,
+                                                  uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+void wire_repeat_number_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_repeat_sequence_twin_rust_async_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_test_contains_mirrored_sub_struct_twin_rust_async_sse(int64_t port_,
+                                                                uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+void wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse(int64_t port_,
+                                                                   uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
+void wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse(int64_t port_,
+                                                                 uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+void wire_test_list_of_raw_nested_string_mirrored_twin_rust_async_sse(int64_t port_,
+                                                                      uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+void wire_test_nested_raw_string_mirrored_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_test_raw_string_enum_mirrored_twin_rust_async_sse(int64_t port_,
+                                                            uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+void wire_test_raw_string_mirrored_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_app_settings_stream_twin_sse(int64_t port_,
+                                       uint8_t *ptr_,
+                                       int32_t rust_vec_len_,
+                                       int32_t data_len_);
+
+void wire_app_settings_vec_stream_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_first_number_twin_sse(int64_t port_,
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
+
+void wire_first_sequence_twin_sse(int64_t port_,
+                                  uint8_t *ptr_,
+                                  int32_t rust_vec_len_,
+                                  int32_t data_len_);
+
+void wire_get_app_settings_twin_sse(int64_t port_,
+                                    uint8_t *ptr_,
+                                    int32_t rust_vec_len_,
+                                    int32_t data_len_);
+
+void wire_get_fallible_app_settings_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_get_message_twin_sse(int64_t port_,
+                               uint8_t *ptr_,
+                               int32_t rust_vec_len_,
+                               int32_t data_len_);
+
+void wire_is_app_embedded_twin_sse(int64_t port_,
+                                   uint8_t *ptr_,
+                                   int32_t rust_vec_len_,
+                                   int32_t data_len_);
+
+void wire_mirror_struct_stream_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_mirror_tuple_stream_twin_sse(int64_t port_,
+                                       uint8_t *ptr_,
+                                       int32_t rust_vec_len_,
+                                       int32_t data_len_);
+
+void wire_repeat_number_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
+void wire_repeat_sequence_twin_sse(int64_t port_,
+                                   uint8_t *ptr_,
+                                   int32_t rust_vec_len_,
+                                   int32_t data_len_);
+
+void wire_test_contains_mirrored_sub_struct_twin_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_test_fallible_of_raw_string_mirrored_twin_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_test_list_of_nested_enums_mirrored_twin_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_test_list_of_raw_nested_string_mirrored_twin_sse(int64_t port_,
+                                                           uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+void wire_test_nested_raw_string_mirrored_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_test_raw_string_enum_mirrored_twin_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_test_raw_string_mirrored_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
 void wire_app_settings_stream_twin_sync(int64_t port_);
 
 void wire_app_settings_vec_stream_twin_sync(int64_t port_);
@@ -2514,6 +5397,86 @@ WireSyncReturnDco wire_test_raw_string_enum_mirrored_twin_sync(bool nested);
 
 WireSyncReturnDco wire_test_raw_string_mirrored_twin_sync(void);
 
+void wire_app_settings_stream_twin_sync_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_app_settings_vec_stream_twin_sync_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+WireSyncReturnSse wire_first_number_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_first_sequence_twin_sync_sse(uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+WireSyncReturnSse wire_get_app_settings_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_get_fallible_app_settings_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_get_message_twin_sync_sse(uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_is_app_embedded_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_mirror_struct_stream_twin_sync_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_mirror_tuple_stream_twin_sync_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+WireSyncReturnSse wire_repeat_number_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_repeat_sequence_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_test_contains_mirrored_sub_struct_twin_sync_sse(uint8_t *ptr_,
+                                                                       int32_t rust_vec_len_,
+                                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_test_fallible_of_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                          int32_t rust_vec_len_,
+                                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_test_list_of_nested_enums_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_test_list_of_raw_nested_string_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                             int32_t rust_vec_len_,
+                                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_test_nested_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_test_raw_string_enum_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_test_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
 void wire_handle_big_buffers_twin_rust_async(int64_t port_);
 
 void wire_handle_complex_struct_twin_rust_async(int64_t port_,
@@ -2538,6 +5501,96 @@ void wire_test_abc_enum_twin_rust_async(int64_t port_, struct wire_cst_abc_twin_
 void wire_test_struct_with_enum_twin_rust_async(int64_t port_,
                                                 struct wire_cst_struct_with_enum_twin_rust_async *se);
 
+void wire_handle_big_buffers_twin_rust_async_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_handle_complex_struct_twin_rust_async_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_handle_nested_struct_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_handle_string_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_handle_struct_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_handle_vec_u8_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_list_of_primitive_enums_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_test_abc_enum_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_test_struct_with_enum_twin_rust_async_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_handle_big_buffers_twin_sse(int64_t port_,
+                                      uint8_t *ptr_,
+                                      int32_t rust_vec_len_,
+                                      int32_t data_len_);
+
+void wire_handle_complex_struct_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_handle_nested_struct_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_handle_string_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
+void wire_handle_struct_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
+void wire_handle_vec_u8_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
+void wire_list_of_primitive_enums_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_test_abc_enum_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
+void wire_test_struct_with_enum_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
 WireSyncReturnDco wire_handle_big_buffers_twin_sync(void);
 
 WireSyncReturnDco wire_handle_complex_struct_twin_sync(struct wire_cst_my_tree_node_twin_sync *s);
@@ -2557,6 +5610,42 @@ WireSyncReturnDco wire_test_abc_enum_twin_sync(struct wire_cst_abc_twin_sync *ab
 
 WireSyncReturnDco wire_test_struct_with_enum_twin_sync(struct wire_cst_struct_with_enum_twin_sync *se);
 
+WireSyncReturnSse wire_handle_big_buffers_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_handle_complex_struct_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncReturnSse wire_handle_nested_struct_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_handle_string_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_handle_struct_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_handle_vec_u8_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_list_of_primitive_enums_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_test_abc_enum_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_test_struct_with_enum_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
 void wire_empty_struct_twin_rust_async(int64_t port_, struct wire_cst_empty_twin_rust_async *empty);
 
 void wire_func_return_unit_twin_rust_async(int64_t port_);
@@ -2566,6 +5655,56 @@ void wire_func_string_twin_rust_async(int64_t port_, struct wire_cst_list_prim_u
 void wire_handle_list_of_struct_twin_rust_async(int64_t port_, struct wire_cst_list_my_size *l);
 
 void wire_handle_string_list_twin_rust_async(int64_t port_, struct wire_cst_list_String *names);
+
+void wire_empty_struct_twin_rust_async_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_func_return_unit_twin_rust_async_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_func_string_twin_rust_async_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_handle_list_of_struct_twin_rust_async_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_handle_string_list_twin_rust_async_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_empty_struct_twin_sse(int64_t port_,
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
+
+void wire_func_return_unit_twin_sse(int64_t port_,
+                                    uint8_t *ptr_,
+                                    int32_t rust_vec_len_,
+                                    int32_t data_len_);
+
+void wire_func_string_twin_sse(int64_t port_,
+                               uint8_t *ptr_,
+                               int32_t rust_vec_len_,
+                               int32_t data_len_);
+
+void wire_handle_list_of_struct_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_handle_string_list_twin_sse(int64_t port_,
+                                      uint8_t *ptr_,
+                                      int32_t rust_vec_len_,
+                                      int32_t data_len_);
 
 WireSyncReturnDco wire_empty_struct_twin_sync(struct wire_cst_empty_twin_sync *empty);
 
@@ -2577,10 +5716,44 @@ WireSyncReturnDco wire_handle_list_of_struct_twin_sync(struct wire_cst_list_my_s
 
 WireSyncReturnDco wire_handle_string_list_twin_sync(struct wire_cst_list_String *names);
 
+WireSyncReturnSse wire_empty_struct_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_func_return_unit_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_func_string_twin_sync_sse(uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_handle_list_of_struct_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncReturnSse wire_handle_string_list_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
 void wire_handle_newtype_twin_rust_async(int64_t port_,
                                          struct wire_cst_new_type_int_twin_rust_async *arg);
 
+void wire_handle_newtype_twin_rust_async_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_handle_newtype_twin_sse(int64_t port_,
+                                  uint8_t *ptr_,
+                                  int32_t rust_vec_len_,
+                                  int32_t data_len_);
+
 WireSyncReturnDco wire_handle_newtype_twin_sync(struct wire_cst_new_type_int_twin_sync *arg);
+
+WireSyncReturnSse wire_handle_newtype_twin_sync_sse(uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
 
 void wire_example_optional_primitive_type_bool_twin_normal(int64_t port_, bool *arg);
 
@@ -2610,10 +5783,24 @@ void wire_primitive_optional_types_twin_rust_async(int64_t port_,
                                                    double *my_f64,
                                                    bool *my_bool);
 
+void wire_primitive_optional_types_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_primitive_optional_types_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
 WireSyncReturnDco wire_primitive_optional_types_twin_sync(int32_t *my_i32,
                                                           int64_t *my_i64,
                                                           double *my_f64,
                                                           bool *my_bool);
+
+WireSyncReturnSse wire_primitive_optional_types_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
 
 void wire_example_optional_primitive_type_bool_twin_rust_async(int64_t port_, bool *arg);
 
@@ -2637,6 +5824,116 @@ void wire_example_optional_primitive_type_u64_twin_rust_async(int64_t port_, uin
 
 void wire_example_optional_primitive_type_u8_twin_rust_async(int64_t port_, uint8_t *arg);
 
+void wire_example_optional_primitive_type_bool_twin_rust_async_sse(int64_t port_,
+                                                                   uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
+void wire_example_optional_primitive_type_f32_twin_rust_async_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_example_optional_primitive_type_f64_twin_rust_async_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_example_optional_primitive_type_i16_twin_rust_async_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_example_optional_primitive_type_i32_twin_rust_async_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_example_optional_primitive_type_i64_twin_rust_async_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_example_optional_primitive_type_i8_twin_rust_async_sse(int64_t port_,
+                                                                 uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+void wire_example_optional_primitive_type_u16_twin_rust_async_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_example_optional_primitive_type_u32_twin_rust_async_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_example_optional_primitive_type_u64_twin_rust_async_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_example_optional_primitive_type_u8_twin_rust_async_sse(int64_t port_,
+                                                                 uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+void wire_example_optional_primitive_type_bool_twin_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_example_optional_primitive_type_f32_twin_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_example_optional_primitive_type_f64_twin_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_example_optional_primitive_type_i16_twin_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_example_optional_primitive_type_i32_twin_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_example_optional_primitive_type_i64_twin_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_example_optional_primitive_type_i8_twin_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_example_optional_primitive_type_u16_twin_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_example_optional_primitive_type_u32_twin_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_example_optional_primitive_type_u64_twin_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_example_optional_primitive_type_u8_twin_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
 WireSyncReturnDco wire_example_optional_primitive_type_bool_twin_sync(bool *arg);
 
 WireSyncReturnDco wire_example_optional_primitive_type_f32_twin_sync(float *arg);
@@ -2658,6 +5955,50 @@ WireSyncReturnDco wire_example_optional_primitive_type_u32_twin_sync(uint32_t *a
 WireSyncReturnDco wire_example_optional_primitive_type_u64_twin_sync(uint64_t *arg);
 
 WireSyncReturnDco wire_example_optional_primitive_type_u8_twin_sync(uint8_t *arg);
+
+WireSyncReturnSse wire_example_optional_primitive_type_bool_twin_sync_sse(uint8_t *ptr_,
+                                                                          int32_t rust_vec_len_,
+                                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_f32_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_f64_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_i16_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_i32_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_i64_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_i8_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_u16_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_u32_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_u64_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncReturnSse wire_example_optional_primitive_type_u8_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
 void wire_handle_increment_boxed_optional_twin_rust_async(int64_t port_, double *opt);
 
@@ -2681,6 +6022,66 @@ void wire_handle_optional_struct_twin_rust_async(int64_t port_,
 void wire_handle_vec_of_opts_twin_rust_async(int64_t port_,
                                              struct wire_cst_opt_vecs_twin_rust_async *opt);
 
+void wire_handle_increment_boxed_optional_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_handle_option_box_arguments_twin_rust_async_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+void wire_handle_optional_increment_twin_rust_async_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_handle_optional_return_twin_rust_async_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_handle_optional_struct_twin_rust_async_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_handle_vec_of_opts_twin_rust_async_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_handle_increment_boxed_optional_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_handle_option_box_arguments_twin_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_handle_optional_increment_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_handle_optional_return_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_handle_optional_struct_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
+
+void wire_handle_vec_of_opts_twin_sse(int64_t port_,
+                                      uint8_t *ptr_,
+                                      int32_t rust_vec_len_,
+                                      int32_t data_len_);
+
 WireSyncReturnDco wire_handle_increment_boxed_optional_twin_sync(double *opt);
 
 WireSyncReturnDco wire_handle_option_box_arguments_twin_sync(int8_t *i8box,
@@ -2698,6 +6099,30 @@ WireSyncReturnDco wire_handle_optional_return_twin_sync(double left, double righ
 WireSyncReturnDco wire_handle_optional_struct_twin_sync(struct wire_cst_list_prim_u_8 *document);
 
 WireSyncReturnDco wire_handle_vec_of_opts_twin_sync(struct wire_cst_opt_vecs_twin_sync *opt);
+
+WireSyncReturnSse wire_handle_increment_boxed_optional_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_handle_option_box_arguments_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_handle_optional_increment_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_handle_optional_return_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_handle_optional_struct_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_handle_vec_of_opts_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
 
 void wire_example_primitive_type_bool_twin_normal(int64_t port_, bool arg);
 
@@ -2756,7 +6181,21 @@ void wire_example_primitive_list_type_u8_twin_normal(int64_t port_,
 
 void wire_handle_vec_of_primitive_twin_rust_async(int64_t port_, int32_t n);
 
+void wire_handle_vec_of_primitive_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_handle_vec_of_primitive_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
 WireSyncReturnDco wire_handle_vec_of_primitive_twin_sync(int32_t n);
+
+WireSyncReturnSse wire_handle_vec_of_primitive_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
 
 void wire_example_primitive_list_type_bool_twin_rust_async(int64_t port_,
                                                            struct wire_cst_list_bool *arg);
@@ -2791,6 +6230,116 @@ void wire_example_primitive_list_type_u64_twin_rust_async(int64_t port_,
 void wire_example_primitive_list_type_u8_twin_rust_async(int64_t port_,
                                                          struct wire_cst_list_prim_u_8 *arg);
 
+void wire_example_primitive_list_type_bool_twin_rust_async_sse(int64_t port_,
+                                                               uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+void wire_example_primitive_list_type_f32_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_example_primitive_list_type_f64_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_example_primitive_list_type_i16_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_example_primitive_list_type_i32_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_example_primitive_list_type_i64_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_example_primitive_list_type_i8_twin_rust_async_sse(int64_t port_,
+                                                             uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+void wire_example_primitive_list_type_u16_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_example_primitive_list_type_u32_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_example_primitive_list_type_u64_twin_rust_async_sse(int64_t port_,
+                                                              uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+void wire_example_primitive_list_type_u8_twin_rust_async_sse(int64_t port_,
+                                                             uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+void wire_example_primitive_list_type_bool_twin_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_example_primitive_list_type_f32_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_example_primitive_list_type_f64_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_example_primitive_list_type_i16_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_example_primitive_list_type_i32_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_example_primitive_list_type_i64_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_example_primitive_list_type_i8_twin_sse(int64_t port_,
+                                                  uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+void wire_example_primitive_list_type_u16_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_example_primitive_list_type_u32_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_example_primitive_list_type_u64_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_example_primitive_list_type_u8_twin_sse(int64_t port_,
+                                                  uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
 WireSyncReturnDco wire_example_primitive_list_type_bool_twin_sync(struct wire_cst_list_bool *arg);
 
 WireSyncReturnDco wire_example_primitive_list_type_f32_twin_sync(struct wire_cst_list_prim_f_32 *arg);
@@ -2813,6 +6362,50 @@ WireSyncReturnDco wire_example_primitive_list_type_u64_twin_sync(struct wire_cst
 
 WireSyncReturnDco wire_example_primitive_list_type_u8_twin_sync(struct wire_cst_list_prim_u_8 *arg);
 
+WireSyncReturnSse wire_example_primitive_list_type_bool_twin_sync_sse(uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_f32_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_f64_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_i16_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_i32_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_i64_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_i8_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_u16_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_u32_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_u64_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_list_type_u8_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
 void wire_primitive_types_twin_rust_async(int64_t port_,
                                           int32_t my_i32,
                                           int64_t my_i64,
@@ -2821,12 +6414,40 @@ void wire_primitive_types_twin_rust_async(int64_t port_,
 
 void wire_primitive_u32_twin_rust_async(int64_t port_, uint32_t my_u32);
 
+void wire_primitive_types_twin_rust_async_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_primitive_u32_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_primitive_types_twin_sse(int64_t port_,
+                                   uint8_t *ptr_,
+                                   int32_t rust_vec_len_,
+                                   int32_t data_len_);
+
+void wire_primitive_u32_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
 WireSyncReturnDco wire_primitive_types_twin_sync(int32_t my_i32,
                                                  int64_t my_i64,
                                                  double my_f64,
                                                  bool my_bool);
 
 WireSyncReturnDco wire_primitive_u32_twin_sync(uint32_t my_u32);
+
+WireSyncReturnSse wire_primitive_types_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_primitive_u32_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
 
 void wire_example_primitive_type_bool_twin_rust_async(int64_t port_, bool arg);
 
@@ -2850,6 +6471,116 @@ void wire_example_primitive_type_u64_twin_rust_async(int64_t port_, uint64_t arg
 
 void wire_example_primitive_type_u8_twin_rust_async(int64_t port_, uint8_t arg);
 
+void wire_example_primitive_type_bool_twin_rust_async_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+void wire_example_primitive_type_f32_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_example_primitive_type_f64_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_example_primitive_type_i16_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_example_primitive_type_i32_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_example_primitive_type_i64_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_example_primitive_type_i8_twin_rust_async_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_example_primitive_type_u16_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_example_primitive_type_u32_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_example_primitive_type_u64_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_example_primitive_type_u8_twin_rust_async_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_example_primitive_type_bool_twin_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_example_primitive_type_f32_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_example_primitive_type_f64_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_example_primitive_type_i16_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_example_primitive_type_i32_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_example_primitive_type_i64_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_example_primitive_type_i8_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_example_primitive_type_u16_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_example_primitive_type_u32_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_example_primitive_type_u64_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_example_primitive_type_u8_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
 WireSyncReturnDco wire_example_primitive_type_bool_twin_sync(bool arg);
 
 WireSyncReturnDco wire_example_primitive_type_f32_twin_sync(float arg);
@@ -2872,13 +6603,235 @@ WireSyncReturnDco wire_example_primitive_type_u64_twin_sync(uint64_t arg);
 
 WireSyncReturnDco wire_example_primitive_type_u8_twin_sync(uint8_t arg);
 
+WireSyncReturnSse wire_example_primitive_type_bool_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_f32_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_f64_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_i16_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_i32_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_i64_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_i8_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_u16_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_u32_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_u64_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_example_primitive_type_u8_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
 void wire_test_more_than_just_one_raw_string_struct_twin_rust_async(int64_t port_);
 
 void wire_test_raw_string_item_struct_twin_rust_async(int64_t port_);
 
+void wire_test_more_than_just_one_raw_string_struct_twin_rust_async_sse(int64_t port_,
+                                                                        uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
+
+void wire_test_raw_string_item_struct_twin_rust_async_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+void wire_test_more_than_just_one_raw_string_struct_twin_sse(int64_t port_,
+                                                             uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+void wire_test_raw_string_item_struct_twin_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
 WireSyncReturnDco wire_test_more_than_just_one_raw_string_struct_twin_sync(void);
 
 WireSyncReturnDco wire_test_raw_string_item_struct_twin_sync(void);
+
+WireSyncReturnSse wire_test_more_than_just_one_raw_string_struct_twin_sync_sse(uint8_t *ptr_,
+                                                                               int32_t rust_vec_len_,
+                                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_test_raw_string_item_struct_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse(int64_t port_,
+                                                                    uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_instance_method_arg_mut_borrow_twin_sse(int64_t port_,
+                                                                        uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse(int64_t port_,
+                                                                 uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse(int64_t port_,
+                                                                    uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_new_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse(int64_t port_,
+                                                                      uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse(int64_t port_,
+                                                               uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+void wire_NonCloneSimpleTwinSse_static_method_return_own_twin_sse(int64_t port_,
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+void wire_rust_auto_opaque_arg_borrow_twin_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_rust_auto_opaque_arg_mut_borrow_twin_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_rust_auto_opaque_arg_own_and_return_own_twin_sse(int64_t port_,
+                                                           uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+void wire_rust_auto_opaque_arg_own_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_rust_auto_opaque_callable_arg_twin_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_rust_auto_opaque_callable_return_twin_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+void wire_rust_auto_opaque_plus_sign_arg_twin_sse(int64_t port_,
+                                                  uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+void wire_rust_auto_opaque_plus_sign_return_twin_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+void wire_rust_auto_opaque_return_own_twin_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse(int64_t port_,
+                                                                                 uint8_t *ptr_,
+                                                                                 int32_t rust_vec_len_,
+                                                                                 int32_t data_len_);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse(int64_t port_,
+                                                                                     uint8_t *ptr_,
+                                                                                     int32_t rust_vec_len_,
+                                                                                     int32_t data_len_);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(int64_t port_,
+                                                                              uint8_t *ptr_,
+                                                                              int32_t rust_vec_len_,
+                                                                              int32_t data_len_);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse(int64_t port_,
+                                                                                 uint8_t *ptr_,
+                                                                                 int32_t rust_vec_len_,
+                                                                                 int32_t data_len_);
+
+void wire_rust_auto_opaque_trait_object_arg_borrow_twin_sse(int64_t port_,
+                                                            uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse(int64_t port_,
+                                                                uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+void wire_rust_auto_opaque_trait_object_arg_own_twin_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_rust_auto_opaque_trait_object_return_own_one_twin_sse(int64_t port_,
+                                                                uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+void wire_rust_auto_opaque_trait_object_return_own_two_twin_sse(int64_t port_,
+                                                                uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+void wire_rust_auto_opaque_two_args_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
 
 WireSyncReturnDco wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(const void *that);
 
@@ -2946,6 +6899,150 @@ WireSyncReturnDco wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(vo
 
 WireSyncReturnDco wire_rust_auto_opaque_two_args_twin_sync(const void *a, const void *b);
 
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                          int32_t rust_vec_len_,
+                                                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                              int32_t rust_vec_len_,
+                                                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                       int32_t rust_vec_len_,
+                                                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                          int32_t rust_vec_len_,
+                                                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(uint8_t *ptr_,
+                                                                               int32_t rust_vec_len_,
+                                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                        int32_t rust_vec_len_,
+                                                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                            int32_t rust_vec_len_,
+                                                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                     int32_t rust_vec_len_,
+                                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                        int32_t rust_vec_len_,
+                                                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                             int32_t rust_vec_len_,
+                                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_arg_own_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_callable_arg_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_callable_return_twin_sync_sse(uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_plus_sign_return_twin_sync_sse(uint8_t *ptr_,
+                                                                       int32_t rust_vec_len_,
+                                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                                   int32_t rust_vec_len_,
+                                                                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                                       int32_t rust_vec_len_,
+                                                                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                                int32_t rust_vec_len_,
+                                                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                                   int32_t rust_vec_len_,
+                                                                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                              int32_t rust_vec_len_,
+                                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                  int32_t rust_vec_len_,
+                                                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse(uint8_t *ptr_,
+                                                                           int32_t rust_vec_len_,
+                                                                           int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_sse(uint8_t *ptr_,
+                                                                                  int32_t rust_vec_len_,
+                                                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_sse(uint8_t *ptr_,
+                                                                                  int32_t rust_vec_len_,
+                                                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_rust_auto_opaque_two_args_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncReturnSse wire_frb_sync_generator_test_twin_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_sync_create_non_clone_twin_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_sync_create_opaque_twin_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_sync_create_sync_opaque_twin_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_sync_option_rust_opaque_twin_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_sync_run_opaque_twin_sse(uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
 void wire_create_array_opaque_enum_twin_rust_async(int64_t port_);
 
 void wire_create_nested_opaque_twin_rust_async(int64_t port_);
@@ -2982,6 +7079,166 @@ void wire_run_opaque_with_delay_twin_rust_async(int64_t port_, const void *opaqu
 
 void wire_unwrap_rust_opaque_twin_rust_async(int64_t port_, const void *opaque);
 
+void wire_create_array_opaque_enum_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_create_nested_opaque_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_create_opaque_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_create_option_opaque_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_create_sync_opaque_twin_rust_async_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_frb_generator_test_twin_rust_async_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_opaque_array_run_twin_rust_async_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_opaque_array_twin_rust_async_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_opaque_vec_run_twin_rust_async_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
+void wire_opaque_vec_twin_rust_async_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_run_enum_opaque_twin_rust_async_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_run_nested_opaque_twin_rust_async_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+void wire_run_non_clone_twin_rust_async_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_run_opaque_twin_rust_async_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_run_opaque_with_delay_twin_rust_async_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_unwrap_rust_opaque_twin_rust_async_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_create_array_opaque_enum_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_create_nested_opaque_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_create_opaque_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
+void wire_create_option_opaque_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_create_sync_opaque_twin_sse(int64_t port_,
+                                      uint8_t *ptr_,
+                                      int32_t rust_vec_len_,
+                                      int32_t data_len_);
+
+void wire_frb_generator_test_twin_sse(int64_t port_,
+                                      uint8_t *ptr_,
+                                      int32_t rust_vec_len_,
+                                      int32_t data_len_);
+
+void wire_opaque_array_run_twin_sse(int64_t port_,
+                                    uint8_t *ptr_,
+                                    int32_t rust_vec_len_,
+                                    int32_t data_len_);
+
+void wire_opaque_array_twin_sse(int64_t port_,
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
+
+void wire_opaque_vec_run_twin_sse(int64_t port_,
+                                  uint8_t *ptr_,
+                                  int32_t rust_vec_len_,
+                                  int32_t data_len_);
+
+void wire_opaque_vec_twin_sse(int64_t port_,
+                              uint8_t *ptr_,
+                              int32_t rust_vec_len_,
+                              int32_t data_len_);
+
+void wire_run_enum_opaque_twin_sse(int64_t port_,
+                                   uint8_t *ptr_,
+                                   int32_t rust_vec_len_,
+                                   int32_t data_len_);
+
+void wire_run_nested_opaque_twin_sse(int64_t port_,
+                                     uint8_t *ptr_,
+                                     int32_t rust_vec_len_,
+                                     int32_t data_len_);
+
+void wire_run_non_clone_twin_sse(int64_t port_,
+                                 uint8_t *ptr_,
+                                 int32_t rust_vec_len_,
+                                 int32_t data_len_);
+
+void wire_run_opaque_twin_sse(int64_t port_,
+                              uint8_t *ptr_,
+                              int32_t rust_vec_len_,
+                              int32_t data_len_);
+
+void wire_run_opaque_with_delay_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_unwrap_rust_opaque_twin_sse(int64_t port_,
+                                      uint8_t *ptr_,
+                                      int32_t rust_vec_len_,
+                                      int32_t data_len_);
+
 WireSyncReturnDco wire_create_array_opaque_enum_twin_sync(void);
 
 WireSyncReturnDco wire_create_nested_opaque_twin_sync(void);
@@ -3014,9 +7271,92 @@ WireSyncReturnDco wire_run_opaque_with_delay_twin_sync(const void *opaque);
 
 WireSyncReturnDco wire_unwrap_rust_opaque_twin_sync(const void *opaque);
 
+WireSyncReturnSse wire_create_array_opaque_enum_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncReturnSse wire_create_nested_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_create_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_create_option_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_create_sync_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_frb_generator_test_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncReturnSse wire_opaque_array_run_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_opaque_array_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_opaque_vec_run_twin_sync_sse(uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+WireSyncReturnSse wire_opaque_vec_twin_sync_sse(uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+WireSyncReturnSse wire_run_enum_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+WireSyncReturnSse wire_run_nested_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+WireSyncReturnSse wire_run_non_clone_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncReturnSse wire_run_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+WireSyncReturnSse wire_run_opaque_with_delay_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncReturnSse wire_unwrap_rust_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
 void wire_simple_adder_twin_rust_async(int64_t port_, int32_t a, int32_t b);
 
+void wire_simple_adder_twin_rust_async_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_simple_adder_twin_sse(int64_t port_,
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
+
 WireSyncReturnDco wire_simple_adder_twin_sync(int32_t a, int32_t b);
+
+WireSyncReturnSse wire_simple_adder_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+void wire_func_stream_realistic_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
 
 void wire_func_stream_return_error_twin_rust_async(int64_t port_);
 
@@ -3031,6 +7371,76 @@ void wire_handle_stream_sink_at_1_twin_rust_async(int64_t port_, uint32_t key, u
 void wire_handle_stream_sink_at_2_twin_rust_async(int64_t port_, uint32_t key, uint32_t max);
 
 void wire_handle_stream_sink_at_3_twin_rust_async(int64_t port_, uint32_t key, uint32_t max);
+
+void wire_func_stream_return_error_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_func_stream_return_panic_twin_rust_async_sse(int64_t port_,
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+void wire_func_stream_sink_arg_position_twin_rust_async_sse(int64_t port_,
+                                                            uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+void wire_handle_stream_of_struct_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_handle_stream_sink_at_1_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_handle_stream_sink_at_2_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_handle_stream_sink_at_3_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_func_stream_return_error_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_func_stream_return_panic_twin_sse(int64_t port_,
+                                            uint8_t *ptr_,
+                                            int32_t rust_vec_len_,
+                                            int32_t data_len_);
+
+void wire_func_stream_sink_arg_position_twin_sse(int64_t port_,
+                                                 uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+void wire_handle_stream_of_struct_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_handle_stream_sink_at_1_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_handle_stream_sink_at_2_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_handle_stream_sink_at_3_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
 
 void wire_func_struct_with_one_field_twin_rust_async(int64_t port_,
                                                      struct wire_cst_struct_with_one_field_twin_rust_async *arg);
@@ -3047,6 +7457,56 @@ void wire_func_tuple_struct_with_one_field_twin_rust_async(int64_t port_,
 void wire_func_tuple_struct_with_two_field_twin_rust_async(int64_t port_,
                                                            struct wire_cst_tuple_struct_with_two_field_twin_rust_async *arg);
 
+void wire_func_struct_with_one_field_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_func_struct_with_two_field_twin_rust_async_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+void wire_func_struct_with_zero_field_twin_rust_async_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+void wire_func_tuple_struct_with_one_field_twin_rust_async_sse(int64_t port_,
+                                                               uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+void wire_func_tuple_struct_with_two_field_twin_rust_async_sse(int64_t port_,
+                                                               uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+void wire_func_struct_with_one_field_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_func_struct_with_two_field_twin_sse(int64_t port_,
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
+
+void wire_func_struct_with_zero_field_twin_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_func_tuple_struct_with_one_field_twin_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
+void wire_func_tuple_struct_with_two_field_twin_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
+
 WireSyncReturnDco wire_func_struct_with_one_field_twin_sync(struct wire_cst_struct_with_one_field_twin_sync *arg);
 
 WireSyncReturnDco wire_func_struct_with_two_field_twin_sync(struct wire_cst_struct_with_two_field_twin_sync *arg);
@@ -3057,14 +7517,62 @@ WireSyncReturnDco wire_func_tuple_struct_with_one_field_twin_sync(struct wire_cs
 
 WireSyncReturnDco wire_func_tuple_struct_with_two_field_twin_sync(struct wire_cst_tuple_struct_with_two_field_twin_sync *arg);
 
+WireSyncReturnSse wire_func_struct_with_one_field_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_func_struct_with_two_field_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncReturnSse wire_func_struct_with_zero_field_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncReturnSse wire_func_tuple_struct_with_one_field_twin_sync_sse(uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+WireSyncReturnSse wire_func_tuple_struct_with_two_field_twin_sync_sse(uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
 void wire_test_tuple_2_twin_rust_async(int64_t port_,
                                        struct wire_cst_list_record_string_i_32 *value);
 
 void wire_test_tuple_twin_rust_async(int64_t port_, struct wire_cst_record_string_i_32 *value);
 
+void wire_test_tuple_2_twin_rust_async_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_test_tuple_twin_rust_async_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
+void wire_test_tuple_2_twin_sse(int64_t port_,
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
+
+void wire_test_tuple_twin_sse(int64_t port_,
+                              uint8_t *ptr_,
+                              int32_t rust_vec_len_,
+                              int32_t data_len_);
+
 WireSyncReturnDco wire_test_tuple_2_twin_sync(struct wire_cst_list_record_string_i_32 *value);
 
 WireSyncReturnDco wire_test_tuple_twin_sync(struct wire_cst_record_string_i_32 *value);
+
+WireSyncReturnSse wire_test_tuple_2_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+WireSyncReturnSse wire_test_tuple_twin_sync_sse(uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
 
 void wire_handle_type_alias_id_twin_rust_async(int64_t port_, uint64_t input);
 
@@ -3072,11 +7580,53 @@ void wire_handle_type_alias_model_twin_rust_async(int64_t port_, uint64_t input)
 
 void wire_handle_type_nest_alias_id_twin_rust_async(int64_t port_, uint64_t input);
 
+void wire_handle_type_alias_id_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_handle_type_alias_model_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+void wire_handle_type_nest_alias_id_twin_rust_async_sse(int64_t port_,
+                                                        uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+void wire_handle_type_alias_id_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_handle_type_alias_model_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
+
+void wire_handle_type_nest_alias_id_twin_sse(int64_t port_,
+                                             uint8_t *ptr_,
+                                             int32_t rust_vec_len_,
+                                             int32_t data_len_);
+
 WireSyncReturnDco wire_handle_type_alias_id_twin_sync(uint64_t input);
 
 WireSyncReturnDco wire_handle_type_alias_model_twin_sync(uint64_t input);
 
 WireSyncReturnDco wire_handle_type_nest_alias_id_twin_sync(uint64_t input);
+
+WireSyncReturnSse wire_handle_type_alias_id_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncReturnSse wire_handle_type_alias_model_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncReturnSse wire_handle_type_nest_alias_id_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
 
 void wire_handle_nested_uuids_twin_rust_async(int64_t port_,
                                               struct wire_cst_feature_uuid_twin_rust_async *ids);
@@ -3286,9 +7836,21 @@ void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(co
 
 void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSse(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSse(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(const void *ptr);
 
@@ -3322,33 +7884,65 @@ void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwi
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(const void *ptr);
 
 struct wire_cst_application_env *cst_new_box_application_env(void);
 
@@ -3362,13 +7956,25 @@ struct wire_cst_a_twin_normal *cst_new_box_autoadd_a_twin_normal(void);
 
 struct wire_cst_a_twin_rust_async *cst_new_box_autoadd_a_twin_rust_async(void);
 
+struct wire_cst_a_twin_rust_async_sse *cst_new_box_autoadd_a_twin_rust_async_sse(void);
+
+struct wire_cst_a_twin_sse *cst_new_box_autoadd_a_twin_sse(void);
+
 struct wire_cst_a_twin_sync *cst_new_box_autoadd_a_twin_sync(void);
+
+struct wire_cst_a_twin_sync_sse *cst_new_box_autoadd_a_twin_sync_sse(void);
 
 struct wire_cst_abc_twin_normal *cst_new_box_autoadd_abc_twin_normal(void);
 
 struct wire_cst_abc_twin_rust_async *cst_new_box_autoadd_abc_twin_rust_async(void);
 
+struct wire_cst_abc_twin_rust_async_sse *cst_new_box_autoadd_abc_twin_rust_async_sse(void);
+
+struct wire_cst_abc_twin_sse *cst_new_box_autoadd_abc_twin_sse(void);
+
 struct wire_cst_abc_twin_sync *cst_new_box_autoadd_abc_twin_sync(void);
+
+struct wire_cst_abc_twin_sync_sse *cst_new_box_autoadd_abc_twin_sync_sse(void);
 
 struct wire_cst_application_env *cst_new_box_autoadd_application_env(void);
 
@@ -3378,13 +7984,25 @@ struct wire_cst_attribute_twin_normal *cst_new_box_autoadd_attribute_twin_normal
 
 struct wire_cst_attribute_twin_rust_async *cst_new_box_autoadd_attribute_twin_rust_async(void);
 
+struct wire_cst_attribute_twin_rust_async_sse *cst_new_box_autoadd_attribute_twin_rust_async_sse(void);
+
+struct wire_cst_attribute_twin_sse *cst_new_box_autoadd_attribute_twin_sse(void);
+
 struct wire_cst_attribute_twin_sync *cst_new_box_autoadd_attribute_twin_sync(void);
+
+struct wire_cst_attribute_twin_sync_sse *cst_new_box_autoadd_attribute_twin_sync_sse(void);
 
 struct wire_cst_b_twin_normal *cst_new_box_autoadd_b_twin_normal(void);
 
 struct wire_cst_b_twin_rust_async *cst_new_box_autoadd_b_twin_rust_async(void);
 
+struct wire_cst_b_twin_rust_async_sse *cst_new_box_autoadd_b_twin_rust_async_sse(void);
+
+struct wire_cst_b_twin_sse *cst_new_box_autoadd_b_twin_sse(void);
+
 struct wire_cst_b_twin_sync *cst_new_box_autoadd_b_twin_sync(void);
+
+struct wire_cst_b_twin_sync_sse *cst_new_box_autoadd_b_twin_sync_sse(void);
 
 bool *cst_new_box_autoadd_bool(bool value);
 
@@ -3392,97 +8010,189 @@ struct wire_cst_c_twin_normal *cst_new_box_autoadd_c_twin_normal(void);
 
 struct wire_cst_c_twin_rust_async *cst_new_box_autoadd_c_twin_rust_async(void);
 
+struct wire_cst_c_twin_rust_async_sse *cst_new_box_autoadd_c_twin_rust_async_sse(void);
+
+struct wire_cst_c_twin_sse *cst_new_box_autoadd_c_twin_sse(void);
+
 struct wire_cst_c_twin_sync *cst_new_box_autoadd_c_twin_sync(void);
+
+struct wire_cst_c_twin_sync_sse *cst_new_box_autoadd_c_twin_sync_sse(void);
 
 struct wire_cst_concatenate_with_twin_normal *cst_new_box_autoadd_concatenate_with_twin_normal(void);
 
 struct wire_cst_concatenate_with_twin_rust_async *cst_new_box_autoadd_concatenate_with_twin_rust_async(void);
 
+struct wire_cst_concatenate_with_twin_rust_async_sse *cst_new_box_autoadd_concatenate_with_twin_rust_async_sse(void);
+
+struct wire_cst_concatenate_with_twin_sse *cst_new_box_autoadd_concatenate_with_twin_sse(void);
+
 struct wire_cst_concatenate_with_twin_sync *cst_new_box_autoadd_concatenate_with_twin_sync(void);
+
+struct wire_cst_concatenate_with_twin_sync_sse *cst_new_box_autoadd_concatenate_with_twin_sync_sse(void);
 
 struct wire_cst_custom_nested_error_inner_twin_normal *cst_new_box_autoadd_custom_nested_error_inner_twin_normal(void);
 
 struct wire_cst_custom_nested_error_inner_twin_rust_async *cst_new_box_autoadd_custom_nested_error_inner_twin_rust_async(void);
 
+struct wire_cst_custom_nested_error_inner_twin_rust_async_sse *cst_new_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(void);
+
+struct wire_cst_custom_nested_error_inner_twin_sse *cst_new_box_autoadd_custom_nested_error_inner_twin_sse(void);
+
 struct wire_cst_custom_nested_error_inner_twin_sync *cst_new_box_autoadd_custom_nested_error_inner_twin_sync(void);
+
+struct wire_cst_custom_nested_error_inner_twin_sync_sse *cst_new_box_autoadd_custom_nested_error_inner_twin_sync_sse(void);
 
 struct wire_cst_custom_nested_error_outer_twin_normal *cst_new_box_autoadd_custom_nested_error_outer_twin_normal(void);
 
 struct wire_cst_custom_nested_error_outer_twin_rust_async *cst_new_box_autoadd_custom_nested_error_outer_twin_rust_async(void);
 
+struct wire_cst_custom_nested_error_outer_twin_rust_async_sse *cst_new_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(void);
+
+struct wire_cst_custom_nested_error_outer_twin_sse *cst_new_box_autoadd_custom_nested_error_outer_twin_sse(void);
+
 struct wire_cst_custom_nested_error_outer_twin_sync *cst_new_box_autoadd_custom_nested_error_outer_twin_sync(void);
+
+struct wire_cst_custom_nested_error_outer_twin_sync_sse *cst_new_box_autoadd_custom_nested_error_outer_twin_sync_sse(void);
 
 struct wire_cst_custom_struct_error_twin_normal *cst_new_box_autoadd_custom_struct_error_twin_normal(void);
 
 struct wire_cst_custom_struct_error_twin_rust_async *cst_new_box_autoadd_custom_struct_error_twin_rust_async(void);
 
+struct wire_cst_custom_struct_error_twin_rust_async_sse *cst_new_box_autoadd_custom_struct_error_twin_rust_async_sse(void);
+
+struct wire_cst_custom_struct_error_twin_sse *cst_new_box_autoadd_custom_struct_error_twin_sse(void);
+
 struct wire_cst_custom_struct_error_twin_sync *cst_new_box_autoadd_custom_struct_error_twin_sync(void);
+
+struct wire_cst_custom_struct_error_twin_sync_sse *cst_new_box_autoadd_custom_struct_error_twin_sync_sse(void);
 
 struct wire_cst_custom_struct_twin_normal *cst_new_box_autoadd_custom_struct_twin_normal(void);
 
 struct wire_cst_custom_struct_twin_rust_async *cst_new_box_autoadd_custom_struct_twin_rust_async(void);
 
+struct wire_cst_custom_struct_twin_rust_async_sse *cst_new_box_autoadd_custom_struct_twin_rust_async_sse(void);
+
+struct wire_cst_custom_struct_twin_sse *cst_new_box_autoadd_custom_struct_twin_sse(void);
+
 struct wire_cst_custom_struct_twin_sync *cst_new_box_autoadd_custom_struct_twin_sync(void);
+
+struct wire_cst_custom_struct_twin_sync_sse *cst_new_box_autoadd_custom_struct_twin_sync_sse(void);
 
 struct wire_cst_customized_twin_normal *cst_new_box_autoadd_customized_twin_normal(void);
 
 struct wire_cst_customized_twin_rust_async *cst_new_box_autoadd_customized_twin_rust_async(void);
 
+struct wire_cst_customized_twin_rust_async_sse *cst_new_box_autoadd_customized_twin_rust_async_sse(void);
+
+struct wire_cst_customized_twin_sse *cst_new_box_autoadd_customized_twin_sse(void);
+
 struct wire_cst_customized_twin_sync *cst_new_box_autoadd_customized_twin_sync(void);
+
+struct wire_cst_customized_twin_sync_sse *cst_new_box_autoadd_customized_twin_sync_sse(void);
 
 struct wire_cst_dart_opaque_nested_twin_normal *cst_new_box_autoadd_dart_opaque_nested_twin_normal(void);
 
 struct wire_cst_dart_opaque_nested_twin_rust_async *cst_new_box_autoadd_dart_opaque_nested_twin_rust_async(void);
 
+struct wire_cst_dart_opaque_nested_twin_rust_async_sse *cst_new_box_autoadd_dart_opaque_nested_twin_rust_async_sse(void);
+
+struct wire_cst_dart_opaque_nested_twin_sse *cst_new_box_autoadd_dart_opaque_nested_twin_sse(void);
+
 struct wire_cst_dart_opaque_nested_twin_sync *cst_new_box_autoadd_dart_opaque_nested_twin_sync(void);
+
+struct wire_cst_dart_opaque_nested_twin_sync_sse *cst_new_box_autoadd_dart_opaque_nested_twin_sync_sse(void);
 
 struct wire_cst_empty_twin_normal *cst_new_box_autoadd_empty_twin_normal(void);
 
 struct wire_cst_empty_twin_rust_async *cst_new_box_autoadd_empty_twin_rust_async(void);
 
+struct wire_cst_empty_twin_rust_async_sse *cst_new_box_autoadd_empty_twin_rust_async_sse(void);
+
+struct wire_cst_empty_twin_sse *cst_new_box_autoadd_empty_twin_sse(void);
+
 struct wire_cst_empty_twin_sync *cst_new_box_autoadd_empty_twin_sync(void);
+
+struct wire_cst_empty_twin_sync_sse *cst_new_box_autoadd_empty_twin_sync_sse(void);
 
 struct wire_cst_enum_dart_opaque_twin_normal *cst_new_box_autoadd_enum_dart_opaque_twin_normal(void);
 
 struct wire_cst_enum_dart_opaque_twin_rust_async *cst_new_box_autoadd_enum_dart_opaque_twin_rust_async(void);
 
+struct wire_cst_enum_dart_opaque_twin_rust_async_sse *cst_new_box_autoadd_enum_dart_opaque_twin_rust_async_sse(void);
+
+struct wire_cst_enum_dart_opaque_twin_sse *cst_new_box_autoadd_enum_dart_opaque_twin_sse(void);
+
 struct wire_cst_enum_dart_opaque_twin_sync *cst_new_box_autoadd_enum_dart_opaque_twin_sync(void);
+
+struct wire_cst_enum_dart_opaque_twin_sync_sse *cst_new_box_autoadd_enum_dart_opaque_twin_sync_sse(void);
 
 struct wire_cst_enum_opaque_twin_normal *cst_new_box_autoadd_enum_opaque_twin_normal(void);
 
 struct wire_cst_enum_opaque_twin_rust_async *cst_new_box_autoadd_enum_opaque_twin_rust_async(void);
 
+struct wire_cst_enum_opaque_twin_rust_async_sse *cst_new_box_autoadd_enum_opaque_twin_rust_async_sse(void);
+
+struct wire_cst_enum_opaque_twin_sse *cst_new_box_autoadd_enum_opaque_twin_sse(void);
+
 struct wire_cst_enum_opaque_twin_sync *cst_new_box_autoadd_enum_opaque_twin_sync(void);
+
+struct wire_cst_enum_opaque_twin_sync_sse *cst_new_box_autoadd_enum_opaque_twin_sync_sse(void);
 
 struct wire_cst_enum_with_item_mixed_twin_normal *cst_new_box_autoadd_enum_with_item_mixed_twin_normal(void);
 
 struct wire_cst_enum_with_item_mixed_twin_rust_async *cst_new_box_autoadd_enum_with_item_mixed_twin_rust_async(void);
 
+struct wire_cst_enum_with_item_mixed_twin_rust_async_sse *cst_new_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(void);
+
+struct wire_cst_enum_with_item_mixed_twin_sse *cst_new_box_autoadd_enum_with_item_mixed_twin_sse(void);
+
 struct wire_cst_enum_with_item_mixed_twin_sync *cst_new_box_autoadd_enum_with_item_mixed_twin_sync(void);
+
+struct wire_cst_enum_with_item_mixed_twin_sync_sse *cst_new_box_autoadd_enum_with_item_mixed_twin_sync_sse(void);
 
 struct wire_cst_enum_with_item_struct_twin_normal *cst_new_box_autoadd_enum_with_item_struct_twin_normal(void);
 
 struct wire_cst_enum_with_item_struct_twin_rust_async *cst_new_box_autoadd_enum_with_item_struct_twin_rust_async(void);
 
+struct wire_cst_enum_with_item_struct_twin_rust_async_sse *cst_new_box_autoadd_enum_with_item_struct_twin_rust_async_sse(void);
+
+struct wire_cst_enum_with_item_struct_twin_sse *cst_new_box_autoadd_enum_with_item_struct_twin_sse(void);
+
 struct wire_cst_enum_with_item_struct_twin_sync *cst_new_box_autoadd_enum_with_item_struct_twin_sync(void);
+
+struct wire_cst_enum_with_item_struct_twin_sync_sse *cst_new_box_autoadd_enum_with_item_struct_twin_sync_sse(void);
 
 struct wire_cst_enum_with_item_tuple_twin_normal *cst_new_box_autoadd_enum_with_item_tuple_twin_normal(void);
 
 struct wire_cst_enum_with_item_tuple_twin_rust_async *cst_new_box_autoadd_enum_with_item_tuple_twin_rust_async(void);
 
+struct wire_cst_enum_with_item_tuple_twin_rust_async_sse *cst_new_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(void);
+
+struct wire_cst_enum_with_item_tuple_twin_sse *cst_new_box_autoadd_enum_with_item_tuple_twin_sse(void);
+
 struct wire_cst_enum_with_item_tuple_twin_sync *cst_new_box_autoadd_enum_with_item_tuple_twin_sync(void);
+
+struct wire_cst_enum_with_item_tuple_twin_sync_sse *cst_new_box_autoadd_enum_with_item_tuple_twin_sync_sse(void);
 
 struct wire_cst_event_twin_normal *cst_new_box_autoadd_event_twin_normal(void);
 
 struct wire_cst_event_twin_rust_async *cst_new_box_autoadd_event_twin_rust_async(void);
 
-struct wire_cst_event_twin_sync *cst_new_box_autoadd_event_twin_sync(void);
+struct wire_cst_event_twin_rust_async_sse *cst_new_box_autoadd_event_twin_rust_async_sse(void);
+
+struct wire_cst_event_twin_sse *cst_new_box_autoadd_event_twin_sse(void);
 
 struct wire_cst_exotic_optionals_twin_normal *cst_new_box_autoadd_exotic_optionals_twin_normal(void);
 
 struct wire_cst_exotic_optionals_twin_rust_async *cst_new_box_autoadd_exotic_optionals_twin_rust_async(void);
 
+struct wire_cst_exotic_optionals_twin_rust_async_sse *cst_new_box_autoadd_exotic_optionals_twin_rust_async_sse(void);
+
+struct wire_cst_exotic_optionals_twin_sse *cst_new_box_autoadd_exotic_optionals_twin_sse(void);
+
 struct wire_cst_exotic_optionals_twin_sync *cst_new_box_autoadd_exotic_optionals_twin_sync(void);
+
+struct wire_cst_exotic_optionals_twin_sync_sse *cst_new_box_autoadd_exotic_optionals_twin_sync_sse(void);
 
 float *cst_new_box_autoadd_f_32(float value);
 
@@ -3504,7 +8214,13 @@ struct wire_cst_feed_id_twin_normal *cst_new_box_autoadd_feed_id_twin_normal(voi
 
 struct wire_cst_feed_id_twin_rust_async *cst_new_box_autoadd_feed_id_twin_rust_async(void);
 
+struct wire_cst_feed_id_twin_rust_async_sse *cst_new_box_autoadd_feed_id_twin_rust_async_sse(void);
+
+struct wire_cst_feed_id_twin_sse *cst_new_box_autoadd_feed_id_twin_sse(void);
+
 struct wire_cst_feed_id_twin_sync *cst_new_box_autoadd_feed_id_twin_sync(void);
+
+struct wire_cst_feed_id_twin_sync_sse *cst_new_box_autoadd_feed_id_twin_sync_sse(void);
 
 int16_t *cst_new_box_autoadd_i_16(int16_t value);
 
@@ -3518,7 +8234,13 @@ struct wire_cst_kitchen_sink_twin_normal *cst_new_box_autoadd_kitchen_sink_twin_
 
 struct wire_cst_kitchen_sink_twin_rust_async *cst_new_box_autoadd_kitchen_sink_twin_rust_async(void);
 
+struct wire_cst_kitchen_sink_twin_rust_async_sse *cst_new_box_autoadd_kitchen_sink_twin_rust_async_sse(void);
+
+struct wire_cst_kitchen_sink_twin_sse *cst_new_box_autoadd_kitchen_sink_twin_sse(void);
+
 struct wire_cst_kitchen_sink_twin_sync *cst_new_box_autoadd_kitchen_sink_twin_sync(void);
+
+struct wire_cst_kitchen_sink_twin_sync_sse *cst_new_box_autoadd_kitchen_sink_twin_sync_sse(void);
 
 struct wire_cst_macro_struct *cst_new_box_autoadd_macro_struct(void);
 
@@ -3526,19 +8248,37 @@ struct wire_cst_measure_twin_normal *cst_new_box_autoadd_measure_twin_normal(voi
 
 struct wire_cst_measure_twin_rust_async *cst_new_box_autoadd_measure_twin_rust_async(void);
 
+struct wire_cst_measure_twin_rust_async_sse *cst_new_box_autoadd_measure_twin_rust_async_sse(void);
+
+struct wire_cst_measure_twin_sse *cst_new_box_autoadd_measure_twin_sse(void);
+
 struct wire_cst_measure_twin_sync *cst_new_box_autoadd_measure_twin_sync(void);
+
+struct wire_cst_measure_twin_sync_sse *cst_new_box_autoadd_measure_twin_sync_sse(void);
 
 struct wire_cst_message_id_twin_normal *cst_new_box_autoadd_message_id_twin_normal(void);
 
 struct wire_cst_message_id_twin_rust_async *cst_new_box_autoadd_message_id_twin_rust_async(void);
 
+struct wire_cst_message_id_twin_rust_async_sse *cst_new_box_autoadd_message_id_twin_rust_async_sse(void);
+
+struct wire_cst_message_id_twin_sse *cst_new_box_autoadd_message_id_twin_sse(void);
+
 struct wire_cst_message_id_twin_sync *cst_new_box_autoadd_message_id_twin_sync(void);
+
+struct wire_cst_message_id_twin_sync_sse *cst_new_box_autoadd_message_id_twin_sync_sse(void);
 
 struct wire_cst_my_nested_struct_twin_normal *cst_new_box_autoadd_my_nested_struct_twin_normal(void);
 
 struct wire_cst_my_nested_struct_twin_rust_async *cst_new_box_autoadd_my_nested_struct_twin_rust_async(void);
 
+struct wire_cst_my_nested_struct_twin_rust_async_sse *cst_new_box_autoadd_my_nested_struct_twin_rust_async_sse(void);
+
+struct wire_cst_my_nested_struct_twin_sse *cst_new_box_autoadd_my_nested_struct_twin_sse(void);
+
 struct wire_cst_my_nested_struct_twin_sync *cst_new_box_autoadd_my_nested_struct_twin_sync(void);
+
+struct wire_cst_my_nested_struct_twin_sync_sse *cst_new_box_autoadd_my_nested_struct_twin_sync_sse(void);
 
 struct wire_cst_my_size *cst_new_box_autoadd_my_size(void);
 
@@ -3548,19 +8288,37 @@ struct wire_cst_my_tree_node_twin_normal *cst_new_box_autoadd_my_tree_node_twin_
 
 struct wire_cst_my_tree_node_twin_rust_async *cst_new_box_autoadd_my_tree_node_twin_rust_async(void);
 
+struct wire_cst_my_tree_node_twin_rust_async_sse *cst_new_box_autoadd_my_tree_node_twin_rust_async_sse(void);
+
+struct wire_cst_my_tree_node_twin_sse *cst_new_box_autoadd_my_tree_node_twin_sse(void);
+
 struct wire_cst_my_tree_node_twin_sync *cst_new_box_autoadd_my_tree_node_twin_sync(void);
+
+struct wire_cst_my_tree_node_twin_sync_sse *cst_new_box_autoadd_my_tree_node_twin_sync_sse(void);
 
 struct wire_cst_new_type_int_twin_normal *cst_new_box_autoadd_new_type_int_twin_normal(void);
 
 struct wire_cst_new_type_int_twin_rust_async *cst_new_box_autoadd_new_type_int_twin_rust_async(void);
 
+struct wire_cst_new_type_int_twin_rust_async_sse *cst_new_box_autoadd_new_type_int_twin_rust_async_sse(void);
+
+struct wire_cst_new_type_int_twin_sse *cst_new_box_autoadd_new_type_int_twin_sse(void);
+
 struct wire_cst_new_type_int_twin_sync *cst_new_box_autoadd_new_type_int_twin_sync(void);
+
+struct wire_cst_new_type_int_twin_sync_sse *cst_new_box_autoadd_new_type_int_twin_sync_sse(void);
 
 struct wire_cst_note_twin_normal *cst_new_box_autoadd_note_twin_normal(void);
 
 struct wire_cst_note_twin_rust_async *cst_new_box_autoadd_note_twin_rust_async(void);
 
+struct wire_cst_note_twin_rust_async_sse *cst_new_box_autoadd_note_twin_rust_async_sse(void);
+
+struct wire_cst_note_twin_sse *cst_new_box_autoadd_note_twin_sse(void);
+
 struct wire_cst_note_twin_sync *cst_new_box_autoadd_note_twin_sync(void);
+
+struct wire_cst_note_twin_sync_sse *cst_new_box_autoadd_note_twin_sync_sse(void);
 
 struct wire_cst_numbers *cst_new_box_autoadd_numbers(void);
 
@@ -3568,13 +8326,25 @@ struct wire_cst_opaque_nested_twin_normal *cst_new_box_autoadd_opaque_nested_twi
 
 struct wire_cst_opaque_nested_twin_rust_async *cst_new_box_autoadd_opaque_nested_twin_rust_async(void);
 
+struct wire_cst_opaque_nested_twin_rust_async_sse *cst_new_box_autoadd_opaque_nested_twin_rust_async_sse(void);
+
+struct wire_cst_opaque_nested_twin_sse *cst_new_box_autoadd_opaque_nested_twin_sse(void);
+
 struct wire_cst_opaque_nested_twin_sync *cst_new_box_autoadd_opaque_nested_twin_sync(void);
+
+struct wire_cst_opaque_nested_twin_sync_sse *cst_new_box_autoadd_opaque_nested_twin_sync_sse(void);
 
 struct wire_cst_opt_vecs_twin_normal *cst_new_box_autoadd_opt_vecs_twin_normal(void);
 
 struct wire_cst_opt_vecs_twin_rust_async *cst_new_box_autoadd_opt_vecs_twin_rust_async(void);
 
+struct wire_cst_opt_vecs_twin_rust_async_sse *cst_new_box_autoadd_opt_vecs_twin_rust_async_sse(void);
+
+struct wire_cst_opt_vecs_twin_sse *cst_new_box_autoadd_opt_vecs_twin_sse(void);
+
 struct wire_cst_opt_vecs_twin_sync *cst_new_box_autoadd_opt_vecs_twin_sync(void);
+
+struct wire_cst_opt_vecs_twin_sync_sse *cst_new_box_autoadd_opt_vecs_twin_sync_sse(void);
 
 struct wire_cst_record_string_i_32 *cst_new_box_autoadd_record_string_i_32(void);
 
@@ -3584,61 +8354,121 @@ struct wire_cst_some_struct_twin_normal *cst_new_box_autoadd_some_struct_twin_no
 
 struct wire_cst_some_struct_twin_rust_async *cst_new_box_autoadd_some_struct_twin_rust_async(void);
 
+struct wire_cst_some_struct_twin_rust_async_sse *cst_new_box_autoadd_some_struct_twin_rust_async_sse(void);
+
+struct wire_cst_some_struct_twin_sse *cst_new_box_autoadd_some_struct_twin_sse(void);
+
 struct wire_cst_some_struct_twin_sync *cst_new_box_autoadd_some_struct_twin_sync(void);
+
+struct wire_cst_some_struct_twin_sync_sse *cst_new_box_autoadd_some_struct_twin_sync_sse(void);
 
 struct wire_cst_struct_with_comments_twin_normal *cst_new_box_autoadd_struct_with_comments_twin_normal(void);
 
 struct wire_cst_struct_with_comments_twin_rust_async *cst_new_box_autoadd_struct_with_comments_twin_rust_async(void);
 
+struct wire_cst_struct_with_comments_twin_rust_async_sse *cst_new_box_autoadd_struct_with_comments_twin_rust_async_sse(void);
+
+struct wire_cst_struct_with_comments_twin_sse *cst_new_box_autoadd_struct_with_comments_twin_sse(void);
+
 struct wire_cst_struct_with_comments_twin_sync *cst_new_box_autoadd_struct_with_comments_twin_sync(void);
+
+struct wire_cst_struct_with_comments_twin_sync_sse *cst_new_box_autoadd_struct_with_comments_twin_sync_sse(void);
 
 struct wire_cst_struct_with_enum_twin_normal *cst_new_box_autoadd_struct_with_enum_twin_normal(void);
 
 struct wire_cst_struct_with_enum_twin_rust_async *cst_new_box_autoadd_struct_with_enum_twin_rust_async(void);
 
+struct wire_cst_struct_with_enum_twin_rust_async_sse *cst_new_box_autoadd_struct_with_enum_twin_rust_async_sse(void);
+
+struct wire_cst_struct_with_enum_twin_sse *cst_new_box_autoadd_struct_with_enum_twin_sse(void);
+
 struct wire_cst_struct_with_enum_twin_sync *cst_new_box_autoadd_struct_with_enum_twin_sync(void);
+
+struct wire_cst_struct_with_enum_twin_sync_sse *cst_new_box_autoadd_struct_with_enum_twin_sync_sse(void);
 
 struct wire_cst_struct_with_one_field_twin_normal *cst_new_box_autoadd_struct_with_one_field_twin_normal(void);
 
 struct wire_cst_struct_with_one_field_twin_rust_async *cst_new_box_autoadd_struct_with_one_field_twin_rust_async(void);
 
+struct wire_cst_struct_with_one_field_twin_rust_async_sse *cst_new_box_autoadd_struct_with_one_field_twin_rust_async_sse(void);
+
+struct wire_cst_struct_with_one_field_twin_sse *cst_new_box_autoadd_struct_with_one_field_twin_sse(void);
+
 struct wire_cst_struct_with_one_field_twin_sync *cst_new_box_autoadd_struct_with_one_field_twin_sync(void);
+
+struct wire_cst_struct_with_one_field_twin_sync_sse *cst_new_box_autoadd_struct_with_one_field_twin_sync_sse(void);
 
 struct wire_cst_struct_with_two_field_twin_normal *cst_new_box_autoadd_struct_with_two_field_twin_normal(void);
 
 struct wire_cst_struct_with_two_field_twin_rust_async *cst_new_box_autoadd_struct_with_two_field_twin_rust_async(void);
 
+struct wire_cst_struct_with_two_field_twin_rust_async_sse *cst_new_box_autoadd_struct_with_two_field_twin_rust_async_sse(void);
+
+struct wire_cst_struct_with_two_field_twin_sse *cst_new_box_autoadd_struct_with_two_field_twin_sse(void);
+
 struct wire_cst_struct_with_two_field_twin_sync *cst_new_box_autoadd_struct_with_two_field_twin_sync(void);
+
+struct wire_cst_struct_with_two_field_twin_sync_sse *cst_new_box_autoadd_struct_with_two_field_twin_sync_sse(void);
 
 struct wire_cst_struct_with_zero_field_twin_normal *cst_new_box_autoadd_struct_with_zero_field_twin_normal(void);
 
 struct wire_cst_struct_with_zero_field_twin_rust_async *cst_new_box_autoadd_struct_with_zero_field_twin_rust_async(void);
 
+struct wire_cst_struct_with_zero_field_twin_rust_async_sse *cst_new_box_autoadd_struct_with_zero_field_twin_rust_async_sse(void);
+
+struct wire_cst_struct_with_zero_field_twin_sse *cst_new_box_autoadd_struct_with_zero_field_twin_sse(void);
+
 struct wire_cst_struct_with_zero_field_twin_sync *cst_new_box_autoadd_struct_with_zero_field_twin_sync(void);
+
+struct wire_cst_struct_with_zero_field_twin_sync_sse *cst_new_box_autoadd_struct_with_zero_field_twin_sync_sse(void);
 
 struct wire_cst_sum_with_twin_normal *cst_new_box_autoadd_sum_with_twin_normal(void);
 
 struct wire_cst_sum_with_twin_rust_async *cst_new_box_autoadd_sum_with_twin_rust_async(void);
 
+struct wire_cst_sum_with_twin_rust_async_sse *cst_new_box_autoadd_sum_with_twin_rust_async_sse(void);
+
+struct wire_cst_sum_with_twin_sse *cst_new_box_autoadd_sum_with_twin_sse(void);
+
 struct wire_cst_sum_with_twin_sync *cst_new_box_autoadd_sum_with_twin_sync(void);
+
+struct wire_cst_sum_with_twin_sync_sse *cst_new_box_autoadd_sum_with_twin_sync_sse(void);
 
 struct wire_cst_test_id_twin_normal *cst_new_box_autoadd_test_id_twin_normal(void);
 
 struct wire_cst_test_id_twin_rust_async *cst_new_box_autoadd_test_id_twin_rust_async(void);
 
+struct wire_cst_test_id_twin_rust_async_sse *cst_new_box_autoadd_test_id_twin_rust_async_sse(void);
+
+struct wire_cst_test_id_twin_sse *cst_new_box_autoadd_test_id_twin_sse(void);
+
 struct wire_cst_test_id_twin_sync *cst_new_box_autoadd_test_id_twin_sync(void);
+
+struct wire_cst_test_id_twin_sync_sse *cst_new_box_autoadd_test_id_twin_sync_sse(void);
 
 struct wire_cst_tuple_struct_with_one_field_twin_normal *cst_new_box_autoadd_tuple_struct_with_one_field_twin_normal(void);
 
 struct wire_cst_tuple_struct_with_one_field_twin_rust_async *cst_new_box_autoadd_tuple_struct_with_one_field_twin_rust_async(void);
 
+struct wire_cst_tuple_struct_with_one_field_twin_rust_async_sse *cst_new_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(void);
+
+struct wire_cst_tuple_struct_with_one_field_twin_sse *cst_new_box_autoadd_tuple_struct_with_one_field_twin_sse(void);
+
 struct wire_cst_tuple_struct_with_one_field_twin_sync *cst_new_box_autoadd_tuple_struct_with_one_field_twin_sync(void);
+
+struct wire_cst_tuple_struct_with_one_field_twin_sync_sse *cst_new_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(void);
 
 struct wire_cst_tuple_struct_with_two_field_twin_normal *cst_new_box_autoadd_tuple_struct_with_two_field_twin_normal(void);
 
 struct wire_cst_tuple_struct_with_two_field_twin_rust_async *cst_new_box_autoadd_tuple_struct_with_two_field_twin_rust_async(void);
 
+struct wire_cst_tuple_struct_with_two_field_twin_rust_async_sse *cst_new_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(void);
+
+struct wire_cst_tuple_struct_with_two_field_twin_sse *cst_new_box_autoadd_tuple_struct_with_two_field_twin_sse(void);
+
 struct wire_cst_tuple_struct_with_two_field_twin_sync *cst_new_box_autoadd_tuple_struct_with_two_field_twin_sync(void);
+
+struct wire_cst_tuple_struct_with_two_field_twin_sync_sse *cst_new_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(void);
 
 uint16_t *cst_new_box_autoadd_u_16(uint16_t value);
 
@@ -3652,19 +8482,37 @@ struct wire_cst_user_id_twin_normal *cst_new_box_autoadd_user_id_twin_normal(voi
 
 struct wire_cst_user_id_twin_rust_async *cst_new_box_autoadd_user_id_twin_rust_async(void);
 
+struct wire_cst_user_id_twin_rust_async_sse *cst_new_box_autoadd_user_id_twin_rust_async_sse(void);
+
+struct wire_cst_user_id_twin_sse *cst_new_box_autoadd_user_id_twin_sse(void);
+
 struct wire_cst_user_id_twin_sync *cst_new_box_autoadd_user_id_twin_sync(void);
+
+struct wire_cst_user_id_twin_sync_sse *cst_new_box_autoadd_user_id_twin_sync_sse(void);
 
 int32_t *cst_new_box_autoadd_weekdays_twin_normal(int32_t value);
 
 int32_t *cst_new_box_autoadd_weekdays_twin_rust_async(int32_t value);
 
+int32_t *cst_new_box_autoadd_weekdays_twin_rust_async_sse(int32_t value);
+
+int32_t *cst_new_box_autoadd_weekdays_twin_sse(int32_t value);
+
 int32_t *cst_new_box_autoadd_weekdays_twin_sync(int32_t value);
+
+int32_t *cst_new_box_autoadd_weekdays_twin_sync_sse(int32_t value);
 
 struct wire_cst_blob_twin_normal *cst_new_box_blob_twin_normal(void);
 
 struct wire_cst_blob_twin_rust_async *cst_new_box_blob_twin_rust_async(void);
 
+struct wire_cst_blob_twin_rust_async_sse *cst_new_box_blob_twin_rust_async_sse(void);
+
+struct wire_cst_blob_twin_sse *cst_new_box_blob_twin_sse(void);
+
 struct wire_cst_blob_twin_sync *cst_new_box_blob_twin_sync(void);
+
+struct wire_cst_blob_twin_sync_sse *cst_new_box_blob_twin_sync_sse(void);
 
 bool *cst_new_box_bool(bool value);
 
@@ -3672,13 +8520,25 @@ struct wire_cst_distance_twin_normal *cst_new_box_distance_twin_normal(void);
 
 struct wire_cst_distance_twin_rust_async *cst_new_box_distance_twin_rust_async(void);
 
+struct wire_cst_distance_twin_rust_async_sse *cst_new_box_distance_twin_rust_async_sse(void);
+
+struct wire_cst_distance_twin_sse *cst_new_box_distance_twin_sse(void);
+
 struct wire_cst_distance_twin_sync *cst_new_box_distance_twin_sync(void);
+
+struct wire_cst_distance_twin_sync_sse *cst_new_box_distance_twin_sync_sse(void);
 
 struct wire_cst_exotic_optionals_twin_normal *cst_new_box_exotic_optionals_twin_normal(void);
 
 struct wire_cst_exotic_optionals_twin_rust_async *cst_new_box_exotic_optionals_twin_rust_async(void);
 
+struct wire_cst_exotic_optionals_twin_rust_async_sse *cst_new_box_exotic_optionals_twin_rust_async_sse(void);
+
+struct wire_cst_exotic_optionals_twin_sse *cst_new_box_exotic_optionals_twin_sse(void);
+
 struct wire_cst_exotic_optionals_twin_sync *cst_new_box_exotic_optionals_twin_sync(void);
+
+struct wire_cst_exotic_optionals_twin_sync_sse *cst_new_box_exotic_optionals_twin_sync_sse(void);
 
 double *cst_new_box_f_64(double value);
 
@@ -3692,7 +8552,13 @@ struct wire_cst_kitchen_sink_twin_normal *cst_new_box_kitchen_sink_twin_normal(v
 
 struct wire_cst_kitchen_sink_twin_rust_async *cst_new_box_kitchen_sink_twin_rust_async(void);
 
+struct wire_cst_kitchen_sink_twin_rust_async_sse *cst_new_box_kitchen_sink_twin_rust_async_sse(void);
+
+struct wire_cst_kitchen_sink_twin_sse *cst_new_box_kitchen_sink_twin_sse(void);
+
 struct wire_cst_kitchen_sink_twin_sync *cst_new_box_kitchen_sink_twin_sync(void);
+
+struct wire_cst_kitchen_sink_twin_sync_sse *cst_new_box_kitchen_sink_twin_sync_sse(void);
 
 struct wire_cst_my_size *cst_new_box_my_size(void);
 
@@ -3700,7 +8566,13 @@ struct wire_cst_speed_twin_normal *cst_new_box_speed_twin_normal(void);
 
 struct wire_cst_speed_twin_rust_async *cst_new_box_speed_twin_rust_async(void);
 
+struct wire_cst_speed_twin_rust_async_sse *cst_new_box_speed_twin_rust_async_sse(void);
+
+struct wire_cst_speed_twin_sse *cst_new_box_speed_twin_sse(void);
+
 struct wire_cst_speed_twin_sync *cst_new_box_speed_twin_sync(void);
+
+struct wire_cst_speed_twin_sync_sse *cst_new_box_speed_twin_sync_sse(void);
 
 uint8_t *cst_new_box_u_8(uint8_t value);
 
@@ -3708,7 +8580,13 @@ int32_t *cst_new_box_weekdays_twin_normal(int32_t value);
 
 int32_t *cst_new_box_weekdays_twin_rust_async(int32_t value);
 
+int32_t *cst_new_box_weekdays_twin_rust_async_sse(int32_t value);
+
+int32_t *cst_new_box_weekdays_twin_sse(int32_t value);
+
 int32_t *cst_new_box_weekdays_twin_sync(int32_t value);
+
+int32_t *cst_new_box_weekdays_twin_sync_sse(int32_t value);
 
 struct wire_cst_list_Chrono_Duration *cst_new_list_Chrono_Duration(int32_t len);
 
@@ -3726,7 +8604,13 @@ struct wire_cst_list_attribute_twin_normal *cst_new_list_attribute_twin_normal(i
 
 struct wire_cst_list_attribute_twin_rust_async *cst_new_list_attribute_twin_rust_async(int32_t len);
 
+struct wire_cst_list_attribute_twin_rust_async_sse *cst_new_list_attribute_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_attribute_twin_sse *cst_new_list_attribute_twin_sse(int32_t len);
+
 struct wire_cst_list_attribute_twin_sync *cst_new_list_attribute_twin_sync(int32_t len);
+
+struct wire_cst_list_attribute_twin_sync_sse *cst_new_list_attribute_twin_sync_sse(int32_t len);
 
 struct wire_cst_list_bool *cst_new_list_bool(int32_t len);
 
@@ -3736,7 +8620,13 @@ struct wire_cst_list_my_tree_node_twin_normal *cst_new_list_my_tree_node_twin_no
 
 struct wire_cst_list_my_tree_node_twin_rust_async *cst_new_list_my_tree_node_twin_rust_async(int32_t len);
 
+struct wire_cst_list_my_tree_node_twin_rust_async_sse *cst_new_list_my_tree_node_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_my_tree_node_twin_sse *cst_new_list_my_tree_node_twin_sse(int32_t len);
+
 struct wire_cst_list_my_tree_node_twin_sync *cst_new_list_my_tree_node_twin_sync(int32_t len);
+
+struct wire_cst_list_my_tree_node_twin_sync_sse *cst_new_list_my_tree_node_twin_sync_sse(int32_t len);
 
 struct wire_cst_list_opt_String *cst_new_list_opt_String(int32_t len);
 
@@ -3744,7 +8634,13 @@ struct wire_cst_list_opt_box_autoadd_attribute_twin_normal *cst_new_list_opt_box
 
 struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async *cst_new_list_opt_box_autoadd_attribute_twin_rust_async(int32_t len);
 
+struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse *cst_new_list_opt_box_autoadd_attribute_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_opt_box_autoadd_attribute_twin_sse *cst_new_list_opt_box_autoadd_attribute_twin_sse(int32_t len);
+
 struct wire_cst_list_opt_box_autoadd_attribute_twin_sync *cst_new_list_opt_box_autoadd_attribute_twin_sync(int32_t len);
+
+struct wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse *cst_new_list_opt_box_autoadd_attribute_twin_sync_sse(int32_t len);
 
 struct wire_cst_list_opt_box_autoadd_i_32 *cst_new_list_opt_box_autoadd_i_32(int32_t len);
 
@@ -3752,7 +8648,13 @@ struct wire_cst_list_opt_box_autoadd_weekdays_twin_normal *cst_new_list_opt_box_
 
 struct wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async *cst_new_list_opt_box_autoadd_weekdays_twin_rust_async(int32_t len);
 
+struct wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async_sse *cst_new_list_opt_box_autoadd_weekdays_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_opt_box_autoadd_weekdays_twin_sse *cst_new_list_opt_box_autoadd_weekdays_twin_sse(int32_t len);
+
 struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync *cst_new_list_opt_box_autoadd_weekdays_twin_sync(int32_t len);
+
+struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse *cst_new_list_opt_box_autoadd_weekdays_twin_sync_sse(int32_t len);
 
 struct wire_cst_list_opt_list_prim_i_32 *cst_new_list_opt_list_prim_i_32(int32_t len);
 
@@ -3782,13 +8684,25 @@ struct wire_cst_list_test_id_twin_normal *cst_new_list_test_id_twin_normal(int32
 
 struct wire_cst_list_test_id_twin_rust_async *cst_new_list_test_id_twin_rust_async(int32_t len);
 
+struct wire_cst_list_test_id_twin_rust_async_sse *cst_new_list_test_id_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_test_id_twin_sse *cst_new_list_test_id_twin_sse(int32_t len);
+
 struct wire_cst_list_test_id_twin_sync *cst_new_list_test_id_twin_sync(int32_t len);
+
+struct wire_cst_list_test_id_twin_sync_sse *cst_new_list_test_id_twin_sync_sse(int32_t len);
 
 struct wire_cst_list_weekdays_twin_normal *cst_new_list_weekdays_twin_normal(int32_t len);
 
 struct wire_cst_list_weekdays_twin_rust_async *cst_new_list_weekdays_twin_rust_async(int32_t len);
 
+struct wire_cst_list_weekdays_twin_rust_async_sse *cst_new_list_weekdays_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_weekdays_twin_sse *cst_new_list_weekdays_twin_sse(int32_t len);
+
 struct wire_cst_list_weekdays_twin_sync *cst_new_list_weekdays_twin_sync(int32_t len);
+
+struct wire_cst_list_weekdays_twin_sync_sse *cst_new_list_weekdays_twin_sync_sse(int32_t len);
 
 union AbcTwinNormalKind *cst_inflate_AbcTwinNormal_A(void);
 
@@ -3806,6 +8720,22 @@ union AbcTwinRustAsyncKind *cst_inflate_AbcTwinRustAsync_C(void);
 
 union AbcTwinRustAsyncKind *cst_inflate_AbcTwinRustAsync_JustInt(void);
 
+union AbcTwinRustAsyncSseKind *cst_inflate_AbcTwinRustAsyncSse_A(void);
+
+union AbcTwinRustAsyncSseKind *cst_inflate_AbcTwinRustAsyncSse_B(void);
+
+union AbcTwinRustAsyncSseKind *cst_inflate_AbcTwinRustAsyncSse_C(void);
+
+union AbcTwinRustAsyncSseKind *cst_inflate_AbcTwinRustAsyncSse_JustInt(void);
+
+union AbcTwinSseKind *cst_inflate_AbcTwinSse_A(void);
+
+union AbcTwinSseKind *cst_inflate_AbcTwinSse_B(void);
+
+union AbcTwinSseKind *cst_inflate_AbcTwinSse_C(void);
+
+union AbcTwinSseKind *cst_inflate_AbcTwinSse_JustInt(void);
+
 union AbcTwinSyncKind *cst_inflate_AbcTwinSync_A(void);
 
 union AbcTwinSyncKind *cst_inflate_AbcTwinSync_B(void);
@@ -3813,6 +8743,14 @@ union AbcTwinSyncKind *cst_inflate_AbcTwinSync_B(void);
 union AbcTwinSyncKind *cst_inflate_AbcTwinSync_C(void);
 
 union AbcTwinSyncKind *cst_inflate_AbcTwinSync_JustInt(void);
+
+union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_A(void);
+
+union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_B(void);
+
+union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_C(void);
+
+union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_JustInt(void);
 
 union CustomNestedErrorInnerTwinNormalKind *cst_inflate_CustomNestedErrorInnerTwinNormal_Three(void);
 
@@ -3822,9 +8760,21 @@ union CustomNestedErrorInnerTwinRustAsyncKind *cst_inflate_CustomNestedErrorInne
 
 union CustomNestedErrorInnerTwinRustAsyncKind *cst_inflate_CustomNestedErrorInnerTwinRustAsync_Four(void);
 
+union CustomNestedErrorInnerTwinRustAsyncSseKind *cst_inflate_CustomNestedErrorInnerTwinRustAsyncSse_Three(void);
+
+union CustomNestedErrorInnerTwinRustAsyncSseKind *cst_inflate_CustomNestedErrorInnerTwinRustAsyncSse_Four(void);
+
+union CustomNestedErrorInnerTwinSseKind *cst_inflate_CustomNestedErrorInnerTwinSse_Three(void);
+
+union CustomNestedErrorInnerTwinSseKind *cst_inflate_CustomNestedErrorInnerTwinSse_Four(void);
+
 union CustomNestedErrorInnerTwinSyncKind *cst_inflate_CustomNestedErrorInnerTwinSync_Three(void);
 
 union CustomNestedErrorInnerTwinSyncKind *cst_inflate_CustomNestedErrorInnerTwinSync_Four(void);
+
+union CustomNestedErrorInnerTwinSyncSseKind *cst_inflate_CustomNestedErrorInnerTwinSyncSse_Three(void);
+
+union CustomNestedErrorInnerTwinSyncSseKind *cst_inflate_CustomNestedErrorInnerTwinSyncSse_Four(void);
 
 union CustomNestedErrorOuterTwinNormalKind *cst_inflate_CustomNestedErrorOuterTwinNormal_One(void);
 
@@ -3834,15 +8784,33 @@ union CustomNestedErrorOuterTwinRustAsyncKind *cst_inflate_CustomNestedErrorOute
 
 union CustomNestedErrorOuterTwinRustAsyncKind *cst_inflate_CustomNestedErrorOuterTwinRustAsync_Two(void);
 
+union CustomNestedErrorOuterTwinRustAsyncSseKind *cst_inflate_CustomNestedErrorOuterTwinRustAsyncSse_One(void);
+
+union CustomNestedErrorOuterTwinRustAsyncSseKind *cst_inflate_CustomNestedErrorOuterTwinRustAsyncSse_Two(void);
+
+union CustomNestedErrorOuterTwinSseKind *cst_inflate_CustomNestedErrorOuterTwinSse_One(void);
+
+union CustomNestedErrorOuterTwinSseKind *cst_inflate_CustomNestedErrorOuterTwinSse_Two(void);
+
 union CustomNestedErrorOuterTwinSyncKind *cst_inflate_CustomNestedErrorOuterTwinSync_One(void);
 
 union CustomNestedErrorOuterTwinSyncKind *cst_inflate_CustomNestedErrorOuterTwinSync_Two(void);
+
+union CustomNestedErrorOuterTwinSyncSseKind *cst_inflate_CustomNestedErrorOuterTwinSyncSse_One(void);
+
+union CustomNestedErrorOuterTwinSyncSseKind *cst_inflate_CustomNestedErrorOuterTwinSyncSse_Two(void);
 
 union DistanceTwinNormalKind *cst_inflate_DistanceTwinNormal_Map(void);
 
 union DistanceTwinRustAsyncKind *cst_inflate_DistanceTwinRustAsync_Map(void);
 
+union DistanceTwinRustAsyncSseKind *cst_inflate_DistanceTwinRustAsyncSse_Map(void);
+
+union DistanceTwinSseKind *cst_inflate_DistanceTwinSse_Map(void);
+
 union DistanceTwinSyncKind *cst_inflate_DistanceTwinSync_Map(void);
+
+union DistanceTwinSyncSseKind *cst_inflate_DistanceTwinSyncSse_Map(void);
 
 union EnumDartOpaqueTwinNormalKind *cst_inflate_EnumDartOpaqueTwinNormal_Primitive(void);
 
@@ -3852,9 +8820,21 @@ union EnumDartOpaqueTwinRustAsyncKind *cst_inflate_EnumDartOpaqueTwinRustAsync_P
 
 union EnumDartOpaqueTwinRustAsyncKind *cst_inflate_EnumDartOpaqueTwinRustAsync_Opaque(void);
 
+union EnumDartOpaqueTwinRustAsyncSseKind *cst_inflate_EnumDartOpaqueTwinRustAsyncSse_Primitive(void);
+
+union EnumDartOpaqueTwinRustAsyncSseKind *cst_inflate_EnumDartOpaqueTwinRustAsyncSse_Opaque(void);
+
+union EnumDartOpaqueTwinSseKind *cst_inflate_EnumDartOpaqueTwinSse_Primitive(void);
+
+union EnumDartOpaqueTwinSseKind *cst_inflate_EnumDartOpaqueTwinSse_Opaque(void);
+
 union EnumDartOpaqueTwinSyncKind *cst_inflate_EnumDartOpaqueTwinSync_Primitive(void);
 
 union EnumDartOpaqueTwinSyncKind *cst_inflate_EnumDartOpaqueTwinSync_Opaque(void);
+
+union EnumDartOpaqueTwinSyncSseKind *cst_inflate_EnumDartOpaqueTwinSyncSse_Primitive(void);
+
+union EnumDartOpaqueTwinSyncSseKind *cst_inflate_EnumDartOpaqueTwinSyncSse_Opaque(void);
 
 union EnumOpaqueTwinNormalKind *cst_inflate_EnumOpaqueTwinNormal_Struct(void);
 
@@ -3876,6 +8856,26 @@ union EnumOpaqueTwinRustAsyncKind *cst_inflate_EnumOpaqueTwinRustAsync_Mutex(voi
 
 union EnumOpaqueTwinRustAsyncKind *cst_inflate_EnumOpaqueTwinRustAsync_RwLock(void);
 
+union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_Struct(void);
+
+union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_Primitive(void);
+
+union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_TraitObj(void);
+
+union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_Mutex(void);
+
+union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_RwLock(void);
+
+union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_Struct(void);
+
+union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_Primitive(void);
+
+union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_TraitObj(void);
+
+union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_Mutex(void);
+
+union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_RwLock(void);
+
 union EnumOpaqueTwinSyncKind *cst_inflate_EnumOpaqueTwinSync_Struct(void);
 
 union EnumOpaqueTwinSyncKind *cst_inflate_EnumOpaqueTwinSync_Primitive(void);
@@ -3886,6 +8886,16 @@ union EnumOpaqueTwinSyncKind *cst_inflate_EnumOpaqueTwinSync_Mutex(void);
 
 union EnumOpaqueTwinSyncKind *cst_inflate_EnumOpaqueTwinSync_RwLock(void);
 
+union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_Struct(void);
+
+union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_Primitive(void);
+
+union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_TraitObj(void);
+
+union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_Mutex(void);
+
+union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_RwLock(void);
+
 union EnumWithItemMixedTwinNormalKind *cst_inflate_EnumWithItemMixedTwinNormal_B(void);
 
 union EnumWithItemMixedTwinNormalKind *cst_inflate_EnumWithItemMixedTwinNormal_C(void);
@@ -3894,9 +8904,21 @@ union EnumWithItemMixedTwinRustAsyncKind *cst_inflate_EnumWithItemMixedTwinRustA
 
 union EnumWithItemMixedTwinRustAsyncKind *cst_inflate_EnumWithItemMixedTwinRustAsync_C(void);
 
+union EnumWithItemMixedTwinRustAsyncSseKind *cst_inflate_EnumWithItemMixedTwinRustAsyncSse_B(void);
+
+union EnumWithItemMixedTwinRustAsyncSseKind *cst_inflate_EnumWithItemMixedTwinRustAsyncSse_C(void);
+
+union EnumWithItemMixedTwinSseKind *cst_inflate_EnumWithItemMixedTwinSse_B(void);
+
+union EnumWithItemMixedTwinSseKind *cst_inflate_EnumWithItemMixedTwinSse_C(void);
+
 union EnumWithItemMixedTwinSyncKind *cst_inflate_EnumWithItemMixedTwinSync_B(void);
 
 union EnumWithItemMixedTwinSyncKind *cst_inflate_EnumWithItemMixedTwinSync_C(void);
+
+union EnumWithItemMixedTwinSyncSseKind *cst_inflate_EnumWithItemMixedTwinSyncSse_B(void);
+
+union EnumWithItemMixedTwinSyncSseKind *cst_inflate_EnumWithItemMixedTwinSyncSse_C(void);
 
 union EnumWithItemStructTwinNormalKind *cst_inflate_EnumWithItemStructTwinNormal_A(void);
 
@@ -3906,9 +8928,21 @@ union EnumWithItemStructTwinRustAsyncKind *cst_inflate_EnumWithItemStructTwinRus
 
 union EnumWithItemStructTwinRustAsyncKind *cst_inflate_EnumWithItemStructTwinRustAsync_B(void);
 
+union EnumWithItemStructTwinRustAsyncSseKind *cst_inflate_EnumWithItemStructTwinRustAsyncSse_A(void);
+
+union EnumWithItemStructTwinRustAsyncSseKind *cst_inflate_EnumWithItemStructTwinRustAsyncSse_B(void);
+
+union EnumWithItemStructTwinSseKind *cst_inflate_EnumWithItemStructTwinSse_A(void);
+
+union EnumWithItemStructTwinSseKind *cst_inflate_EnumWithItemStructTwinSse_B(void);
+
 union EnumWithItemStructTwinSyncKind *cst_inflate_EnumWithItemStructTwinSync_A(void);
 
 union EnumWithItemStructTwinSyncKind *cst_inflate_EnumWithItemStructTwinSync_B(void);
+
+union EnumWithItemStructTwinSyncSseKind *cst_inflate_EnumWithItemStructTwinSyncSse_A(void);
+
+union EnumWithItemStructTwinSyncSseKind *cst_inflate_EnumWithItemStructTwinSyncSse_B(void);
 
 union EnumWithItemTupleTwinNormalKind *cst_inflate_EnumWithItemTupleTwinNormal_A(void);
 
@@ -3918,9 +8952,21 @@ union EnumWithItemTupleTwinRustAsyncKind *cst_inflate_EnumWithItemTupleTwinRustA
 
 union EnumWithItemTupleTwinRustAsyncKind *cst_inflate_EnumWithItemTupleTwinRustAsync_B(void);
 
+union EnumWithItemTupleTwinRustAsyncSseKind *cst_inflate_EnumWithItemTupleTwinRustAsyncSse_A(void);
+
+union EnumWithItemTupleTwinRustAsyncSseKind *cst_inflate_EnumWithItemTupleTwinRustAsyncSse_B(void);
+
+union EnumWithItemTupleTwinSseKind *cst_inflate_EnumWithItemTupleTwinSse_A(void);
+
+union EnumWithItemTupleTwinSseKind *cst_inflate_EnumWithItemTupleTwinSse_B(void);
+
 union EnumWithItemTupleTwinSyncKind *cst_inflate_EnumWithItemTupleTwinSync_A(void);
 
 union EnumWithItemTupleTwinSyncKind *cst_inflate_EnumWithItemTupleTwinSync_B(void);
+
+union EnumWithItemTupleTwinSyncSseKind *cst_inflate_EnumWithItemTupleTwinSyncSse_A(void);
+
+union EnumWithItemTupleTwinSyncSseKind *cst_inflate_EnumWithItemTupleTwinSyncSse_B(void);
 
 union KitchenSinkTwinNormalKind *cst_inflate_KitchenSinkTwinNormal_Primitives(void);
 
@@ -3942,6 +8988,26 @@ union KitchenSinkTwinRustAsyncKind *cst_inflate_KitchenSinkTwinRustAsync_Buffer(
 
 union KitchenSinkTwinRustAsyncKind *cst_inflate_KitchenSinkTwinRustAsync_Enums(void);
 
+union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Primitives(void);
+
+union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Nested(void);
+
+union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Optional(void);
+
+union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Buffer(void);
+
+union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Enums(void);
+
+union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Primitives(void);
+
+union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Nested(void);
+
+union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Optional(void);
+
+union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Buffer(void);
+
+union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Enums(void);
+
 union KitchenSinkTwinSyncKind *cst_inflate_KitchenSinkTwinSync_Primitives(void);
 
 union KitchenSinkTwinSyncKind *cst_inflate_KitchenSinkTwinSync_Nested(void);
@@ -3952,6 +9018,16 @@ union KitchenSinkTwinSyncKind *cst_inflate_KitchenSinkTwinSync_Buffer(void);
 
 union KitchenSinkTwinSyncKind *cst_inflate_KitchenSinkTwinSync_Enums(void);
 
+union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Primitives(void);
+
+union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Nested(void);
+
+union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Optional(void);
+
+union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Buffer(void);
+
+union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Enums(void);
+
 union MeasureTwinNormalKind *cst_inflate_MeasureTwinNormal_Speed(void);
 
 union MeasureTwinNormalKind *cst_inflate_MeasureTwinNormal_Distance(void);
@@ -3960,48 +9036,99 @@ union MeasureTwinRustAsyncKind *cst_inflate_MeasureTwinRustAsync_Speed(void);
 
 union MeasureTwinRustAsyncKind *cst_inflate_MeasureTwinRustAsync_Distance(void);
 
+union MeasureTwinRustAsyncSseKind *cst_inflate_MeasureTwinRustAsyncSse_Speed(void);
+
+union MeasureTwinRustAsyncSseKind *cst_inflate_MeasureTwinRustAsyncSse_Distance(void);
+
+union MeasureTwinSseKind *cst_inflate_MeasureTwinSse_Speed(void);
+
+union MeasureTwinSseKind *cst_inflate_MeasureTwinSse_Distance(void);
+
 union MeasureTwinSyncKind *cst_inflate_MeasureTwinSync_Speed(void);
 
 union MeasureTwinSyncKind *cst_inflate_MeasureTwinSync_Distance(void);
+
+union MeasureTwinSyncSseKind *cst_inflate_MeasureTwinSyncSse_Speed(void);
+
+union MeasureTwinSyncSseKind *cst_inflate_MeasureTwinSyncSse_Distance(void);
 
 union SpeedTwinNormalKind *cst_inflate_SpeedTwinNormal_GPS(void);
 
 union SpeedTwinRustAsyncKind *cst_inflate_SpeedTwinRustAsync_GPS(void);
 
+union SpeedTwinRustAsyncSseKind *cst_inflate_SpeedTwinRustAsyncSse_GPS(void);
+
+union SpeedTwinSseKind *cst_inflate_SpeedTwinSse_GPS(void);
+
 union SpeedTwinSyncKind *cst_inflate_SpeedTwinSync_GPS(void);
+
+union SpeedTwinSyncSseKind *cst_inflate_SpeedTwinSyncSse_GPS(void);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinNormal_A);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinNormal_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinNormal_C);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinNormal_JustInt);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsyncSse_A);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsyncSse_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsyncSse_C);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsyncSse_JustInt);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsync_A);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsync_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsync_C);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsync_JustInt);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSse_A);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSse_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSse_C);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSse_JustInt);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSyncSse_A);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSyncSse_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSyncSse_C);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSyncSse_JustInt);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_A);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_C);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_JustInt);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinNormal_Four);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinNormal_Three);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinRustAsyncSse_Four);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinRustAsyncSse_Three);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinRustAsync_Four);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinRustAsync_Three);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSse_Four);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSse_Three);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSyncSse_Four);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSyncSse_Three);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSync_Four);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSync_Three);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinNormal_One);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinNormal_Two);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinRustAsyncSse_One);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinRustAsyncSse_Two);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinRustAsync_One);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinRustAsync_Two);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSse_One);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSse_Two);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSyncSse_One);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSyncSse_Two);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSync_One);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSync_Two);
     dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinNormal_Map);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinRustAsyncSse_Map);
     dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinRustAsync_Map);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinSse_Map);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinSyncSse_Map);
     dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinSync_Map);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinNormal_Opaque);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinNormal_Primitive);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinRustAsyncSse_Opaque);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinRustAsyncSse_Primitive);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinRustAsync_Opaque);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinRustAsync_Primitive);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSse_Opaque);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSse_Primitive);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSyncSse_Opaque);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSyncSse_Primitive);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSync_Opaque);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSync_Primitive);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinNormal_Mutex);
@@ -4009,11 +9136,26 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinNormal_RwLock);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinNormal_Struct);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinNormal_TraitObj);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_Mutex);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_Primitive);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_RwLock);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_Struct);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_TraitObj);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_Mutex);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_Primitive);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_RwLock);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_Struct);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_TraitObj);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_Mutex);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_Primitive);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_RwLock);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_Struct);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_TraitObj);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_Mutex);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_Primitive);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_RwLock);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_Struct);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_TraitObj);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSync_Mutex);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSync_Primitive);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSync_RwLock);
@@ -4021,20 +9163,38 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSync_TraitObj);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinNormal_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinNormal_C);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinRustAsyncSse_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinRustAsyncSse_C);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinRustAsync_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinRustAsync_C);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSse_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSse_C);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSyncSse_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSyncSse_C);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSync_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSync_C);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinNormal_A);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinNormal_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinRustAsyncSse_A);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinRustAsyncSse_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinRustAsync_A);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinRustAsync_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSse_A);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSse_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSyncSse_A);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSyncSse_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSync_A);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSync_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinNormal_A);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinNormal_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinRustAsyncSse_A);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinRustAsyncSse_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinRustAsync_A);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinRustAsync_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSse_A);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSse_B);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSyncSse_A);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSyncSse_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSync_A);
     dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSync_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinNormal_Buffer);
@@ -4042,11 +9202,26 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinNormal_Nested);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinNormal_Optional);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinNormal_Primitives);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Buffer);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Enums);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Nested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Optional);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Primitives);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Buffer);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Enums);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Nested);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Optional);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Primitives);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Buffer);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Enums);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Nested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Optional);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Primitives);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Buffer);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Enums);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Nested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Optional);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Primitives);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSync_Buffer);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSync_Enums);
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSync_Nested);
@@ -4054,12 +9229,21 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSync_Primitives);
     dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinNormal_Distance);
     dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinNormal_Speed);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinRustAsyncSse_Distance);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinRustAsyncSse_Speed);
     dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinRustAsync_Distance);
     dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinRustAsync_Speed);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSse_Distance);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSse_Speed);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSyncSse_Distance);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSyncSse_Speed);
     dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSync_Distance);
     dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSync_Speed);
     dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinNormal_GPS);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinRustAsyncSse_GPS);
     dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinRustAsync_GPS);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinSse_GPS);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinSyncSse_GPS);
     dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinSync_GPS);
     dummy_var ^= ((int64_t) (void*) cst_new_box_application_env);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_Chrono_Utc);
@@ -4067,67 +9251,125 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_a_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_a_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_a_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_a_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_a_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_a_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_abc_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_abc_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_abc_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_abc_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_abc_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_abc_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_application_env);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_application_settings);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_attribute_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_attribute_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_attribute_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_attribute_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_attribute_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_attribute_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_b_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_b_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_b_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_b_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_b_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_b_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_bool);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_c_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_c_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_c_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_c_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_c_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_c_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_concatenate_with_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_concatenate_with_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_concatenate_with_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_concatenate_with_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_concatenate_with_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_concatenate_with_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_inner_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_inner_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_inner_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_inner_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_inner_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_inner_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_outer_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_outer_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_outer_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_outer_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_outer_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_outer_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_error_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_error_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_customized_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_customized_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_customized_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_customized_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_customized_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_customized_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_dart_opaque_nested_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_dart_opaque_nested_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_dart_opaque_nested_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_dart_opaque_nested_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_dart_opaque_nested_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_dart_opaque_nested_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_empty_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_empty_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_empty_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_empty_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_empty_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_empty_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_mixed_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_mixed_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_mixed_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_mixed_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_mixed_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_mixed_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_tuple_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_tuple_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_tuple_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_tuple_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_tuple_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_enum_with_item_tuple_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_event_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_event_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_event_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_event_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_event_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_exotic_optionals_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_exotic_optionals_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_exotic_optionals_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_exotic_optionals_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_exotic_optionals_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_exotic_optionals_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_f_32);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_f_64);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_feature_chrono_twin_normal);
@@ -4138,109 +9380,193 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_feature_uuid_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_feed_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_feed_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_feed_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_feed_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_feed_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_feed_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_i_16);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_i_32);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_i_64);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_i_8);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_kitchen_sink_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_kitchen_sink_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_kitchen_sink_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_kitchen_sink_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_kitchen_sink_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_kitchen_sink_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_macro_struct);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_measure_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_measure_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_measure_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_measure_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_measure_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_measure_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_message_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_message_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_message_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_message_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_message_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_message_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_nested_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_nested_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_nested_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_nested_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_nested_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_nested_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_size);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_struct);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_tree_node_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_tree_node_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_tree_node_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_tree_node_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_tree_node_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_tree_node_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_new_type_int_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_new_type_int_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_new_type_int_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_new_type_int_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_new_type_int_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_new_type_int_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_note_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_note_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_note_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_note_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_note_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_note_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_numbers);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opaque_nested_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opaque_nested_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opaque_nested_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opaque_nested_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opaque_nested_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opaque_nested_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opt_vecs_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opt_vecs_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opt_vecs_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opt_vecs_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opt_vecs_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opt_vecs_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_sequences);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_some_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_some_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_some_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_some_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_some_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_some_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_comments_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_comments_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_comments_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_comments_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_comments_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_enum_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_enum_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_enum_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_enum_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_enum_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_one_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_one_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_one_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_one_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_one_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_one_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_two_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_two_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_two_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_two_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_two_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_two_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_zero_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_zero_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_zero_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_zero_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_zero_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_struct_with_zero_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_sum_with_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_sum_with_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_sum_with_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_sum_with_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_sum_with_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_sum_with_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_test_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_test_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_test_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_test_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_test_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_test_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_one_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_one_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_one_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_one_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_one_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_two_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_two_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_two_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_two_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_tuple_struct_with_two_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_u_16);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_u_32);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_u_64);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_u_8);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_user_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_user_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_user_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_user_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_user_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_user_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_weekdays_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_weekdays_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_weekdays_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_weekdays_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_weekdays_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_weekdays_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_blob_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_blob_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_blob_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_blob_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_blob_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_blob_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_bool);
     dummy_var ^= ((int64_t) (void*) cst_new_box_distance_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_distance_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_distance_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_distance_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_distance_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_distance_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_exotic_optionals_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_exotic_optionals_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_exotic_optionals_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_exotic_optionals_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_exotic_optionals_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_exotic_optionals_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_f_64);
     dummy_var ^= ((int64_t) (void*) cst_new_box_i_32);
     dummy_var ^= ((int64_t) (void*) cst_new_box_i_64);
     dummy_var ^= ((int64_t) (void*) cst_new_box_i_8);
     dummy_var ^= ((int64_t) (void*) cst_new_box_kitchen_sink_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_kitchen_sink_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_kitchen_sink_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_kitchen_sink_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_kitchen_sink_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_kitchen_sink_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_my_size);
     dummy_var ^= ((int64_t) (void*) cst_new_box_speed_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_speed_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_speed_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_speed_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_speed_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_speed_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_u_8);
     dummy_var ^= ((int64_t) (void*) cst_new_box_weekdays_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_weekdays_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_weekdays_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_weekdays_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_weekdays_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_weekdays_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_Chrono_Duration);
     dummy_var ^= ((int64_t) (void*) cst_new_list_Chrono_Naive);
     dummy_var ^= ((int64_t) (void*) cst_new_list_DartOpaque);
@@ -4249,20 +9575,32 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_list_application_env_var);
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_bool);
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_size);
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_String);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_attribute_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_attribute_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_attribute_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_attribute_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_attribute_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_attribute_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_i_32);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_weekdays_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_weekdays_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_weekdays_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_weekdays_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_weekdays_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_weekdays_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_list_prim_i_32);
     dummy_var ^= ((int64_t) (void*) cst_new_list_prim_f_32);
     dummy_var ^= ((int64_t) (void*) cst_new_list_prim_f_64);
@@ -4277,10 +9615,16 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_list_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) cst_new_list_test_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_test_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_test_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_test_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_test_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_test_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) dart_opaque_dart2rust_encode);
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) frb_initialize_rust);
@@ -4290,7 +9634,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_hide_data);
@@ -4299,18 +9646,29 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_hide_data);
@@ -4319,13 +9677,21 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_non_send_hide_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_twin_normal);
@@ -4334,6 +9700,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_new_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsyncSse_concatenate_static_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsyncSse_concatenate_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_single_arg_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_at_1_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async);
@@ -4341,6 +9714,20 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinRustAsync_new_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSse_concatenate_static_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSse_concatenate_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_single_arg_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSse_handle_some_stream_sink_at_1_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSse_handle_some_stream_sink_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSse_new_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSyncSse_concatenate_static_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_single_arg_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_at_1_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSync_concatenate_static_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSync_concatenate_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync);
@@ -4353,19 +9740,35 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinNormal_static_return_custom_struct_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsyncSse_new_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_ok_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_ok_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsync_new_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsync_static_return_custom_struct_error_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSse_new_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSse_nonstatic_return_custom_struct_error_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSse_nonstatic_return_custom_struct_ok_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSse_static_return_custom_struct_error_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSse_static_return_custom_struct_ok_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSyncSse_new_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_error_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_ok_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSyncSse_static_return_custom_struct_error_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSyncSse_static_return_custom_struct_ok_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSync_new_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_EventTwinNormal_as_string_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) wire_EventTwinRustAsync_as_string_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_EventTwinSync_as_string_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_EventTwinSse_as_string_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal);
@@ -4376,6 +9779,26 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_instance_method_arg_mut_borrow_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_new_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_static_method_return_own_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync);
@@ -4391,11 +9814,26 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_static_return_err_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_static_return_ok_custom_error_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsyncSse_new_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsyncSse_non_static_return_err_custom_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsyncSse_non_static_return_ok_custom_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsyncSse_static_return_err_custom_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsyncSse_static_return_ok_custom_error_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsync_new_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsync_static_return_err_custom_error_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinRustAsync_static_return_ok_custom_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSse_new_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSse_non_static_return_err_custom_error_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSse_non_static_return_ok_custom_error_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSse_static_return_err_custom_error_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSse_static_return_ok_custom_error_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSyncSse_new_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSyncSse_non_static_return_err_custom_error_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSyncSse_non_static_return_ok_custom_error_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSyncSse_static_return_err_custom_error_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSyncSse_static_return_ok_custom_error_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSync_new_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync);
@@ -4403,86 +9841,164 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_instance_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_static_method_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinRustAsyncSse_static_method_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinRustAsync_static_method_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSse_instance_method_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSse_static_method_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSyncSse_instance_method_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSyncSse_static_method_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_instance_method_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_static_method_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_SumWithTwinNormal_sum_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) wire_SumWithTwinRustAsync_sum_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_SumWithTwinSse_sum_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_SumWithTwinSyncSse_sum_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_SumWithTwinSync_sum_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_another_macro_struct_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_another_macro_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_stream_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_stream_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_app_settings_stream_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_app_settings_stream_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_stream_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_app_settings_stream_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_vec_stream_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_vec_stream_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_app_settings_vec_stream_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_app_settings_vec_stream_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_vec_stream_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_app_settings_vec_stream_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_call_new_module_system_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_call_new_module_system_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_call_new_module_system_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_call_new_module_system_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_call_new_module_system_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_call_new_module_system_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_call_old_module_system_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_call_old_module_system_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_call_old_module_system_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_call_old_module_system_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_call_old_module_system_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_call_old_module_system_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_clone_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_clone_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_clone_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_clone_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_clone_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_clone_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_close_event_listener_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_close_event_listener_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_close_event_listener_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_close_event_listener_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_close_event_listener_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_array_opaque_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_create_array_opaque_enum_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_create_array_opaque_enum_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_create_array_opaque_enum_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_array_opaque_enum_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_create_array_opaque_enum_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_enum_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_create_enum_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_create_enum_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_create_enum_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_enum_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_create_enum_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_event_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_create_event_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_create_event_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_create_event_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_create_event_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_nested_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_create_nested_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_create_nested_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_create_nested_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_nested_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_create_nested_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_nested_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_create_nested_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_create_nested_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_create_nested_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_nested_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_create_nested_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_create_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_create_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_create_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_create_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_option_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_create_option_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_create_option_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_create_option_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_option_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_create_option_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_sync_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_create_sync_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_create_sync_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_create_sync_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_create_sync_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_create_sync_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_error_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_error_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_ok_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_ok_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_ok_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_ok_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_ok_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_ok_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_nested_error_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_custom_nested_error_return_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_custom_nested_error_return_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_custom_nested_error_return_error_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_nested_error_return_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_custom_nested_error_return_error_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_datetime_local_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_datetime_local_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_datetime_local_twin_sync);
@@ -4491,568 +10007,1098 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_datetime_utc_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_drop_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_drop_static_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_drop_static_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_drop_static_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_drop_static_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_drop_static_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_duration_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_duration_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_duration_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_empty_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_empty_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_empty_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_empty_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_empty_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_empty_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f64_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f64_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f64_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f64_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f64_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i16_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i16_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i16_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i16_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i16_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i16_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i64_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i64_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i64_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i64_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i64_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i8_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i8_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i8_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_i8_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u16_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u16_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u16_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u16_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u16_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u16_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u64_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u64_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u64_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u64_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u64_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u8_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u8_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u8_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u8_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_bool_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_bool_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_bool_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_bool_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_bool_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_bool_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f64_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f64_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f64_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f64_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f64_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i16_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i16_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i16_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i16_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i16_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i16_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i64_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i64_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i64_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i64_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i64_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i8_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i8_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i8_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i8_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u16_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u16_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u16_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u16_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u16_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u16_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u64_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u64_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u64_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u64_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u64_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u8_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u8_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u8_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u8_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_bool_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_bool_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_bool_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_bool_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_bool_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_bool_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f64_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f64_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f64_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f64_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f64_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i16_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i16_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i16_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i16_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i16_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i16_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i64_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i64_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i64_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i64_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i64_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i8_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i8_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i8_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_i8_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u16_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u16_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u16_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u16_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u16_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u16_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u64_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u64_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u64_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u64_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u64_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_first_number_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_first_number_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_first_number_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_first_number_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_first_number_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_first_number_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_first_sequence_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_first_sequence_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_first_sequence_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_first_sequence_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_first_sequence_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_first_sequence_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_frb_generator_test_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_frb_generator_test_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_frb_generator_test_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_frb_generator_test_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_frb_generator_test_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_frb_generator_test_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_frb_sync_generator_test_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_frb_sync_generator_test_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_async_simple_add);
     dummy_var ^= ((int64_t) (void*) wire_func_async_void);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_macro_struct_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_macro_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_stream_realistic_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_realistic_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_stream_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_stream_return_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_return_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_return_error_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_stream_return_panic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_stream_return_panic_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_return_panic_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_return_panic_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_stream_sink_arg_position_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_stream_sink_arg_position_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_sink_arg_position_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_sink_arg_position_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_string_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_string_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_string_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_string_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_string_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_string_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_test_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_test_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_test_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_test_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_test_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_test_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_type_fallible_panic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_type_fallible_panic_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_type_fallible_panic_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_type_fallible_panic_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_type_fallible_panic_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_type_fallible_panic_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_type_infallible_panic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_type_infallible_panic_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_func_type_infallible_panic_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_type_infallible_panic_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_type_infallible_panic_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_type_infallible_panic_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_single_line_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_single_line_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_single_line_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_single_line_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_single_line_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_single_line_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_app_settings_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_get_app_settings_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_get_app_settings_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_get_app_settings_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_app_settings_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_get_app_settings_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_array_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_get_array_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_get_array_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_get_array_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_array_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_get_array_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_complex_array_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_get_complex_array_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_get_complex_array_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_get_complex_array_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_complex_array_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_get_complex_array_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_enum_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_get_enum_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_get_enum_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_get_enum_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_enum_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_get_enum_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_fallible_app_settings_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_get_fallible_app_settings_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_get_fallible_app_settings_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_get_fallible_app_settings_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_fallible_app_settings_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_get_fallible_app_settings_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_message_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_get_message_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_get_message_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_get_message_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_message_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_get_message_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_nested_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_get_nested_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_get_nested_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_get_nested_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_nested_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_get_nested_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_array_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_array_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_get_sum_array_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_get_sum_array_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_array_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_get_sum_array_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_get_sum_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_get_sum_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_get_sum_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_durations_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_durations_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_handle_durations_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_enum_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_enum_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_enum_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_uuids_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_uuids_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_uuids_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_newtype_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_newtype_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_newtype_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_newtype_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_newtype_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_newtype_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_option_box_arguments_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_option_box_arguments_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_option_box_arguments_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_option_box_arguments_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_option_box_arguments_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_option_box_arguments_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_increment_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_increment_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_increment_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_increment_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_increment_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_increment_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_return_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_return_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_return_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_return_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_return_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_return_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_return_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_return_enum_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_return_enum_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_return_enum_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_return_enum_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_return_enum_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_of_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_of_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_of_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_of_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_1_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_1_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_1_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_1_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_2_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_2_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_2_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_2_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_3_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_3_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_3_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_3_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_list_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_list_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_string_list_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_string_list_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_list_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_string_list_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_string_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_string_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_string_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_timestamps_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_timestamps_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_handle_timestamps_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_nest_alias_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_nest_alias_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_nest_alias_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_nest_alias_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_nest_alias_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_nest_alias_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_primitive_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_primitive_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_primitive_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_primitive_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_primitive_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_primitive_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_u8_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_u8_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_u8_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_u8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_u8_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_is_app_embedded_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_is_app_embedded_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_is_app_embedded_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_is_app_embedded_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_is_app_embedded_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_is_app_embedded_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_last_number_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_last_number_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_last_number_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_last_number_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_last_number_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_last_number_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_array_get_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_array_get_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_array_get_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_array_get_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_array_get_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_array_get_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_array_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_array_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_array_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_array_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_array_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_array_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_option_get_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_option_get_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_option_get_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_option_get_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_option_get_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_option_get_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_option_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_option_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_option_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_option_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_option_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_option_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_get_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_get_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_get_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_get_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_get_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_get_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_mirror_struct_stream_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_mirror_struct_stream_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_mirror_struct_stream_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_mirror_struct_stream_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_mirror_struct_stream_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_mirror_struct_stream_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_mirror_tuple_stream_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_mirror_tuple_stream_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_mirror_tuple_stream_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_mirror_tuple_stream_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_mirror_tuple_stream_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_mirror_tuple_stream_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_multiply_by_ten_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_multiply_by_ten_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_multiply_by_ten_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_multiply_by_ten_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_multiply_by_ten_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_multiply_by_ten_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_naivedatetime_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_naivedatetime_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_naivedatetime_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_nested_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_nested_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_nested_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_nested_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_nested_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_nested_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_new_msgid_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_new_msgid_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_new_msgid_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_new_msgid_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_new_msgid_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_new_msgid_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_next_user_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_next_user_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_next_user_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_next_user_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_next_user_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_next_user_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_opaque_array_run_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_opaque_array_run_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_array_run_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_array_run_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_opaque_array_run_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_array_run_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_opaque_array_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_opaque_array_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_array_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_array_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_opaque_array_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_array_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_opaque_vec_run_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_opaque_vec_run_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_vec_run_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_vec_run_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_opaque_vec_run_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_vec_run_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_opaque_vec_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_opaque_vec_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_vec_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_vec_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_opaque_vec_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_vec_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_panic_unwrap_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_panic_unwrap_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_panic_unwrap_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_panic_unwrap_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_panic_unwrap_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_panic_unwrap_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_primitive_types_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_primitive_types_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_types_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_types_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_primitive_types_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_types_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_primitive_u32_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_primitive_u32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_u32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_u32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_primitive_u32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_u32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_print_note_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_print_note_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_print_note_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_print_note_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_print_note_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_print_note_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_register_event_listener_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_register_event_listener_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_register_event_listener_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_register_event_listener_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_register_event_listener_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_repeat_number_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_repeat_number_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_repeat_number_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_repeat_number_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_repeat_number_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_repeat_number_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_repeat_sequence_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_repeat_sequence_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_repeat_sequence_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_repeat_sequence_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_repeat_sequence_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_repeat_sequence_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_error_variant_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_error_variant_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_error_variant_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_error_variant_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_error_variant_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_error_variant_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_enum_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_run_enum_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_run_enum_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_run_enum_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_enum_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_run_enum_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_nested_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_run_nested_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_run_nested_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_run_nested_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_nested_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_run_nested_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_non_clone_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_run_non_clone_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_run_non_clone_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_run_non_clone_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_non_clone_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_run_non_clone_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_run_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_run_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_run_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_simple);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_sync_accept_dart_opaque_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_sync_accept_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_sync_create_non_clone_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_sync_create_non_clone_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_sync_create_opaque_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_sync_create_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_sync_create_sync_opaque_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_sync_create_sync_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_sync_loopback_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_sync_loopback_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_sync_option_dart_opaque_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_sync_option_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_sync_option_loopback_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_sync_option_loopback_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_sync_option_rust_opaque_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_sync_option_rust_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_sync_run_opaque_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_sync_run_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_abc_enum_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_abc_enum_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_abc_enum_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_chrono_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_chrono_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_test_chrono_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_fallible_of_raw_string_mirrored_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_fallible_of_raw_string_mirrored_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_fallible_of_raw_string_mirrored_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_fallible_of_raw_string_mirrored_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_fallible_of_raw_string_mirrored_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_list_of_nested_enums_mirrored_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_list_of_nested_enums_mirrored_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_list_of_nested_enums_mirrored_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_list_of_nested_enums_mirrored_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_list_of_nested_enums_mirrored_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_list_of_raw_nested_string_mirrored_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_list_of_raw_nested_string_mirrored_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_list_of_raw_nested_string_mirrored_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_list_of_raw_nested_string_mirrored_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_list_of_raw_nested_string_mirrored_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_list_of_raw_nested_string_mirrored_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_more_than_just_one_raw_string_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_more_than_just_one_raw_string_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_more_than_just_one_raw_string_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_more_than_just_one_raw_string_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_more_than_just_one_raw_string_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_more_than_just_one_raw_string_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_nested_raw_string_mirrored_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_nested_raw_string_mirrored_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_nested_raw_string_mirrored_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_nested_raw_string_mirrored_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_nested_raw_string_mirrored_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_nested_raw_string_mirrored_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_precise_chrono_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_precise_chrono_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_test_precise_chrono_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_enum_mirrored_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_enum_mirrored_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_raw_string_enum_mirrored_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_raw_string_enum_mirrored_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_enum_mirrored_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_raw_string_enum_mirrored_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_item_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_item_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_raw_string_item_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_raw_string_item_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_item_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_raw_string_item_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_mirrored_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_mirrored_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_raw_string_mirrored_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_raw_string_mirrored_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_mirrored_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_raw_string_mirrored_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_2_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_2_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple_2_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple_2_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_2_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple_2_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_throw_anyhow_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_throw_anyhow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_throw_anyhow_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_throw_anyhow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_throw_anyhow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_throw_anyhow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_unwrap_dart_opaque_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_unwrap_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_unwrap_rust_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_unwrap_rust_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_unwrap_rust_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_unwrap_rust_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_unwrap_rust_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_unwrap_rust_opaque_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_use_boxed_blob_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_use_boxed_blob_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_use_boxed_blob_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_use_boxed_blob_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_use_boxed_blob_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_use_boxed_blob_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_use_imported_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_use_imported_enum_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_use_imported_enum_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_use_imported_enum_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_use_imported_enum_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_use_imported_enum_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_use_imported_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_use_imported_struct_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_use_imported_struct_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_use_imported_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_use_imported_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_use_imported_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_use_msgid_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_use_msgid_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_use_msgid_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_use_msgid_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_use_msgid_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_use_msgid_twin_sync_sse);
     return dummy_var;
 }

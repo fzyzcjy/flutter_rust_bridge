@@ -5,6 +5,7 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'pseudo_manual/inside_macro_twin_sse.dart';
 
 Future<MacroStruct> funcMacroStructTwinNormal(
         {required MacroStruct arg, dynamic hint}) =>
@@ -33,22 +34,4 @@ class AnotherMacroStructTwinNormal {
           runtimeType == other.runtimeType &&
           data == other.data &&
           nonFinalData == other.nonFinalData;
-}
-
-class MacroStruct {
-  final int data;
-
-  const MacroStruct({
-    required this.data,
-  });
-
-  @override
-  int get hashCode => data.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MacroStruct &&
-          runtimeType == other.runtimeType &&
-          data == other.data;
 }
