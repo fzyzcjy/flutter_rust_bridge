@@ -8,7 +8,8 @@ import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serializa
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/write_buffer.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncRust2DartSse> {
+class SseCodec<S, E extends Object>
+    extends BaseCodec<S, E, WireSyncRust2DartSse> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   final S Function(SseDeserializer deserializer) decodeSuccessData;
 
@@ -22,7 +23,10 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncRust2DartSse
   });
 
   @override
-  S decodeObject(dynamic raw) => _decode(raw as Uint8List);
+  S decodeObject(dynamic raw) {
+    print('hi $runtimeType.decodeObject raw=$raw');
+    return _decode(raw as Uint8List);
+  }
 
   @override
   S decodeWireSyncType(WireSyncRust2DartSse raw) =>

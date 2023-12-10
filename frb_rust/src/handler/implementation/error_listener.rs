@@ -22,6 +22,7 @@ pub(crate) fn handle_non_sync_panic_error<Rust2DartCodec: BaseCodec>(
     port: MessagePort,
     error: Box<dyn Any + Send>,
 ) {
+    crate::console_error!("hi handle_non_sync_panic_error");
     let message = Rust2DartCodec::encode_panic(&error).into_dart_abi();
     error_listener.on_error(Error::Panic(error));
     Rust2DartSender::new(Channel::new(port)).send(message);
