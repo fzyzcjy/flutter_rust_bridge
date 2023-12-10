@@ -78,8 +78,8 @@ pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort
     wire_minimal_adder_impl(port_, a, b)
 }
 
-#[no_mangle]
-pub extern "C" fn dart_opaque_dart2rust_encode(
+#[wasm_bindgen]
+pub fn dart_opaque_dart2rust_encode(
     handle: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> usize {
     unsafe {
