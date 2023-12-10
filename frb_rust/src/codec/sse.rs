@@ -60,10 +60,15 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
 
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
         let WireSyncReturnSse { ptr, len } = raw;
+        println!("hi Rust2DartMessageSse.from_raw_wire_sync");
         Self(vec_from_leak_ptr(ptr, len))
     }
 
     fn into_raw_wire_sync(self) -> Self::WireSyncType {
+        println!(
+            "hi Rust2DartMessageSse.into_raw_wire_sync self.0={:?}",
+            self.0
+        );
         #[cfg(not(wasm))]
         {
             let (ptr, len) = into_leak_vec_ptr(self.0);
@@ -85,6 +90,7 @@ pub struct SseDeserializer {
 impl SseDeserializer {
     pub unsafe fn from_wire(ptr: *mut u8, rust_vec_len: i32, data_len: i32) -> Self {
         let vec = vec_from_leak_ptr(ptr, rust_vec_len);
+        println!("hi SseDeserializer.from_wire vec={vec:?}");
         Self {
             cursor: Cursor::new(vec),
             data_len,
