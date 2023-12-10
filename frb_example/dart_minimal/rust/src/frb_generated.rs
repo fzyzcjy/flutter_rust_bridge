@@ -15,7 +15,7 @@
 // Section: imports
 
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
-use flutter_rust_bridge::for_generated::transform_result_dco;
+use flutter_rust_bridge::for_generated::{transform_result_dco, SseDeserializer};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
@@ -96,7 +96,7 @@ fn wire_rust_call_dart_simple_impl(
 
                 move |arg0, arg1| async {
                     // TODO manual tweak
-                    let mut deserializer = FLUTTER_RUST_BRIDGE_HANDLER
+                    let message = FLUTTER_RUST_BRIDGE_HANDLER
                         .dart_fn_invoke(
                             dart_opaque.clone(),
                             vec![
@@ -105,8 +105,11 @@ fn wire_rust_call_dart_simple_impl(
                             ],
                         )
                         .await;
+
+                    let mut deserializer = SseDeserializer::new(message);
                     let output = <String>::sse_decode(&mut deserializer);
                     deserializer.end();
+
                     output
                 }
             };
