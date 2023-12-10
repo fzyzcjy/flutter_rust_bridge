@@ -2,6 +2,7 @@ use crate::basic_code_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::utils::basic_code::DartBasicHeaderCode;
+use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
 
@@ -11,6 +12,7 @@ pub(crate) struct WireDartOutputCode {
     pub body_top: String,
     pub api_class_body: String,
     pub api_impl_class_body: String,
+    pub api_impl_class_methods: Vec<DartApiImplClassMethod>,
     pub body: String,
 }
 
@@ -23,8 +25,16 @@ impl AddAssign for WireDartOutputCode {
         self.body_top += &rhs.body_top;
         self.api_class_body += &rhs.api_class_body;
         self.api_impl_class_body += &rhs.api_impl_class_body;
+        self.api_impl_class_methods
+            .extend(rhs.api_impl_class_methods);
         self.body += &rhs.body;
     }
+}
+
+#[derive(Default, Clone, Debug, Serialize)]
+pub(crate) struct DartApiImplClassMethod {
+    signature: String,
+    body: String,
 }
 
 impl WireDartOutputCode {
@@ -63,6 +73,7 @@ impl WireDartOutputCode {
         let WireDartOutputCode {
             api_class_body,
             api_impl_class_body,
+            api_impl_class_methods,
             ..
         } = &self;
 
@@ -80,6 +91,11 @@ impl WireDartOutputCode {
         };
 
         let api_impl_class_code = if target == TargetOrCommon::Common {
+            let api_impl_class_methods = api_impl_class_methods
+                .into_iter()
+                .map(|method| format!("{} {{ {} }}", method.signature, method.body))
+                .join("\n\n");
+
             format!(
                 "
                 class {api_impl_class_name} extends {api_impl_platform_class_name} implements {api_class_name} {{
@@ -91,10 +107,17 @@ impl WireDartOutputCode {
                   }});
 
                   {api_impl_class_body}
+
+                  {api_impl_class_methods}
                 }}
                 ",
             )
         } else {
+            let api_impl_class_methods = api_impl_class_methods
+                .into_iter()
+                .map(|method| format!("{};", method.signature))
+                .join("\n\n");
+
             format!(
                 "
                 abstract class {api_impl_platform_class_name} extends BaseApiImpl<{wire_class_name}> {{
@@ -106,6 +129,8 @@ impl WireDartOutputCode {
                   }});
 
                   {api_impl_class_body}
+
+                  {api_impl_class_methods}
                 }}
                 ",
             )
