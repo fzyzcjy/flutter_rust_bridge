@@ -9,18 +9,11 @@ Future<void> main() async {
   await RustLib.init();
   print('Action: Init rust (after)');
 
-  // TODO
-  // print('Action: Configure tests (before)');
-  // test('dart call minimalAdder', () async {
-  //   print('Action: Call rust (before)');
-  //   expect(await minimalAdder(a: 100, b: 200), 300);
-  //   print('Action: Call rust (after)');
-  // });
-  // print('Action: Configure tests (end)');
-
-  test('hi', () async {
-    expect(
-        examplePrimitiveListTypeU8TwinSyncSse(arg: Uint8List.fromList([255])),
-        Uint8List.fromList([255]));
+  print('Action: Configure tests (before)');
+  test('dart call minimalAdder', () async {
+    print('Action: Call rust (before)');
+    expect(await minimalAdder(a: 100, b: 200), 300);
+    print('Action: Call rust (after)');
   });
+  print('Action: Configure tests (end)');
 }
