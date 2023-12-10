@@ -18,12 +18,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  Object cst_encode_DartFn_Inputs_String_String_Output_String(
-      NOT_IMPLEMENTED Function(String, String) raw) {
-    return cst_encode_DartOpaque(raw);
-  }
-
-  @protected
   Object cst_encode_DartOpaque(Object raw) {
     return raw;
   }

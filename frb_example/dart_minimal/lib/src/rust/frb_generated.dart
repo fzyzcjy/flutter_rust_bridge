@@ -173,6 +173,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 // Section: dart2rust
 
+PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
+    NOT_IMPLEMENTED Function(String, String) raw) {
+  return cst_encode_DartOpaque(raw);
+}
+
 int cst_encode_i_32(int raw) {
   return raw;
 }

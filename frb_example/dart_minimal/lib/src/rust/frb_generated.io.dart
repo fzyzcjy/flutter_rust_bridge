@@ -3,14 +3,12 @@
 
 // ignore_for_file: unused_import, unused_element, duplicate_ignore, invalid_use_of_internal_member
 
+import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
-
-import 'api/minimal.dart';
 import 'frb_generated.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -19,19 +17,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  @protected
-  PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
-      NOT_IMPLEMENTED Function(String, String) raw) {
-    // TODO this is manual tweak
-    final closure = (int callId, arg1, arg2) {
-      // TODO decode input
-      raw(arg1, arg2);
-      // TODO encode output
-      wire.dart_fn_deliver_output(callId);
-    };
-    return cst_encode_DartOpaque(closure);
-  }
 
   @protected
   PlatformPointer cst_encode_DartOpaque(Object raw) {
