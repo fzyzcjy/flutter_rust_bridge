@@ -41,6 +41,16 @@ void main() {
           expectLittleEndian: [154, 170, 187, 204, 221, 238, 255, 255],
           expectBigEndian: [255, 255, 238, 221, 204, 187, 170, 154],
         ),
+        _Info(
+          setValue: 0x110000000000,
+          expectLittleEndian: [0, 0, 0, 0, 0, 0x11, 0, 0],
+          expectBigEndian: [0, 0, 0x11, 0, 0, 0, 0, 0],
+        ),
+        _Info(
+          setValue: -0x110000000000,
+          expectLittleEndian: [0, 0, 0, 0, 0, 239, 255, 255],
+          expectBigEndian: [255, 255, 239, 0, 0, 0, 0, 0],
+        ),
       ]) {
         test('$info', () => _body(getFunction, info));
       }
