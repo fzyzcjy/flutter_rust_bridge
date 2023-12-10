@@ -105,7 +105,7 @@ fn wire_rust_call_dart_simple_impl(
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
 
                 move |arg0: String, arg1: String| {
-                    hello(async {
+                    hello(async move {
                         // TODO manual tweak
                         let message = FLUTTER_RUST_BRIDGE_HANDLER
                             .dart_fn_invoke(
