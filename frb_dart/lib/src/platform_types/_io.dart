@@ -15,6 +15,9 @@ typedef NativePortType = int;
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
+typedef PlatformU8Pointer = ffi.Pointer<ffi.Uint8>;
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 

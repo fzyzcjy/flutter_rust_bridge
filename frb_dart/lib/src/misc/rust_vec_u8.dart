@@ -7,7 +7,7 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 /// Must call `dispose` manually, otherwise the memory will be leaked.
 class RustVecU8 {
   /// Null = already disposed (to avoid accidential double free)
-  PlatformPointer? _ptr;
+  PlatformU8Pointer? _ptr;
 
   /// {@macro flutter_rust_bridge.internal}
   int get length => _length;
@@ -31,7 +31,7 @@ class RustVecU8 {
   }
 
   /// {@macro flutter_rust_bridge.internal}
-  ({PlatformPointer ptr, int length}) intoRaw() {
+  ({PlatformU8Pointer ptr, int length}) intoRaw() {
     final ptr = _ptr!;
     final length = _length;
     _forget();

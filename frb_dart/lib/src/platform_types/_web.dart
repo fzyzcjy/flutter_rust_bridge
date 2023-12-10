@@ -18,6 +18,9 @@ Uint8List wireSyncReturnSseAsUint8ListView(WireSyncReturnSse raw) => raw;
 typedef PlatformPointer = int;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
+typedef PlatformU8Pointer = int;
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef DartPostCObject = void;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
