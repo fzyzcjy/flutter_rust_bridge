@@ -133,12 +133,11 @@ class Uint64List extends _TypedList<BigInt> {
 }
 
 /// {@macro flutter_rust_bridge.internal}
-extension ExtByteData on $data.ByteData {
-  /// {@macro flutter_rust_bridge.internal}
-  void generalizedSetUint64(int byteOffset, int value, $data.Endian endian) =>
-      setUint64(byteOffset, value, endian);
+void byteDataSetUint64($data.ByteData byteData, int byteOffset, int value,
+        $data.Endian endian) =>
+    byteData.setUint64(byteOffset, value, endian);
 
-  /// {@macro flutter_rust_bridge.internal}
-  void generalizedSetInt64(int byteOffset, int value, $data.Endian endian) =>
-      setInt64(byteOffset, value, endian);
-}
+/// {@macro flutter_rust_bridge.internal}
+void byteDataSetInt64($data.ByteData byteData, int byteOffset, int value,
+        $data.Endian endian) =>
+    byteData.setInt64(byteOffset, value, endian);

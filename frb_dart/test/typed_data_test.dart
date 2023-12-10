@@ -40,10 +40,9 @@ void main() {
   });
 
   group('read/write ByteData', () {
-    for (final (name, getFunction)
-        in <(String, _GeneralizedSetter Function(ByteData))>[
-      ('Uint64', (b) => b.generalizedSetUint64),
-      ('Int64', (b) => b.generalizedSetInt64),
+    for (final (name, setter) in <(String, _Setter)>[
+      ('Uint64', byteDataSetUint64),
+      ('Int64', byteDataSetInt64),
     ]) {
       group(name, () {
         for (final info in const [
@@ -91,23 +90,23 @@ void main() {
           TODO_about_reader,
           TODO_loopback_test,
         ]) {
-          test('$info', () => _body(getFunction, info));
+          test('$info', () => _body(setter, info));
         }
       });
     }
   });
 }
 
-typedef _GeneralizedSetter = void Function(
-    int byteOffset, int value, Endian endian);
+typedef _Setter = void Function(
+    ByteData byteData, int byteOffset, int value, Endian endian);
 
-void _body(_GeneralizedSetter Function(ByteData) getFunction, _Info info) {
+void _body(_Setter setter, _Info info) {
   final byteData = ByteData(60);
 
-  getFunction(byteData)(40, info.setValue, Endian.little);
+  setter(byteData, 40, info.setValue, Endian.little);
   expect(byteData.buffer.asUint8List(40, 8), info.expectLittleEndian);
 
-  getFunction(byteData)(40, info.setValue, Endian.big);
+  setter(byteData, 40, info.setValue, Endian.big);
   expect(byteData.buffer.asUint8List(40, 8), info.expectBigEndian);
 }
 
