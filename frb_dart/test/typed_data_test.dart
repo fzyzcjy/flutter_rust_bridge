@@ -99,25 +99,24 @@ void main() {
                 expectLittleEndian: [0, 0, 0, 0, 0, 239, 255, 255],
                 expectBigEndian: [255, 255, 239, 0, 0, 0, 0, 0],
               ),
-              _Info(
-                // 2**64-1
-                integer: BigInt.parse('18446744073709551615'),
-                expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
-                expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
-              ),
+              // Dart int does not support this yet...
+              // _Info(
+              //   // 2**64-1
+              //   integer: BigInt.parse('18446744073709551615'),
+              //   expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+              //   expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+              // ),
               _Info(
                 // 2**63-1
                 integer: BigInt.parse('9223372036854775807'),
-                // TODO
-                expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
-                expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+                expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 127],
+                expectBigEndian: [127, 255, 255, 255, 255, 255, 255, 255],
               ),
               _Info(
                 // -2**63
                 integer: BigInt.parse('-9223372036854775808'),
-                // TODO
-                expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
-                expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+                expectLittleEndian: [0, 0, 0, 0, 0, 0, 0, 128],
+                expectBigEndian: [128, 0, 0, 0, 0, 0, 0, 0],
               ),
             ]) {
               test('$info', () => _body(setter, getter, info, endian));
