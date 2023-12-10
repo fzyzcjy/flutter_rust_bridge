@@ -42,8 +42,8 @@ void main() {
 
   group('read/write ByteData', () {
     for (final (name, setter, getter) in <(String, _Setter, _Getter)>[
-      ('Uint64', byteDataSetUint64, byteDataGetUint64),
-      ('Int64', byteDataSetInt64, byteDataGetInt64),
+      (_Name.uint64, byteDataSetUint64, byteDataGetUint64),
+      (_Name.int64, byteDataSetInt64, byteDataGetInt64),
     ]) {
       group(name, () {
         for (final endian in [Endian.little, Endian.big]) {
@@ -53,6 +53,16 @@ void main() {
                 integer: BigInt.parse('0'),
                 expectLittleEndian: [0, 0, 0, 0, 0, 0, 0, 0],
                 expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 0],
+              ),
+              _Info(
+                integer: BigInt.parse('1'),
+                expectLittleEndian: [1, 0, 0, 0, 0, 0, 0, 0],
+                expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 1],
+              ),
+              _Info(
+                integer: BigInt.parse('-1'),
+                expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+                expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
               ),
               _Info(
                 integer: BigInt.parse('2'),
@@ -89,8 +99,26 @@ void main() {
                 expectLittleEndian: [0, 0, 0, 0, 0, 239, 255, 255],
                 expectBigEndian: [255, 255, 239, 0, 0, 0, 0, 0],
               ),
-              TODO_near_boundary,
-              TODO_usebigint_and_test_more_ranges,
+              _Info(
+                // 2**64-1
+                integer: BigInt.parse('18446744073709551615'),
+                expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+                expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+              ),
+              _Info(
+                // 2**63-1
+                integer: BigInt.parse('9223372036854775807'),
+                // TODO
+                expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+                expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+              ),
+              _Info(
+                // -2**63
+                integer: BigInt.parse('-9223372036854775808'),
+                // TODO
+                expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+                expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+              ),
             ]) {
               test('$info', () => _body(setter, getter, info, endian));
             }
@@ -130,6 +158,8 @@ void _body(_Setter setter, _Getter getter, _Info info, Endian endian) {
   expect(byteData.buffer.asUint8List(byteOffset, 8), info.expectBytes(endian));
   expect(getter(byteData, byteOffset, endian), info.integer);
 }
+
+enum _Name { uint64, int64 }
 
 class _Info {
   final BigInt integer;
