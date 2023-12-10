@@ -97,9 +97,9 @@ fn wire_rust_call_dart_simple_impl(
                 use flutter_rust_bridge::IntoDart;
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
 
+                // TODO manual tweak
                 move |arg0: String, arg1: String| {
-                    async fn f2(arg0: String, arg1: String, dart_opaque: DartOpaque) -> String {
-                        // TODO manual tweak
+                    async fn body(arg0: String, arg1: String, dart_opaque: DartOpaque) -> String {
                         let message = FLUTTER_RUST_BRIDGE_HANDLER
                             .dart_fn_invoke(
                                 dart_opaque,
@@ -117,7 +117,7 @@ fn wire_rust_call_dart_simple_impl(
                         output
                     }
 
-                    flutter_rust_bridge::for_generated::convert_into_dart_fn_future(f2(
+                    flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
                         arg0,
                         arg1,
                         dart_opaque.clone(),
