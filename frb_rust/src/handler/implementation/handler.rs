@@ -1,5 +1,6 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
+use crate::dart_fn::handler::DartFnHandler;
 use crate::dart_fn::DartFnFuture;
 use crate::generalized_isolate::Channel;
 use crate::handler::error::Error;
@@ -46,7 +47,7 @@ pub struct SimpleHandler<E: Executor, EL: ErrorListener> {
     executor: E,
     error_listener: EL,
     config: Mutex<Option<HandlerConfig>>,
-    dart_fn_completers: Mutex<HashMap<i32, Sender<()>>>,
+    dart_fn_handler: DartFnHandler,
 }
 
 impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
@@ -56,7 +57,7 @@ impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
             executor,
             error_listener,
             config: Mutex::new(None),
-            dart_fn_completers: Mutex::new(HashMap::new()),
+            dart_fn_handler: DartFnHandler::new(),
         }
     }
 }
@@ -176,28 +177,11 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     }
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
-        let call_id = TODO;
-        let (sender, receiver) = futures::channel::oneshot::channel::<()>();
-        (self.dart_fn_completers.lock().unwrap()).insert(call_id, sender);
-
-        let sender = Rust2DartSender::new(Channel::new(self.dart_fn_invoke_port()));
-        sender.send(dart_fn_and_args);
-
-        receiver
+        self.dart_fn_handler.invoke(dart_fn_and_args)
     }
 
     fn dart_fn_handle_output(&self, call_id: i32) {
-        // NOTE This [catch_unwind] should also be put outside **ALL** code, see comments above for reasonk
-        panic::catch_unwind(move || {
-            let catch_unwind_result = panic::catch_unwind(move || {
-                if let Some(completer) = (self.dart_fn_completers.lock().unwrap()).remove(call_id) {
-                    completer.send(());
-                }
-            });
-            if let Err(err) = catch_unwind_result {
-                warn!("Error when dart_fn_handle_output: {err:?}");
-            }
-        });
+        self.dart_fn_handler.handle_output(call_id)
     }
 }
 
