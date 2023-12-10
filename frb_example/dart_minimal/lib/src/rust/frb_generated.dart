@@ -195,8 +195,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
       String Function(String, String) raw) {
-    // TODO this is manual tweak
-    final closure = (int callId, dynamic arg1Raw, dynamic arg2Raw) {
+    return cst_encode_DartOpaque(encode_dartFn_blahblah(raw));
+  }
+
+  void Function(int callId, dynamic arg1Raw, dynamic arg2Raw)
+      encode_dartFn_blahblah(String Function(String, String) raw) {
+    return (callId, arg1Raw, arg2Raw) {
       final arg1 = _dco_decode_String(arg1Raw);
       final arg2 = _dco_decode_String(arg2Raw);
 
@@ -209,7 +213,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       wire.dart_fn_deliver_output(
           callId, output.ptr, output.rustVecLen, output.dataLen);
     };
-    return cst_encode_DartOpaque(closure);
   }
 
   @protected
