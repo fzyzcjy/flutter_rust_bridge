@@ -144,10 +144,10 @@ void byteDataSetInt64($data.ByteData byteData, int byteOffset, BigInt value,
 
 /// {@macro flutter_rust_bridge.internal}
 BigInt byteDataGetUint64(
-        $data.ByteData byteData, int byteOffget, $data.Endian endian) =>
-    BigInt.from(byteData.getUint64(byteOffget, endian));
+        $data.ByteData byteData, int byteOffset, $data.Endian endian) =>
+    BigInt.from(byteData.getUint64(byteOffset, endian));
 
 /// {@macro flutter_rust_bridge.internal}
 BigInt byteDataGetInt64(
-        $data.ByteData byteData, int byteOffget, $data.Endian endian) =>
-    BigInt.from(byteData.getInt64(byteOffget, endian));
+        $data.ByteData byteData, int byteOffset, $data.Endian endian) =>
+    BigInt.from(byteData.getInt64(byteOffset, endian));

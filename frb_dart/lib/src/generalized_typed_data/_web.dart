@@ -200,3 +200,13 @@ void byteDataSetInt64(
     throw UnimplementedError("Unknown endian");
   }
 }
+
+/// {@macro flutter_rust_bridge.internal}
+BigInt byteDataGetUint64(ByteData byteData, int byteOffset, Endian endian) {
+  return TODO;
+}
+
+/// {@macro flutter_rust_bridge.internal}
+BigInt byteDataGetInt64(ByteData byteData, int byteOffset, Endian endian) {
+  return TODO;
+}
