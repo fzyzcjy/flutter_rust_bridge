@@ -61,7 +61,9 @@ class BaseHandler {
   void dartFnInvoke(List<dynamic> message) {
     print('hi dartFnInvoke $message');
     final [closureDartOpaque, ...args] = message;
-    final closureDartObject = decodeDartOpaque(closureDartOpaque);
+    final closureDartObject =
+        decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding)
+            as Function;
     Function.apply(closureDartObject, args);
   }
 }
