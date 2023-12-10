@@ -4,7 +4,9 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDart
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::{
     WireDartCodecCstGenerator, WireDartCodecCstGeneratorContext,
 };
-use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::dart::spec_generator::output_code::{
+    DartApiImplClassMethod, WireDartOutputCode,
+};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Optional;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
@@ -73,16 +75,16 @@ fn generate_encode_api_fill_to_wire_func(
             it => it,
         };
 
+        let signature = format!(
+            "void _cst_api_fill_to_wire_{}({} apiObj, {} wireObj)",
+            ty.safe_ident(),
+            ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
+            WireDartCodecCstGenerator::new(target_wire_type.clone(), context)
+                .dart_wire_type(Target::Io),
+        );
+
         WireDartOutputCode {
-            api_impl_class_body: format!(
-                "void _cst_api_fill_to_wire_{}({} apiObj, {} wireObj) {{
-                    {body}
-                }}",
-                ty.safe_ident(),
-                ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
-                WireDartCodecCstGenerator::new(target_wire_type.clone(), context)
-                    .dart_wire_type(Target::Io),
-            ),
+            api_impl_class_methods: vec![DartApiImplClassMethod { signature, body }],
             ..Default::default()
         }
     } else {

@@ -33,8 +33,8 @@ impl AddAssign for WireDartOutputCode {
 
 #[derive(Default, Clone, Debug, Serialize)]
 pub(crate) struct DartApiImplClassMethod {
-    signature: String,
-    body: String,
+    pub signature: String,
+    pub body: String,
 }
 
 impl WireDartOutputCode {
