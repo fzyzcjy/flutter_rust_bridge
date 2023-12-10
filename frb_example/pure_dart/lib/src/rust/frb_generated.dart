@@ -42277,6 +42277,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["id"],
       );
 
+  void Function(
+    int,
+  ) encode_DartFn_Inputs__Output_unit(void Function() raw) {
+    return (
+      callId,
+    ) {
+      final rawOutput = raw();
+
+      final serializer = SseSerializer(generalizedFrbRustBinding);
+      _sse_encode_unit(rawOutput, serializer);
+      final output = serializer.intoRaw();
+
+      wire.dart_fn_deliver_output(
+          callId, output.ptr, output.rustVecLen, output.dataLen);
+    };
+  }
+
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData =>
           wire.rust_arc_increment_strong_count_RustOpaque_MutexHideData;
@@ -42629,6 +42646,150 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
   }
 
+  RwLockBoxHelloTraitTwinNormal
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinNormal.dcoDecode(raw);
+  }
+
+  RwLockBoxHelloTraitTwinSse
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinSse.dcoDecode(raw);
+  }
+
+  RwLockBoxHelloTraitTwinSync
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinSync.dcoDecode(raw);
+  }
+
+  RwLockBoxHelloTraitTwinSyncSse
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinSyncSse.dcoDecode(raw);
+  }
+
+  RwLockNonCloneSimpleTwinNormal
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw) {
+    return RwLockNonCloneSimpleTwinNormal.dcoDecode(raw);
+  }
+
+  RwLockNonCloneSimpleTwinSse
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw) {
+    return RwLockNonCloneSimpleTwinSse.dcoDecode(raw);
+  }
+
+  RwLockNonCloneSimpleTwinSync
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw) {
+    return RwLockNonCloneSimpleTwinSync.dcoDecode(raw);
+  }
+
+  RwLockNonCloneSimpleTwinSyncSse
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw) {
+    return RwLockNonCloneSimpleTwinSyncSse.dcoDecode(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      _dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+  }
+
+  RwLockBoxHelloTraitTwinNormal
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinNormal.dcoDecode(raw);
+  }
+
+  RwLockBoxHelloTraitTwinSse
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinSse.dcoDecode(raw);
+  }
+
+  RwLockBoxHelloTraitTwinSync
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinSync.dcoDecode(raw);
+  }
+
+  RwLockBoxHelloTraitTwinSyncSse
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinSyncSse.dcoDecode(raw);
+  }
+
+  RwLockNonCloneSimpleTwinNormal
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw) {
+    return RwLockNonCloneSimpleTwinNormal.dcoDecode(raw);
+  }
+
+  RwLockNonCloneSimpleTwinSse
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw) {
+    return RwLockNonCloneSimpleTwinSse.dcoDecode(raw);
+  }
+
+  RwLockNonCloneSimpleTwinSync
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw) {
+    return RwLockNonCloneSimpleTwinSync.dcoDecode(raw);
+  }
+
+  RwLockNonCloneSimpleTwinSyncSse
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw) {
+    return RwLockNonCloneSimpleTwinSyncSse.dcoDecode(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      _dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+  }
+
   String _dco_decode_Backtrace(dynamic raw) {
     return raw as String;
   }
@@ -42647,6 +42808,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   DateTime _dco_decode_Chrono_Utc(dynamic raw) {
     return dcoDecodeTimestamp(ts: _dco_decode_i_64(raw).toInt(), isUtc: true);
+  }
+
+  void Function() _dco_decode_DartFn_Inputs__Output_unit(dynamic raw) {
+    throw UnimplementedError('');
   }
 
   Object _dco_decode_DartOpaque(dynamic raw) {
@@ -43426,8 +43591,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _dco_decode_a_twin_sync_sse(raw);
   }
 
+  AbcTwinNormal _dco_decode_box_autoadd_abc_twin_normal(dynamic raw) {
+    return _dco_decode_abc_twin_normal(raw);
+  }
+
+  AbcTwinRustAsync _dco_decode_box_autoadd_abc_twin_rust_async(dynamic raw) {
+    return _dco_decode_abc_twin_rust_async(raw);
+  }
+
+  AbcTwinRustAsyncSse _dco_decode_box_autoadd_abc_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_abc_twin_rust_async_sse(raw);
+  }
+
+  AbcTwinSse _dco_decode_box_autoadd_abc_twin_sse(dynamic raw) {
+    return _dco_decode_abc_twin_sse(raw);
+  }
+
+  AbcTwinSync _dco_decode_box_autoadd_abc_twin_sync(dynamic raw) {
+    return _dco_decode_abc_twin_sync(raw);
+  }
+
+  AbcTwinSyncSse _dco_decode_box_autoadd_abc_twin_sync_sse(dynamic raw) {
+    return _dco_decode_abc_twin_sync_sse(raw);
+  }
+
   ApplicationEnv _dco_decode_box_autoadd_application_env(dynamic raw) {
     return _dco_decode_application_env(raw);
+  }
+
+  ApplicationSettings _dco_decode_box_autoadd_application_settings(
+      dynamic raw) {
+    return _dco_decode_application_settings(raw);
   }
 
   AttributeTwinNormal _dco_decode_box_autoadd_attribute_twin_normal(
@@ -43510,6 +43705,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _dco_decode_c_twin_sync_sse(raw);
   }
 
+  ConcatenateWithTwinNormal
+      _dco_decode_box_autoadd_concatenate_with_twin_normal(dynamic raw) {
+    return _dco_decode_concatenate_with_twin_normal(raw);
+  }
+
+  ConcatenateWithTwinRustAsync
+      _dco_decode_box_autoadd_concatenate_with_twin_rust_async(dynamic raw) {
+    return _dco_decode_concatenate_with_twin_rust_async(raw);
+  }
+
+  ConcatenateWithTwinRustAsyncSse
+      _dco_decode_box_autoadd_concatenate_with_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_concatenate_with_twin_rust_async_sse(raw);
+  }
+
+  ConcatenateWithTwinSse _dco_decode_box_autoadd_concatenate_with_twin_sse(
+      dynamic raw) {
+    return _dco_decode_concatenate_with_twin_sse(raw);
+  }
+
+  ConcatenateWithTwinSync _dco_decode_box_autoadd_concatenate_with_twin_sync(
+      dynamic raw) {
+    return _dco_decode_concatenate_with_twin_sync(raw);
+  }
+
+  ConcatenateWithTwinSyncSse
+      _dco_decode_box_autoadd_concatenate_with_twin_sync_sse(dynamic raw) {
+    return _dco_decode_concatenate_with_twin_sync_sse(raw);
+  }
+
   CustomNestedError2TwinNormal
       _dco_decode_box_autoadd_custom_nested_error_2_twin_normal(dynamic raw) {
     return _dco_decode_custom_nested_error_2_twin_normal(raw);
@@ -43576,6 +43802,160 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _dco_decode_custom_nested_error_inner_twin_sync_sse(raw);
   }
 
+  CustomNestedErrorOuterTwinNormal
+      _dco_decode_box_autoadd_custom_nested_error_outer_twin_normal(
+          dynamic raw) {
+    return _dco_decode_custom_nested_error_outer_twin_normal(raw);
+  }
+
+  CustomNestedErrorOuterTwinRustAsync
+      _dco_decode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_custom_nested_error_outer_twin_rust_async(raw);
+  }
+
+  CustomNestedErrorOuterTwinRustAsyncSse
+      _dco_decode_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_custom_nested_error_outer_twin_rust_async_sse(raw);
+  }
+
+  CustomNestedErrorOuterTwinSse
+      _dco_decode_box_autoadd_custom_nested_error_outer_twin_sse(dynamic raw) {
+    return _dco_decode_custom_nested_error_outer_twin_sse(raw);
+  }
+
+  CustomNestedErrorOuterTwinSync
+      _dco_decode_box_autoadd_custom_nested_error_outer_twin_sync(dynamic raw) {
+    return _dco_decode_custom_nested_error_outer_twin_sync(raw);
+  }
+
+  CustomNestedErrorOuterTwinSyncSse
+      _dco_decode_box_autoadd_custom_nested_error_outer_twin_sync_sse(
+          dynamic raw) {
+    return _dco_decode_custom_nested_error_outer_twin_sync_sse(raw);
+  }
+
+  CustomStructErrorTwinNormal
+      _dco_decode_box_autoadd_custom_struct_error_twin_normal(dynamic raw) {
+    return _dco_decode_custom_struct_error_twin_normal(raw);
+  }
+
+  CustomStructErrorTwinRustAsync
+      _dco_decode_box_autoadd_custom_struct_error_twin_rust_async(dynamic raw) {
+    return _dco_decode_custom_struct_error_twin_rust_async(raw);
+  }
+
+  CustomStructErrorTwinRustAsyncSse
+      _dco_decode_box_autoadd_custom_struct_error_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_custom_struct_error_twin_rust_async_sse(raw);
+  }
+
+  CustomStructErrorTwinSse _dco_decode_box_autoadd_custom_struct_error_twin_sse(
+      dynamic raw) {
+    return _dco_decode_custom_struct_error_twin_sse(raw);
+  }
+
+  CustomStructErrorTwinSync
+      _dco_decode_box_autoadd_custom_struct_error_twin_sync(dynamic raw) {
+    return _dco_decode_custom_struct_error_twin_sync(raw);
+  }
+
+  CustomStructErrorTwinSyncSse
+      _dco_decode_box_autoadd_custom_struct_error_twin_sync_sse(dynamic raw) {
+    return _dco_decode_custom_struct_error_twin_sync_sse(raw);
+  }
+
+  CustomStructTwinNormal _dco_decode_box_autoadd_custom_struct_twin_normal(
+      dynamic raw) {
+    return _dco_decode_custom_struct_twin_normal(raw);
+  }
+
+  CustomStructTwinRustAsync
+      _dco_decode_box_autoadd_custom_struct_twin_rust_async(dynamic raw) {
+    return _dco_decode_custom_struct_twin_rust_async(raw);
+  }
+
+  CustomStructTwinRustAsyncSse
+      _dco_decode_box_autoadd_custom_struct_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_custom_struct_twin_rust_async_sse(raw);
+  }
+
+  CustomStructTwinSse _dco_decode_box_autoadd_custom_struct_twin_sse(
+      dynamic raw) {
+    return _dco_decode_custom_struct_twin_sse(raw);
+  }
+
+  CustomStructTwinSync _dco_decode_box_autoadd_custom_struct_twin_sync(
+      dynamic raw) {
+    return _dco_decode_custom_struct_twin_sync(raw);
+  }
+
+  CustomStructTwinSyncSse _dco_decode_box_autoadd_custom_struct_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_custom_struct_twin_sync_sse(raw);
+  }
+
+  CustomizedTwinNormal _dco_decode_box_autoadd_customized_twin_normal(
+      dynamic raw) {
+    return _dco_decode_customized_twin_normal(raw);
+  }
+
+  CustomizedTwinRustAsync _dco_decode_box_autoadd_customized_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_customized_twin_rust_async(raw);
+  }
+
+  CustomizedTwinRustAsyncSse
+      _dco_decode_box_autoadd_customized_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_customized_twin_rust_async_sse(raw);
+  }
+
+  CustomizedTwinSse _dco_decode_box_autoadd_customized_twin_sse(dynamic raw) {
+    return _dco_decode_customized_twin_sse(raw);
+  }
+
+  CustomizedTwinSync _dco_decode_box_autoadd_customized_twin_sync(dynamic raw) {
+    return _dco_decode_customized_twin_sync(raw);
+  }
+
+  CustomizedTwinSyncSse _dco_decode_box_autoadd_customized_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_customized_twin_sync_sse(raw);
+  }
+
+  DartOpaqueNestedTwinNormal
+      _dco_decode_box_autoadd_dart_opaque_nested_twin_normal(dynamic raw) {
+    return _dco_decode_dart_opaque_nested_twin_normal(raw);
+  }
+
+  DartOpaqueNestedTwinRustAsync
+      _dco_decode_box_autoadd_dart_opaque_nested_twin_rust_async(dynamic raw) {
+    return _dco_decode_dart_opaque_nested_twin_rust_async(raw);
+  }
+
+  DartOpaqueNestedTwinRustAsyncSse
+      _dco_decode_box_autoadd_dart_opaque_nested_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_dart_opaque_nested_twin_rust_async_sse(raw);
+  }
+
+  DartOpaqueNestedTwinSse _dco_decode_box_autoadd_dart_opaque_nested_twin_sse(
+      dynamic raw) {
+    return _dco_decode_dart_opaque_nested_twin_sse(raw);
+  }
+
+  DartOpaqueNestedTwinSync _dco_decode_box_autoadd_dart_opaque_nested_twin_sync(
+      dynamic raw) {
+    return _dco_decode_dart_opaque_nested_twin_sync(raw);
+  }
+
+  DartOpaqueNestedTwinSyncSse
+      _dco_decode_box_autoadd_dart_opaque_nested_twin_sync_sse(dynamic raw) {
+    return _dco_decode_dart_opaque_nested_twin_sync_sse(raw);
+  }
+
   ElementTwinNormal _dco_decode_box_autoadd_element_twin_normal(dynamic raw) {
     return _dco_decode_element_twin_normal(raw);
   }
@@ -43601,6 +43981,206 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ElementTwinSyncSse _dco_decode_box_autoadd_element_twin_sync_sse(
       dynamic raw) {
     return _dco_decode_element_twin_sync_sse(raw);
+  }
+
+  EmptyTwinNormal _dco_decode_box_autoadd_empty_twin_normal(dynamic raw) {
+    return _dco_decode_empty_twin_normal(raw);
+  }
+
+  EmptyTwinRustAsync _dco_decode_box_autoadd_empty_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_empty_twin_rust_async(raw);
+  }
+
+  EmptyTwinRustAsyncSse _dco_decode_box_autoadd_empty_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_empty_twin_rust_async_sse(raw);
+  }
+
+  EmptyTwinSse _dco_decode_box_autoadd_empty_twin_sse(dynamic raw) {
+    return _dco_decode_empty_twin_sse(raw);
+  }
+
+  EmptyTwinSync _dco_decode_box_autoadd_empty_twin_sync(dynamic raw) {
+    return _dco_decode_empty_twin_sync(raw);
+  }
+
+  EmptyTwinSyncSse _dco_decode_box_autoadd_empty_twin_sync_sse(dynamic raw) {
+    return _dco_decode_empty_twin_sync_sse(raw);
+  }
+
+  EnumDartOpaqueTwinNormal _dco_decode_box_autoadd_enum_dart_opaque_twin_normal(
+      dynamic raw) {
+    return _dco_decode_enum_dart_opaque_twin_normal(raw);
+  }
+
+  EnumDartOpaqueTwinRustAsync
+      _dco_decode_box_autoadd_enum_dart_opaque_twin_rust_async(dynamic raw) {
+    return _dco_decode_enum_dart_opaque_twin_rust_async(raw);
+  }
+
+  EnumDartOpaqueTwinRustAsyncSse
+      _dco_decode_box_autoadd_enum_dart_opaque_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_enum_dart_opaque_twin_rust_async_sse(raw);
+  }
+
+  EnumDartOpaqueTwinSse _dco_decode_box_autoadd_enum_dart_opaque_twin_sse(
+      dynamic raw) {
+    return _dco_decode_enum_dart_opaque_twin_sse(raw);
+  }
+
+  EnumDartOpaqueTwinSync _dco_decode_box_autoadd_enum_dart_opaque_twin_sync(
+      dynamic raw) {
+    return _dco_decode_enum_dart_opaque_twin_sync(raw);
+  }
+
+  EnumDartOpaqueTwinSyncSse
+      _dco_decode_box_autoadd_enum_dart_opaque_twin_sync_sse(dynamic raw) {
+    return _dco_decode_enum_dart_opaque_twin_sync_sse(raw);
+  }
+
+  EnumOpaqueTwinNormal _dco_decode_box_autoadd_enum_opaque_twin_normal(
+      dynamic raw) {
+    return _dco_decode_enum_opaque_twin_normal(raw);
+  }
+
+  EnumOpaqueTwinRustAsync _dco_decode_box_autoadd_enum_opaque_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_enum_opaque_twin_rust_async(raw);
+  }
+
+  EnumOpaqueTwinRustAsyncSse
+      _dco_decode_box_autoadd_enum_opaque_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_enum_opaque_twin_rust_async_sse(raw);
+  }
+
+  EnumOpaqueTwinSse _dco_decode_box_autoadd_enum_opaque_twin_sse(dynamic raw) {
+    return _dco_decode_enum_opaque_twin_sse(raw);
+  }
+
+  EnumOpaqueTwinSync _dco_decode_box_autoadd_enum_opaque_twin_sync(
+      dynamic raw) {
+    return _dco_decode_enum_opaque_twin_sync(raw);
+  }
+
+  EnumOpaqueTwinSyncSse _dco_decode_box_autoadd_enum_opaque_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_enum_opaque_twin_sync_sse(raw);
+  }
+
+  EnumWithItemMixedTwinNormal
+      _dco_decode_box_autoadd_enum_with_item_mixed_twin_normal(dynamic raw) {
+    return _dco_decode_enum_with_item_mixed_twin_normal(raw);
+  }
+
+  EnumWithItemMixedTwinRustAsync
+      _dco_decode_box_autoadd_enum_with_item_mixed_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_enum_with_item_mixed_twin_rust_async(raw);
+  }
+
+  EnumWithItemMixedTwinRustAsyncSse
+      _dco_decode_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_enum_with_item_mixed_twin_rust_async_sse(raw);
+  }
+
+  EnumWithItemMixedTwinSse
+      _dco_decode_box_autoadd_enum_with_item_mixed_twin_sse(dynamic raw) {
+    return _dco_decode_enum_with_item_mixed_twin_sse(raw);
+  }
+
+  EnumWithItemMixedTwinSync
+      _dco_decode_box_autoadd_enum_with_item_mixed_twin_sync(dynamic raw) {
+    return _dco_decode_enum_with_item_mixed_twin_sync(raw);
+  }
+
+  EnumWithItemMixedTwinSyncSse
+      _dco_decode_box_autoadd_enum_with_item_mixed_twin_sync_sse(dynamic raw) {
+    return _dco_decode_enum_with_item_mixed_twin_sync_sse(raw);
+  }
+
+  EnumWithItemStructTwinNormal
+      _dco_decode_box_autoadd_enum_with_item_struct_twin_normal(dynamic raw) {
+    return _dco_decode_enum_with_item_struct_twin_normal(raw);
+  }
+
+  EnumWithItemStructTwinRustAsync
+      _dco_decode_box_autoadd_enum_with_item_struct_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_enum_with_item_struct_twin_rust_async(raw);
+  }
+
+  EnumWithItemStructTwinRustAsyncSse
+      _dco_decode_box_autoadd_enum_with_item_struct_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_enum_with_item_struct_twin_rust_async_sse(raw);
+  }
+
+  EnumWithItemStructTwinSse
+      _dco_decode_box_autoadd_enum_with_item_struct_twin_sse(dynamic raw) {
+    return _dco_decode_enum_with_item_struct_twin_sse(raw);
+  }
+
+  EnumWithItemStructTwinSync
+      _dco_decode_box_autoadd_enum_with_item_struct_twin_sync(dynamic raw) {
+    return _dco_decode_enum_with_item_struct_twin_sync(raw);
+  }
+
+  EnumWithItemStructTwinSyncSse
+      _dco_decode_box_autoadd_enum_with_item_struct_twin_sync_sse(dynamic raw) {
+    return _dco_decode_enum_with_item_struct_twin_sync_sse(raw);
+  }
+
+  EnumWithItemTupleTwinNormal
+      _dco_decode_box_autoadd_enum_with_item_tuple_twin_normal(dynamic raw) {
+    return _dco_decode_enum_with_item_tuple_twin_normal(raw);
+  }
+
+  EnumWithItemTupleTwinRustAsync
+      _dco_decode_box_autoadd_enum_with_item_tuple_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_enum_with_item_tuple_twin_rust_async(raw);
+  }
+
+  EnumWithItemTupleTwinRustAsyncSse
+      _dco_decode_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_enum_with_item_tuple_twin_rust_async_sse(raw);
+  }
+
+  EnumWithItemTupleTwinSse
+      _dco_decode_box_autoadd_enum_with_item_tuple_twin_sse(dynamic raw) {
+    return _dco_decode_enum_with_item_tuple_twin_sse(raw);
+  }
+
+  EnumWithItemTupleTwinSync
+      _dco_decode_box_autoadd_enum_with_item_tuple_twin_sync(dynamic raw) {
+    return _dco_decode_enum_with_item_tuple_twin_sync(raw);
+  }
+
+  EnumWithItemTupleTwinSyncSse
+      _dco_decode_box_autoadd_enum_with_item_tuple_twin_sync_sse(dynamic raw) {
+    return _dco_decode_enum_with_item_tuple_twin_sync_sse(raw);
+  }
+
+  EventTwinNormal _dco_decode_box_autoadd_event_twin_normal(dynamic raw) {
+    return _dco_decode_event_twin_normal(raw);
+  }
+
+  EventTwinRustAsync _dco_decode_box_autoadd_event_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_event_twin_rust_async(raw);
+  }
+
+  EventTwinRustAsyncSse _dco_decode_box_autoadd_event_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_event_twin_rust_async_sse(raw);
+  }
+
+  EventTwinSse _dco_decode_box_autoadd_event_twin_sse(dynamic raw) {
+    return _dco_decode_event_twin_sse(raw);
   }
 
   ExoticOptionalsTwinNormal
@@ -43642,6 +44222,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as double;
   }
 
+  FeatureChronoTwinNormal _dco_decode_box_autoadd_feature_chrono_twin_normal(
+      dynamic raw) {
+    return _dco_decode_feature_chrono_twin_normal(raw);
+  }
+
+  FeatureChronoTwinRustAsync
+      _dco_decode_box_autoadd_feature_chrono_twin_rust_async(dynamic raw) {
+    return _dco_decode_feature_chrono_twin_rust_async(raw);
+  }
+
+  FeatureChronoTwinSync _dco_decode_box_autoadd_feature_chrono_twin_sync(
+      dynamic raw) {
+    return _dco_decode_feature_chrono_twin_sync(raw);
+  }
+
+  FeatureUuidTwinNormal _dco_decode_box_autoadd_feature_uuid_twin_normal(
+      dynamic raw) {
+    return _dco_decode_feature_uuid_twin_normal(raw);
+  }
+
+  FeatureUuidTwinRustAsync _dco_decode_box_autoadd_feature_uuid_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_feature_uuid_twin_rust_async(raw);
+  }
+
+  FeatureUuidTwinSync _dco_decode_box_autoadd_feature_uuid_twin_sync(
+      dynamic raw) {
+    return _dco_decode_feature_uuid_twin_sync(raw);
+  }
+
+  FeedIdTwinNormal _dco_decode_box_autoadd_feed_id_twin_normal(dynamic raw) {
+    return _dco_decode_feed_id_twin_normal(raw);
+  }
+
+  FeedIdTwinRustAsync _dco_decode_box_autoadd_feed_id_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_feed_id_twin_rust_async(raw);
+  }
+
+  FeedIdTwinRustAsyncSse _dco_decode_box_autoadd_feed_id_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_feed_id_twin_rust_async_sse(raw);
+  }
+
+  FeedIdTwinSse _dco_decode_box_autoadd_feed_id_twin_sse(dynamic raw) {
+    return _dco_decode_feed_id_twin_sse(raw);
+  }
+
+  FeedIdTwinSync _dco_decode_box_autoadd_feed_id_twin_sync(dynamic raw) {
+    return _dco_decode_feed_id_twin_sync(raw);
+  }
+
+  FeedIdTwinSyncSse _dco_decode_box_autoadd_feed_id_twin_sync_sse(dynamic raw) {
+    return _dco_decode_feed_id_twin_sync_sse(raw);
+  }
+
   int _dco_decode_box_autoadd_i_16(dynamic raw) {
     return raw as int;
   }
@@ -43658,9 +44294,43 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as int;
   }
 
+  KitchenSinkTwinNormal _dco_decode_box_autoadd_kitchen_sink_twin_normal(
+      dynamic raw) {
+    return _dco_decode_kitchen_sink_twin_normal(raw);
+  }
+
+  KitchenSinkTwinRustAsync _dco_decode_box_autoadd_kitchen_sink_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_kitchen_sink_twin_rust_async(raw);
+  }
+
+  KitchenSinkTwinRustAsyncSse
+      _dco_decode_box_autoadd_kitchen_sink_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_kitchen_sink_twin_rust_async_sse(raw);
+  }
+
+  KitchenSinkTwinSse _dco_decode_box_autoadd_kitchen_sink_twin_sse(
+      dynamic raw) {
+    return _dco_decode_kitchen_sink_twin_sse(raw);
+  }
+
+  KitchenSinkTwinSync _dco_decode_box_autoadd_kitchen_sink_twin_sync(
+      dynamic raw) {
+    return _dco_decode_kitchen_sink_twin_sync(raw);
+  }
+
+  KitchenSinkTwinSyncSse _dco_decode_box_autoadd_kitchen_sink_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_kitchen_sink_twin_sync_sse(raw);
+  }
+
   ListOfNestedRawStringMirrored
       _dco_decode_box_autoadd_list_of_nested_raw_string_mirrored(dynamic raw) {
     return _dco_decode_list_of_nested_raw_string_mirrored(raw);
+  }
+
+  MacroStruct _dco_decode_box_autoadd_macro_struct(dynamic raw) {
+    return _dco_decode_macro_struct(raw);
   }
 
   MeasureTwinNormal _dco_decode_box_autoadd_measure_twin_normal(dynamic raw) {
@@ -43688,6 +44358,102 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MeasureTwinSyncSse _dco_decode_box_autoadd_measure_twin_sync_sse(
       dynamic raw) {
     return _dco_decode_measure_twin_sync_sse(raw);
+  }
+
+  MessageIdTwinNormal _dco_decode_box_autoadd_message_id_twin_normal(
+      dynamic raw) {
+    return _dco_decode_message_id_twin_normal(raw);
+  }
+
+  MessageIdTwinRustAsync _dco_decode_box_autoadd_message_id_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_message_id_twin_rust_async(raw);
+  }
+
+  MessageIdTwinRustAsyncSse
+      _dco_decode_box_autoadd_message_id_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_message_id_twin_rust_async_sse(raw);
+  }
+
+  MessageIdTwinSse _dco_decode_box_autoadd_message_id_twin_sse(dynamic raw) {
+    return _dco_decode_message_id_twin_sse(raw);
+  }
+
+  MessageIdTwinSync _dco_decode_box_autoadd_message_id_twin_sync(dynamic raw) {
+    return _dco_decode_message_id_twin_sync(raw);
+  }
+
+  MessageIdTwinSyncSse _dco_decode_box_autoadd_message_id_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_message_id_twin_sync_sse(raw);
+  }
+
+  MyNestedStructTwinNormal _dco_decode_box_autoadd_my_nested_struct_twin_normal(
+      dynamic raw) {
+    return _dco_decode_my_nested_struct_twin_normal(raw);
+  }
+
+  MyNestedStructTwinRustAsync
+      _dco_decode_box_autoadd_my_nested_struct_twin_rust_async(dynamic raw) {
+    return _dco_decode_my_nested_struct_twin_rust_async(raw);
+  }
+
+  MyNestedStructTwinRustAsyncSse
+      _dco_decode_box_autoadd_my_nested_struct_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_my_nested_struct_twin_rust_async_sse(raw);
+  }
+
+  MyNestedStructTwinSse _dco_decode_box_autoadd_my_nested_struct_twin_sse(
+      dynamic raw) {
+    return _dco_decode_my_nested_struct_twin_sse(raw);
+  }
+
+  MyNestedStructTwinSync _dco_decode_box_autoadd_my_nested_struct_twin_sync(
+      dynamic raw) {
+    return _dco_decode_my_nested_struct_twin_sync(raw);
+  }
+
+  MyNestedStructTwinSyncSse
+      _dco_decode_box_autoadd_my_nested_struct_twin_sync_sse(dynamic raw) {
+    return _dco_decode_my_nested_struct_twin_sync_sse(raw);
+  }
+
+  MySize _dco_decode_box_autoadd_my_size(dynamic raw) {
+    return _dco_decode_my_size(raw);
+  }
+
+  MyStruct _dco_decode_box_autoadd_my_struct(dynamic raw) {
+    return _dco_decode_my_struct(raw);
+  }
+
+  MyTreeNodeTwinNormal _dco_decode_box_autoadd_my_tree_node_twin_normal(
+      dynamic raw) {
+    return _dco_decode_my_tree_node_twin_normal(raw);
+  }
+
+  MyTreeNodeTwinRustAsync _dco_decode_box_autoadd_my_tree_node_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_my_tree_node_twin_rust_async(raw);
+  }
+
+  MyTreeNodeTwinRustAsyncSse
+      _dco_decode_box_autoadd_my_tree_node_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_my_tree_node_twin_rust_async_sse(raw);
+  }
+
+  MyTreeNodeTwinSse _dco_decode_box_autoadd_my_tree_node_twin_sse(dynamic raw) {
+    return _dco_decode_my_tree_node_twin_sse(raw);
+  }
+
+  MyTreeNodeTwinSync _dco_decode_box_autoadd_my_tree_node_twin_sync(
+      dynamic raw) {
+    return _dco_decode_my_tree_node_twin_sync(raw);
+  }
+
+  MyTreeNodeTwinSyncSse _dco_decode_box_autoadd_my_tree_node_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_my_tree_node_twin_sync_sse(raw);
   }
 
   NestedRawStringMirrored _dco_decode_box_autoadd_nested_raw_string_mirrored(
@@ -43724,8 +44490,416 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _dco_decode_new_type_int_twin_sync_sse(raw);
   }
 
+  NoteTwinNormal _dco_decode_box_autoadd_note_twin_normal(dynamic raw) {
+    return _dco_decode_note_twin_normal(raw);
+  }
+
+  NoteTwinRustAsync _dco_decode_box_autoadd_note_twin_rust_async(dynamic raw) {
+    return _dco_decode_note_twin_rust_async(raw);
+  }
+
+  NoteTwinRustAsyncSse _dco_decode_box_autoadd_note_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_note_twin_rust_async_sse(raw);
+  }
+
+  NoteTwinSse _dco_decode_box_autoadd_note_twin_sse(dynamic raw) {
+    return _dco_decode_note_twin_sse(raw);
+  }
+
+  NoteTwinSync _dco_decode_box_autoadd_note_twin_sync(dynamic raw) {
+    return _dco_decode_note_twin_sync(raw);
+  }
+
+  NoteTwinSyncSse _dco_decode_box_autoadd_note_twin_sync_sse(dynamic raw) {
+    return _dco_decode_note_twin_sync_sse(raw);
+  }
+
+  Numbers _dco_decode_box_autoadd_numbers(dynamic raw) {
+    return _dco_decode_numbers(raw);
+  }
+
+  OpaqueNestedTwinNormal _dco_decode_box_autoadd_opaque_nested_twin_normal(
+      dynamic raw) {
+    return _dco_decode_opaque_nested_twin_normal(raw);
+  }
+
+  OpaqueNestedTwinRustAsync
+      _dco_decode_box_autoadd_opaque_nested_twin_rust_async(dynamic raw) {
+    return _dco_decode_opaque_nested_twin_rust_async(raw);
+  }
+
+  OpaqueNestedTwinRustAsyncSse
+      _dco_decode_box_autoadd_opaque_nested_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_opaque_nested_twin_rust_async_sse(raw);
+  }
+
+  OpaqueNestedTwinSse _dco_decode_box_autoadd_opaque_nested_twin_sse(
+      dynamic raw) {
+    return _dco_decode_opaque_nested_twin_sse(raw);
+  }
+
+  OpaqueNestedTwinSync _dco_decode_box_autoadd_opaque_nested_twin_sync(
+      dynamic raw) {
+    return _dco_decode_opaque_nested_twin_sync(raw);
+  }
+
+  OpaqueNestedTwinSyncSse _dco_decode_box_autoadd_opaque_nested_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_opaque_nested_twin_sync_sse(raw);
+  }
+
+  OptVecsTwinNormal _dco_decode_box_autoadd_opt_vecs_twin_normal(dynamic raw) {
+    return _dco_decode_opt_vecs_twin_normal(raw);
+  }
+
+  OptVecsTwinRustAsync _dco_decode_box_autoadd_opt_vecs_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_opt_vecs_twin_rust_async(raw);
+  }
+
+  OptVecsTwinRustAsyncSse _dco_decode_box_autoadd_opt_vecs_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_opt_vecs_twin_rust_async_sse(raw);
+  }
+
+  OptVecsTwinSse _dco_decode_box_autoadd_opt_vecs_twin_sse(dynamic raw) {
+    return _dco_decode_opt_vecs_twin_sse(raw);
+  }
+
+  OptVecsTwinSync _dco_decode_box_autoadd_opt_vecs_twin_sync(dynamic raw) {
+    return _dco_decode_opt_vecs_twin_sync(raw);
+  }
+
+  OptVecsTwinSyncSse _dco_decode_box_autoadd_opt_vecs_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_opt_vecs_twin_sync_sse(raw);
+  }
+
   RawStringMirrored _dco_decode_box_autoadd_raw_string_mirrored(dynamic raw) {
     return _dco_decode_raw_string_mirrored(raw);
+  }
+
+  (String, int) _dco_decode_box_autoadd_record_string_i_32(dynamic raw) {
+    return raw as (String, int);
+  }
+
+  Sequences _dco_decode_box_autoadd_sequences(dynamic raw) {
+    return _dco_decode_sequences(raw);
+  }
+
+  SomeStructTwinNormal _dco_decode_box_autoadd_some_struct_twin_normal(
+      dynamic raw) {
+    return _dco_decode_some_struct_twin_normal(raw);
+  }
+
+  SomeStructTwinRustAsync _dco_decode_box_autoadd_some_struct_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_some_struct_twin_rust_async(raw);
+  }
+
+  SomeStructTwinRustAsyncSse
+      _dco_decode_box_autoadd_some_struct_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_some_struct_twin_rust_async_sse(raw);
+  }
+
+  SomeStructTwinSse _dco_decode_box_autoadd_some_struct_twin_sse(dynamic raw) {
+    return _dco_decode_some_struct_twin_sse(raw);
+  }
+
+  SomeStructTwinSync _dco_decode_box_autoadd_some_struct_twin_sync(
+      dynamic raw) {
+    return _dco_decode_some_struct_twin_sync(raw);
+  }
+
+  SomeStructTwinSyncSse _dco_decode_box_autoadd_some_struct_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_some_struct_twin_sync_sse(raw);
+  }
+
+  StructWithCommentsTwinNormal
+      _dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw) {
+    return _dco_decode_struct_with_comments_twin_normal(raw);
+  }
+
+  StructWithCommentsTwinRustAsync
+      _dco_decode_box_autoadd_struct_with_comments_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_struct_with_comments_twin_rust_async(raw);
+  }
+
+  StructWithCommentsTwinRustAsyncSse
+      _dco_decode_box_autoadd_struct_with_comments_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_struct_with_comments_twin_rust_async_sse(raw);
+  }
+
+  StructWithCommentsTwinSse
+      _dco_decode_box_autoadd_struct_with_comments_twin_sse(dynamic raw) {
+    return _dco_decode_struct_with_comments_twin_sse(raw);
+  }
+
+  StructWithCommentsTwinSync
+      _dco_decode_box_autoadd_struct_with_comments_twin_sync(dynamic raw) {
+    return _dco_decode_struct_with_comments_twin_sync(raw);
+  }
+
+  StructWithCommentsTwinSyncSse
+      _dco_decode_box_autoadd_struct_with_comments_twin_sync_sse(dynamic raw) {
+    return _dco_decode_struct_with_comments_twin_sync_sse(raw);
+  }
+
+  StructWithEnumTwinNormal _dco_decode_box_autoadd_struct_with_enum_twin_normal(
+      dynamic raw) {
+    return _dco_decode_struct_with_enum_twin_normal(raw);
+  }
+
+  StructWithEnumTwinRustAsync
+      _dco_decode_box_autoadd_struct_with_enum_twin_rust_async(dynamic raw) {
+    return _dco_decode_struct_with_enum_twin_rust_async(raw);
+  }
+
+  StructWithEnumTwinRustAsyncSse
+      _dco_decode_box_autoadd_struct_with_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_struct_with_enum_twin_rust_async_sse(raw);
+  }
+
+  StructWithEnumTwinSse _dco_decode_box_autoadd_struct_with_enum_twin_sse(
+      dynamic raw) {
+    return _dco_decode_struct_with_enum_twin_sse(raw);
+  }
+
+  StructWithEnumTwinSync _dco_decode_box_autoadd_struct_with_enum_twin_sync(
+      dynamic raw) {
+    return _dco_decode_struct_with_enum_twin_sync(raw);
+  }
+
+  StructWithEnumTwinSyncSse
+      _dco_decode_box_autoadd_struct_with_enum_twin_sync_sse(dynamic raw) {
+    return _dco_decode_struct_with_enum_twin_sync_sse(raw);
+  }
+
+  StructWithOneFieldTwinNormal
+      _dco_decode_box_autoadd_struct_with_one_field_twin_normal(dynamic raw) {
+    return _dco_decode_struct_with_one_field_twin_normal(raw);
+  }
+
+  StructWithOneFieldTwinRustAsync
+      _dco_decode_box_autoadd_struct_with_one_field_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_struct_with_one_field_twin_rust_async(raw);
+  }
+
+  StructWithOneFieldTwinRustAsyncSse
+      _dco_decode_box_autoadd_struct_with_one_field_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_struct_with_one_field_twin_rust_async_sse(raw);
+  }
+
+  StructWithOneFieldTwinSse
+      _dco_decode_box_autoadd_struct_with_one_field_twin_sse(dynamic raw) {
+    return _dco_decode_struct_with_one_field_twin_sse(raw);
+  }
+
+  StructWithOneFieldTwinSync
+      _dco_decode_box_autoadd_struct_with_one_field_twin_sync(dynamic raw) {
+    return _dco_decode_struct_with_one_field_twin_sync(raw);
+  }
+
+  StructWithOneFieldTwinSyncSse
+      _dco_decode_box_autoadd_struct_with_one_field_twin_sync_sse(dynamic raw) {
+    return _dco_decode_struct_with_one_field_twin_sync_sse(raw);
+  }
+
+  StructWithTwoFieldTwinNormal
+      _dco_decode_box_autoadd_struct_with_two_field_twin_normal(dynamic raw) {
+    return _dco_decode_struct_with_two_field_twin_normal(raw);
+  }
+
+  StructWithTwoFieldTwinRustAsync
+      _dco_decode_box_autoadd_struct_with_two_field_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_struct_with_two_field_twin_rust_async(raw);
+  }
+
+  StructWithTwoFieldTwinRustAsyncSse
+      _dco_decode_box_autoadd_struct_with_two_field_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_struct_with_two_field_twin_rust_async_sse(raw);
+  }
+
+  StructWithTwoFieldTwinSse
+      _dco_decode_box_autoadd_struct_with_two_field_twin_sse(dynamic raw) {
+    return _dco_decode_struct_with_two_field_twin_sse(raw);
+  }
+
+  StructWithTwoFieldTwinSync
+      _dco_decode_box_autoadd_struct_with_two_field_twin_sync(dynamic raw) {
+    return _dco_decode_struct_with_two_field_twin_sync(raw);
+  }
+
+  StructWithTwoFieldTwinSyncSse
+      _dco_decode_box_autoadd_struct_with_two_field_twin_sync_sse(dynamic raw) {
+    return _dco_decode_struct_with_two_field_twin_sync_sse(raw);
+  }
+
+  StructWithZeroFieldTwinNormal
+      _dco_decode_box_autoadd_struct_with_zero_field_twin_normal(dynamic raw) {
+    return _dco_decode_struct_with_zero_field_twin_normal(raw);
+  }
+
+  StructWithZeroFieldTwinRustAsync
+      _dco_decode_box_autoadd_struct_with_zero_field_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_struct_with_zero_field_twin_rust_async(raw);
+  }
+
+  StructWithZeroFieldTwinRustAsyncSse
+      _dco_decode_box_autoadd_struct_with_zero_field_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_struct_with_zero_field_twin_rust_async_sse(raw);
+  }
+
+  StructWithZeroFieldTwinSse
+      _dco_decode_box_autoadd_struct_with_zero_field_twin_sse(dynamic raw) {
+    return _dco_decode_struct_with_zero_field_twin_sse(raw);
+  }
+
+  StructWithZeroFieldTwinSync
+      _dco_decode_box_autoadd_struct_with_zero_field_twin_sync(dynamic raw) {
+    return _dco_decode_struct_with_zero_field_twin_sync(raw);
+  }
+
+  StructWithZeroFieldTwinSyncSse
+      _dco_decode_box_autoadd_struct_with_zero_field_twin_sync_sse(
+          dynamic raw) {
+    return _dco_decode_struct_with_zero_field_twin_sync_sse(raw);
+  }
+
+  SumWithTwinNormal _dco_decode_box_autoadd_sum_with_twin_normal(dynamic raw) {
+    return _dco_decode_sum_with_twin_normal(raw);
+  }
+
+  SumWithTwinRustAsync _dco_decode_box_autoadd_sum_with_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_sum_with_twin_rust_async(raw);
+  }
+
+  SumWithTwinRustAsyncSse _dco_decode_box_autoadd_sum_with_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_sum_with_twin_rust_async_sse(raw);
+  }
+
+  SumWithTwinSse _dco_decode_box_autoadd_sum_with_twin_sse(dynamic raw) {
+    return _dco_decode_sum_with_twin_sse(raw);
+  }
+
+  SumWithTwinSync _dco_decode_box_autoadd_sum_with_twin_sync(dynamic raw) {
+    return _dco_decode_sum_with_twin_sync(raw);
+  }
+
+  SumWithTwinSyncSse _dco_decode_box_autoadd_sum_with_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_sum_with_twin_sync_sse(raw);
+  }
+
+  TestIdTwinNormal _dco_decode_box_autoadd_test_id_twin_normal(dynamic raw) {
+    return _dco_decode_test_id_twin_normal(raw);
+  }
+
+  TestIdTwinRustAsync _dco_decode_box_autoadd_test_id_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_test_id_twin_rust_async(raw);
+  }
+
+  TestIdTwinRustAsyncSse _dco_decode_box_autoadd_test_id_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_test_id_twin_rust_async_sse(raw);
+  }
+
+  TestIdTwinSse _dco_decode_box_autoadd_test_id_twin_sse(dynamic raw) {
+    return _dco_decode_test_id_twin_sse(raw);
+  }
+
+  TestIdTwinSync _dco_decode_box_autoadd_test_id_twin_sync(dynamic raw) {
+    return _dco_decode_test_id_twin_sync(raw);
+  }
+
+  TestIdTwinSyncSse _dco_decode_box_autoadd_test_id_twin_sync_sse(dynamic raw) {
+    return _dco_decode_test_id_twin_sync_sse(raw);
+  }
+
+  TupleStructWithOneFieldTwinNormal
+      _dco_decode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_one_field_twin_normal(raw);
+  }
+
+  TupleStructWithOneFieldTwinRustAsync
+      _dco_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_one_field_twin_rust_async(raw);
+  }
+
+  TupleStructWithOneFieldTwinRustAsyncSse
+      _dco_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_one_field_twin_rust_async_sse(raw);
+  }
+
+  TupleStructWithOneFieldTwinSse
+      _dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sse(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_one_field_twin_sse(raw);
+  }
+
+  TupleStructWithOneFieldTwinSync
+      _dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sync(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_one_field_twin_sync(raw);
+  }
+
+  TupleStructWithOneFieldTwinSyncSse
+      _dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_one_field_twin_sync_sse(raw);
+  }
+
+  TupleStructWithTwoFieldTwinNormal
+      _dco_decode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_two_field_twin_normal(raw);
+  }
+
+  TupleStructWithTwoFieldTwinRustAsync
+      _dco_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_two_field_twin_rust_async(raw);
+  }
+
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      _dco_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_two_field_twin_rust_async_sse(raw);
+  }
+
+  TupleStructWithTwoFieldTwinSse
+      _dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sse(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_two_field_twin_sse(raw);
+  }
+
+  TupleStructWithTwoFieldTwinSync
+      _dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sync(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_two_field_twin_sync(raw);
+  }
+
+  TupleStructWithTwoFieldTwinSyncSse
+      _dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(
+          dynamic raw) {
+    return _dco_decode_tuple_struct_with_two_field_twin_sync_sse(raw);
   }
 
   int _dco_decode_box_autoadd_u_16(dynamic raw) {
@@ -43742,6 +44916,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   int _dco_decode_box_autoadd_u_8(dynamic raw) {
     return raw as int;
+  }
+
+  UserIdTwinNormal _dco_decode_box_autoadd_user_id_twin_normal(dynamic raw) {
+    return _dco_decode_user_id_twin_normal(raw);
+  }
+
+  UserIdTwinRustAsync _dco_decode_box_autoadd_user_id_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_user_id_twin_rust_async(raw);
+  }
+
+  UserIdTwinRustAsyncSse _dco_decode_box_autoadd_user_id_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_user_id_twin_rust_async_sse(raw);
+  }
+
+  UserIdTwinSse _dco_decode_box_autoadd_user_id_twin_sse(dynamic raw) {
+    return _dco_decode_user_id_twin_sse(raw);
+  }
+
+  UserIdTwinSync _dco_decode_box_autoadd_user_id_twin_sync(dynamic raw) {
+    return _dco_decode_user_id_twin_sync(raw);
+  }
+
+  UserIdTwinSyncSse _dco_decode_box_autoadd_user_id_twin_sync_sse(dynamic raw) {
+    return _dco_decode_user_id_twin_sync_sse(raw);
   }
 
   WeekdaysTwinNormal _dco_decode_box_autoadd_weekdays_twin_normal(dynamic raw) {
@@ -43771,6 +44971,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _dco_decode_weekdays_twin_sync_sse(raw);
   }
 
+  BlobTwinNormal _dco_decode_box_blob_twin_normal(dynamic raw) {
+    return _dco_decode_blob_twin_normal(raw);
+  }
+
+  BlobTwinRustAsync _dco_decode_box_blob_twin_rust_async(dynamic raw) {
+    return _dco_decode_blob_twin_rust_async(raw);
+  }
+
+  BlobTwinRustAsyncSse _dco_decode_box_blob_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_blob_twin_rust_async_sse(raw);
+  }
+
+  BlobTwinSse _dco_decode_box_blob_twin_sse(dynamic raw) {
+    return _dco_decode_blob_twin_sse(raw);
+  }
+
+  BlobTwinSync _dco_decode_box_blob_twin_sync(dynamic raw) {
+    return _dco_decode_blob_twin_sync(raw);
+  }
+
+  BlobTwinSyncSse _dco_decode_box_blob_twin_sync_sse(dynamic raw) {
+    return _dco_decode_blob_twin_sync_sse(raw);
+  }
+
+  bool _dco_decode_box_bool(dynamic raw) {
+    return raw as bool;
+  }
+
   DistanceTwinNormal _dco_decode_box_distance_twin_normal(dynamic raw) {
     return _dco_decode_distance_twin_normal(raw);
   }
@@ -43796,6 +45024,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _dco_decode_distance_twin_sync_sse(raw);
   }
 
+  ExoticOptionalsTwinNormal _dco_decode_box_exotic_optionals_twin_normal(
+      dynamic raw) {
+    return _dco_decode_exotic_optionals_twin_normal(raw);
+  }
+
+  ExoticOptionalsTwinRustAsync _dco_decode_box_exotic_optionals_twin_rust_async(
+      dynamic raw) {
+    return _dco_decode_exotic_optionals_twin_rust_async(raw);
+  }
+
+  ExoticOptionalsTwinRustAsyncSse
+      _dco_decode_box_exotic_optionals_twin_rust_async_sse(dynamic raw) {
+    return _dco_decode_exotic_optionals_twin_rust_async_sse(raw);
+  }
+
+  ExoticOptionalsTwinSse _dco_decode_box_exotic_optionals_twin_sse(
+      dynamic raw) {
+    return _dco_decode_exotic_optionals_twin_sse(raw);
+  }
+
+  ExoticOptionalsTwinSync _dco_decode_box_exotic_optionals_twin_sync(
+      dynamic raw) {
+    return _dco_decode_exotic_optionals_twin_sync(raw);
+  }
+
+  ExoticOptionalsTwinSyncSse _dco_decode_box_exotic_optionals_twin_sync_sse(
+      dynamic raw) {
+    return _dco_decode_exotic_optionals_twin_sync_sse(raw);
+  }
+
+  double _dco_decode_box_f_64(dynamic raw) {
+    return raw as double;
+  }
+
   FeedIdTwinNormal _dco_decode_box_feed_id_twin_normal(dynamic raw) {
     return _dco_decode_feed_id_twin_normal(raw);
   }
@@ -43819,6 +45081,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   FeedIdTwinSyncSse _dco_decode_box_feed_id_twin_sync_sse(dynamic raw) {
     return _dco_decode_feed_id_twin_sync_sse(raw);
+  }
+
+  int _dco_decode_box_i_32(dynamic raw) {
+    return raw as int;
+  }
+
+  int _dco_decode_box_i_64(dynamic raw) {
+    return _dco_decode_i_64(raw);
+  }
+
+  int _dco_decode_box_i_8(dynamic raw) {
+    return raw as int;
   }
 
   KitchenSinkTwinNormal _dco_decode_box_kitchen_sink_twin_normal(dynamic raw) {
@@ -43848,6 +45122,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _dco_decode_kitchen_sink_twin_sync_sse(raw);
   }
 
+  MySize _dco_decode_box_my_size(dynamic raw) {
+    return _dco_decode_my_size(raw);
+  }
+
   SpeedTwinNormal _dco_decode_box_speed_twin_normal(dynamic raw) {
     return _dco_decode_speed_twin_normal(raw);
   }
@@ -43872,8 +45150,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _dco_decode_speed_twin_sync_sse(raw);
   }
 
+  int _dco_decode_box_u_8(dynamic raw) {
+    return raw as int;
+  }
+
+  U8Array1600 _dco_decode_box_u_8_array_1600(dynamic raw) {
+    return _dco_decode_u_8_array_1600(raw);
+  }
+
   U8Array8 _dco_decode_box_u_8_array_8(dynamic raw) {
     return _dco_decode_u_8_array_8(raw);
+  }
+
+  WeekdaysTwinNormal _dco_decode_box_weekdays_twin_normal(dynamic raw) {
+    return _dco_decode_weekdays_twin_normal(raw);
+  }
+
+  WeekdaysTwinRustAsync _dco_decode_box_weekdays_twin_rust_async(dynamic raw) {
+    return _dco_decode_weekdays_twin_rust_async(raw);
+  }
+
+  WeekdaysTwinRustAsyncSse _dco_decode_box_weekdays_twin_rust_async_sse(
+      dynamic raw) {
+    return _dco_decode_weekdays_twin_rust_async_sse(raw);
+  }
+
+  WeekdaysTwinSse _dco_decode_box_weekdays_twin_sse(dynamic raw) {
+    return _dco_decode_weekdays_twin_sse(raw);
+  }
+
+  WeekdaysTwinSync _dco_decode_box_weekdays_twin_sync(dynamic raw) {
+    return _dco_decode_weekdays_twin_sync(raw);
+  }
+
+  WeekdaysTwinSyncSse _dco_decode_box_weekdays_twin_sync_sse(dynamic raw) {
+    return _dco_decode_weekdays_twin_sync_sse(raw);
   }
 
   CTwinNormal _dco_decode_c_twin_normal(dynamic raw) {
@@ -44826,6 +46137,67 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructTwinSyncSse(
       message: _dco_decode_String(arr[0]),
+    );
+  }
+
+  CustomizedTwinNormal _dco_decode_customized_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinNormal(
+      finalField: _dco_decode_String(arr[0]),
+      nonFinalField: _dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  CustomizedTwinRustAsync _dco_decode_customized_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinRustAsync(
+      finalField: _dco_decode_String(arr[0]),
+      nonFinalField: _dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  CustomizedTwinRustAsyncSse _dco_decode_customized_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinRustAsyncSse(
+      finalField: _dco_decode_String(arr[0]),
+      nonFinalField: _dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  CustomizedTwinSse _dco_decode_customized_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinSse(
+      finalField: _dco_decode_String(arr[0]),
+      nonFinalField: _dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  CustomizedTwinSync _dco_decode_customized_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinSync(
+      finalField: _dco_decode_String(arr[0]),
+      nonFinalField: _dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  CustomizedTwinSyncSse _dco_decode_customized_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinSyncSse(
+      finalField: _dco_decode_String(arr[0]),
+      nonFinalField: _dco_decode_opt_String(arr[1]),
     );
   }
 
@@ -45915,6 +47287,47 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as double;
   }
 
+  F64Array16 _dco_decode_f_64_array_16(dynamic raw) {
+    return F64Array16(_dco_decode_list_prim_f_64(raw));
+  }
+
+  FeatureChronoTwinNormal _dco_decode_feature_chrono_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return FeatureChronoTwinNormal(
+      utc: _dco_decode_Chrono_Utc(arr[0]),
+      local: _dco_decode_Chrono_Local(arr[1]),
+      duration: _dco_decode_Chrono_Duration(arr[2]),
+      naive: _dco_decode_Chrono_Naive(arr[3]),
+    );
+  }
+
+  FeatureChronoTwinRustAsync _dco_decode_feature_chrono_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return FeatureChronoTwinRustAsync(
+      utc: _dco_decode_Chrono_Utc(arr[0]),
+      local: _dco_decode_Chrono_Local(arr[1]),
+      duration: _dco_decode_Chrono_Duration(arr[2]),
+      naive: _dco_decode_Chrono_Naive(arr[3]),
+    );
+  }
+
+  FeatureChronoTwinSync _dco_decode_feature_chrono_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return FeatureChronoTwinSync(
+      utc: _dco_decode_Chrono_Utc(arr[0]),
+      local: _dco_decode_Chrono_Local(arr[1]),
+      duration: _dco_decode_Chrono_Duration(arr[2]),
+      naive: _dco_decode_Chrono_Naive(arr[3]),
+    );
+  }
+
   FeatureUuidTwinNormal _dco_decode_feature_uuid_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -46223,6 +47636,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   List<DateTime> _dco_decode_list_Chrono_Local(dynamic raw) {
     return (raw as List<dynamic>).map(_dco_decode_Chrono_Local).toList();
+  }
+
+  List<DateTime> _dco_decode_list_Chrono_Naive(dynamic raw) {
+    return (raw as List<dynamic>).map(_dco_decode_Chrono_Naive).toList();
   }
 
   List<Object> _dco_decode_list_DartOpaque(dynamic raw) {
@@ -46605,6 +48022,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   List<RawStringMirrored> _dco_decode_list_raw_string_mirrored(dynamic raw) {
     return (raw as List<dynamic>).map(_dco_decode_raw_string_mirrored).toList();
+  }
+
+  List<(String, int)> _dco_decode_list_record_string_i_32(dynamic raw) {
+    return (raw as List<dynamic>).map(_dco_decode_record_string_i_32).toList();
   }
 
   List<SumWithTwinNormal> _dco_decode_list_sum_with_twin_normal(dynamic raw) {
@@ -47392,6 +48813,66 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  NoteTwinNormal _dco_decode_note_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinNormal(
+      day: _dco_decode_box_weekdays_twin_normal(arr[0]),
+      body: _dco_decode_String(arr[1]),
+    );
+  }
+
+  NoteTwinRustAsync _dco_decode_note_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinRustAsync(
+      day: _dco_decode_box_weekdays_twin_rust_async(arr[0]),
+      body: _dco_decode_String(arr[1]),
+    );
+  }
+
+  NoteTwinRustAsyncSse _dco_decode_note_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinRustAsyncSse(
+      day: _dco_decode_box_weekdays_twin_rust_async_sse(arr[0]),
+      body: _dco_decode_String(arr[1]),
+    );
+  }
+
+  NoteTwinSse _dco_decode_note_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinSse(
+      day: _dco_decode_box_weekdays_twin_sse(arr[0]),
+      body: _dco_decode_String(arr[1]),
+    );
+  }
+
+  NoteTwinSync _dco_decode_note_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinSync(
+      day: _dco_decode_box_weekdays_twin_sync(arr[0]),
+      body: _dco_decode_String(arr[1]),
+    );
+  }
+
+  NoteTwinSyncSse _dco_decode_note_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinSyncSse(
+      day: _dco_decode_box_weekdays_twin_sync_sse(arr[0]),
+      body: _dco_decode_String(arr[1]),
+    );
+  }
+
   Numbers _dco_decode_numbers(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -47729,6 +49210,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         : _dco_decode_box_autoadd_new_type_int_twin_sync_sse(raw);
   }
 
+  (String, int)? _dco_decode_opt_box_autoadd_record_string_i_32(dynamic raw) {
+    return raw == null ? null : _dco_decode_box_autoadd_record_string_i_32(raw);
+  }
+
   int? _dco_decode_opt_box_autoadd_u_16(dynamic raw) {
     return raw == null ? null : _dco_decode_box_autoadd_u_16(raw);
   }
@@ -47780,6 +49265,68 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : _dco_decode_box_autoadd_weekdays_twin_sync_sse(raw);
+  }
+
+  bool? _dco_decode_opt_box_bool(dynamic raw) {
+    return raw == null ? null : _dco_decode_box_bool(raw);
+  }
+
+  ExoticOptionalsTwinNormal? _dco_decode_opt_box_exotic_optionals_twin_normal(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : _dco_decode_box_exotic_optionals_twin_normal(raw);
+  }
+
+  ExoticOptionalsTwinRustAsync?
+      _dco_decode_opt_box_exotic_optionals_twin_rust_async(dynamic raw) {
+    return raw == null
+        ? null
+        : _dco_decode_box_exotic_optionals_twin_rust_async(raw);
+  }
+
+  ExoticOptionalsTwinRustAsyncSse?
+      _dco_decode_opt_box_exotic_optionals_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : _dco_decode_box_exotic_optionals_twin_rust_async_sse(raw);
+  }
+
+  ExoticOptionalsTwinSse? _dco_decode_opt_box_exotic_optionals_twin_sse(
+      dynamic raw) {
+    return raw == null ? null : _dco_decode_box_exotic_optionals_twin_sse(raw);
+  }
+
+  ExoticOptionalsTwinSync? _dco_decode_opt_box_exotic_optionals_twin_sync(
+      dynamic raw) {
+    return raw == null ? null : _dco_decode_box_exotic_optionals_twin_sync(raw);
+  }
+
+  ExoticOptionalsTwinSyncSse?
+      _dco_decode_opt_box_exotic_optionals_twin_sync_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : _dco_decode_box_exotic_optionals_twin_sync_sse(raw);
+  }
+
+  double? _dco_decode_opt_box_f_64(dynamic raw) {
+    return raw == null ? null : _dco_decode_box_f_64(raw);
+  }
+
+  int? _dco_decode_opt_box_i_32(dynamic raw) {
+    return raw == null ? null : _dco_decode_box_i_32(raw);
+  }
+
+  int? _dco_decode_opt_box_i_64(dynamic raw) {
+    return raw == null ? null : _dco_decode_box_i_64(raw);
+  }
+
+  int? _dco_decode_opt_box_i_8(dynamic raw) {
+    return raw == null ? null : _dco_decode_box_i_8(raw);
+  }
+
+  int? _dco_decode_opt_box_u_8(dynamic raw) {
+    return raw == null ? null : _dco_decode_box_u_8(raw);
   }
 
   List<AttributeTwinNormal>? _dco_decode_opt_list_attribute_twin_normal(
@@ -48329,6 +49876,66 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  StructWithCommentsTwinNormal _dco_decode_struct_with_comments_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinNormal(
+      fieldWithComments: _dco_decode_i_32(arr[0]),
+    );
+  }
+
+  StructWithCommentsTwinRustAsync
+      _dco_decode_struct_with_comments_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinRustAsync(
+      fieldWithComments: _dco_decode_i_32(arr[0]),
+    );
+  }
+
+  StructWithCommentsTwinRustAsyncSse
+      _dco_decode_struct_with_comments_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinRustAsyncSse(
+      fieldWithComments: _dco_decode_i_32(arr[0]),
+    );
+  }
+
+  StructWithCommentsTwinSse _dco_decode_struct_with_comments_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinSse(
+      fieldWithComments: _dco_decode_i_32(arr[0]),
+    );
+  }
+
+  StructWithCommentsTwinSync _dco_decode_struct_with_comments_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinSync(
+      fieldWithComments: _dco_decode_i_32(arr[0]),
+    );
+  }
+
+  StructWithCommentsTwinSyncSse _dco_decode_struct_with_comments_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinSyncSse(
+      fieldWithComments: _dco_decode_i_32(arr[0]),
+    );
+  }
+
   StructWithEnumTwinNormal _dco_decode_struct_with_enum_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -48706,6 +50313,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         (raw as List<dynamic>).map(_dco_decode_test_id_twin_normal).toList());
   }
 
+  TestIdTwinNormalArray4 _dco_decode_test_id_twin_normal_array_4(dynamic raw) {
+    return TestIdTwinNormalArray4(
+        (raw as List<dynamic>).map(_dco_decode_test_id_twin_normal).toList());
+  }
+
   TestIdTwinRustAsync _dco_decode_test_id_twin_rust_async(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -48718,6 +50330,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TestIdTwinRustAsyncArray2 _dco_decode_test_id_twin_rust_async_array_2(
       dynamic raw) {
     return TestIdTwinRustAsyncArray2((raw as List<dynamic>)
+        .map(_dco_decode_test_id_twin_rust_async)
+        .toList());
+  }
+
+  TestIdTwinRustAsyncArray4 _dco_decode_test_id_twin_rust_async_array_4(
+      dynamic raw) {
+    return TestIdTwinRustAsyncArray4((raw as List<dynamic>)
         .map(_dco_decode_test_id_twin_rust_async)
         .toList());
   }
@@ -48738,6 +50357,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         .toList());
   }
 
+  TestIdTwinRustAsyncSseArray4 _dco_decode_test_id_twin_rust_async_sse_array_4(
+      dynamic raw) {
+    return TestIdTwinRustAsyncSseArray4((raw as List<dynamic>)
+        .map(_dco_decode_test_id_twin_rust_async_sse)
+        .toList());
+  }
+
   TestIdTwinSse _dco_decode_test_id_twin_sse(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -48749,6 +50375,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TestIdTwinSseArray2 _dco_decode_test_id_twin_sse_array_2(dynamic raw) {
     return TestIdTwinSseArray2(
+        (raw as List<dynamic>).map(_dco_decode_test_id_twin_sse).toList());
+  }
+
+  TestIdTwinSseArray4 _dco_decode_test_id_twin_sse_array_4(dynamic raw) {
+    return TestIdTwinSseArray4(
         (raw as List<dynamic>).map(_dco_decode_test_id_twin_sse).toList());
   }
 
@@ -48766,6 +50397,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         (raw as List<dynamic>).map(_dco_decode_test_id_twin_sync).toList());
   }
 
+  TestIdTwinSyncArray4 _dco_decode_test_id_twin_sync_array_4(dynamic raw) {
+    return TestIdTwinSyncArray4(
+        (raw as List<dynamic>).map(_dco_decode_test_id_twin_sync).toList());
+  }
+
   TestIdTwinSyncSse _dco_decode_test_id_twin_sync_sse(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -48778,6 +50414,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TestIdTwinSyncSseArray2 _dco_decode_test_id_twin_sync_sse_array_2(
       dynamic raw) {
     return TestIdTwinSyncSseArray2(
+        (raw as List<dynamic>).map(_dco_decode_test_id_twin_sync_sse).toList());
+  }
+
+  TestIdTwinSyncSseArray4 _dco_decode_test_id_twin_sync_sse_array_4(
+      dynamic raw) {
+    return TestIdTwinSyncSseArray4(
         (raw as List<dynamic>).map(_dco_decode_test_id_twin_sync_sse).toList());
   }
 
@@ -49343,6 +50985,174 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
   }
 
+  RwLockBoxHelloTraitTwinNormal
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxHelloTraitTwinSse
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxHelloTraitTwinSync
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxHelloTraitTwinSyncSse
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinSyncSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinNormal
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinSse
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinSync
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinSyncSse
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinSyncSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      _sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxHelloTraitTwinNormal
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxHelloTraitTwinSse
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxHelloTraitTwinSync
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockBoxHelloTraitTwinSyncSse
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          SseDeserializer deserializer) {
+    return RwLockBoxHelloTraitTwinSyncSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinNormal
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinSse
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinSync
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockNonCloneSimpleTwinSyncSse
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          SseDeserializer deserializer) {
+    return RwLockNonCloneSimpleTwinSyncSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      _sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        _sse_decode_usize(deserializer), _sse_decode_i_32(deserializer));
+  }
+
   String _sse_decode_Backtrace(SseDeserializer deserializer) {
     var inner = _sse_decode_String(deserializer);
     return inner;
@@ -49598,51 +51408,51 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   ATwinNormal _sse_decode_a_twin_normal(SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ATwinNormal(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ATwinNormal(a: var_a);
   }
 
   ATwinRustAsync _sse_decode_a_twin_rust_async(SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ATwinRustAsync(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ATwinRustAsync(a: var_a);
   }
 
   ATwinRustAsyncSse _sse_decode_a_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ATwinRustAsyncSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ATwinRustAsyncSse(a: var_a);
   }
 
   ATwinSse _sse_decode_a_twin_sse(SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ATwinSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ATwinSse(a: var_a);
   }
 
   ATwinSync _sse_decode_a_twin_sync(SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ATwinSync(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ATwinSync(a: var_a);
   }
 
   ATwinSyncSse _sse_decode_a_twin_sync_sse(SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ATwinSyncSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ATwinSyncSse(a: var_a);
   }
 
   AbcTwinNormal _sse_decode_abc_twin_normal(SseDeserializer deserializer) {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_autoadd_a_twin_normal(deserializer);
-        return AbcTwinNormal_A(field0);
+        var var_field0 = _sse_decode_box_autoadd_a_twin_normal(deserializer);
+        return AbcTwinNormal_A(var_field0);
       case 1:
-        var field0 = _sse_decode_box_autoadd_b_twin_normal(deserializer);
-        return AbcTwinNormal_B(field0);
+        var var_field0 = _sse_decode_box_autoadd_b_twin_normal(deserializer);
+        return AbcTwinNormal_B(var_field0);
       case 2:
-        var field0 = _sse_decode_box_autoadd_c_twin_normal(deserializer);
-        return AbcTwinNormal_C(field0);
+        var var_field0 = _sse_decode_box_autoadd_c_twin_normal(deserializer);
+        return AbcTwinNormal_C(var_field0);
       case 3:
-        var field0 = _sse_decode_i_32(deserializer);
-        return AbcTwinNormal_JustInt(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return AbcTwinNormal_JustInt(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -49653,17 +51463,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_autoadd_a_twin_rust_async(deserializer);
-        return AbcTwinRustAsync_A(field0);
+        var var_field0 =
+            _sse_decode_box_autoadd_a_twin_rust_async(deserializer);
+        return AbcTwinRustAsync_A(var_field0);
       case 1:
-        var field0 = _sse_decode_box_autoadd_b_twin_rust_async(deserializer);
-        return AbcTwinRustAsync_B(field0);
+        var var_field0 =
+            _sse_decode_box_autoadd_b_twin_rust_async(deserializer);
+        return AbcTwinRustAsync_B(var_field0);
       case 2:
-        var field0 = _sse_decode_box_autoadd_c_twin_rust_async(deserializer);
-        return AbcTwinRustAsync_C(field0);
+        var var_field0 =
+            _sse_decode_box_autoadd_c_twin_rust_async(deserializer);
+        return AbcTwinRustAsync_C(var_field0);
       case 3:
-        var field0 = _sse_decode_i_32(deserializer);
-        return AbcTwinRustAsync_JustInt(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return AbcTwinRustAsync_JustInt(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -49674,20 +51487,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_a_twin_rust_async_sse(deserializer);
-        return AbcTwinRustAsyncSse_A(field0);
+        return AbcTwinRustAsyncSse_A(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_b_twin_rust_async_sse(deserializer);
-        return AbcTwinRustAsyncSse_B(field0);
+        return AbcTwinRustAsyncSse_B(var_field0);
       case 2:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_c_twin_rust_async_sse(deserializer);
-        return AbcTwinRustAsyncSse_C(field0);
+        return AbcTwinRustAsyncSse_C(var_field0);
       case 3:
-        var field0 = _sse_decode_i_32(deserializer);
-        return AbcTwinRustAsyncSse_JustInt(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return AbcTwinRustAsyncSse_JustInt(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -49697,17 +51510,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_autoadd_a_twin_sse(deserializer);
-        return AbcTwinSse_A(field0);
+        var var_field0 = _sse_decode_box_autoadd_a_twin_sse(deserializer);
+        return AbcTwinSse_A(var_field0);
       case 1:
-        var field0 = _sse_decode_box_autoadd_b_twin_sse(deserializer);
-        return AbcTwinSse_B(field0);
+        var var_field0 = _sse_decode_box_autoadd_b_twin_sse(deserializer);
+        return AbcTwinSse_B(var_field0);
       case 2:
-        var field0 = _sse_decode_box_autoadd_c_twin_sse(deserializer);
-        return AbcTwinSse_C(field0);
+        var var_field0 = _sse_decode_box_autoadd_c_twin_sse(deserializer);
+        return AbcTwinSse_C(var_field0);
       case 3:
-        var field0 = _sse_decode_i_32(deserializer);
-        return AbcTwinSse_JustInt(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return AbcTwinSse_JustInt(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -49717,17 +51530,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_autoadd_a_twin_sync(deserializer);
-        return AbcTwinSync_A(field0);
+        var var_field0 = _sse_decode_box_autoadd_a_twin_sync(deserializer);
+        return AbcTwinSync_A(var_field0);
       case 1:
-        var field0 = _sse_decode_box_autoadd_b_twin_sync(deserializer);
-        return AbcTwinSync_B(field0);
+        var var_field0 = _sse_decode_box_autoadd_b_twin_sync(deserializer);
+        return AbcTwinSync_B(var_field0);
       case 2:
-        var field0 = _sse_decode_box_autoadd_c_twin_sync(deserializer);
-        return AbcTwinSync_C(field0);
+        var var_field0 = _sse_decode_box_autoadd_c_twin_sync(deserializer);
+        return AbcTwinSync_C(var_field0);
       case 3:
-        var field0 = _sse_decode_i_32(deserializer);
-        return AbcTwinSync_JustInt(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return AbcTwinSync_JustInt(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -49737,17 +51550,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_autoadd_a_twin_sync_sse(deserializer);
-        return AbcTwinSyncSse_A(field0);
+        var var_field0 = _sse_decode_box_autoadd_a_twin_sync_sse(deserializer);
+        return AbcTwinSyncSse_A(var_field0);
       case 1:
-        var field0 = _sse_decode_box_autoadd_b_twin_sync_sse(deserializer);
-        return AbcTwinSyncSse_B(field0);
+        var var_field0 = _sse_decode_box_autoadd_b_twin_sync_sse(deserializer);
+        return AbcTwinSyncSse_B(var_field0);
       case 2:
-        var field0 = _sse_decode_box_autoadd_c_twin_sync_sse(deserializer);
-        return AbcTwinSyncSse_C(field0);
+        var var_field0 = _sse_decode_box_autoadd_c_twin_sync_sse(deserializer);
+        return AbcTwinSyncSse_C(var_field0);
       case 3:
-        var field0 = _sse_decode_i_32(deserializer);
-        return AbcTwinSyncSse_JustInt(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return AbcTwinSyncSse_JustInt(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -49755,55 +51568,56 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   AnotherMacroStructTwinNormal _sse_decode_another_macro_struct_twin_normal(
       SseDeserializer deserializer) {
-    var data = _sse_decode_i_32(deserializer);
-    var nonFinalData = _sse_decode_i_32(deserializer);
-    return AnotherMacroStructTwinNormal(data: data, nonFinalData: nonFinalData);
+    var var_data = _sse_decode_i_32(deserializer);
+    var var_nonFinalData = _sse_decode_i_32(deserializer);
+    return AnotherMacroStructTwinNormal(
+        data: var_data, nonFinalData: var_nonFinalData);
   }
 
   AnotherTwinNormal _sse_decode_another_twin_normal(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return AnotherTwinNormal(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return AnotherTwinNormal(a: var_a);
   }
 
   AnotherTwinRustAsync _sse_decode_another_twin_rust_async(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return AnotherTwinRustAsync(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return AnotherTwinRustAsync(a: var_a);
   }
 
   AnotherTwinRustAsyncSse _sse_decode_another_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return AnotherTwinRustAsyncSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return AnotherTwinRustAsyncSse(a: var_a);
   }
 
   AnotherTwinSse _sse_decode_another_twin_sse(SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return AnotherTwinSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return AnotherTwinSse(a: var_a);
   }
 
   AnotherTwinSync _sse_decode_another_twin_sync(SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return AnotherTwinSync(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return AnotherTwinSync(a: var_a);
   }
 
   AnotherTwinSyncSse _sse_decode_another_twin_sync_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return AnotherTwinSyncSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return AnotherTwinSyncSse(a: var_a);
   }
 
   ApplicationEnv _sse_decode_application_env(SseDeserializer deserializer) {
-    var vars = _sse_decode_list_application_env_var(deserializer);
-    return ApplicationEnv(vars: vars);
+    var var_vars = _sse_decode_list_application_env_var(deserializer);
+    return ApplicationEnv(vars: var_vars);
   }
 
   ApplicationEnvVar _sse_decode_application_env_var(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_String(deserializer);
-    var field1 = _sse_decode_bool(deserializer);
-    return ApplicationEnvVar(field0: field0, field1: field1);
+    var var_field0 = _sse_decode_String(deserializer);
+    var var_field1 = _sse_decode_bool(deserializer);
+    return ApplicationEnvVar(field0: var_field0, field1: var_field1);
   }
 
   ApplicationMessage _sse_decode_application_message(
@@ -49811,12 +51625,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return ApplicationMessage_DisplayMessage(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return ApplicationMessage_DisplayMessage(var_field0);
       case 1:
-        var x = _sse_decode_i_32(deserializer);
-        var y = _sse_decode_i_32(deserializer);
-        return ApplicationMessage_RenderPixel(x: x, y: y);
+        var var_x = _sse_decode_i_32(deserializer);
+        var var_y = _sse_decode_i_32(deserializer);
+        return ApplicationMessage_RenderPixel(x: var_x, y: var_y);
       case 2:
         return ApplicationMessage_Exit();
       default:
@@ -49831,164 +51645,165 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   ApplicationSettings _sse_decode_application_settings(
       SseDeserializer deserializer) {
-    var name = _sse_decode_String(deserializer);
-    var version = _sse_decode_String(deserializer);
-    var mode = _sse_decode_application_mode(deserializer);
-    var env = _sse_decode_box_application_env(deserializer);
-    var envOptional = _sse_decode_opt_box_autoadd_application_env(deserializer);
+    var var_name = _sse_decode_String(deserializer);
+    var var_version = _sse_decode_String(deserializer);
+    var var_mode = _sse_decode_application_mode(deserializer);
+    var var_env = _sse_decode_box_application_env(deserializer);
+    var var_envOptional =
+        _sse_decode_opt_box_autoadd_application_env(deserializer);
     return ApplicationSettings(
-        name: name,
-        version: version,
-        mode: mode,
-        env: env,
-        envOptional: envOptional);
+        name: var_name,
+        version: var_version,
+        mode: var_mode,
+        env: var_env,
+        envOptional: var_envOptional);
   }
 
   AttributeTwinNormal _sse_decode_attribute_twin_normal(
       SseDeserializer deserializer) {
-    var key = _sse_decode_String(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return AttributeTwinNormal(key: key, value: value);
+    var var_key = _sse_decode_String(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return AttributeTwinNormal(key: var_key, value: var_value);
   }
 
   AttributeTwinRustAsync _sse_decode_attribute_twin_rust_async(
       SseDeserializer deserializer) {
-    var key = _sse_decode_String(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return AttributeTwinRustAsync(key: key, value: value);
+    var var_key = _sse_decode_String(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return AttributeTwinRustAsync(key: var_key, value: var_value);
   }
 
   AttributeTwinRustAsyncSse _sse_decode_attribute_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var key = _sse_decode_String(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return AttributeTwinRustAsyncSse(key: key, value: value);
+    var var_key = _sse_decode_String(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return AttributeTwinRustAsyncSse(key: var_key, value: var_value);
   }
 
   AttributeTwinSse _sse_decode_attribute_twin_sse(
       SseDeserializer deserializer) {
-    var key = _sse_decode_String(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return AttributeTwinSse(key: key, value: value);
+    var var_key = _sse_decode_String(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return AttributeTwinSse(key: var_key, value: var_value);
   }
 
   AttributeTwinSync _sse_decode_attribute_twin_sync(
       SseDeserializer deserializer) {
-    var key = _sse_decode_String(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return AttributeTwinSync(key: key, value: value);
+    var var_key = _sse_decode_String(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return AttributeTwinSync(key: var_key, value: var_value);
   }
 
   AttributeTwinSyncSse _sse_decode_attribute_twin_sync_sse(
       SseDeserializer deserializer) {
-    var key = _sse_decode_String(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return AttributeTwinSyncSse(key: key, value: value);
+    var var_key = _sse_decode_String(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return AttributeTwinSyncSse(key: var_key, value: var_value);
   }
 
   BTwinNormal _sse_decode_b_twin_normal(SseDeserializer deserializer) {
-    var b = _sse_decode_i_32(deserializer);
-    return BTwinNormal(b: b);
+    var var_b = _sse_decode_i_32(deserializer);
+    return BTwinNormal(b: var_b);
   }
 
   BTwinRustAsync _sse_decode_b_twin_rust_async(SseDeserializer deserializer) {
-    var b = _sse_decode_i_32(deserializer);
-    return BTwinRustAsync(b: b);
+    var var_b = _sse_decode_i_32(deserializer);
+    return BTwinRustAsync(b: var_b);
   }
 
   BTwinRustAsyncSse _sse_decode_b_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var b = _sse_decode_i_32(deserializer);
-    return BTwinRustAsyncSse(b: b);
+    var var_b = _sse_decode_i_32(deserializer);
+    return BTwinRustAsyncSse(b: var_b);
   }
 
   BTwinSse _sse_decode_b_twin_sse(SseDeserializer deserializer) {
-    var b = _sse_decode_i_32(deserializer);
-    return BTwinSse(b: b);
+    var var_b = _sse_decode_i_32(deserializer);
+    return BTwinSse(b: var_b);
   }
 
   BTwinSync _sse_decode_b_twin_sync(SseDeserializer deserializer) {
-    var b = _sse_decode_i_32(deserializer);
-    return BTwinSync(b: b);
+    var var_b = _sse_decode_i_32(deserializer);
+    return BTwinSync(b: var_b);
   }
 
   BTwinSyncSse _sse_decode_b_twin_sync_sse(SseDeserializer deserializer) {
-    var b = _sse_decode_i_32(deserializer);
-    return BTwinSyncSse(b: b);
+    var var_b = _sse_decode_i_32(deserializer);
+    return BTwinSyncSse(b: var_b);
   }
 
   BigBuffersTwinNormal _sse_decode_big_buffers_twin_normal(
       SseDeserializer deserializer) {
-    var int64 = _sse_decode_list_prim_i_64(deserializer);
-    var uint64 = _sse_decode_list_prim_u_64(deserializer);
-    return BigBuffersTwinNormal(int64: int64, uint64: uint64);
+    var var_int64 = _sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = _sse_decode_list_prim_u_64(deserializer);
+    return BigBuffersTwinNormal(int64: var_int64, uint64: var_uint64);
   }
 
   BigBuffersTwinRustAsync _sse_decode_big_buffers_twin_rust_async(
       SseDeserializer deserializer) {
-    var int64 = _sse_decode_list_prim_i_64(deserializer);
-    var uint64 = _sse_decode_list_prim_u_64(deserializer);
-    return BigBuffersTwinRustAsync(int64: int64, uint64: uint64);
+    var var_int64 = _sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = _sse_decode_list_prim_u_64(deserializer);
+    return BigBuffersTwinRustAsync(int64: var_int64, uint64: var_uint64);
   }
 
   BigBuffersTwinRustAsyncSse _sse_decode_big_buffers_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var int64 = _sse_decode_list_prim_i_64(deserializer);
-    var uint64 = _sse_decode_list_prim_u_64(deserializer);
-    return BigBuffersTwinRustAsyncSse(int64: int64, uint64: uint64);
+    var var_int64 = _sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = _sse_decode_list_prim_u_64(deserializer);
+    return BigBuffersTwinRustAsyncSse(int64: var_int64, uint64: var_uint64);
   }
 
   BigBuffersTwinSse _sse_decode_big_buffers_twin_sse(
       SseDeserializer deserializer) {
-    var int64 = _sse_decode_list_prim_i_64(deserializer);
-    var uint64 = _sse_decode_list_prim_u_64(deserializer);
-    return BigBuffersTwinSse(int64: int64, uint64: uint64);
+    var var_int64 = _sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = _sse_decode_list_prim_u_64(deserializer);
+    return BigBuffersTwinSse(int64: var_int64, uint64: var_uint64);
   }
 
   BigBuffersTwinSync _sse_decode_big_buffers_twin_sync(
       SseDeserializer deserializer) {
-    var int64 = _sse_decode_list_prim_i_64(deserializer);
-    var uint64 = _sse_decode_list_prim_u_64(deserializer);
-    return BigBuffersTwinSync(int64: int64, uint64: uint64);
+    var var_int64 = _sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = _sse_decode_list_prim_u_64(deserializer);
+    return BigBuffersTwinSync(int64: var_int64, uint64: var_uint64);
   }
 
   BigBuffersTwinSyncSse _sse_decode_big_buffers_twin_sync_sse(
       SseDeserializer deserializer) {
-    var int64 = _sse_decode_list_prim_i_64(deserializer);
-    var uint64 = _sse_decode_list_prim_u_64(deserializer);
-    return BigBuffersTwinSyncSse(int64: int64, uint64: uint64);
+    var var_int64 = _sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = _sse_decode_list_prim_u_64(deserializer);
+    return BigBuffersTwinSyncSse(int64: var_int64, uint64: var_uint64);
   }
 
   BlobTwinNormal _sse_decode_blob_twin_normal(SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_1600(deserializer);
-    return BlobTwinNormal(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_1600(deserializer);
+    return BlobTwinNormal(field0: var_field0);
   }
 
   BlobTwinRustAsync _sse_decode_blob_twin_rust_async(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_1600(deserializer);
-    return BlobTwinRustAsync(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_1600(deserializer);
+    return BlobTwinRustAsync(field0: var_field0);
   }
 
   BlobTwinRustAsyncSse _sse_decode_blob_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_1600(deserializer);
-    return BlobTwinRustAsyncSse(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_1600(deserializer);
+    return BlobTwinRustAsyncSse(field0: var_field0);
   }
 
   BlobTwinSse _sse_decode_blob_twin_sse(SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_1600(deserializer);
-    return BlobTwinSse(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_1600(deserializer);
+    return BlobTwinSse(field0: var_field0);
   }
 
   BlobTwinSync _sse_decode_blob_twin_sync(SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_1600(deserializer);
-    return BlobTwinSync(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_1600(deserializer);
+    return BlobTwinSync(field0: var_field0);
   }
 
   BlobTwinSyncSse _sse_decode_blob_twin_sync_sse(SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_1600(deserializer);
-    return BlobTwinSyncSse(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_1600(deserializer);
+    return BlobTwinSyncSse(field0: var_field0);
   }
 
   bool _sse_decode_bool(SseDeserializer deserializer) {
@@ -50049,9 +51864,44 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_a_twin_sync_sse(deserializer));
   }
 
+  AbcTwinNormal _sse_decode_box_autoadd_abc_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_abc_twin_normal(deserializer));
+  }
+
+  AbcTwinRustAsync _sse_decode_box_autoadd_abc_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_abc_twin_rust_async(deserializer));
+  }
+
+  AbcTwinRustAsyncSse _sse_decode_box_autoadd_abc_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_abc_twin_rust_async_sse(deserializer));
+  }
+
+  AbcTwinSse _sse_decode_box_autoadd_abc_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_abc_twin_sse(deserializer));
+  }
+
+  AbcTwinSync _sse_decode_box_autoadd_abc_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_abc_twin_sync(deserializer));
+  }
+
+  AbcTwinSyncSse _sse_decode_box_autoadd_abc_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_abc_twin_sync_sse(deserializer));
+  }
+
   ApplicationEnv _sse_decode_box_autoadd_application_env(
       SseDeserializer deserializer) {
     return (_sse_decode_application_env(deserializer));
+  }
+
+  ApplicationSettings _sse_decode_box_autoadd_application_settings(
+      SseDeserializer deserializer) {
+    return (_sse_decode_application_settings(deserializer));
   }
 
   AttributeTwinNormal _sse_decode_box_autoadd_attribute_twin_normal(
@@ -50145,6 +51995,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_c_twin_sync_sse(deserializer));
   }
 
+  ConcatenateWithTwinNormal
+      _sse_decode_box_autoadd_concatenate_with_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_concatenate_with_twin_normal(deserializer));
+  }
+
+  ConcatenateWithTwinRustAsync
+      _sse_decode_box_autoadd_concatenate_with_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_concatenate_with_twin_rust_async(deserializer));
+  }
+
+  ConcatenateWithTwinRustAsyncSse
+      _sse_decode_box_autoadd_concatenate_with_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_concatenate_with_twin_rust_async_sse(deserializer));
+  }
+
+  ConcatenateWithTwinSse _sse_decode_box_autoadd_concatenate_with_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_concatenate_with_twin_sse(deserializer));
+  }
+
+  ConcatenateWithTwinSync _sse_decode_box_autoadd_concatenate_with_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_concatenate_with_twin_sync(deserializer));
+  }
+
+  ConcatenateWithTwinSyncSse
+      _sse_decode_box_autoadd_concatenate_with_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_concatenate_with_twin_sync_sse(deserializer));
+  }
+
   CustomNestedError2TwinNormal
       _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
           SseDeserializer deserializer) {
@@ -50220,6 +52104,176 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_custom_nested_error_inner_twin_sync_sse(deserializer));
   }
 
+  CustomNestedErrorOuterTwinNormal
+      _sse_decode_box_autoadd_custom_nested_error_outer_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_nested_error_outer_twin_normal(deserializer));
+  }
+
+  CustomNestedErrorOuterTwinRustAsync
+      _sse_decode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_nested_error_outer_twin_rust_async(
+        deserializer));
+  }
+
+  CustomNestedErrorOuterTwinRustAsyncSse
+      _sse_decode_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_nested_error_outer_twin_rust_async_sse(
+        deserializer));
+  }
+
+  CustomNestedErrorOuterTwinSse
+      _sse_decode_box_autoadd_custom_nested_error_outer_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_nested_error_outer_twin_sse(deserializer));
+  }
+
+  CustomNestedErrorOuterTwinSync
+      _sse_decode_box_autoadd_custom_nested_error_outer_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_nested_error_outer_twin_sync(deserializer));
+  }
+
+  CustomNestedErrorOuterTwinSyncSse
+      _sse_decode_box_autoadd_custom_nested_error_outer_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_nested_error_outer_twin_sync_sse(deserializer));
+  }
+
+  CustomStructErrorTwinNormal
+      _sse_decode_box_autoadd_custom_struct_error_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_error_twin_normal(deserializer));
+  }
+
+  CustomStructErrorTwinRustAsync
+      _sse_decode_box_autoadd_custom_struct_error_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_error_twin_rust_async(deserializer));
+  }
+
+  CustomStructErrorTwinRustAsyncSse
+      _sse_decode_box_autoadd_custom_struct_error_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_error_twin_rust_async_sse(deserializer));
+  }
+
+  CustomStructErrorTwinSse _sse_decode_box_autoadd_custom_struct_error_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_error_twin_sse(deserializer));
+  }
+
+  CustomStructErrorTwinSync
+      _sse_decode_box_autoadd_custom_struct_error_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_error_twin_sync(deserializer));
+  }
+
+  CustomStructErrorTwinSyncSse
+      _sse_decode_box_autoadd_custom_struct_error_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_error_twin_sync_sse(deserializer));
+  }
+
+  CustomStructTwinNormal _sse_decode_box_autoadd_custom_struct_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_twin_normal(deserializer));
+  }
+
+  CustomStructTwinRustAsync
+      _sse_decode_box_autoadd_custom_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_twin_rust_async(deserializer));
+  }
+
+  CustomStructTwinRustAsyncSse
+      _sse_decode_box_autoadd_custom_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_twin_rust_async_sse(deserializer));
+  }
+
+  CustomStructTwinSse _sse_decode_box_autoadd_custom_struct_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_twin_sse(deserializer));
+  }
+
+  CustomStructTwinSync _sse_decode_box_autoadd_custom_struct_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_twin_sync(deserializer));
+  }
+
+  CustomStructTwinSyncSse _sse_decode_box_autoadd_custom_struct_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_custom_struct_twin_sync_sse(deserializer));
+  }
+
+  CustomizedTwinNormal _sse_decode_box_autoadd_customized_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_customized_twin_normal(deserializer));
+  }
+
+  CustomizedTwinRustAsync _sse_decode_box_autoadd_customized_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_customized_twin_rust_async(deserializer));
+  }
+
+  CustomizedTwinRustAsyncSse
+      _sse_decode_box_autoadd_customized_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_customized_twin_rust_async_sse(deserializer));
+  }
+
+  CustomizedTwinSse _sse_decode_box_autoadd_customized_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_customized_twin_sse(deserializer));
+  }
+
+  CustomizedTwinSync _sse_decode_box_autoadd_customized_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_customized_twin_sync(deserializer));
+  }
+
+  CustomizedTwinSyncSse _sse_decode_box_autoadd_customized_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_customized_twin_sync_sse(deserializer));
+  }
+
+  DartOpaqueNestedTwinNormal
+      _sse_decode_box_autoadd_dart_opaque_nested_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_dart_opaque_nested_twin_normal(deserializer));
+  }
+
+  DartOpaqueNestedTwinRustAsync
+      _sse_decode_box_autoadd_dart_opaque_nested_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_dart_opaque_nested_twin_rust_async(deserializer));
+  }
+
+  DartOpaqueNestedTwinRustAsyncSse
+      _sse_decode_box_autoadd_dart_opaque_nested_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_dart_opaque_nested_twin_rust_async_sse(deserializer));
+  }
+
+  DartOpaqueNestedTwinSse _sse_decode_box_autoadd_dart_opaque_nested_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_dart_opaque_nested_twin_sse(deserializer));
+  }
+
+  DartOpaqueNestedTwinSync _sse_decode_box_autoadd_dart_opaque_nested_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_dart_opaque_nested_twin_sync(deserializer));
+  }
+
+  DartOpaqueNestedTwinSyncSse
+      _sse_decode_box_autoadd_dart_opaque_nested_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_dart_opaque_nested_twin_sync_sse(deserializer));
+  }
+
   ElementTwinNormal _sse_decode_box_autoadd_element_twin_normal(
       SseDeserializer deserializer) {
     return (_sse_decode_element_twin_normal(deserializer));
@@ -50248,6 +52302,229 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ElementTwinSyncSse _sse_decode_box_autoadd_element_twin_sync_sse(
       SseDeserializer deserializer) {
     return (_sse_decode_element_twin_sync_sse(deserializer));
+  }
+
+  EmptyTwinNormal _sse_decode_box_autoadd_empty_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_empty_twin_normal(deserializer));
+  }
+
+  EmptyTwinRustAsync _sse_decode_box_autoadd_empty_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_empty_twin_rust_async(deserializer));
+  }
+
+  EmptyTwinRustAsyncSse _sse_decode_box_autoadd_empty_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_empty_twin_rust_async_sse(deserializer));
+  }
+
+  EmptyTwinSse _sse_decode_box_autoadd_empty_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_empty_twin_sse(deserializer));
+  }
+
+  EmptyTwinSync _sse_decode_box_autoadd_empty_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_empty_twin_sync(deserializer));
+  }
+
+  EmptyTwinSyncSse _sse_decode_box_autoadd_empty_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_empty_twin_sync_sse(deserializer));
+  }
+
+  EnumDartOpaqueTwinNormal _sse_decode_box_autoadd_enum_dart_opaque_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_enum_dart_opaque_twin_normal(deserializer));
+  }
+
+  EnumDartOpaqueTwinRustAsync
+      _sse_decode_box_autoadd_enum_dart_opaque_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_dart_opaque_twin_rust_async(deserializer));
+  }
+
+  EnumDartOpaqueTwinRustAsyncSse
+      _sse_decode_box_autoadd_enum_dart_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_dart_opaque_twin_rust_async_sse(deserializer));
+  }
+
+  EnumDartOpaqueTwinSse _sse_decode_box_autoadd_enum_dart_opaque_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_enum_dart_opaque_twin_sse(deserializer));
+  }
+
+  EnumDartOpaqueTwinSync _sse_decode_box_autoadd_enum_dart_opaque_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_enum_dart_opaque_twin_sync(deserializer));
+  }
+
+  EnumDartOpaqueTwinSyncSse
+      _sse_decode_box_autoadd_enum_dart_opaque_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_dart_opaque_twin_sync_sse(deserializer));
+  }
+
+  EnumOpaqueTwinNormal _sse_decode_box_autoadd_enum_opaque_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_enum_opaque_twin_normal(deserializer));
+  }
+
+  EnumOpaqueTwinRustAsync _sse_decode_box_autoadd_enum_opaque_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_enum_opaque_twin_rust_async(deserializer));
+  }
+
+  EnumOpaqueTwinRustAsyncSse
+      _sse_decode_box_autoadd_enum_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_opaque_twin_rust_async_sse(deserializer));
+  }
+
+  EnumOpaqueTwinSse _sse_decode_box_autoadd_enum_opaque_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_enum_opaque_twin_sse(deserializer));
+  }
+
+  EnumOpaqueTwinSync _sse_decode_box_autoadd_enum_opaque_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_enum_opaque_twin_sync(deserializer));
+  }
+
+  EnumOpaqueTwinSyncSse _sse_decode_box_autoadd_enum_opaque_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_enum_opaque_twin_sync_sse(deserializer));
+  }
+
+  EnumWithItemMixedTwinNormal
+      _sse_decode_box_autoadd_enum_with_item_mixed_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_mixed_twin_normal(deserializer));
+  }
+
+  EnumWithItemMixedTwinRustAsync
+      _sse_decode_box_autoadd_enum_with_item_mixed_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_mixed_twin_rust_async(deserializer));
+  }
+
+  EnumWithItemMixedTwinRustAsyncSse
+      _sse_decode_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_mixed_twin_rust_async_sse(deserializer));
+  }
+
+  EnumWithItemMixedTwinSse
+      _sse_decode_box_autoadd_enum_with_item_mixed_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_mixed_twin_sse(deserializer));
+  }
+
+  EnumWithItemMixedTwinSync
+      _sse_decode_box_autoadd_enum_with_item_mixed_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_mixed_twin_sync(deserializer));
+  }
+
+  EnumWithItemMixedTwinSyncSse
+      _sse_decode_box_autoadd_enum_with_item_mixed_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_mixed_twin_sync_sse(deserializer));
+  }
+
+  EnumWithItemStructTwinNormal
+      _sse_decode_box_autoadd_enum_with_item_struct_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_struct_twin_normal(deserializer));
+  }
+
+  EnumWithItemStructTwinRustAsync
+      _sse_decode_box_autoadd_enum_with_item_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_struct_twin_rust_async(deserializer));
+  }
+
+  EnumWithItemStructTwinRustAsyncSse
+      _sse_decode_box_autoadd_enum_with_item_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_struct_twin_rust_async_sse(
+        deserializer));
+  }
+
+  EnumWithItemStructTwinSse
+      _sse_decode_box_autoadd_enum_with_item_struct_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_struct_twin_sse(deserializer));
+  }
+
+  EnumWithItemStructTwinSync
+      _sse_decode_box_autoadd_enum_with_item_struct_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_struct_twin_sync(deserializer));
+  }
+
+  EnumWithItemStructTwinSyncSse
+      _sse_decode_box_autoadd_enum_with_item_struct_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_struct_twin_sync_sse(deserializer));
+  }
+
+  EnumWithItemTupleTwinNormal
+      _sse_decode_box_autoadd_enum_with_item_tuple_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_tuple_twin_normal(deserializer));
+  }
+
+  EnumWithItemTupleTwinRustAsync
+      _sse_decode_box_autoadd_enum_with_item_tuple_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_tuple_twin_rust_async(deserializer));
+  }
+
+  EnumWithItemTupleTwinRustAsyncSse
+      _sse_decode_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_tuple_twin_rust_async_sse(deserializer));
+  }
+
+  EnumWithItemTupleTwinSse
+      _sse_decode_box_autoadd_enum_with_item_tuple_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_tuple_twin_sse(deserializer));
+  }
+
+  EnumWithItemTupleTwinSync
+      _sse_decode_box_autoadd_enum_with_item_tuple_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_tuple_twin_sync(deserializer));
+  }
+
+  EnumWithItemTupleTwinSyncSse
+      _sse_decode_box_autoadd_enum_with_item_tuple_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_enum_with_item_tuple_twin_sync_sse(deserializer));
+  }
+
+  EventTwinNormal _sse_decode_box_autoadd_event_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_event_twin_normal(deserializer));
+  }
+
+  EventTwinRustAsync _sse_decode_box_autoadd_event_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_event_twin_rust_async(deserializer));
+  }
+
+  EventTwinRustAsyncSse _sse_decode_box_autoadd_event_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_event_twin_rust_async_sse(deserializer));
+  }
+
+  EventTwinSse _sse_decode_box_autoadd_event_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_event_twin_sse(deserializer));
   }
 
   ExoticOptionalsTwinNormal
@@ -50292,6 +52569,67 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_f_64(deserializer));
   }
 
+  FeatureChronoTwinNormal _sse_decode_box_autoadd_feature_chrono_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feature_chrono_twin_normal(deserializer));
+  }
+
+  FeatureChronoTwinRustAsync
+      _sse_decode_box_autoadd_feature_chrono_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_feature_chrono_twin_rust_async(deserializer));
+  }
+
+  FeatureChronoTwinSync _sse_decode_box_autoadd_feature_chrono_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feature_chrono_twin_sync(deserializer));
+  }
+
+  FeatureUuidTwinNormal _sse_decode_box_autoadd_feature_uuid_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feature_uuid_twin_normal(deserializer));
+  }
+
+  FeatureUuidTwinRustAsync _sse_decode_box_autoadd_feature_uuid_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feature_uuid_twin_rust_async(deserializer));
+  }
+
+  FeatureUuidTwinSync _sse_decode_box_autoadd_feature_uuid_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feature_uuid_twin_sync(deserializer));
+  }
+
+  FeedIdTwinNormal _sse_decode_box_autoadd_feed_id_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feed_id_twin_normal(deserializer));
+  }
+
+  FeedIdTwinRustAsync _sse_decode_box_autoadd_feed_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feed_id_twin_rust_async(deserializer));
+  }
+
+  FeedIdTwinRustAsyncSse _sse_decode_box_autoadd_feed_id_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feed_id_twin_rust_async_sse(deserializer));
+  }
+
+  FeedIdTwinSse _sse_decode_box_autoadd_feed_id_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feed_id_twin_sse(deserializer));
+  }
+
+  FeedIdTwinSync _sse_decode_box_autoadd_feed_id_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feed_id_twin_sync(deserializer));
+  }
+
+  FeedIdTwinSyncSse _sse_decode_box_autoadd_feed_id_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_feed_id_twin_sync_sse(deserializer));
+  }
+
   int _sse_decode_box_autoadd_i_16(SseDeserializer deserializer) {
     return (_sse_decode_i_16(deserializer));
   }
@@ -50308,10 +52646,46 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_i_8(deserializer));
   }
 
+  KitchenSinkTwinNormal _sse_decode_box_autoadd_kitchen_sink_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_kitchen_sink_twin_normal(deserializer));
+  }
+
+  KitchenSinkTwinRustAsync _sse_decode_box_autoadd_kitchen_sink_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_kitchen_sink_twin_rust_async(deserializer));
+  }
+
+  KitchenSinkTwinRustAsyncSse
+      _sse_decode_box_autoadd_kitchen_sink_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_kitchen_sink_twin_rust_async_sse(deserializer));
+  }
+
+  KitchenSinkTwinSse _sse_decode_box_autoadd_kitchen_sink_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_kitchen_sink_twin_sse(deserializer));
+  }
+
+  KitchenSinkTwinSync _sse_decode_box_autoadd_kitchen_sink_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_kitchen_sink_twin_sync(deserializer));
+  }
+
+  KitchenSinkTwinSyncSse _sse_decode_box_autoadd_kitchen_sink_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_kitchen_sink_twin_sync_sse(deserializer));
+  }
+
   ListOfNestedRawStringMirrored
       _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
           SseDeserializer deserializer) {
     return (_sse_decode_list_of_nested_raw_string_mirrored(deserializer));
+  }
+
+  MacroStruct _sse_decode_box_autoadd_macro_struct(
+      SseDeserializer deserializer) {
+    return (_sse_decode_macro_struct(deserializer));
   }
 
   MeasureTwinNormal _sse_decode_box_autoadd_measure_twin_normal(
@@ -50342,6 +52716,109 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MeasureTwinSyncSse _sse_decode_box_autoadd_measure_twin_sync_sse(
       SseDeserializer deserializer) {
     return (_sse_decode_measure_twin_sync_sse(deserializer));
+  }
+
+  MessageIdTwinNormal _sse_decode_box_autoadd_message_id_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_message_id_twin_normal(deserializer));
+  }
+
+  MessageIdTwinRustAsync _sse_decode_box_autoadd_message_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_message_id_twin_rust_async(deserializer));
+  }
+
+  MessageIdTwinRustAsyncSse
+      _sse_decode_box_autoadd_message_id_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_message_id_twin_rust_async_sse(deserializer));
+  }
+
+  MessageIdTwinSse _sse_decode_box_autoadd_message_id_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_message_id_twin_sse(deserializer));
+  }
+
+  MessageIdTwinSync _sse_decode_box_autoadd_message_id_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_message_id_twin_sync(deserializer));
+  }
+
+  MessageIdTwinSyncSse _sse_decode_box_autoadd_message_id_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_message_id_twin_sync_sse(deserializer));
+  }
+
+  MyNestedStructTwinNormal _sse_decode_box_autoadd_my_nested_struct_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_my_nested_struct_twin_normal(deserializer));
+  }
+
+  MyNestedStructTwinRustAsync
+      _sse_decode_box_autoadd_my_nested_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_my_nested_struct_twin_rust_async(deserializer));
+  }
+
+  MyNestedStructTwinRustAsyncSse
+      _sse_decode_box_autoadd_my_nested_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_my_nested_struct_twin_rust_async_sse(deserializer));
+  }
+
+  MyNestedStructTwinSse _sse_decode_box_autoadd_my_nested_struct_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_my_nested_struct_twin_sse(deserializer));
+  }
+
+  MyNestedStructTwinSync _sse_decode_box_autoadd_my_nested_struct_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_my_nested_struct_twin_sync(deserializer));
+  }
+
+  MyNestedStructTwinSyncSse
+      _sse_decode_box_autoadd_my_nested_struct_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_my_nested_struct_twin_sync_sse(deserializer));
+  }
+
+  MySize _sse_decode_box_autoadd_my_size(SseDeserializer deserializer) {
+    return (_sse_decode_my_size(deserializer));
+  }
+
+  MyStruct _sse_decode_box_autoadd_my_struct(SseDeserializer deserializer) {
+    return (_sse_decode_my_struct(deserializer));
+  }
+
+  MyTreeNodeTwinNormal _sse_decode_box_autoadd_my_tree_node_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_my_tree_node_twin_normal(deserializer));
+  }
+
+  MyTreeNodeTwinRustAsync _sse_decode_box_autoadd_my_tree_node_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_my_tree_node_twin_rust_async(deserializer));
+  }
+
+  MyTreeNodeTwinRustAsyncSse
+      _sse_decode_box_autoadd_my_tree_node_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_my_tree_node_twin_rust_async_sse(deserializer));
+  }
+
+  MyTreeNodeTwinSse _sse_decode_box_autoadd_my_tree_node_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_my_tree_node_twin_sse(deserializer));
+  }
+
+  MyTreeNodeTwinSync _sse_decode_box_autoadd_my_tree_node_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_my_tree_node_twin_sync(deserializer));
+  }
+
+  MyTreeNodeTwinSyncSse _sse_decode_box_autoadd_my_tree_node_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_my_tree_node_twin_sync_sse(deserializer));
   }
 
   NestedRawStringMirrored _sse_decode_box_autoadd_nested_raw_string_mirrored(
@@ -50380,9 +52857,463 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_new_type_int_twin_sync_sse(deserializer));
   }
 
+  NoteTwinNormal _sse_decode_box_autoadd_note_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_note_twin_normal(deserializer));
+  }
+
+  NoteTwinRustAsync _sse_decode_box_autoadd_note_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_note_twin_rust_async(deserializer));
+  }
+
+  NoteTwinRustAsyncSse _sse_decode_box_autoadd_note_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_note_twin_rust_async_sse(deserializer));
+  }
+
+  NoteTwinSse _sse_decode_box_autoadd_note_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_note_twin_sse(deserializer));
+  }
+
+  NoteTwinSync _sse_decode_box_autoadd_note_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_note_twin_sync(deserializer));
+  }
+
+  NoteTwinSyncSse _sse_decode_box_autoadd_note_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_note_twin_sync_sse(deserializer));
+  }
+
+  Numbers _sse_decode_box_autoadd_numbers(SseDeserializer deserializer) {
+    return (_sse_decode_numbers(deserializer));
+  }
+
+  OpaqueNestedTwinNormal _sse_decode_box_autoadd_opaque_nested_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opaque_nested_twin_normal(deserializer));
+  }
+
+  OpaqueNestedTwinRustAsync
+      _sse_decode_box_autoadd_opaque_nested_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_opaque_nested_twin_rust_async(deserializer));
+  }
+
+  OpaqueNestedTwinRustAsyncSse
+      _sse_decode_box_autoadd_opaque_nested_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_opaque_nested_twin_rust_async_sse(deserializer));
+  }
+
+  OpaqueNestedTwinSse _sse_decode_box_autoadd_opaque_nested_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opaque_nested_twin_sse(deserializer));
+  }
+
+  OpaqueNestedTwinSync _sse_decode_box_autoadd_opaque_nested_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opaque_nested_twin_sync(deserializer));
+  }
+
+  OpaqueNestedTwinSyncSse _sse_decode_box_autoadd_opaque_nested_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opaque_nested_twin_sync_sse(deserializer));
+  }
+
+  OptVecsTwinNormal _sse_decode_box_autoadd_opt_vecs_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opt_vecs_twin_normal(deserializer));
+  }
+
+  OptVecsTwinRustAsync _sse_decode_box_autoadd_opt_vecs_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opt_vecs_twin_rust_async(deserializer));
+  }
+
+  OptVecsTwinRustAsyncSse _sse_decode_box_autoadd_opt_vecs_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opt_vecs_twin_rust_async_sse(deserializer));
+  }
+
+  OptVecsTwinSse _sse_decode_box_autoadd_opt_vecs_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opt_vecs_twin_sse(deserializer));
+  }
+
+  OptVecsTwinSync _sse_decode_box_autoadd_opt_vecs_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opt_vecs_twin_sync(deserializer));
+  }
+
+  OptVecsTwinSyncSse _sse_decode_box_autoadd_opt_vecs_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_opt_vecs_twin_sync_sse(deserializer));
+  }
+
   RawStringMirrored _sse_decode_box_autoadd_raw_string_mirrored(
       SseDeserializer deserializer) {
     return (_sse_decode_raw_string_mirrored(deserializer));
+  }
+
+  (String, int) _sse_decode_box_autoadd_record_string_i_32(
+      SseDeserializer deserializer) {
+    return (_sse_decode_record_string_i_32(deserializer));
+  }
+
+  Sequences _sse_decode_box_autoadd_sequences(SseDeserializer deserializer) {
+    return (_sse_decode_sequences(deserializer));
+  }
+
+  SomeStructTwinNormal _sse_decode_box_autoadd_some_struct_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_some_struct_twin_normal(deserializer));
+  }
+
+  SomeStructTwinRustAsync _sse_decode_box_autoadd_some_struct_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_some_struct_twin_rust_async(deserializer));
+  }
+
+  SomeStructTwinRustAsyncSse
+      _sse_decode_box_autoadd_some_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_some_struct_twin_rust_async_sse(deserializer));
+  }
+
+  SomeStructTwinSse _sse_decode_box_autoadd_some_struct_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_some_struct_twin_sse(deserializer));
+  }
+
+  SomeStructTwinSync _sse_decode_box_autoadd_some_struct_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_some_struct_twin_sync(deserializer));
+  }
+
+  SomeStructTwinSyncSse _sse_decode_box_autoadd_some_struct_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_some_struct_twin_sync_sse(deserializer));
+  }
+
+  StructWithCommentsTwinNormal
+      _sse_decode_box_autoadd_struct_with_comments_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_comments_twin_normal(deserializer));
+  }
+
+  StructWithCommentsTwinRustAsync
+      _sse_decode_box_autoadd_struct_with_comments_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_comments_twin_rust_async(deserializer));
+  }
+
+  StructWithCommentsTwinRustAsyncSse
+      _sse_decode_box_autoadd_struct_with_comments_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_comments_twin_rust_async_sse(deserializer));
+  }
+
+  StructWithCommentsTwinSse
+      _sse_decode_box_autoadd_struct_with_comments_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_comments_twin_sse(deserializer));
+  }
+
+  StructWithCommentsTwinSync
+      _sse_decode_box_autoadd_struct_with_comments_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_comments_twin_sync(deserializer));
+  }
+
+  StructWithCommentsTwinSyncSse
+      _sse_decode_box_autoadd_struct_with_comments_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_comments_twin_sync_sse(deserializer));
+  }
+
+  StructWithEnumTwinNormal _sse_decode_box_autoadd_struct_with_enum_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_enum_twin_normal(deserializer));
+  }
+
+  StructWithEnumTwinRustAsync
+      _sse_decode_box_autoadd_struct_with_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_enum_twin_rust_async(deserializer));
+  }
+
+  StructWithEnumTwinRustAsyncSse
+      _sse_decode_box_autoadd_struct_with_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_enum_twin_rust_async_sse(deserializer));
+  }
+
+  StructWithEnumTwinSse _sse_decode_box_autoadd_struct_with_enum_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_enum_twin_sse(deserializer));
+  }
+
+  StructWithEnumTwinSync _sse_decode_box_autoadd_struct_with_enum_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_enum_twin_sync(deserializer));
+  }
+
+  StructWithEnumTwinSyncSse
+      _sse_decode_box_autoadd_struct_with_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_enum_twin_sync_sse(deserializer));
+  }
+
+  StructWithOneFieldTwinNormal
+      _sse_decode_box_autoadd_struct_with_one_field_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_one_field_twin_normal(deserializer));
+  }
+
+  StructWithOneFieldTwinRustAsync
+      _sse_decode_box_autoadd_struct_with_one_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_one_field_twin_rust_async(deserializer));
+  }
+
+  StructWithOneFieldTwinRustAsyncSse
+      _sse_decode_box_autoadd_struct_with_one_field_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_one_field_twin_rust_async_sse(
+        deserializer));
+  }
+
+  StructWithOneFieldTwinSse
+      _sse_decode_box_autoadd_struct_with_one_field_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_one_field_twin_sse(deserializer));
+  }
+
+  StructWithOneFieldTwinSync
+      _sse_decode_box_autoadd_struct_with_one_field_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_one_field_twin_sync(deserializer));
+  }
+
+  StructWithOneFieldTwinSyncSse
+      _sse_decode_box_autoadd_struct_with_one_field_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_one_field_twin_sync_sse(deserializer));
+  }
+
+  StructWithTwoFieldTwinNormal
+      _sse_decode_box_autoadd_struct_with_two_field_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_two_field_twin_normal(deserializer));
+  }
+
+  StructWithTwoFieldTwinRustAsync
+      _sse_decode_box_autoadd_struct_with_two_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_two_field_twin_rust_async(deserializer));
+  }
+
+  StructWithTwoFieldTwinRustAsyncSse
+      _sse_decode_box_autoadd_struct_with_two_field_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_two_field_twin_rust_async_sse(
+        deserializer));
+  }
+
+  StructWithTwoFieldTwinSse
+      _sse_decode_box_autoadd_struct_with_two_field_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_two_field_twin_sse(deserializer));
+  }
+
+  StructWithTwoFieldTwinSync
+      _sse_decode_box_autoadd_struct_with_two_field_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_two_field_twin_sync(deserializer));
+  }
+
+  StructWithTwoFieldTwinSyncSse
+      _sse_decode_box_autoadd_struct_with_two_field_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_two_field_twin_sync_sse(deserializer));
+  }
+
+  StructWithZeroFieldTwinNormal
+      _sse_decode_box_autoadd_struct_with_zero_field_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_zero_field_twin_normal(deserializer));
+  }
+
+  StructWithZeroFieldTwinRustAsync
+      _sse_decode_box_autoadd_struct_with_zero_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_zero_field_twin_rust_async(deserializer));
+  }
+
+  StructWithZeroFieldTwinRustAsyncSse
+      _sse_decode_box_autoadd_struct_with_zero_field_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_zero_field_twin_rust_async_sse(
+        deserializer));
+  }
+
+  StructWithZeroFieldTwinSse
+      _sse_decode_box_autoadd_struct_with_zero_field_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_zero_field_twin_sse(deserializer));
+  }
+
+  StructWithZeroFieldTwinSync
+      _sse_decode_box_autoadd_struct_with_zero_field_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_zero_field_twin_sync(deserializer));
+  }
+
+  StructWithZeroFieldTwinSyncSse
+      _sse_decode_box_autoadd_struct_with_zero_field_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_struct_with_zero_field_twin_sync_sse(deserializer));
+  }
+
+  SumWithTwinNormal _sse_decode_box_autoadd_sum_with_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_sum_with_twin_normal(deserializer));
+  }
+
+  SumWithTwinRustAsync _sse_decode_box_autoadd_sum_with_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_sum_with_twin_rust_async(deserializer));
+  }
+
+  SumWithTwinRustAsyncSse _sse_decode_box_autoadd_sum_with_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_sum_with_twin_rust_async_sse(deserializer));
+  }
+
+  SumWithTwinSse _sse_decode_box_autoadd_sum_with_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_sum_with_twin_sse(deserializer));
+  }
+
+  SumWithTwinSync _sse_decode_box_autoadd_sum_with_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_sum_with_twin_sync(deserializer));
+  }
+
+  SumWithTwinSyncSse _sse_decode_box_autoadd_sum_with_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_sum_with_twin_sync_sse(deserializer));
+  }
+
+  TestIdTwinNormal _sse_decode_box_autoadd_test_id_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_test_id_twin_normal(deserializer));
+  }
+
+  TestIdTwinRustAsync _sse_decode_box_autoadd_test_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_test_id_twin_rust_async(deserializer));
+  }
+
+  TestIdTwinRustAsyncSse _sse_decode_box_autoadd_test_id_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_test_id_twin_rust_async_sse(deserializer));
+  }
+
+  TestIdTwinSse _sse_decode_box_autoadd_test_id_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_test_id_twin_sse(deserializer));
+  }
+
+  TestIdTwinSync _sse_decode_box_autoadd_test_id_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_test_id_twin_sync(deserializer));
+  }
+
+  TestIdTwinSyncSse _sse_decode_box_autoadd_test_id_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_test_id_twin_sync_sse(deserializer));
+  }
+
+  TupleStructWithOneFieldTwinNormal
+      _sse_decode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_one_field_twin_normal(deserializer));
+  }
+
+  TupleStructWithOneFieldTwinRustAsync
+      _sse_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_one_field_twin_rust_async(
+        deserializer));
+  }
+
+  TupleStructWithOneFieldTwinRustAsyncSse
+      _sse_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_one_field_twin_rust_async_sse(
+        deserializer));
+  }
+
+  TupleStructWithOneFieldTwinSse
+      _sse_decode_box_autoadd_tuple_struct_with_one_field_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_one_field_twin_sse(deserializer));
+  }
+
+  TupleStructWithOneFieldTwinSync
+      _sse_decode_box_autoadd_tuple_struct_with_one_field_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_one_field_twin_sync(deserializer));
+  }
+
+  TupleStructWithOneFieldTwinSyncSse
+      _sse_decode_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_one_field_twin_sync_sse(
+        deserializer));
+  }
+
+  TupleStructWithTwoFieldTwinNormal
+      _sse_decode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_two_field_twin_normal(deserializer));
+  }
+
+  TupleStructWithTwoFieldTwinRustAsync
+      _sse_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_two_field_twin_rust_async(
+        deserializer));
+  }
+
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      _sse_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_two_field_twin_rust_async_sse(
+        deserializer));
+  }
+
+  TupleStructWithTwoFieldTwinSse
+      _sse_decode_box_autoadd_tuple_struct_with_two_field_twin_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_two_field_twin_sse(deserializer));
+  }
+
+  TupleStructWithTwoFieldTwinSync
+      _sse_decode_box_autoadd_tuple_struct_with_two_field_twin_sync(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_two_field_twin_sync(deserializer));
+  }
+
+  TupleStructWithTwoFieldTwinSyncSse
+      _sse_decode_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_tuple_struct_with_two_field_twin_sync_sse(
+        deserializer));
   }
 
   int _sse_decode_box_autoadd_u_16(SseDeserializer deserializer) {
@@ -50399,6 +53330,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   int _sse_decode_box_autoadd_u_8(SseDeserializer deserializer) {
     return (_sse_decode_u_8(deserializer));
+  }
+
+  UserIdTwinNormal _sse_decode_box_autoadd_user_id_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_user_id_twin_normal(deserializer));
+  }
+
+  UserIdTwinRustAsync _sse_decode_box_autoadd_user_id_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_user_id_twin_rust_async(deserializer));
+  }
+
+  UserIdTwinRustAsyncSse _sse_decode_box_autoadd_user_id_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_user_id_twin_rust_async_sse(deserializer));
+  }
+
+  UserIdTwinSse _sse_decode_box_autoadd_user_id_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_user_id_twin_sse(deserializer));
+  }
+
+  UserIdTwinSync _sse_decode_box_autoadd_user_id_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_user_id_twin_sync(deserializer));
+  }
+
+  UserIdTwinSyncSse _sse_decode_box_autoadd_user_id_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_user_id_twin_sync_sse(deserializer));
   }
 
   WeekdaysTwinNormal _sse_decode_box_autoadd_weekdays_twin_normal(
@@ -50431,6 +53392,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_weekdays_twin_sync_sse(deserializer));
   }
 
+  BlobTwinNormal _sse_decode_box_blob_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_blob_twin_normal(deserializer));
+  }
+
+  BlobTwinRustAsync _sse_decode_box_blob_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_blob_twin_rust_async(deserializer));
+  }
+
+  BlobTwinRustAsyncSse _sse_decode_box_blob_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_blob_twin_rust_async_sse(deserializer));
+  }
+
+  BlobTwinSse _sse_decode_box_blob_twin_sse(SseDeserializer deserializer) {
+    return (_sse_decode_blob_twin_sse(deserializer));
+  }
+
+  BlobTwinSync _sse_decode_box_blob_twin_sync(SseDeserializer deserializer) {
+    return (_sse_decode_blob_twin_sync(deserializer));
+  }
+
+  BlobTwinSyncSse _sse_decode_box_blob_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_blob_twin_sync_sse(deserializer));
+  }
+
+  bool _sse_decode_box_bool(SseDeserializer deserializer) {
+    return (_sse_decode_bool(deserializer));
+  }
+
   DistanceTwinNormal _sse_decode_box_distance_twin_normal(
       SseDeserializer deserializer) {
     return (_sse_decode_distance_twin_normal(deserializer));
@@ -50461,6 +53454,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_distance_twin_sync_sse(deserializer));
   }
 
+  ExoticOptionalsTwinNormal _sse_decode_box_exotic_optionals_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_exotic_optionals_twin_normal(deserializer));
+  }
+
+  ExoticOptionalsTwinRustAsync _sse_decode_box_exotic_optionals_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_exotic_optionals_twin_rust_async(deserializer));
+  }
+
+  ExoticOptionalsTwinRustAsyncSse
+      _sse_decode_box_exotic_optionals_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (_sse_decode_exotic_optionals_twin_rust_async_sse(deserializer));
+  }
+
+  ExoticOptionalsTwinSse _sse_decode_box_exotic_optionals_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_exotic_optionals_twin_sse(deserializer));
+  }
+
+  ExoticOptionalsTwinSync _sse_decode_box_exotic_optionals_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_exotic_optionals_twin_sync(deserializer));
+  }
+
+  ExoticOptionalsTwinSyncSse _sse_decode_box_exotic_optionals_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_exotic_optionals_twin_sync_sse(deserializer));
+  }
+
+  double _sse_decode_box_f_64(SseDeserializer deserializer) {
+    return (_sse_decode_f_64(deserializer));
+  }
+
   FeedIdTwinNormal _sse_decode_box_feed_id_twin_normal(
       SseDeserializer deserializer) {
     return (_sse_decode_feed_id_twin_normal(deserializer));
@@ -50488,6 +53516,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FeedIdTwinSyncSse _sse_decode_box_feed_id_twin_sync_sse(
       SseDeserializer deserializer) {
     return (_sse_decode_feed_id_twin_sync_sse(deserializer));
+  }
+
+  int _sse_decode_box_i_32(SseDeserializer deserializer) {
+    return (_sse_decode_i_32(deserializer));
+  }
+
+  int _sse_decode_box_i_64(SseDeserializer deserializer) {
+    return (_sse_decode_i_64(deserializer));
+  }
+
+  int _sse_decode_box_i_8(SseDeserializer deserializer) {
+    return (_sse_decode_i_8(deserializer));
   }
 
   KitchenSinkTwinNormal _sse_decode_box_kitchen_sink_twin_normal(
@@ -50520,6 +53560,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_kitchen_sink_twin_sync_sse(deserializer));
   }
 
+  MySize _sse_decode_box_my_size(SseDeserializer deserializer) {
+    return (_sse_decode_my_size(deserializer));
+  }
+
   SpeedTwinNormal _sse_decode_box_speed_twin_normal(
       SseDeserializer deserializer) {
     return (_sse_decode_speed_twin_normal(deserializer));
@@ -50548,124 +53592,166 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (_sse_decode_speed_twin_sync_sse(deserializer));
   }
 
+  int _sse_decode_box_u_8(SseDeserializer deserializer) {
+    return (_sse_decode_u_8(deserializer));
+  }
+
+  U8Array1600 _sse_decode_box_u_8_array_1600(SseDeserializer deserializer) {
+    return (_sse_decode_u_8_array_1600(deserializer));
+  }
+
   U8Array8 _sse_decode_box_u_8_array_8(SseDeserializer deserializer) {
     return (_sse_decode_u_8_array_8(deserializer));
   }
 
+  WeekdaysTwinNormal _sse_decode_box_weekdays_twin_normal(
+      SseDeserializer deserializer) {
+    return (_sse_decode_weekdays_twin_normal(deserializer));
+  }
+
+  WeekdaysTwinRustAsync _sse_decode_box_weekdays_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (_sse_decode_weekdays_twin_rust_async(deserializer));
+  }
+
+  WeekdaysTwinRustAsyncSse _sse_decode_box_weekdays_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_weekdays_twin_rust_async_sse(deserializer));
+  }
+
+  WeekdaysTwinSse _sse_decode_box_weekdays_twin_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_weekdays_twin_sse(deserializer));
+  }
+
+  WeekdaysTwinSync _sse_decode_box_weekdays_twin_sync(
+      SseDeserializer deserializer) {
+    return (_sse_decode_weekdays_twin_sync(deserializer));
+  }
+
+  WeekdaysTwinSyncSse _sse_decode_box_weekdays_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (_sse_decode_weekdays_twin_sync_sse(deserializer));
+  }
+
   CTwinNormal _sse_decode_c_twin_normal(SseDeserializer deserializer) {
-    var c = _sse_decode_bool(deserializer);
-    return CTwinNormal(c: c);
+    var var_c = _sse_decode_bool(deserializer);
+    return CTwinNormal(c: var_c);
   }
 
   CTwinRustAsync _sse_decode_c_twin_rust_async(SseDeserializer deserializer) {
-    var c = _sse_decode_bool(deserializer);
-    return CTwinRustAsync(c: c);
+    var var_c = _sse_decode_bool(deserializer);
+    return CTwinRustAsync(c: var_c);
   }
 
   CTwinRustAsyncSse _sse_decode_c_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var c = _sse_decode_bool(deserializer);
-    return CTwinRustAsyncSse(c: c);
+    var var_c = _sse_decode_bool(deserializer);
+    return CTwinRustAsyncSse(c: var_c);
   }
 
   CTwinSse _sse_decode_c_twin_sse(SseDeserializer deserializer) {
-    var c = _sse_decode_bool(deserializer);
-    return CTwinSse(c: c);
+    var var_c = _sse_decode_bool(deserializer);
+    return CTwinSse(c: var_c);
   }
 
   CTwinSync _sse_decode_c_twin_sync(SseDeserializer deserializer) {
-    var c = _sse_decode_bool(deserializer);
-    return CTwinSync(c: c);
+    var var_c = _sse_decode_bool(deserializer);
+    return CTwinSync(c: var_c);
   }
 
   CTwinSyncSse _sse_decode_c_twin_sync_sse(SseDeserializer deserializer) {
-    var c = _sse_decode_bool(deserializer);
-    return CTwinSyncSse(c: c);
+    var var_c = _sse_decode_bool(deserializer);
+    return CTwinSyncSse(c: var_c);
   }
 
   ConcatenateWithTwinNormal _sse_decode_concatenate_with_twin_normal(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ConcatenateWithTwinNormal(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ConcatenateWithTwinNormal(a: var_a);
   }
 
   ConcatenateWithTwinRustAsync _sse_decode_concatenate_with_twin_rust_async(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ConcatenateWithTwinRustAsync(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ConcatenateWithTwinRustAsync(a: var_a);
   }
 
   ConcatenateWithTwinRustAsyncSse
       _sse_decode_concatenate_with_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ConcatenateWithTwinRustAsyncSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ConcatenateWithTwinRustAsyncSse(a: var_a);
   }
 
   ConcatenateWithTwinSse _sse_decode_concatenate_with_twin_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ConcatenateWithTwinSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ConcatenateWithTwinSse(a: var_a);
   }
 
   ConcatenateWithTwinSync _sse_decode_concatenate_with_twin_sync(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ConcatenateWithTwinSync(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ConcatenateWithTwinSync(a: var_a);
   }
 
   ConcatenateWithTwinSyncSse _sse_decode_concatenate_with_twin_sync_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return ConcatenateWithTwinSyncSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return ConcatenateWithTwinSyncSse(a: var_a);
   }
 
   ContainsMirroredSubStructTwinNormal
       _sse_decode_contains_mirrored_sub_struct_twin_normal(
           SseDeserializer deserializer) {
-    var test = _sse_decode_raw_string_mirrored(deserializer);
-    var test2 = _sse_decode_another_twin_normal(deserializer);
-    return ContainsMirroredSubStructTwinNormal(test: test, test2: test2);
+    var var_test = _sse_decode_raw_string_mirrored(deserializer);
+    var var_test2 = _sse_decode_another_twin_normal(deserializer);
+    return ContainsMirroredSubStructTwinNormal(
+        test: var_test, test2: var_test2);
   }
 
   ContainsMirroredSubStructTwinRustAsync
       _sse_decode_contains_mirrored_sub_struct_twin_rust_async(
           SseDeserializer deserializer) {
-    var test = _sse_decode_raw_string_mirrored(deserializer);
-    var test2 = _sse_decode_another_twin_rust_async(deserializer);
-    return ContainsMirroredSubStructTwinRustAsync(test: test, test2: test2);
+    var var_test = _sse_decode_raw_string_mirrored(deserializer);
+    var var_test2 = _sse_decode_another_twin_rust_async(deserializer);
+    return ContainsMirroredSubStructTwinRustAsync(
+        test: var_test, test2: var_test2);
   }
 
   ContainsMirroredSubStructTwinRustAsyncSse
       _sse_decode_contains_mirrored_sub_struct_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var test = _sse_decode_raw_string_mirrored(deserializer);
-    var test2 = _sse_decode_another_twin_rust_async_sse(deserializer);
-    return ContainsMirroredSubStructTwinRustAsyncSse(test: test, test2: test2);
+    var var_test = _sse_decode_raw_string_mirrored(deserializer);
+    var var_test2 = _sse_decode_another_twin_rust_async_sse(deserializer);
+    return ContainsMirroredSubStructTwinRustAsyncSse(
+        test: var_test, test2: var_test2);
   }
 
   ContainsMirroredSubStructTwinSse
       _sse_decode_contains_mirrored_sub_struct_twin_sse(
           SseDeserializer deserializer) {
-    var test = _sse_decode_raw_string_mirrored(deserializer);
-    var test2 = _sse_decode_another_twin_sse(deserializer);
-    return ContainsMirroredSubStructTwinSse(test: test, test2: test2);
+    var var_test = _sse_decode_raw_string_mirrored(deserializer);
+    var var_test2 = _sse_decode_another_twin_sse(deserializer);
+    return ContainsMirroredSubStructTwinSse(test: var_test, test2: var_test2);
   }
 
   ContainsMirroredSubStructTwinSync
       _sse_decode_contains_mirrored_sub_struct_twin_sync(
           SseDeserializer deserializer) {
-    var test = _sse_decode_raw_string_mirrored(deserializer);
-    var test2 = _sse_decode_another_twin_sync(deserializer);
-    return ContainsMirroredSubStructTwinSync(test: test, test2: test2);
+    var var_test = _sse_decode_raw_string_mirrored(deserializer);
+    var var_test2 = _sse_decode_another_twin_sync(deserializer);
+    return ContainsMirroredSubStructTwinSync(test: var_test, test2: var_test2);
   }
 
   ContainsMirroredSubStructTwinSyncSse
       _sse_decode_contains_mirrored_sub_struct_twin_sync_sse(
           SseDeserializer deserializer) {
-    var test = _sse_decode_raw_string_mirrored(deserializer);
-    var test2 = _sse_decode_another_twin_sync_sse(deserializer);
-    return ContainsMirroredSubStructTwinSyncSse(test: test, test2: test2);
+    var var_test = _sse_decode_raw_string_mirrored(deserializer);
+    var var_test2 = _sse_decode_another_twin_sync_sse(deserializer);
+    return ContainsMirroredSubStructTwinSyncSse(
+        test: var_test, test2: var_test2);
   }
 
   CustomEnumErrorTwinNormal _sse_decode_custom_enum_error_twin_normal(
@@ -50673,15 +53759,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var message = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinNormal_One(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       case 1:
-        var message = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinNormal_Two(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50692,15 +53778,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var message = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinRustAsync_One(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       case 1:
-        var message = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinRustAsync_Two(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50712,15 +53798,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var message = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinRustAsyncSse_One(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       case 1:
-        var message = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinRustAsyncSse_Two(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50731,15 +53817,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var message = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinSse_One(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       case 1:
-        var message = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinSse_Two(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50750,15 +53836,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var message = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinSync_One(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       case 1:
-        var message = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinSync_Two(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50769,15 +53855,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var message = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinSyncSse_One(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       case 1:
-        var message = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
+        var var_message = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
         return CustomEnumErrorTwinSyncSse_Two(
-            message: message, backtrace: backtrace);
+            message: var_message, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50788,13 +53874,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var e = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinNormal_Error0(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinNormal_Error0(e: var_e, backtrace: var_backtrace);
       case 1:
-        var e = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinNormal_Error1(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinNormal_Error1(e: var_e, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50805,13 +53891,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var e = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinRustAsync_Error0(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinRustAsync_Error0(
+            e: var_e, backtrace: var_backtrace);
       case 1:
-        var e = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinRustAsync_Error1(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinRustAsync_Error1(
+            e: var_e, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50822,13 +53910,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var e = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinRustAsyncSse_Error0(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinRustAsyncSse_Error0(
+            e: var_e, backtrace: var_backtrace);
       case 1:
-        var e = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinRustAsyncSse_Error1(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinRustAsyncSse_Error1(
+            e: var_e, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50839,13 +53929,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var e = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinSse_Error0(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinSse_Error0(e: var_e, backtrace: var_backtrace);
       case 1:
-        var e = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinSse_Error1(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinSse_Error1(e: var_e, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50856,13 +53946,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var e = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinSync_Error0(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinSync_Error0(e: var_e, backtrace: var_backtrace);
       case 1:
-        var e = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinSync_Error1(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinSync_Error1(e: var_e, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50873,13 +53963,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var e = _sse_decode_String(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinSyncSse_Error0(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_String(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinSyncSse_Error0(
+            e: var_e, backtrace: var_backtrace);
       case 1:
-        var e = _sse_decode_u_32(deserializer);
-        var backtrace = _sse_decode_Backtrace(deserializer);
-        return CustomErrorTwinSyncSse_Error1(e: e, backtrace: backtrace);
+        var var_e = _sse_decode_u_32(deserializer);
+        var var_backtrace = _sse_decode_Backtrace(deserializer);
+        return CustomErrorTwinSyncSse_Error1(
+            e: var_e, backtrace: var_backtrace);
       default:
         throw UnimplementedError('');
     }
@@ -50890,12 +53982,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError1TwinNormal_CustomNested1(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError1TwinNormal_CustomNested1(var_field0);
       case 1:
-        var field0 = _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
-            deserializer);
-        return CustomNestedError1TwinNormal_ErrorNested(field0);
+        var var_field0 =
+            _sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
+                deserializer);
+        return CustomNestedError1TwinNormal_ErrorNested(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -50907,13 +54000,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError1TwinRustAsync_CustomNested1(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError1TwinRustAsync_CustomNested1(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async(
                 deserializer);
-        return CustomNestedError1TwinRustAsync_ErrorNested(field0);
+        return CustomNestedError1TwinRustAsync_ErrorNested(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -50925,13 +54018,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError1TwinRustAsyncSse_CustomNested1(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError1TwinRustAsyncSse_CustomNested1(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
                 deserializer);
-        return CustomNestedError1TwinRustAsyncSse_ErrorNested(field0);
+        return CustomNestedError1TwinRustAsyncSse_ErrorNested(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -50942,12 +54035,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError1TwinSse_CustomNested1(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError1TwinSse_CustomNested1(var_field0);
       case 1:
-        var field0 = _sse_decode_box_autoadd_custom_nested_error_2_twin_sse(
+        var var_field0 = _sse_decode_box_autoadd_custom_nested_error_2_twin_sse(
             deserializer);
-        return CustomNestedError1TwinSse_ErrorNested(field0);
+        return CustomNestedError1TwinSse_ErrorNested(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -50958,12 +54051,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError1TwinSync_CustomNested1(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError1TwinSync_CustomNested1(var_field0);
       case 1:
-        var field0 = _sse_decode_box_autoadd_custom_nested_error_2_twin_sync(
-            deserializer);
-        return CustomNestedError1TwinSync_ErrorNested(field0);
+        var var_field0 =
+            _sse_decode_box_autoadd_custom_nested_error_2_twin_sync(
+                deserializer);
+        return CustomNestedError1TwinSync_ErrorNested(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -50974,13 +54068,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError1TwinSyncSse_CustomNested1(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError1TwinSyncSse_CustomNested1(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_custom_nested_error_2_twin_sync_sse(
                 deserializer);
-        return CustomNestedError1TwinSyncSse_ErrorNested(field0);
+        return CustomNestedError1TwinSyncSse_ErrorNested(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -50991,11 +54085,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError2TwinNormal_CustomNested2(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError2TwinNormal_CustomNested2(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedError2TwinNormal_CustomNested2Number(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedError2TwinNormal_CustomNested2Number(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51007,11 +54101,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError2TwinRustAsync_CustomNested2(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError2TwinRustAsync_CustomNested2(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedError2TwinRustAsync_CustomNested2Number(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedError2TwinRustAsync_CustomNested2Number(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51023,11 +54117,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError2TwinRustAsyncSse_CustomNested2(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError2TwinRustAsyncSse_CustomNested2(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedError2TwinRustAsyncSse_CustomNested2Number(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedError2TwinRustAsyncSse_CustomNested2Number(
+            var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51038,11 +54133,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError2TwinSse_CustomNested2(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError2TwinSse_CustomNested2(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedError2TwinSse_CustomNested2Number(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedError2TwinSse_CustomNested2Number(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51053,11 +54148,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError2TwinSync_CustomNested2(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError2TwinSync_CustomNested2(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedError2TwinSync_CustomNested2Number(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedError2TwinSync_CustomNested2Number(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51068,11 +54163,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedError2TwinSyncSse_CustomNested2(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedError2TwinSyncSse_CustomNested2(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedError2TwinSyncSse_CustomNested2Number(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedError2TwinSyncSse_CustomNested2Number(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51084,11 +54179,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorInnerTwinNormal_Three(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorInnerTwinNormal_Three(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedErrorInnerTwinNormal_Four(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedErrorInnerTwinNormal_Four(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51100,11 +54195,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorInnerTwinRustAsync_Three(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorInnerTwinRustAsync_Three(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedErrorInnerTwinRustAsync_Four(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedErrorInnerTwinRustAsync_Four(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51116,11 +54211,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorInnerTwinRustAsyncSse_Three(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorInnerTwinRustAsyncSse_Three(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedErrorInnerTwinRustAsyncSse_Four(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedErrorInnerTwinRustAsyncSse_Four(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51131,11 +54226,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorInnerTwinSse_Three(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorInnerTwinSse_Three(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedErrorInnerTwinSse_Four(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedErrorInnerTwinSse_Four(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51147,11 +54242,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorInnerTwinSync_Three(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorInnerTwinSync_Three(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedErrorInnerTwinSync_Four(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedErrorInnerTwinSync_Four(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51163,11 +54258,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorInnerTwinSyncSse_Three(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorInnerTwinSyncSse_Three(var_field0);
       case 1:
-        var field0 = _sse_decode_u_32(deserializer);
-        return CustomNestedErrorInnerTwinSyncSse_Four(field0);
+        var var_field0 = _sse_decode_u_32(deserializer);
+        return CustomNestedErrorInnerTwinSyncSse_Four(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51179,13 +54274,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorOuterTwinNormal_One(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorOuterTwinNormal_One(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_custom_nested_error_inner_twin_normal(
                 deserializer);
-        return CustomNestedErrorOuterTwinNormal_Two(field0);
+        return CustomNestedErrorOuterTwinNormal_Two(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51197,13 +54292,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorOuterTwinRustAsync_One(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorOuterTwinRustAsync_One(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
                 deserializer);
-        return CustomNestedErrorOuterTwinRustAsync_Two(field0);
+        return CustomNestedErrorOuterTwinRustAsync_Two(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51215,13 +54310,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorOuterTwinRustAsyncSse_One(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorOuterTwinRustAsyncSse_One(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(
                 deserializer);
-        return CustomNestedErrorOuterTwinRustAsyncSse_Two(field0);
+        return CustomNestedErrorOuterTwinRustAsyncSse_Two(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51232,12 +54327,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorOuterTwinSse_One(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorOuterTwinSse_One(var_field0);
       case 1:
-        var field0 = _sse_decode_box_autoadd_custom_nested_error_inner_twin_sse(
-            deserializer);
-        return CustomNestedErrorOuterTwinSse_Two(field0);
+        var var_field0 =
+            _sse_decode_box_autoadd_custom_nested_error_inner_twin_sse(
+                deserializer);
+        return CustomNestedErrorOuterTwinSse_Two(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51249,13 +54345,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorOuterTwinSync_One(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorOuterTwinSync_One(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_custom_nested_error_inner_twin_sync(
                 deserializer);
-        return CustomNestedErrorOuterTwinSync_Two(field0);
+        return CustomNestedErrorOuterTwinSync_Two(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51267,13 +54363,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_String(deserializer);
-        return CustomNestedErrorOuterTwinSyncSse_One(field0);
+        var var_field0 = _sse_decode_String(deserializer);
+        return CustomNestedErrorOuterTwinSyncSse_One(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_custom_nested_error_inner_twin_sync_sse(
                 deserializer);
-        return CustomNestedErrorOuterTwinSyncSse_Two(field0);
+        return CustomNestedErrorOuterTwinSyncSse_Two(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51282,160 +54378,209 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   CustomStructErrorAnotherTwinNormal
       _sse_decode_custom_struct_error_another_twin_normal(
           SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructErrorAnotherTwinNormal(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructErrorAnotherTwinNormal(message: var_message);
   }
 
   CustomStructErrorAnotherTwinRustAsync
       _sse_decode_custom_struct_error_another_twin_rust_async(
           SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructErrorAnotherTwinRustAsync(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructErrorAnotherTwinRustAsync(message: var_message);
   }
 
   CustomStructErrorAnotherTwinRustAsyncSse
       _sse_decode_custom_struct_error_another_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructErrorAnotherTwinRustAsyncSse(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructErrorAnotherTwinRustAsyncSse(message: var_message);
   }
 
   CustomStructErrorAnotherTwinSse
       _sse_decode_custom_struct_error_another_twin_sse(
           SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructErrorAnotherTwinSse(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructErrorAnotherTwinSse(message: var_message);
   }
 
   CustomStructErrorAnotherTwinSync
       _sse_decode_custom_struct_error_another_twin_sync(
           SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructErrorAnotherTwinSync(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructErrorAnotherTwinSync(message: var_message);
   }
 
   CustomStructErrorAnotherTwinSyncSse
       _sse_decode_custom_struct_error_another_twin_sync_sse(
           SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructErrorAnotherTwinSyncSse(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructErrorAnotherTwinSyncSse(message: var_message);
   }
 
   CustomStructErrorTwinNormal _sse_decode_custom_struct_error_twin_normal(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return CustomStructErrorTwinNormal(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return CustomStructErrorTwinNormal(a: var_a);
   }
 
   CustomStructErrorTwinRustAsync
       _sse_decode_custom_struct_error_twin_rust_async(
           SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return CustomStructErrorTwinRustAsync(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return CustomStructErrorTwinRustAsync(a: var_a);
   }
 
   CustomStructErrorTwinRustAsyncSse
       _sse_decode_custom_struct_error_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return CustomStructErrorTwinRustAsyncSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return CustomStructErrorTwinRustAsyncSse(a: var_a);
   }
 
   CustomStructErrorTwinSse _sse_decode_custom_struct_error_twin_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return CustomStructErrorTwinSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return CustomStructErrorTwinSse(a: var_a);
   }
 
   CustomStructErrorTwinSync _sse_decode_custom_struct_error_twin_sync(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return CustomStructErrorTwinSync(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return CustomStructErrorTwinSync(a: var_a);
   }
 
   CustomStructErrorTwinSyncSse _sse_decode_custom_struct_error_twin_sync_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_String(deserializer);
-    return CustomStructErrorTwinSyncSse(a: a);
+    var var_a = _sse_decode_String(deserializer);
+    return CustomStructErrorTwinSyncSse(a: var_a);
   }
 
   CustomStructTwinNormal _sse_decode_custom_struct_twin_normal(
       SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructTwinNormal(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructTwinNormal(message: var_message);
   }
 
   CustomStructTwinRustAsync _sse_decode_custom_struct_twin_rust_async(
       SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructTwinRustAsync(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructTwinRustAsync(message: var_message);
   }
 
   CustomStructTwinRustAsyncSse _sse_decode_custom_struct_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructTwinRustAsyncSse(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructTwinRustAsyncSse(message: var_message);
   }
 
   CustomStructTwinSse _sse_decode_custom_struct_twin_sse(
       SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructTwinSse(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructTwinSse(message: var_message);
   }
 
   CustomStructTwinSync _sse_decode_custom_struct_twin_sync(
       SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructTwinSync(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructTwinSync(message: var_message);
   }
 
   CustomStructTwinSyncSse _sse_decode_custom_struct_twin_sync_sse(
       SseDeserializer deserializer) {
-    var message = _sse_decode_String(deserializer);
-    return CustomStructTwinSyncSse(message: message);
+    var var_message = _sse_decode_String(deserializer);
+    return CustomStructTwinSyncSse(message: var_message);
+  }
+
+  CustomizedTwinNormal _sse_decode_customized_twin_normal(
+      SseDeserializer deserializer) {
+    var var_finalField = _sse_decode_String(deserializer);
+    var var_nonFinalField = _sse_decode_opt_String(deserializer);
+    return CustomizedTwinNormal(
+        finalField: var_finalField, nonFinalField: var_nonFinalField);
+  }
+
+  CustomizedTwinRustAsync _sse_decode_customized_twin_rust_async(
+      SseDeserializer deserializer) {
+    var var_finalField = _sse_decode_String(deserializer);
+    var var_nonFinalField = _sse_decode_opt_String(deserializer);
+    return CustomizedTwinRustAsync(
+        finalField: var_finalField, nonFinalField: var_nonFinalField);
+  }
+
+  CustomizedTwinRustAsyncSse _sse_decode_customized_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    var var_finalField = _sse_decode_String(deserializer);
+    var var_nonFinalField = _sse_decode_opt_String(deserializer);
+    return CustomizedTwinRustAsyncSse(
+        finalField: var_finalField, nonFinalField: var_nonFinalField);
+  }
+
+  CustomizedTwinSse _sse_decode_customized_twin_sse(
+      SseDeserializer deserializer) {
+    var var_finalField = _sse_decode_String(deserializer);
+    var var_nonFinalField = _sse_decode_opt_String(deserializer);
+    return CustomizedTwinSse(
+        finalField: var_finalField, nonFinalField: var_nonFinalField);
+  }
+
+  CustomizedTwinSync _sse_decode_customized_twin_sync(
+      SseDeserializer deserializer) {
+    var var_finalField = _sse_decode_String(deserializer);
+    var var_nonFinalField = _sse_decode_opt_String(deserializer);
+    return CustomizedTwinSync(
+        finalField: var_finalField, nonFinalField: var_nonFinalField);
+  }
+
+  CustomizedTwinSyncSse _sse_decode_customized_twin_sync_sse(
+      SseDeserializer deserializer) {
+    var var_finalField = _sse_decode_String(deserializer);
+    var var_nonFinalField = _sse_decode_opt_String(deserializer);
+    return CustomizedTwinSyncSse(
+        finalField: var_finalField, nonFinalField: var_nonFinalField);
   }
 
   DartOpaqueNestedTwinNormal _sse_decode_dart_opaque_nested_twin_normal(
       SseDeserializer deserializer) {
-    var first = _sse_decode_DartOpaque(deserializer);
-    var second = _sse_decode_DartOpaque(deserializer);
-    return DartOpaqueNestedTwinNormal(first: first, second: second);
+    var var_first = _sse_decode_DartOpaque(deserializer);
+    var var_second = _sse_decode_DartOpaque(deserializer);
+    return DartOpaqueNestedTwinNormal(first: var_first, second: var_second);
   }
 
   DartOpaqueNestedTwinRustAsync _sse_decode_dart_opaque_nested_twin_rust_async(
       SseDeserializer deserializer) {
-    var first = _sse_decode_DartOpaque(deserializer);
-    var second = _sse_decode_DartOpaque(deserializer);
-    return DartOpaqueNestedTwinRustAsync(first: first, second: second);
+    var var_first = _sse_decode_DartOpaque(deserializer);
+    var var_second = _sse_decode_DartOpaque(deserializer);
+    return DartOpaqueNestedTwinRustAsync(first: var_first, second: var_second);
   }
 
   DartOpaqueNestedTwinRustAsyncSse
       _sse_decode_dart_opaque_nested_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var first = _sse_decode_DartOpaque(deserializer);
-    var second = _sse_decode_DartOpaque(deserializer);
-    return DartOpaqueNestedTwinRustAsyncSse(first: first, second: second);
+    var var_first = _sse_decode_DartOpaque(deserializer);
+    var var_second = _sse_decode_DartOpaque(deserializer);
+    return DartOpaqueNestedTwinRustAsyncSse(
+        first: var_first, second: var_second);
   }
 
   DartOpaqueNestedTwinSse _sse_decode_dart_opaque_nested_twin_sse(
       SseDeserializer deserializer) {
-    var first = _sse_decode_DartOpaque(deserializer);
-    var second = _sse_decode_DartOpaque(deserializer);
-    return DartOpaqueNestedTwinSse(first: first, second: second);
+    var var_first = _sse_decode_DartOpaque(deserializer);
+    var var_second = _sse_decode_DartOpaque(deserializer);
+    return DartOpaqueNestedTwinSse(first: var_first, second: var_second);
   }
 
   DartOpaqueNestedTwinSync _sse_decode_dart_opaque_nested_twin_sync(
       SseDeserializer deserializer) {
-    var first = _sse_decode_DartOpaque(deserializer);
-    var second = _sse_decode_DartOpaque(deserializer);
-    return DartOpaqueNestedTwinSync(first: first, second: second);
+    var var_first = _sse_decode_DartOpaque(deserializer);
+    var var_second = _sse_decode_DartOpaque(deserializer);
+    return DartOpaqueNestedTwinSync(first: var_first, second: var_second);
   }
 
   DartOpaqueNestedTwinSyncSse _sse_decode_dart_opaque_nested_twin_sync_sse(
       SseDeserializer deserializer) {
-    var first = _sse_decode_DartOpaque(deserializer);
-    var second = _sse_decode_DartOpaque(deserializer);
-    return DartOpaqueNestedTwinSyncSse(first: first, second: second);
+    var var_first = _sse_decode_DartOpaque(deserializer);
+    var var_second = _sse_decode_DartOpaque(deserializer);
+    return DartOpaqueNestedTwinSyncSse(first: var_first, second: var_second);
   }
 
   dynamic _sse_decode_dartabi(SseDeserializer deserializer) {
@@ -51449,8 +54594,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return DistanceTwinNormal_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return DistanceTwinNormal_Map(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return DistanceTwinNormal_Map(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51463,8 +54608,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return DistanceTwinRustAsync_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return DistanceTwinRustAsync_Map(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return DistanceTwinRustAsync_Map(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51477,8 +54622,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return DistanceTwinRustAsyncSse_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return DistanceTwinRustAsyncSse_Map(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return DistanceTwinRustAsyncSse_Map(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51490,8 +54635,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return DistanceTwinSse_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return DistanceTwinSse_Map(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return DistanceTwinSse_Map(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51504,8 +54649,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return DistanceTwinSync_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return DistanceTwinSync_Map(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return DistanceTwinSync_Map(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51518,8 +54663,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return DistanceTwinSyncSse_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return DistanceTwinSyncSse_Map(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return DistanceTwinSyncSse_Map(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51527,63 +54672,84 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   ElementTwinNormal _sse_decode_element_twin_normal(
       SseDeserializer deserializer) {
-    var tag = _sse_decode_opt_String(deserializer);
-    var text = _sse_decode_opt_String(deserializer);
-    var attributes = _sse_decode_opt_list_attribute_twin_normal(deserializer);
-    var children = _sse_decode_opt_list_element_twin_normal(deserializer);
+    var var_tag = _sse_decode_opt_String(deserializer);
+    var var_text = _sse_decode_opt_String(deserializer);
+    var var_attributes =
+        _sse_decode_opt_list_attribute_twin_normal(deserializer);
+    var var_children = _sse_decode_opt_list_element_twin_normal(deserializer);
     return ElementTwinNormal(
-        tag: tag, text: text, attributes: attributes, children: children);
+        tag: var_tag,
+        text: var_text,
+        attributes: var_attributes,
+        children: var_children);
   }
 
   ElementTwinRustAsync _sse_decode_element_twin_rust_async(
       SseDeserializer deserializer) {
-    var tag = _sse_decode_opt_String(deserializer);
-    var text = _sse_decode_opt_String(deserializer);
-    var attributes =
+    var var_tag = _sse_decode_opt_String(deserializer);
+    var var_text = _sse_decode_opt_String(deserializer);
+    var var_attributes =
         _sse_decode_opt_list_attribute_twin_rust_async(deserializer);
-    var children = _sse_decode_opt_list_element_twin_rust_async(deserializer);
+    var var_children =
+        _sse_decode_opt_list_element_twin_rust_async(deserializer);
     return ElementTwinRustAsync(
-        tag: tag, text: text, attributes: attributes, children: children);
+        tag: var_tag,
+        text: var_text,
+        attributes: var_attributes,
+        children: var_children);
   }
 
   ElementTwinRustAsyncSse _sse_decode_element_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var tag = _sse_decode_opt_String(deserializer);
-    var text = _sse_decode_opt_String(deserializer);
-    var attributes =
+    var var_tag = _sse_decode_opt_String(deserializer);
+    var var_text = _sse_decode_opt_String(deserializer);
+    var var_attributes =
         _sse_decode_opt_list_attribute_twin_rust_async_sse(deserializer);
-    var children =
+    var var_children =
         _sse_decode_opt_list_element_twin_rust_async_sse(deserializer);
     return ElementTwinRustAsyncSse(
-        tag: tag, text: text, attributes: attributes, children: children);
+        tag: var_tag,
+        text: var_text,
+        attributes: var_attributes,
+        children: var_children);
   }
 
   ElementTwinSse _sse_decode_element_twin_sse(SseDeserializer deserializer) {
-    var tag = _sse_decode_opt_String(deserializer);
-    var text = _sse_decode_opt_String(deserializer);
-    var attributes = _sse_decode_opt_list_attribute_twin_sse(deserializer);
-    var children = _sse_decode_opt_list_element_twin_sse(deserializer);
+    var var_tag = _sse_decode_opt_String(deserializer);
+    var var_text = _sse_decode_opt_String(deserializer);
+    var var_attributes = _sse_decode_opt_list_attribute_twin_sse(deserializer);
+    var var_children = _sse_decode_opt_list_element_twin_sse(deserializer);
     return ElementTwinSse(
-        tag: tag, text: text, attributes: attributes, children: children);
+        tag: var_tag,
+        text: var_text,
+        attributes: var_attributes,
+        children: var_children);
   }
 
   ElementTwinSync _sse_decode_element_twin_sync(SseDeserializer deserializer) {
-    var tag = _sse_decode_opt_String(deserializer);
-    var text = _sse_decode_opt_String(deserializer);
-    var attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
-    var children = _sse_decode_opt_list_element_twin_sync(deserializer);
+    var var_tag = _sse_decode_opt_String(deserializer);
+    var var_text = _sse_decode_opt_String(deserializer);
+    var var_attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
+    var var_children = _sse_decode_opt_list_element_twin_sync(deserializer);
     return ElementTwinSync(
-        tag: tag, text: text, attributes: attributes, children: children);
+        tag: var_tag,
+        text: var_text,
+        attributes: var_attributes,
+        children: var_children);
   }
 
   ElementTwinSyncSse _sse_decode_element_twin_sync_sse(
       SseDeserializer deserializer) {
-    var tag = _sse_decode_opt_String(deserializer);
-    var text = _sse_decode_opt_String(deserializer);
-    var attributes = _sse_decode_opt_list_attribute_twin_sync_sse(deserializer);
-    var children = _sse_decode_opt_list_element_twin_sync_sse(deserializer);
+    var var_tag = _sse_decode_opt_String(deserializer);
+    var var_text = _sse_decode_opt_String(deserializer);
+    var var_attributes =
+        _sse_decode_opt_list_attribute_twin_sync_sse(deserializer);
+    var var_children = _sse_decode_opt_list_element_twin_sync_sse(deserializer);
     return ElementTwinSyncSse(
-        tag: tag, text: text, attributes: attributes, children: children);
+        tag: var_tag,
+        text: var_text,
+        attributes: var_attributes,
+        children: var_children);
   }
 
   EmptyTwinNormal _sse_decode_empty_twin_normal(SseDeserializer deserializer) {
@@ -51618,11 +54784,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_i_32(deserializer);
-        return EnumDartOpaqueTwinNormal_Primitive(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return EnumDartOpaqueTwinNormal_Primitive(var_field0);
       case 1:
-        var field0 = _sse_decode_DartOpaque(deserializer);
-        return EnumDartOpaqueTwinNormal_Opaque(field0);
+        var var_field0 = _sse_decode_DartOpaque(deserializer);
+        return EnumDartOpaqueTwinNormal_Opaque(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51633,11 +54799,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_i_32(deserializer);
-        return EnumDartOpaqueTwinRustAsync_Primitive(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return EnumDartOpaqueTwinRustAsync_Primitive(var_field0);
       case 1:
-        var field0 = _sse_decode_DartOpaque(deserializer);
-        return EnumDartOpaqueTwinRustAsync_Opaque(field0);
+        var var_field0 = _sse_decode_DartOpaque(deserializer);
+        return EnumDartOpaqueTwinRustAsync_Opaque(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51649,11 +54815,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_i_32(deserializer);
-        return EnumDartOpaqueTwinRustAsyncSse_Primitive(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return EnumDartOpaqueTwinRustAsyncSse_Primitive(var_field0);
       case 1:
-        var field0 = _sse_decode_DartOpaque(deserializer);
-        return EnumDartOpaqueTwinRustAsyncSse_Opaque(field0);
+        var var_field0 = _sse_decode_DartOpaque(deserializer);
+        return EnumDartOpaqueTwinRustAsyncSse_Opaque(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51664,11 +54830,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_i_32(deserializer);
-        return EnumDartOpaqueTwinSse_Primitive(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return EnumDartOpaqueTwinSse_Primitive(var_field0);
       case 1:
-        var field0 = _sse_decode_DartOpaque(deserializer);
-        return EnumDartOpaqueTwinSse_Opaque(field0);
+        var var_field0 = _sse_decode_DartOpaque(deserializer);
+        return EnumDartOpaqueTwinSse_Opaque(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51679,11 +54845,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_i_32(deserializer);
-        return EnumDartOpaqueTwinSync_Primitive(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return EnumDartOpaqueTwinSync_Primitive(var_field0);
       case 1:
-        var field0 = _sse_decode_DartOpaque(deserializer);
-        return EnumDartOpaqueTwinSync_Opaque(field0);
+        var var_field0 = _sse_decode_DartOpaque(deserializer);
+        return EnumDartOpaqueTwinSync_Opaque(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51694,11 +54860,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_i_32(deserializer);
-        return EnumDartOpaqueTwinSyncSse_Primitive(field0);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return EnumDartOpaqueTwinSyncSse_Primitive(var_field0);
       case 1:
-        var field0 = _sse_decode_DartOpaque(deserializer);
-        return EnumDartOpaqueTwinSyncSse_Opaque(field0);
+        var var_field0 = _sse_decode_DartOpaque(deserializer);
+        return EnumDartOpaqueTwinSyncSse_Opaque(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51709,21 +54875,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
-        return EnumOpaqueTwinNormal_Struct(field0);
+        var var_field0 = _sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinNormal_Struct(var_field0);
       case 1:
-        var field0 = _sse_decode_RustOpaque_i_32(deserializer);
-        return EnumOpaqueTwinNormal_Primitive(field0);
+        var var_field0 = _sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinNormal_Primitive(var_field0);
       case 2:
-        var field0 =
+        var var_field0 =
             _sse_decode_RustOpaque_box_dynDartDebugTwinNormal(deserializer);
-        return EnumOpaqueTwinNormal_TraitObj(field0);
+        return EnumOpaqueTwinNormal_TraitObj(var_field0);
       case 3:
-        var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
-        return EnumOpaqueTwinNormal_Mutex(field0);
+        var var_field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinNormal_Mutex(var_field0);
       case 4:
-        var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
-        return EnumOpaqueTwinNormal_RwLock(field0);
+        var var_field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinNormal_RwLock(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51740,21 +54906,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
-        return EnumOpaqueTwinRustAsync_Struct(field0);
+        var var_field0 = _sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinRustAsync_Struct(var_field0);
       case 1:
-        var field0 = _sse_decode_RustOpaque_i_32(deserializer);
-        return EnumOpaqueTwinRustAsync_Primitive(field0);
+        var var_field0 = _sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinRustAsync_Primitive(var_field0);
       case 2:
-        var field0 =
+        var var_field0 =
             _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(deserializer);
-        return EnumOpaqueTwinRustAsync_TraitObj(field0);
+        return EnumOpaqueTwinRustAsync_TraitObj(var_field0);
       case 3:
-        var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
-        return EnumOpaqueTwinRustAsync_Mutex(field0);
+        var var_field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinRustAsync_Mutex(var_field0);
       case 4:
-        var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
-        return EnumOpaqueTwinRustAsync_RwLock(field0);
+        var var_field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinRustAsync_RwLock(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51771,21 +54937,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
-        return EnumOpaqueTwinRustAsyncSse_Struct(field0);
+        var var_field0 = _sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinRustAsyncSse_Struct(var_field0);
       case 1:
-        var field0 = _sse_decode_RustOpaque_i_32(deserializer);
-        return EnumOpaqueTwinRustAsyncSse_Primitive(field0);
+        var var_field0 = _sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinRustAsyncSse_Primitive(var_field0);
       case 2:
-        var field0 = _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
-            deserializer);
-        return EnumOpaqueTwinRustAsyncSse_TraitObj(field0);
+        var var_field0 =
+            _sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
+                deserializer);
+        return EnumOpaqueTwinRustAsyncSse_TraitObj(var_field0);
       case 3:
-        var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
-        return EnumOpaqueTwinRustAsyncSse_Mutex(field0);
+        var var_field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinRustAsyncSse_Mutex(var_field0);
       case 4:
-        var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
-        return EnumOpaqueTwinRustAsyncSse_RwLock(field0);
+        var var_field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinRustAsyncSse_RwLock(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51803,21 +54970,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
-        return EnumOpaqueTwinSse_Struct(field0);
+        var var_field0 = _sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinSse_Struct(var_field0);
       case 1:
-        var field0 = _sse_decode_RustOpaque_i_32(deserializer);
-        return EnumOpaqueTwinSse_Primitive(field0);
+        var var_field0 = _sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinSse_Primitive(var_field0);
       case 2:
-        var field0 =
+        var var_field0 =
             _sse_decode_RustOpaque_box_dynDartDebugTwinSse(deserializer);
-        return EnumOpaqueTwinSse_TraitObj(field0);
+        return EnumOpaqueTwinSse_TraitObj(var_field0);
       case 3:
-        var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
-        return EnumOpaqueTwinSse_Mutex(field0);
+        var var_field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinSse_Mutex(var_field0);
       case 4:
-        var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
-        return EnumOpaqueTwinSse_RwLock(field0);
+        var var_field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinSse_RwLock(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51834,21 +55001,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
-        return EnumOpaqueTwinSync_Struct(field0);
+        var var_field0 = _sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinSync_Struct(var_field0);
       case 1:
-        var field0 = _sse_decode_RustOpaque_i_32(deserializer);
-        return EnumOpaqueTwinSync_Primitive(field0);
+        var var_field0 = _sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinSync_Primitive(var_field0);
       case 2:
-        var field0 =
+        var var_field0 =
             _sse_decode_RustOpaque_box_dynDartDebugTwinSync(deserializer);
-        return EnumOpaqueTwinSync_TraitObj(field0);
+        return EnumOpaqueTwinSync_TraitObj(var_field0);
       case 3:
-        var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
-        return EnumOpaqueTwinSync_Mutex(field0);
+        var var_field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinSync_Mutex(var_field0);
       case 4:
-        var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
-        return EnumOpaqueTwinSync_RwLock(field0);
+        var var_field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinSync_RwLock(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51865,21 +55032,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_RustOpaque_hide_data(deserializer);
-        return EnumOpaqueTwinSyncSse_Struct(field0);
+        var var_field0 = _sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinSyncSse_Struct(var_field0);
       case 1:
-        var field0 = _sse_decode_RustOpaque_i_32(deserializer);
-        return EnumOpaqueTwinSyncSse_Primitive(field0);
+        var var_field0 = _sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinSyncSse_Primitive(var_field0);
       case 2:
-        var field0 =
+        var var_field0 =
             _sse_decode_RustOpaque_box_dynDartDebugTwinSyncSse(deserializer);
-        return EnumOpaqueTwinSyncSse_TraitObj(field0);
+        return EnumOpaqueTwinSyncSse_TraitObj(var_field0);
       case 3:
-        var field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
-        return EnumOpaqueTwinSyncSse_Mutex(field0);
+        var var_field0 = _sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinSyncSse_Mutex(var_field0);
       case 4:
-        var field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
-        return EnumOpaqueTwinSyncSse_RwLock(field0);
+        var var_field0 = _sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinSyncSse_RwLock(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -51934,11 +55101,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinNormal_A();
       case 1:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemMixedTwinNormal_B(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemMixedTwinNormal_B(var_field0);
       case 2:
-        var cField = _sse_decode_String(deserializer);
-        return EnumWithItemMixedTwinNormal_C(cField: cField);
+        var var_cField = _sse_decode_String(deserializer);
+        return EnumWithItemMixedTwinNormal_C(cField: var_cField);
       default:
         throw UnimplementedError('');
     }
@@ -51952,11 +55119,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinRustAsync_A();
       case 1:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemMixedTwinRustAsync_B(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemMixedTwinRustAsync_B(var_field0);
       case 2:
-        var cField = _sse_decode_String(deserializer);
-        return EnumWithItemMixedTwinRustAsync_C(cField: cField);
+        var var_cField = _sse_decode_String(deserializer);
+        return EnumWithItemMixedTwinRustAsync_C(cField: var_cField);
       default:
         throw UnimplementedError('');
     }
@@ -51970,11 +55137,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinRustAsyncSse_A();
       case 1:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemMixedTwinRustAsyncSse_B(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemMixedTwinRustAsyncSse_B(var_field0);
       case 2:
-        var cField = _sse_decode_String(deserializer);
-        return EnumWithItemMixedTwinRustAsyncSse_C(cField: cField);
+        var var_cField = _sse_decode_String(deserializer);
+        return EnumWithItemMixedTwinRustAsyncSse_C(cField: var_cField);
       default:
         throw UnimplementedError('');
     }
@@ -51987,11 +55154,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinSse_A();
       case 1:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemMixedTwinSse_B(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemMixedTwinSse_B(var_field0);
       case 2:
-        var cField = _sse_decode_String(deserializer);
-        return EnumWithItemMixedTwinSse_C(cField: cField);
+        var var_cField = _sse_decode_String(deserializer);
+        return EnumWithItemMixedTwinSse_C(cField: var_cField);
       default:
         throw UnimplementedError('');
     }
@@ -52004,11 +55171,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinSync_A();
       case 1:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemMixedTwinSync_B(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemMixedTwinSync_B(var_field0);
       case 2:
-        var cField = _sse_decode_String(deserializer);
-        return EnumWithItemMixedTwinSync_C(cField: cField);
+        var var_cField = _sse_decode_String(deserializer);
+        return EnumWithItemMixedTwinSync_C(cField: var_cField);
       default:
         throw UnimplementedError('');
     }
@@ -52021,11 +55188,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinSyncSse_A();
       case 1:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemMixedTwinSyncSse_B(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemMixedTwinSyncSse_B(var_field0);
       case 2:
-        var cField = _sse_decode_String(deserializer);
-        return EnumWithItemMixedTwinSyncSse_C(cField: cField);
+        var var_cField = _sse_decode_String(deserializer);
+        return EnumWithItemMixedTwinSyncSse_C(cField: var_cField);
       default:
         throw UnimplementedError('');
     }
@@ -52036,11 +55203,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var aField = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemStructTwinNormal_A(aField: aField);
+        var var_aField = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemStructTwinNormal_A(aField: var_aField);
       case 1:
-        var bField = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemStructTwinNormal_B(bField: bField);
+        var var_bField = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemStructTwinNormal_B(bField: var_bField);
       default:
         throw UnimplementedError('');
     }
@@ -52052,11 +55219,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var aField = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemStructTwinRustAsync_A(aField: aField);
+        var var_aField = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemStructTwinRustAsync_A(aField: var_aField);
       case 1:
-        var bField = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemStructTwinRustAsync_B(bField: bField);
+        var var_bField = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemStructTwinRustAsync_B(bField: var_bField);
       default:
         throw UnimplementedError('');
     }
@@ -52068,11 +55235,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var aField = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemStructTwinRustAsyncSse_A(aField: aField);
+        var var_aField = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemStructTwinRustAsyncSse_A(aField: var_aField);
       case 1:
-        var bField = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemStructTwinRustAsyncSse_B(bField: bField);
+        var var_bField = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemStructTwinRustAsyncSse_B(bField: var_bField);
       default:
         throw UnimplementedError('');
     }
@@ -52083,11 +55250,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var aField = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemStructTwinSse_A(aField: aField);
+        var var_aField = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemStructTwinSse_A(aField: var_aField);
       case 1:
-        var bField = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemStructTwinSse_B(bField: bField);
+        var var_bField = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemStructTwinSse_B(bField: var_bField);
       default:
         throw UnimplementedError('');
     }
@@ -52098,11 +55265,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var aField = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemStructTwinSync_A(aField: aField);
+        var var_aField = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemStructTwinSync_A(aField: var_aField);
       case 1:
-        var bField = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemStructTwinSync_B(bField: bField);
+        var var_bField = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemStructTwinSync_B(bField: var_bField);
       default:
         throw UnimplementedError('');
     }
@@ -52113,11 +55280,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var aField = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemStructTwinSyncSse_A(aField: aField);
+        var var_aField = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemStructTwinSyncSse_A(aField: var_aField);
       case 1:
-        var bField = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemStructTwinSyncSse_B(bField: bField);
+        var var_bField = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemStructTwinSyncSse_B(bField: var_bField);
       default:
         throw UnimplementedError('');
     }
@@ -52128,11 +55295,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemTupleTwinNormal_A(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemTupleTwinNormal_A(var_field0);
       case 1:
-        var field0 = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemTupleTwinNormal_B(field0);
+        var var_field0 = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemTupleTwinNormal_B(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52144,11 +55311,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemTupleTwinRustAsync_A(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemTupleTwinRustAsync_A(var_field0);
       case 1:
-        var field0 = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemTupleTwinRustAsync_B(field0);
+        var var_field0 = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemTupleTwinRustAsync_B(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52160,11 +55327,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemTupleTwinRustAsyncSse_A(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemTupleTwinRustAsyncSse_A(var_field0);
       case 1:
-        var field0 = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemTupleTwinRustAsyncSse_B(field0);
+        var var_field0 = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemTupleTwinRustAsyncSse_B(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52175,11 +55342,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemTupleTwinSse_A(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemTupleTwinSse_A(var_field0);
       case 1:
-        var field0 = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemTupleTwinSse_B(field0);
+        var var_field0 = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemTupleTwinSse_B(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52190,11 +55357,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemTupleTwinSync_A(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemTupleTwinSync_A(var_field0);
       case 1:
-        var field0 = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemTupleTwinSync_B(field0);
+        var var_field0 = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemTupleTwinSync_B(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52205,266 +55372,268 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return EnumWithItemTupleTwinSyncSse_A(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return EnumWithItemTupleTwinSyncSse_A(var_field0);
       case 1:
-        var field0 = _sse_decode_list_prim_i_32(deserializer);
-        return EnumWithItemTupleTwinSyncSse_B(field0);
+        var var_field0 = _sse_decode_list_prim_i_32(deserializer);
+        return EnumWithItemTupleTwinSyncSse_B(var_field0);
       default:
         throw UnimplementedError('');
     }
   }
 
   EventTwinNormal _sse_decode_event_twin_normal(SseDeserializer deserializer) {
-    var address = _sse_decode_String(deserializer);
-    var payload = _sse_decode_String(deserializer);
-    return EventTwinNormal(address: address, payload: payload);
+    var var_address = _sse_decode_String(deserializer);
+    var var_payload = _sse_decode_String(deserializer);
+    return EventTwinNormal(address: var_address, payload: var_payload);
   }
 
   EventTwinRustAsync _sse_decode_event_twin_rust_async(
       SseDeserializer deserializer) {
-    var address = _sse_decode_String(deserializer);
-    var payload = _sse_decode_String(deserializer);
-    return EventTwinRustAsync(address: address, payload: payload);
+    var var_address = _sse_decode_String(deserializer);
+    var var_payload = _sse_decode_String(deserializer);
+    return EventTwinRustAsync(address: var_address, payload: var_payload);
   }
 
   EventTwinRustAsyncSse _sse_decode_event_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var address = _sse_decode_String(deserializer);
-    var payload = _sse_decode_String(deserializer);
-    return EventTwinRustAsyncSse(address: address, payload: payload);
+    var var_address = _sse_decode_String(deserializer);
+    var var_payload = _sse_decode_String(deserializer);
+    return EventTwinRustAsyncSse(address: var_address, payload: var_payload);
   }
 
   EventTwinSse _sse_decode_event_twin_sse(SseDeserializer deserializer) {
-    var address = _sse_decode_String(deserializer);
-    var payload = _sse_decode_String(deserializer);
-    return EventTwinSse(address: address, payload: payload);
+    var var_address = _sse_decode_String(deserializer);
+    var var_payload = _sse_decode_String(deserializer);
+    return EventTwinSse(address: var_address, payload: var_payload);
   }
 
   ExoticOptionalsTwinNormal _sse_decode_exotic_optionals_twin_normal(
       SseDeserializer deserializer) {
-    var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-    var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
-    var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
-    var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
-    var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
-    var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
-    var attributes = _sse_decode_opt_list_attribute_twin_normal(deserializer);
-    var attributesNullable =
+    var var_int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+    var var_int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+    var var_float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+    var var_boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+    var var_zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+    var var_attributes =
+        _sse_decode_opt_list_attribute_twin_normal(deserializer);
+    var var_attributesNullable =
         _sse_decode_list_opt_box_autoadd_attribute_twin_normal(deserializer);
-    var nullableAttributes =
+    var var_nullableAttributes =
         _sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(
             deserializer);
-    var newtypeint =
+    var var_newtypeint =
         _sse_decode_opt_box_autoadd_new_type_int_twin_normal(deserializer);
     return ExoticOptionalsTwinNormal(
-        int32: int32,
-        int64: int64,
-        float64: float64,
-        boolean: boolean,
-        zerocopy: zerocopy,
-        int8List: int8List,
-        uint8List: uint8List,
-        int32List: int32List,
-        float32List: float32List,
-        float64List: float64List,
-        attributes: attributes,
-        attributesNullable: attributesNullable,
-        nullableAttributes: nullableAttributes,
-        newtypeint: newtypeint);
+        int32: var_int32,
+        int64: var_int64,
+        float64: var_float64,
+        boolean: var_boolean,
+        zerocopy: var_zerocopy,
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int32List: var_int32List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        attributes: var_attributes,
+        attributesNullable: var_attributesNullable,
+        nullableAttributes: var_nullableAttributes,
+        newtypeint: var_newtypeint);
   }
 
   ExoticOptionalsTwinRustAsync _sse_decode_exotic_optionals_twin_rust_async(
       SseDeserializer deserializer) {
-    var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-    var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
-    var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
-    var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
-    var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
-    var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
-    var attributes =
+    var var_int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+    var var_int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+    var var_float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+    var var_boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+    var var_zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+    var var_attributes =
         _sse_decode_opt_list_attribute_twin_rust_async(deserializer);
-    var attributesNullable =
+    var var_attributesNullable =
         _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
             deserializer);
-    var nullableAttributes =
+    var var_nullableAttributes =
         _sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
             deserializer);
-    var newtypeint =
+    var var_newtypeint =
         _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(deserializer);
     return ExoticOptionalsTwinRustAsync(
-        int32: int32,
-        int64: int64,
-        float64: float64,
-        boolean: boolean,
-        zerocopy: zerocopy,
-        int8List: int8List,
-        uint8List: uint8List,
-        int32List: int32List,
-        float32List: float32List,
-        float64List: float64List,
-        attributes: attributes,
-        attributesNullable: attributesNullable,
-        nullableAttributes: nullableAttributes,
-        newtypeint: newtypeint);
+        int32: var_int32,
+        int64: var_int64,
+        float64: var_float64,
+        boolean: var_boolean,
+        zerocopy: var_zerocopy,
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int32List: var_int32List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        attributes: var_attributes,
+        attributesNullable: var_attributesNullable,
+        nullableAttributes: var_nullableAttributes,
+        newtypeint: var_newtypeint);
   }
 
   ExoticOptionalsTwinRustAsyncSse
       _sse_decode_exotic_optionals_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-    var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
-    var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
-    var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
-    var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
-    var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
-    var attributes =
+    var var_int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+    var var_int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+    var var_float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+    var var_boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+    var var_zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+    var var_attributes =
         _sse_decode_opt_list_attribute_twin_rust_async_sse(deserializer);
-    var attributesNullable =
+    var var_attributesNullable =
         _sse_decode_list_opt_box_autoadd_attribute_twin_rust_async_sse(
             deserializer);
-    var nullableAttributes =
+    var var_nullableAttributes =
         _sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async_sse(
             deserializer);
-    var newtypeint =
+    var var_newtypeint =
         _sse_decode_opt_box_autoadd_new_type_int_twin_rust_async_sse(
             deserializer);
     return ExoticOptionalsTwinRustAsyncSse(
-        int32: int32,
-        int64: int64,
-        float64: float64,
-        boolean: boolean,
-        zerocopy: zerocopy,
-        int8List: int8List,
-        uint8List: uint8List,
-        int32List: int32List,
-        float32List: float32List,
-        float64List: float64List,
-        attributes: attributes,
-        attributesNullable: attributesNullable,
-        nullableAttributes: nullableAttributes,
-        newtypeint: newtypeint);
+        int32: var_int32,
+        int64: var_int64,
+        float64: var_float64,
+        boolean: var_boolean,
+        zerocopy: var_zerocopy,
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int32List: var_int32List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        attributes: var_attributes,
+        attributesNullable: var_attributesNullable,
+        nullableAttributes: var_nullableAttributes,
+        newtypeint: var_newtypeint);
   }
 
   ExoticOptionalsTwinSse _sse_decode_exotic_optionals_twin_sse(
       SseDeserializer deserializer) {
-    var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-    var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
-    var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
-    var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
-    var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
-    var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
-    var attributes = _sse_decode_opt_list_attribute_twin_sse(deserializer);
-    var attributesNullable =
+    var var_int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+    var var_int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+    var var_float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+    var var_boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+    var var_zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+    var var_attributes = _sse_decode_opt_list_attribute_twin_sse(deserializer);
+    var var_attributesNullable =
         _sse_decode_list_opt_box_autoadd_attribute_twin_sse(deserializer);
-    var nullableAttributes =
+    var var_nullableAttributes =
         _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sse(deserializer);
-    var newtypeint =
+    var var_newtypeint =
         _sse_decode_opt_box_autoadd_new_type_int_twin_sse(deserializer);
     return ExoticOptionalsTwinSse(
-        int32: int32,
-        int64: int64,
-        float64: float64,
-        boolean: boolean,
-        zerocopy: zerocopy,
-        int8List: int8List,
-        uint8List: uint8List,
-        int32List: int32List,
-        float32List: float32List,
-        float64List: float64List,
-        attributes: attributes,
-        attributesNullable: attributesNullable,
-        nullableAttributes: nullableAttributes,
-        newtypeint: newtypeint);
+        int32: var_int32,
+        int64: var_int64,
+        float64: var_float64,
+        boolean: var_boolean,
+        zerocopy: var_zerocopy,
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int32List: var_int32List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        attributes: var_attributes,
+        attributesNullable: var_attributesNullable,
+        nullableAttributes: var_nullableAttributes,
+        newtypeint: var_newtypeint);
   }
 
   ExoticOptionalsTwinSync _sse_decode_exotic_optionals_twin_sync(
       SseDeserializer deserializer) {
-    var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-    var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
-    var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
-    var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
-    var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
-    var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
-    var attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
-    var attributesNullable =
+    var var_int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+    var var_int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+    var var_float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+    var var_boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+    var var_zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+    var var_attributes = _sse_decode_opt_list_attribute_twin_sync(deserializer);
+    var var_attributesNullable =
         _sse_decode_list_opt_box_autoadd_attribute_twin_sync(deserializer);
-    var nullableAttributes =
+    var var_nullableAttributes =
         _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(deserializer);
-    var newtypeint =
+    var var_newtypeint =
         _sse_decode_opt_box_autoadd_new_type_int_twin_sync(deserializer);
     return ExoticOptionalsTwinSync(
-        int32: int32,
-        int64: int64,
-        float64: float64,
-        boolean: boolean,
-        zerocopy: zerocopy,
-        int8List: int8List,
-        uint8List: uint8List,
-        int32List: int32List,
-        float32List: float32List,
-        float64List: float64List,
-        attributes: attributes,
-        attributesNullable: attributesNullable,
-        nullableAttributes: nullableAttributes,
-        newtypeint: newtypeint);
+        int32: var_int32,
+        int64: var_int64,
+        float64: var_float64,
+        boolean: var_boolean,
+        zerocopy: var_zerocopy,
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int32List: var_int32List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        attributes: var_attributes,
+        attributesNullable: var_attributesNullable,
+        nullableAttributes: var_nullableAttributes,
+        newtypeint: var_newtypeint);
   }
 
   ExoticOptionalsTwinSyncSse _sse_decode_exotic_optionals_twin_sync_sse(
       SseDeserializer deserializer) {
-    var int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-    var int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
-    var float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
-    var boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
-    var zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int8List = _sse_decode_opt_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
-    var int32List = _sse_decode_opt_list_prim_i_32(deserializer);
-    var float32List = _sse_decode_opt_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_opt_list_prim_f_64(deserializer);
-    var attributes = _sse_decode_opt_list_attribute_twin_sync_sse(deserializer);
-    var attributesNullable =
+    var var_int32 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+    var var_int64 = _sse_decode_opt_box_autoadd_i_64(deserializer);
+    var var_float64 = _sse_decode_opt_box_autoadd_f_64(deserializer);
+    var var_boolean = _sse_decode_opt_box_autoadd_bool(deserializer);
+    var var_zerocopy = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = _sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = _sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = _sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_opt_list_prim_f_64(deserializer);
+    var var_attributes =
+        _sse_decode_opt_list_attribute_twin_sync_sse(deserializer);
+    var var_attributesNullable =
         _sse_decode_list_opt_box_autoadd_attribute_twin_sync_sse(deserializer);
-    var nullableAttributes =
+    var var_nullableAttributes =
         _sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync_sse(
             deserializer);
-    var newtypeint =
+    var var_newtypeint =
         _sse_decode_opt_box_autoadd_new_type_int_twin_sync_sse(deserializer);
     return ExoticOptionalsTwinSyncSse(
-        int32: int32,
-        int64: int64,
-        float64: float64,
-        boolean: boolean,
-        zerocopy: zerocopy,
-        int8List: int8List,
-        uint8List: uint8List,
-        int32List: int32List,
-        float32List: float32List,
-        float64List: float64List,
-        attributes: attributes,
-        attributesNullable: attributesNullable,
-        nullableAttributes: nullableAttributes,
-        newtypeint: newtypeint);
+        int32: var_int32,
+        int64: var_int64,
+        float64: var_float64,
+        boolean: var_boolean,
+        zerocopy: var_zerocopy,
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int32List: var_int32List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        attributes: var_attributes,
+        attributesNullable: var_attributesNullable,
+        nullableAttributes: var_nullableAttributes,
+        newtypeint: var_newtypeint);
   }
 
   double _sse_decode_f_32(SseDeserializer deserializer) {
@@ -52475,56 +55644,100 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return deserializer.buffer.getFloat64();
   }
 
+  F64Array16 _sse_decode_f_64_array_16(SseDeserializer deserializer) {
+    var inner = _sse_decode_list_prim_f_64(deserializer);
+    return F64Array16(inner);
+  }
+
+  FeatureChronoTwinNormal _sse_decode_feature_chrono_twin_normal(
+      SseDeserializer deserializer) {
+    var var_utc = _sse_decode_Chrono_Utc(deserializer);
+    var var_local = _sse_decode_Chrono_Local(deserializer);
+    var var_duration = _sse_decode_Chrono_Duration(deserializer);
+    var var_naive = _sse_decode_Chrono_Naive(deserializer);
+    return FeatureChronoTwinNormal(
+        utc: var_utc,
+        local: var_local,
+        duration: var_duration,
+        naive: var_naive);
+  }
+
+  FeatureChronoTwinRustAsync _sse_decode_feature_chrono_twin_rust_async(
+      SseDeserializer deserializer) {
+    var var_utc = _sse_decode_Chrono_Utc(deserializer);
+    var var_local = _sse_decode_Chrono_Local(deserializer);
+    var var_duration = _sse_decode_Chrono_Duration(deserializer);
+    var var_naive = _sse_decode_Chrono_Naive(deserializer);
+    return FeatureChronoTwinRustAsync(
+        utc: var_utc,
+        local: var_local,
+        duration: var_duration,
+        naive: var_naive);
+  }
+
+  FeatureChronoTwinSync _sse_decode_feature_chrono_twin_sync(
+      SseDeserializer deserializer) {
+    var var_utc = _sse_decode_Chrono_Utc(deserializer);
+    var var_local = _sse_decode_Chrono_Local(deserializer);
+    var var_duration = _sse_decode_Chrono_Duration(deserializer);
+    var var_naive = _sse_decode_Chrono_Naive(deserializer);
+    return FeatureChronoTwinSync(
+        utc: var_utc,
+        local: var_local,
+        duration: var_duration,
+        naive: var_naive);
+  }
+
   FeatureUuidTwinNormal _sse_decode_feature_uuid_twin_normal(
       SseDeserializer deserializer) {
-    var one = _sse_decode_Uuid(deserializer);
-    return FeatureUuidTwinNormal(one: one);
+    var var_one = _sse_decode_Uuid(deserializer);
+    return FeatureUuidTwinNormal(one: var_one);
   }
 
   FeatureUuidTwinRustAsync _sse_decode_feature_uuid_twin_rust_async(
       SseDeserializer deserializer) {
-    var one = _sse_decode_Uuid(deserializer);
-    return FeatureUuidTwinRustAsync(one: one);
+    var var_one = _sse_decode_Uuid(deserializer);
+    return FeatureUuidTwinRustAsync(one: var_one);
   }
 
   FeatureUuidTwinSync _sse_decode_feature_uuid_twin_sync(
       SseDeserializer deserializer) {
-    var one = _sse_decode_Uuid(deserializer);
-    return FeatureUuidTwinSync(one: one);
+    var var_one = _sse_decode_Uuid(deserializer);
+    return FeatureUuidTwinSync(one: var_one);
   }
 
   FeedIdTwinNormal _sse_decode_feed_id_twin_normal(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_8(deserializer);
-    return FeedIdTwinNormal(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_8(deserializer);
+    return FeedIdTwinNormal(field0: var_field0);
   }
 
   FeedIdTwinRustAsync _sse_decode_feed_id_twin_rust_async(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_8(deserializer);
-    return FeedIdTwinRustAsync(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_8(deserializer);
+    return FeedIdTwinRustAsync(field0: var_field0);
   }
 
   FeedIdTwinRustAsyncSse _sse_decode_feed_id_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_8(deserializer);
-    return FeedIdTwinRustAsyncSse(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_8(deserializer);
+    return FeedIdTwinRustAsyncSse(field0: var_field0);
   }
 
   FeedIdTwinSse _sse_decode_feed_id_twin_sse(SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_8(deserializer);
-    return FeedIdTwinSse(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_8(deserializer);
+    return FeedIdTwinSse(field0: var_field0);
   }
 
   FeedIdTwinSync _sse_decode_feed_id_twin_sync(SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_8(deserializer);
-    return FeedIdTwinSync(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_8(deserializer);
+    return FeedIdTwinSync(field0: var_field0);
   }
 
   FeedIdTwinSyncSse _sse_decode_feed_id_twin_sync_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_8(deserializer);
-    return FeedIdTwinSyncSse(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_8(deserializer);
+    return FeedIdTwinSyncSse(field0: var_field0);
   }
 
   int _sse_decode_i_16(SseDeserializer deserializer) {
@@ -52555,25 +55768,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return KitchenSinkTwinNormal_Empty();
       case 1:
-        var int32 = _sse_decode_i_32(deserializer);
-        var float64 = _sse_decode_f_64(deserializer);
-        var boolean = _sse_decode_bool(deserializer);
+        var var_int32 = _sse_decode_i_32(deserializer);
+        var var_float64 = _sse_decode_f_64(deserializer);
+        var var_boolean = _sse_decode_bool(deserializer);
         return KitchenSinkTwinNormal_Primitives(
-            int32: int32, float64: float64, boolean: boolean);
+            int32: var_int32, float64: var_float64, boolean: var_boolean);
       case 2:
-        var field0 = _sse_decode_i_32(deserializer);
-        var field1 = _sse_decode_box_kitchen_sink_twin_normal(deserializer);
-        return KitchenSinkTwinNormal_Nested(field0, field1);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        var var_field1 = _sse_decode_box_kitchen_sink_twin_normal(deserializer);
+        return KitchenSinkTwinNormal_Nested(var_field0, var_field1);
       case 3:
-        var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        return KitchenSinkTwinNormal_Optional(field0, field1);
+        var var_field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        var var_field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        return KitchenSinkTwinNormal_Optional(var_field0, var_field1);
       case 4:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return KitchenSinkTwinNormal_Buffer(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return KitchenSinkTwinNormal_Buffer(var_field0);
       case 5:
-        var field0 = _sse_decode_weekdays_twin_normal(deserializer);
-        return KitchenSinkTwinNormal_Enums(field0);
+        var var_field0 = _sse_decode_weekdays_twin_normal(deserializer);
+        return KitchenSinkTwinNormal_Enums(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52586,25 +55799,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return KitchenSinkTwinRustAsync_Empty();
       case 1:
-        var int32 = _sse_decode_i_32(deserializer);
-        var float64 = _sse_decode_f_64(deserializer);
-        var boolean = _sse_decode_bool(deserializer);
+        var var_int32 = _sse_decode_i_32(deserializer);
+        var var_float64 = _sse_decode_f_64(deserializer);
+        var var_boolean = _sse_decode_bool(deserializer);
         return KitchenSinkTwinRustAsync_Primitives(
-            int32: int32, float64: float64, boolean: boolean);
+            int32: var_int32, float64: var_float64, boolean: var_boolean);
       case 2:
-        var field0 = _sse_decode_i_32(deserializer);
-        var field1 = _sse_decode_box_kitchen_sink_twin_rust_async(deserializer);
-        return KitchenSinkTwinRustAsync_Nested(field0, field1);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        var var_field1 =
+            _sse_decode_box_kitchen_sink_twin_rust_async(deserializer);
+        return KitchenSinkTwinRustAsync_Nested(var_field0, var_field1);
       case 3:
-        var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        return KitchenSinkTwinRustAsync_Optional(field0, field1);
+        var var_field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        var var_field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        return KitchenSinkTwinRustAsync_Optional(var_field0, var_field1);
       case 4:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return KitchenSinkTwinRustAsync_Buffer(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return KitchenSinkTwinRustAsync_Buffer(var_field0);
       case 5:
-        var field0 = _sse_decode_weekdays_twin_rust_async(deserializer);
-        return KitchenSinkTwinRustAsync_Enums(field0);
+        var var_field0 = _sse_decode_weekdays_twin_rust_async(deserializer);
+        return KitchenSinkTwinRustAsync_Enums(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52617,26 +55831,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return KitchenSinkTwinRustAsyncSse_Empty();
       case 1:
-        var int32 = _sse_decode_i_32(deserializer);
-        var float64 = _sse_decode_f_64(deserializer);
-        var boolean = _sse_decode_bool(deserializer);
+        var var_int32 = _sse_decode_i_32(deserializer);
+        var var_float64 = _sse_decode_f_64(deserializer);
+        var var_boolean = _sse_decode_bool(deserializer);
         return KitchenSinkTwinRustAsyncSse_Primitives(
-            int32: int32, float64: float64, boolean: boolean);
+            int32: var_int32, float64: var_float64, boolean: var_boolean);
       case 2:
-        var field0 = _sse_decode_i_32(deserializer);
-        var field1 =
+        var var_field0 = _sse_decode_i_32(deserializer);
+        var var_field1 =
             _sse_decode_box_kitchen_sink_twin_rust_async_sse(deserializer);
-        return KitchenSinkTwinRustAsyncSse_Nested(field0, field1);
+        return KitchenSinkTwinRustAsyncSse_Nested(var_field0, var_field1);
       case 3:
-        var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        return KitchenSinkTwinRustAsyncSse_Optional(field0, field1);
+        var var_field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        var var_field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        return KitchenSinkTwinRustAsyncSse_Optional(var_field0, var_field1);
       case 4:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return KitchenSinkTwinRustAsyncSse_Buffer(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return KitchenSinkTwinRustAsyncSse_Buffer(var_field0);
       case 5:
-        var field0 = _sse_decode_weekdays_twin_rust_async_sse(deserializer);
-        return KitchenSinkTwinRustAsyncSse_Enums(field0);
+        var var_field0 = _sse_decode_weekdays_twin_rust_async_sse(deserializer);
+        return KitchenSinkTwinRustAsyncSse_Enums(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52649,25 +55863,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return KitchenSinkTwinSse_Empty();
       case 1:
-        var int32 = _sse_decode_i_32(deserializer);
-        var float64 = _sse_decode_f_64(deserializer);
-        var boolean = _sse_decode_bool(deserializer);
+        var var_int32 = _sse_decode_i_32(deserializer);
+        var var_float64 = _sse_decode_f_64(deserializer);
+        var var_boolean = _sse_decode_bool(deserializer);
         return KitchenSinkTwinSse_Primitives(
-            int32: int32, float64: float64, boolean: boolean);
+            int32: var_int32, float64: var_float64, boolean: var_boolean);
       case 2:
-        var field0 = _sse_decode_i_32(deserializer);
-        var field1 = _sse_decode_box_kitchen_sink_twin_sse(deserializer);
-        return KitchenSinkTwinSse_Nested(field0, field1);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        var var_field1 = _sse_decode_box_kitchen_sink_twin_sse(deserializer);
+        return KitchenSinkTwinSse_Nested(var_field0, var_field1);
       case 3:
-        var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        return KitchenSinkTwinSse_Optional(field0, field1);
+        var var_field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        var var_field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        return KitchenSinkTwinSse_Optional(var_field0, var_field1);
       case 4:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return KitchenSinkTwinSse_Buffer(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return KitchenSinkTwinSse_Buffer(var_field0);
       case 5:
-        var field0 = _sse_decode_weekdays_twin_sse(deserializer);
-        return KitchenSinkTwinSse_Enums(field0);
+        var var_field0 = _sse_decode_weekdays_twin_sse(deserializer);
+        return KitchenSinkTwinSse_Enums(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52680,25 +55894,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return KitchenSinkTwinSync_Empty();
       case 1:
-        var int32 = _sse_decode_i_32(deserializer);
-        var float64 = _sse_decode_f_64(deserializer);
-        var boolean = _sse_decode_bool(deserializer);
+        var var_int32 = _sse_decode_i_32(deserializer);
+        var var_float64 = _sse_decode_f_64(deserializer);
+        var var_boolean = _sse_decode_bool(deserializer);
         return KitchenSinkTwinSync_Primitives(
-            int32: int32, float64: float64, boolean: boolean);
+            int32: var_int32, float64: var_float64, boolean: var_boolean);
       case 2:
-        var field0 = _sse_decode_i_32(deserializer);
-        var field1 = _sse_decode_box_kitchen_sink_twin_sync(deserializer);
-        return KitchenSinkTwinSync_Nested(field0, field1);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        var var_field1 = _sse_decode_box_kitchen_sink_twin_sync(deserializer);
+        return KitchenSinkTwinSync_Nested(var_field0, var_field1);
       case 3:
-        var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        return KitchenSinkTwinSync_Optional(field0, field1);
+        var var_field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        var var_field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        return KitchenSinkTwinSync_Optional(var_field0, var_field1);
       case 4:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return KitchenSinkTwinSync_Buffer(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return KitchenSinkTwinSync_Buffer(var_field0);
       case 5:
-        var field0 = _sse_decode_weekdays_twin_sync(deserializer);
-        return KitchenSinkTwinSync_Enums(field0);
+        var var_field0 = _sse_decode_weekdays_twin_sync(deserializer);
+        return KitchenSinkTwinSync_Enums(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52711,25 +55925,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return KitchenSinkTwinSyncSse_Empty();
       case 1:
-        var int32 = _sse_decode_i_32(deserializer);
-        var float64 = _sse_decode_f_64(deserializer);
-        var boolean = _sse_decode_bool(deserializer);
+        var var_int32 = _sse_decode_i_32(deserializer);
+        var var_float64 = _sse_decode_f_64(deserializer);
+        var var_boolean = _sse_decode_bool(deserializer);
         return KitchenSinkTwinSyncSse_Primitives(
-            int32: int32, float64: float64, boolean: boolean);
+            int32: var_int32, float64: var_float64, boolean: var_boolean);
       case 2:
-        var field0 = _sse_decode_i_32(deserializer);
-        var field1 = _sse_decode_box_kitchen_sink_twin_sync_sse(deserializer);
-        return KitchenSinkTwinSyncSse_Nested(field0, field1);
+        var var_field0 = _sse_decode_i_32(deserializer);
+        var var_field1 =
+            _sse_decode_box_kitchen_sink_twin_sync_sse(deserializer);
+        return KitchenSinkTwinSyncSse_Nested(var_field0, var_field1);
       case 3:
-        var field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        var field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
-        return KitchenSinkTwinSyncSse_Optional(field0, field1);
+        var var_field0 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        var var_field1 = _sse_decode_opt_box_autoadd_i_32(deserializer);
+        return KitchenSinkTwinSyncSse_Optional(var_field0, var_field1);
       case 4:
-        var field0 = _sse_decode_list_prim_u_8(deserializer);
-        return KitchenSinkTwinSyncSse_Buffer(field0);
+        var var_field0 = _sse_decode_list_prim_u_8(deserializer);
+        return KitchenSinkTwinSyncSse_Buffer(var_field0);
       case 5:
-        var field0 = _sse_decode_weekdays_twin_sync_sse(deserializer);
-        return KitchenSinkTwinSyncSse_Enums(field0);
+        var var_field0 = _sse_decode_weekdays_twin_sync_sse(deserializer);
+        return KitchenSinkTwinSyncSse_Enums(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -52750,6 +55965,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var ans_ = <DateTime>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
       ans_.add(_sse_decode_Chrono_Local(deserializer));
+    }
+    return ans_;
+  }
+
+  List<DateTime> _sse_decode_list_Chrono_Naive(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <DateTime>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_Chrono_Naive(deserializer));
     }
     return ans_;
   }
@@ -53084,8 +56308,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   ListOfNestedRawStringMirrored _sse_decode_list_of_nested_raw_string_mirrored(
       SseDeserializer deserializer) {
-    var raw = _sse_decode_list_nested_raw_string_mirrored(deserializer);
-    return ListOfNestedRawStringMirrored(raw: raw);
+    var var_raw = _sse_decode_list_nested_raw_string_mirrored(deserializer);
+    return ListOfNestedRawStringMirrored(raw: var_raw);
   }
 
   List<String?> _sse_decode_list_opt_String(SseDeserializer deserializer) {
@@ -53381,6 +56605,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return ans_;
   }
 
+  List<(String, int)> _sse_decode_list_record_string_i_32(
+      SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    var ans_ = <(String, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(_sse_decode_record_string_i_32(deserializer));
+    }
+    return ans_;
+  }
+
   List<SumWithTwinNormal> _sse_decode_list_sum_with_twin_normal(
       SseDeserializer deserializer) {
     var len_ = _sse_decode_i_32(deserializer);
@@ -53562,73 +56796,73 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   Log2TwinNormal _sse_decode_log_2_twin_normal(SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return Log2TwinNormal(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return Log2TwinNormal(key: var_key, value: var_value);
   }
 
   Log2TwinRustAsync _sse_decode_log_2_twin_rust_async(
       SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return Log2TwinRustAsync(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return Log2TwinRustAsync(key: var_key, value: var_value);
   }
 
   Log2TwinRustAsyncSse _sse_decode_log_2_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return Log2TwinRustAsyncSse(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return Log2TwinRustAsyncSse(key: var_key, value: var_value);
   }
 
   Log2TwinSse _sse_decode_log_2_twin_sse(SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return Log2TwinSse(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return Log2TwinSse(key: var_key, value: var_value);
   }
 
   Log2TwinSync _sse_decode_log_2_twin_sync(SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return Log2TwinSync(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return Log2TwinSync(key: var_key, value: var_value);
   }
 
   Log2TwinSyncSse _sse_decode_log_2_twin_sync_sse(
       SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_String(deserializer);
-    return Log2TwinSyncSse(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_String(deserializer);
+    return Log2TwinSyncSse(key: var_key, value: var_value);
   }
 
   LogTwinNormal _sse_decode_log_twin_normal(SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_u_32(deserializer);
-    return LogTwinNormal(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_u_32(deserializer);
+    return LogTwinNormal(key: var_key, value: var_value);
   }
 
   LogTwinRustAsync _sse_decode_log_twin_rust_async(
       SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_u_32(deserializer);
-    return LogTwinRustAsync(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_u_32(deserializer);
+    return LogTwinRustAsync(key: var_key, value: var_value);
   }
 
   LogTwinRustAsyncSse _sse_decode_log_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_u_32(deserializer);
-    return LogTwinRustAsyncSse(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_u_32(deserializer);
+    return LogTwinRustAsyncSse(key: var_key, value: var_value);
   }
 
   LogTwinSse _sse_decode_log_twin_sse(SseDeserializer deserializer) {
-    var key = _sse_decode_u_32(deserializer);
-    var value = _sse_decode_u_32(deserializer);
-    return LogTwinSse(key: key, value: value);
+    var var_key = _sse_decode_u_32(deserializer);
+    var var_value = _sse_decode_u_32(deserializer);
+    return LogTwinSse(key: var_key, value: var_value);
   }
 
   MacroStruct _sse_decode_macro_struct(SseDeserializer deserializer) {
-    var data = _sse_decode_i_32(deserializer);
-    return MacroStruct(data: data);
+    var var_data = _sse_decode_i_32(deserializer);
+    return MacroStruct(data: var_data);
   }
 
   MeasureTwinNormal _sse_decode_measure_twin_normal(
@@ -53636,11 +56870,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_speed_twin_normal(deserializer);
-        return MeasureTwinNormal_Speed(field0);
+        var var_field0 = _sse_decode_box_speed_twin_normal(deserializer);
+        return MeasureTwinNormal_Speed(var_field0);
       case 1:
-        var field0 = _sse_decode_box_distance_twin_normal(deserializer);
-        return MeasureTwinNormal_Distance(field0);
+        var var_field0 = _sse_decode_box_distance_twin_normal(deserializer);
+        return MeasureTwinNormal_Distance(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -53651,11 +56885,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_speed_twin_rust_async(deserializer);
-        return MeasureTwinRustAsync_Speed(field0);
+        var var_field0 = _sse_decode_box_speed_twin_rust_async(deserializer);
+        return MeasureTwinRustAsync_Speed(var_field0);
       case 1:
-        var field0 = _sse_decode_box_distance_twin_rust_async(deserializer);
-        return MeasureTwinRustAsync_Distance(field0);
+        var var_field0 = _sse_decode_box_distance_twin_rust_async(deserializer);
+        return MeasureTwinRustAsync_Distance(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -53666,11 +56900,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_speed_twin_rust_async_sse(deserializer);
-        return MeasureTwinRustAsyncSse_Speed(field0);
+        var var_field0 =
+            _sse_decode_box_speed_twin_rust_async_sse(deserializer);
+        return MeasureTwinRustAsyncSse_Speed(var_field0);
       case 1:
-        var field0 = _sse_decode_box_distance_twin_rust_async_sse(deserializer);
-        return MeasureTwinRustAsyncSse_Distance(field0);
+        var var_field0 =
+            _sse_decode_box_distance_twin_rust_async_sse(deserializer);
+        return MeasureTwinRustAsyncSse_Distance(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -53680,11 +56916,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_speed_twin_sse(deserializer);
-        return MeasureTwinSse_Speed(field0);
+        var var_field0 = _sse_decode_box_speed_twin_sse(deserializer);
+        return MeasureTwinSse_Speed(var_field0);
       case 1:
-        var field0 = _sse_decode_box_distance_twin_sse(deserializer);
-        return MeasureTwinSse_Distance(field0);
+        var var_field0 = _sse_decode_box_distance_twin_sse(deserializer);
+        return MeasureTwinSse_Distance(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -53694,11 +56930,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_speed_twin_sync(deserializer);
-        return MeasureTwinSync_Speed(field0);
+        var var_field0 = _sse_decode_box_speed_twin_sync(deserializer);
+        return MeasureTwinSync_Speed(var_field0);
       case 1:
-        var field0 = _sse_decode_box_distance_twin_sync(deserializer);
-        return MeasureTwinSync_Distance(field0);
+        var var_field0 = _sse_decode_box_distance_twin_sync(deserializer);
+        return MeasureTwinSync_Distance(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -53709,11 +56945,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_speed_twin_sync_sse(deserializer);
-        return MeasureTwinSyncSse_Speed(field0);
+        var var_field0 = _sse_decode_box_speed_twin_sync_sse(deserializer);
+        return MeasureTwinSyncSse_Speed(var_field0);
       case 1:
-        var field0 = _sse_decode_box_distance_twin_sync_sse(deserializer);
-        return MeasureTwinSyncSse_Distance(field0);
+        var var_field0 = _sse_decode_box_distance_twin_sync_sse(deserializer);
+        return MeasureTwinSyncSse_Distance(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -53721,158 +56957,176 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   MessageIdTwinNormal _sse_decode_message_id_twin_normal(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_32(deserializer);
-    return MessageIdTwinNormal(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_32(deserializer);
+    return MessageIdTwinNormal(field0: var_field0);
   }
 
   MessageIdTwinRustAsync _sse_decode_message_id_twin_rust_async(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_32(deserializer);
-    return MessageIdTwinRustAsync(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_32(deserializer);
+    return MessageIdTwinRustAsync(field0: var_field0);
   }
 
   MessageIdTwinRustAsyncSse _sse_decode_message_id_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_32(deserializer);
-    return MessageIdTwinRustAsyncSse(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_32(deserializer);
+    return MessageIdTwinRustAsyncSse(field0: var_field0);
   }
 
   MessageIdTwinSse _sse_decode_message_id_twin_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_32(deserializer);
-    return MessageIdTwinSse(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_32(deserializer);
+    return MessageIdTwinSse(field0: var_field0);
   }
 
   MessageIdTwinSync _sse_decode_message_id_twin_sync(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_32(deserializer);
-    return MessageIdTwinSync(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_32(deserializer);
+    return MessageIdTwinSync(field0: var_field0);
   }
 
   MessageIdTwinSyncSse _sse_decode_message_id_twin_sync_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_u_8_array_32(deserializer);
-    return MessageIdTwinSyncSse(field0: field0);
+    var var_field0 = _sse_decode_u_8_array_32(deserializer);
+    return MessageIdTwinSyncSse(field0: var_field0);
   }
 
   MirrorStructTwinNormal _sse_decode_mirror_struct_twin_normal(
       SseDeserializer deserializer) {
-    var a = _sse_decode_application_settings(deserializer);
-    var b = _sse_decode_my_struct(deserializer);
-    var c = _sse_decode_list_my_enum(deserializer);
-    var d = _sse_decode_list_application_settings(deserializer);
-    return MirrorStructTwinNormal(a: a, b: b, c: c, d: d);
+    var var_a = _sse_decode_application_settings(deserializer);
+    var var_b = _sse_decode_my_struct(deserializer);
+    var var_c = _sse_decode_list_my_enum(deserializer);
+    var var_d = _sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinNormal(a: var_a, b: var_b, c: var_c, d: var_d);
   }
 
   MirrorStructTwinRustAsync _sse_decode_mirror_struct_twin_rust_async(
       SseDeserializer deserializer) {
-    var a = _sse_decode_application_settings(deserializer);
-    var b = _sse_decode_my_struct(deserializer);
-    var c = _sse_decode_list_my_enum(deserializer);
-    var d = _sse_decode_list_application_settings(deserializer);
-    return MirrorStructTwinRustAsync(a: a, b: b, c: c, d: d);
+    var var_a = _sse_decode_application_settings(deserializer);
+    var var_b = _sse_decode_my_struct(deserializer);
+    var var_c = _sse_decode_list_my_enum(deserializer);
+    var var_d = _sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinRustAsync(a: var_a, b: var_b, c: var_c, d: var_d);
   }
 
   MirrorStructTwinRustAsyncSse _sse_decode_mirror_struct_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_application_settings(deserializer);
-    var b = _sse_decode_my_struct(deserializer);
-    var c = _sse_decode_list_my_enum(deserializer);
-    var d = _sse_decode_list_application_settings(deserializer);
-    return MirrorStructTwinRustAsyncSse(a: a, b: b, c: c, d: d);
+    var var_a = _sse_decode_application_settings(deserializer);
+    var var_b = _sse_decode_my_struct(deserializer);
+    var var_c = _sse_decode_list_my_enum(deserializer);
+    var var_d = _sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinRustAsyncSse(a: var_a, b: var_b, c: var_c, d: var_d);
   }
 
   MirrorStructTwinSse _sse_decode_mirror_struct_twin_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_application_settings(deserializer);
-    var b = _sse_decode_my_struct(deserializer);
-    var c = _sse_decode_list_my_enum(deserializer);
-    var d = _sse_decode_list_application_settings(deserializer);
-    return MirrorStructTwinSse(a: a, b: b, c: c, d: d);
+    var var_a = _sse_decode_application_settings(deserializer);
+    var var_b = _sse_decode_my_struct(deserializer);
+    var var_c = _sse_decode_list_my_enum(deserializer);
+    var var_d = _sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinSse(a: var_a, b: var_b, c: var_c, d: var_d);
   }
 
   MirrorStructTwinSync _sse_decode_mirror_struct_twin_sync(
       SseDeserializer deserializer) {
-    var a = _sse_decode_application_settings(deserializer);
-    var b = _sse_decode_my_struct(deserializer);
-    var c = _sse_decode_list_my_enum(deserializer);
-    var d = _sse_decode_list_application_settings(deserializer);
-    return MirrorStructTwinSync(a: a, b: b, c: c, d: d);
+    var var_a = _sse_decode_application_settings(deserializer);
+    var var_b = _sse_decode_my_struct(deserializer);
+    var var_c = _sse_decode_list_my_enum(deserializer);
+    var var_d = _sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinSync(a: var_a, b: var_b, c: var_c, d: var_d);
   }
 
   MirrorStructTwinSyncSse _sse_decode_mirror_struct_twin_sync_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_application_settings(deserializer);
-    var b = _sse_decode_my_struct(deserializer);
-    var c = _sse_decode_list_my_enum(deserializer);
-    var d = _sse_decode_list_application_settings(deserializer);
-    return MirrorStructTwinSyncSse(a: a, b: b, c: c, d: d);
+    var var_a = _sse_decode_application_settings(deserializer);
+    var var_b = _sse_decode_my_struct(deserializer);
+    var var_c = _sse_decode_list_my_enum(deserializer);
+    var var_d = _sse_decode_list_application_settings(deserializer);
+    return MirrorStructTwinSyncSse(a: var_a, b: var_b, c: var_c, d: var_d);
   }
 
   MoreThanJustOneRawStringStructTwinNormal
       _sse_decode_more_than_just_one_raw_string_struct_twin_normal(
           SseDeserializer deserializer) {
-    var regular = _sse_decode_String(deserializer);
-    var type = _sse_decode_String(deserializer);
-    var async = _sse_decode_bool(deserializer);
-    var another = _sse_decode_String(deserializer);
+    var var_regular = _sse_decode_String(deserializer);
+    var var_type = _sse_decode_String(deserializer);
+    var var_async = _sse_decode_bool(deserializer);
+    var var_another = _sse_decode_String(deserializer);
     return MoreThanJustOneRawStringStructTwinNormal(
-        regular: regular, type: type, async: async, another: another);
+        regular: var_regular,
+        type: var_type,
+        async: var_async,
+        another: var_another);
   }
 
   MoreThanJustOneRawStringStructTwinRustAsync
       _sse_decode_more_than_just_one_raw_string_struct_twin_rust_async(
           SseDeserializer deserializer) {
-    var regular = _sse_decode_String(deserializer);
-    var type = _sse_decode_String(deserializer);
-    var async = _sse_decode_bool(deserializer);
-    var another = _sse_decode_String(deserializer);
+    var var_regular = _sse_decode_String(deserializer);
+    var var_type = _sse_decode_String(deserializer);
+    var var_async = _sse_decode_bool(deserializer);
+    var var_another = _sse_decode_String(deserializer);
     return MoreThanJustOneRawStringStructTwinRustAsync(
-        regular: regular, type: type, async: async, another: another);
+        regular: var_regular,
+        type: var_type,
+        async: var_async,
+        another: var_another);
   }
 
   MoreThanJustOneRawStringStructTwinRustAsyncSse
       _sse_decode_more_than_just_one_raw_string_struct_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var regular = _sse_decode_String(deserializer);
-    var type = _sse_decode_String(deserializer);
-    var async = _sse_decode_bool(deserializer);
-    var another = _sse_decode_String(deserializer);
+    var var_regular = _sse_decode_String(deserializer);
+    var var_type = _sse_decode_String(deserializer);
+    var var_async = _sse_decode_bool(deserializer);
+    var var_another = _sse_decode_String(deserializer);
     return MoreThanJustOneRawStringStructTwinRustAsyncSse(
-        regular: regular, type: type, async: async, another: another);
+        regular: var_regular,
+        type: var_type,
+        async: var_async,
+        another: var_another);
   }
 
   MoreThanJustOneRawStringStructTwinSse
       _sse_decode_more_than_just_one_raw_string_struct_twin_sse(
           SseDeserializer deserializer) {
-    var regular = _sse_decode_String(deserializer);
-    var type = _sse_decode_String(deserializer);
-    var async = _sse_decode_bool(deserializer);
-    var another = _sse_decode_String(deserializer);
+    var var_regular = _sse_decode_String(deserializer);
+    var var_type = _sse_decode_String(deserializer);
+    var var_async = _sse_decode_bool(deserializer);
+    var var_another = _sse_decode_String(deserializer);
     return MoreThanJustOneRawStringStructTwinSse(
-        regular: regular, type: type, async: async, another: another);
+        regular: var_regular,
+        type: var_type,
+        async: var_async,
+        another: var_another);
   }
 
   MoreThanJustOneRawStringStructTwinSync
       _sse_decode_more_than_just_one_raw_string_struct_twin_sync(
           SseDeserializer deserializer) {
-    var regular = _sse_decode_String(deserializer);
-    var type = _sse_decode_String(deserializer);
-    var async = _sse_decode_bool(deserializer);
-    var another = _sse_decode_String(deserializer);
+    var var_regular = _sse_decode_String(deserializer);
+    var var_type = _sse_decode_String(deserializer);
+    var var_async = _sse_decode_bool(deserializer);
+    var var_another = _sse_decode_String(deserializer);
     return MoreThanJustOneRawStringStructTwinSync(
-        regular: regular, type: type, async: async, another: another);
+        regular: var_regular,
+        type: var_type,
+        async: var_async,
+        another: var_another);
   }
 
   MoreThanJustOneRawStringStructTwinSyncSse
       _sse_decode_more_than_just_one_raw_string_struct_twin_sync_sse(
           SseDeserializer deserializer) {
-    var regular = _sse_decode_String(deserializer);
-    var type = _sse_decode_String(deserializer);
-    var async = _sse_decode_bool(deserializer);
-    var another = _sse_decode_String(deserializer);
+    var var_regular = _sse_decode_String(deserializer);
+    var var_type = _sse_decode_String(deserializer);
+    var var_async = _sse_decode_bool(deserializer);
+    var var_another = _sse_decode_String(deserializer);
     return MoreThanJustOneRawStringStructTwinSyncSse(
-        regular: regular, type: type, async: async, another: another);
+        regular: var_regular,
+        type: var_type,
+        async: var_async,
+        another: var_another);
   }
 
   MyEnum _sse_decode_my_enum(SseDeserializer deserializer) {
@@ -53882,258 +57136,303 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   MyNestedStructTwinNormal _sse_decode_my_nested_struct_twin_normal(
       SseDeserializer deserializer) {
-    var treeNode = _sse_decode_my_tree_node_twin_normal(deserializer);
-    var weekday = _sse_decode_weekdays_twin_normal(deserializer);
-    return MyNestedStructTwinNormal(treeNode: treeNode, weekday: weekday);
+    var var_treeNode = _sse_decode_my_tree_node_twin_normal(deserializer);
+    var var_weekday = _sse_decode_weekdays_twin_normal(deserializer);
+    return MyNestedStructTwinNormal(
+        treeNode: var_treeNode, weekday: var_weekday);
   }
 
   MyNestedStructTwinRustAsync _sse_decode_my_nested_struct_twin_rust_async(
       SseDeserializer deserializer) {
-    var treeNode = _sse_decode_my_tree_node_twin_rust_async(deserializer);
-    var weekday = _sse_decode_weekdays_twin_rust_async(deserializer);
-    return MyNestedStructTwinRustAsync(treeNode: treeNode, weekday: weekday);
+    var var_treeNode = _sse_decode_my_tree_node_twin_rust_async(deserializer);
+    var var_weekday = _sse_decode_weekdays_twin_rust_async(deserializer);
+    return MyNestedStructTwinRustAsync(
+        treeNode: var_treeNode, weekday: var_weekday);
   }
 
   MyNestedStructTwinRustAsyncSse
       _sse_decode_my_nested_struct_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var treeNode = _sse_decode_my_tree_node_twin_rust_async_sse(deserializer);
-    var weekday = _sse_decode_weekdays_twin_rust_async_sse(deserializer);
-    return MyNestedStructTwinRustAsyncSse(treeNode: treeNode, weekday: weekday);
+    var var_treeNode =
+        _sse_decode_my_tree_node_twin_rust_async_sse(deserializer);
+    var var_weekday = _sse_decode_weekdays_twin_rust_async_sse(deserializer);
+    return MyNestedStructTwinRustAsyncSse(
+        treeNode: var_treeNode, weekday: var_weekday);
   }
 
   MyNestedStructTwinSse _sse_decode_my_nested_struct_twin_sse(
       SseDeserializer deserializer) {
-    var treeNode = _sse_decode_my_tree_node_twin_sse(deserializer);
-    var weekday = _sse_decode_weekdays_twin_sse(deserializer);
-    return MyNestedStructTwinSse(treeNode: treeNode, weekday: weekday);
+    var var_treeNode = _sse_decode_my_tree_node_twin_sse(deserializer);
+    var var_weekday = _sse_decode_weekdays_twin_sse(deserializer);
+    return MyNestedStructTwinSse(treeNode: var_treeNode, weekday: var_weekday);
   }
 
   MyNestedStructTwinSync _sse_decode_my_nested_struct_twin_sync(
       SseDeserializer deserializer) {
-    var treeNode = _sse_decode_my_tree_node_twin_sync(deserializer);
-    var weekday = _sse_decode_weekdays_twin_sync(deserializer);
-    return MyNestedStructTwinSync(treeNode: treeNode, weekday: weekday);
+    var var_treeNode = _sse_decode_my_tree_node_twin_sync(deserializer);
+    var var_weekday = _sse_decode_weekdays_twin_sync(deserializer);
+    return MyNestedStructTwinSync(treeNode: var_treeNode, weekday: var_weekday);
   }
 
   MyNestedStructTwinSyncSse _sse_decode_my_nested_struct_twin_sync_sse(
       SseDeserializer deserializer) {
-    var treeNode = _sse_decode_my_tree_node_twin_sync_sse(deserializer);
-    var weekday = _sse_decode_weekdays_twin_sync_sse(deserializer);
-    return MyNestedStructTwinSyncSse(treeNode: treeNode, weekday: weekday);
+    var var_treeNode = _sse_decode_my_tree_node_twin_sync_sse(deserializer);
+    var var_weekday = _sse_decode_weekdays_twin_sync_sse(deserializer);
+    return MyNestedStructTwinSyncSse(
+        treeNode: var_treeNode, weekday: var_weekday);
   }
 
   MySize _sse_decode_my_size(SseDeserializer deserializer) {
-    var width = _sse_decode_i_32(deserializer);
-    var height = _sse_decode_i_32(deserializer);
-    return MySize(width: width, height: height);
+    var var_width = _sse_decode_i_32(deserializer);
+    var var_height = _sse_decode_i_32(deserializer);
+    return MySize(width: var_width, height: var_height);
   }
 
   MyStreamEntryTwinNormal _sse_decode_my_stream_entry_twin_normal(
       SseDeserializer deserializer) {
-    var hello = _sse_decode_String(deserializer);
-    return MyStreamEntryTwinNormal(hello: hello);
+    var var_hello = _sse_decode_String(deserializer);
+    return MyStreamEntryTwinNormal(hello: var_hello);
   }
 
   MyStreamEntryTwinRustAsync _sse_decode_my_stream_entry_twin_rust_async(
       SseDeserializer deserializer) {
-    var hello = _sse_decode_String(deserializer);
-    return MyStreamEntryTwinRustAsync(hello: hello);
+    var var_hello = _sse_decode_String(deserializer);
+    return MyStreamEntryTwinRustAsync(hello: var_hello);
   }
 
   MyStreamEntryTwinRustAsyncSse _sse_decode_my_stream_entry_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var hello = _sse_decode_String(deserializer);
-    return MyStreamEntryTwinRustAsyncSse(hello: hello);
+    var var_hello = _sse_decode_String(deserializer);
+    return MyStreamEntryTwinRustAsyncSse(hello: var_hello);
   }
 
   MyStreamEntryTwinSse _sse_decode_my_stream_entry_twin_sse(
       SseDeserializer deserializer) {
-    var hello = _sse_decode_String(deserializer);
-    return MyStreamEntryTwinSse(hello: hello);
+    var var_hello = _sse_decode_String(deserializer);
+    return MyStreamEntryTwinSse(hello: var_hello);
   }
 
   MyStruct _sse_decode_my_struct(SseDeserializer deserializer) {
-    var content = _sse_decode_bool(deserializer);
-    return MyStruct(content: content);
+    var var_content = _sse_decode_bool(deserializer);
+    return MyStruct(content: var_content);
   }
 
   MyTreeNodeTwinNormal _sse_decode_my_tree_node_twin_normal(
       SseDeserializer deserializer) {
-    var valueI32 = _sse_decode_i_32(deserializer);
-    var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
-    var valueBoolean = _sse_decode_bool(deserializer);
-    var children = _sse_decode_list_my_tree_node_twin_normal(deserializer);
+    var var_valueI32 = _sse_decode_i_32(deserializer);
+    var var_valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+    var var_valueBoolean = _sse_decode_bool(deserializer);
+    var var_children = _sse_decode_list_my_tree_node_twin_normal(deserializer);
     return MyTreeNodeTwinNormal(
-        valueI32: valueI32,
-        valueVecU8: valueVecU8,
-        valueBoolean: valueBoolean,
-        children: children);
+        valueI32: var_valueI32,
+        valueVecU8: var_valueVecU8,
+        valueBoolean: var_valueBoolean,
+        children: var_children);
   }
 
   MyTreeNodeTwinRustAsync _sse_decode_my_tree_node_twin_rust_async(
       SseDeserializer deserializer) {
-    var valueI32 = _sse_decode_i_32(deserializer);
-    var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
-    var valueBoolean = _sse_decode_bool(deserializer);
-    var children = _sse_decode_list_my_tree_node_twin_rust_async(deserializer);
+    var var_valueI32 = _sse_decode_i_32(deserializer);
+    var var_valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+    var var_valueBoolean = _sse_decode_bool(deserializer);
+    var var_children =
+        _sse_decode_list_my_tree_node_twin_rust_async(deserializer);
     return MyTreeNodeTwinRustAsync(
-        valueI32: valueI32,
-        valueVecU8: valueVecU8,
-        valueBoolean: valueBoolean,
-        children: children);
+        valueI32: var_valueI32,
+        valueVecU8: var_valueVecU8,
+        valueBoolean: var_valueBoolean,
+        children: var_children);
   }
 
   MyTreeNodeTwinRustAsyncSse _sse_decode_my_tree_node_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var valueI32 = _sse_decode_i_32(deserializer);
-    var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
-    var valueBoolean = _sse_decode_bool(deserializer);
-    var children =
+    var var_valueI32 = _sse_decode_i_32(deserializer);
+    var var_valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+    var var_valueBoolean = _sse_decode_bool(deserializer);
+    var var_children =
         _sse_decode_list_my_tree_node_twin_rust_async_sse(deserializer);
     return MyTreeNodeTwinRustAsyncSse(
-        valueI32: valueI32,
-        valueVecU8: valueVecU8,
-        valueBoolean: valueBoolean,
-        children: children);
+        valueI32: var_valueI32,
+        valueVecU8: var_valueVecU8,
+        valueBoolean: var_valueBoolean,
+        children: var_children);
   }
 
   MyTreeNodeTwinSse _sse_decode_my_tree_node_twin_sse(
       SseDeserializer deserializer) {
-    var valueI32 = _sse_decode_i_32(deserializer);
-    var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
-    var valueBoolean = _sse_decode_bool(deserializer);
-    var children = _sse_decode_list_my_tree_node_twin_sse(deserializer);
+    var var_valueI32 = _sse_decode_i_32(deserializer);
+    var var_valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+    var var_valueBoolean = _sse_decode_bool(deserializer);
+    var var_children = _sse_decode_list_my_tree_node_twin_sse(deserializer);
     return MyTreeNodeTwinSse(
-        valueI32: valueI32,
-        valueVecU8: valueVecU8,
-        valueBoolean: valueBoolean,
-        children: children);
+        valueI32: var_valueI32,
+        valueVecU8: var_valueVecU8,
+        valueBoolean: var_valueBoolean,
+        children: var_children);
   }
 
   MyTreeNodeTwinSync _sse_decode_my_tree_node_twin_sync(
       SseDeserializer deserializer) {
-    var valueI32 = _sse_decode_i_32(deserializer);
-    var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
-    var valueBoolean = _sse_decode_bool(deserializer);
-    var children = _sse_decode_list_my_tree_node_twin_sync(deserializer);
+    var var_valueI32 = _sse_decode_i_32(deserializer);
+    var var_valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+    var var_valueBoolean = _sse_decode_bool(deserializer);
+    var var_children = _sse_decode_list_my_tree_node_twin_sync(deserializer);
     return MyTreeNodeTwinSync(
-        valueI32: valueI32,
-        valueVecU8: valueVecU8,
-        valueBoolean: valueBoolean,
-        children: children);
+        valueI32: var_valueI32,
+        valueVecU8: var_valueVecU8,
+        valueBoolean: var_valueBoolean,
+        children: var_children);
   }
 
   MyTreeNodeTwinSyncSse _sse_decode_my_tree_node_twin_sync_sse(
       SseDeserializer deserializer) {
-    var valueI32 = _sse_decode_i_32(deserializer);
-    var valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
-    var valueBoolean = _sse_decode_bool(deserializer);
-    var children = _sse_decode_list_my_tree_node_twin_sync_sse(deserializer);
+    var var_valueI32 = _sse_decode_i_32(deserializer);
+    var var_valueVecU8 = _sse_decode_list_prim_u_8(deserializer);
+    var var_valueBoolean = _sse_decode_bool(deserializer);
+    var var_children =
+        _sse_decode_list_my_tree_node_twin_sync_sse(deserializer);
     return MyTreeNodeTwinSyncSse(
-        valueI32: valueI32,
-        valueVecU8: valueVecU8,
-        valueBoolean: valueBoolean,
-        children: children);
+        valueI32: var_valueI32,
+        valueVecU8: var_valueVecU8,
+        valueBoolean: var_valueBoolean,
+        children: var_children);
   }
 
   NestedRawStringMirrored _sse_decode_nested_raw_string_mirrored(
       SseDeserializer deserializer) {
-    var raw = _sse_decode_raw_string_mirrored(deserializer);
-    return NestedRawStringMirrored(raw: raw);
+    var var_raw = _sse_decode_raw_string_mirrored(deserializer);
+    return NestedRawStringMirrored(raw: var_raw);
   }
 
   NewSimpleStruct _sse_decode_new_simple_struct(SseDeserializer deserializer) {
-    var field = _sse_decode_i_32(deserializer);
-    return NewSimpleStruct(field: field);
+    var var_field = _sse_decode_i_32(deserializer);
+    return NewSimpleStruct(field: var_field);
   }
 
   NewTypeIntTwinNormal _sse_decode_new_type_int_twin_normal(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_64(deserializer);
-    return NewTypeIntTwinNormal(field0: field0);
+    var var_field0 = _sse_decode_i_64(deserializer);
+    return NewTypeIntTwinNormal(field0: var_field0);
   }
 
   NewTypeIntTwinRustAsync _sse_decode_new_type_int_twin_rust_async(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_64(deserializer);
-    return NewTypeIntTwinRustAsync(field0: field0);
+    var var_field0 = _sse_decode_i_64(deserializer);
+    return NewTypeIntTwinRustAsync(field0: var_field0);
   }
 
   NewTypeIntTwinRustAsyncSse _sse_decode_new_type_int_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_64(deserializer);
-    return NewTypeIntTwinRustAsyncSse(field0: field0);
+    var var_field0 = _sse_decode_i_64(deserializer);
+    return NewTypeIntTwinRustAsyncSse(field0: var_field0);
   }
 
   NewTypeIntTwinSse _sse_decode_new_type_int_twin_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_64(deserializer);
-    return NewTypeIntTwinSse(field0: field0);
+    var var_field0 = _sse_decode_i_64(deserializer);
+    return NewTypeIntTwinSse(field0: var_field0);
   }
 
   NewTypeIntTwinSync _sse_decode_new_type_int_twin_sync(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_64(deserializer);
-    return NewTypeIntTwinSync(field0: field0);
+    var var_field0 = _sse_decode_i_64(deserializer);
+    return NewTypeIntTwinSync(field0: var_field0);
   }
 
   NewTypeIntTwinSyncSse _sse_decode_new_type_int_twin_sync_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_64(deserializer);
-    return NewTypeIntTwinSyncSse(field0: field0);
+    var var_field0 = _sse_decode_i_64(deserializer);
+    return NewTypeIntTwinSyncSse(field0: var_field0);
+  }
+
+  NoteTwinNormal _sse_decode_note_twin_normal(SseDeserializer deserializer) {
+    var var_day = _sse_decode_box_weekdays_twin_normal(deserializer);
+    var var_body = _sse_decode_String(deserializer);
+    return NoteTwinNormal(day: var_day, body: var_body);
+  }
+
+  NoteTwinRustAsync _sse_decode_note_twin_rust_async(
+      SseDeserializer deserializer) {
+    var var_day = _sse_decode_box_weekdays_twin_rust_async(deserializer);
+    var var_body = _sse_decode_String(deserializer);
+    return NoteTwinRustAsync(day: var_day, body: var_body);
+  }
+
+  NoteTwinRustAsyncSse _sse_decode_note_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    var var_day = _sse_decode_box_weekdays_twin_rust_async_sse(deserializer);
+    var var_body = _sse_decode_String(deserializer);
+    return NoteTwinRustAsyncSse(day: var_day, body: var_body);
+  }
+
+  NoteTwinSse _sse_decode_note_twin_sse(SseDeserializer deserializer) {
+    var var_day = _sse_decode_box_weekdays_twin_sse(deserializer);
+    var var_body = _sse_decode_String(deserializer);
+    return NoteTwinSse(day: var_day, body: var_body);
+  }
+
+  NoteTwinSync _sse_decode_note_twin_sync(SseDeserializer deserializer) {
+    var var_day = _sse_decode_box_weekdays_twin_sync(deserializer);
+    var var_body = _sse_decode_String(deserializer);
+    return NoteTwinSync(day: var_day, body: var_body);
+  }
+
+  NoteTwinSyncSse _sse_decode_note_twin_sync_sse(SseDeserializer deserializer) {
+    var var_day = _sse_decode_box_weekdays_twin_sync_sse(deserializer);
+    var var_body = _sse_decode_String(deserializer);
+    return NoteTwinSyncSse(day: var_day, body: var_body);
   }
 
   Numbers _sse_decode_numbers(SseDeserializer deserializer) {
-    var field0 = _sse_decode_list_prim_i_32(deserializer);
-    return Numbers(field0: field0);
+    var var_field0 = _sse_decode_list_prim_i_32(deserializer);
+    return Numbers(field0: var_field0);
   }
 
   OldSimpleStruct _sse_decode_old_simple_struct(SseDeserializer deserializer) {
-    var field = _sse_decode_i_32(deserializer);
-    return OldSimpleStruct(field: field);
+    var var_field = _sse_decode_i_32(deserializer);
+    return OldSimpleStruct(field: var_field);
   }
 
   OpaqueNestedTwinNormal _sse_decode_opaque_nested_twin_normal(
       SseDeserializer deserializer) {
-    var first = _sse_decode_RustOpaque_hide_data(deserializer);
-    var second = _sse_decode_RustOpaque_hide_data(deserializer);
-    return OpaqueNestedTwinNormal(first: first, second: second);
+    var var_first = _sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = _sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinNormal(first: var_first, second: var_second);
   }
 
   OpaqueNestedTwinRustAsync _sse_decode_opaque_nested_twin_rust_async(
       SseDeserializer deserializer) {
-    var first = _sse_decode_RustOpaque_hide_data(deserializer);
-    var second = _sse_decode_RustOpaque_hide_data(deserializer);
-    return OpaqueNestedTwinRustAsync(first: first, second: second);
+    var var_first = _sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = _sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinRustAsync(first: var_first, second: var_second);
   }
 
   OpaqueNestedTwinRustAsyncSse _sse_decode_opaque_nested_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var first = _sse_decode_RustOpaque_hide_data(deserializer);
-    var second = _sse_decode_RustOpaque_hide_data(deserializer);
-    return OpaqueNestedTwinRustAsyncSse(first: first, second: second);
+    var var_first = _sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = _sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinRustAsyncSse(first: var_first, second: var_second);
   }
 
   OpaqueNestedTwinSse _sse_decode_opaque_nested_twin_sse(
       SseDeserializer deserializer) {
-    var first = _sse_decode_RustOpaque_hide_data(deserializer);
-    var second = _sse_decode_RustOpaque_hide_data(deserializer);
-    return OpaqueNestedTwinSse(first: first, second: second);
+    var var_first = _sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = _sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinSse(first: var_first, second: var_second);
   }
 
   OpaqueNestedTwinSync _sse_decode_opaque_nested_twin_sync(
       SseDeserializer deserializer) {
-    var first = _sse_decode_RustOpaque_hide_data(deserializer);
-    var second = _sse_decode_RustOpaque_hide_data(deserializer);
-    return OpaqueNestedTwinSync(first: first, second: second);
+    var var_first = _sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = _sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinSync(first: var_first, second: var_second);
   }
 
   OpaqueNestedTwinSyncSse _sse_decode_opaque_nested_twin_sync_sse(
       SseDeserializer deserializer) {
-    var first = _sse_decode_RustOpaque_hide_data(deserializer);
-    var second = _sse_decode_RustOpaque_hide_data(deserializer);
-    return OpaqueNestedTwinSyncSse(first: first, second: second);
+    var var_first = _sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = _sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinSyncSse(first: var_first, second: var_second);
   }
 
   String? _sse_decode_opt_String(SseDeserializer deserializer) {
@@ -54542,6 +57841,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  (String, int)? _sse_decode_opt_box_autoadd_record_string_i_32(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_autoadd_record_string_i_32(deserializer));
+    } else {
+      return null;
+    }
+  }
+
   int? _sse_decode_opt_box_autoadd_u_16(SseDeserializer deserializer) {
     if (_sse_decode_bool(deserializer)) {
       return (_sse_decode_box_autoadd_u_16(deserializer));
@@ -54625,6 +57933,112 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     if (_sse_decode_bool(deserializer)) {
       return (_sse_decode_box_autoadd_weekdays_twin_sync_sse(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  bool? _sse_decode_opt_box_bool(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_bool(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  ExoticOptionalsTwinNormal? _sse_decode_opt_box_exotic_optionals_twin_normal(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_exotic_optionals_twin_normal(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  ExoticOptionalsTwinRustAsync?
+      _sse_decode_opt_box_exotic_optionals_twin_rust_async(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_exotic_optionals_twin_rust_async(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  ExoticOptionalsTwinRustAsyncSse?
+      _sse_decode_opt_box_exotic_optionals_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_exotic_optionals_twin_rust_async_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  ExoticOptionalsTwinSse? _sse_decode_opt_box_exotic_optionals_twin_sse(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_exotic_optionals_twin_sse(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  ExoticOptionalsTwinSync? _sse_decode_opt_box_exotic_optionals_twin_sync(
+      SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_exotic_optionals_twin_sync(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  ExoticOptionalsTwinSyncSse?
+      _sse_decode_opt_box_exotic_optionals_twin_sync_sse(
+          SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_exotic_optionals_twin_sync_sse(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  double? _sse_decode_opt_box_f_64(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_f_64(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  int? _sse_decode_opt_box_i_32(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_i_32(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  int? _sse_decode_opt_box_i_64(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_i_64(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  int? _sse_decode_opt_box_i_8(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_i_8(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  int? _sse_decode_opt_box_u_8(SseDeserializer deserializer) {
+    if (_sse_decode_bool(deserializer)) {
+      return (_sse_decode_box_u_8(deserializer));
     } else {
       return null;
     }
@@ -54848,72 +58262,91 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   OptVecsTwinNormal _sse_decode_opt_vecs_twin_normal(
       SseDeserializer deserializer) {
-    var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
-    var enums =
+    var var_i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+    var var_enums =
         _sse_decode_list_opt_box_autoadd_weekdays_twin_normal(deserializer);
-    var strings = _sse_decode_list_opt_String(deserializer);
-    var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
+    var var_strings = _sse_decode_list_opt_String(deserializer);
+    var var_buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinNormal(
-        i32: i32, enums: enums, strings: strings, buffers: buffers);
+        i32: var_i32,
+        enums: var_enums,
+        strings: var_strings,
+        buffers: var_buffers);
   }
 
   OptVecsTwinRustAsync _sse_decode_opt_vecs_twin_rust_async(
       SseDeserializer deserializer) {
-    var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
-    var enums =
+    var var_i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+    var var_enums =
         _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(deserializer);
-    var strings = _sse_decode_list_opt_String(deserializer);
-    var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
+    var var_strings = _sse_decode_list_opt_String(deserializer);
+    var var_buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinRustAsync(
-        i32: i32, enums: enums, strings: strings, buffers: buffers);
+        i32: var_i32,
+        enums: var_enums,
+        strings: var_strings,
+        buffers: var_buffers);
   }
 
   OptVecsTwinRustAsyncSse _sse_decode_opt_vecs_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
-    var enums = _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(
-        deserializer);
-    var strings = _sse_decode_list_opt_String(deserializer);
-    var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
+    var var_i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+    var var_enums =
+        _sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(
+            deserializer);
+    var var_strings = _sse_decode_list_opt_String(deserializer);
+    var var_buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinRustAsyncSse(
-        i32: i32, enums: enums, strings: strings, buffers: buffers);
+        i32: var_i32,
+        enums: var_enums,
+        strings: var_strings,
+        buffers: var_buffers);
   }
 
   OptVecsTwinSse _sse_decode_opt_vecs_twin_sse(SseDeserializer deserializer) {
-    var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
-    var enums =
+    var var_i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+    var var_enums =
         _sse_decode_list_opt_box_autoadd_weekdays_twin_sse(deserializer);
-    var strings = _sse_decode_list_opt_String(deserializer);
-    var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
+    var var_strings = _sse_decode_list_opt_String(deserializer);
+    var var_buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinSse(
-        i32: i32, enums: enums, strings: strings, buffers: buffers);
+        i32: var_i32,
+        enums: var_enums,
+        strings: var_strings,
+        buffers: var_buffers);
   }
 
   OptVecsTwinSync _sse_decode_opt_vecs_twin_sync(SseDeserializer deserializer) {
-    var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
-    var enums =
+    var var_i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+    var var_enums =
         _sse_decode_list_opt_box_autoadd_weekdays_twin_sync(deserializer);
-    var strings = _sse_decode_list_opt_String(deserializer);
-    var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
+    var var_strings = _sse_decode_list_opt_String(deserializer);
+    var var_buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinSync(
-        i32: i32, enums: enums, strings: strings, buffers: buffers);
+        i32: var_i32,
+        enums: var_enums,
+        strings: var_strings,
+        buffers: var_buffers);
   }
 
   OptVecsTwinSyncSse _sse_decode_opt_vecs_twin_sync_sse(
       SseDeserializer deserializer) {
-    var i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
-    var enums =
+    var var_i32 = _sse_decode_list_opt_box_autoadd_i_32(deserializer);
+    var var_enums =
         _sse_decode_list_opt_box_autoadd_weekdays_twin_sync_sse(deserializer);
-    var strings = _sse_decode_list_opt_String(deserializer);
-    var buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
+    var var_strings = _sse_decode_list_opt_String(deserializer);
+    var var_buffers = _sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinSyncSse(
-        i32: i32, enums: enums, strings: strings, buffers: buffers);
+        i32: var_i32,
+        enums: var_enums,
+        strings: var_strings,
+        buffers: var_buffers);
   }
 
   PointTwinNormal _sse_decode_point_twin_normal(SseDeserializer deserializer) {
-    var x = _sse_decode_f_32(deserializer);
-    var y = _sse_decode_f_32(deserializer);
-    return PointTwinNormal(x: x, y: y);
+    var var_x = _sse_decode_f_32(deserializer);
+    var var_y = _sse_decode_f_32(deserializer);
+    return PointTwinNormal(x: var_x, y: var_y);
   }
 
   PointTwinNormalArray2 _sse_decode_point_twin_normal_array_2(
@@ -54924,9 +58357,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   PointTwinRustAsync _sse_decode_point_twin_rust_async(
       SseDeserializer deserializer) {
-    var x = _sse_decode_f_32(deserializer);
-    var y = _sse_decode_f_32(deserializer);
-    return PointTwinRustAsync(x: x, y: y);
+    var var_x = _sse_decode_f_32(deserializer);
+    var var_y = _sse_decode_f_32(deserializer);
+    return PointTwinRustAsync(x: var_x, y: var_y);
   }
 
   PointTwinRustAsyncArray2 _sse_decode_point_twin_rust_async_array_2(
@@ -54937,9 +58370,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   PointTwinRustAsyncSse _sse_decode_point_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var x = _sse_decode_f_32(deserializer);
-    var y = _sse_decode_f_32(deserializer);
-    return PointTwinRustAsyncSse(x: x, y: y);
+    var var_x = _sse_decode_f_32(deserializer);
+    var var_y = _sse_decode_f_32(deserializer);
+    return PointTwinRustAsyncSse(x: var_x, y: var_y);
   }
 
   PointTwinRustAsyncSseArray2 _sse_decode_point_twin_rust_async_sse_array_2(
@@ -54949,9 +58382,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   PointTwinSse _sse_decode_point_twin_sse(SseDeserializer deserializer) {
-    var x = _sse_decode_f_32(deserializer);
-    var y = _sse_decode_f_32(deserializer);
-    return PointTwinSse(x: x, y: y);
+    var var_x = _sse_decode_f_32(deserializer);
+    var var_y = _sse_decode_f_32(deserializer);
+    return PointTwinSse(x: var_x, y: var_y);
   }
 
   PointTwinSseArray2 _sse_decode_point_twin_sse_array_2(
@@ -54961,9 +58394,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   PointTwinSync _sse_decode_point_twin_sync(SseDeserializer deserializer) {
-    var x = _sse_decode_f_32(deserializer);
-    var y = _sse_decode_f_32(deserializer);
-    return PointTwinSync(x: x, y: y);
+    var var_x = _sse_decode_f_32(deserializer);
+    var var_y = _sse_decode_f_32(deserializer);
+    return PointTwinSync(x: var_x, y: var_y);
   }
 
   PointTwinSyncArray2 _sse_decode_point_twin_sync_array_2(
@@ -54974,9 +58407,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   PointTwinSyncSse _sse_decode_point_twin_sync_sse(
       SseDeserializer deserializer) {
-    var x = _sse_decode_f_32(deserializer);
-    var y = _sse_decode_f_32(deserializer);
-    return PointTwinSyncSse(x: x, y: y);
+    var var_x = _sse_decode_f_32(deserializer);
+    var var_y = _sse_decode_f_32(deserializer);
+    return PointTwinSyncSse(x: var_x, y: var_y);
   }
 
   PointTwinSyncSseArray2 _sse_decode_point_twin_sync_sse_array_2(
@@ -54990,16 +58423,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var field0 = _sse_decode_box_autoadd_raw_string_mirrored(deserializer);
-        return RawStringEnumMirrored_Raw(field0);
+        var var_field0 =
+            _sse_decode_box_autoadd_raw_string_mirrored(deserializer);
+        return RawStringEnumMirrored_Raw(var_field0);
       case 1:
-        var field0 =
+        var var_field0 =
             _sse_decode_box_autoadd_nested_raw_string_mirrored(deserializer);
-        return RawStringEnumMirrored_Nested(field0);
+        return RawStringEnumMirrored_Nested(var_field0);
       case 2:
-        var field0 = _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
-            deserializer);
-        return RawStringEnumMirrored_ListOfNested(field0);
+        var var_field0 =
+            _sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
+                deserializer);
+        return RawStringEnumMirrored_ListOfNested(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -55007,102 +58442,102 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   RawStringItemStructTwinNormal _sse_decode_raw_string_item_struct_twin_normal(
       SseDeserializer deserializer) {
-    var type = _sse_decode_String(deserializer);
-    return RawStringItemStructTwinNormal(type: type);
+    var var_type = _sse_decode_String(deserializer);
+    return RawStringItemStructTwinNormal(type: var_type);
   }
 
   RawStringItemStructTwinRustAsync
       _sse_decode_raw_string_item_struct_twin_rust_async(
           SseDeserializer deserializer) {
-    var type = _sse_decode_String(deserializer);
-    return RawStringItemStructTwinRustAsync(type: type);
+    var var_type = _sse_decode_String(deserializer);
+    return RawStringItemStructTwinRustAsync(type: var_type);
   }
 
   RawStringItemStructTwinRustAsyncSse
       _sse_decode_raw_string_item_struct_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var type = _sse_decode_String(deserializer);
-    return RawStringItemStructTwinRustAsyncSse(type: type);
+    var var_type = _sse_decode_String(deserializer);
+    return RawStringItemStructTwinRustAsyncSse(type: var_type);
   }
 
   RawStringItemStructTwinSse _sse_decode_raw_string_item_struct_twin_sse(
       SseDeserializer deserializer) {
-    var type = _sse_decode_String(deserializer);
-    return RawStringItemStructTwinSse(type: type);
+    var var_type = _sse_decode_String(deserializer);
+    return RawStringItemStructTwinSse(type: var_type);
   }
 
   RawStringItemStructTwinSync _sse_decode_raw_string_item_struct_twin_sync(
       SseDeserializer deserializer) {
-    var type = _sse_decode_String(deserializer);
-    return RawStringItemStructTwinSync(type: type);
+    var var_type = _sse_decode_String(deserializer);
+    return RawStringItemStructTwinSync(type: var_type);
   }
 
   RawStringItemStructTwinSyncSse
       _sse_decode_raw_string_item_struct_twin_sync_sse(
           SseDeserializer deserializer) {
-    var type = _sse_decode_String(deserializer);
-    return RawStringItemStructTwinSyncSse(type: type);
+    var var_type = _sse_decode_String(deserializer);
+    return RawStringItemStructTwinSyncSse(type: var_type);
   }
 
   RawStringMirrored _sse_decode_raw_string_mirrored(
       SseDeserializer deserializer) {
-    var value = _sse_decode_String(deserializer);
-    return RawStringMirrored(value: value);
+    var var_value = _sse_decode_String(deserializer);
+    return RawStringMirrored(value: var_value);
   }
 
   (ApplicationSettings, RawStringEnumMirrored)
       _sse_decode_record_application_settings_raw_string_enum_mirrored(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_application_settings(deserializer);
-    var field1 = _sse_decode_raw_string_enum_mirrored(deserializer);
+    var var_field0 = _sse_decode_application_settings(deserializer);
+    var var_field1 = _sse_decode_raw_string_enum_mirrored(deserializer);
     return (field0, field1);
   }
 
   (String, int) _sse_decode_record_string_i_32(SseDeserializer deserializer) {
-    var field0 = _sse_decode_String(deserializer);
-    var field1 = _sse_decode_i_32(deserializer);
+    var var_field0 = _sse_decode_String(deserializer);
+    var var_field1 = _sse_decode_i_32(deserializer);
     return (field0, field1);
   }
 
   Sequences _sse_decode_sequences(SseDeserializer deserializer) {
-    var field0 = _sse_decode_list_prim_i_32(deserializer);
-    return Sequences(field0: field0);
+    var var_field0 = _sse_decode_list_prim_i_32(deserializer);
+    return Sequences(field0: var_field0);
   }
 
   SomeStructTwinNormal _sse_decode_some_struct_twin_normal(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return SomeStructTwinNormal(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return SomeStructTwinNormal(value: var_value);
   }
 
   SomeStructTwinRustAsync _sse_decode_some_struct_twin_rust_async(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return SomeStructTwinRustAsync(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return SomeStructTwinRustAsync(value: var_value);
   }
 
   SomeStructTwinRustAsyncSse _sse_decode_some_struct_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return SomeStructTwinRustAsyncSse(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return SomeStructTwinRustAsyncSse(value: var_value);
   }
 
   SomeStructTwinSse _sse_decode_some_struct_twin_sse(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return SomeStructTwinSse(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return SomeStructTwinSse(value: var_value);
   }
 
   SomeStructTwinSync _sse_decode_some_struct_twin_sync(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return SomeStructTwinSync(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return SomeStructTwinSync(value: var_value);
   }
 
   SomeStructTwinSyncSse _sse_decode_some_struct_twin_sync_sse(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return SomeStructTwinSyncSse(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return SomeStructTwinSyncSse(value: var_value);
   }
 
   SpeedTwinNormal _sse_decode_speed_twin_normal(SseDeserializer deserializer) {
@@ -55111,8 +58546,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return SpeedTwinNormal_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return SpeedTwinNormal_GPS(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return SpeedTwinNormal_GPS(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -55125,8 +58560,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return SpeedTwinRustAsync_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return SpeedTwinRustAsync_GPS(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return SpeedTwinRustAsync_GPS(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -55139,8 +58574,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return SpeedTwinRustAsyncSse_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return SpeedTwinRustAsyncSse_GPS(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return SpeedTwinRustAsyncSse_GPS(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -55152,8 +58587,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return SpeedTwinSse_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return SpeedTwinSse_GPS(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return SpeedTwinSse_GPS(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -55165,8 +58600,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return SpeedTwinSync_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return SpeedTwinSync_GPS(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return SpeedTwinSync_GPS(var_field0);
       default:
         throw UnimplementedError('');
     }
@@ -55179,136 +58614,178 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return SpeedTwinSyncSse_Unknown();
       case 1:
-        var field0 = _sse_decode_f_64(deserializer);
-        return SpeedTwinSyncSse_GPS(field0);
+        var var_field0 = _sse_decode_f_64(deserializer);
+        return SpeedTwinSyncSse_GPS(var_field0);
       default:
         throw UnimplementedError('');
     }
   }
 
+  StructWithCommentsTwinNormal _sse_decode_struct_with_comments_twin_normal(
+      SseDeserializer deserializer) {
+    var var_fieldWithComments = _sse_decode_i_32(deserializer);
+    return StructWithCommentsTwinNormal(
+        fieldWithComments: var_fieldWithComments);
+  }
+
+  StructWithCommentsTwinRustAsync
+      _sse_decode_struct_with_comments_twin_rust_async(
+          SseDeserializer deserializer) {
+    var var_fieldWithComments = _sse_decode_i_32(deserializer);
+    return StructWithCommentsTwinRustAsync(
+        fieldWithComments: var_fieldWithComments);
+  }
+
+  StructWithCommentsTwinRustAsyncSse
+      _sse_decode_struct_with_comments_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var var_fieldWithComments = _sse_decode_i_32(deserializer);
+    return StructWithCommentsTwinRustAsyncSse(
+        fieldWithComments: var_fieldWithComments);
+  }
+
+  StructWithCommentsTwinSse _sse_decode_struct_with_comments_twin_sse(
+      SseDeserializer deserializer) {
+    var var_fieldWithComments = _sse_decode_i_32(deserializer);
+    return StructWithCommentsTwinSse(fieldWithComments: var_fieldWithComments);
+  }
+
+  StructWithCommentsTwinSync _sse_decode_struct_with_comments_twin_sync(
+      SseDeserializer deserializer) {
+    var var_fieldWithComments = _sse_decode_i_32(deserializer);
+    return StructWithCommentsTwinSync(fieldWithComments: var_fieldWithComments);
+  }
+
+  StructWithCommentsTwinSyncSse _sse_decode_struct_with_comments_twin_sync_sse(
+      SseDeserializer deserializer) {
+    var var_fieldWithComments = _sse_decode_i_32(deserializer);
+    return StructWithCommentsTwinSyncSse(
+        fieldWithComments: var_fieldWithComments);
+  }
+
   StructWithEnumTwinNormal _sse_decode_struct_with_enum_twin_normal(
       SseDeserializer deserializer) {
-    var abc1 = _sse_decode_abc_twin_normal(deserializer);
-    var abc2 = _sse_decode_abc_twin_normal(deserializer);
-    return StructWithEnumTwinNormal(abc1: abc1, abc2: abc2);
+    var var_abc1 = _sse_decode_abc_twin_normal(deserializer);
+    var var_abc2 = _sse_decode_abc_twin_normal(deserializer);
+    return StructWithEnumTwinNormal(abc1: var_abc1, abc2: var_abc2);
   }
 
   StructWithEnumTwinRustAsync _sse_decode_struct_with_enum_twin_rust_async(
       SseDeserializer deserializer) {
-    var abc1 = _sse_decode_abc_twin_rust_async(deserializer);
-    var abc2 = _sse_decode_abc_twin_rust_async(deserializer);
-    return StructWithEnumTwinRustAsync(abc1: abc1, abc2: abc2);
+    var var_abc1 = _sse_decode_abc_twin_rust_async(deserializer);
+    var var_abc2 = _sse_decode_abc_twin_rust_async(deserializer);
+    return StructWithEnumTwinRustAsync(abc1: var_abc1, abc2: var_abc2);
   }
 
   StructWithEnumTwinRustAsyncSse
       _sse_decode_struct_with_enum_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var abc1 = _sse_decode_abc_twin_rust_async_sse(deserializer);
-    var abc2 = _sse_decode_abc_twin_rust_async_sse(deserializer);
-    return StructWithEnumTwinRustAsyncSse(abc1: abc1, abc2: abc2);
+    var var_abc1 = _sse_decode_abc_twin_rust_async_sse(deserializer);
+    var var_abc2 = _sse_decode_abc_twin_rust_async_sse(deserializer);
+    return StructWithEnumTwinRustAsyncSse(abc1: var_abc1, abc2: var_abc2);
   }
 
   StructWithEnumTwinSse _sse_decode_struct_with_enum_twin_sse(
       SseDeserializer deserializer) {
-    var abc1 = _sse_decode_abc_twin_sse(deserializer);
-    var abc2 = _sse_decode_abc_twin_sse(deserializer);
-    return StructWithEnumTwinSse(abc1: abc1, abc2: abc2);
+    var var_abc1 = _sse_decode_abc_twin_sse(deserializer);
+    var var_abc2 = _sse_decode_abc_twin_sse(deserializer);
+    return StructWithEnumTwinSse(abc1: var_abc1, abc2: var_abc2);
   }
 
   StructWithEnumTwinSync _sse_decode_struct_with_enum_twin_sync(
       SseDeserializer deserializer) {
-    var abc1 = _sse_decode_abc_twin_sync(deserializer);
-    var abc2 = _sse_decode_abc_twin_sync(deserializer);
-    return StructWithEnumTwinSync(abc1: abc1, abc2: abc2);
+    var var_abc1 = _sse_decode_abc_twin_sync(deserializer);
+    var var_abc2 = _sse_decode_abc_twin_sync(deserializer);
+    return StructWithEnumTwinSync(abc1: var_abc1, abc2: var_abc2);
   }
 
   StructWithEnumTwinSyncSse _sse_decode_struct_with_enum_twin_sync_sse(
       SseDeserializer deserializer) {
-    var abc1 = _sse_decode_abc_twin_sync_sse(deserializer);
-    var abc2 = _sse_decode_abc_twin_sync_sse(deserializer);
-    return StructWithEnumTwinSyncSse(abc1: abc1, abc2: abc2);
+    var var_abc1 = _sse_decode_abc_twin_sync_sse(deserializer);
+    var var_abc2 = _sse_decode_abc_twin_sync_sse(deserializer);
+    return StructWithEnumTwinSyncSse(abc1: var_abc1, abc2: var_abc2);
   }
 
   StructWithOneFieldTwinNormal _sse_decode_struct_with_one_field_twin_normal(
       SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    return StructWithOneFieldTwinNormal(a: a);
+    var var_a = _sse_decode_i_32(deserializer);
+    return StructWithOneFieldTwinNormal(a: var_a);
   }
 
   StructWithOneFieldTwinRustAsync
       _sse_decode_struct_with_one_field_twin_rust_async(
           SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    return StructWithOneFieldTwinRustAsync(a: a);
+    var var_a = _sse_decode_i_32(deserializer);
+    return StructWithOneFieldTwinRustAsync(a: var_a);
   }
 
   StructWithOneFieldTwinRustAsyncSse
       _sse_decode_struct_with_one_field_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    return StructWithOneFieldTwinRustAsyncSse(a: a);
+    var var_a = _sse_decode_i_32(deserializer);
+    return StructWithOneFieldTwinRustAsyncSse(a: var_a);
   }
 
   StructWithOneFieldTwinSse _sse_decode_struct_with_one_field_twin_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    return StructWithOneFieldTwinSse(a: a);
+    var var_a = _sse_decode_i_32(deserializer);
+    return StructWithOneFieldTwinSse(a: var_a);
   }
 
   StructWithOneFieldTwinSync _sse_decode_struct_with_one_field_twin_sync(
       SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    return StructWithOneFieldTwinSync(a: a);
+    var var_a = _sse_decode_i_32(deserializer);
+    return StructWithOneFieldTwinSync(a: var_a);
   }
 
   StructWithOneFieldTwinSyncSse _sse_decode_struct_with_one_field_twin_sync_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    return StructWithOneFieldTwinSyncSse(a: a);
+    var var_a = _sse_decode_i_32(deserializer);
+    return StructWithOneFieldTwinSyncSse(a: var_a);
   }
 
   StructWithTwoFieldTwinNormal _sse_decode_struct_with_two_field_twin_normal(
       SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    var b = _sse_decode_i_32(deserializer);
-    return StructWithTwoFieldTwinNormal(a: a, b: b);
+    var var_a = _sse_decode_i_32(deserializer);
+    var var_b = _sse_decode_i_32(deserializer);
+    return StructWithTwoFieldTwinNormal(a: var_a, b: var_b);
   }
 
   StructWithTwoFieldTwinRustAsync
       _sse_decode_struct_with_two_field_twin_rust_async(
           SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    var b = _sse_decode_i_32(deserializer);
-    return StructWithTwoFieldTwinRustAsync(a: a, b: b);
+    var var_a = _sse_decode_i_32(deserializer);
+    var var_b = _sse_decode_i_32(deserializer);
+    return StructWithTwoFieldTwinRustAsync(a: var_a, b: var_b);
   }
 
   StructWithTwoFieldTwinRustAsyncSse
       _sse_decode_struct_with_two_field_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    var b = _sse_decode_i_32(deserializer);
-    return StructWithTwoFieldTwinRustAsyncSse(a: a, b: b);
+    var var_a = _sse_decode_i_32(deserializer);
+    var var_b = _sse_decode_i_32(deserializer);
+    return StructWithTwoFieldTwinRustAsyncSse(a: var_a, b: var_b);
   }
 
   StructWithTwoFieldTwinSse _sse_decode_struct_with_two_field_twin_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    var b = _sse_decode_i_32(deserializer);
-    return StructWithTwoFieldTwinSse(a: a, b: b);
+    var var_a = _sse_decode_i_32(deserializer);
+    var var_b = _sse_decode_i_32(deserializer);
+    return StructWithTwoFieldTwinSse(a: var_a, b: var_b);
   }
 
   StructWithTwoFieldTwinSync _sse_decode_struct_with_two_field_twin_sync(
       SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    var b = _sse_decode_i_32(deserializer);
-    return StructWithTwoFieldTwinSync(a: a, b: b);
+    var var_a = _sse_decode_i_32(deserializer);
+    var var_b = _sse_decode_i_32(deserializer);
+    return StructWithTwoFieldTwinSync(a: var_a, b: var_b);
   }
 
   StructWithTwoFieldTwinSyncSse _sse_decode_struct_with_two_field_twin_sync_sse(
       SseDeserializer deserializer) {
-    var a = _sse_decode_i_32(deserializer);
-    var b = _sse_decode_i_32(deserializer);
-    return StructWithTwoFieldTwinSyncSse(a: a, b: b);
+    var var_a = _sse_decode_i_32(deserializer);
+    var var_b = _sse_decode_i_32(deserializer);
+    return StructWithTwoFieldTwinSyncSse(a: var_a, b: var_b);
   }
 
   StructWithZeroFieldTwinNormal _sse_decode_struct_with_zero_field_twin_normal(
@@ -55346,8 +58823,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   SumWithTwinNormal _sse_decode_sum_with_twin_normal(
       SseDeserializer deserializer) {
-    var x = _sse_decode_u_32(deserializer);
-    return SumWithTwinNormal(x: x);
+    var var_x = _sse_decode_u_32(deserializer);
+    return SumWithTwinNormal(x: var_x);
   }
 
   SumWithTwinNormalArray3 _sse_decode_sum_with_twin_normal_array_3(
@@ -55358,8 +58835,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   SumWithTwinRustAsync _sse_decode_sum_with_twin_rust_async(
       SseDeserializer deserializer) {
-    var x = _sse_decode_u_32(deserializer);
-    return SumWithTwinRustAsync(x: x);
+    var var_x = _sse_decode_u_32(deserializer);
+    return SumWithTwinRustAsync(x: var_x);
   }
 
   SumWithTwinRustAsyncArray3 _sse_decode_sum_with_twin_rust_async_array_3(
@@ -55370,8 +58847,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   SumWithTwinRustAsyncSse _sse_decode_sum_with_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var x = _sse_decode_u_32(deserializer);
-    return SumWithTwinRustAsyncSse(x: x);
+    var var_x = _sse_decode_u_32(deserializer);
+    return SumWithTwinRustAsyncSse(x: var_x);
   }
 
   SumWithTwinRustAsyncSseArray3
@@ -55382,8 +58859,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   SumWithTwinSse _sse_decode_sum_with_twin_sse(SseDeserializer deserializer) {
-    var x = _sse_decode_u_32(deserializer);
-    return SumWithTwinSse(x: x);
+    var var_x = _sse_decode_u_32(deserializer);
+    return SumWithTwinSse(x: var_x);
   }
 
   SumWithTwinSseArray3 _sse_decode_sum_with_twin_sse_array_3(
@@ -55393,8 +58870,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   SumWithTwinSync _sse_decode_sum_with_twin_sync(SseDeserializer deserializer) {
-    var x = _sse_decode_u_32(deserializer);
-    return SumWithTwinSync(x: x);
+    var var_x = _sse_decode_u_32(deserializer);
+    return SumWithTwinSync(x: var_x);
   }
 
   SumWithTwinSyncArray3 _sse_decode_sum_with_twin_sync_array_3(
@@ -55405,8 +58882,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   SumWithTwinSyncSse _sse_decode_sum_with_twin_sync_sse(
       SseDeserializer deserializer) {
-    var x = _sse_decode_u_32(deserializer);
-    return SumWithTwinSyncSse(x: x);
+    var var_x = _sse_decode_u_32(deserializer);
+    return SumWithTwinSyncSse(x: var_x);
   }
 
   SumWithTwinSyncSseArray3 _sse_decode_sum_with_twin_sync_sse_array_3(
@@ -55417,32 +58894,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TestChronoTwinNormal _sse_decode_test_chrono_twin_normal(
       SseDeserializer deserializer) {
-    var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
-    var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
-    var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
-    return TestChronoTwinNormal(dt: dt, dt2: dt2, du: du);
+    var var_dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
+    var var_dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+    var var_du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
+    return TestChronoTwinNormal(dt: var_dt, dt2: var_dt2, du: var_du);
   }
 
   TestChronoTwinRustAsync _sse_decode_test_chrono_twin_rust_async(
       SseDeserializer deserializer) {
-    var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
-    var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
-    var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
-    return TestChronoTwinRustAsync(dt: dt, dt2: dt2, du: du);
+    var var_dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
+    var var_dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+    var var_du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
+    return TestChronoTwinRustAsync(dt: var_dt, dt2: var_dt2, du: var_du);
   }
 
   TestChronoTwinSync _sse_decode_test_chrono_twin_sync(
       SseDeserializer deserializer) {
-    var dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
-    var dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
-    var du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
-    return TestChronoTwinSync(dt: dt, dt2: dt2, du: du);
+    var var_dt = _sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
+    var var_dt2 = _sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+    var var_du = _sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
+    return TestChronoTwinSync(dt: var_dt, dt2: var_dt2, du: var_du);
   }
 
   TestIdTwinNormal _sse_decode_test_id_twin_normal(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32_array_2(deserializer);
-    return TestIdTwinNormal(field0: field0);
+    var var_field0 = _sse_decode_i_32_array_2(deserializer);
+    return TestIdTwinNormal(field0: var_field0);
   }
 
   TestIdTwinNormalArray2 _sse_decode_test_id_twin_normal_array_2(
@@ -55451,10 +58928,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return TestIdTwinNormalArray2(inner);
   }
 
+  TestIdTwinNormalArray4 _sse_decode_test_id_twin_normal_array_4(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_test_id_twin_normal(deserializer);
+    return TestIdTwinNormalArray4(inner);
+  }
+
   TestIdTwinRustAsync _sse_decode_test_id_twin_rust_async(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32_array_2(deserializer);
-    return TestIdTwinRustAsync(field0: field0);
+    var var_field0 = _sse_decode_i_32_array_2(deserializer);
+    return TestIdTwinRustAsync(field0: var_field0);
   }
 
   TestIdTwinRustAsyncArray2 _sse_decode_test_id_twin_rust_async_array_2(
@@ -55463,10 +58946,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return TestIdTwinRustAsyncArray2(inner);
   }
 
+  TestIdTwinRustAsyncArray4 _sse_decode_test_id_twin_rust_async_array_4(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_test_id_twin_rust_async(deserializer);
+    return TestIdTwinRustAsyncArray4(inner);
+  }
+
   TestIdTwinRustAsyncSse _sse_decode_test_id_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32_array_2(deserializer);
-    return TestIdTwinRustAsyncSse(field0: field0);
+    var var_field0 = _sse_decode_i_32_array_2(deserializer);
+    return TestIdTwinRustAsyncSse(field0: var_field0);
   }
 
   TestIdTwinRustAsyncSseArray2 _sse_decode_test_id_twin_rust_async_sse_array_2(
@@ -55475,9 +58964,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return TestIdTwinRustAsyncSseArray2(inner);
   }
 
+  TestIdTwinRustAsyncSseArray4 _sse_decode_test_id_twin_rust_async_sse_array_4(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_test_id_twin_rust_async_sse(deserializer);
+    return TestIdTwinRustAsyncSseArray4(inner);
+  }
+
   TestIdTwinSse _sse_decode_test_id_twin_sse(SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32_array_2(deserializer);
-    return TestIdTwinSse(field0: field0);
+    var var_field0 = _sse_decode_i_32_array_2(deserializer);
+    return TestIdTwinSse(field0: var_field0);
   }
 
   TestIdTwinSseArray2 _sse_decode_test_id_twin_sse_array_2(
@@ -55486,9 +58981,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return TestIdTwinSseArray2(inner);
   }
 
+  TestIdTwinSseArray4 _sse_decode_test_id_twin_sse_array_4(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_test_id_twin_sse(deserializer);
+    return TestIdTwinSseArray4(inner);
+  }
+
   TestIdTwinSync _sse_decode_test_id_twin_sync(SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32_array_2(deserializer);
-    return TestIdTwinSync(field0: field0);
+    var var_field0 = _sse_decode_i_32_array_2(deserializer);
+    return TestIdTwinSync(field0: var_field0);
   }
 
   TestIdTwinSyncArray2 _sse_decode_test_id_twin_sync_array_2(
@@ -55497,10 +58998,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return TestIdTwinSyncArray2(inner);
   }
 
+  TestIdTwinSyncArray4 _sse_decode_test_id_twin_sync_array_4(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_test_id_twin_sync(deserializer);
+    return TestIdTwinSyncArray4(inner);
+  }
+
   TestIdTwinSyncSse _sse_decode_test_id_twin_sync_sse(
       SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32_array_2(deserializer);
-    return TestIdTwinSyncSse(field0: field0);
+    var var_field0 = _sse_decode_i_32_array_2(deserializer);
+    return TestIdTwinSyncSse(field0: var_field0);
   }
 
   TestIdTwinSyncSseArray2 _sse_decode_test_id_twin_sync_sse_array_2(
@@ -55509,155 +59016,184 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return TestIdTwinSyncSseArray2(inner);
   }
 
+  TestIdTwinSyncSseArray4 _sse_decode_test_id_twin_sync_sse_array_4(
+      SseDeserializer deserializer) {
+    var inner = _sse_decode_list_test_id_twin_sync_sse(deserializer);
+    return TestIdTwinSyncSseArray4(inner);
+  }
+
   TestModelTwinNormal _sse_decode_test_model_twin_normal(
       SseDeserializer deserializer) {
-    var id = _sse_decode_u_64(deserializer);
-    var name = _sse_decode_String(deserializer);
-    var aliasEnum = _sse_decode_my_enum(deserializer);
-    var aliasStruct = _sse_decode_my_struct(deserializer);
+    var var_id = _sse_decode_u_64(deserializer);
+    var var_name = _sse_decode_String(deserializer);
+    var var_aliasEnum = _sse_decode_my_enum(deserializer);
+    var var_aliasStruct = _sse_decode_my_struct(deserializer);
     return TestModelTwinNormal(
-        id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+        id: var_id,
+        name: var_name,
+        aliasEnum: var_aliasEnum,
+        aliasStruct: var_aliasStruct);
   }
 
   TestModelTwinRustAsync _sse_decode_test_model_twin_rust_async(
       SseDeserializer deserializer) {
-    var id = _sse_decode_u_64(deserializer);
-    var name = _sse_decode_String(deserializer);
-    var aliasEnum = _sse_decode_my_enum(deserializer);
-    var aliasStruct = _sse_decode_my_struct(deserializer);
+    var var_id = _sse_decode_u_64(deserializer);
+    var var_name = _sse_decode_String(deserializer);
+    var var_aliasEnum = _sse_decode_my_enum(deserializer);
+    var var_aliasStruct = _sse_decode_my_struct(deserializer);
     return TestModelTwinRustAsync(
-        id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+        id: var_id,
+        name: var_name,
+        aliasEnum: var_aliasEnum,
+        aliasStruct: var_aliasStruct);
   }
 
   TestModelTwinRustAsyncSse _sse_decode_test_model_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var id = _sse_decode_u_64(deserializer);
-    var name = _sse_decode_String(deserializer);
-    var aliasEnum = _sse_decode_my_enum(deserializer);
-    var aliasStruct = _sse_decode_my_struct(deserializer);
+    var var_id = _sse_decode_u_64(deserializer);
+    var var_name = _sse_decode_String(deserializer);
+    var var_aliasEnum = _sse_decode_my_enum(deserializer);
+    var var_aliasStruct = _sse_decode_my_struct(deserializer);
     return TestModelTwinRustAsyncSse(
-        id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+        id: var_id,
+        name: var_name,
+        aliasEnum: var_aliasEnum,
+        aliasStruct: var_aliasStruct);
   }
 
   TestModelTwinSse _sse_decode_test_model_twin_sse(
       SseDeserializer deserializer) {
-    var id = _sse_decode_u_64(deserializer);
-    var name = _sse_decode_String(deserializer);
-    var aliasEnum = _sse_decode_my_enum(deserializer);
-    var aliasStruct = _sse_decode_my_struct(deserializer);
+    var var_id = _sse_decode_u_64(deserializer);
+    var var_name = _sse_decode_String(deserializer);
+    var var_aliasEnum = _sse_decode_my_enum(deserializer);
+    var var_aliasStruct = _sse_decode_my_struct(deserializer);
     return TestModelTwinSse(
-        id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+        id: var_id,
+        name: var_name,
+        aliasEnum: var_aliasEnum,
+        aliasStruct: var_aliasStruct);
   }
 
   TestModelTwinSync _sse_decode_test_model_twin_sync(
       SseDeserializer deserializer) {
-    var id = _sse_decode_u_64(deserializer);
-    var name = _sse_decode_String(deserializer);
-    var aliasEnum = _sse_decode_my_enum(deserializer);
-    var aliasStruct = _sse_decode_my_struct(deserializer);
+    var var_id = _sse_decode_u_64(deserializer);
+    var var_name = _sse_decode_String(deserializer);
+    var var_aliasEnum = _sse_decode_my_enum(deserializer);
+    var var_aliasStruct = _sse_decode_my_struct(deserializer);
     return TestModelTwinSync(
-        id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+        id: var_id,
+        name: var_name,
+        aliasEnum: var_aliasEnum,
+        aliasStruct: var_aliasStruct);
   }
 
   TestModelTwinSyncSse _sse_decode_test_model_twin_sync_sse(
       SseDeserializer deserializer) {
-    var id = _sse_decode_u_64(deserializer);
-    var name = _sse_decode_String(deserializer);
-    var aliasEnum = _sse_decode_my_enum(deserializer);
-    var aliasStruct = _sse_decode_my_struct(deserializer);
+    var var_id = _sse_decode_u_64(deserializer);
+    var var_name = _sse_decode_String(deserializer);
+    var var_aliasEnum = _sse_decode_my_enum(deserializer);
+    var var_aliasStruct = _sse_decode_my_struct(deserializer);
     return TestModelTwinSyncSse(
-        id: id, name: name, aliasEnum: aliasEnum, aliasStruct: aliasStruct);
+        id: var_id,
+        name: var_name,
+        aliasEnum: var_aliasEnum,
+        aliasStruct: var_aliasStruct);
   }
 
   TupleStructWithOneFieldTwinNormal
       _sse_decode_tuple_struct_with_one_field_twin_normal(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    return TupleStructWithOneFieldTwinNormal(field0: field0);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    return TupleStructWithOneFieldTwinNormal(field0: var_field0);
   }
 
   TupleStructWithOneFieldTwinRustAsync
       _sse_decode_tuple_struct_with_one_field_twin_rust_async(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    return TupleStructWithOneFieldTwinRustAsync(field0: field0);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    return TupleStructWithOneFieldTwinRustAsync(field0: var_field0);
   }
 
   TupleStructWithOneFieldTwinRustAsyncSse
       _sse_decode_tuple_struct_with_one_field_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    return TupleStructWithOneFieldTwinRustAsyncSse(field0: field0);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    return TupleStructWithOneFieldTwinRustAsyncSse(field0: var_field0);
   }
 
   TupleStructWithOneFieldTwinSse
       _sse_decode_tuple_struct_with_one_field_twin_sse(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    return TupleStructWithOneFieldTwinSse(field0: field0);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    return TupleStructWithOneFieldTwinSse(field0: var_field0);
   }
 
   TupleStructWithOneFieldTwinSync
       _sse_decode_tuple_struct_with_one_field_twin_sync(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    return TupleStructWithOneFieldTwinSync(field0: field0);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    return TupleStructWithOneFieldTwinSync(field0: var_field0);
   }
 
   TupleStructWithOneFieldTwinSyncSse
       _sse_decode_tuple_struct_with_one_field_twin_sync_sse(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    return TupleStructWithOneFieldTwinSyncSse(field0: field0);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    return TupleStructWithOneFieldTwinSyncSse(field0: var_field0);
   }
 
   TupleStructWithTwoFieldTwinNormal
       _sse_decode_tuple_struct_with_two_field_twin_normal(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    var field1 = _sse_decode_i_32(deserializer);
-    return TupleStructWithTwoFieldTwinNormal(field0: field0, field1: field1);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    var var_field1 = _sse_decode_i_32(deserializer);
+    return TupleStructWithTwoFieldTwinNormal(
+        field0: var_field0, field1: var_field1);
   }
 
   TupleStructWithTwoFieldTwinRustAsync
       _sse_decode_tuple_struct_with_two_field_twin_rust_async(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    var field1 = _sse_decode_i_32(deserializer);
-    return TupleStructWithTwoFieldTwinRustAsync(field0: field0, field1: field1);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    var var_field1 = _sse_decode_i_32(deserializer);
+    return TupleStructWithTwoFieldTwinRustAsync(
+        field0: var_field0, field1: var_field1);
   }
 
   TupleStructWithTwoFieldTwinRustAsyncSse
       _sse_decode_tuple_struct_with_two_field_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    var field1 = _sse_decode_i_32(deserializer);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    var var_field1 = _sse_decode_i_32(deserializer);
     return TupleStructWithTwoFieldTwinRustAsyncSse(
-        field0: field0, field1: field1);
+        field0: var_field0, field1: var_field1);
   }
 
   TupleStructWithTwoFieldTwinSse
       _sse_decode_tuple_struct_with_two_field_twin_sse(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    var field1 = _sse_decode_i_32(deserializer);
-    return TupleStructWithTwoFieldTwinSse(field0: field0, field1: field1);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    var var_field1 = _sse_decode_i_32(deserializer);
+    return TupleStructWithTwoFieldTwinSse(
+        field0: var_field0, field1: var_field1);
   }
 
   TupleStructWithTwoFieldTwinSync
       _sse_decode_tuple_struct_with_two_field_twin_sync(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    var field1 = _sse_decode_i_32(deserializer);
-    return TupleStructWithTwoFieldTwinSync(field0: field0, field1: field1);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    var var_field1 = _sse_decode_i_32(deserializer);
+    return TupleStructWithTwoFieldTwinSync(
+        field0: var_field0, field1: var_field1);
   }
 
   TupleStructWithTwoFieldTwinSyncSse
       _sse_decode_tuple_struct_with_two_field_twin_sync_sse(
           SseDeserializer deserializer) {
-    var field0 = _sse_decode_i_32(deserializer);
-    var field1 = _sse_decode_i_32(deserializer);
-    return TupleStructWithTwoFieldTwinSyncSse(field0: field0, field1: field1);
+    var var_field0 = _sse_decode_i_32(deserializer);
+    var var_field1 = _sse_decode_i_32(deserializer);
+    return TupleStructWithTwoFieldTwinSyncSse(
+        field0: var_field0, field1: var_field1);
   }
 
   int _sse_decode_u_16(SseDeserializer deserializer) {
@@ -55700,36 +59236,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   UserIdTwinNormal _sse_decode_user_id_twin_normal(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return UserIdTwinNormal(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return UserIdTwinNormal(value: var_value);
   }
 
   UserIdTwinRustAsync _sse_decode_user_id_twin_rust_async(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return UserIdTwinRustAsync(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return UserIdTwinRustAsync(value: var_value);
   }
 
   UserIdTwinRustAsyncSse _sse_decode_user_id_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return UserIdTwinRustAsyncSse(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return UserIdTwinRustAsyncSse(value: var_value);
   }
 
   UserIdTwinSse _sse_decode_user_id_twin_sse(SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return UserIdTwinSse(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return UserIdTwinSse(value: var_value);
   }
 
   UserIdTwinSync _sse_decode_user_id_twin_sync(SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return UserIdTwinSync(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return UserIdTwinSync(value: var_value);
   }
 
   UserIdTwinSyncSse _sse_decode_user_id_twin_sync_sse(
       SseDeserializer deserializer) {
-    var value = _sse_decode_u_32(deserializer);
-    return UserIdTwinSyncSse(value: value);
+    var var_value = _sse_decode_u_32(deserializer);
+    return UserIdTwinSyncSse(value: var_value);
   }
 
   int _sse_decode_usize(SseDeserializer deserializer) {
@@ -55738,166 +59274,166 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   VecOfPrimitivePackTwinNormal _sse_decode_vec_of_primitive_pack_twin_normal(
       SseDeserializer deserializer) {
-    var int8List = _sse_decode_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_list_prim_u_8(deserializer);
-    var int16List = _sse_decode_list_prim_i_16(deserializer);
-    var uint16List = _sse_decode_list_prim_u_16(deserializer);
-    var uint32List = _sse_decode_list_prim_u_32(deserializer);
-    var int32List = _sse_decode_list_prim_i_32(deserializer);
-    var uint64List = _sse_decode_list_prim_u_64(deserializer);
-    var int64List = _sse_decode_list_prim_i_64(deserializer);
-    var float32List = _sse_decode_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_list_prim_f_64(deserializer);
-    var boolList = _sse_decode_list_bool(deserializer);
+    var var_int8List = _sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = _sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = _sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = _sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = _sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = _sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = _sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = _sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_list_prim_f_64(deserializer);
+    var var_boolList = _sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinNormal(
-        int8List: int8List,
-        uint8List: uint8List,
-        int16List: int16List,
-        uint16List: uint16List,
-        uint32List: uint32List,
-        int32List: int32List,
-        uint64List: uint64List,
-        int64List: int64List,
-        float32List: float32List,
-        float64List: float64List,
-        boolList: boolList);
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int16List: var_int16List,
+        uint16List: var_uint16List,
+        uint32List: var_uint32List,
+        int32List: var_int32List,
+        uint64List: var_uint64List,
+        int64List: var_int64List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        boolList: var_boolList);
   }
 
   VecOfPrimitivePackTwinRustAsync
       _sse_decode_vec_of_primitive_pack_twin_rust_async(
           SseDeserializer deserializer) {
-    var int8List = _sse_decode_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_list_prim_u_8(deserializer);
-    var int16List = _sse_decode_list_prim_i_16(deserializer);
-    var uint16List = _sse_decode_list_prim_u_16(deserializer);
-    var uint32List = _sse_decode_list_prim_u_32(deserializer);
-    var int32List = _sse_decode_list_prim_i_32(deserializer);
-    var uint64List = _sse_decode_list_prim_u_64(deserializer);
-    var int64List = _sse_decode_list_prim_i_64(deserializer);
-    var float32List = _sse_decode_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_list_prim_f_64(deserializer);
-    var boolList = _sse_decode_list_bool(deserializer);
+    var var_int8List = _sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = _sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = _sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = _sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = _sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = _sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = _sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = _sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_list_prim_f_64(deserializer);
+    var var_boolList = _sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinRustAsync(
-        int8List: int8List,
-        uint8List: uint8List,
-        int16List: int16List,
-        uint16List: uint16List,
-        uint32List: uint32List,
-        int32List: int32List,
-        uint64List: uint64List,
-        int64List: int64List,
-        float32List: float32List,
-        float64List: float64List,
-        boolList: boolList);
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int16List: var_int16List,
+        uint16List: var_uint16List,
+        uint32List: var_uint32List,
+        int32List: var_int32List,
+        uint64List: var_uint64List,
+        int64List: var_int64List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        boolList: var_boolList);
   }
 
   VecOfPrimitivePackTwinRustAsyncSse
       _sse_decode_vec_of_primitive_pack_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var int8List = _sse_decode_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_list_prim_u_8(deserializer);
-    var int16List = _sse_decode_list_prim_i_16(deserializer);
-    var uint16List = _sse_decode_list_prim_u_16(deserializer);
-    var uint32List = _sse_decode_list_prim_u_32(deserializer);
-    var int32List = _sse_decode_list_prim_i_32(deserializer);
-    var uint64List = _sse_decode_list_prim_u_64(deserializer);
-    var int64List = _sse_decode_list_prim_i_64(deserializer);
-    var float32List = _sse_decode_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_list_prim_f_64(deserializer);
-    var boolList = _sse_decode_list_bool(deserializer);
+    var var_int8List = _sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = _sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = _sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = _sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = _sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = _sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = _sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = _sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_list_prim_f_64(deserializer);
+    var var_boolList = _sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinRustAsyncSse(
-        int8List: int8List,
-        uint8List: uint8List,
-        int16List: int16List,
-        uint16List: uint16List,
-        uint32List: uint32List,
-        int32List: int32List,
-        uint64List: uint64List,
-        int64List: int64List,
-        float32List: float32List,
-        float64List: float64List,
-        boolList: boolList);
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int16List: var_int16List,
+        uint16List: var_uint16List,
+        uint32List: var_uint32List,
+        int32List: var_int32List,
+        uint64List: var_uint64List,
+        int64List: var_int64List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        boolList: var_boolList);
   }
 
   VecOfPrimitivePackTwinSse _sse_decode_vec_of_primitive_pack_twin_sse(
       SseDeserializer deserializer) {
-    var int8List = _sse_decode_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_list_prim_u_8(deserializer);
-    var int16List = _sse_decode_list_prim_i_16(deserializer);
-    var uint16List = _sse_decode_list_prim_u_16(deserializer);
-    var uint32List = _sse_decode_list_prim_u_32(deserializer);
-    var int32List = _sse_decode_list_prim_i_32(deserializer);
-    var uint64List = _sse_decode_list_prim_u_64(deserializer);
-    var int64List = _sse_decode_list_prim_i_64(deserializer);
-    var float32List = _sse_decode_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_list_prim_f_64(deserializer);
-    var boolList = _sse_decode_list_bool(deserializer);
+    var var_int8List = _sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = _sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = _sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = _sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = _sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = _sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = _sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = _sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_list_prim_f_64(deserializer);
+    var var_boolList = _sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinSse(
-        int8List: int8List,
-        uint8List: uint8List,
-        int16List: int16List,
-        uint16List: uint16List,
-        uint32List: uint32List,
-        int32List: int32List,
-        uint64List: uint64List,
-        int64List: int64List,
-        float32List: float32List,
-        float64List: float64List,
-        boolList: boolList);
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int16List: var_int16List,
+        uint16List: var_uint16List,
+        uint32List: var_uint32List,
+        int32List: var_int32List,
+        uint64List: var_uint64List,
+        int64List: var_int64List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        boolList: var_boolList);
   }
 
   VecOfPrimitivePackTwinSync _sse_decode_vec_of_primitive_pack_twin_sync(
       SseDeserializer deserializer) {
-    var int8List = _sse_decode_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_list_prim_u_8(deserializer);
-    var int16List = _sse_decode_list_prim_i_16(deserializer);
-    var uint16List = _sse_decode_list_prim_u_16(deserializer);
-    var uint32List = _sse_decode_list_prim_u_32(deserializer);
-    var int32List = _sse_decode_list_prim_i_32(deserializer);
-    var uint64List = _sse_decode_list_prim_u_64(deserializer);
-    var int64List = _sse_decode_list_prim_i_64(deserializer);
-    var float32List = _sse_decode_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_list_prim_f_64(deserializer);
-    var boolList = _sse_decode_list_bool(deserializer);
+    var var_int8List = _sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = _sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = _sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = _sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = _sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = _sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = _sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = _sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_list_prim_f_64(deserializer);
+    var var_boolList = _sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinSync(
-        int8List: int8List,
-        uint8List: uint8List,
-        int16List: int16List,
-        uint16List: uint16List,
-        uint32List: uint32List,
-        int32List: int32List,
-        uint64List: uint64List,
-        int64List: int64List,
-        float32List: float32List,
-        float64List: float64List,
-        boolList: boolList);
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int16List: var_int16List,
+        uint16List: var_uint16List,
+        uint32List: var_uint32List,
+        int32List: var_int32List,
+        uint64List: var_uint64List,
+        int64List: var_int64List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        boolList: var_boolList);
   }
 
   VecOfPrimitivePackTwinSyncSse _sse_decode_vec_of_primitive_pack_twin_sync_sse(
       SseDeserializer deserializer) {
-    var int8List = _sse_decode_list_prim_i_8(deserializer);
-    var uint8List = _sse_decode_list_prim_u_8(deserializer);
-    var int16List = _sse_decode_list_prim_i_16(deserializer);
-    var uint16List = _sse_decode_list_prim_u_16(deserializer);
-    var uint32List = _sse_decode_list_prim_u_32(deserializer);
-    var int32List = _sse_decode_list_prim_i_32(deserializer);
-    var uint64List = _sse_decode_list_prim_u_64(deserializer);
-    var int64List = _sse_decode_list_prim_i_64(deserializer);
-    var float32List = _sse_decode_list_prim_f_32(deserializer);
-    var float64List = _sse_decode_list_prim_f_64(deserializer);
-    var boolList = _sse_decode_list_bool(deserializer);
+    var var_int8List = _sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = _sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = _sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = _sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = _sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = _sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = _sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = _sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = _sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = _sse_decode_list_prim_f_64(deserializer);
+    var var_boolList = _sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinSyncSse(
-        int8List: int8List,
-        uint8List: uint8List,
-        int16List: int16List,
-        uint16List: uint16List,
-        uint32List: uint32List,
-        int32List: int32List,
-        uint64List: uint64List,
-        int64List: int64List,
-        float32List: float32List,
-        float64List: float64List,
-        boolList: boolList);
+        int8List: var_int8List,
+        uint8List: var_uint8List,
+        int16List: var_int16List,
+        uint16List: var_uint16List,
+        uint32List: var_uint32List,
+        int32List: var_int32List,
+        uint64List: var_uint64List,
+        int64List: var_int64List,
+        float32List: var_float32List,
+        float64List: var_float64List,
+        boolList: var_boolList);
   }
 
   WeekdaysTwinNormal _sse_decode_weekdays_twin_normal(
@@ -55933,6 +59469,691 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner = _sse_decode_i_32(deserializer);
     return WeekdaysTwinSyncSse.values[inner];
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          RwLockBoxFnStringString raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          RwLockBoxHelloTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          RwLockBoxHelloTraitTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          RwLockBoxHelloTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          RwLockBoxMyTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+          RwLockBoxMyTraitTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          RwLockBoxMyTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          RwLockBoxMyTraitTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          RwLockNonCloneSimpleTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          RwLockNonCloneSimpleTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          RwLockNonCloneSimpleTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          RwLockNonCloneSimpleTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          RwLockBoxHelloTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          RwLockBoxHelloTraitTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          RwLockBoxHelloTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          RwLockNonCloneSimpleTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          RwLockNonCloneSimpleTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          RwLockNonCloneSimpleTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          RwLockNonCloneSimpleTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          RwLockBoxHelloTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          RwLockBoxHelloTraitTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          RwLockBoxHelloTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          RwLockNonCloneSimpleTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          RwLockNonCloneSimpleTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          RwLockNonCloneSimpleTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          RwLockNonCloneSimpleTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(void Function() raw) {
+    return cst_encode_DartOpaque(encode_DartFn_Inputs__Output_unit(raw));
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_RwLockHideData(RwLockHideData raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinNormal(
+      BoxDartDebugTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
+      BoxDartDebugTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
+      BoxDartDebugTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSse(
+      BoxDartDebugTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSync(
+      BoxDartDebugTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSyncSse(
+      BoxDartDebugTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_frb_opaque_return(FrbOpaqueReturn raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_frb_opaque_sync_return(
+      FrbOpaqueSyncReturn raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_hide_data(HideData raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_i_32(I32 raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_non_clone_data(NonCloneData raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_non_send_hide_data(
+      NonSendHideData raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          RwLockBoxFnStringString raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+      RwLockBoxHelloTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+      RwLockBoxHelloTraitTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          RwLockBoxMyTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+          RwLockBoxMyTraitTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          RwLockBoxMyTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          RwLockBoxMyTraitTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+      RwLockNonCloneSimpleTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+      RwLockNonCloneSimpleTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_application_mode(ApplicationMode raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  bool cst_encode_bool(bool raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_enum_simple_twin_normal(EnumSimpleTwinNormal raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_enum_simple_twin_rust_async(EnumSimpleTwinRustAsync raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_enum_simple_twin_rust_async_sse(
+      EnumSimpleTwinRustAsyncSse raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_enum_simple_twin_sse(EnumSimpleTwinSse raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_enum_simple_twin_sync(EnumSimpleTwinSync raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_enum_simple_twin_sync_sse(EnumSimpleTwinSyncSse raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  double cst_encode_f_32(double raw) {
+    return raw;
+  }
+
+  @protected
+  double cst_encode_f_64(double raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_i_16(int raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_i_32(int raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_i_8(int raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_my_enum(MyEnum raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_u_16(int raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_u_32(int raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_u_8(int raw) {
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_usize(int raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_weekdays_twin_normal(WeekdaysTwinNormal raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_weekdays_twin_rust_async_sse(WeekdaysTwinRustAsyncSse raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_weekdays_twin_sse(WeekdaysTwinSse raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_weekdays_twin_sync(WeekdaysTwinSync raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_weekdays_twin_sync_sse(WeekdaysTwinSyncSse raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  void _sse_encode_AnyhowException(
+      AnyhowException self, SseSerializer serializer) {
+    _sse_encode_String(NOT_USED, serializer);
   }
 
   void
@@ -56174,6 +60395,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
+  void _sse_encode_Backtrace(String self, SseSerializer serializer) {
+    _sse_encode_String(NOT_USED, serializer);
+  }
+
   void _sse_encode_Chrono_Duration(Duration self, SseSerializer serializer) {
     throw UnimplementedError(
         'not yet supported in serialized mode, feel free to create an issue');
@@ -56247,6 +60472,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   void _sse_encode_RustOpaque_box_dynDartDebugTwinSyncSse(
       BoxDartDebugTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_frb_opaque_return(
+      FrbOpaqueReturn self, SseSerializer serializer) {
+    _sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  void _sse_encode_RustOpaque_frb_opaque_sync_return(
+      FrbOpaqueSyncReturn self, SseSerializer serializer) {
     _sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -56508,6 +60743,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  void _sse_encode_another_macro_struct_twin_normal(
+      AnotherMacroStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_i_32(self.data, serializer);
+    _sse_encode_i_32(self.nonFinalData, serializer);
+  }
+
+  void _sse_encode_another_twin_normal(
+      AnotherTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_another_twin_rust_async(
+      AnotherTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_another_twin_rust_async_sse(
+      AnotherTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_another_twin_sse(
+      AnotherTwinSse self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_another_twin_sync(
+      AnotherTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_another_twin_sync_sse(
+      AnotherTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_String(self.a, serializer);
+  }
+
   void _sse_encode_application_env(
       ApplicationEnv self, SseSerializer serializer) {
     _sse_encode_list_application_env_var(self.vars, serializer);
@@ -56517,6 +60788,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       ApplicationEnvVar self, SseSerializer serializer) {
     _sse_encode_String(self.field0, serializer);
     _sse_encode_bool(self.field1, serializer);
+  }
+
+  void _sse_encode_application_message(
+      ApplicationMessage self, SseSerializer serializer) {
+    switch (self) {
+      case ApplicationMessage_DisplayMessage(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case ApplicationMessage_RenderPixel(x: final x, y: final y):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_i_32(x, serializer);
+        _sse_encode_i_32(y, serializer);
+      case ApplicationMessage_Exit():
+        _sse_encode_i_32(2, serializer);
+    }
   }
 
   void _sse_encode_application_mode(
@@ -56596,6 +60882,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_i_32(self.b, serializer);
   }
 
+  void _sse_encode_big_buffers_twin_normal(
+      BigBuffersTwinNormal self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_64(self.int64, serializer);
+    _sse_encode_list_prim_u_64(self.uint64, serializer);
+  }
+
+  void _sse_encode_big_buffers_twin_rust_async(
+      BigBuffersTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_64(self.int64, serializer);
+    _sse_encode_list_prim_u_64(self.uint64, serializer);
+  }
+
+  void _sse_encode_big_buffers_twin_rust_async_sse(
+      BigBuffersTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_64(self.int64, serializer);
+    _sse_encode_list_prim_u_64(self.uint64, serializer);
+  }
+
+  void _sse_encode_big_buffers_twin_sse(
+      BigBuffersTwinSse self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_64(self.int64, serializer);
+    _sse_encode_list_prim_u_64(self.uint64, serializer);
+  }
+
+  void _sse_encode_big_buffers_twin_sync(
+      BigBuffersTwinSync self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_64(self.int64, serializer);
+    _sse_encode_list_prim_u_64(self.uint64, serializer);
+  }
+
+  void _sse_encode_big_buffers_twin_sync_sse(
+      BigBuffersTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_64(self.int64, serializer);
+    _sse_encode_list_prim_u_64(self.uint64, serializer);
+  }
+
   void _sse_encode_blob_twin_normal(
       BlobTwinNormal self, SseSerializer serializer) {
     _sse_encode_u_8_array_1600(self.field0, serializer);
@@ -56631,6 +60953,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_box_application_env(
       ApplicationEnv self, SseSerializer serializer) {
     _sse_encode_application_env(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_Chrono_Duration(
+      Duration self, SseSerializer serializer) {
+    _sse_encode_Chrono_Duration(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_Chrono_Naive(
+      DateTime self, SseSerializer serializer) {
+    _sse_encode_Chrono_Naive(self, serializer);
   }
 
   void _sse_encode_box_autoadd_Chrono_Utc(
@@ -56842,6 +61174,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_concatenate_with_twin_sync_sse(self, serializer);
   }
 
+  void _sse_encode_box_autoadd_custom_nested_error_2_twin_normal(
+      CustomNestedError2TwinNormal self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_2_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_2_twin_rust_async(
+      CustomNestedError2TwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_2_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+      CustomNestedError2TwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_2_twin_rust_async_sse(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_2_twin_sse(
+      CustomNestedError2TwinSse self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_2_twin_sse(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_2_twin_sync(
+      CustomNestedError2TwinSync self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_2_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_custom_nested_error_2_twin_sync_sse(
+      CustomNestedError2TwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_custom_nested_error_2_twin_sync_sse(self, serializer);
+  }
+
   void _sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal self, SseSerializer serializer) {
     _sse_encode_custom_nested_error_inner_twin_normal(self, serializer);
@@ -57020,6 +61382,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_box_autoadd_dart_opaque_nested_twin_sync_sse(
       DartOpaqueNestedTwinSyncSse self, SseSerializer serializer) {
     _sse_encode_dart_opaque_nested_twin_sync_sse(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_element_twin_normal(
+      ElementTwinNormal self, SseSerializer serializer) {
+    _sse_encode_element_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_element_twin_rust_async(
+      ElementTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_element_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_element_twin_rust_async_sse(
+      ElementTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_element_twin_rust_async_sse(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_element_twin_sse(
+      ElementTwinSse self, SseSerializer serializer) {
+    _sse_encode_element_twin_sse(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_element_twin_sync(
+      ElementTwinSync self, SseSerializer serializer) {
+    _sse_encode_element_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_element_twin_sync_sse(
+      ElementTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_element_twin_sync_sse(self, serializer);
   }
 
   void _sse_encode_box_autoadd_empty_twin_normal(
@@ -57366,6 +61758,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_kitchen_sink_twin_sync_sse(self, serializer);
   }
 
+  void _sse_encode_box_autoadd_list_of_nested_raw_string_mirrored(
+      ListOfNestedRawStringMirrored self, SseSerializer serializer) {
+    _sse_encode_list_of_nested_raw_string_mirrored(self, serializer);
+  }
+
   void _sse_encode_box_autoadd_macro_struct(
       MacroStruct self, SseSerializer serializer) {
     _sse_encode_macro_struct(self, serializer);
@@ -57500,6 +61897,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_my_tree_node_twin_sync_sse(self, serializer);
   }
 
+  void _sse_encode_box_autoadd_nested_raw_string_mirrored(
+      NestedRawStringMirrored self, SseSerializer serializer) {
+    _sse_encode_nested_raw_string_mirrored(self, serializer);
+  }
+
   void _sse_encode_box_autoadd_new_type_int_twin_normal(
       NewTypeIntTwinNormal self, SseSerializer serializer) {
     _sse_encode_new_type_int_twin_normal(self, serializer);
@@ -57622,6 +62024,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_box_autoadd_opt_vecs_twin_sync_sse(
       OptVecsTwinSyncSse self, SseSerializer serializer) {
     _sse_encode_opt_vecs_twin_sync_sse(self, serializer);
+  }
+
+  void _sse_encode_box_autoadd_raw_string_mirrored(
+      RawStringMirrored self, SseSerializer serializer) {
+    _sse_encode_raw_string_mirrored(self, serializer);
   }
 
   void _sse_encode_box_autoadd_record_string_i_32(
@@ -58110,6 +62517,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_f_64(self, serializer);
   }
 
+  void _sse_encode_box_feed_id_twin_normal(
+      FeedIdTwinNormal self, SseSerializer serializer) {
+    _sse_encode_feed_id_twin_normal(self, serializer);
+  }
+
+  void _sse_encode_box_feed_id_twin_rust_async(
+      FeedIdTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_feed_id_twin_rust_async(self, serializer);
+  }
+
+  void _sse_encode_box_feed_id_twin_rust_async_sse(
+      FeedIdTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_feed_id_twin_rust_async_sse(self, serializer);
+  }
+
+  void _sse_encode_box_feed_id_twin_sse(
+      FeedIdTwinSse self, SseSerializer serializer) {
+    _sse_encode_feed_id_twin_sse(self, serializer);
+  }
+
+  void _sse_encode_box_feed_id_twin_sync(
+      FeedIdTwinSync self, SseSerializer serializer) {
+    _sse_encode_feed_id_twin_sync(self, serializer);
+  }
+
+  void _sse_encode_box_feed_id_twin_sync_sse(
+      FeedIdTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_feed_id_twin_sync_sse(self, serializer);
+  }
+
   void _sse_encode_box_i_32(int self, SseSerializer serializer) {
     _sse_encode_i_32(self, serializer);
   }
@@ -58193,6 +62630,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_box_u_8_array_1600(
       U8Array1600 self, SseSerializer serializer) {
     _sse_encode_u_8_array_1600(self, serializer);
+  }
+
+  void _sse_encode_box_u_8_array_8(U8Array8 self, SseSerializer serializer) {
+    _sse_encode_u_8_array_8(self, serializer);
   }
 
   void _sse_encode_box_weekdays_twin_normal(
@@ -58280,6 +62721,427 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_concatenate_with_twin_sync_sse(
       ConcatenateWithTwinSyncSse self, SseSerializer serializer) {
     _sse_encode_String(self.a, serializer);
+  }
+
+  void _sse_encode_contains_mirrored_sub_struct_twin_normal(
+      ContainsMirroredSubStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_raw_string_mirrored(self.test, serializer);
+    _sse_encode_another_twin_normal(self.test2, serializer);
+  }
+
+  void _sse_encode_contains_mirrored_sub_struct_twin_rust_async(
+      ContainsMirroredSubStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_raw_string_mirrored(self.test, serializer);
+    _sse_encode_another_twin_rust_async(self.test2, serializer);
+  }
+
+  void _sse_encode_contains_mirrored_sub_struct_twin_rust_async_sse(
+      ContainsMirroredSubStructTwinRustAsyncSse self,
+      SseSerializer serializer) {
+    _sse_encode_raw_string_mirrored(self.test, serializer);
+    _sse_encode_another_twin_rust_async_sse(self.test2, serializer);
+  }
+
+  void _sse_encode_contains_mirrored_sub_struct_twin_sse(
+      ContainsMirroredSubStructTwinSse self, SseSerializer serializer) {
+    _sse_encode_raw_string_mirrored(self.test, serializer);
+    _sse_encode_another_twin_sse(self.test2, serializer);
+  }
+
+  void _sse_encode_contains_mirrored_sub_struct_twin_sync(
+      ContainsMirroredSubStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_raw_string_mirrored(self.test, serializer);
+    _sse_encode_another_twin_sync(self.test2, serializer);
+  }
+
+  void _sse_encode_contains_mirrored_sub_struct_twin_sync_sse(
+      ContainsMirroredSubStructTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_raw_string_mirrored(self.test, serializer);
+    _sse_encode_another_twin_sync_sse(self.test2, serializer);
+  }
+
+  void _sse_encode_custom_enum_error_twin_normal(
+      CustomEnumErrorTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case CustomEnumErrorTwinNormal_One(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomEnumErrorTwinNormal_Two(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_enum_error_twin_rust_async(
+      CustomEnumErrorTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomEnumErrorTwinRustAsync_One(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomEnumErrorTwinRustAsync_Two(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_enum_error_twin_rust_async_sse(
+      CustomEnumErrorTwinRustAsyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomEnumErrorTwinRustAsyncSse_One(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomEnumErrorTwinRustAsyncSse_Two(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_enum_error_twin_sse(
+      CustomEnumErrorTwinSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomEnumErrorTwinSse_One(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomEnumErrorTwinSse_Two(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_enum_error_twin_sync(
+      CustomEnumErrorTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomEnumErrorTwinSync_One(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomEnumErrorTwinSync_Two(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_enum_error_twin_sync_sse(
+      CustomEnumErrorTwinSyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomEnumErrorTwinSyncSse_One(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomEnumErrorTwinSyncSse_Two(
+          message: final message,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(message, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_error_twin_normal(
+      CustomErrorTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case CustomErrorTwinNormal_Error0(e: final e, backtrace: final backtrace):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomErrorTwinNormal_Error1(e: final e, backtrace: final backtrace):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_error_twin_rust_async(
+      CustomErrorTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomErrorTwinRustAsync_Error0(
+          e: final e,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomErrorTwinRustAsync_Error1(
+          e: final e,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_error_twin_rust_async_sse(
+      CustomErrorTwinRustAsyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomErrorTwinRustAsyncSse_Error0(
+          e: final e,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomErrorTwinRustAsyncSse_Error1(
+          e: final e,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_error_twin_sse(
+      CustomErrorTwinSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomErrorTwinSse_Error0(e: final e, backtrace: final backtrace):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomErrorTwinSse_Error1(e: final e, backtrace: final backtrace):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_error_twin_sync(
+      CustomErrorTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomErrorTwinSync_Error0(e: final e, backtrace: final backtrace):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomErrorTwinSync_Error1(e: final e, backtrace: final backtrace):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_error_twin_sync_sse(
+      CustomErrorTwinSyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomErrorTwinSyncSse_Error0(
+          e: final e,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+      case CustomErrorTwinSyncSse_Error1(
+          e: final e,
+          backtrace: final backtrace
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(e, serializer);
+        _sse_encode_Backtrace(backtrace, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_1_twin_normal(
+      CustomNestedError1TwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError1TwinNormal_CustomNested1(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError1TwinNormal_ErrorNested(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_custom_nested_error_2_twin_normal(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_1_twin_rust_async(
+      CustomNestedError1TwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError1TwinRustAsync_CustomNested1(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError1TwinRustAsync_ErrorNested(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_custom_nested_error_2_twin_rust_async(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_1_twin_rust_async_sse(
+      CustomNestedError1TwinRustAsyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError1TwinRustAsyncSse_CustomNested1(
+          field0: final field0
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError1TwinRustAsyncSse_ErrorNested(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_1_twin_sse(
+      CustomNestedError1TwinSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError1TwinSse_CustomNested1(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError1TwinSse_ErrorNested(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_custom_nested_error_2_twin_sse(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_1_twin_sync(
+      CustomNestedError1TwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError1TwinSync_CustomNested1(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError1TwinSync_ErrorNested(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_custom_nested_error_2_twin_sync(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_1_twin_sync_sse(
+      CustomNestedError1TwinSyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError1TwinSyncSse_CustomNested1(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError1TwinSyncSse_ErrorNested(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_custom_nested_error_2_twin_sync_sse(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_2_twin_normal(
+      CustomNestedError2TwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError2TwinNormal_CustomNested2(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError2TwinNormal_CustomNested2Number(
+          field0: final field0
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_2_twin_rust_async(
+      CustomNestedError2TwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError2TwinRustAsync_CustomNested2(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError2TwinRustAsync_CustomNested2Number(
+          field0: final field0
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_2_twin_rust_async_sse(
+      CustomNestedError2TwinRustAsyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError2TwinRustAsyncSse_CustomNested2(
+          field0: final field0
+        ):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError2TwinRustAsyncSse_CustomNested2Number(
+          field0: final field0
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_2_twin_sse(
+      CustomNestedError2TwinSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError2TwinSse_CustomNested2(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError2TwinSse_CustomNested2Number(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_2_twin_sync(
+      CustomNestedError2TwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError2TwinSync_CustomNested2(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError2TwinSync_CustomNested2Number(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(field0, serializer);
+    }
+  }
+
+  void _sse_encode_custom_nested_error_2_twin_sync_sse(
+      CustomNestedError2TwinSyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case CustomNestedError2TwinSyncSse_CustomNested2(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_String(field0, serializer);
+      case CustomNestedError2TwinSyncSse_CustomNested2Number(
+          field0: final field0
+        ):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_u_32(field0, serializer);
+    }
   }
 
   void _sse_encode_custom_nested_error_inner_twin_normal(
@@ -58432,6 +63294,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  void _sse_encode_custom_struct_error_another_twin_normal(
+      CustomStructErrorAnotherTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.message, serializer);
+  }
+
+  void _sse_encode_custom_struct_error_another_twin_rust_async(
+      CustomStructErrorAnotherTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.message, serializer);
+  }
+
+  void _sse_encode_custom_struct_error_another_twin_rust_async_sse(
+      CustomStructErrorAnotherTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_String(self.message, serializer);
+  }
+
+  void _sse_encode_custom_struct_error_another_twin_sse(
+      CustomStructErrorAnotherTwinSse self, SseSerializer serializer) {
+    _sse_encode_String(self.message, serializer);
+  }
+
+  void _sse_encode_custom_struct_error_another_twin_sync(
+      CustomStructErrorAnotherTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.message, serializer);
+  }
+
+  void _sse_encode_custom_struct_error_another_twin_sync_sse(
+      CustomStructErrorAnotherTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_String(self.message, serializer);
+  }
+
   void _sse_encode_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal self, SseSerializer serializer) {
     _sse_encode_String(self.a, serializer);
@@ -58564,6 +63456,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_DartOpaque(self.second, serializer);
   }
 
+  void _sse_encode_dartabi(dynamic self, SseSerializer serializer) {
+    throw UnimplementedError('');
+  }
+
   void _sse_encode_distance_twin_normal(
       DistanceTwinNormal self, SseSerializer serializer) {
     switch (self) {
@@ -58628,6 +63524,55 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(1, serializer);
         _sse_encode_f_64(field0, serializer);
     }
+  }
+
+  void _sse_encode_element_twin_normal(
+      ElementTwinNormal self, SseSerializer serializer) {
+    _sse_encode_opt_String(self.tag, serializer);
+    _sse_encode_opt_String(self.text, serializer);
+    _sse_encode_opt_list_attribute_twin_normal(self.attributes, serializer);
+    _sse_encode_opt_list_element_twin_normal(self.children, serializer);
+  }
+
+  void _sse_encode_element_twin_rust_async(
+      ElementTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_opt_String(self.tag, serializer);
+    _sse_encode_opt_String(self.text, serializer);
+    _sse_encode_opt_list_attribute_twin_rust_async(self.attributes, serializer);
+    _sse_encode_opt_list_element_twin_rust_async(self.children, serializer);
+  }
+
+  void _sse_encode_element_twin_rust_async_sse(
+      ElementTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_opt_String(self.tag, serializer);
+    _sse_encode_opt_String(self.text, serializer);
+    _sse_encode_opt_list_attribute_twin_rust_async_sse(
+        self.attributes, serializer);
+    _sse_encode_opt_list_element_twin_rust_async_sse(self.children, serializer);
+  }
+
+  void _sse_encode_element_twin_sse(
+      ElementTwinSse self, SseSerializer serializer) {
+    _sse_encode_opt_String(self.tag, serializer);
+    _sse_encode_opt_String(self.text, serializer);
+    _sse_encode_opt_list_attribute_twin_sse(self.attributes, serializer);
+    _sse_encode_opt_list_element_twin_sse(self.children, serializer);
+  }
+
+  void _sse_encode_element_twin_sync(
+      ElementTwinSync self, SseSerializer serializer) {
+    _sse_encode_opt_String(self.tag, serializer);
+    _sse_encode_opt_String(self.text, serializer);
+    _sse_encode_opt_list_attribute_twin_sync(self.attributes, serializer);
+    _sse_encode_opt_list_element_twin_sync(self.children, serializer);
+  }
+
+  void _sse_encode_element_twin_sync_sse(
+      ElementTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_opt_String(self.tag, serializer);
+    _sse_encode_opt_String(self.text, serializer);
+    _sse_encode_opt_list_attribute_twin_sync_sse(self.attributes, serializer);
+    _sse_encode_opt_list_element_twin_sync_sse(self.children, serializer);
   }
 
   void _sse_encode_empty_twin_normal(
@@ -58741,6 +63686,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  void _sse_encode_enum_opaque_twin_normal_array_5(
+      EnumOpaqueTwinNormalArray5 self, SseSerializer serializer) {
+    _sse_encode_list_enum_opaque_twin_normal(self.inner, serializer);
+  }
+
   void _sse_encode_enum_opaque_twin_rust_async(
       EnumOpaqueTwinRustAsync self, SseSerializer serializer) {
     switch (self) {
@@ -58761,6 +63711,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(4, serializer);
         _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
     }
+  }
+
+  void _sse_encode_enum_opaque_twin_rust_async_array_5(
+      EnumOpaqueTwinRustAsyncArray5 self, SseSerializer serializer) {
+    _sse_encode_list_enum_opaque_twin_rust_async(self.inner, serializer);
   }
 
   void _sse_encode_enum_opaque_twin_rust_async_sse(
@@ -58785,6 +63740,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  void _sse_encode_enum_opaque_twin_rust_async_sse_array_5(
+      EnumOpaqueTwinRustAsyncSseArray5 self, SseSerializer serializer) {
+    _sse_encode_list_enum_opaque_twin_rust_async_sse(self.inner, serializer);
+  }
+
   void _sse_encode_enum_opaque_twin_sse(
       EnumOpaqueTwinSse self, SseSerializer serializer) {
     switch (self) {
@@ -58804,6 +63764,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(4, serializer);
         _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
     }
+  }
+
+  void _sse_encode_enum_opaque_twin_sse_array_5(
+      EnumOpaqueTwinSseArray5 self, SseSerializer serializer) {
+    _sse_encode_list_enum_opaque_twin_sse(self.inner, serializer);
   }
 
   void _sse_encode_enum_opaque_twin_sync(
@@ -58827,6 +63792,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  void _sse_encode_enum_opaque_twin_sync_array_5(
+      EnumOpaqueTwinSyncArray5 self, SseSerializer serializer) {
+    _sse_encode_list_enum_opaque_twin_sync(self.inner, serializer);
+  }
+
   void _sse_encode_enum_opaque_twin_sync_sse(
       EnumOpaqueTwinSyncSse self, SseSerializer serializer) {
     switch (self) {
@@ -58846,6 +63816,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         _sse_encode_i_32(4, serializer);
         _sse_encode_RustOpaque_RwLockHideData(field0, serializer);
     }
+  }
+
+  void _sse_encode_enum_opaque_twin_sync_sse_array_5(
+      EnumOpaqueTwinSyncSseArray5 self, SseSerializer serializer) {
+    _sse_encode_list_enum_opaque_twin_sync_sse(self.inner, serializer);
   }
 
   void _sse_encode_enum_simple_twin_normal(
@@ -59587,6 +64562,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  void _sse_encode_list_Chrono_Local(
+      List<DateTime> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_Chrono_Local(item, serializer);
+    }
+  }
+
   void _sse_encode_list_Chrono_Naive(
       List<DateTime> self, SseSerializer serializer) {
     _sse_encode_i_32(self.length, serializer);
@@ -59623,6 +64606,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_i_32(self.length, serializer);
     for (final item in self) {
       _sse_encode_application_env_var(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_application_settings(
+      List<ApplicationSettings> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_application_settings(item, serializer);
     }
   }
 
@@ -59681,6 +64672,109 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  void _sse_encode_list_element_twin_normal(
+      List<ElementTwinNormal> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_element_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_element_twin_rust_async(
+      List<ElementTwinRustAsync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_element_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_element_twin_rust_async_sse(
+      List<ElementTwinRustAsyncSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_element_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_element_twin_sse(
+      List<ElementTwinSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_element_twin_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_element_twin_sync(
+      List<ElementTwinSync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_element_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_element_twin_sync_sse(
+      List<ElementTwinSyncSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_element_twin_sync_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_enum_opaque_twin_normal(
+      List<EnumOpaqueTwinNormal> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_enum_opaque_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_enum_opaque_twin_rust_async(
+      List<EnumOpaqueTwinRustAsync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_enum_opaque_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_enum_opaque_twin_rust_async_sse(
+      List<EnumOpaqueTwinRustAsyncSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_enum_opaque_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_enum_opaque_twin_sse(
+      List<EnumOpaqueTwinSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_enum_opaque_twin_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_enum_opaque_twin_sync(
+      List<EnumOpaqueTwinSync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_enum_opaque_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_enum_opaque_twin_sync_sse(
+      List<EnumOpaqueTwinSyncSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_enum_opaque_twin_sync_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_my_enum(item, serializer);
+    }
+  }
+
   void _sse_encode_list_my_size(List<MySize> self, SseSerializer serializer) {
     _sse_encode_i_32(self.length, serializer);
     for (final item in self) {
@@ -59734,6 +64828,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     for (final item in self) {
       _sse_encode_my_tree_node_twin_sync_sse(item, serializer);
     }
+  }
+
+  void _sse_encode_list_nested_raw_string_mirrored(
+      List<NestedRawStringMirrored> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_nested_raw_string_mirrored(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_of_nested_raw_string_mirrored(
+      ListOfNestedRawStringMirrored self, SseSerializer serializer) {
+    _sse_encode_list_nested_raw_string_mirrored(self.raw, serializer);
   }
 
   void _sse_encode_list_opt_String(
@@ -59858,6 +64965,54 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  void _sse_encode_list_point_twin_normal(
+      List<PointTwinNormal> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_point_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_point_twin_rust_async(
+      List<PointTwinRustAsync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_point_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_point_twin_rust_async_sse(
+      List<PointTwinRustAsyncSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_point_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_point_twin_sse(
+      List<PointTwinSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_point_twin_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_point_twin_sync(
+      List<PointTwinSync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_point_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_point_twin_sync_sse(
+      List<PointTwinSyncSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_point_twin_sync_sse(item, serializer);
+    }
+  }
+
   void _sse_encode_list_prim_f_32(Float32List self, SseSerializer serializer) {
     _sse_encode_i_32(self.length, serializer);
     serializer.buffer.putFloat32List(self);
@@ -59908,11 +65063,75 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     serializer.buffer.putUint8List(self);
   }
 
+  void _sse_encode_list_raw_string_enum_mirrored(
+      List<RawStringEnumMirrored> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_raw_string_enum_mirrored(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_raw_string_mirrored(
+      List<RawStringMirrored> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_raw_string_mirrored(item, serializer);
+    }
+  }
+
   void _sse_encode_list_record_string_i_32(
       List<(String, int)> self, SseSerializer serializer) {
     _sse_encode_i_32(self.length, serializer);
     for (final item in self) {
       _sse_encode_record_string_i_32(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_sum_with_twin_normal(
+      List<SumWithTwinNormal> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_sum_with_twin_normal(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_sum_with_twin_rust_async(
+      List<SumWithTwinRustAsync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_sum_with_twin_rust_async(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_sum_with_twin_rust_async_sse(
+      List<SumWithTwinRustAsyncSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_sum_with_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_sum_with_twin_sse(
+      List<SumWithTwinSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_sum_with_twin_sse(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_sum_with_twin_sync(
+      List<SumWithTwinSync> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_sum_with_twin_sync(item, serializer);
+    }
+  }
+
+  void _sse_encode_list_sum_with_twin_sync_sse(
+      List<SumWithTwinSyncSse> self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      _sse_encode_sum_with_twin_sync_sse(item, serializer);
     }
   }
 
@@ -60010,6 +65229,64 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     for (final item in self) {
       _sse_encode_weekdays_twin_sync_sse(item, serializer);
     }
+  }
+
+  void _sse_encode_log_2_twin_normal(
+      Log2TwinNormal self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_log_2_twin_rust_async(
+      Log2TwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_log_2_twin_rust_async_sse(
+      Log2TwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_log_2_twin_sse(Log2TwinSse self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_log_2_twin_sync(
+      Log2TwinSync self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_log_2_twin_sync_sse(
+      Log2TwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_log_twin_normal(
+      LogTwinNormal self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_u_32(self.value, serializer);
+  }
+
+  void _sse_encode_log_twin_rust_async(
+      LogTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_u_32(self.value, serializer);
+  }
+
+  void _sse_encode_log_twin_rust_async_sse(
+      LogTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_u_32(self.value, serializer);
+  }
+
+  void _sse_encode_log_twin_sse(LogTwinSse self, SseSerializer serializer) {
+    _sse_encode_u_32(self.key, serializer);
+    _sse_encode_u_32(self.value, serializer);
   }
 
   void _sse_encode_macro_struct(MacroStruct self, SseSerializer serializer) {
@@ -60118,6 +65395,105 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_u_8_array_32(self.field0, serializer);
   }
 
+  void _sse_encode_mirror_struct_twin_normal(
+      MirrorStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_application_settings(self.a, serializer);
+    _sse_encode_my_struct(self.b, serializer);
+    _sse_encode_list_my_enum(self.c, serializer);
+    _sse_encode_list_application_settings(self.d, serializer);
+  }
+
+  void _sse_encode_mirror_struct_twin_rust_async(
+      MirrorStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_application_settings(self.a, serializer);
+    _sse_encode_my_struct(self.b, serializer);
+    _sse_encode_list_my_enum(self.c, serializer);
+    _sse_encode_list_application_settings(self.d, serializer);
+  }
+
+  void _sse_encode_mirror_struct_twin_rust_async_sse(
+      MirrorStructTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_application_settings(self.a, serializer);
+    _sse_encode_my_struct(self.b, serializer);
+    _sse_encode_list_my_enum(self.c, serializer);
+    _sse_encode_list_application_settings(self.d, serializer);
+  }
+
+  void _sse_encode_mirror_struct_twin_sse(
+      MirrorStructTwinSse self, SseSerializer serializer) {
+    _sse_encode_application_settings(self.a, serializer);
+    _sse_encode_my_struct(self.b, serializer);
+    _sse_encode_list_my_enum(self.c, serializer);
+    _sse_encode_list_application_settings(self.d, serializer);
+  }
+
+  void _sse_encode_mirror_struct_twin_sync(
+      MirrorStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_application_settings(self.a, serializer);
+    _sse_encode_my_struct(self.b, serializer);
+    _sse_encode_list_my_enum(self.c, serializer);
+    _sse_encode_list_application_settings(self.d, serializer);
+  }
+
+  void _sse_encode_mirror_struct_twin_sync_sse(
+      MirrorStructTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_application_settings(self.a, serializer);
+    _sse_encode_my_struct(self.b, serializer);
+    _sse_encode_list_my_enum(self.c, serializer);
+    _sse_encode_list_application_settings(self.d, serializer);
+  }
+
+  void _sse_encode_more_than_just_one_raw_string_struct_twin_normal(
+      MoreThanJustOneRawStringStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.regular, serializer);
+    _sse_encode_String(self.type, serializer);
+    _sse_encode_bool(self.async, serializer);
+    _sse_encode_String(self.another, serializer);
+  }
+
+  void _sse_encode_more_than_just_one_raw_string_struct_twin_rust_async(
+      MoreThanJustOneRawStringStructTwinRustAsync self,
+      SseSerializer serializer) {
+    _sse_encode_String(self.regular, serializer);
+    _sse_encode_String(self.type, serializer);
+    _sse_encode_bool(self.async, serializer);
+    _sse_encode_String(self.another, serializer);
+  }
+
+  void _sse_encode_more_than_just_one_raw_string_struct_twin_rust_async_sse(
+      MoreThanJustOneRawStringStructTwinRustAsyncSse self,
+      SseSerializer serializer) {
+    _sse_encode_String(self.regular, serializer);
+    _sse_encode_String(self.type, serializer);
+    _sse_encode_bool(self.async, serializer);
+    _sse_encode_String(self.another, serializer);
+  }
+
+  void _sse_encode_more_than_just_one_raw_string_struct_twin_sse(
+      MoreThanJustOneRawStringStructTwinSse self, SseSerializer serializer) {
+    _sse_encode_String(self.regular, serializer);
+    _sse_encode_String(self.type, serializer);
+    _sse_encode_bool(self.async, serializer);
+    _sse_encode_String(self.another, serializer);
+  }
+
+  void _sse_encode_more_than_just_one_raw_string_struct_twin_sync(
+      MoreThanJustOneRawStringStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.regular, serializer);
+    _sse_encode_String(self.type, serializer);
+    _sse_encode_bool(self.async, serializer);
+    _sse_encode_String(self.another, serializer);
+  }
+
+  void _sse_encode_more_than_just_one_raw_string_struct_twin_sync_sse(
+      MoreThanJustOneRawStringStructTwinSyncSse self,
+      SseSerializer serializer) {
+    _sse_encode_String(self.regular, serializer);
+    _sse_encode_String(self.type, serializer);
+    _sse_encode_bool(self.async, serializer);
+    _sse_encode_String(self.another, serializer);
+  }
+
   void _sse_encode_my_enum(MyEnum self, SseSerializer serializer) {
     _sse_encode_i_32(self.index, serializer);
   }
@@ -60161,6 +65537,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_my_size(MySize self, SseSerializer serializer) {
     _sse_encode_i_32(self.width, serializer);
     _sse_encode_i_32(self.height, serializer);
+  }
+
+  void _sse_encode_my_stream_entry_twin_normal(
+      MyStreamEntryTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.hello, serializer);
+  }
+
+  void _sse_encode_my_stream_entry_twin_rust_async(
+      MyStreamEntryTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.hello, serializer);
+  }
+
+  void _sse_encode_my_stream_entry_twin_rust_async_sse(
+      MyStreamEntryTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_String(self.hello, serializer);
+  }
+
+  void _sse_encode_my_stream_entry_twin_sse(
+      MyStreamEntryTwinSse self, SseSerializer serializer) {
+    _sse_encode_String(self.hello, serializer);
   }
 
   void _sse_encode_my_struct(MyStruct self, SseSerializer serializer) {
@@ -60214,6 +65610,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_list_prim_u_8(self.valueVecU8, serializer);
     _sse_encode_bool(self.valueBoolean, serializer);
     _sse_encode_list_my_tree_node_twin_sync_sse(self.children, serializer);
+  }
+
+  void _sse_encode_nested_raw_string_mirrored(
+      NestedRawStringMirrored self, SseSerializer serializer) {
+    _sse_encode_raw_string_mirrored(self.raw, serializer);
+  }
+
+  void _sse_encode_new_simple_struct(
+      NewSimpleStruct self, SseSerializer serializer) {
+    _sse_encode_i_32(self.field, serializer);
   }
 
   void _sse_encode_new_type_int_twin_normal(
@@ -60284,6 +65690,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_list_prim_i_32(self.field0, serializer);
   }
 
+  void _sse_encode_old_simple_struct(
+      OldSimpleStruct self, SseSerializer serializer) {
+    _sse_encode_i_32(self.field, serializer);
+  }
+
   void _sse_encode_opaque_nested_twin_normal(
       OpaqueNestedTwinNormal self, SseSerializer serializer) {
     _sse_encode_RustOpaque_hide_data(self.first, serializer);
@@ -60324,6 +65735,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_bool(self != null, serializer);
     if (self != null) {
       _sse_encode_String(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_Chrono_Duration(
+      Duration? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_Chrono_Duration(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_Chrono_Naive(
+      DateTime? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_Chrono_Naive(self, serializer);
     }
   }
 
@@ -60411,6 +65838,54 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_bool(self != null, serializer);
     if (self != null) {
       _sse_encode_box_autoadd_bool(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_element_twin_normal(
+      ElementTwinNormal? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_element_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_element_twin_rust_async(
+      ElementTwinRustAsync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_element_twin_rust_async(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_element_twin_rust_async_sse(
+      ElementTwinRustAsyncSse? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_element_twin_rust_async_sse(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_element_twin_sse(
+      ElementTwinSse? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_element_twin_sse(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_element_twin_sync(
+      ElementTwinSync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_element_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_element_twin_sync_sse(
+      ElementTwinSyncSse? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_element_twin_sync_sse(self, serializer);
     }
   }
 
@@ -60505,6 +65980,54 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_bool(self != null, serializer);
     if (self != null) {
       _sse_encode_box_autoadd_i_8(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_measure_twin_normal(
+      MeasureTwinNormal? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_measure_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_measure_twin_rust_async(
+      MeasureTwinRustAsync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_measure_twin_rust_async(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_measure_twin_rust_async_sse(
+      MeasureTwinRustAsyncSse? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_measure_twin_rust_async_sse(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_measure_twin_sse(
+      MeasureTwinSse? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_measure_twin_sse(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_measure_twin_sync(
+      MeasureTwinSync? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_measure_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_box_autoadd_measure_twin_sync_sse(
+      MeasureTwinSyncSse? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_box_autoadd_measure_twin_sync_sse(self, serializer);
     }
   }
 
@@ -60779,6 +66302,54 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  void _sse_encode_opt_list_element_twin_normal(
+      List<ElementTwinNormal>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_element_twin_normal(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_element_twin_rust_async(
+      List<ElementTwinRustAsync>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_element_twin_rust_async(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_element_twin_rust_async_sse(
+      List<ElementTwinRustAsyncSse>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_element_twin_rust_async_sse(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_element_twin_sse(
+      List<ElementTwinSse>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_element_twin_sse(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_element_twin_sync(
+      List<ElementTwinSync>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_element_twin_sync(self, serializer);
+    }
+  }
+
+  void _sse_encode_opt_list_element_twin_sync_sse(
+      List<ElementTwinSyncSse>? self, SseSerializer serializer) {
+    _sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      _sse_encode_list_element_twin_sync_sse(self, serializer);
+    }
+  }
+
   void _sse_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
       List<AttributeTwinNormal?>? self, SseSerializer serializer) {
     _sse_encode_bool(self != null, serializer);
@@ -60919,6 +66490,129 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         self.enums, serializer);
     _sse_encode_list_opt_String(self.strings, serializer);
     _sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
+  }
+
+  void _sse_encode_point_twin_normal(
+      PointTwinNormal self, SseSerializer serializer) {
+    _sse_encode_f_32(self.x, serializer);
+    _sse_encode_f_32(self.y, serializer);
+  }
+
+  void _sse_encode_point_twin_normal_array_2(
+      PointTwinNormalArray2 self, SseSerializer serializer) {
+    _sse_encode_list_point_twin_normal(self.inner, serializer);
+  }
+
+  void _sse_encode_point_twin_rust_async(
+      PointTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_f_32(self.x, serializer);
+    _sse_encode_f_32(self.y, serializer);
+  }
+
+  void _sse_encode_point_twin_rust_async_array_2(
+      PointTwinRustAsyncArray2 self, SseSerializer serializer) {
+    _sse_encode_list_point_twin_rust_async(self.inner, serializer);
+  }
+
+  void _sse_encode_point_twin_rust_async_sse(
+      PointTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_f_32(self.x, serializer);
+    _sse_encode_f_32(self.y, serializer);
+  }
+
+  void _sse_encode_point_twin_rust_async_sse_array_2(
+      PointTwinRustAsyncSseArray2 self, SseSerializer serializer) {
+    _sse_encode_list_point_twin_rust_async_sse(self.inner, serializer);
+  }
+
+  void _sse_encode_point_twin_sse(PointTwinSse self, SseSerializer serializer) {
+    _sse_encode_f_32(self.x, serializer);
+    _sse_encode_f_32(self.y, serializer);
+  }
+
+  void _sse_encode_point_twin_sse_array_2(
+      PointTwinSseArray2 self, SseSerializer serializer) {
+    _sse_encode_list_point_twin_sse(self.inner, serializer);
+  }
+
+  void _sse_encode_point_twin_sync(
+      PointTwinSync self, SseSerializer serializer) {
+    _sse_encode_f_32(self.x, serializer);
+    _sse_encode_f_32(self.y, serializer);
+  }
+
+  void _sse_encode_point_twin_sync_array_2(
+      PointTwinSyncArray2 self, SseSerializer serializer) {
+    _sse_encode_list_point_twin_sync(self.inner, serializer);
+  }
+
+  void _sse_encode_point_twin_sync_sse(
+      PointTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_f_32(self.x, serializer);
+    _sse_encode_f_32(self.y, serializer);
+  }
+
+  void _sse_encode_point_twin_sync_sse_array_2(
+      PointTwinSyncSseArray2 self, SseSerializer serializer) {
+    _sse_encode_list_point_twin_sync_sse(self.inner, serializer);
+  }
+
+  void _sse_encode_raw_string_enum_mirrored(
+      RawStringEnumMirrored self, SseSerializer serializer) {
+    switch (self) {
+      case RawStringEnumMirrored_Raw(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_box_autoadd_raw_string_mirrored(field0, serializer);
+      case RawStringEnumMirrored_Nested(field0: final field0):
+        _sse_encode_i_32(1, serializer);
+        _sse_encode_box_autoadd_nested_raw_string_mirrored(field0, serializer);
+      case RawStringEnumMirrored_ListOfNested(field0: final field0):
+        _sse_encode_i_32(2, serializer);
+        _sse_encode_box_autoadd_list_of_nested_raw_string_mirrored(
+            field0, serializer);
+    }
+  }
+
+  void _sse_encode_raw_string_item_struct_twin_normal(
+      RawStringItemStructTwinNormal self, SseSerializer serializer) {
+    _sse_encode_String(self.type, serializer);
+  }
+
+  void _sse_encode_raw_string_item_struct_twin_rust_async(
+      RawStringItemStructTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_String(self.type, serializer);
+  }
+
+  void _sse_encode_raw_string_item_struct_twin_rust_async_sse(
+      RawStringItemStructTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_String(self.type, serializer);
+  }
+
+  void _sse_encode_raw_string_item_struct_twin_sse(
+      RawStringItemStructTwinSse self, SseSerializer serializer) {
+    _sse_encode_String(self.type, serializer);
+  }
+
+  void _sse_encode_raw_string_item_struct_twin_sync(
+      RawStringItemStructTwinSync self, SseSerializer serializer) {
+    _sse_encode_String(self.type, serializer);
+  }
+
+  void _sse_encode_raw_string_item_struct_twin_sync_sse(
+      RawStringItemStructTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_String(self.type, serializer);
+  }
+
+  void _sse_encode_raw_string_mirrored(
+      RawStringMirrored self, SseSerializer serializer) {
+    _sse_encode_String(self.value, serializer);
+  }
+
+  void _sse_encode_record_application_settings_raw_string_enum_mirrored(
+      (ApplicationSettings, RawStringEnumMirrored) self,
+      SseSerializer serializer) {
+    _sse_encode_application_settings(self.$1, serializer);
+    _sse_encode_raw_string_enum_mirrored(self.$2, serializer);
   }
 
   void _sse_encode_record_string_i_32(
@@ -61181,9 +66875,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_u_32(self.x, serializer);
   }
 
+  void _sse_encode_sum_with_twin_normal_array_3(
+      SumWithTwinNormalArray3 self, SseSerializer serializer) {
+    _sse_encode_list_sum_with_twin_normal(self.inner, serializer);
+  }
+
   void _sse_encode_sum_with_twin_rust_async(
       SumWithTwinRustAsync self, SseSerializer serializer) {
     _sse_encode_u_32(self.x, serializer);
+  }
+
+  void _sse_encode_sum_with_twin_rust_async_array_3(
+      SumWithTwinRustAsyncArray3 self, SseSerializer serializer) {
+    _sse_encode_list_sum_with_twin_rust_async(self.inner, serializer);
   }
 
   void _sse_encode_sum_with_twin_rust_async_sse(
@@ -61191,9 +66895,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_u_32(self.x, serializer);
   }
 
+  void _sse_encode_sum_with_twin_rust_async_sse_array_3(
+      SumWithTwinRustAsyncSseArray3 self, SseSerializer serializer) {
+    _sse_encode_list_sum_with_twin_rust_async_sse(self.inner, serializer);
+  }
+
   void _sse_encode_sum_with_twin_sse(
       SumWithTwinSse self, SseSerializer serializer) {
     _sse_encode_u_32(self.x, serializer);
+  }
+
+  void _sse_encode_sum_with_twin_sse_array_3(
+      SumWithTwinSseArray3 self, SseSerializer serializer) {
+    _sse_encode_list_sum_with_twin_sse(self.inner, serializer);
   }
 
   void _sse_encode_sum_with_twin_sync(
@@ -61201,14 +66915,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_u_32(self.x, serializer);
   }
 
+  void _sse_encode_sum_with_twin_sync_array_3(
+      SumWithTwinSyncArray3 self, SseSerializer serializer) {
+    _sse_encode_list_sum_with_twin_sync(self.inner, serializer);
+  }
+
   void _sse_encode_sum_with_twin_sync_sse(
       SumWithTwinSyncSse self, SseSerializer serializer) {
     _sse_encode_u_32(self.x, serializer);
   }
 
+  void _sse_encode_sum_with_twin_sync_sse_array_3(
+      SumWithTwinSyncSseArray3 self, SseSerializer serializer) {
+    _sse_encode_list_sum_with_twin_sync_sse(self.inner, serializer);
+  }
+
+  void _sse_encode_test_chrono_twin_normal(
+      TestChronoTwinNormal self, SseSerializer serializer) {
+    _sse_encode_opt_box_autoadd_Chrono_Utc(self.dt, serializer);
+    _sse_encode_opt_box_autoadd_Chrono_Naive(self.dt2, serializer);
+    _sse_encode_opt_box_autoadd_Chrono_Duration(self.du, serializer);
+  }
+
+  void _sse_encode_test_chrono_twin_rust_async(
+      TestChronoTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_opt_box_autoadd_Chrono_Utc(self.dt, serializer);
+    _sse_encode_opt_box_autoadd_Chrono_Naive(self.dt2, serializer);
+    _sse_encode_opt_box_autoadd_Chrono_Duration(self.du, serializer);
+  }
+
+  void _sse_encode_test_chrono_twin_sync(
+      TestChronoTwinSync self, SseSerializer serializer) {
+    _sse_encode_opt_box_autoadd_Chrono_Utc(self.dt, serializer);
+    _sse_encode_opt_box_autoadd_Chrono_Naive(self.dt2, serializer);
+    _sse_encode_opt_box_autoadd_Chrono_Duration(self.du, serializer);
+  }
+
   void _sse_encode_test_id_twin_normal(
       TestIdTwinNormal self, SseSerializer serializer) {
     _sse_encode_i_32_array_2(self.field0, serializer);
+  }
+
+  void _sse_encode_test_id_twin_normal_array_2(
+      TestIdTwinNormalArray2 self, SseSerializer serializer) {
+    _sse_encode_list_test_id_twin_normal(self.inner, serializer);
   }
 
   void _sse_encode_test_id_twin_normal_array_4(
@@ -61221,6 +66971,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_i_32_array_2(self.field0, serializer);
   }
 
+  void _sse_encode_test_id_twin_rust_async_array_2(
+      TestIdTwinRustAsyncArray2 self, SseSerializer serializer) {
+    _sse_encode_list_test_id_twin_rust_async(self.inner, serializer);
+  }
+
   void _sse_encode_test_id_twin_rust_async_array_4(
       TestIdTwinRustAsyncArray4 self, SseSerializer serializer) {
     _sse_encode_list_test_id_twin_rust_async(self.inner, serializer);
@@ -61229,6 +66984,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_test_id_twin_rust_async_sse(
       TestIdTwinRustAsyncSse self, SseSerializer serializer) {
     _sse_encode_i_32_array_2(self.field0, serializer);
+  }
+
+  void _sse_encode_test_id_twin_rust_async_sse_array_2(
+      TestIdTwinRustAsyncSseArray2 self, SseSerializer serializer) {
+    _sse_encode_list_test_id_twin_rust_async_sse(self.inner, serializer);
   }
 
   void _sse_encode_test_id_twin_rust_async_sse_array_4(
@@ -61241,6 +67001,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_i_32_array_2(self.field0, serializer);
   }
 
+  void _sse_encode_test_id_twin_sse_array_2(
+      TestIdTwinSseArray2 self, SseSerializer serializer) {
+    _sse_encode_list_test_id_twin_sse(self.inner, serializer);
+  }
+
   void _sse_encode_test_id_twin_sse_array_4(
       TestIdTwinSseArray4 self, SseSerializer serializer) {
     _sse_encode_list_test_id_twin_sse(self.inner, serializer);
@@ -61249,6 +67014,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_test_id_twin_sync(
       TestIdTwinSync self, SseSerializer serializer) {
     _sse_encode_i_32_array_2(self.field0, serializer);
+  }
+
+  void _sse_encode_test_id_twin_sync_array_2(
+      TestIdTwinSyncArray2 self, SseSerializer serializer) {
+    _sse_encode_list_test_id_twin_sync(self.inner, serializer);
   }
 
   void _sse_encode_test_id_twin_sync_array_4(
@@ -61261,9 +67031,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_i_32_array_2(self.field0, serializer);
   }
 
+  void _sse_encode_test_id_twin_sync_sse_array_2(
+      TestIdTwinSyncSseArray2 self, SseSerializer serializer) {
+    _sse_encode_list_test_id_twin_sync_sse(self.inner, serializer);
+  }
+
   void _sse_encode_test_id_twin_sync_sse_array_4(
       TestIdTwinSyncSseArray4 self, SseSerializer serializer) {
     _sse_encode_list_test_id_twin_sync_sse(self.inner, serializer);
+  }
+
+  void _sse_encode_test_model_twin_normal(
+      TestModelTwinNormal self, SseSerializer serializer) {
+    _sse_encode_u_64(self.id, serializer);
+    _sse_encode_String(self.name, serializer);
+    _sse_encode_my_enum(self.aliasEnum, serializer);
+    _sse_encode_my_struct(self.aliasStruct, serializer);
+  }
+
+  void _sse_encode_test_model_twin_rust_async(
+      TestModelTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_u_64(self.id, serializer);
+    _sse_encode_String(self.name, serializer);
+    _sse_encode_my_enum(self.aliasEnum, serializer);
+    _sse_encode_my_struct(self.aliasStruct, serializer);
+  }
+
+  void _sse_encode_test_model_twin_rust_async_sse(
+      TestModelTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_u_64(self.id, serializer);
+    _sse_encode_String(self.name, serializer);
+    _sse_encode_my_enum(self.aliasEnum, serializer);
+    _sse_encode_my_struct(self.aliasStruct, serializer);
+  }
+
+  void _sse_encode_test_model_twin_sse(
+      TestModelTwinSse self, SseSerializer serializer) {
+    _sse_encode_u_64(self.id, serializer);
+    _sse_encode_String(self.name, serializer);
+    _sse_encode_my_enum(self.aliasEnum, serializer);
+    _sse_encode_my_struct(self.aliasStruct, serializer);
+  }
+
+  void _sse_encode_test_model_twin_sync(
+      TestModelTwinSync self, SseSerializer serializer) {
+    _sse_encode_u_64(self.id, serializer);
+    _sse_encode_String(self.name, serializer);
+    _sse_encode_my_enum(self.aliasEnum, serializer);
+    _sse_encode_my_struct(self.aliasStruct, serializer);
+  }
+
+  void _sse_encode_test_model_twin_sync_sse(
+      TestModelTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_u_64(self.id, serializer);
+    _sse_encode_String(self.name, serializer);
+    _sse_encode_my_enum(self.aliasEnum, serializer);
+    _sse_encode_my_struct(self.aliasStruct, serializer);
   }
 
   void _sse_encode_tuple_struct_with_one_field_twin_normal(
@@ -61356,6 +67179,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     _sse_encode_list_prim_u_8(self.inner, serializer);
   }
 
+  void _sse_encode_u_8_array_5(U8Array5 self, SseSerializer serializer) {
+    _sse_encode_list_prim_u_8(self.inner, serializer);
+  }
+
   void _sse_encode_u_8_array_8(U8Array8 self, SseSerializer serializer) {
     _sse_encode_list_prim_u_8(self.inner, serializer);
   }
@@ -61396,6 +67223,96 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     serializer.buffer.putUint64(self);
   }
 
+  void _sse_encode_vec_of_primitive_pack_twin_normal(
+      VecOfPrimitivePackTwinNormal self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_8(self.int8List, serializer);
+    _sse_encode_list_prim_u_8(self.uint8List, serializer);
+    _sse_encode_list_prim_i_16(self.int16List, serializer);
+    _sse_encode_list_prim_u_16(self.uint16List, serializer);
+    _sse_encode_list_prim_u_32(self.uint32List, serializer);
+    _sse_encode_list_prim_i_32(self.int32List, serializer);
+    _sse_encode_list_prim_u_64(self.uint64List, serializer);
+    _sse_encode_list_prim_i_64(self.int64List, serializer);
+    _sse_encode_list_prim_f_32(self.float32List, serializer);
+    _sse_encode_list_prim_f_64(self.float64List, serializer);
+    _sse_encode_list_bool(self.boolList, serializer);
+  }
+
+  void _sse_encode_vec_of_primitive_pack_twin_rust_async(
+      VecOfPrimitivePackTwinRustAsync self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_8(self.int8List, serializer);
+    _sse_encode_list_prim_u_8(self.uint8List, serializer);
+    _sse_encode_list_prim_i_16(self.int16List, serializer);
+    _sse_encode_list_prim_u_16(self.uint16List, serializer);
+    _sse_encode_list_prim_u_32(self.uint32List, serializer);
+    _sse_encode_list_prim_i_32(self.int32List, serializer);
+    _sse_encode_list_prim_u_64(self.uint64List, serializer);
+    _sse_encode_list_prim_i_64(self.int64List, serializer);
+    _sse_encode_list_prim_f_32(self.float32List, serializer);
+    _sse_encode_list_prim_f_64(self.float64List, serializer);
+    _sse_encode_list_bool(self.boolList, serializer);
+  }
+
+  void _sse_encode_vec_of_primitive_pack_twin_rust_async_sse(
+      VecOfPrimitivePackTwinRustAsyncSse self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_8(self.int8List, serializer);
+    _sse_encode_list_prim_u_8(self.uint8List, serializer);
+    _sse_encode_list_prim_i_16(self.int16List, serializer);
+    _sse_encode_list_prim_u_16(self.uint16List, serializer);
+    _sse_encode_list_prim_u_32(self.uint32List, serializer);
+    _sse_encode_list_prim_i_32(self.int32List, serializer);
+    _sse_encode_list_prim_u_64(self.uint64List, serializer);
+    _sse_encode_list_prim_i_64(self.int64List, serializer);
+    _sse_encode_list_prim_f_32(self.float32List, serializer);
+    _sse_encode_list_prim_f_64(self.float64List, serializer);
+    _sse_encode_list_bool(self.boolList, serializer);
+  }
+
+  void _sse_encode_vec_of_primitive_pack_twin_sse(
+      VecOfPrimitivePackTwinSse self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_8(self.int8List, serializer);
+    _sse_encode_list_prim_u_8(self.uint8List, serializer);
+    _sse_encode_list_prim_i_16(self.int16List, serializer);
+    _sse_encode_list_prim_u_16(self.uint16List, serializer);
+    _sse_encode_list_prim_u_32(self.uint32List, serializer);
+    _sse_encode_list_prim_i_32(self.int32List, serializer);
+    _sse_encode_list_prim_u_64(self.uint64List, serializer);
+    _sse_encode_list_prim_i_64(self.int64List, serializer);
+    _sse_encode_list_prim_f_32(self.float32List, serializer);
+    _sse_encode_list_prim_f_64(self.float64List, serializer);
+    _sse_encode_list_bool(self.boolList, serializer);
+  }
+
+  void _sse_encode_vec_of_primitive_pack_twin_sync(
+      VecOfPrimitivePackTwinSync self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_8(self.int8List, serializer);
+    _sse_encode_list_prim_u_8(self.uint8List, serializer);
+    _sse_encode_list_prim_i_16(self.int16List, serializer);
+    _sse_encode_list_prim_u_16(self.uint16List, serializer);
+    _sse_encode_list_prim_u_32(self.uint32List, serializer);
+    _sse_encode_list_prim_i_32(self.int32List, serializer);
+    _sse_encode_list_prim_u_64(self.uint64List, serializer);
+    _sse_encode_list_prim_i_64(self.int64List, serializer);
+    _sse_encode_list_prim_f_32(self.float32List, serializer);
+    _sse_encode_list_prim_f_64(self.float64List, serializer);
+    _sse_encode_list_bool(self.boolList, serializer);
+  }
+
+  void _sse_encode_vec_of_primitive_pack_twin_sync_sse(
+      VecOfPrimitivePackTwinSyncSse self, SseSerializer serializer) {
+    _sse_encode_list_prim_i_8(self.int8List, serializer);
+    _sse_encode_list_prim_u_8(self.uint8List, serializer);
+    _sse_encode_list_prim_i_16(self.int16List, serializer);
+    _sse_encode_list_prim_u_16(self.uint16List, serializer);
+    _sse_encode_list_prim_u_32(self.uint32List, serializer);
+    _sse_encode_list_prim_i_32(self.int32List, serializer);
+    _sse_encode_list_prim_u_64(self.uint64List, serializer);
+    _sse_encode_list_prim_i_64(self.int64List, serializer);
+    _sse_encode_list_prim_f_32(self.float32List, serializer);
+    _sse_encode_list_prim_f_64(self.float64List, serializer);
+    _sse_encode_list_bool(self.boolList, serializer);
+  }
+
   void _sse_encode_weekdays_twin_normal(
       WeekdaysTwinNormal self, SseSerializer serializer) {
     _sse_encode_i_32(self.index, serializer);
@@ -61425,569 +67342,4 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       WeekdaysTwinSyncSse self, SseSerializer serializer) {
     _sse_encode_i_32(self.index, serializer);
   }
-}
-
-// Section: dart2rust
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-        RwLockBoxFnStringString raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-        RwLockBoxHelloTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-        RwLockBoxHelloTraitTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-        RwLockBoxHelloTraitTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-        RwLockBoxHelloTraitTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-        RwLockBoxMyTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-        RwLockBoxMyTraitTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-        RwLockBoxMyTraitTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-        RwLockBoxMyTraitTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-        RwLockNonCloneSimpleTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-        RwLockNonCloneSimpleTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-        RwLockNonCloneSimpleTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-        RwLockNonCloneSimpleTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-        RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-        RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-        RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-        RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: true);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-        RwLockBoxHelloTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-        RwLockBoxHelloTraitTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-        RwLockBoxHelloTraitTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-        RwLockBoxHelloTraitTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-        RwLockNonCloneSimpleTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-        RwLockNonCloneSimpleTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-        RwLockNonCloneSimpleTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-        RwLockNonCloneSimpleTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-        RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-        RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-        RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-        RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-        RwLockBoxHelloTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-        RwLockBoxHelloTraitTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-        RwLockBoxHelloTraitTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-        RwLockBoxHelloTraitTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-        RwLockNonCloneSimpleTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-        RwLockNonCloneSimpleTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-        RwLockNonCloneSimpleTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-        RwLockNonCloneSimpleTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-        RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-        RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-        RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer
-    cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-        RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode(move: false);
-}
-
-PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_RwLockHideData(RwLockHideData raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinNormal(
-    BoxDartDebugTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
-    BoxDartDebugTwinRustAsync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
-    BoxDartDebugTwinRustAsyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSse(
-    BoxDartDebugTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSync(
-    BoxDartDebugTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSyncSse(
-    BoxDartDebugTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_hide_data(HideData raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_i_32(I32 raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_non_clone_data(NonCloneData raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_non_send_hide_data(NonSendHideData raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-        RwLockBoxFnStringString raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-    RwLockBoxHelloTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-    RwLockBoxHelloTraitTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-    RwLockBoxHelloTraitTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-    RwLockBoxHelloTraitTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-        RwLockBoxMyTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-    RwLockBoxMyTraitTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-        RwLockBoxMyTraitTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-        RwLockBoxMyTraitTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-    RwLockNonCloneSimpleTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-    RwLockNonCloneSimpleTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-    RwLockNonCloneSimpleTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-    RwLockNonCloneSimpleTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-        RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-        RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-        RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-PlatformPointer
-    cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-        RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.cstEncode();
-}
-
-int cst_encode_application_mode(ApplicationMode raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-bool cst_encode_bool(bool raw) {
-  return raw;
-}
-
-int cst_encode_enum_simple_twin_normal(EnumSimpleTwinNormal raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_enum_simple_twin_rust_async(EnumSimpleTwinRustAsync raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_enum_simple_twin_rust_async_sse(EnumSimpleTwinRustAsyncSse raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_enum_simple_twin_sse(EnumSimpleTwinSse raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_enum_simple_twin_sync(EnumSimpleTwinSync raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_enum_simple_twin_sync_sse(EnumSimpleTwinSyncSse raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-double cst_encode_f_32(double raw) {
-  return raw;
-}
-
-double cst_encode_f_64(double raw) {
-  return raw;
-}
-
-int cst_encode_i_16(int raw) {
-  return raw;
-}
-
-int cst_encode_i_32(int raw) {
-  return raw;
-}
-
-int cst_encode_i_8(int raw) {
-  return raw;
-}
-
-int cst_encode_my_enum(MyEnum raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_u_16(int raw) {
-  return raw;
-}
-
-int cst_encode_u_32(int raw) {
-  return raw;
-}
-
-int cst_encode_u_8(int raw) {
-  return raw;
-}
-
-void cst_encode_unit(void raw) {
-  return raw;
-}
-
-int cst_encode_usize(int raw) {
-  return raw;
-}
-
-int cst_encode_weekdays_twin_normal(WeekdaysTwinNormal raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_weekdays_twin_rust_async_sse(WeekdaysTwinRustAsyncSse raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_weekdays_twin_sse(WeekdaysTwinSse raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_weekdays_twin_sync(WeekdaysTwinSync raw) {
-  return cst_encode_i_32(raw.index);
-}
-
-int cst_encode_weekdays_twin_sync_sse(WeekdaysTwinSyncSse raw) {
-  return cst_encode_i_32(raw.index);
 }

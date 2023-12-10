@@ -1714,6 +1714,114 @@ typedef struct wire_cst_concatenate_with_twin_sync_sse {
   struct wire_cst_list_prim_u_8 *a;
 } wire_cst_concatenate_with_twin_sync_sse;
 
+typedef struct wire_cst_CustomNestedError2TwinNormal_CustomNested2 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError2TwinNormal_CustomNested2;
+
+typedef struct wire_cst_CustomNestedError2TwinNormal_CustomNested2Number {
+  uint32_t field0;
+} wire_cst_CustomNestedError2TwinNormal_CustomNested2Number;
+
+typedef union CustomNestedError2TwinNormalKind {
+  struct wire_cst_CustomNestedError2TwinNormal_CustomNested2 *CustomNested2;
+  struct wire_cst_CustomNestedError2TwinNormal_CustomNested2Number *CustomNested2Number;
+} CustomNestedError2TwinNormalKind;
+
+typedef struct wire_cst_custom_nested_error_2_twin_normal {
+  int32_t tag;
+  union CustomNestedError2TwinNormalKind *kind;
+} wire_cst_custom_nested_error_2_twin_normal;
+
+typedef struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError2TwinRustAsync_CustomNested2;
+
+typedef struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number {
+  uint32_t field0;
+} wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number;
+
+typedef union CustomNestedError2TwinRustAsyncKind {
+  struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 *CustomNested2;
+  struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number *CustomNested2Number;
+} CustomNestedError2TwinRustAsyncKind;
+
+typedef struct wire_cst_custom_nested_error_2_twin_rust_async {
+  int32_t tag;
+  union CustomNestedError2TwinRustAsyncKind *kind;
+} wire_cst_custom_nested_error_2_twin_rust_async;
+
+typedef struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2;
+
+typedef struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number {
+  uint32_t field0;
+} wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number;
+
+typedef union CustomNestedError2TwinRustAsyncSseKind {
+  struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 *CustomNested2;
+  struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number *CustomNested2Number;
+} CustomNestedError2TwinRustAsyncSseKind;
+
+typedef struct wire_cst_custom_nested_error_2_twin_rust_async_sse {
+  int32_t tag;
+  union CustomNestedError2TwinRustAsyncSseKind *kind;
+} wire_cst_custom_nested_error_2_twin_rust_async_sse;
+
+typedef struct wire_cst_CustomNestedError2TwinSse_CustomNested2 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError2TwinSse_CustomNested2;
+
+typedef struct wire_cst_CustomNestedError2TwinSse_CustomNested2Number {
+  uint32_t field0;
+} wire_cst_CustomNestedError2TwinSse_CustomNested2Number;
+
+typedef union CustomNestedError2TwinSseKind {
+  struct wire_cst_CustomNestedError2TwinSse_CustomNested2 *CustomNested2;
+  struct wire_cst_CustomNestedError2TwinSse_CustomNested2Number *CustomNested2Number;
+} CustomNestedError2TwinSseKind;
+
+typedef struct wire_cst_custom_nested_error_2_twin_sse {
+  int32_t tag;
+  union CustomNestedError2TwinSseKind *kind;
+} wire_cst_custom_nested_error_2_twin_sse;
+
+typedef struct wire_cst_CustomNestedError2TwinSync_CustomNested2 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError2TwinSync_CustomNested2;
+
+typedef struct wire_cst_CustomNestedError2TwinSync_CustomNested2Number {
+  uint32_t field0;
+} wire_cst_CustomNestedError2TwinSync_CustomNested2Number;
+
+typedef union CustomNestedError2TwinSyncKind {
+  struct wire_cst_CustomNestedError2TwinSync_CustomNested2 *CustomNested2;
+  struct wire_cst_CustomNestedError2TwinSync_CustomNested2Number *CustomNested2Number;
+} CustomNestedError2TwinSyncKind;
+
+typedef struct wire_cst_custom_nested_error_2_twin_sync {
+  int32_t tag;
+  union CustomNestedError2TwinSyncKind *kind;
+} wire_cst_custom_nested_error_2_twin_sync;
+
+typedef struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError2TwinSyncSse_CustomNested2;
+
+typedef struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number {
+  uint32_t field0;
+} wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number;
+
+typedef union CustomNestedError2TwinSyncSseKind {
+  struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 *CustomNested2;
+  struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number *CustomNested2Number;
+} CustomNestedError2TwinSyncSseKind;
+
+typedef struct wire_cst_custom_nested_error_2_twin_sync_sse {
+  int32_t tag;
+  union CustomNestedError2TwinSyncSseKind *kind;
+} wire_cst_custom_nested_error_2_twin_sync_sse;
+
 typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three {
   struct wire_cst_list_prim_u_8 *field0;
 } wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three;
@@ -1875,6 +1983,93 @@ typedef struct wire_cst_dart_opaque_nested_twin_sync_sse {
   const void *first;
   const void *second;
 } wire_cst_dart_opaque_nested_twin_sync_sse;
+
+typedef struct wire_cst_list_element_twin_normal {
+  struct wire_cst_element_twin_normal *ptr;
+  int32_t len;
+} wire_cst_list_element_twin_normal;
+
+typedef struct wire_cst_element_twin_normal {
+  struct wire_cst_list_prim_u_8 *tag;
+  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_attribute_twin_normal *attributes;
+  struct wire_cst_list_element_twin_normal *children;
+} wire_cst_element_twin_normal;
+
+typedef struct wire_cst_list_element_twin_rust_async {
+  struct wire_cst_element_twin_rust_async *ptr;
+  int32_t len;
+} wire_cst_list_element_twin_rust_async;
+
+typedef struct wire_cst_element_twin_rust_async {
+  struct wire_cst_list_prim_u_8 *tag;
+  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_attribute_twin_rust_async *attributes;
+  struct wire_cst_list_element_twin_rust_async *children;
+} wire_cst_element_twin_rust_async;
+
+typedef struct wire_cst_list_attribute_twin_rust_async_sse {
+  struct wire_cst_attribute_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_attribute_twin_rust_async_sse;
+
+typedef struct wire_cst_list_element_twin_rust_async_sse {
+  struct wire_cst_element_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_element_twin_rust_async_sse;
+
+typedef struct wire_cst_element_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *tag;
+  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_attribute_twin_rust_async_sse *attributes;
+  struct wire_cst_list_element_twin_rust_async_sse *children;
+} wire_cst_element_twin_rust_async_sse;
+
+typedef struct wire_cst_list_attribute_twin_sse {
+  struct wire_cst_attribute_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_attribute_twin_sse;
+
+typedef struct wire_cst_list_element_twin_sse {
+  struct wire_cst_element_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_element_twin_sse;
+
+typedef struct wire_cst_element_twin_sse {
+  struct wire_cst_list_prim_u_8 *tag;
+  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_attribute_twin_sse *attributes;
+  struct wire_cst_list_element_twin_sse *children;
+} wire_cst_element_twin_sse;
+
+typedef struct wire_cst_list_element_twin_sync {
+  struct wire_cst_element_twin_sync *ptr;
+  int32_t len;
+} wire_cst_list_element_twin_sync;
+
+typedef struct wire_cst_element_twin_sync {
+  struct wire_cst_list_prim_u_8 *tag;
+  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_attribute_twin_sync *attributes;
+  struct wire_cst_list_element_twin_sync *children;
+} wire_cst_element_twin_sync;
+
+typedef struct wire_cst_list_attribute_twin_sync_sse {
+  struct wire_cst_attribute_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_attribute_twin_sync_sse;
+
+typedef struct wire_cst_list_element_twin_sync_sse {
+  struct wire_cst_element_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_element_twin_sync_sse;
+
+typedef struct wire_cst_element_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *tag;
+  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_attribute_twin_sync_sse *attributes;
+  struct wire_cst_list_element_twin_sync_sse *children;
+} wire_cst_element_twin_sync_sse;
 
 typedef struct wire_cst_empty_twin_rust_async_sse {
 
@@ -2228,11 +2423,6 @@ typedef struct wire_cst_event_twin_sse {
   struct wire_cst_list_prim_u_8 *payload;
 } wire_cst_event_twin_sse;
 
-typedef struct wire_cst_list_attribute_twin_rust_async_sse {
-  struct wire_cst_attribute_twin_rust_async_sse *ptr;
-  int32_t len;
-} wire_cst_list_attribute_twin_rust_async_sse;
-
 typedef struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse {
   struct wire_cst_attribute_twin_rust_async_sse **ptr;
   int32_t len;
@@ -2259,11 +2449,6 @@ typedef struct wire_cst_exotic_optionals_twin_rust_async_sse {
   struct wire_cst_new_type_int_twin_rust_async_sse *newtypeint;
 } wire_cst_exotic_optionals_twin_rust_async_sse;
 
-typedef struct wire_cst_list_attribute_twin_sse {
-  struct wire_cst_attribute_twin_sse *ptr;
-  int32_t len;
-} wire_cst_list_attribute_twin_sse;
-
 typedef struct wire_cst_list_opt_box_autoadd_attribute_twin_sse {
   struct wire_cst_attribute_twin_sse **ptr;
   int32_t len;
@@ -2289,11 +2474,6 @@ typedef struct wire_cst_exotic_optionals_twin_sse {
   struct wire_cst_list_opt_box_autoadd_attribute_twin_sse *nullable_attributes;
   struct wire_cst_new_type_int_twin_sse *newtypeint;
 } wire_cst_exotic_optionals_twin_sse;
-
-typedef struct wire_cst_list_attribute_twin_sync_sse {
-  struct wire_cst_attribute_twin_sync_sse *ptr;
-  int32_t len;
-} wire_cst_list_attribute_twin_sync_sse;
 
 typedef struct wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse {
   struct wire_cst_attribute_twin_sync_sse **ptr;
@@ -2458,6 +2638,23 @@ typedef struct wire_cst_kitchen_sink_twin_sync_sse {
   int32_t tag;
   union KitchenSinkTwinSyncSseKind *kind;
 } wire_cst_kitchen_sink_twin_sync_sse;
+
+typedef struct wire_cst_raw_string_mirrored {
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_raw_string_mirrored;
+
+typedef struct wire_cst_nested_raw_string_mirrored {
+  struct wire_cst_raw_string_mirrored raw;
+} wire_cst_nested_raw_string_mirrored;
+
+typedef struct wire_cst_list_nested_raw_string_mirrored {
+  struct wire_cst_nested_raw_string_mirrored *ptr;
+  int32_t len;
+} wire_cst_list_nested_raw_string_mirrored;
+
+typedef struct wire_cst_list_of_nested_raw_string_mirrored {
+  struct wire_cst_list_nested_raw_string_mirrored *raw;
+} wire_cst_list_of_nested_raw_string_mirrored;
 
 typedef struct wire_cst_SpeedTwinRustAsyncSse_Unknown {
 
@@ -2903,6 +3100,174 @@ typedef struct wire_cst_blob_twin_sync_sse {
   struct wire_cst_list_prim_u_8 *field0;
 } wire_cst_blob_twin_sync_sse;
 
+typedef struct wire_cst_list_Chrono_Local {
+  int64_t *ptr;
+  int32_t len;
+} wire_cst_list_Chrono_Local;
+
+typedef struct wire_cst_list_application_settings {
+  struct wire_cst_application_settings *ptr;
+  int32_t len;
+} wire_cst_list_application_settings;
+
+typedef struct wire_cst_list_enum_opaque_twin_normal {
+  struct wire_cst_enum_opaque_twin_normal *ptr;
+  int32_t len;
+} wire_cst_list_enum_opaque_twin_normal;
+
+typedef struct wire_cst_list_enum_opaque_twin_rust_async {
+  struct wire_cst_enum_opaque_twin_rust_async *ptr;
+  int32_t len;
+} wire_cst_list_enum_opaque_twin_rust_async;
+
+typedef struct wire_cst_list_enum_opaque_twin_rust_async_sse {
+  struct wire_cst_enum_opaque_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_enum_opaque_twin_rust_async_sse;
+
+typedef struct wire_cst_list_enum_opaque_twin_sse {
+  struct wire_cst_enum_opaque_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_enum_opaque_twin_sse;
+
+typedef struct wire_cst_list_enum_opaque_twin_sync {
+  struct wire_cst_enum_opaque_twin_sync *ptr;
+  int32_t len;
+} wire_cst_list_enum_opaque_twin_sync;
+
+typedef struct wire_cst_list_enum_opaque_twin_sync_sse {
+  struct wire_cst_enum_opaque_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_enum_opaque_twin_sync_sse;
+
+typedef struct wire_cst_list_my_enum {
+  int32_t *ptr;
+  int32_t len;
+} wire_cst_list_my_enum;
+
+typedef struct wire_cst_point_twin_normal {
+  float x;
+  float y;
+} wire_cst_point_twin_normal;
+
+typedef struct wire_cst_list_point_twin_normal {
+  struct wire_cst_point_twin_normal *ptr;
+  int32_t len;
+} wire_cst_list_point_twin_normal;
+
+typedef struct wire_cst_point_twin_rust_async {
+  float x;
+  float y;
+} wire_cst_point_twin_rust_async;
+
+typedef struct wire_cst_list_point_twin_rust_async {
+  struct wire_cst_point_twin_rust_async *ptr;
+  int32_t len;
+} wire_cst_list_point_twin_rust_async;
+
+typedef struct wire_cst_point_twin_rust_async_sse {
+  float x;
+  float y;
+} wire_cst_point_twin_rust_async_sse;
+
+typedef struct wire_cst_list_point_twin_rust_async_sse {
+  struct wire_cst_point_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_point_twin_rust_async_sse;
+
+typedef struct wire_cst_point_twin_sse {
+  float x;
+  float y;
+} wire_cst_point_twin_sse;
+
+typedef struct wire_cst_list_point_twin_sse {
+  struct wire_cst_point_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_point_twin_sse;
+
+typedef struct wire_cst_point_twin_sync {
+  float x;
+  float y;
+} wire_cst_point_twin_sync;
+
+typedef struct wire_cst_list_point_twin_sync {
+  struct wire_cst_point_twin_sync *ptr;
+  int32_t len;
+} wire_cst_list_point_twin_sync;
+
+typedef struct wire_cst_point_twin_sync_sse {
+  float x;
+  float y;
+} wire_cst_point_twin_sync_sse;
+
+typedef struct wire_cst_list_point_twin_sync_sse {
+  struct wire_cst_point_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_point_twin_sync_sse;
+
+typedef struct wire_cst_RawStringEnumMirrored_Raw {
+  struct wire_cst_raw_string_mirrored *field0;
+} wire_cst_RawStringEnumMirrored_Raw;
+
+typedef struct wire_cst_RawStringEnumMirrored_Nested {
+  struct wire_cst_nested_raw_string_mirrored *field0;
+} wire_cst_RawStringEnumMirrored_Nested;
+
+typedef struct wire_cst_RawStringEnumMirrored_ListOfNested {
+  struct wire_cst_list_of_nested_raw_string_mirrored *field0;
+} wire_cst_RawStringEnumMirrored_ListOfNested;
+
+typedef union RawStringEnumMirroredKind {
+  struct wire_cst_RawStringEnumMirrored_Raw *Raw;
+  struct wire_cst_RawStringEnumMirrored_Nested *Nested;
+  struct wire_cst_RawStringEnumMirrored_ListOfNested *ListOfNested;
+} RawStringEnumMirroredKind;
+
+typedef struct wire_cst_raw_string_enum_mirrored {
+  int32_t tag;
+  union RawStringEnumMirroredKind *kind;
+} wire_cst_raw_string_enum_mirrored;
+
+typedef struct wire_cst_list_raw_string_enum_mirrored {
+  struct wire_cst_raw_string_enum_mirrored *ptr;
+  int32_t len;
+} wire_cst_list_raw_string_enum_mirrored;
+
+typedef struct wire_cst_list_raw_string_mirrored {
+  struct wire_cst_raw_string_mirrored *ptr;
+  int32_t len;
+} wire_cst_list_raw_string_mirrored;
+
+typedef struct wire_cst_list_sum_with_twin_normal {
+  struct wire_cst_sum_with_twin_normal *ptr;
+  int32_t len;
+} wire_cst_list_sum_with_twin_normal;
+
+typedef struct wire_cst_list_sum_with_twin_rust_async {
+  struct wire_cst_sum_with_twin_rust_async *ptr;
+  int32_t len;
+} wire_cst_list_sum_with_twin_rust_async;
+
+typedef struct wire_cst_list_sum_with_twin_rust_async_sse {
+  struct wire_cst_sum_with_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_sum_with_twin_rust_async_sse;
+
+typedef struct wire_cst_list_sum_with_twin_sse {
+  struct wire_cst_sum_with_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_sum_with_twin_sse;
+
+typedef struct wire_cst_list_sum_with_twin_sync {
+  struct wire_cst_sum_with_twin_sync *ptr;
+  int32_t len;
+} wire_cst_list_sum_with_twin_sync;
+
+typedef struct wire_cst_list_sum_with_twin_sync_sse {
+  struct wire_cst_sum_with_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_sum_with_twin_sync_sse;
+
 typedef struct wire_cst_list_test_id_twin_rust_async_sse {
   struct wire_cst_test_id_twin_rust_async_sse *ptr;
   int32_t len;
@@ -2933,6 +3298,283 @@ typedef struct wire_cst_list_weekdays_twin_sync_sse {
   int32_t len;
 } wire_cst_list_weekdays_twin_sync_sse;
 
+typedef struct wire_cst_ApplicationMessage_DisplayMessage {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_ApplicationMessage_DisplayMessage;
+
+typedef struct wire_cst_ApplicationMessage_RenderPixel {
+  int32_t x;
+  int32_t y;
+} wire_cst_ApplicationMessage_RenderPixel;
+
+typedef struct wire_cst_ApplicationMessage_Exit {
+
+} wire_cst_ApplicationMessage_Exit;
+
+typedef union ApplicationMessageKind {
+  struct wire_cst_ApplicationMessage_DisplayMessage *DisplayMessage;
+  struct wire_cst_ApplicationMessage_RenderPixel *RenderPixel;
+  struct wire_cst_ApplicationMessage_Exit *Exit;
+} ApplicationMessageKind;
+
+typedef struct wire_cst_CustomEnumErrorTwinNormal_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinNormal_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinNormal_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinNormal_Two;
+
+typedef union CustomEnumErrorTwinNormalKind {
+  struct wire_cst_CustomEnumErrorTwinNormal_One *One;
+  struct wire_cst_CustomEnumErrorTwinNormal_Two *Two;
+} CustomEnumErrorTwinNormalKind;
+
+typedef struct wire_cst_CustomEnumErrorTwinRustAsync_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinRustAsync_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinRustAsync_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinRustAsync_Two;
+
+typedef union CustomEnumErrorTwinRustAsyncKind {
+  struct wire_cst_CustomEnumErrorTwinRustAsync_One *One;
+  struct wire_cst_CustomEnumErrorTwinRustAsync_Two *Two;
+} CustomEnumErrorTwinRustAsyncKind;
+
+typedef struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinRustAsyncSse_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinRustAsyncSse_Two;
+
+typedef union CustomEnumErrorTwinRustAsyncSseKind {
+  struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One *One;
+  struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two *Two;
+} CustomEnumErrorTwinRustAsyncSseKind;
+
+typedef struct wire_cst_CustomEnumErrorTwinSse_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSse_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinSse_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSse_Two;
+
+typedef union CustomEnumErrorTwinSseKind {
+  struct wire_cst_CustomEnumErrorTwinSse_One *One;
+  struct wire_cst_CustomEnumErrorTwinSse_Two *Two;
+} CustomEnumErrorTwinSseKind;
+
+typedef struct wire_cst_CustomEnumErrorTwinSync_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSync_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinSync_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSync_Two;
+
+typedef union CustomEnumErrorTwinSyncKind {
+  struct wire_cst_CustomEnumErrorTwinSync_One *One;
+  struct wire_cst_CustomEnumErrorTwinSync_Two *Two;
+} CustomEnumErrorTwinSyncKind;
+
+typedef struct wire_cst_CustomEnumErrorTwinSyncSse_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSyncSse_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinSyncSse_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSyncSse_Two;
+
+typedef union CustomEnumErrorTwinSyncSseKind {
+  struct wire_cst_CustomEnumErrorTwinSyncSse_One *One;
+  struct wire_cst_CustomEnumErrorTwinSyncSse_Two *Two;
+} CustomEnumErrorTwinSyncSseKind;
+
+typedef struct wire_cst_CustomErrorTwinNormal_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinNormal_Error0;
+
+typedef struct wire_cst_CustomErrorTwinNormal_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinNormal_Error1;
+
+typedef union CustomErrorTwinNormalKind {
+  struct wire_cst_CustomErrorTwinNormal_Error0 *Error0;
+  struct wire_cst_CustomErrorTwinNormal_Error1 *Error1;
+} CustomErrorTwinNormalKind;
+
+typedef struct wire_cst_CustomErrorTwinRustAsync_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinRustAsync_Error0;
+
+typedef struct wire_cst_CustomErrorTwinRustAsync_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinRustAsync_Error1;
+
+typedef union CustomErrorTwinRustAsyncKind {
+  struct wire_cst_CustomErrorTwinRustAsync_Error0 *Error0;
+  struct wire_cst_CustomErrorTwinRustAsync_Error1 *Error1;
+} CustomErrorTwinRustAsyncKind;
+
+typedef struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinRustAsyncSse_Error0;
+
+typedef struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinRustAsyncSse_Error1;
+
+typedef union CustomErrorTwinRustAsyncSseKind {
+  struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 *Error0;
+  struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 *Error1;
+} CustomErrorTwinRustAsyncSseKind;
+
+typedef struct wire_cst_CustomErrorTwinSse_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSse_Error0;
+
+typedef struct wire_cst_CustomErrorTwinSse_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSse_Error1;
+
+typedef union CustomErrorTwinSseKind {
+  struct wire_cst_CustomErrorTwinSse_Error0 *Error0;
+  struct wire_cst_CustomErrorTwinSse_Error1 *Error1;
+} CustomErrorTwinSseKind;
+
+typedef struct wire_cst_CustomErrorTwinSync_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSync_Error0;
+
+typedef struct wire_cst_CustomErrorTwinSync_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSync_Error1;
+
+typedef union CustomErrorTwinSyncKind {
+  struct wire_cst_CustomErrorTwinSync_Error0 *Error0;
+  struct wire_cst_CustomErrorTwinSync_Error1 *Error1;
+} CustomErrorTwinSyncKind;
+
+typedef struct wire_cst_CustomErrorTwinSyncSse_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSyncSse_Error0;
+
+typedef struct wire_cst_CustomErrorTwinSyncSse_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSyncSse_Error1;
+
+typedef union CustomErrorTwinSyncSseKind {
+  struct wire_cst_CustomErrorTwinSyncSse_Error0 *Error0;
+  struct wire_cst_CustomErrorTwinSyncSse_Error1 *Error1;
+} CustomErrorTwinSyncSseKind;
+
+typedef struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinNormal_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinNormal_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_normal *field0;
+} wire_cst_CustomNestedError1TwinNormal_ErrorNested;
+
+typedef union CustomNestedError1TwinNormalKind {
+  struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 *CustomNested1;
+  struct wire_cst_CustomNestedError1TwinNormal_ErrorNested *ErrorNested;
+} CustomNestedError1TwinNormalKind;
+
+typedef struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinRustAsync_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinRustAsync_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_rust_async *field0;
+} wire_cst_CustomNestedError1TwinRustAsync_ErrorNested;
+
+typedef union CustomNestedError1TwinRustAsyncKind {
+  struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 *CustomNested1;
+  struct wire_cst_CustomNestedError1TwinRustAsync_ErrorNested *ErrorNested;
+} CustomNestedError1TwinRustAsyncKind;
+
+typedef struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_rust_async_sse *field0;
+} wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested;
+
+typedef union CustomNestedError1TwinRustAsyncSseKind {
+  struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 *CustomNested1;
+  struct wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested *ErrorNested;
+} CustomNestedError1TwinRustAsyncSseKind;
+
+typedef struct wire_cst_CustomNestedError1TwinSse_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinSse_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinSse_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_sse *field0;
+} wire_cst_CustomNestedError1TwinSse_ErrorNested;
+
+typedef union CustomNestedError1TwinSseKind {
+  struct wire_cst_CustomNestedError1TwinSse_CustomNested1 *CustomNested1;
+  struct wire_cst_CustomNestedError1TwinSse_ErrorNested *ErrorNested;
+} CustomNestedError1TwinSseKind;
+
+typedef struct wire_cst_CustomNestedError1TwinSync_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinSync_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinSync_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_sync *field0;
+} wire_cst_CustomNestedError1TwinSync_ErrorNested;
+
+typedef union CustomNestedError1TwinSyncKind {
+  struct wire_cst_CustomNestedError1TwinSync_CustomNested1 *CustomNested1;
+  struct wire_cst_CustomNestedError1TwinSync_ErrorNested *ErrorNested;
+} CustomNestedError1TwinSyncKind;
+
+typedef struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinSyncSse_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_sync_sse *field0;
+} wire_cst_CustomNestedError1TwinSyncSse_ErrorNested;
+
+typedef union CustomNestedError1TwinSyncSseKind {
+  struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 *CustomNested1;
+  struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested *ErrorNested;
+} CustomNestedError1TwinSyncSseKind;
+
 void benchmark_raw_void_sync(void);
 
 struct benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(int32_t len);
@@ -2942,6 +3584,11 @@ int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
 void benchmark_raw_output_bytes(MessagePort port, int32_t message_id, int32_t size);
 
 void frb_initialize_rust(MessagePort dart_opaque_drop_port, MessagePort dart_fn_invoke_port);
+
+void dart_fn_deliver_output(int32_t call_id,
+                            uint8_t *ptr_,
+                            int32_t rust_vec_len_,
+                            int32_t data_len_);
 
 void wire_boxed_blob_twin_normal(int64_t port_, struct wire_cst_list_prim_u_8 *blob);
 
@@ -7920,6 +8567,10 @@ void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOp
 
 struct wire_cst_application_env *cst_new_box_application_env(void);
 
+int64_t *cst_new_box_autoadd_Chrono_Duration(int64_t value);
+
+int64_t *cst_new_box_autoadd_Chrono_Naive(int64_t value);
+
 int64_t *cst_new_box_autoadd_Chrono_Utc(int64_t value);
 
 const void **cst_new_box_autoadd_DartOpaque(const void *value);
@@ -8004,6 +8655,18 @@ struct wire_cst_concatenate_with_twin_sync *cst_new_box_autoadd_concatenate_with
 
 struct wire_cst_concatenate_with_twin_sync_sse *cst_new_box_autoadd_concatenate_with_twin_sync_sse(void);
 
+struct wire_cst_custom_nested_error_2_twin_normal *cst_new_box_autoadd_custom_nested_error_2_twin_normal(void);
+
+struct wire_cst_custom_nested_error_2_twin_rust_async *cst_new_box_autoadd_custom_nested_error_2_twin_rust_async(void);
+
+struct wire_cst_custom_nested_error_2_twin_rust_async_sse *cst_new_box_autoadd_custom_nested_error_2_twin_rust_async_sse(void);
+
+struct wire_cst_custom_nested_error_2_twin_sse *cst_new_box_autoadd_custom_nested_error_2_twin_sse(void);
+
+struct wire_cst_custom_nested_error_2_twin_sync *cst_new_box_autoadd_custom_nested_error_2_twin_sync(void);
+
+struct wire_cst_custom_nested_error_2_twin_sync_sse *cst_new_box_autoadd_custom_nested_error_2_twin_sync_sse(void);
+
 struct wire_cst_custom_nested_error_inner_twin_normal *cst_new_box_autoadd_custom_nested_error_inner_twin_normal(void);
 
 struct wire_cst_custom_nested_error_inner_twin_rust_async *cst_new_box_autoadd_custom_nested_error_inner_twin_rust_async(void);
@@ -8075,6 +8738,18 @@ struct wire_cst_dart_opaque_nested_twin_sse *cst_new_box_autoadd_dart_opaque_nes
 struct wire_cst_dart_opaque_nested_twin_sync *cst_new_box_autoadd_dart_opaque_nested_twin_sync(void);
 
 struct wire_cst_dart_opaque_nested_twin_sync_sse *cst_new_box_autoadd_dart_opaque_nested_twin_sync_sse(void);
+
+struct wire_cst_element_twin_normal *cst_new_box_autoadd_element_twin_normal(void);
+
+struct wire_cst_element_twin_rust_async *cst_new_box_autoadd_element_twin_rust_async(void);
+
+struct wire_cst_element_twin_rust_async_sse *cst_new_box_autoadd_element_twin_rust_async_sse(void);
+
+struct wire_cst_element_twin_sse *cst_new_box_autoadd_element_twin_sse(void);
+
+struct wire_cst_element_twin_sync *cst_new_box_autoadd_element_twin_sync(void);
+
+struct wire_cst_element_twin_sync_sse *cst_new_box_autoadd_element_twin_sync_sse(void);
 
 struct wire_cst_empty_twin_normal *cst_new_box_autoadd_empty_twin_normal(void);
 
@@ -8216,6 +8891,8 @@ struct wire_cst_kitchen_sink_twin_sync *cst_new_box_autoadd_kitchen_sink_twin_sy
 
 struct wire_cst_kitchen_sink_twin_sync_sse *cst_new_box_autoadd_kitchen_sink_twin_sync_sse(void);
 
+struct wire_cst_list_of_nested_raw_string_mirrored *cst_new_box_autoadd_list_of_nested_raw_string_mirrored(void);
+
 struct wire_cst_macro_struct *cst_new_box_autoadd_macro_struct(void);
 
 struct wire_cst_measure_twin_normal *cst_new_box_autoadd_measure_twin_normal(void);
@@ -8270,6 +8947,8 @@ struct wire_cst_my_tree_node_twin_sync *cst_new_box_autoadd_my_tree_node_twin_sy
 
 struct wire_cst_my_tree_node_twin_sync_sse *cst_new_box_autoadd_my_tree_node_twin_sync_sse(void);
 
+struct wire_cst_nested_raw_string_mirrored *cst_new_box_autoadd_nested_raw_string_mirrored(void);
+
 struct wire_cst_new_type_int_twin_normal *cst_new_box_autoadd_new_type_int_twin_normal(void);
 
 struct wire_cst_new_type_int_twin_rust_async *cst_new_box_autoadd_new_type_int_twin_rust_async(void);
@@ -8319,6 +8998,8 @@ struct wire_cst_opt_vecs_twin_sse *cst_new_box_autoadd_opt_vecs_twin_sse(void);
 struct wire_cst_opt_vecs_twin_sync *cst_new_box_autoadd_opt_vecs_twin_sync(void);
 
 struct wire_cst_opt_vecs_twin_sync_sse *cst_new_box_autoadd_opt_vecs_twin_sync_sse(void);
+
+struct wire_cst_raw_string_mirrored *cst_new_box_autoadd_raw_string_mirrored(void);
 
 struct wire_cst_record_string_i_32 *cst_new_box_autoadd_record_string_i_32(void);
 
@@ -8516,6 +9197,18 @@ struct wire_cst_exotic_optionals_twin_sync_sse *cst_new_box_exotic_optionals_twi
 
 double *cst_new_box_f_64(double value);
 
+struct wire_cst_feed_id_twin_normal *cst_new_box_feed_id_twin_normal(void);
+
+struct wire_cst_feed_id_twin_rust_async *cst_new_box_feed_id_twin_rust_async(void);
+
+struct wire_cst_feed_id_twin_rust_async_sse *cst_new_box_feed_id_twin_rust_async_sse(void);
+
+struct wire_cst_feed_id_twin_sse *cst_new_box_feed_id_twin_sse(void);
+
+struct wire_cst_feed_id_twin_sync *cst_new_box_feed_id_twin_sync(void);
+
+struct wire_cst_feed_id_twin_sync_sse *cst_new_box_feed_id_twin_sync_sse(void);
+
 int32_t *cst_new_box_i_32(int32_t value);
 
 int64_t *cst_new_box_i_64(int64_t value);
@@ -8564,6 +9257,8 @@ int32_t *cst_new_box_weekdays_twin_sync_sse(int32_t value);
 
 struct wire_cst_list_Chrono_Duration *cst_new_list_Chrono_Duration(int32_t len);
 
+struct wire_cst_list_Chrono_Local *cst_new_list_Chrono_Local(int32_t len);
+
 struct wire_cst_list_Chrono_Naive *cst_new_list_Chrono_Naive(int32_t len);
 
 struct wire_cst_list_DartOpaque *cst_new_list_DartOpaque(int32_t len);
@@ -8573,6 +9268,8 @@ struct wire_cst_list_RustOpaque_hide_data *cst_new_list_RustOpaque_hide_data(int
 struct wire_cst_list_String *cst_new_list_String(int32_t len);
 
 struct wire_cst_list_application_env_var *cst_new_list_application_env_var(int32_t len);
+
+struct wire_cst_list_application_settings *cst_new_list_application_settings(int32_t len);
 
 struct wire_cst_list_attribute_twin_normal *cst_new_list_attribute_twin_normal(int32_t len);
 
@@ -8588,6 +9285,32 @@ struct wire_cst_list_attribute_twin_sync_sse *cst_new_list_attribute_twin_sync_s
 
 struct wire_cst_list_bool *cst_new_list_bool(int32_t len);
 
+struct wire_cst_list_element_twin_normal *cst_new_list_element_twin_normal(int32_t len);
+
+struct wire_cst_list_element_twin_rust_async *cst_new_list_element_twin_rust_async(int32_t len);
+
+struct wire_cst_list_element_twin_rust_async_sse *cst_new_list_element_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_element_twin_sse *cst_new_list_element_twin_sse(int32_t len);
+
+struct wire_cst_list_element_twin_sync *cst_new_list_element_twin_sync(int32_t len);
+
+struct wire_cst_list_element_twin_sync_sse *cst_new_list_element_twin_sync_sse(int32_t len);
+
+struct wire_cst_list_enum_opaque_twin_normal *cst_new_list_enum_opaque_twin_normal(int32_t len);
+
+struct wire_cst_list_enum_opaque_twin_rust_async *cst_new_list_enum_opaque_twin_rust_async(int32_t len);
+
+struct wire_cst_list_enum_opaque_twin_rust_async_sse *cst_new_list_enum_opaque_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_enum_opaque_twin_sse *cst_new_list_enum_opaque_twin_sse(int32_t len);
+
+struct wire_cst_list_enum_opaque_twin_sync *cst_new_list_enum_opaque_twin_sync(int32_t len);
+
+struct wire_cst_list_enum_opaque_twin_sync_sse *cst_new_list_enum_opaque_twin_sync_sse(int32_t len);
+
+struct wire_cst_list_my_enum *cst_new_list_my_enum(int32_t len);
+
 struct wire_cst_list_my_size *cst_new_list_my_size(int32_t len);
 
 struct wire_cst_list_my_tree_node_twin_normal *cst_new_list_my_tree_node_twin_normal(int32_t len);
@@ -8601,6 +9324,8 @@ struct wire_cst_list_my_tree_node_twin_sse *cst_new_list_my_tree_node_twin_sse(i
 struct wire_cst_list_my_tree_node_twin_sync *cst_new_list_my_tree_node_twin_sync(int32_t len);
 
 struct wire_cst_list_my_tree_node_twin_sync_sse *cst_new_list_my_tree_node_twin_sync_sse(int32_t len);
+
+struct wire_cst_list_nested_raw_string_mirrored *cst_new_list_nested_raw_string_mirrored(int32_t len);
 
 struct wire_cst_list_opt_String *cst_new_list_opt_String(int32_t len);
 
@@ -8632,6 +9357,18 @@ struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse *cst_new_list_opt_bo
 
 struct wire_cst_list_opt_list_prim_i_32 *cst_new_list_opt_list_prim_i_32(int32_t len);
 
+struct wire_cst_list_point_twin_normal *cst_new_list_point_twin_normal(int32_t len);
+
+struct wire_cst_list_point_twin_rust_async *cst_new_list_point_twin_rust_async(int32_t len);
+
+struct wire_cst_list_point_twin_rust_async_sse *cst_new_list_point_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_point_twin_sse *cst_new_list_point_twin_sse(int32_t len);
+
+struct wire_cst_list_point_twin_sync *cst_new_list_point_twin_sync(int32_t len);
+
+struct wire_cst_list_point_twin_sync_sse *cst_new_list_point_twin_sync_sse(int32_t len);
+
 struct wire_cst_list_prim_f_32 *cst_new_list_prim_f_32(int32_t len);
 
 struct wire_cst_list_prim_f_64 *cst_new_list_prim_f_64(int32_t len);
@@ -8652,7 +9389,23 @@ struct wire_cst_list_prim_u_64 *cst_new_list_prim_u_64(int32_t len);
 
 struct wire_cst_list_prim_u_8 *cst_new_list_prim_u_8(int32_t len);
 
+struct wire_cst_list_raw_string_enum_mirrored *cst_new_list_raw_string_enum_mirrored(int32_t len);
+
+struct wire_cst_list_raw_string_mirrored *cst_new_list_raw_string_mirrored(int32_t len);
+
 struct wire_cst_list_record_string_i_32 *cst_new_list_record_string_i_32(int32_t len);
+
+struct wire_cst_list_sum_with_twin_normal *cst_new_list_sum_with_twin_normal(int32_t len);
+
+struct wire_cst_list_sum_with_twin_rust_async *cst_new_list_sum_with_twin_rust_async(int32_t len);
+
+struct wire_cst_list_sum_with_twin_rust_async_sse *cst_new_list_sum_with_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_sum_with_twin_sse *cst_new_list_sum_with_twin_sse(int32_t len);
+
+struct wire_cst_list_sum_with_twin_sync *cst_new_list_sum_with_twin_sync(int32_t len);
+
+struct wire_cst_list_sum_with_twin_sync_sse *cst_new_list_sum_with_twin_sync_sse(int32_t len);
 
 struct wire_cst_list_test_id_twin_normal *cst_new_list_test_id_twin_normal(int32_t len);
 
@@ -8725,6 +9478,106 @@ union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_B(void);
 union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_C(void);
 
 union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_JustInt(void);
+
+union ApplicationMessageKind *cst_inflate_ApplicationMessage_DisplayMessage(void);
+
+union ApplicationMessageKind *cst_inflate_ApplicationMessage_RenderPixel(void);
+
+union CustomEnumErrorTwinNormalKind *cst_inflate_CustomEnumErrorTwinNormal_One(void);
+
+union CustomEnumErrorTwinNormalKind *cst_inflate_CustomEnumErrorTwinNormal_Two(void);
+
+union CustomEnumErrorTwinRustAsyncKind *cst_inflate_CustomEnumErrorTwinRustAsync_One(void);
+
+union CustomEnumErrorTwinRustAsyncKind *cst_inflate_CustomEnumErrorTwinRustAsync_Two(void);
+
+union CustomEnumErrorTwinRustAsyncSseKind *cst_inflate_CustomEnumErrorTwinRustAsyncSse_One(void);
+
+union CustomEnumErrorTwinRustAsyncSseKind *cst_inflate_CustomEnumErrorTwinRustAsyncSse_Two(void);
+
+union CustomEnumErrorTwinSseKind *cst_inflate_CustomEnumErrorTwinSse_One(void);
+
+union CustomEnumErrorTwinSseKind *cst_inflate_CustomEnumErrorTwinSse_Two(void);
+
+union CustomEnumErrorTwinSyncKind *cst_inflate_CustomEnumErrorTwinSync_One(void);
+
+union CustomEnumErrorTwinSyncKind *cst_inflate_CustomEnumErrorTwinSync_Two(void);
+
+union CustomEnumErrorTwinSyncSseKind *cst_inflate_CustomEnumErrorTwinSyncSse_One(void);
+
+union CustomEnumErrorTwinSyncSseKind *cst_inflate_CustomEnumErrorTwinSyncSse_Two(void);
+
+union CustomErrorTwinNormalKind *cst_inflate_CustomErrorTwinNormal_Error0(void);
+
+union CustomErrorTwinNormalKind *cst_inflate_CustomErrorTwinNormal_Error1(void);
+
+union CustomErrorTwinRustAsyncKind *cst_inflate_CustomErrorTwinRustAsync_Error0(void);
+
+union CustomErrorTwinRustAsyncKind *cst_inflate_CustomErrorTwinRustAsync_Error1(void);
+
+union CustomErrorTwinRustAsyncSseKind *cst_inflate_CustomErrorTwinRustAsyncSse_Error0(void);
+
+union CustomErrorTwinRustAsyncSseKind *cst_inflate_CustomErrorTwinRustAsyncSse_Error1(void);
+
+union CustomErrorTwinSseKind *cst_inflate_CustomErrorTwinSse_Error0(void);
+
+union CustomErrorTwinSseKind *cst_inflate_CustomErrorTwinSse_Error1(void);
+
+union CustomErrorTwinSyncKind *cst_inflate_CustomErrorTwinSync_Error0(void);
+
+union CustomErrorTwinSyncKind *cst_inflate_CustomErrorTwinSync_Error1(void);
+
+union CustomErrorTwinSyncSseKind *cst_inflate_CustomErrorTwinSyncSse_Error0(void);
+
+union CustomErrorTwinSyncSseKind *cst_inflate_CustomErrorTwinSyncSse_Error1(void);
+
+union CustomNestedError1TwinNormalKind *cst_inflate_CustomNestedError1TwinNormal_CustomNested1(void);
+
+union CustomNestedError1TwinNormalKind *cst_inflate_CustomNestedError1TwinNormal_ErrorNested(void);
+
+union CustomNestedError1TwinRustAsyncKind *cst_inflate_CustomNestedError1TwinRustAsync_CustomNested1(void);
+
+union CustomNestedError1TwinRustAsyncKind *cst_inflate_CustomNestedError1TwinRustAsync_ErrorNested(void);
+
+union CustomNestedError1TwinRustAsyncSseKind *cst_inflate_CustomNestedError1TwinRustAsyncSse_CustomNested1(void);
+
+union CustomNestedError1TwinRustAsyncSseKind *cst_inflate_CustomNestedError1TwinRustAsyncSse_ErrorNested(void);
+
+union CustomNestedError1TwinSseKind *cst_inflate_CustomNestedError1TwinSse_CustomNested1(void);
+
+union CustomNestedError1TwinSseKind *cst_inflate_CustomNestedError1TwinSse_ErrorNested(void);
+
+union CustomNestedError1TwinSyncKind *cst_inflate_CustomNestedError1TwinSync_CustomNested1(void);
+
+union CustomNestedError1TwinSyncKind *cst_inflate_CustomNestedError1TwinSync_ErrorNested(void);
+
+union CustomNestedError1TwinSyncSseKind *cst_inflate_CustomNestedError1TwinSyncSse_CustomNested1(void);
+
+union CustomNestedError1TwinSyncSseKind *cst_inflate_CustomNestedError1TwinSyncSse_ErrorNested(void);
+
+union CustomNestedError2TwinNormalKind *cst_inflate_CustomNestedError2TwinNormal_CustomNested2(void);
+
+union CustomNestedError2TwinNormalKind *cst_inflate_CustomNestedError2TwinNormal_CustomNested2Number(void);
+
+union CustomNestedError2TwinRustAsyncKind *cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2(void);
+
+union CustomNestedError2TwinRustAsyncKind *cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2Number(void);
+
+union CustomNestedError2TwinRustAsyncSseKind *cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2(void);
+
+union CustomNestedError2TwinRustAsyncSseKind *cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2Number(void);
+
+union CustomNestedError2TwinSseKind *cst_inflate_CustomNestedError2TwinSse_CustomNested2(void);
+
+union CustomNestedError2TwinSseKind *cst_inflate_CustomNestedError2TwinSse_CustomNested2Number(void);
+
+union CustomNestedError2TwinSyncKind *cst_inflate_CustomNestedError2TwinSync_CustomNested2(void);
+
+union CustomNestedError2TwinSyncKind *cst_inflate_CustomNestedError2TwinSync_CustomNested2Number(void);
+
+union CustomNestedError2TwinSyncSseKind *cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2(void);
+
+union CustomNestedError2TwinSyncSseKind *cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2Number(void);
 
 union CustomNestedErrorInnerTwinNormalKind *cst_inflate_CustomNestedErrorInnerTwinNormal_Three(void);
 
@@ -9026,6 +9879,12 @@ union MeasureTwinSyncSseKind *cst_inflate_MeasureTwinSyncSse_Speed(void);
 
 union MeasureTwinSyncSseKind *cst_inflate_MeasureTwinSyncSse_Distance(void);
 
+union RawStringEnumMirroredKind *cst_inflate_RawStringEnumMirrored_Raw(void);
+
+union RawStringEnumMirroredKind *cst_inflate_RawStringEnumMirrored_Nested(void);
+
+union RawStringEnumMirroredKind *cst_inflate_RawStringEnumMirrored_ListOfNested(void);
+
 union SpeedTwinNormalKind *cst_inflate_SpeedTwinNormal_GPS(void);
 
 union SpeedTwinRustAsyncKind *cst_inflate_SpeedTwinRustAsync_GPS(void);
@@ -9063,6 +9922,56 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_B);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_C);
     dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_JustInt);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_ApplicationMessage_DisplayMessage);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_ApplicationMessage_RenderPixel);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinNormal_One);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinNormal_Two);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinRustAsyncSse_One);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinRustAsyncSse_Two);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinRustAsync_One);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinRustAsync_Two);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSse_One);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSse_Two);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSyncSse_One);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSyncSse_Two);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSync_One);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSync_Two);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinNormal_Error0);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinNormal_Error1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinRustAsyncSse_Error0);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinRustAsyncSse_Error1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinRustAsync_Error0);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinRustAsync_Error1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSse_Error0);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSse_Error1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSyncSse_Error0);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSyncSse_Error1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSync_Error0);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSync_Error1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinNormal_CustomNested1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinNormal_ErrorNested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinRustAsyncSse_CustomNested1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinRustAsyncSse_ErrorNested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinRustAsync_CustomNested1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinRustAsync_ErrorNested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSse_CustomNested1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSse_ErrorNested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSyncSse_CustomNested1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSyncSse_ErrorNested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSync_CustomNested1);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSync_ErrorNested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinNormal_CustomNested2);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinNormal_CustomNested2Number);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2Number);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2Number);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSse_CustomNested2);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSse_CustomNested2Number);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2Number);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSync_CustomNested2);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSync_CustomNested2Number);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinNormal_Four);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinNormal_Three);
     dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinRustAsyncSse_Four);
@@ -9213,6 +10122,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSyncSse_Speed);
     dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSync_Distance);
     dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSync_Speed);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_RawStringEnumMirrored_ListOfNested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_RawStringEnumMirrored_Nested);
+    dummy_var ^= ((int64_t) (void*) cst_inflate_RawStringEnumMirrored_Raw);
     dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinNormal_GPS);
     dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinRustAsyncSse_GPS);
     dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinRustAsync_GPS);
@@ -9220,6 +10132,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinSyncSse_GPS);
     dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinSync_GPS);
     dummy_var ^= ((int64_t) (void*) cst_new_box_application_env);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_Chrono_Duration);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_Chrono_Naive);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_Chrono_Utc);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_DartOpaque);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_RustOpaque_hide_data);
@@ -9262,6 +10176,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_concatenate_with_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_concatenate_with_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_concatenate_with_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_2_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_2_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_2_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_2_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_2_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_2_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_inner_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_inner_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_custom_nested_error_inner_twin_rust_async_sse);
@@ -9298,6 +10218,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_dart_opaque_nested_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_dart_opaque_nested_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_dart_opaque_nested_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_element_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_element_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_element_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_element_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_element_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_element_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_empty_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_empty_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_empty_twin_rust_async_sse);
@@ -9368,6 +10294,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_kitchen_sink_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_kitchen_sink_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_kitchen_sink_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_list_of_nested_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_macro_struct);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_measure_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_measure_twin_rust_async);
@@ -9395,6 +10322,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_tree_node_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_tree_node_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_tree_node_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_nested_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_new_type_int_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_new_type_int_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_new_type_int_twin_rust_async_sse);
@@ -9420,6 +10348,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opt_vecs_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opt_vecs_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_opt_vecs_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_sequences);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_some_struct_twin_normal);
@@ -9518,6 +10447,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_exotic_optionals_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_exotic_optionals_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_f_64);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_feed_id_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_feed_id_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_feed_id_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_feed_id_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_feed_id_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_feed_id_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_i_32);
     dummy_var ^= ((int64_t) (void*) cst_new_box_i_64);
     dummy_var ^= ((int64_t) (void*) cst_new_box_i_8);
@@ -9542,11 +10477,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_weekdays_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_weekdays_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_Chrono_Duration);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_Chrono_Local);
     dummy_var ^= ((int64_t) (void*) cst_new_list_Chrono_Naive);
     dummy_var ^= ((int64_t) (void*) cst_new_list_DartOpaque);
     dummy_var ^= ((int64_t) (void*) cst_new_list_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) cst_new_list_String);
     dummy_var ^= ((int64_t) (void*) cst_new_list_application_env_var);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_application_settings);
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_rust_async_sse);
@@ -9554,6 +10491,19 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_list_attribute_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_bool);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_element_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_element_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_element_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_element_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_element_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_element_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_enum_opaque_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_enum_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_enum_opaque_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_enum_opaque_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_enum_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_enum_opaque_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_my_enum);
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_size);
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_rust_async);
@@ -9561,6 +10511,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_list_my_tree_node_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_nested_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_String);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_attribute_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_attribute_twin_rust_async);
@@ -9576,6 +10527,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_weekdays_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_box_autoadd_weekdays_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_opt_list_prim_i_32);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_point_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_point_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_point_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_point_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_point_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_point_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_prim_f_32);
     dummy_var ^= ((int64_t) (void*) cst_new_list_prim_f_64);
     dummy_var ^= ((int64_t) (void*) cst_new_list_prim_i_16);
@@ -9586,7 +10543,15 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_list_prim_u_32);
     dummy_var ^= ((int64_t) (void*) cst_new_list_prim_u_64);
     dummy_var ^= ((int64_t) (void*) cst_new_list_prim_u_8);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_raw_string_enum_mirrored);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) cst_new_list_record_string_i_32);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_sum_with_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_sum_with_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_sum_with_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_sum_with_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_sum_with_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_sum_with_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_test_id_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_list_test_id_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) cst_new_list_test_id_twin_rust_async_sse);
@@ -9599,6 +10564,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) dart_fn_deliver_output);
     dummy_var ^= ((int64_t) (void*) dart_opaque_dart2rust_encode);
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) frb_initialize_rust);

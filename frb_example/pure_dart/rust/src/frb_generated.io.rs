@@ -89,6 +89,24 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>>>
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
 }
+impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn>>
+    for *const std::ffi::c_void
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>>
+    for *const std::ffi::c_void
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
 impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
     for *const std::ffi::c_void
 {
@@ -599,6 +617,70 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyn
         }
     }
 }
+impl CstDecode<crate::api::inside_macro::AnotherMacroStructTwinNormal>
+    for wire_cst_another_macro_struct_twin_normal
+{
+    fn cst_decode(self) -> crate::api::inside_macro::AnotherMacroStructTwinNormal {
+        crate::api::inside_macro::AnotherMacroStructTwinNormal {
+            data: self.data.cst_decode(),
+            non_final_data: self.non_final_data.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::mirror::AnotherTwinNormal> for wire_cst_another_twin_normal {
+    fn cst_decode(self) -> crate::api::mirror::AnotherTwinNormal {
+        crate::api::mirror::AnotherTwinNormal {
+            a: self.a.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync>
+    for wire_cst_another_twin_rust_async
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync {
+        crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync {
+            a: self.a.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::AnotherTwinRustAsyncSse>
+    for wire_cst_another_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::AnotherTwinRustAsyncSse {
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::AnotherTwinRustAsyncSse {
+            a: self.a.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::AnotherTwinSse>
+    for wire_cst_another_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::AnotherTwinSse {
+        crate::api::pseudo_manual::mirror_twin_sse::AnotherTwinSse {
+            a: self.a.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync>
+    for wire_cst_another_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync {
+        crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync {
+            a: self.a.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::AnotherTwinSyncSse>
+    for wire_cst_another_twin_sync_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::AnotherTwinSyncSse {
+        crate::api::pseudo_manual::mirror_twin_sync_sse::AnotherTwinSyncSse {
+            a: self.a.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
     for wire_cst_application_env
 {
@@ -616,6 +698,31 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVa
             self.field0.cst_decode(),
             self.field1.cst_decode(),
         )
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage>
+    for wire_cst_application_message
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.DisplayMessage);
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::DisplayMessage(
+                    ans.field0.cst_decode(),
+                )
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.RenderPixel);
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::RenderPixel {
+                    x: ans.x.cst_decode(),
+                    y: ans.y.cst_decode(),
+                }
+            },
+            2 => crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::Exit,
+            _ => unreachable!(),
+        }
     }
 }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>
@@ -745,6 +852,75 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncS
         }
     }
 }
+impl CstDecode<crate::api::misc_example::BigBuffersTwinNormal>
+    for wire_cst_big_buffers_twin_normal
+{
+    fn cst_decode(self) -> crate::api::misc_example::BigBuffersTwinNormal {
+        crate::api::misc_example::BigBuffersTwinNormal {
+            int64: self.int64.cst_decode(),
+            uint64: self.uint64.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync>
+    for wire_cst_big_buffers_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync {
+        crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync {
+            int64: self.int64.cst_decode(),
+            uint64: self.uint64.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BigBuffersTwinRustAsyncSse,
+    > for wire_cst_big_buffers_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BigBuffersTwinRustAsyncSse
+    {
+        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BigBuffersTwinRustAsyncSse {
+            int64: self.int64.cst_decode(),
+            uint64: self.uint64.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::BigBuffersTwinSse>
+    for wire_cst_big_buffers_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::BigBuffersTwinSse {
+        crate::api::pseudo_manual::misc_example_twin_sse::BigBuffersTwinSse {
+            int64: self.int64.cst_decode(),
+            uint64: self.uint64.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync>
+    for wire_cst_big_buffers_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync {
+        crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync {
+            int64: self.int64.cst_decode(),
+            uint64: self.uint64.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BigBuffersTwinSyncSse>
+    for wire_cst_big_buffers_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::BigBuffersTwinSyncSse {
+        crate::api::pseudo_manual::misc_example_twin_sync_sse::BigBuffersTwinSyncSse {
+            int64: self.int64.cst_decode(),
+            uint64: self.uint64.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::array::BlobTwinNormal> for wire_cst_blob_twin_normal {
     fn cst_decode(self) -> crate::api::array::BlobTwinNormal {
         crate::api::array::BlobTwinNormal(self.field0.cst_decode())
@@ -798,6 +974,18 @@ impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
             *wrap,
         )
         .into()
+    }
+}
+impl CstDecode<chrono::Duration> for *mut i64 {
+    fn cst_decode(self) -> chrono::Duration {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<chrono::Duration>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<chrono::NaiveDateTime> for *mut i64 {
+    fn cst_decode(self) -> chrono::NaiveDateTime {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<chrono::NaiveDateTime>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<chrono::DateTime<chrono::Utc>> for *mut i64 {
@@ -1172,6 +1360,64 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithT
         CstDecode::<crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithTwinSyncSse>::cst_decode(*wrap).into()
     }
 }
+impl CstDecode<crate::api::exception::CustomNestedError2TwinNormal>
+    for *mut wire_cst_custom_nested_error_2_twin_normal
+{
+    fn cst_decode(self) -> crate::api::exception::CustomNestedError2TwinNormal {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::exception::CustomNestedError2TwinNormal>::cst_decode(*wrap).into()
+    }
+}
+impl
+    CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync>
+    for *mut wire_cst_custom_nested_error_2_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<
+            crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync,
+        >::cst_decode(*wrap)
+        .into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse> for *mut wire_cst_custom_nested_error_2_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse {
+                let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+                CstDecode::<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse>::cst_decode(*wrap).into()
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse>
+    for *mut wire_cst_custom_nested_error_2_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync>
+    for *mut wire_cst_custom_nested_error_2_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse>
+    for *mut wire_cst_custom_nested_error_2_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse>::cst_decode(*wrap).into()
+    }
+}
 impl CstDecode<crate::api::exception::CustomNestedErrorInnerTwinNormal>
     for *mut wire_cst_custom_nested_error_inner_twin_normal
 {
@@ -1540,6 +1786,60 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync_sse::DartOpaqueN
     ) -> crate::api::pseudo_manual::dart_opaque_twin_sync_sse::DartOpaqueNestedTwinSyncSse {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::dart_opaque_twin_sync_sse::DartOpaqueNestedTwinSyncSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::optional::ElementTwinNormal> for *mut wire_cst_element_twin_normal {
+    fn cst_decode(self) -> crate::api::optional::ElementTwinNormal {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::optional::ElementTwinNormal>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>
+    for *mut wire_cst_element_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse>
+    for *mut wire_cst_element_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse>
+    for *mut wire_cst_element_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse>::cst_decode(*wrap)
+            .into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>
+    for *mut wire_cst_element_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>::cst_decode(
+            *wrap,
+        )
+        .into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse>
+    for *mut wire_cst_element_twin_sync_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::api::misc_type::EmptyTwinNormal> for *mut wire_cst_empty_twin_normal {
@@ -2205,6 +2505,16 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSink
         CstDecode::<crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse>::cst_decode(*wrap).into()
     }
 }
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored>
+    for *mut wire_cst_list_of_nested_raw_string_mirrored
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored>::cst_decode(*wrap).into()
+    }
+}
 impl CstDecode<crate::api::inside_macro::MacroStruct> for *mut wire_cst_macro_struct {
     fn cst_decode(self) -> crate::api::inside_macro::MacroStruct {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
@@ -2460,6 +2770,16 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNode
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNodeTwinSyncSse>::cst_decode(*wrap).into()
     }
 }
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>
+    for *mut wire_cst_nested_raw_string_mirrored
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>::cst_decode(*wrap).into()
+    }
+}
 impl CstDecode<crate::api::newtype_pattern::NewTypeIntTwinNormal>
     for *mut wire_cst_new_type_int_twin_normal
 {
@@ -2692,6 +3012,17 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::OptVecsTwinSyn
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync_sse::OptVecsTwinSyncSse {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::optional_twin_sync_sse::OptVecsTwinSyncSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>
+    for *mut wire_cst_raw_string_mirrored
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>::cst_decode(
+            *wrap,
+        )
+        .into()
     }
 }
 impl CstDecode<(String, i32)> for *mut wire_cst_record_string_i_32 {
@@ -3623,6 +3954,61 @@ impl CstDecode<Box<f64>> for *mut f64 {
         unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
+impl CstDecode<Box<crate::api::array::FeedIdTwinNormal>> for *mut wire_cst_feed_id_twin_normal {
+    fn cst_decode(self) -> Box<crate::api::array::FeedIdTwinNormal> {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::array::FeedIdTwinNormal>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>>
+    for *mut wire_cst_feed_id_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync> {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse>>
+    for *mut wire_cst_feed_id_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse> {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse>>
+    for *mut wire_cst_feed_id_twin_sse
+{
+    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse> {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse>::cst_decode(*wrap)
+            .into()
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>>
+    for *mut wire_cst_feed_id_twin_sync
+{
+    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync> {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>::cst_decode(*wrap)
+            .into()
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse>>
+    for *mut wire_cst_feed_id_twin_sync_sse
+{
+    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse> {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse>::cst_decode(
+            *wrap,
+        )
+        .into()
+    }
+}
 impl CstDecode<Box<i32>> for *mut i32 {
     fn cst_decode(self) -> Box<i32> {
         unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
@@ -3780,6 +4166,11 @@ impl CstDecode<Box<u8>> for *mut u8 {
 impl CstDecode<Box<[u8; 1600]>> for *mut wire_cst_list_prim_u_8 {
     fn cst_decode(self) -> Box<[u8; 1600]> {
         CstDecode::<[u8; 1600]>::cst_decode(self).into()
+    }
+}
+impl CstDecode<Box<[u8; 8]>> for *mut wire_cst_list_prim_u_8 {
+    fn cst_decode(self) -> Box<[u8; 8]> {
+        CstDecode::<[u8; 8]>::cst_decode(self).into()
     }
 }
 impl CstDecode<Box<crate::api::misc_example::WeekdaysTwinNormal>> for *mut i32 {
@@ -3957,6 +4348,612 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithT
     ) -> crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithTwinSyncSse {
         crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithTwinSyncSse {
             a: self.a.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::mirror::ContainsMirroredSubStructTwinNormal>
+    for wire_cst_contains_mirrored_sub_struct_twin_normal
+{
+    fn cst_decode(self) -> crate::api::mirror::ContainsMirroredSubStructTwinNormal {
+        crate::api::mirror::ContainsMirroredSubStructTwinNormal {
+            test: self.test.cst_decode(),
+            test2: self.test2.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync,
+    > for wire_cst_contains_mirrored_sub_struct_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync
+    {
+        crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync {
+            test: self.test.cst_decode(),
+            test2: self.test2.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ContainsMirroredSubStructTwinRustAsyncSse> for wire_cst_contains_mirrored_sub_struct_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::ContainsMirroredSubStructTwinRustAsyncSse {
+                crate::api::pseudo_manual::mirror_twin_rust_async_sse::ContainsMirroredSubStructTwinRustAsyncSse{test:  self.test.cst_decode(),test2:  self.test2.cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::ContainsMirroredSubStructTwinSse>
+    for wire_cst_contains_mirrored_sub_struct_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sse::ContainsMirroredSubStructTwinSse {
+        crate::api::pseudo_manual::mirror_twin_sse::ContainsMirroredSubStructTwinSse {
+            test: self.test.cst_decode(),
+            test2: self.test2.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync>
+    for wire_cst_contains_mirrored_sub_struct_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync {
+        crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync {
+            test: self.test.cst_decode(),
+            test2: self.test2.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ContainsMirroredSubStructTwinSyncSse>
+    for wire_cst_contains_mirrored_sub_struct_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ContainsMirroredSubStructTwinSyncSse {
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ContainsMirroredSubStructTwinSyncSse {
+            test: self.test.cst_decode(),
+            test2: self.test2.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::exception::CustomEnumErrorTwinNormal>
+    for wire_cst_custom_enum_error_twin_normal
+{
+    fn cst_decode(self) -> crate::api::exception::CustomEnumErrorTwinNormal {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.One);
+                crate::api::exception::CustomEnumErrorTwinNormal::One {
+                    message: ans.message.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Two);
+                crate::api::exception::CustomEnumErrorTwinNormal::Two {
+                    message: ans.message.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync>
+    for wire_cst_custom_enum_error_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.One);
+                crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::One{message:  ans.message.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Two);
+                crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::Two{message:  ans.message.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse,
+    > for wire_cst_custom_enum_error_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse
+    {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.One);
+                crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse::One{message:  ans.message.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Two);
+                crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse::Two{message:  ans.message.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse>
+    for wire_cst_custom_enum_error_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.One);
+                crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse::One {
+                    message: ans.message.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Two);
+                crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse::Two {
+                    message: ans.message.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync>
+    for wire_cst_custom_enum_error_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.One);
+                crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync::One {
+                    message: ans.message.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Two);
+                crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync::Two {
+                    message: ans.message.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse>
+    for wire_cst_custom_enum_error_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.One);
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse::One{message:  ans.message.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Two);
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse::Two{message:  ans.message.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::exception::CustomErrorTwinNormal> for wire_cst_custom_error_twin_normal {
+    fn cst_decode(self) -> crate::api::exception::CustomErrorTwinNormal {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error0);
+                crate::api::exception::CustomErrorTwinNormal::Error0 {
+                    e: ans.e.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error1);
+                crate::api::exception::CustomErrorTwinNormal::Error1 {
+                    e: ans.e.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync>
+    for wire_cst_custom_error_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error0);
+                crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error0{e:  ans.e.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error1);
+                crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error1{e:  ans.e.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl
+    CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse>
+    for wire_cst_custom_error_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error0);
+                crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse::Error0{e:  ans.e.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error1);
+                crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse::Error1{e:  ans.e.cst_decode(),backtrace:  ans.backtrace.cst_decode()}
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse>
+    for wire_cst_custom_error_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error0);
+                crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse::Error0 {
+                    e: ans.e.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error1);
+                crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse::Error1 {
+                    e: ans.e.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync>
+    for wire_cst_custom_error_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error0);
+                crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync::Error0 {
+                    e: ans.e.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error1);
+                crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync::Error1 {
+                    e: ans.e.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse>
+    for wire_cst_custom_error_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error0);
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse::Error0 {
+                    e: ans.e.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Error1);
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse::Error1 {
+                    e: ans.e.cst_decode(),
+                    backtrace: ans.backtrace.cst_decode(),
+                }
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::exception::CustomNestedError1TwinNormal>
+    for wire_cst_custom_nested_error_1_twin_normal
+{
+    fn cst_decode(self) -> crate::api::exception::CustomNestedError1TwinNormal {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested1);
+                crate::api::exception::CustomNestedError1TwinNormal::CustomNested1(
+                    ans.field0.cst_decode(),
+                )
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.ErrorNested);
+                crate::api::exception::CustomNestedError1TwinNormal::ErrorNested(
+                    ans.field0.cst_decode(),
+                )
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl
+    CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync>
+    for wire_cst_custom_nested_error_1_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested1);
+                crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync::CustomNested1( ans.field0.cst_decode())
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.ErrorNested);
+                crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync::ErrorNested( ans.field0.cst_decode())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse> for wire_cst_custom_nested_error_1_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse {
+                match self.tag {
+                    0 => unsafe {
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested1);
+                        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse::CustomNested1( ans.field0.cst_decode())
+                    }
+1 => unsafe {
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.ErrorNested);
+                        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse::ErrorNested( ans.field0.cst_decode())
+                    }
+                    _ => unreachable!(),
+                }
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse>
+    for wire_cst_custom_nested_error_1_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested1);
+                crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse::CustomNested1( ans.field0.cst_decode())
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.ErrorNested);
+                crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse::ErrorNested( ans.field0.cst_decode())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync>
+    for wire_cst_custom_nested_error_1_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested1);
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync::CustomNested1( ans.field0.cst_decode())
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.ErrorNested);
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync::ErrorNested( ans.field0.cst_decode())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse>
+    for wire_cst_custom_nested_error_1_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested1);
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse::CustomNested1( ans.field0.cst_decode())
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.ErrorNested);
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse::ErrorNested( ans.field0.cst_decode())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::exception::CustomNestedError2TwinNormal>
+    for wire_cst_custom_nested_error_2_twin_normal
+{
+    fn cst_decode(self) -> crate::api::exception::CustomNestedError2TwinNormal {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2);
+                crate::api::exception::CustomNestedError2TwinNormal::CustomNested2(
+                    ans.field0.cst_decode(),
+                )
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans =
+                    flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2Number);
+                crate::api::exception::CustomNestedError2TwinNormal::CustomNested2Number(
+                    ans.field0.cst_decode(),
+                )
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl
+    CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync>
+    for wire_cst_custom_nested_error_2_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2);
+                crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync::CustomNested2( ans.field0.cst_decode())
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans =
+                    flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2Number);
+                crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync::CustomNested2Number( ans.field0.cst_decode())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse> for wire_cst_custom_nested_error_2_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse {
+                match self.tag {
+                    0 => unsafe {
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2);
+                        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse::CustomNested2( ans.field0.cst_decode())
+                    }
+1 => unsafe {
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2Number);
+                        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse::CustomNested2Number( ans.field0.cst_decode())
+                    }
+                    _ => unreachable!(),
+                }
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse>
+    for wire_cst_custom_nested_error_2_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2);
+                crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse::CustomNested2( ans.field0.cst_decode())
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans =
+                    flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2Number);
+                crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse::CustomNested2Number( ans.field0.cst_decode())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync>
+    for wire_cst_custom_nested_error_2_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2);
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync::CustomNested2( ans.field0.cst_decode())
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans =
+                    flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2Number);
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync::CustomNested2Number( ans.field0.cst_decode())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse>
+    for wire_cst_custom_nested_error_2_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2);
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse::CustomNested2( ans.field0.cst_decode())
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans =
+                    flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.CustomNested2Number);
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse::CustomNested2Number( ans.field0.cst_decode())
+            },
+            _ => unreachable!(),
         }
     }
 }
@@ -4227,6 +5224,68 @@ impl
                 crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorOuterTwinSyncSse::Two( ans.field0.cst_decode())
             },
             _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::exception::CustomStructErrorAnotherTwinNormal>
+    for wire_cst_custom_struct_error_another_twin_normal
+{
+    fn cst_decode(self) -> crate::api::exception::CustomStructErrorAnotherTwinNormal {
+        crate::api::exception::CustomStructErrorAnotherTwinNormal {
+            message: self.message.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync,
+    > for wire_cst_custom_struct_error_another_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync
+    {
+        crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync{message:  self.message.cst_decode()}
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorAnotherTwinRustAsyncSse> for wire_cst_custom_struct_error_another_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorAnotherTwinRustAsyncSse {
+                crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorAnotherTwinRustAsyncSse{message:  self.message.cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorAnotherTwinSse>
+    for wire_cst_custom_struct_error_another_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorAnotherTwinSse {
+        crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorAnotherTwinSse {
+            message: self.message.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync>
+    for wire_cst_custom_struct_error_another_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync {
+        crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync {
+            message: self.message.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorAnotherTwinSyncSse,
+    > for wire_cst_custom_struct_error_another_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorAnotherTwinSyncSse
+    {
+        crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorAnotherTwinSyncSse {
+            message: self.message.cst_decode(),
         }
     }
 }
@@ -4584,6 +5643,80 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwi
         }
     }
 }
+impl CstDecode<crate::api::optional::ElementTwinNormal> for wire_cst_element_twin_normal {
+    fn cst_decode(self) -> crate::api::optional::ElementTwinNormal {
+        crate::api::optional::ElementTwinNormal {
+            tag: self.tag.cst_decode(),
+            text: self.text.cst_decode(),
+            attributes: self.attributes.cst_decode(),
+            children: self.children.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>
+    for wire_cst_element_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync {
+        crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync {
+            tag: self.tag.cst_decode(),
+            text: self.text.cst_decode(),
+            attributes: self.attributes.cst_decode(),
+            children: self.children.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse>
+    for wire_cst_element_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse {
+        crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse {
+            tag: self.tag.cst_decode(),
+            text: self.text.cst_decode(),
+            attributes: self.attributes.cst_decode(),
+            children: self.children.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse>
+    for wire_cst_element_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse {
+        crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse {
+            tag: self.tag.cst_decode(),
+            text: self.text.cst_decode(),
+            attributes: self.attributes.cst_decode(),
+            children: self.children.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>
+    for wire_cst_element_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync {
+        crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync {
+            tag: self.tag.cst_decode(),
+            text: self.text.cst_decode(),
+            attributes: self.attributes.cst_decode(),
+            children: self.children.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse>
+    for wire_cst_element_twin_sync_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse {
+        crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse {
+            tag: self.tag.cst_decode(),
+            text: self.text.cst_decode(),
+            attributes: self.attributes.cst_decode(),
+            children: self.children.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::misc_type::EmptyTwinNormal> for wire_cst_empty_twin_normal {
     fn cst_decode(self) -> crate::api::misc_type::EmptyTwinNormal {
         crate::api::misc_type::EmptyTwinNormal {}
@@ -4795,6 +5928,14 @@ impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal> for wire_cst_enum_
         }
     }
 }
+impl CstDecode<[crate::api::rust_opaque::EnumOpaqueTwinNormal; 5]>
+    for *mut wire_cst_list_enum_opaque_twin_normal
+{
+    fn cst_decode(self) -> [crate::api::rust_opaque::EnumOpaqueTwinNormal; 5] {
+        let vec: Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>
     for wire_cst_enum_opaque_twin_rust_async
 {
@@ -4829,6 +5970,18 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqu
             },
             _ => unreachable!(),
         }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync; 5]>
+    for *mut wire_cst_list_enum_opaque_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync; 5] {
+        let vec: Vec<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync,
+        > = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl
@@ -4868,6 +6021,21 @@ impl
             },
             _ => unreachable!(),
         }
+    }
+}
+impl
+    CstDecode<
+        [crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse; 5],
+    > for *mut wire_cst_list_enum_opaque_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse; 5]
+    {
+        let vec: Vec<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse,
+        > = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse>
@@ -4914,6 +6082,15 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSs
         }
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse; 5]>
+    for *mut wire_cst_list_enum_opaque_twin_sse
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse; 5] {
+        let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>
     for wire_cst_enum_opaque_twin_sync
 {
@@ -4958,6 +6135,17 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinS
         }
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync; 5]>
+    for *mut wire_cst_list_enum_opaque_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync; 5] {
+        let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse>
     for wire_cst_enum_opaque_twin_sync_sse
 {
@@ -4998,6 +6186,17 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueT
             },
             _ => unreachable!(),
         }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse; 5]>
+    for *mut wire_cst_list_enum_opaque_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse; 5] {
+        let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<crate::api::enumeration::EnumWithItemMixedTwinNormal>
@@ -5986,6 +7185,15 @@ impl CstDecode<Vec<chrono::Duration>> for *mut wire_cst_list_Chrono_Duration {
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
+impl CstDecode<Vec<chrono::DateTime<chrono::Local>>> for *mut wire_cst_list_Chrono_Local {
+    fn cst_decode(self) -> Vec<chrono::DateTime<chrono::Local>> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
 impl CstDecode<Vec<chrono::NaiveDateTime>> for *mut wire_cst_list_Chrono_Naive {
     fn cst_decode(self) -> Vec<chrono::NaiveDateTime> {
         let vec = unsafe {
@@ -6030,6 +7238,19 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
     for *mut wire_cst_list_application_env_var
 {
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>
+    for *mut wire_cst_list_application_settings
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -6114,6 +7335,165 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeT
 }
 impl CstDecode<Vec<bool>> for *mut wire_cst_list_bool {
     fn cst_decode(self) -> Vec<bool> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::optional::ElementTwinNormal>>
+    for *mut wire_cst_list_element_twin_normal
+{
+    fn cst_decode(self) -> Vec<crate::api::optional::ElementTwinNormal> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>>
+    for *mut wire_cst_list_element_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse>>
+    for *mut wire_cst_list_element_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse>>
+    for *mut wire_cst_list_element_twin_sse
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>>
+    for *mut wire_cst_list_element_twin_sync
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse>>
+    for *mut wire_cst_list_element_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal>>
+    for *mut wire_cst_list_enum_opaque_twin_normal
+{
+    fn cst_decode(self) -> Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>>
+    for *mut wire_cst_list_enum_opaque_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse>,
+    > for *mut wire_cst_list_enum_opaque_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse>
+    {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse>>
+    for *mut wire_cst_list_enum_opaque_twin_sse
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>>
+    for *mut wire_cst_list_enum_opaque_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse>>
+    for *mut wire_cst_list_enum_opaque_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::auxiliary::sample_types::MyEnum>> for *mut wire_cst_list_my_enum {
+    fn cst_decode(self) -> Vec<crate::auxiliary::sample_types::MyEnum> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -6210,6 +7590,30 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTree
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
         vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>>
+    for *mut wire_cst_list_nested_raw_string_mirrored
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored>
+    for wire_cst_list_of_nested_raw_string_mirrored
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored {
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored {
+            raw: self.raw.cst_decode(),
+        }
     }
 }
 impl CstDecode<Vec<Option<String>>> for *mut wire_cst_list_opt_String {
@@ -6404,6 +7808,74 @@ impl CstDecode<Vec<Option<Vec<i32>>>> for *mut wire_cst_list_opt_list_prim_i_32 
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
+impl CstDecode<Vec<crate::api::array::PointTwinNormal>> for *mut wire_cst_list_point_twin_normal {
+    fn cst_decode(self) -> Vec<crate::api::array::PointTwinNormal> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>>
+    for *mut wire_cst_list_point_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse>>
+    for *mut wire_cst_list_point_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse>>
+    for *mut wire_cst_list_point_twin_sse
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>>
+    for *mut wire_cst_list_point_twin_sync
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse>>
+    for *mut wire_cst_list_point_twin_sync_sse
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
 impl CstDecode<Vec<f32>> for *mut wire_cst_list_prim_f_32 {
     fn cst_decode(self) -> Vec<f32> {
         unsafe {
@@ -6484,8 +7956,104 @@ impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8 {
         }
     }
 }
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>>
+    for *mut wire_cst_list_raw_string_enum_mirrored
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>>
+    for *mut wire_cst_list_raw_string_mirrored
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
 impl CstDecode<Vec<(String, i32)>> for *mut wire_cst_list_record_string_i_32 {
     fn cst_decode(self) -> Vec<(String, i32)> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::method::SumWithTwinNormal>>
+    for *mut wire_cst_list_sum_with_twin_normal
+{
+    fn cst_decode(self) -> Vec<crate::api::method::SumWithTwinNormal> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>>
+    for *mut wire_cst_list_sum_with_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse>>
+    for *mut wire_cst_list_sum_with_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse>>
+    for *mut wire_cst_list_sum_with_twin_sse
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>>
+    for *mut wire_cst_list_sum_with_twin_sync
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse>>
+    for *mut wire_cst_list_sum_with_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -6638,6 +8206,104 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::Weekda
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
         vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<crate::api::method::Log2TwinNormal> for wire_cst_log_2_twin_normal {
+    fn cst_decode(self) -> crate::api::method::Log2TwinNormal {
+        crate::api::method::Log2TwinNormal {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>
+    for wire_cst_log_2_twin_rust_async
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
+        crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async_sse::Log2TwinRustAsyncSse>
+    for wire_cst_log_2_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::method_twin_rust_async_sse::Log2TwinRustAsyncSse {
+        crate::api::pseudo_manual::method_twin_rust_async_sse::Log2TwinRustAsyncSse {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_sse::Log2TwinSse>
+    for wire_cst_log_2_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sse::Log2TwinSse {
+        crate::api::pseudo_manual::method_twin_sse::Log2TwinSse {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>
+    for wire_cst_log_2_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
+        crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::Log2TwinSyncSse>
+    for wire_cst_log_2_twin_sync_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync_sse::Log2TwinSyncSse {
+        crate::api::pseudo_manual::method_twin_sync_sse::Log2TwinSyncSse {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::stream::LogTwinNormal> for wire_cst_log_twin_normal {
+    fn cst_decode(self) -> crate::api::stream::LogTwinNormal {
+        crate::api::stream::LogTwinNormal {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>
+    for wire_cst_log_twin_rust_async
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
+        crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async_sse::LogTwinRustAsyncSse>
+    for wire_cst_log_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::stream_twin_rust_async_sse::LogTwinRustAsyncSse {
+        crate::api::pseudo_manual::stream_twin_rust_async_sse::LogTwinRustAsyncSse {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_sse::LogTwinSse> for wire_cst_log_twin_sse {
+    fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_sse::LogTwinSse {
+        crate::api::pseudo_manual::stream_twin_sse::LogTwinSse {
+            key: self.key.cst_decode(),
+            value: self.value.cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::inside_macro::MacroStruct> for wire_cst_macro_struct {
@@ -6829,6 +8495,141 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::MessageIdTwinSync
         )
     }
 }
+impl CstDecode<crate::api::mirror::MirrorStructTwinNormal> for wire_cst_mirror_struct_twin_normal {
+    fn cst_decode(self) -> crate::api::mirror::MirrorStructTwinNormal {
+        crate::api::mirror::MirrorStructTwinNormal {
+            a: self.a.cst_decode(),
+            b: self.b.cst_decode(),
+            c: self.c.cst_decode(),
+            d: self.d.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>
+    for wire_cst_mirror_struct_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
+        crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
+            a: self.a.cst_decode(),
+            b: self.b.cst_decode(),
+            c: self.c.cst_decode(),
+            d: self.d.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::MirrorStructTwinRustAsyncSse>
+    for wire_cst_mirror_struct_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::MirrorStructTwinRustAsyncSse {
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::MirrorStructTwinRustAsyncSse {
+            a: self.a.cst_decode(),
+            b: self.b.cst_decode(),
+            c: self.c.cst_decode(),
+            d: self.d.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::MirrorStructTwinSse>
+    for wire_cst_mirror_struct_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::MirrorStructTwinSse {
+        crate::api::pseudo_manual::mirror_twin_sse::MirrorStructTwinSse {
+            a: self.a.cst_decode(),
+            b: self.b.cst_decode(),
+            c: self.c.cst_decode(),
+            d: self.d.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>
+    for wire_cst_mirror_struct_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
+        crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
+            a: self.a.cst_decode(),
+            b: self.b.cst_decode(),
+            c: self.c.cst_decode(),
+            d: self.d.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::MirrorStructTwinSyncSse>
+    for wire_cst_mirror_struct_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::MirrorStructTwinSyncSse {
+        crate::api::pseudo_manual::mirror_twin_sync_sse::MirrorStructTwinSyncSse {
+            a: self.a.cst_decode(),
+            b: self.b.cst_decode(),
+            c: self.c.cst_decode(),
+            d: self.d.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal>
+    for wire_cst_more_than_just_one_raw_string_struct_twin_normal
+{
+    fn cst_decode(self) -> crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal {
+        crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal {
+            regular: self.regular.cst_decode(),
+            r#type: self.r#type.cst_decode(),
+            r#async: self.r#async.cst_decode(),
+            another: self.another.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync> for wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
+            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync {
+                crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync{regular:  self.regular.cst_decode(),r#type:  self.r#type.cst_decode(),r#async:  self.r#async.cst_decode(),another:  self.another.cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async_sse::MoreThanJustOneRawStringStructTwinRustAsyncSse> for wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async_sse::MoreThanJustOneRawStringStructTwinRustAsyncSse {
+                crate::api::pseudo_manual::raw_string_twin_rust_async_sse::MoreThanJustOneRawStringStructTwinRustAsyncSse{regular:  self.regular.cst_decode(),r#type:  self.r#type.cst_decode(),r#async:  self.r#async.cst_decode(),another:  self.another.cst_decode()}
+            }
+        }
+impl
+    CstDecode<crate::api::pseudo_manual::raw_string_twin_sse::MoreThanJustOneRawStringStructTwinSse>
+    for wire_cst_more_than_just_one_raw_string_struct_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sse::MoreThanJustOneRawStringStructTwinSse {
+        crate::api::pseudo_manual::raw_string_twin_sse::MoreThanJustOneRawStringStructTwinSse {
+            regular: self.regular.cst_decode(),
+            r#type: self.r#type.cst_decode(),
+            r#async: self.r#async.cst_decode(),
+            another: self.another.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync,
+    > for wire_cst_more_than_just_one_raw_string_struct_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync
+    {
+        crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync {
+            regular: self.regular.cst_decode(),
+            r#type: self.r#type.cst_decode(),
+            r#async: self.r#async.cst_decode(),
+            another: self.another.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync_sse::MoreThanJustOneRawStringStructTwinSyncSse> for wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_sync_sse::MoreThanJustOneRawStringStructTwinSyncSse {
+                crate::api::pseudo_manual::raw_string_twin_sync_sse::MoreThanJustOneRawStringStructTwinSyncSse{regular:  self.regular.cst_decode(),r#type:  self.r#type.cst_decode(),r#async:  self.r#async.cst_decode(),another:  self.another.cst_decode()}
+            }
+        }
 impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal>
     for wire_cst_my_nested_struct_twin_normal
 {
@@ -6902,6 +8703,46 @@ impl CstDecode<crate::auxiliary::sample_types::MySize> for wire_cst_my_size {
         crate::auxiliary::sample_types::MySize {
             width: self.width.cst_decode(),
             height: self.height.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::stream::MyStreamEntryTwinNormal>
+    for wire_cst_my_stream_entry_twin_normal
+{
+    fn cst_decode(self) -> crate::api::stream::MyStreamEntryTwinNormal {
+        crate::api::stream::MyStreamEntryTwinNormal {
+            hello: self.hello.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>
+    for wire_cst_my_stream_entry_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
+        crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
+            hello: self.hello.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async_sse::MyStreamEntryTwinRustAsyncSse>
+    for wire_cst_my_stream_entry_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::stream_twin_rust_async_sse::MyStreamEntryTwinRustAsyncSse {
+        crate::api::pseudo_manual::stream_twin_rust_async_sse::MyStreamEntryTwinRustAsyncSse {
+            hello: self.hello.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_sse::MyStreamEntryTwinSse>
+    for wire_cst_my_stream_entry_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_sse::MyStreamEntryTwinSse {
+        crate::api::pseudo_manual::stream_twin_sse::MyStreamEntryTwinSse {
+            hello: self.hello.cst_decode(),
         }
     }
 }
@@ -6990,6 +8831,26 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNode
             value_vec_u8: self.value_vec_u8.cst_decode(),
             value_boolean: self.value_boolean.cst_decode(),
             children: self.children.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>
+    for wire_cst_nested_raw_string_mirrored
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
+        crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
+            raw: self.raw.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::auxiliary::new_module_system::sub_module::NewSimpleStruct>
+    for wire_cst_new_simple_struct
+{
+    fn cst_decode(self) -> crate::auxiliary::new_module_system::sub_module::NewSimpleStruct {
+        crate::auxiliary::new_module_system::sub_module::NewSimpleStruct {
+            field: self.field.cst_decode(),
         }
     }
 }
@@ -7121,6 +8982,15 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::NoteTwinSyn
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers> for wire_cst_numbers {
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers {
         crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers(self.field0.cst_decode())
+    }
+}
+impl CstDecode<crate::auxiliary::old_module_system::sub_module::OldSimpleStruct>
+    for wire_cst_old_simple_struct
+{
+    fn cst_decode(self) -> crate::auxiliary::old_module_system::sub_module::OldSimpleStruct {
+        crate::auxiliary::old_module_system::sub_module::OldSimpleStruct {
+            field: self.field.cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::rust_opaque::OpaqueNestedTwinNormal>
@@ -7264,6 +9134,234 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::OptVecsTwinSyn
             strings: self.strings.cst_decode(),
             buffers: self.buffers.cst_decode(),
         }
+    }
+}
+impl CstDecode<crate::api::array::PointTwinNormal> for wire_cst_point_twin_normal {
+    fn cst_decode(self) -> crate::api::array::PointTwinNormal {
+        crate::api::array::PointTwinNormal {
+            x: self.x.cst_decode(),
+            y: self.y.cst_decode(),
+        }
+    }
+}
+impl CstDecode<[crate::api::array::PointTwinNormal; 2]> for *mut wire_cst_list_point_twin_normal {
+    fn cst_decode(self) -> [crate::api::array::PointTwinNormal; 2] {
+        let vec: Vec<crate::api::array::PointTwinNormal> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>
+    for wire_cst_point_twin_rust_async
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync {
+        crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync {
+            x: self.x.cst_decode(),
+            y: self.y.cst_decode(),
+        }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync; 2]>
+    for *mut wire_cst_list_point_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse>
+    for wire_cst_point_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse {
+        crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse {
+            x: self.x.cst_decode(),
+            y: self.y.cst_decode(),
+        }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse; 2]>
+    for *mut wire_cst_list_point_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_sse::PointTwinSse>
+    for wire_cst_point_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sse::PointTwinSse {
+        crate::api::pseudo_manual::array_twin_sse::PointTwinSse {
+            x: self.x.cst_decode(),
+            y: self.y.cst_decode(),
+        }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::PointTwinSse; 2]>
+    for *mut wire_cst_list_point_twin_sse
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sse::PointTwinSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>
+    for wire_cst_point_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::PointTwinSync {
+        crate::api::pseudo_manual::array_twin_sync::PointTwinSync {
+            x: self.x.cst_decode(),
+            y: self.y.cst_decode(),
+        }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2]>
+    for *mut wire_cst_list_point_twin_sync
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse>
+    for wire_cst_point_twin_sync_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse {
+        crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse {
+            x: self.x.cst_decode(),
+            y: self.y.cst_decode(),
+        }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse; 2]>
+    for *mut wire_cst_list_point_twin_sync_sse
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>
+    for wire_cst_raw_string_enum_mirrored
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored {
+        match self.tag {
+            0 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Raw);
+                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Raw(
+                    ans.field0.cst_decode(),
+                )
+            },
+            1 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.Nested);
+                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Nested(
+                    ans.field0.cst_decode(),
+                )
+            },
+            2 => unsafe {
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.ListOfNested);
+                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::ListOfNested(
+                    ans.field0.cst_decode(),
+                )
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::raw_string::RawStringItemStructTwinNormal>
+    for wire_cst_raw_string_item_struct_twin_normal
+{
+    fn cst_decode(self) -> crate::api::raw_string::RawStringItemStructTwinNormal {
+        crate::api::raw_string::RawStringItemStructTwinNormal {
+            r#type: self.r#type.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync,
+    > for wire_cst_raw_string_item_struct_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync
+    {
+        crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync {
+            r#type: self.r#type.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async_sse::RawStringItemStructTwinRustAsyncSse> for wire_cst_raw_string_item_struct_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async_sse::RawStringItemStructTwinRustAsyncSse {
+                crate::api::pseudo_manual::raw_string_twin_rust_async_sse::RawStringItemStructTwinRustAsyncSse{r#type:  self.r#type.cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sse::RawStringItemStructTwinSse>
+    for wire_cst_raw_string_item_struct_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sse::RawStringItemStructTwinSse {
+        crate::api::pseudo_manual::raw_string_twin_sse::RawStringItemStructTwinSse {
+            r#type: self.r#type.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync>
+    for wire_cst_raw_string_item_struct_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync {
+        crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync {
+            r#type: self.r#type.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync_sse::RawStringItemStructTwinSyncSse>
+    for wire_cst_raw_string_item_struct_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sync_sse::RawStringItemStructTwinSyncSse {
+        crate::api::pseudo_manual::raw_string_twin_sync_sse::RawStringItemStructTwinSyncSse {
+            r#type: self.r#type.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>
+    for wire_cst_raw_string_mirrored
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
+        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
+            value: self.value.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<(
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+    )> for wire_cst_record_application_settings_raw_string_enum_mirrored
+{
+    fn cst_decode(
+        self,
+    ) -> (
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+    ) {
+        (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(String, i32)> for wire_cst_record_string_i_32 {
@@ -7750,6 +9848,14 @@ impl CstDecode<crate::api::method::SumWithTwinNormal> for wire_cst_sum_with_twin
         }
     }
 }
+impl CstDecode<[crate::api::method::SumWithTwinNormal; 3]>
+    for *mut wire_cst_list_sum_with_twin_normal
+{
+    fn cst_decode(self) -> [crate::api::method::SumWithTwinNormal; 3] {
+        let vec: Vec<crate::api::method::SumWithTwinNormal> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>
     for wire_cst_sum_with_twin_rust_async
 {
@@ -7757,6 +9863,17 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRus
         crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync {
             x: self.x.cst_decode(),
         }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync; 3]>
+    for *mut wire_cst_list_sum_with_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync; 3] {
+        let vec: Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse>
@@ -7770,6 +9887,18 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwi
         }
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse; 3]>
+    for *mut wire_cst_list_sum_with_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse; 3] {
+        let vec: Vec<
+            crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse,
+        > = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse>
     for wire_cst_sum_with_twin_sse
 {
@@ -7777,6 +9906,15 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse>
         crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse {
             x: self.x.cst_decode(),
         }
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse; 3]>
+    for *mut wire_cst_list_sum_with_twin_sse
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse; 3] {
+        let vec: Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
@@ -7788,6 +9926,15 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
         }
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync; 3]>
+    for *mut wire_cst_list_sum_with_twin_sync
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync; 3] {
+        let vec: Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse>
     for wire_cst_sum_with_twin_sync_sse
 {
@@ -7797,9 +9944,61 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncS
         }
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse; 3]>
+    for *mut wire_cst_list_sum_with_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse; 3] {
+        let vec: Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<crate::api::chrono_type::TestChronoTwinNormal> for wire_cst_test_chrono_twin_normal {
+    fn cst_decode(self) -> crate::api::chrono_type::TestChronoTwinNormal {
+        crate::api::chrono_type::TestChronoTwinNormal {
+            dt: self.dt.cst_decode(),
+            dt2: self.dt2.cst_decode(),
+            du: self.du.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync>
+    for wire_cst_test_chrono_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync {
+        crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync {
+            dt: self.dt.cst_decode(),
+            dt2: self.dt2.cst_decode(),
+            du: self.du.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync>
+    for wire_cst_test_chrono_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
+        crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
+            dt: self.dt.cst_decode(),
+            dt2: self.dt2.cst_decode(),
+            du: self.du.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::array::TestIdTwinNormal> for wire_cst_test_id_twin_normal {
     fn cst_decode(self) -> crate::api::array::TestIdTwinNormal {
         crate::api::array::TestIdTwinNormal(self.field0.cst_decode())
+    }
+}
+impl CstDecode<[crate::api::array::TestIdTwinNormal; 2]>
+    for *mut wire_cst_list_test_id_twin_normal
+{
+    fn cst_decode(self) -> [crate::api::array::TestIdTwinNormal; 2] {
+        let vec: Vec<crate::api::array::TestIdTwinNormal> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[crate::api::array::TestIdTwinNormal; 4]>
@@ -7817,6 +10016,17 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustA
         crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync(
             self.field0.cst_decode(),
         )
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 2]>
+    for *mut wire_cst_list_test_id_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4]>
@@ -7841,6 +10051,17 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinR
         )
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse; 2]>
+    for *mut wire_cst_list_test_id_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse; 4]>
     for *mut wire_cst_list_test_id_twin_rust_async_sse
 {
@@ -7859,6 +10080,14 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse>
         crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse(self.field0.cst_decode())
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 2]>
+    for *mut wire_cst_list_test_id_twin_sse
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 4]>
     for *mut wire_cst_list_test_id_twin_sse
 {
@@ -7872,6 +10101,15 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
 {
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync {
         crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync(self.field0.cst_decode())
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2]>
+    for *mut wire_cst_list_test_id_twin_sync
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4]>
@@ -7890,6 +10128,15 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse
         crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse(self.field0.cst_decode())
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse; 2]>
+    for *mut wire_cst_list_test_id_twin_sync_sse
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse; 4]>
     for *mut wire_cst_list_test_id_twin_sync_sse
 {
@@ -7897,6 +10144,82 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSs
         let vec: Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse> =
             self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<crate::api::type_alias::TestModelTwinNormal> for wire_cst_test_model_twin_normal {
+    fn cst_decode(self) -> crate::api::type_alias::TestModelTwinNormal {
+        crate::api::type_alias::TestModelTwinNormal {
+            id: self.id.cst_decode(),
+            name: self.name.cst_decode(),
+            alias_enum: self.alias_enum.cst_decode(),
+            alias_struct: self.alias_struct.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync>
+    for wire_cst_test_model_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync {
+        crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync {
+            id: self.id.cst_decode(),
+            name: self.name.cst_decode(),
+            alias_enum: self.alias_enum.cst_decode(),
+            alias_struct: self.alias_struct.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_rust_async_sse::TestModelTwinRustAsyncSse>
+    for wire_cst_test_model_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::type_alias_twin_rust_async_sse::TestModelTwinRustAsyncSse {
+        crate::api::pseudo_manual::type_alias_twin_rust_async_sse::TestModelTwinRustAsyncSse {
+            id: self.id.cst_decode(),
+            name: self.name.cst_decode(),
+            alias_enum: self.alias_enum.cst_decode(),
+            alias_struct: self.alias_struct.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sse::TestModelTwinSse>
+    for wire_cst_test_model_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::type_alias_twin_sse::TestModelTwinSse {
+        crate::api::pseudo_manual::type_alias_twin_sse::TestModelTwinSse {
+            id: self.id.cst_decode(),
+            name: self.name.cst_decode(),
+            alias_enum: self.alias_enum.cst_decode(),
+            alias_struct: self.alias_struct.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync>
+    for wire_cst_test_model_twin_sync
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync {
+        crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync {
+            id: self.id.cst_decode(),
+            name: self.name.cst_decode(),
+            alias_enum: self.alias_enum.cst_decode(),
+            alias_struct: self.alias_struct.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse>
+    for wire_cst_test_model_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse {
+        crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse {
+            id: self.id.cst_decode(),
+            name: self.name.cst_decode(),
+            alias_enum: self.alias_enum.cst_decode(),
+            alias_struct: self.alias_struct.cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::structure::TupleStructWithOneFieldTwinNormal>
@@ -8042,6 +10365,12 @@ impl CstDecode<[u8; 32]> for *mut wire_cst_list_prim_u_8 {
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl CstDecode<[u8; 5]> for *mut wire_cst_list_prim_u_8 {
+    fn cst_decode(self) -> [u8; 5] {
+        let vec: Vec<u8> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[u8; 8]> for *mut wire_cst_list_prim_u_8 {
     fn cst_decode(self) -> [u8; 8] {
         let vec: Vec<u8> = self.cst_decode();
@@ -8102,6 +10431,89 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync_sse::UserIdTwinSyn
         crate::api::pseudo_manual::attribute_twin_sync_sse::UserIdTwinSyncSse {
             value: self.value.cst_decode(),
         }
+    }
+}
+impl CstDecode<crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal>
+    for wire_cst_vec_of_primitive_pack_twin_normal
+{
+    fn cst_decode(self) -> crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal {
+        crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal {
+            int8list: self.int8list.cst_decode(),
+            uint8list: self.uint8list.cst_decode(),
+            int16list: self.int16list.cst_decode(),
+            uint16list: self.uint16list.cst_decode(),
+            uint32list: self.uint32list.cst_decode(),
+            int32list: self.int32list.cst_decode(),
+            uint64list: self.uint64list.cst_decode(),
+            int64list: self.int64list.cst_decode(),
+            float32list: self.float32list.cst_decode(),
+            float64list: self.float64list.cst_decode(),
+            bool_list: self.bool_list.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync> for wire_cst_vec_of_primitive_pack_twin_rust_async {
+            fn cst_decode(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync {
+                crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync{int8list:  self.int8list.cst_decode(),uint8list:  self.uint8list.cst_decode(),int16list:  self.int16list.cst_decode(),uint16list:  self.uint16list.cst_decode(),uint32list:  self.uint32list.cst_decode(),int32list:  self.int32list.cst_decode(),uint64list:  self.uint64list.cst_decode(),int64list:  self.int64list.cst_decode(),float32list:  self.float32list.cst_decode(),float64list:  self.float64list.cst_decode(),bool_list:  self.bool_list.cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async_sse::VecOfPrimitivePackTwinRustAsyncSse> for wire_cst_vec_of_primitive_pack_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_rust_async_sse::VecOfPrimitivePackTwinRustAsyncSse {
+                crate::api::pseudo_manual::primitive_list_misc_twin_rust_async_sse::VecOfPrimitivePackTwinRustAsyncSse{int8list:  self.int8list.cst_decode(),uint8list:  self.uint8list.cst_decode(),int16list:  self.int16list.cst_decode(),uint16list:  self.uint16list.cst_decode(),uint32list:  self.uint32list.cst_decode(),int32list:  self.int32list.cst_decode(),uint64list:  self.uint64list.cst_decode(),int64list:  self.int64list.cst_decode(),float32list:  self.float32list.cst_decode(),float64list:  self.float64list.cst_decode(),bool_list:  self.bool_list.cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_sse::VecOfPrimitivePackTwinSse>
+    for wire_cst_vec_of_primitive_pack_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sse::VecOfPrimitivePackTwinSse {
+        crate::api::pseudo_manual::primitive_list_misc_twin_sse::VecOfPrimitivePackTwinSse {
+            int8list: self.int8list.cst_decode(),
+            uint8list: self.uint8list.cst_decode(),
+            int16list: self.int16list.cst_decode(),
+            uint16list: self.uint16list.cst_decode(),
+            uint32list: self.uint32list.cst_decode(),
+            int32list: self.int32list.cst_decode(),
+            uint64list: self.uint64list.cst_decode(),
+            int64list: self.int64list.cst_decode(),
+            float32list: self.float32list.cst_decode(),
+            float64list: self.float64list.cst_decode(),
+            bool_list: self.bool_list.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync>
+    for wire_cst_vec_of_primitive_pack_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync {
+        crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync {
+            int8list: self.int8list.cst_decode(),
+            uint8list: self.uint8list.cst_decode(),
+            int16list: self.int16list.cst_decode(),
+            uint16list: self.uint16list.cst_decode(),
+            uint32list: self.uint32list.cst_decode(),
+            int32list: self.int32list.cst_decode(),
+            uint64list: self.uint64list.cst_decode(),
+            int64list: self.int64list.cst_decode(),
+            float32list: self.float32list.cst_decode(),
+            float64list: self.float64list.cst_decode(),
+            bool_list: self.bool_list.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse,
+    > for wire_cst_vec_of_primitive_pack_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse
+    {
+        crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse{int8list:  self.int8list.cst_decode(),uint8list:  self.uint8list.cst_decode(),int16list:  self.int16list.cst_decode(),uint16list:  self.uint16list.cst_decode(),uint32list:  self.uint32list.cst_decode(),int32list:  self.int32list.cst_decode(),uint64list:  self.uint64list.cst_decode(),int64list:  self.int64list.cst_decode(),float32list:  self.float32list.cst_decode(),float64list:  self.float64list.cst_decode(),bool_list:  self.bool_list.cst_decode()}
     }
 }
 #[repr(C)]
@@ -8369,6 +10781,49 @@ pub struct wire_cst_AbcTwinSyncSse_JustInt {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_cst_another_macro_struct_twin_normal {
+    data: i32,
+    non_final_data: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_another_twin_normal {
+    a: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_another_twin_rust_async {
+    a: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_another_twin_rust_async_sse {
+    a: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_another_twin_sse {
+    a: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_another_twin_sync {
+    a: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_another_twin_sync_sse {
+    a: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_cst_application_env {
     vars: *mut wire_cst_list_application_env_var,
 }
@@ -8379,7 +10834,36 @@ pub struct wire_cst_application_env_var {
     field0: *mut wire_cst_list_prim_u_8,
     field1: bool,
 }
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_application_message {
+    tag: i32,
+    kind: *mut ApplicationMessageKind,
+}
 
+#[repr(C)]
+pub union ApplicationMessageKind {
+    DisplayMessage: *mut wire_cst_ApplicationMessage_DisplayMessage,
+    RenderPixel: *mut wire_cst_ApplicationMessage_RenderPixel,
+    Exit: *mut wire_cst_ApplicationMessage_Exit,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_ApplicationMessage_DisplayMessage {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_ApplicationMessage_RenderPixel {
+    x: i32,
+    y: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_ApplicationMessage_Exit {}
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_application_settings {
@@ -8466,6 +10950,48 @@ pub struct wire_cst_b_twin_sync {
 #[derive(Clone)]
 pub struct wire_cst_b_twin_sync_sse {
     b: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_big_buffers_twin_normal {
+    int64: *mut wire_cst_list_prim_i_64,
+    uint64: *mut wire_cst_list_prim_u_64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_big_buffers_twin_rust_async {
+    int64: *mut wire_cst_list_prim_i_64,
+    uint64: *mut wire_cst_list_prim_u_64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_big_buffers_twin_rust_async_sse {
+    int64: *mut wire_cst_list_prim_i_64,
+    uint64: *mut wire_cst_list_prim_u_64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_big_buffers_twin_sse {
+    int64: *mut wire_cst_list_prim_i_64,
+    uint64: *mut wire_cst_list_prim_u_64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_big_buffers_twin_sync {
+    int64: *mut wire_cst_list_prim_i_64,
+    uint64: *mut wire_cst_list_prim_u_64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_big_buffers_twin_sync_sse {
+    int64: *mut wire_cst_list_prim_i_64,
+    uint64: *mut wire_cst_list_prim_u_64,
 }
 
 #[repr(C)]
@@ -8574,6 +11100,648 @@ pub struct wire_cst_concatenate_with_twin_sync {
 #[derive(Clone)]
 pub struct wire_cst_concatenate_with_twin_sync_sse {
     a: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_contains_mirrored_sub_struct_twin_normal {
+    test: wire_cst_raw_string_mirrored,
+    test2: wire_cst_another_twin_normal,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_contains_mirrored_sub_struct_twin_rust_async {
+    test: wire_cst_raw_string_mirrored,
+    test2: wire_cst_another_twin_rust_async,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_contains_mirrored_sub_struct_twin_rust_async_sse {
+    test: wire_cst_raw_string_mirrored,
+    test2: wire_cst_another_twin_rust_async_sse,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_contains_mirrored_sub_struct_twin_sse {
+    test: wire_cst_raw_string_mirrored,
+    test2: wire_cst_another_twin_sse,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_contains_mirrored_sub_struct_twin_sync {
+    test: wire_cst_raw_string_mirrored,
+    test2: wire_cst_another_twin_sync,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_contains_mirrored_sub_struct_twin_sync_sse {
+    test: wire_cst_raw_string_mirrored,
+    test2: wire_cst_another_twin_sync_sse,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_enum_error_twin_normal {
+    tag: i32,
+    kind: *mut CustomEnumErrorTwinNormalKind,
+}
+
+#[repr(C)]
+pub union CustomEnumErrorTwinNormalKind {
+    One: *mut wire_cst_CustomEnumErrorTwinNormal_One,
+    Two: *mut wire_cst_CustomEnumErrorTwinNormal_Two,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinNormal_One {
+    message: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinNormal_Two {
+    message: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_enum_error_twin_rust_async {
+    tag: i32,
+    kind: *mut CustomEnumErrorTwinRustAsyncKind,
+}
+
+#[repr(C)]
+pub union CustomEnumErrorTwinRustAsyncKind {
+    One: *mut wire_cst_CustomEnumErrorTwinRustAsync_One,
+    Two: *mut wire_cst_CustomEnumErrorTwinRustAsync_Two,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinRustAsync_One {
+    message: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinRustAsync_Two {
+    message: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_enum_error_twin_rust_async_sse {
+    tag: i32,
+    kind: *mut CustomEnumErrorTwinRustAsyncSseKind,
+}
+
+#[repr(C)]
+pub union CustomEnumErrorTwinRustAsyncSseKind {
+    One: *mut wire_cst_CustomEnumErrorTwinRustAsyncSse_One,
+    Two: *mut wire_cst_CustomEnumErrorTwinRustAsyncSse_Two,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One {
+    message: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two {
+    message: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_enum_error_twin_sse {
+    tag: i32,
+    kind: *mut CustomEnumErrorTwinSseKind,
+}
+
+#[repr(C)]
+pub union CustomEnumErrorTwinSseKind {
+    One: *mut wire_cst_CustomEnumErrorTwinSse_One,
+    Two: *mut wire_cst_CustomEnumErrorTwinSse_Two,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinSse_One {
+    message: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinSse_Two {
+    message: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_enum_error_twin_sync {
+    tag: i32,
+    kind: *mut CustomEnumErrorTwinSyncKind,
+}
+
+#[repr(C)]
+pub union CustomEnumErrorTwinSyncKind {
+    One: *mut wire_cst_CustomEnumErrorTwinSync_One,
+    Two: *mut wire_cst_CustomEnumErrorTwinSync_Two,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinSync_One {
+    message: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinSync_Two {
+    message: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_enum_error_twin_sync_sse {
+    tag: i32,
+    kind: *mut CustomEnumErrorTwinSyncSseKind,
+}
+
+#[repr(C)]
+pub union CustomEnumErrorTwinSyncSseKind {
+    One: *mut wire_cst_CustomEnumErrorTwinSyncSse_One,
+    Two: *mut wire_cst_CustomEnumErrorTwinSyncSse_Two,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinSyncSse_One {
+    message: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomEnumErrorTwinSyncSse_Two {
+    message: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_error_twin_normal {
+    tag: i32,
+    kind: *mut CustomErrorTwinNormalKind,
+}
+
+#[repr(C)]
+pub union CustomErrorTwinNormalKind {
+    Error0: *mut wire_cst_CustomErrorTwinNormal_Error0,
+    Error1: *mut wire_cst_CustomErrorTwinNormal_Error1,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinNormal_Error0 {
+    e: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinNormal_Error1 {
+    e: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_error_twin_rust_async {
+    tag: i32,
+    kind: *mut CustomErrorTwinRustAsyncKind,
+}
+
+#[repr(C)]
+pub union CustomErrorTwinRustAsyncKind {
+    Error0: *mut wire_cst_CustomErrorTwinRustAsync_Error0,
+    Error1: *mut wire_cst_CustomErrorTwinRustAsync_Error1,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinRustAsync_Error0 {
+    e: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinRustAsync_Error1 {
+    e: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_error_twin_rust_async_sse {
+    tag: i32,
+    kind: *mut CustomErrorTwinRustAsyncSseKind,
+}
+
+#[repr(C)]
+pub union CustomErrorTwinRustAsyncSseKind {
+    Error0: *mut wire_cst_CustomErrorTwinRustAsyncSse_Error0,
+    Error1: *mut wire_cst_CustomErrorTwinRustAsyncSse_Error1,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 {
+    e: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 {
+    e: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_error_twin_sse {
+    tag: i32,
+    kind: *mut CustomErrorTwinSseKind,
+}
+
+#[repr(C)]
+pub union CustomErrorTwinSseKind {
+    Error0: *mut wire_cst_CustomErrorTwinSse_Error0,
+    Error1: *mut wire_cst_CustomErrorTwinSse_Error1,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinSse_Error0 {
+    e: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinSse_Error1 {
+    e: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_error_twin_sync {
+    tag: i32,
+    kind: *mut CustomErrorTwinSyncKind,
+}
+
+#[repr(C)]
+pub union CustomErrorTwinSyncKind {
+    Error0: *mut wire_cst_CustomErrorTwinSync_Error0,
+    Error1: *mut wire_cst_CustomErrorTwinSync_Error1,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinSync_Error0 {
+    e: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinSync_Error1 {
+    e: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_error_twin_sync_sse {
+    tag: i32,
+    kind: *mut CustomErrorTwinSyncSseKind,
+}
+
+#[repr(C)]
+pub union CustomErrorTwinSyncSseKind {
+    Error0: *mut wire_cst_CustomErrorTwinSyncSse_Error0,
+    Error1: *mut wire_cst_CustomErrorTwinSyncSse_Error1,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinSyncSse_Error0 {
+    e: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomErrorTwinSyncSse_Error1 {
+    e: u32,
+    backtrace: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_1_twin_normal {
+    tag: i32,
+    kind: *mut CustomNestedError1TwinNormalKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError1TwinNormalKind {
+    CustomNested1: *mut wire_cst_CustomNestedError1TwinNormal_CustomNested1,
+    ErrorNested: *mut wire_cst_CustomNestedError1TwinNormal_ErrorNested,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinNormal_ErrorNested {
+    field0: *mut wire_cst_custom_nested_error_2_twin_normal,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_1_twin_rust_async {
+    tag: i32,
+    kind: *mut CustomNestedError1TwinRustAsyncKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError1TwinRustAsyncKind {
+    CustomNested1: *mut wire_cst_CustomNestedError1TwinRustAsync_CustomNested1,
+    ErrorNested: *mut wire_cst_CustomNestedError1TwinRustAsync_ErrorNested,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinRustAsync_ErrorNested {
+    field0: *mut wire_cst_custom_nested_error_2_twin_rust_async,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_1_twin_rust_async_sse {
+    tag: i32,
+    kind: *mut CustomNestedError1TwinRustAsyncSseKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError1TwinRustAsyncSseKind {
+    CustomNested1: *mut wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1,
+    ErrorNested: *mut wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested {
+    field0: *mut wire_cst_custom_nested_error_2_twin_rust_async_sse,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_1_twin_sse {
+    tag: i32,
+    kind: *mut CustomNestedError1TwinSseKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError1TwinSseKind {
+    CustomNested1: *mut wire_cst_CustomNestedError1TwinSse_CustomNested1,
+    ErrorNested: *mut wire_cst_CustomNestedError1TwinSse_ErrorNested,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinSse_CustomNested1 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinSse_ErrorNested {
+    field0: *mut wire_cst_custom_nested_error_2_twin_sse,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_1_twin_sync {
+    tag: i32,
+    kind: *mut CustomNestedError1TwinSyncKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError1TwinSyncKind {
+    CustomNested1: *mut wire_cst_CustomNestedError1TwinSync_CustomNested1,
+    ErrorNested: *mut wire_cst_CustomNestedError1TwinSync_ErrorNested,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinSync_CustomNested1 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinSync_ErrorNested {
+    field0: *mut wire_cst_custom_nested_error_2_twin_sync,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_1_twin_sync_sse {
+    tag: i32,
+    kind: *mut CustomNestedError1TwinSyncSseKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError1TwinSyncSseKind {
+    CustomNested1: *mut wire_cst_CustomNestedError1TwinSyncSse_CustomNested1,
+    ErrorNested: *mut wire_cst_CustomNestedError1TwinSyncSse_ErrorNested,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested {
+    field0: *mut wire_cst_custom_nested_error_2_twin_sync_sse,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_2_twin_normal {
+    tag: i32,
+    kind: *mut CustomNestedError2TwinNormalKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError2TwinNormalKind {
+    CustomNested2: *mut wire_cst_CustomNestedError2TwinNormal_CustomNested2,
+    CustomNested2Number: *mut wire_cst_CustomNestedError2TwinNormal_CustomNested2Number,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinNormal_CustomNested2 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinNormal_CustomNested2Number {
+    field0: u32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_2_twin_rust_async {
+    tag: i32,
+    kind: *mut CustomNestedError2TwinRustAsyncKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError2TwinRustAsyncKind {
+    CustomNested2: *mut wire_cst_CustomNestedError2TwinRustAsync_CustomNested2,
+    CustomNested2Number: *mut wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number {
+    field0: u32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_2_twin_rust_async_sse {
+    tag: i32,
+    kind: *mut CustomNestedError2TwinRustAsyncSseKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError2TwinRustAsyncSseKind {
+    CustomNested2: *mut wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2,
+    CustomNested2Number: *mut wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number {
+    field0: u32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_2_twin_sse {
+    tag: i32,
+    kind: *mut CustomNestedError2TwinSseKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError2TwinSseKind {
+    CustomNested2: *mut wire_cst_CustomNestedError2TwinSse_CustomNested2,
+    CustomNested2Number: *mut wire_cst_CustomNestedError2TwinSse_CustomNested2Number,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinSse_CustomNested2 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinSse_CustomNested2Number {
+    field0: u32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_2_twin_sync {
+    tag: i32,
+    kind: *mut CustomNestedError2TwinSyncKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError2TwinSyncKind {
+    CustomNested2: *mut wire_cst_CustomNestedError2TwinSync_CustomNested2,
+    CustomNested2Number: *mut wire_cst_CustomNestedError2TwinSync_CustomNested2Number,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinSync_CustomNested2 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinSync_CustomNested2Number {
+    field0: u32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_nested_error_2_twin_sync_sse {
+    tag: i32,
+    kind: *mut CustomNestedError2TwinSyncSseKind,
+}
+
+#[repr(C)]
+pub union CustomNestedError2TwinSyncSseKind {
+    CustomNested2: *mut wire_cst_CustomNestedError2TwinSyncSse_CustomNested2,
+    CustomNested2Number: *mut wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 {
+    field0: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number {
+    field0: u32,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -8865,6 +12033,42 @@ pub struct wire_cst_CustomNestedErrorOuterTwinSyncSse_Two {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_cst_custom_struct_error_another_twin_normal {
+    message: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_struct_error_another_twin_rust_async {
+    message: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_struct_error_another_twin_rust_async_sse {
+    message: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_struct_error_another_twin_sse {
+    message: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_struct_error_another_twin_sync {
+    message: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_custom_struct_error_another_twin_sync_sse {
+    message: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_cst_custom_struct_error_twin_normal {
     a: *mut wire_cst_list_prim_u_8,
 }
@@ -9150,6 +12354,60 @@ pub struct wire_cst_DistanceTwinSyncSse_Unknown {}
 pub struct wire_cst_DistanceTwinSyncSse_Map {
     field0: f64,
 }
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_element_twin_normal {
+    tag: *mut wire_cst_list_prim_u_8,
+    text: *mut wire_cst_list_prim_u_8,
+    attributes: *mut wire_cst_list_attribute_twin_normal,
+    children: *mut wire_cst_list_element_twin_normal,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_element_twin_rust_async {
+    tag: *mut wire_cst_list_prim_u_8,
+    text: *mut wire_cst_list_prim_u_8,
+    attributes: *mut wire_cst_list_attribute_twin_rust_async,
+    children: *mut wire_cst_list_element_twin_rust_async,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_element_twin_rust_async_sse {
+    tag: *mut wire_cst_list_prim_u_8,
+    text: *mut wire_cst_list_prim_u_8,
+    attributes: *mut wire_cst_list_attribute_twin_rust_async_sse,
+    children: *mut wire_cst_list_element_twin_rust_async_sse,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_element_twin_sse {
+    tag: *mut wire_cst_list_prim_u_8,
+    text: *mut wire_cst_list_prim_u_8,
+    attributes: *mut wire_cst_list_attribute_twin_sse,
+    children: *mut wire_cst_list_element_twin_sse,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_element_twin_sync {
+    tag: *mut wire_cst_list_prim_u_8,
+    text: *mut wire_cst_list_prim_u_8,
+    attributes: *mut wire_cst_list_attribute_twin_sync,
+    children: *mut wire_cst_list_element_twin_sync,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_element_twin_sync_sse {
+    tag: *mut wire_cst_list_prim_u_8,
+    text: *mut wire_cst_list_prim_u_8,
+    attributes: *mut wire_cst_list_attribute_twin_sync_sse,
+    children: *mut wire_cst_list_element_twin_sync_sse,
+}
+
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_empty_twin_normal {}
@@ -10604,6 +13862,13 @@ pub struct wire_cst_list_Chrono_Duration {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_cst_list_Chrono_Local {
+    ptr: *mut i64,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_cst_list_Chrono_Naive {
     ptr: *mut i64,
     len: i32,
@@ -10634,6 +13899,13 @@ pub struct wire_cst_list_String {
 #[derive(Clone)]
 pub struct wire_cst_list_application_env_var {
     ptr: *mut wire_cst_application_env_var,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_application_settings {
+    ptr: *mut wire_cst_application_settings,
     len: i32,
 }
 
@@ -10688,6 +13960,97 @@ pub struct wire_cst_list_bool {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_cst_list_element_twin_normal {
+    ptr: *mut wire_cst_element_twin_normal,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_element_twin_rust_async {
+    ptr: *mut wire_cst_element_twin_rust_async,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_element_twin_rust_async_sse {
+    ptr: *mut wire_cst_element_twin_rust_async_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_element_twin_sse {
+    ptr: *mut wire_cst_element_twin_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_element_twin_sync {
+    ptr: *mut wire_cst_element_twin_sync,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_element_twin_sync_sse {
+    ptr: *mut wire_cst_element_twin_sync_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_enum_opaque_twin_normal {
+    ptr: *mut wire_cst_enum_opaque_twin_normal,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_enum_opaque_twin_rust_async {
+    ptr: *mut wire_cst_enum_opaque_twin_rust_async,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_enum_opaque_twin_rust_async_sse {
+    ptr: *mut wire_cst_enum_opaque_twin_rust_async_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_enum_opaque_twin_sse {
+    ptr: *mut wire_cst_enum_opaque_twin_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_enum_opaque_twin_sync {
+    ptr: *mut wire_cst_enum_opaque_twin_sync,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_enum_opaque_twin_sync_sse {
+    ptr: *mut wire_cst_enum_opaque_twin_sync_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_my_enum {
+    ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_cst_list_my_size {
     ptr: *mut wire_cst_my_size,
     len: i32,
@@ -10733,6 +14096,19 @@ pub struct wire_cst_list_my_tree_node_twin_sync {
 pub struct wire_cst_list_my_tree_node_twin_sync_sse {
     ptr: *mut wire_cst_my_tree_node_twin_sync_sse,
     len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_nested_raw_string_mirrored {
+    ptr: *mut wire_cst_nested_raw_string_mirrored,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_of_nested_raw_string_mirrored {
+    raw: *mut wire_cst_list_nested_raw_string_mirrored,
 }
 
 #[repr(C)]
@@ -10842,6 +14218,48 @@ pub struct wire_cst_list_opt_list_prim_i_32 {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_cst_list_point_twin_normal {
+    ptr: *mut wire_cst_point_twin_normal,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_point_twin_rust_async {
+    ptr: *mut wire_cst_point_twin_rust_async,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_point_twin_rust_async_sse {
+    ptr: *mut wire_cst_point_twin_rust_async_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_point_twin_sse {
+    ptr: *mut wire_cst_point_twin_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_point_twin_sync {
+    ptr: *mut wire_cst_point_twin_sync,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_point_twin_sync_sse {
+    ptr: *mut wire_cst_point_twin_sync_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_cst_list_prim_f_32 {
     ptr: *mut f32,
     len: i32,
@@ -10912,8 +14330,64 @@ pub struct wire_cst_list_prim_u_8 {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_cst_list_raw_string_enum_mirrored {
+    ptr: *mut wire_cst_raw_string_enum_mirrored,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_raw_string_mirrored {
+    ptr: *mut wire_cst_raw_string_mirrored,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_cst_list_record_string_i_32 {
     ptr: *mut wire_cst_record_string_i_32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_sum_with_twin_normal {
+    ptr: *mut wire_cst_sum_with_twin_normal,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_sum_with_twin_rust_async {
+    ptr: *mut wire_cst_sum_with_twin_rust_async,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_sum_with_twin_rust_async_sse {
+    ptr: *mut wire_cst_sum_with_twin_rust_async_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_sum_with_twin_sse {
+    ptr: *mut wire_cst_sum_with_twin_sse,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_sum_with_twin_sync {
+    ptr: *mut wire_cst_sum_with_twin_sync,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_sum_with_twin_sync_sse {
+    ptr: *mut wire_cst_sum_with_twin_sync_sse,
     len: i32,
 }
 
@@ -10999,6 +14473,76 @@ pub struct wire_cst_list_weekdays_twin_sync {
 pub struct wire_cst_list_weekdays_twin_sync_sse {
     ptr: *mut i32,
     len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_2_twin_normal {
+    key: u32,
+    value: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_2_twin_rust_async {
+    key: u32,
+    value: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_2_twin_rust_async_sse {
+    key: u32,
+    value: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_2_twin_sse {
+    key: u32,
+    value: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_2_twin_sync {
+    key: u32,
+    value: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_2_twin_sync_sse {
+    key: u32,
+    value: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_twin_normal {
+    key: u32,
+    value: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_twin_rust_async {
+    key: u32,
+    value: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_twin_rust_async_sse {
+    key: u32,
+    value: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_log_twin_sse {
+    key: u32,
+    value: u32,
 }
 
 #[repr(C)]
@@ -11188,6 +14732,114 @@ pub struct wire_cst_message_id_twin_sync_sse {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_cst_mirror_struct_twin_normal {
+    a: wire_cst_application_settings,
+    b: wire_cst_my_struct,
+    c: *mut wire_cst_list_my_enum,
+    d: *mut wire_cst_list_application_settings,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_mirror_struct_twin_rust_async {
+    a: wire_cst_application_settings,
+    b: wire_cst_my_struct,
+    c: *mut wire_cst_list_my_enum,
+    d: *mut wire_cst_list_application_settings,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_mirror_struct_twin_rust_async_sse {
+    a: wire_cst_application_settings,
+    b: wire_cst_my_struct,
+    c: *mut wire_cst_list_my_enum,
+    d: *mut wire_cst_list_application_settings,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_mirror_struct_twin_sse {
+    a: wire_cst_application_settings,
+    b: wire_cst_my_struct,
+    c: *mut wire_cst_list_my_enum,
+    d: *mut wire_cst_list_application_settings,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_mirror_struct_twin_sync {
+    a: wire_cst_application_settings,
+    b: wire_cst_my_struct,
+    c: *mut wire_cst_list_my_enum,
+    d: *mut wire_cst_list_application_settings,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_mirror_struct_twin_sync_sse {
+    a: wire_cst_application_settings,
+    b: wire_cst_my_struct,
+    c: *mut wire_cst_list_my_enum,
+    d: *mut wire_cst_list_application_settings,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_more_than_just_one_raw_string_struct_twin_normal {
+    regular: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8,
+    r#async: bool,
+    another: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
+    regular: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8,
+    r#async: bool,
+    another: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse {
+    regular: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8,
+    r#async: bool,
+    another: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sse {
+    regular: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8,
+    r#async: bool,
+    another: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sync {
+    regular: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8,
+    r#async: bool,
+    another: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse {
+    regular: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8,
+    r#async: bool,
+    another: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_cst_my_nested_struct_twin_normal {
     tree_node: wire_cst_my_tree_node_twin_normal,
     weekday: i32,
@@ -11233,6 +14885,30 @@ pub struct wire_cst_my_nested_struct_twin_sync_sse {
 pub struct wire_cst_my_size {
     width: i32,
     height: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_my_stream_entry_twin_normal {
+    hello: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_my_stream_entry_twin_rust_async {
+    hello: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_my_stream_entry_twin_rust_async_sse {
+    hello: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_my_stream_entry_twin_sse {
+    hello: *mut wire_cst_list_prim_u_8,
 }
 
 #[repr(C)]
@@ -11293,6 +14969,18 @@ pub struct wire_cst_my_tree_node_twin_sync_sse {
     value_vec_u8: *mut wire_cst_list_prim_u_8,
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_sync_sse,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_nested_raw_string_mirrored {
+    raw: wire_cst_raw_string_mirrored,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_new_simple_struct {
+    field: i32,
 }
 
 #[repr(C)]
@@ -11377,6 +15065,12 @@ pub struct wire_cst_note_twin_sync_sse {
 #[derive(Clone)]
 pub struct wire_cst_numbers {
     field0: *mut wire_cst_list_prim_i_32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_old_simple_struct {
+    field: i32,
 }
 
 #[repr(C)]
@@ -11473,6 +15167,127 @@ pub struct wire_cst_opt_vecs_twin_sync_sse {
     enums: *mut wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse,
     strings: *mut wire_cst_list_opt_String,
     buffers: *mut wire_cst_list_opt_list_prim_i_32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_point_twin_normal {
+    x: f32,
+    y: f32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_point_twin_rust_async {
+    x: f32,
+    y: f32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_point_twin_rust_async_sse {
+    x: f32,
+    y: f32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_point_twin_sse {
+    x: f32,
+    y: f32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_point_twin_sync {
+    x: f32,
+    y: f32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_point_twin_sync_sse {
+    x: f32,
+    y: f32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_raw_string_enum_mirrored {
+    tag: i32,
+    kind: *mut RawStringEnumMirroredKind,
+}
+
+#[repr(C)]
+pub union RawStringEnumMirroredKind {
+    Raw: *mut wire_cst_RawStringEnumMirrored_Raw,
+    Nested: *mut wire_cst_RawStringEnumMirrored_Nested,
+    ListOfNested: *mut wire_cst_RawStringEnumMirrored_ListOfNested,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_RawStringEnumMirrored_Raw {
+    field0: *mut wire_cst_raw_string_mirrored,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_RawStringEnumMirrored_Nested {
+    field0: *mut wire_cst_nested_raw_string_mirrored,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_RawStringEnumMirrored_ListOfNested {
+    field0: *mut wire_cst_list_of_nested_raw_string_mirrored,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_raw_string_item_struct_twin_normal {
+    r#type: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_raw_string_item_struct_twin_rust_async {
+    r#type: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_raw_string_item_struct_twin_rust_async_sse {
+    r#type: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_raw_string_item_struct_twin_sse {
+    r#type: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_raw_string_item_struct_twin_sync {
+    r#type: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_raw_string_item_struct_twin_sync_sse {
+    r#type: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_raw_string_mirrored {
+    value: *mut wire_cst_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_record_application_settings_raw_string_enum_mirrored {
+    field0: wire_cst_application_settings,
+    field1: wire_cst_raw_string_enum_mirrored,
 }
 
 #[repr(C)]
@@ -11873,6 +15688,30 @@ pub struct wire_cst_sum_with_twin_sync_sse {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_cst_test_chrono_twin_normal {
+    dt: *mut i64,
+    dt2: *mut i64,
+    du: *mut i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_test_chrono_twin_rust_async {
+    dt: *mut i64,
+    dt2: *mut i64,
+    du: *mut i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_test_chrono_twin_sync {
+    dt: *mut i64,
+    dt2: *mut i64,
+    du: *mut i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_cst_test_id_twin_normal {
     field0: *mut wire_cst_list_prim_i_32,
 }
@@ -11905,6 +15744,60 @@ pub struct wire_cst_test_id_twin_sync {
 #[derive(Clone)]
 pub struct wire_cst_test_id_twin_sync_sse {
     field0: *mut wire_cst_list_prim_i_32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_test_model_twin_normal {
+    id: u64,
+    name: *mut wire_cst_list_prim_u_8,
+    alias_enum: i32,
+    alias_struct: wire_cst_my_struct,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_test_model_twin_rust_async {
+    id: u64,
+    name: *mut wire_cst_list_prim_u_8,
+    alias_enum: i32,
+    alias_struct: wire_cst_my_struct,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_test_model_twin_rust_async_sse {
+    id: u64,
+    name: *mut wire_cst_list_prim_u_8,
+    alias_enum: i32,
+    alias_struct: wire_cst_my_struct,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_test_model_twin_sse {
+    id: u64,
+    name: *mut wire_cst_list_prim_u_8,
+    alias_enum: i32,
+    alias_struct: wire_cst_my_struct,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_test_model_twin_sync {
+    id: u64,
+    name: *mut wire_cst_list_prim_u_8,
+    alias_enum: i32,
+    alias_struct: wire_cst_my_struct,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_test_model_twin_sync_sse {
+    id: u64,
+    name: *mut wire_cst_list_prim_u_8,
+    alias_enum: i32,
+    alias_struct: wire_cst_my_struct,
 }
 
 #[repr(C)]
@@ -12019,6 +15912,102 @@ pub struct wire_cst_user_id_twin_sync {
 #[derive(Clone)]
 pub struct wire_cst_user_id_twin_sync_sse {
     value: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_vec_of_primitive_pack_twin_normal {
+    int8list: *mut wire_cst_list_prim_i_8,
+    uint8list: *mut wire_cst_list_prim_u_8,
+    int16list: *mut wire_cst_list_prim_i_16,
+    uint16list: *mut wire_cst_list_prim_u_16,
+    uint32list: *mut wire_cst_list_prim_u_32,
+    int32list: *mut wire_cst_list_prim_i_32,
+    uint64list: *mut wire_cst_list_prim_u_64,
+    int64list: *mut wire_cst_list_prim_i_64,
+    float32list: *mut wire_cst_list_prim_f_32,
+    float64list: *mut wire_cst_list_prim_f_64,
+    bool_list: *mut wire_cst_list_bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_vec_of_primitive_pack_twin_rust_async {
+    int8list: *mut wire_cst_list_prim_i_8,
+    uint8list: *mut wire_cst_list_prim_u_8,
+    int16list: *mut wire_cst_list_prim_i_16,
+    uint16list: *mut wire_cst_list_prim_u_16,
+    uint32list: *mut wire_cst_list_prim_u_32,
+    int32list: *mut wire_cst_list_prim_i_32,
+    uint64list: *mut wire_cst_list_prim_u_64,
+    int64list: *mut wire_cst_list_prim_i_64,
+    float32list: *mut wire_cst_list_prim_f_32,
+    float64list: *mut wire_cst_list_prim_f_64,
+    bool_list: *mut wire_cst_list_bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_vec_of_primitive_pack_twin_rust_async_sse {
+    int8list: *mut wire_cst_list_prim_i_8,
+    uint8list: *mut wire_cst_list_prim_u_8,
+    int16list: *mut wire_cst_list_prim_i_16,
+    uint16list: *mut wire_cst_list_prim_u_16,
+    uint32list: *mut wire_cst_list_prim_u_32,
+    int32list: *mut wire_cst_list_prim_i_32,
+    uint64list: *mut wire_cst_list_prim_u_64,
+    int64list: *mut wire_cst_list_prim_i_64,
+    float32list: *mut wire_cst_list_prim_f_32,
+    float64list: *mut wire_cst_list_prim_f_64,
+    bool_list: *mut wire_cst_list_bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_vec_of_primitive_pack_twin_sse {
+    int8list: *mut wire_cst_list_prim_i_8,
+    uint8list: *mut wire_cst_list_prim_u_8,
+    int16list: *mut wire_cst_list_prim_i_16,
+    uint16list: *mut wire_cst_list_prim_u_16,
+    uint32list: *mut wire_cst_list_prim_u_32,
+    int32list: *mut wire_cst_list_prim_i_32,
+    uint64list: *mut wire_cst_list_prim_u_64,
+    int64list: *mut wire_cst_list_prim_i_64,
+    float32list: *mut wire_cst_list_prim_f_32,
+    float64list: *mut wire_cst_list_prim_f_64,
+    bool_list: *mut wire_cst_list_bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_vec_of_primitive_pack_twin_sync {
+    int8list: *mut wire_cst_list_prim_i_8,
+    uint8list: *mut wire_cst_list_prim_u_8,
+    int16list: *mut wire_cst_list_prim_i_16,
+    uint16list: *mut wire_cst_list_prim_u_16,
+    uint32list: *mut wire_cst_list_prim_u_32,
+    int32list: *mut wire_cst_list_prim_i_32,
+    uint64list: *mut wire_cst_list_prim_u_64,
+    int64list: *mut wire_cst_list_prim_i_64,
+    float32list: *mut wire_cst_list_prim_f_32,
+    float64list: *mut wire_cst_list_prim_f_64,
+    bool_list: *mut wire_cst_list_bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_vec_of_primitive_pack_twin_sync_sse {
+    int8list: *mut wire_cst_list_prim_i_8,
+    uint8list: *mut wire_cst_list_prim_u_8,
+    int16list: *mut wire_cst_list_prim_i_16,
+    uint16list: *mut wire_cst_list_prim_u_16,
+    uint32list: *mut wire_cst_list_prim_u_32,
+    int32list: *mut wire_cst_list_prim_i_32,
+    uint64list: *mut wire_cst_list_prim_u_64,
+    int64list: *mut wire_cst_list_prim_i_64,
+    float32list: *mut wire_cst_list_prim_f_32,
+    float64list: *mut wire_cst_list_prim_f_64,
+    bool_list: *mut wire_cst_list_bool,
 }
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
@@ -12179,6 +16168,91 @@ impl Default for wire_cst_abc_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_another_macro_struct_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            data: Default::default(),
+            non_final_data: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_another_macro_struct_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_another_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_another_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_another_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_another_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_another_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_another_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_another_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_another_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_another_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_another_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_another_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_another_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_application_env {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -12200,6 +16274,19 @@ impl NewWithNullPtr for wire_cst_application_env_var {
     }
 }
 impl Default for wire_cst_application_env_var {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_application_message {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_application_message {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -12366,6 +16453,84 @@ impl NewWithNullPtr for wire_cst_b_twin_sync_sse {
     }
 }
 impl Default for wire_cst_b_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_big_buffers_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int64: core::ptr::null_mut(),
+            uint64: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_big_buffers_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_big_buffers_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int64: core::ptr::null_mut(),
+            uint64: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_big_buffers_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_big_buffers_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int64: core::ptr::null_mut(),
+            uint64: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_big_buffers_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_big_buffers_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int64: core::ptr::null_mut(),
+            uint64: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_big_buffers_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_big_buffers_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int64: core::ptr::null_mut(),
+            uint64: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_big_buffers_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_big_buffers_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int64: core::ptr::null_mut(),
+            uint64: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_big_buffers_twin_sync_sse {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -12586,6 +16751,396 @@ impl Default for wire_cst_concatenate_with_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_contains_mirrored_sub_struct_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            test: Default::default(),
+            test2: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_contains_mirrored_sub_struct_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_contains_mirrored_sub_struct_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            test: Default::default(),
+            test2: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_contains_mirrored_sub_struct_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_contains_mirrored_sub_struct_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            test: Default::default(),
+            test2: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_contains_mirrored_sub_struct_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_contains_mirrored_sub_struct_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            test: Default::default(),
+            test2: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_contains_mirrored_sub_struct_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_contains_mirrored_sub_struct_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            test: Default::default(),
+            test2: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_contains_mirrored_sub_struct_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_contains_mirrored_sub_struct_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            test: Default::default(),
+            test2: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_contains_mirrored_sub_struct_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_enum_error_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_enum_error_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_enum_error_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_enum_error_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_enum_error_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_enum_error_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_enum_error_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_enum_error_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_enum_error_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_enum_error_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_enum_error_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_enum_error_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_error_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_error_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_error_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_error_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_error_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_error_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_error_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_error_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_error_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_error_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_error_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_error_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_1_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_1_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_1_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_1_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_1_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_1_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_1_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_1_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_1_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_1_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_1_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_1_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_2_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_2_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_2_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_2_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_2_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_2_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_2_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_2_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_2_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_2_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_nested_error_2_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_nested_error_2_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_custom_nested_error_inner_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -12738,6 +17293,78 @@ impl NewWithNullPtr for wire_cst_custom_nested_error_outer_twin_sync_sse {
     }
 }
 impl Default for wire_cst_custom_nested_error_outer_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_struct_error_another_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            message: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_struct_error_another_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_struct_error_another_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            message: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_struct_error_another_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_struct_error_another_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            message: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_struct_error_another_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_struct_error_another_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            message: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_struct_error_another_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_struct_error_another_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            message: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_struct_error_another_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_custom_struct_error_another_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            message: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_custom_struct_error_another_twin_sync_sse {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -13116,6 +17743,96 @@ impl NewWithNullPtr for wire_cst_distance_twin_sync_sse {
     }
 }
 impl Default for wire_cst_distance_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_element_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: core::ptr::null_mut(),
+            text: core::ptr::null_mut(),
+            attributes: core::ptr::null_mut(),
+            children: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_element_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_element_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: core::ptr::null_mut(),
+            text: core::ptr::null_mut(),
+            attributes: core::ptr::null_mut(),
+            children: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_element_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_element_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: core::ptr::null_mut(),
+            text: core::ptr::null_mut(),
+            attributes: core::ptr::null_mut(),
+            children: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_element_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_element_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: core::ptr::null_mut(),
+            text: core::ptr::null_mut(),
+            attributes: core::ptr::null_mut(),
+            children: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_element_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_element_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: core::ptr::null_mut(),
+            text: core::ptr::null_mut(),
+            attributes: core::ptr::null_mut(),
+            children: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_element_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_element_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: core::ptr::null_mut(),
+            text: core::ptr::null_mut(),
+            attributes: core::ptr::null_mut(),
+            children: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_element_twin_sync_sse {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -14003,6 +18720,148 @@ impl Default for wire_cst_kitchen_sink_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_list_of_nested_raw_string_mirrored {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            raw: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_list_of_nested_raw_string_mirrored {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_2_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_log_2_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_2_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_log_2_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_2_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_log_2_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_2_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_log_2_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_2_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_log_2_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_2_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_log_2_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_log_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_log_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_log_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_log_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: Default::default(),
+            value: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_log_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_macro_struct {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -14165,6 +19024,186 @@ impl Default for wire_cst_message_id_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_mirror_struct_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+            b: Default::default(),
+            c: core::ptr::null_mut(),
+            d: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_mirror_struct_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_mirror_struct_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+            b: Default::default(),
+            c: core::ptr::null_mut(),
+            d: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_mirror_struct_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_mirror_struct_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+            b: Default::default(),
+            c: core::ptr::null_mut(),
+            d: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_mirror_struct_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_mirror_struct_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+            b: Default::default(),
+            c: core::ptr::null_mut(),
+            d: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_mirror_struct_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_mirror_struct_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+            b: Default::default(),
+            c: core::ptr::null_mut(),
+            d: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_mirror_struct_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_mirror_struct_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+            b: Default::default(),
+            c: core::ptr::null_mut(),
+            d: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_mirror_struct_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_more_than_just_one_raw_string_struct_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            regular: core::ptr::null_mut(),
+            r#type: core::ptr::null_mut(),
+            r#async: Default::default(),
+            another: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_more_than_just_one_raw_string_struct_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            regular: core::ptr::null_mut(),
+            r#type: core::ptr::null_mut(),
+            r#async: Default::default(),
+            another: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            regular: core::ptr::null_mut(),
+            r#type: core::ptr::null_mut(),
+            r#async: Default::default(),
+            another: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_more_than_just_one_raw_string_struct_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            regular: core::ptr::null_mut(),
+            r#type: core::ptr::null_mut(),
+            r#async: Default::default(),
+            another: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_more_than_just_one_raw_string_struct_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_more_than_just_one_raw_string_struct_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            regular: core::ptr::null_mut(),
+            r#type: core::ptr::null_mut(),
+            r#async: Default::default(),
+            another: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_more_than_just_one_raw_string_struct_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            regular: core::ptr::null_mut(),
+            r#type: core::ptr::null_mut(),
+            r#async: Default::default(),
+            another: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_my_nested_struct_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -14252,6 +19291,54 @@ impl NewWithNullPtr for wire_cst_my_size {
     }
 }
 impl Default for wire_cst_my_size {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_my_stream_entry_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            hello: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_my_stream_entry_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_my_stream_entry_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            hello: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_my_stream_entry_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_my_stream_entry_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            hello: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_my_stream_entry_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_my_stream_entry_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            hello: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_my_stream_entry_twin_sse {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -14354,6 +19441,30 @@ impl NewWithNullPtr for wire_cst_my_tree_node_twin_sync_sse {
     }
 }
 impl Default for wire_cst_my_tree_node_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_nested_raw_string_mirrored {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            raw: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_nested_raw_string_mirrored {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_new_simple_struct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_new_simple_struct {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -14516,6 +19627,18 @@ impl NewWithNullPtr for wire_cst_numbers {
     }
 }
 impl Default for wire_cst_numbers {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_old_simple_struct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_old_simple_struct {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -14684,6 +19807,194 @@ impl NewWithNullPtr for wire_cst_opt_vecs_twin_sync_sse {
     }
 }
 impl Default for wire_cst_opt_vecs_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_point_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            x: Default::default(),
+            y: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_point_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_point_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            x: Default::default(),
+            y: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_point_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_point_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            x: Default::default(),
+            y: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_point_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_point_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            x: Default::default(),
+            y: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_point_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_point_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            x: Default::default(),
+            y: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_point_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_point_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            x: Default::default(),
+            y: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_point_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_raw_string_enum_mirrored {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_raw_string_enum_mirrored {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_raw_string_item_struct_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            r#type: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_raw_string_item_struct_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_raw_string_item_struct_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            r#type: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_raw_string_item_struct_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_raw_string_item_struct_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            r#type: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_raw_string_item_struct_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_raw_string_item_struct_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            r#type: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_raw_string_item_struct_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_raw_string_item_struct_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            r#type: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_raw_string_item_struct_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_raw_string_item_struct_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            r#type: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_raw_string_item_struct_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_raw_string_mirrored {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            value: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_raw_string_mirrored {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_record_application_settings_raw_string_enum_mirrored {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: Default::default(),
+            field1: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_record_application_settings_raw_string_enum_mirrored {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -15295,6 +20606,48 @@ impl Default for wire_cst_sum_with_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_test_chrono_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            dt: core::ptr::null_mut(),
+            dt2: core::ptr::null_mut(),
+            du: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_test_chrono_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_test_chrono_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            dt: core::ptr::null_mut(),
+            dt2: core::ptr::null_mut(),
+            du: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_test_chrono_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_test_chrono_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            dt: core::ptr::null_mut(),
+            dt2: core::ptr::null_mut(),
+            du: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_test_chrono_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_test_id_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -15363,6 +20716,96 @@ impl NewWithNullPtr for wire_cst_test_id_twin_sync_sse {
     }
 }
 impl Default for wire_cst_test_id_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_test_model_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            id: Default::default(),
+            name: core::ptr::null_mut(),
+            alias_enum: Default::default(),
+            alias_struct: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_test_model_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_test_model_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            id: Default::default(),
+            name: core::ptr::null_mut(),
+            alias_enum: Default::default(),
+            alias_struct: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_test_model_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_test_model_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            id: Default::default(),
+            name: core::ptr::null_mut(),
+            alias_enum: Default::default(),
+            alias_struct: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_test_model_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_test_model_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            id: Default::default(),
+            name: core::ptr::null_mut(),
+            alias_enum: Default::default(),
+            alias_struct: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_test_model_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_test_model_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            id: Default::default(),
+            name: core::ptr::null_mut(),
+            alias_enum: Default::default(),
+            alias_struct: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_test_model_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_test_model_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            id: Default::default(),
+            name: core::ptr::null_mut(),
+            alias_enum: Default::default(),
+            alias_struct: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_test_model_twin_sync_sse {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -15589,6 +21032,138 @@ impl Default for wire_cst_user_id_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_vec_of_primitive_pack_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int8list: core::ptr::null_mut(),
+            uint8list: core::ptr::null_mut(),
+            int16list: core::ptr::null_mut(),
+            uint16list: core::ptr::null_mut(),
+            uint32list: core::ptr::null_mut(),
+            int32list: core::ptr::null_mut(),
+            uint64list: core::ptr::null_mut(),
+            int64list: core::ptr::null_mut(),
+            float32list: core::ptr::null_mut(),
+            float64list: core::ptr::null_mut(),
+            bool_list: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_vec_of_primitive_pack_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_vec_of_primitive_pack_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int8list: core::ptr::null_mut(),
+            uint8list: core::ptr::null_mut(),
+            int16list: core::ptr::null_mut(),
+            uint16list: core::ptr::null_mut(),
+            uint32list: core::ptr::null_mut(),
+            int32list: core::ptr::null_mut(),
+            uint64list: core::ptr::null_mut(),
+            int64list: core::ptr::null_mut(),
+            float32list: core::ptr::null_mut(),
+            float64list: core::ptr::null_mut(),
+            bool_list: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_vec_of_primitive_pack_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_vec_of_primitive_pack_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int8list: core::ptr::null_mut(),
+            uint8list: core::ptr::null_mut(),
+            int16list: core::ptr::null_mut(),
+            uint16list: core::ptr::null_mut(),
+            uint32list: core::ptr::null_mut(),
+            int32list: core::ptr::null_mut(),
+            uint64list: core::ptr::null_mut(),
+            int64list: core::ptr::null_mut(),
+            float32list: core::ptr::null_mut(),
+            float64list: core::ptr::null_mut(),
+            bool_list: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_vec_of_primitive_pack_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_vec_of_primitive_pack_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int8list: core::ptr::null_mut(),
+            uint8list: core::ptr::null_mut(),
+            int16list: core::ptr::null_mut(),
+            uint16list: core::ptr::null_mut(),
+            uint32list: core::ptr::null_mut(),
+            int32list: core::ptr::null_mut(),
+            uint64list: core::ptr::null_mut(),
+            int64list: core::ptr::null_mut(),
+            float32list: core::ptr::null_mut(),
+            float64list: core::ptr::null_mut(),
+            bool_list: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_vec_of_primitive_pack_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_vec_of_primitive_pack_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int8list: core::ptr::null_mut(),
+            uint8list: core::ptr::null_mut(),
+            int16list: core::ptr::null_mut(),
+            uint16list: core::ptr::null_mut(),
+            uint32list: core::ptr::null_mut(),
+            int32list: core::ptr::null_mut(),
+            uint64list: core::ptr::null_mut(),
+            int64list: core::ptr::null_mut(),
+            float32list: core::ptr::null_mut(),
+            float64list: core::ptr::null_mut(),
+            bool_list: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_vec_of_primitive_pack_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_vec_of_primitive_pack_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int8list: core::ptr::null_mut(),
+            uint8list: core::ptr::null_mut(),
+            int16list: core::ptr::null_mut(),
+            uint16list: core::ptr::null_mut(),
+            uint32list: core::ptr::null_mut(),
+            int32list: core::ptr::null_mut(),
+            uint64list: core::ptr::null_mut(),
+            int64list: core::ptr::null_mut(),
+            float32list: core::ptr::null_mut(),
+            float64list: core::ptr::null_mut(),
+            bool_list: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_vec_of_primitive_pack_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 
 #[no_mangle]
 pub extern "C" fn frb_initialize_rust(
@@ -15600,6 +21175,23 @@ pub extern "C" fn frb_initialize_rust(
         dart_opaque_drop_port,
         dart_fn_invoke_port,
     )
+}
+
+#[no_mangle]
+pub extern "C" fn dart_fn_deliver_output(
+    call_id: i32,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    let message = unsafe {
+        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+            ptr_,
+            rust_vec_len_,
+            data_len_,
+        )
+    };
+    FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id, message)
 }
 
 #[no_mangle]
@@ -28308,6 +33900,16 @@ pub extern "C" fn cst_new_box_application_env() -> *mut wire_cst_application_env
 }
 
 #[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_Chrono_Duration(value: i64) -> *mut i64 {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_Chrono_Naive(value: i64) -> *mut i64 {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_box_autoadd_Chrono_Utc(value: i64) -> *mut i64 {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
@@ -28586,6 +34188,54 @@ pub extern "C" fn cst_new_box_autoadd_concatenate_with_twin_sync_sse(
 ) -> *mut wire_cst_concatenate_with_twin_sync_sse {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
         wire_cst_concatenate_with_twin_sync_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_custom_nested_error_2_twin_normal(
+) -> *mut wire_cst_custom_nested_error_2_twin_normal {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_custom_nested_error_2_twin_normal::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_custom_nested_error_2_twin_rust_async(
+) -> *mut wire_cst_custom_nested_error_2_twin_rust_async {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_custom_nested_error_2_twin_rust_async::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+) -> *mut wire_cst_custom_nested_error_2_twin_rust_async_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_custom_nested_error_2_twin_rust_async_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_custom_nested_error_2_twin_sse(
+) -> *mut wire_cst_custom_nested_error_2_twin_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_custom_nested_error_2_twin_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_custom_nested_error_2_twin_sync(
+) -> *mut wire_cst_custom_nested_error_2_twin_sync {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_custom_nested_error_2_twin_sync::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_custom_nested_error_2_twin_sync_sse(
+) -> *mut wire_cst_custom_nested_error_2_twin_sync_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_custom_nested_error_2_twin_sync_sse::new_with_null_ptr(),
     )
 }
 
@@ -28872,6 +34522,51 @@ pub extern "C" fn cst_new_box_autoadd_dart_opaque_nested_twin_sync_sse(
 ) -> *mut wire_cst_dart_opaque_nested_twin_sync_sse {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
         wire_cst_dart_opaque_nested_twin_sync_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_element_twin_normal() -> *mut wire_cst_element_twin_normal {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_element_twin_normal::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_element_twin_rust_async(
+) -> *mut wire_cst_element_twin_rust_async {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_element_twin_rust_async::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_element_twin_rust_async_sse(
+) -> *mut wire_cst_element_twin_rust_async_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_element_twin_rust_async_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_element_twin_sse() -> *mut wire_cst_element_twin_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_element_twin_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_element_twin_sync() -> *mut wire_cst_element_twin_sync {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_element_twin_sync::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_element_twin_sync_sse() -> *mut wire_cst_element_twin_sync_sse
+{
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_element_twin_sync_sse::new_with_null_ptr(),
     )
 }
 
@@ -29408,6 +35103,14 @@ pub extern "C" fn cst_new_box_autoadd_kitchen_sink_twin_sync_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_list_of_nested_raw_string_mirrored(
+) -> *mut wire_cst_list_of_nested_raw_string_mirrored {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_list_of_nested_raw_string_mirrored::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_box_autoadd_macro_struct() -> *mut wire_cst_macro_struct {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_macro_struct::new_with_null_ptr())
 }
@@ -29610,6 +35313,14 @@ pub extern "C" fn cst_new_box_autoadd_my_tree_node_twin_sync_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_nested_raw_string_mirrored(
+) -> *mut wire_cst_nested_raw_string_mirrored {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_nested_raw_string_mirrored::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_box_autoadd_new_type_int_twin_normal(
 ) -> *mut wire_cst_new_type_int_twin_normal {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -29793,6 +35504,13 @@ pub extern "C" fn cst_new_box_autoadd_opt_vecs_twin_sync_sse(
 ) -> *mut wire_cst_opt_vecs_twin_sync_sse {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
         wire_cst_opt_vecs_twin_sync_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_raw_string_mirrored() -> *mut wire_cst_raw_string_mirrored {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_raw_string_mirrored::new_with_null_ptr(),
     )
 }
 
@@ -30518,6 +36236,49 @@ pub extern "C" fn cst_new_box_f_64(value: f64) -> *mut f64 {
 }
 
 #[no_mangle]
+pub extern "C" fn cst_new_box_feed_id_twin_normal() -> *mut wire_cst_feed_id_twin_normal {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_feed_id_twin_normal::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_feed_id_twin_rust_async() -> *mut wire_cst_feed_id_twin_rust_async {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_feed_id_twin_rust_async::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_feed_id_twin_rust_async_sse(
+) -> *mut wire_cst_feed_id_twin_rust_async_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_feed_id_twin_rust_async_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_feed_id_twin_sse() -> *mut wire_cst_feed_id_twin_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_feed_id_twin_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_feed_id_twin_sync() -> *mut wire_cst_feed_id_twin_sync {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_feed_id_twin_sync::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_feed_id_twin_sync_sse() -> *mut wire_cst_feed_id_twin_sync_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_feed_id_twin_sync_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_box_i_32(value: i32) -> *mut i32 {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
@@ -30670,6 +36431,15 @@ pub extern "C" fn cst_new_list_Chrono_Duration(len: i32) -> *mut wire_cst_list_C
 }
 
 #[no_mangle]
+pub extern "C" fn cst_new_list_Chrono_Local(len: i32) -> *mut wire_cst_list_Chrono_Local {
+    let wrap = wire_cst_list_Chrono_Local {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_list_Chrono_Naive(len: i32) -> *mut wire_cst_list_Chrono_Naive {
     let wrap = wire_cst_list_Chrono_Naive {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
@@ -30717,6 +36487,20 @@ pub extern "C" fn cst_new_list_application_env_var(
     let wrap = wire_cst_list_application_env_var {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
             <wire_cst_application_env_var>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_application_settings(
+    len: i32,
+) -> *mut wire_cst_list_application_settings {
+    let wrap = wire_cst_list_application_settings {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_application_settings>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -30818,6 +36602,179 @@ pub extern "C" fn cst_new_list_bool(len: i32) -> *mut wire_cst_list_bool {
 }
 
 #[no_mangle]
+pub extern "C" fn cst_new_list_element_twin_normal(
+    len: i32,
+) -> *mut wire_cst_list_element_twin_normal {
+    let wrap = wire_cst_list_element_twin_normal {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_element_twin_normal>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_element_twin_rust_async(
+    len: i32,
+) -> *mut wire_cst_list_element_twin_rust_async {
+    let wrap = wire_cst_list_element_twin_rust_async {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_element_twin_rust_async>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_element_twin_rust_async_sse(
+    len: i32,
+) -> *mut wire_cst_list_element_twin_rust_async_sse {
+    let wrap = wire_cst_list_element_twin_rust_async_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_element_twin_rust_async_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_element_twin_sse(len: i32) -> *mut wire_cst_list_element_twin_sse {
+    let wrap = wire_cst_list_element_twin_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_element_twin_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_element_twin_sync(len: i32) -> *mut wire_cst_list_element_twin_sync {
+    let wrap = wire_cst_list_element_twin_sync {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_element_twin_sync>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_element_twin_sync_sse(
+    len: i32,
+) -> *mut wire_cst_list_element_twin_sync_sse {
+    let wrap = wire_cst_list_element_twin_sync_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_element_twin_sync_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_enum_opaque_twin_normal(
+    len: i32,
+) -> *mut wire_cst_list_enum_opaque_twin_normal {
+    let wrap = wire_cst_list_enum_opaque_twin_normal {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_enum_opaque_twin_normal>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_enum_opaque_twin_rust_async(
+    len: i32,
+) -> *mut wire_cst_list_enum_opaque_twin_rust_async {
+    let wrap = wire_cst_list_enum_opaque_twin_rust_async {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_enum_opaque_twin_rust_async>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_enum_opaque_twin_rust_async_sse(
+    len: i32,
+) -> *mut wire_cst_list_enum_opaque_twin_rust_async_sse {
+    let wrap = wire_cst_list_enum_opaque_twin_rust_async_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_enum_opaque_twin_rust_async_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_enum_opaque_twin_sse(
+    len: i32,
+) -> *mut wire_cst_list_enum_opaque_twin_sse {
+    let wrap = wire_cst_list_enum_opaque_twin_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_enum_opaque_twin_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_enum_opaque_twin_sync(
+    len: i32,
+) -> *mut wire_cst_list_enum_opaque_twin_sync {
+    let wrap = wire_cst_list_enum_opaque_twin_sync {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_enum_opaque_twin_sync>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_enum_opaque_twin_sync_sse(
+    len: i32,
+) -> *mut wire_cst_list_enum_opaque_twin_sync_sse {
+    let wrap = wire_cst_list_enum_opaque_twin_sync_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_enum_opaque_twin_sync_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_my_enum(len: i32) -> *mut wire_cst_list_my_enum {
+    let wrap = wire_cst_list_my_enum {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_list_my_size(len: i32) -> *mut wire_cst_list_my_size {
     let wrap = wire_cst_list_my_size {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
@@ -30906,6 +36863,20 @@ pub extern "C" fn cst_new_list_my_tree_node_twin_sync_sse(
     let wrap = wire_cst_list_my_tree_node_twin_sync_sse {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
             <wire_cst_my_tree_node_twin_sync_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_nested_raw_string_mirrored(
+    len: i32,
+) -> *mut wire_cst_list_nested_raw_string_mirrored {
+    let wrap = wire_cst_list_nested_raw_string_mirrored {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_nested_raw_string_mirrored>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -31077,6 +37048,84 @@ pub extern "C" fn cst_new_list_opt_list_prim_i_32(
 }
 
 #[no_mangle]
+pub extern "C" fn cst_new_list_point_twin_normal(len: i32) -> *mut wire_cst_list_point_twin_normal {
+    let wrap = wire_cst_list_point_twin_normal {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_point_twin_normal>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_point_twin_rust_async(
+    len: i32,
+) -> *mut wire_cst_list_point_twin_rust_async {
+    let wrap = wire_cst_list_point_twin_rust_async {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_point_twin_rust_async>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_point_twin_rust_async_sse(
+    len: i32,
+) -> *mut wire_cst_list_point_twin_rust_async_sse {
+    let wrap = wire_cst_list_point_twin_rust_async_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_point_twin_rust_async_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_point_twin_sse(len: i32) -> *mut wire_cst_list_point_twin_sse {
+    let wrap = wire_cst_list_point_twin_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_point_twin_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_point_twin_sync(len: i32) -> *mut wire_cst_list_point_twin_sync {
+    let wrap = wire_cst_list_point_twin_sync {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_point_twin_sync>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_point_twin_sync_sse(
+    len: i32,
+) -> *mut wire_cst_list_point_twin_sync_sse {
+    let wrap = wire_cst_list_point_twin_sync_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_point_twin_sync_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_list_prim_f_32(len: i32) -> *mut wire_cst_list_prim_f_32 {
     let ans = wire_cst_list_prim_f_32 {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
@@ -31167,12 +37216,122 @@ pub extern "C" fn cst_new_list_prim_u_8(len: i32) -> *mut wire_cst_list_prim_u_8
 }
 
 #[no_mangle]
+pub extern "C" fn cst_new_list_raw_string_enum_mirrored(
+    len: i32,
+) -> *mut wire_cst_list_raw_string_enum_mirrored {
+    let wrap = wire_cst_list_raw_string_enum_mirrored {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_raw_string_enum_mirrored>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_raw_string_mirrored(
+    len: i32,
+) -> *mut wire_cst_list_raw_string_mirrored {
+    let wrap = wire_cst_list_raw_string_mirrored {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_raw_string_mirrored>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_list_record_string_i_32(
     len: i32,
 ) -> *mut wire_cst_list_record_string_i_32 {
     let wrap = wire_cst_list_record_string_i_32 {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
             <wire_cst_record_string_i_32>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_sum_with_twin_normal(
+    len: i32,
+) -> *mut wire_cst_list_sum_with_twin_normal {
+    let wrap = wire_cst_list_sum_with_twin_normal {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_sum_with_twin_normal>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_sum_with_twin_rust_async(
+    len: i32,
+) -> *mut wire_cst_list_sum_with_twin_rust_async {
+    let wrap = wire_cst_list_sum_with_twin_rust_async {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_sum_with_twin_rust_async>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_sum_with_twin_rust_async_sse(
+    len: i32,
+) -> *mut wire_cst_list_sum_with_twin_rust_async_sse {
+    let wrap = wire_cst_list_sum_with_twin_rust_async_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_sum_with_twin_rust_async_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_sum_with_twin_sse(len: i32) -> *mut wire_cst_list_sum_with_twin_sse {
+    let wrap = wire_cst_list_sum_with_twin_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_sum_with_twin_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_sum_with_twin_sync(
+    len: i32,
+) -> *mut wire_cst_list_sum_with_twin_sync {
+    let wrap = wire_cst_list_sum_with_twin_sync {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_sum_with_twin_sync>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_sum_with_twin_sync_sse(
+    len: i32,
+) -> *mut wire_cst_list_sum_with_twin_sync_sse {
+    let wrap = wire_cst_list_sum_with_twin_sync_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_sum_with_twin_sync_sse>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -31546,6 +37705,617 @@ pub extern "C" fn cst_inflate_AbcTwinSyncSse_JustInt() -> *mut AbcTwinSyncSseKin
     flutter_rust_bridge::for_generated::new_leak_box_ptr(AbcTwinSyncSseKind {
         JustInt: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_AbcTwinSyncSse_JustInt {
+                field0: Default::default(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_ApplicationMessage_DisplayMessage() -> *mut ApplicationMessageKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ApplicationMessageKind {
+        DisplayMessage: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_ApplicationMessage_DisplayMessage {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_ApplicationMessage_RenderPixel() -> *mut ApplicationMessageKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ApplicationMessageKind {
+        RenderPixel: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_ApplicationMessage_RenderPixel {
+                x: Default::default(),
+                y: Default::default(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinNormal_One() -> *mut CustomEnumErrorTwinNormalKind
+{
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinNormalKind {
+        One: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinNormal_One {
+                message: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinNormal_Two() -> *mut CustomEnumErrorTwinNormalKind
+{
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinNormalKind {
+        Two: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinNormal_Two {
+                message: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinRustAsync_One(
+) -> *mut CustomEnumErrorTwinRustAsyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinRustAsyncKind {
+        One: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinRustAsync_One {
+                message: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinRustAsync_Two(
+) -> *mut CustomEnumErrorTwinRustAsyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinRustAsyncKind {
+        Two: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinRustAsync_Two {
+                message: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinRustAsyncSse_One(
+) -> *mut CustomEnumErrorTwinRustAsyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinRustAsyncSseKind {
+        One: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinRustAsyncSse_One {
+                message: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinRustAsyncSse_Two(
+) -> *mut CustomEnumErrorTwinRustAsyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinRustAsyncSseKind {
+        Two: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinRustAsyncSse_Two {
+                message: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinSse_One() -> *mut CustomEnumErrorTwinSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinSseKind {
+        One: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinSse_One {
+                message: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinSse_Two() -> *mut CustomEnumErrorTwinSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinSseKind {
+        Two: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinSse_Two {
+                message: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinSync_One() -> *mut CustomEnumErrorTwinSyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinSyncKind {
+        One: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinSync_One {
+                message: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinSync_Two() -> *mut CustomEnumErrorTwinSyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinSyncKind {
+        Two: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinSync_Two {
+                message: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinSyncSse_One() -> *mut CustomEnumErrorTwinSyncSseKind
+{
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinSyncSseKind {
+        One: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinSyncSse_One {
+                message: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomEnumErrorTwinSyncSse_Two() -> *mut CustomEnumErrorTwinSyncSseKind
+{
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomEnumErrorTwinSyncSseKind {
+        Two: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomEnumErrorTwinSyncSse_Two {
+                message: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinNormal_Error0() -> *mut CustomErrorTwinNormalKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinNormalKind {
+        Error0: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinNormal_Error0 {
+                e: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinNormal_Error1() -> *mut CustomErrorTwinNormalKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinNormalKind {
+        Error1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinNormal_Error1 {
+                e: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinRustAsync_Error0() -> *mut CustomErrorTwinRustAsyncKind
+{
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinRustAsyncKind {
+        Error0: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinRustAsync_Error0 {
+                e: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinRustAsync_Error1() -> *mut CustomErrorTwinRustAsyncKind
+{
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinRustAsyncKind {
+        Error1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinRustAsync_Error1 {
+                e: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinRustAsyncSse_Error0(
+) -> *mut CustomErrorTwinRustAsyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinRustAsyncSseKind {
+        Error0: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinRustAsyncSse_Error0 {
+                e: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinRustAsyncSse_Error1(
+) -> *mut CustomErrorTwinRustAsyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinRustAsyncSseKind {
+        Error1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinRustAsyncSse_Error1 {
+                e: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinSse_Error0() -> *mut CustomErrorTwinSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinSseKind {
+        Error0: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinSse_Error0 {
+                e: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinSse_Error1() -> *mut CustomErrorTwinSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinSseKind {
+        Error1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinSse_Error1 {
+                e: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinSync_Error0() -> *mut CustomErrorTwinSyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinSyncKind {
+        Error0: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinSync_Error0 {
+                e: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinSync_Error1() -> *mut CustomErrorTwinSyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinSyncKind {
+        Error1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinSync_Error1 {
+                e: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinSyncSse_Error0() -> *mut CustomErrorTwinSyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinSyncSseKind {
+        Error0: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinSyncSse_Error0 {
+                e: core::ptr::null_mut(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomErrorTwinSyncSse_Error1() -> *mut CustomErrorTwinSyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomErrorTwinSyncSseKind {
+        Error1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomErrorTwinSyncSse_Error1 {
+                e: Default::default(),
+                backtrace: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinNormal_CustomNested1(
+) -> *mut CustomNestedError1TwinNormalKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinNormalKind {
+        CustomNested1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinNormal_CustomNested1 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinNormal_ErrorNested(
+) -> *mut CustomNestedError1TwinNormalKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinNormalKind {
+        ErrorNested: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinNormal_ErrorNested {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinRustAsync_CustomNested1(
+) -> *mut CustomNestedError1TwinRustAsyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinRustAsyncKind {
+        CustomNested1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinRustAsync_ErrorNested(
+) -> *mut CustomNestedError1TwinRustAsyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinRustAsyncKind {
+        ErrorNested: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinRustAsync_ErrorNested {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinRustAsyncSse_CustomNested1(
+) -> *mut CustomNestedError1TwinRustAsyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinRustAsyncSseKind {
+        CustomNested1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinRustAsyncSse_ErrorNested(
+) -> *mut CustomNestedError1TwinRustAsyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinRustAsyncSseKind {
+        ErrorNested: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinSse_CustomNested1(
+) -> *mut CustomNestedError1TwinSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinSseKind {
+        CustomNested1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinSse_CustomNested1 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinSse_ErrorNested(
+) -> *mut CustomNestedError1TwinSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinSseKind {
+        ErrorNested: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinSse_ErrorNested {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinSync_CustomNested1(
+) -> *mut CustomNestedError1TwinSyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinSyncKind {
+        CustomNested1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinSync_CustomNested1 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinSync_ErrorNested(
+) -> *mut CustomNestedError1TwinSyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinSyncKind {
+        ErrorNested: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinSync_ErrorNested {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinSyncSse_CustomNested1(
+) -> *mut CustomNestedError1TwinSyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinSyncSseKind {
+        CustomNested1: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError1TwinSyncSse_ErrorNested(
+) -> *mut CustomNestedError1TwinSyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError1TwinSyncSseKind {
+        ErrorNested: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError1TwinSyncSse_ErrorNested {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinNormal_CustomNested2(
+) -> *mut CustomNestedError2TwinNormalKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinNormalKind {
+        CustomNested2: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinNormal_CustomNested2 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinNormal_CustomNested2Number(
+) -> *mut CustomNestedError2TwinNormalKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinNormalKind {
+        CustomNested2Number: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinNormal_CustomNested2Number {
+                field0: Default::default(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2(
+) -> *mut CustomNestedError2TwinRustAsyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinRustAsyncKind {
+        CustomNested2: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2Number(
+) -> *mut CustomNestedError2TwinRustAsyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinRustAsyncKind {
+        CustomNested2Number: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number {
+                field0: Default::default(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2(
+) -> *mut CustomNestedError2TwinRustAsyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinRustAsyncSseKind {
+        CustomNested2: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2Number(
+) -> *mut CustomNestedError2TwinRustAsyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinRustAsyncSseKind {
+        CustomNested2Number: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number {
+                field0: Default::default(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinSse_CustomNested2(
+) -> *mut CustomNestedError2TwinSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinSseKind {
+        CustomNested2: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinSse_CustomNested2 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinSse_CustomNested2Number(
+) -> *mut CustomNestedError2TwinSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinSseKind {
+        CustomNested2Number: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinSse_CustomNested2Number {
+                field0: Default::default(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinSync_CustomNested2(
+) -> *mut CustomNestedError2TwinSyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinSyncKind {
+        CustomNested2: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinSync_CustomNested2 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinSync_CustomNested2Number(
+) -> *mut CustomNestedError2TwinSyncKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinSyncKind {
+        CustomNested2Number: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinSync_CustomNested2Number {
+                field0: Default::default(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2(
+) -> *mut CustomNestedError2TwinSyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinSyncSseKind {
+        CustomNested2: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2Number(
+) -> *mut CustomNestedError2TwinSyncSseKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(CustomNestedError2TwinSyncSseKind {
+        CustomNested2Number: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number {
                 field0: Default::default(),
             },
         ),
@@ -33302,6 +40072,40 @@ pub extern "C" fn cst_inflate_MeasureTwinSyncSse_Distance() -> *mut MeasureTwinS
     flutter_rust_bridge::for_generated::new_leak_box_ptr(MeasureTwinSyncSseKind {
         Distance: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_cst_MeasureTwinSyncSse_Distance {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_RawStringEnumMirrored_Raw() -> *mut RawStringEnumMirroredKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(RawStringEnumMirroredKind {
+        Raw: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_RawStringEnumMirrored_Raw {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_RawStringEnumMirrored_Nested() -> *mut RawStringEnumMirroredKind {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(RawStringEnumMirroredKind {
+        Nested: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_RawStringEnumMirrored_Nested {
+                field0: core::ptr::null_mut(),
+            },
+        ),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn cst_inflate_RawStringEnumMirrored_ListOfNested() -> *mut RawStringEnumMirroredKind
+{
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(RawStringEnumMirroredKind {
+        ListOfNested: flutter_rust_bridge::for_generated::new_leak_box_ptr(
+            wire_cst_RawStringEnumMirrored_ListOfNested {
                 field0: core::ptr::null_mut(),
             },
         ),

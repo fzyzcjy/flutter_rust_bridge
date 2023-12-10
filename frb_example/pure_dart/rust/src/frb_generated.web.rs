@@ -291,6 +291,135 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyn
         }
     }
 }
+impl CstDecode<crate::api::inside_macro::AnotherMacroStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::inside_macro::AnotherMacroStructTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::inside_macro::AnotherMacroStructTwinNormal {
+            data: self_.get(0).cst_decode(),
+            non_final_data: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::mirror::AnotherTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::mirror::AnotherTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::mirror::AnotherTwinNormal {
+            a: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync {
+            a: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::AnotherTwinRustAsyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::AnotherTwinRustAsyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::AnotherTwinRustAsyncSse {
+            a: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::AnotherTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::AnotherTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sse::AnotherTwinSse {
+            a: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync {
+            a: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::AnotherTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::AnotherTwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync_sse::AnotherTwinSyncSse {
+            a: self_.get(0).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -326,6 +455,26 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVa
             self_.get(0).cst_decode(),
             self_.get(1).cst_decode(),
         )
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => {
+                crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::DisplayMessage(
+                    self_.get(1).cst_decode(),
+                )
+            }
+            1 => crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::RenderPixel {
+                x: self_.get(1).cst_decode(),
+                y: self_.get(2).cst_decode(),
+            },
+            2 => crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::Exit,
+            _ => unreachable!(),
+        }
     }
 }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>
@@ -578,6 +727,129 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncS
         }
     }
 }
+impl CstDecode<crate::api::misc_example::BigBuffersTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::misc_example::BigBuffersTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::misc_example::BigBuffersTwinNormal {
+            int64: self_.get(0).cst_decode(),
+            uint64: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync {
+            int64: self_.get(0).cst_decode(),
+            uint64: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BigBuffersTwinRustAsyncSse,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BigBuffersTwinRustAsyncSse
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BigBuffersTwinRustAsyncSse {
+            int64: self_.get(0).cst_decode(),
+            uint64: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::BigBuffersTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::BigBuffersTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_sse::BigBuffersTwinSse {
+            int64: self_.get(0).cst_decode(),
+            uint64: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync {
+            int64: self_.get(0).cst_decode(),
+            uint64: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BigBuffersTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::BigBuffersTwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_sync_sse::BigBuffersTwinSyncSse {
+            int64: self_.get(0).cst_decode(),
+            uint64: self_.get(1).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::array::BlobTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -683,6 +955,11 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::BlobTwinSyncSse>
 impl CstDecode<Box<[u8; 1600]>> for Box<[u8]> {
     fn cst_decode(self) -> Box<[u8; 1600]> {
         CstDecode::<[u8; 1600]>::cst_decode(self).into()
+    }
+}
+impl CstDecode<Box<[u8; 8]>> for Box<[u8]> {
+    fn cst_decode(self) -> Box<[u8; 8]> {
+        CstDecode::<[u8; 8]>::cst_decode(self).into()
     }
 }
 impl CstDecode<crate::api::misc_example::CTwinNormal>
@@ -912,6 +1189,490 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithT
         }
     }
 }
+impl CstDecode<crate::api::mirror::ContainsMirroredSubStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::mirror::ContainsMirroredSubStructTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::mirror::ContainsMirroredSubStructTwinNormal {
+            test: self_.get(0).cst_decode(),
+            test2: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync {
+            test: self_.get(0).cst_decode(),
+            test2: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ContainsMirroredSubStructTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::ContainsMirroredSubStructTwinRustAsyncSse {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::mirror_twin_rust_async_sse::ContainsMirroredSubStructTwinRustAsyncSse{test:  self_.get(0).cst_decode(),test2:  self_.get(1).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::ContainsMirroredSubStructTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sse::ContainsMirroredSubStructTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sse::ContainsMirroredSubStructTwinSse {
+            test: self_.get(0).cst_decode(),
+            test2: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync {
+            test: self_.get(0).cst_decode(),
+            test2: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ContainsMirroredSubStructTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ContainsMirroredSubStructTwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ContainsMirroredSubStructTwinSyncSse {
+            test: self_.get(0).cst_decode(),
+            test2: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::exception::CustomEnumErrorTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::exception::CustomEnumErrorTwinNormal {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::exception::CustomEnumErrorTwinNormal::One {
+                message: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            1 => crate::api::exception::CustomEnumErrorTwinNormal::Two {
+                message: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::One{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::Two{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse
+    {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse::One{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse::Two{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse::One {
+                message: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            1 => crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse::Two {
+                message: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync::One {
+                message: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            1 => crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync::Two {
+                message: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse::One{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+1 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse::Two{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::exception::CustomErrorTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::exception::CustomErrorTwinNormal {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::exception::CustomErrorTwinNormal::Error0 {
+                e: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            1 => crate::api::exception::CustomErrorTwinNormal::Error1 {
+                e: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error0{e:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error1{e:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl
+    CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse::Error0{e:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse::Error1{e:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse::Error0 {
+                e: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            1 => crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse::Error1 {
+                e: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync::Error0 {
+                e: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            1 => crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync::Error1 {
+                e: self_.get(1).cst_decode(),
+                backtrace: self_.get(2).cst_decode(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => {
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse::Error0 {
+                    e: self_.get(1).cst_decode(),
+                    backtrace: self_.get(2).cst_decode(),
+                }
+            }
+            1 => {
+                crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse::Error1 {
+                    e: self_.get(1).cst_decode(),
+                    backtrace: self_.get(2).cst_decode(),
+                }
+            }
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::exception::CustomNestedError1TwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::exception::CustomNestedError1TwinNormal {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::exception::CustomNestedError1TwinNormal::CustomNested1(
+                self_.get(1).cst_decode(),
+            ),
+            1 => crate::api::exception::CustomNestedError1TwinNormal::ErrorNested(
+                self_.get(1).cst_decode(),
+            ),
+            _ => unreachable!(),
+        }
+    }
+}
+impl
+    CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync::CustomNested1( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync::ErrorNested( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse {
+                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse::CustomNested1( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse::ErrorNested( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse::CustomNested1( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse::ErrorNested( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync::CustomNested1( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync::ErrorNested( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse::CustomNested1( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse::ErrorNested( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::exception::CustomNestedError2TwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::exception::CustomNestedError2TwinNormal {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::exception::CustomNestedError2TwinNormal::CustomNested2(
+                self_.get(1).cst_decode(),
+            ),
+            1 => crate::api::exception::CustomNestedError2TwinNormal::CustomNested2Number(
+                self_.get(1).cst_decode(),
+            ),
+            _ => unreachable!(),
+        }
+    }
+}
+impl
+    CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync::CustomNested2( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync::CustomNested2Number( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse {
+                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse::CustomNested2( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse::CustomNested2Number( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse::CustomNested2( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse::CustomNested2Number( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync::CustomNested2( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync::CustomNested2Number( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse::CustomNested2( self_.get(1).cst_decode()) },
+1 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse::CustomNested2Number( self_.get(1).cst_decode()) },
+                    _ => unreachable!(),
+                }
+    }
+}
 impl CstDecode<crate::api::exception::CustomNestedErrorInnerTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -1100,6 +1861,115 @@ impl
 1 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorOuterTwinSyncSse::Two( self_.get(1).cst_decode()) },
                     _ => unreachable!(),
                 }
+    }
+}
+impl CstDecode<crate::api::exception::CustomStructErrorAnotherTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::exception::CustomStructErrorAnotherTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::exception::CustomStructErrorAnotherTwinNormal {
+            message: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync{message:  self_.get(0).cst_decode()}
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorAnotherTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorAnotherTwinRustAsyncSse {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 1, "Expected 1 elements, got {}", self_.length());
+                crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorAnotherTwinRustAsyncSse{message:  self_.get(0).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorAnotherTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorAnotherTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorAnotherTwinSse {
+            message: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync {
+            message: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorAnotherTwinSyncSse,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorAnotherTwinSyncSse
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorAnotherTwinSyncSse {
+            message: self_.get(0).cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::exception::CustomStructErrorTwinNormal>
@@ -1648,6 +2518,136 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwi
                 self_.get(1).cst_decode(),
             ),
             _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::optional::ElementTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::optional::ElementTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::optional::ElementTwinNormal {
+            tag: self_.get(0).cst_decode(),
+            text: self_.get(1).cst_decode(),
+            attributes: self_.get(2).cst_decode(),
+            children: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync {
+            tag: self_.get(0).cst_decode(),
+            text: self_.get(1).cst_decode(),
+            attributes: self_.get(2).cst_decode(),
+            children: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse {
+            tag: self_.get(0).cst_decode(),
+            text: self_.get(1).cst_decode(),
+            attributes: self_.get(2).cst_decode(),
+            children: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse {
+            tag: self_.get(0).cst_decode(),
+            text: self_.get(1).cst_decode(),
+            attributes: self_.get(2).cst_decode(),
+            children: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync {
+            tag: self_.get(0).cst_decode(),
+            text: self_.get(1).cst_decode(),
+            attributes: self_.get(2).cst_decode(),
+            children: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse {
+            tag: self_.get(0).cst_decode(),
+            text: self_.get(1).cst_decode(),
+            attributes: self_.get(2).cst_decode(),
+            children: self_.get(3).cst_decode(),
         }
     }
 }
@@ -2911,6 +3911,17 @@ impl CstDecode<Vec<chrono::Duration>>
             .collect()
     }
 }
+impl CstDecode<Vec<chrono::DateTime<chrono::Local>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<chrono::DateTime<chrono::Local>> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<chrono::NaiveDateTime>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -2959,6 +3970,19 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -3043,6 +4067,167 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeT
 }
 impl CstDecode<Vec<bool>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Vec<bool> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::optional::ElementTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::optional::ElementTwinNormal> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse>
+    {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::auxiliary::sample_types::MyEnum>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::auxiliary::sample_types::MyEnum> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -3141,6 +4326,39 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTree
             .iter()
             .map(CstDecode::cst_decode)
             .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored {
+            raw: self_.get(0).cst_decode(),
+        }
     }
 }
 impl CstDecode<Vec<Option<String>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -3333,6 +4551,76 @@ impl CstDecode<Vec<Option<Vec<i32>>>>
             .collect()
     }
 }
+impl CstDecode<Vec<crate::api::array::PointTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::array::PointTwinNormal> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<f32>> for Box<[f32]> {
     fn cst_decode(self) -> Vec<f32> {
         self.into_vec()
@@ -3383,8 +4671,104 @@ impl CstDecode<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<(String, i32)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Vec<(String, i32)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::method::SumWithTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::method::SumWithTwinNormal> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -3537,6 +4921,200 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::Weekda
             .iter()
             .map(CstDecode::cst_decode)
             .collect()
+    }
+}
+impl CstDecode<crate::api::method::Log2TwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::method::Log2TwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::method::Log2TwinNormal {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async_sse::Log2TwinRustAsyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::method_twin_rust_async_sse::Log2TwinRustAsyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::method_twin_rust_async_sse::Log2TwinRustAsyncSse {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_sse::Log2TwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sse::Log2TwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::method_twin_sse::Log2TwinSse {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::Log2TwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync_sse::Log2TwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::method_twin_sync_sse::Log2TwinSyncSse {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::stream::LogTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::stream::LogTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::stream::LogTwinNormal {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async_sse::LogTwinRustAsyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::stream_twin_rust_async_sse::LogTwinRustAsyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::stream_twin_rust_async_sse::LogTwinRustAsyncSse {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_sse::LogTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_sse::LogTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::stream_twin_sse::LogTwinSse {
+            key: self_.get(0).cst_decode(),
+            value: self_.get(1).cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::inside_macro::MacroStruct>
@@ -3755,6 +5333,230 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::MessageIdTwinSync
         )
     }
 }
+impl CstDecode<crate::api::mirror::MirrorStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::mirror::MirrorStructTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::mirror::MirrorStructTwinNormal {
+            a: self_.get(0).cst_decode(),
+            b: self_.get(1).cst_decode(),
+            c: self_.get(2).cst_decode(),
+            d: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
+            a: self_.get(0).cst_decode(),
+            b: self_.get(1).cst_decode(),
+            c: self_.get(2).cst_decode(),
+            d: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::MirrorStructTwinRustAsyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::MirrorStructTwinRustAsyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_rust_async_sse::MirrorStructTwinRustAsyncSse {
+            a: self_.get(0).cst_decode(),
+            b: self_.get(1).cst_decode(),
+            c: self_.get(2).cst_decode(),
+            d: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::MirrorStructTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::MirrorStructTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sse::MirrorStructTwinSse {
+            a: self_.get(0).cst_decode(),
+            b: self_.get(1).cst_decode(),
+            c: self_.get(2).cst_decode(),
+            d: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
+            a: self_.get(0).cst_decode(),
+            b: self_.get(1).cst_decode(),
+            c: self_.get(2).cst_decode(),
+            d: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::MirrorStructTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::MirrorStructTwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync_sse::MirrorStructTwinSyncSse {
+            a: self_.get(0).cst_decode(),
+            b: self_.get(1).cst_decode(),
+            c: self_.get(2).cst_decode(),
+            d: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal {
+            regular: self_.get(0).cst_decode(),
+            r#type: self_.get(1).cst_decode(),
+            r#async: self_.get(2).cst_decode(),
+            another: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 4, "Expected 4 elements, got {}", self_.length());
+                crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync{regular:  self_.get(0).cst_decode(),r#type:  self_.get(1).cst_decode(),r#async:  self_.get(2).cst_decode(),another:  self_.get(3).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async_sse::MoreThanJustOneRawStringStructTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async_sse::MoreThanJustOneRawStringStructTwinRustAsyncSse {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 4, "Expected 4 elements, got {}", self_.length());
+                crate::api::pseudo_manual::raw_string_twin_rust_async_sse::MoreThanJustOneRawStringStructTwinRustAsyncSse{regular:  self_.get(0).cst_decode(),r#type:  self_.get(1).cst_decode(),r#async:  self_.get(2).cst_decode(),another:  self_.get(3).cst_decode()}
+            }
+        }
+impl
+    CstDecode<crate::api::pseudo_manual::raw_string_twin_sse::MoreThanJustOneRawStringStructTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sse::MoreThanJustOneRawStringStructTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::raw_string_twin_sse::MoreThanJustOneRawStringStructTwinSse {
+            regular: self_.get(0).cst_decode(),
+            r#type: self_.get(1).cst_decode(),
+            r#async: self_.get(2).cst_decode(),
+            another: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync {
+            regular: self_.get(0).cst_decode(),
+            r#type: self_.get(1).cst_decode(),
+            r#async: self_.get(2).cst_decode(),
+            another: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync_sse::MoreThanJustOneRawStringStructTwinSyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_sync_sse::MoreThanJustOneRawStringStructTwinSyncSse {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 4, "Expected 4 elements, got {}", self_.length());
+                crate::api::pseudo_manual::raw_string_twin_sync_sse::MoreThanJustOneRawStringStructTwinSyncSse{regular:  self_.get(0).cst_decode(),r#type:  self_.get(1).cst_decode(),r#async:  self_.get(2).cst_decode(),another:  self_.get(3).cst_decode()}
+            }
+        }
 impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -3893,6 +5695,82 @@ impl CstDecode<crate::auxiliary::sample_types::MySize>
         crate::auxiliary::sample_types::MySize {
             width: self_.get(0).cst_decode(),
             height: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::stream::MyStreamEntryTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::stream::MyStreamEntryTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::stream::MyStreamEntryTwinNormal {
+            hello: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
+            hello: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async_sse::MyStreamEntryTwinRustAsyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::stream_twin_rust_async_sse::MyStreamEntryTwinRustAsyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::stream_twin_rust_async_sse::MyStreamEntryTwinRustAsyncSse {
+            hello: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::stream_twin_sse::MyStreamEntryTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_sse::MyStreamEntryTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::stream_twin_sse::MyStreamEntryTwinSse {
+            hello: self_.get(0).cst_decode(),
         }
     }
 }
@@ -4046,6 +5924,44 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNode
             value_vec_u8: self_.get(1).cst_decode(),
             value_boolean: self_.get(2).cst_decode(),
             children: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
+            raw: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::auxiliary::new_module_system::sub_module::NewSimpleStruct>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::auxiliary::new_module_system::sub_module::NewSimpleStruct {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::auxiliary::new_module_system::sub_module::NewSimpleStruct {
+            field: self_.get(0).cst_decode(),
         }
     }
 }
@@ -4298,6 +6214,24 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers>
             self_.length()
         );
         crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers(self_.get(0).cst_decode())
+    }
+}
+impl CstDecode<crate::auxiliary::old_module_system::sub_module::OldSimpleStruct>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::auxiliary::old_module_system::sub_module::OldSimpleStruct {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::auxiliary::old_module_system::sub_module::OldSimpleStruct {
+            field: self_.get(0).cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::rust_opaque::OpaqueNestedTwinNormal>
@@ -4581,6 +6515,293 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::OptVecsTwinSyn
             strings: self_.get(2).cst_decode(),
             buffers: self_.get(3).cst_decode(),
         }
+    }
+}
+impl CstDecode<crate::api::array::PointTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::array::PointTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::array::PointTwinNormal {
+            x: self_.get(0).cst_decode(),
+            y: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync {
+            x: self_.get(0).cst_decode(),
+            y: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse {
+            x: self_.get(0).cst_decode(),
+            y: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_sse::PointTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sse::PointTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::array_twin_sse::PointTwinSse {
+            x: self_.get(0).cst_decode(),
+            y: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::PointTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::array_twin_sync::PointTwinSync {
+            x: self_.get(0).cst_decode(),
+            y: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse {
+            x: self_.get(0).cst_decode(),
+            y: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Raw(
+                self_.get(1).cst_decode(),
+            ),
+            1 => crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Nested(
+                self_.get(1).cst_decode(),
+            ),
+            2 => {
+                crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::ListOfNested(
+                    self_.get(1).cst_decode(),
+                )
+            }
+            _ => unreachable!(),
+        }
+    }
+}
+impl CstDecode<crate::api::raw_string::RawStringItemStructTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::raw_string::RawStringItemStructTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::raw_string::RawStringItemStructTwinNormal {
+            r#type: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync {
+            r#type: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async_sse::RawStringItemStructTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async_sse::RawStringItemStructTwinRustAsyncSse {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 1, "Expected 1 elements, got {}", self_.length());
+                crate::api::pseudo_manual::raw_string_twin_rust_async_sse::RawStringItemStructTwinRustAsyncSse{r#type:  self_.get(0).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sse::RawStringItemStructTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sse::RawStringItemStructTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::raw_string_twin_sse::RawStringItemStructTwinSse {
+            r#type: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync {
+            r#type: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync_sse::RawStringItemStructTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::raw_string_twin_sync_sse::RawStringItemStructTwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::raw_string_twin_sync_sse::RawStringItemStructTwinSyncSse {
+            r#type: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
+            value: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<(
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> (
+        crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings,
+        crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
+    ) {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
 impl CstDecode<(String, i32)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -5479,6 +7700,68 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncS
         }
     }
 }
+impl CstDecode<crate::api::chrono_type::TestChronoTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::chrono_type::TestChronoTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::chrono_type::TestChronoTwinNormal {
+            dt: self_.get(0).cst_decode(),
+            dt2: self_.get(1).cst_decode(),
+            du: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync {
+            dt: self_.get(0).cst_decode(),
+            dt2: self_.get(1).cst_decode(),
+            du: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
+            dt: self_.get(0).cst_decode(),
+            dt2: self_.get(1).cst_decode(),
+            du: self_.get(2).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::array::TestIdTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -5579,6 +7862,138 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse
             self_.length()
         );
         crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse(self_.get(0).cst_decode())
+    }
+}
+impl CstDecode<crate::api::type_alias::TestModelTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::type_alias::TestModelTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::type_alias::TestModelTwinNormal {
+            id: self_.get(0).cst_decode(),
+            name: self_.get(1).cst_decode(),
+            alias_enum: self_.get(2).cst_decode(),
+            alias_struct: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync {
+            id: self_.get(0).cst_decode(),
+            name: self_.get(1).cst_decode(),
+            alias_enum: self_.get(2).cst_decode(),
+            alias_struct: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_rust_async_sse::TestModelTwinRustAsyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::type_alias_twin_rust_async_sse::TestModelTwinRustAsyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::type_alias_twin_rust_async_sse::TestModelTwinRustAsyncSse {
+            id: self_.get(0).cst_decode(),
+            name: self_.get(1).cst_decode(),
+            alias_enum: self_.get(2).cst_decode(),
+            alias_struct: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sse::TestModelTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::type_alias_twin_sse::TestModelTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::type_alias_twin_sse::TestModelTwinSse {
+            id: self_.get(0).cst_decode(),
+            name: self_.get(1).cst_decode(),
+            alias_enum: self_.get(2).cst_decode(),
+            alias_struct: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync {
+            id: self_.get(0).cst_decode(),
+            name: self_.get(1).cst_decode(),
+            alias_enum: self_.get(2).cst_decode(),
+            alias_struct: self_.get(3).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse {
+            id: self_.get(0).cst_decode(),
+            name: self_.get(1).cst_decode(),
+            alias_enum: self_.get(2).cst_decode(),
+            alias_struct: self_.get(3).cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::structure::TupleStructWithOneFieldTwinNormal>
@@ -5818,6 +8233,12 @@ impl CstDecode<[u8; 32]> for Box<[u8]> {
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl CstDecode<[u8; 5]> for Box<[u8]> {
+    fn cst_decode(self) -> [u8; 5] {
+        let vec: Vec<u8> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[u8; 8]> for Box<[u8]> {
     fn cst_decode(self) -> [u8; 8] {
         let vec: Vec<u8> = self.cst_decode();
@@ -5936,6 +8357,129 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync_sse::UserIdTwinSyn
         }
     }
 }
+impl CstDecode<crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            11,
+            "Expected 11 elements, got {}",
+            self_.length()
+        );
+        crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal {
+            int8list: self_.get(0).cst_decode(),
+            uint8list: self_.get(1).cst_decode(),
+            int16list: self_.get(2).cst_decode(),
+            uint16list: self_.get(3).cst_decode(),
+            uint32list: self_.get(4).cst_decode(),
+            int32list: self_.get(5).cst_decode(),
+            uint64list: self_.get(6).cst_decode(),
+            int64list: self_.get(7).cst_decode(),
+            float32list: self_.get(8).cst_decode(),
+            float64list: self_.get(9).cst_decode(),
+            bool_list: self_.get(10).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 11, "Expected 11 elements, got {}", self_.length());
+                crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync{int8list:  self_.get(0).cst_decode(),uint8list:  self_.get(1).cst_decode(),int16list:  self_.get(2).cst_decode(),uint16list:  self_.get(3).cst_decode(),uint32list:  self_.get(4).cst_decode(),int32list:  self_.get(5).cst_decode(),uint64list:  self_.get(6).cst_decode(),int64list:  self_.get(7).cst_decode(),float32list:  self_.get(8).cst_decode(),float64list:  self_.get(9).cst_decode(),bool_list:  self_.get(10).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async_sse::VecOfPrimitivePackTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_rust_async_sse::VecOfPrimitivePackTwinRustAsyncSse {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 11, "Expected 11 elements, got {}", self_.length());
+                crate::api::pseudo_manual::primitive_list_misc_twin_rust_async_sse::VecOfPrimitivePackTwinRustAsyncSse{int8list:  self_.get(0).cst_decode(),uint8list:  self_.get(1).cst_decode(),int16list:  self_.get(2).cst_decode(),uint16list:  self_.get(3).cst_decode(),uint32list:  self_.get(4).cst_decode(),int32list:  self_.get(5).cst_decode(),uint64list:  self_.get(6).cst_decode(),int64list:  self_.get(7).cst_decode(),float32list:  self_.get(8).cst_decode(),float64list:  self_.get(9).cst_decode(),bool_list:  self_.get(10).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_sse::VecOfPrimitivePackTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sse::VecOfPrimitivePackTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            11,
+            "Expected 11 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::primitive_list_misc_twin_sse::VecOfPrimitivePackTwinSse {
+            int8list: self_.get(0).cst_decode(),
+            uint8list: self_.get(1).cst_decode(),
+            int16list: self_.get(2).cst_decode(),
+            uint16list: self_.get(3).cst_decode(),
+            uint32list: self_.get(4).cst_decode(),
+            int32list: self_.get(5).cst_decode(),
+            uint64list: self_.get(6).cst_decode(),
+            int64list: self_.get(7).cst_decode(),
+            float32list: self_.get(8).cst_decode(),
+            float64list: self_.get(9).cst_decode(),
+            bool_list: self_.get(10).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            11,
+            "Expected 11 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync {
+            int8list: self_.get(0).cst_decode(),
+            uint8list: self_.get(1).cst_decode(),
+            int16list: self_.get(2).cst_decode(),
+            uint16list: self_.get(3).cst_decode(),
+            uint32list: self_.get(4).cst_decode(),
+            int32list: self_.get(5).cst_decode(),
+            uint64list: self_.get(6).cst_decode(),
+            int64list: self_.get(7).cst_decode(),
+            float32list: self_.get(8).cst_decode(),
+            float64list: self_.get(9).cst_decode(),
+            bool_list: self_.get(10).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            11,
+            "Expected 11 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse{int8list:  self_.get(0).cst_decode(),uint8list:  self_.get(1).cst_decode(),int16list:  self_.get(2).cst_decode(),uint16list:  self_.get(3).cst_decode(),uint32list:  self_.get(4).cst_decode(),int32list:  self_.get(5).cst_decode(),uint64list:  self_.get(6).cst_decode(),int64list:  self_.get(7).cst_decode(),float32list:  self_.get(8).cst_decode(),float64list:  self_.get(9).cst_decode(),bool_list:  self_.get(10).cst_decode()}
+    }
+}
 impl CstDecode<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> chrono::Duration {
         CstDecode::<i64>::cst_decode(self).cst_decode()
@@ -6023,6 +8567,24 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn> {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
 }
@@ -6450,6 +9012,52 @@ impl CstDecode<Box<f64>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
         Box::new(self.cst_decode())
     }
 }
+impl CstDecode<Box<crate::api::array::FeedIdTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Box<crate::api::array::FeedIdTwinNormal> {
+        Box::new(self.cst_decode())
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync> {
+        Box::new(self.cst_decode())
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse> {
+        Box::new(self.cst_decode())
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse> {
+        Box::new(self.cst_decode())
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync> {
+        Box::new(self.cst_decode())
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse> {
+        Box::new(self.cst_decode())
+    }
+}
 impl CstDecode<Box<i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Box<i32> {
         Box::new(self.cst_decode())
@@ -6592,6 +9200,12 @@ impl CstDecode<Box<[u8; 1600]>> for flutter_rust_bridge::for_generated::wasm_bin
         Box::new(flutter_rust_bridge::for_generated::from_vec_to_array(vec))
     }
 }
+impl CstDecode<Box<[u8; 8]>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> Box<[u8; 8]> {
+        let vec: Vec<u8> = self.cst_decode();
+        Box::new(flutter_rust_bridge::for_generated::from_vec_to_array(vec))
+    }
+}
 impl CstDecode<Box<crate::api::misc_example::WeekdaysTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -6649,6 +9263,72 @@ impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_sync_sse::Weekda
     ) -> Box<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse> {
         let ptr: Box<i32> = self.cst_decode();
         Box::new(ptr.cst_decode())
+    }
+}
+impl CstDecode<[crate::api::rust_opaque::EnumOpaqueTwinNormal; 5]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::rust_opaque::EnumOpaqueTwinNormal; 5] {
+        let vec: Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync; 5]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync; 5] {
+        let vec: Vec<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync,
+        > = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl
+    CstDecode<
+        [crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse; 5],
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse; 5]
+    {
+        let vec: Vec<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse,
+        > = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse; 5]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse; 5] {
+        let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync; 5]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync; 5] {
+        let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse; 5]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse; 5] {
+        let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<crate::api::enumeration::EnumSimpleTwinNormal>
@@ -6829,11 +9509,145 @@ impl CstDecode<crate::auxiliary::sample_types::MyEnum>
         (self.unchecked_into_f64() as i32).cst_decode()
     }
 }
+impl CstDecode<[crate::api::array::PointTwinNormal; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::array::PointTwinNormal; 2] {
+        let vec: Vec<crate::api::array::PointTwinNormal> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::PointTwinSse; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sse::PointTwinSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::method::SumWithTwinNormal; 3]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::method::SumWithTwinNormal; 3] {
+        let vec: Vec<crate::api::method::SumWithTwinNormal> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync; 3]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync; 3] {
+        let vec: Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse; 3]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse; 3] {
+        let vec: Vec<
+            crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse,
+        > = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse; 3]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse; 3] {
+        let vec: Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync; 3]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync; 3] {
+        let vec: Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse; 3]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse; 3] {
+        let vec: Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::array::TestIdTwinNormal; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::array::TestIdTwinNormal; 2] {
+        let vec: Vec<crate::api::array::TestIdTwinNormal> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[crate::api::array::TestIdTwinNormal; 4]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(self) -> [crate::api::array::TestIdTwinNormal; 4] {
         let vec: Vec<crate::api::array::TestIdTwinNormal> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync> =
+            self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
@@ -6844,6 +9658,17 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRust
         self,
     ) -> [crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4] {
         let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse> =
             self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -6859,6 +9684,14 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwin
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 4]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -6867,11 +9700,29 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 4]>
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4] {
         let vec: Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> =
+            self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse; 2] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse> =
             self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -6917,6 +9768,12 @@ impl CstDecode<[u8; 1600]> for flutter_rust_bridge::for_generated::wasm_bindgen:
 }
 impl CstDecode<[u8; 32]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> [u8; 32] {
+        let vec: Vec<u8> = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<[u8; 5]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> [u8; 5] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -6992,6 +9849,23 @@ pub fn frb_initialize_rust(
         dart_opaque_drop_port,
         dart_fn_invoke_port,
     )
+}
+
+#[wasm_bindgen]
+pub fn dart_fn_deliver_output(
+    call_id: i32,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    let message = unsafe {
+        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+            ptr_,
+            rust_vec_len_,
+            data_len_,
+        )
+    };
+    FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id, message)
 }
 
 #[wasm_bindgen]

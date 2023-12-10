@@ -331,6 +331,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
 
   @protected
+  String cst_encode_AnyhowException(AnyhowException raw) {
+    throw UnimplementedError();
+  }
+
+  @protected
+  String cst_encode_Backtrace(String raw) {
+    throw UnimplementedError();
+  }
+
+  @protected
   Object cst_encode_Chrono_Duration(Duration raw) {
     return cst_encode_i_64(raw.inMilliseconds);
   }
@@ -348,11 +358,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object cst_encode_Chrono_Utc(DateTime raw) {
     return cst_encode_i_64(raw.millisecondsSinceEpoch);
-  }
-
-  @protected
-  Object cst_encode_DartFn_Inputs__Output_unit(void Function() raw) {
-    return cst_encode_DartOpaque(raw);
   }
 
   @protected
@@ -519,6 +524,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_another_macro_struct_twin_normal(
+      AnotherMacroStructTwinNormal raw) {
+    return [cst_encode_i_32(raw.data), cst_encode_i_32(raw.nonFinalData)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_another_twin_normal(AnotherTwinNormal raw) {
+    return [cst_encode_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_another_twin_rust_async(AnotherTwinRustAsync raw) {
+    return [cst_encode_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_another_twin_rust_async_sse(
+      AnotherTwinRustAsyncSse raw) {
+    return [cst_encode_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_another_twin_sse(AnotherTwinSse raw) {
+    return [cst_encode_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_another_twin_sync(AnotherTwinSync raw) {
+    return [cst_encode_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_another_twin_sync_sse(AnotherTwinSyncSse raw) {
+    return [cst_encode_String(raw.a)];
+  }
+
+  @protected
   List<dynamic> cst_encode_application_env(ApplicationEnv raw) {
     return [cst_encode_list_application_env_var(raw.vars)];
   }
@@ -526,6 +568,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_application_env_var(ApplicationEnvVar raw) {
     return [cst_encode_String(raw.field0), cst_encode_bool(raw.field1)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_application_message(ApplicationMessage raw) {
+    if (raw is ApplicationMessage_DisplayMessage) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is ApplicationMessage_RenderPixel) {
+      return [1, cst_encode_i_32(raw.x), cst_encode_i_32(raw.y)];
+    }
+    if (raw is ApplicationMessage_Exit) {
+      return [2];
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -602,6 +659,57 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_big_buffers_twin_normal(BigBuffersTwinNormal raw) {
+    return [
+      cst_encode_list_prim_i_64(raw.int64),
+      cst_encode_list_prim_u_64(raw.uint64)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_big_buffers_twin_rust_async(
+      BigBuffersTwinRustAsync raw) {
+    return [
+      cst_encode_list_prim_i_64(raw.int64),
+      cst_encode_list_prim_u_64(raw.uint64)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_big_buffers_twin_rust_async_sse(
+      BigBuffersTwinRustAsyncSse raw) {
+    return [
+      cst_encode_list_prim_i_64(raw.int64),
+      cst_encode_list_prim_u_64(raw.uint64)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_big_buffers_twin_sse(BigBuffersTwinSse raw) {
+    return [
+      cst_encode_list_prim_i_64(raw.int64),
+      cst_encode_list_prim_u_64(raw.uint64)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_big_buffers_twin_sync(BigBuffersTwinSync raw) {
+    return [
+      cst_encode_list_prim_i_64(raw.int64),
+      cst_encode_list_prim_u_64(raw.uint64)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_big_buffers_twin_sync_sse(
+      BigBuffersTwinSyncSse raw) {
+    return [
+      cst_encode_list_prim_i_64(raw.int64),
+      cst_encode_list_prim_u_64(raw.uint64)
+    ];
+  }
+
+  @protected
   List<dynamic> cst_encode_blob_twin_normal(BlobTwinNormal raw) {
     return [cst_encode_u_8_array_1600(raw.field0)];
   }
@@ -634,6 +742,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_box_application_env(ApplicationEnv raw) {
     return cst_encode_application_env(raw);
+  }
+
+  @protected
+  Object cst_encode_box_autoadd_Chrono_Duration(Duration raw) {
+    return cst_encode_Chrono_Duration(raw);
+  }
+
+  @protected
+  Object cst_encode_box_autoadd_Chrono_Naive(DateTime raw) {
+    return cst_encode_Chrono_Naive(raw);
   }
 
   @protected
@@ -865,6 +983,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_normal(
+      CustomNestedError2TwinNormal raw) {
+    return cst_encode_custom_nested_error_2_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_rust_async(
+      CustomNestedError2TwinRustAsync raw) {
+    return cst_encode_custom_nested_error_2_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+          CustomNestedError2TwinRustAsyncSse raw) {
+    return cst_encode_custom_nested_error_2_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_sse(
+      CustomNestedError2TwinSse raw) {
+    return cst_encode_custom_nested_error_2_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_sync(
+      CustomNestedError2TwinSync raw) {
+    return cst_encode_custom_nested_error_2_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_sync_sse(
+      CustomNestedError2TwinSyncSse raw) {
+    return cst_encode_custom_nested_error_2_twin_sync_sse(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_box_autoadd_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal raw) {
     return cst_encode_custom_nested_error_inner_twin_normal(raw);
@@ -1082,6 +1237,40 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_sync_sse(
       DartOpaqueNestedTwinSyncSse raw) {
     return cst_encode_dart_opaque_nested_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_element_twin_normal(
+      ElementTwinNormal raw) {
+    return cst_encode_element_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_element_twin_rust_async(
+      ElementTwinRustAsync raw) {
+    return cst_encode_element_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_element_twin_rust_async_sse(
+      ElementTwinRustAsyncSse raw) {
+    return cst_encode_element_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_element_twin_sse(ElementTwinSse raw) {
+    return cst_encode_element_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_element_twin_sync(ElementTwinSync raw) {
+    return cst_encode_element_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_element_twin_sync_sse(
+      ElementTwinSyncSse raw) {
+    return cst_encode_element_twin_sync_sse(raw);
   }
 
   @protected
@@ -1493,6 +1682,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_box_autoadd_list_of_nested_raw_string_mirrored(
+      ListOfNestedRawStringMirrored raw) {
+    return cst_encode_list_of_nested_raw_string_mirrored(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_box_autoadd_macro_struct(MacroStruct raw) {
     return cst_encode_macro_struct(raw);
   }
@@ -1650,6 +1845,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_box_autoadd_nested_raw_string_mirrored(
+      NestedRawStringMirrored raw) {
+    return cst_encode_nested_raw_string_mirrored(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_box_autoadd_new_type_int_twin_normal(
       NewTypeIntTwinNormal raw) {
     return cst_encode_new_type_int_twin_normal(raw);
@@ -1790,6 +1991,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_sync_sse(
       OptVecsTwinSyncSse raw) {
     return cst_encode_opt_vecs_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_raw_string_mirrored(
+      RawStringMirrored raw) {
+    return cst_encode_raw_string_mirrored(raw);
   }
 
   @protected
@@ -2363,6 +2570,38 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_box_feed_id_twin_normal(FeedIdTwinNormal raw) {
+    return cst_encode_feed_id_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_feed_id_twin_rust_async(
+      FeedIdTwinRustAsync raw) {
+    return cst_encode_feed_id_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_feed_id_twin_rust_async_sse(
+      FeedIdTwinRustAsyncSse raw) {
+    return cst_encode_feed_id_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_feed_id_twin_sse(FeedIdTwinSse raw) {
+    return cst_encode_feed_id_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_feed_id_twin_sync(FeedIdTwinSync raw) {
+    return cst_encode_feed_id_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_feed_id_twin_sync_sse(FeedIdTwinSyncSse raw) {
+    return cst_encode_feed_id_twin_sync_sse(raw);
+  }
+
+  @protected
   int cst_encode_box_i_32(int raw) {
     return cst_encode_i_32(raw);
   }
@@ -2455,6 +2694,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Uint8List cst_encode_box_u_8_array_1600(U8Array1600 raw) {
     return cst_encode_u_8_array_1600(raw);
+  }
+
+  @protected
+  Uint8List cst_encode_box_u_8_array_8(U8Array8 raw) {
+    return cst_encode_u_8_array_8(raw);
   }
 
   @protected
@@ -2552,6 +2796,436 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_concatenate_with_twin_sync_sse(
       ConcatenateWithTwinSyncSse raw) {
     return [cst_encode_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_normal(
+      ContainsMirroredSubStructTwinNormal raw) {
+    return [
+      cst_encode_raw_string_mirrored(raw.test),
+      cst_encode_another_twin_normal(raw.test2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_rust_async(
+      ContainsMirroredSubStructTwinRustAsync raw) {
+    return [
+      cst_encode_raw_string_mirrored(raw.test),
+      cst_encode_another_twin_rust_async(raw.test2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_rust_async_sse(
+      ContainsMirroredSubStructTwinRustAsyncSse raw) {
+    return [
+      cst_encode_raw_string_mirrored(raw.test),
+      cst_encode_another_twin_rust_async_sse(raw.test2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_sse(
+      ContainsMirroredSubStructTwinSse raw) {
+    return [
+      cst_encode_raw_string_mirrored(raw.test),
+      cst_encode_another_twin_sse(raw.test2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_sync(
+      ContainsMirroredSubStructTwinSync raw) {
+    return [
+      cst_encode_raw_string_mirrored(raw.test),
+      cst_encode_another_twin_sync(raw.test2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_sync_sse(
+      ContainsMirroredSubStructTwinSyncSse raw) {
+    return [
+      cst_encode_raw_string_mirrored(raw.test),
+      cst_encode_another_twin_sync_sse(raw.test2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_enum_error_twin_normal(
+      CustomEnumErrorTwinNormal raw) {
+    if (raw is CustomEnumErrorTwinNormal_One) {
+      return [
+        0,
+        cst_encode_String(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+    if (raw is CustomEnumErrorTwinNormal_Two) {
+      return [
+        1,
+        cst_encode_u_32(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_enum_error_twin_rust_async(
+      CustomEnumErrorTwinRustAsync raw) {
+    if (raw is CustomEnumErrorTwinRustAsync_One) {
+      return [
+        0,
+        cst_encode_String(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+    if (raw is CustomEnumErrorTwinRustAsync_Two) {
+      return [
+        1,
+        cst_encode_u_32(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_enum_error_twin_rust_async_sse(
+      CustomEnumErrorTwinRustAsyncSse raw) {
+    if (raw is CustomEnumErrorTwinRustAsyncSse_One) {
+      return [
+        0,
+        cst_encode_String(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+    if (raw is CustomEnumErrorTwinRustAsyncSse_Two) {
+      return [
+        1,
+        cst_encode_u_32(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_enum_error_twin_sse(
+      CustomEnumErrorTwinSse raw) {
+    if (raw is CustomEnumErrorTwinSse_One) {
+      return [
+        0,
+        cst_encode_String(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+    if (raw is CustomEnumErrorTwinSse_Two) {
+      return [
+        1,
+        cst_encode_u_32(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_enum_error_twin_sync(
+      CustomEnumErrorTwinSync raw) {
+    if (raw is CustomEnumErrorTwinSync_One) {
+      return [
+        0,
+        cst_encode_String(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+    if (raw is CustomEnumErrorTwinSync_Two) {
+      return [
+        1,
+        cst_encode_u_32(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_enum_error_twin_sync_sse(
+      CustomEnumErrorTwinSyncSse raw) {
+    if (raw is CustomEnumErrorTwinSyncSse_One) {
+      return [
+        0,
+        cst_encode_String(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+    if (raw is CustomEnumErrorTwinSyncSse_Two) {
+      return [
+        1,
+        cst_encode_u_32(raw.message),
+        cst_encode_Backtrace(raw.backtrace)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_error_twin_normal(CustomErrorTwinNormal raw) {
+    if (raw is CustomErrorTwinNormal_Error0) {
+      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+    if (raw is CustomErrorTwinNormal_Error1) {
+      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_error_twin_rust_async(
+      CustomErrorTwinRustAsync raw) {
+    if (raw is CustomErrorTwinRustAsync_Error0) {
+      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+    if (raw is CustomErrorTwinRustAsync_Error1) {
+      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_error_twin_rust_async_sse(
+      CustomErrorTwinRustAsyncSse raw) {
+    if (raw is CustomErrorTwinRustAsyncSse_Error0) {
+      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+    if (raw is CustomErrorTwinRustAsyncSse_Error1) {
+      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_error_twin_sse(CustomErrorTwinSse raw) {
+    if (raw is CustomErrorTwinSse_Error0) {
+      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+    if (raw is CustomErrorTwinSse_Error1) {
+      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_error_twin_sync(CustomErrorTwinSync raw) {
+    if (raw is CustomErrorTwinSync_Error0) {
+      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+    if (raw is CustomErrorTwinSync_Error1) {
+      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_error_twin_sync_sse(
+      CustomErrorTwinSyncSse raw) {
+    if (raw is CustomErrorTwinSyncSse_Error0) {
+      return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+    if (raw is CustomErrorTwinSyncSse_Error1) {
+      return [1, cst_encode_u_32(raw.e), cst_encode_Backtrace(raw.backtrace)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_1_twin_normal(
+      CustomNestedError1TwinNormal raw) {
+    if (raw is CustomNestedError1TwinNormal_CustomNested1) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError1TwinNormal_ErrorNested) {
+      return [
+        1,
+        cst_encode_box_autoadd_custom_nested_error_2_twin_normal(raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_1_twin_rust_async(
+      CustomNestedError1TwinRustAsync raw) {
+    if (raw is CustomNestedError1TwinRustAsync_CustomNested1) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError1TwinRustAsync_ErrorNested) {
+      return [
+        1,
+        cst_encode_box_autoadd_custom_nested_error_2_twin_rust_async(raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_1_twin_rust_async_sse(
+      CustomNestedError1TwinRustAsyncSse raw) {
+    if (raw is CustomNestedError1TwinRustAsyncSse_CustomNested1) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError1TwinRustAsyncSse_ErrorNested) {
+      return [
+        1,
+        cst_encode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+            raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_1_twin_sse(
+      CustomNestedError1TwinSse raw) {
+    if (raw is CustomNestedError1TwinSse_CustomNested1) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError1TwinSse_ErrorNested) {
+      return [
+        1,
+        cst_encode_box_autoadd_custom_nested_error_2_twin_sse(raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_1_twin_sync(
+      CustomNestedError1TwinSync raw) {
+    if (raw is CustomNestedError1TwinSync_CustomNested1) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError1TwinSync_ErrorNested) {
+      return [
+        1,
+        cst_encode_box_autoadd_custom_nested_error_2_twin_sync(raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_1_twin_sync_sse(
+      CustomNestedError1TwinSyncSse raw) {
+    if (raw is CustomNestedError1TwinSyncSse_CustomNested1) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError1TwinSyncSse_ErrorNested) {
+      return [
+        1,
+        cst_encode_box_autoadd_custom_nested_error_2_twin_sync_sse(raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_2_twin_normal(
+      CustomNestedError2TwinNormal raw) {
+    if (raw is CustomNestedError2TwinNormal_CustomNested2) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError2TwinNormal_CustomNested2Number) {
+      return [1, cst_encode_u_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_2_twin_rust_async(
+      CustomNestedError2TwinRustAsync raw) {
+    if (raw is CustomNestedError2TwinRustAsync_CustomNested2) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError2TwinRustAsync_CustomNested2Number) {
+      return [1, cst_encode_u_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_2_twin_rust_async_sse(
+      CustomNestedError2TwinRustAsyncSse raw) {
+    if (raw is CustomNestedError2TwinRustAsyncSse_CustomNested2) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError2TwinRustAsyncSse_CustomNested2Number) {
+      return [1, cst_encode_u_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_2_twin_sse(
+      CustomNestedError2TwinSse raw) {
+    if (raw is CustomNestedError2TwinSse_CustomNested2) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError2TwinSse_CustomNested2Number) {
+      return [1, cst_encode_u_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_2_twin_sync(
+      CustomNestedError2TwinSync raw) {
+    if (raw is CustomNestedError2TwinSync_CustomNested2) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError2TwinSync_CustomNested2Number) {
+      return [1, cst_encode_u_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_nested_error_2_twin_sync_sse(
+      CustomNestedError2TwinSyncSse raw) {
+    if (raw is CustomNestedError2TwinSyncSse_CustomNested2) {
+      return [0, cst_encode_String(raw.field0)];
+    }
+    if (raw is CustomNestedError2TwinSyncSse_CustomNested2Number) {
+      return [1, cst_encode_u_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -2729,6 +3403,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_struct_error_another_twin_normal(
+      CustomStructErrorAnotherTwinNormal raw) {
+    return [cst_encode_String(raw.message)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_struct_error_another_twin_rust_async(
+      CustomStructErrorAnotherTwinRustAsync raw) {
+    return [cst_encode_String(raw.message)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_struct_error_another_twin_rust_async_sse(
+      CustomStructErrorAnotherTwinRustAsyncSse raw) {
+    return [cst_encode_String(raw.message)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_struct_error_another_twin_sse(
+      CustomStructErrorAnotherTwinSse raw) {
+    return [cst_encode_String(raw.message)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_struct_error_another_twin_sync(
+      CustomStructErrorAnotherTwinSync raw) {
+    return [cst_encode_String(raw.message)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_custom_struct_error_another_twin_sync_sse(
+      CustomStructErrorAnotherTwinSyncSse raw) {
+    return [cst_encode_String(raw.message)];
   }
 
   @protected
@@ -2979,6 +3689,67 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_element_twin_normal(ElementTwinNormal raw) {
+    return [
+      cst_encode_opt_String(raw.tag),
+      cst_encode_opt_String(raw.text),
+      cst_encode_opt_list_attribute_twin_normal(raw.attributes),
+      cst_encode_opt_list_element_twin_normal(raw.children)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_element_twin_rust_async(ElementTwinRustAsync raw) {
+    return [
+      cst_encode_opt_String(raw.tag),
+      cst_encode_opt_String(raw.text),
+      cst_encode_opt_list_attribute_twin_rust_async(raw.attributes),
+      cst_encode_opt_list_element_twin_rust_async(raw.children)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_element_twin_rust_async_sse(
+      ElementTwinRustAsyncSse raw) {
+    return [
+      cst_encode_opt_String(raw.tag),
+      cst_encode_opt_String(raw.text),
+      cst_encode_opt_list_attribute_twin_rust_async_sse(raw.attributes),
+      cst_encode_opt_list_element_twin_rust_async_sse(raw.children)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_element_twin_sse(ElementTwinSse raw) {
+    return [
+      cst_encode_opt_String(raw.tag),
+      cst_encode_opt_String(raw.text),
+      cst_encode_opt_list_attribute_twin_sse(raw.attributes),
+      cst_encode_opt_list_element_twin_sse(raw.children)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_element_twin_sync(ElementTwinSync raw) {
+    return [
+      cst_encode_opt_String(raw.tag),
+      cst_encode_opt_String(raw.text),
+      cst_encode_opt_list_attribute_twin_sync(raw.attributes),
+      cst_encode_opt_list_element_twin_sync(raw.children)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_element_twin_sync_sse(ElementTwinSyncSse raw) {
+    return [
+      cst_encode_opt_String(raw.tag),
+      cst_encode_opt_String(raw.text),
+      cst_encode_opt_list_attribute_twin_sync_sse(raw.attributes),
+      cst_encode_opt_list_element_twin_sync_sse(raw.children)
+    ];
+  }
+
+  @protected
   List<dynamic> cst_encode_empty_twin_normal(EmptyTwinNormal raw) {
     return [];
   }
@@ -3109,6 +3880,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_enum_opaque_twin_normal_array_5(
+      EnumOpaqueTwinNormalArray5 raw) {
+    return cst_encode_list_enum_opaque_twin_normal(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_enum_opaque_twin_rust_async(
       EnumOpaqueTwinRustAsync raw) {
     if (raw is EnumOpaqueTwinRustAsync_Struct) {
@@ -3131,6 +3908,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_enum_opaque_twin_rust_async_array_5(
+      EnumOpaqueTwinRustAsyncArray5 raw) {
+    return cst_encode_list_enum_opaque_twin_rust_async(raw);
   }
 
   @protected
@@ -3159,6 +3942,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_enum_opaque_twin_rust_async_sse_array_5(
+      EnumOpaqueTwinRustAsyncSseArray5 raw) {
+    return cst_encode_list_enum_opaque_twin_rust_async_sse(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_enum_opaque_twin_sse(EnumOpaqueTwinSse raw) {
     if (raw is EnumOpaqueTwinSse_Struct) {
       return [0, cst_encode_RustOpaque_hide_data(raw.field0)];
@@ -3177,6 +3966,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_enum_opaque_twin_sse_array_5(
+      EnumOpaqueTwinSseArray5 raw) {
+    return cst_encode_list_enum_opaque_twin_sse(raw);
   }
 
   @protected
@@ -3201,6 +3996,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_enum_opaque_twin_sync_array_5(
+      EnumOpaqueTwinSyncArray5 raw) {
+    return cst_encode_list_enum_opaque_twin_sync(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_enum_opaque_twin_sync_sse(
       EnumOpaqueTwinSyncSse raw) {
     if (raw is EnumOpaqueTwinSyncSse_Struct) {
@@ -3220,6 +4021,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_enum_opaque_twin_sync_sse_array_5(
+      EnumOpaqueTwinSyncSseArray5 raw) {
+    return cst_encode_list_enum_opaque_twin_sync_sse(raw);
   }
 
   @protected
@@ -3959,6 +4766,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_list_Chrono_Local(List<DateTime> raw) {
+    return raw.map(cst_encode_Chrono_Local).toList();
+  }
+
+  @protected
   List<dynamic> cst_encode_list_Chrono_Naive(List<DateTime> raw) {
     return raw.map(cst_encode_Chrono_Naive).toList();
   }
@@ -3982,6 +4794,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_list_application_env_var(
       List<ApplicationEnvVar> raw) {
     return raw.map(cst_encode_application_env_var).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_application_settings(
+      List<ApplicationSettings> raw) {
+    return raw.map(cst_encode_application_settings).toList();
   }
 
   @protected
@@ -4025,6 +4843,81 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_list_element_twin_normal(
+      List<ElementTwinNormal> raw) {
+    return raw.map(cst_encode_element_twin_normal).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_element_twin_rust_async(
+      List<ElementTwinRustAsync> raw) {
+    return raw.map(cst_encode_element_twin_rust_async).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_element_twin_rust_async_sse(
+      List<ElementTwinRustAsyncSse> raw) {
+    return raw.map(cst_encode_element_twin_rust_async_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_element_twin_sse(List<ElementTwinSse> raw) {
+    return raw.map(cst_encode_element_twin_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_element_twin_sync(List<ElementTwinSync> raw) {
+    return raw.map(cst_encode_element_twin_sync).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_element_twin_sync_sse(
+      List<ElementTwinSyncSse> raw) {
+    return raw.map(cst_encode_element_twin_sync_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_enum_opaque_twin_normal(
+      List<EnumOpaqueTwinNormal> raw) {
+    return raw.map(cst_encode_enum_opaque_twin_normal).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_enum_opaque_twin_rust_async(
+      List<EnumOpaqueTwinRustAsync> raw) {
+    return raw.map(cst_encode_enum_opaque_twin_rust_async).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_enum_opaque_twin_rust_async_sse(
+      List<EnumOpaqueTwinRustAsyncSse> raw) {
+    return raw.map(cst_encode_enum_opaque_twin_rust_async_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_enum_opaque_twin_sse(
+      List<EnumOpaqueTwinSse> raw) {
+    return raw.map(cst_encode_enum_opaque_twin_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_enum_opaque_twin_sync(
+      List<EnumOpaqueTwinSync> raw) {
+    return raw.map(cst_encode_enum_opaque_twin_sync).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_enum_opaque_twin_sync_sse(
+      List<EnumOpaqueTwinSyncSse> raw) {
+    return raw.map(cst_encode_enum_opaque_twin_sync_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_my_enum(List<MyEnum> raw) {
+    return raw.map(cst_encode_my_enum).toList();
+  }
+
+  @protected
   List<dynamic> cst_encode_list_my_size(List<MySize> raw) {
     return raw.map(cst_encode_my_size).toList();
   }
@@ -4063,6 +4956,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_list_my_tree_node_twin_sync_sse(
       List<MyTreeNodeTwinSyncSse> raw) {
     return raw.map(cst_encode_my_tree_node_twin_sync_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_nested_raw_string_mirrored(
+      List<NestedRawStringMirrored> raw) {
+    return raw.map(cst_encode_nested_raw_string_mirrored).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_of_nested_raw_string_mirrored(
+      ListOfNestedRawStringMirrored raw) {
+    return [cst_encode_list_nested_raw_string_mirrored(raw.raw)];
   }
 
   @protected
@@ -4161,6 +5066,39 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_list_point_twin_normal(List<PointTwinNormal> raw) {
+    return raw.map(cst_encode_point_twin_normal).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_point_twin_rust_async(
+      List<PointTwinRustAsync> raw) {
+    return raw.map(cst_encode_point_twin_rust_async).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_point_twin_rust_async_sse(
+      List<PointTwinRustAsyncSse> raw) {
+    return raw.map(cst_encode_point_twin_rust_async_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_point_twin_sse(List<PointTwinSse> raw) {
+    return raw.map(cst_encode_point_twin_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_point_twin_sync(List<PointTwinSync> raw) {
+    return raw.map(cst_encode_point_twin_sync).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_point_twin_sync_sse(
+      List<PointTwinSyncSse> raw) {
+    return raw.map(cst_encode_point_twin_sync_sse).toList();
+  }
+
+  @protected
   Float32List cst_encode_list_prim_f_32(Float32List raw) {
     return raw;
   }
@@ -4211,8 +5149,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_list_raw_string_enum_mirrored(
+      List<RawStringEnumMirrored> raw) {
+    return raw.map(cst_encode_raw_string_enum_mirrored).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_raw_string_mirrored(
+      List<RawStringMirrored> raw) {
+    return raw.map(cst_encode_raw_string_mirrored).toList();
+  }
+
+  @protected
   List<dynamic> cst_encode_list_record_string_i_32(List<(String, int)> raw) {
     return raw.map(cst_encode_record_string_i_32).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_sum_with_twin_normal(
+      List<SumWithTwinNormal> raw) {
+    return raw.map(cst_encode_sum_with_twin_normal).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_sum_with_twin_rust_async(
+      List<SumWithTwinRustAsync> raw) {
+    return raw.map(cst_encode_sum_with_twin_rust_async).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_sum_with_twin_rust_async_sse(
+      List<SumWithTwinRustAsyncSse> raw) {
+    return raw.map(cst_encode_sum_with_twin_rust_async_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_sum_with_twin_sse(List<SumWithTwinSse> raw) {
+    return raw.map(cst_encode_sum_with_twin_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_sum_with_twin_sync(List<SumWithTwinSync> raw) {
+    return raw.map(cst_encode_sum_with_twin_sync).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_sum_with_twin_sync_sse(
+      List<SumWithTwinSyncSse> raw) {
+    return raw.map(cst_encode_sum_with_twin_sync_sse).toList();
   }
 
   @protected
@@ -4281,6 +5265,56 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_list_weekdays_twin_sync_sse(
       List<WeekdaysTwinSyncSse> raw) {
     return raw.map(cst_encode_weekdays_twin_sync_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_2_twin_normal(Log2TwinNormal raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_2_twin_rust_async(Log2TwinRustAsync raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_2_twin_rust_async_sse(Log2TwinRustAsyncSse raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_2_twin_sse(Log2TwinSse raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_2_twin_sync(Log2TwinSync raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_2_twin_sync_sse(Log2TwinSyncSse raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_twin_normal(LogTwinNormal raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_twin_rust_async(LogTwinRustAsync raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_twin_rust_async_sse(LogTwinRustAsyncSse raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_log_twin_sse(LogTwinSse raw) {
+    return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)];
   }
 
   @protected
@@ -4394,6 +5428,137 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_mirror_struct_twin_normal(
+      MirrorStructTwinNormal raw) {
+    return [
+      cst_encode_application_settings(raw.a),
+      cst_encode_my_struct(raw.b),
+      cst_encode_list_my_enum(raw.c),
+      cst_encode_list_application_settings(raw.d)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_mirror_struct_twin_rust_async(
+      MirrorStructTwinRustAsync raw) {
+    return [
+      cst_encode_application_settings(raw.a),
+      cst_encode_my_struct(raw.b),
+      cst_encode_list_my_enum(raw.c),
+      cst_encode_list_application_settings(raw.d)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_mirror_struct_twin_rust_async_sse(
+      MirrorStructTwinRustAsyncSse raw) {
+    return [
+      cst_encode_application_settings(raw.a),
+      cst_encode_my_struct(raw.b),
+      cst_encode_list_my_enum(raw.c),
+      cst_encode_list_application_settings(raw.d)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_mirror_struct_twin_sse(MirrorStructTwinSse raw) {
+    return [
+      cst_encode_application_settings(raw.a),
+      cst_encode_my_struct(raw.b),
+      cst_encode_list_my_enum(raw.c),
+      cst_encode_list_application_settings(raw.d)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_mirror_struct_twin_sync(MirrorStructTwinSync raw) {
+    return [
+      cst_encode_application_settings(raw.a),
+      cst_encode_my_struct(raw.b),
+      cst_encode_list_my_enum(raw.c),
+      cst_encode_list_application_settings(raw.d)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_mirror_struct_twin_sync_sse(
+      MirrorStructTwinSyncSse raw) {
+    return [
+      cst_encode_application_settings(raw.a),
+      cst_encode_my_struct(raw.b),
+      cst_encode_list_my_enum(raw.c),
+      cst_encode_list_application_settings(raw.d)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_normal(
+      MoreThanJustOneRawStringStructTwinNormal raw) {
+    return [
+      cst_encode_String(raw.regular),
+      cst_encode_String(raw.type),
+      cst_encode_bool(raw.async),
+      cst_encode_String(raw.another)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_rust_async(
+      MoreThanJustOneRawStringStructTwinRustAsync raw) {
+    return [
+      cst_encode_String(raw.regular),
+      cst_encode_String(raw.type),
+      cst_encode_bool(raw.async),
+      cst_encode_String(raw.another)
+    ];
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_more_than_just_one_raw_string_struct_twin_rust_async_sse(
+          MoreThanJustOneRawStringStructTwinRustAsyncSse raw) {
+    return [
+      cst_encode_String(raw.regular),
+      cst_encode_String(raw.type),
+      cst_encode_bool(raw.async),
+      cst_encode_String(raw.another)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_sse(
+      MoreThanJustOneRawStringStructTwinSse raw) {
+    return [
+      cst_encode_String(raw.regular),
+      cst_encode_String(raw.type),
+      cst_encode_bool(raw.async),
+      cst_encode_String(raw.another)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_sync(
+      MoreThanJustOneRawStringStructTwinSync raw) {
+    return [
+      cst_encode_String(raw.regular),
+      cst_encode_String(raw.type),
+      cst_encode_bool(raw.async),
+      cst_encode_String(raw.another)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_sync_sse(
+      MoreThanJustOneRawStringStructTwinSyncSse raw) {
+    return [
+      cst_encode_String(raw.regular),
+      cst_encode_String(raw.type),
+      cst_encode_bool(raw.async),
+      cst_encode_String(raw.another)
+    ];
+  }
+
+  @protected
   List<dynamic> cst_encode_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal raw) {
     return [
@@ -4450,6 +5615,29 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_my_size(MySize raw) {
     return [cst_encode_i_32(raw.width), cst_encode_i_32(raw.height)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_my_stream_entry_twin_normal(
+      MyStreamEntryTwinNormal raw) {
+    return [cst_encode_String(raw.hello)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_my_stream_entry_twin_rust_async(
+      MyStreamEntryTwinRustAsync raw) {
+    return [cst_encode_String(raw.hello)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_my_stream_entry_twin_rust_async_sse(
+      MyStreamEntryTwinRustAsyncSse raw) {
+    return [cst_encode_String(raw.hello)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_my_stream_entry_twin_sse(MyStreamEntryTwinSse raw) {
+    return [cst_encode_String(raw.hello)];
   }
 
   @protected
@@ -4518,6 +5706,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_bool(raw.valueBoolean),
       cst_encode_list_my_tree_node_twin_sync_sse(raw.children)
     ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_nested_raw_string_mirrored(
+      NestedRawStringMirrored raw) {
+    return [cst_encode_raw_string_mirrored(raw.raw)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_new_simple_struct(NewSimpleStruct raw) {
+    return [cst_encode_i_32(raw.field)];
   }
 
   @protected
@@ -4607,6 +5806,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_old_simple_struct(OldSimpleStruct raw) {
+    return [cst_encode_i_32(raw.field)];
+  }
+
+  @protected
   List<dynamic> cst_encode_opaque_nested_twin_normal(
       OpaqueNestedTwinNormal raw) {
     return [
@@ -4661,6 +5865,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   String? cst_encode_opt_String(String? raw) {
     return raw == null ? null : cst_encode_String(raw);
+  }
+
+  @protected
+  Object? cst_encode_opt_box_autoadd_Chrono_Duration(Duration? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_Chrono_Duration(raw);
+  }
+
+  @protected
+  Object? cst_encode_opt_box_autoadd_Chrono_Naive(DateTime? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_Chrono_Naive(raw);
   }
 
   @protected
@@ -4733,6 +5947,48 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   bool? cst_encode_opt_box_autoadd_bool(bool? raw) {
     return raw == null ? null : cst_encode_box_autoadd_bool(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_element_twin_normal(
+      ElementTwinNormal? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_element_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_element_twin_rust_async(
+      ElementTwinRustAsync? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_element_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_element_twin_rust_async_sse(
+      ElementTwinRustAsyncSse? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_element_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_element_twin_sse(
+      ElementTwinSse? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_element_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_element_twin_sync(
+      ElementTwinSync? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_element_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_element_twin_sync_sse(
+      ElementTwinSyncSse? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_element_twin_sync_sse(raw);
   }
 
   @protected
@@ -4812,6 +6068,48 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int? cst_encode_opt_box_autoadd_i_8(int? raw) {
     return raw == null ? null : cst_encode_box_autoadd_i_8(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_normal(
+      MeasureTwinNormal? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_measure_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_rust_async(
+      MeasureTwinRustAsync? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_measure_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_rust_async_sse(
+      MeasureTwinRustAsyncSse? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_measure_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_sse(
+      MeasureTwinSse? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_measure_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_sync(
+      MeasureTwinSync? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_measure_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_sync_sse(
+      MeasureTwinSyncSse? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_measure_twin_sync_sse(raw);
   }
 
   @protected
@@ -5043,6 +6341,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic>? cst_encode_opt_list_element_twin_normal(
+      List<ElementTwinNormal>? raw) {
+    return raw == null ? null : cst_encode_list_element_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_list_element_twin_rust_async(
+      List<ElementTwinRustAsync>? raw) {
+    return raw == null ? null : cst_encode_list_element_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_list_element_twin_rust_async_sse(
+      List<ElementTwinRustAsyncSse>? raw) {
+    return raw == null
+        ? null
+        : cst_encode_list_element_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_list_element_twin_sse(
+      List<ElementTwinSse>? raw) {
+    return raw == null ? null : cst_encode_list_element_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_list_element_twin_sync(
+      List<ElementTwinSync>? raw) {
+    return raw == null ? null : cst_encode_list_element_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_list_element_twin_sync_sse(
+      List<ElementTwinSyncSse>? raw) {
+    return raw == null ? null : cst_encode_list_element_twin_sync_sse(raw);
+  }
+
+  @protected
   List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
       List<AttributeTwinNormal?>? raw) {
     return raw == null
@@ -5174,6 +6510,139 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_opt_box_autoadd_weekdays_twin_sync_sse(raw.enums),
       cst_encode_list_opt_String(raw.strings),
       cst_encode_list_opt_list_prim_i_32(raw.buffers)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_normal(PointTwinNormal raw) {
+    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_normal_array_2(
+      PointTwinNormalArray2 raw) {
+    return cst_encode_list_point_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_rust_async(PointTwinRustAsync raw) {
+    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_rust_async_array_2(
+      PointTwinRustAsyncArray2 raw) {
+    return cst_encode_list_point_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_rust_async_sse(
+      PointTwinRustAsyncSse raw) {
+    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_rust_async_sse_array_2(
+      PointTwinRustAsyncSseArray2 raw) {
+    return cst_encode_list_point_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_sse(PointTwinSse raw) {
+    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_sse_array_2(PointTwinSseArray2 raw) {
+    return cst_encode_list_point_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_sync(PointTwinSync raw) {
+    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_sync_array_2(PointTwinSyncArray2 raw) {
+    return cst_encode_list_point_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_sync_sse(PointTwinSyncSse raw) {
+    return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_point_twin_sync_sse_array_2(
+      PointTwinSyncSseArray2 raw) {
+    return cst_encode_list_point_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_raw_string_enum_mirrored(RawStringEnumMirrored raw) {
+    if (raw is RawStringEnumMirrored_Raw) {
+      return [0, cst_encode_box_autoadd_raw_string_mirrored(raw.field0)];
+    }
+    if (raw is RawStringEnumMirrored_Nested) {
+      return [1, cst_encode_box_autoadd_nested_raw_string_mirrored(raw.field0)];
+    }
+    if (raw is RawStringEnumMirrored_ListOfNested) {
+      return [
+        2,
+        cst_encode_box_autoadd_list_of_nested_raw_string_mirrored(raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> cst_encode_raw_string_item_struct_twin_normal(
+      RawStringItemStructTwinNormal raw) {
+    return [cst_encode_String(raw.type)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_raw_string_item_struct_twin_rust_async(
+      RawStringItemStructTwinRustAsync raw) {
+    return [cst_encode_String(raw.type)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_raw_string_item_struct_twin_rust_async_sse(
+      RawStringItemStructTwinRustAsyncSse raw) {
+    return [cst_encode_String(raw.type)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_raw_string_item_struct_twin_sse(
+      RawStringItemStructTwinSse raw) {
+    return [cst_encode_String(raw.type)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_raw_string_item_struct_twin_sync(
+      RawStringItemStructTwinSync raw) {
+    return [cst_encode_String(raw.type)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_raw_string_item_struct_twin_sync_sse(
+      RawStringItemStructTwinSyncSse raw) {
+    return [cst_encode_String(raw.type)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_raw_string_mirrored(RawStringMirrored raw) {
+    return [cst_encode_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_application_settings_raw_string_enum_mirrored(
+      (ApplicationSettings, RawStringEnumMirrored) raw) {
+    return [
+      cst_encode_application_settings(raw.$1),
+      cst_encode_raw_string_enum_mirrored(raw.$2)
     ];
   }
 
@@ -5497,8 +6966,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_sum_with_twin_normal_array_3(
+      SumWithTwinNormalArray3 raw) {
+    return cst_encode_list_sum_with_twin_normal(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_sum_with_twin_rust_async(SumWithTwinRustAsync raw) {
     return [cst_encode_u_32(raw.x)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_sum_with_twin_rust_async_array_3(
+      SumWithTwinRustAsyncArray3 raw) {
+    return cst_encode_list_sum_with_twin_rust_async(raw);
   }
 
   @protected
@@ -5508,8 +6989,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_sum_with_twin_rust_async_sse_array_3(
+      SumWithTwinRustAsyncSseArray3 raw) {
+    return cst_encode_list_sum_with_twin_rust_async_sse(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_sum_with_twin_sse(SumWithTwinSse raw) {
     return [cst_encode_u_32(raw.x)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_sum_with_twin_sse_array_3(SumWithTwinSseArray3 raw) {
+    return cst_encode_list_sum_with_twin_sse(raw);
   }
 
   @protected
@@ -5518,13 +7010,59 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_sum_with_twin_sync_array_3(
+      SumWithTwinSyncArray3 raw) {
+    return cst_encode_list_sum_with_twin_sync(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_sum_with_twin_sync_sse(SumWithTwinSyncSse raw) {
     return [cst_encode_u_32(raw.x)];
   }
 
   @protected
+  List<dynamic> cst_encode_sum_with_twin_sync_sse_array_3(
+      SumWithTwinSyncSseArray3 raw) {
+    return cst_encode_list_sum_with_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_chrono_twin_normal(TestChronoTwinNormal raw) {
+    return [
+      cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
+      cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_chrono_twin_rust_async(
+      TestChronoTwinRustAsync raw) {
+    return [
+      cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
+      cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_chrono_twin_sync(TestChronoTwinSync raw) {
+    return [
+      cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
+      cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
+    ];
+  }
+
+  @protected
   List<dynamic> cst_encode_test_id_twin_normal(TestIdTwinNormal raw) {
     return [cst_encode_i_32_array_2(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_id_twin_normal_array_2(
+      TestIdTwinNormalArray2 raw) {
+    return cst_encode_list_test_id_twin_normal(raw);
   }
 
   @protected
@@ -5536,6 +7074,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
     return [cst_encode_i_32_array_2(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_id_twin_rust_async_array_2(
+      TestIdTwinRustAsyncArray2 raw) {
+    return cst_encode_list_test_id_twin_rust_async(raw);
   }
 
   @protected
@@ -5551,6 +7095,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_test_id_twin_rust_async_sse_array_2(
+      TestIdTwinRustAsyncSseArray2 raw) {
+    return cst_encode_list_test_id_twin_rust_async_sse(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_test_id_twin_rust_async_sse_array_4(
       TestIdTwinRustAsyncSseArray4 raw) {
     return cst_encode_list_test_id_twin_rust_async_sse(raw);
@@ -5559,6 +7109,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_test_id_twin_sse(TestIdTwinSse raw) {
     return [cst_encode_i_32_array_2(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_id_twin_sse_array_2(TestIdTwinSseArray2 raw) {
+    return cst_encode_list_test_id_twin_sse(raw);
   }
 
   @protected
@@ -5572,6 +7127,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_test_id_twin_sync_array_2(TestIdTwinSyncArray2 raw) {
+    return cst_encode_list_test_id_twin_sync(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_test_id_twin_sync_array_4(TestIdTwinSyncArray4 raw) {
     return cst_encode_list_test_id_twin_sync(raw);
   }
@@ -5582,9 +7142,77 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_test_id_twin_sync_sse_array_2(
+      TestIdTwinSyncSseArray2 raw) {
+    return cst_encode_list_test_id_twin_sync_sse(raw);
+  }
+
+  @protected
   List<dynamic> cst_encode_test_id_twin_sync_sse_array_4(
       TestIdTwinSyncSseArray4 raw) {
     return cst_encode_list_test_id_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_model_twin_normal(TestModelTwinNormal raw) {
+    return [
+      cst_encode_u_64(raw.id),
+      cst_encode_String(raw.name),
+      cst_encode_my_enum(raw.aliasEnum),
+      cst_encode_my_struct(raw.aliasStruct)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_model_twin_rust_async(
+      TestModelTwinRustAsync raw) {
+    return [
+      cst_encode_u_64(raw.id),
+      cst_encode_String(raw.name),
+      cst_encode_my_enum(raw.aliasEnum),
+      cst_encode_my_struct(raw.aliasStruct)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_model_twin_rust_async_sse(
+      TestModelTwinRustAsyncSse raw) {
+    return [
+      cst_encode_u_64(raw.id),
+      cst_encode_String(raw.name),
+      cst_encode_my_enum(raw.aliasEnum),
+      cst_encode_my_struct(raw.aliasStruct)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_model_twin_sse(TestModelTwinSse raw) {
+    return [
+      cst_encode_u_64(raw.id),
+      cst_encode_String(raw.name),
+      cst_encode_my_enum(raw.aliasEnum),
+      cst_encode_my_struct(raw.aliasStruct)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_model_twin_sync(TestModelTwinSync raw) {
+    return [
+      cst_encode_u_64(raw.id),
+      cst_encode_String(raw.name),
+      cst_encode_my_enum(raw.aliasEnum),
+      cst_encode_my_struct(raw.aliasStruct)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_test_model_twin_sync_sse(TestModelTwinSyncSse raw) {
+    return [
+      cst_encode_u_64(raw.id),
+      cst_encode_String(raw.name),
+      cst_encode_my_enum(raw.aliasEnum),
+      cst_encode_my_struct(raw.aliasStruct)
+    ];
   }
 
   @protected
@@ -5675,6 +7303,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Uint8List cst_encode_u_8_array_5(U8Array5 raw) {
+    return Uint8List.fromList(raw);
+  }
+
+  @protected
   Uint8List cst_encode_u_8_array_8(U8Array8 raw) {
     return Uint8List.fromList(raw);
   }
@@ -5709,6 +7342,114 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_user_id_twin_sync_sse(UserIdTwinSyncSse raw) {
     return [cst_encode_u_32(raw.value)];
   }
+
+  @protected
+  List<dynamic> cst_encode_vec_of_primitive_pack_twin_normal(
+      VecOfPrimitivePackTwinNormal raw) {
+    return [
+      cst_encode_list_prim_i_8(raw.int8List),
+      cst_encode_list_prim_u_8(raw.uint8List),
+      cst_encode_list_prim_i_16(raw.int16List),
+      cst_encode_list_prim_u_16(raw.uint16List),
+      cst_encode_list_prim_u_32(raw.uint32List),
+      cst_encode_list_prim_i_32(raw.int32List),
+      cst_encode_list_prim_u_64(raw.uint64List),
+      cst_encode_list_prim_i_64(raw.int64List),
+      cst_encode_list_prim_f_32(raw.float32List),
+      cst_encode_list_prim_f_64(raw.float64List),
+      cst_encode_list_bool(raw.boolList)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_vec_of_primitive_pack_twin_rust_async(
+      VecOfPrimitivePackTwinRustAsync raw) {
+    return [
+      cst_encode_list_prim_i_8(raw.int8List),
+      cst_encode_list_prim_u_8(raw.uint8List),
+      cst_encode_list_prim_i_16(raw.int16List),
+      cst_encode_list_prim_u_16(raw.uint16List),
+      cst_encode_list_prim_u_32(raw.uint32List),
+      cst_encode_list_prim_i_32(raw.int32List),
+      cst_encode_list_prim_u_64(raw.uint64List),
+      cst_encode_list_prim_i_64(raw.int64List),
+      cst_encode_list_prim_f_32(raw.float32List),
+      cst_encode_list_prim_f_64(raw.float64List),
+      cst_encode_list_bool(raw.boolList)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_vec_of_primitive_pack_twin_rust_async_sse(
+      VecOfPrimitivePackTwinRustAsyncSse raw) {
+    return [
+      cst_encode_list_prim_i_8(raw.int8List),
+      cst_encode_list_prim_u_8(raw.uint8List),
+      cst_encode_list_prim_i_16(raw.int16List),
+      cst_encode_list_prim_u_16(raw.uint16List),
+      cst_encode_list_prim_u_32(raw.uint32List),
+      cst_encode_list_prim_i_32(raw.int32List),
+      cst_encode_list_prim_u_64(raw.uint64List),
+      cst_encode_list_prim_i_64(raw.int64List),
+      cst_encode_list_prim_f_32(raw.float32List),
+      cst_encode_list_prim_f_64(raw.float64List),
+      cst_encode_list_bool(raw.boolList)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_vec_of_primitive_pack_twin_sse(
+      VecOfPrimitivePackTwinSse raw) {
+    return [
+      cst_encode_list_prim_i_8(raw.int8List),
+      cst_encode_list_prim_u_8(raw.uint8List),
+      cst_encode_list_prim_i_16(raw.int16List),
+      cst_encode_list_prim_u_16(raw.uint16List),
+      cst_encode_list_prim_u_32(raw.uint32List),
+      cst_encode_list_prim_i_32(raw.int32List),
+      cst_encode_list_prim_u_64(raw.uint64List),
+      cst_encode_list_prim_i_64(raw.int64List),
+      cst_encode_list_prim_f_32(raw.float32List),
+      cst_encode_list_prim_f_64(raw.float64List),
+      cst_encode_list_bool(raw.boolList)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_vec_of_primitive_pack_twin_sync(
+      VecOfPrimitivePackTwinSync raw) {
+    return [
+      cst_encode_list_prim_i_8(raw.int8List),
+      cst_encode_list_prim_u_8(raw.uint8List),
+      cst_encode_list_prim_i_16(raw.int16List),
+      cst_encode_list_prim_u_16(raw.uint16List),
+      cst_encode_list_prim_u_32(raw.uint32List),
+      cst_encode_list_prim_i_32(raw.int32List),
+      cst_encode_list_prim_u_64(raw.uint64List),
+      cst_encode_list_prim_i_64(raw.int64List),
+      cst_encode_list_prim_f_32(raw.float32List),
+      cst_encode_list_prim_f_64(raw.float64List),
+      cst_encode_list_bool(raw.boolList)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_vec_of_primitive_pack_twin_sync_sse(
+      VecOfPrimitivePackTwinSyncSse raw) {
+    return [
+      cst_encode_list_prim_i_8(raw.int8List),
+      cst_encode_list_prim_u_8(raw.uint8List),
+      cst_encode_list_prim_i_16(raw.int16List),
+      cst_encode_list_prim_u_16(raw.uint16List),
+      cst_encode_list_prim_u_32(raw.uint32List),
+      cst_encode_list_prim_i_32(raw.int32List),
+      cst_encode_list_prim_u_64(raw.uint64List),
+      cst_encode_list_prim_i_64(raw.int64List),
+      cst_encode_list_prim_f_32(raw.float32List),
+      cst_encode_list_prim_f_64(raw.float64List),
+      cst_encode_list_bool(raw.boolList)
+    ];
+  }
 }
 
 // Section: wire_class
@@ -5720,6 +7461,11 @@ class RustLibWire extends BaseWire {
           NativePortType dart_fn_invoke_port) =>
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
+
+  void dart_fn_deliver_output(int call_id, PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_) =>
+      wasmModule.dart_fn_deliver_output(
+          call_id, ptr_, rust_vec_len_, data_len_);
 
   void wire_boxed_blob_twin_normal(NativePortType port_, Uint8List blob) =>
       wasmModule.wire_boxed_blob_twin_normal(port_, blob);
@@ -14470,6 +16216,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void frb_initialize_rust(
       NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
+
+  external void dart_fn_deliver_output(int call_id,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_boxed_blob_twin_normal(
       NativePortType port_, Uint8List blob);
