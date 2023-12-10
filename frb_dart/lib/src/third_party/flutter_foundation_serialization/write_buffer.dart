@@ -1,7 +1,6 @@
 /// Copied and modified from https://github.com/flutter/flutter/blob/master/packages/flutter/lib/src/foundation/serialization.dart
 library;
 
-import 'dart:ffi' as ffi;
 import 'dart:math' as math;
 import 'dart:typed_data';
 
@@ -249,7 +248,7 @@ class WriteBuffer {
 
 /// {@macro flutter_rust_bridge.internal}
 typedef WriteBufferRaw = ({
-  ffi.Pointer<ffi.Uint8> ptr,
+  PlatformGeneralizedUint8ListPtr ptr,
   int rustVecLen,
   int dataLen
 });
