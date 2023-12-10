@@ -1,19 +1,22 @@
 use std::collections::HashMap;
+use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Mutex;
 
 pub(crate) struct DartFnHandler {
     completers: Mutex<HashMap<i32, Sender<()>>>,
+    next_call_id: AtomicI32,
 }
 
 impl DartFnHandler {
     pub(crate) fn new() -> Self {
         Self {
             completers: Mutex::new(HashMap::new()),
+            next_call_id: AtomicI32::new(1),
         }
     }
 
     pub(crate) fn invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
-        let call_id = TODO;
+        let call_id = self.next_call_id.fetch_add(1, Ordering::Relaxed);
         let (sender, receiver) = futures::channel::oneshot::channel::<()>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
 
