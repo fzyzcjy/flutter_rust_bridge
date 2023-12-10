@@ -176,3 +176,29 @@ class Uint64List extends _TypedList<BigInt> {
           [int offset = 0, int? length]) =>
       Uint64List.from(BigUint64Array.sublistView(array, offset, length));
 }
+
+/// {@macro flutter_rust_bridge.internal}
+extension ExtByteData on ByteData {
+  /// {@macro flutter_rust_bridge.internal}
+  void generalizedSetUint64(int byteOffset, int value, Endian endian) =>
+      generalizedSetInt64(byteOffset, value, endian);
+
+  /// {@macro flutter_rust_bridge.internal}
+  void generalizedSetInt64(int byteOffset, int value, Endian endian) {
+    // Quite hacky, should improve if used frequently in the future
+    // Or use `fixnum` https://pub.dev/documentation/fixnum/latest/fixnum/Int64/toBytes.html
+    // Related: https://github.com/dart-lang/sdk/issues/10275
+    final valueBig = BigInt.from(value);
+    final lo = (valueBig & BigInt.from(0xffffffff)).toInt();
+    final hi = (valueBig >> 32).toInt();
+    if (endian == Endian.little) {
+      setInt32(byteOffset, lo, endian);
+      setInt32(byteOffset + 4, hi, endian);
+    } else if (endian == Endian.big) {
+      setInt32(byteOffset, hi, endian);
+      setInt32(byteOffset + 4, lo, endian);
+    } else {
+      throw UnimplementedError("Unknown endian");
+    }
+  }
+}

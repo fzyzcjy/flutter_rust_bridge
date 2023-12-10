@@ -7,7 +7,6 @@ import 'dart:typed_data';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
 import 'package:flutter_rust_bridge/src/generalized_uint8list/generalized_uint8list.dart';
-import 'package:flutter_rust_bridge/src/platform_utils/platform_utils.dart';
 
 // NOTE MAIN MODIFICATION:
 // * Uint8List -> BaseGeneralizedUint8List
