@@ -20,25 +20,8 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl CstDecode<flutter_rust_bridge::DartOpaque>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe {
-            flutter_rust_bridge::for_generated::cst_decode_dart_opaque(
-                &*FLUTTER_RUST_BRIDGE_HANDLER,
-                self,
-            )
-        }
-    }
-}
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> i32 {
-        self.unchecked_into_f64() as _
-    }
-}
-impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> usize {
         self.unchecked_into_f64() as _
     }
 }
@@ -56,36 +39,11 @@ pub fn frb_initialize_rust(
 }
 
 #[wasm_bindgen]
-pub fn wire_hi_one(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_hi_one_impl(port_, a)
-}
-
-#[wasm_bindgen]
-pub fn wire_hi_two(
+pub fn wire_minimal_adder(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    wire_hi_two_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
-    wire_minimal_adder_impl(port_, a, b)
-}
-
-#[wasm_bindgen]
-pub fn dart_opaque_dart2rust_encode(
-    handle: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> usize {
-    unsafe {
-        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
-            &*FLUTTER_RUST_BRIDGE_HANDLER,
-            handle,
-        ) as _
-    }
+    wire_minimal_adder_impl(port_, ptr_, rust_vec_len_, data_len_)
 }

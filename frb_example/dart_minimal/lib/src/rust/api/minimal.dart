@@ -8,9 +8,3 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
-
-Future<Object> hiOne({required Object a, dynamic hint}) =>
-    RustLib.instance.api.hiOne(a: a, hint: hint);
-
-Future<Object> hiTwo({required Object a, dynamic hint}) =>
-    RustLib.instance.api.hiTwo(a: a, hint: hint);

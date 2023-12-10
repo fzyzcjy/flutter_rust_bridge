@@ -56,10 +56,6 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<Object> hiOne({required Object a, dynamic hint});
-
-  Future<Object> hiTwo({required Object a, dynamic hint});
-
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
 
@@ -72,63 +68,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<Object> hiOne({required Object a, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_DartOpaque(a);
-        return wire.wire_hi_one(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_DartOpaque,
-        decodeErrorData: null,
-      ),
-      constMeta: kHiOneConstMeta,
-      argValues: [a],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHiOneConstMeta => const TaskConstMeta(
-        debugName: "hi_one",
-        argNames: ["a"],
-      );
-
-  @override
-  Future<Object> hiTwo({required Object a, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_DartOpaque(a, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_hi_two(port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: _sse_decode_DartOpaque,
-        decodeErrorData: null,
-      ),
-      constMeta: kHiTwoConstMeta,
-      argValues: [a],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHiTwoConstMeta => const TaskConstMeta(
-        debugName: "hi_two",
-        argNames: ["a"],
-      );
-
-  @override
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_i_32(a);
-        var arg1 = cst_encode_i_32(b);
-        return wire.wire_minimal_adder(port_, arg0, arg1);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        _sse_encode_i_32(a, serializer);
+        _sse_encode_i_32(b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_minimal_adder(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_i_32,
+      codec: SseCodec(
+        decodeSuccessData: _sse_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kMinimalAdderConstMeta,
@@ -143,10 +94,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  Object _dco_decode_DartOpaque(dynamic raw) {
-    return decodeDartOpaque(raw, generalizedFrbRustBinding);
-  }
-
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
@@ -155,46 +102,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return;
   }
 
-  int _dco_decode_usize(dynamic raw) {
-    return dcoDecodeI64OrU64(raw);
-  }
-
-  Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
-    var inner = _sse_decode_usize(deserializer);
-    return decodeDartOpaque(inner, generalizedFrbRustBinding);
-  }
-
   int _sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
 
-  int _sse_decode_usize(SseDeserializer deserializer) {
-    return deserializer.buffer.getUint64();
-  }
-
-  void _sse_encode_DartOpaque(Object self, SseSerializer serializer) {
-    _sse_encode_usize(
-        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
-        serializer);
-  }
-
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
-  }
-
-  void _sse_encode_usize(int self, SseSerializer serializer) {
-    serializer.buffer.putUint64(self);
   }
 }
 
 // Section: dart2rust
 
 int cst_encode_i_32(int raw) {
-  return raw;
-}
-
-int cst_encode_usize(int raw) {
   return raw;
 }

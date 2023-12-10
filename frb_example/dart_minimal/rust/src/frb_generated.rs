@@ -45,27 +45,7 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 // Section: wire_funcs
 
-fn wire_hi_one_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "hi_one",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_a = a.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::hi_one(api_a))
-                })())
-            }
-        },
-    )
-}
-fn wire_hi_two_impl(
+fn wire_minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -73,7 +53,7 @@ fn wire_hi_two_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "hi_two",
+            debug_name: "minimal_adder",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -85,32 +65,11 @@ fn wire_hi_two_impl(
                     data_len_,
                 )
             };
-            let api_a = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
+            let api_a = <i32>::sse_decode(&mut deserializer);
+            let api_b = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::hi_two(api_a))
-                })())
-            }
-        },
-    )
-}
-fn wire_minimal_adder_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<i32> + core::panic::UnwindSafe,
-    b: impl CstDecode<i32> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "minimal_adder",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_a = a.cst_decode();
-            let api_b = b.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
                     Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
                 })())
             }
@@ -125,37 +84,13 @@ impl CstDecode<i32> for i32 {
         self
     }
 }
-impl CstDecode<usize> for usize {
-    fn cst_decode(self) -> usize {
-        self
-    }
-}
-impl SseDecode for flutter_rust_bridge::DartOpaque {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return unsafe { flutter_rust_bridge::for_generated::sse_decode_dart_opaque(inner) };
-    }
-}
-
 impl SseDecode for i32 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
     }
 }
 
-impl SseDecode for usize {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_u64::<NativeEndian>().unwrap() as _
-    }
-}
-
 // Section: rust2dart
-
-impl SseEncode for flutter_rust_bridge::DartOpaque {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <usize>::sse_encode(self.encode(), serializer);
-    }
-}
 
 impl SseEncode for i32 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -165,15 +100,6 @@ impl SseEncode for i32 {
 
 impl SseEncode for () {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {}
-}
-
-impl SseEncode for usize {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer
-            .cursor
-            .write_u64::<NativeEndian>(self as _)
-            .unwrap();
-    }
 }
 
 #[cfg(not(target_family = "wasm"))]
