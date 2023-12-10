@@ -92,8 +92,6 @@ impl WireDartOutputCode {
 
                   {api_impl_class_body}
                 }}
-
-                typedef _ApiImplPlatformClass = {api_impl_platform_class_name};
                 ",
             )
         } else {
@@ -109,8 +107,6 @@ impl WireDartOutputCode {
 
                   {api_impl_class_body}
                 }}
-
-                typedef _ApiImplPlatformClass = {api_impl_platform_class_name};
                 ",
             )
         };
