@@ -93,19 +93,19 @@ fn wire_rust_call_dart_simple_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            fn hello<T: Future<Output = String> + Send + UnwindSafe + 'static>(
-                raw: T,
-            ) -> DartFnFuture<String> {
-                // ref: futures `boxed()`
-                Box::pin(raw)
-            }
-
             let api_callback = {
                 use flutter_rust_bridge::IntoDart;
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
 
                 move |arg0: String, arg1: String| {
-                    hello(async move {
+                    fn f1<T: Future<Output = String> + Send + UnwindSafe + 'static>(
+                        raw: T,
+                    ) -> DartFnFuture<String> {
+                        // ref: futures `boxed()`
+                        Box::pin(raw)
+                    }
+
+                    async fn f2(arg0: String, arg1: String) -> String {
                         // TODO manual tweak
                         let message = FLUTTER_RUST_BRIDGE_HANDLER
                             .dart_fn_invoke(
@@ -122,7 +122,9 @@ fn wire_rust_call_dart_simple_impl(
                         deserializer.end();
 
                         output
-                    })
+                    }
+
+                    f1(f2(arg0, arg1))
                 }
             };
             move |context| async move {
