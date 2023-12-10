@@ -27622,7 +27622,7 @@ pub extern "C" fn dart_opaque_dart2rust_encode(
         flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
             &*FLUTTER_RUST_BRIDGE_HANDLER,
             handle,
-        )
+        ) as _
     }
 }
 

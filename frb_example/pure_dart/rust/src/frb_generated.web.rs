@@ -19603,6 +19603,18 @@ pub fn wire_handle_uuid_twin_normal(
     wire_handle_uuid_twin_normal_impl(port_, id)
 }
 
+#[no_mangle]
+pub extern "C" fn dart_opaque_dart2rust_encode(
+    handle: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> usize {
+    unsafe {
+        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
+            &*FLUTTER_RUST_BRIDGE_HANDLER,
+            handle,
+        ) as _
+    }
+}
+
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
     unsafe {
