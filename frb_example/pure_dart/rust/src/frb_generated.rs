@@ -3326,7 +3326,7 @@ fn wire_use_msgid_twin_rust_async_impl(
                 } })
 }
 fn wire_boxed_blob_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3340,7 +3340,7 @@ fn wire_boxed_blob_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_test_id_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3354,7 +3354,7 @@ fn wire_func_test_id_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_get_array_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3368,7 +3368,7 @@ fn wire_get_array_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_get_complex_array_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3382,7 +3382,7 @@ fn wire_get_complex_array_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_last_number_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3396,7 +3396,7 @@ fn wire_last_number_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_nested_id_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3410,7 +3410,7 @@ fn wire_nested_id_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_new_msgid_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3424,7 +3424,7 @@ fn wire_new_msgid_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_boxed_feed_id_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3438,7 +3438,7 @@ fn wire_return_boxed_feed_id_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_boxed_raw_feed_id_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3452,7 +3452,7 @@ fn wire_return_boxed_raw_feed_id_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_use_boxed_blob_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3466,7 +3466,7 @@ fn wire_use_boxed_blob_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_use_msgid_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3479,7 +3479,12 @@ fn wire_use_msgid_twin_rust_async_sse_impl(
                     })().await)
                 } })
 }
-fn wire_boxed_blob_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_boxed_blob_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "boxed_blob_twin_sse",
@@ -3506,7 +3511,12 @@ fn wire_boxed_blob_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, 
         },
     )
 }
-fn wire_func_test_id_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_func_test_id_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_test_id_twin_sse",
@@ -3535,7 +3545,12 @@ fn wire_func_test_id_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32
         },
     )
 }
-fn wire_get_array_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_get_array_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_array_twin_sse",
@@ -3562,7 +3577,7 @@ fn wire_get_array_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, d
     )
 }
 fn wire_get_complex_array_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3592,7 +3607,12 @@ fn wire_get_complex_array_twin_sse_impl(
         },
     )
 }
-fn wire_last_number_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_last_number_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "last_number_twin_sse",
@@ -3619,7 +3639,12 @@ fn wire_last_number_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32,
         },
     )
 }
-fn wire_nested_id_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_nested_id_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "nested_id_twin_sse",
@@ -3649,7 +3674,12 @@ fn wire_nested_id_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, d
         },
     )
 }
-fn wire_new_msgid_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_new_msgid_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "new_msgid_twin_sse",
@@ -3677,7 +3707,7 @@ fn wire_new_msgid_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, d
     )
 }
 fn wire_return_boxed_feed_id_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3711,7 +3741,7 @@ fn wire_return_boxed_feed_id_twin_sse_impl(
     )
 }
 fn wire_return_boxed_raw_feed_id_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3725,7 +3755,7 @@ fn wire_return_boxed_raw_feed_id_twin_sse_impl(
                 } })
 }
 fn wire_use_boxed_blob_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -3761,7 +3791,12 @@ fn wire_use_boxed_blob_twin_sse_impl(
         },
     )
 }
-fn wire_use_msgid_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_use_msgid_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "use_msgid_twin_sse",
@@ -4328,7 +4363,7 @@ fn wire_next_user_id_twin_rust_async_impl(
                 } })
 }
 fn wire_handle_customized_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4342,7 +4377,7 @@ fn wire_handle_customized_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_next_user_id_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4356,7 +4391,7 @@ fn wire_next_user_id_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_customized_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4369,7 +4404,12 @@ fn wire_handle_customized_struct_twin_sse_impl(
                     })())
                 } })
 }
-fn wire_next_user_id_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_next_user_id_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "next_user_id_twin_sse",
@@ -4508,7 +4548,7 @@ fn wire_benchmark_void_twin_rust_async_impl(
                 } })
 }
 fn wire_benchmark_input_bytes_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4522,7 +4562,7 @@ fn wire_benchmark_input_bytes_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_benchmark_output_bytes_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4536,7 +4576,7 @@ fn wire_benchmark_output_bytes_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_benchmark_void_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4550,7 +4590,7 @@ fn wire_benchmark_void_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_benchmark_input_bytes_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4564,7 +4604,7 @@ fn wire_benchmark_input_bytes_twin_sse_impl(
                 } })
 }
 fn wire_benchmark_output_bytes_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -4578,7 +4618,7 @@ fn wire_benchmark_output_bytes_twin_sse_impl(
                 } })
 }
 fn wire_benchmark_void_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5016,7 +5056,7 @@ fn wire_function_with_comments_triple_slash_single_line_twin_rust_async_impl(
                 } })
 }
 fn wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5030,7 +5070,7 @@ fn wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_sse_i
                 } })
 }
 fn wire_StructWithCommentsTwinRustAsyncSse_static_method_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5044,7 +5084,7 @@ fn wire_StructWithCommentsTwinRustAsyncSse_static_method_twin_rust_async_sse_imp
                 } })
 }
 fn wire_function_with_comments_slash_star_star_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5058,7 +5098,7 @@ fn wire_function_with_comments_slash_star_star_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_function_with_comments_triple_slash_multi_line_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5072,7 +5112,7 @@ fn wire_function_with_comments_triple_slash_multi_line_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_function_with_comments_triple_slash_single_line_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5086,7 +5126,7 @@ fn wire_function_with_comments_triple_slash_single_line_twin_rust_async_sse_impl
                 } })
 }
 fn wire_StructWithCommentsTwinSse_instance_method_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5100,7 +5140,7 @@ fn wire_StructWithCommentsTwinSse_instance_method_twin_sse_impl(
                 } })
 }
 fn wire_StructWithCommentsTwinSse_static_method_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5114,7 +5154,7 @@ fn wire_StructWithCommentsTwinSse_static_method_twin_sse_impl(
                 } })
 }
 fn wire_function_with_comments_slash_star_star_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5128,7 +5168,7 @@ fn wire_function_with_comments_slash_star_star_twin_sse_impl(
                 } })
 }
 fn wire_function_with_comments_triple_slash_multi_line_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5142,7 +5182,7 @@ fn wire_function_with_comments_triple_slash_multi_line_twin_sse_impl(
                 } })
 }
 fn wire_function_with_comments_triple_slash_single_line_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5514,7 +5554,7 @@ fn wire_set_static_dart_opaque_twin_rust_async_impl(
                 } })
 }
 fn wire_async_accept_dart_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5528,7 +5568,7 @@ fn wire_async_accept_dart_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_clone_dart_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5542,7 +5582,7 @@ fn wire_clone_dart_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_create_enum_dart_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5556,7 +5596,7 @@ fn wire_create_enum_dart_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_create_nested_dart_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5571,7 +5611,7 @@ let api_opaque2 = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserialize
                 } })
 }
 fn wire_drop_static_dart_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5585,7 +5625,7 @@ fn wire_drop_static_dart_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_get_enum_dart_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5599,7 +5639,7 @@ fn wire_get_enum_dart_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_get_nested_dart_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5613,7 +5653,7 @@ fn wire_get_nested_dart_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_loop_back_array_get_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5627,7 +5667,7 @@ fn wire_loop_back_array_get_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_loop_back_array_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5641,7 +5681,7 @@ fn wire_loop_back_array_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_loop_back_option_get_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5655,7 +5695,7 @@ fn wire_loop_back_option_get_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_loop_back_option_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5669,7 +5709,7 @@ fn wire_loop_back_option_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_loop_back_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5683,7 +5723,7 @@ fn wire_loop_back_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_loop_back_vec_get_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5697,7 +5737,7 @@ fn wire_loop_back_vec_get_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_loop_back_vec_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5711,7 +5751,7 @@ fn wire_loop_back_vec_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_panic_unwrap_dart_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5725,7 +5765,7 @@ fn wire_panic_unwrap_dart_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_set_static_dart_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5740,7 +5780,7 @@ let api_opaque = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer
                 } })
 }
 fn wire_async_accept_dart_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5754,7 +5794,7 @@ fn wire_async_accept_dart_opaque_twin_sse_impl(
                 } })
 }
 fn wire_clone_dart_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5788,7 +5828,7 @@ fn wire_clone_dart_opaque_twin_sse_impl(
     )
 }
 fn wire_create_enum_dart_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5802,7 +5842,7 @@ fn wire_create_enum_dart_opaque_twin_sse_impl(
                 } })
 }
 fn wire_create_nested_dart_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5817,7 +5857,7 @@ let api_opaque2 = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserialize
                 } })
 }
 fn wire_drop_static_dart_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5831,7 +5871,7 @@ fn wire_drop_static_dart_opaque_twin_sse_impl(
                 } })
 }
 fn wire_get_enum_dart_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5845,7 +5885,7 @@ fn wire_get_enum_dart_opaque_twin_sse_impl(
                 } })
 }
 fn wire_get_nested_dart_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5859,7 +5899,7 @@ fn wire_get_nested_dart_opaque_twin_sse_impl(
                 } })
 }
 fn wire_loop_back_array_get_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5873,7 +5913,7 @@ fn wire_loop_back_array_get_twin_sse_impl(
                 } })
 }
 fn wire_loop_back_array_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5907,7 +5947,7 @@ fn wire_loop_back_array_twin_sse_impl(
     )
 }
 fn wire_loop_back_option_get_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5921,7 +5961,7 @@ fn wire_loop_back_option_get_twin_sse_impl(
                 } })
 }
 fn wire_loop_back_option_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -5954,7 +5994,12 @@ fn wire_loop_back_option_twin_sse_impl(
         },
     )
 }
-fn wire_loop_back_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_loop_back_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "loop_back_twin_sse",
@@ -5984,7 +6029,7 @@ fn wire_loop_back_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, d
     )
 }
 fn wire_loop_back_vec_get_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6017,7 +6062,12 @@ fn wire_loop_back_vec_get_twin_sse_impl(
         },
     )
 }
-fn wire_loop_back_vec_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_loop_back_vec_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "loop_back_vec_twin_sse",
@@ -6047,7 +6097,7 @@ fn wire_loop_back_vec_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i3
     )
 }
 fn wire_panic_unwrap_dart_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6061,7 +6111,7 @@ fn wire_panic_unwrap_dart_opaque_twin_sse_impl(
                 } })
 }
 fn wire_set_static_dart_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6613,7 +6663,7 @@ fn wire_print_note_twin_rust_async_impl(
                 } })
 }
 fn wire_func_enum_simple_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6627,7 +6677,7 @@ fn wire_func_enum_simple_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_enum_with_item_mixed_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6641,7 +6691,7 @@ fn wire_func_enum_with_item_mixed_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_enum_with_item_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6655,7 +6705,7 @@ fn wire_func_enum_with_item_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_enum_with_item_tuple_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6669,7 +6719,7 @@ fn wire_func_enum_with_item_tuple_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_enum_parameter_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6683,7 +6733,7 @@ fn wire_handle_enum_parameter_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_enum_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6697,7 +6747,7 @@ fn wire_handle_enum_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_return_enum_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6711,7 +6761,7 @@ fn wire_handle_return_enum_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_multiply_by_ten_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6725,7 +6775,7 @@ fn wire_multiply_by_ten_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_print_note_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6739,7 +6789,7 @@ fn wire_print_note_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_enum_simple_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6776,7 +6826,7 @@ fn wire_func_enum_simple_twin_sse_impl(
     )
 }
 fn wire_func_enum_with_item_mixed_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6790,7 +6840,7 @@ fn wire_func_enum_with_item_mixed_twin_sse_impl(
                 } })
 }
 fn wire_func_enum_with_item_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6804,7 +6854,7 @@ fn wire_func_enum_with_item_struct_twin_sse_impl(
                 } })
 }
 fn wire_func_enum_with_item_tuple_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6818,7 +6868,7 @@ fn wire_func_enum_with_item_tuple_twin_sse_impl(
                 } })
 }
 fn wire_handle_enum_parameter_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6832,7 +6882,7 @@ fn wire_handle_enum_parameter_twin_sse_impl(
                 } })
 }
 fn wire_handle_enum_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6846,7 +6896,7 @@ fn wire_handle_enum_struct_twin_sse_impl(
                 } })
 }
 fn wire_handle_return_enum_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6860,7 +6910,7 @@ fn wire_handle_return_enum_twin_sse_impl(
                 } })
 }
 fn wire_multiply_by_ten_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -6896,7 +6946,12 @@ fn wire_multiply_by_ten_twin_sse_impl(
         },
     )
 }
-fn wire_print_note_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_print_note_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "print_note_twin_sse",
@@ -7244,7 +7299,7 @@ fn wire_register_event_listener_twin_rust_async_impl(
                 } })
 }
 fn wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7258,7 +7313,7 @@ fn wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_close_event_listener_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7272,7 +7327,7 @@ fn wire_close_event_listener_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_create_event_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7287,7 +7342,7 @@ let api_payload = <String>::sse_decode(&mut deserializer);deserializer.end(); mo
                 } })
 }
 fn wire_register_event_listener_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7301,7 +7356,7 @@ fn wire_register_event_listener_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_EventTwinSse_as_string_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7315,7 +7370,7 @@ fn wire_EventTwinSse_as_string_twin_sse_impl(
                 } })
 }
 fn wire_close_event_listener_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7328,7 +7383,12 @@ fn wire_close_event_listener_twin_sse_impl(
                     })())
                 } })
 }
-fn wire_create_event_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_create_event_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "create_event_twin_sse",
@@ -7360,7 +7420,7 @@ fn wire_create_event_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32
     )
 }
 fn wire_register_event_listener_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7649,7 +7709,7 @@ fn wire_throw_anyhow_twin_rust_async_impl(port_: flutter_rust_bridge::for_genera
                 } })
 }
 fn wire_CustomStructTwinRustAsyncSse_new_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7663,7 +7723,7 @@ fn wire_CustomStructTwinRustAsyncSse_new_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7677,7 +7737,7 @@ fn wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_error_twin_r
                 } })
 }
 fn wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_ok_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7691,7 +7751,7 @@ fn wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_ok_twin_rust
                 } })
 }
 fn wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7705,7 +7765,7 @@ fn wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_error_twin_rust
                 } })
 }
 fn wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_ok_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7719,7 +7779,7 @@ fn wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_ok_twin_rust_as
                 } })
 }
 fn wire_SomeStructTwinRustAsyncSse_new_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7733,7 +7793,7 @@ fn wire_SomeStructTwinRustAsyncSse_new_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_SomeStructTwinRustAsyncSse_non_static_return_err_custom_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7747,7 +7807,7 @@ fn wire_SomeStructTwinRustAsyncSse_non_static_return_err_custom_error_twin_rust_
                 } })
 }
 fn wire_SomeStructTwinRustAsyncSse_non_static_return_ok_custom_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7761,7 +7821,7 @@ fn wire_SomeStructTwinRustAsyncSse_non_static_return_ok_custom_error_twin_rust_a
                 } })
 }
 fn wire_SomeStructTwinRustAsyncSse_static_return_err_custom_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7775,7 +7835,7 @@ fn wire_SomeStructTwinRustAsyncSse_static_return_err_custom_error_twin_rust_asyn
                 } })
 }
 fn wire_SomeStructTwinRustAsyncSse_static_return_ok_custom_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7789,7 +7849,7 @@ fn wire_SomeStructTwinRustAsyncSse_static_return_ok_custom_error_twin_rust_async
                 } })
 }
 fn wire_custom_enum_error_panic_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7803,7 +7863,7 @@ fn wire_custom_enum_error_panic_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_custom_enum_error_return_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7817,7 +7877,7 @@ fn wire_custom_enum_error_return_error_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_custom_enum_error_return_ok_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7831,7 +7891,7 @@ fn wire_custom_enum_error_return_ok_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_custom_nested_error_return_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7845,7 +7905,7 @@ fn wire_custom_nested_error_return_error_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_custom_struct_error_return_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7859,7 +7919,7 @@ fn wire_custom_struct_error_return_error_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_return_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7873,7 +7933,7 @@ fn wire_func_return_error_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_type_fallible_panic_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7887,7 +7947,7 @@ fn wire_func_type_fallible_panic_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_type_infallible_panic_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7901,7 +7961,7 @@ fn wire_func_type_infallible_panic_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_panic_with_custom_result_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7915,7 +7975,7 @@ fn wire_panic_with_custom_result_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_custom_nested_error_1_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7929,7 +7989,7 @@ fn wire_return_custom_nested_error_1_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_custom_nested_error_1_variant1_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7943,7 +8003,7 @@ fn wire_return_custom_nested_error_1_variant1_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_custom_nested_error_2_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7957,7 +8017,7 @@ fn wire_return_custom_nested_error_2_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_custom_struct_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7971,7 +8031,7 @@ fn wire_return_custom_struct_error_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_custom_struct_ok_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7985,7 +8045,7 @@ fn wire_return_custom_struct_ok_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_err_custom_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -7999,7 +8059,7 @@ fn wire_return_err_custom_error_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_error_variant_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8013,7 +8073,7 @@ fn wire_return_error_variant_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_return_ok_custom_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8027,7 +8087,7 @@ fn wire_return_ok_custom_error_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_stream_sink_throw_anyhow_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8041,7 +8101,7 @@ fn wire_stream_sink_throw_anyhow_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_throw_anyhow_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8055,7 +8115,7 @@ fn wire_throw_anyhow_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_CustomStructTwinSse_new_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8069,7 +8129,7 @@ fn wire_CustomStructTwinSse_new_twin_sse_impl(
                 } })
 }
 fn wire_CustomStructTwinSse_nonstatic_return_custom_struct_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8083,7 +8143,7 @@ fn wire_CustomStructTwinSse_nonstatic_return_custom_struct_error_twin_sse_impl(
                 } })
 }
 fn wire_CustomStructTwinSse_nonstatic_return_custom_struct_ok_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8097,7 +8157,7 @@ fn wire_CustomStructTwinSse_nonstatic_return_custom_struct_ok_twin_sse_impl(
                 } })
 }
 fn wire_CustomStructTwinSse_static_return_custom_struct_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8111,7 +8171,7 @@ fn wire_CustomStructTwinSse_static_return_custom_struct_error_twin_sse_impl(
                 } })
 }
 fn wire_CustomStructTwinSse_static_return_custom_struct_ok_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8125,7 +8185,7 @@ fn wire_CustomStructTwinSse_static_return_custom_struct_ok_twin_sse_impl(
                 } })
 }
 fn wire_SomeStructTwinSse_new_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8139,7 +8199,7 @@ fn wire_SomeStructTwinSse_new_twin_sse_impl(
                 } })
 }
 fn wire_SomeStructTwinSse_non_static_return_err_custom_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8153,7 +8213,7 @@ fn wire_SomeStructTwinSse_non_static_return_err_custom_error_twin_sse_impl(
                 } })
 }
 fn wire_SomeStructTwinSse_non_static_return_ok_custom_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8167,7 +8227,7 @@ fn wire_SomeStructTwinSse_non_static_return_ok_custom_error_twin_sse_impl(
                 } })
 }
 fn wire_SomeStructTwinSse_static_return_err_custom_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8181,7 +8241,7 @@ fn wire_SomeStructTwinSse_static_return_err_custom_error_twin_sse_impl(
                 } })
 }
 fn wire_SomeStructTwinSse_static_return_ok_custom_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8195,7 +8255,7 @@ fn wire_SomeStructTwinSse_static_return_ok_custom_error_twin_sse_impl(
                 } })
 }
 fn wire_custom_enum_error_panic_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8225,7 +8285,7 @@ fn wire_custom_enum_error_panic_twin_sse_impl(
     )
 }
 fn wire_custom_enum_error_return_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8239,7 +8299,7 @@ fn wire_custom_enum_error_return_error_twin_sse_impl(
                 } })
 }
 fn wire_custom_enum_error_return_ok_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8253,7 +8313,7 @@ fn wire_custom_enum_error_return_ok_twin_sse_impl(
                 } })
 }
 fn wire_custom_nested_error_return_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8267,7 +8327,7 @@ fn wire_custom_nested_error_return_error_twin_sse_impl(
                 } })
 }
 fn wire_custom_struct_error_return_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8281,7 +8341,7 @@ fn wire_custom_struct_error_return_error_twin_sse_impl(
                 } })
 }
 fn wire_func_return_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8310,7 +8370,7 @@ fn wire_func_return_error_twin_sse_impl(
     )
 }
 fn wire_func_type_fallible_panic_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8324,7 +8384,7 @@ fn wire_func_type_fallible_panic_twin_sse_impl(
                 } })
 }
 fn wire_func_type_infallible_panic_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8338,7 +8398,7 @@ fn wire_func_type_infallible_panic_twin_sse_impl(
                 } })
 }
 fn wire_panic_with_custom_result_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8352,7 +8412,7 @@ fn wire_panic_with_custom_result_twin_sse_impl(
                 } })
 }
 fn wire_return_custom_nested_error_1_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8366,7 +8426,7 @@ fn wire_return_custom_nested_error_1_twin_sse_impl(
                 } })
 }
 fn wire_return_custom_nested_error_1_variant1_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8380,7 +8440,7 @@ fn wire_return_custom_nested_error_1_variant1_twin_sse_impl(
                 } })
 }
 fn wire_return_custom_nested_error_2_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8394,7 +8454,7 @@ fn wire_return_custom_nested_error_2_twin_sse_impl(
                 } })
 }
 fn wire_return_custom_struct_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8408,7 +8468,7 @@ fn wire_return_custom_struct_error_twin_sse_impl(
                 } })
 }
 fn wire_return_custom_struct_ok_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8438,7 +8498,7 @@ fn wire_return_custom_struct_ok_twin_sse_impl(
     )
 }
 fn wire_return_err_custom_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8468,7 +8528,7 @@ fn wire_return_err_custom_error_twin_sse_impl(
     )
 }
 fn wire_return_error_variant_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8500,7 +8560,7 @@ fn wire_return_error_variant_twin_sse_impl(
     )
 }
 fn wire_return_ok_custom_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8529,7 +8589,7 @@ fn wire_return_ok_custom_error_twin_sse_impl(
     )
 }
 fn wire_stream_sink_throw_anyhow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8542,7 +8602,12 @@ fn wire_stream_sink_throw_anyhow_twin_sse_impl(
                     })())
                 } })
 }
-fn wire_throw_anyhow_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_throw_anyhow_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "throw_anyhow_twin_sse",
@@ -9201,7 +9266,7 @@ fn wire_return_ok_custom_error_twin_sync_sse_impl(
                 })()) })
 }
 fn wire_stream_sink_throw_anyhow_twin_sync_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9279,7 +9344,7 @@ fn wire_use_imported_struct_twin_rust_async_impl(
                 } })
 }
 fn wire_call_new_module_system_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9293,7 +9358,7 @@ fn wire_call_new_module_system_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_call_old_module_system_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9307,7 +9372,7 @@ fn wire_call_old_module_system_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_use_imported_enum_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9321,7 +9386,7 @@ fn wire_use_imported_enum_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_use_imported_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9335,7 +9400,7 @@ fn wire_use_imported_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_call_new_module_system_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9349,7 +9414,7 @@ fn wire_call_new_module_system_twin_sse_impl(
                 } })
 }
 fn wire_call_old_module_system_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9363,7 +9428,7 @@ fn wire_call_old_module_system_twin_sse_impl(
                 } })
 }
 fn wire_use_imported_enum_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9377,7 +9442,7 @@ fn wire_use_imported_enum_twin_sse_impl(
                 } })
 }
 fn wire_use_imported_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9580,7 +9645,7 @@ fn wire_get_sum_struct_twin_rust_async_impl(
                 } })
 }
 fn wire_ConcatenateWithTwinRustAsyncSse_concatenate_static_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9595,7 +9660,7 @@ let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |co
                 } })
 }
 fn wire_ConcatenateWithTwinRustAsyncSse_concatenate_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9610,7 +9675,7 @@ let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |co
                 } })
 }
 fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_single_arg_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9624,7 +9689,7 @@ fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_single_ar
                 } })
 }
 fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9639,7 +9704,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_at_1_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9653,7 +9718,7 @@ fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_at_1_twin_rust_a
                 } })
 }
 fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9669,7 +9734,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9683,7 +9748,7 @@ fn wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9699,7 +9764,7 @@ let api_z = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |conte
                 } })
 }
 fn wire_get_sum_array_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9715,7 +9780,7 @@ let api_c = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |conte
                 } })
 }
 fn wire_get_sum_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9729,7 +9794,7 @@ fn wire_get_sum_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_ConcatenateWithTwinSse_concatenate_static_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9744,7 +9809,7 @@ let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |co
                 } })
 }
 fn wire_ConcatenateWithTwinSse_concatenate_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9759,7 +9824,7 @@ let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |co
                 } })
 }
 fn wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_single_arg_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9773,7 +9838,7 @@ fn wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_single_arg_twin_ss
                 } })
 }
 fn wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9788,7 +9853,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_ConcatenateWithTwinSse_handle_some_stream_sink_at_1_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9802,7 +9867,7 @@ fn wire_ConcatenateWithTwinSse_handle_some_stream_sink_at_1_twin_sse_impl(
                 } })
 }
 fn wire_ConcatenateWithTwinSse_handle_some_stream_sink_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9818,7 +9883,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_ConcatenateWithTwinSse_new_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9832,7 +9897,7 @@ fn wire_ConcatenateWithTwinSse_new_twin_sse_impl(
                 } })
 }
 fn wire_SumWithTwinSse_sum_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9869,7 +9934,12 @@ fn wire_SumWithTwinSse_sum_twin_sse_impl(
         },
     )
 }
-fn wire_get_sum_array_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_get_sum_array_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_sum_array_twin_sse",
@@ -9901,7 +9971,7 @@ fn wire_get_sum_array_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i3
     )
 }
 fn wire_get_sum_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10096,7 +10166,7 @@ let api_b = <String>::sse_decode(&mut deserializer);deserializer.end();
                 })()) })
 }
 fn wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_single_arg_twin_sync_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10110,7 +10180,7 @@ fn wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_single_arg_twi
                 } })
 }
 fn wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_twin_sync_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10125,7 +10195,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_at_1_twin_sync_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10139,7 +10209,7 @@ fn wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_at_1_twin_sync_sse_im
                 } })
 }
 fn wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_twin_sync_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10422,7 +10492,7 @@ fn wire_test_raw_string_mirrored_twin_rust_async_impl(
                 } })
 }
 fn wire_app_settings_stream_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10436,7 +10506,7 @@ fn wire_app_settings_stream_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_app_settings_vec_stream_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10450,7 +10520,7 @@ fn wire_app_settings_vec_stream_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_first_number_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10464,7 +10534,7 @@ fn wire_first_number_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_first_sequence_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10478,7 +10548,7 @@ fn wire_first_sequence_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_get_app_settings_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10492,7 +10562,7 @@ fn wire_get_app_settings_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_get_fallible_app_settings_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10506,7 +10576,7 @@ fn wire_get_fallible_app_settings_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_get_message_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10520,7 +10590,7 @@ fn wire_get_message_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_is_app_embedded_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10534,7 +10604,7 @@ fn wire_is_app_embedded_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_mirror_struct_stream_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10548,7 +10618,7 @@ fn wire_mirror_struct_stream_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_mirror_tuple_stream_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10562,7 +10632,7 @@ fn wire_mirror_tuple_stream_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_repeat_number_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10577,7 +10647,7 @@ let api_times = <usize>::sse_decode(&mut deserializer);deserializer.end(); move 
                 } })
 }
 fn wire_repeat_sequence_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10592,7 +10662,7 @@ let api_times = <usize>::sse_decode(&mut deserializer);deserializer.end(); move 
                 } })
 }
 fn wire_test_contains_mirrored_sub_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10606,7 +10676,7 @@ fn wire_test_contains_mirrored_sub_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10620,7 +10690,7 @@ fn wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10634,7 +10704,7 @@ fn wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_list_of_raw_nested_string_mirrored_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10648,7 +10718,7 @@ fn wire_test_list_of_raw_nested_string_mirrored_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_nested_raw_string_mirrored_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10662,7 +10732,7 @@ fn wire_test_nested_raw_string_mirrored_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_raw_string_enum_mirrored_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10676,7 +10746,7 @@ fn wire_test_raw_string_enum_mirrored_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_raw_string_mirrored_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10690,7 +10760,7 @@ fn wire_test_raw_string_mirrored_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_app_settings_stream_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10727,7 +10797,7 @@ fn wire_app_settings_stream_twin_sse_impl(
     )
 }
 fn wire_app_settings_vec_stream_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10740,7 +10810,12 @@ fn wire_app_settings_vec_stream_twin_sse_impl(
                     })())
                 } })
 }
-fn wire_first_number_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_first_number_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "first_number_twin_sse",
@@ -10770,7 +10845,7 @@ fn wire_first_number_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32
     )
 }
 fn wire_first_sequence_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10806,7 +10881,7 @@ fn wire_first_sequence_twin_sse_impl(
     )
 }
 fn wire_get_app_settings_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10837,7 +10912,7 @@ fn wire_get_app_settings_twin_sse_impl(
     )
 }
 fn wire_get_fallible_app_settings_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10865,7 +10940,12 @@ fn wire_get_fallible_app_settings_twin_sse_impl(
         },
     )
 }
-fn wire_get_message_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_get_message_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_message_twin_sse",
@@ -10892,7 +10972,7 @@ fn wire_get_message_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32,
     )
 }
 fn wire_is_app_embedded_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10929,7 +11009,7 @@ fn wire_is_app_embedded_twin_sse_impl(
     )
 }
 fn wire_mirror_struct_stream_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10943,7 +11023,7 @@ fn wire_mirror_struct_stream_twin_sse_impl(
                 } })
 }
 fn wire_mirror_tuple_stream_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10979,7 +11059,12 @@ fn wire_mirror_tuple_stream_twin_sse_impl(
         },
     )
 }
-fn wire_repeat_number_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_repeat_number_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "repeat_number_twin_sse",
@@ -11010,7 +11095,7 @@ fn wire_repeat_number_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i3
     )
 }
 fn wire_repeat_sequence_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11045,7 +11130,7 @@ fn wire_repeat_sequence_twin_sse_impl(
     )
 }
 fn wire_test_contains_mirrored_sub_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11059,7 +11144,7 @@ fn wire_test_contains_mirrored_sub_struct_twin_sse_impl(
                 } })
 }
 fn wire_test_fallible_of_raw_string_mirrored_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11073,7 +11158,7 @@ fn wire_test_fallible_of_raw_string_mirrored_twin_sse_impl(
                 } })
 }
 fn wire_test_list_of_nested_enums_mirrored_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11087,7 +11172,7 @@ fn wire_test_list_of_nested_enums_mirrored_twin_sse_impl(
                 } })
 }
 fn wire_test_list_of_raw_nested_string_mirrored_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11101,7 +11186,7 @@ fn wire_test_list_of_raw_nested_string_mirrored_twin_sse_impl(
                 } })
 }
 fn wire_test_nested_raw_string_mirrored_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11115,7 +11200,7 @@ fn wire_test_nested_raw_string_mirrored_twin_sse_impl(
                 } })
 }
 fn wire_test_raw_string_enum_mirrored_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11129,7 +11214,7 @@ fn wire_test_raw_string_enum_mirrored_twin_sse_impl(
                 } })
 }
 fn wire_test_raw_string_mirrored_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11425,7 +11510,7 @@ fn wire_test_raw_string_mirrored_twin_sync_impl(
     )
 }
 fn wire_app_settings_stream_twin_sync_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11439,7 +11524,7 @@ fn wire_app_settings_stream_twin_sync_sse_impl(
                 } })
 }
 fn wire_app_settings_vec_stream_twin_sync_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11622,7 +11707,7 @@ fn wire_is_app_embedded_twin_sync_sse_impl(
     )
 }
 fn wire_mirror_struct_stream_twin_sync_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11636,7 +11721,7 @@ fn wire_mirror_struct_stream_twin_sync_sse_impl(
                 } })
 }
 fn wire_mirror_tuple_stream_twin_sync_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11896,7 +11981,7 @@ fn wire_test_struct_with_enum_twin_rust_async_impl(
                 } })
 }
 fn wire_handle_big_buffers_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11910,7 +11995,7 @@ fn wire_handle_big_buffers_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_complex_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11924,7 +12009,7 @@ fn wire_handle_complex_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_nested_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11938,7 +12023,7 @@ fn wire_handle_nested_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_string_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11952,7 +12037,7 @@ fn wire_handle_string_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11967,7 +12052,7 @@ let api_boxed = <Box<crate::auxiliary::sample_types::MySize>>::sse_decode(&mut d
                 } })
 }
 fn wire_handle_vec_u8_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11981,7 +12066,7 @@ fn wire_handle_vec_u8_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_list_of_primitive_enums_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11995,7 +12080,7 @@ fn wire_list_of_primitive_enums_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_abc_enum_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12009,7 +12094,7 @@ fn wire_test_abc_enum_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_struct_with_enum_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12023,7 +12108,7 @@ fn wire_test_struct_with_enum_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_big_buffers_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12037,7 +12122,7 @@ fn wire_handle_big_buffers_twin_sse_impl(
                 } })
 }
 fn wire_handle_complex_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12051,7 +12136,7 @@ fn wire_handle_complex_struct_twin_sse_impl(
                 } })
 }
 fn wire_handle_nested_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12064,7 +12149,12 @@ fn wire_handle_nested_struct_twin_sse_impl(
                     })())
                 } })
 }
-fn wire_handle_string_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_handle_string_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_string_twin_sse",
@@ -12093,7 +12183,12 @@ fn wire_handle_string_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i3
         },
     )
 }
-fn wire_handle_struct_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_handle_struct_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_struct_twin_sse",
@@ -12124,7 +12219,12 @@ fn wire_handle_struct_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i3
         },
     )
 }
-fn wire_handle_vec_u8_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_handle_vec_u8_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_vec_u8_twin_sse",
@@ -12154,7 +12254,7 @@ fn wire_handle_vec_u8_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i3
     )
 }
 fn wire_list_of_primitive_enums_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12167,7 +12267,12 @@ fn wire_list_of_primitive_enums_twin_sse_impl(
                     })())
                 } })
 }
-fn wire_test_abc_enum_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_test_abc_enum_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_abc_enum_twin_sse",
@@ -12200,7 +12305,7 @@ fn wire_test_abc_enum_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i3
     )
 }
 fn wire_test_struct_with_enum_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12514,7 +12619,7 @@ fn wire_handle_string_list_twin_rust_async_impl(
                 } })
 }
 fn wire_empty_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12528,7 +12633,7 @@ fn wire_empty_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_return_unit_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12542,7 +12647,7 @@ fn wire_func_return_unit_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_string_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12556,7 +12661,7 @@ fn wire_func_string_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_list_of_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12570,7 +12675,7 @@ fn wire_handle_list_of_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_string_list_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12583,7 +12688,12 @@ fn wire_handle_string_list_twin_rust_async_sse_impl(
                     })().await)
                 } })
 }
-fn wire_empty_struct_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_empty_struct_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "empty_struct_twin_sse",
@@ -12616,7 +12726,7 @@ fn wire_empty_struct_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32
     )
 }
 fn wire_func_return_unit_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12646,7 +12756,12 @@ fn wire_func_return_unit_twin_sse_impl(
         },
     )
 }
-fn wire_func_string_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_func_string_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_string_twin_sse",
@@ -12676,7 +12791,7 @@ fn wire_func_string_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32,
     )
 }
 fn wire_handle_list_of_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12690,7 +12805,7 @@ fn wire_handle_list_of_struct_twin_sse_impl(
                 } })
 }
 fn wire_handle_string_list_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12936,7 +13051,7 @@ fn wire_handle_newtype_twin_rust_async_impl(
                 } })
 }
 fn wire_handle_newtype_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12950,7 +13065,7 @@ fn wire_handle_newtype_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_newtype_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13121,7 +13236,7 @@ fn wire_primitive_optional_types_twin_rust_async_impl(
                 } })
 }
 fn wire_primitive_optional_types_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13138,7 +13253,7 @@ let api_my_bool = <Option<bool>>::sse_decode(&mut deserializer);deserializer.end
                 } })
 }
 fn wire_primitive_optional_types_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13291,7 +13406,7 @@ fn wire_example_optional_primitive_type_u8_twin_rust_async_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_bool_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13305,7 +13420,7 @@ fn wire_example_optional_primitive_type_bool_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_f32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13319,7 +13434,7 @@ fn wire_example_optional_primitive_type_f32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_f64_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13333,7 +13448,7 @@ fn wire_example_optional_primitive_type_f64_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_i16_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13347,7 +13462,7 @@ fn wire_example_optional_primitive_type_i16_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_i32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13361,7 +13476,7 @@ fn wire_example_optional_primitive_type_i32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_i64_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13375,7 +13490,7 @@ fn wire_example_optional_primitive_type_i64_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_i8_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13389,7 +13504,7 @@ fn wire_example_optional_primitive_type_i8_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_u16_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13403,7 +13518,7 @@ fn wire_example_optional_primitive_type_u16_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_u32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13417,7 +13532,7 @@ fn wire_example_optional_primitive_type_u32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_u64_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13431,7 +13546,7 @@ fn wire_example_optional_primitive_type_u64_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_u8_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13445,7 +13560,7 @@ fn wire_example_optional_primitive_type_u8_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_bool_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13459,7 +13574,7 @@ fn wire_example_optional_primitive_type_bool_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_f32_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13473,7 +13588,7 @@ fn wire_example_optional_primitive_type_f32_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_f64_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13487,7 +13602,7 @@ fn wire_example_optional_primitive_type_f64_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_i16_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13501,7 +13616,7 @@ fn wire_example_optional_primitive_type_i16_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_i32_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13515,7 +13630,7 @@ fn wire_example_optional_primitive_type_i32_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_i64_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13529,7 +13644,7 @@ fn wire_example_optional_primitive_type_i64_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_i8_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13543,7 +13658,7 @@ fn wire_example_optional_primitive_type_i8_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_u16_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13557,7 +13672,7 @@ fn wire_example_optional_primitive_type_u16_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_u32_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13571,7 +13686,7 @@ fn wire_example_optional_primitive_type_u32_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_u64_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13585,7 +13700,7 @@ fn wire_example_optional_primitive_type_u64_twin_sse_impl(
                 } })
 }
 fn wire_example_optional_primitive_type_u8_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13891,7 +14006,7 @@ fn wire_handle_vec_of_opts_twin_rust_async_impl(
                 } })
 }
 fn wire_handle_increment_boxed_optional_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13905,7 +14020,7 @@ fn wire_handle_increment_boxed_optional_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_option_box_arguments_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13925,7 +14040,7 @@ let api_structbox = <Option<Box<crate::api::pseudo_manual::optional_twin_rust_as
                 } })
 }
 fn wire_handle_optional_increment_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13939,7 +14054,7 @@ fn wire_handle_optional_increment_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_optional_return_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13954,7 +14069,7 @@ let api_right = <f64>::sse_decode(&mut deserializer);deserializer.end(); move |c
                 } })
 }
 fn wire_handle_optional_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13968,7 +14083,7 @@ fn wire_handle_optional_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_vec_of_opts_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13982,7 +14097,7 @@ fn wire_handle_vec_of_opts_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_increment_boxed_optional_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13996,7 +14111,7 @@ fn wire_handle_increment_boxed_optional_twin_sse_impl(
                 } })
 }
 fn wire_handle_option_box_arguments_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14016,7 +14131,7 @@ let api_structbox = <Option<Box<crate::api::pseudo_manual::optional_twin_sse::Ex
                 } })
 }
 fn wire_handle_optional_increment_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14030,7 +14145,7 @@ fn wire_handle_optional_increment_twin_sse_impl(
                 } })
 }
 fn wire_handle_optional_return_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14045,7 +14160,7 @@ let api_right = <f64>::sse_decode(&mut deserializer);deserializer.end(); move |c
                 } })
 }
 fn wire_handle_optional_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14059,7 +14174,7 @@ fn wire_handle_optional_struct_twin_sse_impl(
                 } })
 }
 fn wire_handle_vec_of_opts_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14532,7 +14647,7 @@ fn wire_handle_vec_of_primitive_twin_rust_async_impl(
                 } })
 }
 fn wire_handle_vec_of_primitive_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14546,7 +14661,7 @@ fn wire_handle_vec_of_primitive_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_vec_of_primitive_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14690,7 +14805,7 @@ fn wire_example_primitive_list_type_u8_twin_rust_async_impl(
                 } })
 }
 fn wire_example_primitive_list_type_bool_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14704,7 +14819,7 @@ fn wire_example_primitive_list_type_bool_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_f32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14718,7 +14833,7 @@ fn wire_example_primitive_list_type_f32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_f64_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14732,7 +14847,7 @@ fn wire_example_primitive_list_type_f64_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_i16_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14746,7 +14861,7 @@ fn wire_example_primitive_list_type_i16_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_i32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14760,7 +14875,7 @@ fn wire_example_primitive_list_type_i32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_i64_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14774,7 +14889,7 @@ fn wire_example_primitive_list_type_i64_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_i8_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14788,7 +14903,7 @@ fn wire_example_primitive_list_type_i8_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_u16_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14802,7 +14917,7 @@ fn wire_example_primitive_list_type_u16_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_u32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14816,7 +14931,7 @@ fn wire_example_primitive_list_type_u32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_u64_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14830,7 +14945,7 @@ fn wire_example_primitive_list_type_u64_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_u8_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14844,7 +14959,7 @@ fn wire_example_primitive_list_type_u8_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_bool_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14858,7 +14973,7 @@ fn wire_example_primitive_list_type_bool_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_f32_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14872,7 +14987,7 @@ fn wire_example_primitive_list_type_f32_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_f64_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14886,7 +15001,7 @@ fn wire_example_primitive_list_type_f64_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_i16_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14900,7 +15015,7 @@ fn wire_example_primitive_list_type_i16_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_i32_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14914,7 +15029,7 @@ fn wire_example_primitive_list_type_i32_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_i64_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14928,7 +15043,7 @@ fn wire_example_primitive_list_type_i64_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_i8_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14942,7 +15057,7 @@ fn wire_example_primitive_list_type_i8_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_u16_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14956,7 +15071,7 @@ fn wire_example_primitive_list_type_u16_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_u32_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14970,7 +15085,7 @@ fn wire_example_primitive_list_type_u32_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_u64_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14984,7 +15099,7 @@ fn wire_example_primitive_list_type_u64_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_list_type_u8_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15241,7 +15356,7 @@ fn wire_primitive_u32_twin_rust_async_impl(
                 } })
 }
 fn wire_primitive_types_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15258,7 +15373,7 @@ let api_my_bool = <bool>::sse_decode(&mut deserializer);deserializer.end(); move
                 } })
 }
 fn wire_primitive_u32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15272,7 +15387,7 @@ fn wire_primitive_u32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_primitive_types_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15288,7 +15403,12 @@ let api_my_bool = <bool>::sse_decode(&mut deserializer);deserializer.end(); move
                     })())
                 } })
 }
-fn wire_primitive_u32_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_primitive_u32_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "primitive_u32_twin_sse",
@@ -15506,7 +15626,7 @@ fn wire_example_primitive_type_u8_twin_rust_async_impl(
                 } })
 }
 fn wire_example_primitive_type_bool_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15520,7 +15640,7 @@ fn wire_example_primitive_type_bool_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_f32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15534,7 +15654,7 @@ fn wire_example_primitive_type_f32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_f64_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15548,7 +15668,7 @@ fn wire_example_primitive_type_f64_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_i16_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15562,7 +15682,7 @@ fn wire_example_primitive_type_i16_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_i32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15576,7 +15696,7 @@ fn wire_example_primitive_type_i32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_i64_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15590,7 +15710,7 @@ fn wire_example_primitive_type_i64_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_i8_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15604,7 +15724,7 @@ fn wire_example_primitive_type_i8_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_u16_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15618,7 +15738,7 @@ fn wire_example_primitive_type_u16_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_u32_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15632,7 +15752,7 @@ fn wire_example_primitive_type_u32_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_u64_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15646,7 +15766,7 @@ fn wire_example_primitive_type_u64_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_u8_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15660,7 +15780,7 @@ fn wire_example_primitive_type_u8_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_bool_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15674,7 +15794,7 @@ fn wire_example_primitive_type_bool_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_f32_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15688,7 +15808,7 @@ fn wire_example_primitive_type_f32_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_f64_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15702,7 +15822,7 @@ fn wire_example_primitive_type_f64_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_i16_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15716,7 +15836,7 @@ fn wire_example_primitive_type_i16_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_i32_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15730,7 +15850,7 @@ fn wire_example_primitive_type_i32_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_i64_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15744,7 +15864,7 @@ fn wire_example_primitive_type_i64_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_i8_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15758,7 +15878,7 @@ fn wire_example_primitive_type_i8_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_u16_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15772,7 +15892,7 @@ fn wire_example_primitive_type_u16_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_u32_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15786,7 +15906,7 @@ fn wire_example_primitive_type_u32_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_u64_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15800,7 +15920,7 @@ fn wire_example_primitive_type_u64_twin_sse_impl(
                 } })
 }
 fn wire_example_primitive_type_u8_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16052,7 +16172,7 @@ fn wire_test_raw_string_item_struct_twin_rust_async_impl(
                 } })
 }
 fn wire_test_more_than_just_one_raw_string_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16066,7 +16186,7 @@ fn wire_test_more_than_just_one_raw_string_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_raw_string_item_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16080,7 +16200,7 @@ fn wire_test_raw_string_item_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_more_than_just_one_raw_string_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16094,7 +16214,7 @@ fn wire_test_more_than_just_one_raw_string_struct_twin_sse_impl(
                 } })
 }
 fn wire_test_raw_string_item_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16146,7 +16266,7 @@ fn wire_test_raw_string_item_struct_twin_sync_sse_impl(
                 })()) })
 }
 fn wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16161,7 +16281,7 @@ fn wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse_impl(
                 } })
 }
 fn wire_NonCloneSimpleTwinSse_instance_method_arg_mut_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16176,7 +16296,7 @@ fn wire_NonCloneSimpleTwinSse_instance_method_arg_mut_borrow_twin_sse_impl(
                 } })
 }
 fn wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16191,7 +16311,7 @@ fn wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse_impl(
                 } })
 }
 fn wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16206,7 +16326,7 @@ fn wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse_impl(
                 } })
 }
 fn wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16220,7 +16340,7 @@ fn wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse_impl(
                 } })
 }
 fn wire_NonCloneSimpleTwinSse_new_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16234,7 +16354,7 @@ fn wire_NonCloneSimpleTwinSse_new_twin_sse_impl(
                 } })
 }
 fn wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16249,7 +16369,7 @@ fn wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse_impl(
                 } })
 }
 fn wire_NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16264,7 +16384,7 @@ fn wire_NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse_impl(
                 } })
 }
 fn wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16279,7 +16399,7 @@ fn wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse_impl(
                 } })
 }
 fn wire_NonCloneSimpleTwinSse_static_method_return_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16293,7 +16413,7 @@ fn wire_NonCloneSimpleTwinSse_static_method_return_own_twin_sse_impl(
                 } })
 }
 fn wire_rust_auto_opaque_arg_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16309,7 +16429,7 @@ let api_expect = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |
                 } })
 }
 fn wire_rust_auto_opaque_arg_mut_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16326,7 +16446,7 @@ let api_adder = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |c
                 } })
 }
 fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16341,7 +16461,7 @@ fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sse_impl(
                 } })
 }
 fn wire_rust_auto_opaque_arg_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16357,7 +16477,7 @@ let api_expect = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |
                 } })
 }
 fn wire_rust_auto_opaque_callable_arg_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16372,7 +16492,7 @@ fn wire_rust_auto_opaque_callable_arg_twin_sse_impl(
                 } })
 }
 fn wire_rust_auto_opaque_callable_return_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16386,7 +16506,7 @@ fn wire_rust_auto_opaque_callable_return_twin_sse_impl(
                 } })
 }
 fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16402,7 +16522,7 @@ let api_b = <String>::sse_decode(&mut deserializer);deserializer.end(); move |co
                 } })
 }
 fn wire_rust_auto_opaque_plus_sign_arg_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16417,7 +16537,7 @@ fn wire_rust_auto_opaque_plus_sign_arg_twin_sse_impl(
                 } })
 }
 fn wire_rust_auto_opaque_plus_sign_return_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16431,7 +16551,7 @@ fn wire_rust_auto_opaque_plus_sign_return_twin_sse_impl(
                 } })
 }
 fn wire_rust_auto_opaque_return_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16445,7 +16565,7 @@ fn wire_rust_auto_opaque_return_own_twin_sse_impl(
                 } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16460,7 +16580,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse_i
                 } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16475,7 +16595,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_s
                 } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16490,7 +16610,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_impl
                 } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16504,7 +16624,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse_i
                 } })
 }
 fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16520,7 +16640,7 @@ let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); mov
                 } })
 }
 fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16536,7 +16656,7 @@ let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); mov
                 } })
 }
 fn wire_rust_auto_opaque_trait_object_arg_own_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16552,7 +16672,7 @@ let api_expect = <String>::sse_decode(&mut deserializer);deserializer.end(); mov
                 } })
 }
 fn wire_rust_auto_opaque_trait_object_return_own_one_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16566,7 +16686,7 @@ fn wire_rust_auto_opaque_trait_object_return_own_one_twin_sse_impl(
                 } })
 }
 fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16580,7 +16700,7 @@ fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sse_impl(
                 } })
 }
 fn wire_rust_auto_opaque_two_args_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17539,7 +17659,7 @@ fn wire_unwrap_rust_opaque_twin_rust_async_impl(
                 } })
 }
 fn wire_create_array_opaque_enum_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17553,7 +17673,7 @@ fn wire_create_array_opaque_enum_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_create_nested_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17567,7 +17687,7 @@ fn wire_create_nested_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_create_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17581,7 +17701,7 @@ fn wire_create_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_create_option_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17595,7 +17715,7 @@ fn wire_create_option_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_create_sync_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17609,7 +17729,7 @@ fn wire_create_sync_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_frb_generator_test_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17623,7 +17743,7 @@ fn wire_frb_generator_test_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_opaque_array_run_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17637,7 +17757,7 @@ fn wire_opaque_array_run_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_opaque_array_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17651,7 +17771,7 @@ fn wire_opaque_array_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_opaque_vec_run_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17665,7 +17785,7 @@ fn wire_opaque_vec_run_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_opaque_vec_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17679,7 +17799,7 @@ fn wire_opaque_vec_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_run_enum_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17693,7 +17813,7 @@ fn wire_run_enum_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_run_nested_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17707,7 +17827,7 @@ fn wire_run_nested_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_run_non_clone_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17721,7 +17841,7 @@ fn wire_run_non_clone_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_run_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17735,7 +17855,7 @@ fn wire_run_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_run_opaque_with_delay_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17749,7 +17869,7 @@ fn wire_run_opaque_with_delay_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_unwrap_rust_opaque_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17763,7 +17883,7 @@ fn wire_unwrap_rust_opaque_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_create_array_opaque_enum_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17777,7 +17897,7 @@ fn wire_create_array_opaque_enum_twin_sse_impl(
                 } })
 }
 fn wire_create_nested_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17790,7 +17910,12 @@ fn wire_create_nested_opaque_twin_sse_impl(
                     })())
                 } })
 }
-fn wire_create_opaque_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_create_opaque_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "create_opaque_twin_sse",
@@ -17817,7 +17942,7 @@ fn wire_create_opaque_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i3
     )
 }
 fn wire_create_option_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17831,7 +17956,7 @@ fn wire_create_option_opaque_twin_sse_impl(
                 } })
 }
 fn wire_create_sync_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17845,7 +17970,7 @@ fn wire_create_sync_opaque_twin_sse_impl(
                 } })
 }
 fn wire_frb_generator_test_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17859,7 +17984,7 @@ fn wire_frb_generator_test_twin_sse_impl(
                 } })
 }
 fn wire_opaque_array_run_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17894,7 +18019,12 @@ fn wire_opaque_array_run_twin_sse_impl(
         },
     )
 }
-fn wire_opaque_array_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_opaque_array_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "opaque_array_twin_sse",
@@ -17921,7 +18051,7 @@ fn wire_opaque_array_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32
     )
 }
 fn wire_opaque_vec_run_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17956,7 +18086,12 @@ fn wire_opaque_vec_run_twin_sse_impl(
         },
     )
 }
-fn wire_opaque_vec_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_opaque_vec_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "opaque_vec_twin_sse",
@@ -17983,7 +18118,7 @@ fn wire_opaque_vec_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, 
     )
 }
 fn wire_run_enum_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18020,7 +18155,7 @@ fn wire_run_enum_opaque_twin_sse_impl(
     )
 }
 fn wire_run_nested_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18056,7 +18191,12 @@ fn wire_run_nested_opaque_twin_sse_impl(
         },
     )
 }
-fn wire_run_non_clone_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_run_non_clone_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "run_non_clone_twin_sse",
@@ -18087,7 +18227,12 @@ fn wire_run_non_clone_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i3
         },
     )
 }
-fn wire_run_opaque_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_run_opaque_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "run_opaque_twin_sse",
@@ -18119,7 +18264,7 @@ fn wire_run_opaque_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, 
     )
 }
 fn wire_run_opaque_with_delay_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18133,7 +18278,7 @@ fn wire_run_opaque_with_delay_twin_sse_impl(
                 } })
 }
 fn wire_unwrap_rust_opaque_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18676,7 +18821,7 @@ fn wire_simple_adder_twin_rust_async_impl(
                 } })
 }
 fn wire_simple_adder_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18690,7 +18835,12 @@ let api_b = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |conte
                     })().await)
                 } })
 }
-fn wire_simple_adder_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_simple_adder_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "simple_adder_twin_sse",
@@ -18776,7 +18926,7 @@ fn wire_simple_adder_twin_sync_sse_impl(
     )
 }
 fn wire_func_stream_realistic_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18861,7 +19011,7 @@ fn wire_handle_stream_sink_at_3_twin_rust_async_impl(
                 } })
 }
 fn wire_func_stream_return_error_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18875,7 +19025,7 @@ fn wire_func_stream_return_error_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_stream_return_panic_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18889,7 +19039,7 @@ fn wire_func_stream_return_panic_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_stream_sink_arg_position_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18904,7 +19054,7 @@ let api_b = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |conte
                 } })
 }
 fn wire_handle_stream_of_struct_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18918,7 +19068,7 @@ fn wire_handle_stream_of_struct_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_stream_sink_at_1_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18933,7 +19083,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_handle_stream_sink_at_2_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18948,7 +19098,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_handle_stream_sink_at_3_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18963,7 +19113,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_func_stream_return_error_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18994,7 +19144,7 @@ fn wire_func_stream_return_error_twin_sse_impl(
     )
 }
 fn wire_func_stream_return_panic_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19025,7 +19175,7 @@ fn wire_func_stream_return_panic_twin_sse_impl(
     )
 }
 fn wire_func_stream_sink_arg_position_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19040,7 +19190,7 @@ let api_b = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |conte
                 } })
 }
 fn wire_handle_stream_of_struct_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19054,7 +19204,7 @@ fn wire_handle_stream_of_struct_twin_sse_impl(
                 } })
 }
 fn wire_handle_stream_sink_at_1_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19069,7 +19219,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_handle_stream_sink_at_2_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19084,7 +19234,7 @@ let api_max = <u32>::sse_decode(&mut deserializer);deserializer.end(); move |con
                 } })
 }
 fn wire_handle_stream_sink_at_3_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19155,7 +19305,7 @@ fn wire_func_tuple_struct_with_two_field_twin_rust_async_impl(
                 } })
 }
 fn wire_func_struct_with_one_field_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19169,7 +19319,7 @@ fn wire_func_struct_with_one_field_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_struct_with_two_field_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19183,7 +19333,7 @@ fn wire_func_struct_with_two_field_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_struct_with_zero_field_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19197,7 +19347,7 @@ fn wire_func_struct_with_zero_field_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_tuple_struct_with_one_field_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19211,7 +19361,7 @@ fn wire_func_tuple_struct_with_one_field_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_tuple_struct_with_two_field_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19225,7 +19375,7 @@ fn wire_func_tuple_struct_with_two_field_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_func_struct_with_one_field_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19239,7 +19389,7 @@ fn wire_func_struct_with_one_field_twin_sse_impl(
                 } })
 }
 fn wire_func_struct_with_two_field_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19253,7 +19403,7 @@ fn wire_func_struct_with_two_field_twin_sse_impl(
                 } })
 }
 fn wire_func_struct_with_zero_field_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19267,7 +19417,7 @@ fn wire_func_struct_with_zero_field_twin_sse_impl(
                 } })
 }
 fn wire_func_tuple_struct_with_one_field_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19281,7 +19431,7 @@ fn wire_func_tuple_struct_with_one_field_twin_sse_impl(
                 } })
 }
 fn wire_func_tuple_struct_with_two_field_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19420,7 +19570,7 @@ fn wire_test_tuple_twin_rust_async_impl(
                 } })
 }
 fn wire_test_tuple_2_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19434,7 +19584,7 @@ fn wire_test_tuple_2_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_test_tuple_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19447,7 +19597,12 @@ fn wire_test_tuple_twin_rust_async_sse_impl(
                     })().await)
                 } })
 }
-fn wire_test_tuple_2_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_test_tuple_2_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_tuple_2_twin_sse",
@@ -19474,7 +19629,12 @@ fn wire_test_tuple_2_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32
         },
     )
 }
-fn wire_test_tuple_twin_sse_impl(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+fn wire_test_tuple_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_tuple_twin_sse",
@@ -19632,7 +19792,7 @@ fn wire_handle_type_nest_alias_id_twin_rust_async_impl(
                 } })
 }
 fn wire_handle_type_alias_id_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19646,7 +19806,7 @@ fn wire_handle_type_alias_id_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_type_alias_model_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19660,7 +19820,7 @@ fn wire_handle_type_alias_model_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_type_nest_alias_id_twin_rust_async_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19674,7 +19834,7 @@ fn wire_handle_type_nest_alias_id_twin_rust_async_sse_impl(
                 } })
 }
 fn wire_handle_type_alias_id_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19688,7 +19848,7 @@ fn wire_handle_type_alias_id_twin_sse_impl(
                 } })
 }
 fn wire_handle_type_alias_model_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -19702,7 +19862,7 @@ fn wire_handle_type_alias_model_twin_sse_impl(
                 } })
 }
 fn wire_handle_type_nest_alias_id_twin_sse_impl(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,

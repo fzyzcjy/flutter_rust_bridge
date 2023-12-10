@@ -8293,7 +8293,7 @@ pub fn wire_use_msgid_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_boxed_blob_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8303,7 +8303,7 @@ pub fn wire_boxed_blob_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_test_id_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8313,7 +8313,7 @@ pub fn wire_func_test_id_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_array_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8323,7 +8323,7 @@ pub fn wire_get_array_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_complex_array_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8333,7 +8333,7 @@ pub fn wire_get_complex_array_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_last_number_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8343,7 +8343,7 @@ pub fn wire_last_number_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_nested_id_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8353,7 +8353,7 @@ pub fn wire_nested_id_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_new_msgid_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8363,7 +8363,7 @@ pub fn wire_new_msgid_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_boxed_feed_id_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8373,7 +8373,7 @@ pub fn wire_return_boxed_feed_id_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_boxed_raw_feed_id_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8383,7 +8383,7 @@ pub fn wire_return_boxed_raw_feed_id_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_use_boxed_blob_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8393,7 +8393,7 @@ pub fn wire_use_boxed_blob_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_use_msgid_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8402,23 +8402,38 @@ pub fn wire_use_msgid_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_boxed_blob_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_boxed_blob_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_boxed_blob_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_test_id_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_func_test_id_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_func_test_id_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_array_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_get_array_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_get_array_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_get_complex_array_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8427,23 +8442,38 @@ pub fn wire_get_complex_array_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_last_number_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_last_number_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_last_number_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_nested_id_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_nested_id_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_nested_id_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_new_msgid_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_new_msgid_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_new_msgid_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_return_boxed_feed_id_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8453,7 +8483,7 @@ pub fn wire_return_boxed_feed_id_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_boxed_raw_feed_id_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8462,12 +8492,22 @@ pub fn wire_return_boxed_raw_feed_id_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_use_boxed_blob_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_use_boxed_blob_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_use_boxed_blob_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_use_msgid_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_use_msgid_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_use_msgid_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -8675,7 +8715,7 @@ pub fn wire_next_user_id_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_handle_customized_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8685,7 +8725,7 @@ pub fn wire_handle_customized_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_next_user_id_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8695,7 +8735,7 @@ pub fn wire_next_user_id_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_customized_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8704,7 +8744,12 @@ pub fn wire_handle_customized_struct_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_next_user_id_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_next_user_id_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_next_user_id_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -8763,7 +8808,7 @@ pub fn wire_benchmark_void_twin_rust_async(port_: flutter_rust_bridge::for_gener
 
 #[wasm_bindgen]
 pub fn wire_benchmark_input_bytes_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8773,7 +8818,7 @@ pub fn wire_benchmark_input_bytes_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_benchmark_output_bytes_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8783,7 +8828,7 @@ pub fn wire_benchmark_output_bytes_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_benchmark_void_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8793,7 +8838,7 @@ pub fn wire_benchmark_void_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_benchmark_input_bytes_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8803,7 +8848,7 @@ pub fn wire_benchmark_input_bytes_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_benchmark_output_bytes_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -8812,7 +8857,12 @@ pub fn wire_benchmark_output_bytes_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_benchmark_void_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_benchmark_void_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_benchmark_void_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -9045,7 +9095,7 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9060,7 +9110,7 @@ pub fn wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_s
 
 #[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinRustAsyncSse_static_method_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9075,7 +9125,7 @@ pub fn wire_StructWithCommentsTwinRustAsyncSse_static_method_twin_rust_async_sse
 
 #[wasm_bindgen]
 pub fn wire_function_with_comments_slash_star_star_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9090,7 +9140,7 @@ pub fn wire_function_with_comments_slash_star_star_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_function_with_comments_triple_slash_multi_line_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9105,7 +9155,7 @@ pub fn wire_function_with_comments_triple_slash_multi_line_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_function_with_comments_triple_slash_single_line_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9120,7 +9170,7 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinSse_instance_method_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9135,7 +9185,7 @@ pub fn wire_StructWithCommentsTwinSse_instance_method_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinSse_static_method_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9150,7 +9200,7 @@ pub fn wire_StructWithCommentsTwinSse_static_method_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_function_with_comments_slash_star_star_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9160,7 +9210,7 @@ pub fn wire_function_with_comments_slash_star_star_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_function_with_comments_triple_slash_multi_line_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9175,7 +9225,7 @@ pub fn wire_function_with_comments_triple_slash_multi_line_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_function_with_comments_triple_slash_single_line_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9470,7 +9520,7 @@ pub fn wire_set_static_dart_opaque_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_async_accept_dart_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9480,7 +9530,7 @@ pub fn wire_async_accept_dart_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_clone_dart_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9490,7 +9540,7 @@ pub fn wire_clone_dart_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_enum_dart_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9500,7 +9550,7 @@ pub fn wire_create_enum_dart_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_nested_dart_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9510,7 +9560,7 @@ pub fn wire_create_nested_dart_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_drop_static_dart_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9520,7 +9570,7 @@ pub fn wire_drop_static_dart_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_enum_dart_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9530,7 +9580,7 @@ pub fn wire_get_enum_dart_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_nested_dart_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9540,7 +9590,7 @@ pub fn wire_get_nested_dart_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_array_get_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9550,7 +9600,7 @@ pub fn wire_loop_back_array_get_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_array_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9560,7 +9610,7 @@ pub fn wire_loop_back_array_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_option_get_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9570,7 +9620,7 @@ pub fn wire_loop_back_option_get_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_option_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9580,7 +9630,7 @@ pub fn wire_loop_back_option_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9590,7 +9640,7 @@ pub fn wire_loop_back_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_vec_get_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9600,7 +9650,7 @@ pub fn wire_loop_back_vec_get_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_vec_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9610,7 +9660,7 @@ pub fn wire_loop_back_vec_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_panic_unwrap_dart_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9620,7 +9670,7 @@ pub fn wire_panic_unwrap_dart_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_set_static_dart_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9630,7 +9680,7 @@ pub fn wire_set_static_dart_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_async_accept_dart_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9640,7 +9690,7 @@ pub fn wire_async_accept_dart_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_clone_dart_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9650,7 +9700,7 @@ pub fn wire_clone_dart_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_enum_dart_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9660,7 +9710,7 @@ pub fn wire_create_enum_dart_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_nested_dart_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9670,7 +9720,7 @@ pub fn wire_create_nested_dart_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_drop_static_dart_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9680,7 +9730,7 @@ pub fn wire_drop_static_dart_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_enum_dart_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9690,7 +9740,7 @@ pub fn wire_get_enum_dart_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_nested_dart_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9700,7 +9750,7 @@ pub fn wire_get_nested_dart_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_array_get_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9710,7 +9760,7 @@ pub fn wire_loop_back_array_get_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_array_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9720,7 +9770,7 @@ pub fn wire_loop_back_array_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_option_get_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9730,7 +9780,7 @@ pub fn wire_loop_back_option_get_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_option_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9739,13 +9789,18 @@ pub fn wire_loop_back_option_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_loop_back_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_loop_back_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_vec_get_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9754,13 +9809,18 @@ pub fn wire_loop_back_vec_get_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back_vec_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_loop_back_vec_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_loop_back_vec_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_panic_unwrap_dart_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -9770,7 +9830,7 @@ pub fn wire_panic_unwrap_dart_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_set_static_dart_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10110,7 +10170,7 @@ pub fn wire_print_note_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_func_enum_simple_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10120,7 +10180,7 @@ pub fn wire_func_enum_simple_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_mixed_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10130,7 +10190,7 @@ pub fn wire_func_enum_with_item_mixed_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10140,7 +10200,7 @@ pub fn wire_func_enum_with_item_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_tuple_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10150,7 +10210,7 @@ pub fn wire_func_enum_with_item_tuple_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_enum_parameter_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10160,7 +10220,7 @@ pub fn wire_handle_enum_parameter_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_enum_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10170,7 +10230,7 @@ pub fn wire_handle_enum_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_return_enum_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10180,7 +10240,7 @@ pub fn wire_handle_return_enum_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_multiply_by_ten_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10190,7 +10250,7 @@ pub fn wire_multiply_by_ten_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_print_note_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10200,7 +10260,7 @@ pub fn wire_print_note_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_enum_simple_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10210,7 +10270,7 @@ pub fn wire_func_enum_simple_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_mixed_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10220,7 +10280,7 @@ pub fn wire_func_enum_with_item_mixed_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10230,7 +10290,7 @@ pub fn wire_func_enum_with_item_struct_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_tuple_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10240,7 +10300,7 @@ pub fn wire_func_enum_with_item_tuple_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_enum_parameter_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10250,7 +10310,7 @@ pub fn wire_handle_enum_parameter_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_enum_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10260,7 +10320,7 @@ pub fn wire_handle_enum_struct_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_return_enum_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10270,7 +10330,7 @@ pub fn wire_handle_return_enum_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_multiply_by_ten_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10279,7 +10339,12 @@ pub fn wire_multiply_by_ten_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_print_note_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_print_note_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_print_note_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -10460,7 +10525,7 @@ pub fn wire_register_event_listener_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10475,7 +10540,7 @@ pub fn wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_close_event_listener_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10485,7 +10550,7 @@ pub fn wire_close_event_listener_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_event_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10495,7 +10560,7 @@ pub fn wire_create_event_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_register_event_listener_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10505,7 +10570,7 @@ pub fn wire_register_event_listener_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_EventTwinSse_as_string_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10515,7 +10580,7 @@ pub fn wire_EventTwinSse_as_string_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_close_event_listener_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10524,13 +10589,18 @@ pub fn wire_close_event_listener_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_create_event_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_create_event_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_create_event_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_register_event_listener_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10757,7 +10827,7 @@ pub fn wire_throw_anyhow_twin_rust_async(port_: flutter_rust_bridge::for_generat
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinRustAsyncSse_new_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10772,7 +10842,7 @@ pub fn wire_CustomStructTwinRustAsyncSse_new_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10787,7 +10857,7 @@ pub fn wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_error_tw
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_ok_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10802,7 +10872,7 @@ pub fn wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_ok_twin_
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10817,7 +10887,7 @@ pub fn wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_error_twin_
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_ok_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10832,7 +10902,7 @@ pub fn wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_ok_twin_rus
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinRustAsyncSse_new_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10847,7 +10917,7 @@ pub fn wire_SomeStructTwinRustAsyncSse_new_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinRustAsyncSse_non_static_return_err_custom_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10862,7 +10932,7 @@ pub fn wire_SomeStructTwinRustAsyncSse_non_static_return_err_custom_error_twin_r
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinRustAsyncSse_non_static_return_ok_custom_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10877,7 +10947,7 @@ pub fn wire_SomeStructTwinRustAsyncSse_non_static_return_ok_custom_error_twin_ru
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinRustAsyncSse_static_return_err_custom_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10892,7 +10962,7 @@ pub fn wire_SomeStructTwinRustAsyncSse_static_return_err_custom_error_twin_rust_
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinRustAsyncSse_static_return_ok_custom_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10907,7 +10977,7 @@ pub fn wire_SomeStructTwinRustAsyncSse_static_return_ok_custom_error_twin_rust_a
 
 #[wasm_bindgen]
 pub fn wire_custom_enum_error_panic_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10917,7 +10987,7 @@ pub fn wire_custom_enum_error_panic_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_custom_enum_error_return_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10932,7 +11002,7 @@ pub fn wire_custom_enum_error_return_error_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_custom_enum_error_return_ok_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10942,7 +11012,7 @@ pub fn wire_custom_enum_error_return_ok_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_custom_nested_error_return_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10957,7 +11027,7 @@ pub fn wire_custom_nested_error_return_error_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_custom_struct_error_return_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10972,7 +11042,7 @@ pub fn wire_custom_struct_error_return_error_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_return_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10982,7 +11052,7 @@ pub fn wire_func_return_error_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_type_fallible_panic_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -10992,7 +11062,7 @@ pub fn wire_func_type_fallible_panic_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_type_infallible_panic_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11002,7 +11072,7 @@ pub fn wire_func_type_infallible_panic_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_panic_with_custom_result_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11012,7 +11082,7 @@ pub fn wire_panic_with_custom_result_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_nested_error_1_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11027,7 +11097,7 @@ pub fn wire_return_custom_nested_error_1_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_nested_error_1_variant1_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11042,7 +11112,7 @@ pub fn wire_return_custom_nested_error_1_variant1_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_nested_error_2_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11057,7 +11127,7 @@ pub fn wire_return_custom_nested_error_2_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_struct_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11067,7 +11137,7 @@ pub fn wire_return_custom_struct_error_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_struct_ok_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11077,7 +11147,7 @@ pub fn wire_return_custom_struct_ok_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_err_custom_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11087,7 +11157,7 @@ pub fn wire_return_err_custom_error_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_error_variant_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11097,7 +11167,7 @@ pub fn wire_return_error_variant_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_ok_custom_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11107,7 +11177,7 @@ pub fn wire_return_ok_custom_error_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_stream_sink_throw_anyhow_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11117,7 +11187,7 @@ pub fn wire_stream_sink_throw_anyhow_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_throw_anyhow_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11127,7 +11197,7 @@ pub fn wire_throw_anyhow_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSse_new_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11137,7 +11207,7 @@ pub fn wire_CustomStructTwinSse_new_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSse_nonstatic_return_custom_struct_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11152,7 +11222,7 @@ pub fn wire_CustomStructTwinSse_nonstatic_return_custom_struct_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSse_nonstatic_return_custom_struct_ok_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11167,7 +11237,7 @@ pub fn wire_CustomStructTwinSse_nonstatic_return_custom_struct_ok_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSse_static_return_custom_struct_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11182,7 +11252,7 @@ pub fn wire_CustomStructTwinSse_static_return_custom_struct_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_CustomStructTwinSse_static_return_custom_struct_ok_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11197,7 +11267,7 @@ pub fn wire_CustomStructTwinSse_static_return_custom_struct_ok_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSse_new_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11207,7 +11277,7 @@ pub fn wire_SomeStructTwinSse_new_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSse_non_static_return_err_custom_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11222,7 +11292,7 @@ pub fn wire_SomeStructTwinSse_non_static_return_err_custom_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSse_non_static_return_ok_custom_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11237,7 +11307,7 @@ pub fn wire_SomeStructTwinSse_non_static_return_ok_custom_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSse_static_return_err_custom_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11252,7 +11322,7 @@ pub fn wire_SomeStructTwinSse_static_return_err_custom_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_SomeStructTwinSse_static_return_ok_custom_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11267,7 +11337,7 @@ pub fn wire_SomeStructTwinSse_static_return_ok_custom_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_custom_enum_error_panic_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11277,7 +11347,7 @@ pub fn wire_custom_enum_error_panic_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_custom_enum_error_return_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11287,7 +11357,7 @@ pub fn wire_custom_enum_error_return_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_custom_enum_error_return_ok_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11297,7 +11367,7 @@ pub fn wire_custom_enum_error_return_ok_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_custom_nested_error_return_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11307,7 +11377,7 @@ pub fn wire_custom_nested_error_return_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_custom_struct_error_return_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11317,7 +11387,7 @@ pub fn wire_custom_struct_error_return_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_return_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11327,7 +11397,7 @@ pub fn wire_func_return_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_type_fallible_panic_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11337,7 +11407,7 @@ pub fn wire_func_type_fallible_panic_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_type_infallible_panic_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11347,7 +11417,7 @@ pub fn wire_func_type_infallible_panic_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_panic_with_custom_result_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11357,7 +11427,7 @@ pub fn wire_panic_with_custom_result_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_nested_error_1_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11367,7 +11437,7 @@ pub fn wire_return_custom_nested_error_1_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_nested_error_1_variant1_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11377,7 +11447,7 @@ pub fn wire_return_custom_nested_error_1_variant1_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_nested_error_2_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11387,7 +11457,7 @@ pub fn wire_return_custom_nested_error_2_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_struct_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11397,7 +11467,7 @@ pub fn wire_return_custom_struct_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_custom_struct_ok_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11407,7 +11477,7 @@ pub fn wire_return_custom_struct_ok_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_err_custom_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11417,7 +11487,7 @@ pub fn wire_return_err_custom_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_error_variant_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11427,7 +11497,7 @@ pub fn wire_return_error_variant_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_return_ok_custom_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11437,7 +11507,7 @@ pub fn wire_return_ok_custom_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_stream_sink_throw_anyhow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11446,7 +11516,12 @@ pub fn wire_stream_sink_throw_anyhow_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_throw_anyhow_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_throw_anyhow_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_throw_anyhow_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -11910,7 +11985,7 @@ pub fn wire_return_ok_custom_error_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_stream_sink_throw_anyhow_twin_sync_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11959,7 +12034,7 @@ pub fn wire_use_imported_struct_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_call_new_module_system_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11969,7 +12044,7 @@ pub fn wire_call_new_module_system_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_call_old_module_system_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11979,7 +12054,7 @@ pub fn wire_call_old_module_system_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_use_imported_enum_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11989,7 +12064,7 @@ pub fn wire_use_imported_enum_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_use_imported_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -11999,7 +12074,7 @@ pub fn wire_use_imported_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_call_new_module_system_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12009,7 +12084,7 @@ pub fn wire_call_new_module_system_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_call_old_module_system_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12019,7 +12094,7 @@ pub fn wire_call_old_module_system_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_use_imported_enum_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12029,7 +12104,7 @@ pub fn wire_use_imported_enum_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_use_imported_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12192,7 +12267,7 @@ pub fn wire_get_sum_struct_twin_rust_async(port_: flutter_rust_bridge::for_gener
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinRustAsyncSse_concatenate_static_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12207,7 +12282,7 @@ pub fn wire_ConcatenateWithTwinRustAsyncSse_concatenate_static_twin_rust_async_s
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinRustAsyncSse_concatenate_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12222,7 +12297,7 @@ pub fn wire_ConcatenateWithTwinRustAsyncSse_concatenate_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_single_arg_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12232,7 +12307,7 @@ pub fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_singl
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12247,7 +12322,7 @@ pub fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_twin_
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_at_1_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12262,7 +12337,7 @@ pub fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_at_1_twin_ru
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12277,7 +12352,7 @@ pub fn wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_twin_rust_as
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12292,7 +12367,7 @@ pub fn wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12302,7 +12377,7 @@ pub fn wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_sum_array_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12312,7 +12387,7 @@ pub fn wire_get_sum_array_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_sum_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12322,7 +12397,7 @@ pub fn wire_get_sum_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSse_concatenate_static_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12337,7 +12412,7 @@ pub fn wire_ConcatenateWithTwinSse_concatenate_static_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSse_concatenate_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12347,7 +12422,7 @@ pub fn wire_ConcatenateWithTwinSse_concatenate_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_single_arg_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12362,7 +12437,7 @@ pub fn wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_single_arg_twi
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12377,7 +12452,7 @@ pub fn wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSse_handle_some_stream_sink_at_1_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12392,7 +12467,7 @@ pub fn wire_ConcatenateWithTwinSse_handle_some_stream_sink_at_1_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSse_handle_some_stream_sink_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12407,7 +12482,7 @@ pub fn wire_ConcatenateWithTwinSse_handle_some_stream_sink_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSse_new_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12417,7 +12492,7 @@ pub fn wire_ConcatenateWithTwinSse_new_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_SumWithTwinSse_sum_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12426,12 +12501,22 @@ pub fn wire_SumWithTwinSse_sum_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_get_sum_array_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_get_sum_array_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_get_sum_array_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_sum_struct_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_get_sum_struct_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_get_sum_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -12539,7 +12624,7 @@ pub fn wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_single_arg_twin_sync_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12554,7 +12639,7 @@ pub fn wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_single_arg
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_twin_sync_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12569,7 +12654,7 @@ pub fn wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_twin_sync_
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_at_1_twin_sync_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12584,7 +12669,7 @@ pub fn wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_at_1_twin_sync_ss
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_twin_sync_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12774,7 +12859,7 @@ pub fn wire_test_raw_string_mirrored_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_app_settings_stream_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12784,7 +12869,7 @@ pub fn wire_app_settings_stream_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_app_settings_vec_stream_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12794,7 +12879,7 @@ pub fn wire_app_settings_vec_stream_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_first_number_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12804,7 +12889,7 @@ pub fn wire_first_number_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_first_sequence_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12814,7 +12899,7 @@ pub fn wire_first_sequence_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_app_settings_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12824,7 +12909,7 @@ pub fn wire_get_app_settings_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_fallible_app_settings_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12834,7 +12919,7 @@ pub fn wire_get_fallible_app_settings_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_message_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12844,7 +12929,7 @@ pub fn wire_get_message_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_is_app_embedded_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12854,7 +12939,7 @@ pub fn wire_is_app_embedded_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_mirror_struct_stream_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12864,7 +12949,7 @@ pub fn wire_mirror_struct_stream_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_mirror_tuple_stream_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12874,7 +12959,7 @@ pub fn wire_mirror_tuple_stream_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_repeat_number_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12884,7 +12969,7 @@ pub fn wire_repeat_number_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_repeat_sequence_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12894,7 +12979,7 @@ pub fn wire_repeat_sequence_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_contains_mirrored_sub_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12909,7 +12994,7 @@ pub fn wire_test_contains_mirrored_sub_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12924,7 +13009,7 @@ pub fn wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12939,7 +13024,7 @@ pub fn wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_list_of_raw_nested_string_mirrored_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12954,7 +13039,7 @@ pub fn wire_test_list_of_raw_nested_string_mirrored_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_nested_raw_string_mirrored_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12969,7 +13054,7 @@ pub fn wire_test_nested_raw_string_mirrored_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_raw_string_enum_mirrored_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12984,7 +13069,7 @@ pub fn wire_test_raw_string_enum_mirrored_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_raw_string_mirrored_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -12994,7 +13079,7 @@ pub fn wire_test_raw_string_mirrored_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_app_settings_stream_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13004,7 +13089,7 @@ pub fn wire_app_settings_stream_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_app_settings_vec_stream_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13013,18 +13098,28 @@ pub fn wire_app_settings_vec_stream_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_first_number_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_first_number_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_first_number_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_first_sequence_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_first_sequence_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_first_sequence_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_get_app_settings_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13034,7 +13129,7 @@ pub fn wire_get_app_settings_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_get_fallible_app_settings_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13043,13 +13138,18 @@ pub fn wire_get_fallible_app_settings_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_get_message_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_get_message_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_get_message_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_is_app_embedded_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13059,7 +13159,7 @@ pub fn wire_is_app_embedded_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_mirror_struct_stream_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13069,7 +13169,7 @@ pub fn wire_mirror_struct_stream_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_mirror_tuple_stream_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13078,13 +13178,18 @@ pub fn wire_mirror_tuple_stream_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_repeat_number_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_repeat_number_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_repeat_number_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_repeat_sequence_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13094,7 +13199,7 @@ pub fn wire_repeat_sequence_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_contains_mirrored_sub_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13104,7 +13209,7 @@ pub fn wire_test_contains_mirrored_sub_struct_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_fallible_of_raw_string_mirrored_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13114,7 +13219,7 @@ pub fn wire_test_fallible_of_raw_string_mirrored_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_list_of_nested_enums_mirrored_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13124,7 +13229,7 @@ pub fn wire_test_list_of_nested_enums_mirrored_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_list_of_raw_nested_string_mirrored_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13139,7 +13244,7 @@ pub fn wire_test_list_of_raw_nested_string_mirrored_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_nested_raw_string_mirrored_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13149,7 +13254,7 @@ pub fn wire_test_nested_raw_string_mirrored_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_raw_string_enum_mirrored_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13159,7 +13264,7 @@ pub fn wire_test_raw_string_enum_mirrored_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_raw_string_mirrored_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13287,7 +13392,7 @@ pub fn wire_test_raw_string_mirrored_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_app_settings_stream_twin_sync_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13297,7 +13402,7 @@ pub fn wire_app_settings_stream_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_app_settings_vec_stream_twin_sync_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13361,7 +13466,7 @@ pub fn wire_is_app_embedded_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_mirror_struct_stream_twin_sync_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13371,7 +13476,7 @@ pub fn wire_mirror_struct_stream_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_mirror_tuple_stream_twin_sync_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13534,7 +13639,7 @@ pub fn wire_test_struct_with_enum_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_handle_big_buffers_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13544,7 +13649,7 @@ pub fn wire_handle_big_buffers_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_complex_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13554,7 +13659,7 @@ pub fn wire_handle_complex_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_nested_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13564,7 +13669,7 @@ pub fn wire_handle_nested_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_string_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13574,7 +13679,7 @@ pub fn wire_handle_string_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13584,7 +13689,7 @@ pub fn wire_handle_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_vec_u8_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13594,7 +13699,7 @@ pub fn wire_handle_vec_u8_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_list_of_primitive_enums_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13604,7 +13709,7 @@ pub fn wire_list_of_primitive_enums_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_abc_enum_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13614,7 +13719,7 @@ pub fn wire_test_abc_enum_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_struct_with_enum_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13624,7 +13729,7 @@ pub fn wire_test_struct_with_enum_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_big_buffers_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13634,7 +13739,7 @@ pub fn wire_handle_big_buffers_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_complex_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13644,7 +13749,7 @@ pub fn wire_handle_complex_struct_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_nested_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13653,23 +13758,38 @@ pub fn wire_handle_nested_struct_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_string_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_handle_string_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_handle_string_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_struct_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_handle_struct_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_handle_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_vec_u8_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_handle_vec_u8_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_handle_vec_u8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_list_of_primitive_enums_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13678,13 +13798,18 @@ pub fn wire_list_of_primitive_enums_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_abc_enum_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_test_abc_enum_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_test_abc_enum_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_test_struct_with_enum_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13877,7 +14002,7 @@ pub fn wire_handle_string_list_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_empty_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13887,7 +14012,7 @@ pub fn wire_empty_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_return_unit_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13897,7 +14022,7 @@ pub fn wire_func_return_unit_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_string_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13907,7 +14032,7 @@ pub fn wire_func_string_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_list_of_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13917,7 +14042,7 @@ pub fn wire_handle_list_of_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_string_list_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13926,13 +14051,18 @@ pub fn wire_handle_string_list_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_empty_struct_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_empty_struct_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_empty_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_func_return_unit_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13941,13 +14071,18 @@ pub fn wire_func_return_unit_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_func_string_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_func_string_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_func_string_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_list_of_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -13957,7 +14092,7 @@ pub fn wire_handle_list_of_struct_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_string_list_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14053,7 +14188,7 @@ pub fn wire_handle_newtype_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_handle_newtype_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14062,7 +14197,12 @@ pub fn wire_handle_newtype_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_newtype_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_handle_newtype_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_handle_newtype_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -14183,7 +14323,7 @@ pub fn wire_primitive_optional_types_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_primitive_optional_types_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14193,7 +14333,7 @@ pub fn wire_primitive_optional_types_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_primitive_optional_types_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14310,7 +14450,7 @@ pub fn wire_example_optional_primitive_type_u8_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_bool_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14325,7 +14465,7 @@ pub fn wire_example_optional_primitive_type_bool_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_f32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14340,7 +14480,7 @@ pub fn wire_example_optional_primitive_type_f32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_f64_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14355,7 +14495,7 @@ pub fn wire_example_optional_primitive_type_f64_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i16_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14370,7 +14510,7 @@ pub fn wire_example_optional_primitive_type_i16_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14385,7 +14525,7 @@ pub fn wire_example_optional_primitive_type_i32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i64_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14400,7 +14540,7 @@ pub fn wire_example_optional_primitive_type_i64_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i8_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14415,7 +14555,7 @@ pub fn wire_example_optional_primitive_type_i8_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u16_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14430,7 +14570,7 @@ pub fn wire_example_optional_primitive_type_u16_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14445,7 +14585,7 @@ pub fn wire_example_optional_primitive_type_u32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u64_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14460,7 +14600,7 @@ pub fn wire_example_optional_primitive_type_u64_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u8_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14475,7 +14615,7 @@ pub fn wire_example_optional_primitive_type_u8_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_bool_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14485,7 +14625,7 @@ pub fn wire_example_optional_primitive_type_bool_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_f32_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14495,7 +14635,7 @@ pub fn wire_example_optional_primitive_type_f32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_f64_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14505,7 +14645,7 @@ pub fn wire_example_optional_primitive_type_f64_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i16_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14515,7 +14655,7 @@ pub fn wire_example_optional_primitive_type_i16_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i32_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14525,7 +14665,7 @@ pub fn wire_example_optional_primitive_type_i32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i64_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14535,7 +14675,7 @@ pub fn wire_example_optional_primitive_type_i64_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_i8_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14545,7 +14685,7 @@ pub fn wire_example_optional_primitive_type_i8_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u16_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14555,7 +14695,7 @@ pub fn wire_example_optional_primitive_type_u16_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u32_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14565,7 +14705,7 @@ pub fn wire_example_optional_primitive_type_u32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u64_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14575,7 +14715,7 @@ pub fn wire_example_optional_primitive_type_u64_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_u8_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14818,7 +14958,7 @@ pub fn wire_handle_vec_of_opts_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_handle_increment_boxed_optional_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14833,7 +14973,7 @@ pub fn wire_handle_increment_boxed_optional_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_option_box_arguments_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14843,7 +14983,7 @@ pub fn wire_handle_option_box_arguments_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_optional_increment_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14853,7 +14993,7 @@ pub fn wire_handle_optional_increment_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_optional_return_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14863,7 +15003,7 @@ pub fn wire_handle_optional_return_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_optional_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14873,7 +15013,7 @@ pub fn wire_handle_optional_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_vec_of_opts_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14883,7 +15023,7 @@ pub fn wire_handle_vec_of_opts_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_increment_boxed_optional_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14893,7 +15033,7 @@ pub fn wire_handle_increment_boxed_optional_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_option_box_arguments_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14903,7 +15043,7 @@ pub fn wire_handle_option_box_arguments_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_optional_increment_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14913,7 +15053,7 @@ pub fn wire_handle_optional_increment_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_optional_return_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14923,7 +15063,7 @@ pub fn wire_handle_optional_return_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_optional_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -14933,7 +15073,7 @@ pub fn wire_handle_optional_struct_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_vec_of_opts_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15232,7 +15372,7 @@ pub fn wire_handle_vec_of_primitive_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_handle_vec_of_primitive_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15242,7 +15382,7 @@ pub fn wire_handle_vec_of_primitive_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_vec_of_primitive_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15356,7 +15496,7 @@ pub fn wire_example_primitive_list_type_u8_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_bool_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15371,7 +15511,7 @@ pub fn wire_example_primitive_list_type_bool_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_f32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15386,7 +15526,7 @@ pub fn wire_example_primitive_list_type_f32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_f64_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15401,7 +15541,7 @@ pub fn wire_example_primitive_list_type_f64_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i16_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15416,7 +15556,7 @@ pub fn wire_example_primitive_list_type_i16_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15431,7 +15571,7 @@ pub fn wire_example_primitive_list_type_i32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i64_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15446,7 +15586,7 @@ pub fn wire_example_primitive_list_type_i64_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i8_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15461,7 +15601,7 @@ pub fn wire_example_primitive_list_type_i8_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u16_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15476,7 +15616,7 @@ pub fn wire_example_primitive_list_type_u16_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15491,7 +15631,7 @@ pub fn wire_example_primitive_list_type_u32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u64_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15506,7 +15646,7 @@ pub fn wire_example_primitive_list_type_u64_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u8_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15521,7 +15661,7 @@ pub fn wire_example_primitive_list_type_u8_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_bool_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15531,7 +15671,7 @@ pub fn wire_example_primitive_list_type_bool_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_f32_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15541,7 +15681,7 @@ pub fn wire_example_primitive_list_type_f32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_f64_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15551,7 +15691,7 @@ pub fn wire_example_primitive_list_type_f64_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i16_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15561,7 +15701,7 @@ pub fn wire_example_primitive_list_type_i16_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i32_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15571,7 +15711,7 @@ pub fn wire_example_primitive_list_type_i32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i64_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15581,7 +15721,7 @@ pub fn wire_example_primitive_list_type_i64_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_i8_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15591,7 +15731,7 @@ pub fn wire_example_primitive_list_type_i8_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u16_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15601,7 +15741,7 @@ pub fn wire_example_primitive_list_type_u16_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u32_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15611,7 +15751,7 @@ pub fn wire_example_primitive_list_type_u32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u64_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15621,7 +15761,7 @@ pub fn wire_example_primitive_list_type_u64_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_list_type_u8_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15826,7 +15966,7 @@ pub fn wire_primitive_u32_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_primitive_types_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15836,7 +15976,7 @@ pub fn wire_primitive_types_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_primitive_u32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15846,7 +15986,7 @@ pub fn wire_primitive_u32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_primitive_types_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15855,7 +15995,12 @@ pub fn wire_primitive_types_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_primitive_u32_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_primitive_u32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_primitive_u32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -15984,7 +16129,7 @@ pub fn wire_example_primitive_type_u8_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_bool_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -15994,7 +16139,7 @@ pub fn wire_example_primitive_type_bool_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_f32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16004,7 +16149,7 @@ pub fn wire_example_primitive_type_f32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_f64_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16014,7 +16159,7 @@ pub fn wire_example_primitive_type_f64_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i16_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16024,7 +16169,7 @@ pub fn wire_example_primitive_type_i16_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16034,7 +16179,7 @@ pub fn wire_example_primitive_type_i32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i64_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16044,7 +16189,7 @@ pub fn wire_example_primitive_type_i64_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i8_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16054,7 +16199,7 @@ pub fn wire_example_primitive_type_i8_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u16_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16064,7 +16209,7 @@ pub fn wire_example_primitive_type_u16_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u32_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16074,7 +16219,7 @@ pub fn wire_example_primitive_type_u32_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u64_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16084,7 +16229,7 @@ pub fn wire_example_primitive_type_u64_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u8_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16094,7 +16239,7 @@ pub fn wire_example_primitive_type_u8_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_bool_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16104,7 +16249,7 @@ pub fn wire_example_primitive_type_bool_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_f32_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16114,7 +16259,7 @@ pub fn wire_example_primitive_type_f32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_f64_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16124,7 +16269,7 @@ pub fn wire_example_primitive_type_f64_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i16_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16134,7 +16279,7 @@ pub fn wire_example_primitive_type_i16_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i32_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16144,7 +16289,7 @@ pub fn wire_example_primitive_type_i32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i64_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16154,7 +16299,7 @@ pub fn wire_example_primitive_type_i64_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_i8_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16164,7 +16309,7 @@ pub fn wire_example_primitive_type_i8_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u16_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16174,7 +16319,7 @@ pub fn wire_example_primitive_type_u16_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u32_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16184,7 +16329,7 @@ pub fn wire_example_primitive_type_u32_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u64_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16194,7 +16339,7 @@ pub fn wire_example_primitive_type_u64_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_example_primitive_type_u8_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16394,7 +16539,7 @@ pub fn wire_test_raw_string_item_struct_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_test_more_than_just_one_raw_string_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16409,7 +16554,7 @@ pub fn wire_test_more_than_just_one_raw_string_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_raw_string_item_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16419,7 +16564,7 @@ pub fn wire_test_raw_string_item_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_more_than_just_one_raw_string_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16434,7 +16579,7 @@ pub fn wire_test_more_than_just_one_raw_string_struct_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_raw_string_item_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16478,7 +16623,7 @@ pub fn wire_test_raw_string_item_struct_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16493,7 +16638,7 @@ pub fn wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_instance_method_arg_mut_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16508,7 +16653,7 @@ pub fn wire_NonCloneSimpleTwinSse_instance_method_arg_mut_borrow_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16523,7 +16668,7 @@ pub fn wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16538,7 +16683,7 @@ pub fn wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16548,7 +16693,7 @@ pub fn wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_new_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16558,7 +16703,7 @@ pub fn wire_NonCloneSimpleTwinSse_new_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16573,7 +16718,7 @@ pub fn wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16588,7 +16733,7 @@ pub fn wire_NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16603,7 +16748,7 @@ pub fn wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_static_method_return_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16618,7 +16763,7 @@ pub fn wire_NonCloneSimpleTwinSse_static_method_return_own_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_arg_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16628,7 +16773,7 @@ pub fn wire_rust_auto_opaque_arg_borrow_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_arg_mut_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16638,7 +16783,7 @@ pub fn wire_rust_auto_opaque_arg_mut_borrow_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16653,7 +16798,7 @@ pub fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_arg_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16663,7 +16808,7 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_arg_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16673,7 +16818,7 @@ pub fn wire_rust_auto_opaque_callable_arg_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_return_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16683,7 +16828,7 @@ pub fn wire_rust_auto_opaque_callable_return_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16693,7 +16838,7 @@ pub fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_plus_sign_arg_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16703,7 +16848,7 @@ pub fn wire_rust_auto_opaque_plus_sign_arg_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_plus_sign_return_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16713,7 +16858,7 @@ pub fn wire_rust_auto_opaque_plus_sign_return_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_return_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16723,7 +16868,7 @@ pub fn wire_rust_auto_opaque_return_own_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16738,7 +16883,7 @@ pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_s
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16753,7 +16898,7 @@ pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_tw
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16768,7 +16913,7 @@ pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16783,7 +16928,7 @@ pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_s
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16798,7 +16943,7 @@ pub fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16813,7 +16958,7 @@ pub fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_trait_object_arg_own_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16823,7 +16968,7 @@ pub fn wire_rust_auto_opaque_trait_object_arg_own_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_trait_object_return_own_one_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16838,7 +16983,7 @@ pub fn wire_rust_auto_opaque_trait_object_return_own_one_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -16853,7 +16998,7 @@ pub fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_rust_auto_opaque_two_args_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17577,7 +17722,7 @@ pub fn wire_unwrap_rust_opaque_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_create_array_opaque_enum_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17587,7 +17732,7 @@ pub fn wire_create_array_opaque_enum_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_nested_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17597,7 +17742,7 @@ pub fn wire_create_nested_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17607,7 +17752,7 @@ pub fn wire_create_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_option_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17617,7 +17762,7 @@ pub fn wire_create_option_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_sync_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17627,7 +17772,7 @@ pub fn wire_create_sync_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_frb_generator_test_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17637,7 +17782,7 @@ pub fn wire_frb_generator_test_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_opaque_array_run_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17647,7 +17792,7 @@ pub fn wire_opaque_array_run_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_opaque_array_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17657,7 +17802,7 @@ pub fn wire_opaque_array_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_opaque_vec_run_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17667,7 +17812,7 @@ pub fn wire_opaque_vec_run_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_opaque_vec_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17677,7 +17822,7 @@ pub fn wire_opaque_vec_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_run_enum_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17687,7 +17832,7 @@ pub fn wire_run_enum_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_run_nested_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17697,7 +17842,7 @@ pub fn wire_run_nested_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_run_non_clone_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17707,7 +17852,7 @@ pub fn wire_run_non_clone_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_run_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17717,7 +17862,7 @@ pub fn wire_run_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_run_opaque_with_delay_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17727,7 +17872,7 @@ pub fn wire_run_opaque_with_delay_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_unwrap_rust_opaque_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17737,7 +17882,7 @@ pub fn wire_unwrap_rust_opaque_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_array_opaque_enum_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17747,7 +17892,7 @@ pub fn wire_create_array_opaque_enum_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_nested_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17756,13 +17901,18 @@ pub fn wire_create_nested_opaque_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_create_opaque_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_create_opaque_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_create_opaque_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_create_option_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17772,7 +17922,7 @@ pub fn wire_create_option_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_create_sync_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17782,7 +17932,7 @@ pub fn wire_create_sync_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_frb_generator_test_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17792,7 +17942,7 @@ pub fn wire_frb_generator_test_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_opaque_array_run_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17801,23 +17951,38 @@ pub fn wire_opaque_array_run_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_opaque_array_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_opaque_array_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_opaque_array_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_opaque_vec_run_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_opaque_vec_run_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_opaque_vec_run_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_opaque_vec_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_opaque_vec_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_opaque_vec_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_run_enum_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17827,7 +17992,7 @@ pub fn wire_run_enum_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_run_nested_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17836,18 +18001,28 @@ pub fn wire_run_nested_opaque_twin_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_run_non_clone_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_run_non_clone_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_run_non_clone_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_run_opaque_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_run_opaque_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_run_opaque_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_run_opaque_with_delay_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -17857,7 +18032,7 @@ pub fn wire_run_opaque_with_delay_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_unwrap_rust_opaque_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18122,7 +18297,7 @@ pub fn wire_simple_adder_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_simple_adder_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18131,7 +18306,12 @@ pub fn wire_simple_adder_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_simple_adder_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_simple_adder_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_simple_adder_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18154,7 +18334,7 @@ pub fn wire_simple_adder_twin_sync_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_stream_realistic_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18221,7 +18401,7 @@ pub fn wire_handle_stream_sink_at_3_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18231,7 +18411,7 @@ pub fn wire_func_stream_return_error_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_stream_return_panic_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18241,7 +18421,7 @@ pub fn wire_func_stream_return_panic_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_stream_sink_arg_position_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18256,7 +18436,7 @@ pub fn wire_func_stream_sink_arg_position_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_of_struct_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18266,7 +18446,7 @@ pub fn wire_handle_stream_of_struct_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_1_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18276,7 +18456,7 @@ pub fn wire_handle_stream_sink_at_1_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_2_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18286,7 +18466,7 @@ pub fn wire_handle_stream_sink_at_2_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_3_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18296,7 +18476,7 @@ pub fn wire_handle_stream_sink_at_3_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18306,7 +18486,7 @@ pub fn wire_func_stream_return_error_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_stream_return_panic_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18316,7 +18496,7 @@ pub fn wire_func_stream_return_panic_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_stream_sink_arg_position_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18326,7 +18506,7 @@ pub fn wire_func_stream_sink_arg_position_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_of_struct_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18336,7 +18516,7 @@ pub fn wire_handle_stream_of_struct_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_1_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18346,7 +18526,7 @@ pub fn wire_handle_stream_sink_at_1_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_2_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18356,7 +18536,7 @@ pub fn wire_handle_stream_sink_at_2_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_stream_sink_at_3_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18406,7 +18586,7 @@ pub fn wire_func_tuple_struct_with_two_field_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_func_struct_with_one_field_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18416,7 +18596,7 @@ pub fn wire_func_struct_with_one_field_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_struct_with_two_field_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18426,7 +18606,7 @@ pub fn wire_func_struct_with_two_field_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_struct_with_zero_field_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18436,7 +18616,7 @@ pub fn wire_func_struct_with_zero_field_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_tuple_struct_with_one_field_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18451,7 +18631,7 @@ pub fn wire_func_tuple_struct_with_one_field_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_tuple_struct_with_two_field_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18466,7 +18646,7 @@ pub fn wire_func_tuple_struct_with_two_field_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_struct_with_one_field_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18476,7 +18656,7 @@ pub fn wire_func_struct_with_one_field_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_struct_with_two_field_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18486,7 +18666,7 @@ pub fn wire_func_struct_with_two_field_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_struct_with_zero_field_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18496,7 +18676,7 @@ pub fn wire_func_struct_with_zero_field_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_tuple_struct_with_one_field_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18506,7 +18686,7 @@ pub fn wire_func_tuple_struct_with_one_field_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_func_tuple_struct_with_two_field_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18612,7 +18792,7 @@ pub fn wire_test_tuple_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_test_tuple_2_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18622,7 +18802,7 @@ pub fn wire_test_tuple_2_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_test_tuple_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18631,12 +18811,22 @@ pub fn wire_test_tuple_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_tuple_2_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_test_tuple_2_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_test_tuple_2_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_tuple_twin_sse(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+pub fn wire_test_tuple_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
     wire_test_tuple_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18698,7 +18888,7 @@ pub fn wire_handle_type_nest_alias_id_twin_rust_async(
 
 #[wasm_bindgen]
 pub fn wire_handle_type_alias_id_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18708,7 +18898,7 @@ pub fn wire_handle_type_alias_id_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_type_alias_model_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18718,7 +18908,7 @@ pub fn wire_handle_type_alias_model_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_type_nest_alias_id_twin_rust_async_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18728,7 +18918,7 @@ pub fn wire_handle_type_nest_alias_id_twin_rust_async_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_type_alias_id_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18738,7 +18928,7 @@ pub fn wire_handle_type_alias_id_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_type_alias_model_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
@@ -18748,7 +18938,7 @@ pub fn wire_handle_type_alias_model_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_handle_type_nest_alias_id_twin_sse(
-    port_: i64,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
