@@ -24,10 +24,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                     )
                 {
                     format!(
-                        "return wire.cst_new_{ir_safe_ident}(cst_encode_{inner_safe_ident}(apiImpl, raw));"
+                        "return wire.cst_new_{ir_safe_ident}(cst_encode_{inner_safe_ident}(raw));"
                     )
                 } else if self.ir.inner.is_array() {
-                    format!("return cst_encode_{inner_safe_ident}(apiImpl, raw);")
+                    format!("return cst_encode_{inner_safe_ident}(raw);")
                 } else {
                     format!(
                         "final ptr = wire.cst_new_{ir_safe_ident}();
@@ -41,9 +41,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                     )
                 },
             ),
-            wasm: Some(format!(
-                "return cst_encode_{inner_safe_ident}(apiImpl, raw);"
-            )),
+            wasm: Some(format!("return cst_encode_{inner_safe_ident}(raw);")),
             ..Default::default()
         }
     }
@@ -52,9 +50,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
         let inner_safe_ident = self.ir.inner.safe_ident();
 
         if self.ir.inner.is_array() {
-            Some(format!(
-                "wireObj = cst_encode_{inner_safe_ident}(apiImpl, apiObj);"
-            ))
+            Some(format!("wireObj = cst_encode_{inner_safe_ident}(apiObj);"))
         } else if !self.ir.inner.is_primitive()
             && !matches!(
                 *self.ir.inner,

@@ -54,7 +54,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
                 let values = (st.fields.iter().enumerate())
                     .map(|(index, field)| {
                         format!(
-                            "cst_encode_{}(apiImpl, raw.{})",
+                            "cst_encode_{}(raw.{})",
                             field.ty.safe_ident(),
                             self.mode.field_name(
                                 index,
@@ -99,7 +99,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         if field.ty.is_struct_or_enum_or_record() {
             format!("_cst_api_fill_to_wire_{safe_ident}(apiObj.{dart_style}, wireObj.{c_style});")
         } else {
-            format!("wireObj.{c_style} = cst_encode_{safe_ident}(apiImpl, apiObj.{dart_style});")
+            format!("wireObj.{c_style} = cst_encode_{safe_ident}(apiObj.{dart_style});")
         }
     }
 }
