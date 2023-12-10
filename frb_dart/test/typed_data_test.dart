@@ -90,7 +90,9 @@ void main() {
           TODO_usebigint_and_test_more_ranges,
           TODO_loopback_test,
         ]) {
-          test('$info', () => _body(setter, getter, info));
+          for (final endian in [Endian.little, Endian.big]) {
+            test('$info $endian', () => _body(setter, getter, info, endian));
+          }
         }
       });
     }
@@ -102,17 +104,13 @@ typedef _Setter = void Function(
 typedef _Getter = BigInt Function(
     ByteData byteData, int byteOffset, Endian endian);
 
-void _body(_Setter setter, _Getter getter, _Info info) {
+void _body(_Setter setter, _Getter getter, _Info info, Endian endian) {
   final byteData = ByteData(60);
   const byteOffset = 40;
 
-  setter(byteData, byteOffset, info.integer, Endian.little);
-  expect(byteData.buffer.asUint8List(byteOffset, 8), info.expectLittleEndian);
-  expect(getter(byteData, byteOffset, Endian.little), info.integer);
-
-  setter(byteData, byteOffset, info.integer, Endian.big);
-  expect(byteData.buffer.asUint8List(byteOffset, 8), info.expectBigEndian);
-  expect(getter(byteData, byteOffset, Endian.big), info.integer);
+  setter(byteData, byteOffset, info.integer, endian);
+  expect(byteData.buffer.asUint8List(byteOffset, 8), info.expectBytes(endian));
+  expect(getter(byteData, byteOffset, endian), info.integer);
 }
 
 class _Info {
@@ -125,6 +123,12 @@ class _Info {
     required this.expectLittleEndian,
     required this.expectBigEndian,
   });
+
+  List<int> expectBytes(Endian endian) => switch (endian) {
+        Endian.little => expectLittleEndian,
+        Endian.big => expectBigEndian,
+        _ => throw UnimplementedError(),
+      };
 
   @override
   String toString() =>
