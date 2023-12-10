@@ -40,7 +40,7 @@ fn generate_encode_func(
             raw_body
                 .map(|raw_body| {
                     format!(
-                        "@internal {} cst_encode_{}({api_impl_class} apiImpl, {} raw) {{
+                        "@internal {} cst_encode_{}(_ApiImplPlatformClass apiImpl, {} raw) {{
                             {raw_body}
                         }}",
                         WireDartCodecCstGenerator::new(ty.clone(), context)
