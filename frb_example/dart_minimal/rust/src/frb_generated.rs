@@ -93,10 +93,7 @@ fn wire_rust_call_dart_simple_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_callback = {
-                let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
-                cst_decode_dart_fn_blahblahblah(dart_opaque)
-            };
+            let api_callback = cst_decode_dart_fn_blahblahblah(callback.cst_decode());
             move |context| async move {
                 transform_result_dco(
                     (move || async move {
