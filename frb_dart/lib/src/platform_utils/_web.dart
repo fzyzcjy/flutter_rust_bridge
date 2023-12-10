@@ -34,12 +34,21 @@ external Object castNativeBigInt(Object? value);
 /// {@macro flutter_rust_bridge.internal}
 extension ExtByteData on ByteData {
   /// {@macro flutter_rust_bridge.internal}
-  void generalizedSetUint64(int byteOffset, int value, Endian endian) {
-    TODO;
-  }
+  void generalizedSetUint64(int byteOffset, int value, Endian endian) =>
+      generalizedSetInt64(byteOffset, value, endian);
 
   /// {@macro flutter_rust_bridge.internal}
   void generalizedSetInt64(int byteOffset, int value, Endian endian) {
-    TODO;
+    final lo = value & 0xffffffff;
+    final hi = value >> 32;
+    if (endian == Endian.little) {
+      setInt32(byteOffset, lo);
+      setInt32(byteOffset + 4, hi);
+    } else if (endian == Endian.big) {
+      setInt32(byteOffset + 4, hi);
+      setInt32(byteOffset, lo);
+    } else {
+      throw UnimplementedError("Unknown endian");
+    }
   }
 }
