@@ -38,7 +38,7 @@ pub extern "C" fn frb_initialize_rust(
 }
 
 #[no_mangle]
-pub extern "C" fn dart_fn_deliver_output(call_id: i64) {
+pub extern "C" fn dart_fn_deliver_output(call_id: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id)
 }
 

@@ -56,7 +56,7 @@ pub fn frb_initialize_rust(
 }
 
 #[wasm_bindgen]
-pub fn dart_fn_deliver_output(call_id: i64) {
+pub fn dart_fn_deliver_output(call_id: i32) {
     FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id)
 }
 
