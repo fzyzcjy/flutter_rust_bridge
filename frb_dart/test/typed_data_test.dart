@@ -135,7 +135,8 @@ void main() {
                 final newByteData = ByteData(8);
                 setter(newByteData, 0, integer, endian);
 
-                expect(oldByteData, newByteData);
+                expect(oldByteData.buffer.asUint8List(),
+                    newByteData.buffer.asUint8List());
               }
             });
           });
