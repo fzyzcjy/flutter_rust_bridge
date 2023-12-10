@@ -5,12 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for DartFnWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
-        Acc::new(|target| match target {
-            TargetOrCommon::Io | TargetOrCommon::Wasm => {
-                Some("return cst_encode_DartOpaque(raw);".to_owned())
-            }
-            TargetOrCommon::Common => None,
-        })
+        Acc::new_common(Some("return cst_encode_DartOpaque(raw);".to_owned()))
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
