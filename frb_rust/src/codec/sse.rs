@@ -82,6 +82,12 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
 }
 
 // TODO maybe move
+#[cfg(not(wasm))]
+type PlatformGeneralizedUint8ListPtr = *mut u8;
+#[cfg(wasm)]
+type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
+
+// TODO maybe move
 pub struct SseDeserializer {
     // Only to be used for generated code
     pub cursor: Cursor<Vec<u8>>,
@@ -89,7 +95,11 @@ pub struct SseDeserializer {
 }
 
 impl SseDeserializer {
-    pub unsafe fn from_wire(ptr: *mut u8, rust_vec_len: i32, data_len: i32) -> Self {
+    pub unsafe fn from_wire(
+        ptr: PlatformGeneralizedUint8ListPtr,
+        rust_vec_len: i32,
+        data_len: i32,
+    ) -> Self {
         let vec = vec_from_leak_ptr(ptr, rust_vec_len);
         Self {
             cursor: Cursor::new(vec),
