@@ -1,4 +1,12 @@
+use super::DartFnFuture;
+use crate::generalized_isolate::Channel;
+use crate::platform_types::DartAbi;
+use crate::rust2dart::sender::Rust2DartSender;
+use futures::channel::oneshot;
+use futures::channel::oneshot::Sender;
+use log::warn;
 use std::collections::HashMap;
+use std::panic;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Mutex;
 
@@ -17,7 +25,7 @@ impl DartFnHandler {
 
     pub(crate) fn invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
         let call_id = self.next_call_id.fetch_add(1, Ordering::Relaxed);
-        let (sender, receiver) = futures::channel::oneshot::channel::<()>();
+        let (sender, receiver) = oneshot::channel::<()>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
 
         let sender = Rust2DartSender::new(Channel::new(self.dart_fn_invoke_port()));
@@ -30,7 +38,7 @@ impl DartFnHandler {
         // NOTE This [catch_unwind] should also be put outside **ALL** code, see comments above for reasonk
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
-                if let Some(completer) = (self.completers.lock().unwrap()).remove(call_id) {
+                if let Some(completer) = (self.completers.lock().unwrap()).remove(&call_id) {
                     completer.send(());
                 }
             });
