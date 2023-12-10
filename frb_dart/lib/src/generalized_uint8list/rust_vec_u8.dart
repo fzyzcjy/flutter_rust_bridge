@@ -4,12 +4,9 @@ import 'dart:typed_data';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_uint8list/generalized_uint8list.dart';
 
-/// {@macro flutter_rust_bridge.internal}
-typedef RustVecU8Raw = ({ffi.Pointer<ffi.Uint8> ptr, int length});
-
 /// The Rust `std::Vec<u8>` on the Dart side.
 /// Must call `dispose` manually, otherwise the memory will be leaked.
-class RustVecU8 implements BaseGeneralizedUint8List<RustVecU8Raw> {
+class RustVecU8 implements BaseGeneralizedUint8List<ffi.Pointer<ffi.Uint8>> {
   /// Null = already disposed (to avoid accidential double free)
   ffi.Pointer<ffi.Uint8>? _ptr;
 
@@ -38,7 +35,7 @@ class RustVecU8 implements BaseGeneralizedUint8List<RustVecU8Raw> {
 
   /// {@macro flutter_rust_bridge.internal}
   @override
-  RustVecU8Raw intoRaw() {
+  BaseGeneralizedUint8ListRaw<ffi.Pointer<ffi.Uint8>> intoRaw() {
     final ptr = _ptr!;
     final length = _length;
     _forget();

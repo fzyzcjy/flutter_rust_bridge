@@ -1,7 +1,10 @@
 import 'dart:typed_data';
 
 /// {@macro flutter_rust_bridge.internal}
-abstract interface class BaseGeneralizedUint8List<Raw> {
+typedef BaseGeneralizedUint8ListRaw<PtrType> = ({PtrType ptr, int length});
+
+/// {@macro flutter_rust_bridge.internal}
+abstract interface class BaseGeneralizedUint8List<PtrType> {
   /// {@macro flutter_rust_bridge.internal}
   int get length;
 
@@ -18,5 +21,5 @@ abstract interface class BaseGeneralizedUint8List<Raw> {
   void setRange(int start, int end, Uint8List data);
 
   /// {@macro flutter_rust_bridge.internal}
-  Raw intoRaw();
+  BaseGeneralizedUint8ListRaw<PtrType> intoRaw();
 }
