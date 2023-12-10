@@ -15,7 +15,6 @@ pub unsafe fn cst_decode_dart_opaque(raw: *const std::ffi::c_void) -> DartOpaque
     DartOpaque::from_raw(raw)
 }
 
-#[cfg(not(wasm))]
 pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
     DartOpaque::from_raw(raw as _)
 }
