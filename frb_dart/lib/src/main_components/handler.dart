@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_rust_bridge/src/codec/base.dart';
+import 'package:flutter_rust_bridge/src/dart_opaque/dart_opaque.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
@@ -60,7 +61,7 @@ class BaseHandler {
   void dartFnInvoke(List<dynamic> message) {
     print('hi dartFnInvoke $message');
     final [closureDartOpaque, ...args] = message;
-    final closureDartObject = dart_opaque_dart2rust_encode(closureDartOpaque);
+    final closureDartObject = decodeDartOpaque(closureDartOpaque);
     Function.apply(closureDartObject, args);
   }
 }
