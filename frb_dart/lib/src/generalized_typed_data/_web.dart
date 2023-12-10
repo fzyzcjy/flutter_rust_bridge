@@ -203,10 +203,23 @@ void byteDataSetInt64(
 
 /// {@macro flutter_rust_bridge.internal}
 BigInt byteDataGetUint64(ByteData byteData, int byteOffset, Endian endian) {
-  return TODO;
+  final lo = BigInt.from(byteData.getUint32(byteOffset, endian));
+  final hi = BigInt.from(byteData.getUint32(byteOffset + 4, endian));
+  if (endian == Endian.little) {
+    return lo + (hi << 32);
+  } else if (endian == Endian.big) {
+    return (lo << 32) + hi;
+  } else {
+    throw UnimplementedError("Unknown endian");
+  }
 }
 
 /// {@macro flutter_rust_bridge.internal}
 BigInt byteDataGetInt64(ByteData byteData, int byteOffset, Endian endian) {
-  return TODO;
+  // Just a quick hack, should improve if used frequently in the future
+  var ans = byteDataGetUint64(byteData, byteOffset, endian);
+  if ((ans & (BigInt.from(1) << 63)).toInt() != 0) {
+    ans -= BigInt.from(1) << 64;
+  }
+  return ans;
 }
