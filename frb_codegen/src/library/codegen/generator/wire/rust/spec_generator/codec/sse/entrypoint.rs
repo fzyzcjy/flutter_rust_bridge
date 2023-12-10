@@ -49,7 +49,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
                         }
                         TargetOrCommon::Io => "*mut u8".to_owned(),
                     },
-                    dart_type: "PlatformPointer".to_owned(),
+                    dart_type: "PlatformGeneralizedUint8ListPtr".to_owned(),
                 },
                 ExternFuncParam {
                     name: "rust_vec_len_".to_owned(),
