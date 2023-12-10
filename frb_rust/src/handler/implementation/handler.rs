@@ -16,6 +16,7 @@ use crate::platform_types::SendableMessagePortHandle;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
+use futures::channel::oneshot::Sender;
 use log::warn;
 use std::collections::HashMap;
 use std::future::Future;
@@ -45,7 +46,7 @@ pub struct SimpleHandler<E: Executor, EL: ErrorListener> {
     executor: E,
     error_listener: EL,
     config: Mutex<Option<HandlerConfig>>,
-    dart_fn_completers: Mutex<HashMap<i64, TODO>>,
+    dart_fn_completers: Mutex<HashMap<i64, Sender<()>>>,
 }
 
 impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
@@ -176,13 +177,13 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
         let call_id = TODO;
-        let completer = TODO;
-        (self.dart_fn_completers.lock().unwrap()).insert(call_id, completer);
+        let (sender, receiver) = futures::channel::oneshot::channel::<()>();
+        (self.dart_fn_completers.lock().unwrap()).insert(call_id, sender);
 
         let sender = Rust2DartSender::new(Channel::new(self.dart_fn_invoke_port()));
         sender.send(dart_fn_and_args);
 
-        completer.future
+        receiver
     }
 
     fn dart_fn_handle_output(&self, call_id: i64) {
@@ -190,7 +191,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
                 if let Some(completer) = (self.dart_fn_completers.lock().unwrap()).remove(call_id) {
-                    completer.complete();
+                    completer.send(());
                 }
             });
             if let Err(err) = catch_unwind_result {
