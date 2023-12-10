@@ -40,6 +40,7 @@ extension ExtByteData on ByteData {
   /// {@macro flutter_rust_bridge.internal}
   void generalizedSetInt64(int byteOffset, int value, Endian endian) {
     // Quite hacky, should improve if used frequently in the future
+    // Or use `fixnum` https://pub.dev/documentation/fixnum/latest/fixnum/Int64/toBytes.html
     final valueBig = BigInt.from(value);
     final lo = (valueBig & BigInt.from(0xffffffff)).toInt();
     final hi = (valueBig >> 32).toInt();
