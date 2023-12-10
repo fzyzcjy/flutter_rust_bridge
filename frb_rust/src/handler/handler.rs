@@ -1,3 +1,4 @@
+use crate::codec::sse::Dart2RustMessageSse;
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::DartFnFuture;
@@ -75,15 +76,9 @@ pub trait Handler {
         &self,
         dart_fn: DartOpaque,
         args: Vec<DartAbi>,
-    ) -> DartFnFuture<SseDeserializer>;
+    ) -> DartFnFuture<Dart2RustMessageSse>;
 
-    fn dart_fn_handle_output(
-        &self,
-        call_id: i32,
-        output_ptr: PlatformGeneralizedUint8ListPtr,
-        output_rust_vec_len: i32,
-        output_data_len: i32,
-    );
+    fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse);
 }
 
 #[derive(Clone, Debug)]
