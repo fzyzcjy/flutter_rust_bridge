@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
@@ -93,6 +94,22 @@ void main() {
             ]) {
               test('$info', () => _body(setter, getter, info, endian));
             }
+
+            test('random loopback', () {
+              final random = Random();
+              for (var iter = 0; iter < 1000; ++iter) {
+                final oldByteData = ByteData(8);
+                for (var i = 0; i < oldByteData.lengthInBytes; ++i) {
+                  oldByteData.setUint8(i, random.nextInt(256));
+                }
+
+                final integer = getter(oldByteData, 0, endian);
+                final newByteData = ByteData(8);
+                setter(newByteData, 0, integer, endian);
+
+                expect(oldByteData, newByteData);
+              }
+            });
           });
         }
       });
