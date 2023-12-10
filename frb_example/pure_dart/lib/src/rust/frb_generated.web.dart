@@ -14114,6 +14114,9 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuid_twin_normal(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid_twin_normal(port_, id);
 
+  dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle) =>
+      wasmModule.dart_opaque_dart2rust_encode(handle);
+
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr);
 
@@ -20004,6 +20007,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_uuid_twin_normal(
       NativePortType port_, Uint8List id);
+
+  external dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle);
 
   external void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);

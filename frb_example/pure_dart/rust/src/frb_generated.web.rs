@@ -19603,8 +19603,8 @@ pub fn wire_handle_uuid_twin_normal(
     wire_handle_uuid_twin_normal_impl(port_, id)
 }
 
-#[no_mangle]
-pub extern "C" fn dart_opaque_dart2rust_encode(
+#[wasm_bindgen]
+pub fn dart_opaque_dart2rust_encode(
     handle: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> usize {
     unsafe {
