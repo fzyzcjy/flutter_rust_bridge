@@ -126,7 +126,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   String Function(String, String)
       _dco_decode_DartFn_Inputs_String_String_Output_String(dynamic raw) {
-    return _dco_decode_DartOpaque(raw);
+    throw UnimplementedError();
   }
 
   Object _dco_decode_DartOpaque(dynamic raw) {
@@ -160,8 +160,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   String Function(String, String)
       _sse_decode_DartFn_Inputs_String_String_Output_String(
           SseDeserializer deserializer) {
-    var inner = _sse_decode_DartOpaque(deserializer);
-    return inner;
+    throw UnimplementedError();
   }
 
   Object _sse_decode_DartOpaque(SseDeserializer deserializer) {

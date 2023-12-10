@@ -17,8 +17,9 @@ Future<void> main() async {
 
   test('hi', () async {
     print('hi dart before rustCallDartSimple');
-    await rustCallDartSimple(callback: () {
-      print('hi Dart callback is called');
+    await rustCallDartSimple(callback: (x, y) {
+      print('hi Dart callback is called: $x, $y');
+      return 'this is string returned from dart callback';
     });
     print('hi dart after rustCallDartSimple');
   });
