@@ -61,10 +61,8 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let port = port.unwrap();
 
         self.thread_pool.execute(transfer!(|port: MessagePort| {
-            #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
             let thread_result = panic::catch_unwind(|| {
-                #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
 
@@ -115,11 +113,9 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         self.async_runtime.spawn(async move {
             let TaskInfo { port, mode, .. } = task_info;
             let port = port.unwrap();
-            #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
 
             let async_result = async {
-                #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
 
