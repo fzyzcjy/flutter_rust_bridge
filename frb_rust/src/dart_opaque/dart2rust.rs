@@ -27,3 +27,11 @@ pub unsafe fn dart_opaque_dart2rust_encode<H: Handler>(
     let drop_port = handler.dart_opaque_drop_port();
     DartOpaque::new(handle, drop_port).into_raw()
 }
+
+#[cfg(wasm)]
+pub unsafe fn dart_opaque_dart2rust_encode<H: Handler>(
+    handler: &H,
+    handle: wasm_bindgen::JsValue,
+) -> usize {
+    todo!()
+}

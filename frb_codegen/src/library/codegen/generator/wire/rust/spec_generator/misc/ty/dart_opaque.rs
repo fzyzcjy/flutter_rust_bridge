@@ -27,7 +27,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartOpaqueWireRustGenerator<'a> {
                             Target::Io => "*const std::ffi::c_void",
                             Target::Wasm => "usize",
                         }.into()),
-                        body: format!("unsafe {{ flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(&*{HANDLER_NAME}, handle) as _ }}"),
+                        body: format!("unsafe {{ flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(&*{HANDLER_NAME}, handle) }}"),
                         target: Target::Io,
                     };
                 vec![func].into()
