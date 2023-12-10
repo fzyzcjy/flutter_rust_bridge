@@ -1,13 +1,13 @@
 /// Copied and modified from https://github.com/flutter/flutter/blob/master/packages/flutter/lib/src/foundation/serialization.dart
 library;
 
-import 'dart:ffi' as ffi;
 import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
 import 'package:flutter_rust_bridge/src/misc/rust_vec_u8.dart';
+import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 // NOTE MAIN MODIFICATION:
 // * Uint8List -> RustVecU8
@@ -248,8 +248,4 @@ class WriteBuffer {
 }
 
 /// {@macro flutter_rust_bridge.internal}
-typedef WriteBufferRaw = ({
-  ffi.Pointer<ffi.Uint8> ptr,
-  int rustVecLen,
-  int dataLen
-});
+typedef WriteBufferRaw = ({PlatformPointer ptr, int rustVecLen, int dataLen});
