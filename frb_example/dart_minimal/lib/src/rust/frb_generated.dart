@@ -137,6 +137,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
+  @protected
+  PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
+      NOT_IMPLEMENTED Function(String, String) raw) {
+    return cst_encode_DartOpaque(raw);
+  }
+
+  @protected
+  int cst_encode_i_32(int raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_u_8(int raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_usize(int raw) {
+    return raw;
+  }
 
   void _sse_encode_DartFn_Inputs_String_String_Output_String(
       NOT_IMPLEMENTED Function(String, String) self, SseSerializer serializer) {
@@ -169,23 +189,4 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_usize(int self, SseSerializer serializer) {
     serializer.buffer.putUint64(self);
   }
-}
-
-// Section: dart2rust
-
-PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
-    NOT_IMPLEMENTED Function(String, String) raw) {
-  return cst_encode_DartOpaque(raw);
-}
-
-int cst_encode_i_32(int raw) {
-  return raw;
-}
-
-int cst_encode_u_8(int raw) {
-  return raw;
-}
-
-int cst_encode_usize(int raw) {
-  return raw;
 }
