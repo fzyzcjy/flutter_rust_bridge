@@ -1,4 +1,6 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::sse::lang::rust::RustLang;
+use crate::codegen::generator::codec::sse::lang::LangTrait;
 use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
@@ -80,7 +82,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
             .map(|field| {
                 let name = field.name.rust_style();
                 let rust_api_type = field.ty.rust_api_type();
-                format!("let api_{name} = <{rust_api_type}>::sse_decode(&mut deserializer);")
+                format!("let api_{name} = {};", RustLang.call_decode(&field.ty))
             })
             .join("\n");
         format!(
