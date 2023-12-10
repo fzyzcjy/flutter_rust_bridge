@@ -110,11 +110,7 @@ fn wire_rust_call_dart_simple_impl(
                             )
                             .await;
 
-                        let mut deserializer = SseDeserializer::new(message);
-                        let output = <String>::sse_decode(&mut deserializer);
-                        deserializer.end();
-
-                        output
+                        <String>::sse_decode_single(message)
                     }
 
                     flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
