@@ -19,7 +19,9 @@ use flutter_rust_bridge::for_generated::futures::FutureExt;
 use flutter_rust_bridge::for_generated::{
     transform_result_dco, Dart2RustMessageSse, SseDeserializer,
 };
-use flutter_rust_bridge::{Handler, IntoIntoDart};
+use flutter_rust_bridge::{DartFnFuture, Handler, IntoIntoDart};
+use std::future::Future;
+use std::panic::UnwindSafe;
 
 // Section: boilerplate
 
@@ -91,12 +93,19 @@ fn wire_rust_call_dart_simple_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
+            fn hello<T: Future<Output = String> + Send + UnwindSafe + 'static>(
+                raw: T,
+            ) -> DartFnFuture<String> {
+                // ref: futures `boxed()`
+                Box::pin(raw)
+            }
+
             let api_callback = {
                 use flutter_rust_bridge::IntoDart;
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
 
                 move |arg0: String, arg1: String| {
-                    async {
+                    hello(async {
                         // TODO manual tweak
                         let message = FLUTTER_RUST_BRIDGE_HANDLER
                             .dart_fn_invoke(
@@ -113,8 +122,7 @@ fn wire_rust_call_dart_simple_impl(
                         deserializer.end();
 
                         output
-                    }
-                    .boxed()
+                    })
                 }
             };
             move |context| async move {
