@@ -7,8 +7,6 @@ typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct Result_JsValue Result_JsValue;
 
-typedef JsValue GeneralizedDartHandle;
-
 typedef Dart_Handle GeneralizedDartHandle;
 
 typedef Dart_CObject *WireSyncReturnDco;

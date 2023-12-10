@@ -248,7 +248,7 @@ class MultiPackageCBinding {
       _dart_opaque_drop_thread_box_persistent_handlePtr
           .asFunction<void Function(int)>();
 
-  int dart_opaque_rust2dart_decode(
+  Object dart_opaque_rust2dart_decode(
     int ptr,
   ) {
     return _dart_opaque_rust2dart_decode(
@@ -257,10 +257,10 @@ class MultiPackageCBinding {
   }
 
   late final _dart_opaque_rust2dart_decodePtr =
-      _lookup<ffi.NativeFunction<GeneralizedDartHandle Function(ffi.UintPtr)>>(
+      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
           'dart_opaque_rust2dart_decode');
   late final _dart_opaque_rust2dart_decode =
-      _dart_opaque_rust2dart_decodePtr.asFunction<int Function(int)>();
+      _dart_opaque_rust2dart_decodePtr.asFunction<Object Function(int)>();
 
   ffi.Pointer<ffi.Uint8> rust_vec_u8_new(
     int len,
@@ -577,6 +577,4 @@ final class WireSyncReturnSse extends ffi.Struct {
   external int len;
 }
 
-typedef GeneralizedDartHandle = ffi.Int;
-typedef DartGeneralizedDartHandle = int;
 typedef WireSyncReturnDco = ffi.Pointer<Dart_CObject>;
