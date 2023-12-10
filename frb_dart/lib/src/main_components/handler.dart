@@ -58,6 +58,7 @@ class BaseHandler {
 
   /// When Rust invokes a Dart function
   void dartFnInvoke(List<dynamic> message) {
+    print('hi dartFnInvoke $message');
     final [closure, ...args] = message;
     Function.apply(closure, args);
   }
