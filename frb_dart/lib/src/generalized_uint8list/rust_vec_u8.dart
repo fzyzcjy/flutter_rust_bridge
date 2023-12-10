@@ -2,10 +2,14 @@ import 'dart:ffi' as ffi;
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:flutter_rust_bridge/src/generalized_uint8list/generalized_uint8list.dart';
+
+/// {@macro flutter_rust_bridge.internal}
+typedef RustVecU8Raw = ({ffi.Pointer<ffi.Uint8> ptr, int length});
 
 /// The Rust `std::Vec<u8>` on the Dart side.
 /// Must call `dispose` manually, otherwise the memory will be leaked.
-class RustVecU8 {
+class RustVecU8 implements BaseGeneralizedUint8List<RustVecU8Raw> {
   /// Null = already disposed (to avoid accidential double free)
   ffi.Pointer<ffi.Uint8>? _ptr;
 
@@ -24,6 +28,7 @@ class RustVecU8 {
   }
 
   /// {@macro flutter_rust_bridge.internal}
+  @override
   void resize(int newLen) {
     _ptr = binding.rustVecU8Resize(_ptr!, _length, newLen);
     _length = newLen;
@@ -31,7 +36,8 @@ class RustVecU8 {
   }
 
   /// {@macro flutter_rust_bridge.internal}
-  ({ffi.Pointer<ffi.Uint8> ptr, int length}) intoRaw() {
+  @override
+  RustVecU8Raw intoRaw() {
     final ptr = _ptr!;
     final length = _length;
     _forget();
@@ -39,6 +45,7 @@ class RustVecU8 {
   }
 
   /// {@macro flutter_rust_bridge.internal}
+  @override
   void dispose() {
     // Set ptr to null before calling free to avoid potential
     // double-free when error happens
@@ -54,11 +61,13 @@ class RustVecU8 {
   }
 
   /// {@macro flutter_rust_bridge.internal}
+  @override
   void operator []=(int index, int value) {
     _ptr![index] = value;
   }
 
   /// {@macro flutter_rust_bridge.internal}
+  @override
   void setRange(int start, int end, Uint8List data) {
     _cachedView!.setRange(start, end, data);
   }
