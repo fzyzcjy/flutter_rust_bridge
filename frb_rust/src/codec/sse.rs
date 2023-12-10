@@ -100,7 +100,11 @@ impl SseDeserializer {
         rust_vec_len: i32,
         data_len: i32,
     ) -> Self {
+        #[cfg(not(wasm))]
         let vec = vec_from_leak_ptr(ptr, rust_vec_len);
+        #[cfg(wasm)]
+        let vec = ptr;
+
         Self {
             cursor: Cursor::new(vec),
             data_len,
