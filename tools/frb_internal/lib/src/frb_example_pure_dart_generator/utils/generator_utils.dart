@@ -56,6 +56,16 @@ enum DuplicatorMode {
   ;
 
   String get postfix => '_twin_${ReCase(name).snakeCase}';
+
+  bool get enableSse {
+    return switch (this) {
+      DuplicatorMode.sync || DuplicatorMode.rustAsync => false,
+      DuplicatorMode.sse ||
+      DuplicatorMode.syncSse ||
+      DuplicatorMode.rustAsyncSse =>
+        true,
+    };
+  }
 }
 
 class _Duplicator {

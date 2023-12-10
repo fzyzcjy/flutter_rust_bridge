@@ -30,7 +30,7 @@ class RustGenerator extends BaseGenerator {
       DuplicatorMode.rustAsyncSse => '$sse pub async fn',
     };
 
-    return inputText
+    var ans = inputText
         .replaceAllMapped(
           RegExp(r'pub fn ([a-zA-Z0-9_-]+?)(_twin_normal)?\('),
           (m) => '$prefix ${m.group(1)}${mode.postfix}(',
@@ -42,6 +42,11 @@ class RustGenerator extends BaseGenerator {
             RegExp(r'use crate::api::([a-zA-Z0-9_]+)::'),
             (m) =>
                 'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::');
+    if (mode.enableSse) {
+      ans = ans.replaceAllMapped(RegExp(r'StreamSink<(.*?)>'),
+          (m) => 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
+    }
+    return ans;
   }
 
   @override
