@@ -95,7 +95,7 @@ class SseDeserializer {
   SseDeserializer(ByteData data) : buffer = ReadBuffer(data);
 }
 
-S _decodeObjectOfOtherType(dynamic raw) {
+S _decodeObjectOfOtherType<S>(dynamic raw) {
   // Temporary workaround before Rust panic=unwind is implemented.
   // Then, when panic happens, the Rust side WorkerPool will use JavaScript
   // to inform the error. Thus we have to use a simple JS implementable protocol.
