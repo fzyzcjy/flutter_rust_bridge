@@ -93,7 +93,7 @@ fn wire_rust_call_dart_simple_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_callback = cst_decode_dart_fn_blahblahblah(callback);
+            let api_callback = decode_dart_fn_blahblahblah(callback.cst_decode());
             move |context| async move {
                 transform_result_dco(
                     (move || async move {
@@ -108,12 +108,10 @@ fn wire_rust_call_dart_simple_impl(
     )
 }
 
-fn cst_decode_dart_fn_blahblahblah(
-    raw: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+fn decode_dart_fn_blahblahblah(
+    dart_opaque: DartOpaque,
 ) -> impl Fn(String, String) -> DartFnFuture<String> {
     use flutter_rust_bridge::IntoDart;
-
-    let dart_opaque = raw.cst_decode();
 
     async fn body(arg0: String, arg1: String, dart_opaque: DartOpaque) -> String {
         let args = vec![
