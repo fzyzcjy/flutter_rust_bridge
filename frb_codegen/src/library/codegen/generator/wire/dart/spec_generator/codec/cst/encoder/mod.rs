@@ -53,7 +53,7 @@ fn generate_encode_func(
                     let api_impl_body = format!("@protected\n{code}");
 
                     WireDartOutputCode {
-                        api_impl_class_body: api_impl_body,
+                        api_impl_extension_body: api_impl_body,
                         ..Default::default()
                     }
                 })
