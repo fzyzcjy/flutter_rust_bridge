@@ -93,7 +93,8 @@ Future<void> expectRustPanic(FutureOr<void> Function() body, String mode,
 /// But normal code should *not* rely on panic, so it should be OK.
 Future<void> expectRustPanicRaw(
     FutureOr<void> Function() body, String mode, Matcher matcher) async {
-  if (kIsWeb && mode == 'TwinRustAsync') {
+  if (kIsWeb && mode.contains('RustAsync')) {
+    print('expectRustPanicRaw check it should have no response');
     // expect it timeouts (hangs), instead of throws
     var bodyCompleted = false;
     unawaited(Future.value(body()).whenComplete(() => bodyCompleted = true));
