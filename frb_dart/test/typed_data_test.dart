@@ -86,6 +86,7 @@ void main() {
             expectLittleEndian: [0, 0, 0, 0, 0, 239, 255, 255],
             expectBigEndian: [255, 255, 239, 0, 0, 0, 0, 0],
           ),
+          TODO_near_boundary,
           TODO_usebigint_and_test_more_ranges,
           TODO_about_reader,
           TODO_loopback_test,
