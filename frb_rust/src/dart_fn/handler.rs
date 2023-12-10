@@ -4,6 +4,7 @@ use crate::platform_types::{DartAbi, SendableMessagePortHandle};
 use crate::rust2dart::sender::Rust2DartSender;
 use futures::channel::oneshot;
 use futures::channel::oneshot::Sender;
+use futures::FutureExt;
 use log::warn;
 use std::collections::HashMap;
 use std::panic;
@@ -24,7 +25,7 @@ impl DartFnHandler {
         }
     }
 
-    pub(crate) async fn invoke(
+    pub(crate) fn invoke(
         &self,
         dart_fn_and_args: Vec<DartAbi>,
         invoke_port: SendableMessagePortHandle,
@@ -36,7 +37,7 @@ impl DartFnHandler {
         let sender = Rust2DartSender::new(Channel::new(invoke_port));
         sender.send(dart_fn_and_args);
 
-        receiver.await
+        Box::pin(receiver.then(|x| x.unwrap()))
     }
 
     pub(crate) fn handle_output(&self, call_id: i32) {
