@@ -21,6 +21,6 @@ Future<void> main() async {
   test('hi', () async {
     expect(
         examplePrimitiveListTypeU8TwinSyncSse(arg: Uint8List.fromList([255])),
-        255);
+        Uint8List.fromList([255]));
   });
 }
