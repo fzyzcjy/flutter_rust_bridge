@@ -3,14 +3,12 @@
 
 // ignore_for_file: unused_import, unused_element, duplicate_ignore, invalid_use_of_internal_member
 
+import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
-
-import 'api/minimal.dart';
 import 'frb_generated.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -21,18 +19,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(void Function() raw) {
-    // TODO this is manual tweak
-    final closure = (int callId) {
-      raw();
-      wire.dart_fn_deliver_output(callId);
-    };
-    return cst_encode_DartOpaque(closure);
+  PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
+      NOT_IMPLEMENTED Function(String, String) raw) {
+    return cst_encode_DartOpaque(raw);
   }
 
   @protected
   PlatformPointer cst_encode_DartOpaque(Object raw) {
     return wire.dart_opaque_dart2rust_encode(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_String(String raw) {
+    return cst_encode_list_prim_u_8(utf8.encoder.convert(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_list_prim_u_8(Uint8List raw) {
+    final ans = wire.cst_new_list_prim_u_8(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
   }
 }
 
@@ -88,7 +94,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _dart_fn_deliver_outputPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
           'dart_fn_deliver_output');
   late final _dart_fn_deliver_output =
       _dart_fn_deliver_outputPtr.asFunction<void Function(int)>();
@@ -145,6 +151,21 @@ class RustLibWire implements BaseWire {
   late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
       .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
 
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_new_list_prim_u_8(
+    int len,
+  ) {
+    return _cst_new_list_prim_u_8(
+      len,
+    );
+  }
+
+  late final _cst_new_list_prim_u_8Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_list_prim_u_8> Function(
+              ffi.Int32)>>('cst_new_list_prim_u_8');
+  late final _cst_new_list_prim_u_8 = _cst_new_list_prim_u_8Ptr
+      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8> Function(int)>();
+
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
@@ -154,4 +175,11 @@ class RustLibWire implements BaseWire {
           'dummy_method_to_enforce_bundling');
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
+}
+
+final class wire_cst_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
 }

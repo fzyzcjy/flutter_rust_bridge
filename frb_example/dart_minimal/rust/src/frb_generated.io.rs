@@ -15,6 +15,26 @@ impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self) }
     }
 }
+impl CstDecode<String> for *mut wire_cst_list_prim_u_8 {
+    fn cst_decode(self) -> String {
+        let vec: Vec<u8> = self.cst_decode();
+        String::from_utf8(vec).unwrap()
+    }
+}
+impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8 {
+    fn cst_decode(self) -> Vec<u8> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_list_prim_u_8 {
+    ptr: *mut u8,
+    len: i32,
+}
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }
@@ -67,4 +87,13 @@ pub extern "C" fn dart_opaque_dart2rust_encode(
             handle,
         ) as _
     }
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_list_prim_u_8(len: i32) -> *mut wire_cst_list_prim_u_8 {
+    let ans = wire_cst_list_prim_u_8 {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
 }

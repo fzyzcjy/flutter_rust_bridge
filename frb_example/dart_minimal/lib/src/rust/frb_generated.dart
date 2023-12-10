@@ -59,7 +59,8 @@ abstract class RustLibApi extends BaseApi {
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 
   Future<void> rustCallDartSimple(
-      {required void Function() callback, dynamic hint});
+      {required NOT_IMPLEMENTED Function(String, String) callback,
+      dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -99,10 +100,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartSimple(
-      {required void Function() callback, dynamic hint}) {
+      {required NOT_IMPLEMENTED Function(String, String) callback,
+      dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
+        var arg0 =
+            cst_encode_DartFn_Inputs_String_String_Output_String(callback);
         return wire.wire_rust_call_dart_simple(port_, arg0);
       },
       codec: DcoCodec(
@@ -135,8 +138,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
 
-  void _sse_encode_DartFn_Inputs__Output_unit(
-      void Function() self, SseSerializer serializer) {
+  void _sse_encode_DartFn_Inputs_String_String_Output_String(
+      NOT_IMPLEMENTED Function(String, String) self, SseSerializer serializer) {
     _sse_encode_DartOpaque(self, serializer);
   }
 
@@ -146,11 +149,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         serializer);
   }
 
+  void _sse_encode_String(String self, SseSerializer serializer) {
+    _sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
+  }
+
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
-  void _sse_encode_unit(void self, SseSerializer serializer) {}
+  void _sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
+    _sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint8List(self);
+  }
+
+  void _sse_encode_u_8(int self, SseSerializer serializer) {
+    serializer.buffer.putUint8(self);
+  }
 
   void _sse_encode_usize(int self, SseSerializer serializer) {
     serializer.buffer.putUint64(self);
@@ -163,7 +177,7 @@ int cst_encode_i_32(int raw) {
   return raw;
 }
 
-void cst_encode_unit(void raw) {
+int cst_encode_u_8(int raw) {
   return raw;
 }
 

@@ -10,6 +10,11 @@ typedef struct WireSyncRust2DartSse {
 // EXTRA END
 typedef struct _Dart_Handle* Dart_Handle;
 
+typedef struct wire_cst_list_prim_u_8 {
+  uint8_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_u_8;
+
 void frb_initialize_rust(MessagePort dart_opaque_drop_port, MessagePort dart_fn_invoke_port);
 
 void dart_fn_deliver_output(int32_t call_id);
@@ -19,8 +24,11 @@ void wire_minimal_adder(int64_t port_, uint8_t *ptr_, int32_t rust_vec_len_, int
 void wire_rust_call_dart_simple(int64_t port_, const void *callback);
 
 const void *dart_opaque_dart2rust_encode(Dart_Handle handle);
+
+struct wire_cst_list_prim_u_8 *cst_new_list_prim_u_8(int32_t len);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
+    dummy_var ^= ((int64_t) (void*) cst_new_list_prim_u_8);
     dummy_var ^= ((int64_t) (void*) dart_fn_deliver_output);
     dummy_var ^= ((int64_t) (void*) dart_opaque_dart2rust_encode);
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
