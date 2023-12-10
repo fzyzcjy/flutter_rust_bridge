@@ -38,7 +38,7 @@ impl WireDartCodecEntrypointTrait<'_> for CstWireDartCodecEntrypoint {
             .enumerate()
             .map(|(index, input)| {
                 format!(
-                    "var arg{index} = cst_encode_{ty_ident}({name});",
+                    "var arg{index} = cst_encode_{ty_ident}(this, {name});",
                     ty_ident = input.ty.safe_ident(),
                     name = &input.name.dart_style()
                 )
