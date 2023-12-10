@@ -92,29 +92,28 @@ class ReadBuffer {
 
   /// Reads the given number of Uint8s from the buffer.
   Uint8List getUint8List(int length) {
-    final Uint8List list =
+    final Uint8List listView =
         data.buffer.asUint8List(data.offsetInBytes + _position, length);
     _position += length;
-    return list;
+    // NOTE: Must copy when in `sync` mode, because the underlying buffer
+    // is a Rust pointer and will be freed later
+    // (but in non-sync mode, we can optimize this and do not copy)
+    return Uint8List.fromList(listView);
   }
-
-  Uint8List _getCopiedUint8List(int length) =>
-      Uint8List.fromList(getUint8List(length));
 
   /// Reads the given number of Uint16s from the buffer.
   Uint16List getUint16List(int length) {
-    return _getCopiedUint8List(length * 2).buffer.asUint16List();
+    return getUint8List(length * 2).buffer.asUint16List();
   }
 
   /// Reads the given number of Uint32s from the buffer.
   Uint32List getUint32List(int length) {
-    return _getCopiedUint8List(length * 4).buffer.asUint32List();
+    return getUint8List(length * 4).buffer.asUint32List();
   }
 
   /// Reads the given number of Uint64s from the buffer.
   Uint64List getUint64List(int length) {
-    return Uint64List.fromList(
-        _getCopiedUint8List(length * 8).buffer.asUint64List());
+    return Uint64List.fromList(getUint8List(length * 8).buffer.asUint64List());
   }
 
   /// Reads the given number of Int8s from the buffer.
@@ -127,28 +126,27 @@ class ReadBuffer {
 
   /// Reads the given number of Int16s from the buffer.
   Int16List getInt16List(int length) {
-    return _getCopiedUint8List(length * 2).buffer.asInt16List();
+    return getUint8List(length * 2).buffer.asInt16List();
   }
 
   /// Reads the given number of Int32s from the buffer.
   Int32List getInt32List(int length) {
-    return _getCopiedUint8List(length * 4).buffer.asInt32List();
+    return getUint8List(length * 4).buffer.asInt32List();
   }
 
   /// Reads the given number of Int64s from the buffer.
   Int64List getInt64List(int length) {
-    return Int64List.fromList(
-        _getCopiedUint8List(length * 8).buffer.asInt64List());
+    return Int64List.fromList(getUint8List(length * 8).buffer.asInt64List());
   }
 
   /// Reads the given number of Float32s from the buffer
   Float32List getFloat32List(int length) {
-    return _getCopiedUint8List(length * 4).buffer.asFloat32List();
+    return getUint8List(length * 4).buffer.asFloat32List();
   }
 
   /// Reads the given number of Float64s from the buffer.
   Float64List getFloat64List(int length) {
-    return _getCopiedUint8List(length * 8).buffer.asFloat64List();
+    return getUint8List(length * 8).buffer.asFloat64List();
   }
 
 // NOTE MODIFIED try remove this to simplify rust side
