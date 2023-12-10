@@ -15,6 +15,7 @@
 // Section: imports
 
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
+use flutter_rust_bridge::for_generated::futures::FutureExt;
 use flutter_rust_bridge::for_generated::{
     transform_result_dco, Dart2RustMessageSse, SseDeserializer,
 };
@@ -94,23 +95,26 @@ fn wire_rust_call_dart_simple_impl(
                 use flutter_rust_bridge::IntoDart;
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
 
-                move |arg0: String, arg1: String| async {
-                    // TODO manual tweak
-                    let message = FLUTTER_RUST_BRIDGE_HANDLER
-                        .dart_fn_invoke(
-                            dart_opaque.clone(),
-                            vec![
-                                arg0.into_into_dart().into_dart(),
-                                arg1.into_into_dart().into_dart(),
-                            ],
-                        )
-                        .await;
+                move |arg0: String, arg1: String| {
+                    async {
+                        // TODO manual tweak
+                        let message = FLUTTER_RUST_BRIDGE_HANDLER
+                            .dart_fn_invoke(
+                                dart_opaque.clone(),
+                                vec![
+                                    arg0.into_into_dart().into_dart(),
+                                    arg1.into_into_dart().into_dart(),
+                                ],
+                            )
+                            .await;
 
-                    let mut deserializer = SseDeserializer::new(message);
-                    let output = <String>::sse_decode(&mut deserializer);
-                    deserializer.end();
+                        let mut deserializer = SseDeserializer::new(message);
+                        let output = <String>::sse_decode(&mut deserializer);
+                        deserializer.end();
 
-                    output
+                        output
+                    }
+                    .boxed()
                 }
             };
             move |context| async move {
