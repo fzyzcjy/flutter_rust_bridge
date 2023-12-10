@@ -38,11 +38,11 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2DartDco(WireSyncRust2DartDco val) =>
-      _binding.free_wire_sync_return_dco(val);
+      _binding.free_wire_sync_rust2dart_dco(val);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2DartSse(WireSyncRust2DartSse val) =>
-      _binding.free_wire_sync_return_sse(val);
+      _binding.free_wire_sync_rust2dart_sse(val);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   ffi.Pointer<ffi.Uint8> rustVecU8New(int len) => _binding.rust_vec_u8_new(len);

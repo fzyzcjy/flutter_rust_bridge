@@ -44,11 +44,11 @@ intptr_t init_frb_dart_api_dl(void *data);
  *
  * This function should never be called manually.
  */
-void free_wire_sync_return_dco(WireSyncRust2DartDco value);
+void free_wire_sync_rust2dart_dco(WireSyncRust2DartDco value);
 
 /**
  * # Safety
  *
  * This function should never be called manually.
  */
-void free_wire_sync_return_sse(struct WireSyncRust2DartSse value);
+void free_wire_sync_rust2dart_sse(struct WireSyncRust2DartSse value);

@@ -332,35 +332,35 @@ class MultiPackageCBinding {
   /// # Safety
   ///
   /// This function should never be called manually.
-  void free_wire_sync_return_dco(
+  void free_wire_sync_rust2dart_dco(
     WireSyncRust2DartDco value,
   ) {
-    return _free_wire_sync_return_dco(
+    return _free_wire_sync_rust2dart_dco(
       value,
     );
   }
 
-  late final _free_wire_sync_return_dcoPtr =
+  late final _free_wire_sync_rust2dart_dcoPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncRust2DartDco)>>(
-          'free_wire_sync_return_dco');
-  late final _free_wire_sync_return_dco = _free_wire_sync_return_dcoPtr
+          'free_wire_sync_rust2dart_dco');
+  late final _free_wire_sync_rust2dart_dco = _free_wire_sync_rust2dart_dcoPtr
       .asFunction<void Function(WireSyncRust2DartDco)>();
 
   /// # Safety
   ///
   /// This function should never be called manually.
-  void free_wire_sync_return_sse(
+  void free_wire_sync_rust2dart_sse(
     WireSyncRust2DartSse value,
   ) {
-    return _free_wire_sync_return_sse(
+    return _free_wire_sync_rust2dart_sse(
       value,
     );
   }
 
-  late final _free_wire_sync_return_ssePtr =
+  late final _free_wire_sync_rust2dart_ssePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncRust2DartSse)>>(
-          'free_wire_sync_return_sse');
-  late final _free_wire_sync_return_sse = _free_wire_sync_return_ssePtr
+          'free_wire_sync_rust2dart_sse');
+  late final _free_wire_sync_rust2dart_sse = _free_wire_sync_rust2dart_ssePtr
       .asFunction<void Function(WireSyncRust2DartSse)>();
 }
 
