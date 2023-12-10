@@ -51,7 +51,7 @@ fn wire_minimal_adder_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "minimal_adder",
             port: Some(port_),
@@ -68,10 +68,13 @@ fn wire_minimal_adder_impl(
             let api_a = <i32>::sse_decode(&mut deserializer);
             let api_b = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
-                })())
+            move |context| async move {
+                transform_result_sse(
+                    (move || async move {
+                        Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b).await)
+                    })()
+                    .await,
+                )
             }
         },
     )
