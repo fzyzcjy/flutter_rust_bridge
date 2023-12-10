@@ -3,13 +3,11 @@
 
 // ignore_for_file: unused_import, unused_element, duplicate_ignore, invalid_use_of_internal_member
 
+import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-import 'api/minimal.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -124,9 +122,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["callback"],
       );
 
+  void Function(int, dynamic, dynamic)
+      encode_DartFn_Inputs_String_String_Output_String(
+          String Function(String, String) raw) {
+    return (callId, rawArg0, rawArg1) {
+      final arg0 = _dco_decode_String(rawArg0);
+      final arg1 = _dco_decode_String(rawArg1);
+
+      final rawOutput = raw(arg0, arg1);
+
+      final serializer = SseSerializer(generalizedFrbRustBinding);
+      _sse_encode_String(rawOutput, serializer);
+      final output = serializer.intoRaw();
+
+      wire.dart_fn_deliver_output(
+          callId, output.ptr, output.rustVecLen, output.dataLen);
+    };
+  }
+
   String Function(String, String)
       _dco_decode_DartFn_Inputs_String_String_Output_String(dynamic raw) {
-    throw UnimplementedError();
+    return _dco_decode_DartOpaque(raw);
   }
 
   Object _dco_decode_DartOpaque(dynamic raw) {
@@ -160,7 +176,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   String Function(String, String)
       _sse_decode_DartFn_Inputs_String_String_Output_String(
           SseDeserializer deserializer) {
-    throw UnimplementedError();
+    var inner = _sse_decode_DartOpaque(deserializer);
+    return inner;
   }
 
   Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
@@ -195,24 +212,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
       String Function(String, String) raw) {
-    return cst_encode_DartOpaque(encode_dartFn_blahblah(raw));
-  }
-
-  void Function(int callId, dynamic arg1Raw, dynamic arg2Raw)
-      encode_dartFn_blahblah(String Function(String, String) raw) {
-    return (callId, arg1Raw, arg2Raw) {
-      final arg1 = _dco_decode_String(arg1Raw);
-      final arg2 = _dco_decode_String(arg2Raw);
-
-      final outputRaw = raw(arg1, arg2);
-
-      final serializer = SseSerializer(generalizedFrbRustBinding);
-      _sse_encode_String(outputRaw, serializer);
-      final output = serializer.intoRaw();
-
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
-    };
+    return cst_encode_DartOpaque(
+        encode_DartFn_Inputs_String_String_Output_String(raw));
   }
 
   @protected
