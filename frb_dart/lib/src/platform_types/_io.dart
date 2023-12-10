@@ -19,7 +19,7 @@ typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
 /// {@macro flutter_rust_bridge.internal}
-Uint8List wireSyncReturnSseAsUint8ListView(WireSyncRust2DartSse raw) =>
+Uint8List wireSyncRust2DartSseAsUint8ListView(WireSyncRust2DartSse raw) =>
     raw.ptr.asTypedList(raw.len);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

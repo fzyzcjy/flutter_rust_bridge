@@ -26,7 +26,7 @@ class DcoCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncRust2DartDco
 
   @override
   S decodeWireSyncType(WireSyncRust2DartDco raw) =>
-      decodeObject(wireSyncReturnDcoIntoDart(raw));
+      decodeObject(wireSyncRust2DartDcoIntoDart(raw));
 
   @override
   void freeWireSyncRust2Dart(WireSyncRust2DartDco raw,

@@ -26,7 +26,7 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E, WireSyncRust2DartSse
 
   @override
   S decodeWireSyncType(WireSyncRust2DartSse raw) =>
-      _decode(wireSyncReturnSseAsUint8ListView(raw));
+      _decode(wireSyncRust2DartSseAsUint8ListView(raw));
 
   S _decode(Uint8List bytes) {
     final deserializer = SseDeserializer(bytes.buffer.asByteData());
