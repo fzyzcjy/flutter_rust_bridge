@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:js/js.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -28,3 +30,16 @@ external bool? get crossOriginIsolated;
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS('BigInt')
 external Object castNativeBigInt(Object? value);
+
+/// {@macro flutter_rust_bridge.internal}
+extension ExtByteData on ByteData {
+  /// {@macro flutter_rust_bridge.internal}
+  void generalizedSetUint64(int byteOffset, int value, Endian endian) {
+    TODO;
+  }
+
+  /// {@macro flutter_rust_bridge.internal}
+  void generalizedSetInt64(int byteOffset, int value, Endian endian) {
+    TODO;
+  }
+}
