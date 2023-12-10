@@ -17,7 +17,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::String => "utf8.encoder.convert(self)".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(_) => "self.index".to_owned(),
                 IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
-                    "NOT_USED".to_owned()
+                    return Some(format!(
+                        "{};",
+                        lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                    ));
                 }
                 _ => unreachable!(),
             },
@@ -72,7 +75,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                     rust_decode_primitive_enum(inner, self.context.ir_pack, "inner")
                 }
                 IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
-                    "NOT_USED".to_owned()
+                    return Some(format!(
+                        "{};",
+                        lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                    ));
                 }
                 _ => unreachable!(),
             },
