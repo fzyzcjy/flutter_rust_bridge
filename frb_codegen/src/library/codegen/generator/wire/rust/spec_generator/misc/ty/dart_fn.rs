@@ -27,11 +27,11 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
             format!(
                 "
                 fn decode_{safe_ident}(
-                    dart_opaque: DartOpaque,
+                    dart_opaque: flutter_rust_bridge::DartOpaque,
                 ) -> impl Fn({parameter_types}) -> flutter_rust_bridge::DartFnFuture<{return_type}> {{
                     use flutter_rust_bridge::IntoDart;
 
-                    async fn body(dart_opaque: DartOpaque, {parameter_names_and_types}) -> {return_type} {{
+                    async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, {parameter_names_and_types}) -> {return_type} {{
                         let args = vec![{into_dart_expressions}];
                         let message = FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_invoke(dart_opaque, args).await;
                         <{return_type}>::sse_decode_single(message)
