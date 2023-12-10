@@ -1,4 +1,4 @@
-use super::DartOpaque;
+use super::{DartOpaque, GeneralizedDartHandle};
 use crate::Handler;
 
 #[cfg(wasm)]
@@ -19,19 +19,10 @@ pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
     DartOpaque::from_raw(raw as _)
 }
 
-#[cfg(not(wasm))]
 pub unsafe fn dart_opaque_dart2rust_encode<H: Handler>(
     handler: &H,
-    handle: dart_sys::Dart_Handle,
+    handle: GeneralizedDartHandle,
 ) -> *const std::ffi::c_void {
     let drop_port = handler.dart_opaque_drop_port();
     DartOpaque::new(handle, drop_port).into_raw()
-}
-
-#[cfg(wasm)]
-pub unsafe fn dart_opaque_dart2rust_encode<H: Handler>(
-    handler: &H,
-    handle: wasm_bindgen::JsValue,
-) -> usize {
-    todo!()
 }
