@@ -45,8 +45,8 @@ extension ExtByteData on ByteData {
       setInt32(byteOffset, lo, endian);
       setInt32(byteOffset + 4, hi, endian);
     } else if (endian == Endian.big) {
-      setInt32(byteOffset + 4, hi, endian);
-      setInt32(byteOffset, lo, endian);
+      setInt32(byteOffset, hi, endian);
+      setInt32(byteOffset + 4, lo, endian);
     } else {
       throw UnimplementedError("Unknown endian");
     }
