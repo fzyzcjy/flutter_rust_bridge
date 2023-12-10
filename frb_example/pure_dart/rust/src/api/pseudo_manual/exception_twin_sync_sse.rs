@@ -295,6 +295,8 @@ pub fn panic_with_custom_result_twin_sync_sse() -> Result<(), CustomErrorTwinSyn
 
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
-pub fn stream_sink_throw_anyhow_twin_sync_sse(_sink: StreamSink<String>) -> Result<()> {
+pub fn stream_sink_throw_anyhow_twin_sync_sse(
+    _sink: StreamSink<String, flutter_rust_bridge::SseCodec>,
+) -> Result<()> {
     Err(anyhow!("anyhow error"))
 }

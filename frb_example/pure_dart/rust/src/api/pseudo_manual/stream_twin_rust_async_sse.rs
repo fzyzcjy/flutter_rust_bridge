@@ -12,21 +12,25 @@ use flutter_rust_bridge::transfer;
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn func_stream_return_error_twin_rust_async_sse(
-    _sink: StreamSink<String>,
+    _sink: StreamSink<String, flutter_rust_bridge::SseCodec>,
 ) -> anyhow::Result<()> {
     Err(anyhow!("deliberate error"))
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn func_stream_return_panic_twin_rust_async_sse(
-    _sink: StreamSink<String>,
+    _sink: StreamSink<String, flutter_rust_bridge::SseCodec>,
 ) -> anyhow::Result<()> {
     panic!("deliberate panic")
 }
 
 #[allow(unused_variables)]
 #[flutter_rust_bridge::frb(serialize)]
-pub async fn func_stream_sink_arg_position_twin_rust_async_sse(a: u32, b: u32, c: StreamSink<u32>) {
+pub async fn func_stream_sink_arg_position_twin_rust_async_sse(
+    a: u32,
+    b: u32,
+    c: StreamSink<u32, flutter_rust_bridge::SseCodec>,
+) {
 }
 
 pub struct MyStreamEntryTwinRustAsyncSse {
@@ -37,7 +41,7 @@ pub struct MyStreamEntryTwinRustAsyncSse {
 // https://github.com/fzyzcjy/flutter_rust_bridge/issues/398 reports a compile error like this
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn handle_stream_of_struct_twin_rust_async_sse(
-    _sink: StreamSink<MyStreamEntryTwinRustAsyncSse>,
+    _sink: StreamSink<MyStreamEntryTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
 ) {
     // Ok(())
 }
@@ -52,7 +56,7 @@ pub struct LogTwinRustAsyncSse {
 pub async fn handle_stream_sink_at_1_twin_rust_async_sse(
     key: u32,
     max: u32,
-    sink: StreamSink<LogTwinRustAsyncSse>,
+    sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
 ) {
     (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
         .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
@@ -61,7 +65,7 @@ pub async fn handle_stream_sink_at_1_twin_rust_async_sse(
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn handle_stream_sink_at_2_twin_rust_async_sse(
     key: u32,
-    sink: StreamSink<LogTwinRustAsyncSse>,
+    sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
     max: u32,
 ) {
     (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
@@ -70,7 +74,7 @@ pub async fn handle_stream_sink_at_2_twin_rust_async_sse(
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn handle_stream_sink_at_3_twin_rust_async_sse(
-    sink: StreamSink<LogTwinRustAsyncSse>,
+    sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
     key: u32,
     max: u32,
 ) {
@@ -78,7 +82,11 @@ pub async fn handle_stream_sink_at_3_twin_rust_async_sse(
         .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
-fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinRustAsyncSse>) {
+fn handle_stream_inner(
+    key: u32,
+    max: u32,
+    sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
+) {
     for i in 0..max {
         let _ = sink.add(LogTwinRustAsyncSse { key, value: i });
     }

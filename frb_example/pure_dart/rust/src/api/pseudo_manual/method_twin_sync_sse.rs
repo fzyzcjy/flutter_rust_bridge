@@ -42,7 +42,7 @@ impl ConcatenateWithTwinSyncSse {
         &self,
         key: u32,
         max: u32,
-        sink: StreamSink<Log2TwinSyncSse>,
+        sink: StreamSink<Log2TwinSyncSse, flutter_rust_bridge::SseCodec>,
     ) {
         let a = self.a.clone();
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
@@ -58,7 +58,10 @@ impl ConcatenateWithTwinSyncSse {
 
     #[flutter_rust_bridge::frb(serialize)]
     #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_stream_sink_at_1_twin_sync_sse(&self, sink: StreamSink<u32>) {
+    pub fn handle_some_stream_sink_at_1_twin_sync_sse(
+        &self,
+        sink: StreamSink<u32, flutter_rust_bridge::SseCodec>,
+    ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i);
@@ -72,7 +75,7 @@ impl ConcatenateWithTwinSyncSse {
     pub fn handle_some_static_stream_sink_twin_sync_sse(
         key: u32,
         max: u32,
-        sink: StreamSink<Log2TwinSyncSse>,
+        sink: StreamSink<Log2TwinSyncSse, flutter_rust_bridge::SseCodec>,
     ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..max {
@@ -87,7 +90,9 @@ impl ConcatenateWithTwinSyncSse {
 
     #[flutter_rust_bridge::frb(serialize)]
     #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_static_stream_sink_single_arg_twin_sync_sse(sink: StreamSink<u32>) {
+    pub fn handle_some_static_stream_sink_single_arg_twin_sync_sse(
+        sink: StreamSink<u32, flutter_rust_bridge::SseCodec>,
+    ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i);

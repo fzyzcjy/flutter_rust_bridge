@@ -61,7 +61,9 @@ pub fn is_app_embedded_twin_sse(app_settings: ApplicationSettings) -> bool {
 
 // use a stream of a mirrored type
 #[flutter_rust_bridge::frb(serialize)]
-pub fn app_settings_stream_twin_sse(sink: StreamSink<ApplicationSettings>) {
+pub fn app_settings_stream_twin_sse(
+    sink: StreamSink<ApplicationSettings, flutter_rust_bridge::SseCodec>,
+) {
     let app_settings = frb_example_pure_dart_exapmle_external_lib::get_app_settings();
     sink.add(app_settings);
     sink.close();
@@ -69,7 +71,9 @@ pub fn app_settings_stream_twin_sse(sink: StreamSink<ApplicationSettings>) {
 
 // use a stream of a vec of mirrored type
 #[flutter_rust_bridge::frb(serialize)]
-pub fn app_settings_vec_stream_twin_sse(sink: StreamSink<Vec<ApplicationSettings>>) {
+pub fn app_settings_vec_stream_twin_sse(
+    sink: StreamSink<Vec<ApplicationSettings>, flutter_rust_bridge::SseCodec>,
+) {
     let app_settings = vec![
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
@@ -87,7 +91,9 @@ pub struct MirrorStructTwinSse {
 
 // use a Struct consisting of mirror types as argument to a Stream
 #[flutter_rust_bridge::frb(serialize)]
-pub fn mirror_struct_stream_twin_sse(sink: StreamSink<MirrorStructTwinSse>) {
+pub fn mirror_struct_stream_twin_sse(
+    sink: StreamSink<MirrorStructTwinSse, flutter_rust_bridge::SseCodec>,
+) {
     let val = MirrorStructTwinSse {
         a: frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         b: MyStruct { content: true },
@@ -104,7 +110,7 @@ pub fn mirror_struct_stream_twin_sse(sink: StreamSink<MirrorStructTwinSse>) {
 // usa a tuple of Mirror types for a StreamSink
 #[flutter_rust_bridge::frb(serialize)]
 pub fn mirror_tuple_stream_twin_sse(
-    sink: StreamSink<(ApplicationSettings, RawStringEnumMirrored)>,
+    sink: StreamSink<(ApplicationSettings, RawStringEnumMirrored), flutter_rust_bridge::SseCodec>,
 ) {
     let tuple = (
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),

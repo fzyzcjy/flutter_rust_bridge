@@ -13,7 +13,8 @@ use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 lazy_static! {
-    static ref EVENTS: Mutex<Option<StreamSink<EventTwinRustAsyncSse>>> = Default::default();
+    static ref EVENTS: Mutex<Option<StreamSink<EventTwinRustAsyncSse, flutter_rust_bridge::SseCodec>>> =
+        Default::default();
 }
 
 #[frb(dart_metadata = ("freezed"))]
@@ -32,7 +33,7 @@ impl EventTwinRustAsyncSse {
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn register_event_listener_twin_rust_async_sse(
-    listener: StreamSink<EventTwinRustAsyncSse>,
+    listener: StreamSink<EventTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
 ) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {
