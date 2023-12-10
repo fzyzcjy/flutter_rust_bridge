@@ -26,7 +26,6 @@ pub mod dart_dynamic_twin_rust_async_sse;
 pub mod dart_dynamic_twin_sse;
 pub mod dart_dynamic_twin_sync;
 pub mod dart_dynamic_twin_sync_sse;
-pub mod dart_fn_twin_sse;
 pub mod dart_opaque_sync_twin_sse;
 pub mod dart_opaque_twin_rust_async;
 pub mod dart_opaque_twin_rust_async_sse;
