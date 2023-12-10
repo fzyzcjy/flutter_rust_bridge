@@ -115,7 +115,11 @@ class ReadBuffer {
 
   /// Reads the given number of Uint64s from the buffer.
   Uint64List getUint64List(int length) {
-    return Uint64List.fromList(getUint8List(length * 8).buffer.asUint64List());
+    final ans = Uint64List(length);
+    for (var i = 0; i < length; ++i) {
+      ans[i] = getUint64();
+    }
+    return ans;
   }
 
   /// Reads the given number of Int8s from the buffer.
@@ -135,7 +139,11 @@ class ReadBuffer {
 
   /// Reads the given number of Int64s from the buffer.
   Int64List getInt64List(int length) {
-    return Int64List.fromList(getUint8List(length * 8).buffer.asInt64List());
+    final ans = Int64List(length);
+    for (var i = 0; i < length; ++i) {
+      ans[i] = getInt64();
+    }
+    return ans;
   }
 
   /// Reads the given number of Float32s from the buffer
