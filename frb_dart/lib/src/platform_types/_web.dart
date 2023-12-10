@@ -1,6 +1,9 @@
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
+typedef NativePortType = dynamic;
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef WireSyncReturnDco = List<dynamic>;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

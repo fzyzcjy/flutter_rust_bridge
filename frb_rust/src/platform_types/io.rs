@@ -6,6 +6,8 @@ pub struct WireSyncReturnSse {
     pub len: i32,
 }
 
+pub type MessagePort = i64;
+
 pub type DartAbi = allo_isolate::ffi::DartCObject;
 
 pub type SendableMessagePortHandle = MessagePort;
