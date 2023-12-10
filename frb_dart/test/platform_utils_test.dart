@@ -12,9 +12,14 @@ void main() {
         expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 0],
       ),
       _Info(
-        setValue: 42,
-        expectLittleEndian: [42, 0, 0, 0, 0, 0, 0, 0],
-        expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 42],
+        setValue: 2,
+        expectLittleEndian: [2, 0, 0, 0, 0, 0, 0, 0],
+        expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 2],
+      ),
+      _Info(
+        setValue: -2,
+        expectLittleEndian: [254, 255, 255, 255, 255, 255, 255, 255],
+        expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 254],
       ),
       _Info(
         setValue: 2023,
@@ -40,9 +45,14 @@ void main() {
         expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 0],
       ),
       _Info(
-        setValue: 42,
-        expectLittleEndian: [42, 0, 0, 0, 0, 0, 0, 0],
-        expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 42],
+        setValue: 2,
+        expectLittleEndian: [2, 0, 0, 0, 0, 0, 0, 0],
+        expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 2],
+      ),
+      _Info(
+        setValue: -2,
+        expectLittleEndian: [254, 255, 255, 255, 255, 255, 255, 255],
+        expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 254],
       ),
       _Info(
         setValue: 2023,
