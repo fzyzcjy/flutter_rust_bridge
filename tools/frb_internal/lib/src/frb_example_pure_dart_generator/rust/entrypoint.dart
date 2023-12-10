@@ -43,8 +43,17 @@ class RustGenerator extends BaseGenerator {
             (m) =>
                 'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::');
     if (mode.enableSse) {
-      ans = ans.replaceAllMapped(RegExp(r'StreamSink<(.*?)>'),
-          (m) => 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
+      // quick hack, since we are merely generating tests
+      ans = ans
+          .replaceAllMapped(
+              RegExp(r'StreamSink<Vec<(.*?)>>'),
+              (m) =>
+                  'StreamSink<Vec<${m.group(1)}>, flutter_rust_bridge::SseCodec>')
+          .replaceAllMapped(
+              RegExp(r'StreamSink<(.*?)>'),
+              (m) => m.group(1)!.startsWith('Vec')
+                  ? m.group(0)!
+                  : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
     }
     return ans;
   }
