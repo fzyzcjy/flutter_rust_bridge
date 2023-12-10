@@ -92,8 +92,10 @@ class ReadBuffer {
 
   /// Reads the given number of Uint8s from the buffer.
   Uint8List getUint8List(int length) {
+    print('hi getUint8List START length=$length this._position=$_position');
     final Uint8List list =
         data.buffer.asUint8List(data.offsetInBytes + _position, length);
+    print('hi getUint8List END list=$list');
     _position += length;
     return list;
   }

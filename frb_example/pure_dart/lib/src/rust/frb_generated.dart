@@ -53357,7 +53357,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   Uint8List _sse_decode_list_prim_u_8(SseDeserializer deserializer) {
+    print('hi _sse_decode_list_prim_u_8 start');
     var len_ = _sse_decode_i_32(deserializer);
+    print('hi _sse_decode_list_prim_u_8 len=$len_');
     return deserializer.buffer.getUint8List(len_);
   }
 
@@ -59911,6 +59913,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_list_record_string_i_32(
       List<(String, int)> self, SseSerializer serializer) {
     _sse_encode_i_32(self.length, serializer);
+
     for (final item in self) {
       _sse_encode_record_string_i_32(item, serializer);
     }
