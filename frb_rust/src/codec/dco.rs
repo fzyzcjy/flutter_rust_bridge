@@ -14,7 +14,6 @@ impl BaseCodec for DcoCodec {
     type Message = Rust2DartMessageDco;
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
-        crate::console_error!("hi dco encode_panic");
         Self::encode(Rust2DartAction::Panic, error_to_string(error))
     }
 
