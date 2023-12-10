@@ -103,7 +103,7 @@ impl SseDeserializer {
         #[cfg(not(wasm))]
         let vec = vec_from_leak_ptr(ptr, rust_vec_len);
         #[cfg(wasm)]
-        let vec = ptr;
+        let vec = js_sys::Uint8Array::new(&ptr).to_vec();
 
         Self {
             cursor: Cursor::new(vec),
