@@ -61,8 +61,8 @@ impl WireDartOutputCode {
             ..
         } = &dart_output_class_name_pack;
         let WireDartOutputCode {
-            api_class_body: api_body,
-            api_impl_class_body: api_impl_body,
+            api_class_body,
+            api_impl_class_body,
             ..
         } = &self;
 
@@ -70,12 +70,12 @@ impl WireDartOutputCode {
             format!(
                 "
                 abstract class {api_class_name} extends BaseApi {{
-                  {api_body}
+                  {api_class_body}
                 }}
                 ",
             )
         } else {
-            assert_eq!(api_body, "");
+            assert_eq!(api_class_body, "");
             "".to_owned()
         };
 
@@ -90,7 +90,7 @@ impl WireDartOutputCode {
                     required super.portManager,
                   }});
 
-                  {api_impl_body}
+                  {api_impl_class_body}
                 }}
                 ",
             )
@@ -105,7 +105,7 @@ impl WireDartOutputCode {
                     required super.portManager,
                   }});
 
-                  {api_impl_body}
+                  {api_impl_class_body}
                 }}
                 ",
             )
