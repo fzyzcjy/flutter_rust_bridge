@@ -5,24 +5,26 @@ import 'package:test/test.dart';
 
 void main() {
   group('generalizedSetUint64', () {
-    for (final info in [
+    for (final info in const [
       _Info(
-        setValue: setValue,
-        expectLittleEndian: expectLittleEndian,
-        expectBigEndian: expectBigEndian,
+        setValue: 0,
+        expectLittleEndian: [0, 0, 0, 0, 0, 0, 0, 0],
+        expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 0],
       ),
+      // TODO
     ]) {
       test('$info', () => _body((b) => b.generalizedSetUint64, info));
     }
   });
 
   group('generalizedSetInt64', () {
-    for (final info in [
+    for (final info in const [
       _Info(
-        setValue: setValue,
-        expectLittleEndian: expectLittleEndian,
-        expectBigEndian: expectBigEndian,
+        setValue: 0,
+        expectLittleEndian: [0, 0, 0, 0, 0, 0, 0, 0],
+        expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 0],
       ),
+      // TODO
     ]) {
       test('$info', () => _body((b) => b.generalizedSetInt64, info));
     }
@@ -44,8 +46,8 @@ void _body(_GeneralizedSetter Function(ByteData) getFunction, _Info info) {
 
 class _Info {
   final int setValue;
-  final Uint8List expectLittleEndian;
-  final Uint8List expectBigEndian;
+  final List<int> expectLittleEndian;
+  final List<int> expectBigEndian;
 
   const _Info({
     required this.setValue,
