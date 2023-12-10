@@ -80,7 +80,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
             .map(|field| {
                 let name = field.name.rust_style();
                 let rust_api_type = field.ty.rust_api_type();
-                format!("let api_{name} = {rust_api_type}::sse_decode(&mut deserializer);")
+                format!("let api_{name} = <{rust_api_type}>::sse_decode(&mut deserializer);")
             })
             .join("\n");
         format!(
