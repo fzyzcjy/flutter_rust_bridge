@@ -145,7 +145,10 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
 fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Wasm => {
-            vec![generate_boilerplate_frb_initialize_rust(target).into()]
+            vec![
+                generate_boilerplate_frb_initialize_rust(target).into(),
+                generate_boilerplate_dart_fn_deliver_output(target).into(),
+            ]
         }
         TargetOrCommon::Common => vec!["
             flutter_rust_bridge::frb_generated_boilerplate!();
@@ -179,6 +182,23 @@ fn generate_boilerplate_frb_initialize_rust(target: TargetOrCommon) -> ExternFun
                 )
                 "
         ),
+        target: target.try_into().unwrap(),
+    }
+}
+
+fn generate_boilerplate_dart_fn_deliver_output(target: TargetOrCommon) -> ExternFunc {
+    ExternFunc {
+        func_name: "dart_fn_deliver_output".into(),
+        params: vec![
+            ExternFuncParam {
+                name: "call_id".to_owned(),
+                rust_type: "i64".to_owned(),
+                dart_type: "int".to_owned(),
+            },
+            // TODO concrete output data
+        ],
+        return_type: None,
+        body: format!("{HANDLER_NAME}.dart_fn_handle_output(call_id)"),
         target: target.try_into().unwrap(),
     }
 }
