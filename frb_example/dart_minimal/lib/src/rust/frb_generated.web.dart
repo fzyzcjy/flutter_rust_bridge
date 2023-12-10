@@ -18,18 +18,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  Object cst_encode_DartOpaque(Object raw) {
-    return raw;
+  List<dynamic> cst_encode_box_autoadd_the_enum(TheEnum raw) {
+    return cst_encode_the_enum(raw);
   }
 
   @protected
-  String cst_encode_String(String raw) {
-    return raw;
-  }
+  List<dynamic> cst_encode_the_enum(TheEnum raw) {
+    if (raw is TheEnum_TheVariant) {
+      return [0, cst_encode_i_32(raw.field0)];
+    }
 
-  @protected
-  Uint8List cst_encode_list_prim_u_8(Uint8List raw) {
-    return raw;
+    throw Exception('unreachable');
   }
 }
 
@@ -48,18 +47,11 @@ class RustLibWire extends BaseWire {
       wasmModule.dart_fn_deliver_output(
           call_id, ptr_, rust_vec_len_, data_len_);
 
-  void wire_minimal_adder(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_minimal_adder(port_, ptr_, rust_vec_len_, data_len_);
+  void wire_hi(NativePortType port_, List<dynamic> a) =>
+      wasmModule.wire_hi(port_, a);
 
-  void wire_rust_call_dart_simple(NativePortType port_, Object callback) =>
-      wasmModule.wire_rust_call_dart_simple(port_, callback);
-
-  dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle) =>
-      wasmModule.dart_opaque_dart2rust_encode(handle);
+  void wire_minimal_adder(NativePortType port_, int a, int b) =>
+      wasmModule.wire_minimal_adder(port_, a, b);
 }
 
 @JS('wasm_bindgen')
@@ -80,11 +72,7 @@ class RustLibWasmModule implements WasmModule {
   external void dart_fn_deliver_output(int call_id,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_minimal_adder(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+  external void wire_hi(NativePortType port_, List<dynamic> a);
 
-  external void wire_rust_call_dart_simple(
-      NativePortType port_, Object callback);
-
-  external dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle);
+  external void wire_minimal_adder(NativePortType port_, int a, int b);
 }

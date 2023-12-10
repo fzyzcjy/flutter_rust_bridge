@@ -56,10 +56,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<int> minimalAdder({required int a, required int b, dynamic hint});
+  Future<TheEnum> hi({required TheEnum a, dynamic hint});
 
-  Future<void> rustCallDartSimple(
-      {required String Function(String, String) callback, dynamic hint});
+  Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -71,18 +70,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
+  Future<TheEnum> hi({required TheEnum a, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_the_enum(a);
+        return wire.wire_hi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: _dco_decode_the_enum,
+        decodeErrorData: null,
+      ),
+      constMeta: kHiConstMeta,
+      argValues: [a],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHiConstMeta => const TaskConstMeta(
+        debugName: "hi",
+        argNames: ["a"],
+      );
+
+  @override
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_i_32(a, serializer);
-        _sse_encode_i_32(b, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_minimal_adder(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire_minimal_adder(port_, arg0, arg1);
       },
-      codec: SseCodec(
-        decodeSuccessData: _sse_decode_i_32,
+      codec: DcoCodec(
+        decodeSuccessData: _dco_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kMinimalAdderConstMeta,
@@ -97,125 +116,51 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  @override
-  Future<void> rustCallDartSimple(
-      {required String Function(String, String) callback, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 =
-            cst_encode_DartFn_Inputs_String_String_Output_String(callback);
-        return wire.wire_rust_call_dart_simple(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kRustCallDartSimpleConstMeta,
-      argValues: [callback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustCallDartSimpleConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_simple",
-        argNames: ["callback"],
-      );
-
-  void Function(int, dynamic, dynamic)
-      encode_DartFn_Inputs_String_String_Output_String(
-          String Function(String, String) raw) {
-    return (callId, rawArg0, rawArg1) {
-      final arg0 = _dco_decode_String(rawArg0);
-      final arg1 = _dco_decode_String(rawArg1);
-
-      final rawOutput = raw(arg0, arg1);
-
-      final serializer = SseSerializer(generalizedFrbRustBinding);
-      _sse_encode_String(rawOutput, serializer);
-      final output = serializer.intoRaw();
-
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
-    };
-  }
-
-  String Function(String, String)
-      _dco_decode_DartFn_Inputs_String_String_Output_String(dynamic raw) {
-    throw UnimplementedError('');
-  }
-
-  Object _dco_decode_DartOpaque(dynamic raw) {
-    return decodeDartOpaque(raw, generalizedFrbRustBinding);
-  }
-
-  String _dco_decode_String(dynamic raw) {
-    return raw as String;
+  TheEnum _dco_decode_box_autoadd_the_enum(dynamic raw) {
+    return _dco_decode_the_enum(raw);
   }
 
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
 
-  Uint8List _dco_decode_list_prim_u_8(dynamic raw) {
-    return raw as Uint8List;
-  }
-
-  int _dco_decode_u_8(dynamic raw) {
-    return raw as int;
+  TheEnum _dco_decode_the_enum(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return TheEnum_TheVariant(
+          _dco_decode_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
   }
 
   void _dco_decode_unit(dynamic raw) {
     return;
   }
 
-  int _dco_decode_usize(dynamic raw) {
-    return dcoDecodeI64OrU64(raw);
-  }
-
-  Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
-    var inner = _sse_decode_usize(deserializer);
-    return decodeDartOpaque(inner, generalizedFrbRustBinding);
-  }
-
-  String _sse_decode_String(SseDeserializer deserializer) {
-    var inner = _sse_decode_list_prim_u_8(deserializer);
-    return utf8.decoder.convert(inner);
+  TheEnum _sse_decode_box_autoadd_the_enum(SseDeserializer deserializer) {
+    return (_sse_decode_the_enum(deserializer));
   }
 
   int _sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
-  Uint8List _sse_decode_list_prim_u_8(SseDeserializer deserializer) {
-    var len_ = _sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint8List(len_);
-  }
-
-  int _sse_decode_u_8(SseDeserializer deserializer) {
-    return deserializer.buffer.getUint8();
+  TheEnum _sse_decode_the_enum(SseDeserializer deserializer) {
+    var tag_ = _sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field0 = _sse_decode_i_32(deserializer);
+        return TheEnum_TheVariant(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
   }
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
-
-  int _sse_decode_usize(SseDeserializer deserializer) {
-    return deserializer.buffer.getUint64();
-  }
-
-  @protected
-  PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
-      String Function(String, String) raw) {
-    return cst_encode_DartOpaque(
-        encode_DartFn_Inputs_String_String_Output_String(raw));
-  }
-
   @protected
   int cst_encode_i_32(int raw) {
-    return raw;
-  }
-
-  @protected
-  int cst_encode_u_8(int raw) {
     return raw;
   }
 
@@ -224,42 +169,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw;
   }
 
-  @protected
-  int cst_encode_usize(int raw) {
-    return raw;
-  }
-
-  void _sse_encode_DartFn_Inputs_String_String_Output_String(
-      String Function(String, String) self, SseSerializer serializer) {
-    _sse_encode_DartOpaque(self, serializer);
-  }
-
-  void _sse_encode_DartOpaque(Object self, SseSerializer serializer) {
-    _sse_encode_usize(
-        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
-        serializer);
-  }
-
-  void _sse_encode_String(String self, SseSerializer serializer) {
-    _sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
+  void _sse_encode_box_autoadd_the_enum(
+      TheEnum self, SseSerializer serializer) {
+    _sse_encode_the_enum(self, serializer);
   }
 
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
-  void _sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
-    _sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint8List(self);
-  }
-
-  void _sse_encode_u_8(int self, SseSerializer serializer) {
-    serializer.buffer.putUint8(self);
+  void _sse_encode_the_enum(TheEnum self, SseSerializer serializer) {
+    switch (self) {
+      case TheEnum_TheVariant(field0: final field0):
+        _sse_encode_i_32(0, serializer);
+        _sse_encode_i_32(field0, serializer);
+    }
   }
 
   void _sse_encode_unit(void self, SseSerializer serializer) {}
-
-  void _sse_encode_usize(int self, SseSerializer serializer) {
-    serializer.buffer.putUint64(self);
-  }
 }

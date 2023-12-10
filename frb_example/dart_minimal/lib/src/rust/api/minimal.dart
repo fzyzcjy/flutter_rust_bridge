@@ -5,10 +5,18 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'minimal.freezed.dart';
 
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
 
-Future<void> rustCallDartSimple(
-        {required String Function(String, String) callback, dynamic hint}) =>
-    RustLib.instance.api.rustCallDartSimple(callback: callback, hint: hint);
+Future<TheEnum> hi({required TheEnum a, dynamic hint}) =>
+    RustLib.instance.api.hi(a: a, hint: hint);
+
+@freezed
+sealed class TheEnum with _$TheEnum {
+  const factory TheEnum.theVariant(
+    int field0,
+  ) = TheEnum_TheVariant;
+}
