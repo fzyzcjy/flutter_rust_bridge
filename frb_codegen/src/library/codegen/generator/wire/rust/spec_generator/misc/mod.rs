@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::generate_platform_generalized_uint8list_params;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
@@ -187,18 +188,23 @@ fn generate_boilerplate_frb_initialize_rust(target: TargetOrCommon) -> ExternFun
 }
 
 fn generate_boilerplate_dart_fn_deliver_output(target: TargetOrCommon) -> ExternFunc {
+    let params = {
+        let mut ans = vec![ExternFuncParam {
+            name: "call_id".to_owned(),
+            rust_type: "i32".to_owned(),
+            dart_type: "int".to_owned(),
+        }];
+        ans.extend(generate_platform_generalized_uint8list_params(target));
+        ans
+    };
+
     ExternFunc {
         func_name: "dart_fn_deliver_output".into(),
-        params: vec![
-            ExternFuncParam {
-                name: "call_id".to_owned(),
-                rust_type: "i32".to_owned(),
-                dart_type: "int".to_owned(),
-            },
-            // TODO concrete output data
-        ],
+        params,
         return_type: None,
-        body: format!("{HANDLER_NAME}.dart_fn_handle_output(call_id)"),
+        body: format!(
+            "{HANDLER_NAME}.dart_fn_handle_output(call_id, ptr_, rust_vec_len_, data_len_)"
+        ),
         target: target.try_into().unwrap(),
     }
 }
