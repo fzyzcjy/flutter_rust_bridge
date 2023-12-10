@@ -38,8 +38,7 @@ class WriteBuffer {
   bool _isDone = false;
   final ByteData _eightBytes;
   final Uint8List _eightBytesAsList;
-
-  // static final Uint8List _zeroBuffer = Uint8List(8);
+  static final Uint8List _zeroBuffer = Uint8List(8);
 
   void _add(int byte) {
     if (_currentSize == _buffer.length) {
@@ -157,18 +156,21 @@ class WriteBuffer {
   /// Write all the values from an [Uint16List] into the buffer.
   void putUint16List(Uint16List list) {
     assert(!_isDone);
+    _alignTo(2);
     _append(list.buffer.asUint8List(list.offsetInBytes, 2 * list.length));
   }
 
   /// Write all the values from an [Uint32List] into the buffer.
   void putUint32List(Uint32List list) {
     assert(!_isDone);
+    _alignTo(4);
     _append(list.buffer.asUint8List(list.offsetInBytes, 4 * list.length));
   }
 
   /// Write all the values from an [Uint64List] into the buffer.
   void putUint64List(Uint64List list) {
     assert(!_isDone);
+    _alignTo(8);
     for (final value in list) {
       putUint64(value.toInt());
     }
@@ -183,20 +185,21 @@ class WriteBuffer {
   /// Write all the values from an [Int16List] into the buffer.
   void putInt16List(Int16List list) {
     assert(!_isDone);
+    _alignTo(2);
     _append(list.buffer.asUint8List(list.offsetInBytes, 2 * list.length));
   }
 
   /// Write all the values from an [Int32List] into the buffer.
   void putInt32List(Int32List list) {
     assert(!_isDone);
-    // _alignTo(4);
+    _alignTo(4);
     _append(list.buffer.asUint8List(list.offsetInBytes, 4 * list.length));
   }
 
   /// Write all the values from an [Int64List] into the buffer.
   void putInt64List(Int64List list) {
     assert(!_isDone);
-    // _alignTo(8);
+    _alignTo(8);
     for (final value in list) {
       putInt64(value.toInt());
     }
@@ -205,25 +208,24 @@ class WriteBuffer {
   /// Write all the values from a [Float32List] into the buffer.
   void putFloat32List(Float32List list) {
     assert(!_isDone);
-    // _alignTo(4);
+    _alignTo(4);
     _append(list.buffer.asUint8List(list.offsetInBytes, 4 * list.length));
   }
 
   /// Write all the values from a [Float64List] into the buffer.
   void putFloat64List(Float64List list) {
     assert(!_isDone);
-    // _alignTo(8);
+    _alignTo(8);
     _append(list.buffer.asUint8List(list.offsetInBytes, 8 * list.length));
   }
 
-  // NOTE MODIFIED try remove this to simplify rust side
-  // void _alignTo(int alignment) {
-  //   assert(!_isDone);
-  //   final int mod = _currentSize % alignment;
-  //   if (mod != 0) {
-  //     _addAll(_zeroBuffer, 0, alignment - mod);
-  //   }
-  // }
+  void _alignTo(int alignment) {
+    assert(!_isDone);
+    final int mod = _currentSize % alignment;
+    if (mod != 0) {
+      _addAll(_zeroBuffer, 0, alignment - mod);
+    }
+  }
 
   /// NOTE: We do not call `resize()` to shrink the buffer (which makes the
   /// API nicer since there is no need to pass around the extra size variable).
