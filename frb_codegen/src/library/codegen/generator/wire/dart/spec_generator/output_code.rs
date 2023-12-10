@@ -11,7 +11,6 @@ pub(crate) struct WireDartOutputCode {
     pub body_top: String,
     pub api_class_body: String,
     pub api_impl_class_body: String,
-    pub api_impl_extension_body: String,
     pub body: String,
 }
 
@@ -24,7 +23,6 @@ impl AddAssign for WireDartOutputCode {
         self.body_top += &rhs.body_top;
         self.api_class_body += &rhs.api_class_body;
         self.api_impl_class_body += &rhs.api_impl_class_body;
-        self.api_impl_extension_body += &rhs.api_impl_extension_body;
         self.body += &rhs.body;
     }
 }
@@ -65,7 +63,6 @@ impl WireDartOutputCode {
         let WireDartOutputCode {
             api_class_body,
             api_impl_class_body,
-            api_impl_extension_body,
             ..
         } = &self;
 
@@ -95,10 +92,6 @@ impl WireDartOutputCode {
 
                   {api_impl_class_body}
                 }}
-
-                extension Ext{api_impl_class_name} on {api_impl_platform_class_name} {{
-                    {api_impl_extension_body}
-                }}
                 ",
             )
         } else {
@@ -113,10 +106,6 @@ impl WireDartOutputCode {
                   }});
 
                   {api_impl_class_body}
-                }}
-
-                extension Ext{api_impl_class_name} on {api_impl_platform_class_name} {{
-                    {api_impl_extension_body}
                 }}
                 ",
             )
