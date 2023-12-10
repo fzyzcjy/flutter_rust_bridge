@@ -118,10 +118,7 @@ class ReadBuffer {
 
   /// Reads the given number of Int8s from the buffer.
   Int8List getInt8List(int length) {
-    final Int8List list =
-        data.buffer.asInt8List(data.offsetInBytes + _position, length);
-    _position += 1 * length;
-    return list;
+    return getUint8List(length * 1).buffer.asInt8List();
   }
 
   /// Reads the given number of Int16s from the buffer.
