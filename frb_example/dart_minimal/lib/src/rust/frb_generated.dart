@@ -3,11 +3,13 @@
 
 // ignore_for_file: unused_import, unused_element, duplicate_ignore, invalid_use_of_internal_member
 
-import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+
+import 'api/minimal.dart';
+import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -135,10 +137,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
+
   @protected
   PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
       String Function(String, String) raw) {
-    return cst_encode_DartOpaque(raw);
+    // TODO this is manual tweak
+    final closure = (int callId, dynamic arg1Raw, dynamic arg2Raw) {
+      final arg1 = _dco_decode_String(arg1Raw);
+      final arg2 = _dco_decode_String(arg2Raw);
+      final outputRaw = raw(arg1, arg2);
+      final output = TODO_encode(outputRaw);
+      wire.dart_fn_deliver_output(callId, output);
+    };
+    return cst_encode_DartOpaque(closure);
   }
 
   @protected
