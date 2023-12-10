@@ -16,7 +16,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+}
 
+extension ExtPlatformRustLibApiImpl on RustLibApiImplPlatform {
   @protected
   List<dynamic> cst_encode_box_autoadd_the_enum(TheEnum raw) {
     return cst_encode_the_enum(raw);
