@@ -57,6 +57,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
 abstract class RustLibApi extends BaseApi {
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
+
+  Future<void> rustCallDartSimple(
+      {required void Function() callback, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -94,6 +97,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  @override
+  Future<void> rustCallDartSimple(
+      {required void Function() callback, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
+        return wire.wire_rust_call_dart_simple(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: _dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustCallDartSimpleConstMeta,
+      argValues: [callback],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustCallDartSimpleConstMeta => const TaskConstMeta(
+        debugName: "rust_call_dart_simple",
+        argNames: ["callback"],
+      );
+
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
@@ -108,13 +135,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
 
+  void _sse_encode_DartFn_Inputs__Output_unit(
+      void Function() self, SseSerializer serializer) {
+    _sse_encode_DartOpaque(self, serializer);
+  }
+
+  void _sse_encode_DartOpaque(Object self, SseSerializer serializer) {
+    _sse_encode_usize(
+        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
+        serializer);
+  }
+
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
+  }
+
+  void _sse_encode_unit(void self, SseSerializer serializer) {}
+
+  void _sse_encode_usize(int self, SseSerializer serializer) {
+    serializer.buffer.putUint64(self);
   }
 }
 
 // Section: dart2rust
 
 int cst_encode_i_32(int raw) {
+  return raw;
+}
+
+void cst_encode_unit(void raw) {
+  return raw;
+}
+
+int cst_encode_usize(int raw) {
   return raw;
 }

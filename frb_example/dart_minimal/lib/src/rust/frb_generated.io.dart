@@ -17,6 +17,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @protected
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(void Function() raw) {
+    return cst_encode_DartOpaque(raw);
+  }
+
+  @protected
+  PlatformPointer cst_encode_DartOpaque(Object raw) {
+    return wire.dart_opaque_dart2rust_encode(raw);
+  }
 }
 
 // Section: wire_class
@@ -82,6 +92,37 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('wire_minimal_adder');
   late final _wire_minimal_adder = _wire_minimal_adderPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_call_dart_simple(
+    int port_,
+    ffi.Pointer<ffi.Void> callback,
+  ) {
+    return _wire_rust_call_dart_simple(
+      port_,
+      callback,
+    );
+  }
+
+  late final _wire_rust_call_dart_simplePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_call_dart_simple');
+  late final _wire_rust_call_dart_simple = _wire_rust_call_dart_simplePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
+    Object handle,
+  ) {
+    return _dart_opaque_dart2rust_encode(
+      handle,
+    );
+  }
+
+  late final _dart_opaque_dart2rust_encodePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
+          'dart_opaque_dart2rust_encode');
+  late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();

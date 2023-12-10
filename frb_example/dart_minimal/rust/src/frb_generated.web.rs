@@ -20,8 +20,25 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
+impl CstDecode<flutter_rust_bridge::DartOpaque>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
+        unsafe {
+            flutter_rust_bridge::for_generated::cst_decode_dart_opaque(
+                &*FLUTTER_RUST_BRIDGE_HANDLER,
+                self,
+            )
+        }
+    }
+}
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> usize {
         self.unchecked_into_f64() as _
     }
 }
@@ -46,4 +63,24 @@ pub fn wire_minimal_adder(
     data_len_: i32,
 ) {
     wire_minimal_adder_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_simple(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_simple_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn dart_opaque_dart2rust_encode(
+    handle: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> usize {
+    unsafe {
+        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
+            &*FLUTTER_RUST_BRIDGE_HANDLER,
+            handle,
+        ) as _
+    }
 }

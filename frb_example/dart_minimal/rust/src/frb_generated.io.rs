@@ -10,6 +10,11 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
+impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
+    fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self) }
+    }
+}
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }
@@ -40,4 +45,21 @@ pub extern "C" fn wire_minimal_adder(
     data_len_: i32,
 ) {
     wire_minimal_adder_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: *const std::ffi::c_void) {
+    wire_rust_call_dart_simple_impl(port_, callback)
+}
+
+#[no_mangle]
+pub extern "C" fn dart_opaque_dart2rust_encode(
+    handle: flutter_rust_bridge::for_generated::dart_sys::Dart_Handle,
+) -> *const std::ffi::c_void {
+    unsafe {
+        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
+            &*FLUTTER_RUST_BRIDGE_HANDLER,
+            handle,
+        ) as _
+    }
 }

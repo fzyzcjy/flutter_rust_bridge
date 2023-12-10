@@ -16,6 +16,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @protected
+  Object cst_encode_DartFn_Inputs__Output_unit(void Function() raw) {
+    return cst_encode_DartOpaque(raw);
+  }
+
+  @protected
+  Object cst_encode_DartOpaque(Object raw) {
+    return raw;
+  }
 }
 
 // Section: wire_class
@@ -34,6 +44,12 @@ class RustLibWire extends BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_minimal_adder(port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_call_dart_simple(NativePortType port_, Object callback) =>
+      wasmModule.wire_rust_call_dart_simple(port_, callback);
+
+  dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle) =>
+      wasmModule.dart_opaque_dart2rust_encode(handle);
 }
 
 @JS('wasm_bindgen')
@@ -53,4 +69,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_minimal_adder(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_rust_call_dart_simple(
+      NativePortType port_, Object callback);
+
+  external dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle);
 }
