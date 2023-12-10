@@ -19,3 +19,5 @@ pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
 pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort {
     *handle
 }
+
+type PlatformGeneralizedUint8ListPtr = *mut u8;

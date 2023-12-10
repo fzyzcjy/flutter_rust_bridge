@@ -82,12 +82,6 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
 }
 
 // TODO maybe move
-#[cfg(not(wasm))]
-type PlatformGeneralizedUint8ListPtr = *mut u8;
-#[cfg(wasm)]
-type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
-
-// TODO maybe move
 pub struct SseDeserializer {
     // Only to be used for generated code
     pub cursor: Cursor<Vec<u8>>,
