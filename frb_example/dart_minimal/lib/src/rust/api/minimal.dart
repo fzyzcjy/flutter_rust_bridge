@@ -10,6 +10,5 @@ Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
 
 Future<void> rustCallDartSimple(
-        {required NOT_IMPLEMENTED Function(String, String) callback,
-        dynamic hint}) =>
+        {required String Function(String, String) callback, dynamic hint}) =>
     RustLib.instance.api.rustCallDartSimple(callback: callback, hint: hint);

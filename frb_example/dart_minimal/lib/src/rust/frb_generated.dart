@@ -59,8 +59,7 @@ abstract class RustLibApi extends BaseApi {
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 
   Future<void> rustCallDartSimple(
-      {required NOT_IMPLEMENTED Function(String, String) callback,
-      dynamic hint});
+      {required String Function(String, String) callback, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -100,8 +99,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartSimple(
-      {required NOT_IMPLEMENTED Function(String, String) callback,
-      dynamic hint}) {
+      {required String Function(String, String) callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -139,7 +137,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_decode_unit(SseDeserializer deserializer) {}
   @protected
   PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
-      NOT_IMPLEMENTED Function(String, String) raw) {
+      String Function(String, String) raw) {
     return cst_encode_DartOpaque(raw);
   }
 
@@ -159,7 +157,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   void _sse_encode_DartFn_Inputs_String_String_Output_String(
-      NOT_IMPLEMENTED Function(String, String) self, SseSerializer serializer) {
+      String Function(String, String) self, SseSerializer serializer) {
     _sse_encode_DartOpaque(self, serializer);
   }
 
