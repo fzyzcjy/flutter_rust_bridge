@@ -1,6 +1,7 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::DartFnFuture;
+use crate::generalized_isolate::Channel;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -12,6 +13,7 @@ use crate::handler::implementation::error_listener::{
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::platform_types::DartAbi;
 use crate::platform_types::SendableMessagePortHandle;
+use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use log::warn;
@@ -169,7 +171,9 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         )
     }
 
-    fn dart_fn_invoke<Ret>(&self, _dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
+    fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
+        let sender = Rust2DartSender::new(Channel::new(self.dart_fn_invoke_port()));
+        sender.send(dart_fn_and_args);
         todo!()
     }
 
