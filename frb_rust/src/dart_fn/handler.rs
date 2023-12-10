@@ -1,6 +1,6 @@
 use super::DartFnFuture;
 use crate::generalized_isolate::Channel;
-use crate::platform_types::DartAbi;
+use crate::platform_types::{DartAbi, SendableMessagePortHandle};
 use crate::rust2dart::sender::Rust2DartSender;
 use futures::channel::oneshot;
 use futures::channel::oneshot::Sender;
@@ -23,15 +23,19 @@ impl DartFnHandler {
         }
     }
 
-    pub(crate) fn invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
+    pub(crate) fn invoke<Ret>(
+        &self,
+        dart_fn_and_args: Vec<DartAbi>,
+        invoke_port: SendableMessagePortHandle,
+    ) -> DartFnFuture<Ret> {
         let call_id = self.next_call_id.fetch_add(1, Ordering::Relaxed);
         let (sender, receiver) = oneshot::channel::<()>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
 
-        let sender = Rust2DartSender::new(Channel::new(self.dart_fn_invoke_port()));
+        let sender = Rust2DartSender::new(Channel::new(invoke_port));
         sender.send(dart_fn_and_args);
 
-        receiver
+        Box::new(receiver)
     }
 
     pub(crate) fn handle_output(&self, call_id: i32) {
