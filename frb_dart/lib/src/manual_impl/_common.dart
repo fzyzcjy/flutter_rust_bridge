@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter_rust_bridge/src/codec/sse.dart';
 import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 
@@ -24,4 +27,9 @@ Duration dcoDecodeDuration(int ts) {
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-PanicException sseDecodePanicError(dynamic raw) => TODO;
+PanicException sseDecodePanicError(SseDeserializer deserializer) {
+  // NOTE copied from auto-generated SSE deserialization code
+  final len = deserializer.buffer.getInt32();
+  final inner = deserializer.buffer.getUint8List(len);
+  return PanicException(utf8.decoder.convert(inner));
+}
