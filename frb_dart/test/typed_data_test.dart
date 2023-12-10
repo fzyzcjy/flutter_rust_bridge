@@ -88,10 +88,11 @@ void main() {
           ),
           TODO_near_boundary,
           TODO_usebigint_and_test_more_ranges,
-          TODO_loopback_test,
         ]) {
           for (final endian in [Endian.little, Endian.big]) {
-            test('$info $endian', () => _body(setter, getter, info, endian));
+            group('endian=$endian', () {
+              test('$info', () => _body(setter, getter, info, endian));
+            });
           }
         }
       });
