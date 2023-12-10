@@ -11,8 +11,17 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let raw_parameter_names = (0..num_params).map(|i| format!("rawArg{i}")).join(", ");
         let parameter_names = (0..num_params).map(|i| format!("arg{i}")).join(", ");
         let repeated_dynamics = (0..num_params).map(|i| format!("dynamic")).join(", ");
-        let decode_block =
-            (0..num_params).map(|i| format!("final arg{i} = _dco_decode_{TODO}(rawArg{i});\n"));
+        let parameter_types = (self.ir.inputs.iter())
+            .map(|x| x.dart_api_type())
+            .join(", ");
+        let decode_block = (self.ir.inputs.iter().enumerate())
+            .map(|(i, ty)| {
+                format!(
+                    "final arg{i} = _dco_decode_{}(rawArg{i});\n",
+                    ty.safe_ident()
+                )
+            })
+            .join("");
         let ir_safe_ident = self.ir.safe_ident();
         let return_type_dart = self.ir.output.dart_api_type();
         let return_type_safe_ident = self.ir.output.safe_ident();
@@ -33,7 +42,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 wire.dart_fn_deliver_output(callId, output.ptr, output.rustVecLen, output.dataLen);
               }};
             }}
-            "
+            ",
         );
         Some(Acc::new_common(WireDartOutputCode {
             api_impl_body,
