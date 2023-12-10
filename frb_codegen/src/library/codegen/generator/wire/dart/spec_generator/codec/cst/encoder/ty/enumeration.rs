@@ -56,7 +56,7 @@ impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
                     .iter()
                     .map(|field| {
                         format!(
-                            "var pre_{} = cst_encode_{}(apiObj.{});",
+                            "var pre_{} = cst_encode_{}(this, apiObj.{});",
                             field.name.rust_style(),
                             field.ty.safe_ident(),
                             field.name.dart_style()
