@@ -32,10 +32,10 @@ pub(crate) fn execute(
 
 // Please keep in sync with frb_rust
 const EXTRA_CODE: &str = "// EXTRA BEGIN
-typedef struct DartCObject *WireSyncReturnDco;
-typedef struct WireSyncReturnSse {
+typedef struct DartCObject *WireSyncRust2DartDco;
+typedef struct WireSyncRust2DartSse {
   uint8_t *ptr;
   int32_t len;
-} WireSyncReturnSse;
+} WireSyncRust2DartSse;
 // EXTRA END
 ";

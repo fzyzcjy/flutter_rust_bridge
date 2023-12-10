@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 export 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart'
-    show WireSyncReturnDco, WireSyncReturnSse;
+    show WireSyncRust2DartDco, WireSyncRust2DartSse;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 ///
@@ -19,7 +19,7 @@ typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
 /// {@macro flutter_rust_bridge.internal}
-Uint8List wireSyncReturnSseAsUint8ListView(WireSyncReturnSse raw) =>
+Uint8List wireSyncReturnSseAsUint8ListView(WireSyncRust2DartSse raw) =>
     raw.ptr.asTypedList(raw.len);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

@@ -9,12 +9,12 @@ typedef struct Result_JsValue Result_JsValue;
 
 typedef Dart_Handle GeneralizedDartHandle;
 
-typedef Dart_CObject *WireSyncReturnDco;
+typedef Dart_CObject *WireSyncRust2DartDco;
 
-typedef struct WireSyncReturnSse {
+typedef struct WireSyncRust2DartSse {
   uint8_t *ptr;
   int32_t len;
-} WireSyncReturnSse;
+} WireSyncRust2DartSse;
 
 extern struct Result_JsValue post_message(const PortLike *this_, const JsValue *value);
 
@@ -44,11 +44,11 @@ intptr_t init_frb_dart_api_dl(void *data);
  *
  * This function should never be called manually.
  */
-void free_wire_sync_return_dco(WireSyncReturnDco value);
+void free_wire_sync_return_dco(WireSyncRust2DartDco value);
 
 /**
  * # Safety
  *
  * This function should never be called manually.
  */
-void free_wire_sync_return_sse(struct WireSyncReturnSse value);
+void free_wire_sync_return_sse(struct WireSyncRust2DartSse value);

@@ -33,7 +33,7 @@ class BaseHandler {
     try {
       return task.codec.decodeWireSyncType(syncReturn);
     } finally {
-      task.codec.freeWireSyncReturn(
+      task.codec.freeWireSyncRust2Dart(
           syncReturn, task.apiImpl.generalizedFrbRustBinding);
     }
   }

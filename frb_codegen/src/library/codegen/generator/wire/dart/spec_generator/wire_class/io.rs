@@ -36,7 +36,8 @@ fn postpare_modify(
 ) -> String {
     lazy_static! {
         static ref FILTER: Regex =
-            Regex::new(r#"(?s)final class WireSyncReturnSse extends ffi.Struct \{.*?\}"#).unwrap();
+            Regex::new(r#"(?s)final class WireSyncRust2DartSse extends ffi.Struct \{.*?\}"#)
+                .unwrap();
     }
 
     let DartOutputClassNamePack {
@@ -56,7 +57,10 @@ fn postpare_modify(
         )
         .replace("final class DartCObject extends ffi.Opaque {}", "")
         .replace("final class _Dart_Handle extends ffi.Opaque {}", "")
-        .replace("typedef WireSyncReturnDco = ffi.Pointer<DartCObject>;", "");
+        .replace(
+            "typedef WireSyncRust2DartDco = ffi.Pointer<DartCObject>;",
+            "",
+        );
     let ans = FILTER.replace_all(&ans, "").to_string();
     ans
 }

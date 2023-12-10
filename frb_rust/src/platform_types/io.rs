@@ -1,7 +1,7 @@
-pub type WireSyncReturnDco = *mut allo_isolate::ffi::DartCObject;
+pub type WireSyncRust2DartDco = *mut allo_isolate::ffi::DartCObject;
 
 #[repr(C)]
-pub struct WireSyncReturnSse {
+pub struct WireSyncRust2DartSse {
     pub ptr: *mut u8,
     pub len: i32,
 }

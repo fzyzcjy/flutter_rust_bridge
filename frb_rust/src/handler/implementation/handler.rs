@@ -140,8 +140,8 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
                 })
                 .into_raw_wire_sync()
         })
-        // Deliberately construct simplest possible WireSyncReturn object
-        // instead of more realistic things like `WireSyncReturnSrc::new(Panic, ...)`.
+        // Deliberately construct simplest possible WireSyncRust2Dart object
+        // instead of more realistic things like `WireSyncRust2DartSrc::new(Panic, ...)`.
         // See comments in [wrap] for why.
         .unwrap_or_else(|_| Rust2DartCodec::Message::simplest().into_raw_wire_sync())
     }

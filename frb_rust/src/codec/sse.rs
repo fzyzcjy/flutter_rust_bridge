@@ -3,7 +3,7 @@ use crate::for_generated::into_leak_vec_ptr;
 use crate::for_generated::vec_from_leak_ptr;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
-use crate::platform_types::{DartAbi, WireSyncReturnSse};
+use crate::platform_types::{DartAbi, WireSyncRust2DartSse};
 use crate::rust2dart::action::Rust2DartAction;
 use byteorder::NativeEndian;
 use byteorder::WriteBytesExt;
@@ -48,7 +48,7 @@ impl SseCodec {
 pub struct Rust2DartMessageSse(Vec<u8>);
 
 impl Rust2DartMessageTrait for Rust2DartMessageSse {
-    type WireSyncRust2DartType = WireSyncReturnSse;
+    type WireSyncRust2DartType = WireSyncRust2DartSse;
 
     fn simplest() -> Self {
         Self(vec![])
@@ -61,7 +61,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
     unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self {
         #[cfg(not(wasm))]
         {
-            let WireSyncReturnSse { ptr, len } = raw;
+            let WireSyncRust2DartSse { ptr, len } = raw;
             Self(vec_from_leak_ptr(ptr, len))
         }
 
@@ -73,7 +73,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
         #[cfg(not(wasm))]
         {
             let (ptr, len) = into_leak_vec_ptr(self.0);
-            WireSyncReturnSse { ptr, len }
+            WireSyncRust2DartSse { ptr, len }
         }
 
         #[cfg(wasm)]

@@ -6,7 +6,7 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 /// Generates the dynamic Dart object from either an FFI struct or a JS value
 ///
 /// {@macro flutter_rust_bridge.internal}
-List<dynamic> wireSyncReturnDcoIntoDart(WireSyncReturnDco syncReturn) =>
+List<dynamic> wireSyncReturnDcoIntoDart(WireSyncRust2DartDco syncReturn) =>
     dartCObjectIntoDart(syncReturn.ref);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

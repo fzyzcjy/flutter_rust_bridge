@@ -6,13 +6,13 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 typedef NativePortType = dynamic;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef WireSyncReturnDco = List<dynamic>;
+typedef WireSyncRust2DartDco = List<dynamic>;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef WireSyncReturnSse = Uint8List;
+typedef WireSyncRust2DartSse = Uint8List;
 
 /// {@macro flutter_rust_bridge.internal}
-Uint8List wireSyncReturnSseAsUint8ListView(WireSyncReturnSse raw) => raw;
+Uint8List wireSyncReturnSseAsUint8ListView(WireSyncRust2DartSse raw) => raw;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef PlatformPointer = int;

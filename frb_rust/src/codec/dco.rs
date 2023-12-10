@@ -3,7 +3,7 @@ use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
 use crate::misc::into_into_dart::IntoIntoDart;
-use crate::platform_types::{DartAbi, WireSyncReturnDco};
+use crate::platform_types::{DartAbi, WireSyncRust2DartDco};
 use crate::rust2dart::action::Rust2DartAction;
 use std::any::Any;
 
@@ -31,7 +31,7 @@ impl DcoCodec {
 pub struct Rust2DartMessageDco(DartAbi);
 
 impl Rust2DartMessageTrait for Rust2DartMessageDco {
-    type WireSyncRust2DartType = WireSyncReturnDco;
+    type WireSyncRust2DartType = WireSyncRust2DartDco;
 
     fn simplest() -> Self {
         Self(().into_dart())
