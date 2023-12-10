@@ -1,3 +1,4 @@
+use crate::codec::sse::Dart2RustMessageSse;
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::handler::DartFnHandler;
@@ -182,24 +183,13 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         &self,
         dart_fn: DartOpaque,
         args: Vec<DartAbi>,
-    ) -> DartFnFuture<SseDeserializer> {
+    ) -> DartFnFuture<Dart2RustMessageSse> {
         self.dart_fn_handler
             .invoke(dart_fn, args, self.dart_fn_invoke_port())
     }
 
-    fn dart_fn_handle_output(
-        &self,
-        call_id: i32,
-        output_ptr: PlatformGeneralizedUint8ListPtr,
-        output_rust_vec_len: i32,
-        output_data_len: i32,
-    ) {
-        self.dart_fn_handler.handle_output(
-            call_id,
-            output_ptr,
-            output_rust_vec_len,
-            output_data_len,
-        )
+    fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {
+        self.dart_fn_handler.handle_output(call_id, message)
     }
 }
 

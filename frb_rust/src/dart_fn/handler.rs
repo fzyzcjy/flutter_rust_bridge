@@ -1,4 +1,5 @@
 use super::DartFnFuture;
+use crate::codec::sse::Dart2RustMessageSse;
 use crate::for_generated::SseDeserializer;
 use crate::generalized_isolate::Channel;
 use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr, SendableMessagePortHandle};
@@ -17,8 +18,7 @@ use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Mutex;
 
 pub(crate) struct DartFnHandler {
-    // TODO it should be a (safe) struct, instead of a "serializer"
-    completers: Mutex<HashMap<i32, Sender<SseDeserializer>>>,
+    completers: Mutex<HashMap<i32, Sender<Dart2RustMessageSse>>>,
     next_call_id: AtomicI32,
 }
 
@@ -35,9 +35,9 @@ impl DartFnHandler {
         dart_fn: DartOpaque,
         args: Vec<DartAbi>,
         invoke_port: SendableMessagePortHandle,
-    ) -> DartFnFuture<SseDeserializer> {
+    ) -> DartFnFuture<Dart2RustMessageSse> {
         let call_id = self.next_call_id.fetch_add(1, Ordering::Relaxed);
-        let (sender, receiver) = oneshot::channel::<SseDeserializer>();
+        let (sender, receiver) = oneshot::channel::<Dart2RustMessageSse>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
 
         let sender = Rust2DartSender::new(Channel::new(invoke_port));
@@ -53,22 +53,12 @@ impl DartFnHandler {
         ))
     }
 
-    pub(crate) fn handle_output(
-        &self,
-        call_id: i32,
-        output_ptr: PlatformGeneralizedUint8ListPtr,
-        output_rust_vec_len: i32,
-        output_data_len: i32,
-    ) {
+    pub(crate) fn handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {
         // NOTE This [catch_unwind] should also be put outside **ALL** code, see comments above for reasonk
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
-                let mut output_deserializer = unsafe {
-                    SseDeserializer::from_wire(output_ptr, output_rust_vec_len, output_data_len)
-                };
-
                 if let Some(completer) = (self.completers.lock().unwrap()).remove(&call_id) {
-                    completer.send(output_deserializer);
+                    completer.send(message);
                 }
             });
             if let Err(err) = catch_unwind_result {
