@@ -200,9 +200,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     final closure = (int callId, dynamic arg1Raw, dynamic arg2Raw) {
       final arg1 = _dco_decode_String(arg1Raw);
       final arg2 = _dco_decode_String(arg2Raw);
+
       final outputRaw = raw(arg1, arg2);
-      final output = TODO_encode(outputRaw);
-      wire.dart_fn_deliver_output(callId, output);
+
+      final serializer = SseSerializer(generalizedFrbRustBinding);
+      _sse_encode_String(outputRaw, serializer);
+      final output = serializer.intoRaw();
+
+      wire.dart_fn_deliver_output(
+          callId, output.ptr, output.rustVecLen, output.dataLen);
     };
     return cst_encode_DartOpaque(closure);
   }
