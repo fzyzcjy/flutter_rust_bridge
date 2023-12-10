@@ -7,6 +7,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypointTrait, WireRustCodecOutputSpec,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::create_port_param;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
@@ -42,22 +43,7 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
         context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
         let mut params = if has_port_argument(func.mode) {
-            Acc::new(|target| {
-                let rust_type = match target {
-                    // NOTE Though in `io`, i64 == our MessagePort, but it will affect the cbindgen
-                    // and ffigen and make code tricker, so we manually write down "i64" here.
-                    TargetOrCommon::Io => "i64",
-                    TargetOrCommon::Common | TargetOrCommon::Wasm => {
-                        "flutter_rust_bridge::for_generated::MessagePort"
-                    }
-                }
-                .to_owned();
-                vec![ExternFuncParam {
-                    name: "port_".to_owned(),
-                    rust_type,
-                    dart_type: "NativePortType".to_owned(),
-                }]
-            })
+            Acc::new(|target| vec![create_port_param(target)])
         } else {
             Acc::default()
         };

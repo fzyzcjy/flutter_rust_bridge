@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
+use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
@@ -88,5 +89,22 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
             let mut deserializer = unsafe {{ flutter_rust_bridge::for_generated::SseDeserializer::from_wire(ptr_, rust_vec_len_, data_len_) }};
             {primary}deserializer.end();"
         )
+    }
+}
+
+pub(crate) fn create_port_param(target: TargetOrCommon) -> ExternFuncParam {
+    let rust_type = match target {
+        // NOTE Though in `io`, i64 == our MessagePort, but it will affect the cbindgen
+        // and ffigen and make code tricker, so we manually write down "i64" here.
+        TargetOrCommon::Io => "i64",
+        TargetOrCommon::Common | TargetOrCommon::Wasm => {
+            "flutter_rust_bridge::for_generated::MessagePort"
+        }
+    }
+    .to_owned();
+    ExternFuncParam {
+        name: "port_".to_owned(),
+        rust_type,
+        dart_type: "NativePortType".to_owned(),
     }
 }
