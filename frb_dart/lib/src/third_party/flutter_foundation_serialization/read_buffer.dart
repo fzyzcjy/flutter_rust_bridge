@@ -41,9 +41,11 @@ class ReadBuffer {
   }
 
   /// Reads a Uint64 from the buffer.
-  int getUint64({Endian? endian}) {
-    final int value =
-        byteDataGetUint64(data, _position, endian ?? Endian.host).toInt();
+  int getUint64({Endian? endian}) => getBigUint64(endian: endian).toInt();
+
+  /// Reads a Uint64 from the buffer.
+  BigInt getBigUint64({Endian? endian}) {
+    final value = byteDataGetUint64(data, _position, endian ?? Endian.host);
     _position += 8;
     return value;
   }
@@ -69,9 +71,11 @@ class ReadBuffer {
   }
 
   /// Reads an Int64 from the buffer.
-  int getInt64({Endian? endian}) {
-    final int value =
-        byteDataGetInt64(data, _position, endian ?? Endian.host).toInt();
+  int getInt64({Endian? endian}) => getBigInt64(endian: endian).toInt();
+
+  /// Reads an Int64 from the buffer.
+  BigInt getBigInt64({Endian? endian}) {
+    final value = byteDataGetInt64(data, _position, endian ?? Endian.host);
     _position += 8;
     return value;
   }
@@ -117,7 +121,7 @@ class ReadBuffer {
   Uint64List getUint64List(int length) {
     final ans = Uint64List(length);
     for (var i = 0; i < length; ++i) {
-      ans[i] = getUint64();
+      ans[i] = getBigUint64();
     }
     return ans;
   }
@@ -141,7 +145,7 @@ class ReadBuffer {
   Int64List getInt64List(int length) {
     final ans = Int64List(length);
     for (var i = 0; i < length; ++i) {
-      ans[i] = getInt64();
+      ans[i] = getBigInt64();
     }
     return ans;
   }
