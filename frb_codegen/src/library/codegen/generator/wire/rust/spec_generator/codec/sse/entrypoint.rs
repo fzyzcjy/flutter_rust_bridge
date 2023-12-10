@@ -42,7 +42,12 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
             let mut params = vec![
                 ExternFuncParam {
                     name: "ptr_".to_owned(),
-                    rust_type: "*mut u8".to_owned(),
+                    rust_type: match target {
+                        TargetOrCommon::Common | TargetOrCommon::Wasm => {
+                            "PlatformGeneralizedUint8ListPtr".to_owned()
+                        }
+                        TargetOrCommon::Io => "*mut u8".to_owned(),
+                    },
                     dart_type: "PlatformPointer".to_owned(),
                 },
                 ExternFuncParam {
