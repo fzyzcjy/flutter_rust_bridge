@@ -73,7 +73,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<TheEnum> hi({required TheEnum a, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_box_autoadd_the_enum(a);
+        var arg0 = cst_encode_box_autoadd_the_enum(this, a);
         return wire.wire_hi(port_, arg0);
       },
       codec: DcoCodec(
@@ -96,8 +96,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_i_32(a);
-        var arg1 = cst_encode_i_32(b);
+        var arg0 = cst_encode_i_32(this, a);
+        var arg1 = cst_encode_i_32(this, b);
         return wire.wire_minimal_adder(port_, arg0, arg1);
       },
       codec: DcoCodec(
