@@ -56,8 +56,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Uint8List examplePrimitiveListTypeU8TwinSyncSse(
-      {required Uint8List arg, dynamic hint});
+  Future<Object> hiOne({required Object a, dynamic hint});
+
+  Future<Object> hiTwo({required Object a, dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
@@ -71,31 +72,51 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Uint8List examplePrimitiveListTypeU8TwinSyncSse(
-      {required Uint8List arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_list_prim_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u8_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+  Future<Object> hiOne({required Object a, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(a);
+        return wire.wire_hi_one(port_, arg0);
       },
-      codec: SseCodec(
-        decodeSuccessData: _sse_decode_list_prim_u_8,
+      codec: DcoCodec(
+        decodeSuccessData: _dco_decode_DartOpaque,
         decodeErrorData: null,
       ),
-      constMeta: kExamplePrimitiveListTypeU8TwinSyncSseConstMeta,
-      argValues: [arg],
+      constMeta: kHiOneConstMeta,
+      argValues: [a],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u8_twin_sync_sse",
-        argNames: ["arg"],
+  TaskConstMeta get kHiOneConstMeta => const TaskConstMeta(
+        debugName: "hi_one",
+        argNames: ["a"],
+      );
+
+  @override
+  Future<Object> hiTwo({required Object a, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        _sse_encode_DartOpaque(a, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_hi_two(port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: _sse_decode_DartOpaque,
+        decodeErrorData: null,
+      ),
+      constMeta: kHiTwoConstMeta,
+      argValues: [a],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHiTwoConstMeta => const TaskConstMeta(
+        debugName: "hi_two",
+        argNames: ["a"],
       );
 
   @override
@@ -122,15 +143,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  Object _dco_decode_DartOpaque(dynamic raw) {
+    return decodeDartOpaque(raw, generalizedFrbRustBinding);
+  }
+
   int _dco_decode_i_32(dynamic raw) {
-    return raw as int;
-  }
-
-  Uint8List _dco_decode_list_prim_u_8(dynamic raw) {
-    return raw as Uint8List;
-  }
-
-  int _dco_decode_u_8(dynamic raw) {
     return raw as int;
   }
 
@@ -138,32 +155,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return;
   }
 
+  int _dco_decode_usize(dynamic raw) {
+    return dcoDecodeI64OrU64(raw);
+  }
+
+  Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
+    var inner = _sse_decode_usize(deserializer);
+    return decodeDartOpaque(inner, generalizedFrbRustBinding);
+  }
+
   int _sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
-  Uint8List _sse_decode_list_prim_u_8(SseDeserializer deserializer) {
-    var len_ = _sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint8List(len_);
-  }
-
-  int _sse_decode_u_8(SseDeserializer deserializer) {
-    return deserializer.buffer.getUint8();
-  }
-
   void _sse_decode_unit(SseDeserializer deserializer) {}
+
+  int _sse_decode_usize(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint64();
+  }
+
+  void _sse_encode_DartOpaque(Object self, SseSerializer serializer) {
+    _sse_encode_usize(
+        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
+        serializer);
+  }
 
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
-  void _sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
-    _sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint8List(self);
-  }
-
-  void _sse_encode_u_8(int self, SseSerializer serializer) {
-    serializer.buffer.putUint8(self);
+  void _sse_encode_usize(int self, SseSerializer serializer) {
+    serializer.buffer.putUint64(self);
   }
 }
 
@@ -173,6 +195,6 @@ int cst_encode_i_32(int raw) {
   return raw;
 }
 
-int cst_encode_u_8(int raw) {
+int cst_encode_usize(int raw) {
   return raw;
 }

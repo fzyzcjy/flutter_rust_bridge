@@ -10,19 +10,10 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8 {
-    fn cst_decode(self) -> Vec<u8> {
-        unsafe {
-            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
-            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        }
+impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
+    fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self) }
     }
-}
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_cst_list_prim_u_8 {
-    ptr: *mut u8,
-    len: i32,
 }
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
@@ -47,12 +38,13 @@ pub extern "C" fn frb_initialize_rust(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_list_type_u8_twin_sync_sse(
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+pub extern "C" fn wire_hi_one(port_: i64, a: *const std::ffi::c_void) {
+    wire_hi_one_impl(port_, a)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_hi_two(port_: i64, ptr_: *mut u8, rust_vec_len_: i32, data_len_: i32) {
+    wire_hi_two_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -61,10 +53,13 @@ pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn cst_new_list_prim_u_8(len: i32) -> *mut wire_cst_list_prim_u_8 {
-    let ans = wire_cst_list_prim_u_8 {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+pub extern "C" fn dart_opaque_dart2rust_encode(
+    handle: flutter_rust_bridge::for_generated::dart_sys::Dart_Handle,
+) -> *const std::ffi::c_void {
+    unsafe {
+        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
+            &*FLUTTER_RUST_BRIDGE_HANDLER,
+            handle,
+        )
+    }
 }

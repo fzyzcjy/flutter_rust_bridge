@@ -20,9 +20,16 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl CstDecode<Vec<u8>> for Box<[u8]> {
-    fn cst_decode(self) -> Vec<u8> {
-        self.into_vec()
+impl CstDecode<flutter_rust_bridge::DartOpaque>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
+        unsafe {
+            flutter_rust_bridge::for_generated::cst_decode_dart_opaque(
+                &*FLUTTER_RUST_BRIDGE_HANDLER,
+                self,
+            )
+        }
     }
 }
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -30,15 +37,8 @@ impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
         self.unchecked_into_f64() as _
     }
 }
-impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<u8> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
-            .to_vec()
-            .into()
-    }
-}
-impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> u8 {
+impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> usize {
         self.unchecked_into_f64() as _
     }
 }
@@ -56,15 +56,36 @@ pub fn frb_initialize_rust(
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u8_twin_sync_sse(
+pub fn wire_hi_one(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_hi_one_impl(port_, a)
+}
+
+#[wasm_bindgen]
+pub fn wire_hi_two(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+) {
+    wire_hi_two_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn dart_opaque_dart2rust_encode(
+    handle: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> usize {
+    unsafe {
+        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
+            &*FLUTTER_RUST_BRIDGE_HANDLER,
+            handle,
+        )
+    }
 }

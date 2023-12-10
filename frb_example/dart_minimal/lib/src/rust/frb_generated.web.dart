@@ -18,7 +18,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  Uint8List cst_encode_list_prim_u_8(Uint8List raw) {
+  Object cst_encode_DartOpaque(Object raw) {
     return raw;
   }
 }
@@ -33,13 +33,12 @@ class RustLibWire extends BaseWire {
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
 
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u8_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_u8_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
+  void wire_hi_one(NativePortType port_, Object a) =>
+      wasmModule.wire_hi_one(port_, a);
+
+  void wire_hi_two(NativePortType port_, PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_) =>
+      wasmModule.wire_hi_two(port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
@@ -60,11 +59,10 @@ class RustLibWasmModule implements WasmModule {
   external void frb_initialize_rust(
       NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
 
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u8_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
+  external void wire_hi_one(NativePortType port_, Object a);
+
+  external void wire_hi_two(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 }
