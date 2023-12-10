@@ -93,30 +93,8 @@ fn wire_rust_call_dart_simple_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_callback = {
-                use flutter_rust_bridge::IntoDart;
-                let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
-
-                // TODO manual tweak
-                move |arg0: String, arg1: String| {
-                    async fn body(arg0: String, arg1: String, dart_opaque: DartOpaque) -> String {
-                        let args = vec![
-                            arg0.into_into_dart().into_dart(),
-                            arg1.into_into_dart().into_dart(),
-                        ];
-                        let message = FLUTTER_RUST_BRIDGE_HANDLER
-                            .dart_fn_invoke(dart_opaque, args)
-                            .await;
-                        <String>::sse_decode_single(message)
-                    }
-
-                    flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
-                        arg0,
-                        arg1,
-                        dart_opaque.clone(),
-                    ))
-                }
-            };
+            let callback_dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
+            let api_callback = f1(callback_dart_opaque);
             move |context| async move {
                 transform_result_dco(
                     (move || async move {
@@ -129,6 +107,30 @@ fn wire_rust_call_dart_simple_impl(
             }
         },
     )
+}
+
+fn f1(dart_opaque: DartOpaque) -> impl Fn(String, String) -> DartFnFuture<String> {
+    use flutter_rust_bridge::IntoDart;
+
+    // TODO manual tweak
+    move |arg0: String, arg1: String| {
+        async fn body(arg0: String, arg1: String, dart_opaque: DartOpaque) -> String {
+            let args = vec![
+                arg0.into_into_dart().into_dart(),
+                arg1.into_into_dart().into_dart(),
+            ];
+            let message = FLUTTER_RUST_BRIDGE_HANDLER
+                .dart_fn_invoke(dart_opaque, args)
+                .await;
+            <String>::sse_decode_single(message)
+        }
+
+        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+            arg0,
+            arg1,
+            dart_opaque.clone(),
+        ))
+    }
 }
 
 // Section: dart2rust
