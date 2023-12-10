@@ -40,9 +40,9 @@ void main() {
   });
 
   group('read/write ByteData', () {
-    for (final (name, setter) in <(String, _Setter)>[
-      ('Uint64', byteDataSetUint64),
-      ('Int64', byteDataSetInt64),
+    for (final (name, setter, getter) in <(String, _Setter, _Getter)>[
+      ('Uint64', byteDataSetUint64, byteDataGetUint64),
+      ('Int64', byteDataSetInt64, byteDataGetInt64),
     ]) {
       group(name, () {
         for (final info in [
@@ -88,10 +88,9 @@ void main() {
           ),
           TODO_near_boundary,
           TODO_usebigint_and_test_more_ranges,
-          TODO_about_reader,
           TODO_loopback_test,
         ]) {
-          test('$info', () => _body(setter, info));
+          test('$info', () => _body(setter, getter, info));
         }
       });
     }
@@ -100,15 +99,20 @@ void main() {
 
 typedef _Setter = void Function(
     ByteData byteData, int byteOffset, BigInt value, Endian endian);
+typedef _Getter = BigInt Function(
+    ByteData byteData, int byteOffset, Endian endian);
 
-void _body(_Setter setter, _Info info) {
+void _body(_Setter setter, _Getter getter, _Info info) {
   final byteData = ByteData(60);
+  const byteOffset = 40;
 
-  setter(byteData, 40, info.setValue, Endian.little);
-  expect(byteData.buffer.asUint8List(40, 8), info.expectLittleEndian);
+  setter(byteData, byteOffset, info.setValue, Endian.little);
+  expect(byteData.buffer.asUint8List(byteOffset, 8), info.expectLittleEndian);
+  expect(getter(byteData, byteOffset, Endian.little), info.setValue);
 
-  setter(byteData, 40, info.setValue, Endian.big);
-  expect(byteData.buffer.asUint8List(40, 8), info.expectBigEndian);
+  setter(byteData, byteOffset, info.setValue, Endian.big);
+  expect(byteData.buffer.asUint8List(byteOffset, 8), info.expectBigEndian);
+  expect(getter(byteData, byteOffset, Endian.big), info.setValue);
 }
 
 class _Info {
