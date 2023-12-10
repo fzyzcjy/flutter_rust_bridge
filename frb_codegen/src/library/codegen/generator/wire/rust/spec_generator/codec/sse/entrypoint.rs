@@ -43,7 +43,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
                 ExternFuncParam {
                     name: "ptr_".to_owned(),
                     rust_type: "*mut u8".to_owned(),
-                    dart_type: "ffi.Pointer<ffi.Uint8>".to_owned(),
+                    dart_type: "PlatformPointer".to_owned(),
                 },
                 ExternFuncParam {
                     name: "rust_vec_len_".to_owned(),
