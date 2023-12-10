@@ -98,13 +98,6 @@ fn wire_rust_call_dart_simple_impl(
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
 
                 move |arg0: String, arg1: String| {
-                    fn f1<T: Future<Output = String> + Send + UnwindSafe + 'static>(
-                        raw: T,
-                    ) -> DartFnFuture<String> {
-                        // ref: futures `boxed()`
-                        Box::pin(raw)
-                    }
-
                     async fn f2(arg0: String, arg1: String, dart_opaque: DartOpaque) -> String {
                         // TODO manual tweak
                         let message = FLUTTER_RUST_BRIDGE_HANDLER
@@ -124,7 +117,11 @@ fn wire_rust_call_dart_simple_impl(
                         output
                     }
 
-                    f1(f2(arg0, arg1, dart_opaque.clone()))
+                    flutter_rust_bridge::for_generated::convert_into_dart_fn_future(f2(
+                        arg0,
+                        arg1,
+                        dart_opaque.clone(),
+                    ))
                 }
             };
             move |context| async move {

@@ -3,6 +3,7 @@
 
 mod boilerplate;
 mod cast;
+mod misc;
 mod pointer;
 
 pub use crate::codec::dco::{transform_result_dco, Rust2DartMessageDco};
@@ -37,6 +38,7 @@ pub use futures;
 #[cfg(wasm)]
 pub use js_sys;
 pub use lazy_static::lazy_static;
+pub use misc::*;
 pub use pointer::*;
 #[cfg(wasm)]
 pub use wasm_bindgen;
