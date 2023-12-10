@@ -22649,15 +22649,13 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTw
 }
 impl SseDecode for anyhow::Error {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <String>::sse_decode(deserializer);
-        return NOT_USED;
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
 impl SseDecode for backtrace::Backtrace {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <String>::sse_decode(deserializer);
-        return NOT_USED;
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
 }
 
@@ -30596,7 +30594,7 @@ impl SseDecode
             <crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>::sse_decode(
                 deserializer,
             );
-        return (field0, field1);
+        return (var_field0, var_field1);
     }
 }
 
@@ -30604,7 +30602,7 @@ impl SseDecode for (String, i32) {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_field0 = <String>::sse_decode(deserializer);
         let mut var_field1 = <i32>::sse_decode(deserializer);
-        return (field0, field1);
+        return (var_field0, var_field1);
     }
 }
 
