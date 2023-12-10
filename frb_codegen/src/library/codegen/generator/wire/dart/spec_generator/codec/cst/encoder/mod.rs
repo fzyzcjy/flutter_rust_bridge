@@ -39,8 +39,8 @@ fn generate_encode_func(
         .map(|raw_body, target: TargetOrCommon| {
             raw_body
                 .map(|raw_body| {
-                    let code = format!(
-                        "{} cst_encode_{}({} raw) {{
+                    format!(
+                        "@internal {} cst_encode_{}({api_impl_class} apiImpl, {} raw) {{
                             {raw_body}
                         }}",
                         WireDartCodecCstGenerator::new(ty.clone(), context)
@@ -48,14 +48,8 @@ fn generate_encode_func(
                         ty.safe_ident(),
                         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context())
                             .dart_api_type(),
-                    );
-
-                    let api_impl_body = format!("@protected\n{code}");
-
-                    WireDartOutputCode {
-                        api_impl_class_body: api_impl_body,
-                        ..Default::default()
-                    }
+                    )
+                    .into()
                 })
                 .unwrap_or_default()
         })
