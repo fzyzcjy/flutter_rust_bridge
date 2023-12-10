@@ -30,14 +30,14 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
                             | IrType::Delegate(IrTypeDelegate::Uuid)
                     )
                 {
-                    format!("ans.ref.ptr[i] = cst_encode_{inner}(raw[i]);")
+                    format!("ans.ref.ptr[i] = cst_encode_{inner}(apiImpl, raw[i]);")
                 } else {
                     format!("_cst_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
                 }
             )),
             wasm: self.context.config.wasm_enabled.then(|| {
                 format!(
-                    "return raw.map(cst_encode_{}).toList();",
+                    "return raw.map((x) => cst_encode_{}(apiImpl, x)).toList();",
                     self.ir.inner.safe_ident()
                 )
             }),

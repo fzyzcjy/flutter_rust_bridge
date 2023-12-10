@@ -7,7 +7,7 @@ use crate::codegen::ir::ty::IrTypeTrait;
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for DartFnWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new_common(Some(format!(
-            "return cst_encode_DartOpaque(encode_{}(raw));",
+            "return cst_encode_DartOpaque(apiImpl, encode_{}(raw));",
             self.ir.safe_ident(),
         )))
     }

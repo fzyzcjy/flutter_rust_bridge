@@ -16,7 +16,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
         match &self.ir {
             IrTypeDelegate::Array(ref array) => match &array.mode {
                 IrTypeDelegateArrayMode::General(_) => Acc::distribute(Some(format!(
-                    "return cst_encode_{}(raw);",
+                    "return cst_encode_{}(apiImpl, raw);",
                     array.get_delegate().safe_ident(),
                 ))),
                 IrTypeDelegateArrayMode::Primitive(_) => Acc {
@@ -41,7 +41,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
 
             IrTypeDelegate::String => Acc {
                 io: Some(format!(
-                    "return cst_encode_{}(utf8.encoder.convert(raw));",
+                    "return cst_encode_{}(apiImpl, utf8.encoder.convert(raw));",
                     uint8list_safe_ident()
                 )),
                 wasm: Some("return raw;".into()),
@@ -68,20 +68,26 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             //     wasm: Some("return raw;".into()),
             //     ..Default::default()
             // },
-            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ref repr, .. }) => {
-                format!("return cst_encode_{}(raw.index);", repr.safe_ident()).into()
-            }
+            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ref repr, .. }) => format!(
+                "return cst_encode_{}(apiImpl, raw.index);",
+                repr.safe_ident()
+            )
+            .into(),
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::Naive => {
                     Acc {
-                        io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
-                        wasm: Some("return cst_encode_i_64(raw.millisecondsSinceEpoch);".into()),
+                        io: Some(
+                            "return cst_encode_i_64(apiImpl, raw.microsecondsSinceEpoch);".into(),
+                        ),
+                        wasm: Some(
+                            "return cst_encode_i_64(apiImpl, raw.millisecondsSinceEpoch);".into(),
+                        ),
                         ..Default::default()
                     }
                 }
                 IrTypeDelegateTime::Duration => Acc {
-                    io: Some("return cst_encode_i_64(raw.inMicroseconds);".into()),
-                    wasm: Some("return cst_encode_i_64(raw.inMilliseconds);".into()),
+                    io: Some("return cst_encode_i_64(apiImpl, raw.inMicroseconds);".into()),
+                    wasm: Some("return cst_encode_i_64(apiImpl, raw.inMilliseconds);".into()),
                     ..Default::default()
                 },
             },
@@ -92,7 +98,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             //     IrTypeDelegate::Time(*t).safe_ident()
             // ))),
             IrTypeDelegate::Uuid => Acc::distribute(Some(format!(
-                "return cst_encode_{}(raw.toBytes());",
+                "return cst_encode_{}(apiImpl, raw.toBytes());",
                 uint8list_safe_ident()
             ))),
             // IrTypeDelegate::Uuids => Acc::distribute(Some(format!(

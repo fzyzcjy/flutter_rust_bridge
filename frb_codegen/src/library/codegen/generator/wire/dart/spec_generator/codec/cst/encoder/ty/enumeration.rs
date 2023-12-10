@@ -56,7 +56,7 @@ impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
                     .iter()
                     .map(|field| {
                         format!(
-                            "var pre_{} = cst_encode_{}(apiObj.{});",
+                            "var pre_{} = cst_encode_{}(apiImpl, apiObj.{});",
                             field.name.rust_style(),
                             field.ty.safe_ident(),
                             field.name.dart_style()
@@ -96,7 +96,7 @@ fn generate_encode_body_variant(index: usize, variant: &IrVariant) -> String {
             .iter()
             .map(|field| {
                 format!(
-                    ",cst_encode_{}(raw.{})",
+                    ",cst_encode_{}(apiImpl, raw.{})",
                     field.ty.safe_ident(),
                     field.name.dart_style()
                 )

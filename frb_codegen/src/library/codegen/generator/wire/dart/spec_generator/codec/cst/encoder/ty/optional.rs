@@ -8,7 +8,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for OptionalWireDartCodecCstGener
     fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => Some(format!(
-                "return raw == null ? {} : cst_encode_{}(raw);",
+                "return raw == null ? {} : cst_encode_{}(apiImpl, raw);",
                 if target == TargetOrCommon::Wasm {
                     "null"
                 } else {
