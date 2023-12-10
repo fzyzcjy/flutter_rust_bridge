@@ -69,7 +69,7 @@ class RustLibWire implements BaseWire {
   late final _frb_initialize_rust =
       _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
 
-  WireSyncReturnSse wire_example_primitive_list_type_u8_twin_sync_sse(
+  WireSyncRust2DartSse wire_example_primitive_list_type_u8_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
@@ -83,11 +83,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_u8_twin_sync_ssePtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
               ffi.Int32)>>('wire_example_primitive_list_type_u8_twin_sync_sse');
   late final _wire_example_primitive_list_type_u8_twin_sync_sse =
       _wire_example_primitive_list_type_u8_twin_sync_ssePtr.asFunction<
-          WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_minimal_adder(
     int port_,

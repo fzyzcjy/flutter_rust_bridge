@@ -60,7 +60,7 @@ pub fn wire_example_primitive_list_type_u8_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
