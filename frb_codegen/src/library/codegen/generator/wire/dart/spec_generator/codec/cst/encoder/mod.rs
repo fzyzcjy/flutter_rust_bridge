@@ -50,16 +50,10 @@ fn generate_encode_func(
                             .dart_api_type(),
                     );
 
-                    let (body, api_impl_body) = match target {
-                        TargetOrCommon::Common => (code, "".into()),
-                        TargetOrCommon::Io | TargetOrCommon::Wasm => {
-                            ("".into(), format!("@protected\n{code}"))
-                        }
-                    };
+                    let api_impl_body = format!("@protected\n{code}");
 
                     WireDartOutputCode {
                         api_impl_body,
-                        body,
                         ..Default::default()
                     }
                 })
