@@ -45,11 +45,11 @@ class GeneralizedFrbRustBinding {
       _binding.free_wire_sync_return_sse(val);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  PlatformU8Pointer rustVecU8New(int len) => _binding.rust_vec_u8_new(len);
+  ffi.Pointer<ffi.Uint8> rustVecU8New(int len) => _binding.rust_vec_u8_new(len);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  PlatformU8Pointer rustVecU8Resize(
-          PlatformU8Pointer ptr, int oldLen, int newLen) =>
+  ffi.Pointer<ffi.Uint8> rustVecU8Resize(
+          ffi.Pointer<ffi.Uint8> ptr, int oldLen, int newLen) =>
       _binding.rust_vec_u8_resize(ptr, oldLen, newLen);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
