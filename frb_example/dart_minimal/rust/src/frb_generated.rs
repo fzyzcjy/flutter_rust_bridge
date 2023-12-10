@@ -126,7 +126,6 @@ fn cst_decode_dart_fn_blahblahblah(
         <String>::sse_decode_single(message)
     }
 
-    // TODO manual tweak
     move |arg0: String, arg1: String| {
         flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
             arg0,
