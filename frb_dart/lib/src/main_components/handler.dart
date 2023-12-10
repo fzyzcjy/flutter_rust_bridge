@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/dart_opaque/dart_opaque.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
+import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/_io.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
@@ -58,7 +59,8 @@ class BaseHandler {
   }
 
   /// When Rust invokes a Dart function
-  void dartFnInvoke(List<dynamic> message) {
+  void dartFnInvoke(List<dynamic> message,
+      GeneralizedFrbRustBinding generalizedFrbRustBinding) {
     print('hi dartFnInvoke $message');
     final [closureDartOpaque, ...args] = message;
     final closureDartObject =

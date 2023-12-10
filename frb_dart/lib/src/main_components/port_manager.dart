@@ -14,7 +14,8 @@ class PortManager {
       GeneralizedFrbRustBinding generalizedFrbRustBinding, BaseHandler handler)
       : _dartOpaqueDropPortManager =
             DartOpaqueDropPortManager(generalizedFrbRustBinding),
-        _dartFnInvokePortManager = DartFnInvokePortManager(handler);
+        _dartFnInvokePortManager =
+            DartFnInvokePortManager(handler, generalizedFrbRustBinding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   NativePortType get dartOpaqueDropPort => _dartOpaqueDropPortManager.port;
