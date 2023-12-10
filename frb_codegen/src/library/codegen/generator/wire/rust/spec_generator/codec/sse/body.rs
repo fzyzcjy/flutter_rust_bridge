@@ -32,7 +32,8 @@ fn generate_encode_or_decode_for_type(
         ty.clone(),
         CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
     )
-    .generate(&Lang::RustLang(RustLang), mode);
+    .generate(&Lang::RustLang(RustLang), mode)
+    .trim();
 
     if let Some(body) = body {
         let code  = match mode {
