@@ -66,7 +66,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
         }
 
         #[cfg(wasm)]
-        Self(raw)
+        Self(js_sys::Uint8Array::new(&raw).to_vec())
     }
 
     fn into_raw_wire_sync(self) -> Self::WireSyncType {
@@ -77,7 +77,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
         }
 
         #[cfg(wasm)]
-        return self.0;
+        return <js_sys::Uint8Array>::from(self.0.as_slice()).into();
     }
 }
 
