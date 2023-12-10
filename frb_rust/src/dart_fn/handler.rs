@@ -24,7 +24,7 @@ impl DartFnHandler {
         }
     }
 
-    pub(crate) fn invoke(
+    pub(crate) async fn invoke(
         &self,
         dart_fn_and_args: Vec<DartAbi>,
         invoke_port: SendableMessagePortHandle,
@@ -36,7 +36,7 @@ impl DartFnHandler {
         let sender = Rust2DartSender::new(Channel::new(invoke_port));
         sender.send(dart_fn_and_args);
 
-        Box::pin(receiver)
+        receiver.await
     }
 
     pub(crate) fn handle_output(&self, call_id: i32) {
