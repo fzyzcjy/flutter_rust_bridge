@@ -24,4 +24,4 @@ Duration dcoDecodeDuration(int ts) {
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-PanicException sseDecodePanicError(dynamic raw) => throw UnimplementedError();
+PanicException sseDecodePanicError(dynamic raw) => TODO;
