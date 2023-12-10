@@ -17710,38 +17710,9 @@ pub extern "C" fn wire_return_dart_dynamic_twin_rust_async(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_dart_dynamic_twin_rust_async_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_return_dart_dynamic_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_return_dart_dynamic_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_return_dart_dynamic_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_return_dart_dynamic_twin_sync(
 ) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
     wire_return_dart_dynamic_twin_sync_impl()
-}
-
-#[no_mangle]
-pub extern "C" fn wire_return_dart_dynamic_twin_sync_sse(
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
-    wire_return_dart_dynamic_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]

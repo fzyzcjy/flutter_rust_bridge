@@ -51,10 +51,7 @@ import 'api/pseudo_manual/comment_twin_sse.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_sync_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_rust_async.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_sync_sse.dart';
 import 'api/pseudo_manual/dart_opaque_sync_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async_sse.dart';
@@ -1039,13 +1036,7 @@ abstract class RustLibApi extends BaseApi {
 
   Future<dynamic> returnDartDynamicTwinRustAsync({dynamic hint});
 
-  Future<dynamic> returnDartDynamicTwinRustAsyncSse({dynamic hint});
-
-  Future<dynamic> returnDartDynamicTwinSse({dynamic hint});
-
   dynamic returnDartDynamicTwinSync({dynamic hint});
-
-  dynamic returnDartDynamicTwinSyncSse({dynamic hint});
 
   String syncAcceptDartOpaqueTwinSse({required Object opaque, dynamic hint});
 
@@ -11830,59 +11821,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<dynamic> returnDartDynamicTwinRustAsyncSse({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-
-        final raw_ = serializer.intoRaw();
-        return wire.wire_return_dart_dynamic_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: _sse_decode_dartabi,
-        decodeErrorData: null,
-      ),
-      constMeta: kReturnDartDynamicTwinRustAsyncSseConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kReturnDartDynamicTwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "return_dart_dynamic_twin_rust_async_sse",
-        argNames: [],
-      );
-
-  @override
-  Future<dynamic> returnDartDynamicTwinSse({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-
-        final raw_ = serializer.intoRaw();
-        return wire.wire_return_dart_dynamic_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: _sse_decode_dartabi,
-        decodeErrorData: null,
-      ),
-      constMeta: kReturnDartDynamicTwinSseConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kReturnDartDynamicTwinSseConstMeta => const TaskConstMeta(
-        debugName: "return_dart_dynamic_twin_sse",
-        argNames: [],
-      );
-
-  @override
   dynamic returnDartDynamicTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -11901,33 +11839,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kReturnDartDynamicTwinSyncConstMeta => const TaskConstMeta(
         debugName: "return_dart_dynamic_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  dynamic returnDartDynamicTwinSyncSse({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-
-        final raw_ = serializer.intoRaw();
-        return wire.wire_return_dart_dynamic_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: _sse_decode_dartabi,
-        decodeErrorData: null,
-      ),
-      constMeta: kReturnDartDynamicTwinSyncSseConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kReturnDartDynamicTwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "return_dart_dynamic_twin_sync_sse",
         argNames: [],
       );
 

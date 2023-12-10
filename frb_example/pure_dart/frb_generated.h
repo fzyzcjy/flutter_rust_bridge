@@ -3760,21 +3760,7 @@ WireSyncReturnSse wire_function_with_comments_triple_slash_single_line_twin_sync
 
 void wire_return_dart_dynamic_twin_rust_async(int64_t port_);
 
-void wire_return_dart_dynamic_twin_rust_async_sse(int64_t port_,
-                                                  uint8_t *ptr_,
-                                                  int32_t rust_vec_len_,
-                                                  int32_t data_len_);
-
-void wire_return_dart_dynamic_twin_sse(int64_t port_,
-                                       uint8_t *ptr_,
-                                       int32_t rust_vec_len_,
-                                       int32_t data_len_);
-
 WireSyncReturnDco wire_return_dart_dynamic_twin_sync(void);
-
-WireSyncReturnSse wire_return_dart_dynamic_twin_sync_sse(uint8_t *ptr_,
-                                                         int32_t rust_vec_len_,
-                                                         int32_t data_len_);
 
 WireSyncReturnSse wire_sync_accept_dart_opaque_twin_sse(uint8_t *ptr_,
                                                         int32_t rust_vec_len_,
@@ -10797,10 +10783,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_rust_async_sse);
-    dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error_twin_rust_async_sse);

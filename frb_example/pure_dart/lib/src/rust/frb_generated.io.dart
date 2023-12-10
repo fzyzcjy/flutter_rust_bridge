@@ -51,10 +51,7 @@ import 'api/pseudo_manual/comment_twin_sse.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_sync_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_rust_async.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_sync_sse.dart';
 import 'api/pseudo_manual/dart_opaque_sync_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async_sse.dart';
@@ -14511,50 +14508,6 @@ class RustLibWire implements BaseWire {
       _wire_return_dart_dynamic_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
-  void wire_return_dart_dynamic_twin_rust_async_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_return_dart_dynamic_twin_rust_async_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_return_dart_dynamic_twin_rust_async_ssePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_return_dart_dynamic_twin_rust_async_sse');
-  late final _wire_return_dart_dynamic_twin_rust_async_sse =
-      _wire_return_dart_dynamic_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_return_dart_dynamic_twin_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_return_dart_dynamic_twin_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_return_dart_dynamic_twin_ssePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_return_dart_dynamic_twin_sse');
-  late final _wire_return_dart_dynamic_twin_sse =
-      _wire_return_dart_dynamic_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
   WireSyncReturnDco wire_return_dart_dynamic_twin_sync() {
     return _wire_return_dart_dynamic_twin_sync();
   }
@@ -14565,26 +14518,6 @@ class RustLibWire implements BaseWire {
   late final _wire_return_dart_dynamic_twin_sync =
       _wire_return_dart_dynamic_twin_syncPtr
           .asFunction<WireSyncReturnDco Function()>();
-
-  WireSyncReturnSse wire_return_dart_dynamic_twin_sync_sse(
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_return_dart_dynamic_twin_sync_sse(
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_return_dart_dynamic_twin_sync_ssePtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_return_dart_dynamic_twin_sync_sse');
-  late final _wire_return_dart_dynamic_twin_sync_sse =
-      _wire_return_dart_dynamic_twin_sync_ssePtr.asFunction<
-          WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncReturnSse wire_sync_accept_dart_opaque_twin_sse(
     ffi.Pointer<ffi.Uint8> ptr_,

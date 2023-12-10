@@ -51,10 +51,7 @@ import 'api/pseudo_manual/comment_twin_sse.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_sync_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_rust_async.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_sync_sse.dart';
 import 'api/pseudo_manual/dart_opaque_sync_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async_sse.dart';
@@ -6952,25 +6949,9 @@ class RustLibWire extends BaseWire {
   void wire_return_dart_dynamic_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_return_dart_dynamic_twin_rust_async(port_);
 
-  void wire_return_dart_dynamic_twin_rust_async_sse(int port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
-      wasmModule.wire_return_dart_dynamic_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_return_dart_dynamic_twin_sse(int port_, ffi.Pointer<ffi.Uint8> ptr_,
-          int rust_vec_len_, int data_len_) =>
-      wasmModule.wire_return_dart_dynamic_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_dart_dynamic_twin_sync() =>
           wasmModule.wire_return_dart_dynamic_twin_sync();
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
-      wire_return_dart_dynamic_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
-          wasmModule.wire_return_dart_dynamic_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_accept_dart_opaque_twin_sse(
@@ -13790,18 +13771,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_return_dart_dynamic_twin_rust_async(NativePortType port_);
 
-  external void wire_return_dart_dynamic_twin_rust_async_sse(
-      int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_return_dart_dynamic_twin_sse(
-      int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
-
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_return_dart_dynamic_twin_sync();
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
-      wire_return_dart_dynamic_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_accept_dart_opaque_twin_sse(
