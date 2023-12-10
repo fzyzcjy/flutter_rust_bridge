@@ -60,6 +60,6 @@ class BaseHandler {
   Future<void> dartFnInvoke(List<dynamic> message) async {
     final [closure, ...args] = message;
     final output = await Future.value(Function.apply(closure, args));
-    throw Exception("call rust");
+    TODO;
   }
 }
