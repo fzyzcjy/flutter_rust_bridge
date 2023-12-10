@@ -50,9 +50,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
         let inner_safe_ident = self.ir.inner.safe_ident();
 
         if self.ir.inner.is_array() {
-            Some(format!(
-                "wireObj = cst_encode_{inner_safe_ident}(this, apiObj);"
-            ))
+            Some(format!("wireObj = cst_encode_{inner_safe_ident}(apiObj);"))
         } else if !self.ir.inner.is_primitive()
             && !matches!(
                 *self.ir.inner,
