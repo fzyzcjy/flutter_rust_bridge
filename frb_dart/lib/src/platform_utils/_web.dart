@@ -42,11 +42,11 @@ extension ExtByteData on ByteData {
     final lo = value & 0xffffffff;
     final hi = value >> 32;
     if (endian == Endian.little) {
-      setInt32(byteOffset, lo);
-      setInt32(byteOffset + 4, hi);
+      setInt32(byteOffset, lo, endian);
+      setInt32(byteOffset + 4, hi, endian);
     } else if (endian == Endian.big) {
-      setInt32(byteOffset + 4, hi);
-      setInt32(byteOffset, lo);
+      setInt32(byteOffset + 4, hi, endian);
+      setInt32(byteOffset, lo, endian);
     } else {
       throw UnimplementedError("Unknown endian");
     }
