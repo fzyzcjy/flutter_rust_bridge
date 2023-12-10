@@ -5,6 +5,7 @@ use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
 use crate::platform_types::{message_port_to_handle, DartAbi};
 use crate::rust2dart::context::TaskRust2DartContext;
+use crate::DartOpaque;
 use std::future::Future;
 use std::panic::UnwindSafe;
 
@@ -66,7 +67,7 @@ pub trait Handler {
             + UnwindSafe,
         Rust2DartCodec: BaseCodec;
 
-    fn dart_fn_invoke(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<()>;
+    fn dart_fn_invoke(&self, dart_fn: DartOpaque, args: Vec<DartAbi>) -> DartFnFuture<()>;
 
     fn dart_fn_handle_output(&self, call_id: i32);
 }

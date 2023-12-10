@@ -94,10 +94,7 @@ fn wire_rust_call_dart_simple_impl(
                 use flutter_rust_bridge::IntoDart;
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
 
-                move || {
-                    FLUTTER_RUST_BRIDGE_HANDLER
-                        .dart_fn_invoke(vec![dart_opaque.clone().into_into_dart().into_dart()])
-                }
+                move || FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_invoke(dart_opaque.clone(), vec![])
             };
             move |context| async move {
                 transform_result_dco(

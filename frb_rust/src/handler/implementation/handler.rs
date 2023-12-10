@@ -17,6 +17,7 @@ use crate::platform_types::SendableMessagePortHandle;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
+use crate::DartOpaque;
 use futures::channel::oneshot::Sender;
 use log::warn;
 use std::collections::HashMap;
@@ -176,9 +177,9 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         )
     }
 
-    fn dart_fn_invoke(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<()> {
+    fn dart_fn_invoke(&self, dart_fn: DartOpaque, args: Vec<DartAbi>) -> DartFnFuture<()> {
         self.dart_fn_handler
-            .invoke(dart_fn_and_args, self.dart_fn_invoke_port())
+            .invoke(dart_fn, args, self.dart_fn_invoke_port())
     }
 
     fn dart_fn_handle_output(&self, call_id: i32) {
