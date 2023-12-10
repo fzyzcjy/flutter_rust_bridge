@@ -100,7 +100,6 @@ class ReadBuffer {
 
   /// Reads the given number of Uint16s from the buffer.
   Uint16List getUint16List(int length) {
-    _alignTo(2);
     final Uint16List list =
         data.buffer.asUint16List(data.offsetInBytes + _position, length);
     _position += 2 * length;
@@ -109,7 +108,6 @@ class ReadBuffer {
 
   /// Reads the given number of Uint32s from the buffer.
   Uint32List getUint32List(int length) {
-    _alignTo(4);
     final Uint32List list =
         data.buffer.asUint32List(data.offsetInBytes + _position, length);
     _position += 4 * length;
@@ -118,7 +116,6 @@ class ReadBuffer {
 
   /// Reads the given number of Uint64s from the buffer.
   Uint64List getUint64List(int length) {
-    _alignTo(8);
     final Uint64List list = Uint64List.fromList(
         data.buffer.asUint64List(data.offsetInBytes + _position, length));
     _position += 8 * length;
@@ -135,7 +132,6 @@ class ReadBuffer {
 
   /// Reads the given number of Int16s from the buffer.
   Int16List getInt16List(int length) {
-    _alignTo(2);
     final Int16List list =
         data.buffer.asInt16List(data.offsetInBytes + _position, length);
     _position += 2 * length;
@@ -144,7 +140,7 @@ class ReadBuffer {
 
   /// Reads the given number of Int32s from the buffer.
   Int32List getInt32List(int length) {
-    _alignTo(4);
+    // _alignTo(4);
     final Int32List list =
         data.buffer.asInt32List(data.offsetInBytes + _position, length);
     _position += 4 * length;
@@ -153,7 +149,7 @@ class ReadBuffer {
 
   /// Reads the given number of Int64s from the buffer.
   Int64List getInt64List(int length) {
-    _alignTo(8);
+    // _alignTo(8);
     final Int64List list = Int64List.fromList(
         data.buffer.asInt64List(data.offsetInBytes + _position, length));
     _position += 8 * length;
@@ -162,7 +158,7 @@ class ReadBuffer {
 
   /// Reads the given number of Float32s from the buffer
   Float32List getFloat32List(int length) {
-    _alignTo(4);
+    // _alignTo(4);
     final Float32List list =
         data.buffer.asFloat32List(data.offsetInBytes + _position, length);
     _position += 4 * length;
@@ -171,17 +167,18 @@ class ReadBuffer {
 
   /// Reads the given number of Float64s from the buffer.
   Float64List getFloat64List(int length) {
-    _alignTo(8);
+    // _alignTo(8);
     final Float64List list =
         data.buffer.asFloat64List(data.offsetInBytes + _position, length);
     _position += 8 * length;
     return list;
   }
 
-  void _alignTo(int alignment) {
-    final int mod = _position % alignment;
-    if (mod != 0) {
-      _position += alignment - mod;
-    }
-  }
+// NOTE MODIFIED try remove this to simplify rust side
+// void _alignTo(int alignment) {
+//   final int mod = _position % alignment;
+//   if (mod != 0) {
+//     _position += alignment - mod;
+//   }
+// }
 }
