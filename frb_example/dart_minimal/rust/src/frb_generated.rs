@@ -170,6 +170,10 @@ impl SseDecode for u8 {
     }
 }
 
+impl SseDecode for () {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {}
+}
+
 impl SseDecode for usize {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_u64::<NativeEndian>().unwrap() as _

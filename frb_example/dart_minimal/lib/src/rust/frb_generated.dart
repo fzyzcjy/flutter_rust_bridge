@@ -124,7 +124,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["callback"],
       );
 
+  String Function(String, String)
+      _dco_decode_DartFn_Inputs_String_String_Output_String(dynamic raw) {
+    return _dco_decode_DartOpaque(raw);
+  }
+
+  Object _dco_decode_DartOpaque(dynamic raw) {
+    return decodeDartOpaque(raw, generalizedFrbRustBinding);
+  }
+
+  String _dco_decode_String(dynamic raw) {
+    return raw as String;
+  }
+
   int _dco_decode_i_32(dynamic raw) {
+    return raw as int;
+  }
+
+  Uint8List _dco_decode_list_prim_u_8(dynamic raw) {
+    return raw as Uint8List;
+  }
+
+  int _dco_decode_u_8(dynamic raw) {
     return raw as int;
   }
 
@@ -132,11 +153,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return;
   }
 
+  int _dco_decode_usize(dynamic raw) {
+    return dcoDecodeI64OrU64(raw);
+  }
+
+  String Function(String, String)
+      _sse_decode_DartFn_Inputs_String_String_Output_String(
+          SseDeserializer deserializer) {
+    var inner = _sse_decode_DartOpaque(deserializer);
+    return inner;
+  }
+
+  Object _sse_decode_DartOpaque(SseDeserializer deserializer) {
+    var inner = _sse_decode_usize(deserializer);
+    return decodeDartOpaque(inner, generalizedFrbRustBinding);
+  }
+
+  String _sse_decode_String(SseDeserializer deserializer) {
+    var inner = _sse_decode_list_prim_u_8(deserializer);
+    return utf8.decoder.convert(inner);
+  }
+
   int _sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
+  Uint8List _sse_decode_list_prim_u_8(SseDeserializer deserializer) {
+    var len_ = _sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint8List(len_);
+  }
+
+  int _sse_decode_u_8(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint8();
+  }
+
   void _sse_decode_unit(SseDeserializer deserializer) {}
+
+  int _sse_decode_usize(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint64();
+  }
 
   @protected
   PlatformPointer cst_encode_DartFn_Inputs_String_String_Output_String(
@@ -159,6 +214,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   int cst_encode_u_8(int raw) {
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
     return raw;
   }
 
@@ -194,6 +254,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void _sse_encode_u_8(int self, SseSerializer serializer) {
     serializer.buffer.putUint8(self);
   }
+
+  void _sse_encode_unit(void self, SseSerializer serializer) {}
 
   void _sse_encode_usize(int self, SseSerializer serializer) {
     serializer.buffer.putUint64(self);
