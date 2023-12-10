@@ -3,6 +3,9 @@ import 'dart:typed_data';
 /// {@macro flutter_rust_bridge.internal}
 abstract interface class BaseGeneralizedUint8List<Raw> {
   /// {@macro flutter_rust_bridge.internal}
+  int get length;
+
+  /// {@macro flutter_rust_bridge.internal}
   void resize(int newLen);
 
   /// {@macro flutter_rust_bridge.internal}

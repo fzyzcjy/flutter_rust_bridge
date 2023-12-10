@@ -12,6 +12,9 @@ class AdaptedUint8List implements BaseGeneralizedUint8List<Uint8List> {
       : _inner = Uint8List(length);
 
   @override
+  int get length => _inner.length;
+
+  @override
   void operator []=(int index, int value) => _inner[index] = value;
 
   @override

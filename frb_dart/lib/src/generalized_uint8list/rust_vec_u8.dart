@@ -14,6 +14,7 @@ class RustVecU8 implements BaseGeneralizedUint8List<RustVecU8Raw> {
   ffi.Pointer<ffi.Uint8>? _ptr;
 
   /// {@macro flutter_rust_bridge.internal}
+  @override
   int get length => _length;
   int _length;
 
