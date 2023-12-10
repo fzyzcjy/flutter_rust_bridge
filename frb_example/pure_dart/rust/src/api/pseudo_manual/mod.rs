@@ -50,7 +50,6 @@ pub mod external_type_in_crate_twin_rust_async_sse;
 pub mod external_type_in_crate_twin_sse;
 pub mod external_type_in_crate_twin_sync;
 pub mod external_type_in_crate_twin_sync_sse;
-pub mod inside_macro_twin_sse;
 pub mod method_twin_rust_async;
 pub mod method_twin_rust_async_sse;
 pub mod method_twin_sse;
