@@ -44,7 +44,8 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
                     name: "ptr_".to_owned(),
                     rust_type: match target {
                         TargetOrCommon::Common | TargetOrCommon::Wasm => {
-                            "PlatformGeneralizedUint8ListPtr".to_owned()
+                            "flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr"
+                                .to_owned()
                         }
                         TargetOrCommon::Io => "*mut u8".to_owned(),
                     },
