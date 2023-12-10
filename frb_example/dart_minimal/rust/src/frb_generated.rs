@@ -100,16 +100,13 @@ fn wire_rust_call_dart_simple_impl(
                 // TODO manual tweak
                 move |arg0: String, arg1: String| {
                     async fn body(arg0: String, arg1: String, dart_opaque: DartOpaque) -> String {
+                        let args = vec![
+                            arg0.into_into_dart().into_dart(),
+                            arg1.into_into_dart().into_dart(),
+                        ];
                         let message = FLUTTER_RUST_BRIDGE_HANDLER
-                            .dart_fn_invoke(
-                                dart_opaque,
-                                vec![
-                                    arg0.into_into_dart().into_dart(),
-                                    arg1.into_into_dart().into_dart(),
-                                ],
-                            )
+                            .dart_fn_invoke(dart_opaque, args)
                             .await;
-
                         <String>::sse_decode_single(message)
                     }
 
