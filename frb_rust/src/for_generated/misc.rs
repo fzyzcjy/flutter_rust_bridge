@@ -3,8 +3,8 @@ use std::future::Future;
 use std::panic::UnwindSafe;
 
 // ref: futures `boxed()`
-pub fn convert_into_dart_fn_future<T: Future<Output = String> + Send + UnwindSafe + 'static>(
+pub fn convert_into_dart_fn_future<T: Future<Output = O> + Send + UnwindSafe + 'static, O>(
     raw: T,
-) -> DartFnFuture<String> {
+) -> DartFnFuture<O> {
     Box::pin(raw)
 }
