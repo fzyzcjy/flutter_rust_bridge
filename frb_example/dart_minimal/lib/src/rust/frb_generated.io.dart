@@ -18,6 +18,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
+  @protected
+  ffi.Pointer<wire_cst_the_enum> cst_encode_box_autoadd_the_enum(TheEnum raw) {
+    final ptr = wire.cst_new_box_autoadd_the_enum();
+    _cst_api_fill_to_wire_the_enum(raw, ptr.ref);
+    return ptr;
+  }
+
   void _cst_api_fill_to_wire_box_autoadd_the_enum(
       TheEnum apiObj, ffi.Pointer<wire_cst_the_enum> wireObj) {
     _cst_api_fill_to_wire_the_enum(apiObj, wireObj.ref);
@@ -34,8 +41,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 }
-
-typedef _ApiImplPlatformClass = RustLibApiImplPlatform;
 
 // Section: wire_class
 
@@ -183,14 +188,4 @@ final class wire_cst_the_enum extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<TheEnumKind> kind;
-}
-
-// Section: dart2rust
-
-@internal
-ffi.Pointer<wire_cst_the_enum> cst_encode_box_autoadd_the_enum(
-    _ApiImplPlatformClass apiImpl, TheEnum raw) {
-  final ptr = wire.cst_new_box_autoadd_the_enum();
-  _cst_api_fill_to_wire_the_enum(raw, ptr.ref);
-  return ptr;
 }
