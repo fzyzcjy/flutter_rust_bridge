@@ -61,7 +61,7 @@ impl GeneralizedStructGenerator {
         let decode_fields = (self.st.fields.iter().enumerate())
             .map(|(_index, field)| {
                 format!(
-                    "{} {} = {};\n",
+                    "{} var_{} = {};\n",
                     lang.var_decl(),
                     field.name.dart_style(),
                     lang.call_decode(&field.ty)
@@ -76,7 +76,7 @@ impl GeneralizedStructGenerator {
                     .map(|x| x.name.style(lang))
                     .collect_vec(),
                 &(self.st.fields.iter())
-                    .map(|x| x.name.dart_style().clone())
+                    .map(|x| format!("var_{}", x.name.dart_style().clone()))
                     .collect_vec(),
                 (matches!(lang, Lang::DartLang(_)) && dart_unconditionally_kwargs_ctor)
                     || self.st.is_fields_named,
