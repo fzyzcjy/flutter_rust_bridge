@@ -203,7 +203,8 @@ fn generate_boilerplate_dart_fn_deliver_output(target: TargetOrCommon) -> Extern
         params,
         return_type: None,
         body: format!(
-            "{HANDLER_NAME}.dart_fn_handle_output(call_id, ptr_, rust_vec_len_, data_len_)"
+            "let message = unsafe {{ flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) }};
+            {HANDLER_NAME}.dart_fn_handle_output(call_id, message)"
         ),
         target: target.try_into().unwrap(),
     }

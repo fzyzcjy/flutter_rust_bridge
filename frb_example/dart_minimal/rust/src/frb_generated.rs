@@ -15,7 +15,9 @@
 // Section: imports
 
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
-use flutter_rust_bridge::for_generated::{transform_result_dco, SseDeserializer};
+use flutter_rust_bridge::for_generated::{
+    transform_result_dco, Dart2RustMessageSse, SseDeserializer,
+};
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
@@ -59,10 +61,8 @@ fn wire_minimal_adder_impl(
         },
         move || {
             let mut deserializer = unsafe {
-                flutter_rust_bridge::for_generated::SseDeserializer::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
+                flutter_rust_bridge::for_generated::SseDeserializer::new(
+                    Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_),
                 )
             };
             let api_a = <i32>::sse_decode(&mut deserializer);
@@ -94,7 +94,7 @@ fn wire_rust_call_dart_simple_impl(
                 use flutter_rust_bridge::IntoDart;
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
 
-                move |arg0, arg1| async {
+                move |arg0: String, arg1: String| async {
                     // TODO manual tweak
                     let message = FLUTTER_RUST_BRIDGE_HANDLER
                         .dart_fn_invoke(
