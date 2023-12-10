@@ -1,5 +1,5 @@
 import 'package:flutter_rust_bridge/src/codec/base.dart';
-import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/_io.dart';
+import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class CstCodec<S, E extends Object> extends BaseCodec<S, E, dynamic> {

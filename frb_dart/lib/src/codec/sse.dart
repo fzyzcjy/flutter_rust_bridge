@@ -1,4 +1,3 @@
-import 'dart:ffi' as ffi;
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/codec/base.dart';
