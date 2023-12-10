@@ -177,8 +177,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         // NOTE This [catch_unwind] should also be put outside **ALL** code, see comments above for reasonk
         panic::catch_unwind(move || {
             todo!();
-            todo!();
-        })
+        });
     }
 }
 
