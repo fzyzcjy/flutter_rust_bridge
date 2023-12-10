@@ -17,8 +17,10 @@ pub use crate::handler::handler::{handler_initialize, FfiCallMode, TaskInfo};
 pub use crate::misc::manual_impl::*;
 pub use crate::misc::rust_arc::{rust_arc_decrement_strong_count, rust_arc_increment_strong_count};
 pub use crate::misc::rust_auto_opaque::rust_auto_opaque_encode;
-pub use crate::platform_types::DartAbi;
-pub use crate::platform_types::{MessagePort, WireSyncRust2DartDco, WireSyncRust2DartSse};
+pub use crate::platform_types::{
+    DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
+    WireSyncRust2DartSse,
+};
 pub use crate::rust2dart::action::Rust2DartAction;
 pub use crate::rust2dart::stream_sink::StreamSinkBase;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
