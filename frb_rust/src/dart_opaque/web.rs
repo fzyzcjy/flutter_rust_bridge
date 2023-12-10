@@ -8,6 +8,7 @@ use web_sys::BroadcastChannel;
 
 #[derive(Debug, Clone)]
 pub struct GeneralizedAutoDropDartPersistentHandle(wasm_bindgen::JsValue);
+/// cbindgen:ignore
 pub type GeneralizedDartHandle = wasm_bindgen::JsValue;
 
 impl GeneralizedAutoDropDartPersistentHandle {
