@@ -103,8 +103,9 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             //     return cst_encode_{}(builder.toBytes());",
             //     uint8list_safe_ident()
             // ))),
-            IrTypeDelegate::Backtrace => unimplemented!(),
-            IrTypeDelegate::AnyhowException => unimplemented!(),
+            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
+                Acc::distribute(Some(format!("throw UnimplementedError();")))
+            }
         }
     }
 
