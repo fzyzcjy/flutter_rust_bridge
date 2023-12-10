@@ -6374,109 +6374,109 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_use_msgid_twin_rust_async(port_, id);
 
   void wire_boxed_blob_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_boxed_blob_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_test_id_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_test_id_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_array_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_array_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_complex_array_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_complex_array_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_last_number_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_last_number_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_nested_id_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_nested_id_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_new_msgid_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_new_msgid_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_boxed_feed_id_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_boxed_feed_id_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_boxed_raw_feed_id_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_boxed_raw_feed_id_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_use_boxed_blob_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_use_boxed_blob_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_use_msgid_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_use_msgid_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_boxed_blob_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_boxed_blob_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_boxed_blob_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_func_test_id_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_func_test_id_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_test_id_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_get_array_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_get_array_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_array_twin_sse(port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_complex_array_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_complex_array_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_last_number_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_last_number_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_last_number_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_nested_id_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_nested_id_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_nested_id_twin_sse(port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_new_msgid_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_new_msgid_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_new_msgid_twin_sse(port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_boxed_feed_id_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_boxed_feed_id_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_boxed_raw_feed_id_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_boxed_raw_feed_id_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_use_boxed_blob_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_use_boxed_blob_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_use_boxed_blob_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_use_msgid_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_use_msgid_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_use_msgid_twin_sse(port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
@@ -6524,67 +6524,67 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_boxed_blob_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_boxed_blob_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_test_id_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_test_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_array_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_get_array_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_complex_array_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_get_complex_array_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_last_number_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_last_number_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_nested_id_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_nested_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_new_msgid_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_new_msgid_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_boxed_feed_id_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_boxed_feed_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_boxed_raw_feed_id_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_boxed_raw_feed_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_use_boxed_blob_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_use_boxed_blob_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_use_msgid_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_use_msgid_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -6604,22 +6604,22 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_next_user_id_twin_rust_async(port_, user_id);
 
   void wire_handle_customized_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_customized_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_next_user_id_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_next_user_id_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_customized_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_customized_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_next_user_id_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_next_user_id_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_next_user_id_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -6633,13 +6633,13 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_customized_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_customized_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_next_user_id_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_next_user_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -6655,32 +6655,32 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_benchmark_void_twin_rust_async(port_);
 
   void wire_benchmark_input_bytes_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_benchmark_input_bytes_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_output_bytes_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_benchmark_output_bytes_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_void_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_benchmark_void_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_input_bytes_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_benchmark_input_bytes_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_output_bytes_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_benchmark_output_bytes_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_benchmark_void_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_benchmark_void_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_benchmark_void_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -6698,19 +6698,19 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_benchmark_input_bytes_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_benchmark_input_bytes_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_benchmark_output_bytes_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_benchmark_output_bytes_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_benchmark_void_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_benchmark_void_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -6820,7 +6820,7 @@ class RustLibWire extends BaseWire {
 
   void wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -6829,7 +6829,7 @@ class RustLibWire extends BaseWire {
 
   void wire_StructWithCommentsTwinRustAsyncSse_static_method_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -6838,7 +6838,7 @@ class RustLibWire extends BaseWire {
 
   void wire_function_with_comments_slash_star_star_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -6847,7 +6847,7 @@ class RustLibWire extends BaseWire {
 
   void wire_function_with_comments_triple_slash_multi_line_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -6856,7 +6856,7 @@ class RustLibWire extends BaseWire {
 
   void wire_function_with_comments_triple_slash_single_line_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -6865,7 +6865,7 @@ class RustLibWire extends BaseWire {
 
   void wire_StructWithCommentsTwinSse_instance_method_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_StructWithCommentsTwinSse_instance_method_twin_sse(
@@ -6873,7 +6873,7 @@ class RustLibWire extends BaseWire {
 
   void wire_StructWithCommentsTwinSse_static_method_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_StructWithCommentsTwinSse_static_method_twin_sse(
@@ -6881,7 +6881,7 @@ class RustLibWire extends BaseWire {
 
   void wire_function_with_comments_slash_star_star_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_function_with_comments_slash_star_star_twin_sse(
@@ -6889,7 +6889,7 @@ class RustLibWire extends BaseWire {
 
   void wire_function_with_comments_triple_slash_multi_line_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_function_with_comments_triple_slash_multi_line_twin_sse(
@@ -6897,7 +6897,7 @@ class RustLibWire extends BaseWire {
 
   void wire_function_with_comments_triple_slash_single_line_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_function_with_comments_triple_slash_single_line_twin_sse(
@@ -6929,34 +6929,34 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_StructWithCommentsTwinSyncSse_instance_method_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_StructWithCommentsTwinSyncSse_instance_method_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_StructWithCommentsTwinSyncSse_static_method_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_StructWithCommentsTwinSyncSse_static_method_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_function_with_comments_slash_star_star_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_function_with_comments_slash_star_star_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_function_with_comments_triple_slash_multi_line_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_function_with_comments_triple_slash_multi_line_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_function_with_comments_triple_slash_single_line_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_function_with_comments_triple_slash_single_line_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
@@ -6970,31 +6970,31 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_accept_dart_opaque_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_sync_accept_dart_opaque_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_loopback_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_sync_loopback_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_option_dart_opaque_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_sync_option_dart_opaque_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_option_loopback_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_sync_option_loopback_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_unwrap_dart_opaque_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_unwrap_dart_opaque_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -7063,161 +7063,161 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_set_static_dart_opaque_twin_rust_async(port_, id, opaque);
 
   void wire_async_accept_dart_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_async_accept_dart_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_clone_dart_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_clone_dart_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_enum_dart_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_enum_dart_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_nested_dart_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_nested_dart_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_drop_static_dart_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_drop_static_dart_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_enum_dart_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_enum_dart_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_nested_dart_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_nested_dart_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_array_get_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_array_get_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_array_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_array_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_option_get_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_option_get_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_option_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_option_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_vec_get_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_vec_get_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_vec_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_vec_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_panic_unwrap_dart_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_panic_unwrap_dart_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_set_static_dart_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_set_static_dart_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_async_accept_dart_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_async_accept_dart_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_clone_dart_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_clone_dart_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_enum_dart_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_enum_dart_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_nested_dart_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_nested_dart_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_drop_static_dart_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_drop_static_dart_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_enum_dart_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_enum_dart_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_nested_dart_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_nested_dart_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_array_get_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_array_get_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_loop_back_array_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_loop_back_array_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_array_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_option_get_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_option_get_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_option_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_option_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_loop_back_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_loop_back_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_twin_sse(port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_loop_back_vec_get_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_vec_get_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_loop_back_vec_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_loop_back_vec_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_loop_back_vec_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_panic_unwrap_dart_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_panic_unwrap_dart_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_set_static_dart_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_set_static_dart_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -7288,97 +7288,97 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_async_accept_dart_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_async_accept_dart_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_clone_dart_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_clone_dart_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_enum_dart_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_create_enum_dart_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_nested_dart_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_create_nested_dart_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_drop_static_dart_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_drop_static_dart_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_enum_dart_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_get_enum_dart_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_nested_dart_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_get_nested_dart_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_array_get_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_loop_back_array_get_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_array_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_loop_back_array_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_option_get_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_loop_back_option_get_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_option_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_loop_back_option_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_loop_back_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_vec_get_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_loop_back_vec_get_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_vec_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_loop_back_vec_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_panic_unwrap_dart_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_panic_unwrap_dart_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_set_static_dart_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_set_static_dart_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -7418,92 +7418,92 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_print_note_twin_rust_async(port_, note);
 
   void wire_func_enum_simple_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_enum_simple_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_enum_with_item_mixed_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_enum_with_item_mixed_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_enum_with_item_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_enum_with_item_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_enum_with_item_tuple_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_enum_with_item_tuple_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_enum_parameter_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_enum_parameter_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_enum_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_enum_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_return_enum_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_return_enum_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_multiply_by_ten_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_multiply_by_ten_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_print_note_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_print_note_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_enum_simple_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_enum_simple_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_enum_with_item_mixed_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_enum_with_item_mixed_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_enum_with_item_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_enum_with_item_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_enum_with_item_tuple_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_enum_with_item_tuple_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_enum_parameter_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_enum_parameter_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_enum_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_enum_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_return_enum_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_return_enum_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_multiply_by_ten_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_multiply_by_ten_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_multiply_by_ten_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_print_note_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_print_note_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_print_note_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -7545,55 +7545,55 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_enum_simple_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_enum_simple_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_enum_with_item_mixed_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_enum_with_item_mixed_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_enum_with_item_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_enum_with_item_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_enum_with_item_tuple_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_enum_with_item_tuple_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_enum_parameter_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_enum_parameter_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_enum_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_enum_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_return_enum_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_return_enum_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_multiply_by_ten_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_multiply_by_ten_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_print_note_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_print_note_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -7613,44 +7613,44 @@ class RustLibWire extends BaseWire {
 
   void wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_close_event_listener_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_close_event_listener_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_event_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_event_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_register_event_listener_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_register_event_listener_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_EventTwinSse_as_string_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_EventTwinSse_as_string_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_close_event_listener_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_close_event_listener_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_create_event_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_create_event_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_event_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_register_event_listener_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_register_event_listener_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -7781,7 +7781,7 @@ class RustLibWire extends BaseWire {
 
   void wire_CustomStructTwinRustAsyncSse_new_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_CustomStructTwinRustAsyncSse_new_twin_rust_async_sse(
@@ -7789,7 +7789,7 @@ class RustLibWire extends BaseWire {
 
   void wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -7798,7 +7798,7 @@ class RustLibWire extends BaseWire {
 
   void wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_ok_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -7807,7 +7807,7 @@ class RustLibWire extends BaseWire {
 
   void wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -7816,7 +7816,7 @@ class RustLibWire extends BaseWire {
 
   void wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_ok_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -7825,7 +7825,7 @@ class RustLibWire extends BaseWire {
 
   void wire_SomeStructTwinRustAsyncSse_new_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_SomeStructTwinRustAsyncSse_new_twin_rust_async_sse(
@@ -7833,7 +7833,7 @@ class RustLibWire extends BaseWire {
 
   void wire_SomeStructTwinRustAsyncSse_non_static_return_err_custom_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -7842,7 +7842,7 @@ class RustLibWire extends BaseWire {
 
   void wire_SomeStructTwinRustAsyncSse_non_static_return_ok_custom_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -7851,7 +7851,7 @@ class RustLibWire extends BaseWire {
 
   void wire_SomeStructTwinRustAsyncSse_static_return_err_custom_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -7860,7 +7860,7 @@ class RustLibWire extends BaseWire {
 
   void wire_SomeStructTwinRustAsyncSse_static_return_ok_custom_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -7868,13 +7868,13 @@ class RustLibWire extends BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_custom_enum_error_panic_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_custom_enum_error_panic_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_custom_enum_error_return_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_custom_enum_error_return_error_twin_rust_async_sse(
@@ -7882,7 +7882,7 @@ class RustLibWire extends BaseWire {
 
   void wire_custom_enum_error_return_ok_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_custom_enum_error_return_ok_twin_rust_async_sse(
@@ -7890,7 +7890,7 @@ class RustLibWire extends BaseWire {
 
   void wire_custom_nested_error_return_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_custom_nested_error_return_error_twin_rust_async_sse(
@@ -7898,35 +7898,35 @@ class RustLibWire extends BaseWire {
 
   void wire_custom_struct_error_return_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_custom_struct_error_return_error_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_return_error_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_return_error_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_type_fallible_panic_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_type_fallible_panic_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_type_infallible_panic_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_type_infallible_panic_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_panic_with_custom_result_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_panic_with_custom_result_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_custom_nested_error_1_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_return_custom_nested_error_1_twin_rust_async_sse(
@@ -7934,7 +7934,7 @@ class RustLibWire extends BaseWire {
 
   void wire_return_custom_nested_error_1_variant1_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_return_custom_nested_error_1_variant1_twin_rust_async_sse(
@@ -7942,55 +7942,55 @@ class RustLibWire extends BaseWire {
 
   void wire_return_custom_nested_error_2_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_return_custom_nested_error_2_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_custom_struct_error_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_custom_struct_error_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_custom_struct_ok_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_custom_struct_ok_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_err_custom_error_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_err_custom_error_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_error_variant_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_error_variant_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_ok_custom_error_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_ok_custom_error_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_stream_sink_throw_anyhow_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_stream_sink_throw_anyhow_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_throw_anyhow_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_throw_anyhow_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_CustomStructTwinSse_new_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_CustomStructTwinSse_new_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_CustomStructTwinSse_nonstatic_return_custom_struct_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -7999,7 +7999,7 @@ class RustLibWire extends BaseWire {
 
   void wire_CustomStructTwinSse_nonstatic_return_custom_struct_ok_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8008,7 +8008,7 @@ class RustLibWire extends BaseWire {
 
   void wire_CustomStructTwinSse_static_return_custom_struct_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8017,7 +8017,7 @@ class RustLibWire extends BaseWire {
 
   void wire_CustomStructTwinSse_static_return_custom_struct_ok_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8025,13 +8025,13 @@ class RustLibWire extends BaseWire {
               port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_SomeStructTwinSse_new_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_SomeStructTwinSse_new_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_SomeStructTwinSse_non_static_return_err_custom_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8040,7 +8040,7 @@ class RustLibWire extends BaseWire {
 
   void wire_SomeStructTwinSse_non_static_return_ok_custom_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8049,7 +8049,7 @@ class RustLibWire extends BaseWire {
 
   void wire_SomeStructTwinSse_static_return_err_custom_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_SomeStructTwinSse_static_return_err_custom_error_twin_sse(
@@ -8057,104 +8057,104 @@ class RustLibWire extends BaseWire {
 
   void wire_SomeStructTwinSse_static_return_ok_custom_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_SomeStructTwinSse_static_return_ok_custom_error_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_custom_enum_error_panic_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_custom_enum_error_panic_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_custom_enum_error_return_error_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_custom_enum_error_return_error_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_custom_enum_error_return_ok_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_custom_enum_error_return_ok_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_custom_nested_error_return_error_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_custom_nested_error_return_error_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_custom_struct_error_return_error_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_custom_struct_error_return_error_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_return_error_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_return_error_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_type_fallible_panic_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_type_fallible_panic_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_type_infallible_panic_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_type_infallible_panic_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_panic_with_custom_result_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_panic_with_custom_result_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_custom_nested_error_1_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_custom_nested_error_1_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_custom_nested_error_1_variant1_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_custom_nested_error_1_variant1_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_custom_nested_error_2_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_custom_nested_error_2_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_custom_struct_error_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_custom_struct_error_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_custom_struct_ok_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_custom_struct_ok_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_err_custom_error_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_err_custom_error_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_error_variant_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_error_variant_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_return_ok_custom_error_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_return_ok_custom_error_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_stream_sink_throw_anyhow_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_stream_sink_throw_anyhow_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_throw_anyhow_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_throw_anyhow_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_throw_anyhow_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -8290,182 +8290,182 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_new_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_CustomStructTwinSyncSse_new_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_ok_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_ok_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_static_return_custom_struct_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_CustomStructTwinSyncSse_static_return_custom_struct_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_static_return_custom_struct_ok_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_CustomStructTwinSyncSse_static_return_custom_struct_ok_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_new_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_SomeStructTwinSyncSse_new_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_non_static_return_err_custom_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_SomeStructTwinSyncSse_non_static_return_err_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_non_static_return_ok_custom_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_SomeStructTwinSyncSse_non_static_return_ok_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_static_return_err_custom_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_SomeStructTwinSyncSse_static_return_err_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_static_return_ok_custom_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_SomeStructTwinSyncSse_static_return_ok_custom_error_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_enum_error_panic_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_custom_enum_error_panic_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_enum_error_return_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_custom_enum_error_return_error_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_enum_error_return_ok_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_custom_enum_error_return_ok_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_nested_error_return_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_custom_nested_error_return_error_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_struct_error_return_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_custom_struct_error_return_error_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_return_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_return_error_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_type_fallible_panic_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_type_fallible_panic_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_type_infallible_panic_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_type_infallible_panic_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_panic_with_custom_result_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_panic_with_custom_result_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_nested_error_1_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_custom_nested_error_1_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_nested_error_1_variant1_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_custom_nested_error_1_variant1_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_nested_error_2_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_custom_nested_error_2_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_struct_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_custom_struct_error_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_struct_ok_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_custom_struct_ok_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_err_custom_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_err_custom_error_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_error_variant_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_error_variant_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_ok_custom_error_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_ok_custom_error_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_stream_sink_throw_anyhow_twin_sync_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_stream_sink_throw_anyhow_twin_sync_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_throw_anyhow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_throw_anyhow_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -8484,42 +8484,42 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_use_imported_struct_twin_rust_async(port_, my_struct);
 
   void wire_call_new_module_system_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_call_new_module_system_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_call_old_module_system_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_call_old_module_system_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_use_imported_enum_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_use_imported_enum_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_use_imported_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_use_imported_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_call_new_module_system_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_call_new_module_system_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_call_old_module_system_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_call_old_module_system_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_use_imported_enum_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_use_imported_enum_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_use_imported_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_use_imported_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -8541,25 +8541,25 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_call_new_module_system_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_call_new_module_system_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_call_old_module_system_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_call_old_module_system_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_use_imported_enum_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_use_imported_enum_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_use_imported_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_use_imported_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -8617,7 +8617,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinRustAsyncSse_concatenate_static_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8626,7 +8626,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinRustAsyncSse_concatenate_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8635,7 +8635,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_single_arg_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8644,7 +8644,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8653,7 +8653,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_at_1_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8662,7 +8662,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8671,7 +8671,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse(
@@ -8679,38 +8679,38 @@ class RustLibWire extends BaseWire {
 
   void wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_sum_array_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_sum_array_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_sum_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_sum_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_ConcatenateWithTwinSse_concatenate_static_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_ConcatenateWithTwinSse_concatenate_static_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_ConcatenateWithTwinSse_concatenate_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_ConcatenateWithTwinSse_concatenate_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_single_arg_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8719,7 +8719,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8728,7 +8728,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinSse_handle_some_stream_sink_at_1_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8737,29 +8737,29 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinSse_handle_some_stream_sink_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_ConcatenateWithTwinSse_handle_some_stream_sink_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_ConcatenateWithTwinSse_new_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_ConcatenateWithTwinSse_new_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_SumWithTwinSse_sum_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_SumWithTwinSse_sum_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_get_sum_array_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_get_sum_array_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_sum_array_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_get_sum_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_get_sum_struct_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_sum_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -8816,20 +8816,20 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_ConcatenateWithTwinSyncSse_concatenate_static_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_ConcatenateWithTwinSyncSse_concatenate_static_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_single_arg_twin_sync_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8838,7 +8838,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_twin_sync_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8847,7 +8847,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_at_1_twin_sync_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8856,7 +8856,7 @@ class RustLibWire extends BaseWire {
 
   void wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_twin_sync_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -8865,25 +8865,25 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SumWithTwinSyncSse_sum_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_SumWithTwinSyncSse_sum_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_sum_array_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_get_sum_array_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_sum_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_get_sum_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -8959,68 +8959,68 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_test_raw_string_mirrored_twin_rust_async(port_);
 
   void wire_app_settings_stream_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_app_settings_stream_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_app_settings_vec_stream_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_app_settings_vec_stream_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_first_number_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_first_number_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_first_sequence_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_first_sequence_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_app_settings_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_app_settings_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_fallible_app_settings_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_fallible_app_settings_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_message_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_message_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_is_app_embedded_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_is_app_embedded_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_mirror_struct_stream_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_mirror_struct_stream_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_mirror_tuple_stream_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_mirror_tuple_stream_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_repeat_number_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_repeat_number_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_repeat_sequence_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_repeat_sequence_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_contains_mirrored_sub_struct_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_test_contains_mirrored_sub_struct_twin_rust_async_sse(
@@ -9028,7 +9028,7 @@ class RustLibWire extends BaseWire {
 
   void wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse(
@@ -9036,7 +9036,7 @@ class RustLibWire extends BaseWire {
 
   void wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse(
@@ -9044,7 +9044,7 @@ class RustLibWire extends BaseWire {
 
   void wire_test_list_of_raw_nested_string_mirrored_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -9053,7 +9053,7 @@ class RustLibWire extends BaseWire {
 
   void wire_test_nested_raw_string_mirrored_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_test_nested_raw_string_mirrored_twin_rust_async_sse(
@@ -9061,112 +9061,112 @@ class RustLibWire extends BaseWire {
 
   void wire_test_raw_string_enum_mirrored_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_test_raw_string_enum_mirrored_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_raw_string_mirrored_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_raw_string_mirrored_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_app_settings_stream_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_app_settings_stream_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_app_settings_vec_stream_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_app_settings_vec_stream_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_first_number_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_first_number_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_first_number_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_first_sequence_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_first_sequence_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_first_sequence_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_app_settings_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_app_settings_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_get_fallible_app_settings_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_fallible_app_settings_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_get_message_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_get_message_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_get_message_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_is_app_embedded_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_is_app_embedded_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_is_app_embedded_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_mirror_struct_stream_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_mirror_struct_stream_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_mirror_tuple_stream_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_mirror_tuple_stream_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_repeat_number_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_repeat_number_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_repeat_number_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_repeat_sequence_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_repeat_sequence_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_repeat_sequence_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_contains_mirrored_sub_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_contains_mirrored_sub_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_fallible_of_raw_string_mirrored_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_fallible_of_raw_string_mirrored_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_list_of_nested_enums_mirrored_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_list_of_nested_enums_mirrored_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_list_of_raw_nested_string_mirrored_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_test_list_of_raw_nested_string_mirrored_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_nested_raw_string_mirrored_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_nested_raw_string_mirrored_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_raw_string_enum_mirrored_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_raw_string_enum_mirrored_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_raw_string_mirrored_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_raw_string_mirrored_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -9242,112 +9242,112 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_test_raw_string_mirrored_twin_sync();
 
   void wire_app_settings_stream_twin_sync_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_app_settings_stream_twin_sync_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_app_settings_vec_stream_twin_sync_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_app_settings_vec_stream_twin_sync_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_first_number_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_first_number_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_first_sequence_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_first_sequence_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_app_settings_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_get_app_settings_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_fallible_app_settings_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_get_fallible_app_settings_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_message_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_get_message_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_is_app_embedded_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_is_app_embedded_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_mirror_struct_stream_twin_sync_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_mirror_struct_stream_twin_sync_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_mirror_tuple_stream_twin_sync_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_mirror_tuple_stream_twin_sync_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_repeat_number_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_repeat_number_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_repeat_sequence_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_repeat_sequence_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_contains_mirrored_sub_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_contains_mirrored_sub_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_fallible_of_raw_string_mirrored_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_fallible_of_raw_string_mirrored_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_list_of_nested_enums_mirrored_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_list_of_nested_enums_mirrored_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_list_of_raw_nested_string_mirrored_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_list_of_raw_nested_string_mirrored_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_nested_raw_string_mirrored_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_nested_raw_string_mirrored_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_raw_string_enum_mirrored_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_raw_string_enum_mirrored_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_raw_string_mirrored_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_raw_string_mirrored_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -9385,92 +9385,92 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_test_struct_with_enum_twin_rust_async(port_, se);
 
   void wire_handle_big_buffers_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_big_buffers_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_complex_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_complex_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_nested_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_nested_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_string_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_string_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_vec_u8_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_vec_u8_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_list_of_primitive_enums_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_list_of_primitive_enums_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_abc_enum_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_abc_enum_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_struct_with_enum_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_struct_with_enum_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_big_buffers_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_big_buffers_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_complex_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_complex_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_nested_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_nested_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_handle_string_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_handle_string_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_string_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_handle_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_handle_struct_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_handle_vec_u8_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_handle_vec_u8_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_vec_u8_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_list_of_primitive_enums_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_list_of_primitive_enums_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_test_abc_enum_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_test_abc_enum_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_abc_enum_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_struct_with_enum_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_struct_with_enum_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -9512,55 +9512,55 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_big_buffers_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_big_buffers_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_complex_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_complex_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_nested_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_nested_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_string_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_string_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_vec_u8_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_vec_u8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_list_of_primitive_enums_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_list_of_primitive_enums_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_abc_enum_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_abc_enum_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_struct_with_enum_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_struct_with_enum_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -9583,52 +9583,52 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_handle_string_list_twin_rust_async(port_, names);
 
   void wire_empty_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_empty_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_return_unit_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_return_unit_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_string_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_string_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_list_of_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_list_of_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_string_list_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_string_list_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_empty_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_empty_struct_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_empty_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_return_unit_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_return_unit_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_func_string_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_func_string_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_string_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_list_of_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_list_of_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_string_list_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_string_list_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -9654,31 +9654,31 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_empty_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_empty_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_return_unit_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_return_unit_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_string_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_string_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_list_of_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_list_of_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_string_list_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_string_list_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -9687,12 +9687,12 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_handle_newtype_twin_rust_async(port_, arg);
 
   void wire_handle_newtype_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_newtype_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_handle_newtype_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_handle_newtype_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_newtype_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -9702,7 +9702,7 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_newtype_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_newtype_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -9767,12 +9767,12 @@ class RustLibWire extends BaseWire {
           port_, my_i32, my_i64, my_f64, my_bool);
 
   void wire_primitive_optional_types_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_primitive_optional_types_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_primitive_optional_types_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_primitive_optional_types_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -9784,7 +9784,7 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_primitive_optional_types_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_primitive_optional_types_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -9845,7 +9845,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_bool_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_bool_twin_rust_async_sse(
@@ -9853,7 +9853,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_f32_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_f32_twin_rust_async_sse(
@@ -9861,7 +9861,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_f64_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_f64_twin_rust_async_sse(
@@ -9869,7 +9869,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_i16_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_i16_twin_rust_async_sse(
@@ -9877,7 +9877,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_i32_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_i32_twin_rust_async_sse(
@@ -9885,7 +9885,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_i64_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_i64_twin_rust_async_sse(
@@ -9893,7 +9893,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_i8_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_i8_twin_rust_async_sse(
@@ -9901,7 +9901,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_u16_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_u16_twin_rust_async_sse(
@@ -9909,7 +9909,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_u32_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_u32_twin_rust_async_sse(
@@ -9917,7 +9917,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_u64_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_u64_twin_rust_async_sse(
@@ -9925,64 +9925,64 @@ class RustLibWire extends BaseWire {
 
   void wire_example_optional_primitive_type_u8_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_u8_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_bool_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_bool_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_f32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_f32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_f64_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_f64_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_i16_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_i16_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_i32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_i32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_i64_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_i64_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_i8_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_i8_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_u16_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_u16_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_u32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_u32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_u64_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_u64_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_optional_primitive_type_u8_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_optional_primitive_type_u8_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -10032,67 +10032,67 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_bool_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_bool_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_f32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_f32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_f64_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_f64_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_i16_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_i16_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_i32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_i32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_i64_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_i64_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_i8_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_i8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_u16_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_u16_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_u32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_u32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_u64_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_u64_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_u8_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_optional_primitive_type_u8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -10132,7 +10132,7 @@ class RustLibWire extends BaseWire {
 
   void wire_handle_increment_boxed_optional_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_handle_increment_boxed_optional_twin_rust_async_sse(
@@ -10140,59 +10140,59 @@ class RustLibWire extends BaseWire {
 
   void wire_handle_option_box_arguments_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_handle_option_box_arguments_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_optional_increment_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_optional_increment_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_optional_return_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_optional_return_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_optional_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_optional_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_vec_of_opts_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_vec_of_opts_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_increment_boxed_optional_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_increment_boxed_optional_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_option_box_arguments_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_option_box_arguments_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_optional_increment_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_optional_increment_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_optional_return_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_optional_return_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_optional_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_optional_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_vec_of_opts_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_vec_of_opts_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -10230,37 +10230,37 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_increment_boxed_optional_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_increment_boxed_optional_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_option_box_arguments_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_option_box_arguments_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_optional_increment_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_optional_increment_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_optional_return_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_optional_return_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_optional_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_optional_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_vec_of_opts_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_vec_of_opts_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -10357,12 +10357,12 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_handle_vec_of_primitive_twin_rust_async(port_, n);
 
   void wire_handle_vec_of_primitive_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_vec_of_primitive_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_vec_of_primitive_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_vec_of_primitive_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -10372,7 +10372,7 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_vec_of_primitive_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_vec_of_primitive_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -10433,7 +10433,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_bool_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_bool_twin_rust_async_sse(
@@ -10441,7 +10441,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_f32_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_f32_twin_rust_async_sse(
@@ -10449,7 +10449,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_f64_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_f64_twin_rust_async_sse(
@@ -10457,7 +10457,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_i16_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_i16_twin_rust_async_sse(
@@ -10465,7 +10465,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_i32_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_i32_twin_rust_async_sse(
@@ -10473,7 +10473,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_i64_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_i64_twin_rust_async_sse(
@@ -10481,7 +10481,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_i8_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_i8_twin_rust_async_sse(
@@ -10489,7 +10489,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_u16_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_u16_twin_rust_async_sse(
@@ -10497,7 +10497,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_u32_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_u32_twin_rust_async_sse(
@@ -10505,7 +10505,7 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_u64_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_u64_twin_rust_async_sse(
@@ -10513,64 +10513,64 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_list_type_u8_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_list_type_u8_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_bool_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_bool_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_f32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_f32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_f64_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_f64_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_i16_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_i16_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_i32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_i32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_i64_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_i64_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_i8_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_i8_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_u16_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_u16_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_u32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_u32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_u64_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_u64_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_list_type_u8_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_list_type_u8_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -10622,67 +10622,67 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_bool_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_bool_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_f32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_f32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_f64_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_f64_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_i16_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_i16_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_i32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_i32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_i64_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_i64_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_i8_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_i8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_u16_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_u16_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_u32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_u32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_u64_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_u64_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_u8_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_list_type_u8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -10695,22 +10695,22 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_primitive_u32_twin_rust_async(port_, my_u32);
 
   void wire_primitive_types_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_primitive_types_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_primitive_u32_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_primitive_u32_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_primitive_types_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_primitive_types_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_primitive_types_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_primitive_u32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_primitive_u32_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_primitive_u32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -10726,13 +10726,13 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_primitive_types_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_primitive_types_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_primitive_u32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_primitive_u32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -10782,114 +10782,114 @@ class RustLibWire extends BaseWire {
 
   void wire_example_primitive_type_bool_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_example_primitive_type_bool_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_f32_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_f32_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_f64_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_f64_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_i16_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_i16_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_i32_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_i32_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_i64_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_i64_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_i8_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_i8_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_u16_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_u16_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_u32_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_u32_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_u64_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_u64_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_u8_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_u8_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_bool_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_bool_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_f32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_f32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_f64_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_f64_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_i16_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_i16_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_i32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_i32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_i64_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_i64_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_i8_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_i8_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_u16_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_u16_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_u32_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_u32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_u64_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_u64_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_u8_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_example_primitive_type_u8_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -10939,67 +10939,67 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_bool_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_bool_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_f32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_f32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_f64_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_f64_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_i16_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_i16_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_i32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_i32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_i64_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_i64_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_i8_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_i8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_u16_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_u16_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_u32_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_u32_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_u64_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_u64_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_u8_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_example_primitive_type_u8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -11013,7 +11013,7 @@ class RustLibWire extends BaseWire {
 
   void wire_test_more_than_just_one_raw_string_struct_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -11022,7 +11022,7 @@ class RustLibWire extends BaseWire {
 
   void wire_test_raw_string_item_struct_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_test_raw_string_item_struct_twin_rust_async_sse(
@@ -11030,14 +11030,14 @@ class RustLibWire extends BaseWire {
 
   void wire_test_more_than_just_one_raw_string_struct_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_test_more_than_just_one_raw_string_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_raw_string_item_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_raw_string_item_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -11051,20 +11051,20 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_more_than_just_one_raw_string_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_test_more_than_just_one_raw_string_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_raw_string_item_struct_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_raw_string_item_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse(
@@ -11072,7 +11072,7 @@ class RustLibWire extends BaseWire {
 
   void wire_NonCloneSimpleTwinSse_instance_method_arg_mut_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -11081,7 +11081,7 @@ class RustLibWire extends BaseWire {
 
   void wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse(
@@ -11089,25 +11089,25 @@ class RustLibWire extends BaseWire {
 
   void wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_NonCloneSimpleTwinSse_new_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_NonCloneSimpleTwinSse_new_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(
@@ -11115,7 +11115,7 @@ class RustLibWire extends BaseWire {
 
   void wire_NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -11124,7 +11124,7 @@ class RustLibWire extends BaseWire {
 
   void wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse(
@@ -11132,71 +11132,71 @@ class RustLibWire extends BaseWire {
 
   void wire_NonCloneSimpleTwinSse_static_method_return_own_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_NonCloneSimpleTwinSse_static_method_return_own_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_arg_borrow_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_arg_borrow_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_arg_mut_borrow_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_arg_mut_borrow_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_arg_own_and_return_own_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_arg_own_and_return_own_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_arg_own_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_arg_own_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_callable_arg_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_callable_arg_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_callable_return_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_callable_return_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_plus_sign_arg_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_plus_sign_arg_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_plus_sign_return_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_plus_sign_return_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_return_own_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_return_own_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -11205,7 +11205,7 @@ class RustLibWire extends BaseWire {
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -11214,7 +11214,7 @@ class RustLibWire extends BaseWire {
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -11223,7 +11223,7 @@ class RustLibWire extends BaseWire {
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule
@@ -11232,7 +11232,7 @@ class RustLibWire extends BaseWire {
 
   void wire_rust_auto_opaque_trait_object_arg_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_trait_object_arg_borrow_twin_sse(
@@ -11240,20 +11240,20 @@ class RustLibWire extends BaseWire {
 
   void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_trait_object_arg_own_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_trait_object_arg_own_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_trait_object_return_own_one_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_trait_object_return_own_one_twin_sse(
@@ -11261,14 +11261,14 @@ class RustLibWire extends BaseWire {
 
   void wire_rust_auto_opaque_trait_object_return_own_two_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_trait_object_return_own_two_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_two_args_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_rust_auto_opaque_two_args_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -11438,234 +11438,234 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_arg_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_arg_borrow_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_arg_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_arg_own_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_callable_arg_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_callable_arg_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_callable_return_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_callable_return_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_plus_sign_return_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_plus_sign_return_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_return_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_return_own_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule
               .wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_two_args_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_rust_auto_opaque_two_args_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_frb_sync_generator_test_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_frb_sync_generator_test_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_create_non_clone_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_sync_create_non_clone_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_create_opaque_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_sync_create_opaque_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_create_sync_opaque_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_sync_create_sync_opaque_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_option_rust_opaque_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_sync_option_rust_opaque_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_run_opaque_twin_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_sync_run_opaque_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -11725,162 +11725,162 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_unwrap_rust_opaque_twin_rust_async(port_, opaque);
 
   void wire_create_array_opaque_enum_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_array_opaque_enum_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_nested_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_nested_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_option_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_option_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_sync_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_sync_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_frb_generator_test_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_frb_generator_test_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_opaque_array_run_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_opaque_array_run_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_opaque_array_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_opaque_array_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_opaque_vec_run_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_opaque_vec_run_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_opaque_vec_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_opaque_vec_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_run_enum_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_enum_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_run_nested_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_nested_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_run_non_clone_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_non_clone_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_run_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_run_opaque_with_delay_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_opaque_with_delay_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_unwrap_rust_opaque_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_unwrap_rust_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_array_opaque_enum_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_array_opaque_enum_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_nested_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_nested_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_create_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_create_opaque_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_option_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_option_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_create_sync_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_create_sync_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_frb_generator_test_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_frb_generator_test_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_opaque_array_run_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_opaque_array_run_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_opaque_array_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_opaque_array_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_opaque_array_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_opaque_vec_run_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_opaque_vec_run_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_opaque_vec_run_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_opaque_vec_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_opaque_vec_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_opaque_vec_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_run_enum_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_run_enum_opaque_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_enum_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_run_nested_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_nested_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_run_non_clone_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_run_non_clone_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_non_clone_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_run_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_run_opaque_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_run_opaque_with_delay_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_run_opaque_with_delay_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_unwrap_rust_opaque_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_unwrap_rust_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -11948,97 +11948,97 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_array_opaque_enum_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_create_array_opaque_enum_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_nested_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_create_nested_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_create_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_option_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_create_option_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_sync_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_create_sync_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_frb_generator_test_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_frb_generator_test_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_opaque_array_run_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_opaque_array_run_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_opaque_array_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_opaque_array_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_opaque_vec_run_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_opaque_vec_run_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_opaque_vec_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_opaque_vec_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_enum_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_run_enum_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_nested_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_run_nested_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_non_clone_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_run_non_clone_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_run_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_opaque_with_delay_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_run_opaque_with_delay_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_unwrap_rust_opaque_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_unwrap_rust_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -12046,12 +12046,12 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_simple_adder_twin_rust_async(port_, a, b);
 
   void wire_simple_adder_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_simple_adder_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_simple_adder_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_simple_adder_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_simple_adder_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -12061,12 +12061,12 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_simple_adder_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_simple_adder_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_func_stream_realistic_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_stream_realistic_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -12097,75 +12097,75 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_handle_stream_sink_at_3_twin_rust_async(port_, key, max);
 
   void wire_func_stream_return_error_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_stream_return_error_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_stream_return_panic_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_stream_return_panic_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_stream_sink_arg_position_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_func_stream_sink_arg_position_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_stream_of_struct_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_stream_of_struct_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_stream_sink_at_1_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_stream_sink_at_1_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_stream_sink_at_2_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_stream_sink_at_2_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_stream_sink_at_3_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_stream_sink_at_3_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_stream_return_error_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_stream_return_error_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_stream_return_panic_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_stream_return_panic_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_stream_sink_arg_position_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_stream_sink_arg_position_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_stream_of_struct_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_stream_of_struct_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_stream_sink_at_1_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_stream_sink_at_1_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_stream_sink_at_2_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_stream_sink_at_2_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_stream_sink_at_3_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_stream_sink_at_3_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -12192,18 +12192,18 @@ class RustLibWire extends BaseWire {
           port_, arg);
 
   void wire_func_struct_with_one_field_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_struct_with_one_field_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_struct_with_two_field_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_struct_with_two_field_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_struct_with_zero_field_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_func_struct_with_zero_field_twin_rust_async_sse(
@@ -12211,7 +12211,7 @@ class RustLibWire extends BaseWire {
 
   void wire_func_tuple_struct_with_one_field_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_func_tuple_struct_with_one_field_twin_rust_async_sse(
@@ -12219,34 +12219,34 @@ class RustLibWire extends BaseWire {
 
   void wire_func_tuple_struct_with_two_field_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_func_tuple_struct_with_two_field_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_struct_with_one_field_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_struct_with_one_field_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_struct_with_two_field_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_struct_with_two_field_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_struct_with_zero_field_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_struct_with_zero_field_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_tuple_struct_with_one_field_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_tuple_struct_with_one_field_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_tuple_struct_with_two_field_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_func_tuple_struct_with_two_field_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -12272,31 +12272,31 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_struct_with_one_field_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_struct_with_one_field_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_struct_with_two_field_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_struct_with_two_field_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_struct_with_zero_field_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_struct_with_zero_field_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_tuple_struct_with_one_field_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_tuple_struct_with_one_field_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_tuple_struct_with_two_field_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_func_tuple_struct_with_two_field_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -12309,22 +12309,22 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_test_tuple_twin_rust_async(port_, value);
 
   void wire_test_tuple_2_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_tuple_2_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_test_tuple_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_tuple_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_test_tuple_2_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_test_tuple_2_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_tuple_2_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_test_tuple_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+  void wire_test_tuple_twin_sse(NativePortType port_, PlatformPointer ptr_,
+          int rust_vec_len_, int data_len_) =>
       wasmModule.wire_test_tuple_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -12338,13 +12338,13 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_tuple_2_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_tuple_2_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_tuple_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_test_tuple_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -12361,32 +12361,32 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_handle_type_nest_alias_id_twin_rust_async(port_, input);
 
   void wire_handle_type_alias_id_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_type_alias_id_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_type_alias_model_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_type_alias_model_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_type_nest_alias_id_twin_rust_async_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_type_nest_alias_id_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_type_alias_id_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_type_alias_id_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_type_alias_model_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_type_alias_model_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_type_nest_alias_id_twin_sse(NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
       wasmModule.wire_handle_type_nest_alias_id_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
@@ -12404,19 +12404,19 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_type_alias_id_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_type_alias_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_type_alias_model_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_type_alias_model_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_type_nest_alias_id_twin_sync_sse(
-              ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
+              PlatformPointer ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_handle_type_nest_alias_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
@@ -13595,76 +13595,76 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> id);
 
   external void wire_boxed_blob_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_test_id_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_array_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_complex_array_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_last_number_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_nested_id_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_new_msgid_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_boxed_feed_id_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_boxed_raw_feed_id_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_use_boxed_blob_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_use_msgid_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_boxed_blob_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_test_id_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_array_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_complex_array_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_last_number_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_nested_id_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_new_msgid_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_boxed_feed_id_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_boxed_raw_feed_id_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_use_boxed_blob_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_use_msgid_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_boxed_blob_twin_sync(Uint8List blob);
@@ -13701,47 +13701,47 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_boxed_blob_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_test_id_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_array_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_complex_array_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_last_number_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_nested_id_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_new_msgid_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_boxed_feed_id_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_boxed_raw_feed_id_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_use_boxed_blob_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_use_msgid_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_async_simple_add_twin_sse(
       NativePortType port_, int a, int b);
@@ -13756,18 +13756,18 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_customized_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_next_user_id_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_customized_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_next_user_id_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_customized_struct_twin_sync(List<dynamic> val);
@@ -13777,11 +13777,11 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_customized_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_next_user_id_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_benchmark_input_bytes_twin_rust_async(
       NativePortType port_, Uint8List bytes);
@@ -13793,27 +13793,27 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_benchmark_input_bytes_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_benchmark_output_bytes_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_benchmark_void_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_benchmark_input_bytes_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_benchmark_output_bytes_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_benchmark_void_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_benchmark_input_bytes_twin_sync(Uint8List bytes);
@@ -13826,15 +13826,15 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_benchmark_input_bytes_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_benchmark_output_bytes_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_benchmark_void_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_datetime_local_twin_rust_async(
       NativePortType port_, Object d);
@@ -13915,64 +13915,64 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_StructWithCommentsTwinRustAsyncSse_static_method_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_function_with_comments_slash_star_star_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void
       wire_function_with_comments_triple_slash_multi_line_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_function_with_comments_triple_slash_single_line_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_StructWithCommentsTwinSse_instance_method_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_StructWithCommentsTwinSse_static_method_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_function_with_comments_slash_star_star_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_function_with_comments_triple_slash_multi_line_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_function_with_comments_triple_slash_single_line_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
@@ -13994,23 +13994,23 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_StructWithCommentsTwinSyncSse_instance_method_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_StructWithCommentsTwinSyncSse_static_method_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_function_with_comments_slash_star_star_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_function_with_comments_triple_slash_multi_line_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_function_with_comments_triple_slash_single_line_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_dart_dynamic_twin_rust_async(NativePortType port_);
 
@@ -14019,23 +14019,23 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_accept_dart_opaque_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_loopback_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_option_dart_opaque_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_option_loopback_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_unwrap_dart_opaque_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_async_accept_dart_opaque_twin_rust_async(
       NativePortType port_, Object opaque);
@@ -14087,129 +14087,129 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_async_accept_dart_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_clone_dart_opaque_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_enum_dart_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_create_nested_dart_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_drop_static_dart_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_get_enum_dart_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_get_nested_dart_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_loop_back_array_get_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_loop_back_array_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_option_get_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_loop_back_option_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_vec_get_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_vec_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_panic_unwrap_dart_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_set_static_dart_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_async_accept_dart_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_clone_dart_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_enum_dart_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_nested_dart_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_drop_static_dart_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_enum_dart_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_nested_dart_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_array_get_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_array_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_option_get_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_option_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_vec_get_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_loop_back_vec_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_panic_unwrap_dart_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_set_static_dart_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_async_accept_dart_opaque_twin_sync(Object opaque);
@@ -14261,67 +14261,67 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_async_accept_dart_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_clone_dart_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_enum_dart_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_nested_dart_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_drop_static_dart_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_enum_dart_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_nested_dart_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_array_get_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_array_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_option_get_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_option_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_vec_get_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_loop_back_vec_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_panic_unwrap_dart_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_set_static_dart_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_enum_simple_twin_rust_async(
       NativePortType port_, int arg);
@@ -14351,76 +14351,76 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> note);
 
   external void wire_func_enum_simple_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_enum_with_item_mixed_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_enum_with_item_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_enum_with_item_tuple_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_enum_parameter_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_enum_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_return_enum_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_multiply_by_ten_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_print_note_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_enum_simple_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_enum_with_item_mixed_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_enum_with_item_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_enum_with_item_tuple_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_enum_parameter_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_enum_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_return_enum_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_multiply_by_ten_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_print_note_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_func_enum_simple_twin_sync(int arg);
@@ -14451,39 +14451,39 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_enum_simple_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_enum_with_item_mixed_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_enum_with_item_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_enum_with_item_tuple_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_enum_parameter_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_enum_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_return_enum_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_multiply_by_ten_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_print_note_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_EventTwinRustAsync_as_string_twin_rust_async(
       NativePortType port_, List<dynamic> that);
@@ -14498,36 +14498,36 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_EventTwinRustAsyncSse_as_string_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_close_event_listener_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_create_event_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_register_event_listener_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_EventTwinSse_as_string_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_close_event_listener_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_event_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_register_event_listener_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_CustomStructTwinRustAsync_new_twin_rust_async(
       NativePortType port_, String message);
@@ -14624,308 +14624,308 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_CustomStructTwinRustAsyncSse_new_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void
       wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_CustomStructTwinRustAsyncSse_nonstatic_return_custom_struct_ok_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_CustomStructTwinRustAsyncSse_static_return_custom_struct_ok_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_SomeStructTwinRustAsyncSse_new_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void
       wire_SomeStructTwinRustAsyncSse_non_static_return_err_custom_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_SomeStructTwinRustAsyncSse_non_static_return_ok_custom_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_SomeStructTwinRustAsyncSse_static_return_err_custom_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_SomeStructTwinRustAsyncSse_static_return_ok_custom_error_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_custom_enum_error_panic_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_custom_enum_error_return_error_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_custom_enum_error_return_ok_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_custom_nested_error_return_error_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_custom_struct_error_return_error_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_return_error_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_type_fallible_panic_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_type_infallible_panic_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_panic_with_custom_result_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_custom_nested_error_1_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_custom_nested_error_1_variant1_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_custom_nested_error_2_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_custom_struct_error_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_custom_struct_ok_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_err_custom_error_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_error_variant_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_ok_custom_error_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_stream_sink_throw_anyhow_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_throw_anyhow_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_CustomStructTwinSse_new_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void
       wire_CustomStructTwinSse_nonstatic_return_custom_struct_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_CustomStructTwinSse_nonstatic_return_custom_struct_ok_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_CustomStructTwinSse_static_return_custom_struct_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_CustomStructTwinSse_static_return_custom_struct_ok_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_SomeStructTwinSse_new_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void
       wire_SomeStructTwinSse_non_static_return_err_custom_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_SomeStructTwinSse_non_static_return_ok_custom_error_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_SomeStructTwinSse_static_return_err_custom_error_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_SomeStructTwinSse_static_return_ok_custom_error_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_custom_enum_error_panic_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_custom_enum_error_return_error_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_custom_enum_error_return_ok_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_custom_nested_error_return_error_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_custom_struct_error_return_error_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_return_error_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_type_fallible_panic_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_type_infallible_panic_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_panic_with_custom_result_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_custom_nested_error_1_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_custom_nested_error_1_variant1_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_return_custom_nested_error_2_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_custom_struct_error_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_custom_struct_ok_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_err_custom_error_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_error_variant_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_return_ok_custom_error_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_stream_sink_throw_anyhow_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_throw_anyhow_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_CustomStructTwinSync_new_twin_sync(String message);
@@ -15019,121 +15019,121 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_new_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_ok_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_static_return_custom_struct_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_CustomStructTwinSyncSse_static_return_custom_struct_ok_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_new_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_non_static_return_err_custom_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_non_static_return_ok_custom_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_static_return_err_custom_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SomeStructTwinSyncSse_static_return_ok_custom_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_enum_error_panic_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_enum_error_return_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_enum_error_return_ok_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_nested_error_return_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_custom_struct_error_return_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_return_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_type_fallible_panic_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_type_infallible_panic_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_panic_with_custom_result_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_nested_error_1_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_nested_error_1_variant1_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_nested_error_2_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_struct_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_custom_struct_ok_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_err_custom_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_error_variant_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_ok_custom_error_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_stream_sink_throw_anyhow_twin_sync_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_throw_anyhow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_call_new_module_system_twin_rust_async(
       NativePortType port_);
@@ -15149,36 +15149,36 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_call_new_module_system_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_call_old_module_system_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_use_imported_enum_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_use_imported_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_call_new_module_system_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_call_old_module_system_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_use_imported_enum_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_use_imported_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_call_new_module_system_twin_sync();
@@ -15194,19 +15194,19 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_call_new_module_system_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_call_old_module_system_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_use_imported_enum_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_use_imported_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void
       wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
@@ -15245,113 +15245,113 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire_ConcatenateWithTwinRustAsyncSse_concatenate_static_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinRustAsyncSse_concatenate_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_single_arg_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinRustAsyncSse_handle_some_static_stream_sink_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_at_1_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinRustAsyncSse_handle_some_stream_sink_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_get_sum_array_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_sum_struct_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_ConcatenateWithTwinSse_concatenate_static_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_ConcatenateWithTwinSse_concatenate_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void
       wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_single_arg_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinSse_handle_some_static_stream_sink_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinSse_handle_some_stream_sink_at_1_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_ConcatenateWithTwinSse_handle_some_stream_sink_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_ConcatenateWithTwinSse_new_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_SumWithTwinSse_sum_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_sum_array_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_sum_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
@@ -15390,55 +15390,55 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_ConcatenateWithTwinSyncSse_concatenate_static_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void
       wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_single_arg_twin_sync_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_twin_sync_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_at_1_twin_sync_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_twin_sync_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_SumWithTwinSyncSse_sum_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_sum_array_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_sum_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_app_settings_stream_twin_rust_async(NativePortType port_);
 
@@ -15494,172 +15494,172 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_app_settings_stream_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_app_settings_vec_stream_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_first_number_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_first_sequence_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_app_settings_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_fallible_app_settings_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_get_message_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_is_app_embedded_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_mirror_struct_stream_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_mirror_tuple_stream_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_repeat_number_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_repeat_sequence_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_contains_mirrored_sub_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_fallible_of_raw_string_mirrored_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_list_of_nested_enums_mirrored_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void
       wire_test_list_of_raw_nested_string_mirrored_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_test_nested_raw_string_mirrored_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_raw_string_enum_mirrored_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_raw_string_mirrored_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_app_settings_stream_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_app_settings_vec_stream_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_first_number_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_first_sequence_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_app_settings_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_fallible_app_settings_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_get_message_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_is_app_embedded_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_mirror_struct_stream_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_mirror_tuple_stream_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_repeat_number_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_repeat_sequence_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_contains_mirrored_sub_struct_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_fallible_of_raw_string_mirrored_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_list_of_nested_enums_mirrored_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_list_of_raw_nested_string_mirrored_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_nested_raw_string_mirrored_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_raw_string_enum_mirrored_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_raw_string_mirrored_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_app_settings_stream_twin_sync(NativePortType port_);
 
@@ -15715,76 +15715,76 @@ class RustLibWasmModule implements WasmModule {
       wire_test_raw_string_mirrored_twin_sync();
 
   external void wire_app_settings_stream_twin_sync_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_app_settings_vec_stream_twin_sync_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_first_number_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_first_sequence_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_app_settings_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_fallible_app_settings_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_get_message_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_is_app_embedded_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_mirror_struct_stream_twin_sync_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_mirror_tuple_stream_twin_sync_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_repeat_number_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_repeat_sequence_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_contains_mirrored_sub_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_fallible_of_raw_string_mirrored_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_list_of_nested_enums_mirrored_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_list_of_raw_nested_string_mirrored_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_nested_raw_string_mirrored_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_raw_string_enum_mirrored_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_raw_string_mirrored_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_big_buffers_twin_rust_async(NativePortType port_);
 
@@ -15814,72 +15814,72 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_big_buffers_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_complex_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_nested_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_string_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_struct_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_vec_u8_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_list_of_primitive_enums_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_abc_enum_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_struct_with_enum_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_big_buffers_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_complex_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_nested_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_string_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_vec_u8_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_list_of_primitive_enums_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_abc_enum_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_struct_with_enum_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_big_buffers_twin_sync();
@@ -15910,39 +15910,39 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_big_buffers_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_complex_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_nested_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_string_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_vec_u8_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_list_of_primitive_enums_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_abc_enum_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_struct_with_enum_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_empty_struct_twin_rust_async(
       NativePortType port_, List<dynamic> empty);
@@ -15959,40 +15959,40 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> names);
 
   external void wire_empty_struct_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_return_unit_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_string_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_list_of_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_string_list_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_empty_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_return_unit_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_string_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_list_of_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_string_list_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_empty_struct_twin_sync(List<dynamic> empty);
@@ -16011,39 +16011,39 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_empty_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_return_unit_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_string_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_list_of_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_string_list_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_newtype_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
 
   external void wire_handle_newtype_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_newtype_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_newtype_twin_sync(List<dynamic> arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_newtype_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_optional_primitive_type_bool_twin_normal(
       NativePortType port_, bool? arg);
@@ -16087,12 +16087,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_primitive_optional_types_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_primitive_optional_types_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_primitive_optional_types_twin_sync(
@@ -16100,7 +16100,7 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_primitive_optional_types_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_optional_primitive_type_bool_twin_rust_async(
       NativePortType port_, bool? arg);
@@ -16137,133 +16137,133 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_example_optional_primitive_type_bool_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_f32_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_f64_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_i16_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_i32_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_i64_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_i8_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_u16_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_u32_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_u64_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_u8_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_bool_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_f32_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_f64_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_i16_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_i32_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_i64_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_i8_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_u16_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_u32_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_u64_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_optional_primitive_type_u8_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
@@ -16302,47 +16302,47 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_bool_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_f32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_f64_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_i16_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_i32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_i64_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_i8_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_u16_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_u32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_u64_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_optional_primitive_type_u8_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_increment_boxed_optional_twin_rust_async(
       NativePortType port_, double? opt);
@@ -16371,60 +16371,60 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_increment_boxed_optional_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_option_box_arguments_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_optional_increment_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_optional_return_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_optional_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_vec_of_opts_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_increment_boxed_optional_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_option_box_arguments_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_optional_increment_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_optional_return_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_optional_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_vec_of_opts_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_increment_boxed_optional_twin_sync(double? opt);
@@ -16453,27 +16453,27 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_increment_boxed_optional_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_option_box_arguments_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_optional_increment_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_optional_return_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_optional_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_vec_of_opts_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_bool_twin_normal(
       NativePortType port_, bool arg);
@@ -16546,19 +16546,19 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_vec_of_primitive_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_vec_of_primitive_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_vec_of_primitive_twin_sync(int n);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_vec_of_primitive_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_list_type_bool_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
@@ -16595,133 +16595,133 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_example_primitive_list_type_bool_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_f32_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_f64_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_i16_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_i32_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_i64_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_i8_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_u16_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_u32_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_u64_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_u8_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_bool_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_f32_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_f64_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_i16_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_i32_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_i64_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_i8_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_u16_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_u32_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_u64_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_list_type_u8_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
@@ -16762,47 +16762,47 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_bool_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_f32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_f64_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_i16_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_i32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_i64_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_i8_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_u16_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_u32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_u64_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_list_type_u8_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_primitive_types_twin_rust_async(NativePortType port_,
       int my_i32, Object my_i64, double my_f64, bool my_bool);
@@ -16811,16 +16811,16 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int my_u32);
 
   external void wire_primitive_types_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_primitive_u32_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_primitive_types_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_primitive_u32_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_primitive_types_twin_sync(
@@ -16831,11 +16831,11 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_primitive_types_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_primitive_u32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_bool_twin_rust_async(
       NativePortType port_, bool arg);
@@ -16872,102 +16872,102 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_example_primitive_type_bool_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_f32_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_f64_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_i16_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_i32_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_i64_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_i8_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_u16_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_u32_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_u64_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_u8_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_example_primitive_type_bool_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_f32_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_f64_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_i16_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_i32_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_i64_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_i8_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_u16_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_u32_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_u64_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_example_primitive_type_u8_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_example_primitive_type_bool_twin_sync(bool arg);
@@ -17004,47 +17004,47 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_bool_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_f32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_f64_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_i16_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_i32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_i64_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_i8_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_u16_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_u32_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_u64_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_example_primitive_type_u8_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
       NativePortType port_);
@@ -17055,24 +17055,24 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire_test_more_than_just_one_raw_string_struct_twin_rust_async_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_test_raw_string_item_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_more_than_just_one_raw_string_struct_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_test_raw_string_item_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_more_than_just_one_raw_string_struct_twin_sync();
@@ -17082,182 +17082,182 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_more_than_just_one_raw_string_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_raw_string_item_struct_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void
       wire_NonCloneSimpleTwinSse_instance_method_arg_mut_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_NonCloneSimpleTwinSse_new_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void
       wire_NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_NonCloneSimpleTwinSse_static_method_return_own_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_arg_borrow_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_rust_auto_opaque_arg_mut_borrow_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_arg_own_and_return_own_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_arg_own_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_rust_auto_opaque_callable_arg_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_callable_return_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_plus_sign_arg_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_plus_sign_return_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_return_own_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse(
           NativePortType port_,
-          ffi.Pointer<ffi.Uint8> ptr_,
+          PlatformPointer ptr_,
           int rust_vec_len_,
           int data_len_);
 
   external void wire_rust_auto_opaque_trait_object_arg_borrow_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_trait_object_arg_own_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_trait_object_return_own_one_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_trait_object_return_own_two_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_rust_auto_opaque_two_args_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
@@ -17364,147 +17364,147 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_arg_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_arg_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_callable_arg_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_callable_return_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_plus_sign_return_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_return_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_rust_auto_opaque_two_args_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_frb_sync_generator_test_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_create_non_clone_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_create_opaque_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_create_sync_opaque_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_option_rust_opaque_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_run_opaque_twin_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_array_opaque_enum_twin_rust_async(
       NativePortType port_);
@@ -17550,120 +17550,120 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_create_array_opaque_enum_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_create_nested_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_create_opaque_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_option_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_create_sync_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_frb_generator_test_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_opaque_array_run_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_opaque_array_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_opaque_vec_run_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_opaque_vec_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_enum_opaque_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_nested_opaque_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_non_clone_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_opaque_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_opaque_with_delay_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_unwrap_rust_opaque_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_create_array_opaque_enum_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_nested_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_option_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_sync_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_frb_generator_test_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_opaque_array_run_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_opaque_array_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_opaque_vec_run_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_opaque_vec_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_enum_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_nested_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_non_clone_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_run_opaque_with_delay_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_unwrap_rust_opaque_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_create_array_opaque_enum_twin_sync();
@@ -17715,86 +17715,86 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_array_opaque_enum_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_nested_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_option_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_create_sync_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_frb_generator_test_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_opaque_array_run_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_opaque_array_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_opaque_vec_run_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_opaque_vec_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_enum_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_nested_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_non_clone_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_run_opaque_with_delay_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_unwrap_rust_opaque_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_simple_adder_twin_rust_async(
       NativePortType port_, int a, int b);
 
   external void wire_simple_adder_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_simple_adder_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_simple_adder_twin_sync(int a, int b);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_simple_adder_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_stream_realistic_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_stream_return_error_twin_rust_async(
       NativePortType port_);
@@ -17819,69 +17819,69 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_func_stream_return_error_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_stream_return_panic_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_stream_sink_arg_position_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_stream_of_struct_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_stream_sink_at_1_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_stream_sink_at_2_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_stream_sink_at_3_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_stream_return_error_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_stream_return_panic_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_stream_sink_arg_position_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_stream_of_struct_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_stream_sink_at_1_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_stream_sink_at_2_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_stream_sink_at_3_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_struct_with_one_field_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
@@ -17900,52 +17900,52 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_func_struct_with_one_field_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_struct_with_two_field_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_struct_with_zero_field_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_tuple_struct_with_one_field_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_tuple_struct_with_two_field_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_struct_with_one_field_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_struct_with_two_field_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_struct_with_zero_field_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_func_tuple_struct_with_one_field_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_func_tuple_struct_with_two_field_twin_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
@@ -17966,23 +17966,23 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_struct_with_one_field_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_struct_with_two_field_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_struct_with_zero_field_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_tuple_struct_with_one_field_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_func_tuple_struct_with_two_field_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_tuple_2_twin_rust_async(
       NativePortType port_, List<dynamic> value);
@@ -17991,16 +17991,16 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic>? value);
 
   external void wire_test_tuple_2_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_tuple_twin_rust_async_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_tuple_2_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_test_tuple_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_test_tuple_2_twin_sync(List<dynamic> value);
@@ -18010,11 +18010,11 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_tuple_2_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_test_tuple_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_type_alias_id_twin_rust_async(
       NativePortType port_, Object input);
@@ -18027,30 +18027,30 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_type_alias_id_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_type_alias_model_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_type_nest_alias_id_twin_rust_async_sse(
       NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_,
+      PlatformPointer ptr_,
       int rust_vec_len_,
       int data_len_);
 
   external void wire_handle_type_alias_id_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_type_alias_model_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_type_nest_alias_id_twin_sse(NativePortType port_,
-      ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+      PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnDco */
       wire_handle_type_alias_id_twin_sync(Object input);
@@ -18063,15 +18063,15 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_type_alias_id_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_type_alias_model_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_handle_type_nest_alias_id_twin_sync_sse(
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
+          PlatformPointer ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_nested_uuids_twin_rust_async(
       NativePortType port_, List<dynamic> ids);
