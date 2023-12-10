@@ -159,6 +159,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   void _sse_decode_unit(SseDeserializer deserializer) {}
+  @protected
+  int cst_encode_i_32(int raw) {
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    return raw;
+  }
 
   void _sse_encode_box_autoadd_the_enum(
       TheEnum self, SseSerializer serializer) {
@@ -178,16 +187,4 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   void _sse_encode_unit(void self, SseSerializer serializer) {}
-}
-
-extension ExtRustLibApiImpl on RustLibApiImplPlatform {
-  @protected
-  int cst_encode_i_32(int raw) {
-    return raw;
-  }
-
-  @protected
-  void cst_encode_unit(void raw) {
-    return raw;
-  }
 }
