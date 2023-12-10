@@ -188,8 +188,13 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     fn dart_fn_handle_output(&self, call_id: i64) {
         // NOTE This [catch_unwind] should also be put outside **ALL** code, see comments above for reasonk
         panic::catch_unwind(move || {
-            if let Some(completer) = (self.dart_fn_completers.lock().unwrap()).remove(call_id) {
-                completer.complete();
+            let catch_unwind_result = panic::catch_unwind(move || {
+                if let Some(completer) = (self.dart_fn_completers.lock().unwrap()).remove(call_id) {
+                    completer.complete();
+                }
+            });
+            if let Err(err) = catch_unwind_result {
+                warn!("Error when dart_fn_handle_output: {err:?}");
             }
         });
     }
