@@ -70,13 +70,13 @@ class RustLibWasmModule implements WasmModule {
 @internal
 List<dynamic> cst_encode_box_autoadd_the_enum(
     _ApiImplPlatformClass apiImpl, TheEnum raw) {
-  return cst_encode_the_enum(apiImpl, raw);
+  return cst_encode_the_enum(raw);
 }
 
 @internal
 List<dynamic> cst_encode_the_enum(_ApiImplPlatformClass apiImpl, TheEnum raw) {
   if (raw is TheEnum_TheVariant) {
-    return [0, cst_encode_i_32(apiImpl, raw.field0)];
+    return [0, cst_encode_i_32(raw.field0)];
   }
 
   throw Exception('unreachable');

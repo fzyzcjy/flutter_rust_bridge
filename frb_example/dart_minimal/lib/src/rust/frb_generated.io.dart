@@ -26,7 +26,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _cst_api_fill_to_wire_the_enum(
       TheEnum apiObj, wire_cst_the_enum wireObj) {
     if (apiObj is TheEnum_TheVariant) {
-      var pre_field0 = cst_encode_i_32(apiImpl, apiObj.field0);
+      var pre_field0 = cst_encode_i_32(apiObj.field0);
       wireObj.tag = 0;
       wireObj.kind = wire.cst_inflate_TheEnum_TheVariant();
       wireObj.kind.ref.TheVariant.ref.field0 = pre_field0;
