@@ -4,7 +4,7 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/generalized_uint8list/generalized_uint8list.dart';
 
 /// {@macro flutter_rust_bridge.internal}
-class AdaptedUint8List implements BaseGeneralizedUint8List {
+class AdaptedUint8List implements BaseGeneralizedUint8List<Uint8List> {
   Uint8List _inner;
 
   /// {@macro flutter_rust_bridge.internal}
@@ -18,7 +18,7 @@ class AdaptedUint8List implements BaseGeneralizedUint8List {
   void dispose() {}
 
   @override
-  TODO intoRaw() => TODO;
+  Uint8List intoRaw() => _inner;
 
   @override
   void resize(int newLen) {
