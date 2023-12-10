@@ -16,6 +16,11 @@ void main() {
         expectLittleEndian: [42, 0, 0, 0, 0, 0, 0, 0],
         expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 42],
       ),
+      _Info(
+        setValue: 2023,
+        expectLittleEndian: [231, 7, 0, 0, 0, 0, 0, 0],
+        expectBigEndian: [0, 0, 0, 0, 0, 0, 7, 231],
+      ),
       // TODO
     ]) {
       test('$info', () => _body((b) => b.generalizedSetUint64, info));
@@ -33,6 +38,11 @@ void main() {
         setValue: 42,
         expectLittleEndian: [42, 0, 0, 0, 0, 0, 0, 0],
         expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 42],
+      ),
+      _Info(
+        setValue: 2023,
+        expectLittleEndian: [231, 7, 0, 0, 0, 0, 0, 0],
+        expectBigEndian: [0, 0, 0, 0, 0, 0, 7, 231],
       ),
       // TODO
     ]) {
