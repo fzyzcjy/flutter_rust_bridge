@@ -41,7 +41,7 @@ void main() {
   });
 
   group('read/write ByteData', () {
-    for (final (name, setter, getter) in <(String, _Setter, _Getter)>[
+    for (final (name, setter, getter) in <(_Name, _Setter, _Getter)>[
       (_Name.uint64, byteDataSetUint64, byteDataGetUint64),
       (_Name.int64, byteDataSetInt64, byteDataGetInt64),
     ]) {
