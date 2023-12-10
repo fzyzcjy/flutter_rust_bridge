@@ -64,7 +64,13 @@ pub extern "C" fn dart_fn_deliver_output(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    let message = unsafe { Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+    let message = unsafe {
+        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+            ptr_,
+            rust_vec_len_,
+            data_len_,
+        )
+    };
     FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id, message)
 }
 

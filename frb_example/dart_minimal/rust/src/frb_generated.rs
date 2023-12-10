@@ -15,13 +15,8 @@
 // Section: imports
 
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
-use flutter_rust_bridge::for_generated::futures::FutureExt;
-use flutter_rust_bridge::for_generated::{
-    transform_result_dco, Dart2RustMessageSse, SseDeserializer,
-};
-use flutter_rust_bridge::{DartFnFuture, DartOpaque, Handler, IntoIntoDart};
-use std::future::Future;
-use std::panic::UnwindSafe;
+use flutter_rust_bridge::for_generated::transform_result_dco;
+use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
 
@@ -63,11 +58,15 @@ fn wire_minimal_adder_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let mut deserializer = unsafe {
-                flutter_rust_bridge::for_generated::SseDeserializer::new(
-                    Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_),
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
                 )
             };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <i32>::sse_decode(&mut deserializer);
             let api_b = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
@@ -84,7 +83,7 @@ fn wire_minimal_adder_impl(
 }
 fn wire_rust_call_dart_simple_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe + 'static,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -93,7 +92,8 @@ fn wire_rust_call_dart_simple_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_callback = decode_dart_fn_blahblahblah(callback.cst_decode());
+            let api_callback =
+                decode_DartFn_Inputs_String_String_Output_String(callback.cst_decode());
             move |context| async move {
                 transform_result_dco(
                     (move || async move {
@@ -108,12 +108,18 @@ fn wire_rust_call_dart_simple_impl(
     )
 }
 
-fn decode_dart_fn_blahblahblah(
-    dart_opaque: DartOpaque,
-) -> impl Fn(String, String) -> DartFnFuture<String> {
+// Section: related_funcs
+
+fn decode_DartFn_Inputs_String_String_Output_String(
+    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(String, String) -> flutter_rust_bridge::DartFnFuture<String> {
     use flutter_rust_bridge::IntoDart;
 
-    async fn body(arg0: String, arg1: String, dart_opaque: DartOpaque) -> String {
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+        arg0: String,
+        arg1: String,
+    ) -> String {
         let args = vec![
             arg0.into_into_dart().into_dart(),
             arg1.into_into_dart().into_dart(),
@@ -126,9 +132,9 @@ fn decode_dart_fn_blahblahblah(
 
     move |arg0: String, arg1: String| {
         flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+            dart_opaque.clone(),
             arg0,
             arg1,
-            dart_opaque.clone(),
         ))
     }
 }
