@@ -56,6 +56,11 @@ pub fn frb_initialize_rust(
 }
 
 #[wasm_bindgen]
+pub fn dart_fn_deliver_output(call_id: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id)
+}
+
+#[wasm_bindgen]
 pub fn wire_minimal_adder(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,

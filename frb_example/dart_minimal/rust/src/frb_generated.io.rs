@@ -38,6 +38,11 @@ pub extern "C" fn frb_initialize_rust(
 }
 
 #[no_mangle]
+pub extern "C" fn dart_fn_deliver_output(call_id: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_minimal_adder(
     port_: i64,
     ptr_: *mut u8,
