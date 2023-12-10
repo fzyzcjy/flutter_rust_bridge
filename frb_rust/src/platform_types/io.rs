@@ -20,4 +20,4 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
     *handle
 }
 
-type PlatformGeneralizedUint8ListPtr = *mut u8;
+pub type PlatformGeneralizedUint8ListPtr = *mut u8;

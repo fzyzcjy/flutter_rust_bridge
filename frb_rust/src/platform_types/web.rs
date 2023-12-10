@@ -26,4 +26,4 @@ pub fn handle_to_message_port(handle: &SendableMessagePortHandle) -> MessagePort
     PortLike::broadcast(&handle.0)
 }
 
-type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
+pub type PlatformGeneralizedUint8ListPtr = wasm_bindgen::JsValue;
