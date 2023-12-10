@@ -12,10 +12,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart call funcAsyncVoid', () async {
-    await funcAsyncVoid();
+    await funcAsyncVoidTwinSse();
   });
 
   test('dart call funcAsyncSimpleAdd', () async {
-    expect(await funcAsyncSimpleAdd(a: 10, b: 20), 30);
+    expect(await funcAsyncSimpleAddTwinSse(a: 10, b: 20), 30);
   });
 }

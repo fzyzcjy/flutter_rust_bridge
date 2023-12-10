@@ -2205,15 +2205,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSink
         CstDecode::<crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse>::cst_decode(*wrap).into()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct>
-    for *mut wire_cst_macro_struct
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct {
+impl CstDecode<crate::api::inside_macro::MacroStruct> for *mut wire_cst_macro_struct {
+    fn cst_decode(self) -> crate::api::inside_macro::MacroStruct {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct>::cst_decode(
-            *wrap,
-        )
-        .into()
+        CstDecode::<crate::api::inside_macro::MacroStruct>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::api::enumeration::MeasureTwinNormal> for *mut wire_cst_measure_twin_normal {
@@ -6645,11 +6640,9 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::Weekda
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct>
-    for wire_cst_macro_struct
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct {
-        crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct {
+impl CstDecode<crate::api::inside_macro::MacroStruct> for wire_cst_macro_struct {
+    fn cst_decode(self) -> crate::api::inside_macro::MacroStruct {
+        crate::api::inside_macro::MacroStruct {
             data: self.data.cst_decode(),
         }
     }
@@ -15677,13 +15670,13 @@ pub extern "C" fn wire_use_msgid_twin_normal(port_: i64, id: *mut wire_cst_messa
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_async_simple_add(port_: i64, a: i32, b: i32) {
-    wire_func_async_simple_add_impl(port_, a, b)
+pub extern "C" fn wire_func_async_simple_add_twin_normal(port_: i64, a: i32, b: i32) {
+    wire_func_async_simple_add_twin_normal_impl(port_, a, b)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_async_void(port_: i64) {
-    wire_func_async_void_impl(port_)
+pub extern "C" fn wire_func_async_void_twin_normal(port_: i64) {
+    wire_func_async_void_twin_normal_impl(port_)
 }
 
 #[no_mangle]
@@ -17093,13 +17086,13 @@ pub extern "C" fn wire_use_msgid_twin_sync_sse(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_async_simple_add(port_: i64, a: i32, b: i32) {
-    wire_func_async_simple_add_impl(port_, a, b)
+pub extern "C" fn wire_func_async_simple_add_twin_sse(port_: i64, a: i32, b: i32) {
+    wire_func_async_simple_add_twin_sse_impl(port_, a, b)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_async_void(port_: i64) {
-    wire_func_async_void_impl(port_)
+pub extern "C" fn wire_func_async_void_twin_sse(port_: i64) {
+    wire_func_async_void_twin_sse_impl(port_)
 }
 
 #[no_mangle]
@@ -17749,11 +17742,6 @@ pub extern "C" fn wire_return_dart_dynamic_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
     wire_return_dart_dynamic_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: *const std::ffi::c_void) {
-    wire_rust_call_dart_simple_impl(port_, callback)
 }
 
 #[no_mangle]
@@ -20522,26 +20510,6 @@ pub extern "C" fn wire_use_imported_struct_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
     wire_use_imported_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_another_macro_struct_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_another_macro_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_func_macro_struct_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_func_macro_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]

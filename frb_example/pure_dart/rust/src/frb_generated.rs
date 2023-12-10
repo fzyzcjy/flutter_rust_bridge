@@ -270,14 +270,14 @@ fn wire_use_msgid_twin_normal_impl(
         },
     )
 }
-fn wire_func_async_simple_add_impl(
+fn wire_func_async_simple_add_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl CstDecode<i32> + core::panic::UnwindSafe,
     b: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "func_async_simple_add",
+            debug_name: "func_async_simple_add_twin_normal",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -288,7 +288,8 @@ fn wire_func_async_simple_add_impl(
                 transform_result_dco(
                     (move || async move {
                         Result::<_, ()>::Ok(
-                            crate::api::async_misc::func_async_simple_add(api_a, api_b).await,
+                            crate::api::async_misc::func_async_simple_add_twin_normal(api_a, api_b)
+                                .await,
                         )
                     })()
                     .await,
@@ -297,10 +298,10 @@ fn wire_func_async_simple_add_impl(
         },
     )
 }
-fn wire_func_async_void_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
+fn wire_func_async_void_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "func_async_void",
+            debug_name: "func_async_void_twin_normal",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
@@ -308,7 +309,9 @@ fn wire_func_async_void_impl(port_: flutter_rust_bridge::for_generated::MessageP
             move |context| async move {
                 transform_result_dco(
                     (move || async move {
-                        Result::<_, ()>::Ok(crate::api::async_misc::func_async_void().await)
+                        Result::<_, ()>::Ok(
+                            crate::api::async_misc::func_async_void_twin_normal().await,
+                        )
                     })()
                     .await,
                 )
@@ -2044,8 +2047,7 @@ fn wire_another_macro_struct_twin_normal_impl(
 }
 fn wire_func_macro_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<crate::api::inside_macro::MacroStruct> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -4285,56 +4287,23 @@ fn wire_use_msgid_twin_sync_sse_impl(
         },
     )
 }
-fn wire_func_async_simple_add_impl(
+fn wire_func_async_simple_add_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl CstDecode<i32> + core::panic::UnwindSafe,
     b: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "func_async_simple_add",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_a = a.cst_decode();
-            let api_b = b.cst_decode();
-            move |context| async move {
-                transform_result_dco(
-                    (move || async move {
-                        Result::<_, ()>::Ok(
-                            crate::api::pseudo_manual::async_misc_twin_sse::func_async_simple_add(
-                                api_a, api_b,
-                            )
-                            .await,
-                        )
-                    })()
-                    .await,
-                )
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_async_simple_add_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::async_misc_twin_sse::func_async_simple_add_twin_sse(api_a, api_b).await)
+                    })().await)
+                } })
 }
-fn wire_func_async_void_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "func_async_void",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            move |context| async move {
-                transform_result_dco(
-                    (move || async move {
-                        Result::<_, ()>::Ok(
-                            crate::api::pseudo_manual::async_misc_twin_sse::func_async_void().await,
-                        )
-                    })()
-                    .await,
-                )
-            }
-        },
-    )
+fn wire_func_async_void_twin_sse_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_async_void_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::async_misc_twin_sse::func_async_void_twin_sse().await)
+                    })().await)
+                } })
 }
 fn wire_handle_customized_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -5338,42 +5307,6 @@ fn wire_return_dart_dynamic_twin_sync_sse_impl(
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::dart_dynamic_twin_sync_sse::return_dart_dynamic_twin_sync_sse())
                 })()) })
-}
-fn wire_rust_call_dart_simple_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "rust_call_dart_simple",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_callback = {
-                use flutter_rust_bridge::IntoDart;
-                let dart_opaque: flutter_rust_bridge::DartOpaque = callback.cst_decode();
-
-                move || {
-                    FLUTTER_RUST_BRIDGE_HANDLER
-                        .dart_fn_invoke(vec![dart_opaque.clone().into_into_dart().into_dart()])
-                }
-            };
-            move |context| async move {
-                transform_result_dco(
-                    (move || async move {
-                        Result::<_, ()>::Ok(
-                            crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_simple(
-                                api_callback,
-                            )
-                            .await,
-                        )
-                    })()
-                    .await,
-                )
-            }
-        },
-    )
 }
 fn wire_sync_accept_dart_opaque_twin_sse_impl(
     ptr_: *mut u8,
@@ -9574,34 +9507,6 @@ fn wire_use_imported_struct_twin_sync_sse_impl(
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync_sse::use_imported_struct_twin_sync_sse(api_my_struct))
                 })()) })
-}
-fn wire_another_macro_struct_twin_sse_impl(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "another_macro_struct_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let mut deserializer = unsafe { flutter_rust_bridge::for_generated::SseDeserializer::from_wire(ptr_, rust_vec_len_, data_len_) };
-            deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::inside_macro_twin_sse::another_macro_struct_twin_sse())
-                    })())
-                } })
-}
-fn wire_func_macro_struct_twin_sse_impl(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_macro_struct_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let mut deserializer = unsafe { flutter_rust_bridge::for_generated::SseDeserializer::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let api_arg = <crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::inside_macro_twin_sse::func_macro_struct_twin_sse(api_arg))
-                    })())
-                } })
 }
 fn wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -25819,10 +25724,10 @@ impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::We
     }
 }
 
-impl SseDecode for crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct {
+impl SseDecode for crate::api::inside_macro::MacroStruct {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut data = <i32>::sse_decode(deserializer);
-        return crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct { data };
+        return crate::api::inside_macro::MacroStruct { data };
     }
 }
 
@@ -28615,32 +28520,6 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::inside_macro::AnotherMacroStr
     for crate::api::inside_macro::AnotherMacroStructTwinNormal
 {
     fn into_into_dart(self) -> crate::api::inside_macro::AnotherMacroStructTwinNormal {
-        self
-    }
-}
-impl flutter_rust_bridge::IntoDart
-    for crate::api::pseudo_manual::inside_macro_twin_sse::AnotherMacroStructTwinSse
-{
-    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        vec![
-            self.data.into_into_dart().into_dart(),
-            self.non_final_data.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::inside_macro_twin_sse::AnotherMacroStructTwinSse
-{
-}
-impl
-    flutter_rust_bridge::IntoIntoDart<
-        crate::api::pseudo_manual::inside_macro_twin_sse::AnotherMacroStructTwinSse,
-    > for crate::api::pseudo_manual::inside_macro_twin_sse::AnotherMacroStructTwinSse
-{
-    fn into_into_dart(
-        self,
-    ) -> crate::api::pseudo_manual::inside_macro_twin_sse::AnotherMacroStructTwinSse {
         self
     }
 }
@@ -34007,22 +33886,19 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::stream_twin_ss
         self
     }
 }
-impl flutter_rust_bridge::IntoDart
-    for crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct
-{
+impl flutter_rust_bridge::IntoDart for crate::api::inside_macro::MacroStruct {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         vec![self.data.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct
+    for crate::api::inside_macro::MacroStruct
 {
 }
-impl
-    flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct>
-    for crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct
+impl flutter_rust_bridge::IntoIntoDart<crate::api::inside_macro::MacroStruct>
+    for crate::api::inside_macro::MacroStruct
 {
-    fn into_into_dart(self) -> crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct {
+    fn into_into_dart(self) -> crate::api::inside_macro::MacroStruct {
         self
     }
 }
@@ -38698,13 +38574,6 @@ impl SseEncode for crate::api::inside_macro::AnotherMacroStructTwinNormal {
     }
 }
 
-impl SseEncode for crate::api::pseudo_manual::inside_macro_twin_sse::AnotherMacroStructTwinSse {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.data, serializer);
-        <i32>::sse_encode(self.non_final_data, serializer);
-    }
-}
-
 impl SseEncode for crate::api::mirror::AnotherTwinNormal {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.a, serializer);
@@ -42519,7 +42388,7 @@ impl SseEncode for crate::api::pseudo_manual::stream_twin_sse::LogTwinSse {
     }
 }
 
-impl SseEncode for crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct {
+impl SseEncode for crate::api::inside_macro::MacroStruct {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.data, serializer);
     }

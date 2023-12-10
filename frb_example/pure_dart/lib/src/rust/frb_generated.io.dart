@@ -55,7 +55,6 @@ import 'api/pseudo_manual/dart_dynamic_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync_sse.dart';
-import 'api/pseudo_manual/dart_fn_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_sync_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async_sse.dart';
@@ -80,7 +79,6 @@ import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync_sse.dart';
-import 'api/pseudo_manual/inside_macro_twin_sse.dart';
 import 'api/pseudo_manual/method_twin_rust_async.dart';
 import 'api/pseudo_manual/method_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/method_twin_sse.dart';
@@ -9426,38 +9424,39 @@ class RustLibWire implements BaseWire {
       _wire_use_msgid_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_message_id_twin_normal>)>();
 
-  void wire_func_async_simple_add(
+  void wire_func_async_simple_add_twin_normal(
     int port_,
     int a,
     int b,
   ) {
-    return _wire_func_async_simple_add(
+    return _wire_func_async_simple_add_twin_normal(
       port_,
       a,
       b,
     );
   }
 
-  late final _wire_func_async_simple_addPtr = _lookup<
+  late final _wire_func_async_simple_add_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
-      'wire_func_async_simple_add');
-  late final _wire_func_async_simple_add =
-      _wire_func_async_simple_addPtr.asFunction<void Function(int, int, int)>();
+      'wire_func_async_simple_add_twin_normal');
+  late final _wire_func_async_simple_add_twin_normal =
+      _wire_func_async_simple_add_twin_normalPtr
+          .asFunction<void Function(int, int, int)>();
 
-  void wire_func_async_void(
+  void wire_func_async_void_twin_normal(
     int port_,
   ) {
-    return _wire_func_async_void(
+    return _wire_func_async_void_twin_normal(
       port_,
     );
   }
 
-  late final _wire_func_async_voidPtr =
+  late final _wire_func_async_void_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_func_async_void');
-  late final _wire_func_async_void =
-      _wire_func_async_voidPtr.asFunction<void Function(int)>();
+          'wire_func_async_void_twin_normal');
+  late final _wire_func_async_void_twin_normal =
+      _wire_func_async_void_twin_normalPtr.asFunction<void Function(int)>();
 
   void wire_handle_customized_struct_twin_normal(
     int port_,
@@ -13142,6 +13141,40 @@ class RustLibWire implements BaseWire {
   late final _wire_use_msgid_twin_sync_sse =
       _wire_use_msgid_twin_sync_ssePtr.asFunction<
           WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_async_simple_add_twin_sse(
+    int port_,
+    int a,
+    int b,
+  ) {
+    return _wire_func_async_simple_add_twin_sse(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_func_async_simple_add_twin_ssePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
+      'wire_func_async_simple_add_twin_sse');
+  late final _wire_func_async_simple_add_twin_sse =
+      _wire_func_async_simple_add_twin_ssePtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_func_async_void_twin_sse(
+    int port_,
+  ) {
+    return _wire_func_async_void_twin_sse(
+      port_,
+    );
+  }
+
+  late final _wire_func_async_void_twin_ssePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_func_async_void_twin_sse');
+  late final _wire_func_async_void_twin_sse =
+      _wire_func_async_void_twin_ssePtr.asFunction<void Function(int)>();
 
   void wire_handle_customized_struct_twin_rust_async(
     int port_,
@@ -20610,50 +20643,6 @@ class RustLibWire implements BaseWire {
   late final _wire_use_imported_struct_twin_sync_sse =
       _wire_use_imported_struct_twin_sync_ssePtr.asFunction<
           WireSyncReturnSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_another_macro_struct_twin_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_another_macro_struct_twin_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_another_macro_struct_twin_ssePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_another_macro_struct_twin_sse');
-  late final _wire_another_macro_struct_twin_sse =
-      _wire_another_macro_struct_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_func_macro_struct_twin_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_func_macro_struct_twin_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_func_macro_struct_twin_ssePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_func_macro_struct_twin_sse');
-  late final _wire_func_macro_struct_twin_sse =
-      _wire_func_macro_struct_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
     int port_,

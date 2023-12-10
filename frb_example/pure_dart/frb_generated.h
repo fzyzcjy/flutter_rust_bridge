@@ -2966,9 +2966,9 @@ void wire_use_boxed_blob_twin_normal(int64_t port_, struct wire_cst_blob_twin_no
 
 void wire_use_msgid_twin_normal(int64_t port_, struct wire_cst_message_id_twin_normal *id);
 
-void wire_func_async_simple_add(int64_t port_, int32_t a, int32_t b);
+void wire_func_async_simple_add_twin_normal(int64_t port_, int32_t a, int32_t b);
 
-void wire_func_async_void(int64_t port_);
+void wire_func_async_void_twin_normal(int64_t port_);
 
 void wire_handle_customized_struct_twin_normal(int64_t port_,
                                                struct wire_cst_customized_twin_normal *val);
@@ -3523,9 +3523,9 @@ WireSyncReturnSse wire_use_msgid_twin_sync_sse(uint8_t *ptr_,
                                                int32_t rust_vec_len_,
                                                int32_t data_len_);
 
-void wire_func_async_simple_add(int64_t port_, int32_t a, int32_t b);
+void wire_func_async_simple_add_twin_sse(int64_t port_, int32_t a, int32_t b);
 
-void wire_func_async_void(int64_t port_);
+void wire_func_async_void_twin_sse(int64_t port_);
 
 void wire_handle_customized_struct_twin_rust_async(int64_t port_,
                                                    struct wire_cst_customized_twin_rust_async *val);
@@ -3775,8 +3775,6 @@ WireSyncReturnDco wire_return_dart_dynamic_twin_sync(void);
 WireSyncReturnSse wire_return_dart_dynamic_twin_sync_sse(uint8_t *ptr_,
                                                          int32_t rust_vec_len_,
                                                          int32_t data_len_);
-
-void wire_rust_call_dart_simple(int64_t port_, const void *callback);
 
 WireSyncReturnSse wire_sync_accept_dart_opaque_twin_sse(uint8_t *ptr_,
                                                         int32_t rust_vec_len_,
@@ -4911,16 +4909,6 @@ WireSyncReturnSse wire_use_imported_enum_twin_sync_sse(uint8_t *ptr_,
 WireSyncReturnSse wire_use_imported_struct_twin_sync_sse(uint8_t *ptr_,
                                                          int32_t rust_vec_len_,
                                                          int32_t data_len_);
-
-void wire_another_macro_struct_twin_sse(int64_t port_,
-                                        uint8_t *ptr_,
-                                        int32_t rust_vec_len_,
-                                        int32_t data_len_);
-
-void wire_func_macro_struct_twin_sse(int64_t port_,
-                                     uint8_t *ptr_,
-                                     int32_t rust_vec_len_,
-                                     int32_t data_len_);
 
 void wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(int64_t port_,
                                                                           struct wire_cst_list_prim_u_8 *a,
@@ -9858,7 +9846,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_SumWithTwinSyncSse_sum_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_SumWithTwinSync_sum_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_another_macro_struct_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_another_macro_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_stream_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_stream_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_stream_twin_rust_async_sse);
@@ -10238,8 +10225,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_frb_generator_test_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_frb_sync_generator_test_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_frb_sync_generator_test_twin_sse);
-    dummy_var ^= ((int64_t) (void*) wire_func_async_simple_add);
-    dummy_var ^= ((int64_t) (void*) wire_func_async_void);
+    dummy_var ^= ((int64_t) (void*) wire_func_async_simple_add_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_async_simple_add_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_func_async_void_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_async_void_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_rust_async_sse);
@@ -10265,7 +10254,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_macro_struct_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_func_macro_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_rust_async_sse);

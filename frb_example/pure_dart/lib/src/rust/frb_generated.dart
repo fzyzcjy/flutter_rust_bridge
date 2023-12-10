@@ -55,7 +55,6 @@ import 'api/pseudo_manual/dart_dynamic_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync_sse.dart';
-import 'api/pseudo_manual/dart_fn_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_sync_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async_sse.dart';
@@ -80,7 +79,6 @@ import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync_sse.dart';
-import 'api/pseudo_manual/inside_macro_twin_sse.dart';
 import 'api/pseudo_manual/method_twin_rust_async.dart';
 import 'api/pseudo_manual/method_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/method_twin_sse.dart';
@@ -283,10 +281,10 @@ abstract class RustLibApi extends BaseApi {
   Future<U8Array32> useMsgidTwinNormal(
       {required MessageIdTwinNormal id, dynamic hint});
 
-  Future<int> funcAsyncSimpleAdd(
+  Future<int> funcAsyncSimpleAddTwinNormal(
       {required int a, required int b, dynamic hint});
 
-  Future<void> funcAsyncVoid({dynamic hint});
+  Future<void> funcAsyncVoidTwinNormal({dynamic hint});
 
   Future<void> handleCustomizedStructTwinNormal(
       {required CustomizedTwinNormal val, dynamic hint});
@@ -847,10 +845,10 @@ abstract class RustLibApi extends BaseApi {
   U8Array32 useMsgidTwinSyncSse(
       {required MessageIdTwinSyncSse id, dynamic hint});
 
-  Future<int> funcAsyncSimpleAdd(
+  Future<int> funcAsyncSimpleAddTwinSse(
       {required int a, required int b, dynamic hint});
 
-  Future<void> funcAsyncVoid({dynamic hint});
+  Future<void> funcAsyncVoidTwinSse({dynamic hint});
 
   Future<void> handleCustomizedStructTwinRustAsync(
       {required CustomizedTwinRustAsync val, dynamic hint});
@@ -1048,9 +1046,6 @@ abstract class RustLibApi extends BaseApi {
   dynamic returnDartDynamicTwinSync({dynamic hint});
 
   dynamic returnDartDynamicTwinSyncSse({dynamic hint});
-
-  Future<void> rustCallDartSimple(
-      {required void Function() callback, dynamic hint});
 
   String syncAcceptDartOpaqueTwinSse({required Object opaque, dynamic hint});
 
@@ -1850,11 +1845,6 @@ abstract class RustLibApi extends BaseApi {
   bool useImportedEnumTwinSyncSse({required MyEnum myEnum, dynamic hint});
 
   bool useImportedStructTwinSyncSse({required MyStruct myStruct, dynamic hint});
-
-  Future<AnotherMacroStructTwinSse> anotherMacroStructTwinSse({dynamic hint});
-
-  Future<MacroStruct> funcMacroStructTwinSse(
-      {required MacroStruct arg, dynamic hint});
 
   Future<String> concatenateWithTwinRustAsyncConcatenateStaticTwinRustAsync(
       {required String a, required String b, dynamic hint});
@@ -4817,49 +4807,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> funcAsyncSimpleAdd(
+  Future<int> funcAsyncSimpleAddTwinNormal(
       {required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_i_32(a);
         var arg1 = cst_encode_i_32(b);
-        return wire.wire_func_async_simple_add(port_, arg0, arg1);
+        return wire.wire_func_async_simple_add_twin_normal(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: _dco_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kFuncAsyncSimpleAddConstMeta,
+      constMeta: kFuncAsyncSimpleAddTwinNormalConstMeta,
       argValues: [a, b],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFuncAsyncSimpleAddConstMeta => const TaskConstMeta(
-        debugName: "func_async_simple_add",
+  TaskConstMeta get kFuncAsyncSimpleAddTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_async_simple_add_twin_normal",
         argNames: ["a", "b"],
       );
 
   @override
-  Future<void> funcAsyncVoid({dynamic hint}) {
+  Future<void> funcAsyncVoidTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_func_async_void(port_);
+        return wire.wire_func_async_void_twin_normal(port_);
       },
       codec: DcoCodec(
         decodeSuccessData: _dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kFuncAsyncVoidConstMeta,
+      constMeta: kFuncAsyncVoidTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFuncAsyncVoidConstMeta => const TaskConstMeta(
-        debugName: "func_async_void",
+  TaskConstMeta get kFuncAsyncVoidTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "func_async_void_twin_normal",
         argNames: [],
       );
 
@@ -9916,49 +9907,49 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> funcAsyncSimpleAdd(
+  Future<int> funcAsyncSimpleAddTwinSse(
       {required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_i_32(a);
         var arg1 = cst_encode_i_32(b);
-        return wire.wire_func_async_simple_add(port_, arg0, arg1);
+        return wire.wire_func_async_simple_add_twin_sse(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: _dco_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kFuncAsyncSimpleAddConstMeta,
+      constMeta: kFuncAsyncSimpleAddTwinSseConstMeta,
       argValues: [a, b],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFuncAsyncSimpleAddConstMeta => const TaskConstMeta(
-        debugName: "func_async_simple_add",
+  TaskConstMeta get kFuncAsyncSimpleAddTwinSseConstMeta => const TaskConstMeta(
+        debugName: "func_async_simple_add_twin_sse",
         argNames: ["a", "b"],
       );
 
   @override
-  Future<void> funcAsyncVoid({dynamic hint}) {
+  Future<void> funcAsyncVoidTwinSse({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_func_async_void(port_);
+        return wire.wire_func_async_void_twin_sse(port_);
       },
       codec: DcoCodec(
         decodeSuccessData: _dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kFuncAsyncVoidConstMeta,
+      constMeta: kFuncAsyncVoidTwinSseConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFuncAsyncVoidConstMeta => const TaskConstMeta(
-        debugName: "func_async_void",
+  TaskConstMeta get kFuncAsyncVoidTwinSseConstMeta => const TaskConstMeta(
+        debugName: "func_async_void_twin_sse",
         argNames: [],
       );
 
@@ -11939,30 +11930,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "return_dart_dynamic_twin_sync_sse",
         argNames: [],
-      );
-
-  @override
-  Future<void> rustCallDartSimple(
-      {required void Function() callback, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
-        return wire.wire_rust_call_dart_simple(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: _dco_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kRustCallDartSimpleConstMeta,
-      argValues: [callback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustCallDartSimpleConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_simple",
-        argNames: ["callback"],
       );
 
   @override
@@ -20211,59 +20178,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "use_imported_struct_twin_sync_sse",
         argNames: ["myStruct"],
-      );
-
-  @override
-  Future<AnotherMacroStructTwinSse> anotherMacroStructTwinSse({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-
-        final raw_ = serializer.intoRaw();
-        return wire.wire_another_macro_struct_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: _sse_decode_another_macro_struct_twin_sse,
-        decodeErrorData: null,
-      ),
-      constMeta: kAnotherMacroStructTwinSseConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kAnotherMacroStructTwinSseConstMeta => const TaskConstMeta(
-        debugName: "another_macro_struct_twin_sse",
-        argNames: [],
-      );
-
-  @override
-  Future<MacroStruct> funcMacroStructTwinSse(
-      {required MacroStruct arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        _sse_encode_box_autoadd_macro_struct(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_macro_struct_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: _sse_decode_macro_struct,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncMacroStructTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncMacroStructTwinSseConstMeta => const TaskConstMeta(
-        debugName: "func_macro_struct_twin_sse",
-        argNames: ["arg"],
       );
 
   @override
@@ -43212,17 +43126,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  AnotherMacroStructTwinSse _dco_decode_another_macro_struct_twin_sse(
-      dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return AnotherMacroStructTwinSse(
-      data: _dco_decode_i_32(arr[0]),
-      nonFinalData: _dco_decode_i_32(arr[1]),
-    );
-  }
-
   AnotherTwinNormal _dco_decode_another_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -49945,13 +49848,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var data = _sse_decode_i_32(deserializer);
     var nonFinalData = _sse_decode_i_32(deserializer);
     return AnotherMacroStructTwinNormal(data: data, nonFinalData: nonFinalData);
-  }
-
-  AnotherMacroStructTwinSse _sse_decode_another_macro_struct_twin_sse(
-      SseDeserializer deserializer) {
-    var data = _sse_decode_i_32(deserializer);
-    var nonFinalData = _sse_decode_i_32(deserializer);
-    return AnotherMacroStructTwinSse(data: data, nonFinalData: nonFinalData);
   }
 
   AnotherTwinNormal _sse_decode_another_twin_normal(

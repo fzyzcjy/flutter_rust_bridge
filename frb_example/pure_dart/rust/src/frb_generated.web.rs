@@ -3539,10 +3539,10 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::Weekda
             .collect()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct>
+impl CstDecode<crate::api::inside_macro::MacroStruct>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct {
+    fn cst_decode(self) -> crate::api::inside_macro::MacroStruct {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -3552,7 +3552,7 @@ impl CstDecode<crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct>
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::api::pseudo_manual::inside_macro_twin_sse::MacroStruct {
+        crate::api::inside_macro::MacroStruct {
             data: self_.get(0).cst_decode(),
         }
     }
@@ -7077,17 +7077,17 @@ pub fn wire_use_msgid_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_func_async_simple_add(
+pub fn wire_func_async_simple_add_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
     b: i32,
 ) {
-    wire_func_async_simple_add_impl(port_, a, b)
+    wire_func_async_simple_add_twin_normal_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_async_void(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_func_async_void_impl(port_)
+pub fn wire_func_async_void_twin_normal(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_func_async_void_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -8644,17 +8644,17 @@ pub fn wire_use_msgid_twin_sync_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_func_async_simple_add(
+pub fn wire_func_async_simple_add_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
     b: i32,
 ) {
-    wire_func_async_simple_add_impl(port_, a, b)
+    wire_func_async_simple_add_twin_sse_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_async_void(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_func_async_void_impl(port_)
+pub fn wire_func_async_void_twin_sse(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_func_async_void_twin_sse_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -9320,14 +9320,6 @@ pub fn wire_return_dart_dynamic_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
     wire_return_dart_dynamic_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_call_dart_simple(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_call_dart_simple_impl(port_, callback)
 }
 
 #[wasm_bindgen]
@@ -12134,26 +12126,6 @@ pub fn wire_use_imported_struct_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
     wire_use_imported_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_another_macro_struct_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_another_macro_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_func_macro_struct_twin_sse(
-    port_: i64,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_func_macro_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

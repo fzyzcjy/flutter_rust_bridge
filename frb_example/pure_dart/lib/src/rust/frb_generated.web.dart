@@ -55,7 +55,6 @@ import 'api/pseudo_manual/dart_dynamic_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sse.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync_sse.dart';
-import 'api/pseudo_manual/dart_fn_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_sync_twin_sse.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async_sse.dart';
@@ -80,7 +79,6 @@ import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync_sse.dart';
-import 'api/pseudo_manual/inside_macro_twin_sse.dart';
 import 'api/pseudo_manual/method_twin_rust_async.dart';
 import 'api/pseudo_manual/method_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/method_twin_sse.dart';
@@ -5762,11 +5760,12 @@ class RustLibWire extends BaseWire {
   void wire_use_msgid_twin_normal(NativePortType port_, List<dynamic> id) =>
       wasmModule.wire_use_msgid_twin_normal(port_, id);
 
-  void wire_func_async_simple_add(NativePortType port_, int a, int b) =>
-      wasmModule.wire_func_async_simple_add(port_, a, b);
+  void wire_func_async_simple_add_twin_normal(
+          NativePortType port_, int a, int b) =>
+      wasmModule.wire_func_async_simple_add_twin_normal(port_, a, b);
 
-  void wire_func_async_void(NativePortType port_) =>
-      wasmModule.wire_func_async_void(port_);
+  void wire_func_async_void_twin_normal(NativePortType port_) =>
+      wasmModule.wire_func_async_void_twin_normal(port_);
 
   void wire_handle_customized_struct_twin_normal(
           NativePortType port_, List<dynamic> val) =>
@@ -6592,11 +6591,12 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_use_msgid_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
-  void wire_func_async_simple_add(NativePortType port_, int a, int b) =>
-      wasmModule.wire_func_async_simple_add(port_, a, b);
+  void wire_func_async_simple_add_twin_sse(
+          NativePortType port_, int a, int b) =>
+      wasmModule.wire_func_async_simple_add_twin_sse(port_, a, b);
 
-  void wire_func_async_void(NativePortType port_) =>
-      wasmModule.wire_func_async_void(port_);
+  void wire_func_async_void_twin_sse(NativePortType port_) =>
+      wasmModule.wire_func_async_void_twin_sse(port_);
 
   void wire_handle_customized_struct_twin_rust_async(
           NativePortType port_, List<dynamic> val) =>
@@ -6971,9 +6971,6 @@ class RustLibWire extends BaseWire {
               ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_return_dart_dynamic_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
-
-  void wire_rust_call_dart_simple(NativePortType port_, Object callback) =>
-      wasmModule.wire_rust_call_dart_simple(port_, callback);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_accept_dart_opaque_twin_sse(
@@ -8533,16 +8530,6 @@ class RustLibWire extends BaseWire {
               ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
           wasmModule.wire_use_imported_struct_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
-
-  void wire_another_macro_struct_twin_sse(int port_,
-          ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_) =>
-      wasmModule.wire_another_macro_struct_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_func_macro_struct_twin_sse(int port_, ffi.Pointer<ffi.Uint8> ptr_,
-          int rust_vec_len_, int data_len_) =>
-      wasmModule.wire_func_macro_struct_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
           NativePortType port_, String a, String b) =>
@@ -12960,9 +12947,10 @@ class RustLibWasmModule implements WasmModule {
   external void wire_use_msgid_twin_normal(
       NativePortType port_, List<dynamic> id);
 
-  external void wire_func_async_simple_add(NativePortType port_, int a, int b);
+  external void wire_func_async_simple_add_twin_normal(
+      NativePortType port_, int a, int b);
 
-  external void wire_func_async_void(NativePortType port_);
+  external void wire_func_async_void_twin_normal(NativePortType port_);
 
   external void wire_handle_customized_struct_twin_normal(
       NativePortType port_, List<dynamic> val);
@@ -13558,9 +13546,10 @@ class RustLibWasmModule implements WasmModule {
       wire_use_msgid_twin_sync_sse(
           ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_func_async_simple_add(NativePortType port_, int a, int b);
+  external void wire_func_async_simple_add_twin_sse(
+      NativePortType port_, int a, int b);
 
-  external void wire_func_async_void(NativePortType port_);
+  external void wire_func_async_void_twin_sse(NativePortType port_);
 
   external void wire_handle_customized_struct_twin_rust_async(
       NativePortType port_, List<dynamic> val);
@@ -13813,9 +13802,6 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_return_dart_dynamic_twin_sync_sse(
           ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_rust_call_dart_simple(
-      NativePortType port_, Object callback);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_sync_accept_dart_opaque_twin_sse(
@@ -14863,12 +14849,6 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturnSse */
       wire_use_imported_struct_twin_sync_sse(
           ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_another_macro_struct_twin_sse(
-      int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_func_macro_struct_twin_sse(
-      int port_, ffi.Pointer<ffi.Uint8> ptr_, int rust_vec_len_, int data_len_);
 
   external void
       wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
