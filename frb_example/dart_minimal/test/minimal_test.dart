@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -9,11 +7,19 @@ Future<void> main() async {
   await RustLib.init();
   print('Action: Init rust (after)');
 
-  print('Action: Configure tests (before)');
-  test('dart call minimalAdder', () async {
-    print('Action: Call rust (before)');
-    expect(await minimalAdder(a: 100, b: 200), 300);
-    print('Action: Call rust (after)');
+  // print('Action: Configure tests (before)');
+  // test('dart call minimalAdder', () async {
+  //   print('Action: Call rust (before)');
+  //   expect(await minimalAdder(a: 100, b: 200), 300);
+  //   print('Action: Call rust (after)');
+  // });
+  // print('Action: Configure tests (end)');
+
+  test('hi', () async {
+    print('hi dart before rustCallDartSimple');
+    await rustCallDartSimple(callback: () {
+      print('hi Dart callback is called');
+    });
+    print('hi dart after rustCallDartSimple');
   });
-  print('Action: Configure tests (end)');
 }
