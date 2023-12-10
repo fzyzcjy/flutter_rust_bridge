@@ -12,8 +12,8 @@ use crate::handler::implementation::error_listener::{
     handle_non_sync_panic_error, NoOpErrorListener,
 };
 use crate::handler::implementation::executor::SimpleExecutor;
-use crate::platform_types::DartAbi;
 use crate::platform_types::SendableMessagePortHandle;
+use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr};
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
@@ -182,8 +182,19 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             .invoke(dart_fn, args, self.dart_fn_invoke_port())
     }
 
-    fn dart_fn_handle_output(&self, call_id: i32) {
-        self.dart_fn_handler.handle_output(call_id)
+    fn dart_fn_handle_output(
+        &self,
+        call_id: i32,
+        output_ptr: PlatformGeneralizedUint8ListPtr,
+        output_rust_vec_len: i32,
+        output_data_len: i32,
+    ) {
+        self.dart_fn_handler.handle_output(
+            call_id,
+            output_ptr,
+            output_rust_vec_len,
+            output_data_len,
+        )
     }
 }
 

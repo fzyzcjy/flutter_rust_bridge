@@ -1,6 +1,7 @@
 use super::DartFnFuture;
+use crate::for_generated::SseDeserializer;
 use crate::generalized_isolate::Channel;
-use crate::platform_types::{DartAbi, SendableMessagePortHandle};
+use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr, SendableMessagePortHandle};
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::DartOpaque;
 use allo_isolate::IntoDart;
@@ -51,10 +52,20 @@ impl DartFnHandler {
         ))
     }
 
-    pub(crate) fn handle_output(&self, call_id: i32) {
+    pub(crate) fn handle_output(
+        &self,
+        call_id: i32,
+        output_ptr: PlatformGeneralizedUint8ListPtr,
+        output_rust_vec_len: i32,
+        output_data_len: i32,
+    ) {
         // NOTE This [catch_unwind] should also be put outside **ALL** code, see comments above for reasonk
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
+                let mut output_deserializer = unsafe {
+                    SseDeserializer::from_wire(output_ptr, output_rust_vec_len, output_data_len)
+                };
+
                 if let Some(completer) = (self.completers.lock().unwrap()).remove(&call_id) {
                     completer.send(());
                 }
