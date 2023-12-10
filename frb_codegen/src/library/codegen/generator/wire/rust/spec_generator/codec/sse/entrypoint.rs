@@ -39,29 +39,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         _context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
         Acc::new(|target| {
-            let mut params = vec![
-                ExternFuncParam {
-                    name: "ptr_".to_owned(),
-                    rust_type: match target {
-                        TargetOrCommon::Common | TargetOrCommon::Wasm => {
-                            "flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr"
-                                .to_owned()
-                        }
-                        TargetOrCommon::Io => "*mut u8".to_owned(),
-                    },
-                    dart_type: "PlatformGeneralizedUint8ListPtr".to_owned(),
-                },
-                ExternFuncParam {
-                    name: "rust_vec_len_".to_owned(),
-                    rust_type: "i32".to_owned(),
-                    dart_type: "int".to_owned(),
-                },
-                ExternFuncParam {
-                    name: "data_len_".to_owned(),
-                    rust_type: "i32".to_owned(),
-                    dart_type: "int".to_owned(),
-                },
-            ];
+            let mut params = generate_platform_generalized_uint8list_params(target);
 
             if has_port_argument(func.mode) {
                 params.insert(0, create_port_param(target));
@@ -106,4 +84,31 @@ pub(crate) fn create_port_param(target: TargetOrCommon) -> ExternFuncParam {
         rust_type,
         dart_type: "NativePortType".to_owned(),
     }
+}
+
+pub(crate) fn generate_platform_generalized_uint8list_params(
+    target: TargetOrCommon,
+) -> Vec<ExternFuncParam> {
+    vec![
+        ExternFuncParam {
+            name: "ptr_".to_owned(),
+            rust_type: match target {
+                TargetOrCommon::Common | TargetOrCommon::Wasm => {
+                    "flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr".to_owned()
+                }
+                TargetOrCommon::Io => "*mut u8".to_owned(),
+            },
+            dart_type: "PlatformGeneralizedUint8ListPtr".to_owned(),
+        },
+        ExternFuncParam {
+            name: "rust_vec_len_".to_owned(),
+            rust_type: "i32".to_owned(),
+            dart_type: "int".to_owned(),
+        },
+        ExternFuncParam {
+            name: "data_len_".to_owned(),
+            rust_type: "i32".to_owned(),
+            dart_type: "int".to_owned(),
+        },
+    ]
 }
