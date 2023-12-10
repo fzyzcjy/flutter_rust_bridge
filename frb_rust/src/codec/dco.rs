@@ -31,7 +31,7 @@ impl DcoCodec {
 pub struct Rust2DartMessageDco(DartAbi);
 
 impl Rust2DartMessageTrait for Rust2DartMessageDco {
-    type WireSyncType = WireSyncReturnDco;
+    type WireSyncRust2DartType = WireSyncReturnDco;
 
     fn simplest() -> Self {
         Self(().into_dart())
@@ -41,7 +41,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageDco {
         self.0
     }
 
-    unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self {
         #[cfg(not(wasm))]
         return Self(*box_from_leak_ptr(raw));
 
@@ -49,7 +49,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageDco {
         return Self(raw);
     }
 
-    fn into_raw_wire_sync(self) -> Self::WireSyncType {
+    fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType {
         #[cfg(not(wasm))]
         return new_leak_box_ptr(self.0);
 

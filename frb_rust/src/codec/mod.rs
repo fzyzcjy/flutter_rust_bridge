@@ -15,13 +15,13 @@ pub trait BaseCodec: Clone + Copy {
 
 /// An encoded message
 pub trait Rust2DartMessageTrait {
-    type WireSyncType;
+    type WireSyncRust2DartType;
 
     fn simplest() -> Self;
 
     fn into_dart_abi(self) -> DartAbi;
 
-    unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self;
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self;
 
-    fn into_raw_wire_sync(self) -> Self::WireSyncType;
+    fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType;
 }

@@ -48,7 +48,7 @@ impl SseCodec {
 pub struct Rust2DartMessageSse(Vec<u8>);
 
 impl Rust2DartMessageTrait for Rust2DartMessageSse {
-    type WireSyncType = WireSyncReturnSse;
+    type WireSyncRust2DartType = WireSyncReturnSse;
 
     fn simplest() -> Self {
         Self(vec![])
@@ -58,7 +58,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
         self.0.into_dart()
     }
 
-    unsafe fn from_raw_wire_sync(raw: Self::WireSyncType) -> Self {
+    unsafe fn from_raw_wire_sync(raw: Self::WireSyncRust2DartType) -> Self {
         #[cfg(not(wasm))]
         {
             let WireSyncReturnSse { ptr, len } = raw;
@@ -69,7 +69,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
         Self(js_sys::Uint8Array::new(&raw).to_vec())
     }
 
-    fn into_raw_wire_sync(self) -> Self::WireSyncType {
+    fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType {
         #[cfg(not(wasm))]
         {
             let (ptr, len) = into_leak_vec_ptr(self.0);

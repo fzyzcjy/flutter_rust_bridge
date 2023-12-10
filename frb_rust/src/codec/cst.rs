@@ -20,7 +20,7 @@ impl BaseCodec for CstCodec {
 pub struct Rust2DartMessageCst(DartAbi);
 
 impl Rust2DartMessageTrait for Rust2DartMessageCst {
-    type WireSyncType = ();
+    type WireSyncRust2DartType = ();
 
     fn simplest() -> Self {
         unreachable!()
@@ -30,11 +30,11 @@ impl Rust2DartMessageTrait for Rust2DartMessageCst {
         unreachable!()
     }
 
-    unsafe fn from_raw_wire_sync(_raw: Self::WireSyncType) -> Self {
+    unsafe fn from_raw_wire_sync(_raw: Self::WireSyncRust2DartType) -> Self {
         unreachable!()
     }
 
-    fn into_raw_wire_sync(self) -> Self::WireSyncType {
+    fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType {
         unreachable!()
     }
 }
