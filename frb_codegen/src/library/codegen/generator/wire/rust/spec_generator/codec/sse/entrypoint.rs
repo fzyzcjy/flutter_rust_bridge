@@ -38,7 +38,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         func: &IrFunc,
         _context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
-        Acc::new(|_| {
+        Acc::new(|target| {
             let mut params = vec![
                 ExternFuncParam {
                     name: "ptr_".to_owned(),
@@ -58,14 +58,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
             ];
 
             if has_port_argument(func.mode) {
-                params.insert(
-                    0,
-                    ExternFuncParam {
-                        name: "port_".to_owned(),
-                        rust_type: "i64".to_owned(),
-                        dart_type: "int".to_owned(),
-                    },
-                );
+                params.insert(0, create_port_param(target));
             }
 
             params
