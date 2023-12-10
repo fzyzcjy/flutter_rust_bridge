@@ -16,12 +16,13 @@ impl IrIdent {
         &self.raw
     }
 
+    pub fn c_style(&self) -> &str {
+        // TODO correct?
+        self.raw.strip_prefix("r#").unwrap_or(self.raw.as_str())
+    }
+
     pub fn dart_style(&self) -> String {
-        self.raw
-            .strip_prefix("r#")
-            .unwrap_or(self.raw.as_str())
-            .to_string()
-            .to_case(Case::Camel)
+        self.c_style().to_case(Case::Camel)
     }
 
     pub fn style(&self, lang: &Lang) -> String {

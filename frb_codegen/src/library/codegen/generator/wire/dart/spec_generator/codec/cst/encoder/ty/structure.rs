@@ -94,14 +94,12 @@ impl<'a> GeneralizedStructGenerator<'a> {
         let safe_ident = field.ty.safe_ident();
         let dart_style =
             (self.mode).field_name(index, field, st.is_fields_named, &Lang::DartLang(DartLang));
-        let rust_style = field.name.rust_style();
+        let c_style = field.name.c_style();
 
         if field.ty.is_struct_or_enum_or_record() {
-            format!(
-                "_cst_api_fill_to_wire_{safe_ident}(apiObj.{dart_style}, wireObj.{rust_style});"
-            )
+            format!("_cst_api_fill_to_wire_{safe_ident}(apiObj.{dart_style}, wireObj.{c_style});")
         } else {
-            format!("wireObj.{rust_style} = cst_encode_{safe_ident}(apiObj.{dart_style});")
+            format!("wireObj.{c_style} = cst_encode_{safe_ident}(apiObj.{dart_style});")
         }
     }
 }
