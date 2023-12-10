@@ -42,7 +42,8 @@ class ReadBuffer {
 
   /// Reads a Uint64 from the buffer.
   int getUint64({Endian? endian}) {
-    final int value = data.getUint64(_position, endian ?? Endian.host);
+    final int value =
+        byteDataGetUint64(data, _position, endian ?? Endian.host).toInt();
     _position += 8;
     return value;
   }
@@ -69,7 +70,8 @@ class ReadBuffer {
 
   /// Reads an Int64 from the buffer.
   int getInt64({Endian? endian}) {
-    final int value = data.getInt64(_position, endian ?? Endian.host);
+    final int value =
+        byteDataGetInt64(data, _position, endian ?? Endian.host).toInt();
     _position += 8;
     return value;
   }
