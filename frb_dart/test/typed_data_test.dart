@@ -59,21 +59,23 @@ void main() {
                 expectLittleEndian: [1, 0, 0, 0, 0, 0, 0, 0],
                 expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 1],
               ),
-              _Info(
-                integer: BigInt.parse('-1'),
-                expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
-                expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
-              ),
+              if (name != _Name.uint64)
+                _Info(
+                  integer: BigInt.parse('-1'),
+                  expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+                  expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 255],
+                ),
               _Info(
                 integer: BigInt.parse('2'),
                 expectLittleEndian: [2, 0, 0, 0, 0, 0, 0, 0],
                 expectBigEndian: [0, 0, 0, 0, 0, 0, 0, 2],
               ),
-              _Info(
-                integer: BigInt.parse('-2'),
-                expectLittleEndian: [254, 255, 255, 255, 255, 255, 255, 255],
-                expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 254],
-              ),
+              if (name != _Name.uint64)
+                _Info(
+                  integer: BigInt.parse('-2'),
+                  expectLittleEndian: [254, 255, 255, 255, 255, 255, 255, 255],
+                  expectBigEndian: [255, 255, 255, 255, 255, 255, 255, 254],
+                ),
               _Info(
                 integer: BigInt.parse('2023'),
                 expectLittleEndian: [231, 7, 0, 0, 0, 0, 0, 0],
@@ -84,21 +86,23 @@ void main() {
                 expectLittleEndian: [0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0, 0],
                 expectBigEndian: [0, 0, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66],
               ),
-              _Info(
-                integer: BigInt.parse('-0x112233445566'),
-                expectLittleEndian: [154, 170, 187, 204, 221, 238, 255, 255],
-                expectBigEndian: [255, 255, 238, 221, 204, 187, 170, 154],
-              ),
+              if (name != _Name.uint64)
+                _Info(
+                  integer: BigInt.parse('-0x112233445566'),
+                  expectLittleEndian: [154, 170, 187, 204, 221, 238, 255, 255],
+                  expectBigEndian: [255, 255, 238, 221, 204, 187, 170, 154],
+                ),
               _Info(
                 integer: BigInt.parse('0x110000000000'),
                 expectLittleEndian: [0, 0, 0, 0, 0, 0x11, 0, 0],
                 expectBigEndian: [0, 0, 0x11, 0, 0, 0, 0, 0],
               ),
-              _Info(
-                integer: BigInt.parse('-0x110000000000'),
-                expectLittleEndian: [0, 0, 0, 0, 0, 239, 255, 255],
-                expectBigEndian: [255, 255, 239, 0, 0, 0, 0, 0],
-              ),
+              if (name != _Name.uint64)
+                _Info(
+                  integer: BigInt.parse('-0x110000000000'),
+                  expectLittleEndian: [0, 0, 0, 0, 0, 239, 255, 255],
+                  expectBigEndian: [255, 255, 239, 0, 0, 0, 0, 0],
+                ),
               // Dart int does not support this yet...
               // _Info(
               //   // 2**64-1
@@ -112,12 +116,13 @@ void main() {
                 expectLittleEndian: [255, 255, 255, 255, 255, 255, 255, 127],
                 expectBigEndian: [127, 255, 255, 255, 255, 255, 255, 255],
               ),
-              _Info(
-                // -2**63
-                integer: BigInt.parse('-9223372036854775808'),
-                expectLittleEndian: [0, 0, 0, 0, 0, 0, 0, 128],
-                expectBigEndian: [128, 0, 0, 0, 0, 0, 0, 0],
-              ),
+              if (name != _Name.uint64)
+                _Info(
+                  // -2**63
+                  integer: BigInt.parse('-9223372036854775808'),
+                  expectLittleEndian: [0, 0, 0, 0, 0, 0, 0, 128],
+                  expectBigEndian: [128, 0, 0, 0, 0, 0, 0, 0],
+                ),
             ]) {
               test('$info', () => _body(setter, getter, info, endian));
             }
