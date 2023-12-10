@@ -30,7 +30,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
                             | IrType::Delegate(IrTypeDelegate::Uuid)
                     )
                 {
-                    format!("ans.ref.ptr[i] = cst_encode_{inner}(this, raw[i]);")
+                    format!("ans.ref.ptr[i] = cst_encode_{inner}(raw[i]);")
                 } else {
                     format!("_cst_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
                 }
