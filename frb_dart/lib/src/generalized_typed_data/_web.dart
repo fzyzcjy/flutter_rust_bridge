@@ -218,7 +218,7 @@ BigInt byteDataGetUint64(ByteData byteData, int byteOffset, Endian endian) {
 BigInt byteDataGetInt64(ByteData byteData, int byteOffset, Endian endian) {
   // Just a quick hack, should improve if used frequently in the future
   var ans = byteDataGetUint64(byteData, byteOffset, endian);
-  if ((ans & (BigInt.from(1) << 63)).toInt() != 0) {
+  if ((ans & (BigInt.from(1) << 63)) != BigInt.from(0)) {
     ans -= BigInt.from(1) << 64;
   }
   return ans;
