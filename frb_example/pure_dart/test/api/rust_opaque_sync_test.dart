@@ -1,6 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "syncSse", "rustAsyncSse"]}
 
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_sync_twin_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_opaque_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';

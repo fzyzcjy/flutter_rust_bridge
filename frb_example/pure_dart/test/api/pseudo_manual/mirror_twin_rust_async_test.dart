@@ -9,6 +9,7 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_syn
 import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_rust_async.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async.dart';
 import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
