@@ -15927,35 +15927,35 @@ pub extern "C" fn wire_set_static_dart_opaque_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_sync_accept_dart_opaque_twin_normal(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_accept_dart_opaque_twin_normal_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_loopback_twin_normal(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_loopback_twin_normal_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_option_dart_opaque_twin_normal(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_option_dart_opaque_twin_normal_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_option_loopback_twin_normal(
     opaque: *mut *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_option_loopback_twin_normal_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_unwrap_dart_opaque_twin_normal(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_unwrap_dart_opaque_twin_normal_impl(opaque)
 }
 
@@ -16914,75 +16914,75 @@ pub extern "C" fn wire_use_msgid_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_boxed_blob_twin_sync(
     blob: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_boxed_blob_twin_sync_impl(blob)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_test_id_twin_sync(
     id: *mut wire_cst_test_id_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_test_id_twin_sync_impl(id)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_array_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturnDco
-{
+pub extern "C" fn wire_get_array_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_get_array_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_get_complex_array_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_get_complex_array_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_last_number_twin_sync(
     array: *mut wire_cst_list_prim_f_64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_last_number_twin_sync_impl(array)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_nested_id_twin_sync(
     id: *mut wire_cst_list_test_id_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_nested_id_twin_sync_impl(id)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_new_msgid_twin_sync(
     id: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_new_msgid_twin_sync_impl(id)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_boxed_feed_id_twin_sync(
     id: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_boxed_feed_id_twin_sync_impl(id)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_boxed_raw_feed_id_twin_sync(
     id: *mut wire_cst_feed_id_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_boxed_raw_feed_id_twin_sync_impl(id)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_use_boxed_blob_twin_sync(
     blob: *mut wire_cst_blob_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_use_boxed_blob_twin_sync_impl(blob)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_use_msgid_twin_sync(
     id: *mut wire_cst_message_id_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_use_msgid_twin_sync_impl(id)
 }
 
@@ -16991,7 +16991,7 @@ pub extern "C" fn wire_boxed_blob_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_boxed_blob_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17000,7 +17000,7 @@ pub extern "C" fn wire_func_test_id_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_test_id_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17009,7 +17009,7 @@ pub extern "C" fn wire_get_array_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_get_array_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17018,7 +17018,7 @@ pub extern "C" fn wire_get_complex_array_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_get_complex_array_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17027,7 +17027,7 @@ pub extern "C" fn wire_last_number_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_last_number_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17036,7 +17036,7 @@ pub extern "C" fn wire_nested_id_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_nested_id_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17045,7 +17045,7 @@ pub extern "C" fn wire_new_msgid_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_new_msgid_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17054,7 +17054,7 @@ pub extern "C" fn wire_return_boxed_feed_id_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_boxed_feed_id_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17063,7 +17063,7 @@ pub extern "C" fn wire_return_boxed_raw_feed_id_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_boxed_raw_feed_id_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17072,7 +17072,7 @@ pub extern "C" fn wire_use_boxed_blob_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_use_boxed_blob_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17081,7 +17081,7 @@ pub extern "C" fn wire_use_msgid_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_use_msgid_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17154,14 +17154,14 @@ pub extern "C" fn wire_next_user_id_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_handle_customized_struct_twin_sync(
     val: *mut wire_cst_customized_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_customized_struct_twin_sync_impl(val)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_next_user_id_twin_sync(
     user_id: *mut wire_cst_user_id_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_next_user_id_twin_sync_impl(user_id)
 }
 
@@ -17170,7 +17170,7 @@ pub extern "C" fn wire_handle_customized_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_customized_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17179,7 +17179,7 @@ pub extern "C" fn wire_next_user_id_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_next_user_id_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17264,20 +17264,20 @@ pub extern "C" fn wire_benchmark_void_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_benchmark_input_bytes_twin_sync(
     bytes: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_input_bytes_twin_sync_impl(bytes)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_benchmark_output_bytes_twin_sync(
     size: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_output_bytes_twin_sync_impl(size)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_benchmark_void_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_void_twin_sync_impl()
 }
 
@@ -17286,7 +17286,7 @@ pub extern "C" fn wire_benchmark_input_bytes_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_benchmark_input_bytes_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17295,7 +17295,7 @@ pub extern "C" fn wire_benchmark_output_bytes_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_benchmark_output_bytes_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17304,7 +17304,7 @@ pub extern "C" fn wire_benchmark_void_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_benchmark_void_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17372,21 +17372,21 @@ pub extern "C" fn wire_test_precise_chrono_twin_rust_async(port_: i64) {
 #[no_mangle]
 pub extern "C" fn wire_datetime_local_twin_sync(
     d: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_datetime_local_twin_sync_impl(d)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_datetime_utc_twin_sync(
     d: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_datetime_utc_twin_sync_impl(d)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_duration_twin_sync(
     d: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_duration_twin_sync_impl(d)
 }
 
@@ -17394,7 +17394,7 @@ pub extern "C" fn wire_duration_twin_sync(
 pub extern "C" fn wire_handle_durations_twin_sync(
     durations: *mut wire_cst_list_Chrono_Duration,
     since: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_durations_twin_sync_impl(durations, since)
 }
 
@@ -17402,40 +17402,40 @@ pub extern "C" fn wire_handle_durations_twin_sync(
 pub extern "C" fn wire_handle_timestamps_twin_sync(
     timestamps: *mut wire_cst_list_Chrono_Naive,
     epoch: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_timestamps_twin_sync_impl(timestamps, epoch)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_how_long_does_it_take_twin_sync(
     mine: *mut wire_cst_feature_chrono_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_how_long_does_it_take_twin_sync_impl(mine)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_naivedatetime_twin_sync(
     d: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_naivedatetime_twin_sync_impl(d)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_optional_empty_datetime_utc_twin_sync(
     d: *mut i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_optional_empty_datetime_utc_twin_sync_impl(d)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_chrono_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_chrono_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_precise_chrono_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_precise_chrono_twin_sync_impl()
 }
 
@@ -17615,31 +17615,31 @@ pub extern "C" fn wire_function_with_comments_triple_slash_single_line_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     that: *mut wire_cst_struct_with_comments_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_StructWithCommentsTwinSync_static_method_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_StructWithCommentsTwinSync_static_method_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_function_with_comments_slash_star_star_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_function_with_comments_slash_star_star_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_function_with_comments_triple_slash_multi_line_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_function_with_comments_triple_slash_multi_line_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_function_with_comments_triple_slash_single_line_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_function_with_comments_triple_slash_single_line_twin_sync_impl()
 }
 
@@ -17648,7 +17648,7 @@ pub extern "C" fn wire_StructWithCommentsTwinSyncSse_instance_method_twin_sync_s
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_StructWithCommentsTwinSyncSse_instance_method_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -17661,7 +17661,7 @@ pub extern "C" fn wire_StructWithCommentsTwinSyncSse_static_method_twin_sync_sse
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_StructWithCommentsTwinSyncSse_static_method_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -17674,7 +17674,7 @@ pub extern "C" fn wire_function_with_comments_slash_star_star_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_function_with_comments_slash_star_star_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17683,7 +17683,7 @@ pub extern "C" fn wire_function_with_comments_triple_slash_multi_line_twin_sync_
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_function_with_comments_triple_slash_multi_line_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -17696,7 +17696,7 @@ pub extern "C" fn wire_function_with_comments_triple_slash_single_line_twin_sync
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_function_with_comments_triple_slash_single_line_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -17711,7 +17711,7 @@ pub extern "C" fn wire_return_dart_dynamic_twin_rust_async(port_: i64) {
 
 #[no_mangle]
 pub extern "C" fn wire_return_dart_dynamic_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_dart_dynamic_twin_sync_impl()
 }
 
@@ -17720,7 +17720,7 @@ pub extern "C" fn wire_sync_accept_dart_opaque_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_sync_accept_dart_opaque_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17729,7 +17729,7 @@ pub extern "C" fn wire_sync_loopback_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_sync_loopback_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17738,7 +17738,7 @@ pub extern "C" fn wire_sync_option_dart_opaque_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_sync_option_dart_opaque_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17747,7 +17747,7 @@ pub extern "C" fn wire_sync_option_loopback_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_sync_option_loopback_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -17756,7 +17756,7 @@ pub extern "C" fn wire_unwrap_dart_opaque_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_unwrap_dart_opaque_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18204,21 +18204,21 @@ pub extern "C" fn wire_set_static_dart_opaque_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_async_accept_dart_opaque_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_async_accept_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_clone_dart_opaque_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_clone_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_create_enum_dart_opaque_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_create_enum_dart_opaque_twin_sync_impl(opaque)
 }
 
@@ -18226,84 +18226,84 @@ pub extern "C" fn wire_create_enum_dart_opaque_twin_sync(
 pub extern "C" fn wire_create_nested_dart_opaque_twin_sync(
     opaque1: *const std::ffi::c_void,
     opaque2: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_create_nested_dart_opaque_twin_sync_impl(opaque1, opaque2)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_drop_static_dart_opaque_twin_sync(
     id: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_drop_static_dart_opaque_twin_sync_impl(id)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_get_enum_dart_opaque_twin_sync(
     opaque: *mut wire_cst_enum_dart_opaque_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_get_enum_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_get_nested_dart_opaque_twin_sync(
     opaque: *mut wire_cst_dart_opaque_nested_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_get_nested_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_array_get_twin_sync(
     opaque: *mut wire_cst_list_DartOpaque,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_array_get_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_array_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_array_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_option_get_twin_sync(
     opaque: *mut *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_option_get_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_option_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_option_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_vec_get_twin_sync(
     opaque: *mut wire_cst_list_DartOpaque,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_vec_get_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_vec_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_vec_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_panic_unwrap_dart_opaque_twin_sync_impl(opaque)
 }
 
@@ -18311,7 +18311,7 @@ pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_sync(
 pub extern "C" fn wire_set_static_dart_opaque_twin_sync(
     id: i32,
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_set_static_dart_opaque_twin_sync_impl(id, opaque)
 }
 
@@ -18320,7 +18320,7 @@ pub extern "C" fn wire_async_accept_dart_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_async_accept_dart_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18329,7 +18329,7 @@ pub extern "C" fn wire_clone_dart_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_clone_dart_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18338,7 +18338,7 @@ pub extern "C" fn wire_create_enum_dart_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_create_enum_dart_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18347,7 +18347,7 @@ pub extern "C" fn wire_create_nested_dart_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_create_nested_dart_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18356,7 +18356,7 @@ pub extern "C" fn wire_drop_static_dart_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_drop_static_dart_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18365,7 +18365,7 @@ pub extern "C" fn wire_get_enum_dart_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_get_enum_dart_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18374,7 +18374,7 @@ pub extern "C" fn wire_get_nested_dart_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_get_nested_dart_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18383,7 +18383,7 @@ pub extern "C" fn wire_loop_back_array_get_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_loop_back_array_get_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18392,7 +18392,7 @@ pub extern "C" fn wire_loop_back_array_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_loop_back_array_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18401,7 +18401,7 @@ pub extern "C" fn wire_loop_back_option_get_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_loop_back_option_get_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18410,7 +18410,7 @@ pub extern "C" fn wire_loop_back_option_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_loop_back_option_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18419,7 +18419,7 @@ pub extern "C" fn wire_loop_back_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_loop_back_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18428,7 +18428,7 @@ pub extern "C" fn wire_loop_back_vec_get_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_loop_back_vec_get_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18437,7 +18437,7 @@ pub extern "C" fn wire_loop_back_vec_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_loop_back_vec_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18446,7 +18446,7 @@ pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_panic_unwrap_dart_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18455,7 +18455,7 @@ pub extern "C" fn wire_set_static_dart_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_set_static_dart_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18708,63 +18708,63 @@ pub extern "C" fn wire_print_note_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_func_enum_simple_twin_sync(
     arg: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_enum_simple_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_enum_with_item_mixed_twin_sync(
     arg: *mut wire_cst_enum_with_item_mixed_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_enum_with_item_mixed_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_enum_with_item_struct_twin_sync(
     arg: *mut wire_cst_enum_with_item_struct_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_enum_with_item_struct_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_enum_with_item_tuple_twin_sync(
     arg: *mut wire_cst_enum_with_item_tuple_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_enum_with_item_tuple_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_enum_parameter_twin_sync(
     weekday: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_enum_parameter_twin_sync_impl(weekday)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_enum_struct_twin_sync(
     val: *mut wire_cst_kitchen_sink_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_enum_struct_twin_sync_impl(val)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_return_enum_twin_sync(
     input: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_return_enum_twin_sync_impl(input)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_multiply_by_ten_twin_sync(
     measure: *mut wire_cst_measure_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_multiply_by_ten_twin_sync_impl(measure)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_print_note_twin_sync(
     note: *mut wire_cst_note_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_print_note_twin_sync_impl(note)
 }
 
@@ -18773,7 +18773,7 @@ pub extern "C" fn wire_func_enum_simple_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_enum_simple_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18782,7 +18782,7 @@ pub extern "C" fn wire_func_enum_with_item_mixed_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_enum_with_item_mixed_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18791,7 +18791,7 @@ pub extern "C" fn wire_func_enum_with_item_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_enum_with_item_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18800,7 +18800,7 @@ pub extern "C" fn wire_func_enum_with_item_tuple_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_enum_with_item_tuple_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18809,7 +18809,7 @@ pub extern "C" fn wire_handle_enum_parameter_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_enum_parameter_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18818,7 +18818,7 @@ pub extern "C" fn wire_handle_enum_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_enum_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18827,7 +18827,7 @@ pub extern "C" fn wire_handle_return_enum_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_return_enum_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18836,7 +18836,7 @@ pub extern "C" fn wire_multiply_by_ten_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_multiply_by_ten_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -18845,7 +18845,7 @@ pub extern "C" fn wire_print_note_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_print_note_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -19844,172 +19844,172 @@ pub extern "C" fn wire_throw_anyhow_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_CustomStructTwinSync_new_twin_sync(
     message: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_CustomStructTwinSync_new_twin_sync_impl(message)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
     that: *mut wire_cst_custom_struct_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
     that: *mut wire_cst_custom_struct_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_SomeStructTwinSync_new_twin_sync(
     value: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_SomeStructTwinSync_new_twin_sync_impl(value)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
     that: *mut wire_cst_some_struct_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
     that: *mut wire_cst_some_struct_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_custom_enum_error_panic_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_custom_enum_error_panic_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_custom_enum_error_return_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_custom_enum_error_return_error_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_custom_enum_error_return_ok_twin_sync(
     arg: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_custom_enum_error_return_ok_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_custom_nested_error_return_error_twin_sync(
     arg: *mut wire_cst_custom_nested_error_outer_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_custom_nested_error_return_error_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_custom_struct_error_return_error_twin_sync(
     arg: *mut wire_cst_custom_struct_error_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_custom_struct_error_return_error_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_return_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_return_error_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_type_fallible_panic_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_type_fallible_panic_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_type_infallible_panic_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_type_infallible_panic_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_panic_with_custom_result_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_panic_with_custom_result_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_custom_nested_error_1_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_custom_nested_error_1_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_custom_nested_error_1_variant1_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_custom_nested_error_1_variant1_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_custom_nested_error_2_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_custom_nested_error_2_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_custom_struct_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_custom_struct_error_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_custom_struct_ok_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_custom_struct_ok_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_err_custom_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_err_custom_error_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_error_variant_twin_sync(
     variant: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_error_variant_twin_sync_impl(variant)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_ok_custom_error_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_ok_custom_error_twin_sync_impl()
 }
 
@@ -20020,7 +20020,7 @@ pub extern "C" fn wire_stream_sink_throw_anyhow_twin_sync(port_: i64) {
 
 #[no_mangle]
 pub extern "C" fn wire_throw_anyhow_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_throw_anyhow_twin_sync_impl()
 }
 
@@ -20029,7 +20029,7 @@ pub extern "C" fn wire_CustomStructTwinSyncSse_new_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_CustomStructTwinSyncSse_new_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20038,7 +20038,7 @@ pub extern "C" fn wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_er
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_error_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -20051,7 +20051,7 @@ pub extern "C" fn wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_ok
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_ok_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -20064,7 +20064,7 @@ pub extern "C" fn wire_CustomStructTwinSyncSse_static_return_custom_struct_error
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_CustomStructTwinSyncSse_static_return_custom_struct_error_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -20077,7 +20077,7 @@ pub extern "C" fn wire_CustomStructTwinSyncSse_static_return_custom_struct_ok_tw
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_CustomStructTwinSyncSse_static_return_custom_struct_ok_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -20090,7 +20090,7 @@ pub extern "C" fn wire_SomeStructTwinSyncSse_new_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_SomeStructTwinSyncSse_new_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20099,7 +20099,7 @@ pub extern "C" fn wire_SomeStructTwinSyncSse_non_static_return_err_custom_error_
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_SomeStructTwinSyncSse_non_static_return_err_custom_error_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -20112,7 +20112,7 @@ pub extern "C" fn wire_SomeStructTwinSyncSse_non_static_return_ok_custom_error_t
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_SomeStructTwinSyncSse_non_static_return_ok_custom_error_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -20125,7 +20125,7 @@ pub extern "C" fn wire_SomeStructTwinSyncSse_static_return_err_custom_error_twin
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_SomeStructTwinSyncSse_static_return_err_custom_error_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -20138,7 +20138,7 @@ pub extern "C" fn wire_SomeStructTwinSyncSse_static_return_ok_custom_error_twin_
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_SomeStructTwinSyncSse_static_return_ok_custom_error_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -20151,7 +20151,7 @@ pub extern "C" fn wire_custom_enum_error_panic_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_custom_enum_error_panic_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20160,7 +20160,7 @@ pub extern "C" fn wire_custom_enum_error_return_error_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_custom_enum_error_return_error_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20169,7 +20169,7 @@ pub extern "C" fn wire_custom_enum_error_return_ok_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_custom_enum_error_return_ok_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20178,7 +20178,7 @@ pub extern "C" fn wire_custom_nested_error_return_error_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_custom_nested_error_return_error_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20187,7 +20187,7 @@ pub extern "C" fn wire_custom_struct_error_return_error_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_custom_struct_error_return_error_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20196,7 +20196,7 @@ pub extern "C" fn wire_func_return_error_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_return_error_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20205,7 +20205,7 @@ pub extern "C" fn wire_func_type_fallible_panic_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_type_fallible_panic_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20214,7 +20214,7 @@ pub extern "C" fn wire_func_type_infallible_panic_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_type_infallible_panic_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20223,7 +20223,7 @@ pub extern "C" fn wire_panic_with_custom_result_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_panic_with_custom_result_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20232,7 +20232,7 @@ pub extern "C" fn wire_return_custom_nested_error_1_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_custom_nested_error_1_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20241,7 +20241,7 @@ pub extern "C" fn wire_return_custom_nested_error_1_variant1_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_custom_nested_error_1_variant1_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20250,7 +20250,7 @@ pub extern "C" fn wire_return_custom_nested_error_2_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_custom_nested_error_2_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20259,7 +20259,7 @@ pub extern "C" fn wire_return_custom_struct_error_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_custom_struct_error_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20268,7 +20268,7 @@ pub extern "C" fn wire_return_custom_struct_ok_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_custom_struct_ok_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20277,7 +20277,7 @@ pub extern "C" fn wire_return_err_custom_error_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_err_custom_error_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20286,7 +20286,7 @@ pub extern "C" fn wire_return_error_variant_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_error_variant_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20295,7 +20295,7 @@ pub extern "C" fn wire_return_ok_custom_error_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_return_ok_custom_error_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20314,7 +20314,7 @@ pub extern "C" fn wire_throw_anyhow_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_throw_anyhow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20423,27 +20423,27 @@ pub extern "C" fn wire_use_imported_struct_twin_sse(
 
 #[no_mangle]
 pub extern "C" fn wire_call_new_module_system_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_call_new_module_system_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_call_old_module_system_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_call_old_module_system_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_use_imported_enum_twin_sync(
     my_enum: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_use_imported_enum_twin_sync_impl(my_enum)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_use_imported_struct_twin_sync(
     my_struct: *mut wire_cst_my_struct,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_use_imported_struct_twin_sync_impl(my_struct)
 }
 
@@ -20452,7 +20452,7 @@ pub extern "C" fn wire_call_new_module_system_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_call_new_module_system_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20461,7 +20461,7 @@ pub extern "C" fn wire_call_old_module_system_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_call_old_module_system_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20470,7 +20470,7 @@ pub extern "C" fn wire_use_imported_enum_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_use_imported_enum_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20479,7 +20479,7 @@ pub extern "C" fn wire_use_imported_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_use_imported_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20828,7 +20828,7 @@ pub extern "C" fn wire_get_sum_struct_twin_sse(
 pub extern "C" fn wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
     a: *mut wire_cst_list_prim_u_8,
     b: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_ConcatenateWithTwinSync_concatenate_static_twin_sync_impl(a, b)
 }
 
@@ -20836,7 +20836,7 @@ pub extern "C" fn wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
 pub extern "C" fn wire_ConcatenateWithTwinSync_concatenate_twin_sync(
     that: *mut wire_cst_concatenate_with_twin_sync,
     b: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_ConcatenateWithTwinSync_concatenate_twin_sync_impl(that, b)
 }
 
@@ -20877,7 +20877,7 @@ pub extern "C" fn wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync
 #[no_mangle]
 pub extern "C" fn wire_ConcatenateWithTwinSync_new_twin_sync(
     a: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_ConcatenateWithTwinSync_new_twin_sync_impl(a)
 }
 
@@ -20886,7 +20886,7 @@ pub extern "C" fn wire_SumWithTwinSync_sum_twin_sync(
     that: *mut wire_cst_sum_with_twin_sync,
     y: u32,
     z: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_SumWithTwinSync_sum_twin_sync_impl(that, y, z)
 }
 
@@ -20895,13 +20895,13 @@ pub extern "C" fn wire_get_sum_array_twin_sync(
     a: u32,
     b: u32,
     c: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_get_sum_array_twin_sync_impl(a, b, c)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_get_sum_struct_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_get_sum_struct_twin_sync_impl()
 }
 
@@ -20910,7 +20910,7 @@ pub extern "C" fn wire_ConcatenateWithTwinSyncSse_concatenate_static_twin_sync_s
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_ConcatenateWithTwinSyncSse_concatenate_static_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -20923,7 +20923,7 @@ pub extern "C" fn wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -20992,7 +20992,7 @@ pub extern "C" fn wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21001,7 +21001,7 @@ pub extern "C" fn wire_SumWithTwinSyncSse_sum_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_SumWithTwinSyncSse_sum_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21010,7 +21010,7 @@ pub extern "C" fn wire_get_sum_array_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_get_sum_array_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21019,7 +21019,7 @@ pub extern "C" fn wire_get_sum_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_get_sum_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21549,39 +21549,39 @@ pub extern "C" fn wire_app_settings_vec_stream_twin_sync(port_: i64) {
 #[no_mangle]
 pub extern "C" fn wire_first_number_twin_sync(
     nums: *mut wire_cst_numbers,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_first_number_twin_sync_impl(nums)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_first_sequence_twin_sync(
     seqs: *mut wire_cst_sequences,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_first_sequence_twin_sync_impl(seqs)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_get_app_settings_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_get_app_settings_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_get_fallible_app_settings_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_get_fallible_app_settings_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_get_message_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_get_message_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_is_app_embedded_twin_sync(
     app_settings: *mut wire_cst_application_settings,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_is_app_embedded_twin_sync_impl(app_settings)
 }
 
@@ -21599,7 +21599,7 @@ pub extern "C" fn wire_mirror_tuple_stream_twin_sync(port_: i64) {
 pub extern "C" fn wire_repeat_number_twin_sync(
     num: i32,
     times: usize,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_repeat_number_twin_sync_impl(num, times)
 }
 
@@ -21607,50 +21607,50 @@ pub extern "C" fn wire_repeat_number_twin_sync(
 pub extern "C" fn wire_repeat_sequence_twin_sync(
     seq: i32,
     times: usize,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_repeat_sequence_twin_sync_impl(seq, times)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_contains_mirrored_sub_struct_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_contains_mirrored_sub_struct_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_fallible_of_raw_string_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_fallible_of_raw_string_mirrored_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_list_of_nested_enums_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_list_of_nested_enums_mirrored_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_list_of_raw_nested_string_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_list_of_raw_nested_string_mirrored_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_nested_raw_string_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_nested_raw_string_mirrored_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_raw_string_enum_mirrored_twin_sync(
     nested: bool,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_raw_string_enum_mirrored_twin_sync_impl(nested)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_raw_string_mirrored_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_raw_string_mirrored_twin_sync_impl()
 }
 
@@ -21679,7 +21679,7 @@ pub extern "C" fn wire_first_number_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_first_number_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21688,7 +21688,7 @@ pub extern "C" fn wire_first_sequence_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_first_sequence_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21697,7 +21697,7 @@ pub extern "C" fn wire_get_app_settings_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_get_app_settings_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21706,7 +21706,7 @@ pub extern "C" fn wire_get_fallible_app_settings_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_get_fallible_app_settings_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21715,7 +21715,7 @@ pub extern "C" fn wire_get_message_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_get_message_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21724,7 +21724,7 @@ pub extern "C" fn wire_is_app_embedded_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_is_app_embedded_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21753,7 +21753,7 @@ pub extern "C" fn wire_repeat_number_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_repeat_number_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21762,7 +21762,7 @@ pub extern "C" fn wire_repeat_sequence_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_repeat_sequence_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21771,7 +21771,7 @@ pub extern "C" fn wire_test_contains_mirrored_sub_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_contains_mirrored_sub_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21780,7 +21780,7 @@ pub extern "C" fn wire_test_fallible_of_raw_string_mirrored_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_fallible_of_raw_string_mirrored_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21789,7 +21789,7 @@ pub extern "C" fn wire_test_list_of_nested_enums_mirrored_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_list_of_nested_enums_mirrored_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21798,7 +21798,7 @@ pub extern "C" fn wire_test_list_of_raw_nested_string_mirrored_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_list_of_raw_nested_string_mirrored_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21807,7 +21807,7 @@ pub extern "C" fn wire_test_nested_raw_string_mirrored_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_nested_raw_string_mirrored_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21816,7 +21816,7 @@ pub extern "C" fn wire_test_raw_string_enum_mirrored_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_raw_string_enum_mirrored_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -21825,7 +21825,7 @@ pub extern "C" fn wire_test_raw_string_mirrored_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_raw_string_mirrored_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22075,28 +22075,28 @@ pub extern "C" fn wire_test_struct_with_enum_twin_sse(
 
 #[no_mangle]
 pub extern "C" fn wire_handle_big_buffers_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_big_buffers_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_complex_struct_twin_sync(
     s: *mut wire_cst_my_tree_node_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_complex_struct_twin_sync_impl(s)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_nested_struct_twin_sync(
     s: *mut wire_cst_my_nested_struct_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_nested_struct_twin_sync_impl(s)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_string_twin_sync(
     s: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_string_twin_sync_impl(s)
 }
 
@@ -22104,35 +22104,35 @@ pub extern "C" fn wire_handle_string_twin_sync(
 pub extern "C" fn wire_handle_struct_twin_sync(
     arg: *mut wire_cst_my_size,
     boxed: *mut wire_cst_my_size,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_struct_twin_sync_impl(arg, boxed)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_vec_u8_twin_sync(
     v: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_vec_u8_twin_sync_impl(v)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_list_of_primitive_enums_twin_sync(
     weekdays: *mut wire_cst_list_weekdays_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_list_of_primitive_enums_twin_sync_impl(weekdays)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_abc_enum_twin_sync(
     abc: *mut wire_cst_abc_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_abc_enum_twin_sync_impl(abc)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_struct_with_enum_twin_sync(
     se: *mut wire_cst_struct_with_enum_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_struct_with_enum_twin_sync_impl(se)
 }
 
@@ -22141,7 +22141,7 @@ pub extern "C" fn wire_handle_big_buffers_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_big_buffers_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22150,7 +22150,7 @@ pub extern "C" fn wire_handle_complex_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_complex_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22159,7 +22159,7 @@ pub extern "C" fn wire_handle_nested_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_nested_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22168,7 +22168,7 @@ pub extern "C" fn wire_handle_string_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_string_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22177,7 +22177,7 @@ pub extern "C" fn wire_handle_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22186,7 +22186,7 @@ pub extern "C" fn wire_handle_vec_u8_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_vec_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22195,7 +22195,7 @@ pub extern "C" fn wire_list_of_primitive_enums_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_list_of_primitive_enums_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22204,7 +22204,7 @@ pub extern "C" fn wire_test_abc_enum_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_abc_enum_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22213,7 +22213,7 @@ pub extern "C" fn wire_test_struct_with_enum_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_struct_with_enum_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22354,34 +22354,34 @@ pub extern "C" fn wire_handle_string_list_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_empty_struct_twin_sync(
     empty: *mut wire_cst_empty_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_empty_struct_twin_sync_impl(empty)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_return_unit_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_return_unit_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_string_twin_sync(
     arg: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_string_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_list_of_struct_twin_sync(
     l: *mut wire_cst_list_my_size,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_list_of_struct_twin_sync_impl(l)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_string_list_twin_sync(
     names: *mut wire_cst_list_String,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_string_list_twin_sync_impl(names)
 }
 
@@ -22390,7 +22390,7 @@ pub extern "C" fn wire_empty_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_empty_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22399,7 +22399,7 @@ pub extern "C" fn wire_func_return_unit_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_return_unit_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22408,7 +22408,7 @@ pub extern "C" fn wire_func_string_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_string_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22417,7 +22417,7 @@ pub extern "C" fn wire_handle_list_of_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_list_of_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22426,7 +22426,7 @@ pub extern "C" fn wire_handle_string_list_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_string_list_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22461,7 +22461,7 @@ pub extern "C" fn wire_handle_newtype_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_handle_newtype_twin_sync(
     arg: *mut wire_cst_new_type_int_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_newtype_twin_sync_impl(arg)
 }
 
@@ -22470,7 +22470,7 @@ pub extern "C" fn wire_handle_newtype_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_newtype_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22569,7 +22569,7 @@ pub extern "C" fn wire_primitive_optional_types_twin_sync(
     my_i64: *mut i64,
     my_f64: *mut f64,
     my_bool: *mut bool,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_primitive_optional_types_twin_sync_impl(my_i32, my_i64, my_f64, my_bool)
 }
 
@@ -22578,7 +22578,7 @@ pub extern "C" fn wire_primitive_optional_types_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_primitive_optional_types_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -22948,77 +22948,77 @@ pub extern "C" fn wire_example_optional_primitive_type_u8_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_bool_twin_sync(
     arg: *mut bool,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_bool_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_f32_twin_sync(
     arg: *mut f32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_f32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_f64_twin_sync(
     arg: *mut f64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_f64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_i16_twin_sync(
     arg: *mut i16,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_i16_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_i32_twin_sync(
     arg: *mut i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_i32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_i64_twin_sync(
     arg: *mut i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_i64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_i8_twin_sync(
     arg: *mut i8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_i8_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_u16_twin_sync(
     arg: *mut u16,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_u16_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_u32_twin_sync(
     arg: *mut u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_u32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_u64_twin_sync(
     arg: *mut u64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_u64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_optional_primitive_type_u8_twin_sync(
     arg: *mut u8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_optional_primitive_type_u8_twin_sync_impl(arg)
 }
 
@@ -23027,7 +23027,7 @@ pub extern "C" fn wire_example_optional_primitive_type_bool_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23036,7 +23036,7 @@ pub extern "C" fn wire_example_optional_primitive_type_f32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_f32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23045,7 +23045,7 @@ pub extern "C" fn wire_example_optional_primitive_type_f64_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_f64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23054,7 +23054,7 @@ pub extern "C" fn wire_example_optional_primitive_type_i16_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_i16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23063,7 +23063,7 @@ pub extern "C" fn wire_example_optional_primitive_type_i32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23072,7 +23072,7 @@ pub extern "C" fn wire_example_optional_primitive_type_i64_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_i64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23081,7 +23081,7 @@ pub extern "C" fn wire_example_optional_primitive_type_i8_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_i8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23090,7 +23090,7 @@ pub extern "C" fn wire_example_optional_primitive_type_u16_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_u16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23099,7 +23099,7 @@ pub extern "C" fn wire_example_optional_primitive_type_u32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23108,7 +23108,7 @@ pub extern "C" fn wire_example_optional_primitive_type_u64_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_u64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23117,7 +23117,7 @@ pub extern "C" fn wire_example_optional_primitive_type_u8_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_optional_primitive_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23299,7 +23299,7 @@ pub extern "C" fn wire_handle_vec_of_opts_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_handle_increment_boxed_optional_twin_sync(
     opt: *mut f64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_increment_boxed_optional_twin_sync_impl(opt)
 }
 
@@ -23312,7 +23312,7 @@ pub extern "C" fn wire_handle_option_box_arguments_twin_sync(
     f64box: *mut f64,
     boolbox: *mut bool,
     structbox: *mut wire_cst_exotic_optionals_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_option_box_arguments_twin_sync_impl(
         i8box, u8box, i32box, i64box, f64box, boolbox, structbox,
     )
@@ -23321,7 +23321,7 @@ pub extern "C" fn wire_handle_option_box_arguments_twin_sync(
 #[no_mangle]
 pub extern "C" fn wire_handle_optional_increment_twin_sync(
     opt: *mut wire_cst_exotic_optionals_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_optional_increment_twin_sync_impl(opt)
 }
 
@@ -23329,21 +23329,21 @@ pub extern "C" fn wire_handle_optional_increment_twin_sync(
 pub extern "C" fn wire_handle_optional_return_twin_sync(
     left: f64,
     right: f64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_optional_return_twin_sync_impl(left, right)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_optional_struct_twin_sync(
     document: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_optional_struct_twin_sync_impl(document)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_vec_of_opts_twin_sync(
     opt: *mut wire_cst_opt_vecs_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_vec_of_opts_twin_sync_impl(opt)
 }
 
@@ -23352,7 +23352,7 @@ pub extern "C" fn wire_handle_increment_boxed_optional_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_increment_boxed_optional_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23361,7 +23361,7 @@ pub extern "C" fn wire_handle_option_box_arguments_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_option_box_arguments_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23370,7 +23370,7 @@ pub extern "C" fn wire_handle_optional_increment_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_optional_increment_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23379,7 +23379,7 @@ pub extern "C" fn wire_handle_optional_return_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_optional_return_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23388,7 +23388,7 @@ pub extern "C" fn wire_handle_optional_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_optional_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23397,7 +23397,7 @@ pub extern "C" fn wire_handle_vec_of_opts_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_vec_of_opts_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23572,7 +23572,7 @@ pub extern "C" fn wire_handle_vec_of_primitive_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_handle_vec_of_primitive_twin_sync(
     n: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_vec_of_primitive_twin_sync_impl(n)
 }
 
@@ -23581,7 +23581,7 @@ pub extern "C" fn wire_handle_vec_of_primitive_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_vec_of_primitive_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -23951,77 +23951,77 @@ pub extern "C" fn wire_example_primitive_list_type_u8_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_bool_twin_sync(
     arg: *mut wire_cst_list_bool,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_bool_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_f32_twin_sync(
     arg: *mut wire_cst_list_prim_f_32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_f32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_f64_twin_sync(
     arg: *mut wire_cst_list_prim_f_64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_f64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_i16_twin_sync(
     arg: *mut wire_cst_list_prim_i_16,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_i16_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_i32_twin_sync(
     arg: *mut wire_cst_list_prim_i_32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_i32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_i64_twin_sync(
     arg: *mut wire_cst_list_prim_i_64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_i64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_i8_twin_sync(
     arg: *mut wire_cst_list_prim_i_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_i8_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_u16_twin_sync(
     arg: *mut wire_cst_list_prim_u_16,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_u16_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_u32_twin_sync(
     arg: *mut wire_cst_list_prim_u_32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_u32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_u64_twin_sync(
     arg: *mut wire_cst_list_prim_u_64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_u64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_list_type_u8_twin_sync(
     arg: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_u8_twin_sync_impl(arg)
 }
 
@@ -24030,7 +24030,7 @@ pub extern "C" fn wire_example_primitive_list_type_bool_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24039,7 +24039,7 @@ pub extern "C" fn wire_example_primitive_list_type_f32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_f32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24048,7 +24048,7 @@ pub extern "C" fn wire_example_primitive_list_type_f64_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_f64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24057,7 +24057,7 @@ pub extern "C" fn wire_example_primitive_list_type_i16_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_i16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24066,7 +24066,7 @@ pub extern "C" fn wire_example_primitive_list_type_i32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24075,7 +24075,7 @@ pub extern "C" fn wire_example_primitive_list_type_i64_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_i64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24084,7 +24084,7 @@ pub extern "C" fn wire_example_primitive_list_type_i8_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_i8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24093,7 +24093,7 @@ pub extern "C" fn wire_example_primitive_list_type_u16_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_u16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24102,7 +24102,7 @@ pub extern "C" fn wire_example_primitive_list_type_u32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24111,7 +24111,7 @@ pub extern "C" fn wire_example_primitive_list_type_u64_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_u64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24120,7 +24120,7 @@ pub extern "C" fn wire_example_primitive_list_type_u8_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_list_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24186,14 +24186,14 @@ pub extern "C" fn wire_primitive_types_twin_sync(
     my_i64: i64,
     my_f64: f64,
     my_bool: bool,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_primitive_types_twin_sync_impl(my_i32, my_i64, my_f64, my_bool)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_primitive_u32_twin_sync(
     my_u32: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_primitive_u32_twin_sync_impl(my_u32)
 }
 
@@ -24202,7 +24202,7 @@ pub extern "C" fn wire_primitive_types_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_primitive_types_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24211,7 +24211,7 @@ pub extern "C" fn wire_primitive_u32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_primitive_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24493,77 +24493,77 @@ pub extern "C" fn wire_example_primitive_type_u8_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_bool_twin_sync(
     arg: bool,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_bool_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_f32_twin_sync(
     arg: f32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_f32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_f64_twin_sync(
     arg: f64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_f64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_i16_twin_sync(
     arg: i16,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_i16_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_i32_twin_sync(
     arg: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_i32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_i64_twin_sync(
     arg: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_i64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_i8_twin_sync(
     arg: i8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_i8_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_u16_twin_sync(
     arg: u16,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_u16_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_u32_twin_sync(
     arg: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_u32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_u64_twin_sync(
     arg: u64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_u64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_example_primitive_type_u8_twin_sync(
     arg: u8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_type_u8_twin_sync_impl(arg)
 }
 
@@ -24572,7 +24572,7 @@ pub extern "C" fn wire_example_primitive_type_bool_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24581,7 +24581,7 @@ pub extern "C" fn wire_example_primitive_type_f32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_f32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24590,7 +24590,7 @@ pub extern "C" fn wire_example_primitive_type_f64_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_f64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24599,7 +24599,7 @@ pub extern "C" fn wire_example_primitive_type_i16_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_i16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24608,7 +24608,7 @@ pub extern "C" fn wire_example_primitive_type_i32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24617,7 +24617,7 @@ pub extern "C" fn wire_example_primitive_type_i64_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_i64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24626,7 +24626,7 @@ pub extern "C" fn wire_example_primitive_type_i8_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_i8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24635,7 +24635,7 @@ pub extern "C" fn wire_example_primitive_type_u16_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_u16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24644,7 +24644,7 @@ pub extern "C" fn wire_example_primitive_type_u32_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24653,7 +24653,7 @@ pub extern "C" fn wire_example_primitive_type_u64_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_u64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24662,7 +24662,7 @@ pub extern "C" fn wire_example_primitive_type_u8_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_primitive_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -24728,13 +24728,13 @@ pub extern "C" fn wire_test_raw_string_item_struct_twin_sse(
 
 #[no_mangle]
 pub extern "C" fn wire_test_more_than_just_one_raw_string_struct_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_more_than_just_one_raw_string_struct_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_raw_string_item_struct_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_raw_string_item_struct_twin_sync_impl()
 }
 
@@ -24743,7 +24743,7 @@ pub extern "C" fn wire_test_more_than_just_one_raw_string_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_more_than_just_one_raw_string_struct_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -24756,7 +24756,7 @@ pub extern "C" fn wire_test_raw_string_item_struct_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_raw_string_item_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25148,67 +25148,67 @@ pub extern "C" fn wire_rust_auto_opaque_two_args_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
     that: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
     that: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
     that: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
     that: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_new_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_new_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
     arg: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
     arg: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
     arg: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync_impl()
 }
 
@@ -25216,7 +25216,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync
 pub extern "C" fn wire_rust_auto_opaque_arg_borrow_twin_sync(
     arg: *const std::ffi::c_void,
     expect: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_arg_borrow_twin_sync_impl(arg, expect)
 }
 
@@ -25225,14 +25225,14 @@ pub extern "C" fn wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
     arg: *const std::ffi::c_void,
     expect: i32,
     adder: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_arg_mut_borrow_twin_sync_impl(arg, expect, adder)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
     arg: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_impl(arg)
 }
 
@@ -25240,20 +25240,20 @@ pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
 pub extern "C" fn wire_rust_auto_opaque_arg_own_twin_sync(
     arg: *const std::ffi::c_void,
     expect: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_arg_own_twin_sync_impl(arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_callable_arg_twin_sync(
     arg: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_callable_arg_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_callable_return_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_callable_return_twin_sync_impl()
 }
 
@@ -25261,54 +25261,54 @@ pub extern "C" fn wire_rust_auto_opaque_callable_return_twin_sync(
 pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
     a: *const std::ffi::c_void,
     b: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_impl(a, b)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_plus_sign_arg_twin_sync(
     arg: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_plus_sign_arg_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_plus_sign_return_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_plus_sign_return_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_return_own_twin_sync(
     initial: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_return_own_twin_sync_impl(initial)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
     arg: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
     arg: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
     arg: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_impl()
 }
 
@@ -25316,7 +25316,7 @@ pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return
 pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
     arg: *const std::ffi::c_void,
     expect: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_impl(arg, expect)
 }
 
@@ -25324,7 +25324,7 @@ pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
 pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
     arg: *const std::ffi::c_void,
     expect: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_impl(arg, expect)
 }
 
@@ -25332,19 +25332,19 @@ pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
 pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
     arg: *const std::ffi::c_void,
     expect: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_trait_object_arg_own_twin_sync_impl(arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_one_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_impl()
 }
 
@@ -25352,7 +25352,7 @@ pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(
 pub extern "C" fn wire_rust_auto_opaque_two_args_twin_sync(
     a: *const std::ffi::c_void,
     b: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_two_args_twin_sync_impl(a, b)
 }
 
@@ -25361,7 +25361,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25374,7 +25374,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25387,7 +25387,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sy
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25400,7 +25400,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25413,7 +25413,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25426,7 +25426,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25435,7 +25435,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_s
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25448,7 +25448,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_tw
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25461,7 +25461,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25474,7 +25474,7 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_static_method_return_own_twin_s
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25487,7 +25487,7 @@ pub extern "C" fn wire_rust_auto_opaque_arg_borrow_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_arg_borrow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25496,7 +25496,7 @@ pub extern "C" fn wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25505,7 +25505,7 @@ pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25514,7 +25514,7 @@ pub extern "C" fn wire_rust_auto_opaque_arg_own_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_arg_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25523,7 +25523,7 @@ pub extern "C" fn wire_rust_auto_opaque_callable_arg_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_callable_arg_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25532,7 +25532,7 @@ pub extern "C" fn wire_rust_auto_opaque_callable_return_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_callable_return_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25541,7 +25541,7 @@ pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25550,7 +25550,7 @@ pub extern "C" fn wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25559,7 +25559,7 @@ pub extern "C" fn wire_rust_auto_opaque_plus_sign_return_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_plus_sign_return_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25568,7 +25568,7 @@ pub extern "C" fn wire_rust_auto_opaque_return_own_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_return_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25577,7 +25577,7 @@ pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_bo
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25590,7 +25590,7 @@ pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mu
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25603,7 +25603,7 @@ pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_ow
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25616,7 +25616,7 @@ pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25629,7 +25629,7 @@ pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25638,7 +25638,7 @@ pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_ss
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25651,7 +25651,7 @@ pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25660,7 +25660,7 @@ pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_ss
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25673,7 +25673,7 @@ pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_ss
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
@@ -25686,7 +25686,7 @@ pub extern "C" fn wire_rust_auto_opaque_two_args_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_two_args_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25695,7 +25695,7 @@ pub extern "C" fn wire_frb_sync_generator_test_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_frb_sync_generator_test_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25704,7 +25704,7 @@ pub extern "C" fn wire_sync_create_non_clone_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_sync_create_non_clone_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25713,7 +25713,7 @@ pub extern "C" fn wire_sync_create_opaque_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_sync_create_opaque_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25722,7 +25722,7 @@ pub extern "C" fn wire_sync_create_sync_opaque_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_sync_create_sync_opaque_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25731,7 +25731,7 @@ pub extern "C" fn wire_sync_option_rust_opaque_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_sync_option_rust_opaque_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -25740,7 +25740,7 @@ pub extern "C" fn wire_sync_run_opaque_twin_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_sync_run_opaque_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26167,106 +26167,106 @@ pub extern "C" fn wire_unwrap_rust_opaque_twin_sse(
 
 #[no_mangle]
 pub extern "C" fn wire_create_array_opaque_enum_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_create_array_opaque_enum_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_create_nested_opaque_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_create_nested_opaque_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_create_opaque_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_create_opaque_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_create_option_opaque_twin_sync(
     opaque: *mut *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_create_option_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_create_sync_opaque_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_create_sync_opaque_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_frb_generator_test_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_frb_generator_test_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_opaque_array_run_twin_sync(
     data: *mut wire_cst_list_RustOpaque_hide_data,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_opaque_array_run_twin_sync_impl(data)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_opaque_array_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_opaque_array_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_opaque_vec_run_twin_sync(
     data: *mut wire_cst_list_RustOpaque_hide_data,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_opaque_vec_run_twin_sync_impl(data)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_opaque_vec_twin_sync(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_opaque_vec_twin_sync_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_run_enum_opaque_twin_sync(
     opaque: *mut wire_cst_enum_opaque_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_run_enum_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_run_nested_opaque_twin_sync(
     opaque: *mut wire_cst_opaque_nested_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_run_nested_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_run_non_clone_twin_sync(
     clone: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_run_non_clone_twin_sync_impl(clone)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_run_opaque_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_run_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_run_opaque_with_delay_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_run_opaque_with_delay_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_unwrap_rust_opaque_twin_sync(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_unwrap_rust_opaque_twin_sync_impl(opaque)
 }
 
@@ -26275,7 +26275,7 @@ pub extern "C" fn wire_create_array_opaque_enum_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_create_array_opaque_enum_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26284,7 +26284,7 @@ pub extern "C" fn wire_create_nested_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_create_nested_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26293,7 +26293,7 @@ pub extern "C" fn wire_create_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_create_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26302,7 +26302,7 @@ pub extern "C" fn wire_create_option_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_create_option_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26311,7 +26311,7 @@ pub extern "C" fn wire_create_sync_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_create_sync_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26320,7 +26320,7 @@ pub extern "C" fn wire_frb_generator_test_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_frb_generator_test_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26329,7 +26329,7 @@ pub extern "C" fn wire_opaque_array_run_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_opaque_array_run_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26338,7 +26338,7 @@ pub extern "C" fn wire_opaque_array_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_opaque_array_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26347,7 +26347,7 @@ pub extern "C" fn wire_opaque_vec_run_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_opaque_vec_run_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26356,7 +26356,7 @@ pub extern "C" fn wire_opaque_vec_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_opaque_vec_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26365,7 +26365,7 @@ pub extern "C" fn wire_run_enum_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_run_enum_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26374,7 +26374,7 @@ pub extern "C" fn wire_run_nested_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_run_nested_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26383,7 +26383,7 @@ pub extern "C" fn wire_run_non_clone_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_run_non_clone_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26392,7 +26392,7 @@ pub extern "C" fn wire_run_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_run_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26401,7 +26401,7 @@ pub extern "C" fn wire_run_opaque_with_delay_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_run_opaque_with_delay_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26410,7 +26410,7 @@ pub extern "C" fn wire_unwrap_rust_opaque_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_unwrap_rust_opaque_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26443,7 +26443,7 @@ pub extern "C" fn wire_simple_adder_twin_sse(
 pub extern "C" fn wire_simple_adder_twin_sync(
     a: i32,
     b: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_simple_adder_twin_sync_impl(a, b)
 }
 
@@ -26452,7 +26452,7 @@ pub extern "C" fn wire_simple_adder_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_simple_adder_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26799,35 +26799,35 @@ pub extern "C" fn wire_func_tuple_struct_with_two_field_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_func_struct_with_one_field_twin_sync(
     arg: *mut wire_cst_struct_with_one_field_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_struct_with_one_field_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_struct_with_two_field_twin_sync(
     arg: *mut wire_cst_struct_with_two_field_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_struct_with_two_field_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_struct_with_zero_field_twin_sync(
     arg: *mut wire_cst_struct_with_zero_field_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_struct_with_zero_field_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_tuple_struct_with_one_field_twin_sync(
     arg: *mut wire_cst_tuple_struct_with_one_field_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_tuple_struct_with_one_field_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_func_tuple_struct_with_two_field_twin_sync(
     arg: *mut wire_cst_tuple_struct_with_two_field_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_tuple_struct_with_two_field_twin_sync_impl(arg)
 }
 
@@ -26836,7 +26836,7 @@ pub extern "C" fn wire_func_struct_with_one_field_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_struct_with_one_field_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26845,7 +26845,7 @@ pub extern "C" fn wire_func_struct_with_two_field_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_struct_with_two_field_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26854,7 +26854,7 @@ pub extern "C" fn wire_func_struct_with_zero_field_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_struct_with_zero_field_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26863,7 +26863,7 @@ pub extern "C" fn wire_func_tuple_struct_with_one_field_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_tuple_struct_with_one_field_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26872,7 +26872,7 @@ pub extern "C" fn wire_func_tuple_struct_with_two_field_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_tuple_struct_with_two_field_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26935,14 +26935,14 @@ pub extern "C" fn wire_test_tuple_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_test_tuple_2_twin_sync(
     value: *mut wire_cst_list_record_string_i_32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_tuple_2_twin_sync_impl(value)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_test_tuple_twin_sync(
     value: *mut wire_cst_record_string_i_32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_test_tuple_twin_sync_impl(value)
 }
 
@@ -26951,7 +26951,7 @@ pub extern "C" fn wire_test_tuple_2_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_tuple_2_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -26960,7 +26960,7 @@ pub extern "C" fn wire_test_tuple_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_test_tuple_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -27042,21 +27042,21 @@ pub extern "C" fn wire_handle_type_nest_alias_id_twin_sse(
 #[no_mangle]
 pub extern "C" fn wire_handle_type_alias_id_twin_sync(
     input: u64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_type_alias_id_twin_sync_impl(input)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_type_alias_model_twin_sync(
     input: u64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_type_alias_model_twin_sync_impl(input)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_type_nest_alias_id_twin_sync(
     input: u64,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_type_nest_alias_id_twin_sync_impl(input)
 }
 
@@ -27065,7 +27065,7 @@ pub extern "C" fn wire_handle_type_alias_id_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_type_alias_id_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -27074,7 +27074,7 @@ pub extern "C" fn wire_handle_type_alias_model_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_type_alias_model_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -27083,7 +27083,7 @@ pub extern "C" fn wire_handle_type_nest_alias_id_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnSse {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_type_nest_alias_id_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
@@ -27103,14 +27103,14 @@ pub extern "C" fn wire_handle_uuid_twin_rust_async(port_: i64, id: *mut wire_cst
 #[no_mangle]
 pub extern "C" fn wire_handle_nested_uuids_twin_sync(
     ids: *mut wire_cst_feature_uuid_twin_sync,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_nested_uuids_twin_sync_impl(ids)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_handle_uuid_twin_sync(
     id: *mut wire_cst_list_prim_u_8,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_uuid_twin_sync_impl(id)
 }
 
@@ -27450,38 +27450,38 @@ pub extern "C" fn wire_unwrap_rust_opaque_twin_normal(port_: i64, opaque: *const
 
 #[no_mangle]
 pub extern "C" fn wire_frb_sync_generator_test_twin_normal(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_frb_sync_generator_test_twin_normal_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_create_non_clone_twin_normal(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_create_non_clone_twin_normal_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_create_opaque_twin_normal(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_create_opaque_twin_normal_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_create_sync_opaque_twin_normal(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_create_sync_opaque_twin_normal_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_option_rust_opaque_twin_normal(
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_option_rust_opaque_twin_normal_impl()
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_run_opaque_twin_normal(
     opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturnDco {
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_run_opaque_twin_normal_impl(opaque)
 }
 

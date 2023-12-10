@@ -2,11 +2,11 @@
 #include <stdint.h>
 #include <stdlib.h>
 // EXTRA BEGIN
-typedef struct DartCObject *WireSyncReturnDco;
-typedef struct WireSyncReturnSse {
+typedef struct DartCObject *WireSyncRust2DartDco;
+typedef struct WireSyncRust2DartSse {
   uint8_t *ptr;
   int32_t len;
-} WireSyncReturnSse;
+} WireSyncRust2DartSse;
 // EXTRA END
 typedef struct _Dart_Handle* Dart_Handle;
 
@@ -3057,15 +3057,15 @@ void wire_panic_unwrap_dart_opaque_twin_normal(int64_t port_, const void *opaque
 
 void wire_set_static_dart_opaque_twin_normal(int64_t port_, int32_t id, const void *opaque);
 
-WireSyncReturnDco wire_sync_accept_dart_opaque_twin_normal(const void *opaque);
+WireSyncRust2DartDco wire_sync_accept_dart_opaque_twin_normal(const void *opaque);
 
-WireSyncReturnDco wire_sync_loopback_twin_normal(const void *opaque);
+WireSyncRust2DartDco wire_sync_loopback_twin_normal(const void *opaque);
 
-WireSyncReturnDco wire_sync_option_dart_opaque_twin_normal(const void *opaque);
+WireSyncRust2DartDco wire_sync_option_dart_opaque_twin_normal(const void *opaque);
 
-WireSyncReturnDco wire_sync_option_loopback_twin_normal(const void **opaque);
+WireSyncRust2DartDco wire_sync_option_loopback_twin_normal(const void **opaque);
 
-WireSyncReturnDco wire_unwrap_dart_opaque_twin_normal(const void *opaque);
+WireSyncRust2DartDco wire_unwrap_dart_opaque_twin_normal(const void *opaque);
 
 void wire_func_enum_simple_twin_normal(int64_t port_, int32_t arg);
 
@@ -3457,71 +3457,71 @@ void wire_use_msgid_twin_sse(int64_t port_,
                              int32_t rust_vec_len_,
                              int32_t data_len_);
 
-WireSyncReturnDco wire_boxed_blob_twin_sync(struct wire_cst_list_prim_u_8 *blob);
+WireSyncRust2DartDco wire_boxed_blob_twin_sync(struct wire_cst_list_prim_u_8 *blob);
 
-WireSyncReturnDco wire_func_test_id_twin_sync(struct wire_cst_test_id_twin_sync *id);
+WireSyncRust2DartDco wire_func_test_id_twin_sync(struct wire_cst_test_id_twin_sync *id);
 
-WireSyncReturnDco wire_get_array_twin_sync(void);
+WireSyncRust2DartDco wire_get_array_twin_sync(void);
 
-WireSyncReturnDco wire_get_complex_array_twin_sync(void);
+WireSyncRust2DartDco wire_get_complex_array_twin_sync(void);
 
-WireSyncReturnDco wire_last_number_twin_sync(struct wire_cst_list_prim_f_64 *array);
+WireSyncRust2DartDco wire_last_number_twin_sync(struct wire_cst_list_prim_f_64 *array);
 
-WireSyncReturnDco wire_nested_id_twin_sync(struct wire_cst_list_test_id_twin_sync *id);
+WireSyncRust2DartDco wire_nested_id_twin_sync(struct wire_cst_list_test_id_twin_sync *id);
 
-WireSyncReturnDco wire_new_msgid_twin_sync(struct wire_cst_list_prim_u_8 *id);
+WireSyncRust2DartDco wire_new_msgid_twin_sync(struct wire_cst_list_prim_u_8 *id);
 
-WireSyncReturnDco wire_return_boxed_feed_id_twin_sync(struct wire_cst_list_prim_u_8 *id);
+WireSyncRust2DartDco wire_return_boxed_feed_id_twin_sync(struct wire_cst_list_prim_u_8 *id);
 
-WireSyncReturnDco wire_return_boxed_raw_feed_id_twin_sync(struct wire_cst_feed_id_twin_sync *id);
+WireSyncRust2DartDco wire_return_boxed_raw_feed_id_twin_sync(struct wire_cst_feed_id_twin_sync *id);
 
-WireSyncReturnDco wire_use_boxed_blob_twin_sync(struct wire_cst_blob_twin_sync *blob);
+WireSyncRust2DartDco wire_use_boxed_blob_twin_sync(struct wire_cst_blob_twin_sync *blob);
 
-WireSyncReturnDco wire_use_msgid_twin_sync(struct wire_cst_message_id_twin_sync *id);
+WireSyncRust2DartDco wire_use_msgid_twin_sync(struct wire_cst_message_id_twin_sync *id);
 
-WireSyncReturnSse wire_boxed_blob_twin_sync_sse(uint8_t *ptr_,
-                                                int32_t rust_vec_len_,
-                                                int32_t data_len_);
+WireSyncRust2DartSse wire_boxed_blob_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_func_test_id_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_func_test_id_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+WireSyncRust2DartSse wire_get_array_twin_sync_sse(uint8_t *ptr_,
                                                   int32_t rust_vec_len_,
                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_get_array_twin_sync_sse(uint8_t *ptr_,
-                                               int32_t rust_vec_len_,
-                                               int32_t data_len_);
-
-WireSyncReturnSse wire_get_complex_array_twin_sync_sse(uint8_t *ptr_,
-                                                       int32_t rust_vec_len_,
-                                                       int32_t data_len_);
-
-WireSyncReturnSse wire_last_number_twin_sync_sse(uint8_t *ptr_,
-                                                 int32_t rust_vec_len_,
-                                                 int32_t data_len_);
-
-WireSyncReturnSse wire_nested_id_twin_sync_sse(uint8_t *ptr_,
-                                               int32_t rust_vec_len_,
-                                               int32_t data_len_);
-
-WireSyncReturnSse wire_new_msgid_twin_sync_sse(uint8_t *ptr_,
-                                               int32_t rust_vec_len_,
-                                               int32_t data_len_);
-
-WireSyncReturnSse wire_return_boxed_feed_id_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_get_complex_array_twin_sync_sse(uint8_t *ptr_,
                                                           int32_t rust_vec_len_,
                                                           int32_t data_len_);
 
-WireSyncReturnSse wire_return_boxed_raw_feed_id_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
-
-WireSyncReturnSse wire_use_boxed_blob_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_last_number_twin_sync_sse(uint8_t *ptr_,
                                                     int32_t rust_vec_len_,
                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_use_msgid_twin_sync_sse(uint8_t *ptr_,
-                                               int32_t rust_vec_len_,
-                                               int32_t data_len_);
+WireSyncRust2DartSse wire_nested_id_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+WireSyncRust2DartSse wire_new_msgid_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_boxed_feed_id_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_boxed_raw_feed_id_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncRust2DartSse wire_use_boxed_blob_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+WireSyncRust2DartSse wire_use_msgid_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
 
 void wire_func_async_simple_add_twin_sse(int64_t port_, int32_t a, int32_t b);
 
@@ -3553,17 +3553,17 @@ void wire_next_user_id_twin_sse(int64_t port_,
                                 int32_t rust_vec_len_,
                                 int32_t data_len_);
 
-WireSyncReturnDco wire_handle_customized_struct_twin_sync(struct wire_cst_customized_twin_sync *val);
+WireSyncRust2DartDco wire_handle_customized_struct_twin_sync(struct wire_cst_customized_twin_sync *val);
 
-WireSyncReturnDco wire_next_user_id_twin_sync(struct wire_cst_user_id_twin_sync *user_id);
+WireSyncRust2DartDco wire_next_user_id_twin_sync(struct wire_cst_user_id_twin_sync *user_id);
 
-WireSyncReturnSse wire_handle_customized_struct_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
+WireSyncRust2DartSse wire_handle_customized_struct_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
 
-WireSyncReturnSse wire_next_user_id_twin_sync_sse(uint8_t *ptr_,
-                                                  int32_t rust_vec_len_,
-                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_next_user_id_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
 
 void wire_benchmark_input_bytes_twin_rust_async(int64_t port_,
                                                 struct wire_cst_list_prim_u_8 *bytes);
@@ -3602,23 +3602,23 @@ void wire_benchmark_void_twin_sse(int64_t port_,
                                   int32_t rust_vec_len_,
                                   int32_t data_len_);
 
-WireSyncReturnDco wire_benchmark_input_bytes_twin_sync(struct wire_cst_list_prim_u_8 *bytes);
+WireSyncRust2DartDco wire_benchmark_input_bytes_twin_sync(struct wire_cst_list_prim_u_8 *bytes);
 
-WireSyncReturnDco wire_benchmark_output_bytes_twin_sync(int32_t size);
+WireSyncRust2DartDco wire_benchmark_output_bytes_twin_sync(int32_t size);
 
-WireSyncReturnDco wire_benchmark_void_twin_sync(void);
+WireSyncRust2DartDco wire_benchmark_void_twin_sync(void);
 
-WireSyncReturnSse wire_benchmark_input_bytes_twin_sync_sse(uint8_t *ptr_,
-                                                           int32_t rust_vec_len_,
-                                                           int32_t data_len_);
+WireSyncRust2DartSse wire_benchmark_input_bytes_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
 
-WireSyncReturnSse wire_benchmark_output_bytes_twin_sync_sse(uint8_t *ptr_,
-                                                            int32_t rust_vec_len_,
-                                                            int32_t data_len_);
+WireSyncRust2DartSse wire_benchmark_output_bytes_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
 
-WireSyncReturnSse wire_benchmark_void_twin_sync_sse(uint8_t *ptr_,
-                                                    int32_t rust_vec_len_,
-                                                    int32_t data_len_);
+WireSyncRust2DartSse wire_benchmark_void_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
 
 void wire_datetime_local_twin_rust_async(int64_t port_, int64_t d);
 
@@ -3645,27 +3645,27 @@ void wire_test_chrono_twin_rust_async(int64_t port_);
 
 void wire_test_precise_chrono_twin_rust_async(int64_t port_);
 
-WireSyncReturnDco wire_datetime_local_twin_sync(int64_t d);
+WireSyncRust2DartDco wire_datetime_local_twin_sync(int64_t d);
 
-WireSyncReturnDco wire_datetime_utc_twin_sync(int64_t d);
+WireSyncRust2DartDco wire_datetime_utc_twin_sync(int64_t d);
 
-WireSyncReturnDco wire_duration_twin_sync(int64_t d);
+WireSyncRust2DartDco wire_duration_twin_sync(int64_t d);
 
-WireSyncReturnDco wire_handle_durations_twin_sync(struct wire_cst_list_Chrono_Duration *durations,
-                                                  int64_t since);
+WireSyncRust2DartDco wire_handle_durations_twin_sync(struct wire_cst_list_Chrono_Duration *durations,
+                                                     int64_t since);
 
-WireSyncReturnDco wire_handle_timestamps_twin_sync(struct wire_cst_list_Chrono_Naive *timestamps,
-                                                   int64_t epoch);
+WireSyncRust2DartDco wire_handle_timestamps_twin_sync(struct wire_cst_list_Chrono_Naive *timestamps,
+                                                      int64_t epoch);
 
-WireSyncReturnDco wire_how_long_does_it_take_twin_sync(struct wire_cst_feature_chrono_twin_sync *mine);
+WireSyncRust2DartDco wire_how_long_does_it_take_twin_sync(struct wire_cst_feature_chrono_twin_sync *mine);
 
-WireSyncReturnDco wire_naivedatetime_twin_sync(int64_t d);
+WireSyncRust2DartDco wire_naivedatetime_twin_sync(int64_t d);
 
-WireSyncReturnDco wire_optional_empty_datetime_utc_twin_sync(int64_t *d);
+WireSyncRust2DartDco wire_optional_empty_datetime_utc_twin_sync(int64_t *d);
 
-WireSyncReturnDco wire_test_chrono_twin_sync(void);
+WireSyncRust2DartDco wire_test_chrono_twin_sync(void);
 
-WireSyncReturnDco wire_test_precise_chrono_twin_sync(void);
+WireSyncRust2DartDco wire_test_precise_chrono_twin_sync(void);
 
 void wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(int64_t port_,
                                                                           struct wire_cst_struct_with_comments_twin_rust_async *that);
@@ -3728,59 +3728,59 @@ void wire_function_with_comments_triple_slash_single_line_twin_sse(int64_t port_
                                                                    int32_t rust_vec_len_,
                                                                    int32_t data_len_);
 
-WireSyncReturnDco wire_StructWithCommentsTwinSync_instance_method_twin_sync(struct wire_cst_struct_with_comments_twin_sync *that);
+WireSyncRust2DartDco wire_StructWithCommentsTwinSync_instance_method_twin_sync(struct wire_cst_struct_with_comments_twin_sync *that);
 
-WireSyncReturnDco wire_StructWithCommentsTwinSync_static_method_twin_sync(void);
+WireSyncRust2DartDco wire_StructWithCommentsTwinSync_static_method_twin_sync(void);
 
-WireSyncReturnDco wire_function_with_comments_slash_star_star_twin_sync(void);
+WireSyncRust2DartDco wire_function_with_comments_slash_star_star_twin_sync(void);
 
-WireSyncReturnDco wire_function_with_comments_triple_slash_multi_line_twin_sync(void);
+WireSyncRust2DartDco wire_function_with_comments_triple_slash_multi_line_twin_sync(void);
 
-WireSyncReturnDco wire_function_with_comments_triple_slash_single_line_twin_sync(void);
+WireSyncRust2DartDco wire_function_with_comments_triple_slash_single_line_twin_sync(void);
 
-WireSyncReturnSse wire_StructWithCommentsTwinSyncSse_instance_method_twin_sync_sse(uint8_t *ptr_,
-                                                                                   int32_t rust_vec_len_,
-                                                                                   int32_t data_len_);
+WireSyncRust2DartSse wire_StructWithCommentsTwinSyncSse_instance_method_twin_sync_sse(uint8_t *ptr_,
+                                                                                      int32_t rust_vec_len_,
+                                                                                      int32_t data_len_);
 
-WireSyncReturnSse wire_StructWithCommentsTwinSyncSse_static_method_twin_sync_sse(uint8_t *ptr_,
-                                                                                 int32_t rust_vec_len_,
-                                                                                 int32_t data_len_);
-
-WireSyncReturnSse wire_function_with_comments_slash_star_star_twin_sync_sse(uint8_t *ptr_,
-                                                                            int32_t rust_vec_len_,
-                                                                            int32_t data_len_);
-
-WireSyncReturnSse wire_function_with_comments_triple_slash_multi_line_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_StructWithCommentsTwinSyncSse_static_method_twin_sync_sse(uint8_t *ptr_,
                                                                                     int32_t rust_vec_len_,
                                                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_function_with_comments_triple_slash_single_line_twin_sync_sse(uint8_t *ptr_,
-                                                                                     int32_t rust_vec_len_,
-                                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_function_with_comments_slash_star_star_twin_sync_sse(uint8_t *ptr_,
+                                                                               int32_t rust_vec_len_,
+                                                                               int32_t data_len_);
+
+WireSyncRust2DartSse wire_function_with_comments_triple_slash_multi_line_twin_sync_sse(uint8_t *ptr_,
+                                                                                       int32_t rust_vec_len_,
+                                                                                       int32_t data_len_);
+
+WireSyncRust2DartSse wire_function_with_comments_triple_slash_single_line_twin_sync_sse(uint8_t *ptr_,
+                                                                                        int32_t rust_vec_len_,
+                                                                                        int32_t data_len_);
 
 void wire_return_dart_dynamic_twin_rust_async(int64_t port_);
 
-WireSyncReturnDco wire_return_dart_dynamic_twin_sync(void);
+WireSyncRust2DartDco wire_return_dart_dynamic_twin_sync(void);
 
-WireSyncReturnSse wire_sync_accept_dart_opaque_twin_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_sync_accept_dart_opaque_twin_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncRust2DartSse wire_sync_loopback_twin_sse(uint8_t *ptr_,
+                                                 int32_t rust_vec_len_,
+                                                 int32_t data_len_);
+
+WireSyncRust2DartSse wire_sync_option_dart_opaque_twin_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncRust2DartSse wire_sync_option_loopback_twin_sse(uint8_t *ptr_,
                                                         int32_t rust_vec_len_,
                                                         int32_t data_len_);
 
-WireSyncReturnSse wire_sync_loopback_twin_sse(uint8_t *ptr_,
-                                              int32_t rust_vec_len_,
-                                              int32_t data_len_);
-
-WireSyncReturnSse wire_sync_option_dart_opaque_twin_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_sync_option_loopback_twin_sse(uint8_t *ptr_,
-                                                     int32_t rust_vec_len_,
-                                                     int32_t data_len_);
-
-WireSyncReturnSse wire_unwrap_dart_opaque_twin_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
+WireSyncRust2DartSse wire_unwrap_dart_opaque_twin_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
 
 void wire_async_accept_dart_opaque_twin_rust_async(int64_t port_, const void *opaque);
 
@@ -3979,102 +3979,102 @@ void wire_set_static_dart_opaque_twin_sse(int64_t port_,
                                           int32_t rust_vec_len_,
                                           int32_t data_len_);
 
-WireSyncReturnDco wire_async_accept_dart_opaque_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_async_accept_dart_opaque_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_clone_dart_opaque_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_clone_dart_opaque_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_create_enum_dart_opaque_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_create_enum_dart_opaque_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_create_nested_dart_opaque_twin_sync(const void *opaque1,
-                                                           const void *opaque2);
+WireSyncRust2DartDco wire_create_nested_dart_opaque_twin_sync(const void *opaque1,
+                                                              const void *opaque2);
 
-WireSyncReturnDco wire_drop_static_dart_opaque_twin_sync(int32_t id);
+WireSyncRust2DartDco wire_drop_static_dart_opaque_twin_sync(int32_t id);
 
-WireSyncReturnDco wire_get_enum_dart_opaque_twin_sync(struct wire_cst_enum_dart_opaque_twin_sync *opaque);
+WireSyncRust2DartDco wire_get_enum_dart_opaque_twin_sync(struct wire_cst_enum_dart_opaque_twin_sync *opaque);
 
-WireSyncReturnDco wire_get_nested_dart_opaque_twin_sync(struct wire_cst_dart_opaque_nested_twin_sync *opaque);
+WireSyncRust2DartDco wire_get_nested_dart_opaque_twin_sync(struct wire_cst_dart_opaque_nested_twin_sync *opaque);
 
-WireSyncReturnDco wire_loop_back_array_get_twin_sync(struct wire_cst_list_DartOpaque *opaque);
+WireSyncRust2DartDco wire_loop_back_array_get_twin_sync(struct wire_cst_list_DartOpaque *opaque);
 
-WireSyncReturnDco wire_loop_back_array_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_loop_back_array_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_loop_back_option_get_twin_sync(const void **opaque);
+WireSyncRust2DartDco wire_loop_back_option_get_twin_sync(const void **opaque);
 
-WireSyncReturnDco wire_loop_back_option_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_loop_back_option_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_loop_back_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_loop_back_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_loop_back_vec_get_twin_sync(struct wire_cst_list_DartOpaque *opaque);
+WireSyncRust2DartDco wire_loop_back_vec_get_twin_sync(struct wire_cst_list_DartOpaque *opaque);
 
-WireSyncReturnDco wire_loop_back_vec_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_loop_back_vec_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_panic_unwrap_dart_opaque_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_panic_unwrap_dart_opaque_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_set_static_dart_opaque_twin_sync(int32_t id, const void *opaque);
+WireSyncRust2DartDco wire_set_static_dart_opaque_twin_sync(int32_t id, const void *opaque);
 
-WireSyncReturnSse wire_async_accept_dart_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
+WireSyncRust2DartSse wire_async_accept_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
 
-WireSyncReturnSse wire_clone_dart_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                       int32_t rust_vec_len_,
-                                                       int32_t data_len_);
+WireSyncRust2DartSse wire_clone_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
 
-WireSyncReturnSse wire_create_enum_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_create_enum_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncRust2DartSse wire_create_nested_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+WireSyncRust2DartSse wire_drop_static_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncRust2DartSse wire_get_enum_dart_opaque_twin_sync_sse(uint8_t *ptr_,
                                                              int32_t rust_vec_len_,
                                                              int32_t data_len_);
 
-WireSyncReturnSse wire_create_nested_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_get_nested_dart_opaque_twin_sync_sse(uint8_t *ptr_,
                                                                int32_t rust_vec_len_,
                                                                int32_t data_len_);
 
-WireSyncReturnSse wire_drop_static_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_loop_back_array_get_twin_sync_sse(uint8_t *ptr_,
+                                                            int32_t rust_vec_len_,
+                                                            int32_t data_len_);
+
+WireSyncRust2DartSse wire_loop_back_array_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
+
+WireSyncRust2DartSse wire_loop_back_option_get_twin_sync_sse(uint8_t *ptr_,
                                                              int32_t rust_vec_len_,
                                                              int32_t data_len_);
 
-WireSyncReturnSse wire_get_enum_dart_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                          int32_t rust_vec_len_,
-                                                          int32_t data_len_);
-
-WireSyncReturnSse wire_get_nested_dart_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                            int32_t rust_vec_len_,
-                                                            int32_t data_len_);
-
-WireSyncReturnSse wire_loop_back_array_get_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_loop_back_option_twin_sync_sse(uint8_t *ptr_,
                                                          int32_t rust_vec_len_,
                                                          int32_t data_len_);
 
-WireSyncReturnSse wire_loop_back_array_twin_sync_sse(uint8_t *ptr_,
-                                                     int32_t rust_vec_len_,
-                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_loop_back_twin_sync_sse(uint8_t *ptr_,
+                                                  int32_t rust_vec_len_,
+                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_loop_back_option_get_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_loop_back_vec_get_twin_sync_sse(uint8_t *ptr_,
                                                           int32_t rust_vec_len_,
                                                           int32_t data_len_);
 
-WireSyncReturnSse wire_loop_back_option_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_loop_back_vec_twin_sync_sse(uint8_t *ptr_,
                                                       int32_t rust_vec_len_,
                                                       int32_t data_len_);
 
-WireSyncReturnSse wire_loop_back_twin_sync_sse(uint8_t *ptr_,
-                                               int32_t rust_vec_len_,
-                                               int32_t data_len_);
+WireSyncRust2DartSse wire_panic_unwrap_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
 
-WireSyncReturnSse wire_loop_back_vec_get_twin_sync_sse(uint8_t *ptr_,
-                                                       int32_t rust_vec_len_,
-                                                       int32_t data_len_);
-
-WireSyncReturnSse wire_loop_back_vec_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
-
-WireSyncReturnSse wire_panic_unwrap_dart_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
-
-WireSyncReturnSse wire_set_static_dart_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                            int32_t rust_vec_len_,
-                                                            int32_t data_len_);
+WireSyncRust2DartSse wire_set_static_dart_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
 
 void wire_func_enum_simple_twin_rust_async(int64_t port_, int32_t arg);
 
@@ -4189,59 +4189,59 @@ void wire_print_note_twin_sse(int64_t port_,
                               int32_t rust_vec_len_,
                               int32_t data_len_);
 
-WireSyncReturnDco wire_func_enum_simple_twin_sync(int32_t arg);
+WireSyncRust2DartDco wire_func_enum_simple_twin_sync(int32_t arg);
 
-WireSyncReturnDco wire_func_enum_with_item_mixed_twin_sync(struct wire_cst_enum_with_item_mixed_twin_sync *arg);
+WireSyncRust2DartDco wire_func_enum_with_item_mixed_twin_sync(struct wire_cst_enum_with_item_mixed_twin_sync *arg);
 
-WireSyncReturnDco wire_func_enum_with_item_struct_twin_sync(struct wire_cst_enum_with_item_struct_twin_sync *arg);
+WireSyncRust2DartDco wire_func_enum_with_item_struct_twin_sync(struct wire_cst_enum_with_item_struct_twin_sync *arg);
 
-WireSyncReturnDco wire_func_enum_with_item_tuple_twin_sync(struct wire_cst_enum_with_item_tuple_twin_sync *arg);
+WireSyncRust2DartDco wire_func_enum_with_item_tuple_twin_sync(struct wire_cst_enum_with_item_tuple_twin_sync *arg);
 
-WireSyncReturnDco wire_handle_enum_parameter_twin_sync(int32_t weekday);
+WireSyncRust2DartDco wire_handle_enum_parameter_twin_sync(int32_t weekday);
 
-WireSyncReturnDco wire_handle_enum_struct_twin_sync(struct wire_cst_kitchen_sink_twin_sync *val);
+WireSyncRust2DartDco wire_handle_enum_struct_twin_sync(struct wire_cst_kitchen_sink_twin_sync *val);
 
-WireSyncReturnDco wire_handle_return_enum_twin_sync(struct wire_cst_list_prim_u_8 *input);
+WireSyncRust2DartDco wire_handle_return_enum_twin_sync(struct wire_cst_list_prim_u_8 *input);
 
-WireSyncReturnDco wire_multiply_by_ten_twin_sync(struct wire_cst_measure_twin_sync *measure);
+WireSyncRust2DartDco wire_multiply_by_ten_twin_sync(struct wire_cst_measure_twin_sync *measure);
 
-WireSyncReturnDco wire_print_note_twin_sync(struct wire_cst_note_twin_sync *note);
+WireSyncRust2DartDco wire_print_note_twin_sync(struct wire_cst_note_twin_sync *note);
 
-WireSyncReturnSse wire_func_enum_simple_twin_sync_sse(uint8_t *ptr_,
-                                                      int32_t rust_vec_len_,
-                                                      int32_t data_len_);
+WireSyncRust2DartSse wire_func_enum_simple_twin_sync_sse(uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
 
-WireSyncReturnSse wire_func_enum_with_item_mixed_twin_sync_sse(uint8_t *ptr_,
-                                                               int32_t rust_vec_len_,
-                                                               int32_t data_len_);
+WireSyncRust2DartSse wire_func_enum_with_item_mixed_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_func_enum_with_item_struct_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_func_enum_with_item_struct_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_func_enum_with_item_tuple_twin_sync_sse(uint8_t *ptr_,
-                                                               int32_t rust_vec_len_,
-                                                               int32_t data_len_);
+WireSyncRust2DartSse wire_func_enum_with_item_tuple_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_handle_enum_parameter_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_handle_enum_parameter_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncRust2DartSse wire_handle_enum_struct_twin_sync_sse(uint8_t *ptr_,
                                                            int32_t rust_vec_len_,
                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_handle_enum_struct_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_handle_return_enum_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncRust2DartSse wire_multiply_by_ten_twin_sync_sse(uint8_t *ptr_,
                                                         int32_t rust_vec_len_,
                                                         int32_t data_len_);
 
-WireSyncReturnSse wire_handle_return_enum_twin_sync_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_multiply_by_ten_twin_sync_sse(uint8_t *ptr_,
-                                                     int32_t rust_vec_len_,
-                                                     int32_t data_len_);
-
-WireSyncReturnSse wire_print_note_twin_sync_sse(uint8_t *ptr_,
-                                                int32_t rust_vec_len_,
-                                                int32_t data_len_);
+WireSyncRust2DartSse wire_print_note_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
 
 void wire_EventTwinRustAsync_as_string_twin_rust_async(int64_t port_,
                                                        struct wire_cst_event_twin_rust_async *that);
@@ -4649,180 +4649,180 @@ void wire_throw_anyhow_twin_sse(int64_t port_,
                                 int32_t rust_vec_len_,
                                 int32_t data_len_);
 
-WireSyncReturnDco wire_CustomStructTwinSync_new_twin_sync(struct wire_cst_list_prim_u_8 *message);
+WireSyncRust2DartDco wire_CustomStructTwinSync_new_twin_sync(struct wire_cst_list_prim_u_8 *message);
 
-WireSyncReturnDco wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(struct wire_cst_custom_struct_twin_sync *that);
+WireSyncRust2DartDco wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(struct wire_cst_custom_struct_twin_sync *that);
 
-WireSyncReturnDco wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(struct wire_cst_custom_struct_twin_sync *that);
+WireSyncRust2DartDco wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(struct wire_cst_custom_struct_twin_sync *that);
 
-WireSyncReturnDco wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync(void);
+WireSyncRust2DartDco wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync(void);
 
-WireSyncReturnDco wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync(void);
+WireSyncRust2DartDco wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync(void);
 
-WireSyncReturnDco wire_SomeStructTwinSync_new_twin_sync(uint32_t value);
+WireSyncRust2DartDco wire_SomeStructTwinSync_new_twin_sync(uint32_t value);
 
-WireSyncReturnDco wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(struct wire_cst_some_struct_twin_sync *that);
+WireSyncRust2DartDco wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(struct wire_cst_some_struct_twin_sync *that);
 
-WireSyncReturnDco wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(struct wire_cst_some_struct_twin_sync *that);
+WireSyncRust2DartDco wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(struct wire_cst_some_struct_twin_sync *that);
 
-WireSyncReturnDco wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync(void);
+WireSyncRust2DartDco wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync(void);
 
-WireSyncReturnDco wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync(void);
+WireSyncRust2DartDco wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync(void);
 
-WireSyncReturnDco wire_custom_enum_error_panic_twin_sync(void);
+WireSyncRust2DartDco wire_custom_enum_error_panic_twin_sync(void);
 
-WireSyncReturnDco wire_custom_enum_error_return_error_twin_sync(void);
+WireSyncRust2DartDco wire_custom_enum_error_return_error_twin_sync(void);
 
-WireSyncReturnDco wire_custom_enum_error_return_ok_twin_sync(uint32_t arg);
+WireSyncRust2DartDco wire_custom_enum_error_return_ok_twin_sync(uint32_t arg);
 
-WireSyncReturnDco wire_custom_nested_error_return_error_twin_sync(struct wire_cst_custom_nested_error_outer_twin_sync *arg);
+WireSyncRust2DartDco wire_custom_nested_error_return_error_twin_sync(struct wire_cst_custom_nested_error_outer_twin_sync *arg);
 
-WireSyncReturnDco wire_custom_struct_error_return_error_twin_sync(struct wire_cst_custom_struct_error_twin_sync *arg);
+WireSyncRust2DartDco wire_custom_struct_error_return_error_twin_sync(struct wire_cst_custom_struct_error_twin_sync *arg);
 
-WireSyncReturnDco wire_func_return_error_twin_sync(void);
+WireSyncRust2DartDco wire_func_return_error_twin_sync(void);
 
-WireSyncReturnDco wire_func_type_fallible_panic_twin_sync(void);
+WireSyncRust2DartDco wire_func_type_fallible_panic_twin_sync(void);
 
-WireSyncReturnDco wire_func_type_infallible_panic_twin_sync(void);
+WireSyncRust2DartDco wire_func_type_infallible_panic_twin_sync(void);
 
-WireSyncReturnDco wire_panic_with_custom_result_twin_sync(void);
+WireSyncRust2DartDco wire_panic_with_custom_result_twin_sync(void);
 
-WireSyncReturnDco wire_return_custom_nested_error_1_twin_sync(void);
+WireSyncRust2DartDco wire_return_custom_nested_error_1_twin_sync(void);
 
-WireSyncReturnDco wire_return_custom_nested_error_1_variant1_twin_sync(void);
+WireSyncRust2DartDco wire_return_custom_nested_error_1_variant1_twin_sync(void);
 
-WireSyncReturnDco wire_return_custom_nested_error_2_twin_sync(void);
+WireSyncRust2DartDco wire_return_custom_nested_error_2_twin_sync(void);
 
-WireSyncReturnDco wire_return_custom_struct_error_twin_sync(void);
+WireSyncRust2DartDco wire_return_custom_struct_error_twin_sync(void);
 
-WireSyncReturnDco wire_return_custom_struct_ok_twin_sync(void);
+WireSyncRust2DartDco wire_return_custom_struct_ok_twin_sync(void);
 
-WireSyncReturnDco wire_return_err_custom_error_twin_sync(void);
+WireSyncRust2DartDco wire_return_err_custom_error_twin_sync(void);
 
-WireSyncReturnDco wire_return_error_variant_twin_sync(uint32_t variant);
+WireSyncRust2DartDco wire_return_error_variant_twin_sync(uint32_t variant);
 
-WireSyncReturnDco wire_return_ok_custom_error_twin_sync(void);
+WireSyncRust2DartDco wire_return_ok_custom_error_twin_sync(void);
 
 void wire_stream_sink_throw_anyhow_twin_sync(int64_t port_);
 
-WireSyncReturnDco wire_throw_anyhow_twin_sync(void);
+WireSyncRust2DartDco wire_throw_anyhow_twin_sync(void);
 
-WireSyncReturnSse wire_CustomStructTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
-                                                                 int32_t rust_vec_len_,
-                                                                 int32_t data_len_);
-
-WireSyncReturnSse wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_error_twin_sync_sse(uint8_t *ptr_,
-                                                                                                  int32_t rust_vec_len_,
-                                                                                                  int32_t data_len_);
-
-WireSyncReturnSse wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_ok_twin_sync_sse(uint8_t *ptr_,
-                                                                                               int32_t rust_vec_len_,
-                                                                                               int32_t data_len_);
-
-WireSyncReturnSse wire_CustomStructTwinSyncSse_static_return_custom_struct_error_twin_sync_sse(uint8_t *ptr_,
-                                                                                               int32_t rust_vec_len_,
-                                                                                               int32_t data_len_);
-
-WireSyncReturnSse wire_CustomStructTwinSyncSse_static_return_custom_struct_ok_twin_sync_sse(uint8_t *ptr_,
-                                                                                            int32_t rust_vec_len_,
-                                                                                            int32_t data_len_);
-
-WireSyncReturnSse wire_SomeStructTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
-                                                               int32_t rust_vec_len_,
-                                                               int32_t data_len_);
-
-WireSyncReturnSse wire_SomeStructTwinSyncSse_non_static_return_err_custom_error_twin_sync_sse(uint8_t *ptr_,
-                                                                                              int32_t rust_vec_len_,
-                                                                                              int32_t data_len_);
-
-WireSyncReturnSse wire_SomeStructTwinSyncSse_non_static_return_ok_custom_error_twin_sync_sse(uint8_t *ptr_,
-                                                                                             int32_t rust_vec_len_,
-                                                                                             int32_t data_len_);
-
-WireSyncReturnSse wire_SomeStructTwinSyncSse_static_return_err_custom_error_twin_sync_sse(uint8_t *ptr_,
-                                                                                          int32_t rust_vec_len_,
-                                                                                          int32_t data_len_);
-
-WireSyncReturnSse wire_SomeStructTwinSyncSse_static_return_ok_custom_error_twin_sync_sse(uint8_t *ptr_,
-                                                                                         int32_t rust_vec_len_,
-                                                                                         int32_t data_len_);
-
-WireSyncReturnSse wire_custom_enum_error_panic_twin_sync_sse(uint8_t *ptr_,
-                                                             int32_t rust_vec_len_,
-                                                             int32_t data_len_);
-
-WireSyncReturnSse wire_custom_enum_error_return_error_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_CustomStructTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
                                                                     int32_t rust_vec_len_,
                                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_custom_enum_error_return_ok_twin_sync_sse(uint8_t *ptr_,
-                                                                 int32_t rust_vec_len_,
-                                                                 int32_t data_len_);
+WireSyncRust2DartSse wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                                     int32_t rust_vec_len_,
+                                                                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_custom_nested_error_return_error_twin_sync_sse(uint8_t *ptr_,
-                                                                      int32_t rust_vec_len_,
-                                                                      int32_t data_len_);
+WireSyncRust2DartSse wire_CustomStructTwinSyncSse_nonstatic_return_custom_struct_ok_twin_sync_sse(uint8_t *ptr_,
+                                                                                                  int32_t rust_vec_len_,
+                                                                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_custom_struct_error_return_error_twin_sync_sse(uint8_t *ptr_,
-                                                                      int32_t rust_vec_len_,
-                                                                      int32_t data_len_);
+WireSyncRust2DartSse wire_CustomStructTwinSyncSse_static_return_custom_struct_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                                  int32_t rust_vec_len_,
+                                                                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_func_return_error_twin_sync_sse(uint8_t *ptr_,
-                                                       int32_t rust_vec_len_,
-                                                       int32_t data_len_);
+WireSyncRust2DartSse wire_CustomStructTwinSyncSse_static_return_custom_struct_ok_twin_sync_sse(uint8_t *ptr_,
+                                                                                               int32_t rust_vec_len_,
+                                                                                               int32_t data_len_);
 
-WireSyncReturnSse wire_func_type_fallible_panic_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
-
-WireSyncReturnSse wire_func_type_infallible_panic_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
-
-WireSyncReturnSse wire_panic_with_custom_result_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
-
-WireSyncReturnSse wire_return_custom_nested_error_1_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_SomeStructTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
                                                                   int32_t rust_vec_len_,
                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_return_custom_nested_error_1_variant1_twin_sync_sse(uint8_t *ptr_,
-                                                                           int32_t rust_vec_len_,
-                                                                           int32_t data_len_);
+WireSyncRust2DartSse wire_SomeStructTwinSyncSse_non_static_return_err_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                                 int32_t rust_vec_len_,
+                                                                                                 int32_t data_len_);
 
-WireSyncReturnSse wire_return_custom_nested_error_2_twin_sync_sse(uint8_t *ptr_,
-                                                                  int32_t rust_vec_len_,
-                                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_SomeStructTwinSyncSse_non_static_return_ok_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                                int32_t rust_vec_len_,
+                                                                                                int32_t data_len_);
 
-WireSyncReturnSse wire_return_custom_struct_error_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_SomeStructTwinSyncSse_static_return_err_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                             int32_t rust_vec_len_,
+                                                                                             int32_t data_len_);
+
+WireSyncRust2DartSse wire_SomeStructTwinSyncSse_static_return_ok_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                                                            int32_t rust_vec_len_,
+                                                                                            int32_t data_len_);
+
+WireSyncRust2DartSse wire_custom_enum_error_panic_twin_sync_sse(uint8_t *ptr_,
                                                                 int32_t rust_vec_len_,
                                                                 int32_t data_len_);
 
-WireSyncReturnSse wire_return_custom_struct_ok_twin_sync_sse(uint8_t *ptr_,
-                                                             int32_t rust_vec_len_,
-                                                             int32_t data_len_);
+WireSyncRust2DartSse wire_custom_enum_error_return_error_twin_sync_sse(uint8_t *ptr_,
+                                                                       int32_t rust_vec_len_,
+                                                                       int32_t data_len_);
 
-WireSyncReturnSse wire_return_err_custom_error_twin_sync_sse(uint8_t *ptr_,
-                                                             int32_t rust_vec_len_,
-                                                             int32_t data_len_);
+WireSyncRust2DartSse wire_custom_enum_error_return_ok_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
 
-WireSyncReturnSse wire_return_error_variant_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_custom_nested_error_return_error_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncRust2DartSse wire_custom_struct_error_return_error_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncRust2DartSse wire_func_return_error_twin_sync_sse(uint8_t *ptr_,
                                                           int32_t rust_vec_len_,
                                                           int32_t data_len_);
 
-WireSyncReturnSse wire_return_ok_custom_error_twin_sync_sse(uint8_t *ptr_,
-                                                            int32_t rust_vec_len_,
-                                                            int32_t data_len_);
+WireSyncRust2DartSse wire_func_type_fallible_panic_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncRust2DartSse wire_func_type_infallible_panic_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
+WireSyncRust2DartSse wire_panic_with_custom_result_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_custom_nested_error_1_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_custom_nested_error_1_variant1_twin_sync_sse(uint8_t *ptr_,
+                                                                              int32_t rust_vec_len_,
+                                                                              int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_custom_nested_error_2_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_custom_struct_error_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_custom_struct_ok_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_err_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_error_variant_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncRust2DartSse wire_return_ok_custom_error_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
 
 void wire_stream_sink_throw_anyhow_twin_sync_sse(int64_t port_,
                                                  uint8_t *ptr_,
                                                  int32_t rust_vec_len_,
                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_throw_anyhow_twin_sync_sse(uint8_t *ptr_,
-                                                  int32_t rust_vec_len_,
-                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_throw_anyhow_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
 
 void wire_call_new_module_system_twin_rust_async(int64_t port_);
 
@@ -4872,29 +4872,29 @@ void wire_use_imported_struct_twin_sse(int64_t port_,
                                        int32_t rust_vec_len_,
                                        int32_t data_len_);
 
-WireSyncReturnDco wire_call_new_module_system_twin_sync(void);
+WireSyncRust2DartDco wire_call_new_module_system_twin_sync(void);
 
-WireSyncReturnDco wire_call_old_module_system_twin_sync(void);
+WireSyncRust2DartDco wire_call_old_module_system_twin_sync(void);
 
-WireSyncReturnDco wire_use_imported_enum_twin_sync(int32_t my_enum);
+WireSyncRust2DartDco wire_use_imported_enum_twin_sync(int32_t my_enum);
 
-WireSyncReturnDco wire_use_imported_struct_twin_sync(struct wire_cst_my_struct *my_struct);
+WireSyncRust2DartDco wire_use_imported_struct_twin_sync(struct wire_cst_my_struct *my_struct);
 
-WireSyncReturnSse wire_call_new_module_system_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_call_new_module_system_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncRust2DartSse wire_call_old_module_system_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
+
+WireSyncRust2DartSse wire_use_imported_enum_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncRust2DartSse wire_use_imported_struct_twin_sync_sse(uint8_t *ptr_,
                                                             int32_t rust_vec_len_,
                                                             int32_t data_len_);
-
-WireSyncReturnSse wire_call_old_module_system_twin_sync_sse(uint8_t *ptr_,
-                                                            int32_t rust_vec_len_,
-                                                            int32_t data_len_);
-
-WireSyncReturnSse wire_use_imported_enum_twin_sync_sse(uint8_t *ptr_,
-                                                       int32_t rust_vec_len_,
-                                                       int32_t data_len_);
-
-WireSyncReturnSse wire_use_imported_struct_twin_sync_sse(uint8_t *ptr_,
-                                                         int32_t rust_vec_len_,
-                                                         int32_t data_len_);
 
 void wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(int64_t port_,
                                                                           struct wire_cst_list_prim_u_8 *a,
@@ -5030,11 +5030,11 @@ void wire_get_sum_struct_twin_sse(int64_t port_,
                                   int32_t rust_vec_len_,
                                   int32_t data_len_);
 
-WireSyncReturnDco wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(struct wire_cst_list_prim_u_8 *a,
-                                                                            struct wire_cst_list_prim_u_8 *b);
+WireSyncRust2DartDco wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(struct wire_cst_list_prim_u_8 *a,
+                                                                               struct wire_cst_list_prim_u_8 *b);
 
-WireSyncReturnDco wire_ConcatenateWithTwinSync_concatenate_twin_sync(struct wire_cst_concatenate_with_twin_sync *that,
-                                                                     struct wire_cst_list_prim_u_8 *b);
+WireSyncRust2DartDco wire_ConcatenateWithTwinSync_concatenate_twin_sync(struct wire_cst_concatenate_with_twin_sync *that,
+                                                                        struct wire_cst_list_prim_u_8 *b);
 
 void wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync(int64_t port_);
 
@@ -5050,23 +5050,23 @@ void wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync(int64_t port
                                                                     uint32_t key,
                                                                     uint32_t max);
 
-WireSyncReturnDco wire_ConcatenateWithTwinSync_new_twin_sync(struct wire_cst_list_prim_u_8 *a);
+WireSyncRust2DartDco wire_ConcatenateWithTwinSync_new_twin_sync(struct wire_cst_list_prim_u_8 *a);
 
-WireSyncReturnDco wire_SumWithTwinSync_sum_twin_sync(struct wire_cst_sum_with_twin_sync *that,
-                                                     uint32_t y,
-                                                     uint32_t z);
+WireSyncRust2DartDco wire_SumWithTwinSync_sum_twin_sync(struct wire_cst_sum_with_twin_sync *that,
+                                                        uint32_t y,
+                                                        uint32_t z);
 
-WireSyncReturnDco wire_get_sum_array_twin_sync(uint32_t a, uint32_t b, uint32_t c);
+WireSyncRust2DartDco wire_get_sum_array_twin_sync(uint32_t a, uint32_t b, uint32_t c);
 
-WireSyncReturnDco wire_get_sum_struct_twin_sync(void);
+WireSyncRust2DartDco wire_get_sum_struct_twin_sync(void);
 
-WireSyncReturnSse wire_ConcatenateWithTwinSyncSse_concatenate_static_twin_sync_sse(uint8_t *ptr_,
-                                                                                   int32_t rust_vec_len_,
-                                                                                   int32_t data_len_);
+WireSyncRust2DartSse wire_ConcatenateWithTwinSyncSse_concatenate_static_twin_sync_sse(uint8_t *ptr_,
+                                                                                      int32_t rust_vec_len_,
+                                                                                      int32_t data_len_);
 
-WireSyncReturnSse wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse(uint8_t *ptr_,
-                                                                            int32_t rust_vec_len_,
-                                                                            int32_t data_len_);
+WireSyncRust2DartSse wire_ConcatenateWithTwinSyncSse_concatenate_twin_sync_sse(uint8_t *ptr_,
+                                                                               int32_t rust_vec_len_,
+                                                                               int32_t data_len_);
 
 void wire_ConcatenateWithTwinSyncSse_handle_some_static_stream_sink_single_arg_twin_sync_sse(int64_t port_,
                                                                                              uint8_t *ptr_,
@@ -5088,21 +5088,21 @@ void wire_ConcatenateWithTwinSyncSse_handle_some_stream_sink_twin_sync_sse(int64
                                                                            int32_t rust_vec_len_,
                                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
-                                                                    int32_t rust_vec_len_,
-                                                                    int32_t data_len_);
+WireSyncRust2DartSse wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
+                                                                       int32_t rust_vec_len_,
+                                                                       int32_t data_len_);
 
-WireSyncReturnSse wire_SumWithTwinSyncSse_sum_twin_sync_sse(uint8_t *ptr_,
-                                                            int32_t rust_vec_len_,
-                                                            int32_t data_len_);
+WireSyncRust2DartSse wire_SumWithTwinSyncSse_sum_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
 
-WireSyncReturnSse wire_get_sum_array_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
+WireSyncRust2DartSse wire_get_sum_array_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
 
-WireSyncReturnSse wire_get_sum_struct_twin_sync_sse(uint8_t *ptr_,
-                                                    int32_t rust_vec_len_,
-                                                    int32_t data_len_);
+WireSyncRust2DartSse wire_get_sum_struct_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
 
 void wire_app_settings_stream_twin_rust_async(int64_t port_);
 
@@ -5337,39 +5337,39 @@ void wire_app_settings_stream_twin_sync(int64_t port_);
 
 void wire_app_settings_vec_stream_twin_sync(int64_t port_);
 
-WireSyncReturnDco wire_first_number_twin_sync(struct wire_cst_numbers *nums);
+WireSyncRust2DartDco wire_first_number_twin_sync(struct wire_cst_numbers *nums);
 
-WireSyncReturnDco wire_first_sequence_twin_sync(struct wire_cst_sequences *seqs);
+WireSyncRust2DartDco wire_first_sequence_twin_sync(struct wire_cst_sequences *seqs);
 
-WireSyncReturnDco wire_get_app_settings_twin_sync(void);
+WireSyncRust2DartDco wire_get_app_settings_twin_sync(void);
 
-WireSyncReturnDco wire_get_fallible_app_settings_twin_sync(void);
+WireSyncRust2DartDco wire_get_fallible_app_settings_twin_sync(void);
 
-WireSyncReturnDco wire_get_message_twin_sync(void);
+WireSyncRust2DartDco wire_get_message_twin_sync(void);
 
-WireSyncReturnDco wire_is_app_embedded_twin_sync(struct wire_cst_application_settings *app_settings);
+WireSyncRust2DartDco wire_is_app_embedded_twin_sync(struct wire_cst_application_settings *app_settings);
 
 void wire_mirror_struct_stream_twin_sync(int64_t port_);
 
 void wire_mirror_tuple_stream_twin_sync(int64_t port_);
 
-WireSyncReturnDco wire_repeat_number_twin_sync(int32_t num, uintptr_t times);
+WireSyncRust2DartDco wire_repeat_number_twin_sync(int32_t num, uintptr_t times);
 
-WireSyncReturnDco wire_repeat_sequence_twin_sync(int32_t seq, uintptr_t times);
+WireSyncRust2DartDco wire_repeat_sequence_twin_sync(int32_t seq, uintptr_t times);
 
-WireSyncReturnDco wire_test_contains_mirrored_sub_struct_twin_sync(void);
+WireSyncRust2DartDco wire_test_contains_mirrored_sub_struct_twin_sync(void);
 
-WireSyncReturnDco wire_test_fallible_of_raw_string_mirrored_twin_sync(void);
+WireSyncRust2DartDco wire_test_fallible_of_raw_string_mirrored_twin_sync(void);
 
-WireSyncReturnDco wire_test_list_of_nested_enums_mirrored_twin_sync(void);
+WireSyncRust2DartDco wire_test_list_of_nested_enums_mirrored_twin_sync(void);
 
-WireSyncReturnDco wire_test_list_of_raw_nested_string_mirrored_twin_sync(void);
+WireSyncRust2DartDco wire_test_list_of_raw_nested_string_mirrored_twin_sync(void);
 
-WireSyncReturnDco wire_test_nested_raw_string_mirrored_twin_sync(void);
+WireSyncRust2DartDco wire_test_nested_raw_string_mirrored_twin_sync(void);
 
-WireSyncReturnDco wire_test_raw_string_enum_mirrored_twin_sync(bool nested);
+WireSyncRust2DartDco wire_test_raw_string_enum_mirrored_twin_sync(bool nested);
 
-WireSyncReturnDco wire_test_raw_string_mirrored_twin_sync(void);
+WireSyncRust2DartDco wire_test_raw_string_mirrored_twin_sync(void);
 
 void wire_app_settings_stream_twin_sync_sse(int64_t port_,
                                             uint8_t *ptr_,
@@ -5381,29 +5381,29 @@ void wire_app_settings_vec_stream_twin_sync_sse(int64_t port_,
                                                 int32_t rust_vec_len_,
                                                 int32_t data_len_);
 
-WireSyncReturnSse wire_first_number_twin_sync_sse(uint8_t *ptr_,
-                                                  int32_t rust_vec_len_,
-                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_first_number_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_first_sequence_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_first_sequence_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+WireSyncRust2DartSse wire_get_app_settings_twin_sync_sse(uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+WireSyncRust2DartSse wire_get_fallible_app_settings_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+WireSyncRust2DartSse wire_get_message_twin_sync_sse(uint8_t *ptr_,
                                                     int32_t rust_vec_len_,
                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_get_app_settings_twin_sync_sse(uint8_t *ptr_,
-                                                      int32_t rust_vec_len_,
-                                                      int32_t data_len_);
-
-WireSyncReturnSse wire_get_fallible_app_settings_twin_sync_sse(uint8_t *ptr_,
-                                                               int32_t rust_vec_len_,
-                                                               int32_t data_len_);
-
-WireSyncReturnSse wire_get_message_twin_sync_sse(uint8_t *ptr_,
-                                                 int32_t rust_vec_len_,
-                                                 int32_t data_len_);
-
-WireSyncReturnSse wire_is_app_embedded_twin_sync_sse(uint8_t *ptr_,
-                                                     int32_t rust_vec_len_,
-                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_is_app_embedded_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
 
 void wire_mirror_struct_stream_twin_sync_sse(int64_t port_,
                                              uint8_t *ptr_,
@@ -5415,41 +5415,41 @@ void wire_mirror_tuple_stream_twin_sync_sse(int64_t port_,
                                             int32_t rust_vec_len_,
                                             int32_t data_len_);
 
-WireSyncReturnSse wire_repeat_number_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
+WireSyncRust2DartSse wire_repeat_number_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
 
-WireSyncReturnSse wire_repeat_sequence_twin_sync_sse(uint8_t *ptr_,
-                                                     int32_t rust_vec_len_,
-                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_repeat_sequence_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_test_contains_mirrored_sub_struct_twin_sync_sse(uint8_t *ptr_,
-                                                                       int32_t rust_vec_len_,
-                                                                       int32_t data_len_);
-
-WireSyncReturnSse wire_test_fallible_of_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_test_contains_mirrored_sub_struct_twin_sync_sse(uint8_t *ptr_,
                                                                           int32_t rust_vec_len_,
                                                                           int32_t data_len_);
 
-WireSyncReturnSse wire_test_list_of_nested_enums_mirrored_twin_sync_sse(uint8_t *ptr_,
-                                                                        int32_t rust_vec_len_,
-                                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_test_list_of_raw_nested_string_mirrored_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_test_fallible_of_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
                                                                              int32_t rust_vec_len_,
                                                                              int32_t data_len_);
 
-WireSyncReturnSse wire_test_nested_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_test_list_of_nested_enums_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                           int32_t rust_vec_len_,
+                                                                           int32_t data_len_);
 
-WireSyncReturnSse wire_test_raw_string_enum_mirrored_twin_sync_sse(uint8_t *ptr_,
-                                                                   int32_t rust_vec_len_,
-                                                                   int32_t data_len_);
+WireSyncRust2DartSse wire_test_list_of_raw_nested_string_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                                int32_t rust_vec_len_,
+                                                                                int32_t data_len_);
 
-WireSyncReturnSse wire_test_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
+WireSyncRust2DartSse wire_test_nested_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
+
+WireSyncRust2DartSse wire_test_raw_string_enum_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+WireSyncRust2DartSse wire_test_raw_string_mirrored_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
 
 void wire_handle_big_buffers_twin_rust_async(int64_t port_);
 
@@ -5565,60 +5565,60 @@ void wire_test_struct_with_enum_twin_sse(int64_t port_,
                                          int32_t rust_vec_len_,
                                          int32_t data_len_);
 
-WireSyncReturnDco wire_handle_big_buffers_twin_sync(void);
+WireSyncRust2DartDco wire_handle_big_buffers_twin_sync(void);
 
-WireSyncReturnDco wire_handle_complex_struct_twin_sync(struct wire_cst_my_tree_node_twin_sync *s);
+WireSyncRust2DartDco wire_handle_complex_struct_twin_sync(struct wire_cst_my_tree_node_twin_sync *s);
 
-WireSyncReturnDco wire_handle_nested_struct_twin_sync(struct wire_cst_my_nested_struct_twin_sync *s);
+WireSyncRust2DartDco wire_handle_nested_struct_twin_sync(struct wire_cst_my_nested_struct_twin_sync *s);
 
-WireSyncReturnDco wire_handle_string_twin_sync(struct wire_cst_list_prim_u_8 *s);
+WireSyncRust2DartDco wire_handle_string_twin_sync(struct wire_cst_list_prim_u_8 *s);
 
-WireSyncReturnDco wire_handle_struct_twin_sync(struct wire_cst_my_size *arg,
-                                               struct wire_cst_my_size *boxed);
+WireSyncRust2DartDco wire_handle_struct_twin_sync(struct wire_cst_my_size *arg,
+                                                  struct wire_cst_my_size *boxed);
 
-WireSyncReturnDco wire_handle_vec_u8_twin_sync(struct wire_cst_list_prim_u_8 *v);
+WireSyncRust2DartDco wire_handle_vec_u8_twin_sync(struct wire_cst_list_prim_u_8 *v);
 
-WireSyncReturnDco wire_list_of_primitive_enums_twin_sync(struct wire_cst_list_weekdays_twin_sync *weekdays);
+WireSyncRust2DartDco wire_list_of_primitive_enums_twin_sync(struct wire_cst_list_weekdays_twin_sync *weekdays);
 
-WireSyncReturnDco wire_test_abc_enum_twin_sync(struct wire_cst_abc_twin_sync *abc);
+WireSyncRust2DartDco wire_test_abc_enum_twin_sync(struct wire_cst_abc_twin_sync *abc);
 
-WireSyncReturnDco wire_test_struct_with_enum_twin_sync(struct wire_cst_struct_with_enum_twin_sync *se);
+WireSyncRust2DartDco wire_test_struct_with_enum_twin_sync(struct wire_cst_struct_with_enum_twin_sync *se);
 
-WireSyncReturnSse wire_handle_big_buffers_twin_sync_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_handle_complex_struct_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_handle_big_buffers_twin_sync_sse(uint8_t *ptr_,
                                                            int32_t rust_vec_len_,
                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_handle_nested_struct_twin_sync_sse(uint8_t *ptr_,
-                                                          int32_t rust_vec_len_,
-                                                          int32_t data_len_);
+WireSyncRust2DartSse wire_handle_complex_struct_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
 
-WireSyncReturnSse wire_handle_string_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
-
-WireSyncReturnSse wire_handle_struct_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
-
-WireSyncReturnSse wire_handle_vec_u8_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
-
-WireSyncReturnSse wire_list_of_primitive_enums_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_handle_nested_struct_twin_sync_sse(uint8_t *ptr_,
                                                              int32_t rust_vec_len_,
                                                              int32_t data_len_);
 
-WireSyncReturnSse wire_test_abc_enum_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
+WireSyncRust2DartSse wire_handle_string_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
 
-WireSyncReturnSse wire_test_struct_with_enum_twin_sync_sse(uint8_t *ptr_,
-                                                           int32_t rust_vec_len_,
-                                                           int32_t data_len_);
+WireSyncRust2DartSse wire_handle_struct_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncRust2DartSse wire_handle_vec_u8_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncRust2DartSse wire_list_of_primitive_enums_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncRust2DartSse wire_test_abc_enum_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncRust2DartSse wire_test_struct_with_enum_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
 
 void wire_empty_struct_twin_rust_async(int64_t port_, struct wire_cst_empty_twin_rust_async *empty);
 
@@ -5680,35 +5680,35 @@ void wire_handle_string_list_twin_sse(int64_t port_,
                                       int32_t rust_vec_len_,
                                       int32_t data_len_);
 
-WireSyncReturnDco wire_empty_struct_twin_sync(struct wire_cst_empty_twin_sync *empty);
+WireSyncRust2DartDco wire_empty_struct_twin_sync(struct wire_cst_empty_twin_sync *empty);
 
-WireSyncReturnDco wire_func_return_unit_twin_sync(void);
+WireSyncRust2DartDco wire_func_return_unit_twin_sync(void);
 
-WireSyncReturnDco wire_func_string_twin_sync(struct wire_cst_list_prim_u_8 *arg);
+WireSyncRust2DartDco wire_func_string_twin_sync(struct wire_cst_list_prim_u_8 *arg);
 
-WireSyncReturnDco wire_handle_list_of_struct_twin_sync(struct wire_cst_list_my_size *l);
+WireSyncRust2DartDco wire_handle_list_of_struct_twin_sync(struct wire_cst_list_my_size *l);
 
-WireSyncReturnDco wire_handle_string_list_twin_sync(struct wire_cst_list_String *names);
+WireSyncRust2DartDco wire_handle_string_list_twin_sync(struct wire_cst_list_String *names);
 
-WireSyncReturnSse wire_empty_struct_twin_sync_sse(uint8_t *ptr_,
-                                                  int32_t rust_vec_len_,
-                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_empty_struct_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_func_return_unit_twin_sync_sse(uint8_t *ptr_,
-                                                      int32_t rust_vec_len_,
-                                                      int32_t data_len_);
+WireSyncRust2DartSse wire_func_return_unit_twin_sync_sse(uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
 
-WireSyncReturnSse wire_func_string_twin_sync_sse(uint8_t *ptr_,
-                                                 int32_t rust_vec_len_,
-                                                 int32_t data_len_);
+WireSyncRust2DartSse wire_func_string_twin_sync_sse(uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
 
-WireSyncReturnSse wire_handle_list_of_struct_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_handle_list_of_struct_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncRust2DartSse wire_handle_string_list_twin_sync_sse(uint8_t *ptr_,
                                                            int32_t rust_vec_len_,
                                                            int32_t data_len_);
-
-WireSyncReturnSse wire_handle_string_list_twin_sync_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
 
 void wire_handle_newtype_twin_rust_async(int64_t port_,
                                          struct wire_cst_new_type_int_twin_rust_async *arg);
@@ -5723,11 +5723,11 @@ void wire_handle_newtype_twin_sse(int64_t port_,
                                   int32_t rust_vec_len_,
                                   int32_t data_len_);
 
-WireSyncReturnDco wire_handle_newtype_twin_sync(struct wire_cst_new_type_int_twin_sync *arg);
+WireSyncRust2DartDco wire_handle_newtype_twin_sync(struct wire_cst_new_type_int_twin_sync *arg);
 
-WireSyncReturnSse wire_handle_newtype_twin_sync_sse(uint8_t *ptr_,
-                                                    int32_t rust_vec_len_,
-                                                    int32_t data_len_);
+WireSyncRust2DartSse wire_handle_newtype_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
 
 void wire_example_optional_primitive_type_bool_twin_normal(int64_t port_, bool *arg);
 
@@ -5767,14 +5767,14 @@ void wire_primitive_optional_types_twin_sse(int64_t port_,
                                             int32_t rust_vec_len_,
                                             int32_t data_len_);
 
-WireSyncReturnDco wire_primitive_optional_types_twin_sync(int32_t *my_i32,
-                                                          int64_t *my_i64,
-                                                          double *my_f64,
-                                                          bool *my_bool);
+WireSyncRust2DartDco wire_primitive_optional_types_twin_sync(int32_t *my_i32,
+                                                             int64_t *my_i64,
+                                                             double *my_f64,
+                                                             bool *my_bool);
 
-WireSyncReturnSse wire_primitive_optional_types_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
+WireSyncRust2DartSse wire_primitive_optional_types_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
 
 void wire_example_optional_primitive_type_bool_twin_rust_async(int64_t port_, bool *arg);
 
@@ -5908,71 +5908,71 @@ void wire_example_optional_primitive_type_u8_twin_sse(int64_t port_,
                                                       int32_t rust_vec_len_,
                                                       int32_t data_len_);
 
-WireSyncReturnDco wire_example_optional_primitive_type_bool_twin_sync(bool *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_bool_twin_sync(bool *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_f32_twin_sync(float *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_f32_twin_sync(float *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_f64_twin_sync(double *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_f64_twin_sync(double *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_i16_twin_sync(int16_t *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_i16_twin_sync(int16_t *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_i32_twin_sync(int32_t *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_i32_twin_sync(int32_t *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_i64_twin_sync(int64_t *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_i64_twin_sync(int64_t *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_i8_twin_sync(int8_t *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_i8_twin_sync(int8_t *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_u16_twin_sync(uint16_t *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_u16_twin_sync(uint16_t *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_u32_twin_sync(uint32_t *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_u32_twin_sync(uint32_t *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_u64_twin_sync(uint64_t *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_u64_twin_sync(uint64_t *arg);
 
-WireSyncReturnDco wire_example_optional_primitive_type_u8_twin_sync(uint8_t *arg);
+WireSyncRust2DartDco wire_example_optional_primitive_type_u8_twin_sync(uint8_t *arg);
 
-WireSyncReturnSse wire_example_optional_primitive_type_bool_twin_sync_sse(uint8_t *ptr_,
-                                                                          int32_t rust_vec_len_,
-                                                                          int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_bool_twin_sync_sse(uint8_t *ptr_,
+                                                                             int32_t rust_vec_len_,
+                                                                             int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_f32_twin_sync_sse(uint8_t *ptr_,
-                                                                         int32_t rust_vec_len_,
-                                                                         int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_f32_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_f64_twin_sync_sse(uint8_t *ptr_,
-                                                                         int32_t rust_vec_len_,
-                                                                         int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_f64_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_i16_twin_sync_sse(uint8_t *ptr_,
-                                                                         int32_t rust_vec_len_,
-                                                                         int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_i16_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_i32_twin_sync_sse(uint8_t *ptr_,
-                                                                         int32_t rust_vec_len_,
-                                                                         int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_i32_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_i64_twin_sync_sse(uint8_t *ptr_,
-                                                                         int32_t rust_vec_len_,
-                                                                         int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_i64_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_i8_twin_sync_sse(uint8_t *ptr_,
-                                                                        int32_t rust_vec_len_,
-                                                                        int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_i8_twin_sync_sse(uint8_t *ptr_,
+                                                                           int32_t rust_vec_len_,
+                                                                           int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_u16_twin_sync_sse(uint8_t *ptr_,
-                                                                         int32_t rust_vec_len_,
-                                                                         int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_u16_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_u32_twin_sync_sse(uint8_t *ptr_,
-                                                                         int32_t rust_vec_len_,
-                                                                         int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_u32_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_u64_twin_sync_sse(uint8_t *ptr_,
-                                                                         int32_t rust_vec_len_,
-                                                                         int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_u64_twin_sync_sse(uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_example_optional_primitive_type_u8_twin_sync_sse(uint8_t *ptr_,
-                                                                        int32_t rust_vec_len_,
-                                                                        int32_t data_len_);
+WireSyncRust2DartSse wire_example_optional_primitive_type_u8_twin_sync_sse(uint8_t *ptr_,
+                                                                           int32_t rust_vec_len_,
+                                                                           int32_t data_len_);
 
 void wire_handle_increment_boxed_optional_twin_rust_async(int64_t port_, double *opt);
 
@@ -6056,47 +6056,47 @@ void wire_handle_vec_of_opts_twin_sse(int64_t port_,
                                       int32_t rust_vec_len_,
                                       int32_t data_len_);
 
-WireSyncReturnDco wire_handle_increment_boxed_optional_twin_sync(double *opt);
+WireSyncRust2DartDco wire_handle_increment_boxed_optional_twin_sync(double *opt);
 
-WireSyncReturnDco wire_handle_option_box_arguments_twin_sync(int8_t *i8box,
-                                                             uint8_t *u8box,
-                                                             int32_t *i32box,
-                                                             int64_t *i64box,
-                                                             double *f64box,
-                                                             bool *boolbox,
-                                                             struct wire_cst_exotic_optionals_twin_sync *structbox);
+WireSyncRust2DartDco wire_handle_option_box_arguments_twin_sync(int8_t *i8box,
+                                                                uint8_t *u8box,
+                                                                int32_t *i32box,
+                                                                int64_t *i64box,
+                                                                double *f64box,
+                                                                bool *boolbox,
+                                                                struct wire_cst_exotic_optionals_twin_sync *structbox);
 
-WireSyncReturnDco wire_handle_optional_increment_twin_sync(struct wire_cst_exotic_optionals_twin_sync *opt);
+WireSyncRust2DartDco wire_handle_optional_increment_twin_sync(struct wire_cst_exotic_optionals_twin_sync *opt);
 
-WireSyncReturnDco wire_handle_optional_return_twin_sync(double left, double right);
+WireSyncRust2DartDco wire_handle_optional_return_twin_sync(double left, double right);
 
-WireSyncReturnDco wire_handle_optional_struct_twin_sync(struct wire_cst_list_prim_u_8 *document);
+WireSyncRust2DartDco wire_handle_optional_struct_twin_sync(struct wire_cst_list_prim_u_8 *document);
 
-WireSyncReturnDco wire_handle_vec_of_opts_twin_sync(struct wire_cst_opt_vecs_twin_sync *opt);
+WireSyncRust2DartDco wire_handle_vec_of_opts_twin_sync(struct wire_cst_opt_vecs_twin_sync *opt);
 
-WireSyncReturnSse wire_handle_increment_boxed_optional_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_handle_increment_boxed_optional_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_handle_option_box_arguments_twin_sync_sse(uint8_t *ptr_,
-                                                                 int32_t rust_vec_len_,
-                                                                 int32_t data_len_);
+WireSyncRust2DartSse wire_handle_option_box_arguments_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
 
-WireSyncReturnSse wire_handle_optional_increment_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_handle_optional_increment_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
+
+WireSyncRust2DartSse wire_handle_optional_return_twin_sync_sse(uint8_t *ptr_,
                                                                int32_t rust_vec_len_,
                                                                int32_t data_len_);
 
-WireSyncReturnSse wire_handle_optional_return_twin_sync_sse(uint8_t *ptr_,
-                                                            int32_t rust_vec_len_,
-                                                            int32_t data_len_);
+WireSyncRust2DartSse wire_handle_optional_struct_twin_sync_sse(uint8_t *ptr_,
+                                                               int32_t rust_vec_len_,
+                                                               int32_t data_len_);
 
-WireSyncReturnSse wire_handle_optional_struct_twin_sync_sse(uint8_t *ptr_,
-                                                            int32_t rust_vec_len_,
-                                                            int32_t data_len_);
-
-WireSyncReturnSse wire_handle_vec_of_opts_twin_sync_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
+WireSyncRust2DartSse wire_handle_vec_of_opts_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
 
 void wire_example_primitive_type_bool_twin_normal(int64_t port_, bool arg);
 
@@ -6165,11 +6165,11 @@ void wire_handle_vec_of_primitive_twin_sse(int64_t port_,
                                            int32_t rust_vec_len_,
                                            int32_t data_len_);
 
-WireSyncReturnDco wire_handle_vec_of_primitive_twin_sync(int32_t n);
+WireSyncRust2DartDco wire_handle_vec_of_primitive_twin_sync(int32_t n);
 
-WireSyncReturnSse wire_handle_vec_of_primitive_twin_sync_sse(uint8_t *ptr_,
-                                                             int32_t rust_vec_len_,
-                                                             int32_t data_len_);
+WireSyncRust2DartSse wire_handle_vec_of_primitive_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
 
 void wire_example_primitive_list_type_bool_twin_rust_async(int64_t port_,
                                                            struct wire_cst_list_bool *arg);
@@ -6314,71 +6314,71 @@ void wire_example_primitive_list_type_u8_twin_sse(int64_t port_,
                                                   int32_t rust_vec_len_,
                                                   int32_t data_len_);
 
-WireSyncReturnDco wire_example_primitive_list_type_bool_twin_sync(struct wire_cst_list_bool *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_bool_twin_sync(struct wire_cst_list_bool *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_f32_twin_sync(struct wire_cst_list_prim_f_32 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_f32_twin_sync(struct wire_cst_list_prim_f_32 *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_f64_twin_sync(struct wire_cst_list_prim_f_64 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_f64_twin_sync(struct wire_cst_list_prim_f_64 *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_i16_twin_sync(struct wire_cst_list_prim_i_16 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_i16_twin_sync(struct wire_cst_list_prim_i_16 *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_i32_twin_sync(struct wire_cst_list_prim_i_32 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_i32_twin_sync(struct wire_cst_list_prim_i_32 *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_i64_twin_sync(struct wire_cst_list_prim_i_64 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_i64_twin_sync(struct wire_cst_list_prim_i_64 *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_i8_twin_sync(struct wire_cst_list_prim_i_8 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_i8_twin_sync(struct wire_cst_list_prim_i_8 *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_u16_twin_sync(struct wire_cst_list_prim_u_16 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_u16_twin_sync(struct wire_cst_list_prim_u_16 *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_u32_twin_sync(struct wire_cst_list_prim_u_32 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_u32_twin_sync(struct wire_cst_list_prim_u_32 *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_u64_twin_sync(struct wire_cst_list_prim_u_64 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_u64_twin_sync(struct wire_cst_list_prim_u_64 *arg);
 
-WireSyncReturnDco wire_example_primitive_list_type_u8_twin_sync(struct wire_cst_list_prim_u_8 *arg);
+WireSyncRust2DartDco wire_example_primitive_list_type_u8_twin_sync(struct wire_cst_list_prim_u_8 *arg);
 
-WireSyncReturnSse wire_example_primitive_list_type_bool_twin_sync_sse(uint8_t *ptr_,
-                                                                      int32_t rust_vec_len_,
-                                                                      int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_bool_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_f32_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_f32_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_f64_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_f64_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_i16_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_i16_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_i32_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_i32_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_i64_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_i64_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_i8_twin_sync_sse(uint8_t *ptr_,
-                                                                    int32_t rust_vec_len_,
-                                                                    int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_i8_twin_sync_sse(uint8_t *ptr_,
+                                                                       int32_t rust_vec_len_,
+                                                                       int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_u16_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_u16_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_u32_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_u32_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_u64_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_u64_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_list_type_u8_twin_sync_sse(uint8_t *ptr_,
-                                                                    int32_t rust_vec_len_,
-                                                                    int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_list_type_u8_twin_sync_sse(uint8_t *ptr_,
+                                                                       int32_t rust_vec_len_,
+                                                                       int32_t data_len_);
 
 void wire_primitive_types_twin_rust_async(int64_t port_,
                                           int32_t my_i32,
@@ -6408,20 +6408,20 @@ void wire_primitive_u32_twin_sse(int64_t port_,
                                  int32_t rust_vec_len_,
                                  int32_t data_len_);
 
-WireSyncReturnDco wire_primitive_types_twin_sync(int32_t my_i32,
-                                                 int64_t my_i64,
-                                                 double my_f64,
-                                                 bool my_bool);
+WireSyncRust2DartDco wire_primitive_types_twin_sync(int32_t my_i32,
+                                                    int64_t my_i64,
+                                                    double my_f64,
+                                                    bool my_bool);
 
-WireSyncReturnDco wire_primitive_u32_twin_sync(uint32_t my_u32);
+WireSyncRust2DartDco wire_primitive_u32_twin_sync(uint32_t my_u32);
 
-WireSyncReturnSse wire_primitive_types_twin_sync_sse(uint8_t *ptr_,
-                                                     int32_t rust_vec_len_,
-                                                     int32_t data_len_);
+WireSyncRust2DartSse wire_primitive_types_twin_sync_sse(uint8_t *ptr_,
+                                                        int32_t rust_vec_len_,
+                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_primitive_u32_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
+WireSyncRust2DartSse wire_primitive_u32_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
 
 void wire_example_primitive_type_bool_twin_rust_async(int64_t port_, bool arg);
 
@@ -6555,71 +6555,71 @@ void wire_example_primitive_type_u8_twin_sse(int64_t port_,
                                              int32_t rust_vec_len_,
                                              int32_t data_len_);
 
-WireSyncReturnDco wire_example_primitive_type_bool_twin_sync(bool arg);
+WireSyncRust2DartDco wire_example_primitive_type_bool_twin_sync(bool arg);
 
-WireSyncReturnDco wire_example_primitive_type_f32_twin_sync(float arg);
+WireSyncRust2DartDco wire_example_primitive_type_f32_twin_sync(float arg);
 
-WireSyncReturnDco wire_example_primitive_type_f64_twin_sync(double arg);
+WireSyncRust2DartDco wire_example_primitive_type_f64_twin_sync(double arg);
 
-WireSyncReturnDco wire_example_primitive_type_i16_twin_sync(int16_t arg);
+WireSyncRust2DartDco wire_example_primitive_type_i16_twin_sync(int16_t arg);
 
-WireSyncReturnDco wire_example_primitive_type_i32_twin_sync(int32_t arg);
+WireSyncRust2DartDco wire_example_primitive_type_i32_twin_sync(int32_t arg);
 
-WireSyncReturnDco wire_example_primitive_type_i64_twin_sync(int64_t arg);
+WireSyncRust2DartDco wire_example_primitive_type_i64_twin_sync(int64_t arg);
 
-WireSyncReturnDco wire_example_primitive_type_i8_twin_sync(int8_t arg);
+WireSyncRust2DartDco wire_example_primitive_type_i8_twin_sync(int8_t arg);
 
-WireSyncReturnDco wire_example_primitive_type_u16_twin_sync(uint16_t arg);
+WireSyncRust2DartDco wire_example_primitive_type_u16_twin_sync(uint16_t arg);
 
-WireSyncReturnDco wire_example_primitive_type_u32_twin_sync(uint32_t arg);
+WireSyncRust2DartDco wire_example_primitive_type_u32_twin_sync(uint32_t arg);
 
-WireSyncReturnDco wire_example_primitive_type_u64_twin_sync(uint64_t arg);
+WireSyncRust2DartDco wire_example_primitive_type_u64_twin_sync(uint64_t arg);
 
-WireSyncReturnDco wire_example_primitive_type_u8_twin_sync(uint8_t arg);
+WireSyncRust2DartDco wire_example_primitive_type_u8_twin_sync(uint8_t arg);
 
-WireSyncReturnSse wire_example_primitive_type_bool_twin_sync_sse(uint8_t *ptr_,
-                                                                 int32_t rust_vec_len_,
-                                                                 int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_bool_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_f32_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_f32_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_f64_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_f64_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_i16_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_i16_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_i32_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_i32_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_i64_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_i64_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_i8_twin_sync_sse(uint8_t *ptr_,
-                                                               int32_t rust_vec_len_,
-                                                               int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_i8_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_u16_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_u16_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_u32_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_u32_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_u64_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_u64_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_example_primitive_type_u8_twin_sync_sse(uint8_t *ptr_,
-                                                               int32_t rust_vec_len_,
-                                                               int32_t data_len_);
+WireSyncRust2DartSse wire_example_primitive_type_u8_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
 
 void wire_test_more_than_just_one_raw_string_struct_twin_rust_async(int64_t port_);
 
@@ -6645,17 +6645,17 @@ void wire_test_raw_string_item_struct_twin_sse(int64_t port_,
                                                int32_t rust_vec_len_,
                                                int32_t data_len_);
 
-WireSyncReturnDco wire_test_more_than_just_one_raw_string_struct_twin_sync(void);
+WireSyncRust2DartDco wire_test_more_than_just_one_raw_string_struct_twin_sync(void);
 
-WireSyncReturnDco wire_test_raw_string_item_struct_twin_sync(void);
+WireSyncRust2DartDco wire_test_raw_string_item_struct_twin_sync(void);
 
-WireSyncReturnSse wire_test_more_than_just_one_raw_string_struct_twin_sync_sse(uint8_t *ptr_,
-                                                                               int32_t rust_vec_len_,
-                                                                               int32_t data_len_);
+WireSyncRust2DartSse wire_test_more_than_just_one_raw_string_struct_twin_sync_sse(uint8_t *ptr_,
+                                                                                  int32_t rust_vec_len_,
+                                                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_test_raw_string_item_struct_twin_sync_sse(uint8_t *ptr_,
-                                                                 int32_t rust_vec_len_,
-                                                                 int32_t data_len_);
+WireSyncRust2DartSse wire_test_raw_string_item_struct_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
 
 void wire_NonCloneSimpleTwinSse_instance_method_arg_borrow_twin_sse(int64_t port_,
                                                                     uint8_t *ptr_,
@@ -6807,215 +6807,215 @@ void wire_rust_auto_opaque_two_args_twin_sse(int64_t port_,
                                              int32_t rust_vec_len_,
                                              int32_t data_len_);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(const void *that);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(const void *that);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(const void *that);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(const void *that);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(const void *that);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(const void *that);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(const void *that);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(const void *that);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync(void);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync(void);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_new_twin_sync(void);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_new_twin_sync(void);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(const void *arg);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(const void *arg);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(const void *arg);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(const void *arg);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(const void *arg);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(const void *arg);
 
-WireSyncReturnDco wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync(void);
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync(void);
 
-WireSyncReturnDco wire_rust_auto_opaque_arg_borrow_twin_sync(const void *arg, int32_t expect);
+WireSyncRust2DartDco wire_rust_auto_opaque_arg_borrow_twin_sync(const void *arg, int32_t expect);
 
-WireSyncReturnDco wire_rust_auto_opaque_arg_mut_borrow_twin_sync(const void *arg,
-                                                                 int32_t expect,
-                                                                 int32_t adder);
+WireSyncRust2DartDco wire_rust_auto_opaque_arg_mut_borrow_twin_sync(const void *arg,
+                                                                    int32_t expect,
+                                                                    int32_t adder);
 
-WireSyncReturnDco wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(const void *arg);
+WireSyncRust2DartDco wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(const void *arg);
 
-WireSyncReturnDco wire_rust_auto_opaque_arg_own_twin_sync(const void *arg, int32_t expect);
+WireSyncRust2DartDco wire_rust_auto_opaque_arg_own_twin_sync(const void *arg, int32_t expect);
 
-WireSyncReturnDco wire_rust_auto_opaque_callable_arg_twin_sync(const void *arg);
+WireSyncRust2DartDco wire_rust_auto_opaque_callable_arg_twin_sync(const void *arg);
 
-WireSyncReturnDco wire_rust_auto_opaque_callable_return_twin_sync(void);
+WireSyncRust2DartDco wire_rust_auto_opaque_callable_return_twin_sync(void);
 
-WireSyncReturnDco wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(const void *a,
-                                                                        struct wire_cst_list_prim_u_8 *b);
+WireSyncRust2DartDco wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(const void *a,
+                                                                           struct wire_cst_list_prim_u_8 *b);
 
-WireSyncReturnDco wire_rust_auto_opaque_plus_sign_arg_twin_sync(const void *arg);
+WireSyncRust2DartDco wire_rust_auto_opaque_plus_sign_arg_twin_sync(const void *arg);
 
-WireSyncReturnDco wire_rust_auto_opaque_plus_sign_return_twin_sync(void);
+WireSyncRust2DartDco wire_rust_auto_opaque_plus_sign_return_twin_sync(void);
 
-WireSyncReturnDco wire_rust_auto_opaque_return_own_twin_sync(int32_t initial);
+WireSyncRust2DartDco wire_rust_auto_opaque_return_own_twin_sync(int32_t initial);
 
-WireSyncReturnDco wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(const void *arg);
+WireSyncRust2DartDco wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(const void *arg);
 
-WireSyncReturnDco wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(const void *arg);
+WireSyncRust2DartDco wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(const void *arg);
 
-WireSyncReturnDco wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(const void *arg);
+WireSyncRust2DartDco wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(const void *arg);
 
-WireSyncReturnDco wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(void);
+WireSyncRust2DartDco wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(void);
 
-WireSyncReturnDco wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(const void *arg,
+WireSyncRust2DartDco wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(const void *arg,
+                                                                             struct wire_cst_list_prim_u_8 *expect);
+
+WireSyncRust2DartDco wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(const void *arg,
+                                                                                 struct wire_cst_list_prim_u_8 *expect);
+
+WireSyncRust2DartDco wire_rust_auto_opaque_trait_object_arg_own_twin_sync(const void *arg,
                                                                           struct wire_cst_list_prim_u_8 *expect);
 
-WireSyncReturnDco wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(const void *arg,
-                                                                              struct wire_cst_list_prim_u_8 *expect);
+WireSyncRust2DartDco wire_rust_auto_opaque_trait_object_return_own_one_twin_sync(void);
 
-WireSyncReturnDco wire_rust_auto_opaque_trait_object_arg_own_twin_sync(const void *arg,
-                                                                       struct wire_cst_list_prim_u_8 *expect);
+WireSyncRust2DartDco wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(void);
 
-WireSyncReturnDco wire_rust_auto_opaque_trait_object_return_own_one_twin_sync(void);
+WireSyncRust2DartDco wire_rust_auto_opaque_two_args_twin_sync(const void *a, const void *b);
 
-WireSyncReturnDco wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(void);
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                             int32_t rust_vec_len_,
+                                                                                             int32_t data_len_);
 
-WireSyncReturnDco wire_rust_auto_opaque_two_args_twin_sync(const void *a, const void *b);
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                                 int32_t rust_vec_len_,
+                                                                                                 int32_t data_len_);
 
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse(uint8_t *ptr_,
                                                                                           int32_t rust_vec_len_,
                                                                                           int32_t data_len_);
 
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_instance_method_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
-                                                                                              int32_t rust_vec_len_,
-                                                                                              int32_t data_len_);
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                             int32_t rust_vec_len_,
+                                                                                             int32_t data_len_);
 
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse(uint8_t *ptr_,
-                                                                                       int32_t rust_vec_len_,
-                                                                                       int32_t data_len_);
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(uint8_t *ptr_,
+                                                                                  int32_t rust_vec_len_,
+                                                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse(uint8_t *ptr_,
-                                                                                          int32_t rust_vec_len_,
-                                                                                          int32_t data_len_);
-
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse(uint8_t *ptr_,
-                                                                               int32_t rust_vec_len_,
-                                                                               int32_t data_len_);
-
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
-                                                                   int32_t rust_vec_len_,
-                                                                   int32_t data_len_);
-
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(uint8_t *ptr_,
-                                                                                        int32_t rust_vec_len_,
-                                                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
-                                                                                            int32_t rust_vec_len_,
-                                                                                            int32_t data_len_);
-
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse(uint8_t *ptr_,
-                                                                                     int32_t rust_vec_len_,
-                                                                                     int32_t data_len_);
-
-WireSyncReturnSse wire_NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse(uint8_t *ptr_,
-                                                                                        int32_t rust_vec_len_,
-                                                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_rust_auto_opaque_arg_borrow_twin_sync_sse(uint8_t *ptr_,
-                                                                 int32_t rust_vec_len_,
-                                                                 int32_t data_len_);
-
-WireSyncReturnSse wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
-                                                                     int32_t rust_vec_len_,
-                                                                     int32_t data_len_);
-
-WireSyncReturnSse wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(uint8_t *ptr_,
-                                                                             int32_t rust_vec_len_,
-                                                                             int32_t data_len_);
-
-WireSyncReturnSse wire_rust_auto_opaque_arg_own_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
-
-WireSyncReturnSse wire_rust_auto_opaque_callable_arg_twin_sync_sse(uint8_t *ptr_,
-                                                                   int32_t rust_vec_len_,
-                                                                   int32_t data_len_);
-
-WireSyncReturnSse wire_rust_auto_opaque_callable_return_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
                                                                       int32_t rust_vec_len_,
                                                                       int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(uint8_t *ptr_,
-                                                                            int32_t rust_vec_len_,
-                                                                            int32_t data_len_);
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                           int32_t rust_vec_len_,
+                                                                                           int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                               int32_t rust_vec_len_,
+                                                                                               int32_t data_len_);
+
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                        int32_t rust_vec_len_,
+                                                                                        int32_t data_len_);
+
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_static_method_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                           int32_t rust_vec_len_,
+                                                                                           int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_arg_borrow_twin_sync_sse(uint8_t *ptr_,
                                                                     int32_t rust_vec_len_,
                                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_plus_sign_return_twin_sync_sse(uint8_t *ptr_,
-                                                                       int32_t rust_vec_len_,
-                                                                       int32_t data_len_);
+WireSyncRust2DartSse wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                        int32_t rust_vec_len_,
+                                                                        int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_return_own_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                int32_t rust_vec_len_,
+                                                                                int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_arg_own_twin_sync_sse(uint8_t *ptr_,
                                                                  int32_t rust_vec_len_,
                                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_rust_auto_opaque_callable_arg_twin_sync_sse(uint8_t *ptr_,
+                                                                      int32_t rust_vec_len_,
+                                                                      int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_callable_return_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(uint8_t *ptr_,
+                                                                               int32_t rust_vec_len_,
+                                                                               int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse(uint8_t *ptr_,
+                                                                       int32_t rust_vec_len_,
+                                                                       int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_plus_sign_return_twin_sync_sse(uint8_t *ptr_,
+                                                                          int32_t rust_vec_len_,
+                                                                          int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                                      int32_t rust_vec_len_,
+                                                                                                      int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                                          int32_t rust_vec_len_,
+                                                                                                          int32_t data_len_);
+
+WireSyncRust2DartSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(uint8_t *ptr_,
                                                                                                    int32_t rust_vec_len_,
                                                                                                    int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
-                                                                                                       int32_t rust_vec_len_,
-                                                                                                       int32_t data_len_);
+WireSyncRust2DartSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse(uint8_t *ptr_,
+                                                                                                      int32_t rust_vec_len_,
+                                                                                                      int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse(uint8_t *ptr_,
-                                                                                                int32_t rust_vec_len_,
-                                                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                 int32_t rust_vec_len_,
+                                                                                 int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse(uint8_t *ptr_,
-                                                                                                   int32_t rust_vec_len_,
-                                                                                                   int32_t data_len_);
+WireSyncRust2DartSse wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
+                                                                                     int32_t rust_vec_len_,
+                                                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse(uint8_t *ptr_,
                                                                               int32_t rust_vec_len_,
                                                                               int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse(uint8_t *ptr_,
-                                                                                  int32_t rust_vec_len_,
-                                                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_sse(uint8_t *ptr_,
+                                                                                     int32_t rust_vec_len_,
+                                                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse(uint8_t *ptr_,
-                                                                           int32_t rust_vec_len_,
-                                                                           int32_t data_len_);
+WireSyncRust2DartSse wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_sse(uint8_t *ptr_,
+                                                                                     int32_t rust_vec_len_,
+                                                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_sse(uint8_t *ptr_,
-                                                                                  int32_t rust_vec_len_,
-                                                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_rust_auto_opaque_two_args_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_sse(uint8_t *ptr_,
-                                                                                  int32_t rust_vec_len_,
-                                                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_frb_sync_generator_test_twin_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
 
-WireSyncReturnSse wire_rust_auto_opaque_two_args_twin_sync_sse(uint8_t *ptr_,
-                                                               int32_t rust_vec_len_,
-                                                               int32_t data_len_);
+WireSyncRust2DartSse wire_sync_create_non_clone_twin_sse(uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
 
-WireSyncReturnSse wire_frb_sync_generator_test_twin_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_sync_create_non_clone_twin_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_sync_create_opaque_twin_sse(uint8_t *ptr_,
                                                       int32_t rust_vec_len_,
                                                       int32_t data_len_);
 
-WireSyncReturnSse wire_sync_create_opaque_twin_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_sync_create_sync_opaque_twin_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncRust2DartSse wire_sync_option_rust_opaque_twin_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncRust2DartSse wire_sync_run_opaque_twin_sse(uint8_t *ptr_,
                                                    int32_t rust_vec_len_,
                                                    int32_t data_len_);
-
-WireSyncReturnSse wire_sync_create_sync_opaque_twin_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_sync_option_rust_opaque_twin_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_sync_run_opaque_twin_sse(uint8_t *ptr_,
-                                                int32_t rust_vec_len_,
-                                                int32_t data_len_);
 
 void wire_create_array_opaque_enum_twin_rust_async(int64_t port_);
 
@@ -7213,101 +7213,101 @@ void wire_unwrap_rust_opaque_twin_sse(int64_t port_,
                                       int32_t rust_vec_len_,
                                       int32_t data_len_);
 
-WireSyncReturnDco wire_create_array_opaque_enum_twin_sync(void);
+WireSyncRust2DartDco wire_create_array_opaque_enum_twin_sync(void);
 
-WireSyncReturnDco wire_create_nested_opaque_twin_sync(void);
+WireSyncRust2DartDco wire_create_nested_opaque_twin_sync(void);
 
-WireSyncReturnDco wire_create_opaque_twin_sync(void);
+WireSyncRust2DartDco wire_create_opaque_twin_sync(void);
 
-WireSyncReturnDco wire_create_option_opaque_twin_sync(const void **opaque);
+WireSyncRust2DartDco wire_create_option_opaque_twin_sync(const void **opaque);
 
-WireSyncReturnDco wire_create_sync_opaque_twin_sync(void);
+WireSyncRust2DartDco wire_create_sync_opaque_twin_sync(void);
 
-WireSyncReturnDco wire_frb_generator_test_twin_sync(void);
+WireSyncRust2DartDco wire_frb_generator_test_twin_sync(void);
 
-WireSyncReturnDco wire_opaque_array_run_twin_sync(struct wire_cst_list_RustOpaque_hide_data *data);
+WireSyncRust2DartDco wire_opaque_array_run_twin_sync(struct wire_cst_list_RustOpaque_hide_data *data);
 
-WireSyncReturnDco wire_opaque_array_twin_sync(void);
+WireSyncRust2DartDco wire_opaque_array_twin_sync(void);
 
-WireSyncReturnDco wire_opaque_vec_run_twin_sync(struct wire_cst_list_RustOpaque_hide_data *data);
+WireSyncRust2DartDco wire_opaque_vec_run_twin_sync(struct wire_cst_list_RustOpaque_hide_data *data);
 
-WireSyncReturnDco wire_opaque_vec_twin_sync(void);
+WireSyncRust2DartDco wire_opaque_vec_twin_sync(void);
 
-WireSyncReturnDco wire_run_enum_opaque_twin_sync(struct wire_cst_enum_opaque_twin_sync *opaque);
+WireSyncRust2DartDco wire_run_enum_opaque_twin_sync(struct wire_cst_enum_opaque_twin_sync *opaque);
 
-WireSyncReturnDco wire_run_nested_opaque_twin_sync(struct wire_cst_opaque_nested_twin_sync *opaque);
+WireSyncRust2DartDco wire_run_nested_opaque_twin_sync(struct wire_cst_opaque_nested_twin_sync *opaque);
 
-WireSyncReturnDco wire_run_non_clone_twin_sync(const void *clone);
+WireSyncRust2DartDco wire_run_non_clone_twin_sync(const void *clone);
 
-WireSyncReturnDco wire_run_opaque_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_run_opaque_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_run_opaque_with_delay_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_run_opaque_with_delay_twin_sync(const void *opaque);
 
-WireSyncReturnDco wire_unwrap_rust_opaque_twin_sync(const void *opaque);
+WireSyncRust2DartDco wire_unwrap_rust_opaque_twin_sync(const void *opaque);
 
-WireSyncReturnSse wire_create_array_opaque_enum_twin_sync_sse(uint8_t *ptr_,
-                                                              int32_t rust_vec_len_,
-                                                              int32_t data_len_);
+WireSyncRust2DartSse wire_create_array_opaque_enum_twin_sync_sse(uint8_t *ptr_,
+                                                                 int32_t rust_vec_len_,
+                                                                 int32_t data_len_);
 
-WireSyncReturnSse wire_create_nested_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                          int32_t rust_vec_len_,
-                                                          int32_t data_len_);
+WireSyncRust2DartSse wire_create_nested_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
 
-WireSyncReturnSse wire_create_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
-
-WireSyncReturnSse wire_create_option_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                          int32_t rust_vec_len_,
-                                                          int32_t data_len_);
-
-WireSyncReturnSse wire_create_sync_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_frb_generator_test_twin_sync_sse(uint8_t *ptr_,
-                                                        int32_t rust_vec_len_,
-                                                        int32_t data_len_);
-
-WireSyncReturnSse wire_opaque_array_run_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_create_opaque_twin_sync_sse(uint8_t *ptr_,
                                                       int32_t rust_vec_len_,
                                                       int32_t data_len_);
 
-WireSyncReturnSse wire_opaque_array_twin_sync_sse(uint8_t *ptr_,
-                                                  int32_t rust_vec_len_,
-                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_create_option_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
 
-WireSyncReturnSse wire_opaque_vec_run_twin_sync_sse(uint8_t *ptr_,
-                                                    int32_t rust_vec_len_,
-                                                    int32_t data_len_);
-
-WireSyncReturnSse wire_opaque_vec_twin_sync_sse(uint8_t *ptr_,
-                                                int32_t rust_vec_len_,
-                                                int32_t data_len_);
-
-WireSyncReturnSse wire_run_enum_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                     int32_t rust_vec_len_,
-                                                     int32_t data_len_);
-
-WireSyncReturnSse wire_run_nested_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                       int32_t rust_vec_len_,
-                                                       int32_t data_len_);
-
-WireSyncReturnSse wire_run_non_clone_twin_sync_sse(uint8_t *ptr_,
-                                                   int32_t rust_vec_len_,
-                                                   int32_t data_len_);
-
-WireSyncReturnSse wire_run_opaque_twin_sync_sse(uint8_t *ptr_,
-                                                int32_t rust_vec_len_,
-                                                int32_t data_len_);
-
-WireSyncReturnSse wire_run_opaque_with_delay_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_create_sync_opaque_twin_sync_sse(uint8_t *ptr_,
                                                            int32_t rust_vec_len_,
                                                            int32_t data_len_);
 
-WireSyncReturnSse wire_unwrap_rust_opaque_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_frb_generator_test_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+WireSyncRust2DartSse wire_opaque_array_run_twin_sync_sse(uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
+WireSyncRust2DartSse wire_opaque_array_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
+
+WireSyncRust2DartSse wire_opaque_vec_run_twin_sync_sse(uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
+
+WireSyncRust2DartSse wire_opaque_vec_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncRust2DartSse wire_run_enum_opaque_twin_sync_sse(uint8_t *ptr_,
                                                         int32_t rust_vec_len_,
                                                         int32_t data_len_);
+
+WireSyncRust2DartSse wire_run_nested_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+WireSyncRust2DartSse wire_run_non_clone_twin_sync_sse(uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
+
+WireSyncRust2DartSse wire_run_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+WireSyncRust2DartSse wire_run_opaque_with_delay_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
+
+WireSyncRust2DartSse wire_unwrap_rust_opaque_twin_sync_sse(uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
 
 void wire_simple_adder_twin_rust_async(int64_t port_, int32_t a, int32_t b);
 
@@ -7321,11 +7321,11 @@ void wire_simple_adder_twin_sse(int64_t port_,
                                 int32_t rust_vec_len_,
                                 int32_t data_len_);
 
-WireSyncReturnDco wire_simple_adder_twin_sync(int32_t a, int32_t b);
+WireSyncRust2DartDco wire_simple_adder_twin_sync(int32_t a, int32_t b);
 
-WireSyncReturnSse wire_simple_adder_twin_sync_sse(uint8_t *ptr_,
-                                                  int32_t rust_vec_len_,
-                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_simple_adder_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
 
 void wire_func_stream_realistic_twin_sse(int64_t port_,
                                          uint8_t *ptr_,
@@ -7481,35 +7481,35 @@ void wire_func_tuple_struct_with_two_field_twin_sse(int64_t port_,
                                                     int32_t rust_vec_len_,
                                                     int32_t data_len_);
 
-WireSyncReturnDco wire_func_struct_with_one_field_twin_sync(struct wire_cst_struct_with_one_field_twin_sync *arg);
+WireSyncRust2DartDco wire_func_struct_with_one_field_twin_sync(struct wire_cst_struct_with_one_field_twin_sync *arg);
 
-WireSyncReturnDco wire_func_struct_with_two_field_twin_sync(struct wire_cst_struct_with_two_field_twin_sync *arg);
+WireSyncRust2DartDco wire_func_struct_with_two_field_twin_sync(struct wire_cst_struct_with_two_field_twin_sync *arg);
 
-WireSyncReturnDco wire_func_struct_with_zero_field_twin_sync(struct wire_cst_struct_with_zero_field_twin_sync *arg);
+WireSyncRust2DartDco wire_func_struct_with_zero_field_twin_sync(struct wire_cst_struct_with_zero_field_twin_sync *arg);
 
-WireSyncReturnDco wire_func_tuple_struct_with_one_field_twin_sync(struct wire_cst_tuple_struct_with_one_field_twin_sync *arg);
+WireSyncRust2DartDco wire_func_tuple_struct_with_one_field_twin_sync(struct wire_cst_tuple_struct_with_one_field_twin_sync *arg);
 
-WireSyncReturnDco wire_func_tuple_struct_with_two_field_twin_sync(struct wire_cst_tuple_struct_with_two_field_twin_sync *arg);
+WireSyncRust2DartDco wire_func_tuple_struct_with_two_field_twin_sync(struct wire_cst_tuple_struct_with_two_field_twin_sync *arg);
 
-WireSyncReturnSse wire_func_struct_with_one_field_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_func_struct_with_one_field_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_func_struct_with_two_field_twin_sync_sse(uint8_t *ptr_,
-                                                                int32_t rust_vec_len_,
-                                                                int32_t data_len_);
+WireSyncRust2DartSse wire_func_struct_with_two_field_twin_sync_sse(uint8_t *ptr_,
+                                                                   int32_t rust_vec_len_,
+                                                                   int32_t data_len_);
 
-WireSyncReturnSse wire_func_struct_with_zero_field_twin_sync_sse(uint8_t *ptr_,
-                                                                 int32_t rust_vec_len_,
-                                                                 int32_t data_len_);
+WireSyncRust2DartSse wire_func_struct_with_zero_field_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
 
-WireSyncReturnSse wire_func_tuple_struct_with_one_field_twin_sync_sse(uint8_t *ptr_,
-                                                                      int32_t rust_vec_len_,
-                                                                      int32_t data_len_);
+WireSyncRust2DartSse wire_func_tuple_struct_with_one_field_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
 
-WireSyncReturnSse wire_func_tuple_struct_with_two_field_twin_sync_sse(uint8_t *ptr_,
-                                                                      int32_t rust_vec_len_,
-                                                                      int32_t data_len_);
+WireSyncRust2DartSse wire_func_tuple_struct_with_two_field_twin_sync_sse(uint8_t *ptr_,
+                                                                         int32_t rust_vec_len_,
+                                                                         int32_t data_len_);
 
 void wire_test_tuple_2_twin_rust_async(int64_t port_,
                                        struct wire_cst_list_record_string_i_32 *value);
@@ -7536,17 +7536,17 @@ void wire_test_tuple_twin_sse(int64_t port_,
                               int32_t rust_vec_len_,
                               int32_t data_len_);
 
-WireSyncReturnDco wire_test_tuple_2_twin_sync(struct wire_cst_list_record_string_i_32 *value);
+WireSyncRust2DartDco wire_test_tuple_2_twin_sync(struct wire_cst_list_record_string_i_32 *value);
 
-WireSyncReturnDco wire_test_tuple_twin_sync(struct wire_cst_record_string_i_32 *value);
+WireSyncRust2DartDco wire_test_tuple_twin_sync(struct wire_cst_record_string_i_32 *value);
 
-WireSyncReturnSse wire_test_tuple_2_twin_sync_sse(uint8_t *ptr_,
-                                                  int32_t rust_vec_len_,
-                                                  int32_t data_len_);
+WireSyncRust2DartSse wire_test_tuple_2_twin_sync_sse(uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
 
-WireSyncReturnSse wire_test_tuple_twin_sync_sse(uint8_t *ptr_,
-                                                int32_t rust_vec_len_,
-                                                int32_t data_len_);
+WireSyncRust2DartSse wire_test_tuple_twin_sync_sse(uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
 
 void wire_handle_type_alias_id_twin_rust_async(int64_t port_, uint64_t input);
 
@@ -7584,32 +7584,32 @@ void wire_handle_type_nest_alias_id_twin_sse(int64_t port_,
                                              int32_t rust_vec_len_,
                                              int32_t data_len_);
 
-WireSyncReturnDco wire_handle_type_alias_id_twin_sync(uint64_t input);
+WireSyncRust2DartDco wire_handle_type_alias_id_twin_sync(uint64_t input);
 
-WireSyncReturnDco wire_handle_type_alias_model_twin_sync(uint64_t input);
+WireSyncRust2DartDco wire_handle_type_alias_model_twin_sync(uint64_t input);
 
-WireSyncReturnDco wire_handle_type_nest_alias_id_twin_sync(uint64_t input);
+WireSyncRust2DartDco wire_handle_type_nest_alias_id_twin_sync(uint64_t input);
 
-WireSyncReturnSse wire_handle_type_alias_id_twin_sync_sse(uint8_t *ptr_,
-                                                          int32_t rust_vec_len_,
-                                                          int32_t data_len_);
-
-WireSyncReturnSse wire_handle_type_alias_model_twin_sync_sse(uint8_t *ptr_,
+WireSyncRust2DartSse wire_handle_type_alias_id_twin_sync_sse(uint8_t *ptr_,
                                                              int32_t rust_vec_len_,
                                                              int32_t data_len_);
 
-WireSyncReturnSse wire_handle_type_nest_alias_id_twin_sync_sse(uint8_t *ptr_,
-                                                               int32_t rust_vec_len_,
-                                                               int32_t data_len_);
+WireSyncRust2DartSse wire_handle_type_alias_model_twin_sync_sse(uint8_t *ptr_,
+                                                                int32_t rust_vec_len_,
+                                                                int32_t data_len_);
+
+WireSyncRust2DartSse wire_handle_type_nest_alias_id_twin_sync_sse(uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
 
 void wire_handle_nested_uuids_twin_rust_async(int64_t port_,
                                               struct wire_cst_feature_uuid_twin_rust_async *ids);
 
 void wire_handle_uuid_twin_rust_async(int64_t port_, struct wire_cst_list_prim_u_8 *id);
 
-WireSyncReturnDco wire_handle_nested_uuids_twin_sync(struct wire_cst_feature_uuid_twin_sync *ids);
+WireSyncRust2DartDco wire_handle_nested_uuids_twin_sync(struct wire_cst_feature_uuid_twin_sync *ids);
 
-WireSyncReturnDco wire_handle_uuid_twin_sync(struct wire_cst_list_prim_u_8 *id);
+WireSyncRust2DartDco wire_handle_uuid_twin_sync(struct wire_cst_list_prim_u_8 *id);
 
 void wire_test_more_than_just_one_raw_string_struct_twin_normal(int64_t port_);
 
@@ -7732,17 +7732,17 @@ void wire_run_opaque_with_delay_twin_normal(int64_t port_, const void *opaque);
 
 void wire_unwrap_rust_opaque_twin_normal(int64_t port_, const void *opaque);
 
-WireSyncReturnDco wire_frb_sync_generator_test_twin_normal(void);
+WireSyncRust2DartDco wire_frb_sync_generator_test_twin_normal(void);
 
-WireSyncReturnDco wire_sync_create_non_clone_twin_normal(void);
+WireSyncRust2DartDco wire_sync_create_non_clone_twin_normal(void);
 
-WireSyncReturnDco wire_sync_create_opaque_twin_normal(void);
+WireSyncRust2DartDco wire_sync_create_opaque_twin_normal(void);
 
-WireSyncReturnDco wire_sync_create_sync_opaque_twin_normal(void);
+WireSyncRust2DartDco wire_sync_create_sync_opaque_twin_normal(void);
 
-WireSyncReturnDco wire_sync_option_rust_opaque_twin_normal(void);
+WireSyncRust2DartDco wire_sync_option_rust_opaque_twin_normal(void);
 
-WireSyncReturnDco wire_sync_run_opaque_twin_normal(const void *opaque);
+WireSyncRust2DartDco wire_sync_run_opaque_twin_normal(const void *opaque);
 
 void wire_simple_adder_twin_normal(int64_t port_, int32_t a, int32_t b);
 
