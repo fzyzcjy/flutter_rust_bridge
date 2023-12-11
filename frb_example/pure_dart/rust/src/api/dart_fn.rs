@@ -56,6 +56,15 @@ pub async fn rust_call_dart_with_dart_opaque_result(
     callback().await
 }
 
-pub async fn TODO_dart_closure_be_async() {}
+// TODO this has no code on rust side
+// pub async fn TODO_dart_closure_be_async() {}
 
-pub async fn TODO_rust_call_dart_multi_times() {}
+// TODO make dart side stateful
+pub async fn rust_call_dart_multi_times(
+    callback: impl Fn() -> DartFnFuture<()> + UnwindSafe,
+    num_times: i32,
+) {
+    for i in 0..num_times {
+        callback().await;
+    }
+}
