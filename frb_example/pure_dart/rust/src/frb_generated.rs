@@ -5549,6 +5549,252 @@ fn wire_return_dart_dynamic_twin_sync_impl(
                      Result::<_,()>::Ok(crate::api::pseudo_manual::dart_dynamic_twin_sync::return_dart_dynamic_twin_sync())
                 })()) })
 }
+fn wire_rust_call_dart_loopback_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_loopback_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_loopback_twin_rust_async(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_multi_times_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    num_times: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_multi_times_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode());let api_num_times = num_times.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_multi_times_twin_rust_async(api_callback, api_num_times).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_one_arg_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_one_arg_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_one_arg_twin_rust_async(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_return_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_return_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_String(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_return_twin_rust_async(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_simple_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_simple_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_simple_twin_rust_async(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_two_args_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_two_args_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_two_args_twin_rust_async(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    input: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_arg_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode();let api_callback = decode_DartFn_Inputs_DartOpaque_Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_with_dart_opaque_arg_twin_rust_async(api_input, api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_result_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_DartOpaque(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_with_dart_opaque_result_twin_rust_async(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_loopback_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_loopback_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_loopback_twin_rust_async_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_multi_times_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    num_times: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_multi_times_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode());let api_num_times = num_times.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_multi_times_twin_rust_async_sse(api_callback, api_num_times).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_one_arg_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_one_arg_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_one_arg_twin_rust_async_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_return_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_return_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_String(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_return_twin_rust_async_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_simple_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_simple_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_simple_twin_rust_async_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_two_args_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_two_args_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_two_args_twin_rust_async_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    input: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode();let api_callback = decode_DartFn_Inputs_DartOpaque_Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(api_input, api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_result_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_DartOpaque(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_loopback_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_loopback_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_loopback_twin_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_multi_times_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    num_times: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_multi_times_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode());let api_num_times = num_times.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_multi_times_twin_sse(api_callback, api_num_times).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_one_arg_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_one_arg_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_one_arg_twin_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_return_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_return_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_String(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_return_twin_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_simple_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_simple_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_simple_twin_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_two_args_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_two_args_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_two_args_twin_sse(api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_with_dart_opaque_arg_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    input: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_arg_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode();let api_callback = decode_DartFn_Inputs_DartOpaque_Output_unit(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_with_dart_opaque_arg_twin_sse(api_input, api_callback).await)
+                    })().await)
+                } })
+}
+fn wire_rust_call_dart_with_dart_opaque_result_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_result_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_DartOpaque(callback.cst_decode()); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_with_dart_opaque_result_twin_sse(api_callback).await)
+                    })().await)
+                } })
+}
 fn wire_sync_accept_dart_opaque_twin_sse_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -22531,7 +22777,6 @@ fn decode_DartFn_Inputs_DartOpaque_Output_unit(
         ))
     }
 }
-
 fn decode_DartFn_Inputs_String_Output_unit(
     dart_opaque: flutter_rust_bridge::DartOpaque,
 ) -> impl Fn(String) -> flutter_rust_bridge::DartFnFuture<()> {
@@ -22552,7 +22797,6 @@ fn decode_DartFn_Inputs_String_Output_unit(
         ))
     }
 }
-
 fn decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
     dart_opaque: flutter_rust_bridge::DartOpaque,
 ) -> impl Fn(
@@ -22584,7 +22828,92 @@ fn decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output
         ))
     }
 }
+fn decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
+    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(
+    String,
+    crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
+) -> flutter_rust_bridge::DartFnFuture<()> {
+    use flutter_rust_bridge::IntoDart;
 
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+        arg0: String,
+        arg1: crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
+    ) -> () {
+        let args = vec![
+            arg0.into_into_dart().into_dart(),
+            arg1.into_into_dart().into_dart(),
+        ];
+        let message = FLUTTER_RUST_BRIDGE_HANDLER
+            .dart_fn_invoke(dart_opaque, args)
+            .await;
+        <()>::sse_decode_single(message)
+    }
+
+    move |arg0: String, arg1: crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync| {
+                        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+                            dart_opaque.clone(), arg0, arg1
+                        ))
+                    }
+}fn decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
+                    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(String, crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse) -> flutter_rust_bridge::DartFnFuture<()>{
+    use flutter_rust_bridge::IntoDart;
+
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+        arg0: String,
+        arg1: crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse,
+    ) -> () {
+        let args = vec![
+            arg0.into_into_dart().into_dart(),
+            arg1.into_into_dart().into_dart(),
+        ];
+        let message = FLUTTER_RUST_BRIDGE_HANDLER
+            .dart_fn_invoke(dart_opaque, args)
+            .await;
+        <()>::sse_decode_single(message)
+    }
+
+    move |arg0: String, arg1: crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse| {
+                        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+                            dart_opaque.clone(), arg0, arg1
+                        ))
+                    }
+}
+fn decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
+    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(
+    String,
+    crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse,
+) -> flutter_rust_bridge::DartFnFuture<()> {
+    use flutter_rust_bridge::IntoDart;
+
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+        arg0: String,
+        arg1: crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse,
+    ) -> () {
+        let args = vec![
+            arg0.into_into_dart().into_dart(),
+            arg1.into_into_dart().into_dart(),
+        ];
+        let message = FLUTTER_RUST_BRIDGE_HANDLER
+            .dart_fn_invoke(dart_opaque, args)
+            .await;
+        <()>::sse_decode_single(message)
+    }
+
+    move |arg0: String,
+          arg1: crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse| {
+        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+            dart_opaque.clone(),
+            arg0,
+            arg1,
+        ))
+    }
+}
 fn decode_DartFn_Inputs__Output_DartOpaque(
     dart_opaque: flutter_rust_bridge::DartOpaque,
 ) -> impl Fn() -> flutter_rust_bridge::DartFnFuture<flutter_rust_bridge::DartOpaque> {
@@ -22602,7 +22931,6 @@ fn decode_DartFn_Inputs__Output_DartOpaque(
         flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(dart_opaque.clone()))
     }
 }
-
 fn decode_DartFn_Inputs__Output_String(
     dart_opaque: flutter_rust_bridge::DartOpaque,
 ) -> impl Fn() -> flutter_rust_bridge::DartFnFuture<String> {
@@ -22620,7 +22948,6 @@ fn decode_DartFn_Inputs__Output_String(
         flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(dart_opaque.clone()))
     }
 }
-
 fn decode_DartFn_Inputs__Output_unit(
     dart_opaque: flutter_rust_bridge::DartOpaque,
 ) -> impl Fn() -> flutter_rust_bridge::DartFnFuture<()> {
@@ -22638,7 +22965,6 @@ fn decode_DartFn_Inputs__Output_unit(
         flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(dart_opaque.clone()))
     }
 }
-
 fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
     dart_opaque: flutter_rust_bridge::DartOpaque,
 ) -> impl Fn(
@@ -22660,6 +22986,78 @@ fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_s
     }
 
     move |arg0: crate::api::dart_fn::DemoStructForRustCallDartTwinNormal| {
+        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+            dart_opaque.clone(),
+            arg0,
+        ))
+    }
+}
+fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
+    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(
+    crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
+) -> flutter_rust_bridge::DartFnFuture<
+    crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
+> {
+    use flutter_rust_bridge::IntoDart;
+
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+        arg0: crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
+    ) -> crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
+    {
+        let args = vec![arg0.into_into_dart().into_dart()];
+        let message = FLUTTER_RUST_BRIDGE_HANDLER
+            .dart_fn_invoke(dart_opaque, args)
+            .await;
+        <crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync>::sse_decode_single(message)
+    }
+
+    move |arg0: crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync| {
+                        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+                            dart_opaque.clone(), arg0
+                        ))
+                    }
+}fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
+                    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse) -> flutter_rust_bridge::DartFnFuture<crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse>{
+    use flutter_rust_bridge::IntoDart;
+
+    async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, arg0: crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse) -> crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse{
+        let args = vec![arg0.into_into_dart().into_dart()];
+        let message = FLUTTER_RUST_BRIDGE_HANDLER
+            .dart_fn_invoke(dart_opaque, args)
+            .await;
+        <crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse>::sse_decode_single(message)
+    }
+
+    move |arg0: crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse| {
+                        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
+                            dart_opaque.clone(), arg0
+                        ))
+                    }
+}
+fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
+    dart_opaque: flutter_rust_bridge::DartOpaque,
+) -> impl Fn(
+    crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse,
+) -> flutter_rust_bridge::DartFnFuture<
+    crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse,
+> {
+    use flutter_rust_bridge::IntoDart;
+
+    async fn body(
+        dart_opaque: flutter_rust_bridge::DartOpaque,
+        arg0: crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse,
+    ) -> crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
+        let args = vec![arg0.into_into_dart().into_dart()];
+        let message = FLUTTER_RUST_BRIDGE_HANDLER
+            .dart_fn_invoke(dart_opaque, args)
+            .await;
+        <crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse>::sse_decode_single(message)
+    }
+
+    move |arg0: crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse| {
         flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
             dart_opaque.clone(),
             arg0,
@@ -25527,6 +25925,29 @@ impl SseDecode for crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_name = <String>::sse_decode(deserializer);
         return crate::api::dart_fn::DemoStructForRustCallDartTwinNormal { name: var_name };
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_name = <String>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync{name: var_name};
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut var_name = <String>::sse_decode(deserializer);
+return crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse{name: var_name};}
+                }
+
+impl SseDecode for crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_name = <String>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
+            name: var_name,
+        };
     }
 }
 
@@ -35348,6 +35769,65 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::dart_fn::DemoStructForRustCal
         self
     }
 }
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![self.name.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
+    >
+    for crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
+    {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse {
+                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+                    vec![
+                    self.name.into_into_dart().into_dart()
+                ].into_dart()
+                }
+            }
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse> for crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse {
+            fn into_into_dart(self) -> crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse {
+                self
+            }
+        }
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![self.name.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse,
+    > for crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
+        self
+    }
+}
 impl flutter_rust_bridge::IntoDart for crate::api::enumeration::DistanceTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
@@ -44126,6 +44606,24 @@ impl SseEncode for flutter_rust_bridge::for_generated::DartAbi {
 }
 
 impl SseEncode for crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.name, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.name, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<String>::sse_encode(self.name, serializer);}
+                }
+
+impl SseEncode for crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.name, serializer);
     }

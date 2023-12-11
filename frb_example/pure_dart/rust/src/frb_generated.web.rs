@@ -2465,6 +2465,56 @@ impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDartTwinNormal>
         }
     }
 }
+impl
+    CstDecode<
+        crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync {
+            name: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 1, "Expected 1 elements, got {}", self_.length());
+                crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse{name:  self_.get(0).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
+            name: self_.get(0).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::enumeration::DistanceTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -12312,6 +12362,204 @@ pub fn wire_return_dart_dynamic_twin_rust_async(
 pub fn wire_return_dart_dynamic_twin_sync(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_dart_dynamic_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_loopback_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_loopback_twin_rust_async_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_multi_times_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    num_times: i32,
+) {
+    wire_rust_call_dart_multi_times_twin_rust_async_impl(port_, callback, num_times)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_one_arg_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_one_arg_twin_rust_async_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_return_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_return_twin_rust_async_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_simple_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_simple_twin_rust_async_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_two_args_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_two_args_twin_rust_async_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_impl(port_, input, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_loopback_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_loopback_twin_rust_async_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_multi_times_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    num_times: i32,
+) {
+    wire_rust_call_dart_multi_times_twin_rust_async_sse_impl(port_, callback, num_times)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_one_arg_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_one_arg_twin_rust_async_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_return_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_return_twin_rust_async_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_simple_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_simple_twin_rust_async_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_two_args_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_two_args_twin_rust_async_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse_impl(port_, input, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_loopback_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_loopback_twin_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_multi_times_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    num_times: i32,
+) {
+    wire_rust_call_dart_multi_times_twin_sse_impl(port_, callback, num_times)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_one_arg_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_one_arg_twin_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_return_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_return_twin_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_simple_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_simple_twin_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_two_args_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_two_args_twin_sse_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_with_dart_opaque_arg_twin_sse_impl(port_, input, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_with_dart_opaque_result_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_with_dart_opaque_result_twin_sse_impl(port_, callback)
 }
 
 #[wasm_bindgen]
