@@ -7,7 +7,7 @@ Future<void> main() async {
   final customHandler = _MyHandler();
   await RustLib.init(handler: customHandler);
 
-  test('can use custom subclasses', () async {
+  test('can use custom handler', () async {
     expect(customHandler.logs, <String>[]);
     expect(await simpleAdderTwinNormal(a: 1, b: 2), 3);
     expect(customHandler.logs, ['executeNormal called']);
