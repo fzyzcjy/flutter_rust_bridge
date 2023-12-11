@@ -61,7 +61,6 @@ class BaseHandler {
   /// When Rust invokes a Dart function
   void dartFnInvoke(List<dynamic> message,
       GeneralizedFrbRustBinding generalizedFrbRustBinding) {
-    print('hi dartFnInvoke $message');
     final [closureDartOpaque, ...args] = message;
     final closureDartObject =
         decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding)
