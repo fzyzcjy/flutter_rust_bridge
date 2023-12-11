@@ -3783,9 +3783,9 @@ typedef struct wire_cst_custom_struct_error_another_twin_sync_sse {
   struct wire_cst_list_prim_u_8 *message;
 } wire_cst_custom_struct_error_another_twin_sync_sse;
 
-typedef struct wire_cst_demo_struct_for_rust_call_dart {
+typedef struct wire_cst_demo_struct_for_rust_call_dart_twin_normal {
   struct wire_cst_list_prim_u_8 *name;
-} wire_cst_demo_struct_for_rust_call_dart;
+} wire_cst_demo_struct_for_rust_call_dart_twin_normal;
 
 typedef struct wire_cst_log_2_twin_normal {
   uint32_t key;
@@ -4209,23 +4209,25 @@ void wire_function_with_comments_triple_slash_single_line_twin_normal(int64_t po
 
 void wire_return_dart_dynamic_twin_normal(int64_t port_);
 
-void wire_rust_call_dart_loopback(int64_t port_, const void *callback);
+void wire_rust_call_dart_loopback_twin_normal(int64_t port_, const void *callback);
 
-void wire_rust_call_dart_multi_times(int64_t port_, const void *callback, int32_t num_times);
+void wire_rust_call_dart_multi_times_twin_normal(int64_t port_,
+                                                 const void *callback,
+                                                 int32_t num_times);
 
-void wire_rust_call_dart_one_arg(int64_t port_, const void *callback);
+void wire_rust_call_dart_one_arg_twin_normal(int64_t port_, const void *callback);
 
-void wire_rust_call_dart_return(int64_t port_, const void *callback);
+void wire_rust_call_dart_return_twin_normal(int64_t port_, const void *callback);
 
-void wire_rust_call_dart_simple(int64_t port_, const void *callback);
+void wire_rust_call_dart_simple_twin_normal(int64_t port_, const void *callback);
 
-void wire_rust_call_dart_two_args(int64_t port_, const void *callback);
+void wire_rust_call_dart_two_args_twin_normal(int64_t port_, const void *callback);
 
-void wire_rust_call_dart_with_dart_opaque_arg(int64_t port_,
-                                              const void *input,
-                                              const void *callback);
+void wire_rust_call_dart_with_dart_opaque_arg_twin_normal(int64_t port_,
+                                                          const void *input,
+                                                          const void *callback);
 
-void wire_rust_call_dart_with_dart_opaque_result(int64_t port_, const void *callback);
+void wire_rust_call_dart_with_dart_opaque_result_twin_normal(int64_t port_, const void *callback);
 
 void wire_async_accept_dart_opaque_twin_normal(int64_t port_, const void *opaque);
 
@@ -12437,14 +12439,14 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_sync_sse);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_loopback);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_multi_times);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_one_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_return);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_simple);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_two_args);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_with_dart_opaque_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_with_dart_opaque_result);
+    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_loopback_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_multi_times_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_one_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_return_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_simple_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_two_args_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_with_dart_opaque_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_with_dart_opaque_result_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async_sse);

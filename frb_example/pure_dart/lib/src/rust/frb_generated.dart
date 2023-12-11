@@ -341,33 +341,35 @@ abstract class RustLibApi extends BaseApi {
 
   Future<dynamic> returnDartDynamicTwinNormal({dynamic hint});
 
-  Future<void> rustCallDartLoopback(
-      {required DemoStructForRustCallDart Function(DemoStructForRustCallDart)
+  Future<void> rustCallDartLoopbackTwinNormal(
+      {required DemoStructForRustCallDartTwinNormal Function(
+              DemoStructForRustCallDartTwinNormal)
           callback,
       dynamic hint});
 
-  Future<void> rustCallDartMultiTimes(
+  Future<void> rustCallDartMultiTimesTwinNormal(
       {required void Function() callback, required int numTimes, dynamic hint});
 
-  Future<void> rustCallDartOneArg(
+  Future<void> rustCallDartOneArgTwinNormal(
       {required void Function(String) callback, dynamic hint});
 
-  Future<void> rustCallDartReturn(
+  Future<void> rustCallDartReturnTwinNormal(
       {required String Function() callback, dynamic hint});
 
-  Future<void> rustCallDartSimple(
+  Future<void> rustCallDartSimpleTwinNormal(
       {required void Function() callback, dynamic hint});
 
-  Future<void> rustCallDartTwoArgs(
-      {required void Function(String, DemoStructForRustCallDart) callback,
+  Future<void> rustCallDartTwoArgsTwinNormal(
+      {required void Function(String, DemoStructForRustCallDartTwinNormal)
+          callback,
       dynamic hint});
 
-  Future<void> rustCallDartWithDartOpaqueArg(
+  Future<void> rustCallDartWithDartOpaqueArgTwinNormal(
       {required Object input,
       required void Function(Object) callback,
       dynamic hint});
 
-  Future<Object> rustCallDartWithDartOpaqueResult(
+  Future<Object> rustCallDartWithDartOpaqueResultTwinNormal(
       {required Object Function() callback, dynamic hint});
 
   Future<String> asyncAcceptDartOpaqueTwinNormal(
@@ -5395,35 +5397,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> rustCallDartLoopback(
-      {required DemoStructForRustCallDart Function(DemoStructForRustCallDart)
+  Future<void> rustCallDartLoopbackTwinNormal(
+      {required DemoStructForRustCallDartTwinNormal Function(
+              DemoStructForRustCallDartTwinNormal)
           callback,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
-            cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+            cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
                 callback);
-        return wire.wire_rust_call_dart_loopback(port_, arg0);
+        return wire.wire_rust_call_dart_loopback_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kRustCallDartLoopbackConstMeta,
+      constMeta: kRustCallDartLoopbackTwinNormalConstMeta,
       argValues: [callback],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustCallDartLoopbackConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_loopback",
+  TaskConstMeta get kRustCallDartLoopbackTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_call_dart_loopback_twin_normal",
         argNames: ["callback"],
       );
 
   @override
-  Future<void> rustCallDartMultiTimes(
+  Future<void> rustCallDartMultiTimesTwinNormal(
       {required void Function() callback,
       required int numTimes,
       dynamic hint}) {
@@ -5431,125 +5435,132 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
         var arg1 = cst_encode_i_32(numTimes);
-        return wire.wire_rust_call_dart_multi_times(port_, arg0, arg1);
+        return wire.wire_rust_call_dart_multi_times_twin_normal(
+            port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kRustCallDartMultiTimesConstMeta,
+      constMeta: kRustCallDartMultiTimesTwinNormalConstMeta,
       argValues: [callback, numTimes],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustCallDartMultiTimesConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_multi_times",
+  TaskConstMeta get kRustCallDartMultiTimesTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_call_dart_multi_times_twin_normal",
         argNames: ["callback", "numTimes"],
       );
 
   @override
-  Future<void> rustCallDartOneArg(
+  Future<void> rustCallDartOneArgTwinNormal(
       {required void Function(String) callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_DartFn_Inputs_String_Output_unit(callback);
-        return wire.wire_rust_call_dart_one_arg(port_, arg0);
+        return wire.wire_rust_call_dart_one_arg_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kRustCallDartOneArgConstMeta,
+      constMeta: kRustCallDartOneArgTwinNormalConstMeta,
       argValues: [callback],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustCallDartOneArgConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_one_arg",
+  TaskConstMeta get kRustCallDartOneArgTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_call_dart_one_arg_twin_normal",
         argNames: ["callback"],
       );
 
   @override
-  Future<void> rustCallDartReturn(
+  Future<void> rustCallDartReturnTwinNormal(
       {required String Function() callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_DartFn_Inputs__Output_String(callback);
-        return wire.wire_rust_call_dart_return(port_, arg0);
+        return wire.wire_rust_call_dart_return_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kRustCallDartReturnConstMeta,
+      constMeta: kRustCallDartReturnTwinNormalConstMeta,
       argValues: [callback],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustCallDartReturnConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_return",
+  TaskConstMeta get kRustCallDartReturnTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_call_dart_return_twin_normal",
         argNames: ["callback"],
       );
 
   @override
-  Future<void> rustCallDartSimple(
+  Future<void> rustCallDartSimpleTwinNormal(
       {required void Function() callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
-        return wire.wire_rust_call_dart_simple(port_, arg0);
+        return wire.wire_rust_call_dart_simple_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kRustCallDartSimpleConstMeta,
+      constMeta: kRustCallDartSimpleTwinNormalConstMeta,
       argValues: [callback],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustCallDartSimpleConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_simple",
+  TaskConstMeta get kRustCallDartSimpleTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_call_dart_simple_twin_normal",
         argNames: ["callback"],
       );
 
   @override
-  Future<void> rustCallDartTwoArgs(
-      {required void Function(String, DemoStructForRustCallDart) callback,
+  Future<void> rustCallDartTwoArgsTwinNormal(
+      {required void Function(String, DemoStructForRustCallDartTwinNormal)
+          callback,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
-            cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+            cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
                 callback);
-        return wire.wire_rust_call_dart_two_args(port_, arg0);
+        return wire.wire_rust_call_dart_two_args_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kRustCallDartTwoArgsConstMeta,
+      constMeta: kRustCallDartTwoArgsTwinNormalConstMeta,
       argValues: [callback],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustCallDartTwoArgsConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_two_args",
+  TaskConstMeta get kRustCallDartTwoArgsTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_call_dart_two_args_twin_normal",
         argNames: ["callback"],
       );
 
   @override
-  Future<void> rustCallDartWithDartOpaqueArg(
+  Future<void> rustCallDartWithDartOpaqueArgTwinNormal(
       {required Object input,
       required void Function(Object) callback,
       dynamic hint}) {
@@ -5557,47 +5568,49 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         var arg0 = cst_encode_DartOpaque(input);
         var arg1 = cst_encode_DartFn_Inputs_DartOpaque_Output_unit(callback);
-        return wire.wire_rust_call_dart_with_dart_opaque_arg(port_, arg0, arg1);
+        return wire.wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
+            port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kRustCallDartWithDartOpaqueArgConstMeta,
+      constMeta: kRustCallDartWithDartOpaqueArgTwinNormalConstMeta,
       argValues: [input, callback],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustCallDartWithDartOpaqueArgConstMeta =>
+  TaskConstMeta get kRustCallDartWithDartOpaqueArgTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "rust_call_dart_with_dart_opaque_arg",
+        debugName: "rust_call_dart_with_dart_opaque_arg_twin_normal",
         argNames: ["input", "callback"],
       );
 
   @override
-  Future<Object> rustCallDartWithDartOpaqueResult(
+  Future<Object> rustCallDartWithDartOpaqueResultTwinNormal(
       {required Object Function() callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_DartFn_Inputs__Output_DartOpaque(callback);
-        return wire.wire_rust_call_dart_with_dart_opaque_result(port_, arg0);
+        return wire.wire_rust_call_dart_with_dart_opaque_result_twin_normal(
+            port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_DartOpaque,
         decodeErrorData: null,
       ),
-      constMeta: kRustCallDartWithDartOpaqueResultConstMeta,
+      constMeta: kRustCallDartWithDartOpaqueResultTwinNormalConstMeta,
       argValues: [callback],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustCallDartWithDartOpaqueResultConstMeta =>
+  TaskConstMeta get kRustCallDartWithDartOpaqueResultTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "rust_call_dart_with_dart_opaque_result",
+        debugName: "rust_call_dart_with_dart_opaque_result_twin_normal",
         argNames: ["callback"],
       );
 
@@ -42501,11 +42514,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   void Function(int, dynamic, dynamic)
-      encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
-          void Function(String, DemoStructForRustCallDart) raw) {
+      encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+          void Function(String, DemoStructForRustCallDartTwinNormal) raw) {
     return (callId, rawArg0, rawArg1) {
       final arg0 = dco_decode_String(rawArg0);
-      final arg1 = dco_decode_demo_struct_for_rust_call_dart(rawArg1);
+      final arg1 =
+          dco_decode_demo_struct_for_rust_call_dart_twin_normal(rawArg1);
 
       final rawOutput = raw(arg0, arg1);
 
@@ -42570,15 +42584,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   void Function(int, dynamic)
-      encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
-          DemoStructForRustCallDart Function(DemoStructForRustCallDart) raw) {
+      encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+          DemoStructForRustCallDartTwinNormal Function(
+                  DemoStructForRustCallDartTwinNormal)
+              raw) {
     return (callId, rawArg0) {
-      final arg0 = dco_decode_demo_struct_for_rust_call_dart(rawArg0);
+      final arg0 =
+          dco_decode_demo_struct_for_rust_call_dart_twin_normal(rawArg0);
 
       final rawOutput = raw(arg0);
 
       final serializer = SseSerializer(generalizedFrbRustBinding);
-      sse_encode_demo_struct_for_rust_call_dart(rawOutput, serializer);
+      sse_encode_demo_struct_for_rust_call_dart_twin_normal(
+          rawOutput, serializer);
       final output = serializer.intoRaw();
 
       wire.dart_fn_deliver_output(
@@ -43162,8 +43180,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void Function(String, DemoStructForRustCallDart)
-      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+  void Function(String, DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
           dynamic raw) {
     throw UnimplementedError('');
   }
@@ -43184,8 +43202,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DemoStructForRustCallDart Function(DemoStructForRustCallDart)
-      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+  DemoStructForRustCallDartTwinNormal Function(
+          DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
           dynamic raw) {
     throw UnimplementedError('');
   }
@@ -47141,12 +47160,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DemoStructForRustCallDart dco_decode_demo_struct_for_rust_call_dart(
-      dynamic raw) {
+  DemoStructForRustCallDartTwinNormal
+      dco_decode_demo_struct_for_rust_call_dart_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return DemoStructForRustCallDart(
+    return DemoStructForRustCallDartTwinNormal(
       name: dco_decode_String(arr[0]),
     );
   }
@@ -56477,10 +56496,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DemoStructForRustCallDart sse_decode_demo_struct_for_rust_call_dart(
-      SseDeserializer deserializer) {
+  DemoStructForRustCallDartTwinNormal
+      sse_decode_demo_struct_for_rust_call_dart_twin_normal(
+          SseDeserializer deserializer) {
     var var_name = sse_decode_String(deserializer);
-    return DemoStructForRustCallDart(name: var_name);
+    return DemoStructForRustCallDartTwinNormal(name: var_name);
   }
 
   @protected
@@ -62195,10 +62215,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DartOpaqueWireType
-      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
-          void Function(String, DemoStructForRustCallDart) raw) {
+      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+          void Function(String, DemoStructForRustCallDartTwinNormal) raw) {
     return cst_encode_DartOpaque(
-        encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+        encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
             raw));
   }
 
@@ -62222,10 +62242,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DartOpaqueWireType
-      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
-          DemoStructForRustCallDart Function(DemoStructForRustCallDart) raw) {
+      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+          DemoStructForRustCallDartTwinNormal Function(
+                  DemoStructForRustCallDartTwinNormal)
+              raw) {
     return cst_encode_DartOpaque(
-        encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+        encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
             raw));
   }
 
@@ -62905,8 +62927,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
-          void Function(String, DemoStructForRustCallDart) self,
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+          void Function(String, DemoStructForRustCallDartTwinNormal) self,
           SseSerializer serializer) {
     sse_encode_DartOpaque(self, serializer);
   }
@@ -62931,8 +62953,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
-          DemoStructForRustCallDart Function(DemoStructForRustCallDart) self,
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+          DemoStructForRustCallDartTwinNormal Function(
+                  DemoStructForRustCallDartTwinNormal)
+              self,
           SseSerializer serializer) {
     sse_encode_DartOpaque(self, serializer);
   }
@@ -66488,8 +66512,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_demo_struct_for_rust_call_dart(
-      DemoStructForRustCallDart self, SseSerializer serializer) {
+  void sse_encode_demo_struct_for_rust_call_dart_twin_normal(
+      DemoStructForRustCallDartTwinNormal self, SseSerializer serializer) {
     sse_encode_String(self.name, serializer);
   }
 

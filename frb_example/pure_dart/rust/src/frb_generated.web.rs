@@ -2447,10 +2447,10 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync_sse::DartOpaqueN
         }
     }
 }
-impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDart>
+impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDartTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> crate::api::dart_fn::DemoStructForRustCallDart {
+    fn cst_decode(self) -> crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -2460,7 +2460,7 @@ impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDart>
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::api::dart_fn::DemoStructForRustCallDart {
+        crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
             name: self_.get(0).cst_decode(),
         }
     }
@@ -10158,69 +10158,69 @@ pub fn wire_return_dart_dynamic_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_call_dart_loopback(
+pub fn wire_rust_call_dart_loopback_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_call_dart_loopback_impl(port_, callback)
+    wire_rust_call_dart_loopback_twin_normal_impl(port_, callback)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_call_dart_multi_times(
+pub fn wire_rust_call_dart_multi_times_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     num_times: i32,
 ) {
-    wire_rust_call_dart_multi_times_impl(port_, callback, num_times)
+    wire_rust_call_dart_multi_times_twin_normal_impl(port_, callback, num_times)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_call_dart_one_arg(
+pub fn wire_rust_call_dart_one_arg_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_call_dart_one_arg_impl(port_, callback)
+    wire_rust_call_dart_one_arg_twin_normal_impl(port_, callback)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_call_dart_return(
+pub fn wire_rust_call_dart_return_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_call_dart_return_impl(port_, callback)
+    wire_rust_call_dart_return_twin_normal_impl(port_, callback)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_call_dart_simple(
+pub fn wire_rust_call_dart_simple_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_call_dart_simple_impl(port_, callback)
+    wire_rust_call_dart_simple_twin_normal_impl(port_, callback)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_call_dart_two_args(
+pub fn wire_rust_call_dart_two_args_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_call_dart_two_args_impl(port_, callback)
+    wire_rust_call_dart_two_args_twin_normal_impl(port_, callback)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_call_dart_with_dart_opaque_arg(
+pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_call_dart_with_dart_opaque_arg_impl(port_, input, callback)
+    wire_rust_call_dart_with_dart_opaque_arg_twin_normal_impl(port_, input, callback)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_call_dart_with_dart_opaque_result(
+pub fn wire_rust_call_dart_with_dart_opaque_result_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_call_dart_with_dart_opaque_result_impl(port_, callback)
+    wire_rust_call_dart_with_dart_opaque_result_twin_normal_impl(port_, callback)
 }
 
 #[wasm_bindgen]

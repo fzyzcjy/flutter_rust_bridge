@@ -6,52 +6,59 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> rustCallDartSimple(
+Future<void> rustCallDartSimpleTwinNormal(
         {required void Function() callback, dynamic hint}) =>
-    RustLib.instance.api.rustCallDartSimple(callback: callback, hint: hint);
+    RustLib.instance.api
+        .rustCallDartSimpleTwinNormal(callback: callback, hint: hint);
 
-Future<void> rustCallDartOneArg(
+Future<void> rustCallDartOneArgTwinNormal(
         {required void Function(String) callback, dynamic hint}) =>
-    RustLib.instance.api.rustCallDartOneArg(callback: callback, hint: hint);
+    RustLib.instance.api
+        .rustCallDartOneArgTwinNormal(callback: callback, hint: hint);
 
-Future<void> rustCallDartTwoArgs(
-        {required void Function(String, DemoStructForRustCallDart) callback,
-        dynamic hint}) =>
-    RustLib.instance.api.rustCallDartTwoArgs(callback: callback, hint: hint);
-
-Future<void> rustCallDartReturn(
-        {required String Function() callback, dynamic hint}) =>
-    RustLib.instance.api.rustCallDartReturn(callback: callback, hint: hint);
-
-Future<void> rustCallDartLoopback(
-        {required DemoStructForRustCallDart Function(DemoStructForRustCallDart)
+Future<void> rustCallDartTwoArgsTwinNormal(
+        {required void Function(String, DemoStructForRustCallDartTwinNormal)
             callback,
         dynamic hint}) =>
-    RustLib.instance.api.rustCallDartLoopback(callback: callback, hint: hint);
+    RustLib.instance.api
+        .rustCallDartTwoArgsTwinNormal(callback: callback, hint: hint);
 
-Future<void> rustCallDartWithDartOpaqueArg(
+Future<void> rustCallDartReturnTwinNormal(
+        {required String Function() callback, dynamic hint}) =>
+    RustLib.instance.api
+        .rustCallDartReturnTwinNormal(callback: callback, hint: hint);
+
+Future<void> rustCallDartLoopbackTwinNormal(
+        {required DemoStructForRustCallDartTwinNormal Function(
+                DemoStructForRustCallDartTwinNormal)
+            callback,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustCallDartLoopbackTwinNormal(callback: callback, hint: hint);
+
+Future<void> rustCallDartWithDartOpaqueArgTwinNormal(
         {required Object input,
         required void Function(Object) callback,
         dynamic hint}) =>
-    RustLib.instance.api.rustCallDartWithDartOpaqueArg(
+    RustLib.instance.api.rustCallDartWithDartOpaqueArgTwinNormal(
         input: input, callback: callback, hint: hint);
 
-Future<Object> rustCallDartWithDartOpaqueResult(
+Future<Object> rustCallDartWithDartOpaqueResultTwinNormal(
         {required Object Function() callback, dynamic hint}) =>
-    RustLib.instance.api
-        .rustCallDartWithDartOpaqueResult(callback: callback, hint: hint);
+    RustLib.instance.api.rustCallDartWithDartOpaqueResultTwinNormal(
+        callback: callback, hint: hint);
 
-Future<void> rustCallDartMultiTimes(
+Future<void> rustCallDartMultiTimesTwinNormal(
         {required void Function() callback,
         required int numTimes,
         dynamic hint}) =>
-    RustLib.instance.api.rustCallDartMultiTimes(
+    RustLib.instance.api.rustCallDartMultiTimesTwinNormal(
         callback: callback, numTimes: numTimes, hint: hint);
 
-class DemoStructForRustCallDart {
+class DemoStructForRustCallDartTwinNormal {
   final String name;
 
-  const DemoStructForRustCallDart({
+  const DemoStructForRustCallDartTwinNormal({
     required this.name,
   });
 
@@ -61,7 +68,7 @@ class DemoStructForRustCallDart {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is DemoStructForRustCallDart &&
+      other is DemoStructForRustCallDartTwinNormal &&
           runtimeType == other.runtimeType &&
           name == other.name;
 }

@@ -562,8 +562,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  void Function(String, DemoStructForRustCallDart)
-      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+  void Function(String, DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
           dynamic raw);
 
   @protected
@@ -576,8 +576,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
 
   @protected
-  DemoStructForRustCallDart Function(DemoStructForRustCallDart)
-      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+  DemoStructForRustCallDartTwinNormal Function(
+          DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
           dynamic raw);
 
   @protected
@@ -2448,8 +2449,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   dynamic dco_decode_dartabi(dynamic raw);
 
   @protected
-  DemoStructForRustCallDart dco_decode_demo_struct_for_rust_call_dart(
-      dynamic raw);
+  DemoStructForRustCallDartTwinNormal
+      dco_decode_demo_struct_for_rust_call_dart_twin_normal(dynamic raw);
 
   @protected
   DistanceTwinNormal dco_decode_distance_twin_normal(dynamic raw);
@@ -6526,8 +6527,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   dynamic sse_decode_dartabi(SseDeserializer deserializer);
 
   @protected
-  DemoStructForRustCallDart sse_decode_demo_struct_for_rust_call_dart(
-      SseDeserializer deserializer);
+  DemoStructForRustCallDartTwinNormal
+      sse_decode_demo_struct_for_rust_call_dart_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
   DistanceTwinNormal sse_decode_distance_twin_normal(
@@ -11774,8 +11776,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_demo_struct_for_rust_call_dart(
-      DemoStructForRustCallDart raw) {
+  List<dynamic> cst_encode_demo_struct_for_rust_call_dart_twin_normal(
+      DemoStructForRustCallDartTwinNormal raw) {
     return [cst_encode_String(raw.name)];
   }
 
@@ -15830,8 +15832,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DartOpaqueWireType
-      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
-          void Function(String, DemoStructForRustCallDart) raw);
+      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+          void Function(String, DemoStructForRustCallDartTwinNormal) raw);
 
   @protected
   DartOpaqueWireType cst_encode_DartFn_Inputs__Output_DartOpaque(
@@ -15846,8 +15848,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DartOpaqueWireType
-      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
-          DemoStructForRustCallDart Function(DemoStructForRustCallDart) raw);
+      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+          DemoStructForRustCallDartTwinNormal Function(
+                  DemoStructForRustCallDartTwinNormal)
+              raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw);
@@ -16277,8 +16281,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
-          void Function(String, DemoStructForRustCallDart) self,
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+          void Function(String, DemoStructForRustCallDartTwinNormal) self,
           SseSerializer serializer);
 
   @protected
@@ -16295,8 +16299,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
-          DemoStructForRustCallDart Function(DemoStructForRustCallDart) self,
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+          DemoStructForRustCallDartTwinNormal Function(
+                  DemoStructForRustCallDartTwinNormal)
+              self,
           SseSerializer serializer);
 
   @protected
@@ -18327,8 +18333,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_dartabi(dynamic self, SseSerializer serializer);
 
   @protected
-  void sse_encode_demo_struct_for_rust_call_dart(
-      DemoStructForRustCallDart self, SseSerializer serializer);
+  void sse_encode_demo_struct_for_rust_call_dart_twin_normal(
+      DemoStructForRustCallDartTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_distance_twin_normal(
@@ -20404,38 +20410,42 @@ class RustLibWire extends BaseWire {
   void wire_return_dart_dynamic_twin_normal(NativePortType port_) =>
       wasmModule.wire_return_dart_dynamic_twin_normal(port_);
 
-  void wire_rust_call_dart_loopback(
+  void wire_rust_call_dart_loopback_twin_normal(
           NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_loopback(port_, callback);
+      wasmModule.wire_rust_call_dart_loopback_twin_normal(port_, callback);
 
-  void wire_rust_call_dart_multi_times(
+  void wire_rust_call_dart_multi_times_twin_normal(
           NativePortType port_, DartOpaqueWireType callback, int num_times) =>
-      wasmModule.wire_rust_call_dart_multi_times(port_, callback, num_times);
+      wasmModule.wire_rust_call_dart_multi_times_twin_normal(
+          port_, callback, num_times);
 
-  void wire_rust_call_dart_one_arg(
+  void wire_rust_call_dart_one_arg_twin_normal(
           NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_one_arg(port_, callback);
+      wasmModule.wire_rust_call_dart_one_arg_twin_normal(port_, callback);
 
-  void wire_rust_call_dart_return(
+  void wire_rust_call_dart_return_twin_normal(
           NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_return(port_, callback);
+      wasmModule.wire_rust_call_dart_return_twin_normal(port_, callback);
 
-  void wire_rust_call_dart_simple(
+  void wire_rust_call_dart_simple_twin_normal(
           NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_simple(port_, callback);
+      wasmModule.wire_rust_call_dart_simple_twin_normal(port_, callback);
 
-  void wire_rust_call_dart_two_args(
+  void wire_rust_call_dart_two_args_twin_normal(
           NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_two_args(port_, callback);
+      wasmModule.wire_rust_call_dart_two_args_twin_normal(port_, callback);
 
-  void wire_rust_call_dart_with_dart_opaque_arg(NativePortType port_,
-          DartOpaqueWireType input, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_with_dart_opaque_arg(
+  void wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
+          NativePortType port_,
+          DartOpaqueWireType input,
+          DartOpaqueWireType callback) =>
+      wasmModule.wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
           port_, input, callback);
 
-  void wire_rust_call_dart_with_dart_opaque_result(
+  void wire_rust_call_dart_with_dart_opaque_result_twin_normal(
           NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_with_dart_opaque_result(port_, callback);
+      wasmModule.wire_rust_call_dart_with_dart_opaque_result_twin_normal(
+          port_, callback);
 
   void wire_async_accept_dart_opaque_twin_normal(
           NativePortType port_, DartOpaqueWireType opaque) =>
@@ -29159,28 +29169,30 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_return_dart_dynamic_twin_normal(NativePortType port_);
 
-  external void wire_rust_call_dart_loopback(
+  external void wire_rust_call_dart_loopback_twin_normal(
       NativePortType port_, DartOpaqueWireType callback);
 
-  external void wire_rust_call_dart_multi_times(
+  external void wire_rust_call_dart_multi_times_twin_normal(
       NativePortType port_, DartOpaqueWireType callback, int num_times);
 
-  external void wire_rust_call_dart_one_arg(
+  external void wire_rust_call_dart_one_arg_twin_normal(
       NativePortType port_, DartOpaqueWireType callback);
 
-  external void wire_rust_call_dart_return(
+  external void wire_rust_call_dart_return_twin_normal(
       NativePortType port_, DartOpaqueWireType callback);
 
-  external void wire_rust_call_dart_simple(
+  external void wire_rust_call_dart_simple_twin_normal(
       NativePortType port_, DartOpaqueWireType callback);
 
-  external void wire_rust_call_dart_two_args(
+  external void wire_rust_call_dart_two_args_twin_normal(
       NativePortType port_, DartOpaqueWireType callback);
 
-  external void wire_rust_call_dart_with_dart_opaque_arg(NativePortType port_,
-      DartOpaqueWireType input, DartOpaqueWireType callback);
+  external void wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
+      NativePortType port_,
+      DartOpaqueWireType input,
+      DartOpaqueWireType callback);
 
-  external void wire_rust_call_dart_with_dart_opaque_result(
+  external void wire_rust_call_dart_with_dart_opaque_result_twin_normal(
       NativePortType port_, DartOpaqueWireType callback);
 
   external void wire_async_accept_dart_opaque_twin_normal(

@@ -5553,11 +5553,11 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync_sse::DartOpaqueN
         }
     }
 }
-impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDart>
-    for wire_cst_demo_struct_for_rust_call_dart
+impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDartTwinNormal>
+    for wire_cst_demo_struct_for_rust_call_dart_twin_normal
 {
-    fn cst_decode(self) -> crate::api::dart_fn::DemoStructForRustCallDart {
-        crate::api::dart_fn::DemoStructForRustCallDart {
+    fn cst_decode(self) -> crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
+        crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
             name: self.name.cst_decode(),
         }
     }
@@ -12195,14 +12195,14 @@ impl Default for wire_cst_dart_opaque_nested_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_cst_demo_struct_for_rust_call_dart {
+impl NewWithNullPtr for wire_cst_demo_struct_for_rust_call_dart_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
             name: core::ptr::null_mut(),
         }
     }
 }
-impl Default for wire_cst_demo_struct_for_rust_call_dart {
+impl Default for wire_cst_demo_struct_for_rust_call_dart_twin_normal {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -15938,54 +15938,69 @@ pub extern "C" fn wire_return_dart_dynamic_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_loopback(port_: i64, callback: *const std::ffi::c_void) {
-    wire_rust_call_dart_loopback_impl(port_, callback)
+pub extern "C" fn wire_rust_call_dart_loopback_twin_normal(
+    port_: i64,
+    callback: *const std::ffi::c_void,
+) {
+    wire_rust_call_dart_loopback_twin_normal_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_multi_times(
+pub extern "C" fn wire_rust_call_dart_multi_times_twin_normal(
     port_: i64,
     callback: *const std::ffi::c_void,
     num_times: i32,
 ) {
-    wire_rust_call_dart_multi_times_impl(port_, callback, num_times)
+    wire_rust_call_dart_multi_times_twin_normal_impl(port_, callback, num_times)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_one_arg(port_: i64, callback: *const std::ffi::c_void) {
-    wire_rust_call_dart_one_arg_impl(port_, callback)
+pub extern "C" fn wire_rust_call_dart_one_arg_twin_normal(
+    port_: i64,
+    callback: *const std::ffi::c_void,
+) {
+    wire_rust_call_dart_one_arg_twin_normal_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_return(port_: i64, callback: *const std::ffi::c_void) {
-    wire_rust_call_dart_return_impl(port_, callback)
+pub extern "C" fn wire_rust_call_dart_return_twin_normal(
+    port_: i64,
+    callback: *const std::ffi::c_void,
+) {
+    wire_rust_call_dart_return_twin_normal_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: *const std::ffi::c_void) {
-    wire_rust_call_dart_simple_impl(port_, callback)
+pub extern "C" fn wire_rust_call_dart_simple_twin_normal(
+    port_: i64,
+    callback: *const std::ffi::c_void,
+) {
+    wire_rust_call_dart_simple_twin_normal_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_two_args(port_: i64, callback: *const std::ffi::c_void) {
-    wire_rust_call_dart_two_args_impl(port_, callback)
+pub extern "C" fn wire_rust_call_dart_two_args_twin_normal(
+    port_: i64,
+    callback: *const std::ffi::c_void,
+) {
+    wire_rust_call_dart_two_args_twin_normal_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_with_dart_opaque_arg(
+pub extern "C" fn wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
     port_: i64,
     input: *const std::ffi::c_void,
     callback: *const std::ffi::c_void,
 ) {
-    wire_rust_call_dart_with_dart_opaque_arg_impl(port_, input, callback)
+    wire_rust_call_dart_with_dart_opaque_arg_twin_normal_impl(port_, input, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_with_dart_opaque_result(
+pub extern "C" fn wire_rust_call_dart_with_dart_opaque_result_twin_normal(
     port_: i64,
     callback: *const std::ffi::c_void,
 ) {
-    wire_rust_call_dart_with_dart_opaque_result_impl(port_, callback)
+    wire_rust_call_dart_with_dart_opaque_result_twin_normal_impl(port_, callback)
 }
 
 #[no_mangle]
@@ -36236,7 +36251,7 @@ pub struct wire_cst_dart_opaque_nested_twin_sync_sse {
 }
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_cst_demo_struct_for_rust_call_dart {
+pub struct wire_cst_demo_struct_for_rust_call_dart_twin_normal {
     name: *mut wire_cst_list_prim_u_8,
 }
 #[repr(C)]

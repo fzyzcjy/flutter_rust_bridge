@@ -563,8 +563,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  void Function(String, DemoStructForRustCallDart)
-      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+  void Function(String, DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
           dynamic raw);
 
   @protected
@@ -577,8 +577,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
 
   @protected
-  DemoStructForRustCallDart Function(DemoStructForRustCallDart)
-      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+  DemoStructForRustCallDartTwinNormal Function(
+          DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
           dynamic raw);
 
   @protected
@@ -2449,8 +2450,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   dynamic dco_decode_dartabi(dynamic raw);
 
   @protected
-  DemoStructForRustCallDart dco_decode_demo_struct_for_rust_call_dart(
-      dynamic raw);
+  DemoStructForRustCallDartTwinNormal
+      dco_decode_demo_struct_for_rust_call_dart_twin_normal(dynamic raw);
 
   @protected
   DistanceTwinNormal dco_decode_distance_twin_normal(dynamic raw);
@@ -6527,8 +6528,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   dynamic sse_decode_dartabi(SseDeserializer deserializer);
 
   @protected
-  DemoStructForRustCallDart sse_decode_demo_struct_for_rust_call_dart(
-      SseDeserializer deserializer);
+  DemoStructForRustCallDartTwinNormal
+      sse_decode_demo_struct_for_rust_call_dart_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
   DistanceTwinNormal sse_decode_distance_twin_normal(
@@ -17067,9 +17069,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  void cst_api_fill_to_wire_demo_struct_for_rust_call_dart(
-      DemoStructForRustCallDart apiObj,
-      wire_cst_demo_struct_for_rust_call_dart wireObj) {
+  void cst_api_fill_to_wire_demo_struct_for_rust_call_dart_twin_normal(
+      DemoStructForRustCallDartTwinNormal apiObj,
+      wire_cst_demo_struct_for_rust_call_dart_twin_normal wireObj) {
     wireObj.name = cst_encode_String(apiObj.name);
   }
 
@@ -20417,8 +20419,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DartOpaqueWireType
-      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
-          void Function(String, DemoStructForRustCallDart) raw);
+      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+          void Function(String, DemoStructForRustCallDartTwinNormal) raw);
 
   @protected
   DartOpaqueWireType cst_encode_DartFn_Inputs__Output_DartOpaque(
@@ -20433,8 +20435,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DartOpaqueWireType
-      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
-          DemoStructForRustCallDart Function(DemoStructForRustCallDart) raw);
+      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+          DemoStructForRustCallDartTwinNormal Function(
+                  DemoStructForRustCallDartTwinNormal)
+              raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw);
@@ -20864,8 +20868,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
-          void Function(String, DemoStructForRustCallDart) self,
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+          void Function(String, DemoStructForRustCallDartTwinNormal) self,
           SseSerializer serializer);
 
   @protected
@@ -20882,8 +20886,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
-          DemoStructForRustCallDart Function(DemoStructForRustCallDart) self,
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+          DemoStructForRustCallDartTwinNormal Function(
+                  DemoStructForRustCallDartTwinNormal)
+              self,
           SseSerializer serializer);
 
   @protected
@@ -22914,8 +22920,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_dartabi(dynamic self, SseSerializer serializer);
 
   @protected
-  void sse_encode_demo_struct_for_rust_call_dart(
-      DemoStructForRustCallDart self, SseSerializer serializer);
+  void sse_encode_demo_struct_for_rust_call_dart_twin_normal(
+      DemoStructForRustCallDartTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_distance_twin_normal(
@@ -25559,148 +25565,154 @@ class RustLibWire implements BaseWire {
   late final _wire_return_dart_dynamic_twin_normal =
       _wire_return_dart_dynamic_twin_normalPtr.asFunction<void Function(int)>();
 
-  void wire_rust_call_dart_loopback(
+  void wire_rust_call_dart_loopback_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> callback,
   ) {
-    return _wire_rust_call_dart_loopback(
+    return _wire_rust_call_dart_loopback_twin_normal(
       port_,
       callback,
     );
   }
 
-  late final _wire_rust_call_dart_loopbackPtr = _lookup<
+  late final _wire_rust_call_dart_loopback_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_loopback');
-  late final _wire_rust_call_dart_loopback = _wire_rust_call_dart_loopbackPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      'wire_rust_call_dart_loopback_twin_normal');
+  late final _wire_rust_call_dart_loopback_twin_normal =
+      _wire_rust_call_dart_loopback_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_call_dart_multi_times(
+  void wire_rust_call_dart_multi_times_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> callback,
     int num_times,
   ) {
-    return _wire_rust_call_dart_multi_times(
+    return _wire_rust_call_dart_multi_times_twin_normal(
       port_,
       callback,
       num_times,
     );
   }
 
-  late final _wire_rust_call_dart_multi_timesPtr = _lookup<
+  late final _wire_rust_call_dart_multi_times_twin_normalPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
-              ffi.Int32)>>('wire_rust_call_dart_multi_times');
-  late final _wire_rust_call_dart_multi_times =
-      _wire_rust_call_dart_multi_timesPtr
+              ffi.Int32)>>('wire_rust_call_dart_multi_times_twin_normal');
+  late final _wire_rust_call_dart_multi_times_twin_normal =
+      _wire_rust_call_dart_multi_times_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int)>();
 
-  void wire_rust_call_dart_one_arg(
+  void wire_rust_call_dart_one_arg_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> callback,
   ) {
-    return _wire_rust_call_dart_one_arg(
+    return _wire_rust_call_dart_one_arg_twin_normal(
       port_,
       callback,
     );
   }
 
-  late final _wire_rust_call_dart_one_argPtr = _lookup<
+  late final _wire_rust_call_dart_one_arg_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_one_arg');
-  late final _wire_rust_call_dart_one_arg = _wire_rust_call_dart_one_argPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      'wire_rust_call_dart_one_arg_twin_normal');
+  late final _wire_rust_call_dart_one_arg_twin_normal =
+      _wire_rust_call_dart_one_arg_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_call_dart_return(
+  void wire_rust_call_dart_return_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> callback,
   ) {
-    return _wire_rust_call_dart_return(
+    return _wire_rust_call_dart_return_twin_normal(
       port_,
       callback,
     );
   }
 
-  late final _wire_rust_call_dart_returnPtr = _lookup<
+  late final _wire_rust_call_dart_return_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_return');
-  late final _wire_rust_call_dart_return = _wire_rust_call_dart_returnPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      'wire_rust_call_dart_return_twin_normal');
+  late final _wire_rust_call_dart_return_twin_normal =
+      _wire_rust_call_dart_return_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_call_dart_simple(
+  void wire_rust_call_dart_simple_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> callback,
   ) {
-    return _wire_rust_call_dart_simple(
+    return _wire_rust_call_dart_simple_twin_normal(
       port_,
       callback,
     );
   }
 
-  late final _wire_rust_call_dart_simplePtr = _lookup<
+  late final _wire_rust_call_dart_simple_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_simple');
-  late final _wire_rust_call_dart_simple = _wire_rust_call_dart_simplePtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      'wire_rust_call_dart_simple_twin_normal');
+  late final _wire_rust_call_dart_simple_twin_normal =
+      _wire_rust_call_dart_simple_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_call_dart_two_args(
+  void wire_rust_call_dart_two_args_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> callback,
   ) {
-    return _wire_rust_call_dart_two_args(
+    return _wire_rust_call_dart_two_args_twin_normal(
       port_,
       callback,
     );
   }
 
-  late final _wire_rust_call_dart_two_argsPtr = _lookup<
+  late final _wire_rust_call_dart_two_args_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_two_args');
-  late final _wire_rust_call_dart_two_args = _wire_rust_call_dart_two_argsPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      'wire_rust_call_dart_two_args_twin_normal');
+  late final _wire_rust_call_dart_two_args_twin_normal =
+      _wire_rust_call_dart_two_args_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_call_dart_with_dart_opaque_arg(
+  void wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> input,
     ffi.Pointer<ffi.Void> callback,
   ) {
-    return _wire_rust_call_dart_with_dart_opaque_arg(
+    return _wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
       port_,
       input,
       callback,
     );
   }
 
-  late final _wire_rust_call_dart_with_dart_opaque_argPtr = _lookup<
+  late final _wire_rust_call_dart_with_dart_opaque_arg_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
                   ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_with_dart_opaque_arg');
-  late final _wire_rust_call_dart_with_dart_opaque_arg =
-      _wire_rust_call_dart_with_dart_opaque_argPtr.asFunction<
+      'wire_rust_call_dart_with_dart_opaque_arg_twin_normal');
+  late final _wire_rust_call_dart_with_dart_opaque_arg_twin_normal =
+      _wire_rust_call_dart_with_dart_opaque_arg_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_call_dart_with_dart_opaque_result(
+  void wire_rust_call_dart_with_dart_opaque_result_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> callback,
   ) {
-    return _wire_rust_call_dart_with_dart_opaque_result(
+    return _wire_rust_call_dart_with_dart_opaque_result_twin_normal(
       port_,
       callback,
     );
   }
 
-  late final _wire_rust_call_dart_with_dart_opaque_resultPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_with_dart_opaque_result');
-  late final _wire_rust_call_dart_with_dart_opaque_result =
-      _wire_rust_call_dart_with_dart_opaque_resultPtr
+  late final _wire_rust_call_dart_with_dart_opaque_result_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_call_dart_with_dart_opaque_result_twin_normal');
+  late final _wire_rust_call_dart_with_dart_opaque_result_twin_normal =
+      _wire_rust_call_dart_with_dart_opaque_result_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_async_accept_dart_opaque_twin_normal(
@@ -67575,7 +67587,8 @@ final class wire_cst_custom_struct_error_another_twin_sync_sse
   external ffi.Pointer<wire_cst_list_prim_u_8> message;
 }
 
-final class wire_cst_demo_struct_for_rust_call_dart extends ffi.Struct {
+final class wire_cst_demo_struct_for_rust_call_dart_twin_normal
+    extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> name;
 }
 
