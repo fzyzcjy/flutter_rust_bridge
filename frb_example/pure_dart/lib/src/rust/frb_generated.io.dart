@@ -555,29 +555,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime dco_decode_Chrono_Utc(dynamic raw);
 
   @protected
-  void Function(Object) dco_decode_DartFn_Inputs_DartOpaque_Output_unit(
+  FutureOr<void> Function(Object)
+      dco_decode_DartFn_Inputs_DartOpaque_Output_unit(dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String) dco_decode_DartFn_Inputs_String_Output_unit(
       dynamic raw);
 
   @protected
-  void Function(String) dco_decode_DartFn_Inputs_String_Output_unit(
-      dynamic raw);
-
-  @protected
-  void Function(String, DemoStructForRustCallDartTwinNormal)
+  FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
       dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
           dynamic raw);
 
   @protected
-  Object Function() dco_decode_DartFn_Inputs__Output_DartOpaque(dynamic raw);
+  FutureOr<Object> Function() dco_decode_DartFn_Inputs__Output_DartOpaque(
+      dynamic raw);
 
   @protected
-  String Function() dco_decode_DartFn_Inputs__Output_String(dynamic raw);
+  FutureOr<String> Function() dco_decode_DartFn_Inputs__Output_String(
+      dynamic raw);
 
   @protected
-  void Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
+  FutureOr<void> Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
 
   @protected
-  DemoStructForRustCallDartTwinNormal Function(
+  FutureOr<DemoStructForRustCallDartTwinNormal> Function(
           DemoStructForRustCallDartTwinNormal)
       dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
           dynamic raw);
@@ -20411,32 +20413,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DartOpaqueWireType cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
-      void Function(Object) raw);
+      FutureOr<void> Function(Object) raw);
 
   @protected
   DartOpaqueWireType cst_encode_DartFn_Inputs_String_Output_unit(
-      void Function(String) raw);
+      FutureOr<void> Function(String) raw);
 
   @protected
   DartOpaqueWireType
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
-          void Function(String, DemoStructForRustCallDartTwinNormal) raw);
+          FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
+              raw);
 
   @protected
   DartOpaqueWireType cst_encode_DartFn_Inputs__Output_DartOpaque(
-      Object Function() raw);
+      FutureOr<Object> Function() raw);
 
   @protected
   DartOpaqueWireType cst_encode_DartFn_Inputs__Output_String(
-      String Function() raw);
+      FutureOr<String> Function() raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(void Function() raw);
+  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(
+      FutureOr<void> Function() raw);
 
   @protected
   DartOpaqueWireType
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
-          DemoStructForRustCallDartTwinNormal Function(
+          FutureOr<DemoStructForRustCallDartTwinNormal> Function(
                   DemoStructForRustCallDartTwinNormal)
               raw);
 
@@ -20860,34 +20864,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_DartFn_Inputs_DartOpaque_Output_unit(
-      void Function(Object) self, SseSerializer serializer);
+      FutureOr<void> Function(Object) self, SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_unit(
-      void Function(String) self, SseSerializer serializer);
+      FutureOr<void> Function(String) self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
-          void Function(String, DemoStructForRustCallDartTwinNormal) self,
+          FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
+              self,
           SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs__Output_DartOpaque(
-      Object Function() self, SseSerializer serializer);
+      FutureOr<Object> Function() self, SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs__Output_String(
-      String Function() self, SseSerializer serializer);
+      FutureOr<String> Function() self, SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs__Output_unit(
-      void Function() self, SseSerializer serializer);
+      FutureOr<void> Function() self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
-          DemoStructForRustCallDartTwinNormal Function(
+          FutureOr<DemoStructForRustCallDartTwinNormal> Function(
                   DemoStructForRustCallDartTwinNormal)
               self,
           SseSerializer serializer);
