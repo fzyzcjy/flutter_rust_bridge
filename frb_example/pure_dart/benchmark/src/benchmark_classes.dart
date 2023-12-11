@@ -10,6 +10,7 @@ import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart/src/rust/api/benchmark_api.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 
@@ -45,6 +46,8 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
     for (final depth in [0, 5, 10]) ...[
       BinaryTreeInputSyncBenchmark(depth, emitter: emitter),
       BinaryTreeOutputSyncBenchmark(depth, emitter: emitter),
+      BinaryTreeInputSyncSseBenchmark(depth, emitter: emitter),
+      BinaryTreeOutputSyncSseBenchmark(depth, emitter: emitter),
     ],
   ];
 }
@@ -239,5 +242,42 @@ class BinaryTreeOutputSyncBenchmark extends EnhancedBenchmarkBase {
 
   @override
   void run() => benchmarkBinaryTreeOutputTwinSync(
+      depth: depth, name: _kBinaryTreeNodeName);
+}
+
+class BinaryTreeInputSyncSseBenchmark extends EnhancedBenchmarkBase {
+  final BenchmarkBinaryTreeTwinSyncSse tree;
+
+  BinaryTreeInputSyncSseBenchmark(int depth, {super.emitter})
+      : tree = _createTree(depth),
+        super('BinaryTreeInputSyncSse_Depth$depth');
+
+  static BenchmarkBinaryTreeTwinSyncSse _createTree(int depth) {
+    if (depth == 0) {
+      return BenchmarkBinaryTreeTwinSyncSse(
+        name: _kBinaryTreeNodeName,
+        left: null,
+        right: null,
+      );
+    }
+    return BenchmarkBinaryTreeTwinSyncSse(
+      name: _kBinaryTreeNodeName,
+      left: _createTree(depth - 1),
+      right: _createTree(depth - 1),
+    );
+  }
+
+  @override
+  void run() => benchmarkBinaryTreeInputTwinSyncSse(tree: tree);
+}
+
+class BinaryTreeOutputSyncSseBenchmark extends EnhancedBenchmarkBase {
+  final int depth;
+
+  BinaryTreeOutputSyncSseBenchmark(this.depth, {super.emitter})
+      : super('BinaryTreeOutputSyncSse_Depth$depth');
+
+  @override
+  void run() => benchmarkBinaryTreeOutputTwinSyncSse(
       depth: depth, name: _kBinaryTreeNodeName);
 }
