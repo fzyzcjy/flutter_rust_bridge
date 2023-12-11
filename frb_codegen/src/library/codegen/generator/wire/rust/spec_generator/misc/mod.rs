@@ -56,7 +56,7 @@ pub(crate) fn generate(
             .map(|f| generate_wire_func(f, context))
             .collect(),
         wrapper_structs: cache
-            .distinct_output_types
+            .distinct_types
             .iter()
             .filter_map(|ty| generate_wrapper_struct(ty, context))
             .map(|x| Acc::<WireRustOutputCode>::new_common(x.into()))
