@@ -8489,7 +8489,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  PlatformPointer cst_encode_DartOpaque(Object raw) {
+  DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
     return wire.dart_opaque_dart2rust_encode(raw);
   }
 
@@ -8540,7 +8540,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<PlatformPointer> cst_encode_box_autoadd_DartOpaque(Object raw) {
+  ffi.Pointer<DartOpaqueWireType> cst_encode_box_autoadd_DartOpaque(
+      Object raw) {
     return wire.cst_new_box_autoadd_DartOpaque(cst_encode_DartOpaque(raw));
   }
 
@@ -12415,7 +12416,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<PlatformPointer> cst_encode_opt_box_autoadd_DartOpaque(
+  ffi.Pointer<DartOpaqueWireType> cst_encode_opt_box_autoadd_DartOpaque(
       Object? raw) {
     return raw == null ? ffi.nullptr : cst_encode_box_autoadd_DartOpaque(raw);
   }
@@ -20368,7 +20369,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
-  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(void Function() raw);
+  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(void Function() raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw);

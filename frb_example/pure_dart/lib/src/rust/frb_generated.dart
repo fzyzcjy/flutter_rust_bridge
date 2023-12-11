@@ -61817,7 +61817,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(void Function() raw) {
+  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(
+      void Function() raw) {
     return cst_encode_DartOpaque(encode_DartFn_Inputs__Output_unit(raw));
   }
 
