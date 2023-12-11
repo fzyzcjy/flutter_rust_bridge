@@ -297,8 +297,7 @@ class BinaryTreeOutputSyncBenchmark extends EnhancedBenchmarkBase {
       : super('BinaryTreeOutputSync_Depth$depth');
 
   @override
-  void run() => benchmarkBinaryTreeOutputTwinSync(
-      depth: depth, name: _kBinaryTreeNodeName);
+  void run() => benchmarkBinaryTreeOutputTwinSync(depth: depth);
 }
 
 class BinaryTreeInputSyncSseBenchmark extends EnhancedBenchmarkBase {
@@ -334,6 +333,5 @@ class BinaryTreeOutputSyncSseBenchmark extends EnhancedBenchmarkBase {
       : super('BinaryTreeOutputSyncSse_Depth$depth');
 
   @override
-  void run() => benchmarkBinaryTreeOutputTwinSyncSse(
-      depth: depth, name: _kBinaryTreeNodeName);
+  void run() => benchmarkBinaryTreeOutputTwinSyncSse(depth: depth);
 }
