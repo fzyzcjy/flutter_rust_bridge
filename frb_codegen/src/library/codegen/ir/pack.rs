@@ -48,19 +48,19 @@ impl IrPack {
 /// Some information derivable from `IrPack`, but may be expensive to compute,
 /// so we compute once and cache them.
 pub(crate) struct IrPackComputedCache {
-    pub(crate) distinct_input_types: Vec<IrType>,
-    pub(crate) distinct_output_types: Vec<IrType>,
+    // pub(crate) distinct_input_types: Vec<IrType>,
+    // pub(crate) distinct_output_types: Vec<IrType>,
     pub(crate) distinct_types: Vec<IrType>,
 }
 
 impl IrPackComputedCache {
     pub fn compute(ir_pack: &IrPack) -> Self {
-        let distinct_input_types = ir_pack.distinct_types(true, false);
-        let distinct_output_types = ir_pack.distinct_types(false, true);
+        // let distinct_input_types = ir_pack.distinct_types(true, false);
+        // let distinct_output_types = ir_pack.distinct_types(false, true);
         let distinct_types = ir_pack.distinct_types(true, true);
         Self {
-            distinct_input_types,
-            distinct_output_types,
+            // distinct_input_types,
+            // distinct_output_types,
             distinct_types,
         }
     }
