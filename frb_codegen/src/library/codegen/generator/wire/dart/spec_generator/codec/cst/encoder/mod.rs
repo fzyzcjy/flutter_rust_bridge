@@ -51,7 +51,10 @@ fn generate_encode_func(
                     );
 
                     WireDartOutputCode {
-                        api_impl_class_methods: vec![DartApiImplClassMethod { signature, body }],
+                        api_impl_class_methods: vec![DartApiImplClassMethod {
+                            signature,
+                            body: Some(body),
+                        }],
                         ..Default::default()
                     }
                 })
@@ -80,7 +83,10 @@ fn generate_encode_api_fill_to_wire_func(
         );
 
         WireDartOutputCode {
-            api_impl_class_methods: vec![DartApiImplClassMethod { signature, body }],
+            api_impl_class_methods: vec![DartApiImplClassMethod {
+                signature,
+                body: Some(body),
+            }],
             ..Default::default()
         }
     } else {

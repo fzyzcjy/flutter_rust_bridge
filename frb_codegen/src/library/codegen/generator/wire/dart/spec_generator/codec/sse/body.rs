@@ -51,7 +51,10 @@ fn generate_encode_or_decode_for_type(
         };
 
         Acc::new_common(WireDartOutputCode {
-            api_impl_class_methods: vec![DartApiImplClassMethod { signature, body }],
+            api_impl_class_methods: vec![DartApiImplClassMethod {
+                signature,
+                body: Some(body),
+            }],
             ..Default::default()
         })
     } else {

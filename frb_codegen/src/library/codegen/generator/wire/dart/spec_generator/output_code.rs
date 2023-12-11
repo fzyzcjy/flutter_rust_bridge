@@ -34,7 +34,7 @@ impl AddAssign for WireDartOutputCode {
 #[derive(Default, Clone, Debug, Serialize)]
 pub(crate) struct DartApiImplClassMethod {
     pub signature: String,
-    pub body: String,
+    pub body: Option<String>,
 }
 
 impl WireDartOutputCode {
@@ -90,12 +90,14 @@ impl WireDartOutputCode {
             "".to_owned()
         };
 
-        let api_impl_class_code = if target == TargetOrCommon::Common {
-            let api_impl_class_methods = api_impl_class_methods
-                .into_iter()
-                .map(|method| format!("{} {{ {} }}", method.signature, method.body))
-                .join("\n\n");
+        let api_impl_class_methods = api_impl_class_methods
+            .into_iter()
+            .filter_map(|method| {
+                (method.body).map(|body| format!("{} {{ {body} }}", method.signature))
+            })
+            .join("\n\n");
 
+        let api_impl_class_code = if target == TargetOrCommon::Common {
             format!(
                 "
                 class {api_impl_class_name} extends {api_impl_platform_class_name} implements {api_class_name} {{
@@ -113,11 +115,6 @@ impl WireDartOutputCode {
                 ",
             )
         } else {
-            let api_impl_class_methods = api_impl_class_methods
-                .into_iter()
-                .map(|method| format!("{};", method.signature))
-                .join("\n\n");
-
             format!(
                 "
                 abstract class {api_impl_platform_class_name} extends BaseApiImpl<{wire_class_name}> {{

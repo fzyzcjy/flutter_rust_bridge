@@ -38,7 +38,10 @@ fn generate_impl_decode(
         safe_ident = ty.safe_ident(),
     );
     WireDartOutputCode {
-        api_impl_class_methods: vec![DartApiImplClassMethod { signature, body }],
+        api_impl_class_methods: vec![DartApiImplClassMethod {
+            signature,
+            body: Some(body),
+        }],
         ..Default::default()
     }
 }
