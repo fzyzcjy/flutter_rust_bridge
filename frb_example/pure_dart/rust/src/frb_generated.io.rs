@@ -862,6 +862,153 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncS
         }
     }
 }
+impl CstDecode<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
+    for wire_cst_benchmark_binary_tree_twin_normal
+{
+    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+        crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+            name: self.name.cst_decode(),
+            left: self.left.cst_decode(),
+            right: self.right.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync,
+    > for wire_cst_benchmark_binary_tree_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
+    {
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync {
+            name: self.name.cst_decode(),
+            left: self.left.cst_decode(),
+            right: self.right.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> for wire_cst_benchmark_binary_tree_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {
+                crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse{name:  self.name.cst_decode(),left:  self.left.cst_decode(),right:  self.right.cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>
+    for wire_cst_benchmark_binary_tree_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
+        crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
+            name: self.name.cst_decode(),
+            left: self.left.cst_decode(),
+            right: self.right.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>
+    for wire_cst_benchmark_binary_tree_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
+        crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
+            name: self.name.cst_decode(),
+            left: self.left.cst_decode(),
+            right: self.right.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse,
+    > for wire_cst_benchmark_binary_tree_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
+    {
+        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse {
+            name: self.name.cst_decode(),
+            left: self.left.cst_decode(),
+            right: self.right.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::benchmark_api::BenchmarkBlobTwinNormal>
+    for wire_cst_benchmark_blob_twin_normal
+{
+    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+        crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+            first: self.first.cst_decode(),
+            second: self.second.cst_decode(),
+            third: self.third.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync>
+    for wire_cst_benchmark_blob_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync {
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync {
+            first: self.first.cst_decode(),
+            second: self.second.cst_decode(),
+            third: self.third.cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse,
+    > for wire_cst_benchmark_blob_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
+    {
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse{first:  self.first.cst_decode(),second:  self.second.cst_decode(),third:  self.third.cst_decode()}
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse>
+    for wire_cst_benchmark_blob_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
+        crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
+            first: self.first.cst_decode(),
+            second: self.second.cst_decode(),
+            third: self.third.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync>
+    for wire_cst_benchmark_blob_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
+        crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
+            first: self.first.cst_decode(),
+            second: self.second.cst_decode(),
+            third: self.third.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse>
+    for wire_cst_benchmark_blob_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse {
+        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse {
+            first: self.first.cst_decode(),
+            second: self.second.cst_decode(),
+            third: self.third.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::misc_example::BigBuffersTwinNormal>
     for wire_cst_big_buffers_twin_normal
 {
@@ -1250,6 +1397,132 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncS
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncSse {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
+    for *mut wire_cst_benchmark_binary_tree_twin_normal
+{
+    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>::cst_decode(*wrap)
+            .into()
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync,
+    > for *mut wire_cst_benchmark_binary_tree_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
+    {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> for *mut wire_cst_benchmark_binary_tree_twin_rust_async_sse {
+            fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {
+                let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+                CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>::cst_decode(*wrap).into()
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>
+    for *mut wire_cst_benchmark_binary_tree_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>
+    for *mut wire_cst_benchmark_binary_tree_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>::cst_decode(*wrap).into()
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse,
+    > for *mut wire_cst_benchmark_binary_tree_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
+    {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<
+            crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse,
+        >::cst_decode(*wrap)
+        .into()
+    }
+}
+impl CstDecode<crate::api::benchmark_api::BenchmarkBlobTwinNormal>
+    for *mut wire_cst_benchmark_blob_twin_normal
+{
+    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::benchmark_api::BenchmarkBlobTwinNormal>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync>
+    for *mut wire_cst_benchmark_blob_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<
+            crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync,
+        >::cst_decode(*wrap)
+        .into()
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse,
+    > for *mut wire_cst_benchmark_blob_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
+    {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse>
+    for *mut wire_cst_benchmark_blob_twin_sse
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync>
+    for *mut wire_cst_benchmark_blob_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse>
+    for *mut wire_cst_benchmark_blob_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<bool> for *mut bool {
@@ -3774,6 +4047,63 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTw
     ) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>>
+    for *mut wire_cst_benchmark_binary_tree_twin_normal
+{
+    fn cst_decode(self) -> Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>::cst_decode(*wrap)
+            .into()
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>> for *mut wire_cst_benchmark_binary_tree_twin_rust_async {
+            fn cst_decode(self) -> Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync> {
+                let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+                CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>::cst_decode(*wrap).into()
+            }
+        }
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>> for *mut wire_cst_benchmark_binary_tree_twin_rust_async_sse {
+            fn cst_decode(self) -> Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> {
+                let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+                CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>::cst_decode(*wrap).into()
+            }
+        }
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>>
+    for *mut wire_cst_benchmark_binary_tree_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse> {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>::cst_decode(*wrap).into()
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>>
+    for *mut wire_cst_benchmark_binary_tree_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync> {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>::cst_decode(*wrap).into()
+    }
+}
+impl
+    CstDecode<
+        Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>,
+    > for *mut wire_cst_benchmark_binary_tree_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>
+    {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<
+            crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse,
+        >::cst_decode(*wrap)
+        .into()
     }
 }
 impl CstDecode<Box<crate::api::array::BlobTwinNormal>> for *mut wire_cst_blob_twin_normal {
@@ -11013,6 +11343,174 @@ impl Default for wire_cst_b_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_benchmark_binary_tree_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+            left: core::ptr::null_mut(),
+            right: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_binary_tree_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_binary_tree_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+            left: core::ptr::null_mut(),
+            right: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_binary_tree_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_binary_tree_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+            left: core::ptr::null_mut(),
+            right: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_binary_tree_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_binary_tree_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+            left: core::ptr::null_mut(),
+            right: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_binary_tree_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_binary_tree_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+            left: core::ptr::null_mut(),
+            right: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_binary_tree_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_binary_tree_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+            left: core::ptr::null_mut(),
+            right: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_binary_tree_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_blob_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
+            third: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_blob_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_blob_twin_rust_async {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
+            third: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_blob_twin_rust_async {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_blob_twin_rust_async_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
+            third: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_blob_twin_rust_async_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_blob_twin_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
+            third: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_blob_twin_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_blob_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
+            third: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_blob_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_benchmark_blob_twin_sync_sse {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
+            third: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_cst_benchmark_blob_twin_sync_sse {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_big_buffers_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -15892,6 +16390,36 @@ pub extern "C" fn wire_next_user_id_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_twin_normal(
+    port_: i64,
+    tree: *mut wire_cst_benchmark_binary_tree_twin_normal,
+) {
+    wire_benchmark_binary_tree_input_twin_normal_impl(port_, tree)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_twin_normal(
+    port_: i64,
+    depth: i32,
+    name: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth, name)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_twin_normal(
+    port_: i64,
+    blob: *mut wire_cst_benchmark_blob_twin_normal,
+) {
+    wire_benchmark_blob_input_twin_normal_impl(port_, blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_twin_normal(port_: i64, size: i32) {
+    wire_benchmark_blob_output_twin_normal_impl(port_, size)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_input_bytes_twin_normal(
     port_: i64,
     bytes: *mut wire_cst_list_prim_u_8,
@@ -17441,6 +17969,36 @@ pub extern "C" fn wire_next_user_id_twin_sync_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_twin_rust_async(
+    port_: i64,
+    tree: *mut wire_cst_benchmark_binary_tree_twin_rust_async,
+) {
+    wire_benchmark_binary_tree_input_twin_rust_async_impl(port_, tree)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_twin_rust_async(
+    port_: i64,
+    depth: i32,
+    name: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_binary_tree_output_twin_rust_async_impl(port_, depth, name)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_twin_rust_async(
+    port_: i64,
+    blob: *mut wire_cst_benchmark_blob_twin_rust_async,
+) {
+    wire_benchmark_blob_input_twin_rust_async_impl(port_, blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_twin_rust_async(port_: i64, size: i32) {
+    wire_benchmark_blob_output_twin_rust_async_impl(port_, size)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_input_bytes_twin_rust_async(
     port_: i64,
     bytes: *mut wire_cst_list_prim_u_8,
@@ -17456,6 +18014,51 @@ pub extern "C" fn wire_benchmark_output_bytes_twin_rust_async(port_: i64, size: 
 #[no_mangle]
 pub extern "C" fn wire_benchmark_void_twin_rust_async(port_: i64) {
     wire_benchmark_void_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -17489,6 +18092,46 @@ pub extern "C" fn wire_benchmark_void_twin_rust_async_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_input_bytes_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -17519,6 +18162,35 @@ pub extern "C" fn wire_benchmark_void_twin_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_twin_sync(
+    tree: *mut wire_cst_benchmark_binary_tree_twin_sync,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_input_twin_sync_impl(tree)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_twin_sync(
+    depth: i32,
+    name: *mut wire_cst_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_output_twin_sync_impl(depth, name)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_twin_sync(
+    blob: *mut wire_cst_benchmark_blob_twin_sync,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_input_twin_sync_impl(blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_twin_sync(
+    size: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_output_twin_sync_impl(size)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_input_bytes_twin_sync(
     bytes: *mut wire_cst_list_prim_u_8,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -17536,6 +18208,42 @@ pub extern "C" fn wire_benchmark_output_bytes_twin_sync(
 pub extern "C" fn wire_benchmark_void_twin_sync(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_void_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_input_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_output_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_input_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_output_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -28965,6 +29673,102 @@ pub extern "C" fn cst_new_box_autoadd_b_twin_sync_sse() -> *mut wire_cst_b_twin_
 }
 
 #[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_binary_tree_twin_normal(
+) -> *mut wire_cst_benchmark_binary_tree_twin_normal {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_normal::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async(
+) -> *mut wire_cst_benchmark_binary_tree_twin_rust_async {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_rust_async::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+) -> *mut wire_cst_benchmark_binary_tree_twin_rust_async_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_rust_async_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_binary_tree_twin_sse(
+) -> *mut wire_cst_benchmark_binary_tree_twin_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_binary_tree_twin_sync(
+) -> *mut wire_cst_benchmark_binary_tree_twin_sync {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_sync::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+) -> *mut wire_cst_benchmark_binary_tree_twin_sync_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_sync_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_blob_twin_normal(
+) -> *mut wire_cst_benchmark_blob_twin_normal {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_blob_twin_normal::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_blob_twin_rust_async(
+) -> *mut wire_cst_benchmark_blob_twin_rust_async {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_blob_twin_rust_async::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_blob_twin_rust_async_sse(
+) -> *mut wire_cst_benchmark_blob_twin_rust_async_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_blob_twin_rust_async_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_blob_twin_sse(
+) -> *mut wire_cst_benchmark_blob_twin_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_blob_twin_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_blob_twin_sync(
+) -> *mut wire_cst_benchmark_blob_twin_sync {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_blob_twin_sync::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_autoadd_benchmark_blob_twin_sync_sse(
+) -> *mut wire_cst_benchmark_blob_twin_sync_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_blob_twin_sync_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_box_autoadd_bool(value: bool) -> *mut bool {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
@@ -30955,6 +31759,54 @@ pub extern "C" fn cst_new_box_autoadd_weekdays_twin_sync(value: i32) -> *mut i32
 #[no_mangle]
 pub extern "C" fn cst_new_box_autoadd_weekdays_twin_sync_sse(value: i32) -> *mut i32 {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_benchmark_binary_tree_twin_normal(
+) -> *mut wire_cst_benchmark_binary_tree_twin_normal {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_normal::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_benchmark_binary_tree_twin_rust_async(
+) -> *mut wire_cst_benchmark_binary_tree_twin_rust_async {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_rust_async::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_benchmark_binary_tree_twin_rust_async_sse(
+) -> *mut wire_cst_benchmark_binary_tree_twin_rust_async_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_rust_async_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_benchmark_binary_tree_twin_sse(
+) -> *mut wire_cst_benchmark_binary_tree_twin_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_sse::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_benchmark_binary_tree_twin_sync(
+) -> *mut wire_cst_benchmark_binary_tree_twin_sync {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_sync::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn cst_new_box_benchmark_binary_tree_twin_sync_sse(
+) -> *mut wire_cst_benchmark_binary_tree_twin_sync_sse {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_benchmark_binary_tree_twin_sync_sse::new_with_null_ptr(),
+    )
 }
 
 #[no_mangle]
@@ -35408,6 +36260,90 @@ pub struct wire_cst_b_twin_sync {
 #[derive(Clone)]
 pub struct wire_cst_b_twin_sync_sse {
     b: i32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_binary_tree_twin_normal {
+    name: *mut wire_cst_list_prim_u_8,
+    left: *mut wire_cst_benchmark_binary_tree_twin_normal,
+    right: *mut wire_cst_benchmark_binary_tree_twin_normal,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_binary_tree_twin_rust_async {
+    name: *mut wire_cst_list_prim_u_8,
+    left: *mut wire_cst_benchmark_binary_tree_twin_rust_async,
+    right: *mut wire_cst_benchmark_binary_tree_twin_rust_async,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_binary_tree_twin_rust_async_sse {
+    name: *mut wire_cst_list_prim_u_8,
+    left: *mut wire_cst_benchmark_binary_tree_twin_rust_async_sse,
+    right: *mut wire_cst_benchmark_binary_tree_twin_rust_async_sse,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_binary_tree_twin_sse {
+    name: *mut wire_cst_list_prim_u_8,
+    left: *mut wire_cst_benchmark_binary_tree_twin_sse,
+    right: *mut wire_cst_benchmark_binary_tree_twin_sse,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_binary_tree_twin_sync {
+    name: *mut wire_cst_list_prim_u_8,
+    left: *mut wire_cst_benchmark_binary_tree_twin_sync,
+    right: *mut wire_cst_benchmark_binary_tree_twin_sync,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_binary_tree_twin_sync_sse {
+    name: *mut wire_cst_list_prim_u_8,
+    left: *mut wire_cst_benchmark_binary_tree_twin_sync_sse,
+    right: *mut wire_cst_benchmark_binary_tree_twin_sync_sse,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_blob_twin_normal {
+    first: *mut wire_cst_list_prim_u_8,
+    second: *mut wire_cst_list_prim_u_8,
+    third: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_blob_twin_rust_async {
+    first: *mut wire_cst_list_prim_u_8,
+    second: *mut wire_cst_list_prim_u_8,
+    third: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_blob_twin_rust_async_sse {
+    first: *mut wire_cst_list_prim_u_8,
+    second: *mut wire_cst_list_prim_u_8,
+    third: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_blob_twin_sse {
+    first: *mut wire_cst_list_prim_u_8,
+    second: *mut wire_cst_list_prim_u_8,
+    third: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_blob_twin_sync {
+    first: *mut wire_cst_list_prim_u_8,
+    second: *mut wire_cst_list_prim_u_8,
+    third: *mut wire_cst_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_cst_benchmark_blob_twin_sync_sse {
+    first: *mut wire_cst_list_prim_u_8,
+    second: *mut wire_cst_list_prim_u_8,
+    third: *mut wire_cst_list_prim_u_8,
 }
 #[repr(C)]
 #[derive(Clone)]

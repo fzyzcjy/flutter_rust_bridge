@@ -872,6 +872,50 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BTwinSyncSse dco_decode_b_twin_sync_sse(dynamic raw);
 
   @protected
+  BenchmarkBinaryTreeTwinNormal dco_decode_benchmark_binary_tree_twin_normal(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_benchmark_binary_tree_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_benchmark_binary_tree_twin_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_benchmark_binary_tree_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse dco_decode_benchmark_binary_tree_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_benchmark_blob_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsync dco_decode_benchmark_blob_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse dco_decode_benchmark_blob_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_benchmark_blob_twin_sse(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_benchmark_blob_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_benchmark_blob_twin_sync_sse(dynamic raw);
+
+  @protected
   BigBuffersTwinNormal dco_decode_big_buffers_twin_normal(dynamic raw);
 
   @protected
@@ -1010,6 +1054,55 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BTwinSyncSse dco_decode_box_autoadd_b_twin_sync_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync_sse(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_box_autoadd_benchmark_blob_twin_normal(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsync
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_box_autoadd_benchmark_blob_twin_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_box_autoadd_benchmark_blob_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_box_autoadd_benchmark_blob_twin_sync_sse(
+      dynamic raw);
 
   @protected
   bool dco_decode_box_autoadd_bool(dynamic raw);
@@ -2010,6 +2103,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   WeekdaysTwinSyncSse dco_decode_box_autoadd_weekdays_twin_sync_sse(
       dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_benchmark_binary_tree_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_benchmark_binary_tree_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_box_benchmark_binary_tree_twin_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_box_benchmark_binary_tree_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_benchmark_binary_tree_twin_sync_sse(dynamic raw);
 
   @protected
   BlobTwinNormal dco_decode_box_blob_twin_normal(dynamic raw);
@@ -3573,6 +3690,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  BenchmarkBinaryTreeTwinNormal?
+      dco_decode_opt_box_benchmark_binary_tree_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse? dco_decode_opt_box_benchmark_binary_tree_twin_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync_sse(dynamic raw);
+
+  @protected
   bool? dco_decode_opt_box_bool(dynamic raw);
 
   @protected
@@ -4716,6 +4857,56 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BTwinSyncSse sse_decode_b_twin_sync_sse(SseDeserializer deserializer);
 
   @protected
+  BenchmarkBinaryTreeTwinNormal sse_decode_benchmark_binary_tree_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      sse_decode_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      sse_decode_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse sse_decode_benchmark_binary_tree_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync sse_decode_benchmark_binary_tree_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse sse_decode_benchmark_binary_tree_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinNormal sse_decode_benchmark_blob_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinRustAsync sse_decode_benchmark_blob_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse sse_decode_benchmark_blob_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSse sse_decode_benchmark_blob_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSync sse_decode_benchmark_blob_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSyncSse sse_decode_benchmark_blob_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   BigBuffersTwinNormal sse_decode_big_buffers_twin_normal(
       SseDeserializer deserializer);
 
@@ -4879,6 +5070,62 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BTwinSyncSse sse_decode_box_autoadd_b_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinNormal sse_decode_box_autoadd_benchmark_blob_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinRustAsync
+      sse_decode_box_autoadd_benchmark_blob_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse
+      sse_decode_box_autoadd_benchmark_blob_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSse sse_decode_box_autoadd_benchmark_blob_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSync sse_decode_box_autoadd_benchmark_blob_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSyncSse sse_decode_box_autoadd_benchmark_blob_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -6025,6 +6272,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   WeekdaysTwinSyncSse sse_decode_box_autoadd_weekdays_twin_sync_sse(
       SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      sse_decode_box_benchmark_binary_tree_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      sse_decode_box_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      sse_decode_box_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse sse_decode_box_benchmark_binary_tree_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync sse_decode_box_benchmark_binary_tree_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      sse_decode_box_benchmark_binary_tree_twin_sync_sse(
+          SseDeserializer deserializer);
 
   @protected
   BlobTwinNormal sse_decode_box_blob_twin_normal(SseDeserializer deserializer);
@@ -7823,6 +8098,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  BenchmarkBinaryTreeTwinNormal?
+      sse_decode_opt_box_benchmark_binary_tree_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync?
+      sse_decode_opt_box_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse?
+      sse_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse? sse_decode_opt_box_benchmark_binary_tree_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync?
+      sse_decode_opt_box_benchmark_binary_tree_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse?
+      sse_decode_opt_box_benchmark_binary_tree_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   bool? sse_decode_opt_box_bool(SseDeserializer deserializer);
 
   @protected
@@ -8885,6 +9189,124 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal raw) {
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_opt_box_benchmark_binary_tree_twin_normal(raw.left),
+      cst_encode_opt_box_benchmark_binary_tree_twin_normal(raw.right)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync raw) {
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(raw.left),
+      cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(raw.right)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse raw) {
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(raw.left),
+      cst_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(raw.right)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse raw) {
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_opt_box_benchmark_binary_tree_twin_sse(raw.left),
+      cst_encode_opt_box_benchmark_binary_tree_twin_sse(raw.right)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync raw) {
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_opt_box_benchmark_binary_tree_twin_sync(raw.left),
+      cst_encode_opt_box_benchmark_binary_tree_twin_sync(raw.right)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse raw) {
+    return [
+      cst_encode_String(raw.name),
+      cst_encode_opt_box_benchmark_binary_tree_twin_sync_sse(raw.left),
+      cst_encode_opt_box_benchmark_binary_tree_twin_sync_sse(raw.right)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal raw) {
+    return [
+      cst_encode_list_prim_u_8(raw.first),
+      cst_encode_list_prim_u_8(raw.second),
+      cst_encode_list_prim_u_8(raw.third)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync raw) {
+    return [
+      cst_encode_list_prim_u_8(raw.first),
+      cst_encode_list_prim_u_8(raw.second),
+      cst_encode_list_prim_u_8(raw.third)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse raw) {
+    return [
+      cst_encode_list_prim_u_8(raw.first),
+      cst_encode_list_prim_u_8(raw.second),
+      cst_encode_list_prim_u_8(raw.third)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_blob_twin_sse(BenchmarkBlobTwinSse raw) {
+    return [
+      cst_encode_list_prim_u_8(raw.first),
+      cst_encode_list_prim_u_8(raw.second),
+      cst_encode_list_prim_u_8(raw.third)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_blob_twin_sync(BenchmarkBlobTwinSync raw) {
+    return [
+      cst_encode_list_prim_u_8(raw.first),
+      cst_encode_list_prim_u_8(raw.second),
+      cst_encode_list_prim_u_8(raw.third)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse raw) {
+    return [
+      cst_encode_list_prim_u_8(raw.first),
+      cst_encode_list_prim_u_8(raw.second),
+      cst_encode_list_prim_u_8(raw.third)
+    ];
+  }
+
+  @protected
   List<dynamic> cst_encode_big_buffers_twin_normal(BigBuffersTwinNormal raw) {
     return [
       cst_encode_list_prim_i_64(raw.int64),
@@ -9134,6 +9556,79 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_box_autoadd_b_twin_sync_sse(BTwinSyncSse raw) {
     return cst_encode_b_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal raw) {
+    return cst_encode_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync raw) {
+    return cst_encode_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic>
+      cst_encode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          BenchmarkBinaryTreeTwinRustAsyncSse raw) {
+    return cst_encode_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse raw) {
+    return cst_encode_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync raw) {
+    return cst_encode_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse raw) {
+    return cst_encode_benchmark_binary_tree_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal raw) {
+    return cst_encode_benchmark_blob_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync raw) {
+    return cst_encode_benchmark_blob_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse raw) {
+    return cst_encode_benchmark_blob_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_sse(
+      BenchmarkBlobTwinSse raw) {
+    return cst_encode_benchmark_blob_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_sync(
+      BenchmarkBlobTwinSync raw) {
+    return cst_encode_benchmark_blob_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse raw) {
+    return cst_encode_benchmark_blob_twin_sync_sse(raw);
   }
 
   @protected
@@ -10684,6 +11179,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_box_autoadd_weekdays_twin_sync_sse(WeekdaysTwinSyncSse raw) {
     return cst_encode_weekdays_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal raw) {
+    return cst_encode_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync raw) {
+    return cst_encode_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse raw) {
+    return cst_encode_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse raw) {
+    return cst_encode_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync raw) {
+    return cst_encode_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse raw) {
+    return cst_encode_benchmark_binary_tree_twin_sync_sse(raw);
   }
 
   @protected
@@ -14479,6 +15010,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_benchmark_binary_tree_twin_sync_sse(raw);
+  }
+
+  @protected
   bool? cst_encode_opt_box_bool(bool? raw) {
     return raw == null ? null : cst_encode_box_bool(raw);
   }
@@ -16759,6 +17338,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_b_twin_sync_sse(BTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_sse(
+      BenchmarkBlobTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_sync(
+      BenchmarkBlobTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_big_buffers_twin_normal(
       BigBuffersTwinNormal self, SseSerializer serializer);
 
@@ -16933,6 +17560,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_b_twin_sync_sse(
       BTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_sse(
+      BenchmarkBlobTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_sync(
+      BenchmarkBlobTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_bool(bool self, SseSerializer serializer);
@@ -17976,6 +18651,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_weekdays_twin_sync_sse(
       WeekdaysTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_blob_twin_normal(
@@ -19740,6 +20439,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       WeekdaysTwinSyncSse? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_bool(bool? self, SseSerializer serializer);
 
   @protected
@@ -20522,6 +21245,22 @@ class RustLibWire extends BaseWire {
   void wire_next_user_id_twin_normal(
           NativePortType port_, List<dynamic> user_id) =>
       wasmModule.wire_next_user_id_twin_normal(port_, user_id);
+
+  void wire_benchmark_binary_tree_input_twin_normal(
+          NativePortType port_, List<dynamic> tree) =>
+      wasmModule.wire_benchmark_binary_tree_input_twin_normal(port_, tree);
+
+  void wire_benchmark_binary_tree_output_twin_normal(
+          NativePortType port_, int depth, String name) =>
+      wasmModule.wire_benchmark_binary_tree_output_twin_normal(
+          port_, depth, name);
+
+  void wire_benchmark_blob_input_twin_normal(
+          NativePortType port_, List<dynamic> blob) =>
+      wasmModule.wire_benchmark_blob_input_twin_normal(port_, blob);
+
+  void wire_benchmark_blob_output_twin_normal(NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_blob_output_twin_normal(port_, size);
 
   void wire_benchmark_input_bytes_twin_normal(
           NativePortType port_, Uint8List bytes) =>
@@ -21516,6 +22255,23 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_next_user_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
+  void wire_benchmark_binary_tree_input_twin_rust_async(
+          NativePortType port_, List<dynamic> tree) =>
+      wasmModule.wire_benchmark_binary_tree_input_twin_rust_async(port_, tree);
+
+  void wire_benchmark_binary_tree_output_twin_rust_async(
+          NativePortType port_, int depth, String name) =>
+      wasmModule.wire_benchmark_binary_tree_output_twin_rust_async(
+          port_, depth, name);
+
+  void wire_benchmark_blob_input_twin_rust_async(
+          NativePortType port_, List<dynamic> blob) =>
+      wasmModule.wire_benchmark_blob_input_twin_rust_async(port_, blob);
+
+  void wire_benchmark_blob_output_twin_rust_async(
+          NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_blob_output_twin_rust_async(port_, size);
+
   void wire_benchmark_input_bytes_twin_rust_async(
           NativePortType port_, Uint8List bytes) =>
       wasmModule.wire_benchmark_input_bytes_twin_rust_async(port_, bytes);
@@ -21526,6 +22282,38 @@ class RustLibWire extends BaseWire {
 
   void wire_benchmark_void_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_benchmark_void_twin_rust_async(port_);
+
+  void wire_benchmark_binary_tree_input_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_input_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_output_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_output_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_input_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_input_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_output_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_output_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_input_bytes_twin_rust_async_sse(
           NativePortType port_,
@@ -21549,6 +22337,38 @@ class RustLibWire extends BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_benchmark_void_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_input_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_input_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_output_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_output_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_input_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_input_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_output_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_output_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_input_bytes_twin_sse(
@@ -21576,6 +22396,22 @@ class RustLibWire extends BaseWire {
           port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_input_twin_sync(List<dynamic> tree) =>
+          wasmModule.wire_benchmark_binary_tree_input_twin_sync(tree);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_output_twin_sync(int depth, String name) =>
+          wasmModule.wire_benchmark_binary_tree_output_twin_sync(depth, name);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_input_twin_sync(List<dynamic> blob) =>
+          wasmModule.wire_benchmark_blob_input_twin_sync(blob);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_output_twin_sync(int size) =>
+          wasmModule.wire_benchmark_blob_output_twin_sync(size);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_input_bytes_twin_sync(Uint8List bytes) =>
           wasmModule.wire_benchmark_input_bytes_twin_sync(bytes);
 
@@ -21586,6 +22422,38 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_void_twin_sync() =>
           wasmModule.wire_benchmark_void_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_input_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_binary_tree_input_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_output_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_binary_tree_output_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_input_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_blob_input_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_output_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_blob_output_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_benchmark_input_bytes_twin_sync_sse(
@@ -29421,6 +30289,18 @@ class RustLibWasmModule implements WasmModule {
   external void wire_next_user_id_twin_normal(
       NativePortType port_, List<dynamic> user_id);
 
+  external void wire_benchmark_binary_tree_input_twin_normal(
+      NativePortType port_, List<dynamic> tree);
+
+  external void wire_benchmark_binary_tree_output_twin_normal(
+      NativePortType port_, int depth, String name);
+
+  external void wire_benchmark_blob_input_twin_normal(
+      NativePortType port_, List<dynamic> blob);
+
+  external void wire_benchmark_blob_output_twin_normal(
+      NativePortType port_, int size);
+
   external void wire_benchmark_input_bytes_twin_normal(
       NativePortType port_, Uint8List bytes);
 
@@ -30085,6 +30965,18 @@ class RustLibWasmModule implements WasmModule {
       wire_next_user_id_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
 
+  external void wire_benchmark_binary_tree_input_twin_rust_async(
+      NativePortType port_, List<dynamic> tree);
+
+  external void wire_benchmark_binary_tree_output_twin_rust_async(
+      NativePortType port_, int depth, String name);
+
+  external void wire_benchmark_blob_input_twin_rust_async(
+      NativePortType port_, List<dynamic> blob);
+
+  external void wire_benchmark_blob_output_twin_rust_async(
+      NativePortType port_, int size);
+
   external void wire_benchmark_input_bytes_twin_rust_async(
       NativePortType port_, Uint8List bytes);
 
@@ -30092,6 +30984,30 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int size);
 
   external void wire_benchmark_void_twin_rust_async(NativePortType port_);
+
+  external void wire_benchmark_binary_tree_input_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_binary_tree_output_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_blob_input_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_blob_output_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_benchmark_input_bytes_twin_rust_async_sse(
       NativePortType port_,
@@ -30108,6 +31024,18 @@ class RustLibWasmModule implements WasmModule {
   external void wire_benchmark_void_twin_rust_async_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_benchmark_binary_tree_input_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_benchmark_binary_tree_output_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_benchmark_blob_input_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_benchmark_blob_output_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
   external void wire_benchmark_input_bytes_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
@@ -30118,6 +31046,18 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_input_twin_sync(List<dynamic> tree);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_output_twin_sync(int depth, String name);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_input_twin_sync(List<dynamic> blob);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_output_twin_sync(int size);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_input_bytes_twin_sync(Uint8List bytes);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -30125,6 +31065,30 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_void_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_input_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_output_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_input_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_output_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_benchmark_input_bytes_twin_sync_sse(

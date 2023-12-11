@@ -17,3 +17,69 @@ Future<int> benchmarkInputBytesTwinNormal(
 Future<Uint8List> benchmarkOutputBytesTwinNormal(
         {required int size, dynamic hint}) =>
     RustLib.instance.api.benchmarkOutputBytesTwinNormal(size: size, hint: hint);
+
+Future<void> benchmarkBinaryTreeInputTwinNormal(
+        {required BenchmarkBinaryTreeTwinNormal tree, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputTwinNormal(tree: tree, hint: hint);
+
+Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
+        {required int depth, required String name, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBinaryTreeOutputTwinNormal(
+        depth: depth, name: name, hint: hint);
+
+Future<void> benchmarkBlobInputTwinNormal(
+        {required BenchmarkBlobTwinNormal blob, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBlobInputTwinNormal(blob: blob, hint: hint);
+
+Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBlobOutputTwinNormal(size: size, hint: hint);
+
+class BenchmarkBinaryTreeTwinNormal {
+  final String name;
+  final BenchmarkBinaryTreeTwinNormal? left;
+  final BenchmarkBinaryTreeTwinNormal? right;
+
+  const BenchmarkBinaryTreeTwinNormal({
+    required this.name,
+    this.left,
+    this.right,
+  });
+
+  @override
+  int get hashCode => name.hashCode ^ left.hashCode ^ right.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBinaryTreeTwinNormal &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          left == other.left &&
+          right == other.right;
+}
+
+class BenchmarkBlobTwinNormal {
+  final Uint8List first;
+  final Uint8List second;
+  final Uint8List third;
+
+  const BenchmarkBlobTwinNormal({
+    required this.first,
+    required this.second,
+    required this.third,
+  });
+
+  @override
+  int get hashCode => first.hashCode ^ second.hashCode ^ third.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBlobTwinNormal &&
+          runtimeType == other.runtimeType &&
+          first == other.first &&
+          second == other.second &&
+          third == other.third;
+}

@@ -873,6 +873,50 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BTwinSyncSse dco_decode_b_twin_sync_sse(dynamic raw);
 
   @protected
+  BenchmarkBinaryTreeTwinNormal dco_decode_benchmark_binary_tree_twin_normal(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_benchmark_binary_tree_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_benchmark_binary_tree_twin_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_benchmark_binary_tree_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse dco_decode_benchmark_binary_tree_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_benchmark_blob_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsync dco_decode_benchmark_blob_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse dco_decode_benchmark_blob_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_benchmark_blob_twin_sse(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_benchmark_blob_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_benchmark_blob_twin_sync_sse(dynamic raw);
+
+  @protected
   BigBuffersTwinNormal dco_decode_big_buffers_twin_normal(dynamic raw);
 
   @protected
@@ -1011,6 +1055,55 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BTwinSyncSse dco_decode_box_autoadd_b_twin_sync_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync_sse(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_box_autoadd_benchmark_blob_twin_normal(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsync
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_box_autoadd_benchmark_blob_twin_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_box_autoadd_benchmark_blob_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_box_autoadd_benchmark_blob_twin_sync_sse(
+      dynamic raw);
 
   @protected
   bool dco_decode_box_autoadd_bool(dynamic raw);
@@ -2011,6 +2104,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   WeekdaysTwinSyncSse dco_decode_box_autoadd_weekdays_twin_sync_sse(
       dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_benchmark_binary_tree_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_benchmark_binary_tree_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_box_benchmark_binary_tree_twin_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_box_benchmark_binary_tree_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_benchmark_binary_tree_twin_sync_sse(dynamic raw);
 
   @protected
   BlobTwinNormal dco_decode_box_blob_twin_normal(dynamic raw);
@@ -3574,6 +3691,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  BenchmarkBinaryTreeTwinNormal?
+      dco_decode_opt_box_benchmark_binary_tree_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse? dco_decode_opt_box_benchmark_binary_tree_twin_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync_sse(dynamic raw);
+
+  @protected
   bool? dco_decode_opt_box_bool(dynamic raw);
 
   @protected
@@ -4717,6 +4858,56 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BTwinSyncSse sse_decode_b_twin_sync_sse(SseDeserializer deserializer);
 
   @protected
+  BenchmarkBinaryTreeTwinNormal sse_decode_benchmark_binary_tree_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      sse_decode_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      sse_decode_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse sse_decode_benchmark_binary_tree_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync sse_decode_benchmark_binary_tree_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse sse_decode_benchmark_binary_tree_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinNormal sse_decode_benchmark_blob_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinRustAsync sse_decode_benchmark_blob_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse sse_decode_benchmark_blob_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSse sse_decode_benchmark_blob_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSync sse_decode_benchmark_blob_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSyncSse sse_decode_benchmark_blob_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   BigBuffersTwinNormal sse_decode_big_buffers_twin_normal(
       SseDeserializer deserializer);
 
@@ -4880,6 +5071,62 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BTwinSyncSse sse_decode_box_autoadd_b_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinNormal sse_decode_box_autoadd_benchmark_blob_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinRustAsync
+      sse_decode_box_autoadd_benchmark_blob_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse
+      sse_decode_box_autoadd_benchmark_blob_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSse sse_decode_box_autoadd_benchmark_blob_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSync sse_decode_box_autoadd_benchmark_blob_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBlobTwinSyncSse sse_decode_box_autoadd_benchmark_blob_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -6026,6 +6273,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   WeekdaysTwinSyncSse sse_decode_box_autoadd_weekdays_twin_sync_sse(
       SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      sse_decode_box_benchmark_binary_tree_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      sse_decode_box_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      sse_decode_box_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse sse_decode_box_benchmark_binary_tree_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync sse_decode_box_benchmark_binary_tree_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      sse_decode_box_benchmark_binary_tree_twin_sync_sse(
+          SseDeserializer deserializer);
 
   @protected
   BlobTwinNormal sse_decode_box_blob_twin_normal(SseDeserializer deserializer);
@@ -7824,6 +8099,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  BenchmarkBinaryTreeTwinNormal?
+      sse_decode_opt_box_benchmark_binary_tree_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync?
+      sse_decode_opt_box_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse?
+      sse_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse? sse_decode_opt_box_benchmark_binary_tree_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync?
+      sse_decode_opt_box_benchmark_binary_tree_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse?
+      sse_decode_opt_box_benchmark_binary_tree_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   bool? sse_decode_opt_box_bool(SseDeserializer deserializer);
 
   @protected
@@ -8859,6 +9163,116 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       BTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_b_twin_sync_sse();
     cst_api_fill_to_wire_b_twin_sync_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>
+      cst_encode_box_autoadd_benchmark_binary_tree_twin_normal(
+          BenchmarkBinaryTreeTwinNormal raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_binary_tree_twin_normal();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>
+      cst_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+          BenchmarkBinaryTreeTwinRustAsync raw) {
+    final ptr =
+        wire.cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+      cst_encode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          BenchmarkBinaryTreeTwinRustAsyncSse raw) {
+    final ptr =
+        wire.cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_sse();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async_sse(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse>
+      cst_encode_box_autoadd_benchmark_binary_tree_twin_sse(
+          BenchmarkBinaryTreeTwinSse raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_binary_tree_twin_sse();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>
+      cst_encode_box_autoadd_benchmark_binary_tree_twin_sync(
+          BenchmarkBinaryTreeTwinSync raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_binary_tree_twin_sync();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse>
+      cst_encode_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+          BenchmarkBinaryTreeTwinSyncSse raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_binary_tree_twin_sync_sse();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sync_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_blob_twin_normal>
+      cst_encode_box_autoadd_benchmark_blob_twin_normal(
+          BenchmarkBlobTwinNormal raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_blob_twin_normal();
+    cst_api_fill_to_wire_benchmark_blob_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async>
+      cst_encode_box_autoadd_benchmark_blob_twin_rust_async(
+          BenchmarkBlobTwinRustAsync raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_blob_twin_rust_async();
+    cst_api_fill_to_wire_benchmark_blob_twin_rust_async(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async_sse>
+      cst_encode_box_autoadd_benchmark_blob_twin_rust_async_sse(
+          BenchmarkBlobTwinRustAsyncSse raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_blob_twin_rust_async_sse();
+    cst_api_fill_to_wire_benchmark_blob_twin_rust_async_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_blob_twin_sse>
+      cst_encode_box_autoadd_benchmark_blob_twin_sse(BenchmarkBlobTwinSse raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_blob_twin_sse();
+    cst_api_fill_to_wire_benchmark_blob_twin_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_blob_twin_sync>
+      cst_encode_box_autoadd_benchmark_blob_twin_sync(
+          BenchmarkBlobTwinSync raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_blob_twin_sync();
+    cst_api_fill_to_wire_benchmark_blob_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_blob_twin_sync_sse>
+      cst_encode_box_autoadd_benchmark_blob_twin_sync_sse(
+          BenchmarkBlobTwinSyncSse raw) {
+    final ptr = wire.cst_new_box_autoadd_benchmark_blob_twin_sync_sse();
+    cst_api_fill_to_wire_benchmark_blob_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -11146,6 +11560,61 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>
+      cst_encode_box_benchmark_binary_tree_twin_normal(
+          BenchmarkBinaryTreeTwinNormal raw) {
+    final ptr = wire.cst_new_box_benchmark_binary_tree_twin_normal();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>
+      cst_encode_box_benchmark_binary_tree_twin_rust_async(
+          BenchmarkBinaryTreeTwinRustAsync raw) {
+    final ptr = wire.cst_new_box_benchmark_binary_tree_twin_rust_async();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+      cst_encode_box_benchmark_binary_tree_twin_rust_async_sse(
+          BenchmarkBinaryTreeTwinRustAsyncSse raw) {
+    final ptr = wire.cst_new_box_benchmark_binary_tree_twin_rust_async_sse();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async_sse(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse>
+      cst_encode_box_benchmark_binary_tree_twin_sse(
+          BenchmarkBinaryTreeTwinSse raw) {
+    final ptr = wire.cst_new_box_benchmark_binary_tree_twin_sse();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>
+      cst_encode_box_benchmark_binary_tree_twin_sync(
+          BenchmarkBinaryTreeTwinSync raw) {
+    final ptr = wire.cst_new_box_benchmark_binary_tree_twin_sync();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse>
+      cst_encode_box_benchmark_binary_tree_twin_sync_sse(
+          BenchmarkBinaryTreeTwinSyncSse raw) {
+    final ptr = wire.cst_new_box_benchmark_binary_tree_twin_sync_sse();
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sync_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_cst_blob_twin_normal> cst_encode_box_blob_twin_normal(
       BlobTwinNormal raw) {
     final ptr = wire.cst_new_box_blob_twin_normal();
@@ -12911,6 +13380,60 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>
+      cst_encode_opt_box_benchmark_binary_tree_twin_normal(
+          BenchmarkBinaryTreeTwinNormal? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>
+      cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(
+          BenchmarkBinaryTreeTwinRustAsync? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+      cst_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+          BenchmarkBinaryTreeTwinRustAsyncSse? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse>
+      cst_encode_opt_box_benchmark_binary_tree_twin_sse(
+          BenchmarkBinaryTreeTwinSse? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>
+      cst_encode_opt_box_benchmark_binary_tree_twin_sync(
+          BenchmarkBinaryTreeTwinSync? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse>
+      cst_encode_opt_box_benchmark_binary_tree_twin_sync_sse(
+          BenchmarkBinaryTreeTwinSyncSse? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_benchmark_binary_tree_twin_sync_sse(raw);
+  }
+
+  @protected
   ffi.Pointer<ffi.Bool> cst_encode_opt_box_bool(bool? raw) {
     return raw == null ? ffi.nullptr : cst_encode_box_bool(raw);
   }
@@ -13767,6 +14290,125 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal apiObj,
+      wire_cst_benchmark_binary_tree_twin_normal wireObj) {
+    wireObj.name = cst_encode_String(apiObj.name);
+    wireObj.left =
+        cst_encode_opt_box_benchmark_binary_tree_twin_normal(apiObj.left);
+    wireObj.right =
+        cst_encode_opt_box_benchmark_binary_tree_twin_normal(apiObj.right);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync apiObj,
+      wire_cst_benchmark_binary_tree_twin_rust_async wireObj) {
+    wireObj.name = cst_encode_String(apiObj.name);
+    wireObj.left =
+        cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(apiObj.left);
+    wireObj.right =
+        cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(apiObj.right);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse apiObj,
+      wire_cst_benchmark_binary_tree_twin_rust_async_sse wireObj) {
+    wireObj.name = cst_encode_String(apiObj.name);
+    wireObj.left = cst_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+        apiObj.left);
+    wireObj.right =
+        cst_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+            apiObj.right);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse apiObj,
+      wire_cst_benchmark_binary_tree_twin_sse wireObj) {
+    wireObj.name = cst_encode_String(apiObj.name);
+    wireObj.left =
+        cst_encode_opt_box_benchmark_binary_tree_twin_sse(apiObj.left);
+    wireObj.right =
+        cst_encode_opt_box_benchmark_binary_tree_twin_sse(apiObj.right);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync apiObj,
+      wire_cst_benchmark_binary_tree_twin_sync wireObj) {
+    wireObj.name = cst_encode_String(apiObj.name);
+    wireObj.left =
+        cst_encode_opt_box_benchmark_binary_tree_twin_sync(apiObj.left);
+    wireObj.right =
+        cst_encode_opt_box_benchmark_binary_tree_twin_sync(apiObj.right);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse apiObj,
+      wire_cst_benchmark_binary_tree_twin_sync_sse wireObj) {
+    wireObj.name = cst_encode_String(apiObj.name);
+    wireObj.left =
+        cst_encode_opt_box_benchmark_binary_tree_twin_sync_sse(apiObj.left);
+    wireObj.right =
+        cst_encode_opt_box_benchmark_binary_tree_twin_sync_sse(apiObj.right);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal apiObj,
+      wire_cst_benchmark_blob_twin_normal wireObj) {
+    wireObj.first = cst_encode_list_prim_u_8(apiObj.first);
+    wireObj.second = cst_encode_list_prim_u_8(apiObj.second);
+    wireObj.third = cst_encode_list_prim_u_8(apiObj.third);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync apiObj,
+      wire_cst_benchmark_blob_twin_rust_async wireObj) {
+    wireObj.first = cst_encode_list_prim_u_8(apiObj.first);
+    wireObj.second = cst_encode_list_prim_u_8(apiObj.second);
+    wireObj.third = cst_encode_list_prim_u_8(apiObj.third);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse apiObj,
+      wire_cst_benchmark_blob_twin_rust_async_sse wireObj) {
+    wireObj.first = cst_encode_list_prim_u_8(apiObj.first);
+    wireObj.second = cst_encode_list_prim_u_8(apiObj.second);
+    wireObj.third = cst_encode_list_prim_u_8(apiObj.third);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_blob_twin_sse(
+      BenchmarkBlobTwinSse apiObj, wire_cst_benchmark_blob_twin_sse wireObj) {
+    wireObj.first = cst_encode_list_prim_u_8(apiObj.first);
+    wireObj.second = cst_encode_list_prim_u_8(apiObj.second);
+    wireObj.third = cst_encode_list_prim_u_8(apiObj.third);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_blob_twin_sync(
+      BenchmarkBlobTwinSync apiObj, wire_cst_benchmark_blob_twin_sync wireObj) {
+    wireObj.first = cst_encode_list_prim_u_8(apiObj.first);
+    wireObj.second = cst_encode_list_prim_u_8(apiObj.second);
+    wireObj.third = cst_encode_list_prim_u_8(apiObj.third);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse apiObj,
+      wire_cst_benchmark_blob_twin_sync_sse wireObj) {
+    wireObj.first = cst_encode_list_prim_u_8(apiObj.first);
+    wireObj.second = cst_encode_list_prim_u_8(apiObj.second);
+    wireObj.third = cst_encode_list_prim_u_8(apiObj.third);
+  }
+
+  @protected
   void cst_api_fill_to_wire_big_buffers_twin_normal(
       BigBuffersTwinNormal apiObj, wire_cst_big_buffers_twin_normal wireObj) {
     wireObj.int64 = cst_encode_list_prim_i_64(apiObj.int64);
@@ -14018,6 +14660,96 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_api_fill_to_wire_box_autoadd_b_twin_sync_sse(
       BTwinSyncSse apiObj, ffi.Pointer<wire_cst_b_twin_sync_sse> wireObj) {
     cst_api_fill_to_wire_b_twin_sync_sse(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_normal(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          BenchmarkBinaryTreeTwinRustAsyncSse apiObj,
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+              wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async_sse(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sse(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sync(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sync_sse(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal apiObj,
+      ffi.Pointer<wire_cst_benchmark_blob_twin_normal> wireObj) {
+    cst_api_fill_to_wire_benchmark_blob_twin_normal(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync apiObj,
+      ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async> wireObj) {
+    cst_api_fill_to_wire_benchmark_blob_twin_rust_async(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse apiObj,
+      ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async_sse> wireObj) {
+    cst_api_fill_to_wire_benchmark_blob_twin_rust_async_sse(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_blob_twin_sse(
+      BenchmarkBlobTwinSse apiObj,
+      ffi.Pointer<wire_cst_benchmark_blob_twin_sse> wireObj) {
+    cst_api_fill_to_wire_benchmark_blob_twin_sse(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_blob_twin_sync(
+      BenchmarkBlobTwinSync apiObj,
+      ffi.Pointer<wire_cst_benchmark_blob_twin_sync> wireObj) {
+    cst_api_fill_to_wire_benchmark_blob_twin_sync(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse apiObj,
+      ffi.Pointer<wire_cst_benchmark_blob_twin_sync_sse> wireObj) {
+    cst_api_fill_to_wire_benchmark_blob_twin_sync_sse(apiObj, wireObj.ref);
   }
 
   @protected
@@ -15724,6 +16456,51 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       UserIdTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_user_id_twin_sync_sse> wireObj) {
     cst_api_fill_to_wire_user_id_twin_sync_sse(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_normal(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_rust_async_sse(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sse(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sync(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse apiObj,
+      ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse> wireObj) {
+    cst_api_fill_to_wire_benchmark_binary_tree_twin_sync_sse(
+        apiObj, wireObj.ref);
   }
 
   @protected
@@ -21349,6 +22126,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_b_twin_sync_sse(BTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_sse(
+      BenchmarkBlobTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_sync(
+      BenchmarkBlobTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_big_buffers_twin_normal(
       BigBuffersTwinNormal self, SseSerializer serializer);
 
@@ -21523,6 +22348,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_b_twin_sync_sse(
       BTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_sse(
+      BenchmarkBlobTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_sync(
+      BenchmarkBlobTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_bool(bool self, SseSerializer serializer);
@@ -22566,6 +23439,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_weekdays_twin_sync_sse(
       WeekdaysTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_blob_twin_normal(
@@ -24330,6 +25227,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       WeekdaysTwinSyncSse? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_bool(bool? self, SseSerializer serializer);
 
   @protected
@@ -25435,6 +26356,84 @@ class RustLibWire implements BaseWire {
   late final _wire_next_user_id_twin_normal =
       _wire_next_user_id_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_user_id_twin_normal>)>();
+
+  void wire_benchmark_binary_tree_input_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> tree,
+  ) {
+    return _wire_benchmark_binary_tree_input_twin_normal(
+      port_,
+      tree,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>)>>(
+      'wire_benchmark_binary_tree_input_twin_normal');
+  late final _wire_benchmark_binary_tree_input_twin_normal =
+      _wire_benchmark_binary_tree_input_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>)>();
+
+  void wire_benchmark_binary_tree_output_twin_normal(
+    int port_,
+    int depth,
+    ffi.Pointer<wire_cst_list_prim_u_8> name,
+  ) {
+    return _wire_benchmark_binary_tree_output_twin_normal(
+      port_,
+      depth,
+      name,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Int32, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_binary_tree_output_twin_normal');
+  late final _wire_benchmark_binary_tree_output_twin_normal =
+      _wire_benchmark_binary_tree_output_twin_normalPtr.asFunction<
+          void Function(int, int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_blob_input_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_benchmark_blob_twin_normal> blob,
+  ) {
+    return _wire_benchmark_blob_input_twin_normal(
+      port_,
+      blob,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_benchmark_blob_twin_normal>)>>(
+      'wire_benchmark_blob_input_twin_normal');
+  late final _wire_benchmark_blob_input_twin_normal =
+      _wire_benchmark_blob_input_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_benchmark_blob_twin_normal>)>();
+
+  void wire_benchmark_blob_output_twin_normal(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_twin_normal(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_blob_output_twin_normal');
+  late final _wire_benchmark_blob_output_twin_normal =
+      _wire_benchmark_blob_output_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
   void wire_benchmark_input_bytes_twin_normal(
     int port_,
@@ -29457,6 +30456,86 @@ class RustLibWire implements BaseWire {
       _wire_next_user_id_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_benchmark_binary_tree_input_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async> tree,
+  ) {
+    return _wire_benchmark_binary_tree_input_twin_rust_async(
+      port_,
+      tree,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_benchmark_binary_tree_twin_rust_async>)>>(
+      'wire_benchmark_binary_tree_input_twin_rust_async');
+  late final _wire_benchmark_binary_tree_input_twin_rust_async =
+      _wire_benchmark_binary_tree_input_twin_rust_asyncPtr.asFunction<
+          void Function(int,
+              ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>)>();
+
+  void wire_benchmark_binary_tree_output_twin_rust_async(
+    int port_,
+    int depth,
+    ffi.Pointer<wire_cst_list_prim_u_8> name,
+  ) {
+    return _wire_benchmark_binary_tree_output_twin_rust_async(
+      port_,
+      depth,
+      name,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Int32, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_binary_tree_output_twin_rust_async');
+  late final _wire_benchmark_binary_tree_output_twin_rust_async =
+      _wire_benchmark_binary_tree_output_twin_rust_asyncPtr.asFunction<
+          void Function(int, int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_blob_input_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async> blob,
+  ) {
+    return _wire_benchmark_blob_input_twin_rust_async(
+      port_,
+      blob,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async>)>>(
+      'wire_benchmark_blob_input_twin_rust_async');
+  late final _wire_benchmark_blob_input_twin_rust_async =
+      _wire_benchmark_blob_input_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async>)>();
+
+  void wire_benchmark_blob_output_twin_rust_async(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_twin_rust_async(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_blob_output_twin_rust_async');
+  late final _wire_benchmark_blob_output_twin_rust_async =
+      _wire_benchmark_blob_output_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
   void wire_benchmark_input_bytes_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8> bytes,
@@ -29506,6 +30585,97 @@ class RustLibWire implements BaseWire {
           'wire_benchmark_void_twin_rust_async');
   late final _wire_benchmark_void_twin_rust_async =
       _wire_benchmark_void_twin_rust_asyncPtr.asFunction<void Function(int)>();
+
+  void wire_benchmark_binary_tree_input_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_input_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'wire_benchmark_binary_tree_input_twin_rust_async_sse');
+  late final _wire_benchmark_binary_tree_input_twin_rust_async_sse =
+      _wire_benchmark_binary_tree_input_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_binary_tree_output_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_output_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_twin_rust_async_sse');
+  late final _wire_benchmark_binary_tree_output_twin_rust_async_sse =
+      _wire_benchmark_binary_tree_output_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_input_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_input_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_twin_rust_async_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_input_twin_rust_async_sse');
+  late final _wire_benchmark_blob_input_twin_rust_async_sse =
+      _wire_benchmark_blob_input_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_output_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_output_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_twin_rust_async_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_output_twin_rust_async_sse');
+  late final _wire_benchmark_blob_output_twin_rust_async_sse =
+      _wire_benchmark_blob_output_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_benchmark_input_bytes_twin_rust_async_sse(
     int port_,
@@ -29573,6 +30743,94 @@ class RustLibWire implements BaseWire {
       _wire_benchmark_void_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_benchmark_binary_tree_input_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_input_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_binary_tree_input_twin_sse');
+  late final _wire_benchmark_binary_tree_input_twin_sse =
+      _wire_benchmark_binary_tree_input_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_binary_tree_output_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_output_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_binary_tree_output_twin_sse');
+  late final _wire_benchmark_binary_tree_output_twin_sse =
+      _wire_benchmark_binary_tree_output_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_input_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_input_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_input_twin_sse');
+  late final _wire_benchmark_blob_input_twin_sse =
+      _wire_benchmark_blob_input_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_output_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_output_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_output_twin_sse');
+  late final _wire_benchmark_blob_output_twin_sse =
+      _wire_benchmark_blob_output_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_benchmark_input_bytes_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -29638,6 +30896,77 @@ class RustLibWire implements BaseWire {
   late final _wire_benchmark_void_twin_sse = _wire_benchmark_void_twin_ssePtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  WireSyncRust2DartDco wire_benchmark_binary_tree_input_twin_sync(
+    ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync> tree,
+  ) {
+    return _wire_benchmark_binary_tree_input_twin_sync(
+      tree,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>)>>(
+      'wire_benchmark_binary_tree_input_twin_sync');
+  late final _wire_benchmark_binary_tree_input_twin_sync =
+      _wire_benchmark_binary_tree_input_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>)>();
+
+  WireSyncRust2DartDco wire_benchmark_binary_tree_output_twin_sync(
+    int depth,
+    ffi.Pointer<wire_cst_list_prim_u_8> name,
+  ) {
+    return _wire_benchmark_binary_tree_output_twin_sync(
+      depth,
+      name,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Int32, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_binary_tree_output_twin_sync');
+  late final _wire_benchmark_binary_tree_output_twin_sync =
+      _wire_benchmark_binary_tree_output_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  WireSyncRust2DartDco wire_benchmark_blob_input_twin_sync(
+    ffi.Pointer<wire_cst_benchmark_blob_twin_sync> blob,
+  ) {
+    return _wire_benchmark_blob_input_twin_sync(
+      blob,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_benchmark_blob_twin_sync>)>>(
+      'wire_benchmark_blob_input_twin_sync');
+  late final _wire_benchmark_blob_input_twin_sync =
+      _wire_benchmark_blob_input_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_benchmark_blob_twin_sync>)>();
+
+  WireSyncRust2DartDco wire_benchmark_blob_output_twin_sync(
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_twin_sync(
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+          'wire_benchmark_blob_output_twin_sync');
+  late final _wire_benchmark_blob_output_twin_sync =
+      _wire_benchmark_blob_output_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
   WireSyncRust2DartDco wire_benchmark_input_bytes_twin_sync(
     ffi.Pointer<wire_cst_list_prim_u_8> bytes,
   ) {
@@ -29679,6 +31008,86 @@ class RustLibWire implements BaseWire {
           'wire_benchmark_void_twin_sync');
   late final _wire_benchmark_void_twin_sync = _wire_benchmark_void_twin_syncPtr
       .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartSse wire_benchmark_binary_tree_input_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_input_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_binary_tree_input_twin_sync_sse');
+  late final _wire_benchmark_binary_tree_input_twin_sync_sse =
+      _wire_benchmark_binary_tree_input_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_benchmark_binary_tree_output_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_output_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_binary_tree_output_twin_sync_sse');
+  late final _wire_benchmark_binary_tree_output_twin_sync_sse =
+      _wire_benchmark_binary_tree_output_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_benchmark_blob_input_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_input_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_input_twin_sync_sse');
+  late final _wire_benchmark_blob_input_twin_sync_sse =
+      _wire_benchmark_blob_input_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_benchmark_blob_output_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_output_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_output_twin_sync_sse');
+  late final _wire_benchmark_blob_output_twin_sync_sse =
+      _wire_benchmark_blob_output_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_benchmark_input_bytes_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -54657,6 +56066,179 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_b_twin_sync_ssePtr
           .asFunction<ffi.Pointer<wire_cst_b_twin_sync_sse> Function()>();
 
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>
+      cst_new_box_autoadd_benchmark_binary_tree_twin_normal() {
+    return _cst_new_box_autoadd_benchmark_binary_tree_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>
+                      Function()>>(
+          'cst_new_box_autoadd_benchmark_binary_tree_twin_normal');
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_normal =
+      _cst_new_box_autoadd_benchmark_binary_tree_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>
+      cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async() {
+    return _cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>
+                      Function()>>(
+          'cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async');
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async =
+      _cst_new_box_autoadd_benchmark_binary_tree_twin_rust_asyncPtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>
+              Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+      cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_sse() {
+    return _cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_sse();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+                      Function()>>(
+          'cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_sse');
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_sse =
+      _cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_ssePtr
+          .asFunction<
+              ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse>
+      cst_new_box_autoadd_benchmark_binary_tree_twin_sse() {
+    return _cst_new_box_autoadd_benchmark_binary_tree_twin_sse();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse> Function()>>(
+      'cst_new_box_autoadd_benchmark_binary_tree_twin_sse');
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_sse =
+      _cst_new_box_autoadd_benchmark_binary_tree_twin_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>
+      cst_new_box_autoadd_benchmark_binary_tree_twin_sync() {
+    return _cst_new_box_autoadd_benchmark_binary_tree_twin_sync();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>
+                  Function()>>(
+      'cst_new_box_autoadd_benchmark_binary_tree_twin_sync');
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_sync =
+      _cst_new_box_autoadd_benchmark_binary_tree_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse>
+      cst_new_box_autoadd_benchmark_binary_tree_twin_sync_sse() {
+    return _cst_new_box_autoadd_benchmark_binary_tree_twin_sync_sse();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse>
+                      Function()>>(
+          'cst_new_box_autoadd_benchmark_binary_tree_twin_sync_sse');
+  late final _cst_new_box_autoadd_benchmark_binary_tree_twin_sync_sse =
+      _cst_new_box_autoadd_benchmark_binary_tree_twin_sync_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse>
+              Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_blob_twin_normal>
+      cst_new_box_autoadd_benchmark_blob_twin_normal() {
+    return _cst_new_box_autoadd_benchmark_blob_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_blob_twin_normalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_normal>
+              Function()>>('cst_new_box_autoadd_benchmark_blob_twin_normal');
+  late final _cst_new_box_autoadd_benchmark_blob_twin_normal =
+      _cst_new_box_autoadd_benchmark_blob_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_normal> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async>
+      cst_new_box_autoadd_benchmark_blob_twin_rust_async() {
+    return _cst_new_box_autoadd_benchmark_blob_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_blob_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async> Function()>>(
+      'cst_new_box_autoadd_benchmark_blob_twin_rust_async');
+  late final _cst_new_box_autoadd_benchmark_blob_twin_rust_async =
+      _cst_new_box_autoadd_benchmark_blob_twin_rust_asyncPtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async_sse>
+      cst_new_box_autoadd_benchmark_blob_twin_rust_async_sse() {
+    return _cst_new_box_autoadd_benchmark_blob_twin_rust_async_sse();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_blob_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async_sse>
+                      Function()>>(
+          'cst_new_box_autoadd_benchmark_blob_twin_rust_async_sse');
+  late final _cst_new_box_autoadd_benchmark_blob_twin_rust_async_sse =
+      _cst_new_box_autoadd_benchmark_blob_twin_rust_async_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async_sse>
+              Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_blob_twin_sse>
+      cst_new_box_autoadd_benchmark_blob_twin_sse() {
+    return _cst_new_box_autoadd_benchmark_blob_twin_sse();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_blob_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_sse>
+              Function()>>('cst_new_box_autoadd_benchmark_blob_twin_sse');
+  late final _cst_new_box_autoadd_benchmark_blob_twin_sse =
+      _cst_new_box_autoadd_benchmark_blob_twin_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_sse> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_blob_twin_sync>
+      cst_new_box_autoadd_benchmark_blob_twin_sync() {
+    return _cst_new_box_autoadd_benchmark_blob_twin_sync();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_blob_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_sync>
+              Function()>>('cst_new_box_autoadd_benchmark_blob_twin_sync');
+  late final _cst_new_box_autoadd_benchmark_blob_twin_sync =
+      _cst_new_box_autoadd_benchmark_blob_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_sync> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_blob_twin_sync_sse>
+      cst_new_box_autoadd_benchmark_blob_twin_sync_sse() {
+    return _cst_new_box_autoadd_benchmark_blob_twin_sync_sse();
+  }
+
+  late final _cst_new_box_autoadd_benchmark_blob_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_sync_sse>
+              Function()>>('cst_new_box_autoadd_benchmark_blob_twin_sync_sse');
+  late final _cst_new_box_autoadd_benchmark_blob_twin_sync_sse =
+      _cst_new_box_autoadd_benchmark_blob_twin_sync_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_blob_twin_sync_sse> Function()>();
+
   ffi.Pointer<ffi.Bool> cst_new_box_autoadd_bool(
     bool value,
   ) {
@@ -58333,6 +59915,90 @@ class RustLibWire implements BaseWire {
   late final _cst_new_box_autoadd_weekdays_twin_sync_sse =
       _cst_new_box_autoadd_weekdays_twin_sync_ssePtr
           .asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>
+      cst_new_box_benchmark_binary_tree_twin_normal() {
+    return _cst_new_box_benchmark_binary_tree_twin_normal();
+  }
+
+  late final _cst_new_box_benchmark_binary_tree_twin_normalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>
+              Function()>>('cst_new_box_benchmark_binary_tree_twin_normal');
+  late final _cst_new_box_benchmark_binary_tree_twin_normal =
+      _cst_new_box_benchmark_binary_tree_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>
+      cst_new_box_benchmark_binary_tree_twin_rust_async() {
+    return _cst_new_box_benchmark_binary_tree_twin_rust_async();
+  }
+
+  late final _cst_new_box_benchmark_binary_tree_twin_rust_asyncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>
+              Function()>>('cst_new_box_benchmark_binary_tree_twin_rust_async');
+  late final _cst_new_box_benchmark_binary_tree_twin_rust_async =
+      _cst_new_box_benchmark_binary_tree_twin_rust_asyncPtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>
+              Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+      cst_new_box_benchmark_binary_tree_twin_rust_async_sse() {
+    return _cst_new_box_benchmark_binary_tree_twin_rust_async_sse();
+  }
+
+  late final _cst_new_box_benchmark_binary_tree_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+                      Function()>>(
+          'cst_new_box_benchmark_binary_tree_twin_rust_async_sse');
+  late final _cst_new_box_benchmark_binary_tree_twin_rust_async_sse =
+      _cst_new_box_benchmark_binary_tree_twin_rust_async_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+              Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse>
+      cst_new_box_benchmark_binary_tree_twin_sse() {
+    return _cst_new_box_benchmark_binary_tree_twin_sse();
+  }
+
+  late final _cst_new_box_benchmark_binary_tree_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse>
+              Function()>>('cst_new_box_benchmark_binary_tree_twin_sse');
+  late final _cst_new_box_benchmark_binary_tree_twin_sse =
+      _cst_new_box_benchmark_binary_tree_twin_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>
+      cst_new_box_benchmark_binary_tree_twin_sync() {
+    return _cst_new_box_benchmark_binary_tree_twin_sync();
+  }
+
+  late final _cst_new_box_benchmark_binary_tree_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>
+              Function()>>('cst_new_box_benchmark_binary_tree_twin_sync');
+  late final _cst_new_box_benchmark_binary_tree_twin_sync =
+      _cst_new_box_benchmark_binary_tree_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync> Function()>();
+
+  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse>
+      cst_new_box_benchmark_binary_tree_twin_sync_sse() {
+    return _cst_new_box_benchmark_binary_tree_twin_sync_sse();
+  }
+
+  late final _cst_new_box_benchmark_binary_tree_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse>
+              Function()>>('cst_new_box_benchmark_binary_tree_twin_sync_sse');
+  late final _cst_new_box_benchmark_binary_tree_twin_sync_sse =
+      _cst_new_box_benchmark_binary_tree_twin_sync_ssePtr.asFunction<
+          ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse>
+              Function()>();
 
   ffi.Pointer<wire_cst_blob_twin_normal> cst_new_box_blob_twin_normal() {
     return _cst_new_box_blob_twin_normal();
@@ -63440,6 +65106,22 @@ final class wire_cst_user_id_twin_normal extends ffi.Struct {
   external int value;
 }
 
+final class wire_cst_benchmark_binary_tree_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> left;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> right;
+}
+
+final class wire_cst_benchmark_blob_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> first;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> second;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> third;
+}
+
 final class wire_cst_list_Chrono_Duration extends ffi.Struct {
   external ffi.Pointer<ffi.Int64> ptr;
 
@@ -64107,6 +65789,38 @@ final class wire_cst_customized_twin_sync extends ffi.Struct {
 final class wire_cst_user_id_twin_sync extends ffi.Struct {
   @ffi.Uint32()
   external int value;
+}
+
+final class wire_cst_benchmark_binary_tree_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async> left;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async> right;
+}
+
+final class wire_cst_benchmark_blob_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> first;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> second;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> third;
+}
+
+final class wire_cst_benchmark_binary_tree_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync> left;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync> right;
+}
+
+final class wire_cst_benchmark_blob_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> first;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> second;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> third;
 }
 
 final class wire_cst_feature_chrono_twin_rust_async extends ffi.Struct {
@@ -65518,6 +67232,56 @@ final class wire_cst_attribute_twin_sync_sse extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> key;
 
   external ffi.Pointer<wire_cst_list_prim_u_8> value;
+}
+
+final class wire_cst_benchmark_binary_tree_twin_rust_async_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse> left;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async_sse>
+      right;
+}
+
+final class wire_cst_benchmark_binary_tree_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse> left;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sse> right;
+}
+
+final class wire_cst_benchmark_binary_tree_twin_sync_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse> left;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync_sse> right;
+}
+
+final class wire_cst_benchmark_blob_twin_rust_async_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> first;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> second;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> third;
+}
+
+final class wire_cst_benchmark_blob_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> first;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> second;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> third;
+}
+
+final class wire_cst_benchmark_blob_twin_sync_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> first;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> second;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> third;
 }
 
 final class wire_cst_concatenate_with_twin_rust_async_sse extends ffi.Struct {

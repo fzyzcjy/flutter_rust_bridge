@@ -14,3 +14,69 @@ int benchmarkInputBytesTwinSync({required Uint8List bytes, dynamic hint}) =>
 
 Uint8List benchmarkOutputBytesTwinSync({required int size, dynamic hint}) =>
     RustLib.instance.api.benchmarkOutputBytesTwinSync(size: size, hint: hint);
+
+void benchmarkBinaryTreeInputTwinSync(
+        {required BenchmarkBinaryTreeTwinSync tree, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputTwinSync(tree: tree, hint: hint);
+
+BenchmarkBinaryTreeTwinSync benchmarkBinaryTreeOutputTwinSync(
+        {required int depth, required String name, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBinaryTreeOutputTwinSync(
+        depth: depth, name: name, hint: hint);
+
+void benchmarkBlobInputTwinSync(
+        {required BenchmarkBlobTwinSync blob, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBlobInputTwinSync(blob: blob, hint: hint);
+
+BenchmarkBlobTwinSync benchmarkBlobOutputTwinSync(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBlobOutputTwinSync(size: size, hint: hint);
+
+class BenchmarkBinaryTreeTwinSync {
+  final String name;
+  final BenchmarkBinaryTreeTwinSync? left;
+  final BenchmarkBinaryTreeTwinSync? right;
+
+  const BenchmarkBinaryTreeTwinSync({
+    required this.name,
+    this.left,
+    this.right,
+  });
+
+  @override
+  int get hashCode => name.hashCode ^ left.hashCode ^ right.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBinaryTreeTwinSync &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          left == other.left &&
+          right == other.right;
+}
+
+class BenchmarkBlobTwinSync {
+  final Uint8List first;
+  final Uint8List second;
+  final Uint8List third;
+
+  const BenchmarkBlobTwinSync({
+    required this.first,
+    required this.second,
+    required this.third,
+  });
+
+  @override
+  int get hashCode => first.hashCode ^ second.hashCode ^ third.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBlobTwinSync &&
+          runtimeType == other.runtimeType &&
+          first == other.first &&
+          second == other.second &&
+          third == other.third;
+}

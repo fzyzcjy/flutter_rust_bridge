@@ -292,6 +292,18 @@ abstract class RustLibApi extends BaseApi {
   Future<UserIdTwinNormal> nextUserIdTwinNormal(
       {required UserIdTwinNormal userId, dynamic hint});
 
+  Future<void> benchmarkBinaryTreeInputTwinNormal(
+      {required BenchmarkBinaryTreeTwinNormal tree, dynamic hint});
+
+  Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
+      {required int depth, required String name, dynamic hint});
+
+  Future<void> benchmarkBlobInputTwinNormal(
+      {required BenchmarkBlobTwinNormal blob, dynamic hint});
+
+  Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal(
+      {required int size, dynamic hint});
+
   Future<int> benchmarkInputBytesTwinNormal(
       {required Uint8List bytes, dynamic hint});
 
@@ -911,6 +923,19 @@ abstract class RustLibApi extends BaseApi {
   UserIdTwinSyncSse nextUserIdTwinSyncSse(
       {required UserIdTwinSyncSse userId, dynamic hint});
 
+  Future<void> benchmarkBinaryTreeInputTwinRustAsync(
+      {required BenchmarkBinaryTreeTwinRustAsync tree, dynamic hint});
+
+  Future<BenchmarkBinaryTreeTwinRustAsync>
+      benchmarkBinaryTreeOutputTwinRustAsync(
+          {required int depth, required String name, dynamic hint});
+
+  Future<void> benchmarkBlobInputTwinRustAsync(
+      {required BenchmarkBlobTwinRustAsync blob, dynamic hint});
+
+  Future<BenchmarkBlobTwinRustAsync> benchmarkBlobOutputTwinRustAsync(
+      {required int size, dynamic hint});
+
   Future<int> benchmarkInputBytesTwinRustAsync(
       {required Uint8List bytes, dynamic hint});
 
@@ -918,6 +943,19 @@ abstract class RustLibApi extends BaseApi {
       {required int size, dynamic hint});
 
   Future<void> benchmarkVoidTwinRustAsync({dynamic hint});
+
+  Future<void> benchmarkBinaryTreeInputTwinRustAsyncSse(
+      {required BenchmarkBinaryTreeTwinRustAsyncSse tree, dynamic hint});
+
+  Future<BenchmarkBinaryTreeTwinRustAsyncSse>
+      benchmarkBinaryTreeOutputTwinRustAsyncSse(
+          {required int depth, required String name, dynamic hint});
+
+  Future<void> benchmarkBlobInputTwinRustAsyncSse(
+      {required BenchmarkBlobTwinRustAsyncSse blob, dynamic hint});
+
+  Future<BenchmarkBlobTwinRustAsyncSse> benchmarkBlobOutputTwinRustAsyncSse(
+      {required int size, dynamic hint});
 
   Future<int> benchmarkInputBytesTwinRustAsyncSse(
       {required Uint8List bytes, dynamic hint});
@@ -927,6 +965,18 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> benchmarkVoidTwinRustAsyncSse({dynamic hint});
 
+  Future<void> benchmarkBinaryTreeInputTwinSse(
+      {required BenchmarkBinaryTreeTwinSse tree, dynamic hint});
+
+  Future<BenchmarkBinaryTreeTwinSse> benchmarkBinaryTreeOutputTwinSse(
+      {required int depth, required String name, dynamic hint});
+
+  Future<void> benchmarkBlobInputTwinSse(
+      {required BenchmarkBlobTwinSse blob, dynamic hint});
+
+  Future<BenchmarkBlobTwinSse> benchmarkBlobOutputTwinSse(
+      {required int size, dynamic hint});
+
   Future<int> benchmarkInputBytesTwinSse(
       {required Uint8List bytes, dynamic hint});
 
@@ -935,11 +985,35 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> benchmarkVoidTwinSse({dynamic hint});
 
+  void benchmarkBinaryTreeInputTwinSync(
+      {required BenchmarkBinaryTreeTwinSync tree, dynamic hint});
+
+  BenchmarkBinaryTreeTwinSync benchmarkBinaryTreeOutputTwinSync(
+      {required int depth, required String name, dynamic hint});
+
+  void benchmarkBlobInputTwinSync(
+      {required BenchmarkBlobTwinSync blob, dynamic hint});
+
+  BenchmarkBlobTwinSync benchmarkBlobOutputTwinSync(
+      {required int size, dynamic hint});
+
   int benchmarkInputBytesTwinSync({required Uint8List bytes, dynamic hint});
 
   Uint8List benchmarkOutputBytesTwinSync({required int size, dynamic hint});
 
   void benchmarkVoidTwinSync({dynamic hint});
+
+  void benchmarkBinaryTreeInputTwinSyncSse(
+      {required BenchmarkBinaryTreeTwinSyncSse tree, dynamic hint});
+
+  BenchmarkBinaryTreeTwinSyncSse benchmarkBinaryTreeOutputTwinSyncSse(
+      {required int depth, required String name, dynamic hint});
+
+  void benchmarkBlobInputTwinSyncSse(
+      {required BenchmarkBlobTwinSyncSse blob, dynamic hint});
+
+  BenchmarkBlobTwinSyncSse benchmarkBlobOutputTwinSyncSse(
+      {required int size, dynamic hint});
 
   int benchmarkInputBytesTwinSyncSse({required Uint8List bytes, dynamic hint});
 
@@ -5028,6 +5102,109 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kNextUserIdTwinNormalConstMeta => const TaskConstMeta(
         debugName: "next_user_id_twin_normal",
         argNames: ["userId"],
+      );
+
+  @override
+  Future<void> benchmarkBinaryTreeInputTwinNormal(
+      {required BenchmarkBinaryTreeTwinNormal tree, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_benchmark_binary_tree_twin_normal(tree);
+        return wire.wire_benchmark_binary_tree_input_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputTwinNormalConstMeta,
+      argValues: [tree],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_twin_normal",
+        argNames: ["tree"],
+      );
+
+  @override
+  Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
+      {required int depth, required String name, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(depth);
+        var arg1 = cst_encode_String(name);
+        return wire.wire_benchmark_binary_tree_output_twin_normal(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_benchmark_binary_tree_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputTwinNormalConstMeta,
+      argValues: [depth, name],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_twin_normal",
+        argNames: ["depth", "name"],
+      );
+
+  @override
+  Future<void> benchmarkBlobInputTwinNormal(
+      {required BenchmarkBlobTwinNormal blob, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_benchmark_blob_twin_normal(blob);
+        return wire.wire_benchmark_blob_input_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputTwinNormalConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_twin_normal",
+        argNames: ["blob"],
+      );
+
+  @override
+  Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_blob_output_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_benchmark_blob_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputTwinNormalConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_twin_normal",
+        argNames: ["size"],
       );
 
   @override
@@ -10539,6 +10716,111 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBinaryTreeInputTwinRustAsync(
+      {required BenchmarkBinaryTreeTwinRustAsync tree, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(tree);
+        return wire.wire_benchmark_binary_tree_input_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputTwinRustAsyncConstMeta,
+      argValues: [tree],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_twin_rust_async",
+        argNames: ["tree"],
+      );
+
+  @override
+  Future<BenchmarkBinaryTreeTwinRustAsync>
+      benchmarkBinaryTreeOutputTwinRustAsync(
+          {required int depth, required String name, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(depth);
+        var arg1 = cst_encode_String(name);
+        return wire.wire_benchmark_binary_tree_output_twin_rust_async(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_benchmark_binary_tree_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputTwinRustAsyncConstMeta,
+      argValues: [depth, name],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_twin_rust_async",
+        argNames: ["depth", "name"],
+      );
+
+  @override
+  Future<void> benchmarkBlobInputTwinRustAsync(
+      {required BenchmarkBlobTwinRustAsync blob, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_benchmark_blob_twin_rust_async(blob);
+        return wire.wire_benchmark_blob_input_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputTwinRustAsyncConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_twin_rust_async",
+        argNames: ["blob"],
+      );
+
+  @override
+  Future<BenchmarkBlobTwinRustAsync> benchmarkBlobOutputTwinRustAsync(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_blob_output_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_benchmark_blob_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputTwinRustAsyncConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_twin_rust_async",
+        argNames: ["size"],
+      );
+
+  @override
   Future<int> benchmarkInputBytesTwinRustAsync(
       {required Uint8List bytes, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -10608,6 +10890,122 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kBenchmarkVoidTwinRustAsyncConstMeta => const TaskConstMeta(
         debugName: "benchmark_void_twin_rust_async",
         argNames: [],
+      );
+
+  @override
+  Future<void> benchmarkBinaryTreeInputTwinRustAsyncSse(
+      {required BenchmarkBinaryTreeTwinRustAsyncSse tree, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+            tree, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_input_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputTwinRustAsyncSseConstMeta,
+      argValues: [tree],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_twin_rust_async_sse",
+        argNames: ["tree"],
+      );
+
+  @override
+  Future<BenchmarkBinaryTreeTwinRustAsyncSse>
+      benchmarkBinaryTreeOutputTwinRustAsyncSse(
+          {required int depth, required String name, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(depth, serializer);
+        sse_encode_String(name, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_output_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_benchmark_binary_tree_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputTwinRustAsyncSseConstMeta,
+      argValues: [depth, name],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_twin_rust_async_sse",
+        argNames: ["depth", "name"],
+      );
+
+  @override
+  Future<void> benchmarkBlobInputTwinRustAsyncSse(
+      {required BenchmarkBlobTwinRustAsyncSse blob, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_benchmark_blob_twin_rust_async_sse(
+            blob, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_input_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputTwinRustAsyncSseConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_twin_rust_async_sse",
+        argNames: ["blob"],
+      );
+
+  @override
+  Future<BenchmarkBlobTwinRustAsyncSse> benchmarkBlobOutputTwinRustAsyncSse(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(size, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_output_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_benchmark_blob_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputTwinRustAsyncSseConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_twin_rust_async_sse",
+        argNames: ["size"],
       );
 
   @override
@@ -10694,6 +11092,117 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBinaryTreeInputTwinSse(
+      {required BenchmarkBinaryTreeTwinSse tree, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_benchmark_binary_tree_twin_sse(tree, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_input_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputTwinSseConstMeta,
+      argValues: [tree],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_twin_sse",
+        argNames: ["tree"],
+      );
+
+  @override
+  Future<BenchmarkBinaryTreeTwinSse> benchmarkBinaryTreeOutputTwinSse(
+      {required int depth, required String name, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(depth, serializer);
+        sse_encode_String(name, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_output_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_benchmark_binary_tree_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputTwinSseConstMeta,
+      argValues: [depth, name],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_twin_sse",
+        argNames: ["depth", "name"],
+      );
+
+  @override
+  Future<void> benchmarkBlobInputTwinSse(
+      {required BenchmarkBlobTwinSse blob, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_benchmark_blob_twin_sse(blob, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_input_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputTwinSseConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputTwinSseConstMeta => const TaskConstMeta(
+        debugName: "benchmark_blob_input_twin_sse",
+        argNames: ["blob"],
+      );
+
+  @override
+  Future<BenchmarkBlobTwinSse> benchmarkBlobOutputTwinSse(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(size, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_output_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_benchmark_blob_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputTwinSseConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputTwinSseConstMeta => const TaskConstMeta(
+        debugName: "benchmark_blob_output_twin_sse",
+        argNames: ["size"],
+      );
+
+  @override
   Future<int> benchmarkInputBytesTwinSse(
       {required Uint8List bytes, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -10775,6 +11284,106 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  void benchmarkBinaryTreeInputTwinSync(
+      {required BenchmarkBinaryTreeTwinSync tree, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_benchmark_binary_tree_twin_sync(tree);
+        return wire.wire_benchmark_binary_tree_input_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputTwinSyncConstMeta,
+      argValues: [tree],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_twin_sync",
+        argNames: ["tree"],
+      );
+
+  @override
+  BenchmarkBinaryTreeTwinSync benchmarkBinaryTreeOutputTwinSync(
+      {required int depth, required String name, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_32(depth);
+        var arg1 = cst_encode_String(name);
+        return wire.wire_benchmark_binary_tree_output_twin_sync(arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_benchmark_binary_tree_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputTwinSyncConstMeta,
+      argValues: [depth, name],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_twin_sync",
+        argNames: ["depth", "name"],
+      );
+
+  @override
+  void benchmarkBlobInputTwinSync(
+      {required BenchmarkBlobTwinSync blob, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_benchmark_blob_twin_sync(blob);
+        return wire.wire_benchmark_blob_input_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputTwinSyncConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "benchmark_blob_input_twin_sync",
+        argNames: ["blob"],
+      );
+
+  @override
+  BenchmarkBlobTwinSync benchmarkBlobOutputTwinSync(
+      {required int size, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_blob_output_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_benchmark_blob_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputTwinSyncConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_twin_sync",
+        argNames: ["size"],
+      );
+
+  @override
   int benchmarkInputBytesTwinSync({required Uint8List bytes, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -10842,6 +11451,120 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kBenchmarkVoidTwinSyncConstMeta => const TaskConstMeta(
         debugName: "benchmark_void_twin_sync",
         argNames: [],
+      );
+
+  @override
+  void benchmarkBinaryTreeInputTwinSyncSse(
+      {required BenchmarkBinaryTreeTwinSyncSse tree, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+            tree, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_input_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputTwinSyncSseConstMeta,
+      argValues: [tree],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_twin_sync_sse",
+        argNames: ["tree"],
+      );
+
+  @override
+  BenchmarkBinaryTreeTwinSyncSse benchmarkBinaryTreeOutputTwinSyncSse(
+      {required int depth, required String name, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(depth, serializer);
+        sse_encode_String(name, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_output_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_benchmark_binary_tree_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputTwinSyncSseConstMeta,
+      argValues: [depth, name],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_twin_sync_sse",
+        argNames: ["depth", "name"],
+      );
+
+  @override
+  void benchmarkBlobInputTwinSyncSse(
+      {required BenchmarkBlobTwinSyncSse blob, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_benchmark_blob_twin_sync_sse(blob, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_input_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputTwinSyncSseConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_twin_sync_sse",
+        argNames: ["blob"],
+      );
+
+  @override
+  BenchmarkBlobTwinSyncSse benchmarkBlobOutputTwinSyncSse(
+      {required int size, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(size, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_output_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_benchmark_blob_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputTwinSyncSseConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_twin_sync_sse",
+        argNames: ["size"],
       );
 
   @override
@@ -44831,6 +45554,161 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BenchmarkBinaryTreeTwinNormal dco_decode_benchmark_binary_tree_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinNormal(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_normal(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_normal(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_benchmark_binary_tree_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinRustAsync(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_benchmark_binary_tree_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinRustAsyncSse(
+      name: dco_decode_String(arr[0]),
+      left:
+          dco_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(arr[1]),
+      right:
+          dco_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_benchmark_binary_tree_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinSse(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_sse(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_sse(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_benchmark_binary_tree_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinSync(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_sync(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_sync(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse dco_decode_benchmark_binary_tree_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinSyncSse(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_sync_sse(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_sync_sse(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_benchmark_blob_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinNormal(
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsync dco_decode_benchmark_blob_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinRustAsync(
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse dco_decode_benchmark_blob_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinRustAsyncSse(
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_benchmark_blob_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinSse(
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_benchmark_blob_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinSync(
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_benchmark_blob_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinSyncSse(
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
+    );
+  }
+
+  @protected
   BigBuffersTwinNormal dco_decode_big_buffers_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
@@ -45125,6 +46003,80 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BTwinSyncSse dco_decode_box_autoadd_b_twin_sync_sse(dynamic raw) {
     return dco_decode_b_twin_sync_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_normal(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sse(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync_sse(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sync_sse(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_box_autoadd_benchmark_blob_twin_normal(
+      dynamic raw) {
+    return dco_decode_benchmark_blob_twin_normal(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsync
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async(dynamic raw) {
+    return dco_decode_benchmark_blob_twin_rust_async(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_benchmark_blob_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_box_autoadd_benchmark_blob_twin_sse(
+      dynamic raw) {
+    return dco_decode_benchmark_blob_twin_sse(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_box_autoadd_benchmark_blob_twin_sync(
+      dynamic raw) {
+    return dco_decode_benchmark_blob_twin_sync(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_box_autoadd_benchmark_blob_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_benchmark_blob_twin_sync_sse(raw);
   }
 
   @protected
@@ -46665,6 +47617,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   WeekdaysTwinSyncSse dco_decode_box_autoadd_weekdays_twin_sync_sse(
       dynamic raw) {
     return dco_decode_weekdays_twin_sync_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_benchmark_binary_tree_twin_normal(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_benchmark_binary_tree_twin_rust_async(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_benchmark_binary_tree_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_box_benchmark_binary_tree_twin_sse(
+      dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_box_benchmark_binary_tree_twin_sync(
+      dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_benchmark_binary_tree_twin_sync_sse(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sync_sse(raw);
   }
 
   @protected
@@ -51430,6 +52418,55 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BenchmarkBinaryTreeTwinNormal?
+      dco_decode_opt_box_benchmark_binary_tree_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse? dco_decode_opt_box_benchmark_binary_tree_twin_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_sync_sse(raw);
+  }
+
+  @protected
   bool? dco_decode_opt_box_bool(dynamic raw) {
     return raw == null ? null : dco_decode_box_bool(raw);
   }
@@ -54189,6 +55226,141 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BenchmarkBinaryTreeTwinNormal sse_decode_benchmark_binary_tree_twin_normal(
+      SseDeserializer deserializer) {
+    var var_name = sse_decode_String(deserializer);
+    var var_left =
+        sse_decode_opt_box_benchmark_binary_tree_twin_normal(deserializer);
+    var var_right =
+        sse_decode_opt_box_benchmark_binary_tree_twin_normal(deserializer);
+    return BenchmarkBinaryTreeTwinNormal(
+        name: var_name, left: var_left, right: var_right);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      sse_decode_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer) {
+    var var_name = sse_decode_String(deserializer);
+    var var_left =
+        sse_decode_opt_box_benchmark_binary_tree_twin_rust_async(deserializer);
+    var var_right =
+        sse_decode_opt_box_benchmark_binary_tree_twin_rust_async(deserializer);
+    return BenchmarkBinaryTreeTwinRustAsync(
+        name: var_name, left: var_left, right: var_right);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      sse_decode_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var var_name = sse_decode_String(deserializer);
+    var var_left = sse_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+        deserializer);
+    var var_right =
+        sse_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+            deserializer);
+    return BenchmarkBinaryTreeTwinRustAsyncSse(
+        name: var_name, left: var_left, right: var_right);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse sse_decode_benchmark_binary_tree_twin_sse(
+      SseDeserializer deserializer) {
+    var var_name = sse_decode_String(deserializer);
+    var var_left =
+        sse_decode_opt_box_benchmark_binary_tree_twin_sse(deserializer);
+    var var_right =
+        sse_decode_opt_box_benchmark_binary_tree_twin_sse(deserializer);
+    return BenchmarkBinaryTreeTwinSse(
+        name: var_name, left: var_left, right: var_right);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync sse_decode_benchmark_binary_tree_twin_sync(
+      SseDeserializer deserializer) {
+    var var_name = sse_decode_String(deserializer);
+    var var_left =
+        sse_decode_opt_box_benchmark_binary_tree_twin_sync(deserializer);
+    var var_right =
+        sse_decode_opt_box_benchmark_binary_tree_twin_sync(deserializer);
+    return BenchmarkBinaryTreeTwinSync(
+        name: var_name, left: var_left, right: var_right);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse sse_decode_benchmark_binary_tree_twin_sync_sse(
+      SseDeserializer deserializer) {
+    var var_name = sse_decode_String(deserializer);
+    var var_left =
+        sse_decode_opt_box_benchmark_binary_tree_twin_sync_sse(deserializer);
+    var var_right =
+        sse_decode_opt_box_benchmark_binary_tree_twin_sync_sse(deserializer);
+    return BenchmarkBinaryTreeTwinSyncSse(
+        name: var_name, left: var_left, right: var_right);
+  }
+
+  @protected
+  BenchmarkBlobTwinNormal sse_decode_benchmark_blob_twin_normal(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
+    return BenchmarkBlobTwinNormal(
+        first: var_first, second: var_second, third: var_third);
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsync sse_decode_benchmark_blob_twin_rust_async(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
+    return BenchmarkBlobTwinRustAsync(
+        first: var_first, second: var_second, third: var_third);
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse sse_decode_benchmark_blob_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
+    return BenchmarkBlobTwinRustAsyncSse(
+        first: var_first, second: var_second, third: var_third);
+  }
+
+  @protected
+  BenchmarkBlobTwinSse sse_decode_benchmark_blob_twin_sse(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
+    return BenchmarkBlobTwinSse(
+        first: var_first, second: var_second, third: var_third);
+  }
+
+  @protected
+  BenchmarkBlobTwinSync sse_decode_benchmark_blob_twin_sync(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
+    return BenchmarkBlobTwinSync(
+        first: var_first, second: var_second, third: var_third);
+  }
+
+  @protected
+  BenchmarkBlobTwinSyncSse sse_decode_benchmark_blob_twin_sync_sse(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
+    return BenchmarkBlobTwinSyncSse(
+        first: var_first, second: var_second, third: var_third);
+  }
+
+  @protected
   BigBuffersTwinNormal sse_decode_big_buffers_twin_normal(
       SseDeserializer deserializer) {
     var var_int64 = sse_decode_list_prim_i_64(deserializer);
@@ -54461,6 +55633,86 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BTwinSyncSse sse_decode_box_autoadd_b_twin_sync_sse(
       SseDeserializer deserializer) {
     return (sse_decode_b_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_normal(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_normal(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_rust_async(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_sse(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_sync(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_sync(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      sse_decode_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  BenchmarkBlobTwinNormal sse_decode_box_autoadd_benchmark_blob_twin_normal(
+      SseDeserializer deserializer) {
+    return (sse_decode_benchmark_blob_twin_normal(deserializer));
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsync
+      sse_decode_box_autoadd_benchmark_blob_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_blob_twin_rust_async(deserializer));
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse
+      sse_decode_box_autoadd_benchmark_blob_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_blob_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  BenchmarkBlobTwinSse sse_decode_box_autoadd_benchmark_blob_twin_sse(
+      SseDeserializer deserializer) {
+    return (sse_decode_benchmark_blob_twin_sse(deserializer));
+  }
+
+  @protected
+  BenchmarkBlobTwinSync sse_decode_box_autoadd_benchmark_blob_twin_sync(
+      SseDeserializer deserializer) {
+    return (sse_decode_benchmark_blob_twin_sync(deserializer));
+  }
+
+  @protected
+  BenchmarkBlobTwinSyncSse sse_decode_box_autoadd_benchmark_blob_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (sse_decode_benchmark_blob_twin_sync_sse(deserializer));
   }
 
   @protected
@@ -56142,6 +57394,46 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   WeekdaysTwinSyncSse sse_decode_box_autoadd_weekdays_twin_sync_sse(
       SseDeserializer deserializer) {
     return (sse_decode_weekdays_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      sse_decode_box_benchmark_binary_tree_twin_normal(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_normal(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      sse_decode_box_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_rust_async(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      sse_decode_box_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse sse_decode_box_benchmark_binary_tree_twin_sse(
+      SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_sse(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync sse_decode_box_benchmark_binary_tree_twin_sync(
+      SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_sync(deserializer));
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      sse_decode_box_benchmark_binary_tree_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_benchmark_binary_tree_twin_sync_sse(deserializer));
   }
 
   @protected
@@ -61158,6 +62450,73 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BenchmarkBinaryTreeTwinNormal?
+      sse_decode_opt_box_benchmark_binary_tree_twin_normal(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_benchmark_binary_tree_twin_normal(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync?
+      sse_decode_opt_box_benchmark_binary_tree_twin_rust_async(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_benchmark_binary_tree_twin_rust_async(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse?
+      sse_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_benchmark_binary_tree_twin_rust_async_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse? sse_decode_opt_box_benchmark_binary_tree_twin_sse(
+      SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_benchmark_binary_tree_twin_sse(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync?
+      sse_decode_opt_box_benchmark_binary_tree_twin_sync(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_benchmark_binary_tree_twin_sync(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse?
+      sse_decode_opt_box_benchmark_binary_tree_twin_sync_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_benchmark_binary_tree_twin_sync_sse(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   bool? sse_decode_opt_box_bool(SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_bool(deserializer));
@@ -64643,6 +66002,109 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer) {
+    sse_encode_String(self.name, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_normal(self.left, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_normal(
+        self.right, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_String(self.name, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_rust_async(
+        self.left, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_rust_async(
+        self.right, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_String(self.name, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+        self.left, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+        self.right, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse self, SseSerializer serializer) {
+    sse_encode_String(self.name, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_sse(self.left, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_sse(self.right, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync self, SseSerializer serializer) {
+    sse_encode_String(self.name, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_sync(self.left, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_sync(self.right, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_String(self.name, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_sync_sse(
+        self.left, serializer);
+    sse_encode_opt_box_benchmark_binary_tree_twin_sync_sse(
+        self.right, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal self, SseSerializer serializer) {
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_blob_twin_sse(
+      BenchmarkBlobTwinSse self, SseSerializer serializer) {
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_blob_twin_sync(
+      BenchmarkBlobTwinSync self, SseSerializer serializer) {
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
+  }
+
+  @protected
+  void sse_encode_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
+  }
+
+  @protected
   void sse_encode_big_buffers_twin_normal(
       BigBuffersTwinNormal self, SseSerializer serializer) {
     sse_encode_list_prim_i_64(self.int64, serializer);
@@ -64913,6 +66375,78 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_box_autoadd_b_twin_sync_sse(
       BTwinSyncSse self, SseSerializer serializer) {
     sse_encode_b_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_normal(
+      BenchmarkBlobTwinNormal self, SseSerializer serializer) {
+    sse_encode_benchmark_blob_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_rust_async(
+      BenchmarkBlobTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_benchmark_blob_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_rust_async_sse(
+      BenchmarkBlobTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_benchmark_blob_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_sse(
+      BenchmarkBlobTwinSse self, SseSerializer serializer) {
+    sse_encode_benchmark_blob_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_sync(
+      BenchmarkBlobTwinSync self, SseSerializer serializer) {
+    sse_encode_benchmark_blob_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_benchmark_blob_twin_sync_sse(
+      BenchmarkBlobTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_benchmark_blob_twin_sync_sse(self, serializer);
   }
 
   @protected
@@ -66486,6 +68020,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_box_autoadd_weekdays_twin_sync_sse(
       WeekdaysTwinSyncSse self, SseSerializer serializer) {
     sse_encode_weekdays_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_benchmark_binary_tree_twin_sync_sse(self, serializer);
   }
 
   @protected
@@ -70696,6 +72266,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_weekdays_twin_sync_sse(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_normal(
+      BenchmarkBinaryTreeTwinNormal? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_benchmark_binary_tree_twin_normal(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_rust_async(
+      BenchmarkBinaryTreeTwinRustAsync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_benchmark_binary_tree_twin_rust_async(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+      BenchmarkBinaryTreeTwinRustAsyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_benchmark_binary_tree_twin_rust_async_sse(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_sse(
+      BenchmarkBinaryTreeTwinSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_benchmark_binary_tree_twin_sse(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_sync(
+      BenchmarkBinaryTreeTwinSync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_benchmark_binary_tree_twin_sync(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_benchmark_binary_tree_twin_sync_sse(
+      BenchmarkBinaryTreeTwinSyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_benchmark_binary_tree_twin_sync_sse(self, serializer);
     }
   }
 

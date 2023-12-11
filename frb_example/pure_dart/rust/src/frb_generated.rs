@@ -363,6 +363,101 @@ fn wire_next_user_id_twin_normal_impl(
         },
     )
 }
+fn wire_benchmark_binary_tree_input_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    tree: impl CstDecode<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
+        + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_binary_tree_input_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_tree = tree.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_binary_tree_input_twin_normal(
+                            api_tree,
+                        ),
+                    )
+                })())
+            }
+        },
+    )
+}
+fn wire_benchmark_binary_tree_output_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: impl CstDecode<i32> + core::panic::UnwindSafe,
+    name: impl CstDecode<String> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_binary_tree_output_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_depth = depth.cst_decode();
+            let api_name = name.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_binary_tree_output_twin_normal(
+                            api_depth, api_name,
+                        ),
+                    )
+                })())
+            }
+        },
+    )
+}
+fn wire_benchmark_blob_input_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    blob: impl CstDecode<crate::api::benchmark_api::BenchmarkBlobTwinNormal> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_blob_input_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_blob = blob.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_blob_input_twin_normal(api_blob),
+                    )
+                })())
+            }
+        },
+    )
+}
+fn wire_benchmark_blob_output_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_blob_output_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_size = size.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_blob_output_twin_normal(api_size),
+                    )
+                })())
+            }
+        },
+    )
+}
 fn wire_benchmark_input_bytes_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     bytes: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
@@ -4733,6 +4828,49 @@ fn wire_next_user_id_twin_sync_sse_impl(
         },
     )
 }
+fn wire_benchmark_binary_tree_input_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    tree: impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_input_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_tree = tree.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_input_twin_rust_async(api_tree).await)
+                    })().await)
+                } })
+}
+fn wire_benchmark_binary_tree_output_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: impl CstDecode<i32> + core::panic::UnwindSafe,
+    name: impl CstDecode<String> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_depth = depth.cst_decode();let api_name = name.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_output_twin_rust_async(api_depth, api_name).await)
+                    })().await)
+                } })
+}
+fn wire_benchmark_blob_input_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    blob: impl CstDecode<
+            crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync,
+        > + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_input_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_blob = blob.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_input_twin_rust_async(api_blob).await)
+                    })().await)
+                } })
+}
+fn wire_benchmark_blob_output_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_output_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_size = size.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_blob_output_twin_rust_async(api_size).await)
+                    })().await)
+                } })
+}
 fn wire_benchmark_input_bytes_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     bytes: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
@@ -4759,6 +4897,67 @@ fn wire_benchmark_void_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_void_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {
                     transform_result_dco((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_void_twin_rust_async().await)
+                    })().await)
+                } })
+}
+fn wire_benchmark_binary_tree_input_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_input_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_tree = <crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::benchmark_binary_tree_input_twin_rust_async_sse(api_tree).await)
+                    })().await)
+                } })
+}
+fn wire_benchmark_binary_tree_output_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_depth = <i32>::sse_decode(&mut deserializer);
+let api_name = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::benchmark_binary_tree_output_twin_rust_async_sse(api_depth, api_name).await)
+                    })().await)
+                } })
+}
+fn wire_benchmark_blob_input_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_input_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_blob = <crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::benchmark_blob_input_twin_rust_async_sse(api_blob).await)
+                    })().await)
+                } })
+}
+fn wire_benchmark_blob_output_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_output_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::benchmark_blob_output_twin_rust_async_sse(api_size).await)
                     })().await)
                 } })
 }
@@ -4805,6 +5004,67 @@ fn wire_benchmark_void_twin_rust_async_sse_impl(
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::benchmark_void_twin_rust_async_sse().await)
                     })().await)
+                } })
+}
+fn wire_benchmark_binary_tree_input_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_input_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_tree = <crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sse::benchmark_binary_tree_input_twin_sse(api_tree))
+                    })())
+                } })
+}
+fn wire_benchmark_binary_tree_output_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_depth = <i32>::sse_decode(&mut deserializer);
+let api_name = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sse::benchmark_binary_tree_output_twin_sse(api_depth, api_name))
+                    })())
+                } })
+}
+fn wire_benchmark_blob_input_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_input_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_blob = <crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sse::benchmark_blob_input_twin_sse(api_blob))
+                    })())
+                } })
+}
+fn wire_benchmark_blob_output_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_output_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sse::benchmark_blob_output_twin_sse(api_size))
+                    })())
                 } })
 }
 fn wire_benchmark_input_bytes_twin_sse_impl(
@@ -4871,6 +5131,41 @@ fn wire_benchmark_void_twin_sse_impl(
         },
     )
 }
+fn wire_benchmark_binary_tree_input_twin_sync_impl(
+    tree: impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>
+        + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_input_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_tree = tree.cst_decode();
+                transform_result_dco((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_input_twin_sync(api_tree))
+                })()) })
+}
+fn wire_benchmark_binary_tree_output_twin_sync_impl(
+    depth: impl CstDecode<i32> + core::panic::UnwindSafe,
+    name: impl CstDecode<String> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_depth = depth.cst_decode();let api_name = name.cst_decode();
+                transform_result_dco((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_output_twin_sync(api_depth, api_name))
+                })()) })
+}
+fn wire_benchmark_blob_input_twin_sync_impl(
+    blob: impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync>
+        + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_input_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_blob = blob.cst_decode();
+                transform_result_dco((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_input_twin_sync(api_blob))
+                })()) })
+}
+fn wire_benchmark_blob_output_twin_sync_impl(
+    size: impl CstDecode<i32> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_output_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_size = size.cst_decode();
+                transform_result_dco((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_blob_output_twin_sync(api_size))
+                })()) })
+}
 fn wire_benchmark_input_bytes_twin_sync_impl(
     bytes: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -4903,6 +5198,59 @@ fn wire_benchmark_void_twin_sync_impl() -> flutter_rust_bridge::for_generated::W
             })())
         },
     )
+}
+fn wire_benchmark_binary_tree_input_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_input_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_tree = <crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync_sse::benchmark_binary_tree_input_twin_sync_sse(api_tree))
+                })()) })
+}
+fn wire_benchmark_binary_tree_output_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_depth = <i32>::sse_decode(&mut deserializer);
+let api_name = <String>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync_sse::benchmark_binary_tree_output_twin_sync_sse(api_depth, api_name))
+                })()) })
+}
+fn wire_benchmark_blob_input_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_input_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_blob = <crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync_sse::benchmark_blob_input_twin_sync_sse(api_blob))
+                })()) })
+}
+fn wire_benchmark_blob_output_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_blob_output_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_size = <i32>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync_sse::benchmark_blob_output_twin_sync_sse(api_size))
+                })()) })
 }
 fn wire_benchmark_input_bytes_twin_sync_sse_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -24155,6 +24503,164 @@ impl SseDecode for crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinS
     }
 }
 
+impl SseDecode for crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_name = <String>::sse_decode(deserializer);
+        let mut var_left =
+            <Option<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>>>::sse_decode(
+                deserializer,
+            );
+        let mut var_right =
+            <Option<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>>>::sse_decode(
+                deserializer,
+            );
+        return crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+            name: var_name,
+            left: var_left,
+            right: var_right,
+        };
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_name = <String>::sse_decode(deserializer);
+        let mut var_left = <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>>>::sse_decode(deserializer);
+        let mut var_right = <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>>>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync{name: var_name, left: var_left, right: var_right};
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut var_name = <String>::sse_decode(deserializer);
+let mut var_left = <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>>>::sse_decode(deserializer);
+let mut var_right = <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>>>::sse_decode(deserializer);
+return crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse{name: var_name, left: var_left, right: var_right};}
+                }
+
+impl SseDecode for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_name = <String>::sse_decode(deserializer);
+        let mut var_left = <Option<
+            Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>,
+        >>::sse_decode(deserializer);
+        let mut var_right = <Option<
+            Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>,
+        >>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
+            name: var_name,
+            left: var_left,
+            right: var_right,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_name = <String>::sse_decode(deserializer);
+        let mut var_left = <Option<
+            Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>,
+        >>::sse_decode(deserializer);
+        let mut var_right = <Option<
+            Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>,
+        >>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
+            name: var_name,
+            left: var_left,
+            right: var_right,
+        };
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_name = <String>::sse_decode(deserializer);
+        let mut var_left = <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>>>::sse_decode(deserializer);
+        let mut var_right = <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>>>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse{name: var_name, left: var_left, right: var_right};
+    }
+}
+
+impl SseDecode for crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_first = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_second = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_third = <Vec<u8>>::sse_decode(deserializer);
+        return crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+            first: var_first,
+            second: var_second,
+            third: var_third,
+        };
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_first = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_second = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_third = <Vec<u8>>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync{first: var_first, second: var_second, third: var_third};
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_first = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_second = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_third = <Vec<u8>>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse{first: var_first, second: var_second, third: var_third};
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_first = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_second = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_third = <Vec<u8>>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
+            first: var_first,
+            second: var_second,
+            third: var_third,
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_first = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_second = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_third = <Vec<u8>>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
+            first: var_first,
+            second: var_second,
+            third: var_third,
+        };
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_first = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_second = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_third = <Vec<u8>>::sse_decode(deserializer);
+        return crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse {
+            first: var_first,
+            second: var_second,
+            third: var_third,
+        };
+    }
+}
+
 impl SseDecode for crate::api::misc_example::BigBuffersTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_int64 = <Vec<i64>>::sse_decode(deserializer);
@@ -24279,6 +24785,52 @@ impl SseDecode for Box<crate::api::pseudo_manual::mirror_twin_sync_sse::Applicat
                 deserializer,
             ),
         );
+    }
+}
+
+impl SseDecode for Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return Box::new(
+            <crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>::sse_decode(deserializer),
+        );
+    }
+}
+
+impl SseDecode
+    for Box<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return Box::new(<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>::sse_decode(deserializer));
+    }
+}
+
+impl SseDecode for Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {return Box::new(<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>::sse_decode(deserializer));}
+                }
+
+impl SseDecode
+    for Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return Box::new(<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>::sse_decode(deserializer));
+    }
+}
+
+impl SseDecode
+    for Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return Box::new(<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>::sse_decode(deserializer));
+    }
+}
+
+impl SseDecode
+    for Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        return Box::new(<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>::sse_decode(deserializer));
     }
 }
 
@@ -30569,6 +31121,76 @@ impl SseDecode
     }
 }
 
+impl SseDecode for Option<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<Box<
+                crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>> {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {if (<bool>::sse_decode(deserializer)) {
+                return Some(<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>>::sse_decode(deserializer));
+            } else {
+                return None;
+            }}
+                }
+
+impl SseDecode for Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>> {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {if (<bool>::sse_decode(deserializer)) {
+                return Some(<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>>::sse_decode(deserializer));
+            } else {
+                return None;
+            }}
+                }
+
+impl SseDecode
+    for Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<Box<
+                crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<Box<
+                crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
 impl SseDecode for Option<Box<bool>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         if (<bool>::sse_decode(deserializer)) {
@@ -33433,6 +34055,311 @@ impl
     > for crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncSse
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncSse {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.name.into_into_dart().into_dart(),
+            self.left.into_into_dart().into_dart(),
+            self.right.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
+    for crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.name.into_into_dart().into_dart(),
+            self.left.into_into_dart().into_dart(),
+            self.right.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync,
+    >
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
+    {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {
+                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+                    vec![
+                    self.name.into_into_dart().into_dart(),
+self.left.into_into_dart().into_dart(),
+self.right.into_into_dart().into_dart()
+                ].into_dart()
+                }
+            }
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {
+            fn into_into_dart(self) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {
+                self
+            }
+        }
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.name.into_into_dart().into_dart(),
+            self.left.into_into_dart().into_dart(),
+            self.right.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse,
+    > for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.name.into_into_dart().into_dart(),
+            self.left.into_into_dart().into_dart(),
+            self.right.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync,
+    > for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.name.into_into_dart().into_dart(),
+            self.left.into_into_dart().into_dart(),
+            self.right.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse,
+    > for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
+    {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.first.into_into_dart().into_dart(),
+            self.second.into_into_dart().into_dart(),
+            self.third.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::benchmark_api::BenchmarkBlobTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::benchmark_api::BenchmarkBlobTwinNormal>
+    for crate::api::benchmark_api::BenchmarkBlobTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.first.into_into_dart().into_dart(),
+            self.second.into_into_dart().into_dart(),
+            self.third.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync,
+    > for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.first.into_into_dart().into_dart(),
+            self.second.into_into_dart().into_dart(),
+            self.third.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse,
+    >
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
+    {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.first.into_into_dart().into_dart(),
+            self.second.into_into_dart().into_dart(),
+            self.third.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse,
+    > for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.first.into_into_dart().into_dart(),
+            self.second.into_into_dart().into_dart(),
+            self.third.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync,
+    > for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.first.into_into_dart().into_dart(),
+            self.second.into_into_dart().into_dart(),
+            self.third.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse,
+    > for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse {
         self
     }
 }
@@ -43266,6 +44193,118 @@ impl SseEncode for crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinS
     }
 }
 
+impl SseEncode for crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.name, serializer);
+        <Option<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>>>::sse_encode(
+            self.left, serializer,
+        );
+        <Option<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>>>::sse_encode(
+            self.right, serializer,
+        );
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.name, serializer);
+        <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>>>::sse_encode(self.left, serializer);
+        <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>>>::sse_encode(self.right, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<String>::sse_encode(self.name, serializer);
+<Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>>>::sse_encode(self.left, serializer);
+<Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>>>::sse_encode(self.right, serializer);}
+                }
+
+impl SseEncode for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.name, serializer);
+        <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>>>::sse_encode(self.left, serializer);
+        <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>>>::sse_encode(self.right, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.name, serializer);
+        <Option<
+            Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>,
+        >>::sse_encode(self.left, serializer);
+        <Option<
+            Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>,
+        >>::sse_encode(self.right, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.name, serializer);
+        <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>>>::sse_encode(self.left, serializer);
+        <Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>>>::sse_encode(self.right, serializer);
+    }
+}
+
+impl SseEncode for crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(self.first, serializer);
+        <Vec<u8>>::sse_encode(self.second, serializer);
+        <Vec<u8>>::sse_encode(self.third, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(self.first, serializer);
+        <Vec<u8>>::sse_encode(self.second, serializer);
+        <Vec<u8>>::sse_encode(self.third, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(self.first, serializer);
+        <Vec<u8>>::sse_encode(self.second, serializer);
+        <Vec<u8>>::sse_encode(self.third, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(self.first, serializer);
+        <Vec<u8>>::sse_encode(self.second, serializer);
+        <Vec<u8>>::sse_encode(self.third, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(self.first, serializer);
+        <Vec<u8>>::sse_encode(self.second, serializer);
+        <Vec<u8>>::sse_encode(self.third, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(self.first, serializer);
+        <Vec<u8>>::sse_encode(self.second, serializer);
+        <Vec<u8>>::sse_encode(self.third, serializer);
+    }
+}
+
 impl SseEncode for crate::api::misc_example::BigBuffersTwinNormal {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<i64>>::sse_encode(self.int64, serializer);
@@ -43359,6 +44398,52 @@ impl SseEncode for Box<crate::api::pseudo_manual::mirror_twin_sync_sse::Applicat
         <crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>::sse_encode(
             *self, serializer,
         );
+    }
+}
+
+impl SseEncode for Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>::sse_encode(*self, serializer);
+    }
+}
+
+impl SseEncode
+    for Box<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>::sse_encode(*self, serializer);
+    }
+}
+
+impl SseEncode for Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>::sse_encode(*self, serializer);}
+                }
+
+impl SseEncode
+    for Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>::sse_encode(
+            *self, serializer,
+        );
+    }
+}
+
+impl SseEncode
+    for Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>::sse_encode(*self, serializer);
+    }
+}
+
+impl SseEncode
+    for Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>::sse_encode(*self, serializer);
     }
 }
 
@@ -48131,6 +49216,66 @@ impl SseEncode
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>>::sse_encode(
+                value, serializer,
+            );
+        }
+    }
+}
+
+impl SseEncode for Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>> {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<bool>::sse_encode(self.is_some(), serializer);
+                if let Some(value) = self {
+                    <Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>>::sse_encode(value, serializer);
+                }}
+                }
+
+impl SseEncode for Option<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>> {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<bool>::sse_encode(self.is_some(), serializer);
+                if let Some(value) = self {
+                    <Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>>::sse_encode(value, serializer);
+                }}
+                }
+
+impl SseEncode
+    for Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>>::sse_encode(value, serializer);
         }
     }
 }

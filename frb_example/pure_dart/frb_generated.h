@@ -60,6 +60,18 @@ typedef struct wire_cst_user_id_twin_normal {
   uint32_t value;
 } wire_cst_user_id_twin_normal;
 
+typedef struct wire_cst_benchmark_binary_tree_twin_normal {
+  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_benchmark_binary_tree_twin_normal *left;
+  struct wire_cst_benchmark_binary_tree_twin_normal *right;
+} wire_cst_benchmark_binary_tree_twin_normal;
+
+typedef struct wire_cst_benchmark_blob_twin_normal {
+  struct wire_cst_list_prim_u_8 *first;
+  struct wire_cst_list_prim_u_8 *second;
+  struct wire_cst_list_prim_u_8 *third;
+} wire_cst_benchmark_blob_twin_normal;
+
 typedef struct wire_cst_list_Chrono_Duration {
   int64_t *ptr;
   int32_t len;
@@ -586,6 +598,30 @@ typedef struct wire_cst_customized_twin_sync {
 typedef struct wire_cst_user_id_twin_sync {
   uint32_t value;
 } wire_cst_user_id_twin_sync;
+
+typedef struct wire_cst_benchmark_binary_tree_twin_rust_async {
+  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_benchmark_binary_tree_twin_rust_async *left;
+  struct wire_cst_benchmark_binary_tree_twin_rust_async *right;
+} wire_cst_benchmark_binary_tree_twin_rust_async;
+
+typedef struct wire_cst_benchmark_blob_twin_rust_async {
+  struct wire_cst_list_prim_u_8 *first;
+  struct wire_cst_list_prim_u_8 *second;
+  struct wire_cst_list_prim_u_8 *third;
+} wire_cst_benchmark_blob_twin_rust_async;
+
+typedef struct wire_cst_benchmark_binary_tree_twin_sync {
+  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_benchmark_binary_tree_twin_sync *left;
+  struct wire_cst_benchmark_binary_tree_twin_sync *right;
+} wire_cst_benchmark_binary_tree_twin_sync;
+
+typedef struct wire_cst_benchmark_blob_twin_sync {
+  struct wire_cst_list_prim_u_8 *first;
+  struct wire_cst_list_prim_u_8 *second;
+  struct wire_cst_list_prim_u_8 *third;
+} wire_cst_benchmark_blob_twin_sync;
 
 typedef struct wire_cst_feature_chrono_twin_rust_async {
   int64_t utc;
@@ -1701,6 +1737,42 @@ typedef struct wire_cst_attribute_twin_sync_sse {
   struct wire_cst_list_prim_u_8 *key;
   struct wire_cst_list_prim_u_8 *value;
 } wire_cst_attribute_twin_sync_sse;
+
+typedef struct wire_cst_benchmark_binary_tree_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_benchmark_binary_tree_twin_rust_async_sse *left;
+  struct wire_cst_benchmark_binary_tree_twin_rust_async_sse *right;
+} wire_cst_benchmark_binary_tree_twin_rust_async_sse;
+
+typedef struct wire_cst_benchmark_binary_tree_twin_sse {
+  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_benchmark_binary_tree_twin_sse *left;
+  struct wire_cst_benchmark_binary_tree_twin_sse *right;
+} wire_cst_benchmark_binary_tree_twin_sse;
+
+typedef struct wire_cst_benchmark_binary_tree_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_benchmark_binary_tree_twin_sync_sse *left;
+  struct wire_cst_benchmark_binary_tree_twin_sync_sse *right;
+} wire_cst_benchmark_binary_tree_twin_sync_sse;
+
+typedef struct wire_cst_benchmark_blob_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *first;
+  struct wire_cst_list_prim_u_8 *second;
+  struct wire_cst_list_prim_u_8 *third;
+} wire_cst_benchmark_blob_twin_rust_async_sse;
+
+typedef struct wire_cst_benchmark_blob_twin_sse {
+  struct wire_cst_list_prim_u_8 *first;
+  struct wire_cst_list_prim_u_8 *second;
+  struct wire_cst_list_prim_u_8 *third;
+} wire_cst_benchmark_blob_twin_sse;
+
+typedef struct wire_cst_benchmark_blob_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *first;
+  struct wire_cst_list_prim_u_8 *second;
+  struct wire_cst_list_prim_u_8 *third;
+} wire_cst_benchmark_blob_twin_sync_sse;
 
 typedef struct wire_cst_concatenate_with_twin_rust_async_sse {
   struct wire_cst_list_prim_u_8 *a;
@@ -4177,6 +4249,18 @@ void wire_handle_customized_struct_twin_normal(int64_t port_,
 
 void wire_next_user_id_twin_normal(int64_t port_, struct wire_cst_user_id_twin_normal *user_id);
 
+void wire_benchmark_binary_tree_input_twin_normal(int64_t port_,
+                                                  struct wire_cst_benchmark_binary_tree_twin_normal *tree);
+
+void wire_benchmark_binary_tree_output_twin_normal(int64_t port_,
+                                                   int32_t depth,
+                                                   struct wire_cst_list_prim_u_8 *name);
+
+void wire_benchmark_blob_input_twin_normal(int64_t port_,
+                                           struct wire_cst_benchmark_blob_twin_normal *blob);
+
+void wire_benchmark_blob_output_twin_normal(int64_t port_, int32_t size);
+
 void wire_benchmark_input_bytes_twin_normal(int64_t port_, struct wire_cst_list_prim_u_8 *bytes);
 
 void wire_benchmark_output_bytes_twin_normal(int64_t port_, int32_t size);
@@ -4785,12 +4869,44 @@ WireSyncRust2DartSse wire_next_user_id_twin_sync_sse(uint8_t *ptr_,
                                                      int32_t rust_vec_len_,
                                                      int32_t data_len_);
 
+void wire_benchmark_binary_tree_input_twin_rust_async(int64_t port_,
+                                                      struct wire_cst_benchmark_binary_tree_twin_rust_async *tree);
+
+void wire_benchmark_binary_tree_output_twin_rust_async(int64_t port_,
+                                                       int32_t depth,
+                                                       struct wire_cst_list_prim_u_8 *name);
+
+void wire_benchmark_blob_input_twin_rust_async(int64_t port_,
+                                               struct wire_cst_benchmark_blob_twin_rust_async *blob);
+
+void wire_benchmark_blob_output_twin_rust_async(int64_t port_, int32_t size);
+
 void wire_benchmark_input_bytes_twin_rust_async(int64_t port_,
                                                 struct wire_cst_list_prim_u_8 *bytes);
 
 void wire_benchmark_output_bytes_twin_rust_async(int64_t port_, int32_t size);
 
 void wire_benchmark_void_twin_rust_async(int64_t port_);
+
+void wire_benchmark_binary_tree_input_twin_rust_async_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
+
+void wire_benchmark_binary_tree_output_twin_rust_async_sse(int64_t port_,
+                                                           uint8_t *ptr_,
+                                                           int32_t rust_vec_len_,
+                                                           int32_t data_len_);
+
+void wire_benchmark_blob_input_twin_rust_async_sse(int64_t port_,
+                                                   uint8_t *ptr_,
+                                                   int32_t rust_vec_len_,
+                                                   int32_t data_len_);
+
+void wire_benchmark_blob_output_twin_rust_async_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
 
 void wire_benchmark_input_bytes_twin_rust_async_sse(int64_t port_,
                                                     uint8_t *ptr_,
@@ -4807,6 +4923,26 @@ void wire_benchmark_void_twin_rust_async_sse(int64_t port_,
                                              int32_t rust_vec_len_,
                                              int32_t data_len_);
 
+void wire_benchmark_binary_tree_input_twin_sse(int64_t port_,
+                                               uint8_t *ptr_,
+                                               int32_t rust_vec_len_,
+                                               int32_t data_len_);
+
+void wire_benchmark_binary_tree_output_twin_sse(int64_t port_,
+                                                uint8_t *ptr_,
+                                                int32_t rust_vec_len_,
+                                                int32_t data_len_);
+
+void wire_benchmark_blob_input_twin_sse(int64_t port_,
+                                        uint8_t *ptr_,
+                                        int32_t rust_vec_len_,
+                                        int32_t data_len_);
+
+void wire_benchmark_blob_output_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
+
 void wire_benchmark_input_bytes_twin_sse(int64_t port_,
                                          uint8_t *ptr_,
                                          int32_t rust_vec_len_,
@@ -4822,11 +4958,36 @@ void wire_benchmark_void_twin_sse(int64_t port_,
                                   int32_t rust_vec_len_,
                                   int32_t data_len_);
 
+WireSyncRust2DartDco wire_benchmark_binary_tree_input_twin_sync(struct wire_cst_benchmark_binary_tree_twin_sync *tree);
+
+WireSyncRust2DartDco wire_benchmark_binary_tree_output_twin_sync(int32_t depth,
+                                                                 struct wire_cst_list_prim_u_8 *name);
+
+WireSyncRust2DartDco wire_benchmark_blob_input_twin_sync(struct wire_cst_benchmark_blob_twin_sync *blob);
+
+WireSyncRust2DartDco wire_benchmark_blob_output_twin_sync(int32_t size);
+
 WireSyncRust2DartDco wire_benchmark_input_bytes_twin_sync(struct wire_cst_list_prim_u_8 *bytes);
 
 WireSyncRust2DartDco wire_benchmark_output_bytes_twin_sync(int32_t size);
 
 WireSyncRust2DartDco wire_benchmark_void_twin_sync(void);
+
+WireSyncRust2DartSse wire_benchmark_binary_tree_input_twin_sync_sse(uint8_t *ptr_,
+                                                                    int32_t rust_vec_len_,
+                                                                    int32_t data_len_);
+
+WireSyncRust2DartSse wire_benchmark_binary_tree_output_twin_sync_sse(uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
+
+WireSyncRust2DartSse wire_benchmark_blob_input_twin_sync_sse(uint8_t *ptr_,
+                                                             int32_t rust_vec_len_,
+                                                             int32_t data_len_);
+
+WireSyncRust2DartSse wire_benchmark_blob_output_twin_sync_sse(uint8_t *ptr_,
+                                                              int32_t rust_vec_len_,
+                                                              int32_t data_len_);
 
 WireSyncRust2DartSse wire_benchmark_input_bytes_twin_sync_sse(uint8_t *ptr_,
                                                               int32_t rust_vec_len_,
@@ -9264,6 +9425,30 @@ struct wire_cst_b_twin_sync *cst_new_box_autoadd_b_twin_sync(void);
 
 struct wire_cst_b_twin_sync_sse *cst_new_box_autoadd_b_twin_sync_sse(void);
 
+struct wire_cst_benchmark_binary_tree_twin_normal *cst_new_box_autoadd_benchmark_binary_tree_twin_normal(void);
+
+struct wire_cst_benchmark_binary_tree_twin_rust_async *cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async(void);
+
+struct wire_cst_benchmark_binary_tree_twin_rust_async_sse *cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(void);
+
+struct wire_cst_benchmark_binary_tree_twin_sse *cst_new_box_autoadd_benchmark_binary_tree_twin_sse(void);
+
+struct wire_cst_benchmark_binary_tree_twin_sync *cst_new_box_autoadd_benchmark_binary_tree_twin_sync(void);
+
+struct wire_cst_benchmark_binary_tree_twin_sync_sse *cst_new_box_autoadd_benchmark_binary_tree_twin_sync_sse(void);
+
+struct wire_cst_benchmark_blob_twin_normal *cst_new_box_autoadd_benchmark_blob_twin_normal(void);
+
+struct wire_cst_benchmark_blob_twin_rust_async *cst_new_box_autoadd_benchmark_blob_twin_rust_async(void);
+
+struct wire_cst_benchmark_blob_twin_rust_async_sse *cst_new_box_autoadd_benchmark_blob_twin_rust_async_sse(void);
+
+struct wire_cst_benchmark_blob_twin_sse *cst_new_box_autoadd_benchmark_blob_twin_sse(void);
+
+struct wire_cst_benchmark_blob_twin_sync *cst_new_box_autoadd_benchmark_blob_twin_sync(void);
+
+struct wire_cst_benchmark_blob_twin_sync_sse *cst_new_box_autoadd_benchmark_blob_twin_sync_sse(void);
+
 bool *cst_new_box_autoadd_bool(bool value);
 
 struct wire_cst_c_twin_normal *cst_new_box_autoadd_c_twin_normal(void);
@@ -9791,6 +9976,18 @@ int32_t *cst_new_box_autoadd_weekdays_twin_sse(int32_t value);
 int32_t *cst_new_box_autoadd_weekdays_twin_sync(int32_t value);
 
 int32_t *cst_new_box_autoadd_weekdays_twin_sync_sse(int32_t value);
+
+struct wire_cst_benchmark_binary_tree_twin_normal *cst_new_box_benchmark_binary_tree_twin_normal(void);
+
+struct wire_cst_benchmark_binary_tree_twin_rust_async *cst_new_box_benchmark_binary_tree_twin_rust_async(void);
+
+struct wire_cst_benchmark_binary_tree_twin_rust_async_sse *cst_new_box_benchmark_binary_tree_twin_rust_async_sse(void);
+
+struct wire_cst_benchmark_binary_tree_twin_sse *cst_new_box_benchmark_binary_tree_twin_sse(void);
+
+struct wire_cst_benchmark_binary_tree_twin_sync *cst_new_box_benchmark_binary_tree_twin_sync(void);
+
+struct wire_cst_benchmark_binary_tree_twin_sync_sse *cst_new_box_benchmark_binary_tree_twin_sync_sse(void);
 
 struct wire_cst_blob_twin_normal *cst_new_box_blob_twin_normal(void);
 
@@ -10798,6 +10995,18 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_b_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_b_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_b_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_binary_tree_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_binary_tree_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_binary_tree_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_binary_tree_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_blob_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_blob_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_blob_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_blob_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_blob_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_benchmark_blob_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_bool);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_c_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_c_twin_rust_async);
@@ -11062,6 +11271,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_weekdays_twin_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_weekdays_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_weekdays_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_benchmark_binary_tree_twin_normal);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_benchmark_binary_tree_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_benchmark_binary_tree_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_benchmark_binary_tree_twin_sse);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_benchmark_binary_tree_twin_sync);
+    dummy_var ^= ((int64_t) (void*) cst_new_box_benchmark_binary_tree_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) cst_new_box_blob_twin_normal);
     dummy_var ^= ((int64_t) (void*) cst_new_box_blob_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) cst_new_box_blob_twin_rust_async_sse);
@@ -11451,6 +11666,30 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_input_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_input_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_input_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_input_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_input_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_input_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_output_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_output_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_output_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_output_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_output_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_binary_tree_output_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_input_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_input_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_input_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_input_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_input_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_input_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_output_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_output_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_output_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_output_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_output_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_blob_output_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_rust_async_sse);

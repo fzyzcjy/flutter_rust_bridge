@@ -737,6 +737,254 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncS
         }
     }
 }
+impl CstDecode<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+            name: self_.get(0).cst_decode(),
+            left: self_.get(1).cst_decode(),
+            right: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync {
+            name: self_.get(0).cst_decode(),
+            left: self_.get(1).cst_decode(),
+            right: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 3, "Expected 3 elements, got {}", self_.length());
+                crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse{name:  self_.get(0).cst_decode(),left:  self_.get(1).cst_decode(),right:  self_.get(2).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
+            name: self_.get(0).cst_decode(),
+            left: self_.get(1).cst_decode(),
+            right: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
+            name: self_.get(0).cst_decode(),
+            left: self_.get(1).cst_decode(),
+            right: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse {
+            name: self_.get(0).cst_decode(),
+            left: self_.get(1).cst_decode(),
+            right: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::benchmark_api::BenchmarkBlobTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+            first: self_.get(0).cst_decode(),
+            second: self_.get(1).cst_decode(),
+            third: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync {
+            first: self_.get(0).cst_decode(),
+            second: self_.get(1).cst_decode(),
+            third: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
+    {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse{first:  self_.get(0).cst_decode(),second:  self_.get(1).cst_decode(),third:  self_.get(2).cst_decode()}
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
+            first: self_.get(0).cst_decode(),
+            second: self_.get(1).cst_decode(),
+            third: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
+            first: self_.get(0).cst_decode(),
+            second: self_.get(1).cst_decode(),
+            third: self_.get(2).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse {
+            first: self_.get(0).cst_decode(),
+            second: self_.get(1).cst_decode(),
+            third: self_.get(2).cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::misc_example::BigBuffersTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -8942,6 +9190,53 @@ impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
         Box::new(self.cst_decode())
     }
 }
+impl CstDecode<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
+        Box::new(self.cst_decode())
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync> {
+                Box::new(self.cst_decode())
+            }
+        }
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> {
+                Box::new(self.cst_decode())
+            }
+        }
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse> {
+        Box::new(self.cst_decode())
+    }
+}
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync> {
+        Box::new(self.cst_decode())
+    }
+}
+impl
+    CstDecode<
+        Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>
+    {
+        Box::new(self.cst_decode())
+    }
+}
 impl CstDecode<Box<crate::api::array::BlobTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -10066,6 +10361,39 @@ pub fn wire_next_user_id_twin_normal(
     user_id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_next_user_id_twin_normal_impl(port_, user_id)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    tree: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_benchmark_binary_tree_input_twin_normal_impl(port_, tree)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: i32,
+    name: String,
+) {
+    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth, name)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_benchmark_blob_input_twin_normal_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: i32,
+) {
+    wire_benchmark_blob_output_twin_normal_impl(port_, size)
 }
 
 #[wasm_bindgen]
@@ -11807,6 +12135,39 @@ pub fn wire_next_user_id_twin_sync_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    tree: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_benchmark_binary_tree_input_twin_rust_async_impl(port_, tree)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: i32,
+    name: String,
+) {
+    wire_benchmark_binary_tree_output_twin_rust_async_impl(port_, depth, name)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_benchmark_blob_input_twin_rust_async_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: i32,
+) {
+    wire_benchmark_blob_output_twin_rust_async_impl(port_, size)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_input_bytes_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     bytes: Box<[u8]>,
@@ -11825,6 +12186,51 @@ pub fn wire_benchmark_output_bytes_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_benchmark_void_twin_rust_async(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_benchmark_void_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -11858,6 +12264,46 @@ pub fn wire_benchmark_void_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_input_bytes_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -11888,6 +12334,35 @@ pub fn wire_benchmark_void_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_twin_sync(
+    tree: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_input_twin_sync_impl(tree)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_twin_sync(
+    depth: i32,
+    name: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_output_twin_sync_impl(depth, name)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_twin_sync(
+    blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_input_twin_sync_impl(blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_twin_sync(
+    size: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_output_twin_sync_impl(size)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_input_bytes_twin_sync(
     bytes: Box<[u8]>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -11904,6 +12379,42 @@ pub fn wire_benchmark_output_bytes_twin_sync(
 #[wasm_bindgen]
 pub fn wire_benchmark_void_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_void_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_input_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_output_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_input_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_output_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

@@ -16,3 +16,69 @@ Future<int> benchmarkInputBytesTwinSse(
 Future<Uint8List> benchmarkOutputBytesTwinSse(
         {required int size, dynamic hint}) =>
     RustLib.instance.api.benchmarkOutputBytesTwinSse(size: size, hint: hint);
+
+Future<void> benchmarkBinaryTreeInputTwinSse(
+        {required BenchmarkBinaryTreeTwinSse tree, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputTwinSse(tree: tree, hint: hint);
+
+Future<BenchmarkBinaryTreeTwinSse> benchmarkBinaryTreeOutputTwinSse(
+        {required int depth, required String name, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputTwinSse(depth: depth, name: name, hint: hint);
+
+Future<void> benchmarkBlobInputTwinSse(
+        {required BenchmarkBlobTwinSse blob, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBlobInputTwinSse(blob: blob, hint: hint);
+
+Future<BenchmarkBlobTwinSse> benchmarkBlobOutputTwinSse(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBlobOutputTwinSse(size: size, hint: hint);
+
+class BenchmarkBinaryTreeTwinSse {
+  final String name;
+  final BenchmarkBinaryTreeTwinSse? left;
+  final BenchmarkBinaryTreeTwinSse? right;
+
+  const BenchmarkBinaryTreeTwinSse({
+    required this.name,
+    this.left,
+    this.right,
+  });
+
+  @override
+  int get hashCode => name.hashCode ^ left.hashCode ^ right.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBinaryTreeTwinSse &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          left == other.left &&
+          right == other.right;
+}
+
+class BenchmarkBlobTwinSse {
+  final Uint8List first;
+  final Uint8List second;
+  final Uint8List third;
+
+  const BenchmarkBlobTwinSse({
+    required this.first,
+    required this.second,
+    required this.third,
+  });
+
+  @override
+  int get hashCode => first.hashCode ^ second.hashCode ^ third.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBlobTwinSse &&
+          runtimeType == other.runtimeType &&
+          first == other.first &&
+          second == other.second &&
+          third == other.third;
+}

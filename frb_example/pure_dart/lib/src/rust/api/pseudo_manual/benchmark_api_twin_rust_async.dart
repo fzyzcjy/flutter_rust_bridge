@@ -18,3 +18,71 @@ Future<Uint8List> benchmarkOutputBytesTwinRustAsync(
         {required int size, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkOutputBytesTwinRustAsync(size: size, hint: hint);
+
+Future<void> benchmarkBinaryTreeInputTwinRustAsync(
+        {required BenchmarkBinaryTreeTwinRustAsync tree, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputTwinRustAsync(tree: tree, hint: hint);
+
+Future<BenchmarkBinaryTreeTwinRustAsync> benchmarkBinaryTreeOutputTwinRustAsync(
+        {required int depth, required String name, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBinaryTreeOutputTwinRustAsync(
+        depth: depth, name: name, hint: hint);
+
+Future<void> benchmarkBlobInputTwinRustAsync(
+        {required BenchmarkBlobTwinRustAsync blob, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobInputTwinRustAsync(blob: blob, hint: hint);
+
+Future<BenchmarkBlobTwinRustAsync> benchmarkBlobOutputTwinRustAsync(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobOutputTwinRustAsync(size: size, hint: hint);
+
+class BenchmarkBinaryTreeTwinRustAsync {
+  final String name;
+  final BenchmarkBinaryTreeTwinRustAsync? left;
+  final BenchmarkBinaryTreeTwinRustAsync? right;
+
+  const BenchmarkBinaryTreeTwinRustAsync({
+    required this.name,
+    this.left,
+    this.right,
+  });
+
+  @override
+  int get hashCode => name.hashCode ^ left.hashCode ^ right.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBinaryTreeTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          left == other.left &&
+          right == other.right;
+}
+
+class BenchmarkBlobTwinRustAsync {
+  final Uint8List first;
+  final Uint8List second;
+  final Uint8List third;
+
+  const BenchmarkBlobTwinRustAsync({
+    required this.first,
+    required this.second,
+    required this.third,
+  });
+
+  @override
+  int get hashCode => first.hashCode ^ second.hashCode ^ third.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBlobTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          first == other.first &&
+          second == other.second &&
+          third == other.third;
+}
