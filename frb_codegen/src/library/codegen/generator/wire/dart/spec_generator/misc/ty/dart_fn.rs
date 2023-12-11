@@ -13,11 +13,6 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let raw_parameter_names = (0..num_params).map(|i| format!("rawArg{i}")).join(", ");
         let parameter_names = (0..num_params).map(|i| format!("arg{i}")).join(", ");
         let repeated_dynamics = (0..num_params).map(|i| format!("dynamic")).join(", ");
-        let parameter_types = (self.ir.inputs.iter())
-            .map(|x| {
-                ApiDartGenerator::new(x.clone(), self.context.as_api_dart_context()).dart_api_type()
-            })
-            .join(", ");
         let decode_block = (self.ir.inputs.iter().enumerate())
             .map(|(i, ty)| {
                 format!(
@@ -28,7 +23,8 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
             .join("");
         let ir_safe_ident = self.ir.safe_ident();
         let dart_api_type =
-            ApiDartGenerator::new(self.ir, self.context.as_api_dart_context()).dart_api_type();
+            ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+                .dart_api_type();
         let return_type_safe_ident = self.ir.output.safe_ident();
 
         let api_impl_body = format!(
