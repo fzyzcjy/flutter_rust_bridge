@@ -77,7 +77,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_hi(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: _dco_decode_the_enum,
+        decodeSuccessData: dco_decode_the_enum,
         decodeErrorData: null,
       ),
       constMeta: kHiConstMeta,
@@ -101,7 +101,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_minimal_adder(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        decodeSuccessData: _dco_decode_i_32,
+        decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kMinimalAdderConstMeta,
