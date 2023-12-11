@@ -34,6 +34,8 @@ List<Command<void>> createCommands() {
         _$parseGenerateConfigResult),
     SimpleConfigCommand('generate-internal-rust', generateInternalRust,
         _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate-internal-book-help', generateInternalBookHelp,
+        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
     SimpleConfigCommand(
         'generate-internal-dart-source',
         generateInternalDartSource,
@@ -115,7 +117,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
       ('build-web', '--dart-root ${exec.pwd}frb_example/pure_dart'),
     ]) {
       await exec(
-          'cargo run -- $cmd $extraArgs --help > ${exec.pwd}book/src/generated/${cmd.isEmpty ? "main" : cmd}.txt',
+          'cargo run -- $cmd $extraArgs --help > ${exec.pwd}website/docs/generated/${cmd.isEmpty ? "main" : cmd}.txt',
           relativePwd: 'frb_codegen');
     }
   });
