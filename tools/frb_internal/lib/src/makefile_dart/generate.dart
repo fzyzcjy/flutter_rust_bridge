@@ -117,7 +117,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
       ('build-web', '--dart-root ${exec.pwd}frb_example/pure_dart'),
     ]) {
       await exec(
-          'cargo run -- $cmd $extraArgs --help > ${exec.pwd}website/docs/generated/${cmd.isEmpty ? "main" : cmd}.txt',
+          'cargo run -- $cmd $extraArgs --help > ${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx',
           relativePwd: 'frb_codegen');
     }
   });
