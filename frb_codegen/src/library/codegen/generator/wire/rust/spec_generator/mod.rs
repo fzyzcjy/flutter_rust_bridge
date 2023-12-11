@@ -10,6 +10,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::Wir
 use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
 use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;
 use serde::Serialize;
