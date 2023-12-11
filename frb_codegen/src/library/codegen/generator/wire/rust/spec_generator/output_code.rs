@@ -29,6 +29,7 @@ impl AddAssign for WireRustOutputCode {
     fn add_assign(&mut self, rhs: Self) {
         self.body += &rhs.body;
         self.extern_funcs.extend(rhs.extern_funcs);
+        self.extern_classes.extend(rhs.extern_classes);
     }
 }
 
