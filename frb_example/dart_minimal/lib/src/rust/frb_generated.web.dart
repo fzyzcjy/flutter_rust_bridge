@@ -18,6 +18,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  TheEnum dco_decode_box_autoadd_the_enum(dynamic raw);
+
+  @protected
+  int dco_decode_i_32(dynamic raw);
+
+  @protected
+  TheEnum dco_decode_the_enum(dynamic raw);
+
+  @protected
+  void dco_decode_unit(dynamic raw);
+
+  @protected
+  TheEnum sse_decode_box_autoadd_the_enum(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  TheEnum sse_decode_the_enum(SseDeserializer deserializer);
+
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer);
+
+  @protected
   List<dynamic> cst_encode_box_autoadd_the_enum(TheEnum raw) {
     return cst_encode_the_enum(raw);
   }
@@ -30,6 +54,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
     throw Exception('unreachable');
   }
+
+  @protected
+  int cst_encode_i_32(int raw);
+
+  @protected
+  void cst_encode_unit(void raw);
+
+  @protected
+  void sse_encode_box_autoadd_the_enum(TheEnum self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_the_enum(TheEnum self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer);
 }
 
 // Section: wire_class

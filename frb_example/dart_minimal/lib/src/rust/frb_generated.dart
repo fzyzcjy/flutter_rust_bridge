@@ -117,21 +117,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @protected
-  TheEnum _dco_decode_box_autoadd_the_enum(dynamic raw) {
-    return _dco_decode_the_enum(raw);
+  TheEnum dco_decode_box_autoadd_the_enum(dynamic raw) {
+    return dco_decode_the_enum(raw);
   }
 
   @protected
-  int _dco_decode_i_32(dynamic raw) {
+  int dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
 
   @protected
-  TheEnum _dco_decode_the_enum(dynamic raw) {
+  TheEnum dco_decode_the_enum(dynamic raw) {
     switch (raw[0]) {
       case 0:
         return TheEnum_TheVariant(
-          _dco_decode_i_32(raw[1]),
+          dco_decode_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -139,26 +139,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void _dco_decode_unit(dynamic raw) {
+  void dco_decode_unit(dynamic raw) {
     return;
   }
 
   @protected
-  TheEnum _sse_decode_box_autoadd_the_enum(SseDeserializer deserializer) {
-    return (_sse_decode_the_enum(deserializer));
+  TheEnum sse_decode_box_autoadd_the_enum(SseDeserializer deserializer) {
+    return (sse_decode_the_enum(deserializer));
   }
 
   @protected
-  int _sse_decode_i_32(SseDeserializer deserializer) {
+  int sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
   @protected
-  TheEnum _sse_decode_the_enum(SseDeserializer deserializer) {
-    var tag_ = _sse_decode_i_32(deserializer);
+  TheEnum sse_decode_the_enum(SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = _sse_decode_i_32(deserializer);
+        var var_field0 = sse_decode_i_32(deserializer);
         return TheEnum_TheVariant(var_field0);
       default:
         throw UnimplementedError('');
@@ -166,7 +166,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void _sse_decode_unit(SseDeserializer deserializer) {}
+  void sse_decode_unit(SseDeserializer deserializer) {}
 
   @protected
   int cst_encode_i_32(int raw) {
@@ -179,25 +179,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void _sse_encode_box_autoadd_the_enum(
-      TheEnum self, SseSerializer serializer) {
-    _sse_encode_the_enum(self, serializer);
+  void sse_encode_box_autoadd_the_enum(TheEnum self, SseSerializer serializer) {
+    sse_encode_the_enum(self, serializer);
   }
 
   @protected
-  void _sse_encode_i_32(int self, SseSerializer serializer) {
+  void sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
   @protected
-  void _sse_encode_the_enum(TheEnum self, SseSerializer serializer) {
+  void sse_encode_the_enum(TheEnum self, SseSerializer serializer) {
     switch (self) {
       case TheEnum_TheVariant(field0: final field0):
-        _sse_encode_i_32(0, serializer);
-        _sse_encode_i_32(field0, serializer);
+        sse_encode_i_32(0, serializer);
+        sse_encode_i_32(field0, serializer);
     }
   }
 
   @protected
-  void _sse_encode_unit(void self, SseSerializer serializer) {}
+  void sse_encode_unit(void self, SseSerializer serializer) {}
 }

@@ -19,20 +19,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  TheEnum dco_decode_box_autoadd_the_enum(dynamic raw);
+
+  @protected
+  int dco_decode_i_32(dynamic raw);
+
+  @protected
+  TheEnum dco_decode_the_enum(dynamic raw);
+
+  @protected
+  void dco_decode_unit(dynamic raw);
+
+  @protected
+  TheEnum sse_decode_box_autoadd_the_enum(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  TheEnum sse_decode_the_enum(SseDeserializer deserializer);
+
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer);
+
+  @protected
   ffi.Pointer<wire_cst_the_enum> cst_encode_box_autoadd_the_enum(TheEnum raw) {
     final ptr = wire.cst_new_box_autoadd_the_enum();
-    _cst_api_fill_to_wire_the_enum(raw, ptr.ref);
+    cst_api_fill_to_wire_the_enum(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  void _cst_api_fill_to_wire_box_autoadd_the_enum(
+  void cst_api_fill_to_wire_box_autoadd_the_enum(
       TheEnum apiObj, ffi.Pointer<wire_cst_the_enum> wireObj) {
-    _cst_api_fill_to_wire_the_enum(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_the_enum(apiObj, wireObj.ref);
   }
 
   @protected
-  void _cst_api_fill_to_wire_the_enum(
+  void cst_api_fill_to_wire_the_enum(
       TheEnum apiObj, wire_cst_the_enum wireObj) {
     if (apiObj is TheEnum_TheVariant) {
       var pre_field0 = cst_encode_i_32(apiObj.field0);
@@ -42,6 +66,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
   }
+
+  @protected
+  int cst_encode_i_32(int raw);
+
+  @protected
+  void cst_encode_unit(void raw);
+
+  @protected
+  void sse_encode_box_autoadd_the_enum(TheEnum self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_the_enum(TheEnum self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer);
 }
 
 // Section: wire_class
