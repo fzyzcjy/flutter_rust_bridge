@@ -1,6 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
-use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
+use crate::codegen::generator::wire::rust::spec_generator::extern_func::{ExternClass, ExternClassMode, ExternFunc};
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
@@ -20,11 +20,6 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
 
         let variants = src.variants();
 
-        let variant_structs = variants
-            .iter()
-            .map(|variant| self.generate_decoder_class_variant(variant))
-            .join("\n\n");
-
         let union_fields = variants
             .iter()
             .map(|variant| {
@@ -36,20 +31,28 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
             .join("\n");
 
         let rust_wire_type = self.rust_wire_type(Target::Io);
+        let name = &self.ir.ident.0.name;
 
-        Some(format!(
-            "#[repr(C)]
-            #[derive(Clone)]
-            pub struct {rust_wire_type} {{ tag: i32, kind: *mut {name}Kind }}
+        let mut extern_classes = vec![
+            ExternClass {
+                name: rust_wire_type,
+                mode: ExternClassMode::Struct,
+                body: format!("tag: i32, kind: *mut {name}Kind",),
+            },
+            ExternClass {
+                name: format!("{name}Kind"),
+                mode: ExternClassMode::Union,
+                body: union_fields,
+            },
+        ];
 
-            #[repr(C)]
-            pub union {name}Kind {{
-                {union_fields}
-            }}
+        extern_classes
+            .extend((variants.iter()).map(|variant| self.generate_decoder_class_variant(variant)));
 
-            {variant_structs}",
-            name = self.ir.ident.0.name,
-        ))
+        Some(WireRustOutputCode {
+            extern_classes,
+            ..Default::default()
+        })
     }
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
@@ -116,7 +119,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
 }
 
 impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
-    fn generate_decoder_class_variant(&self, variant: &IrVariant) -> String {
+    fn generate_decoder_class_variant(&self, variant: &IrVariant) -> ExternClass {
         let fields = match &variant.kind {
             IrVariantKind::Value => vec![],
             IrVariantKind::Struct(s) => s
@@ -134,14 +137,11 @@ impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
                 })
                 .collect(),
         };
-        format!(
-            "#[repr(C)]
-            #[derive(Clone)]
-            pub struct wire_cst_{}_{} {{ {} }}",
-            self.ir.ident.0.name,
-            variant.name,
-            fields.join("\n")
-        )
+        ExternClass {
+            name: format!("wire_cst_{}_{}", self.ir.ident.0.name, variant.name,),
+            mode: ExternClassMode::Struct,
+            body: fields.join("\n"),
+        }
     }
 
     fn generate_impl_new_with_nullptr_variant(&self, variant: &IrVariant) -> Option<ExternFunc> {
