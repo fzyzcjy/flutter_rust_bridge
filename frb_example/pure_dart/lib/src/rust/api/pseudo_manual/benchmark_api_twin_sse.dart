@@ -23,9 +23,9 @@ Future<void> benchmarkBinaryTreeInputTwinSse(
         .benchmarkBinaryTreeInputTwinSse(tree: tree, hint: hint);
 
 Future<BenchmarkBinaryTreeTwinSse> benchmarkBinaryTreeOutputTwinSse(
-        {required int depth, required String name, dynamic hint}) =>
+        {required int depth, dynamic hint}) =>
     RustLib.instance.api
-        .benchmarkBinaryTreeOutputTwinSse(depth: depth, name: name, hint: hint);
+        .benchmarkBinaryTreeOutputTwinSse(depth: depth, hint: hint);
 
 Future<void> benchmarkBlobInputTwinSse(
         {required BenchmarkBlobTwinSse blob, dynamic hint}) =>

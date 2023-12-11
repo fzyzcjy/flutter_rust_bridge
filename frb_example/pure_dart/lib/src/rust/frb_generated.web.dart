@@ -21251,9 +21251,8 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_benchmark_binary_tree_input_twin_normal(port_, tree);
 
   void wire_benchmark_binary_tree_output_twin_normal(
-          NativePortType port_, int depth, String name) =>
-      wasmModule.wire_benchmark_binary_tree_output_twin_normal(
-          port_, depth, name);
+          NativePortType port_, int depth) =>
+      wasmModule.wire_benchmark_binary_tree_output_twin_normal(port_, depth);
 
   void wire_benchmark_blob_input_twin_normal(
           NativePortType port_, List<dynamic> blob) =>
@@ -22260,9 +22259,9 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_benchmark_binary_tree_input_twin_rust_async(port_, tree);
 
   void wire_benchmark_binary_tree_output_twin_rust_async(
-          NativePortType port_, int depth, String name) =>
+          NativePortType port_, int depth) =>
       wasmModule.wire_benchmark_binary_tree_output_twin_rust_async(
-          port_, depth, name);
+          port_, depth);
 
   void wire_benchmark_blob_input_twin_rust_async(
           NativePortType port_, List<dynamic> blob) =>
@@ -22400,8 +22399,8 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_benchmark_binary_tree_input_twin_sync(tree);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_benchmark_binary_tree_output_twin_sync(int depth, String name) =>
-          wasmModule.wire_benchmark_binary_tree_output_twin_sync(depth, name);
+      wire_benchmark_binary_tree_output_twin_sync(int depth) =>
+          wasmModule.wire_benchmark_binary_tree_output_twin_sync(depth);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_blob_input_twin_sync(List<dynamic> blob) =>
@@ -30293,7 +30292,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> tree);
 
   external void wire_benchmark_binary_tree_output_twin_normal(
-      NativePortType port_, int depth, String name);
+      NativePortType port_, int depth);
 
   external void wire_benchmark_blob_input_twin_normal(
       NativePortType port_, List<dynamic> blob);
@@ -30969,7 +30968,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> tree);
 
   external void wire_benchmark_binary_tree_output_twin_rust_async(
-      NativePortType port_, int depth, String name);
+      NativePortType port_, int depth);
 
   external void wire_benchmark_blob_input_twin_rust_async(
       NativePortType port_, List<dynamic> blob);
@@ -31049,7 +31048,7 @@ class RustLibWasmModule implements WasmModule {
       wire_benchmark_binary_tree_input_twin_sync(List<dynamic> tree);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_benchmark_binary_tree_output_twin_sync(int depth, String name);
+      wire_benchmark_binary_tree_output_twin_sync(int depth);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_blob_input_twin_sync(List<dynamic> blob);

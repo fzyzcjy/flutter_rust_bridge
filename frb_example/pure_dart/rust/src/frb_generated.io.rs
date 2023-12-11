@@ -16398,12 +16398,8 @@ pub extern "C" fn wire_benchmark_binary_tree_input_twin_normal(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_benchmark_binary_tree_output_twin_normal(
-    port_: i64,
-    depth: i32,
-    name: *mut wire_cst_list_prim_u_8,
-) {
-    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth, name)
+pub extern "C" fn wire_benchmark_binary_tree_output_twin_normal(port_: i64, depth: i32) {
+    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth)
 }
 
 #[no_mangle]
@@ -17977,12 +17973,8 @@ pub extern "C" fn wire_benchmark_binary_tree_input_twin_rust_async(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_benchmark_binary_tree_output_twin_rust_async(
-    port_: i64,
-    depth: i32,
-    name: *mut wire_cst_list_prim_u_8,
-) {
-    wire_benchmark_binary_tree_output_twin_rust_async_impl(port_, depth, name)
+pub extern "C" fn wire_benchmark_binary_tree_output_twin_rust_async(port_: i64, depth: i32) {
+    wire_benchmark_binary_tree_output_twin_rust_async_impl(port_, depth)
 }
 
 #[no_mangle]
@@ -18171,9 +18163,8 @@ pub extern "C" fn wire_benchmark_binary_tree_input_twin_sync(
 #[no_mangle]
 pub extern "C" fn wire_benchmark_binary_tree_output_twin_sync(
     depth: i32,
-    name: *mut wire_cst_list_prim_u_8,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_benchmark_binary_tree_output_twin_sync_impl(depth, name)
+    wire_benchmark_binary_tree_output_twin_sync_impl(depth)
 }
 
 #[no_mangle]

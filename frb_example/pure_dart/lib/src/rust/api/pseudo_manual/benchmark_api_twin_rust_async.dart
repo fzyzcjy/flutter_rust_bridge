@@ -25,9 +25,9 @@ Future<void> benchmarkBinaryTreeInputTwinRustAsync(
         .benchmarkBinaryTreeInputTwinRustAsync(tree: tree, hint: hint);
 
 Future<BenchmarkBinaryTreeTwinRustAsync> benchmarkBinaryTreeOutputTwinRustAsync(
-        {required int depth, required String name, dynamic hint}) =>
-    RustLib.instance.api.benchmarkBinaryTreeOutputTwinRustAsync(
-        depth: depth, name: name, hint: hint);
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputTwinRustAsync(depth: depth, hint: hint);
 
 Future<void> benchmarkBlobInputTwinRustAsync(
         {required BenchmarkBlobTwinRustAsync blob, dynamic hint}) =>

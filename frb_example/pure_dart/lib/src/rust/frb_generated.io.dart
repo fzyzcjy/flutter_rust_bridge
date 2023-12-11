@@ -26380,23 +26380,19 @@ class RustLibWire implements BaseWire {
   void wire_benchmark_binary_tree_output_twin_normal(
     int port_,
     int depth,
-    ffi.Pointer<wire_cst_list_prim_u_8> name,
   ) {
     return _wire_benchmark_binary_tree_output_twin_normal(
       port_,
       depth,
-      name,
     );
   }
 
-  late final _wire_benchmark_binary_tree_output_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Int32, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-      'wire_benchmark_binary_tree_output_twin_normal');
+  late final _wire_benchmark_binary_tree_output_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_twin_normal');
   late final _wire_benchmark_binary_tree_output_twin_normal =
-      _wire_benchmark_binary_tree_output_twin_normalPtr.asFunction<
-          void Function(int, int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+      _wire_benchmark_binary_tree_output_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
   void wire_benchmark_blob_input_twin_normal(
     int port_,
@@ -30481,23 +30477,19 @@ class RustLibWire implements BaseWire {
   void wire_benchmark_binary_tree_output_twin_rust_async(
     int port_,
     int depth,
-    ffi.Pointer<wire_cst_list_prim_u_8> name,
   ) {
     return _wire_benchmark_binary_tree_output_twin_rust_async(
       port_,
       depth,
-      name,
     );
   }
 
-  late final _wire_benchmark_binary_tree_output_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Int32, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-      'wire_benchmark_binary_tree_output_twin_rust_async');
+  late final _wire_benchmark_binary_tree_output_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_twin_rust_async');
   late final _wire_benchmark_binary_tree_output_twin_rust_async =
-      _wire_benchmark_binary_tree_output_twin_rust_asyncPtr.asFunction<
-          void Function(int, int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+      _wire_benchmark_binary_tree_output_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
 
   void wire_benchmark_blob_input_twin_rust_async(
     int port_,
@@ -30916,23 +30908,18 @@ class RustLibWire implements BaseWire {
 
   WireSyncRust2DartDco wire_benchmark_binary_tree_output_twin_sync(
     int depth,
-    ffi.Pointer<wire_cst_list_prim_u_8> name,
   ) {
     return _wire_benchmark_binary_tree_output_twin_sync(
       depth,
-      name,
     );
   }
 
-  late final _wire_benchmark_binary_tree_output_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(
-                  ffi.Int32, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-      'wire_benchmark_binary_tree_output_twin_sync');
+  late final _wire_benchmark_binary_tree_output_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_twin_sync');
   late final _wire_benchmark_binary_tree_output_twin_sync =
-      _wire_benchmark_binary_tree_output_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(
-              int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+      _wire_benchmark_binary_tree_output_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_benchmark_blob_input_twin_sync(
     ffi.Pointer<wire_cst_benchmark_blob_twin_sync> blob,

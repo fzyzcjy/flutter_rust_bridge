@@ -23,9 +23,9 @@ void benchmarkBinaryTreeInputTwinSyncSse(
         .benchmarkBinaryTreeInputTwinSyncSse(tree: tree, hint: hint);
 
 BenchmarkBinaryTreeTwinSyncSse benchmarkBinaryTreeOutputTwinSyncSse(
-        {required int depth, required String name, dynamic hint}) =>
-    RustLib.instance.api.benchmarkBinaryTreeOutputTwinSyncSse(
-        depth: depth, name: name, hint: hint);
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputTwinSyncSse(depth: depth, hint: hint);
 
 void benchmarkBlobInputTwinSyncSse(
         {required BenchmarkBlobTwinSyncSse blob, dynamic hint}) =>

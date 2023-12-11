@@ -10375,9 +10375,8 @@ pub fn wire_benchmark_binary_tree_input_twin_normal(
 pub fn wire_benchmark_binary_tree_output_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: i32,
-    name: String,
 ) {
-    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth, name)
+    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth)
 }
 
 #[wasm_bindgen]
@@ -12146,9 +12145,8 @@ pub fn wire_benchmark_binary_tree_input_twin_rust_async(
 pub fn wire_benchmark_binary_tree_output_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: i32,
-    name: String,
 ) {
-    wire_benchmark_binary_tree_output_twin_rust_async_impl(port_, depth, name)
+    wire_benchmark_binary_tree_output_twin_rust_async_impl(port_, depth)
 }
 
 #[wasm_bindgen]
@@ -12343,9 +12341,8 @@ pub fn wire_benchmark_binary_tree_input_twin_sync(
 #[wasm_bindgen]
 pub fn wire_benchmark_binary_tree_output_twin_sync(
     depth: i32,
-    name: String,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_benchmark_binary_tree_output_twin_sync_impl(depth, name)
+    wire_benchmark_binary_tree_output_twin_sync_impl(depth)
 }
 
 #[wasm_bindgen]

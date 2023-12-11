@@ -4252,9 +4252,7 @@ void wire_next_user_id_twin_normal(int64_t port_, struct wire_cst_user_id_twin_n
 void wire_benchmark_binary_tree_input_twin_normal(int64_t port_,
                                                   struct wire_cst_benchmark_binary_tree_twin_normal *tree);
 
-void wire_benchmark_binary_tree_output_twin_normal(int64_t port_,
-                                                   int32_t depth,
-                                                   struct wire_cst_list_prim_u_8 *name);
+void wire_benchmark_binary_tree_output_twin_normal(int64_t port_, int32_t depth);
 
 void wire_benchmark_blob_input_twin_normal(int64_t port_,
                                            struct wire_cst_benchmark_blob_twin_normal *blob);
@@ -4872,9 +4870,7 @@ WireSyncRust2DartSse wire_next_user_id_twin_sync_sse(uint8_t *ptr_,
 void wire_benchmark_binary_tree_input_twin_rust_async(int64_t port_,
                                                       struct wire_cst_benchmark_binary_tree_twin_rust_async *tree);
 
-void wire_benchmark_binary_tree_output_twin_rust_async(int64_t port_,
-                                                       int32_t depth,
-                                                       struct wire_cst_list_prim_u_8 *name);
+void wire_benchmark_binary_tree_output_twin_rust_async(int64_t port_, int32_t depth);
 
 void wire_benchmark_blob_input_twin_rust_async(int64_t port_,
                                                struct wire_cst_benchmark_blob_twin_rust_async *blob);
@@ -4960,8 +4956,7 @@ void wire_benchmark_void_twin_sse(int64_t port_,
 
 WireSyncRust2DartDco wire_benchmark_binary_tree_input_twin_sync(struct wire_cst_benchmark_binary_tree_twin_sync *tree);
 
-WireSyncRust2DartDco wire_benchmark_binary_tree_output_twin_sync(int32_t depth,
-                                                                 struct wire_cst_list_prim_u_8 *name);
+WireSyncRust2DartDco wire_benchmark_binary_tree_output_twin_sync(int32_t depth);
 
 WireSyncRust2DartDco wire_benchmark_blob_input_twin_sync(struct wire_cst_benchmark_blob_twin_sync *blob);
 

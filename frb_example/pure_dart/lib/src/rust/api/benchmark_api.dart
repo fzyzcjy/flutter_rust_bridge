@@ -24,9 +24,9 @@ Future<void> benchmarkBinaryTreeInputTwinNormal(
         .benchmarkBinaryTreeInputTwinNormal(tree: tree, hint: hint);
 
 Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
-        {required int depth, required String name, dynamic hint}) =>
-    RustLib.instance.api.benchmarkBinaryTreeOutputTwinNormal(
-        depth: depth, name: name, hint: hint);
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputTwinNormal(depth: depth, hint: hint);
 
 Future<void> benchmarkBlobInputTwinNormal(
         {required BenchmarkBlobTwinNormal blob, dynamic hint}) =>

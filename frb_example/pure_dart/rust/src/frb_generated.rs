@@ -391,7 +391,6 @@ fn wire_benchmark_binary_tree_input_twin_normal_impl(
 fn wire_benchmark_binary_tree_output_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: impl CstDecode<i32> + core::panic::UnwindSafe,
-    name: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -401,12 +400,11 @@ fn wire_benchmark_binary_tree_output_twin_normal_impl(
         },
         move || {
             let api_depth = depth.cst_decode();
-            let api_name = name.cst_decode();
             move |context| {
                 transform_result_dco((move || {
                     Result::<_, ()>::Ok(
                         crate::api::benchmark_api::benchmark_binary_tree_output_twin_normal(
-                            api_depth, api_name,
+                            api_depth,
                         ),
                     )
                 })())
@@ -4841,11 +4839,10 @@ fn wire_benchmark_binary_tree_input_twin_rust_async_impl(
 fn wire_benchmark_binary_tree_output_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: impl CstDecode<i32> + core::panic::UnwindSafe,
-    name: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_depth = depth.cst_decode();let api_name = name.cst_decode(); move |context| async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_depth = depth.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_output_twin_rust_async(api_depth, api_name).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async::benchmark_binary_tree_output_twin_rust_async(api_depth).await)
                     })().await)
                 } })
 }
@@ -4924,10 +4921,9 @@ fn wire_benchmark_binary_tree_output_twin_rust_async_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_depth = <i32>::sse_decode(&mut deserializer);
-let api_name = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::benchmark_binary_tree_output_twin_rust_async_sse(api_depth, api_name).await)
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::benchmark_binary_tree_output_twin_rust_async_sse(api_depth).await)
                     })().await)
                 } })
 }
@@ -5030,10 +5026,9 @@ fn wire_benchmark_binary_tree_output_twin_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_depth = <i32>::sse_decode(&mut deserializer);
-let api_name = <String>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sse::benchmark_binary_tree_output_twin_sse(api_depth, api_name))
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sse::benchmark_binary_tree_output_twin_sse(api_depth))
                     })())
                 } })
 }
@@ -5142,11 +5137,10 @@ fn wire_benchmark_binary_tree_input_twin_sync_impl(
 }
 fn wire_benchmark_binary_tree_output_twin_sync_impl(
     depth: impl CstDecode<i32> + core::panic::UnwindSafe,
-    name: impl CstDecode<String> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_depth = depth.cst_decode();let api_name = name.cst_decode();
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_depth = depth.cst_decode();
                 transform_result_dco((move || {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_output_twin_sync(api_depth, api_name))
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_binary_tree_output_twin_sync(api_depth))
                 })()) })
 }
 fn wire_benchmark_blob_input_twin_sync_impl(
@@ -5220,10 +5214,9 @@ fn wire_benchmark_binary_tree_output_twin_sync_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_depth = <i32>::sse_decode(&mut deserializer);
-let api_name = <String>::sse_decode(&mut deserializer);deserializer.end();
+            let api_depth = <i32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync_sse::benchmark_binary_tree_output_twin_sync_sse(api_depth, api_name))
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync_sse::benchmark_binary_tree_output_twin_sync_sse(api_depth))
                 })()) })
 }
 fn wire_benchmark_blob_input_twin_sync_sse_impl(
