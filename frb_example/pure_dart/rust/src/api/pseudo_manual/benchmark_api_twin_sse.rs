@@ -65,9 +65,9 @@ fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinSse {
 }
 
 pub struct BenchmarkBlobTwinSse {
-    first: Vec<u8>,
-    second: Vec<u8>,
-    third: Vec<u8>,
+    pub first: Vec<u8>,
+    pub second: Vec<u8>,
+    pub third: Vec<u8>,
 }
 
 #[flutter_rust_bridge::frb(serialize)]

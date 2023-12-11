@@ -62,9 +62,9 @@ fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinRustAsync {
 }
 
 pub struct BenchmarkBlobTwinRustAsync {
-    first: Vec<u8>,
-    second: Vec<u8>,
-    third: Vec<u8>,
+    pub first: Vec<u8>,
+    pub second: Vec<u8>,
+    pub third: Vec<u8>,
 }
 
 pub async fn benchmark_blob_input_twin_rust_async(blob: BenchmarkBlobTwinRustAsync) {
