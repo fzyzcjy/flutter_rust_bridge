@@ -13,11 +13,11 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustOpaqueWireDartCodecCstGen
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        dart_or_rust_opaque_dart_wire_type(target)
+        rust_opaque_dart_wire_type(target)
     }
 }
 
-pub(super) fn dart_or_rust_opaque_dart_wire_type(target: Target) -> String {
+pub(super) fn rust_opaque_dart_wire_type(target: Target) -> String {
     match target {
         Target::Io => "PlatformPointer",
         Target::Wasm => "Object",

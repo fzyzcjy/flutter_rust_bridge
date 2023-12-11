@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::rust_opaque::dart_or_rust_opaque_dart_wire_type;
+use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::rust_opaque::rust_opaque_dart_wire_type;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustAutoOpaqueWireDartCodecCstGenerator<'a> {
@@ -14,6 +14,6 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustAutoOpaqueWireDartCodecCs
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        dart_or_rust_opaque_dart_wire_type(target)
+        rust_opaque_dart_wire_type(target)
     }
 }
