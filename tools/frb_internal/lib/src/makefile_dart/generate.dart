@@ -116,9 +116,10 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
       ('integrate', ''),
       ('build-web', '--dart-root ${exec.pwd}frb_example/pure_dart'),
     ]) {
-      await exec(
-          'cargo run -- $cmd $extraArgs --help > ${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx',
+      final resp = await exec('cargo run -- $cmd $extraArgs --help',
           relativePwd: 'frb_codegen');
+      File('${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx')
+          .writeAsStringSync('```\n${resp.stdout}```');
     }
   });
 }
