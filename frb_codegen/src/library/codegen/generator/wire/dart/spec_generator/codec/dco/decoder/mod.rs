@@ -3,7 +3,9 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDart
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::{
     WireDartCodecDcoGenerator, WireDartCodecDcoGeneratorContext,
 };
-use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::dart::spec_generator::output_code::{
+    DartApiImplClassMethod, WireDartOutputCode,
+};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
@@ -29,17 +31,14 @@ fn generate_impl_decode(
     context: WireDartCodecDcoGeneratorContext,
 ) -> WireDartOutputCode {
     let body = WireDartCodecDcoGenerator::new(ty.clone(), context).generate_impl_decode_body();
-    let api_impl_body = format!(
-        "{dart_api_type} _dco_decode_{safe_ident}(dynamic raw) {{
-            {body}
-        }}
-        ",
+    let signature = format!(
+        "{dart_api_type} _dco_decode_{safe_ident}(dynamic raw)",
         dart_api_type =
             ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
         safe_ident = ty.safe_ident(),
     );
     WireDartOutputCode {
-        api_impl_class_body: api_impl_body,
+        api_impl_class_methods: vec![DartApiImplClassMethod { signature, body }],
         ..Default::default()
     }
 }
