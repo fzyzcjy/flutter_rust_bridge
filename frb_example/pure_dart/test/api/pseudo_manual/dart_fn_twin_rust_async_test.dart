@@ -61,15 +61,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('rustCallDartWithDartOpaqueArgTwinRustAsync', () async {
     final opaque = (String whatever) => 42;
-    var callCount = 0;
+    var callbackCalls = <Object>[];
     await rustCallDartWithDartOpaqueArgTwinRustAsync(
-      input: opaque,
-      callback: (arg) {
-        callCount++;
-        expect(arg, opaque);
-      },
-    );
-    expect(callCount, 1);
+        input: opaque, callback: (arg) => callbackCalls.add(arg));
+    expect(callbackCalls, [opaque]);
   });
 
   test('rustCallDartWithDartOpaqueResultTwinRustAsync', () async {
