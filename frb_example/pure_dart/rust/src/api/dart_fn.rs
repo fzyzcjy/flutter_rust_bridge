@@ -57,3 +57,5 @@ pub async fn rust_call_dart_with_dart_opaque_result(
 }
 
 pub async fn TODO_dart_closure_be_async() {}
+
+pub async fn TODO_rust_call_dart_multi_times() {}
