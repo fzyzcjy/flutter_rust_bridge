@@ -4,6 +4,8 @@
 
 #![allow(unused_variables)]
 
+use std::hint::black_box;
+
 #[flutter_rust_bridge::frb(sync)]
 pub fn benchmark_void_twin_sync() {}
 
@@ -15,4 +17,60 @@ pub fn benchmark_input_bytes_twin_sync(bytes: Vec<u8>) -> i32 {
 #[flutter_rust_bridge::frb(sync)]
 pub fn benchmark_output_bytes_twin_sync(size: i32) -> Vec<u8> {
     vec![0; size as usize]
+}
+
+pub struct BenchmarkBinaryTreeTwinSync {
+    name: String,
+    left: Option<BenchmarkBinaryTreeTwinSync>,
+    right: Option<BenchmarkBinaryTreeTwinSync>,
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn benchmark_binary_tree_input_twin_sync(tree: BenchmarkBinaryTreeTwinSync) {
+    black_box(tree);
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn benchmark_binary_tree_output_twin_sync(
+    depth: i32,
+    name: String,
+) -> BenchmarkBinaryTreeTwinSync {
+    create_tree(depth, &name)
+}
+
+fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinSync {
+    if depth == 0 {
+        BenchmarkBinaryTreeTwinSync {
+            name: name.to_owned(),
+            left: None,
+            right: None,
+        }
+    } else {
+        BenchmarkBinaryTreeTwinSync {
+            name: name.to_owned(),
+            left: Some(create_tree(depth - 1)),
+            right: Some(create_tree(depth - 1)),
+        }
+    }
+}
+
+pub struct BenchmarkBlobTwinSync {
+    first: Vec<u8>,
+    second: Vec<u8>,
+    third: Vec<u8>,
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn benchmark_blob_input_twin_sync(blob: BenchmarkBlobTwinSync) {
+    black_box(blob);
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn benchmark_blob_output_twin_sync(size: i32) -> BenchmarkBlobTwinSync {
+    let data = vec![0; size as _];
+    BenchmarkBlobTwinSync {
+        first: data.clone(),
+        second: data.clone(),
+        third: data,
+    }
 }

@@ -4,6 +4,8 @@
 
 #![allow(unused_variables)]
 
+use std::hint::black_box;
+
 pub async fn benchmark_void_twin_rust_async() {}
 
 pub async fn benchmark_input_bytes_twin_rust_async(bytes: Vec<u8>) -> i32 {
@@ -12,4 +14,56 @@ pub async fn benchmark_input_bytes_twin_rust_async(bytes: Vec<u8>) -> i32 {
 
 pub async fn benchmark_output_bytes_twin_rust_async(size: i32) -> Vec<u8> {
     vec![0; size as usize]
+}
+
+pub struct BenchmarkBinaryTreeTwinRustAsync {
+    name: String,
+    left: Option<BenchmarkBinaryTreeTwinRustAsync>,
+    right: Option<BenchmarkBinaryTreeTwinRustAsync>,
+}
+
+pub async fn benchmark_binary_tree_input_twin_rust_async(tree: BenchmarkBinaryTreeTwinRustAsync) {
+    black_box(tree);
+}
+
+pub async fn benchmark_binary_tree_output_twin_rust_async(
+    depth: i32,
+    name: String,
+) -> BenchmarkBinaryTreeTwinRustAsync {
+    create_tree(depth, &name)
+}
+
+fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinRustAsync {
+    if depth == 0 {
+        BenchmarkBinaryTreeTwinRustAsync {
+            name: name.to_owned(),
+            left: None,
+            right: None,
+        }
+    } else {
+        BenchmarkBinaryTreeTwinRustAsync {
+            name: name.to_owned(),
+            left: Some(create_tree(depth - 1)),
+            right: Some(create_tree(depth - 1)),
+        }
+    }
+}
+
+pub struct BenchmarkBlobTwinRustAsync {
+    first: Vec<u8>,
+    second: Vec<u8>,
+    third: Vec<u8>,
+}
+
+pub async fn benchmark_blob_input_twin_rust_async(blob: BenchmarkBlobTwinRustAsync) {
+    black_box(blob);
+}
+
+pub async fn benchmark_blob_output_twin_rust_async(size: i32) -> BenchmarkBlobTwinRustAsync {
+    let data = vec![0; size as _];
+    BenchmarkBlobTwinRustAsync {
+        first: data.clone(),
+        second: data.clone(),
+        third: data,
+    }
 }
