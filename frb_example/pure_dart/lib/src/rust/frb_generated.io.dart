@@ -67079,3 +67079,778 @@ final class CustomNestedError1TwinSyncSseKind extends ffi.Union {
   external ffi.Pointer<wire_cst_CustomNestedError1TwinSyncSse_ErrorNested>
       ErrorNested;
 }
+
+final class wire_cst_another_macro_struct_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int data;
+
+  @ffi.Int32()
+  external int non_final_data;
+}
+
+final class wire_cst_another_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> a;
+}
+
+final class wire_cst_another_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> a;
+}
+
+final class wire_cst_another_twin_rust_async_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> a;
+}
+
+final class wire_cst_another_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> a;
+}
+
+final class wire_cst_another_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> a;
+}
+
+final class wire_cst_another_twin_sync_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> a;
+}
+
+final class wire_cst_application_message extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<ApplicationMessageKind> kind;
+}
+
+final class wire_cst_big_buffers_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64;
+}
+
+final class wire_cst_big_buffers_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64;
+}
+
+final class wire_cst_big_buffers_twin_rust_async_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64;
+}
+
+final class wire_cst_big_buffers_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64;
+}
+
+final class wire_cst_big_buffers_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64;
+}
+
+final class wire_cst_big_buffers_twin_sync_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64;
+}
+
+final class wire_cst_contains_mirrored_sub_struct_twin_normal
+    extends ffi.Struct {
+  external wire_cst_raw_string_mirrored test;
+
+  external wire_cst_another_twin_normal test2;
+}
+
+final class wire_cst_contains_mirrored_sub_struct_twin_rust_async
+    extends ffi.Struct {
+  external wire_cst_raw_string_mirrored test;
+
+  external wire_cst_another_twin_rust_async test2;
+}
+
+final class wire_cst_contains_mirrored_sub_struct_twin_rust_async_sse
+    extends ffi.Struct {
+  external wire_cst_raw_string_mirrored test;
+
+  external wire_cst_another_twin_rust_async_sse test2;
+}
+
+final class wire_cst_contains_mirrored_sub_struct_twin_sse extends ffi.Struct {
+  external wire_cst_raw_string_mirrored test;
+
+  external wire_cst_another_twin_sse test2;
+}
+
+final class wire_cst_contains_mirrored_sub_struct_twin_sync extends ffi.Struct {
+  external wire_cst_raw_string_mirrored test;
+
+  external wire_cst_another_twin_sync test2;
+}
+
+final class wire_cst_contains_mirrored_sub_struct_twin_sync_sse
+    extends ffi.Struct {
+  external wire_cst_raw_string_mirrored test;
+
+  external wire_cst_another_twin_sync_sse test2;
+}
+
+final class wire_cst_custom_enum_error_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomEnumErrorTwinNormalKind> kind;
+}
+
+final class wire_cst_custom_enum_error_twin_rust_async extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomEnumErrorTwinRustAsyncKind> kind;
+}
+
+final class wire_cst_custom_enum_error_twin_rust_async_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomEnumErrorTwinRustAsyncSseKind> kind;
+}
+
+final class wire_cst_custom_enum_error_twin_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomEnumErrorTwinSseKind> kind;
+}
+
+final class wire_cst_custom_enum_error_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomEnumErrorTwinSyncKind> kind;
+}
+
+final class wire_cst_custom_enum_error_twin_sync_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomEnumErrorTwinSyncSseKind> kind;
+}
+
+final class wire_cst_custom_error_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomErrorTwinNormalKind> kind;
+}
+
+final class wire_cst_custom_error_twin_rust_async extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomErrorTwinRustAsyncKind> kind;
+}
+
+final class wire_cst_custom_error_twin_rust_async_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomErrorTwinRustAsyncSseKind> kind;
+}
+
+final class wire_cst_custom_error_twin_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomErrorTwinSseKind> kind;
+}
+
+final class wire_cst_custom_error_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomErrorTwinSyncKind> kind;
+}
+
+final class wire_cst_custom_error_twin_sync_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomErrorTwinSyncSseKind> kind;
+}
+
+final class wire_cst_custom_nested_error_1_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomNestedError1TwinNormalKind> kind;
+}
+
+final class wire_cst_custom_nested_error_1_twin_rust_async extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomNestedError1TwinRustAsyncKind> kind;
+}
+
+final class wire_cst_custom_nested_error_1_twin_rust_async_sse
+    extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomNestedError1TwinRustAsyncSseKind> kind;
+}
+
+final class wire_cst_custom_nested_error_1_twin_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomNestedError1TwinSseKind> kind;
+}
+
+final class wire_cst_custom_nested_error_1_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomNestedError1TwinSyncKind> kind;
+}
+
+final class wire_cst_custom_nested_error_1_twin_sync_sse extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomNestedError1TwinSyncSseKind> kind;
+}
+
+final class wire_cst_custom_struct_error_another_twin_normal
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> message;
+}
+
+final class wire_cst_custom_struct_error_another_twin_rust_async
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> message;
+}
+
+final class wire_cst_custom_struct_error_another_twin_rust_async_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> message;
+}
+
+final class wire_cst_custom_struct_error_another_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> message;
+}
+
+final class wire_cst_custom_struct_error_another_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> message;
+}
+
+final class wire_cst_custom_struct_error_another_twin_sync_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> message;
+}
+
+final class wire_cst_log_2_twin_normal extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> value;
+}
+
+final class wire_cst_log_2_twin_rust_async extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> value;
+}
+
+final class wire_cst_log_2_twin_rust_async_sse extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> value;
+}
+
+final class wire_cst_log_2_twin_sse extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> value;
+}
+
+final class wire_cst_log_2_twin_sync extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> value;
+}
+
+final class wire_cst_log_2_twin_sync_sse extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> value;
+}
+
+final class wire_cst_log_twin_normal extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  @ffi.Uint32()
+  external int value;
+}
+
+final class wire_cst_log_twin_rust_async extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  @ffi.Uint32()
+  external int value;
+}
+
+final class wire_cst_log_twin_rust_async_sse extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  @ffi.Uint32()
+  external int value;
+}
+
+final class wire_cst_log_twin_sse extends ffi.Struct {
+  @ffi.Uint32()
+  external int key;
+
+  @ffi.Uint32()
+  external int value;
+}
+
+final class wire_cst_mirror_struct_twin_normal extends ffi.Struct {
+  external wire_cst_application_settings a;
+
+  external wire_cst_my_struct b;
+
+  external ffi.Pointer<wire_cst_list_my_enum> c;
+
+  external ffi.Pointer<wire_cst_list_application_settings> d;
+}
+
+final class wire_cst_mirror_struct_twin_rust_async extends ffi.Struct {
+  external wire_cst_application_settings a;
+
+  external wire_cst_my_struct b;
+
+  external ffi.Pointer<wire_cst_list_my_enum> c;
+
+  external ffi.Pointer<wire_cst_list_application_settings> d;
+}
+
+final class wire_cst_mirror_struct_twin_rust_async_sse extends ffi.Struct {
+  external wire_cst_application_settings a;
+
+  external wire_cst_my_struct b;
+
+  external ffi.Pointer<wire_cst_list_my_enum> c;
+
+  external ffi.Pointer<wire_cst_list_application_settings> d;
+}
+
+final class wire_cst_mirror_struct_twin_sse extends ffi.Struct {
+  external wire_cst_application_settings a;
+
+  external wire_cst_my_struct b;
+
+  external ffi.Pointer<wire_cst_list_my_enum> c;
+
+  external ffi.Pointer<wire_cst_list_application_settings> d;
+}
+
+final class wire_cst_mirror_struct_twin_sync extends ffi.Struct {
+  external wire_cst_application_settings a;
+
+  external wire_cst_my_struct b;
+
+  external ffi.Pointer<wire_cst_list_my_enum> c;
+
+  external ffi.Pointer<wire_cst_list_application_settings> d;
+}
+
+final class wire_cst_mirror_struct_twin_sync_sse extends ffi.Struct {
+  external wire_cst_application_settings a;
+
+  external wire_cst_my_struct b;
+
+  external ffi.Pointer<wire_cst_list_my_enum> c;
+
+  external ffi.Pointer<wire_cst_list_application_settings> d;
+}
+
+final class wire_cst_more_than_just_one_raw_string_struct_twin_normal
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> regular;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+
+  @ffi.Bool()
+  external bool async1;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> another;
+}
+
+final class wire_cst_more_than_just_one_raw_string_struct_twin_rust_async
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> regular;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+
+  @ffi.Bool()
+  external bool async1;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> another;
+}
+
+final class wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> regular;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+
+  @ffi.Bool()
+  external bool async1;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> another;
+}
+
+final class wire_cst_more_than_just_one_raw_string_struct_twin_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> regular;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+
+  @ffi.Bool()
+  external bool async1;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> another;
+}
+
+final class wire_cst_more_than_just_one_raw_string_struct_twin_sync
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> regular;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+
+  @ffi.Bool()
+  external bool async1;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> another;
+}
+
+final class wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> regular;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+
+  @ffi.Bool()
+  external bool async1;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> another;
+}
+
+final class wire_cst_my_stream_entry_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> hello;
+}
+
+final class wire_cst_my_stream_entry_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> hello;
+}
+
+final class wire_cst_my_stream_entry_twin_rust_async_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> hello;
+}
+
+final class wire_cst_my_stream_entry_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> hello;
+}
+
+final class wire_cst_new_simple_struct extends ffi.Struct {
+  @ffi.Int32()
+  external int field;
+}
+
+final class wire_cst_old_simple_struct extends ffi.Struct {
+  @ffi.Int32()
+  external int field;
+}
+
+final class wire_cst_raw_string_item_struct_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+}
+
+final class wire_cst_raw_string_item_struct_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+}
+
+final class wire_cst_raw_string_item_struct_twin_rust_async_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+}
+
+final class wire_cst_raw_string_item_struct_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+}
+
+final class wire_cst_raw_string_item_struct_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+}
+
+final class wire_cst_raw_string_item_struct_twin_sync_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> type;
+}
+
+final class wire_cst_record_application_settings_raw_string_enum_mirrored
+    extends ffi.Struct {
+  external wire_cst_application_settings field0;
+
+  external wire_cst_raw_string_enum_mirrored field1;
+}
+
+final class wire_cst_test_chrono_twin_normal extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> dt;
+
+  external ffi.Pointer<ffi.Int64> dt2;
+
+  external ffi.Pointer<ffi.Int64> du;
+}
+
+final class wire_cst_test_chrono_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> dt;
+
+  external ffi.Pointer<ffi.Int64> dt2;
+
+  external ffi.Pointer<ffi.Int64> du;
+}
+
+final class wire_cst_test_chrono_twin_sync extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> dt;
+
+  external ffi.Pointer<ffi.Int64> dt2;
+
+  external ffi.Pointer<ffi.Int64> du;
+}
+
+final class wire_cst_test_model_twin_normal extends ffi.Struct {
+  @ffi.Uint64()
+  external int id;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  @ffi.Int32()
+  external int alias_enum;
+
+  external wire_cst_my_struct alias_struct;
+}
+
+final class wire_cst_test_model_twin_rust_async extends ffi.Struct {
+  @ffi.Uint64()
+  external int id;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  @ffi.Int32()
+  external int alias_enum;
+
+  external wire_cst_my_struct alias_struct;
+}
+
+final class wire_cst_test_model_twin_rust_async_sse extends ffi.Struct {
+  @ffi.Uint64()
+  external int id;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  @ffi.Int32()
+  external int alias_enum;
+
+  external wire_cst_my_struct alias_struct;
+}
+
+final class wire_cst_test_model_twin_sse extends ffi.Struct {
+  @ffi.Uint64()
+  external int id;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  @ffi.Int32()
+  external int alias_enum;
+
+  external wire_cst_my_struct alias_struct;
+}
+
+final class wire_cst_test_model_twin_sync extends ffi.Struct {
+  @ffi.Uint64()
+  external int id;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  @ffi.Int32()
+  external int alias_enum;
+
+  external wire_cst_my_struct alias_struct;
+}
+
+final class wire_cst_test_model_twin_sync_sse extends ffi.Struct {
+  @ffi.Uint64()
+  external int id;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  @ffi.Int32()
+  external int alias_enum;
+
+  external wire_cst_my_struct alias_struct;
+}
+
+final class wire_cst_vec_of_primitive_pack_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_8> int8list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> uint8list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_16> int16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_16> uint16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_32> uint32list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_32> int32list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_32> float32list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_64> float64list;
+
+  external ffi.Pointer<wire_cst_list_bool> bool_list;
+}
+
+final class wire_cst_vec_of_primitive_pack_twin_rust_async extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_8> int8list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> uint8list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_16> int16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_16> uint16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_32> uint32list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_32> int32list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_32> float32list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_64> float64list;
+
+  external ffi.Pointer<wire_cst_list_bool> bool_list;
+}
+
+final class wire_cst_vec_of_primitive_pack_twin_rust_async_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_8> int8list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> uint8list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_16> int16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_16> uint16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_32> uint32list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_32> int32list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_32> float32list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_64> float64list;
+
+  external ffi.Pointer<wire_cst_list_bool> bool_list;
+}
+
+final class wire_cst_vec_of_primitive_pack_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_8> int8list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> uint8list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_16> int16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_16> uint16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_32> uint32list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_32> int32list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_32> float32list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_64> float64list;
+
+  external ffi.Pointer<wire_cst_list_bool> bool_list;
+}
+
+final class wire_cst_vec_of_primitive_pack_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_8> int8list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> uint8list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_16> int16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_16> uint16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_32> uint32list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_32> int32list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_32> float32list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_64> float64list;
+
+  external ffi.Pointer<wire_cst_list_bool> bool_list;
+}
+
+final class wire_cst_vec_of_primitive_pack_twin_sync_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_i_8> int8list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> uint8list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_16> int16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_16> uint16list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_32> uint32list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_32> int32list;
+
+  external ffi.Pointer<wire_cst_list_prim_u_64> uint64list;
+
+  external ffi.Pointer<wire_cst_list_prim_i_64> int64list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_32> float32list;
+
+  external ffi.Pointer<wire_cst_list_prim_f_64> float64list;
+
+  external ffi.Pointer<wire_cst_list_bool> bool_list;
+}

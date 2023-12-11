@@ -3575,6 +3575,545 @@ typedef union CustomNestedError1TwinSyncSseKind {
   struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested *ErrorNested;
 } CustomNestedError1TwinSyncSseKind;
 
+typedef struct wire_cst_another_macro_struct_twin_normal {
+  int32_t data;
+  int32_t non_final_data;
+} wire_cst_another_macro_struct_twin_normal;
+
+typedef struct wire_cst_another_twin_normal {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_another_twin_normal;
+
+typedef struct wire_cst_another_twin_rust_async {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_another_twin_rust_async;
+
+typedef struct wire_cst_another_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_another_twin_rust_async_sse;
+
+typedef struct wire_cst_another_twin_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_another_twin_sse;
+
+typedef struct wire_cst_another_twin_sync {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_another_twin_sync;
+
+typedef struct wire_cst_another_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *a;
+} wire_cst_another_twin_sync_sse;
+
+typedef struct wire_cst_application_message {
+  int32_t tag;
+  union ApplicationMessageKind *kind;
+} wire_cst_application_message;
+
+typedef struct wire_cst_big_buffers_twin_normal {
+  struct wire_cst_list_prim_i_64 *int64;
+  struct wire_cst_list_prim_u_64 *uint64;
+} wire_cst_big_buffers_twin_normal;
+
+typedef struct wire_cst_big_buffers_twin_rust_async {
+  struct wire_cst_list_prim_i_64 *int64;
+  struct wire_cst_list_prim_u_64 *uint64;
+} wire_cst_big_buffers_twin_rust_async;
+
+typedef struct wire_cst_big_buffers_twin_rust_async_sse {
+  struct wire_cst_list_prim_i_64 *int64;
+  struct wire_cst_list_prim_u_64 *uint64;
+} wire_cst_big_buffers_twin_rust_async_sse;
+
+typedef struct wire_cst_big_buffers_twin_sse {
+  struct wire_cst_list_prim_i_64 *int64;
+  struct wire_cst_list_prim_u_64 *uint64;
+} wire_cst_big_buffers_twin_sse;
+
+typedef struct wire_cst_big_buffers_twin_sync {
+  struct wire_cst_list_prim_i_64 *int64;
+  struct wire_cst_list_prim_u_64 *uint64;
+} wire_cst_big_buffers_twin_sync;
+
+typedef struct wire_cst_big_buffers_twin_sync_sse {
+  struct wire_cst_list_prim_i_64 *int64;
+  struct wire_cst_list_prim_u_64 *uint64;
+} wire_cst_big_buffers_twin_sync_sse;
+
+typedef struct wire_cst_contains_mirrored_sub_struct_twin_normal {
+  struct wire_cst_raw_string_mirrored test;
+  struct wire_cst_another_twin_normal test2;
+} wire_cst_contains_mirrored_sub_struct_twin_normal;
+
+typedef struct wire_cst_contains_mirrored_sub_struct_twin_rust_async {
+  struct wire_cst_raw_string_mirrored test;
+  struct wire_cst_another_twin_rust_async test2;
+} wire_cst_contains_mirrored_sub_struct_twin_rust_async;
+
+typedef struct wire_cst_contains_mirrored_sub_struct_twin_rust_async_sse {
+  struct wire_cst_raw_string_mirrored test;
+  struct wire_cst_another_twin_rust_async_sse test2;
+} wire_cst_contains_mirrored_sub_struct_twin_rust_async_sse;
+
+typedef struct wire_cst_contains_mirrored_sub_struct_twin_sse {
+  struct wire_cst_raw_string_mirrored test;
+  struct wire_cst_another_twin_sse test2;
+} wire_cst_contains_mirrored_sub_struct_twin_sse;
+
+typedef struct wire_cst_contains_mirrored_sub_struct_twin_sync {
+  struct wire_cst_raw_string_mirrored test;
+  struct wire_cst_another_twin_sync test2;
+} wire_cst_contains_mirrored_sub_struct_twin_sync;
+
+typedef struct wire_cst_contains_mirrored_sub_struct_twin_sync_sse {
+  struct wire_cst_raw_string_mirrored test;
+  struct wire_cst_another_twin_sync_sse test2;
+} wire_cst_contains_mirrored_sub_struct_twin_sync_sse;
+
+typedef struct wire_cst_custom_enum_error_twin_normal {
+  int32_t tag;
+  union CustomEnumErrorTwinNormalKind *kind;
+} wire_cst_custom_enum_error_twin_normal;
+
+typedef struct wire_cst_custom_enum_error_twin_rust_async {
+  int32_t tag;
+  union CustomEnumErrorTwinRustAsyncKind *kind;
+} wire_cst_custom_enum_error_twin_rust_async;
+
+typedef struct wire_cst_custom_enum_error_twin_rust_async_sse {
+  int32_t tag;
+  union CustomEnumErrorTwinRustAsyncSseKind *kind;
+} wire_cst_custom_enum_error_twin_rust_async_sse;
+
+typedef struct wire_cst_custom_enum_error_twin_sse {
+  int32_t tag;
+  union CustomEnumErrorTwinSseKind *kind;
+} wire_cst_custom_enum_error_twin_sse;
+
+typedef struct wire_cst_custom_enum_error_twin_sync {
+  int32_t tag;
+  union CustomEnumErrorTwinSyncKind *kind;
+} wire_cst_custom_enum_error_twin_sync;
+
+typedef struct wire_cst_custom_enum_error_twin_sync_sse {
+  int32_t tag;
+  union CustomEnumErrorTwinSyncSseKind *kind;
+} wire_cst_custom_enum_error_twin_sync_sse;
+
+typedef struct wire_cst_custom_error_twin_normal {
+  int32_t tag;
+  union CustomErrorTwinNormalKind *kind;
+} wire_cst_custom_error_twin_normal;
+
+typedef struct wire_cst_custom_error_twin_rust_async {
+  int32_t tag;
+  union CustomErrorTwinRustAsyncKind *kind;
+} wire_cst_custom_error_twin_rust_async;
+
+typedef struct wire_cst_custom_error_twin_rust_async_sse {
+  int32_t tag;
+  union CustomErrorTwinRustAsyncSseKind *kind;
+} wire_cst_custom_error_twin_rust_async_sse;
+
+typedef struct wire_cst_custom_error_twin_sse {
+  int32_t tag;
+  union CustomErrorTwinSseKind *kind;
+} wire_cst_custom_error_twin_sse;
+
+typedef struct wire_cst_custom_error_twin_sync {
+  int32_t tag;
+  union CustomErrorTwinSyncKind *kind;
+} wire_cst_custom_error_twin_sync;
+
+typedef struct wire_cst_custom_error_twin_sync_sse {
+  int32_t tag;
+  union CustomErrorTwinSyncSseKind *kind;
+} wire_cst_custom_error_twin_sync_sse;
+
+typedef struct wire_cst_custom_nested_error_1_twin_normal {
+  int32_t tag;
+  union CustomNestedError1TwinNormalKind *kind;
+} wire_cst_custom_nested_error_1_twin_normal;
+
+typedef struct wire_cst_custom_nested_error_1_twin_rust_async {
+  int32_t tag;
+  union CustomNestedError1TwinRustAsyncKind *kind;
+} wire_cst_custom_nested_error_1_twin_rust_async;
+
+typedef struct wire_cst_custom_nested_error_1_twin_rust_async_sse {
+  int32_t tag;
+  union CustomNestedError1TwinRustAsyncSseKind *kind;
+} wire_cst_custom_nested_error_1_twin_rust_async_sse;
+
+typedef struct wire_cst_custom_nested_error_1_twin_sse {
+  int32_t tag;
+  union CustomNestedError1TwinSseKind *kind;
+} wire_cst_custom_nested_error_1_twin_sse;
+
+typedef struct wire_cst_custom_nested_error_1_twin_sync {
+  int32_t tag;
+  union CustomNestedError1TwinSyncKind *kind;
+} wire_cst_custom_nested_error_1_twin_sync;
+
+typedef struct wire_cst_custom_nested_error_1_twin_sync_sse {
+  int32_t tag;
+  union CustomNestedError1TwinSyncSseKind *kind;
+} wire_cst_custom_nested_error_1_twin_sync_sse;
+
+typedef struct wire_cst_custom_struct_error_another_twin_normal {
+  struct wire_cst_list_prim_u_8 *message;
+} wire_cst_custom_struct_error_another_twin_normal;
+
+typedef struct wire_cst_custom_struct_error_another_twin_rust_async {
+  struct wire_cst_list_prim_u_8 *message;
+} wire_cst_custom_struct_error_another_twin_rust_async;
+
+typedef struct wire_cst_custom_struct_error_another_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *message;
+} wire_cst_custom_struct_error_another_twin_rust_async_sse;
+
+typedef struct wire_cst_custom_struct_error_another_twin_sse {
+  struct wire_cst_list_prim_u_8 *message;
+} wire_cst_custom_struct_error_another_twin_sse;
+
+typedef struct wire_cst_custom_struct_error_another_twin_sync {
+  struct wire_cst_list_prim_u_8 *message;
+} wire_cst_custom_struct_error_another_twin_sync;
+
+typedef struct wire_cst_custom_struct_error_another_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *message;
+} wire_cst_custom_struct_error_another_twin_sync_sse;
+
+typedef struct wire_cst_log_2_twin_normal {
+  uint32_t key;
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_log_2_twin_normal;
+
+typedef struct wire_cst_log_2_twin_rust_async {
+  uint32_t key;
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_log_2_twin_rust_async;
+
+typedef struct wire_cst_log_2_twin_rust_async_sse {
+  uint32_t key;
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_log_2_twin_rust_async_sse;
+
+typedef struct wire_cst_log_2_twin_sse {
+  uint32_t key;
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_log_2_twin_sse;
+
+typedef struct wire_cst_log_2_twin_sync {
+  uint32_t key;
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_log_2_twin_sync;
+
+typedef struct wire_cst_log_2_twin_sync_sse {
+  uint32_t key;
+  struct wire_cst_list_prim_u_8 *value;
+} wire_cst_log_2_twin_sync_sse;
+
+typedef struct wire_cst_log_twin_normal {
+  uint32_t key;
+  uint32_t value;
+} wire_cst_log_twin_normal;
+
+typedef struct wire_cst_log_twin_rust_async {
+  uint32_t key;
+  uint32_t value;
+} wire_cst_log_twin_rust_async;
+
+typedef struct wire_cst_log_twin_rust_async_sse {
+  uint32_t key;
+  uint32_t value;
+} wire_cst_log_twin_rust_async_sse;
+
+typedef struct wire_cst_log_twin_sse {
+  uint32_t key;
+  uint32_t value;
+} wire_cst_log_twin_sse;
+
+typedef struct wire_cst_mirror_struct_twin_normal {
+  struct wire_cst_application_settings a;
+  struct wire_cst_my_struct b;
+  struct wire_cst_list_my_enum *c;
+  struct wire_cst_list_application_settings *d;
+} wire_cst_mirror_struct_twin_normal;
+
+typedef struct wire_cst_mirror_struct_twin_rust_async {
+  struct wire_cst_application_settings a;
+  struct wire_cst_my_struct b;
+  struct wire_cst_list_my_enum *c;
+  struct wire_cst_list_application_settings *d;
+} wire_cst_mirror_struct_twin_rust_async;
+
+typedef struct wire_cst_mirror_struct_twin_rust_async_sse {
+  struct wire_cst_application_settings a;
+  struct wire_cst_my_struct b;
+  struct wire_cst_list_my_enum *c;
+  struct wire_cst_list_application_settings *d;
+} wire_cst_mirror_struct_twin_rust_async_sse;
+
+typedef struct wire_cst_mirror_struct_twin_sse {
+  struct wire_cst_application_settings a;
+  struct wire_cst_my_struct b;
+  struct wire_cst_list_my_enum *c;
+  struct wire_cst_list_application_settings *d;
+} wire_cst_mirror_struct_twin_sse;
+
+typedef struct wire_cst_mirror_struct_twin_sync {
+  struct wire_cst_application_settings a;
+  struct wire_cst_my_struct b;
+  struct wire_cst_list_my_enum *c;
+  struct wire_cst_list_application_settings *d;
+} wire_cst_mirror_struct_twin_sync;
+
+typedef struct wire_cst_mirror_struct_twin_sync_sse {
+  struct wire_cst_application_settings a;
+  struct wire_cst_my_struct b;
+  struct wire_cst_list_my_enum *c;
+  struct wire_cst_list_application_settings *d;
+} wire_cst_mirror_struct_twin_sync_sse;
+
+typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_normal {
+  struct wire_cst_list_prim_u_8 *regular;
+  struct wire_cst_list_prim_u_8 *type;
+  bool async;
+  struct wire_cst_list_prim_u_8 *another;
+} wire_cst_more_than_just_one_raw_string_struct_twin_normal;
+
+typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
+  struct wire_cst_list_prim_u_8 *regular;
+  struct wire_cst_list_prim_u_8 *type;
+  bool async;
+  struct wire_cst_list_prim_u_8 *another;
+} wire_cst_more_than_just_one_raw_string_struct_twin_rust_async;
+
+typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *regular;
+  struct wire_cst_list_prim_u_8 *type;
+  bool async;
+  struct wire_cst_list_prim_u_8 *another;
+} wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse;
+
+typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_sse {
+  struct wire_cst_list_prim_u_8 *regular;
+  struct wire_cst_list_prim_u_8 *type;
+  bool async;
+  struct wire_cst_list_prim_u_8 *another;
+} wire_cst_more_than_just_one_raw_string_struct_twin_sse;
+
+typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_sync {
+  struct wire_cst_list_prim_u_8 *regular;
+  struct wire_cst_list_prim_u_8 *type;
+  bool async;
+  struct wire_cst_list_prim_u_8 *another;
+} wire_cst_more_than_just_one_raw_string_struct_twin_sync;
+
+typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *regular;
+  struct wire_cst_list_prim_u_8 *type;
+  bool async;
+  struct wire_cst_list_prim_u_8 *another;
+} wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse;
+
+typedef struct wire_cst_my_stream_entry_twin_normal {
+  struct wire_cst_list_prim_u_8 *hello;
+} wire_cst_my_stream_entry_twin_normal;
+
+typedef struct wire_cst_my_stream_entry_twin_rust_async {
+  struct wire_cst_list_prim_u_8 *hello;
+} wire_cst_my_stream_entry_twin_rust_async;
+
+typedef struct wire_cst_my_stream_entry_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *hello;
+} wire_cst_my_stream_entry_twin_rust_async_sse;
+
+typedef struct wire_cst_my_stream_entry_twin_sse {
+  struct wire_cst_list_prim_u_8 *hello;
+} wire_cst_my_stream_entry_twin_sse;
+
+typedef struct wire_cst_new_simple_struct {
+  int32_t field;
+} wire_cst_new_simple_struct;
+
+typedef struct wire_cst_old_simple_struct {
+  int32_t field;
+} wire_cst_old_simple_struct;
+
+typedef struct wire_cst_raw_string_item_struct_twin_normal {
+  struct wire_cst_list_prim_u_8 *type;
+} wire_cst_raw_string_item_struct_twin_normal;
+
+typedef struct wire_cst_raw_string_item_struct_twin_rust_async {
+  struct wire_cst_list_prim_u_8 *type;
+} wire_cst_raw_string_item_struct_twin_rust_async;
+
+typedef struct wire_cst_raw_string_item_struct_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *type;
+} wire_cst_raw_string_item_struct_twin_rust_async_sse;
+
+typedef struct wire_cst_raw_string_item_struct_twin_sse {
+  struct wire_cst_list_prim_u_8 *type;
+} wire_cst_raw_string_item_struct_twin_sse;
+
+typedef struct wire_cst_raw_string_item_struct_twin_sync {
+  struct wire_cst_list_prim_u_8 *type;
+} wire_cst_raw_string_item_struct_twin_sync;
+
+typedef struct wire_cst_raw_string_item_struct_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *type;
+} wire_cst_raw_string_item_struct_twin_sync_sse;
+
+typedef struct wire_cst_record_application_settings_raw_string_enum_mirrored {
+  struct wire_cst_application_settings field0;
+  struct wire_cst_raw_string_enum_mirrored field1;
+} wire_cst_record_application_settings_raw_string_enum_mirrored;
+
+typedef struct wire_cst_test_chrono_twin_normal {
+  int64_t *dt;
+  int64_t *dt2;
+  int64_t *du;
+} wire_cst_test_chrono_twin_normal;
+
+typedef struct wire_cst_test_chrono_twin_rust_async {
+  int64_t *dt;
+  int64_t *dt2;
+  int64_t *du;
+} wire_cst_test_chrono_twin_rust_async;
+
+typedef struct wire_cst_test_chrono_twin_sync {
+  int64_t *dt;
+  int64_t *dt2;
+  int64_t *du;
+} wire_cst_test_chrono_twin_sync;
+
+typedef struct wire_cst_test_model_twin_normal {
+  uint64_t id;
+  struct wire_cst_list_prim_u_8 *name;
+  int32_t alias_enum;
+  struct wire_cst_my_struct alias_struct;
+} wire_cst_test_model_twin_normal;
+
+typedef struct wire_cst_test_model_twin_rust_async {
+  uint64_t id;
+  struct wire_cst_list_prim_u_8 *name;
+  int32_t alias_enum;
+  struct wire_cst_my_struct alias_struct;
+} wire_cst_test_model_twin_rust_async;
+
+typedef struct wire_cst_test_model_twin_rust_async_sse {
+  uint64_t id;
+  struct wire_cst_list_prim_u_8 *name;
+  int32_t alias_enum;
+  struct wire_cst_my_struct alias_struct;
+} wire_cst_test_model_twin_rust_async_sse;
+
+typedef struct wire_cst_test_model_twin_sse {
+  uint64_t id;
+  struct wire_cst_list_prim_u_8 *name;
+  int32_t alias_enum;
+  struct wire_cst_my_struct alias_struct;
+} wire_cst_test_model_twin_sse;
+
+typedef struct wire_cst_test_model_twin_sync {
+  uint64_t id;
+  struct wire_cst_list_prim_u_8 *name;
+  int32_t alias_enum;
+  struct wire_cst_my_struct alias_struct;
+} wire_cst_test_model_twin_sync;
+
+typedef struct wire_cst_test_model_twin_sync_sse {
+  uint64_t id;
+  struct wire_cst_list_prim_u_8 *name;
+  int32_t alias_enum;
+  struct wire_cst_my_struct alias_struct;
+} wire_cst_test_model_twin_sync_sse;
+
+typedef struct wire_cst_vec_of_primitive_pack_twin_normal {
+  struct wire_cst_list_prim_i_8 *int8list;
+  struct wire_cst_list_prim_u_8 *uint8list;
+  struct wire_cst_list_prim_i_16 *int16list;
+  struct wire_cst_list_prim_u_16 *uint16list;
+  struct wire_cst_list_prim_u_32 *uint32list;
+  struct wire_cst_list_prim_i_32 *int32list;
+  struct wire_cst_list_prim_u_64 *uint64list;
+  struct wire_cst_list_prim_i_64 *int64list;
+  struct wire_cst_list_prim_f_32 *float32list;
+  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_bool *bool_list;
+} wire_cst_vec_of_primitive_pack_twin_normal;
+
+typedef struct wire_cst_vec_of_primitive_pack_twin_rust_async {
+  struct wire_cst_list_prim_i_8 *int8list;
+  struct wire_cst_list_prim_u_8 *uint8list;
+  struct wire_cst_list_prim_i_16 *int16list;
+  struct wire_cst_list_prim_u_16 *uint16list;
+  struct wire_cst_list_prim_u_32 *uint32list;
+  struct wire_cst_list_prim_i_32 *int32list;
+  struct wire_cst_list_prim_u_64 *uint64list;
+  struct wire_cst_list_prim_i_64 *int64list;
+  struct wire_cst_list_prim_f_32 *float32list;
+  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_bool *bool_list;
+} wire_cst_vec_of_primitive_pack_twin_rust_async;
+
+typedef struct wire_cst_vec_of_primitive_pack_twin_rust_async_sse {
+  struct wire_cst_list_prim_i_8 *int8list;
+  struct wire_cst_list_prim_u_8 *uint8list;
+  struct wire_cst_list_prim_i_16 *int16list;
+  struct wire_cst_list_prim_u_16 *uint16list;
+  struct wire_cst_list_prim_u_32 *uint32list;
+  struct wire_cst_list_prim_i_32 *int32list;
+  struct wire_cst_list_prim_u_64 *uint64list;
+  struct wire_cst_list_prim_i_64 *int64list;
+  struct wire_cst_list_prim_f_32 *float32list;
+  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_bool *bool_list;
+} wire_cst_vec_of_primitive_pack_twin_rust_async_sse;
+
+typedef struct wire_cst_vec_of_primitive_pack_twin_sse {
+  struct wire_cst_list_prim_i_8 *int8list;
+  struct wire_cst_list_prim_u_8 *uint8list;
+  struct wire_cst_list_prim_i_16 *int16list;
+  struct wire_cst_list_prim_u_16 *uint16list;
+  struct wire_cst_list_prim_u_32 *uint32list;
+  struct wire_cst_list_prim_i_32 *int32list;
+  struct wire_cst_list_prim_u_64 *uint64list;
+  struct wire_cst_list_prim_i_64 *int64list;
+  struct wire_cst_list_prim_f_32 *float32list;
+  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_bool *bool_list;
+} wire_cst_vec_of_primitive_pack_twin_sse;
+
+typedef struct wire_cst_vec_of_primitive_pack_twin_sync {
+  struct wire_cst_list_prim_i_8 *int8list;
+  struct wire_cst_list_prim_u_8 *uint8list;
+  struct wire_cst_list_prim_i_16 *int16list;
+  struct wire_cst_list_prim_u_16 *uint16list;
+  struct wire_cst_list_prim_u_32 *uint32list;
+  struct wire_cst_list_prim_i_32 *int32list;
+  struct wire_cst_list_prim_u_64 *uint64list;
+  struct wire_cst_list_prim_i_64 *int64list;
+  struct wire_cst_list_prim_f_32 *float32list;
+  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_bool *bool_list;
+} wire_cst_vec_of_primitive_pack_twin_sync;
+
+typedef struct wire_cst_vec_of_primitive_pack_twin_sync_sse {
+  struct wire_cst_list_prim_i_8 *int8list;
+  struct wire_cst_list_prim_u_8 *uint8list;
+  struct wire_cst_list_prim_i_16 *int16list;
+  struct wire_cst_list_prim_u_16 *uint16list;
+  struct wire_cst_list_prim_u_32 *uint32list;
+  struct wire_cst_list_prim_i_32 *int32list;
+  struct wire_cst_list_prim_u_64 *uint64list;
+  struct wire_cst_list_prim_i_64 *int64list;
+  struct wire_cst_list_prim_f_32 *float32list;
+  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_bool *bool_list;
+} wire_cst_vec_of_primitive_pack_twin_sync_sse;
+
 void benchmark_raw_void_sync(void);
 
 struct benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(int32_t len);
