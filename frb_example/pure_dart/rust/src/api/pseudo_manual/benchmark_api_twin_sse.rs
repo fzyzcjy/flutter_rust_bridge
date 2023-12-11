@@ -4,6 +4,8 @@
 
 #![allow(unused_variables)]
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
 use std::hint::black_box;
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -19,6 +21,7 @@ pub fn benchmark_output_bytes_twin_sse(size: i32) -> Vec<u8> {
     vec![0; size as usize]
 }
 
+#[derive(Clone)]
 pub struct BenchmarkBinaryTreeTwinSse {
     pub name: String,
     pub left: Option<Box<BenchmarkBinaryTreeTwinSse>>,
@@ -30,12 +33,19 @@ pub fn benchmark_binary_tree_input_twin_sse(tree: BenchmarkBinaryTreeTwinSse) {
     black_box(tree);
 }
 
+lazy_static! {
+    static ref BINARY_TREES: HashMap<i32, BenchmarkBinaryTreeTwinSse> = {
+        let mut m = HashMap::new();
+        for depth in vec![0, 5, 10].into_iter() {
+            m.insert(depth, create_tree(depth, "HelloWorld"));
+        }
+        m
+    };
+}
+
 #[flutter_rust_bridge::frb(serialize)]
-pub fn benchmark_binary_tree_output_twin_sse(
-    depth: i32,
-    name: String,
-) -> BenchmarkBinaryTreeTwinSse {
-    create_tree(depth, &name)
+pub fn benchmark_binary_tree_output_twin_sse(depth: i32) -> BenchmarkBinaryTreeTwinSse {
+    BINARY_TREES.get(&depth).unwrap().to_owned()
 }
 
 fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinSse {

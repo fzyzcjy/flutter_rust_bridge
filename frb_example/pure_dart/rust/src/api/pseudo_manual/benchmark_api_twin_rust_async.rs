@@ -4,6 +4,8 @@
 
 #![allow(unused_variables)]
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
 use std::hint::black_box;
 
 pub async fn benchmark_void_twin_rust_async() {}
@@ -16,6 +18,7 @@ pub async fn benchmark_output_bytes_twin_rust_async(size: i32) -> Vec<u8> {
     vec![0; size as usize]
 }
 
+#[derive(Clone)]
 pub struct BenchmarkBinaryTreeTwinRustAsync {
     pub name: String,
     pub left: Option<Box<BenchmarkBinaryTreeTwinRustAsync>>,
@@ -26,11 +29,20 @@ pub async fn benchmark_binary_tree_input_twin_rust_async(tree: BenchmarkBinaryTr
     black_box(tree);
 }
 
+lazy_static! {
+    static ref BINARY_TREES: HashMap<i32, BenchmarkBinaryTreeTwinRustAsync> = {
+        let mut m = HashMap::new();
+        for depth in vec![0, 5, 10].into_iter() {
+            m.insert(depth, create_tree(depth, "HelloWorld"));
+        }
+        m
+    };
+}
+
 pub async fn benchmark_binary_tree_output_twin_rust_async(
     depth: i32,
-    name: String,
 ) -> BenchmarkBinaryTreeTwinRustAsync {
-    create_tree(depth, &name)
+    BINARY_TREES.get(&depth).unwrap().to_owned()
 }
 
 fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinRustAsync {
