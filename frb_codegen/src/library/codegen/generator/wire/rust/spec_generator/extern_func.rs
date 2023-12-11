@@ -6,6 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
+use cbindgen::ExportConfig;
 use itertools::Itertools;
 use serde::Serialize;
 
@@ -81,5 +82,37 @@ impl ExternFuncParam {
 
     pub(crate) fn rust_name_and_type(&self) -> String {
         format!("{}: {}", self.name, self.rust_type)
+    }
+}
+
+// TODO maybe move
+#[derive(Clone, Debug, Serialize)]
+pub(crate) struct ExternClass {
+    pub name: String,
+    pub mode: ExternClassMode,
+    pub body: String,
+}
+
+pub(crate) enum ExternClassMode {
+    Struct,
+    Union,
+}
+
+impl ExternClass {
+    pub(crate) fn generate(&self) -> String {
+        let ExternClass { name, mode, body } = self;
+
+        let mode = match mode {
+            ExternClassMode::Struct => "struct",
+            ExternClassMode::Union => "union",
+        };
+
+        format!(
+            "
+            #[repr(C)]
+            #[derive(Clone)]
+            pub {mode} {name} {{ {body} }}
+            "
+        )
     }
 }
