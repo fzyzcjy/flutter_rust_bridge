@@ -33,6 +33,6 @@ pub(crate) fn generate(
     Ok(GeneratorWireRustOutput {
         output_texts: PathTexts::new_from_targets(&context.config.rust_output_path, &text.text),
         extern_funcs: text.extern_funcs,
-        extern_struct_names: spec.misc.extern_struct_names,
+        extern_struct_names: spec.extern_struct_names,
     })
 }

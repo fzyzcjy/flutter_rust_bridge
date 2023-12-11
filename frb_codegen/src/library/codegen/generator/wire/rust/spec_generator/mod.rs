@@ -5,10 +5,12 @@ use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerat
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypoint, WireRustCodecOutputSpec,
 };
+use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
+use itertools::Itertools;
 use serde::Serialize;
 use strum::IntoEnumIterator;
 
@@ -24,6 +26,7 @@ pub(super) struct WireRustOutputSpec {
     pub(super) misc: WireRustOutputSpecMisc,
     pub(super) dart2rust: WireRustCodecOutputSpec,
     pub(super) rust2dart: WireRustCodecOutputSpec,
+    pub(super) extern_struct_names: Vec<String>,
 }
 
 pub(super) fn generate(
@@ -38,15 +41,37 @@ pub(super) fn generate(
         &generate_dump_info(&cache, context),
     )?;
 
+    let dart2rust = CodecMode::iter()
+        .map(WireRustCodecEntrypoint::from)
+        .flat_map(|codec| codec.generate(context, &cache.distinct_types, Decode))
+        .collect();
+    let rust2dart = CodecMode::iter()
+        .map(WireRustCodecEntrypoint::from)
+        .flat_map(|codec| codec.generate(context, &cache.distinct_types, Encode))
+        .collect();
+    let extern_struct_names = generate_extern_struct_names(context, &cache);
+
     Ok(WireRustOutputSpec {
         misc: misc::generate(context, &cache)?,
-        dart2rust: CodecMode::iter()
-            .map(WireRustCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate(context, &cache.distinct_types, Decode))
-            .collect(),
-        rust2dart: CodecMode::iter()
-            .map(WireRustCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate(context, &cache.distinct_types, Encode))
-            .collect(),
+        dart2rust,
+        rust2dart,
+        extern_struct_names,
     })
+}
+
+fn generate_extern_struct_names(
+    context: WireRustGeneratorContext,
+    cache: &IrPackComputedCache,
+) -> Vec<String> {
+    [
+        (cache.distinct_types.iter())
+            .filter(|ty| matches!(&ty, IrType::StructRef(_)))
+            .map(|ty| {
+                WireRustCodecCstGenerator::new(ty.clone(), context.as_wire_rust_codec_cst_context())
+                    .rust_wire_type(Target::Io)
+            })
+            .collect_vec(),
+        TODO,
+    ]
+    .concat()
 }

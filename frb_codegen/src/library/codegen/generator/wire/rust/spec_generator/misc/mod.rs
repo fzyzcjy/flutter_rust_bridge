@@ -35,7 +35,6 @@ pub(crate) struct WireRustOutputSpecMisc {
     pub wire_funcs: Acc<Vec<WireRustOutputCode>>,
     pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     pub static_checks: Acc<Vec<WireRustOutputCode>>,
-    pub extern_struct_names: Vec<String>,
     pub related_funcs: Acc<Vec<WireRustOutputCode>>,
 }
 
@@ -61,7 +60,6 @@ pub(crate) fn generate(
             context,
         )
         .into()]),
-        extern_struct_names: generate_extern_struct_names(context, cache),
         related_funcs: cache
             .distinct_types
             .iter()
@@ -230,21 +228,4 @@ fn generate_executor(ir_pack: &IrPack) -> String {
                 }
             "#.to_string()
     }
-}
-
-fn generate_extern_struct_names(
-    context: WireRustGeneratorContext,
-    cache: &IrPackComputedCache,
-) -> Vec<String> {
-    [
-        (cache.distinct_types.iter())
-            .filter(|ty| matches!(&ty, IrType::StructRef(_)))
-            .map(|ty| {
-                WireRustCodecCstGenerator::new(ty.clone(), context.as_wire_rust_codec_cst_context())
-                    .rust_wire_type(Target::Io)
-            })
-            .collect_vec(),
-        TODO,
-    ]
-    .concat()
 }
