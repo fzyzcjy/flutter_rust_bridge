@@ -554,7 +554,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime dco_decode_Chrono_Utc(dynamic raw);
 
   @protected
+  void Function(Object) dco_decode_DartFn_Inputs_DartOpaque_Output_unit(
+      dynamic raw);
+
+  @protected
+  void Function(String) dco_decode_DartFn_Inputs_String_Output_unit(
+      dynamic raw);
+
+  @protected
+  void Function(String, DemoStructForRustCallDart)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+          dynamic raw);
+
+  @protected
+  Object Function() dco_decode_DartFn_Inputs__Output_DartOpaque(dynamic raw);
+
+  @protected
+  String Function() dco_decode_DartFn_Inputs__Output_String(dynamic raw);
+
+  @protected
   void Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
+
+  @protected
+  DemoStructForRustCallDart Function(DemoStructForRustCallDart)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+          dynamic raw);
 
   @protected
   Object dco_decode_DartOpaque(dynamic raw);
@@ -2422,6 +2446,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   dynamic dco_decode_dartabi(dynamic raw);
+
+  @protected
+  DemoStructForRustCallDart dco_decode_demo_struct_for_rust_call_dart(
+      dynamic raw);
 
   @protected
   DistanceTwinNormal dco_decode_distance_twin_normal(dynamic raw);
@@ -6496,6 +6524,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   dynamic sse_decode_dartabi(SseDeserializer deserializer);
+
+  @protected
+  DemoStructForRustCallDart sse_decode_demo_struct_for_rust_call_dart(
+      SseDeserializer deserializer);
 
   @protected
   DistanceTwinNormal sse_decode_distance_twin_normal(
@@ -11742,6 +11774,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_demo_struct_for_rust_call_dart(
+      DemoStructForRustCallDart raw) {
+    return [cst_encode_String(raw.name)];
+  }
+
+  @protected
   List<dynamic> cst_encode_distance_twin_normal(DistanceTwinNormal raw) {
     if (raw is DistanceTwinNormal_Unknown) {
       return [0];
@@ -15783,7 +15821,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
+  DartOpaqueWireType cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
+      void Function(Object) raw);
+
+  @protected
+  DartOpaqueWireType cst_encode_DartFn_Inputs_String_Output_unit(
+      void Function(String) raw);
+
+  @protected
+  DartOpaqueWireType
+      cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+          void Function(String, DemoStructForRustCallDart) raw);
+
+  @protected
+  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_DartOpaque(
+      Object Function() raw);
+
+  @protected
+  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_String(
+      String Function() raw);
+
+  @protected
   DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(void Function() raw);
+
+  @protected
+  DartOpaqueWireType
+      cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+          DemoStructForRustCallDart Function(DemoStructForRustCallDart) raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw);
@@ -16204,8 +16268,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer);
 
   @protected
+  void sse_encode_DartFn_Inputs_DartOpaque_Output_unit(
+      void Function(Object) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_DartFn_Inputs_String_Output_unit(
+      void Function(String) self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+          void Function(String, DemoStructForRustCallDart) self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_DartFn_Inputs__Output_DartOpaque(
+      Object Function() self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_DartFn_Inputs__Output_String(
+      String Function() self, SseSerializer serializer);
+
+  @protected
   void sse_encode_DartFn_Inputs__Output_unit(
       void Function() self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+          DemoStructForRustCallDart Function(DemoStructForRustCallDart) self,
+          SseSerializer serializer);
 
   @protected
   void sse_encode_DartOpaque(Object self, SseSerializer serializer);
@@ -18233,6 +18325,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_dartabi(dynamic self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_demo_struct_for_rust_call_dart(
+      DemoStructForRustCallDart self, SseSerializer serializer);
 
   @protected
   void sse_encode_distance_twin_normal(
@@ -20308,9 +20404,38 @@ class RustLibWire extends BaseWire {
   void wire_return_dart_dynamic_twin_normal(NativePortType port_) =>
       wasmModule.wire_return_dart_dynamic_twin_normal(port_);
 
+  void wire_rust_call_dart_loopback(
+          NativePortType port_, DartOpaqueWireType callback) =>
+      wasmModule.wire_rust_call_dart_loopback(port_, callback);
+
+  void wire_rust_call_dart_multi_times(
+          NativePortType port_, DartOpaqueWireType callback, int num_times) =>
+      wasmModule.wire_rust_call_dart_multi_times(port_, callback, num_times);
+
+  void wire_rust_call_dart_one_arg(
+          NativePortType port_, DartOpaqueWireType callback) =>
+      wasmModule.wire_rust_call_dart_one_arg(port_, callback);
+
+  void wire_rust_call_dart_return(
+          NativePortType port_, DartOpaqueWireType callback) =>
+      wasmModule.wire_rust_call_dart_return(port_, callback);
+
   void wire_rust_call_dart_simple(
           NativePortType port_, DartOpaqueWireType callback) =>
       wasmModule.wire_rust_call_dart_simple(port_, callback);
+
+  void wire_rust_call_dart_two_args(
+          NativePortType port_, DartOpaqueWireType callback) =>
+      wasmModule.wire_rust_call_dart_two_args(port_, callback);
+
+  void wire_rust_call_dart_with_dart_opaque_arg(NativePortType port_,
+          DartOpaqueWireType input, DartOpaqueWireType callback) =>
+      wasmModule.wire_rust_call_dart_with_dart_opaque_arg(
+          port_, input, callback);
+
+  void wire_rust_call_dart_with_dart_opaque_result(
+          NativePortType port_, DartOpaqueWireType callback) =>
+      wasmModule.wire_rust_call_dart_with_dart_opaque_result(port_, callback);
 
   void wire_async_accept_dart_opaque_twin_normal(
           NativePortType port_, DartOpaqueWireType opaque) =>
@@ -29034,7 +29159,28 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_return_dart_dynamic_twin_normal(NativePortType port_);
 
+  external void wire_rust_call_dart_loopback(
+      NativePortType port_, DartOpaqueWireType callback);
+
+  external void wire_rust_call_dart_multi_times(
+      NativePortType port_, DartOpaqueWireType callback, int num_times);
+
+  external void wire_rust_call_dart_one_arg(
+      NativePortType port_, DartOpaqueWireType callback);
+
+  external void wire_rust_call_dart_return(
+      NativePortType port_, DartOpaqueWireType callback);
+
   external void wire_rust_call_dart_simple(
+      NativePortType port_, DartOpaqueWireType callback);
+
+  external void wire_rust_call_dart_two_args(
+      NativePortType port_, DartOpaqueWireType callback);
+
+  external void wire_rust_call_dart_with_dart_opaque_arg(NativePortType port_,
+      DartOpaqueWireType input, DartOpaqueWireType callback);
+
+  external void wire_rust_call_dart_with_dart_opaque_result(
       NativePortType port_, DartOpaqueWireType callback);
 
   external void wire_async_accept_dart_opaque_twin_normal(
