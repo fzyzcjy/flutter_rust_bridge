@@ -22364,16 +22364,6 @@ fn decode_DartFn_Inputs__Output_unit(
 
 // Section: dart2rust
 
-impl CstDecode<anyhow::Error> for *mut wire_cst_list_prim_u_8 {
-    fn cst_decode(self) -> anyhow::Error {
-        self.cst_decode()
-    }
-}
-impl CstDecode<backtrace::Backtrace> for *mut wire_cst_list_prim_u_8 {
-    fn cst_decode(self) -> backtrace::Backtrace {
-        self.cst_decode()
-    }
-}
 impl CstDecode<chrono::DateTime<chrono::Local>> for i64 {
     fn cst_decode(self) -> chrono::DateTime<chrono::Local> {
         let flutter_rust_bridge::for_generated::Timestamp { s, ns } =

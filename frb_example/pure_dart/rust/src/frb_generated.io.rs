@@ -21,6 +21,16 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
+impl CstDecode<anyhow::Error> for *mut wire_cst_list_prim_u_8 {
+    fn cst_decode(self) -> anyhow::Error {
+        unimplemented!()
+    }
+}
+impl CstDecode<backtrace::Backtrace> for *mut wire_cst_list_prim_u_8 {
+    fn cst_decode(self) -> backtrace::Backtrace {
+        unimplemented!()
+    }
+}
 impl CstDecode<chrono::Duration> for i64 {
     fn cst_decode(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)
