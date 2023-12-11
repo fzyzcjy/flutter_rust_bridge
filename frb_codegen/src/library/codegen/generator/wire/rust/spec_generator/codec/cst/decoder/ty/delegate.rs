@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::ty::delegate::rust_decode_primitive_enum;
 use crate::codegen::generator::misc::is_js_value;
-use crate::codegen::generator::misc::target::Target;
+use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
@@ -86,7 +86,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             //         "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuids(multiple)".into(),
             //     ),
             // ),
-            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "self.cst_decode()".into(),
+            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => Acc::new(|target| match target {
+                TargetOrCommon::Common => None,
+                TargetOrCommon::Io | TargetOrCommon::Wasm => Some("unimplemented!()".into()),
+            }),
         }
     }
 
