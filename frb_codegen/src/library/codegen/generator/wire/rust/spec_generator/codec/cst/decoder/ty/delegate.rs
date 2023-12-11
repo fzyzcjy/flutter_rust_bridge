@@ -11,7 +11,7 @@ use crate::codegen::ir::ty::delegate::{
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator<'a> {
-    fn generate_decoder_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         None
     }
 

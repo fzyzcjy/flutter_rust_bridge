@@ -11,7 +11,7 @@ use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use itertools::Itertools;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'a> {
-    fn generate_decoder_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         let s = self.ir.get(self.context.ir_pack);
         Some(generate_class_from_fields(
             self.ir.clone(),

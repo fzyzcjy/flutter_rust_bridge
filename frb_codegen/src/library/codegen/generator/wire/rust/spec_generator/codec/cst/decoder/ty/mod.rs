@@ -24,7 +24,7 @@ use std::borrow::Cow;
 
 #[enum_dispatch]
 pub(crate) trait WireRustCodecCstGeneratorDecoderTrait {
-    fn generate_decoder_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         None
     }
 

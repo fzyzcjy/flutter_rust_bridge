@@ -14,7 +14,7 @@ use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGenerator<'a> {
-    fn generate_decoder_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         Some(generate_class_from_fields(
             self.ir.clone(),
             self.context,

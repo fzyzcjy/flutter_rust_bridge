@@ -12,7 +12,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::rust_wire_type_add_prefix_or_js_value;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenerator<'a> {
-    fn generate_decoder_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         let src = self.ir.get(self.context.ir_pack);
         if src.mode == IrEnumMode::Simple {
             return None;
