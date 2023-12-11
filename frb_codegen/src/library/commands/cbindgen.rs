@@ -31,11 +31,7 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
     let default_cbindgen_config = default_cbindgen_config();
     let config = cbindgen::Config {
         export: cbindgen::ExportConfig {
-            include: args
-                .c_struct_names
-                .iter()
-                .map(|name| format!("\"{name}\""))
-                .collect(),
+            include: args.c_struct_names,
             exclude: args.exclude_symbols,
             ..Default::default()
         },
