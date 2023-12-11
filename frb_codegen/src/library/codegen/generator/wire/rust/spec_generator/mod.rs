@@ -82,4 +82,7 @@ fn generate_extern_struct_names(
             .collect_vec(),
     ]
     .concat()
+    .into_iter()
+    .unique()
+    .collect_vec()
 }
