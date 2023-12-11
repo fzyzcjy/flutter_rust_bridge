@@ -63981,13 +63981,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_DartFn_Inputs_DartOpaque_Output_unit(
       FutureOr<void> Function(Object) self, SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_DartOpaque_Output_unit(self), serializer);
   }
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_unit(
       FutureOr<void> Function(String) self, SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_String_Output_unit(self), serializer);
   }
 
   @protected
@@ -63996,7 +63998,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
               self,
           SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+            self),
+        serializer);
   }
 
   @protected
@@ -64006,7 +64011,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                   String, DemoStructForRustCallDartTwinRustAsync)
               self,
           SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
+            self),
+        serializer);
   }
 
   @protected
@@ -64016,7 +64024,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                   String, DemoStructForRustCallDartTwinRustAsyncSse)
               self,
           SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
+            self),
+        serializer);
   }
 
   @protected
@@ -64025,25 +64036,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinSse)
               self,
           SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
+            self),
+        serializer);
   }
 
   @protected
   void sse_encode_DartFn_Inputs__Output_DartOpaque(
       FutureOr<Object> Function() self, SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs__Output_DartOpaque(self), serializer);
   }
 
   @protected
   void sse_encode_DartFn_Inputs__Output_String(
       FutureOr<String> Function() self, SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs__Output_String(self), serializer);
   }
 
   @protected
   void sse_encode_DartFn_Inputs__Output_unit(
       FutureOr<void> Function() self, SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(encode_DartFn_Inputs__Output_unit(self), serializer);
   }
 
   @protected
@@ -64053,7 +64069,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                   DemoStructForRustCallDartTwinNormal)
               self,
           SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+            self),
+        serializer);
   }
 
   @protected
@@ -64063,7 +64082,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                   DemoStructForRustCallDartTwinRustAsync)
               self,
           SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
+            self),
+        serializer);
   }
 
   @protected
@@ -64073,7 +64095,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                   DemoStructForRustCallDartTwinRustAsyncSse)
               self,
           SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
+            self),
+        serializer);
   }
 
   @protected
@@ -64083,7 +64108,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                   DemoStructForRustCallDartTwinSse)
               self,
           SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
+            self),
+        serializer);
   }
 
   @protected
