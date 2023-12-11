@@ -16,13 +16,16 @@ impl IrIdent {
         &self.raw
     }
 
-    pub fn c_style(&self) -> &str {
-        // TODO correct?
-        self.raw.strip_prefix("r#").unwrap_or(self.raw.as_str())
+    pub fn c_style(&self) -> String {
+        let mut ans = (self.raw.strip_prefix("r#").unwrap_or(self.raw.as_str())).to_string();
+        if &ans == "async" {
+            ans = "async1".to_owned(); // match behavior of ffigen
+        }
+        ans
     }
 
     pub fn dart_style(&self) -> String {
-        self.c_style().to_case(Case::Camel)
+        (self.raw.strip_prefix("r#").unwrap_or(self.raw.as_str())).to_case(Case::Camel)
     }
 
     pub fn style(&self, lang: &Lang) -> String {
