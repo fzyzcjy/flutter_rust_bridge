@@ -68,7 +68,7 @@ fn generate_extern_struct_names(
     [dart2rust.inner.io.clone(), rust2dart.inner.io.clone()]
         .concat()
         .iter()
-        .flat_map(|x| x.extern_classes)
+        .flat_map(|x| x.extern_classes.clone())
         .map(|x| x.name)
         .unique()
         .collect_vec()
