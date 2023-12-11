@@ -1,6 +1,7 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::codec::structs::EncodeOrDecode::{Decode, Encode};
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypoint, WireRustCodecOutputSpec,
@@ -49,7 +50,7 @@ pub(super) fn generate(
         .map(WireRustCodecEntrypoint::from)
         .flat_map(|codec| codec.generate(context, &cache.distinct_types, Encode))
         .collect();
-    let extern_struct_names = generate_extern_struct_names(context, &cache);
+    let extern_struct_names = generate_extern_struct_names(context, &cache, &dart2rust, &rust2dart);
 
     Ok(WireRustOutputSpec {
         misc: misc::generate(context, &cache)?,
@@ -62,6 +63,8 @@ pub(super) fn generate(
 fn generate_extern_struct_names(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
+    dart2rust: &WireRustCodecOutputSpec,
+    rust2dart: &WireRustCodecOutputSpec,
 ) -> Vec<String> {
     [
         (cache.distinct_types.iter())
@@ -71,7 +74,12 @@ fn generate_extern_struct_names(
                     .rust_wire_type(Target::Io)
             })
             .collect_vec(),
-        TODO,
+        [dart2rust.inner.io.clone(), rust2dart.inner.io.clone()]
+            .concat()
+            .iter()
+            .flat_map(|x| x.extern_classes)
+            .map(|x| x.name)
+            .collect_vec(),
     ]
     .concat()
 }
