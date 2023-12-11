@@ -1,6 +1,7 @@
 #![allow(unused_variables)]
 
 use lazy_static::lazy_static;
+use std::collections::HashMap;
 use std::hint::black_box;
 
 pub fn benchmark_void_twin_normal() {}
@@ -13,6 +14,7 @@ pub fn benchmark_output_bytes_twin_normal(size: i32) -> Vec<u8> {
     vec![0; size as usize]
 }
 
+#[derive(Clone)]
 pub struct BenchmarkBinaryTreeTwinNormal {
     pub name: String,
     pub left: Option<Box<BenchmarkBinaryTreeTwinNormal>>,
@@ -34,7 +36,7 @@ lazy_static! {
 }
 
 pub fn benchmark_binary_tree_output_twin_normal(depth: i32) -> BenchmarkBinaryTreeTwinNormal {
-    BINARY_TREES.get(&depth).unwrap()
+    BINARY_TREES.get(&depth).unwrap().to_owned()
 }
 
 fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
