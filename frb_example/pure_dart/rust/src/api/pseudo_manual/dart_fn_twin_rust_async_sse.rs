@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `dart_fn.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -28,7 +28,8 @@ pub async fn rust_call_dart_one_arg_twin_rust_async_sse(
 }
 
 pub async fn rust_call_dart_two_args_twin_rust_async_sse(
-    callback: impl Fn(String, DemoStructForRustCallDartTwinRustAsyncSse) -> DartFnFuture<()> + UnwindSafe,
+    callback: impl Fn(String, DemoStructForRustCallDartTwinRustAsyncSse) -> DartFnFuture<()>
+        + UnwindSafe,
 ) {
     callback(
         "a".to_owned(),
@@ -47,7 +48,9 @@ pub async fn rust_call_dart_return_twin_rust_async_sse(
 }
 
 pub async fn rust_call_dart_loopback_twin_rust_async_sse(
-    callback: impl Fn(DemoStructForRustCallDartTwinRustAsyncSse) -> DartFnFuture<DemoStructForRustCallDartTwinRustAsyncSse>
+    callback: impl Fn(
+            DemoStructForRustCallDartTwinRustAsyncSse,
+        ) -> DartFnFuture<DemoStructForRustCallDartTwinRustAsyncSse>
         + UnwindSafe,
 ) {
     let result = callback(DemoStructForRustCallDartTwinRustAsyncSse { name: "a".into() }).await;

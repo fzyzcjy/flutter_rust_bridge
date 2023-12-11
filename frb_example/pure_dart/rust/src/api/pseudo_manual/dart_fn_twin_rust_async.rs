@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `dart_fn.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -47,7 +47,9 @@ pub async fn rust_call_dart_return_twin_rust_async(
 }
 
 pub async fn rust_call_dart_loopback_twin_rust_async(
-    callback: impl Fn(DemoStructForRustCallDartTwinRustAsync) -> DartFnFuture<DemoStructForRustCallDartTwinRustAsync>
+    callback: impl Fn(
+            DemoStructForRustCallDartTwinRustAsync,
+        ) -> DartFnFuture<DemoStructForRustCallDartTwinRustAsync>
         + UnwindSafe,
 ) {
     let result = callback(DemoStructForRustCallDartTwinRustAsync { name: "a".into() }).await;

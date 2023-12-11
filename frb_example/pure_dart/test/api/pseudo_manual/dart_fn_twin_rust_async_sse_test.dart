@@ -31,7 +31,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await rustCallDartTwoArgsTwinRustAsyncSse(
         callback: (a, b) => callbackCalls.add((a, b)));
     expect(callbackCalls,
-        [('a'), DemoStructForRustCallDartTwinRustAsyncSse(name: 'b')]);
+        [('a', DemoStructForRustCallDartTwinRustAsyncSse(name: 'b'))]);
   });
 
   test('rustCallDartReturnTwinRustAsyncSse', () async {

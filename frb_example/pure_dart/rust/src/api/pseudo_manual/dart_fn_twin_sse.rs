@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `dart_fn.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -13,9 +13,7 @@ pub struct DemoStructForRustCallDartTwinSse {
     pub name: String,
 }
 
-pub async fn rust_call_dart_simple_twin_sse(
-    callback: impl Fn() -> DartFnFuture<()> + UnwindSafe,
-) {
+pub async fn rust_call_dart_simple_twin_sse(callback: impl Fn() -> DartFnFuture<()> + UnwindSafe) {
     println!("rust_call_dart_simple before");
     callback().await;
     println!("rust_call_dart_simple after");
