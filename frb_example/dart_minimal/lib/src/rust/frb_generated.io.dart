@@ -25,11 +25,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return ptr;
   }
 
+  @protected
   void _cst_api_fill_to_wire_box_autoadd_the_enum(
       TheEnum apiObj, ffi.Pointer<wire_cst_the_enum> wireObj) {
     _cst_api_fill_to_wire_the_enum(apiObj, wireObj.ref);
   }
 
+  @protected
   void _cst_api_fill_to_wire_the_enum(
       TheEnum apiObj, wire_cst_the_enum wireObj) {
     if (apiObj is TheEnum_TheVariant) {

@@ -116,14 +116,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  @protected
   TheEnum _dco_decode_box_autoadd_the_enum(dynamic raw) {
     return _dco_decode_the_enum(raw);
   }
 
+  @protected
   int _dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
 
+  @protected
   TheEnum _dco_decode_the_enum(dynamic raw) {
     switch (raw[0]) {
       case 0:
@@ -135,18 +138,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  @protected
   void _dco_decode_unit(dynamic raw) {
     return;
   }
 
+  @protected
   TheEnum _sse_decode_box_autoadd_the_enum(SseDeserializer deserializer) {
     return (_sse_decode_the_enum(deserializer));
   }
 
+  @protected
   int _sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
+  @protected
   TheEnum _sse_decode_the_enum(SseDeserializer deserializer) {
     var tag_ = _sse_decode_i_32(deserializer);
     switch (tag_) {
@@ -158,7 +165,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  @protected
   void _sse_decode_unit(SseDeserializer deserializer) {}
+
   @protected
   int cst_encode_i_32(int raw) {
     return raw;
@@ -169,15 +178,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw;
   }
 
+  @protected
   void _sse_encode_box_autoadd_the_enum(
       TheEnum self, SseSerializer serializer) {
     _sse_encode_the_enum(self, serializer);
   }
 
+  @protected
   void _sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
+  @protected
   void _sse_encode_the_enum(TheEnum self, SseSerializer serializer) {
     switch (self) {
       case TheEnum_TheVariant(field0: final field0):
@@ -186,5 +198,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  @protected
   void _sse_encode_unit(void self, SseSerializer serializer) {}
 }
