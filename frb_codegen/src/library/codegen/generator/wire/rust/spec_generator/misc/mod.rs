@@ -236,9 +236,7 @@ fn generate_extern_struct_names(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> Vec<String> {
-    cache
-        .distinct_types
-        .iter()
+    (cache.distinct_types.iter())
         .filter(|ty| matches!(&ty, IrType::StructRef(_)))
         .map(|ty| {
             WireRustCodecCstGenerator::new(ty.clone(), context.as_wire_rust_codec_cst_context())
