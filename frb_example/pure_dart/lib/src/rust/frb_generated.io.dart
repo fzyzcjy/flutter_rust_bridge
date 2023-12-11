@@ -18863,7 +18863,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wire_cst_more_than_just_one_raw_string_struct_twin_normal wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
     wireObj.type = cst_encode_String(apiObj.type);
-    wireObj.async = cst_encode_bool(apiObj.async);
+    wireObj.async1 = cst_encode_bool(apiObj.async);
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
@@ -18875,7 +18875,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
               wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
     wireObj.type = cst_encode_String(apiObj.type);
-    wireObj.async = cst_encode_bool(apiObj.async);
+    wireObj.async1 = cst_encode_bool(apiObj.async);
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
@@ -18887,7 +18887,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
               wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
     wireObj.type = cst_encode_String(apiObj.type);
-    wireObj.async = cst_encode_bool(apiObj.async);
+    wireObj.async1 = cst_encode_bool(apiObj.async);
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
@@ -18897,7 +18897,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wire_cst_more_than_just_one_raw_string_struct_twin_sse wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
     wireObj.type = cst_encode_String(apiObj.type);
-    wireObj.async = cst_encode_bool(apiObj.async);
+    wireObj.async1 = cst_encode_bool(apiObj.async);
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
@@ -18907,7 +18907,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wire_cst_more_than_just_one_raw_string_struct_twin_sync wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
     wireObj.type = cst_encode_String(apiObj.type);
-    wireObj.async = cst_encode_bool(apiObj.async);
+    wireObj.async1 = cst_encode_bool(apiObj.async);
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
@@ -18917,7 +18917,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
     wireObj.type = cst_encode_String(apiObj.type);
-    wireObj.async = cst_encode_bool(apiObj.async);
+    wireObj.async1 = cst_encode_bool(apiObj.async);
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
