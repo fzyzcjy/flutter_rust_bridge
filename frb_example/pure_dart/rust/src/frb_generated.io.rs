@@ -34692,365 +34692,302 @@ pub extern "C" fn cst_inflate_SpeedTwinSyncSse_GPS() -> *mut SpeedTwinSyncSseKin
 pub struct wire_cst_a_twin_normal {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_a_twin_rust_async {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_a_twin_rust_async_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_a_twin_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_a_twin_sync {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_a_twin_sync_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_abc_twin_normal {
     tag: i32,
     kind: *mut AbcTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union AbcTwinNormalKind {
     A: *mut wire_cst_AbcTwinNormal_A,
     B: *mut wire_cst_AbcTwinNormal_B,
     C: *mut wire_cst_AbcTwinNormal_C,
     JustInt: *mut wire_cst_AbcTwinNormal_JustInt,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinNormal_A {
     field0: *mut wire_cst_a_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinNormal_B {
     field0: *mut wire_cst_b_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinNormal_C {
     field0: *mut wire_cst_c_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinNormal_JustInt {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_abc_twin_rust_async {
     tag: i32,
     kind: *mut AbcTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union AbcTwinRustAsyncKind {
     A: *mut wire_cst_AbcTwinRustAsync_A,
     B: *mut wire_cst_AbcTwinRustAsync_B,
     C: *mut wire_cst_AbcTwinRustAsync_C,
     JustInt: *mut wire_cst_AbcTwinRustAsync_JustInt,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinRustAsync_A {
     field0: *mut wire_cst_a_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinRustAsync_B {
     field0: *mut wire_cst_b_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinRustAsync_C {
     field0: *mut wire_cst_c_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinRustAsync_JustInt {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_abc_twin_rust_async_sse {
     tag: i32,
     kind: *mut AbcTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union AbcTwinRustAsyncSseKind {
     A: *mut wire_cst_AbcTwinRustAsyncSse_A,
     B: *mut wire_cst_AbcTwinRustAsyncSse_B,
     C: *mut wire_cst_AbcTwinRustAsyncSse_C,
     JustInt: *mut wire_cst_AbcTwinRustAsyncSse_JustInt,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinRustAsyncSse_A {
     field0: *mut wire_cst_a_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinRustAsyncSse_B {
     field0: *mut wire_cst_b_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinRustAsyncSse_C {
     field0: *mut wire_cst_c_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinRustAsyncSse_JustInt {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_abc_twin_sse {
     tag: i32,
     kind: *mut AbcTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union AbcTwinSseKind {
     A: *mut wire_cst_AbcTwinSse_A,
     B: *mut wire_cst_AbcTwinSse_B,
     C: *mut wire_cst_AbcTwinSse_C,
     JustInt: *mut wire_cst_AbcTwinSse_JustInt,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSse_A {
     field0: *mut wire_cst_a_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSse_B {
     field0: *mut wire_cst_b_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSse_C {
     field0: *mut wire_cst_c_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSse_JustInt {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_abc_twin_sync {
     tag: i32,
     kind: *mut AbcTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union AbcTwinSyncKind {
     A: *mut wire_cst_AbcTwinSync_A,
     B: *mut wire_cst_AbcTwinSync_B,
     C: *mut wire_cst_AbcTwinSync_C,
     JustInt: *mut wire_cst_AbcTwinSync_JustInt,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSync_A {
     field0: *mut wire_cst_a_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSync_B {
     field0: *mut wire_cst_b_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSync_C {
     field0: *mut wire_cst_c_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSync_JustInt {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_abc_twin_sync_sse {
     tag: i32,
     kind: *mut AbcTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union AbcTwinSyncSseKind {
     A: *mut wire_cst_AbcTwinSyncSse_A,
     B: *mut wire_cst_AbcTwinSyncSse_B,
     C: *mut wire_cst_AbcTwinSyncSse_C,
     JustInt: *mut wire_cst_AbcTwinSyncSse_JustInt,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSyncSse_A {
     field0: *mut wire_cst_a_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSyncSse_B {
     field0: *mut wire_cst_b_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSyncSse_C {
     field0: *mut wire_cst_c_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_AbcTwinSyncSse_JustInt {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_another_macro_struct_twin_normal {
     data: i32,
     non_final_data: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_another_twin_normal {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_another_twin_rust_async {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_another_twin_rust_async_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_another_twin_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_another_twin_sync {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_another_twin_sync_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_application_env {
     vars: *mut wire_cst_list_application_env_var,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_application_env_var {
     field0: *mut wire_cst_list_prim_u_8,
     field1: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_application_message {
     tag: i32,
     kind: *mut ApplicationMessageKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union ApplicationMessageKind {
     DisplayMessage: *mut wire_cst_ApplicationMessage_DisplayMessage,
     RenderPixel: *mut wire_cst_ApplicationMessage_RenderPixel,
     Exit: *mut wire_cst_ApplicationMessage_Exit,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_ApplicationMessage_DisplayMessage {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_ApplicationMessage_RenderPixel {
     x: i32,
     y: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_ApplicationMessage_Exit {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_application_settings {
@@ -35060,1573 +34997,1290 @@ pub struct wire_cst_application_settings {
     env: *mut wire_cst_application_env,
     env_optional: *mut wire_cst_application_env,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_attribute_twin_normal {
     key: *mut wire_cst_list_prim_u_8,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_attribute_twin_rust_async {
     key: *mut wire_cst_list_prim_u_8,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_attribute_twin_rust_async_sse {
     key: *mut wire_cst_list_prim_u_8,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_attribute_twin_sse {
     key: *mut wire_cst_list_prim_u_8,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_attribute_twin_sync {
     key: *mut wire_cst_list_prim_u_8,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_attribute_twin_sync_sse {
     key: *mut wire_cst_list_prim_u_8,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_b_twin_normal {
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_b_twin_rust_async {
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_b_twin_rust_async_sse {
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_b_twin_sse {
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_b_twin_sync {
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_b_twin_sync_sse {
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_big_buffers_twin_normal {
     int64: *mut wire_cst_list_prim_i_64,
     uint64: *mut wire_cst_list_prim_u_64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_big_buffers_twin_rust_async {
     int64: *mut wire_cst_list_prim_i_64,
     uint64: *mut wire_cst_list_prim_u_64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_big_buffers_twin_rust_async_sse {
     int64: *mut wire_cst_list_prim_i_64,
     uint64: *mut wire_cst_list_prim_u_64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_big_buffers_twin_sse {
     int64: *mut wire_cst_list_prim_i_64,
     uint64: *mut wire_cst_list_prim_u_64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_big_buffers_twin_sync {
     int64: *mut wire_cst_list_prim_i_64,
     uint64: *mut wire_cst_list_prim_u_64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_big_buffers_twin_sync_sse {
     int64: *mut wire_cst_list_prim_i_64,
     uint64: *mut wire_cst_list_prim_u_64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_blob_twin_normal {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_blob_twin_rust_async {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_blob_twin_rust_async_sse {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_blob_twin_sse {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_blob_twin_sync {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_blob_twin_sync_sse {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_c_twin_normal {
     c: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_c_twin_rust_async {
     c: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_c_twin_rust_async_sse {
     c: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_c_twin_sse {
     c: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_c_twin_sync {
     c: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_c_twin_sync_sse {
     c: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_concatenate_with_twin_normal {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_concatenate_with_twin_rust_async {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_concatenate_with_twin_rust_async_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_concatenate_with_twin_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_concatenate_with_twin_sync {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_concatenate_with_twin_sync_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_contains_mirrored_sub_struct_twin_normal {
     test: wire_cst_raw_string_mirrored,
     test2: wire_cst_another_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_contains_mirrored_sub_struct_twin_rust_async {
     test: wire_cst_raw_string_mirrored,
     test2: wire_cst_another_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_contains_mirrored_sub_struct_twin_rust_async_sse {
     test: wire_cst_raw_string_mirrored,
     test2: wire_cst_another_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_contains_mirrored_sub_struct_twin_sse {
     test: wire_cst_raw_string_mirrored,
     test2: wire_cst_another_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_contains_mirrored_sub_struct_twin_sync {
     test: wire_cst_raw_string_mirrored,
     test2: wire_cst_another_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_contains_mirrored_sub_struct_twin_sync_sse {
     test: wire_cst_raw_string_mirrored,
     test2: wire_cst_another_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_enum_error_twin_normal {
     tag: i32,
     kind: *mut CustomEnumErrorTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomEnumErrorTwinNormalKind {
     One: *mut wire_cst_CustomEnumErrorTwinNormal_One,
     Two: *mut wire_cst_CustomEnumErrorTwinNormal_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinNormal_One {
     message: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinNormal_Two {
     message: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_enum_error_twin_rust_async {
     tag: i32,
     kind: *mut CustomEnumErrorTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomEnumErrorTwinRustAsyncKind {
     One: *mut wire_cst_CustomEnumErrorTwinRustAsync_One,
     Two: *mut wire_cst_CustomEnumErrorTwinRustAsync_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinRustAsync_One {
     message: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinRustAsync_Two {
     message: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_enum_error_twin_rust_async_sse {
     tag: i32,
     kind: *mut CustomEnumErrorTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomEnumErrorTwinRustAsyncSseKind {
     One: *mut wire_cst_CustomEnumErrorTwinRustAsyncSse_One,
     Two: *mut wire_cst_CustomEnumErrorTwinRustAsyncSse_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One {
     message: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two {
     message: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_enum_error_twin_sse {
     tag: i32,
     kind: *mut CustomEnumErrorTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomEnumErrorTwinSseKind {
     One: *mut wire_cst_CustomEnumErrorTwinSse_One,
     Two: *mut wire_cst_CustomEnumErrorTwinSse_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinSse_One {
     message: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinSse_Two {
     message: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_enum_error_twin_sync {
     tag: i32,
     kind: *mut CustomEnumErrorTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomEnumErrorTwinSyncKind {
     One: *mut wire_cst_CustomEnumErrorTwinSync_One,
     Two: *mut wire_cst_CustomEnumErrorTwinSync_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinSync_One {
     message: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinSync_Two {
     message: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_enum_error_twin_sync_sse {
     tag: i32,
     kind: *mut CustomEnumErrorTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomEnumErrorTwinSyncSseKind {
     One: *mut wire_cst_CustomEnumErrorTwinSyncSse_One,
     Two: *mut wire_cst_CustomEnumErrorTwinSyncSse_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinSyncSse_One {
     message: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomEnumErrorTwinSyncSse_Two {
     message: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_error_twin_normal {
     tag: i32,
     kind: *mut CustomErrorTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomErrorTwinNormalKind {
     Error0: *mut wire_cst_CustomErrorTwinNormal_Error0,
     Error1: *mut wire_cst_CustomErrorTwinNormal_Error1,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinNormal_Error0 {
     e: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinNormal_Error1 {
     e: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_error_twin_rust_async {
     tag: i32,
     kind: *mut CustomErrorTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomErrorTwinRustAsyncKind {
     Error0: *mut wire_cst_CustomErrorTwinRustAsync_Error0,
     Error1: *mut wire_cst_CustomErrorTwinRustAsync_Error1,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinRustAsync_Error0 {
     e: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinRustAsync_Error1 {
     e: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_error_twin_rust_async_sse {
     tag: i32,
     kind: *mut CustomErrorTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomErrorTwinRustAsyncSseKind {
     Error0: *mut wire_cst_CustomErrorTwinRustAsyncSse_Error0,
     Error1: *mut wire_cst_CustomErrorTwinRustAsyncSse_Error1,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 {
     e: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 {
     e: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_error_twin_sse {
     tag: i32,
     kind: *mut CustomErrorTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomErrorTwinSseKind {
     Error0: *mut wire_cst_CustomErrorTwinSse_Error0,
     Error1: *mut wire_cst_CustomErrorTwinSse_Error1,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinSse_Error0 {
     e: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinSse_Error1 {
     e: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_error_twin_sync {
     tag: i32,
     kind: *mut CustomErrorTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomErrorTwinSyncKind {
     Error0: *mut wire_cst_CustomErrorTwinSync_Error0,
     Error1: *mut wire_cst_CustomErrorTwinSync_Error1,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinSync_Error0 {
     e: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinSync_Error1 {
     e: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_error_twin_sync_sse {
     tag: i32,
     kind: *mut CustomErrorTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomErrorTwinSyncSseKind {
     Error0: *mut wire_cst_CustomErrorTwinSyncSse_Error0,
     Error1: *mut wire_cst_CustomErrorTwinSyncSse_Error1,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinSyncSse_Error0 {
     e: *mut wire_cst_list_prim_u_8,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomErrorTwinSyncSse_Error1 {
     e: u32,
     backtrace: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_1_twin_normal {
     tag: i32,
     kind: *mut CustomNestedError1TwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError1TwinNormalKind {
     CustomNested1: *mut wire_cst_CustomNestedError1TwinNormal_CustomNested1,
     ErrorNested: *mut wire_cst_CustomNestedError1TwinNormal_ErrorNested,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinNormal_ErrorNested {
     field0: *mut wire_cst_custom_nested_error_2_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_1_twin_rust_async {
     tag: i32,
     kind: *mut CustomNestedError1TwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError1TwinRustAsyncKind {
     CustomNested1: *mut wire_cst_CustomNestedError1TwinRustAsync_CustomNested1,
     ErrorNested: *mut wire_cst_CustomNestedError1TwinRustAsync_ErrorNested,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinRustAsync_ErrorNested {
     field0: *mut wire_cst_custom_nested_error_2_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_1_twin_rust_async_sse {
     tag: i32,
     kind: *mut CustomNestedError1TwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError1TwinRustAsyncSseKind {
     CustomNested1: *mut wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1,
     ErrorNested: *mut wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested {
     field0: *mut wire_cst_custom_nested_error_2_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_1_twin_sse {
     tag: i32,
     kind: *mut CustomNestedError1TwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError1TwinSseKind {
     CustomNested1: *mut wire_cst_CustomNestedError1TwinSse_CustomNested1,
     ErrorNested: *mut wire_cst_CustomNestedError1TwinSse_ErrorNested,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinSse_CustomNested1 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinSse_ErrorNested {
     field0: *mut wire_cst_custom_nested_error_2_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_1_twin_sync {
     tag: i32,
     kind: *mut CustomNestedError1TwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError1TwinSyncKind {
     CustomNested1: *mut wire_cst_CustomNestedError1TwinSync_CustomNested1,
     ErrorNested: *mut wire_cst_CustomNestedError1TwinSync_ErrorNested,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinSync_CustomNested1 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinSync_ErrorNested {
     field0: *mut wire_cst_custom_nested_error_2_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_1_twin_sync_sse {
     tag: i32,
     kind: *mut CustomNestedError1TwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError1TwinSyncSseKind {
     CustomNested1: *mut wire_cst_CustomNestedError1TwinSyncSse_CustomNested1,
     ErrorNested: *mut wire_cst_CustomNestedError1TwinSyncSse_ErrorNested,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested {
     field0: *mut wire_cst_custom_nested_error_2_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_2_twin_normal {
     tag: i32,
     kind: *mut CustomNestedError2TwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError2TwinNormalKind {
     CustomNested2: *mut wire_cst_CustomNestedError2TwinNormal_CustomNested2,
     CustomNested2Number: *mut wire_cst_CustomNestedError2TwinNormal_CustomNested2Number,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinNormal_CustomNested2 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinNormal_CustomNested2Number {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_2_twin_rust_async {
     tag: i32,
     kind: *mut CustomNestedError2TwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError2TwinRustAsyncKind {
     CustomNested2: *mut wire_cst_CustomNestedError2TwinRustAsync_CustomNested2,
     CustomNested2Number: *mut wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_2_twin_rust_async_sse {
     tag: i32,
     kind: *mut CustomNestedError2TwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError2TwinRustAsyncSseKind {
     CustomNested2: *mut wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2,
     CustomNested2Number: *mut wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_2_twin_sse {
     tag: i32,
     kind: *mut CustomNestedError2TwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError2TwinSseKind {
     CustomNested2: *mut wire_cst_CustomNestedError2TwinSse_CustomNested2,
     CustomNested2Number: *mut wire_cst_CustomNestedError2TwinSse_CustomNested2Number,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinSse_CustomNested2 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinSse_CustomNested2Number {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_2_twin_sync {
     tag: i32,
     kind: *mut CustomNestedError2TwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError2TwinSyncKind {
     CustomNested2: *mut wire_cst_CustomNestedError2TwinSync_CustomNested2,
     CustomNested2Number: *mut wire_cst_CustomNestedError2TwinSync_CustomNested2Number,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinSync_CustomNested2 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinSync_CustomNested2Number {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_2_twin_sync_sse {
     tag: i32,
     kind: *mut CustomNestedError2TwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedError2TwinSyncSseKind {
     CustomNested2: *mut wire_cst_CustomNestedError2TwinSyncSse_CustomNested2,
     CustomNested2Number: *mut wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_inner_twin_normal {
     tag: i32,
     kind: *mut CustomNestedErrorInnerTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorInnerTwinNormalKind {
     Three: *mut wire_cst_CustomNestedErrorInnerTwinNormal_Three,
     Four: *mut wire_cst_CustomNestedErrorInnerTwinNormal_Four,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinNormal_Three {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinNormal_Four {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_inner_twin_rust_async {
     tag: i32,
     kind: *mut CustomNestedErrorInnerTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorInnerTwinRustAsyncKind {
     Three: *mut wire_cst_CustomNestedErrorInnerTwinRustAsync_Three,
     Four: *mut wire_cst_CustomNestedErrorInnerTwinRustAsync_Four,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Three {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Four {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_inner_twin_rust_async_sse {
     tag: i32,
     kind: *mut CustomNestedErrorInnerTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorInnerTwinRustAsyncSseKind {
     Three: *mut wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three,
     Four: *mut wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_inner_twin_sse {
     tag: i32,
     kind: *mut CustomNestedErrorInnerTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorInnerTwinSseKind {
     Three: *mut wire_cst_CustomNestedErrorInnerTwinSse_Three,
     Four: *mut wire_cst_CustomNestedErrorInnerTwinSse_Four,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinSse_Three {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinSse_Four {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_inner_twin_sync {
     tag: i32,
     kind: *mut CustomNestedErrorInnerTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorInnerTwinSyncKind {
     Three: *mut wire_cst_CustomNestedErrorInnerTwinSync_Three,
     Four: *mut wire_cst_CustomNestedErrorInnerTwinSync_Four,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinSync_Three {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinSync_Four {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_inner_twin_sync_sse {
     tag: i32,
     kind: *mut CustomNestedErrorInnerTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorInnerTwinSyncSseKind {
     Three: *mut wire_cst_CustomNestedErrorInnerTwinSyncSse_Three,
     Four: *mut wire_cst_CustomNestedErrorInnerTwinSyncSse_Four,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Three {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Four {
     field0: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_outer_twin_normal {
     tag: i32,
     kind: *mut CustomNestedErrorOuterTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorOuterTwinNormalKind {
     One: *mut wire_cst_CustomNestedErrorOuterTwinNormal_One,
     Two: *mut wire_cst_CustomNestedErrorOuterTwinNormal_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinNormal_One {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinNormal_Two {
     field0: *mut wire_cst_custom_nested_error_inner_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_outer_twin_rust_async {
     tag: i32,
     kind: *mut CustomNestedErrorOuterTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorOuterTwinRustAsyncKind {
     One: *mut wire_cst_CustomNestedErrorOuterTwinRustAsync_One,
     Two: *mut wire_cst_CustomNestedErrorOuterTwinRustAsync_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinRustAsync_One {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinRustAsync_Two {
     field0: *mut wire_cst_custom_nested_error_inner_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_outer_twin_rust_async_sse {
     tag: i32,
     kind: *mut CustomNestedErrorOuterTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorOuterTwinRustAsyncSseKind {
     One: *mut wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One,
     Two: *mut wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two {
     field0: *mut wire_cst_custom_nested_error_inner_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_outer_twin_sse {
     tag: i32,
     kind: *mut CustomNestedErrorOuterTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorOuterTwinSseKind {
     One: *mut wire_cst_CustomNestedErrorOuterTwinSse_One,
     Two: *mut wire_cst_CustomNestedErrorOuterTwinSse_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinSse_One {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinSse_Two {
     field0: *mut wire_cst_custom_nested_error_inner_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_outer_twin_sync {
     tag: i32,
     kind: *mut CustomNestedErrorOuterTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorOuterTwinSyncKind {
     One: *mut wire_cst_CustomNestedErrorOuterTwinSync_One,
     Two: *mut wire_cst_CustomNestedErrorOuterTwinSync_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinSync_One {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinSync_Two {
     field0: *mut wire_cst_custom_nested_error_inner_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_nested_error_outer_twin_sync_sse {
     tag: i32,
     kind: *mut CustomNestedErrorOuterTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union CustomNestedErrorOuterTwinSyncSseKind {
     One: *mut wire_cst_CustomNestedErrorOuterTwinSyncSse_One,
     Two: *mut wire_cst_CustomNestedErrorOuterTwinSyncSse_Two,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinSyncSse_One {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_CustomNestedErrorOuterTwinSyncSse_Two {
     field0: *mut wire_cst_custom_nested_error_inner_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_another_twin_normal {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_another_twin_rust_async {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_another_twin_rust_async_sse {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_another_twin_sse {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_another_twin_sync {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_another_twin_sync_sse {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_twin_normal {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_twin_rust_async {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_twin_rust_async_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_twin_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_twin_sync {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_error_twin_sync_sse {
     a: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_twin_normal {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_twin_rust_async {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_twin_rust_async_sse {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_twin_sse {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_twin_sync {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_custom_struct_twin_sync_sse {
     message: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_customized_twin_normal {
     final_field: *mut wire_cst_list_prim_u_8,
     non_final_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_customized_twin_rust_async {
     final_field: *mut wire_cst_list_prim_u_8,
     non_final_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_customized_twin_rust_async_sse {
     final_field: *mut wire_cst_list_prim_u_8,
     non_final_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_customized_twin_sse {
     final_field: *mut wire_cst_list_prim_u_8,
     non_final_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_customized_twin_sync {
     final_field: *mut wire_cst_list_prim_u_8,
     non_final_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_customized_twin_sync_sse {
     final_field: *mut wire_cst_list_prim_u_8,
     non_final_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_dart_opaque_nested_twin_normal {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_dart_opaque_nested_twin_rust_async {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_dart_opaque_nested_twin_rust_async_sse {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_dart_opaque_nested_twin_sse {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_dart_opaque_nested_twin_sync {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_dart_opaque_nested_twin_sync_sse {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_distance_twin_normal {
     tag: i32,
     kind: *mut DistanceTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union DistanceTwinNormalKind {
     Unknown: *mut wire_cst_DistanceTwinNormal_Unknown,
     Map: *mut wire_cst_DistanceTwinNormal_Map,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinNormal_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinNormal_Map {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_distance_twin_rust_async {
     tag: i32,
     kind: *mut DistanceTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union DistanceTwinRustAsyncKind {
     Unknown: *mut wire_cst_DistanceTwinRustAsync_Unknown,
     Map: *mut wire_cst_DistanceTwinRustAsync_Map,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinRustAsync_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinRustAsync_Map {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_distance_twin_rust_async_sse {
     tag: i32,
     kind: *mut DistanceTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union DistanceTwinRustAsyncSseKind {
     Unknown: *mut wire_cst_DistanceTwinRustAsyncSse_Unknown,
     Map: *mut wire_cst_DistanceTwinRustAsyncSse_Map,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinRustAsyncSse_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinRustAsyncSse_Map {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_distance_twin_sse {
     tag: i32,
     kind: *mut DistanceTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union DistanceTwinSseKind {
     Unknown: *mut wire_cst_DistanceTwinSse_Unknown,
     Map: *mut wire_cst_DistanceTwinSse_Map,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinSse_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinSse_Map {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_distance_twin_sync {
     tag: i32,
     kind: *mut DistanceTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union DistanceTwinSyncKind {
     Unknown: *mut wire_cst_DistanceTwinSync_Unknown,
     Map: *mut wire_cst_DistanceTwinSync_Map,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinSync_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinSync_Map {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_distance_twin_sync_sse {
     tag: i32,
     kind: *mut DistanceTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union DistanceTwinSyncSseKind {
     Unknown: *mut wire_cst_DistanceTwinSyncSse_Unknown,
     Map: *mut wire_cst_DistanceTwinSyncSse_Map,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinSyncSse_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_DistanceTwinSyncSse_Map {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_element_twin_normal {
@@ -36635,7 +36289,6 @@ pub struct wire_cst_element_twin_normal {
     attributes: *mut wire_cst_list_attribute_twin_normal,
     children: *mut wire_cst_list_element_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_element_twin_rust_async {
@@ -36644,7 +36297,6 @@ pub struct wire_cst_element_twin_rust_async {
     attributes: *mut wire_cst_list_attribute_twin_rust_async,
     children: *mut wire_cst_list_element_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_element_twin_rust_async_sse {
@@ -36653,7 +36305,6 @@ pub struct wire_cst_element_twin_rust_async_sse {
     attributes: *mut wire_cst_list_attribute_twin_rust_async_sse,
     children: *mut wire_cst_list_element_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_element_twin_sse {
@@ -36662,7 +36313,6 @@ pub struct wire_cst_element_twin_sse {
     attributes: *mut wire_cst_list_attribute_twin_sse,
     children: *mut wire_cst_list_element_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_element_twin_sync {
@@ -36671,7 +36321,6 @@ pub struct wire_cst_element_twin_sync {
     attributes: *mut wire_cst_list_attribute_twin_sync,
     children: *mut wire_cst_list_element_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_element_twin_sync_sse {
@@ -36680,196 +36329,157 @@ pub struct wire_cst_element_twin_sync_sse {
     attributes: *mut wire_cst_list_attribute_twin_sync_sse,
     children: *mut wire_cst_list_element_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_empty_twin_normal {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_empty_twin_rust_async {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_empty_twin_rust_async_sse {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_empty_twin_sse {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_empty_twin_sync {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_empty_twin_sync_sse {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_dart_opaque_twin_normal {
     tag: i32,
     kind: *mut EnumDartOpaqueTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumDartOpaqueTwinNormalKind {
     Primitive: *mut wire_cst_EnumDartOpaqueTwinNormal_Primitive,
     Opaque: *mut wire_cst_EnumDartOpaqueTwinNormal_Opaque,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinNormal_Primitive {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinNormal_Opaque {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_dart_opaque_twin_rust_async {
     tag: i32,
     kind: *mut EnumDartOpaqueTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumDartOpaqueTwinRustAsyncKind {
     Primitive: *mut wire_cst_EnumDartOpaqueTwinRustAsync_Primitive,
     Opaque: *mut wire_cst_EnumDartOpaqueTwinRustAsync_Opaque,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinRustAsync_Primitive {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinRustAsync_Opaque {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_dart_opaque_twin_rust_async_sse {
     tag: i32,
     kind: *mut EnumDartOpaqueTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumDartOpaqueTwinRustAsyncSseKind {
     Primitive: *mut wire_cst_EnumDartOpaqueTwinRustAsyncSse_Primitive,
     Opaque: *mut wire_cst_EnumDartOpaqueTwinRustAsyncSse_Opaque,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Primitive {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Opaque {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_dart_opaque_twin_sse {
     tag: i32,
     kind: *mut EnumDartOpaqueTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumDartOpaqueTwinSseKind {
     Primitive: *mut wire_cst_EnumDartOpaqueTwinSse_Primitive,
     Opaque: *mut wire_cst_EnumDartOpaqueTwinSse_Opaque,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinSse_Primitive {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinSse_Opaque {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_dart_opaque_twin_sync {
     tag: i32,
     kind: *mut EnumDartOpaqueTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumDartOpaqueTwinSyncKind {
     Primitive: *mut wire_cst_EnumDartOpaqueTwinSync_Primitive,
     Opaque: *mut wire_cst_EnumDartOpaqueTwinSync_Opaque,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinSync_Primitive {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinSync_Opaque {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_dart_opaque_twin_sync_sse {
     tag: i32,
     kind: *mut EnumDartOpaqueTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumDartOpaqueTwinSyncSseKind {
     Primitive: *mut wire_cst_EnumDartOpaqueTwinSyncSse_Primitive,
     Opaque: *mut wire_cst_EnumDartOpaqueTwinSyncSse_Opaque,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinSyncSse_Primitive {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumDartOpaqueTwinSyncSse_Opaque {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_opaque_twin_normal {
     tag: i32,
     kind: *mut EnumOpaqueTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumOpaqueTwinNormalKind {
     Struct: *mut wire_cst_EnumOpaqueTwinNormal_Struct,
     Primitive: *mut wire_cst_EnumOpaqueTwinNormal_Primitive,
@@ -36877,46 +36487,38 @@ pub union EnumOpaqueTwinNormalKind {
     Mutex: *mut wire_cst_EnumOpaqueTwinNormal_Mutex,
     RwLock: *mut wire_cst_EnumOpaqueTwinNormal_RwLock,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinNormal_Struct {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinNormal_Primitive {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinNormal_TraitObj {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinNormal_Mutex {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinNormal_RwLock {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_opaque_twin_rust_async {
     tag: i32,
     kind: *mut EnumOpaqueTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumOpaqueTwinRustAsyncKind {
     Struct: *mut wire_cst_EnumOpaqueTwinRustAsync_Struct,
     Primitive: *mut wire_cst_EnumOpaqueTwinRustAsync_Primitive,
@@ -36924,46 +36526,38 @@ pub union EnumOpaqueTwinRustAsyncKind {
     Mutex: *mut wire_cst_EnumOpaqueTwinRustAsync_Mutex,
     RwLock: *mut wire_cst_EnumOpaqueTwinRustAsync_RwLock,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsync_Struct {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsync_Primitive {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsync_TraitObj {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsync_Mutex {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsync_RwLock {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_opaque_twin_rust_async_sse {
     tag: i32,
     kind: *mut EnumOpaqueTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumOpaqueTwinRustAsyncSseKind {
     Struct: *mut wire_cst_EnumOpaqueTwinRustAsyncSse_Struct,
     Primitive: *mut wire_cst_EnumOpaqueTwinRustAsyncSse_Primitive,
@@ -36971,46 +36565,38 @@ pub union EnumOpaqueTwinRustAsyncSseKind {
     Mutex: *mut wire_cst_EnumOpaqueTwinRustAsyncSse_Mutex,
     RwLock: *mut wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsyncSse_Struct {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsyncSse_Primitive {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsyncSse_TraitObj {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsyncSse_Mutex {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_opaque_twin_sse {
     tag: i32,
     kind: *mut EnumOpaqueTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumOpaqueTwinSseKind {
     Struct: *mut wire_cst_EnumOpaqueTwinSse_Struct,
     Primitive: *mut wire_cst_EnumOpaqueTwinSse_Primitive,
@@ -37018,46 +36604,38 @@ pub union EnumOpaqueTwinSseKind {
     Mutex: *mut wire_cst_EnumOpaqueTwinSse_Mutex,
     RwLock: *mut wire_cst_EnumOpaqueTwinSse_RwLock,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSse_Struct {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSse_Primitive {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSse_TraitObj {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSse_Mutex {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSse_RwLock {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_opaque_twin_sync {
     tag: i32,
     kind: *mut EnumOpaqueTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumOpaqueTwinSyncKind {
     Struct: *mut wire_cst_EnumOpaqueTwinSync_Struct,
     Primitive: *mut wire_cst_EnumOpaqueTwinSync_Primitive,
@@ -37065,46 +36643,38 @@ pub union EnumOpaqueTwinSyncKind {
     Mutex: *mut wire_cst_EnumOpaqueTwinSync_Mutex,
     RwLock: *mut wire_cst_EnumOpaqueTwinSync_RwLock,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSync_Struct {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSync_Primitive {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSync_TraitObj {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSync_Mutex {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSync_RwLock {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_opaque_twin_sync_sse {
     tag: i32,
     kind: *mut EnumOpaqueTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumOpaqueTwinSyncSseKind {
     Struct: *mut wire_cst_EnumOpaqueTwinSyncSse_Struct,
     Primitive: *mut wire_cst_EnumOpaqueTwinSyncSse_Primitive,
@@ -37112,563 +36682,457 @@ pub union EnumOpaqueTwinSyncSseKind {
     Mutex: *mut wire_cst_EnumOpaqueTwinSyncSse_Mutex,
     RwLock: *mut wire_cst_EnumOpaqueTwinSyncSse_RwLock,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSyncSse_Struct {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSyncSse_Primitive {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSyncSse_TraitObj {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSyncSse_Mutex {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumOpaqueTwinSyncSse_RwLock {
     field0: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_mixed_twin_normal {
     tag: i32,
     kind: *mut EnumWithItemMixedTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemMixedTwinNormalKind {
     A: *mut wire_cst_EnumWithItemMixedTwinNormal_A,
     B: *mut wire_cst_EnumWithItemMixedTwinNormal_B,
     C: *mut wire_cst_EnumWithItemMixedTwinNormal_C,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinNormal_A {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinNormal_B {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinNormal_C {
     c_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_mixed_twin_rust_async {
     tag: i32,
     kind: *mut EnumWithItemMixedTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemMixedTwinRustAsyncKind {
     A: *mut wire_cst_EnumWithItemMixedTwinRustAsync_A,
     B: *mut wire_cst_EnumWithItemMixedTwinRustAsync_B,
     C: *mut wire_cst_EnumWithItemMixedTwinRustAsync_C,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsync_A {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsync_B {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsync_C {
     c_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_mixed_twin_rust_async_sse {
     tag: i32,
     kind: *mut EnumWithItemMixedTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemMixedTwinRustAsyncSseKind {
     A: *mut wire_cst_EnumWithItemMixedTwinRustAsyncSse_A,
     B: *mut wire_cst_EnumWithItemMixedTwinRustAsyncSse_B,
     C: *mut wire_cst_EnumWithItemMixedTwinRustAsyncSse_C,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_A {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_B {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_C {
     c_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_mixed_twin_sse {
     tag: i32,
     kind: *mut EnumWithItemMixedTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemMixedTwinSseKind {
     A: *mut wire_cst_EnumWithItemMixedTwinSse_A,
     B: *mut wire_cst_EnumWithItemMixedTwinSse_B,
     C: *mut wire_cst_EnumWithItemMixedTwinSse_C,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinSse_A {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinSse_B {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinSse_C {
     c_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_mixed_twin_sync {
     tag: i32,
     kind: *mut EnumWithItemMixedTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemMixedTwinSyncKind {
     A: *mut wire_cst_EnumWithItemMixedTwinSync_A,
     B: *mut wire_cst_EnumWithItemMixedTwinSync_B,
     C: *mut wire_cst_EnumWithItemMixedTwinSync_C,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinSync_A {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinSync_B {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinSync_C {
     c_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_mixed_twin_sync_sse {
     tag: i32,
     kind: *mut EnumWithItemMixedTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemMixedTwinSyncSseKind {
     A: *mut wire_cst_EnumWithItemMixedTwinSyncSse_A,
     B: *mut wire_cst_EnumWithItemMixedTwinSyncSse_B,
     C: *mut wire_cst_EnumWithItemMixedTwinSyncSse_C,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinSyncSse_A {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinSyncSse_B {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemMixedTwinSyncSse_C {
     c_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_struct_twin_normal {
     tag: i32,
     kind: *mut EnumWithItemStructTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemStructTwinNormalKind {
     A: *mut wire_cst_EnumWithItemStructTwinNormal_A,
     B: *mut wire_cst_EnumWithItemStructTwinNormal_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinNormal_A {
     a_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinNormal_B {
     b_field: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_struct_twin_rust_async {
     tag: i32,
     kind: *mut EnumWithItemStructTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemStructTwinRustAsyncKind {
     A: *mut wire_cst_EnumWithItemStructTwinRustAsync_A,
     B: *mut wire_cst_EnumWithItemStructTwinRustAsync_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinRustAsync_A {
     a_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinRustAsync_B {
     b_field: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_struct_twin_rust_async_sse {
     tag: i32,
     kind: *mut EnumWithItemStructTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemStructTwinRustAsyncSseKind {
     A: *mut wire_cst_EnumWithItemStructTwinRustAsyncSse_A,
     B: *mut wire_cst_EnumWithItemStructTwinRustAsyncSse_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinRustAsyncSse_A {
     a_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinRustAsyncSse_B {
     b_field: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_struct_twin_sse {
     tag: i32,
     kind: *mut EnumWithItemStructTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemStructTwinSseKind {
     A: *mut wire_cst_EnumWithItemStructTwinSse_A,
     B: *mut wire_cst_EnumWithItemStructTwinSse_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinSse_A {
     a_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinSse_B {
     b_field: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_struct_twin_sync {
     tag: i32,
     kind: *mut EnumWithItemStructTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemStructTwinSyncKind {
     A: *mut wire_cst_EnumWithItemStructTwinSync_A,
     B: *mut wire_cst_EnumWithItemStructTwinSync_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinSync_A {
     a_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinSync_B {
     b_field: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_struct_twin_sync_sse {
     tag: i32,
     kind: *mut EnumWithItemStructTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemStructTwinSyncSseKind {
     A: *mut wire_cst_EnumWithItemStructTwinSyncSse_A,
     B: *mut wire_cst_EnumWithItemStructTwinSyncSse_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinSyncSse_A {
     a_field: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemStructTwinSyncSse_B {
     b_field: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_tuple_twin_normal {
     tag: i32,
     kind: *mut EnumWithItemTupleTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemTupleTwinNormalKind {
     A: *mut wire_cst_EnumWithItemTupleTwinNormal_A,
     B: *mut wire_cst_EnumWithItemTupleTwinNormal_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinNormal_A {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinNormal_B {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_tuple_twin_rust_async {
     tag: i32,
     kind: *mut EnumWithItemTupleTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemTupleTwinRustAsyncKind {
     A: *mut wire_cst_EnumWithItemTupleTwinRustAsync_A,
     B: *mut wire_cst_EnumWithItemTupleTwinRustAsync_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinRustAsync_A {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinRustAsync_B {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_tuple_twin_rust_async_sse {
     tag: i32,
     kind: *mut EnumWithItemTupleTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemTupleTwinRustAsyncSseKind {
     A: *mut wire_cst_EnumWithItemTupleTwinRustAsyncSse_A,
     B: *mut wire_cst_EnumWithItemTupleTwinRustAsyncSse_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_A {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_B {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_tuple_twin_sse {
     tag: i32,
     kind: *mut EnumWithItemTupleTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemTupleTwinSseKind {
     A: *mut wire_cst_EnumWithItemTupleTwinSse_A,
     B: *mut wire_cst_EnumWithItemTupleTwinSse_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinSse_A {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinSse_B {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_tuple_twin_sync {
     tag: i32,
     kind: *mut EnumWithItemTupleTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemTupleTwinSyncKind {
     A: *mut wire_cst_EnumWithItemTupleTwinSync_A,
     B: *mut wire_cst_EnumWithItemTupleTwinSync_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinSync_A {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinSync_B {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_enum_with_item_tuple_twin_sync_sse {
     tag: i32,
     kind: *mut EnumWithItemTupleTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union EnumWithItemTupleTwinSyncSseKind {
     A: *mut wire_cst_EnumWithItemTupleTwinSyncSse_A,
     B: *mut wire_cst_EnumWithItemTupleTwinSyncSse_B,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinSyncSse_A {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_EnumWithItemTupleTwinSyncSse_B {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_event_twin_normal {
     address: *mut wire_cst_list_prim_u_8,
     payload: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_event_twin_rust_async {
     address: *mut wire_cst_list_prim_u_8,
     payload: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_event_twin_rust_async_sse {
     address: *mut wire_cst_list_prim_u_8,
     payload: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_event_twin_sse {
     address: *mut wire_cst_list_prim_u_8,
     payload: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_exotic_optionals_twin_normal {
@@ -37687,7 +37151,6 @@ pub struct wire_cst_exotic_optionals_twin_normal {
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_normal,
     newtypeint: *mut wire_cst_new_type_int_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_exotic_optionals_twin_rust_async {
@@ -37706,7 +37169,6 @@ pub struct wire_cst_exotic_optionals_twin_rust_async {
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_rust_async,
     newtypeint: *mut wire_cst_new_type_int_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_exotic_optionals_twin_rust_async_sse {
@@ -37725,7 +37187,6 @@ pub struct wire_cst_exotic_optionals_twin_rust_async_sse {
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse,
     newtypeint: *mut wire_cst_new_type_int_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_exotic_optionals_twin_sse {
@@ -37744,7 +37205,6 @@ pub struct wire_cst_exotic_optionals_twin_sse {
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_sse,
     newtypeint: *mut wire_cst_new_type_int_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_exotic_optionals_twin_sync {
@@ -37763,7 +37223,6 @@ pub struct wire_cst_exotic_optionals_twin_sync {
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_sync,
     newtypeint: *mut wire_cst_new_type_int_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_exotic_optionals_twin_sync_sse {
@@ -37782,7 +37241,6 @@ pub struct wire_cst_exotic_optionals_twin_sync_sse {
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse,
     newtypeint: *mut wire_cst_new_type_int_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feature_chrono_twin_normal {
@@ -37791,7 +37249,6 @@ pub struct wire_cst_feature_chrono_twin_normal {
     duration: i64,
     naive: i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feature_chrono_twin_rust_async {
@@ -37800,7 +37257,6 @@ pub struct wire_cst_feature_chrono_twin_rust_async {
     duration: i64,
     naive: i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feature_chrono_twin_sync {
@@ -37809,70 +37265,58 @@ pub struct wire_cst_feature_chrono_twin_sync {
     duration: i64,
     naive: i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feature_uuid_twin_normal {
     one: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feature_uuid_twin_rust_async {
     one: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feature_uuid_twin_sync {
     one: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feed_id_twin_normal {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feed_id_twin_rust_async {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feed_id_twin_rust_async_sse {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feed_id_twin_sse {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feed_id_twin_sync {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_feed_id_twin_sync_sse {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_kitchen_sink_twin_normal {
     tag: i32,
     kind: *mut KitchenSinkTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union KitchenSinkTwinNormalKind {
     Empty: *mut wire_cst_KitchenSinkTwinNormal_Empty,
     Primitives: *mut wire_cst_KitchenSinkTwinNormal_Primitives,
@@ -37881,11 +37325,9 @@ pub union KitchenSinkTwinNormalKind {
     Buffer: *mut wire_cst_KitchenSinkTwinNormal_Buffer,
     Enums: *mut wire_cst_KitchenSinkTwinNormal_Enums,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinNormal_Empty {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinNormal_Primitives {
@@ -37893,42 +37335,35 @@ pub struct wire_cst_KitchenSinkTwinNormal_Primitives {
     float64: f64,
     boolean: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinNormal_Nested {
     field0: i32,
     field1: *mut wire_cst_kitchen_sink_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinNormal_Optional {
     field0: *mut i32,
     field1: *mut i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinNormal_Buffer {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinNormal_Enums {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_kitchen_sink_twin_rust_async {
     tag: i32,
     kind: *mut KitchenSinkTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union KitchenSinkTwinRustAsyncKind {
     Empty: *mut wire_cst_KitchenSinkTwinRustAsync_Empty,
     Primitives: *mut wire_cst_KitchenSinkTwinRustAsync_Primitives,
@@ -37937,11 +37372,9 @@ pub union KitchenSinkTwinRustAsyncKind {
     Buffer: *mut wire_cst_KitchenSinkTwinRustAsync_Buffer,
     Enums: *mut wire_cst_KitchenSinkTwinRustAsync_Enums,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsync_Empty {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsync_Primitives {
@@ -37949,42 +37382,35 @@ pub struct wire_cst_KitchenSinkTwinRustAsync_Primitives {
     float64: f64,
     boolean: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsync_Nested {
     field0: i32,
     field1: *mut wire_cst_kitchen_sink_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsync_Optional {
     field0: *mut i32,
     field1: *mut i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsync_Buffer {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsync_Enums {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_kitchen_sink_twin_rust_async_sse {
     tag: i32,
     kind: *mut KitchenSinkTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union KitchenSinkTwinRustAsyncSseKind {
     Empty: *mut wire_cst_KitchenSinkTwinRustAsyncSse_Empty,
     Primitives: *mut wire_cst_KitchenSinkTwinRustAsyncSse_Primitives,
@@ -37993,11 +37419,9 @@ pub union KitchenSinkTwinRustAsyncSseKind {
     Buffer: *mut wire_cst_KitchenSinkTwinRustAsyncSse_Buffer,
     Enums: *mut wire_cst_KitchenSinkTwinRustAsyncSse_Enums,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsyncSse_Empty {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsyncSse_Primitives {
@@ -38005,42 +37429,35 @@ pub struct wire_cst_KitchenSinkTwinRustAsyncSse_Primitives {
     float64: f64,
     boolean: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsyncSse_Nested {
     field0: i32,
     field1: *mut wire_cst_kitchen_sink_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsyncSse_Optional {
     field0: *mut i32,
     field1: *mut i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsyncSse_Buffer {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinRustAsyncSse_Enums {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_kitchen_sink_twin_sse {
     tag: i32,
     kind: *mut KitchenSinkTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union KitchenSinkTwinSseKind {
     Empty: *mut wire_cst_KitchenSinkTwinSse_Empty,
     Primitives: *mut wire_cst_KitchenSinkTwinSse_Primitives,
@@ -38049,11 +37466,9 @@ pub union KitchenSinkTwinSseKind {
     Buffer: *mut wire_cst_KitchenSinkTwinSse_Buffer,
     Enums: *mut wire_cst_KitchenSinkTwinSse_Enums,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSse_Empty {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSse_Primitives {
@@ -38061,42 +37476,35 @@ pub struct wire_cst_KitchenSinkTwinSse_Primitives {
     float64: f64,
     boolean: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSse_Nested {
     field0: i32,
     field1: *mut wire_cst_kitchen_sink_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSse_Optional {
     field0: *mut i32,
     field1: *mut i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSse_Buffer {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSse_Enums {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_kitchen_sink_twin_sync {
     tag: i32,
     kind: *mut KitchenSinkTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union KitchenSinkTwinSyncKind {
     Empty: *mut wire_cst_KitchenSinkTwinSync_Empty,
     Primitives: *mut wire_cst_KitchenSinkTwinSync_Primitives,
@@ -38105,11 +37513,9 @@ pub union KitchenSinkTwinSyncKind {
     Buffer: *mut wire_cst_KitchenSinkTwinSync_Buffer,
     Enums: *mut wire_cst_KitchenSinkTwinSync_Enums,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSync_Empty {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSync_Primitives {
@@ -38117,42 +37523,35 @@ pub struct wire_cst_KitchenSinkTwinSync_Primitives {
     float64: f64,
     boolean: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSync_Nested {
     field0: i32,
     field1: *mut wire_cst_kitchen_sink_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSync_Optional {
     field0: *mut i32,
     field1: *mut i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSync_Buffer {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSync_Enums {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_kitchen_sink_twin_sync_sse {
     tag: i32,
     kind: *mut KitchenSinkTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union KitchenSinkTwinSyncSseKind {
     Empty: *mut wire_cst_KitchenSinkTwinSyncSse_Empty,
     Primitives: *mut wire_cst_KitchenSinkTwinSyncSse_Primitives,
@@ -38161,11 +37560,9 @@ pub union KitchenSinkTwinSyncSseKind {
     Buffer: *mut wire_cst_KitchenSinkTwinSyncSse_Buffer,
     Enums: *mut wire_cst_KitchenSinkTwinSyncSse_Enums,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSyncSse_Empty {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSyncSse_Primitives {
@@ -38173,923 +37570,782 @@ pub struct wire_cst_KitchenSinkTwinSyncSse_Primitives {
     float64: f64,
     boolean: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSyncSse_Nested {
     field0: i32,
     field1: *mut wire_cst_kitchen_sink_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSyncSse_Optional {
     field0: *mut i32,
     field1: *mut i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSyncSse_Buffer {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_KitchenSinkTwinSyncSse_Enums {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_Chrono_Duration {
     ptr: *mut i64,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_Chrono_Local {
     ptr: *mut i64,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_Chrono_Naive {
     ptr: *mut i64,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_DartOpaque {
     ptr: *mut *const std::ffi::c_void,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_RustOpaque_hide_data {
     ptr: *mut *const std::ffi::c_void,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_String {
     ptr: *mut *mut wire_cst_list_prim_u_8,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_application_env_var {
     ptr: *mut wire_cst_application_env_var,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_application_settings {
     ptr: *mut wire_cst_application_settings,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_attribute_twin_normal {
     ptr: *mut wire_cst_attribute_twin_normal,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_attribute_twin_rust_async {
     ptr: *mut wire_cst_attribute_twin_rust_async,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_attribute_twin_rust_async_sse {
     ptr: *mut wire_cst_attribute_twin_rust_async_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_attribute_twin_sse {
     ptr: *mut wire_cst_attribute_twin_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_attribute_twin_sync {
     ptr: *mut wire_cst_attribute_twin_sync,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_attribute_twin_sync_sse {
     ptr: *mut wire_cst_attribute_twin_sync_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_bool {
     ptr: *mut bool,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_element_twin_normal {
     ptr: *mut wire_cst_element_twin_normal,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_element_twin_rust_async {
     ptr: *mut wire_cst_element_twin_rust_async,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_element_twin_rust_async_sse {
     ptr: *mut wire_cst_element_twin_rust_async_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_element_twin_sse {
     ptr: *mut wire_cst_element_twin_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_element_twin_sync {
     ptr: *mut wire_cst_element_twin_sync,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_element_twin_sync_sse {
     ptr: *mut wire_cst_element_twin_sync_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_enum_opaque_twin_normal {
     ptr: *mut wire_cst_enum_opaque_twin_normal,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_enum_opaque_twin_rust_async {
     ptr: *mut wire_cst_enum_opaque_twin_rust_async,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_enum_opaque_twin_rust_async_sse {
     ptr: *mut wire_cst_enum_opaque_twin_rust_async_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_enum_opaque_twin_sse {
     ptr: *mut wire_cst_enum_opaque_twin_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_enum_opaque_twin_sync {
     ptr: *mut wire_cst_enum_opaque_twin_sync,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_enum_opaque_twin_sync_sse {
     ptr: *mut wire_cst_enum_opaque_twin_sync_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_my_enum {
     ptr: *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_my_size {
     ptr: *mut wire_cst_my_size,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_my_tree_node_twin_normal {
     ptr: *mut wire_cst_my_tree_node_twin_normal,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_my_tree_node_twin_rust_async {
     ptr: *mut wire_cst_my_tree_node_twin_rust_async,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_my_tree_node_twin_rust_async_sse {
     ptr: *mut wire_cst_my_tree_node_twin_rust_async_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_my_tree_node_twin_sse {
     ptr: *mut wire_cst_my_tree_node_twin_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_my_tree_node_twin_sync {
     ptr: *mut wire_cst_my_tree_node_twin_sync,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_my_tree_node_twin_sync_sse {
     ptr: *mut wire_cst_my_tree_node_twin_sync_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_nested_raw_string_mirrored {
     ptr: *mut wire_cst_nested_raw_string_mirrored,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_of_nested_raw_string_mirrored {
     raw: *mut wire_cst_list_nested_raw_string_mirrored,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_String {
     ptr: *mut *mut wire_cst_list_prim_u_8,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_attribute_twin_normal {
     ptr: *mut *mut wire_cst_attribute_twin_normal,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async {
     ptr: *mut *mut wire_cst_attribute_twin_rust_async,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse {
     ptr: *mut *mut wire_cst_attribute_twin_rust_async_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_attribute_twin_sse {
     ptr: *mut *mut wire_cst_attribute_twin_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_attribute_twin_sync {
     ptr: *mut *mut wire_cst_attribute_twin_sync,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse {
     ptr: *mut *mut wire_cst_attribute_twin_sync_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_i_32 {
     ptr: *mut *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_weekdays_twin_normal {
     ptr: *mut *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async {
     ptr: *mut *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async_sse {
     ptr: *mut *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_weekdays_twin_sse {
     ptr: *mut *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync {
     ptr: *mut *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse {
     ptr: *mut *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_opt_list_prim_i_32 {
     ptr: *mut *mut wire_cst_list_prim_i_32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_point_twin_normal {
     ptr: *mut wire_cst_point_twin_normal,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_point_twin_rust_async {
     ptr: *mut wire_cst_point_twin_rust_async,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_point_twin_rust_async_sse {
     ptr: *mut wire_cst_point_twin_rust_async_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_point_twin_sse {
     ptr: *mut wire_cst_point_twin_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_point_twin_sync {
     ptr: *mut wire_cst_point_twin_sync,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_point_twin_sync_sse {
     ptr: *mut wire_cst_point_twin_sync_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_f_32 {
     ptr: *mut f32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_f_64 {
     ptr: *mut f64,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_i_16 {
     ptr: *mut i16,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_i_32 {
     ptr: *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_i_64 {
     ptr: *mut i64,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_i_8 {
     ptr: *mut i8,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_u_16 {
     ptr: *mut u16,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_u_32 {
     ptr: *mut u32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_u_64 {
     ptr: *mut u64,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_prim_u_8 {
     ptr: *mut u8,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_raw_string_enum_mirrored {
     ptr: *mut wire_cst_raw_string_enum_mirrored,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_raw_string_mirrored {
     ptr: *mut wire_cst_raw_string_mirrored,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_record_string_i_32 {
     ptr: *mut wire_cst_record_string_i_32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_sum_with_twin_normal {
     ptr: *mut wire_cst_sum_with_twin_normal,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_sum_with_twin_rust_async {
     ptr: *mut wire_cst_sum_with_twin_rust_async,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_sum_with_twin_rust_async_sse {
     ptr: *mut wire_cst_sum_with_twin_rust_async_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_sum_with_twin_sse {
     ptr: *mut wire_cst_sum_with_twin_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_sum_with_twin_sync {
     ptr: *mut wire_cst_sum_with_twin_sync,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_sum_with_twin_sync_sse {
     ptr: *mut wire_cst_sum_with_twin_sync_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_test_id_twin_normal {
     ptr: *mut wire_cst_test_id_twin_normal,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_test_id_twin_rust_async {
     ptr: *mut wire_cst_test_id_twin_rust_async,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_test_id_twin_rust_async_sse {
     ptr: *mut wire_cst_test_id_twin_rust_async_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_test_id_twin_sse {
     ptr: *mut wire_cst_test_id_twin_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_test_id_twin_sync {
     ptr: *mut wire_cst_test_id_twin_sync,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_test_id_twin_sync_sse {
     ptr: *mut wire_cst_test_id_twin_sync_sse,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_weekdays_twin_normal {
     ptr: *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_weekdays_twin_rust_async {
     ptr: *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_weekdays_twin_rust_async_sse {
     ptr: *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_weekdays_twin_sse {
     ptr: *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_weekdays_twin_sync {
     ptr: *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_list_weekdays_twin_sync_sse {
     ptr: *mut i32,
     len: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_2_twin_normal {
     key: u32,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_2_twin_rust_async {
     key: u32,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_2_twin_rust_async_sse {
     key: u32,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_2_twin_sse {
     key: u32,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_2_twin_sync {
     key: u32,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_2_twin_sync_sse {
     key: u32,
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_twin_normal {
     key: u32,
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_twin_rust_async {
     key: u32,
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_twin_rust_async_sse {
     key: u32,
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_log_twin_sse {
     key: u32,
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_macro_struct {
     data: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_measure_twin_normal {
     tag: i32,
     kind: *mut MeasureTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union MeasureTwinNormalKind {
     Speed: *mut wire_cst_MeasureTwinNormal_Speed,
     Distance: *mut wire_cst_MeasureTwinNormal_Distance,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinNormal_Speed {
     field0: *mut wire_cst_speed_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinNormal_Distance {
     field0: *mut wire_cst_distance_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_measure_twin_rust_async {
     tag: i32,
     kind: *mut MeasureTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union MeasureTwinRustAsyncKind {
     Speed: *mut wire_cst_MeasureTwinRustAsync_Speed,
     Distance: *mut wire_cst_MeasureTwinRustAsync_Distance,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinRustAsync_Speed {
     field0: *mut wire_cst_speed_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinRustAsync_Distance {
     field0: *mut wire_cst_distance_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_measure_twin_rust_async_sse {
     tag: i32,
     kind: *mut MeasureTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union MeasureTwinRustAsyncSseKind {
     Speed: *mut wire_cst_MeasureTwinRustAsyncSse_Speed,
     Distance: *mut wire_cst_MeasureTwinRustAsyncSse_Distance,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinRustAsyncSse_Speed {
     field0: *mut wire_cst_speed_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinRustAsyncSse_Distance {
     field0: *mut wire_cst_distance_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_measure_twin_sse {
     tag: i32,
     kind: *mut MeasureTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union MeasureTwinSseKind {
     Speed: *mut wire_cst_MeasureTwinSse_Speed,
     Distance: *mut wire_cst_MeasureTwinSse_Distance,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinSse_Speed {
     field0: *mut wire_cst_speed_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinSse_Distance {
     field0: *mut wire_cst_distance_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_measure_twin_sync {
     tag: i32,
     kind: *mut MeasureTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union MeasureTwinSyncKind {
     Speed: *mut wire_cst_MeasureTwinSync_Speed,
     Distance: *mut wire_cst_MeasureTwinSync_Distance,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinSync_Speed {
     field0: *mut wire_cst_speed_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinSync_Distance {
     field0: *mut wire_cst_distance_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_measure_twin_sync_sse {
     tag: i32,
     kind: *mut MeasureTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union MeasureTwinSyncSseKind {
     Speed: *mut wire_cst_MeasureTwinSyncSse_Speed,
     Distance: *mut wire_cst_MeasureTwinSyncSse_Distance,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinSyncSse_Speed {
     field0: *mut wire_cst_speed_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_MeasureTwinSyncSse_Distance {
     field0: *mut wire_cst_distance_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_message_id_twin_normal {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_message_id_twin_rust_async {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_message_id_twin_rust_async_sse {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_message_id_twin_sse {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_message_id_twin_sync {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_message_id_twin_sync_sse {
     field0: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_mirror_struct_twin_normal {
@@ -39098,7 +38354,6 @@ pub struct wire_cst_mirror_struct_twin_normal {
     c: *mut wire_cst_list_my_enum,
     d: *mut wire_cst_list_application_settings,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_mirror_struct_twin_rust_async {
@@ -39107,7 +38362,6 @@ pub struct wire_cst_mirror_struct_twin_rust_async {
     c: *mut wire_cst_list_my_enum,
     d: *mut wire_cst_list_application_settings,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_mirror_struct_twin_rust_async_sse {
@@ -39116,7 +38370,6 @@ pub struct wire_cst_mirror_struct_twin_rust_async_sse {
     c: *mut wire_cst_list_my_enum,
     d: *mut wire_cst_list_application_settings,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_mirror_struct_twin_sse {
@@ -39125,7 +38378,6 @@ pub struct wire_cst_mirror_struct_twin_sse {
     c: *mut wire_cst_list_my_enum,
     d: *mut wire_cst_list_application_settings,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_mirror_struct_twin_sync {
@@ -39134,7 +38386,6 @@ pub struct wire_cst_mirror_struct_twin_sync {
     c: *mut wire_cst_list_my_enum,
     d: *mut wire_cst_list_application_settings,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_mirror_struct_twin_sync_sse {
@@ -39143,7 +38394,6 @@ pub struct wire_cst_mirror_struct_twin_sync_sse {
     c: *mut wire_cst_list_my_enum,
     d: *mut wire_cst_list_application_settings,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_normal {
@@ -39152,7 +38402,6 @@ pub struct wire_cst_more_than_just_one_raw_string_struct_twin_normal {
     r#async: bool,
     another: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
@@ -39161,7 +38410,6 @@ pub struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
     r#async: bool,
     another: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse {
@@ -39170,7 +38418,6 @@ pub struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse {
     r#async: bool,
     another: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sse {
@@ -39179,7 +38426,6 @@ pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sse {
     r#async: bool,
     another: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sync {
@@ -39188,7 +38434,6 @@ pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sync {
     r#async: bool,
     another: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse {
@@ -39197,86 +38442,73 @@ pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse {
     r#async: bool,
     another: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_nested_struct_twin_normal {
     tree_node: wire_cst_my_tree_node_twin_normal,
     weekday: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_nested_struct_twin_rust_async {
     tree_node: wire_cst_my_tree_node_twin_rust_async,
     weekday: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_nested_struct_twin_rust_async_sse {
     tree_node: wire_cst_my_tree_node_twin_rust_async_sse,
     weekday: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_nested_struct_twin_sse {
     tree_node: wire_cst_my_tree_node_twin_sse,
     weekday: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_nested_struct_twin_sync {
     tree_node: wire_cst_my_tree_node_twin_sync,
     weekday: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_nested_struct_twin_sync_sse {
     tree_node: wire_cst_my_tree_node_twin_sync_sse,
     weekday: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_size {
     width: i32,
     height: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_stream_entry_twin_normal {
     hello: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_stream_entry_twin_rust_async {
     hello: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_stream_entry_twin_rust_async_sse {
     hello: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_stream_entry_twin_sse {
     hello: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_struct {
     content: bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_tree_node_twin_normal {
@@ -39285,7 +38517,6 @@ pub struct wire_cst_my_tree_node_twin_normal {
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_tree_node_twin_rust_async {
@@ -39294,7 +38525,6 @@ pub struct wire_cst_my_tree_node_twin_rust_async {
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_tree_node_twin_rust_async_sse {
@@ -39303,7 +38533,6 @@ pub struct wire_cst_my_tree_node_twin_rust_async_sse {
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_tree_node_twin_sse {
@@ -39312,7 +38541,6 @@ pub struct wire_cst_my_tree_node_twin_sse {
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_tree_node_twin_sync {
@@ -39321,7 +38549,6 @@ pub struct wire_cst_my_tree_node_twin_sync {
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_my_tree_node_twin_sync_sse {
@@ -39330,151 +38557,128 @@ pub struct wire_cst_my_tree_node_twin_sync_sse {
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_nested_raw_string_mirrored {
     raw: wire_cst_raw_string_mirrored,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_new_simple_struct {
     field: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_new_type_int_twin_normal {
     field0: i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_new_type_int_twin_rust_async {
     field0: i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_new_type_int_twin_rust_async_sse {
     field0: i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_new_type_int_twin_sse {
     field0: i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_new_type_int_twin_sync {
     field0: i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_new_type_int_twin_sync_sse {
     field0: i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_note_twin_normal {
     day: *mut i32,
     body: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_note_twin_rust_async {
     day: *mut i32,
     body: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_note_twin_rust_async_sse {
     day: *mut i32,
     body: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_note_twin_sse {
     day: *mut i32,
     body: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_note_twin_sync {
     day: *mut i32,
     body: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_note_twin_sync_sse {
     day: *mut i32,
     body: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_numbers {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_old_simple_struct {
     field: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opaque_nested_twin_normal {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opaque_nested_twin_rust_async {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opaque_nested_twin_rust_async_sse {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opaque_nested_twin_sse {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opaque_nested_twin_sync {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opaque_nested_twin_sync_sse {
     first: *const std::ffi::c_void,
     second: *const std::ffi::c_void,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opt_vecs_twin_normal {
@@ -39483,7 +38687,6 @@ pub struct wire_cst_opt_vecs_twin_normal {
     strings: *mut wire_cst_list_opt_String,
     buffers: *mut wire_cst_list_opt_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opt_vecs_twin_rust_async {
@@ -39492,7 +38695,6 @@ pub struct wire_cst_opt_vecs_twin_rust_async {
     strings: *mut wire_cst_list_opt_String,
     buffers: *mut wire_cst_list_opt_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opt_vecs_twin_rust_async_sse {
@@ -39501,7 +38703,6 @@ pub struct wire_cst_opt_vecs_twin_rust_async_sse {
     strings: *mut wire_cst_list_opt_String,
     buffers: *mut wire_cst_list_opt_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opt_vecs_twin_sse {
@@ -39510,7 +38711,6 @@ pub struct wire_cst_opt_vecs_twin_sse {
     strings: *mut wire_cst_list_opt_String,
     buffers: *mut wire_cst_list_opt_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opt_vecs_twin_sync {
@@ -39519,7 +38719,6 @@ pub struct wire_cst_opt_vecs_twin_sync {
     strings: *mut wire_cst_list_opt_String,
     buffers: *mut wire_cst_list_opt_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_opt_vecs_twin_sync_sse {
@@ -39528,540 +38727,445 @@ pub struct wire_cst_opt_vecs_twin_sync_sse {
     strings: *mut wire_cst_list_opt_String,
     buffers: *mut wire_cst_list_opt_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_point_twin_normal {
     x: f32,
     y: f32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_point_twin_rust_async {
     x: f32,
     y: f32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_point_twin_rust_async_sse {
     x: f32,
     y: f32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_point_twin_sse {
     x: f32,
     y: f32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_point_twin_sync {
     x: f32,
     y: f32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_point_twin_sync_sse {
     x: f32,
     y: f32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_raw_string_enum_mirrored {
     tag: i32,
     kind: *mut RawStringEnumMirroredKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union RawStringEnumMirroredKind {
     Raw: *mut wire_cst_RawStringEnumMirrored_Raw,
     Nested: *mut wire_cst_RawStringEnumMirrored_Nested,
     ListOfNested: *mut wire_cst_RawStringEnumMirrored_ListOfNested,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_RawStringEnumMirrored_Raw {
     field0: *mut wire_cst_raw_string_mirrored,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_RawStringEnumMirrored_Nested {
     field0: *mut wire_cst_nested_raw_string_mirrored,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_RawStringEnumMirrored_ListOfNested {
     field0: *mut wire_cst_list_of_nested_raw_string_mirrored,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_raw_string_item_struct_twin_normal {
     r#type: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_raw_string_item_struct_twin_rust_async {
     r#type: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_raw_string_item_struct_twin_rust_async_sse {
     r#type: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_raw_string_item_struct_twin_sse {
     r#type: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_raw_string_item_struct_twin_sync {
     r#type: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_raw_string_item_struct_twin_sync_sse {
     r#type: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_raw_string_mirrored {
     value: *mut wire_cst_list_prim_u_8,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_record_application_settings_raw_string_enum_mirrored {
     field0: wire_cst_application_settings,
     field1: wire_cst_raw_string_enum_mirrored,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_record_string_i_32 {
     field0: *mut wire_cst_list_prim_u_8,
     field1: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_sequences {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_some_struct_twin_normal {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_some_struct_twin_rust_async {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_some_struct_twin_rust_async_sse {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_some_struct_twin_sse {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_some_struct_twin_sync {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_some_struct_twin_sync_sse {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_speed_twin_normal {
     tag: i32,
     kind: *mut SpeedTwinNormalKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union SpeedTwinNormalKind {
     Unknown: *mut wire_cst_SpeedTwinNormal_Unknown,
     GPS: *mut wire_cst_SpeedTwinNormal_GPS,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinNormal_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinNormal_GPS {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_speed_twin_rust_async {
     tag: i32,
     kind: *mut SpeedTwinRustAsyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union SpeedTwinRustAsyncKind {
     Unknown: *mut wire_cst_SpeedTwinRustAsync_Unknown,
     GPS: *mut wire_cst_SpeedTwinRustAsync_GPS,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinRustAsync_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinRustAsync_GPS {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_speed_twin_rust_async_sse {
     tag: i32,
     kind: *mut SpeedTwinRustAsyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union SpeedTwinRustAsyncSseKind {
     Unknown: *mut wire_cst_SpeedTwinRustAsyncSse_Unknown,
     GPS: *mut wire_cst_SpeedTwinRustAsyncSse_GPS,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinRustAsyncSse_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinRustAsyncSse_GPS {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_speed_twin_sse {
     tag: i32,
     kind: *mut SpeedTwinSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union SpeedTwinSseKind {
     Unknown: *mut wire_cst_SpeedTwinSse_Unknown,
     GPS: *mut wire_cst_SpeedTwinSse_GPS,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinSse_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinSse_GPS {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_speed_twin_sync {
     tag: i32,
     kind: *mut SpeedTwinSyncKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union SpeedTwinSyncKind {
     Unknown: *mut wire_cst_SpeedTwinSync_Unknown,
     GPS: *mut wire_cst_SpeedTwinSync_GPS,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinSync_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinSync_GPS {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_speed_twin_sync_sse {
     tag: i32,
     kind: *mut SpeedTwinSyncSseKind,
 }
-
 #[repr(C)]
-#[derive(Clone)]
 pub union SpeedTwinSyncSseKind {
     Unknown: *mut wire_cst_SpeedTwinSyncSse_Unknown,
     GPS: *mut wire_cst_SpeedTwinSyncSse_GPS,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinSyncSse_Unknown {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_SpeedTwinSyncSse_GPS {
     field0: f64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_comments_twin_normal {
     field_with_comments: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_comments_twin_rust_async {
     field_with_comments: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_comments_twin_rust_async_sse {
     field_with_comments: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_comments_twin_sse {
     field_with_comments: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_comments_twin_sync {
     field_with_comments: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_comments_twin_sync_sse {
     field_with_comments: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_enum_twin_normal {
     abc1: wire_cst_abc_twin_normal,
     abc2: wire_cst_abc_twin_normal,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_enum_twin_rust_async {
     abc1: wire_cst_abc_twin_rust_async,
     abc2: wire_cst_abc_twin_rust_async,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_enum_twin_rust_async_sse {
     abc1: wire_cst_abc_twin_rust_async_sse,
     abc2: wire_cst_abc_twin_rust_async_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_enum_twin_sse {
     abc1: wire_cst_abc_twin_sse,
     abc2: wire_cst_abc_twin_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_enum_twin_sync {
     abc1: wire_cst_abc_twin_sync,
     abc2: wire_cst_abc_twin_sync,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_enum_twin_sync_sse {
     abc1: wire_cst_abc_twin_sync_sse,
     abc2: wire_cst_abc_twin_sync_sse,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_one_field_twin_normal {
     a: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_one_field_twin_rust_async {
     a: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_one_field_twin_rust_async_sse {
     a: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_one_field_twin_sse {
     a: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_one_field_twin_sync {
     a: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_one_field_twin_sync_sse {
     a: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_two_field_twin_normal {
     a: i32,
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_two_field_twin_rust_async {
     a: i32,
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_two_field_twin_rust_async_sse {
     a: i32,
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_two_field_twin_sse {
     a: i32,
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_two_field_twin_sync {
     a: i32,
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_two_field_twin_sync_sse {
     a: i32,
     b: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_zero_field_twin_normal {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_zero_field_twin_rust_async {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_zero_field_twin_rust_async_sse {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_zero_field_twin_sse {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_zero_field_twin_sync {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_struct_with_zero_field_twin_sync_sse {}
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_sum_with_twin_normal {
     x: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_sum_with_twin_rust_async {
     x: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_sum_with_twin_rust_async_sse {
     x: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_sum_with_twin_sse {
     x: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_sum_with_twin_sync {
     x: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_sum_with_twin_sync_sse {
     x: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_chrono_twin_normal {
@@ -40069,7 +39173,6 @@ pub struct wire_cst_test_chrono_twin_normal {
     dt2: *mut i64,
     du: *mut i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_chrono_twin_rust_async {
@@ -40077,7 +39180,6 @@ pub struct wire_cst_test_chrono_twin_rust_async {
     dt2: *mut i64,
     du: *mut i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_chrono_twin_sync {
@@ -40085,43 +39187,36 @@ pub struct wire_cst_test_chrono_twin_sync {
     dt2: *mut i64,
     du: *mut i64,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_id_twin_normal {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_id_twin_rust_async {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_id_twin_rust_async_sse {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_id_twin_sse {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_id_twin_sync {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_id_twin_sync_sse {
     field0: *mut wire_cst_list_prim_i_32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_model_twin_normal {
@@ -40130,7 +39225,6 @@ pub struct wire_cst_test_model_twin_normal {
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_model_twin_rust_async {
@@ -40139,7 +39233,6 @@ pub struct wire_cst_test_model_twin_rust_async {
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_model_twin_rust_async_sse {
@@ -40148,7 +39241,6 @@ pub struct wire_cst_test_model_twin_rust_async_sse {
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_model_twin_sse {
@@ -40157,7 +39249,6 @@ pub struct wire_cst_test_model_twin_sse {
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_model_twin_sync {
@@ -40166,7 +39257,6 @@ pub struct wire_cst_test_model_twin_sync {
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_test_model_twin_sync_sse {
@@ -40175,121 +39265,102 @@ pub struct wire_cst_test_model_twin_sync_sse {
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_one_field_twin_normal {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_one_field_twin_rust_async {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_one_field_twin_rust_async_sse {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_one_field_twin_sse {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_one_field_twin_sync {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_one_field_twin_sync_sse {
     field0: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_two_field_twin_normal {
     field0: i32,
     field1: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_two_field_twin_rust_async {
     field0: i32,
     field1: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_two_field_twin_rust_async_sse {
     field0: i32,
     field1: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_two_field_twin_sse {
     field0: i32,
     field1: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_two_field_twin_sync {
     field0: i32,
     field1: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_tuple_struct_with_two_field_twin_sync_sse {
     field0: i32,
     field1: i32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_user_id_twin_normal {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_user_id_twin_rust_async {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_user_id_twin_rust_async_sse {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_user_id_twin_sse {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_user_id_twin_sync {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_user_id_twin_sync_sse {
     value: u32,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_vec_of_primitive_pack_twin_normal {
@@ -40305,7 +39376,6 @@ pub struct wire_cst_vec_of_primitive_pack_twin_normal {
     float64list: *mut wire_cst_list_prim_f_64,
     bool_list: *mut wire_cst_list_bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_vec_of_primitive_pack_twin_rust_async {
@@ -40321,7 +39391,6 @@ pub struct wire_cst_vec_of_primitive_pack_twin_rust_async {
     float64list: *mut wire_cst_list_prim_f_64,
     bool_list: *mut wire_cst_list_bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_vec_of_primitive_pack_twin_rust_async_sse {
@@ -40337,7 +39406,6 @@ pub struct wire_cst_vec_of_primitive_pack_twin_rust_async_sse {
     float64list: *mut wire_cst_list_prim_f_64,
     bool_list: *mut wire_cst_list_bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_vec_of_primitive_pack_twin_sse {
@@ -40353,7 +39421,6 @@ pub struct wire_cst_vec_of_primitive_pack_twin_sse {
     float64list: *mut wire_cst_list_prim_f_64,
     bool_list: *mut wire_cst_list_bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_vec_of_primitive_pack_twin_sync {
@@ -40369,7 +39436,6 @@ pub struct wire_cst_vec_of_primitive_pack_twin_sync {
     float64list: *mut wire_cst_list_prim_f_64,
     bool_list: *mut wire_cst_list_bool,
 }
-
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_cst_vec_of_primitive_pack_twin_sync_sse {
