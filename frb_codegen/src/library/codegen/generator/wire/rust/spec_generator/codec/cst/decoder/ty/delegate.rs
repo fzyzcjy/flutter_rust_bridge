@@ -86,7 +86,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             //         "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuids(multiple)".into(),
             //     ),
             // ),
-            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => return Default::default(),
+            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "self.cst_decode()".into(),
         }
     }
 
