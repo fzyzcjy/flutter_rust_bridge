@@ -27,19 +27,18 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
             })
             .join("");
         let ir_safe_ident = self.ir.safe_ident();
-        let return_type_dart =
-            ApiDartGenerator::new(self.ir.output.clone(), self.context.as_api_dart_context())
-                .dart_api_type();
+        let dart_api_type =
+            ApiDartGenerator::new(self.ir, self.context.as_api_dart_context()).dart_api_type();
         let return_type_safe_ident = self.ir.output.safe_ident();
 
         let api_impl_body = format!(
             "
-            void Function(int, {repeated_dynamics})
-                encode_{ir_safe_ident}({return_type_dart} Function({parameter_types}) raw) {{
-              return (callId, {raw_parameter_names}) {{
+            Future<void> Function(int, {repeated_dynamics})
+                encode_{ir_safe_ident}({dart_api_type} raw) {{
+              return (callId, {raw_parameter_names}) async {{
                 {decode_block}
 
-                final rawOutput = raw({parameter_names});
+                final rawOutput = await raw({parameter_names});
 
                 final serializer = SseSerializer(generalizedFrbRustBinding);
                 sse_encode_{return_type_safe_ident}(rawOutput, serializer);
