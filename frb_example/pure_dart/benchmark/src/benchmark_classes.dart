@@ -41,6 +41,12 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
       OutputBytesAsyncBenchmark(len, emitter: emitter),
       OutputBytesSyncBenchmark(len, emitter: emitter),
       OutputBytesAsyncRawBenchmark(len, emitter: emitter),
+
+      // input blob
+      BlobInputSyncBenchmark(len, emitter: emitter),
+      BlobOutputSyncBenchmark(len, emitter: emitter),
+      BlobInputSyncSseBenchmark(len, emitter: emitter),
+      BlobOutputSyncSseBenchmark(len, emitter: emitter),
     ],
 
     for (final depth in [0, 5, 10]) ...[
@@ -204,6 +210,56 @@ class OutputBytesAsyncRawBenchmark extends EnhancedAsyncBenchmarkBase {
     // sanity check
     if (result.length != len + 4) throw Exception();
   }
+}
+
+class BlobInputSyncBenchmark extends EnhancedBenchmarkBase {
+  final BenchmarkBlobTwinSync blob;
+
+  BlobInputSyncBenchmark(int len, {super.emitter})
+      : blob = BenchmarkBlobTwinSync(
+          first: Uint8List(len),
+          second: Uint8List(len),
+          third: Uint8List(len),
+        ),
+        super('BlobInputSyncBenchmark_Len$len');
+
+  @override
+  void run() => benchmarkBlobInputTwinSync(blob: blob);
+}
+
+class BlobOutputSyncBenchmark extends EnhancedBenchmarkBase {
+  final int len;
+
+  BlobOutputSyncBenchmark(this.len, {super.emitter})
+      : super('BlobOutputSync_Len$len');
+
+  @override
+  void run() => benchmarkBlobOutputTwinSync(size: len);
+}
+
+class BlobInputSyncSseBenchmark extends EnhancedBenchmarkBase {
+  final BenchmarkBlobTwinSyncSse blob;
+
+  BlobInputSyncSseBenchmark(int len, {super.emitter})
+      : blob = BenchmarkBlobTwinSyncSse(
+          first: Uint8List(len),
+          second: Uint8List(len),
+          third: Uint8List(len),
+        ),
+        super('BlobInputSyncSseBenchmark_Len$len');
+
+  @override
+  void run() => benchmarkBlobInputTwinSyncSse(blob: blob);
+}
+
+class BlobOutputSyncSseBenchmark extends EnhancedBenchmarkBase {
+  final int len;
+
+  BlobOutputSyncSseBenchmark(this.len, {super.emitter})
+      : super('BlobOutputSyncSse_Len$len');
+
+  @override
+  void run() => benchmarkBlobOutputTwinSyncSse(size: len);
 }
 
 const _kBinaryTreeNodeName = 'HelloWorld';
