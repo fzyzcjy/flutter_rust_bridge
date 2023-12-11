@@ -92,9 +92,16 @@ impl WireDartOutputCode {
 
         let api_impl_class_methods = api_impl_class_methods
             .into_iter()
-            .filter_map(|method| {
-                (method.body.as_ref())
-                    .map(|body| format!("@protected {} {{ {body} }}", method.signature))
+            .map(|method| {
+                let DartApiImplClassMethod { signature, body } = method;
+                format!(
+                    "@protected {signature}{}",
+                    if let Some(body) = body {
+                        format!("{{ {body} }}")
+                    } else {
+                        ";".to_owned()
+                    }
+                )
             })
             .join("\n\n");
 
