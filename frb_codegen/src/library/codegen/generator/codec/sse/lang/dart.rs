@@ -9,14 +9,14 @@ pub(crate) struct DartLang;
 impl LangTrait for DartLang {
     fn call_encode(&self, var_ty: &IrType, var_name: &str) -> String {
         format!(
-            "_sse_encode_{}({}, serializer)",
+            "sse_encode_{}({}, serializer)",
             var_ty.safe_ident(),
             var_name
         )
     }
 
     fn call_decode(&self, var_ty: &IrType) -> String {
-        format!("_sse_decode_{}(deserializer)", var_ty.safe_ident(),)
+        format!("sse_decode_{}(deserializer)", var_ty.safe_ident(),)
     }
 
     fn call_constructor(

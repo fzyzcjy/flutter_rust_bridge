@@ -43,10 +43,10 @@ fn generate_encode_or_decode_for_type(
     if let Some(body) = body {
         let signature = match mode {
             EncodeOrDecode::Encode => format!(
-                "void _sse_encode_{safe_ident}({dart_api_type} self, SseSerializer serializer)"
+                "void sse_encode_{safe_ident}({dart_api_type} self, SseSerializer serializer)"
             ),
             EncodeOrDecode::Decode => {
-                format!("{dart_api_type} _sse_decode_{safe_ident}(SseDeserializer deserializer)")
+                format!("{dart_api_type} sse_decode_{safe_ident}(SseDeserializer deserializer)")
             }
         };
 
