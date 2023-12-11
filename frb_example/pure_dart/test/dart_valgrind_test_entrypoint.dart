@@ -13,6 +13,7 @@ import 'api/attribute_test.dart' as attribute_test;
 import 'api/chrono_type_test.dart' as chrono_type_test;
 import 'api/comment_test.dart' as comment_test;
 import 'api/dart_dynamic_test.dart' as dart_dynamic_test;
+import 'api/dart_fn_test.dart' as dart_fn_test;
 import 'api/dart_opaque_sync_test.dart' as dart_opaque_sync_test;
 import 'api/dart_opaque_test.dart' as dart_opaque_test;
 import 'api/enumeration_test.dart' as enumeration_test;
@@ -66,6 +67,11 @@ import 'api/pseudo_manual/dart_dynamic_twin_rust_async_test.dart'
     as dart_dynamic_twin_rust_async_test;
 import 'api/pseudo_manual/dart_dynamic_twin_sync_test.dart'
     as dart_dynamic_twin_sync_test;
+import 'api/pseudo_manual/dart_fn_twin_rust_async_sse_test.dart'
+    as dart_fn_twin_rust_async_sse_test;
+import 'api/pseudo_manual/dart_fn_twin_rust_async_test.dart'
+    as dart_fn_twin_rust_async_test;
+import 'api/pseudo_manual/dart_fn_twin_sse_test.dart' as dart_fn_twin_sse_test;
 import 'api/pseudo_manual/dart_opaque_sync_twin_sse_test.dart'
     as dart_opaque_sync_twin_sse_test;
 import 'api/pseudo_manual/dart_opaque_twin_rust_async_sse_test.dart'
@@ -345,6 +351,7 @@ Future<void> callFileEntrypoints() async {
   await chrono_type_test.main(skipRustLibInit: true);
   await comment_test.main(skipRustLibInit: true);
   await dart_dynamic_test.main(skipRustLibInit: true);
+  await dart_fn_test.main(skipRustLibInit: true);
   await dart_opaque_sync_test.main(skipRustLibInit: true);
   await dart_opaque_test.main(skipRustLibInit: true);
   await enumeration_test.main(skipRustLibInit: true);
@@ -381,6 +388,9 @@ Future<void> callFileEntrypoints() async {
   await comment_twin_sync_test.main(skipRustLibInit: true);
   await dart_dynamic_twin_rust_async_test.main(skipRustLibInit: true);
   await dart_dynamic_twin_sync_test.main(skipRustLibInit: true);
+  await dart_fn_twin_rust_async_sse_test.main(skipRustLibInit: true);
+  await dart_fn_twin_rust_async_test.main(skipRustLibInit: true);
+  await dart_fn_twin_sse_test.main(skipRustLibInit: true);
   await dart_opaque_sync_twin_sse_test.main(skipRustLibInit: true);
   await dart_opaque_twin_rust_async_sse_test.main(skipRustLibInit: true);
   await dart_opaque_twin_rust_async_test.main(skipRustLibInit: true);
