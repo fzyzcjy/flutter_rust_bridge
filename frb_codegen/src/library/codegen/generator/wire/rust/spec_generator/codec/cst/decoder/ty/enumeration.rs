@@ -106,6 +106,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
                 true,
             ),
             extern_funcs: inflators,
+            ..Default::default()
         })
     }
 

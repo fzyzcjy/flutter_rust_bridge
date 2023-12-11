@@ -41,8 +41,8 @@ impl From<ExternFunc> for WireRustOutputCode {
 impl From<Vec<ExternFunc>> for WireRustOutputCode {
     fn from(extern_funcs: Vec<ExternFunc>) -> Self {
         Self {
-            body: "".to_string(),
             extern_funcs,
+            ..Default::default()
         }
     }
 }

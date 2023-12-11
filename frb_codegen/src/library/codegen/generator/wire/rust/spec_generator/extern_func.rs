@@ -93,6 +93,7 @@ pub(crate) struct ExternClass {
     pub body: String,
 }
 
+#[derive(Clone, Debug, Serialize)]
 pub(crate) enum ExternClassMode {
     Struct,
     Union,
