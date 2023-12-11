@@ -5,10 +5,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     panic!("hello this is deliberate panic")
 }
 
-pub fn hi(a: TheEnum) -> TheEnum {
+#[frb(serialize)]
+pub fn hi(a: impl Fn(String, String) -> DartFnFuture<String> + UnwindSafe) {
     a
-}
-
-enum TheEnum {
-    TheVariant(i32),
 }
