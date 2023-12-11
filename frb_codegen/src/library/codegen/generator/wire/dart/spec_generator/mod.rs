@@ -1,4 +1,5 @@
 use crate::codegen::dumper::Dumper;
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::codec::structs::EncodeOrDecode::{Decode, Encode};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
@@ -7,9 +8,13 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
+use crate::codegen::generator::wire::dart::spec_generator::output_code::{
+    DartApiImplClassMethod, WireDartOutputCode,
+};
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
+use itertools::Itertools;
 use serde::Serialize;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
@@ -51,13 +56,42 @@ pub(crate) fn generate(
             api_dart_actual_output_paths,
             rust_extern_funcs,
         )?,
-        rust2dart: CodecMode::iter()
-            .map(WireDartCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate(context, &cache.distinct_types, Decode))
-            .collect(),
-        dart2rust: CodecMode::iter()
-            .map(WireDartCodecEntrypoint::from)
-            .flat_map(|codec| codec.generate(context, &cache.distinct_types, Encode))
-            .collect(),
+        rust2dart: auto_add_base_class_abstract_method(
+            (CodecMode::iter().map(WireDartCodecEntrypoint::from))
+                .flat_map(|codec| codec.generate(context, &cache.distinct_types, Decode))
+                .collect(),
+        ),
+        dart2rust: auto_add_base_class_abstract_method(
+            (CodecMode::iter().map(WireDartCodecEntrypoint::from))
+                .flat_map(|codec| codec.generate(context, &cache.distinct_types, Encode))
+                .collect(),
+        ),
     })
+}
+
+fn auto_add_base_class_abstract_method(raw: WireDartCodecOutputSpec) -> WireDartCodecOutputSpec {
+    let Acc {
+        common,
+        mut io,
+        mut wasm,
+    } = raw.inner;
+
+    let extra_abstract_methods = (common.iter())
+        .flat_map(|x| x.api_impl_class_methods.clone())
+        .map(|method| DartApiImplClassMethod {
+            signature: method.signature,
+            body: None,
+        })
+        .collect_vec();
+    let extra_item = WireDartOutputCode {
+        api_impl_class_methods: extra_abstract_methods,
+        ..Default::default()
+    };
+
+    io.push(extra_item.clone());
+    wasm.push(extra_item);
+
+    WireDartCodecOutputSpec {
+        inner: Acc { common, io, wasm },
+    }
 }
