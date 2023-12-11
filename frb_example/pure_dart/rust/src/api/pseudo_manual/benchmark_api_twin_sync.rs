@@ -20,9 +20,9 @@ pub fn benchmark_output_bytes_twin_sync(size: i32) -> Vec<u8> {
 }
 
 pub struct BenchmarkBinaryTreeTwinSync {
-    name: String,
-    left: Option<BenchmarkBinaryTreeTwinSync>,
-    right: Option<BenchmarkBinaryTreeTwinSync>,
+    pub name: String,
+    pub left: Option<Box<BenchmarkBinaryTreeTwinSync>>,
+    pub right: Option<Box<BenchmarkBinaryTreeTwinSync>>,
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -48,8 +48,8 @@ fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinSync {
     } else {
         BenchmarkBinaryTreeTwinSync {
             name: name.to_owned(),
-            left: Some(create_tree(depth - 1)),
-            right: Some(create_tree(depth - 1)),
+            left: Some(Box::new(create_tree(depth - 1, name))),
+            right: Some(Box::new(create_tree(depth - 1, name))),
         }
     }
 }

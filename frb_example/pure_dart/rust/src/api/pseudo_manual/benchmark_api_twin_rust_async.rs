@@ -17,9 +17,9 @@ pub async fn benchmark_output_bytes_twin_rust_async(size: i32) -> Vec<u8> {
 }
 
 pub struct BenchmarkBinaryTreeTwinRustAsync {
-    name: String,
-    left: Option<BenchmarkBinaryTreeTwinRustAsync>,
-    right: Option<BenchmarkBinaryTreeTwinRustAsync>,
+    pub name: String,
+    pub left: Option<Box<BenchmarkBinaryTreeTwinRustAsync>>,
+    pub right: Option<Box<BenchmarkBinaryTreeTwinRustAsync>>,
 }
 
 pub async fn benchmark_binary_tree_input_twin_rust_async(tree: BenchmarkBinaryTreeTwinRustAsync) {
@@ -43,8 +43,8 @@ fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinRustAsync {
     } else {
         BenchmarkBinaryTreeTwinRustAsync {
             name: name.to_owned(),
-            left: Some(create_tree(depth - 1)),
-            right: Some(create_tree(depth - 1)),
+            left: Some(Box::new(create_tree(depth - 1, name))),
+            right: Some(Box::new(create_tree(depth - 1, name))),
         }
     }
 }

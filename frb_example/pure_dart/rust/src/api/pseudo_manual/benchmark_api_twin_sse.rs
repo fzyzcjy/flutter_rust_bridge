@@ -20,9 +20,9 @@ pub fn benchmark_output_bytes_twin_sse(size: i32) -> Vec<u8> {
 }
 
 pub struct BenchmarkBinaryTreeTwinSse {
-    name: String,
-    left: Option<BenchmarkBinaryTreeTwinSse>,
-    right: Option<BenchmarkBinaryTreeTwinSse>,
+    pub name: String,
+    pub left: Option<Box<BenchmarkBinaryTreeTwinSse>>,
+    pub right: Option<Box<BenchmarkBinaryTreeTwinSse>>,
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -48,8 +48,8 @@ fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinSse {
     } else {
         BenchmarkBinaryTreeTwinSse {
             name: name.to_owned(),
-            left: Some(create_tree(depth - 1)),
-            right: Some(create_tree(depth - 1)),
+            left: Some(Box::new(create_tree(depth - 1, name))),
+            right: Some(Box::new(create_tree(depth - 1, name))),
         }
     }
 }

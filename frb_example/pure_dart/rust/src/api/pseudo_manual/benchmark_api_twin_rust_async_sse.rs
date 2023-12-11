@@ -20,9 +20,9 @@ pub async fn benchmark_output_bytes_twin_rust_async_sse(size: i32) -> Vec<u8> {
 }
 
 pub struct BenchmarkBinaryTreeTwinRustAsyncSse {
-    name: String,
-    left: Option<BenchmarkBinaryTreeTwinRustAsyncSse>,
-    right: Option<BenchmarkBinaryTreeTwinRustAsyncSse>,
+    pub name: String,
+    pub left: Option<Box<BenchmarkBinaryTreeTwinRustAsyncSse>>,
+    pub right: Option<Box<BenchmarkBinaryTreeTwinRustAsyncSse>>,
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -50,8 +50,8 @@ fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinRustAsyncSse {
     } else {
         BenchmarkBinaryTreeTwinRustAsyncSse {
             name: name.to_owned(),
-            left: Some(create_tree(depth - 1)),
-            right: Some(create_tree(depth - 1)),
+            left: Some(Box::new(create_tree(depth - 1, name))),
+            right: Some(Box::new(create_tree(depth - 1, name))),
         }
     }
 }

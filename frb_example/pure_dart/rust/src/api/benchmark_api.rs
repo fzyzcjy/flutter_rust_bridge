@@ -13,9 +13,9 @@ pub fn benchmark_output_bytes_twin_normal(size: i32) -> Vec<u8> {
 }
 
 pub struct BenchmarkBinaryTreeTwinNormal {
-    name: String,
-    left: Option<BenchmarkBinaryTreeTwinNormal>,
-    right: Option<BenchmarkBinaryTreeTwinNormal>,
+    pub name: String,
+    pub left: Option<Box<BenchmarkBinaryTreeTwinNormal>>,
+    pub right: Option<Box<BenchmarkBinaryTreeTwinNormal>>,
 }
 
 pub fn benchmark_binary_tree_input_twin_normal(tree: BenchmarkBinaryTreeTwinNormal) {
@@ -39,8 +39,8 @@ fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
     } else {
         BenchmarkBinaryTreeTwinNormal {
             name: name.to_owned(),
-            left: Some(create_tree(depth - 1)),
-            right: Some(create_tree(depth - 1)),
+            left: Some(Box::new(create_tree(depth - 1, name))),
+            right: Some(Box::new(create_tree(depth - 1, name))),
         }
     }
 }
