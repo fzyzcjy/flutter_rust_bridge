@@ -49,15 +49,10 @@ pub(crate) fn generate(
         imports: generate_imports(&cache.distinct_types, context),
         executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
         boilerplate: generate_boilerplate(),
-        wire_funcs: context
-            .ir_pack
-            .funcs
-            .iter()
+        wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
-        wrapper_structs: cache
-            .distinct_types
-            .iter()
+        wrapper_structs: (cache.distinct_types.iter())
             .filter_map(|ty| generate_wrapper_struct(ty, context))
             .map(|x| Acc::<WireRustOutputCode>::new_common(x.into()))
             .collect(),
