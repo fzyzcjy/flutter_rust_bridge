@@ -5,8 +5,13 @@ use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for DartFnCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        self.should_generate(lang)
-            .then(|| simple_delegate_encode(lang, &self.ir.get_delegate(), "self"))
+        self.should_generate(lang).then(|| {
+            simple_delegate_encode(
+                lang,
+                &self.ir.get_delegate(),
+                &format!("encode_{}(self)", self.ir.safe_ident()),
+            )
+        })
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {

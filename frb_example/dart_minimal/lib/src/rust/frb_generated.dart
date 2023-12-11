@@ -246,7 +246,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_DartFn_Inputs_String_String_Output_String(
       FutureOr<String> Function(String, String) self,
       SseSerializer serializer) {
-    sse_encode_DartOpaque(self, serializer);
+    sse_encode_DartOpaque(
+        encode_DartFn_Inputs_String_String_Output_String(self), serializer);
   }
 
   @protected
