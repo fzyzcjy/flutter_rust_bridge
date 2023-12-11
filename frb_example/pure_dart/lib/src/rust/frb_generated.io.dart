@@ -332,6 +332,8132 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSsePtr;
 
   @protected
+  AnyhowException dco_decode_AnyhowException(dynamic raw);
+
+  @protected
+  RwLockBoxFnStringString
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RwLockBoxMyTraitTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic raw);
+
+  @protected
+  RwLockBoxMyTraitTwinSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+          dynamic raw);
+
+  @protected
+  RwLockBoxMyTraitTwinSync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic raw);
+
+  @protected
+  RwLockBoxMyTraitTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSse
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSync
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSse
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSync
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  String dco_decode_Backtrace(dynamic raw);
+
+  @protected
+  Duration dco_decode_Chrono_Duration(dynamic raw);
+
+  @protected
+  DateTime dco_decode_Chrono_Local(dynamic raw);
+
+  @protected
+  DateTime dco_decode_Chrono_Naive(dynamic raw);
+
+  @protected
+  DateTime dco_decode_Chrono_Utc(dynamic raw);
+
+  @protected
+  void Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
+
+  @protected
+  Object dco_decode_DartOpaque(dynamic raw);
+
+  @protected
+  ObjectArray1 dco_decode_DartOpaque_array_1(dynamic raw);
+
+  @protected
+  MutexHideData dco_decode_RustOpaque_MutexHideData(dynamic raw);
+
+  @protected
+  RwLockHideData dco_decode_RustOpaque_RwLockHideData(dynamic raw);
+
+  @protected
+  BoxDartDebugTwinNormal dco_decode_RustOpaque_box_dynDartDebugTwinNormal(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinRustAsync dco_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinRustAsyncSse
+      dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(dynamic raw);
+
+  @protected
+  BoxDartDebugTwinSse dco_decode_RustOpaque_box_dynDartDebugTwinSse(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinSync dco_decode_RustOpaque_box_dynDartDebugTwinSync(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinSyncSse dco_decode_RustOpaque_box_dynDartDebugTwinSyncSse(
+      dynamic raw);
+
+  @protected
+  FrbOpaqueReturn dco_decode_RustOpaque_frb_opaque_return(dynamic raw);
+
+  @protected
+  FrbOpaqueSyncReturn dco_decode_RustOpaque_frb_opaque_sync_return(dynamic raw);
+
+  @protected
+  HideData dco_decode_RustOpaque_hide_data(dynamic raw);
+
+  @protected
+  HideDataArray2 dco_decode_RustOpaque_hide_data_array_2(dynamic raw);
+
+  @protected
+  I32 dco_decode_RustOpaque_i_32(dynamic raw);
+
+  @protected
+  NonCloneData dco_decode_RustOpaque_non_clone_data(dynamic raw);
+
+  @protected
+  NonSendHideData dco_decode_RustOpaque_non_send_hide_data(dynamic raw);
+
+  @protected
+  RwLockBoxFnStringString
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinNormal
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSse
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSync
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(dynamic raw);
+
+  @protected
+  RwLockBoxHelloTraitTwinSyncSse
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  RwLockBoxMyTraitTwinNormal
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic raw);
+
+  @protected
+  RwLockBoxMyTraitTwinSse
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+          dynamic raw);
+
+  @protected
+  RwLockBoxMyTraitTwinSync
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic raw);
+
+  @protected
+  RwLockBoxMyTraitTwinSyncSse
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinNormal
+      dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSse
+      dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSync
+      dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(dynamic raw);
+
+  @protected
+  RwLockNonCloneSimpleTwinSyncSse
+      dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  String dco_decode_String(dynamic raw);
+
+  @protected
+  UuidValue dco_decode_Uuid(dynamic raw);
+
+  @protected
+  ATwinNormal dco_decode_a_twin_normal(dynamic raw);
+
+  @protected
+  ATwinRustAsync dco_decode_a_twin_rust_async(dynamic raw);
+
+  @protected
+  ATwinRustAsyncSse dco_decode_a_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ATwinSse dco_decode_a_twin_sse(dynamic raw);
+
+  @protected
+  ATwinSync dco_decode_a_twin_sync(dynamic raw);
+
+  @protected
+  ATwinSyncSse dco_decode_a_twin_sync_sse(dynamic raw);
+
+  @protected
+  AbcTwinNormal dco_decode_abc_twin_normal(dynamic raw);
+
+  @protected
+  AbcTwinRustAsync dco_decode_abc_twin_rust_async(dynamic raw);
+
+  @protected
+  AbcTwinRustAsyncSse dco_decode_abc_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  AbcTwinSse dco_decode_abc_twin_sse(dynamic raw);
+
+  @protected
+  AbcTwinSync dco_decode_abc_twin_sync(dynamic raw);
+
+  @protected
+  AbcTwinSyncSse dco_decode_abc_twin_sync_sse(dynamic raw);
+
+  @protected
+  AnotherMacroStructTwinNormal dco_decode_another_macro_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  AnotherTwinNormal dco_decode_another_twin_normal(dynamic raw);
+
+  @protected
+  AnotherTwinRustAsync dco_decode_another_twin_rust_async(dynamic raw);
+
+  @protected
+  AnotherTwinRustAsyncSse dco_decode_another_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  AnotherTwinSse dco_decode_another_twin_sse(dynamic raw);
+
+  @protected
+  AnotherTwinSync dco_decode_another_twin_sync(dynamic raw);
+
+  @protected
+  AnotherTwinSyncSse dco_decode_another_twin_sync_sse(dynamic raw);
+
+  @protected
+  ApplicationEnv dco_decode_application_env(dynamic raw);
+
+  @protected
+  ApplicationEnvVar dco_decode_application_env_var(dynamic raw);
+
+  @protected
+  ApplicationMessage dco_decode_application_message(dynamic raw);
+
+  @protected
+  ApplicationMode dco_decode_application_mode(dynamic raw);
+
+  @protected
+  ApplicationSettings dco_decode_application_settings(dynamic raw);
+
+  @protected
+  AttributeTwinNormal dco_decode_attribute_twin_normal(dynamic raw);
+
+  @protected
+  AttributeTwinRustAsync dco_decode_attribute_twin_rust_async(dynamic raw);
+
+  @protected
+  AttributeTwinRustAsyncSse dco_decode_attribute_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  AttributeTwinSse dco_decode_attribute_twin_sse(dynamic raw);
+
+  @protected
+  AttributeTwinSync dco_decode_attribute_twin_sync(dynamic raw);
+
+  @protected
+  AttributeTwinSyncSse dco_decode_attribute_twin_sync_sse(dynamic raw);
+
+  @protected
+  BTwinNormal dco_decode_b_twin_normal(dynamic raw);
+
+  @protected
+  BTwinRustAsync dco_decode_b_twin_rust_async(dynamic raw);
+
+  @protected
+  BTwinRustAsyncSse dco_decode_b_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BTwinSse dco_decode_b_twin_sse(dynamic raw);
+
+  @protected
+  BTwinSync dco_decode_b_twin_sync(dynamic raw);
+
+  @protected
+  BTwinSyncSse dco_decode_b_twin_sync_sse(dynamic raw);
+
+  @protected
+  BigBuffersTwinNormal dco_decode_big_buffers_twin_normal(dynamic raw);
+
+  @protected
+  BigBuffersTwinRustAsync dco_decode_big_buffers_twin_rust_async(dynamic raw);
+
+  @protected
+  BigBuffersTwinRustAsyncSse dco_decode_big_buffers_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  BigBuffersTwinSse dco_decode_big_buffers_twin_sse(dynamic raw);
+
+  @protected
+  BigBuffersTwinSync dco_decode_big_buffers_twin_sync(dynamic raw);
+
+  @protected
+  BigBuffersTwinSyncSse dco_decode_big_buffers_twin_sync_sse(dynamic raw);
+
+  @protected
+  BlobTwinNormal dco_decode_blob_twin_normal(dynamic raw);
+
+  @protected
+  BlobTwinRustAsync dco_decode_blob_twin_rust_async(dynamic raw);
+
+  @protected
+  BlobTwinRustAsyncSse dco_decode_blob_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BlobTwinSse dco_decode_blob_twin_sse(dynamic raw);
+
+  @protected
+  BlobTwinSync dco_decode_blob_twin_sync(dynamic raw);
+
+  @protected
+  BlobTwinSyncSse dco_decode_blob_twin_sync_sse(dynamic raw);
+
+  @protected
+  bool dco_decode_bool(dynamic raw);
+
+  @protected
+  ApplicationEnv dco_decode_box_application_env(dynamic raw);
+
+  @protected
+  Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw);
+
+  @protected
+  DateTime dco_decode_box_autoadd_Chrono_Naive(dynamic raw);
+
+  @protected
+  DateTime dco_decode_box_autoadd_Chrono_Utc(dynamic raw);
+
+  @protected
+  Object dco_decode_box_autoadd_DartOpaque(dynamic raw);
+
+  @protected
+  HideData dco_decode_box_autoadd_RustOpaque_hide_data(dynamic raw);
+
+  @protected
+  ATwinNormal dco_decode_box_autoadd_a_twin_normal(dynamic raw);
+
+  @protected
+  ATwinRustAsync dco_decode_box_autoadd_a_twin_rust_async(dynamic raw);
+
+  @protected
+  ATwinRustAsyncSse dco_decode_box_autoadd_a_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ATwinSse dco_decode_box_autoadd_a_twin_sse(dynamic raw);
+
+  @protected
+  ATwinSync dco_decode_box_autoadd_a_twin_sync(dynamic raw);
+
+  @protected
+  ATwinSyncSse dco_decode_box_autoadd_a_twin_sync_sse(dynamic raw);
+
+  @protected
+  AbcTwinNormal dco_decode_box_autoadd_abc_twin_normal(dynamic raw);
+
+  @protected
+  AbcTwinRustAsync dco_decode_box_autoadd_abc_twin_rust_async(dynamic raw);
+
+  @protected
+  AbcTwinRustAsyncSse dco_decode_box_autoadd_abc_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  AbcTwinSse dco_decode_box_autoadd_abc_twin_sse(dynamic raw);
+
+  @protected
+  AbcTwinSync dco_decode_box_autoadd_abc_twin_sync(dynamic raw);
+
+  @protected
+  AbcTwinSyncSse dco_decode_box_autoadd_abc_twin_sync_sse(dynamic raw);
+
+  @protected
+  ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw);
+
+  @protected
+  ApplicationSettings dco_decode_box_autoadd_application_settings(dynamic raw);
+
+  @protected
+  AttributeTwinNormal dco_decode_box_autoadd_attribute_twin_normal(dynamic raw);
+
+  @protected
+  AttributeTwinRustAsync dco_decode_box_autoadd_attribute_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  AttributeTwinRustAsyncSse
+      dco_decode_box_autoadd_attribute_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  AttributeTwinSse dco_decode_box_autoadd_attribute_twin_sse(dynamic raw);
+
+  @protected
+  AttributeTwinSync dco_decode_box_autoadd_attribute_twin_sync(dynamic raw);
+
+  @protected
+  AttributeTwinSyncSse dco_decode_box_autoadd_attribute_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  BTwinNormal dco_decode_box_autoadd_b_twin_normal(dynamic raw);
+
+  @protected
+  BTwinRustAsync dco_decode_box_autoadd_b_twin_rust_async(dynamic raw);
+
+  @protected
+  BTwinRustAsyncSse dco_decode_box_autoadd_b_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BTwinSse dco_decode_box_autoadd_b_twin_sse(dynamic raw);
+
+  @protected
+  BTwinSync dco_decode_box_autoadd_b_twin_sync(dynamic raw);
+
+  @protected
+  BTwinSyncSse dco_decode_box_autoadd_b_twin_sync_sse(dynamic raw);
+
+  @protected
+  bool dco_decode_box_autoadd_bool(dynamic raw);
+
+  @protected
+  CTwinNormal dco_decode_box_autoadd_c_twin_normal(dynamic raw);
+
+  @protected
+  CTwinRustAsync dco_decode_box_autoadd_c_twin_rust_async(dynamic raw);
+
+  @protected
+  CTwinRustAsyncSse dco_decode_box_autoadd_c_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CTwinSse dco_decode_box_autoadd_c_twin_sse(dynamic raw);
+
+  @protected
+  CTwinSync dco_decode_box_autoadd_c_twin_sync(dynamic raw);
+
+  @protected
+  CTwinSyncSse dco_decode_box_autoadd_c_twin_sync_sse(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinNormal dco_decode_box_autoadd_concatenate_with_twin_normal(
+      dynamic raw);
+
+  @protected
+  ConcatenateWithTwinRustAsync
+      dco_decode_box_autoadd_concatenate_with_twin_rust_async(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinRustAsyncSse
+      dco_decode_box_autoadd_concatenate_with_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSse dco_decode_box_autoadd_concatenate_with_twin_sse(
+      dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSync dco_decode_box_autoadd_concatenate_with_twin_sync(
+      dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSyncSse
+      dco_decode_box_autoadd_concatenate_with_twin_sync_sse(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinNormal
+      dco_decode_box_autoadd_custom_nested_error_2_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinRustAsync
+      dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinRustAsyncSse
+      dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSse
+      dco_decode_box_autoadd_custom_nested_error_2_twin_sse(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSync
+      dco_decode_box_autoadd_custom_nested_error_2_twin_sync(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSyncSse
+      dco_decode_box_autoadd_custom_nested_error_2_twin_sync_sse(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinNormal
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsync
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSse
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_sse(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSync
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_sync(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSyncSse
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinNormal
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsync
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSse
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_sse(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSync
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_sync(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSyncSse
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  CustomStructErrorTwinNormal
+      dco_decode_box_autoadd_custom_struct_error_twin_normal(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinRustAsync
+      dco_decode_box_autoadd_custom_struct_error_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_struct_error_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSse dco_decode_box_autoadd_custom_struct_error_twin_sse(
+      dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSync
+      dco_decode_box_autoadd_custom_struct_error_twin_sync(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSyncSse
+      dco_decode_box_autoadd_custom_struct_error_twin_sync_sse(dynamic raw);
+
+  @protected
+  CustomStructTwinNormal dco_decode_box_autoadd_custom_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinRustAsync
+      dco_decode_box_autoadd_custom_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomStructTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomStructTwinSse dco_decode_box_autoadd_custom_struct_twin_sse(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinSync dco_decode_box_autoadd_custom_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinSyncSse dco_decode_box_autoadd_custom_struct_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  CustomizedTwinNormal dco_decode_box_autoadd_customized_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomizedTwinRustAsync dco_decode_box_autoadd_customized_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  CustomizedTwinRustAsyncSse
+      dco_decode_box_autoadd_customized_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomizedTwinSse dco_decode_box_autoadd_customized_twin_sse(dynamic raw);
+
+  @protected
+  CustomizedTwinSync dco_decode_box_autoadd_customized_twin_sync(dynamic raw);
+
+  @protected
+  CustomizedTwinSyncSse dco_decode_box_autoadd_customized_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinNormal
+      dco_decode_box_autoadd_dart_opaque_nested_twin_normal(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinRustAsync
+      dco_decode_box_autoadd_dart_opaque_nested_twin_rust_async(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinRustAsyncSse
+      dco_decode_box_autoadd_dart_opaque_nested_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSse dco_decode_box_autoadd_dart_opaque_nested_twin_sse(
+      dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSync dco_decode_box_autoadd_dart_opaque_nested_twin_sync(
+      dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSyncSse
+      dco_decode_box_autoadd_dart_opaque_nested_twin_sync_sse(dynamic raw);
+
+  @protected
+  ElementTwinNormal dco_decode_box_autoadd_element_twin_normal(dynamic raw);
+
+  @protected
+  ElementTwinRustAsync dco_decode_box_autoadd_element_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ElementTwinRustAsyncSse dco_decode_box_autoadd_element_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  ElementTwinSse dco_decode_box_autoadd_element_twin_sse(dynamic raw);
+
+  @protected
+  ElementTwinSync dco_decode_box_autoadd_element_twin_sync(dynamic raw);
+
+  @protected
+  ElementTwinSyncSse dco_decode_box_autoadd_element_twin_sync_sse(dynamic raw);
+
+  @protected
+  EmptyTwinNormal dco_decode_box_autoadd_empty_twin_normal(dynamic raw);
+
+  @protected
+  EmptyTwinRustAsync dco_decode_box_autoadd_empty_twin_rust_async(dynamic raw);
+
+  @protected
+  EmptyTwinRustAsyncSse dco_decode_box_autoadd_empty_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  EmptyTwinSse dco_decode_box_autoadd_empty_twin_sse(dynamic raw);
+
+  @protected
+  EmptyTwinSync dco_decode_box_autoadd_empty_twin_sync(dynamic raw);
+
+  @protected
+  EmptyTwinSyncSse dco_decode_box_autoadd_empty_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinNormal dco_decode_box_autoadd_enum_dart_opaque_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinRustAsync
+      dco_decode_box_autoadd_enum_dart_opaque_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_dart_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSse dco_decode_box_autoadd_enum_dart_opaque_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSync dco_decode_box_autoadd_enum_dart_opaque_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSyncSse
+      dco_decode_box_autoadd_enum_dart_opaque_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinNormal dco_decode_box_autoadd_enum_opaque_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsync dco_decode_box_autoadd_enum_opaque_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSse dco_decode_box_autoadd_enum_opaque_twin_sse(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSync dco_decode_box_autoadd_enum_opaque_twin_sync(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncSse dco_decode_box_autoadd_enum_opaque_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinNormal
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinRustAsync
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSse dco_decode_box_autoadd_enum_with_item_mixed_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSync
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSyncSse
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinNormal
+      dco_decode_box_autoadd_enum_with_item_struct_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinRustAsync
+      dco_decode_box_autoadd_enum_with_item_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_item_struct_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSse
+      dco_decode_box_autoadd_enum_with_item_struct_twin_sse(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSync
+      dco_decode_box_autoadd_enum_with_item_struct_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSyncSse
+      dco_decode_box_autoadd_enum_with_item_struct_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinNormal
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinRustAsync
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSse dco_decode_box_autoadd_enum_with_item_tuple_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSync
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSyncSse
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_sync_sse(dynamic raw);
+
+  @protected
+  EventTwinNormal dco_decode_box_autoadd_event_twin_normal(dynamic raw);
+
+  @protected
+  EventTwinRustAsync dco_decode_box_autoadd_event_twin_rust_async(dynamic raw);
+
+  @protected
+  EventTwinRustAsyncSse dco_decode_box_autoadd_event_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  EventTwinSse dco_decode_box_autoadd_event_twin_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal dco_decode_box_autoadd_exotic_optionals_twin_normal(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync
+      dco_decode_box_autoadd_exotic_optionals_twin_rust_async(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse
+      dco_decode_box_autoadd_exotic_optionals_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse dco_decode_box_autoadd_exotic_optionals_twin_sse(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync dco_decode_box_autoadd_exotic_optionals_twin_sync(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse
+      dco_decode_box_autoadd_exotic_optionals_twin_sync_sse(dynamic raw);
+
+  @protected
+  double dco_decode_box_autoadd_f_32(dynamic raw);
+
+  @protected
+  double dco_decode_box_autoadd_f_64(dynamic raw);
+
+  @protected
+  FeatureChronoTwinNormal dco_decode_box_autoadd_feature_chrono_twin_normal(
+      dynamic raw);
+
+  @protected
+  FeatureChronoTwinRustAsync
+      dco_decode_box_autoadd_feature_chrono_twin_rust_async(dynamic raw);
+
+  @protected
+  FeatureChronoTwinSync dco_decode_box_autoadd_feature_chrono_twin_sync(
+      dynamic raw);
+
+  @protected
+  FeatureUuidTwinNormal dco_decode_box_autoadd_feature_uuid_twin_normal(
+      dynamic raw);
+
+  @protected
+  FeatureUuidTwinRustAsync dco_decode_box_autoadd_feature_uuid_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  FeatureUuidTwinSync dco_decode_box_autoadd_feature_uuid_twin_sync(
+      dynamic raw);
+
+  @protected
+  FeedIdTwinNormal dco_decode_box_autoadd_feed_id_twin_normal(dynamic raw);
+
+  @protected
+  FeedIdTwinRustAsync dco_decode_box_autoadd_feed_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  FeedIdTwinRustAsyncSse dco_decode_box_autoadd_feed_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  FeedIdTwinSse dco_decode_box_autoadd_feed_id_twin_sse(dynamic raw);
+
+  @protected
+  FeedIdTwinSync dco_decode_box_autoadd_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  FeedIdTwinSyncSse dco_decode_box_autoadd_feed_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_i_16(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_i_32(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_i_64(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_i_8(dynamic raw);
+
+  @protected
+  KitchenSinkTwinNormal dco_decode_box_autoadd_kitchen_sink_twin_normal(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinRustAsync dco_decode_box_autoadd_kitchen_sink_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinRustAsyncSse
+      dco_decode_box_autoadd_kitchen_sink_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSse dco_decode_box_autoadd_kitchen_sink_twin_sse(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSync dco_decode_box_autoadd_kitchen_sink_twin_sync(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinSyncSse dco_decode_box_autoadd_kitchen_sink_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  ListOfNestedRawStringMirrored
+      dco_decode_box_autoadd_list_of_nested_raw_string_mirrored(dynamic raw);
+
+  @protected
+  MacroStruct dco_decode_box_autoadd_macro_struct(dynamic raw);
+
+  @protected
+  MeasureTwinNormal dco_decode_box_autoadd_measure_twin_normal(dynamic raw);
+
+  @protected
+  MeasureTwinRustAsync dco_decode_box_autoadd_measure_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MeasureTwinRustAsyncSse dco_decode_box_autoadd_measure_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MeasureTwinSse dco_decode_box_autoadd_measure_twin_sse(dynamic raw);
+
+  @protected
+  MeasureTwinSync dco_decode_box_autoadd_measure_twin_sync(dynamic raw);
+
+  @protected
+  MeasureTwinSyncSse dco_decode_box_autoadd_measure_twin_sync_sse(dynamic raw);
+
+  @protected
+  MessageIdTwinNormal dco_decode_box_autoadd_message_id_twin_normal(
+      dynamic raw);
+
+  @protected
+  MessageIdTwinRustAsync dco_decode_box_autoadd_message_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MessageIdTwinRustAsyncSse
+      dco_decode_box_autoadd_message_id_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MessageIdTwinSse dco_decode_box_autoadd_message_id_twin_sse(dynamic raw);
+
+  @protected
+  MessageIdTwinSync dco_decode_box_autoadd_message_id_twin_sync(dynamic raw);
+
+  @protected
+  MessageIdTwinSyncSse dco_decode_box_autoadd_message_id_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  MyNestedStructTwinNormal dco_decode_box_autoadd_my_nested_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  MyNestedStructTwinRustAsync
+      dco_decode_box_autoadd_my_nested_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  MyNestedStructTwinRustAsyncSse
+      dco_decode_box_autoadd_my_nested_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MyNestedStructTwinSse dco_decode_box_autoadd_my_nested_struct_twin_sse(
+      dynamic raw);
+
+  @protected
+  MyNestedStructTwinSync dco_decode_box_autoadd_my_nested_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  MyNestedStructTwinSyncSse
+      dco_decode_box_autoadd_my_nested_struct_twin_sync_sse(dynamic raw);
+
+  @protected
+  MySize dco_decode_box_autoadd_my_size(dynamic raw);
+
+  @protected
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
+      dynamic raw);
+
+  @protected
+  MyTreeNodeTwinRustAsync dco_decode_box_autoadd_my_tree_node_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MyTreeNodeTwinRustAsyncSse
+      dco_decode_box_autoadd_my_tree_node_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSse dco_decode_box_autoadd_my_tree_node_twin_sse(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSync dco_decode_box_autoadd_my_tree_node_twin_sync(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSyncSse dco_decode_box_autoadd_my_tree_node_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  NestedRawStringMirrored dco_decode_box_autoadd_nested_raw_string_mirrored(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinNormal dco_decode_box_autoadd_new_type_int_twin_normal(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinRustAsync dco_decode_box_autoadd_new_type_int_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinRustAsyncSse
+      dco_decode_box_autoadd_new_type_int_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSse dco_decode_box_autoadd_new_type_int_twin_sse(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSync dco_decode_box_autoadd_new_type_int_twin_sync(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSyncSse dco_decode_box_autoadd_new_type_int_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  NoteTwinNormal dco_decode_box_autoadd_note_twin_normal(dynamic raw);
+
+  @protected
+  NoteTwinRustAsync dco_decode_box_autoadd_note_twin_rust_async(dynamic raw);
+
+  @protected
+  NoteTwinRustAsyncSse dco_decode_box_autoadd_note_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  NoteTwinSse dco_decode_box_autoadd_note_twin_sse(dynamic raw);
+
+  @protected
+  NoteTwinSync dco_decode_box_autoadd_note_twin_sync(dynamic raw);
+
+  @protected
+  NoteTwinSyncSse dco_decode_box_autoadd_note_twin_sync_sse(dynamic raw);
+
+  @protected
+  Numbers dco_decode_box_autoadd_numbers(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinNormal dco_decode_box_autoadd_opaque_nested_twin_normal(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsync
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsyncSse
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSse dco_decode_box_autoadd_opaque_nested_twin_sse(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSync dco_decode_box_autoadd_opaque_nested_twin_sync(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSyncSse dco_decode_box_autoadd_opaque_nested_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  OptVecsTwinNormal dco_decode_box_autoadd_opt_vecs_twin_normal(dynamic raw);
+
+  @protected
+  OptVecsTwinRustAsync dco_decode_box_autoadd_opt_vecs_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OptVecsTwinRustAsyncSse dco_decode_box_autoadd_opt_vecs_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  OptVecsTwinSse dco_decode_box_autoadd_opt_vecs_twin_sse(dynamic raw);
+
+  @protected
+  OptVecsTwinSync dco_decode_box_autoadd_opt_vecs_twin_sync(dynamic raw);
+
+  @protected
+  OptVecsTwinSyncSse dco_decode_box_autoadd_opt_vecs_twin_sync_sse(dynamic raw);
+
+  @protected
+  RawStringMirrored dco_decode_box_autoadd_raw_string_mirrored(dynamic raw);
+
+  @protected
+  (String, int) dco_decode_box_autoadd_record_string_i_32(dynamic raw);
+
+  @protected
+  Sequences dco_decode_box_autoadd_sequences(dynamic raw);
+
+  @protected
+  SomeStructTwinNormal dco_decode_box_autoadd_some_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  SomeStructTwinRustAsync dco_decode_box_autoadd_some_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  SomeStructTwinRustAsyncSse
+      dco_decode_box_autoadd_some_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SomeStructTwinSse dco_decode_box_autoadd_some_struct_twin_sse(dynamic raw);
+
+  @protected
+  SomeStructTwinSync dco_decode_box_autoadd_some_struct_twin_sync(dynamic raw);
+
+  @protected
+  SomeStructTwinSyncSse dco_decode_box_autoadd_some_struct_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  StructWithCommentsTwinNormal
+      dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinRustAsync
+      dco_decode_box_autoadd_struct_with_comments_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_comments_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSse
+      dco_decode_box_autoadd_struct_with_comments_twin_sse(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSync
+      dco_decode_box_autoadd_struct_with_comments_twin_sync(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSyncSse
+      dco_decode_box_autoadd_struct_with_comments_twin_sync_sse(dynamic raw);
+
+  @protected
+  StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithEnumTwinRustAsync
+      dco_decode_box_autoadd_struct_with_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithEnumTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithEnumTwinSse dco_decode_box_autoadd_struct_with_enum_twin_sse(
+      dynamic raw);
+
+  @protected
+  StructWithEnumTwinSync dco_decode_box_autoadd_struct_with_enum_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithEnumTwinSyncSse
+      dco_decode_box_autoadd_struct_with_enum_twin_sync_sse(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_one_field_twin_normal(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_one_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_one_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSse
+      dco_decode_box_autoadd_struct_with_one_field_twin_sse(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSync
+      dco_decode_box_autoadd_struct_with_one_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_one_field_twin_sync_sse(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_two_field_twin_normal(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_two_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_two_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSse
+      dco_decode_box_autoadd_struct_with_two_field_twin_sse(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSync
+      dco_decode_box_autoadd_struct_with_two_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_two_field_twin_sync_sse(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_zero_field_twin_normal(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_zero_field_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_zero_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSse
+      dco_decode_box_autoadd_struct_with_zero_field_twin_sse(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSync
+      dco_decode_box_autoadd_struct_with_zero_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_zero_field_twin_sync_sse(dynamic raw);
+
+  @protected
+  SumWithTwinNormal dco_decode_box_autoadd_sum_with_twin_normal(dynamic raw);
+
+  @protected
+  SumWithTwinRustAsync dco_decode_box_autoadd_sum_with_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  SumWithTwinRustAsyncSse dco_decode_box_autoadd_sum_with_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  SumWithTwinSse dco_decode_box_autoadd_sum_with_twin_sse(dynamic raw);
+
+  @protected
+  SumWithTwinSync dco_decode_box_autoadd_sum_with_twin_sync(dynamic raw);
+
+  @protected
+  SumWithTwinSyncSse dco_decode_box_autoadd_sum_with_twin_sync_sse(dynamic raw);
+
+  @protected
+  TestIdTwinNormal dco_decode_box_autoadd_test_id_twin_normal(dynamic raw);
+
+  @protected
+  TestIdTwinRustAsync dco_decode_box_autoadd_test_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncSse dco_decode_box_autoadd_test_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  TestIdTwinSse dco_decode_box_autoadd_test_id_twin_sse(dynamic raw);
+
+  @protected
+  TestIdTwinSync dco_decode_box_autoadd_test_id_twin_sync(dynamic raw);
+
+  @protected
+  TestIdTwinSyncSse dco_decode_box_autoadd_test_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinNormal
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+          dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsync
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSse
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sse(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSync
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSyncSse
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinNormal
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+          dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsync
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSse
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sse(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSync
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSyncSse
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_u_16(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_u_32(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_u_64(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_u_8(dynamic raw);
+
+  @protected
+  UserIdTwinNormal dco_decode_box_autoadd_user_id_twin_normal(dynamic raw);
+
+  @protected
+  UserIdTwinRustAsync dco_decode_box_autoadd_user_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  UserIdTwinRustAsyncSse dco_decode_box_autoadd_user_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  UserIdTwinSse dco_decode_box_autoadd_user_id_twin_sse(dynamic raw);
+
+  @protected
+  UserIdTwinSync dco_decode_box_autoadd_user_id_twin_sync(dynamic raw);
+
+  @protected
+  UserIdTwinSyncSse dco_decode_box_autoadd_user_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  WeekdaysTwinNormal dco_decode_box_autoadd_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsync dco_decode_box_autoadd_weekdays_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsyncSse dco_decode_box_autoadd_weekdays_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinSse dco_decode_box_autoadd_weekdays_twin_sse(dynamic raw);
+
+  @protected
+  WeekdaysTwinSync dco_decode_box_autoadd_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  WeekdaysTwinSyncSse dco_decode_box_autoadd_weekdays_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  BlobTwinNormal dco_decode_box_blob_twin_normal(dynamic raw);
+
+  @protected
+  BlobTwinRustAsync dco_decode_box_blob_twin_rust_async(dynamic raw);
+
+  @protected
+  BlobTwinRustAsyncSse dco_decode_box_blob_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BlobTwinSse dco_decode_box_blob_twin_sse(dynamic raw);
+
+  @protected
+  BlobTwinSync dco_decode_box_blob_twin_sync(dynamic raw);
+
+  @protected
+  BlobTwinSyncSse dco_decode_box_blob_twin_sync_sse(dynamic raw);
+
+  @protected
+  bool dco_decode_box_bool(dynamic raw);
+
+  @protected
+  DistanceTwinNormal dco_decode_box_distance_twin_normal(dynamic raw);
+
+  @protected
+  DistanceTwinRustAsync dco_decode_box_distance_twin_rust_async(dynamic raw);
+
+  @protected
+  DistanceTwinRustAsyncSse dco_decode_box_distance_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  DistanceTwinSse dco_decode_box_distance_twin_sse(dynamic raw);
+
+  @protected
+  DistanceTwinSync dco_decode_box_distance_twin_sync(dynamic raw);
+
+  @protected
+  DistanceTwinSyncSse dco_decode_box_distance_twin_sync_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal dco_decode_box_exotic_optionals_twin_normal(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync dco_decode_box_exotic_optionals_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse
+      dco_decode_box_exotic_optionals_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse dco_decode_box_exotic_optionals_twin_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync dco_decode_box_exotic_optionals_twin_sync(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse dco_decode_box_exotic_optionals_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  double dco_decode_box_f_64(dynamic raw);
+
+  @protected
+  FeedIdTwinNormal dco_decode_box_feed_id_twin_normal(dynamic raw);
+
+  @protected
+  FeedIdTwinRustAsync dco_decode_box_feed_id_twin_rust_async(dynamic raw);
+
+  @protected
+  FeedIdTwinRustAsyncSse dco_decode_box_feed_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  FeedIdTwinSse dco_decode_box_feed_id_twin_sse(dynamic raw);
+
+  @protected
+  FeedIdTwinSync dco_decode_box_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  FeedIdTwinSyncSse dco_decode_box_feed_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  int dco_decode_box_i_32(dynamic raw);
+
+  @protected
+  int dco_decode_box_i_64(dynamic raw);
+
+  @protected
+  int dco_decode_box_i_8(dynamic raw);
+
+  @protected
+  KitchenSinkTwinNormal dco_decode_box_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  KitchenSinkTwinRustAsync dco_decode_box_kitchen_sink_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinRustAsyncSse dco_decode_box_kitchen_sink_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinSse dco_decode_box_kitchen_sink_twin_sse(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSync dco_decode_box_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSyncSse dco_decode_box_kitchen_sink_twin_sync_sse(dynamic raw);
+
+  @protected
+  MySize dco_decode_box_my_size(dynamic raw);
+
+  @protected
+  SpeedTwinNormal dco_decode_box_speed_twin_normal(dynamic raw);
+
+  @protected
+  SpeedTwinRustAsync dco_decode_box_speed_twin_rust_async(dynamic raw);
+
+  @protected
+  SpeedTwinRustAsyncSse dco_decode_box_speed_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SpeedTwinSse dco_decode_box_speed_twin_sse(dynamic raw);
+
+  @protected
+  SpeedTwinSync dco_decode_box_speed_twin_sync(dynamic raw);
+
+  @protected
+  SpeedTwinSyncSse dco_decode_box_speed_twin_sync_sse(dynamic raw);
+
+  @protected
+  int dco_decode_box_u_8(dynamic raw);
+
+  @protected
+  U8Array1600 dco_decode_box_u_8_array_1600(dynamic raw);
+
+  @protected
+  U8Array8 dco_decode_box_u_8_array_8(dynamic raw);
+
+  @protected
+  WeekdaysTwinNormal dco_decode_box_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsync dco_decode_box_weekdays_twin_rust_async(dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsyncSse dco_decode_box_weekdays_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinSse dco_decode_box_weekdays_twin_sse(dynamic raw);
+
+  @protected
+  WeekdaysTwinSync dco_decode_box_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  WeekdaysTwinSyncSse dco_decode_box_weekdays_twin_sync_sse(dynamic raw);
+
+  @protected
+  CTwinNormal dco_decode_c_twin_normal(dynamic raw);
+
+  @protected
+  CTwinRustAsync dco_decode_c_twin_rust_async(dynamic raw);
+
+  @protected
+  CTwinRustAsyncSse dco_decode_c_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CTwinSse dco_decode_c_twin_sse(dynamic raw);
+
+  @protected
+  CTwinSync dco_decode_c_twin_sync(dynamic raw);
+
+  @protected
+  CTwinSyncSse dco_decode_c_twin_sync_sse(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinNormal dco_decode_concatenate_with_twin_normal(
+      dynamic raw);
+
+  @protected
+  ConcatenateWithTwinRustAsync dco_decode_concatenate_with_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ConcatenateWithTwinRustAsyncSse
+      dco_decode_concatenate_with_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSse dco_decode_concatenate_with_twin_sse(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSync dco_decode_concatenate_with_twin_sync(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSyncSse dco_decode_concatenate_with_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinNormal
+      dco_decode_contains_mirrored_sub_struct_twin_normal(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinRustAsync
+      dco_decode_contains_mirrored_sub_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinRustAsyncSse
+      dco_decode_contains_mirrored_sub_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinSse
+      dco_decode_contains_mirrored_sub_struct_twin_sse(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinSync
+      dco_decode_contains_mirrored_sub_struct_twin_sync(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinSyncSse
+      dco_decode_contains_mirrored_sub_struct_twin_sync_sse(dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinNormal dco_decode_custom_enum_error_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinRustAsync dco_decode_custom_enum_error_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinRustAsyncSse
+      dco_decode_custom_enum_error_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinSse dco_decode_custom_enum_error_twin_sse(dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinSync dco_decode_custom_enum_error_twin_sync(dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinSyncSse dco_decode_custom_enum_error_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  CustomErrorTwinNormal dco_decode_custom_error_twin_normal(dynamic raw);
+
+  @protected
+  CustomErrorTwinRustAsync dco_decode_custom_error_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomErrorTwinRustAsyncSse dco_decode_custom_error_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  CustomErrorTwinSse dco_decode_custom_error_twin_sse(dynamic raw);
+
+  @protected
+  CustomErrorTwinSync dco_decode_custom_error_twin_sync(dynamic raw);
+
+  @protected
+  CustomErrorTwinSyncSse dco_decode_custom_error_twin_sync_sse(dynamic raw);
+
+  @protected
+  CustomNestedError1TwinNormal dco_decode_custom_nested_error_1_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomNestedError1TwinRustAsync
+      dco_decode_custom_nested_error_1_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedError1TwinRustAsyncSse
+      dco_decode_custom_nested_error_1_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomNestedError1TwinSse dco_decode_custom_nested_error_1_twin_sse(
+      dynamic raw);
+
+  @protected
+  CustomNestedError1TwinSync dco_decode_custom_nested_error_1_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedError1TwinSyncSse dco_decode_custom_nested_error_1_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  CustomNestedError2TwinNormal dco_decode_custom_nested_error_2_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomNestedError2TwinRustAsync
+      dco_decode_custom_nested_error_2_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinRustAsyncSse
+      dco_decode_custom_nested_error_2_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSse dco_decode_custom_nested_error_2_twin_sse(
+      dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSync dco_decode_custom_nested_error_2_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSyncSse dco_decode_custom_nested_error_2_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinNormal
+      dco_decode_custom_nested_error_inner_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsync
+      dco_decode_custom_nested_error_inner_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsyncSse
+      dco_decode_custom_nested_error_inner_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSse dco_decode_custom_nested_error_inner_twin_sse(
+      dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSync dco_decode_custom_nested_error_inner_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSyncSse
+      dco_decode_custom_nested_error_inner_twin_sync_sse(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinNormal
+      dco_decode_custom_nested_error_outer_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsync
+      dco_decode_custom_nested_error_outer_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsyncSse
+      dco_decode_custom_nested_error_outer_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSse dco_decode_custom_nested_error_outer_twin_sse(
+      dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSync dco_decode_custom_nested_error_outer_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSyncSse
+      dco_decode_custom_nested_error_outer_twin_sync_sse(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinNormal
+      dco_decode_custom_struct_error_another_twin_normal(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinRustAsync
+      dco_decode_custom_struct_error_another_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinRustAsyncSse
+      dco_decode_custom_struct_error_another_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinSse
+      dco_decode_custom_struct_error_another_twin_sse(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinSync
+      dco_decode_custom_struct_error_another_twin_sync(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinSyncSse
+      dco_decode_custom_struct_error_another_twin_sync_sse(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinNormal dco_decode_custom_struct_error_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomStructErrorTwinRustAsync dco_decode_custom_struct_error_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  CustomStructErrorTwinRustAsyncSse
+      dco_decode_custom_struct_error_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSse dco_decode_custom_struct_error_twin_sse(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSync dco_decode_custom_struct_error_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSyncSse dco_decode_custom_struct_error_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinNormal dco_decode_custom_struct_twin_normal(dynamic raw);
+
+  @protected
+  CustomStructTwinRustAsync dco_decode_custom_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinRustAsyncSse dco_decode_custom_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinSse dco_decode_custom_struct_twin_sse(dynamic raw);
+
+  @protected
+  CustomStructTwinSync dco_decode_custom_struct_twin_sync(dynamic raw);
+
+  @protected
+  CustomStructTwinSyncSse dco_decode_custom_struct_twin_sync_sse(dynamic raw);
+
+  @protected
+  CustomizedTwinNormal dco_decode_customized_twin_normal(dynamic raw);
+
+  @protected
+  CustomizedTwinRustAsync dco_decode_customized_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomizedTwinRustAsyncSse dco_decode_customized_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  CustomizedTwinSse dco_decode_customized_twin_sse(dynamic raw);
+
+  @protected
+  CustomizedTwinSync dco_decode_customized_twin_sync(dynamic raw);
+
+  @protected
+  CustomizedTwinSyncSse dco_decode_customized_twin_sync_sse(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinNormal dco_decode_dart_opaque_nested_twin_normal(
+      dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinRustAsync dco_decode_dart_opaque_nested_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinRustAsyncSse
+      dco_decode_dart_opaque_nested_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSse dco_decode_dart_opaque_nested_twin_sse(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSync dco_decode_dart_opaque_nested_twin_sync(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSyncSse dco_decode_dart_opaque_nested_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  dynamic dco_decode_dartabi(dynamic raw);
+
+  @protected
+  DistanceTwinNormal dco_decode_distance_twin_normal(dynamic raw);
+
+  @protected
+  DistanceTwinRustAsync dco_decode_distance_twin_rust_async(dynamic raw);
+
+  @protected
+  DistanceTwinRustAsyncSse dco_decode_distance_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  DistanceTwinSse dco_decode_distance_twin_sse(dynamic raw);
+
+  @protected
+  DistanceTwinSync dco_decode_distance_twin_sync(dynamic raw);
+
+  @protected
+  DistanceTwinSyncSse dco_decode_distance_twin_sync_sse(dynamic raw);
+
+  @protected
+  ElementTwinNormal dco_decode_element_twin_normal(dynamic raw);
+
+  @protected
+  ElementTwinRustAsync dco_decode_element_twin_rust_async(dynamic raw);
+
+  @protected
+  ElementTwinRustAsyncSse dco_decode_element_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ElementTwinSse dco_decode_element_twin_sse(dynamic raw);
+
+  @protected
+  ElementTwinSync dco_decode_element_twin_sync(dynamic raw);
+
+  @protected
+  ElementTwinSyncSse dco_decode_element_twin_sync_sse(dynamic raw);
+
+  @protected
+  EmptyTwinNormal dco_decode_empty_twin_normal(dynamic raw);
+
+  @protected
+  EmptyTwinRustAsync dco_decode_empty_twin_rust_async(dynamic raw);
+
+  @protected
+  EmptyTwinRustAsyncSse dco_decode_empty_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EmptyTwinSse dco_decode_empty_twin_sse(dynamic raw);
+
+  @protected
+  EmptyTwinSync dco_decode_empty_twin_sync(dynamic raw);
+
+  @protected
+  EmptyTwinSyncSse dco_decode_empty_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinNormal dco_decode_enum_dart_opaque_twin_normal(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinRustAsync dco_decode_enum_dart_opaque_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinRustAsyncSse
+      dco_decode_enum_dart_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSse dco_decode_enum_dart_opaque_twin_sse(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSync dco_decode_enum_dart_opaque_twin_sync(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSyncSse dco_decode_enum_dart_opaque_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinNormal dco_decode_enum_opaque_twin_normal(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinNormalArray5 dco_decode_enum_opaque_twin_normal_array_5(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsync dco_decode_enum_opaque_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncArray5 dco_decode_enum_opaque_twin_rust_async_array_5(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSse dco_decode_enum_opaque_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseArray5
+      dco_decode_enum_opaque_twin_rust_async_sse_array_5(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSse dco_decode_enum_opaque_twin_sse(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSseArray5 dco_decode_enum_opaque_twin_sse_array_5(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSync dco_decode_enum_opaque_twin_sync(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncArray5 dco_decode_enum_opaque_twin_sync_array_5(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncSse dco_decode_enum_opaque_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncSseArray5 dco_decode_enum_opaque_twin_sync_sse_array_5(
+      dynamic raw);
+
+  @protected
+  EnumSimpleTwinNormal dco_decode_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  EnumSimpleTwinRustAsync dco_decode_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumSimpleTwinRustAsyncSse dco_decode_enum_simple_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  EnumSimpleTwinSse dco_decode_enum_simple_twin_sse(dynamic raw);
+
+  @protected
+  EnumSimpleTwinSync dco_decode_enum_simple_twin_sync(dynamic raw);
+
+  @protected
+  EnumSimpleTwinSyncSse dco_decode_enum_simple_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinNormal dco_decode_enum_with_item_mixed_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinRustAsync
+      dco_decode_enum_with_item_mixed_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinRustAsyncSse
+      dco_decode_enum_with_item_mixed_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSse dco_decode_enum_with_item_mixed_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSync dco_decode_enum_with_item_mixed_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSyncSse dco_decode_enum_with_item_mixed_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinNormal dco_decode_enum_with_item_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinRustAsync
+      dco_decode_enum_with_item_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinRustAsyncSse
+      dco_decode_enum_with_item_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSse dco_decode_enum_with_item_struct_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSync dco_decode_enum_with_item_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSyncSse dco_decode_enum_with_item_struct_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinNormal dco_decode_enum_with_item_tuple_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinRustAsync
+      dco_decode_enum_with_item_tuple_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinRustAsyncSse
+      dco_decode_enum_with_item_tuple_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSse dco_decode_enum_with_item_tuple_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSync dco_decode_enum_with_item_tuple_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSyncSse dco_decode_enum_with_item_tuple_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  EventTwinNormal dco_decode_event_twin_normal(dynamic raw);
+
+  @protected
+  EventTwinRustAsync dco_decode_event_twin_rust_async(dynamic raw);
+
+  @protected
+  EventTwinRustAsyncSse dco_decode_event_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EventTwinSse dco_decode_event_twin_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal dco_decode_exotic_optionals_twin_normal(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync dco_decode_exotic_optionals_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse
+      dco_decode_exotic_optionals_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse dco_decode_exotic_optionals_twin_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync dco_decode_exotic_optionals_twin_sync(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse dco_decode_exotic_optionals_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  double dco_decode_f_32(dynamic raw);
+
+  @protected
+  double dco_decode_f_64(dynamic raw);
+
+  @protected
+  F64Array16 dco_decode_f_64_array_16(dynamic raw);
+
+  @protected
+  FeatureChronoTwinNormal dco_decode_feature_chrono_twin_normal(dynamic raw);
+
+  @protected
+  FeatureChronoTwinRustAsync dco_decode_feature_chrono_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  FeatureChronoTwinSync dco_decode_feature_chrono_twin_sync(dynamic raw);
+
+  @protected
+  FeatureUuidTwinNormal dco_decode_feature_uuid_twin_normal(dynamic raw);
+
+  @protected
+  FeatureUuidTwinRustAsync dco_decode_feature_uuid_twin_rust_async(dynamic raw);
+
+  @protected
+  FeatureUuidTwinSync dco_decode_feature_uuid_twin_sync(dynamic raw);
+
+  @protected
+  FeedIdTwinNormal dco_decode_feed_id_twin_normal(dynamic raw);
+
+  @protected
+  FeedIdTwinRustAsync dco_decode_feed_id_twin_rust_async(dynamic raw);
+
+  @protected
+  FeedIdTwinRustAsyncSse dco_decode_feed_id_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  FeedIdTwinSse dco_decode_feed_id_twin_sse(dynamic raw);
+
+  @protected
+  FeedIdTwinSync dco_decode_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  FeedIdTwinSyncSse dco_decode_feed_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  int dco_decode_i_16(dynamic raw);
+
+  @protected
+  int dco_decode_i_32(dynamic raw);
+
+  @protected
+  I32Array2 dco_decode_i_32_array_2(dynamic raw);
+
+  @protected
+  int dco_decode_i_64(dynamic raw);
+
+  @protected
+  int dco_decode_i_8(dynamic raw);
+
+  @protected
+  KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  KitchenSinkTwinRustAsync dco_decode_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  KitchenSinkTwinRustAsyncSse dco_decode_kitchen_sink_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinSse dco_decode_kitchen_sink_twin_sse(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSync dco_decode_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSyncSse dco_decode_kitchen_sink_twin_sync_sse(dynamic raw);
+
+  @protected
+  List<Duration> dco_decode_list_Chrono_Duration(dynamic raw);
+
+  @protected
+  List<DateTime> dco_decode_list_Chrono_Local(dynamic raw);
+
+  @protected
+  List<DateTime> dco_decode_list_Chrono_Naive(dynamic raw);
+
+  @protected
+  List<Object> dco_decode_list_DartOpaque(dynamic raw);
+
+  @protected
+  List<HideData> dco_decode_list_RustOpaque_hide_data(dynamic raw);
+
+  @protected
+  List<String> dco_decode_list_String(dynamic raw);
+
+  @protected
+  List<ApplicationEnvVar> dco_decode_list_application_env_var(dynamic raw);
+
+  @protected
+  List<ApplicationSettings> dco_decode_list_application_settings(dynamic raw);
+
+  @protected
+  List<AttributeTwinNormal> dco_decode_list_attribute_twin_normal(dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsync> dco_decode_list_attribute_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsyncSse> dco_decode_list_attribute_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinSse> dco_decode_list_attribute_twin_sse(dynamic raw);
+
+  @protected
+  List<AttributeTwinSync> dco_decode_list_attribute_twin_sync(dynamic raw);
+
+  @protected
+  List<AttributeTwinSyncSse> dco_decode_list_attribute_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  List<bool> dco_decode_list_bool(dynamic raw);
+
+  @protected
+  List<ElementTwinNormal> dco_decode_list_element_twin_normal(dynamic raw);
+
+  @protected
+  List<ElementTwinRustAsync> dco_decode_list_element_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<ElementTwinRustAsyncSse> dco_decode_list_element_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<ElementTwinSse> dco_decode_list_element_twin_sse(dynamic raw);
+
+  @protected
+  List<ElementTwinSync> dco_decode_list_element_twin_sync(dynamic raw);
+
+  @protected
+  List<ElementTwinSyncSse> dco_decode_list_element_twin_sync_sse(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinNormal> dco_decode_list_enum_opaque_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinRustAsync> dco_decode_list_enum_opaque_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinRustAsyncSse>
+      dco_decode_list_enum_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinSse> dco_decode_list_enum_opaque_twin_sse(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinSync> dco_decode_list_enum_opaque_twin_sync(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinSyncSse> dco_decode_list_enum_opaque_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  List<MyEnum> dco_decode_list_my_enum(dynamic raw);
+
+  @protected
+  List<MySize> dco_decode_list_my_size(dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinNormal> dco_decode_list_my_tree_node_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinRustAsync> dco_decode_list_my_tree_node_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinRustAsyncSse>
+      dco_decode_list_my_tree_node_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinSse> dco_decode_list_my_tree_node_twin_sse(dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinSync> dco_decode_list_my_tree_node_twin_sync(dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinSyncSse> dco_decode_list_my_tree_node_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  List<NestedRawStringMirrored> dco_decode_list_nested_raw_string_mirrored(
+      dynamic raw);
+
+  @protected
+  ListOfNestedRawStringMirrored dco_decode_list_of_nested_raw_string_mirrored(
+      dynamic raw);
+
+  @protected
+  List<String?> dco_decode_list_opt_String(dynamic raw);
+
+  @protected
+  List<AttributeTwinNormal?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_normal(dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsync?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_rust_async(dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsyncSse?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<AttributeTwinSse?> dco_decode_list_opt_box_autoadd_attribute_twin_sse(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinSync?> dco_decode_list_opt_box_autoadd_attribute_twin_sync(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinSyncSse?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_sync_sse(dynamic raw);
+
+  @protected
+  List<int?> dco_decode_list_opt_box_autoadd_i_32(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinNormal?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinRustAsync?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinRustAsyncSse?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSse?> dco_decode_list_opt_box_autoadd_weekdays_twin_sse(
+      dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSync?> dco_decode_list_opt_box_autoadd_weekdays_twin_sync(
+      dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSyncSse?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_sync_sse(dynamic raw);
+
+  @protected
+  List<Int32List?> dco_decode_list_opt_list_prim_i_32(dynamic raw);
+
+  @protected
+  List<PointTwinNormal> dco_decode_list_point_twin_normal(dynamic raw);
+
+  @protected
+  List<PointTwinRustAsync> dco_decode_list_point_twin_rust_async(dynamic raw);
+
+  @protected
+  List<PointTwinRustAsyncSse> dco_decode_list_point_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<PointTwinSse> dco_decode_list_point_twin_sse(dynamic raw);
+
+  @protected
+  List<PointTwinSync> dco_decode_list_point_twin_sync(dynamic raw);
+
+  @protected
+  List<PointTwinSyncSse> dco_decode_list_point_twin_sync_sse(dynamic raw);
+
+  @protected
+  Float32List dco_decode_list_prim_f_32(dynamic raw);
+
+  @protected
+  Float64List dco_decode_list_prim_f_64(dynamic raw);
+
+  @protected
+  Int16List dco_decode_list_prim_i_16(dynamic raw);
+
+  @protected
+  Int32List dco_decode_list_prim_i_32(dynamic raw);
+
+  @protected
+  Int64List dco_decode_list_prim_i_64(dynamic raw);
+
+  @protected
+  Int8List dco_decode_list_prim_i_8(dynamic raw);
+
+  @protected
+  Uint16List dco_decode_list_prim_u_16(dynamic raw);
+
+  @protected
+  Uint32List dco_decode_list_prim_u_32(dynamic raw);
+
+  @protected
+  Uint64List dco_decode_list_prim_u_64(dynamic raw);
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8(dynamic raw);
+
+  @protected
+  List<RawStringEnumMirrored> dco_decode_list_raw_string_enum_mirrored(
+      dynamic raw);
+
+  @protected
+  List<RawStringMirrored> dco_decode_list_raw_string_mirrored(dynamic raw);
+
+  @protected
+  List<(String, int)> dco_decode_list_record_string_i_32(dynamic raw);
+
+  @protected
+  List<SumWithTwinNormal> dco_decode_list_sum_with_twin_normal(dynamic raw);
+
+  @protected
+  List<SumWithTwinRustAsync> dco_decode_list_sum_with_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<SumWithTwinRustAsyncSse> dco_decode_list_sum_with_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<SumWithTwinSse> dco_decode_list_sum_with_twin_sse(dynamic raw);
+
+  @protected
+  List<SumWithTwinSync> dco_decode_list_sum_with_twin_sync(dynamic raw);
+
+  @protected
+  List<SumWithTwinSyncSse> dco_decode_list_sum_with_twin_sync_sse(dynamic raw);
+
+  @protected
+  List<TestIdTwinNormal> dco_decode_list_test_id_twin_normal(dynamic raw);
+
+  @protected
+  List<TestIdTwinRustAsync> dco_decode_list_test_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<TestIdTwinRustAsyncSse> dco_decode_list_test_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<TestIdTwinSse> dco_decode_list_test_id_twin_sse(dynamic raw);
+
+  @protected
+  List<TestIdTwinSync> dco_decode_list_test_id_twin_sync(dynamic raw);
+
+  @protected
+  List<TestIdTwinSyncSse> dco_decode_list_test_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinNormal> dco_decode_list_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinRustAsync> dco_decode_list_weekdays_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<WeekdaysTwinRustAsyncSse> dco_decode_list_weekdays_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSse> dco_decode_list_weekdays_twin_sse(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSync> dco_decode_list_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSyncSse> dco_decode_list_weekdays_twin_sync_sse(dynamic raw);
+
+  @protected
+  Log2TwinNormal dco_decode_log_2_twin_normal(dynamic raw);
+
+  @protected
+  Log2TwinRustAsync dco_decode_log_2_twin_rust_async(dynamic raw);
+
+  @protected
+  Log2TwinRustAsyncSse dco_decode_log_2_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Log2TwinSse dco_decode_log_2_twin_sse(dynamic raw);
+
+  @protected
+  Log2TwinSync dco_decode_log_2_twin_sync(dynamic raw);
+
+  @protected
+  Log2TwinSyncSse dco_decode_log_2_twin_sync_sse(dynamic raw);
+
+  @protected
+  LogTwinNormal dco_decode_log_twin_normal(dynamic raw);
+
+  @protected
+  LogTwinRustAsync dco_decode_log_twin_rust_async(dynamic raw);
+
+  @protected
+  LogTwinRustAsyncSse dco_decode_log_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  LogTwinSse dco_decode_log_twin_sse(dynamic raw);
+
+  @protected
+  MacroStruct dco_decode_macro_struct(dynamic raw);
+
+  @protected
+  MeasureTwinNormal dco_decode_measure_twin_normal(dynamic raw);
+
+  @protected
+  MeasureTwinRustAsync dco_decode_measure_twin_rust_async(dynamic raw);
+
+  @protected
+  MeasureTwinRustAsyncSse dco_decode_measure_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MeasureTwinSse dco_decode_measure_twin_sse(dynamic raw);
+
+  @protected
+  MeasureTwinSync dco_decode_measure_twin_sync(dynamic raw);
+
+  @protected
+  MeasureTwinSyncSse dco_decode_measure_twin_sync_sse(dynamic raw);
+
+  @protected
+  MessageIdTwinNormal dco_decode_message_id_twin_normal(dynamic raw);
+
+  @protected
+  MessageIdTwinRustAsync dco_decode_message_id_twin_rust_async(dynamic raw);
+
+  @protected
+  MessageIdTwinRustAsyncSse dco_decode_message_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MessageIdTwinSse dco_decode_message_id_twin_sse(dynamic raw);
+
+  @protected
+  MessageIdTwinSync dco_decode_message_id_twin_sync(dynamic raw);
+
+  @protected
+  MessageIdTwinSyncSse dco_decode_message_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  MirrorStructTwinNormal dco_decode_mirror_struct_twin_normal(dynamic raw);
+
+  @protected
+  MirrorStructTwinRustAsync dco_decode_mirror_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MirrorStructTwinRustAsyncSse dco_decode_mirror_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MirrorStructTwinSse dco_decode_mirror_struct_twin_sse(dynamic raw);
+
+  @protected
+  MirrorStructTwinSync dco_decode_mirror_struct_twin_sync(dynamic raw);
+
+  @protected
+  MirrorStructTwinSyncSse dco_decode_mirror_struct_twin_sync_sse(dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinNormal
+      dco_decode_more_than_just_one_raw_string_struct_twin_normal(dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinRustAsync
+      dco_decode_more_than_just_one_raw_string_struct_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinRustAsyncSse
+      dco_decode_more_than_just_one_raw_string_struct_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSse
+      dco_decode_more_than_just_one_raw_string_struct_twin_sse(dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSync
+      dco_decode_more_than_just_one_raw_string_struct_twin_sync(dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSyncSse
+      dco_decode_more_than_just_one_raw_string_struct_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  MyEnum dco_decode_my_enum(dynamic raw);
+
+  @protected
+  MyNestedStructTwinNormal dco_decode_my_nested_struct_twin_normal(dynamic raw);
+
+  @protected
+  MyNestedStructTwinRustAsync dco_decode_my_nested_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MyNestedStructTwinRustAsyncSse
+      dco_decode_my_nested_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MyNestedStructTwinSse dco_decode_my_nested_struct_twin_sse(dynamic raw);
+
+  @protected
+  MyNestedStructTwinSync dco_decode_my_nested_struct_twin_sync(dynamic raw);
+
+  @protected
+  MyNestedStructTwinSyncSse dco_decode_my_nested_struct_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  MySize dco_decode_my_size(dynamic raw);
+
+  @protected
+  MyStreamEntryTwinNormal dco_decode_my_stream_entry_twin_normal(dynamic raw);
+
+  @protected
+  MyStreamEntryTwinRustAsync dco_decode_my_stream_entry_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MyStreamEntryTwinRustAsyncSse dco_decode_my_stream_entry_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MyStreamEntryTwinSse dco_decode_my_stream_entry_twin_sse(dynamic raw);
+
+  @protected
+  MyStruct dco_decode_my_struct(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinRustAsync dco_decode_my_tree_node_twin_rust_async(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinRustAsyncSse dco_decode_my_tree_node_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSse dco_decode_my_tree_node_twin_sse(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSync dco_decode_my_tree_node_twin_sync(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSyncSse dco_decode_my_tree_node_twin_sync_sse(dynamic raw);
+
+  @protected
+  NestedRawStringMirrored dco_decode_nested_raw_string_mirrored(dynamic raw);
+
+  @protected
+  NewSimpleStruct dco_decode_new_simple_struct(dynamic raw);
+
+  @protected
+  NewTypeIntTwinNormal dco_decode_new_type_int_twin_normal(dynamic raw);
+
+  @protected
+  NewTypeIntTwinRustAsync dco_decode_new_type_int_twin_rust_async(dynamic raw);
+
+  @protected
+  NewTypeIntTwinRustAsyncSse dco_decode_new_type_int_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinSse dco_decode_new_type_int_twin_sse(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSync dco_decode_new_type_int_twin_sync(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSyncSse dco_decode_new_type_int_twin_sync_sse(dynamic raw);
+
+  @protected
+  NoteTwinNormal dco_decode_note_twin_normal(dynamic raw);
+
+  @protected
+  NoteTwinRustAsync dco_decode_note_twin_rust_async(dynamic raw);
+
+  @protected
+  NoteTwinRustAsyncSse dco_decode_note_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  NoteTwinSse dco_decode_note_twin_sse(dynamic raw);
+
+  @protected
+  NoteTwinSync dco_decode_note_twin_sync(dynamic raw);
+
+  @protected
+  NoteTwinSyncSse dco_decode_note_twin_sync_sse(dynamic raw);
+
+  @protected
+  Numbers dco_decode_numbers(dynamic raw);
+
+  @protected
+  OldSimpleStruct dco_decode_old_simple_struct(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinNormal dco_decode_opaque_nested_twin_normal(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsync dco_decode_opaque_nested_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsyncSse dco_decode_opaque_nested_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSse dco_decode_opaque_nested_twin_sse(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSync dco_decode_opaque_nested_twin_sync(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSyncSse dco_decode_opaque_nested_twin_sync_sse(dynamic raw);
+
+  @protected
+  String? dco_decode_opt_String(dynamic raw);
+
+  @protected
+  Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw);
+
+  @protected
+  DateTime? dco_decode_opt_box_autoadd_Chrono_Naive(dynamic raw);
+
+  @protected
+  DateTime? dco_decode_opt_box_autoadd_Chrono_Utc(dynamic raw);
+
+  @protected
+  Object? dco_decode_opt_box_autoadd_DartOpaque(dynamic raw);
+
+  @protected
+  HideData? dco_decode_opt_box_autoadd_RustOpaque_hide_data(dynamic raw);
+
+  @protected
+  ApplicationEnv? dco_decode_opt_box_autoadd_application_env(dynamic raw);
+
+  @protected
+  AttributeTwinNormal? dco_decode_opt_box_autoadd_attribute_twin_normal(
+      dynamic raw);
+
+  @protected
+  AttributeTwinRustAsync? dco_decode_opt_box_autoadd_attribute_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  AttributeTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_attribute_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  AttributeTwinSse? dco_decode_opt_box_autoadd_attribute_twin_sse(dynamic raw);
+
+  @protected
+  AttributeTwinSync? dco_decode_opt_box_autoadd_attribute_twin_sync(
+      dynamic raw);
+
+  @protected
+  AttributeTwinSyncSse? dco_decode_opt_box_autoadd_attribute_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  bool? dco_decode_opt_box_autoadd_bool(dynamic raw);
+
+  @protected
+  ElementTwinNormal? dco_decode_opt_box_autoadd_element_twin_normal(
+      dynamic raw);
+
+  @protected
+  ElementTwinRustAsync? dco_decode_opt_box_autoadd_element_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ElementTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_element_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ElementTwinSse? dco_decode_opt_box_autoadd_element_twin_sse(dynamic raw);
+
+  @protected
+  ElementTwinSync? dco_decode_opt_box_autoadd_element_twin_sync(dynamic raw);
+
+  @protected
+  ElementTwinSyncSse? dco_decode_opt_box_autoadd_element_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_normal(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse? dco_decode_opt_box_autoadd_exotic_optionals_twin_sse(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_sync(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_sync_sse(dynamic raw);
+
+  @protected
+  double? dco_decode_opt_box_autoadd_f_32(dynamic raw);
+
+  @protected
+  double? dco_decode_opt_box_autoadd_f_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_16(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_32(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_8(dynamic raw);
+
+  @protected
+  MeasureTwinNormal? dco_decode_opt_box_autoadd_measure_twin_normal(
+      dynamic raw);
+
+  @protected
+  MeasureTwinRustAsync? dco_decode_opt_box_autoadd_measure_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MeasureTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_measure_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MeasureTwinSse? dco_decode_opt_box_autoadd_measure_twin_sse(dynamic raw);
+
+  @protected
+  MeasureTwinSync? dco_decode_opt_box_autoadd_measure_twin_sync(dynamic raw);
+
+  @protected
+  MeasureTwinSyncSse? dco_decode_opt_box_autoadd_measure_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinNormal? dco_decode_opt_box_autoadd_new_type_int_twin_normal(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinRustAsync?
+      dco_decode_opt_box_autoadd_new_type_int_twin_rust_async(dynamic raw);
+
+  @protected
+  NewTypeIntTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_new_type_int_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSse? dco_decode_opt_box_autoadd_new_type_int_twin_sse(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinSync? dco_decode_opt_box_autoadd_new_type_int_twin_sync(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinSyncSse? dco_decode_opt_box_autoadd_new_type_int_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  (String, int)? dco_decode_opt_box_autoadd_record_string_i_32(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_16(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_32(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_8(dynamic raw);
+
+  @protected
+  WeekdaysTwinNormal? dco_decode_opt_box_autoadd_weekdays_twin_normal(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsync? dco_decode_opt_box_autoadd_weekdays_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_weekdays_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  WeekdaysTwinSse? dco_decode_opt_box_autoadd_weekdays_twin_sse(dynamic raw);
+
+  @protected
+  WeekdaysTwinSync? dco_decode_opt_box_autoadd_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  WeekdaysTwinSyncSse? dco_decode_opt_box_autoadd_weekdays_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  bool? dco_decode_opt_box_bool(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal? dco_decode_opt_box_exotic_optionals_twin_normal(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync?
+      dco_decode_opt_box_exotic_optionals_twin_rust_async(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse?
+      dco_decode_opt_box_exotic_optionals_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse? dco_decode_opt_box_exotic_optionals_twin_sse(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync? dco_decode_opt_box_exotic_optionals_twin_sync(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse? dco_decode_opt_box_exotic_optionals_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  double? dco_decode_opt_box_f_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_i_32(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_i_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_i_8(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_u_8(dynamic raw);
+
+  @protected
+  List<AttributeTwinNormal>? dco_decode_opt_list_attribute_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsync>? dco_decode_opt_list_attribute_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsyncSse>?
+      dco_decode_opt_list_attribute_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<AttributeTwinSse>? dco_decode_opt_list_attribute_twin_sse(dynamic raw);
+
+  @protected
+  List<AttributeTwinSync>? dco_decode_opt_list_attribute_twin_sync(dynamic raw);
+
+  @protected
+  List<AttributeTwinSyncSse>? dco_decode_opt_list_attribute_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  List<ElementTwinNormal>? dco_decode_opt_list_element_twin_normal(dynamic raw);
+
+  @protected
+  List<ElementTwinRustAsync>? dco_decode_opt_list_element_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<ElementTwinRustAsyncSse>?
+      dco_decode_opt_list_element_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<ElementTwinSse>? dco_decode_opt_list_element_twin_sse(dynamic raw);
+
+  @protected
+  List<ElementTwinSync>? dco_decode_opt_list_element_twin_sync(dynamic raw);
+
+  @protected
+  List<ElementTwinSyncSse>? dco_decode_opt_list_element_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinNormal?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_normal(dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsync?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsyncSse?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<AttributeTwinSse?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_sse(dynamic raw);
+
+  @protected
+  List<AttributeTwinSync?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_sync(dynamic raw);
+
+  @protected
+  List<AttributeTwinSyncSse?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_sync_sse(dynamic raw);
+
+  @protected
+  Float32List? dco_decode_opt_list_prim_f_32(dynamic raw);
+
+  @protected
+  Float64List? dco_decode_opt_list_prim_f_64(dynamic raw);
+
+  @protected
+  Int32List? dco_decode_opt_list_prim_i_32(dynamic raw);
+
+  @protected
+  Int8List? dco_decode_opt_list_prim_i_8(dynamic raw);
+
+  @protected
+  Uint8List? dco_decode_opt_list_prim_u_8(dynamic raw);
+
+  @protected
+  OptVecsTwinNormal dco_decode_opt_vecs_twin_normal(dynamic raw);
+
+  @protected
+  OptVecsTwinRustAsync dco_decode_opt_vecs_twin_rust_async(dynamic raw);
+
+  @protected
+  OptVecsTwinRustAsyncSse dco_decode_opt_vecs_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  OptVecsTwinSse dco_decode_opt_vecs_twin_sse(dynamic raw);
+
+  @protected
+  OptVecsTwinSync dco_decode_opt_vecs_twin_sync(dynamic raw);
+
+  @protected
+  OptVecsTwinSyncSse dco_decode_opt_vecs_twin_sync_sse(dynamic raw);
+
+  @protected
+  PointTwinNormal dco_decode_point_twin_normal(dynamic raw);
+
+  @protected
+  PointTwinNormalArray2 dco_decode_point_twin_normal_array_2(dynamic raw);
+
+  @protected
+  PointTwinRustAsync dco_decode_point_twin_rust_async(dynamic raw);
+
+  @protected
+  PointTwinRustAsyncArray2 dco_decode_point_twin_rust_async_array_2(
+      dynamic raw);
+
+  @protected
+  PointTwinRustAsyncSse dco_decode_point_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  PointTwinRustAsyncSseArray2 dco_decode_point_twin_rust_async_sse_array_2(
+      dynamic raw);
+
+  @protected
+  PointTwinSse dco_decode_point_twin_sse(dynamic raw);
+
+  @protected
+  PointTwinSseArray2 dco_decode_point_twin_sse_array_2(dynamic raw);
+
+  @protected
+  PointTwinSync dco_decode_point_twin_sync(dynamic raw);
+
+  @protected
+  PointTwinSyncArray2 dco_decode_point_twin_sync_array_2(dynamic raw);
+
+  @protected
+  PointTwinSyncSse dco_decode_point_twin_sync_sse(dynamic raw);
+
+  @protected
+  PointTwinSyncSseArray2 dco_decode_point_twin_sync_sse_array_2(dynamic raw);
+
+  @protected
+  RawStringEnumMirrored dco_decode_raw_string_enum_mirrored(dynamic raw);
+
+  @protected
+  RawStringItemStructTwinNormal dco_decode_raw_string_item_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  RawStringItemStructTwinRustAsync
+      dco_decode_raw_string_item_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  RawStringItemStructTwinRustAsyncSse
+      dco_decode_raw_string_item_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  RawStringItemStructTwinSse dco_decode_raw_string_item_struct_twin_sse(
+      dynamic raw);
+
+  @protected
+  RawStringItemStructTwinSync dco_decode_raw_string_item_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  RawStringItemStructTwinSyncSse
+      dco_decode_raw_string_item_struct_twin_sync_sse(dynamic raw);
+
+  @protected
+  RawStringMirrored dco_decode_raw_string_mirrored(dynamic raw);
+
+  @protected
+  (ApplicationSettings, RawStringEnumMirrored)
+      dco_decode_record_application_settings_raw_string_enum_mirrored(
+          dynamic raw);
+
+  @protected
+  (String, int) dco_decode_record_string_i_32(dynamic raw);
+
+  @protected
+  Sequences dco_decode_sequences(dynamic raw);
+
+  @protected
+  SomeStructTwinNormal dco_decode_some_struct_twin_normal(dynamic raw);
+
+  @protected
+  SomeStructTwinRustAsync dco_decode_some_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  SomeStructTwinRustAsyncSse dco_decode_some_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  SomeStructTwinSse dco_decode_some_struct_twin_sse(dynamic raw);
+
+  @protected
+  SomeStructTwinSync dco_decode_some_struct_twin_sync(dynamic raw);
+
+  @protected
+  SomeStructTwinSyncSse dco_decode_some_struct_twin_sync_sse(dynamic raw);
+
+  @protected
+  SpeedTwinNormal dco_decode_speed_twin_normal(dynamic raw);
+
+  @protected
+  SpeedTwinRustAsync dco_decode_speed_twin_rust_async(dynamic raw);
+
+  @protected
+  SpeedTwinRustAsyncSse dco_decode_speed_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SpeedTwinSse dco_decode_speed_twin_sse(dynamic raw);
+
+  @protected
+  SpeedTwinSync dco_decode_speed_twin_sync(dynamic raw);
+
+  @protected
+  SpeedTwinSyncSse dco_decode_speed_twin_sync_sse(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithCommentsTwinRustAsync
+      dco_decode_struct_with_comments_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinRustAsyncSse
+      dco_decode_struct_with_comments_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSse dco_decode_struct_with_comments_twin_sse(
+      dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSync dco_decode_struct_with_comments_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSyncSse dco_decode_struct_with_comments_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(dynamic raw);
+
+  @protected
+  StructWithEnumTwinRustAsync dco_decode_struct_with_enum_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  StructWithEnumTwinRustAsyncSse
+      dco_decode_struct_with_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithEnumTwinSse dco_decode_struct_with_enum_twin_sse(dynamic raw);
+
+  @protected
+  StructWithEnumTwinSync dco_decode_struct_with_enum_twin_sync(dynamic raw);
+
+  @protected
+  StructWithEnumTwinSyncSse dco_decode_struct_with_enum_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinRustAsync
+      dco_decode_struct_with_one_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinRustAsyncSse
+      dco_decode_struct_with_one_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSse dco_decode_struct_with_one_field_twin_sse(
+      dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSync dco_decode_struct_with_one_field_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSyncSse dco_decode_struct_with_one_field_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinNormal dco_decode_struct_with_two_field_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinRustAsync
+      dco_decode_struct_with_two_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinRustAsyncSse
+      dco_decode_struct_with_two_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSse dco_decode_struct_with_two_field_twin_sse(
+      dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSync dco_decode_struct_with_two_field_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSyncSse dco_decode_struct_with_two_field_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinNormal dco_decode_struct_with_zero_field_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinRustAsync
+      dco_decode_struct_with_zero_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinRustAsyncSse
+      dco_decode_struct_with_zero_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSse dco_decode_struct_with_zero_field_twin_sse(
+      dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSync dco_decode_struct_with_zero_field_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSyncSse
+      dco_decode_struct_with_zero_field_twin_sync_sse(dynamic raw);
+
+  @protected
+  SumWithTwinNormal dco_decode_sum_with_twin_normal(dynamic raw);
+
+  @protected
+  SumWithTwinNormalArray3 dco_decode_sum_with_twin_normal_array_3(dynamic raw);
+
+  @protected
+  SumWithTwinRustAsync dco_decode_sum_with_twin_rust_async(dynamic raw);
+
+  @protected
+  SumWithTwinRustAsyncArray3 dco_decode_sum_with_twin_rust_async_array_3(
+      dynamic raw);
+
+  @protected
+  SumWithTwinRustAsyncSse dco_decode_sum_with_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SumWithTwinRustAsyncSseArray3 dco_decode_sum_with_twin_rust_async_sse_array_3(
+      dynamic raw);
+
+  @protected
+  SumWithTwinSse dco_decode_sum_with_twin_sse(dynamic raw);
+
+  @protected
+  SumWithTwinSseArray3 dco_decode_sum_with_twin_sse_array_3(dynamic raw);
+
+  @protected
+  SumWithTwinSync dco_decode_sum_with_twin_sync(dynamic raw);
+
+  @protected
+  SumWithTwinSyncArray3 dco_decode_sum_with_twin_sync_array_3(dynamic raw);
+
+  @protected
+  SumWithTwinSyncSse dco_decode_sum_with_twin_sync_sse(dynamic raw);
+
+  @protected
+  SumWithTwinSyncSseArray3 dco_decode_sum_with_twin_sync_sse_array_3(
+      dynamic raw);
+
+  @protected
+  TestChronoTwinNormal dco_decode_test_chrono_twin_normal(dynamic raw);
+
+  @protected
+  TestChronoTwinRustAsync dco_decode_test_chrono_twin_rust_async(dynamic raw);
+
+  @protected
+  TestChronoTwinSync dco_decode_test_chrono_twin_sync(dynamic raw);
+
+  @protected
+  TestIdTwinNormal dco_decode_test_id_twin_normal(dynamic raw);
+
+  @protected
+  TestIdTwinNormalArray2 dco_decode_test_id_twin_normal_array_2(dynamic raw);
+
+  @protected
+  TestIdTwinNormalArray4 dco_decode_test_id_twin_normal_array_4(dynamic raw);
+
+  @protected
+  TestIdTwinRustAsync dco_decode_test_id_twin_rust_async(dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncArray2 dco_decode_test_id_twin_rust_async_array_2(
+      dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncArray4 dco_decode_test_id_twin_rust_async_array_4(
+      dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncSse dco_decode_test_id_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncSseArray2 dco_decode_test_id_twin_rust_async_sse_array_2(
+      dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncSseArray4 dco_decode_test_id_twin_rust_async_sse_array_4(
+      dynamic raw);
+
+  @protected
+  TestIdTwinSse dco_decode_test_id_twin_sse(dynamic raw);
+
+  @protected
+  TestIdTwinSseArray2 dco_decode_test_id_twin_sse_array_2(dynamic raw);
+
+  @protected
+  TestIdTwinSseArray4 dco_decode_test_id_twin_sse_array_4(dynamic raw);
+
+  @protected
+  TestIdTwinSync dco_decode_test_id_twin_sync(dynamic raw);
+
+  @protected
+  TestIdTwinSyncArray2 dco_decode_test_id_twin_sync_array_2(dynamic raw);
+
+  @protected
+  TestIdTwinSyncArray4 dco_decode_test_id_twin_sync_array_4(dynamic raw);
+
+  @protected
+  TestIdTwinSyncSse dco_decode_test_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  TestIdTwinSyncSseArray2 dco_decode_test_id_twin_sync_sse_array_2(dynamic raw);
+
+  @protected
+  TestIdTwinSyncSseArray4 dco_decode_test_id_twin_sync_sse_array_4(dynamic raw);
+
+  @protected
+  TestModelTwinNormal dco_decode_test_model_twin_normal(dynamic raw);
+
+  @protected
+  TestModelTwinRustAsync dco_decode_test_model_twin_rust_async(dynamic raw);
+
+  @protected
+  TestModelTwinRustAsyncSse dco_decode_test_model_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  TestModelTwinSse dco_decode_test_model_twin_sse(dynamic raw);
+
+  @protected
+  TestModelTwinSync dco_decode_test_model_twin_sync(dynamic raw);
+
+  @protected
+  TestModelTwinSyncSse dco_decode_test_model_twin_sync_sse(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinNormal
+      dco_decode_tuple_struct_with_one_field_twin_normal(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsync
+      dco_decode_tuple_struct_with_one_field_twin_rust_async(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsyncSse
+      dco_decode_tuple_struct_with_one_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSse
+      dco_decode_tuple_struct_with_one_field_twin_sse(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSync
+      dco_decode_tuple_struct_with_one_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSyncSse
+      dco_decode_tuple_struct_with_one_field_twin_sync_sse(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinNormal
+      dco_decode_tuple_struct_with_two_field_twin_normal(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsync
+      dco_decode_tuple_struct_with_two_field_twin_rust_async(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      dco_decode_tuple_struct_with_two_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSse
+      dco_decode_tuple_struct_with_two_field_twin_sse(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSync
+      dco_decode_tuple_struct_with_two_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSyncSse
+      dco_decode_tuple_struct_with_two_field_twin_sync_sse(dynamic raw);
+
+  @protected
+  int dco_decode_u_16(dynamic raw);
+
+  @protected
+  int dco_decode_u_32(dynamic raw);
+
+  @protected
+  int dco_decode_u_64(dynamic raw);
+
+  @protected
+  int dco_decode_u_8(dynamic raw);
+
+  @protected
+  U8Array1600 dco_decode_u_8_array_1600(dynamic raw);
+
+  @protected
+  U8Array32 dco_decode_u_8_array_32(dynamic raw);
+
+  @protected
+  U8Array5 dco_decode_u_8_array_5(dynamic raw);
+
+  @protected
+  U8Array8 dco_decode_u_8_array_8(dynamic raw);
+
+  @protected
+  void dco_decode_unit(dynamic raw);
+
+  @protected
+  UserIdTwinNormal dco_decode_user_id_twin_normal(dynamic raw);
+
+  @protected
+  UserIdTwinRustAsync dco_decode_user_id_twin_rust_async(dynamic raw);
+
+  @protected
+  UserIdTwinRustAsyncSse dco_decode_user_id_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  UserIdTwinSse dco_decode_user_id_twin_sse(dynamic raw);
+
+  @protected
+  UserIdTwinSync dco_decode_user_id_twin_sync(dynamic raw);
+
+  @protected
+  UserIdTwinSyncSse dco_decode_user_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  int dco_decode_usize(dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinNormal dco_decode_vec_of_primitive_pack_twin_normal(
+      dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinRustAsync
+      dco_decode_vec_of_primitive_pack_twin_rust_async(dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinRustAsyncSse
+      dco_decode_vec_of_primitive_pack_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinSse dco_decode_vec_of_primitive_pack_twin_sse(
+      dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinSync dco_decode_vec_of_primitive_pack_twin_sync(
+      dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinSyncSse dco_decode_vec_of_primitive_pack_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinNormal dco_decode_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsync dco_decode_weekdays_twin_rust_async(dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsyncSse dco_decode_weekdays_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  WeekdaysTwinSse dco_decode_weekdays_twin_sse(dynamic raw);
+
+  @protected
+  WeekdaysTwinSync dco_decode_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  WeekdaysTwinSyncSse dco_decode_weekdays_twin_sync_sse(dynamic raw);
+
+  @protected
+  AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxFnStringString
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxMyTraitTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxMyTraitTwinSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxMyTraitTwinSync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxMyTraitTwinSyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinNormal
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSse
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSync
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSyncSse
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinNormal
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSse
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSync
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSyncSse
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSse
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSync
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSyncSse
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSse
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSync
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSyncSse
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  String sse_decode_Backtrace(SseDeserializer deserializer);
+
+  @protected
+  Duration sse_decode_Chrono_Duration(SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_Chrono_Local(SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_Chrono_Naive(SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_Chrono_Utc(SseDeserializer deserializer);
+
+  @protected
+  Object sse_decode_DartOpaque(SseDeserializer deserializer);
+
+  @protected
+  ObjectArray1 sse_decode_DartOpaque_array_1(SseDeserializer deserializer);
+
+  @protected
+  MutexHideData sse_decode_RustOpaque_MutexHideData(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockHideData sse_decode_RustOpaque_RwLockHideData(
+      SseDeserializer deserializer);
+
+  @protected
+  BoxDartDebugTwinNormal sse_decode_RustOpaque_box_dynDartDebugTwinNormal(
+      SseDeserializer deserializer);
+
+  @protected
+  BoxDartDebugTwinRustAsync sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
+      SseDeserializer deserializer);
+
+  @protected
+  BoxDartDebugTwinRustAsyncSse
+      sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  BoxDartDebugTwinSse sse_decode_RustOpaque_box_dynDartDebugTwinSse(
+      SseDeserializer deserializer);
+
+  @protected
+  BoxDartDebugTwinSync sse_decode_RustOpaque_box_dynDartDebugTwinSync(
+      SseDeserializer deserializer);
+
+  @protected
+  BoxDartDebugTwinSyncSse sse_decode_RustOpaque_box_dynDartDebugTwinSyncSse(
+      SseDeserializer deserializer);
+
+  @protected
+  FrbOpaqueReturn sse_decode_RustOpaque_frb_opaque_return(
+      SseDeserializer deserializer);
+
+  @protected
+  FrbOpaqueSyncReturn sse_decode_RustOpaque_frb_opaque_sync_return(
+      SseDeserializer deserializer);
+
+  @protected
+  HideData sse_decode_RustOpaque_hide_data(SseDeserializer deserializer);
+
+  @protected
+  HideDataArray2 sse_decode_RustOpaque_hide_data_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  I32 sse_decode_RustOpaque_i_32(SseDeserializer deserializer);
+
+  @protected
+  NonCloneData sse_decode_RustOpaque_non_clone_data(
+      SseDeserializer deserializer);
+
+  @protected
+  NonSendHideData sse_decode_RustOpaque_non_send_hide_data(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxFnStringString
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinNormal
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSse
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSync
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxHelloTraitTwinSyncSse
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxMyTraitTwinNormal
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxMyTraitTwinSse
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxMyTraitTwinSync
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockBoxMyTraitTwinSyncSse
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinNormal
+      sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSse
+      sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSync
+      sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockNonCloneSimpleTwinSyncSse
+      sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSse
+      sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSync
+      sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+      sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  String sse_decode_String(SseDeserializer deserializer);
+
+  @protected
+  UuidValue sse_decode_Uuid(SseDeserializer deserializer);
+
+  @protected
+  ATwinNormal sse_decode_a_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  ATwinRustAsync sse_decode_a_twin_rust_async(SseDeserializer deserializer);
+
+  @protected
+  ATwinRustAsyncSse sse_decode_a_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ATwinSse sse_decode_a_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  ATwinSync sse_decode_a_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  ATwinSyncSse sse_decode_a_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  AbcTwinNormal sse_decode_abc_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  AbcTwinRustAsync sse_decode_abc_twin_rust_async(SseDeserializer deserializer);
+
+  @protected
+  AbcTwinRustAsyncSse sse_decode_abc_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  AbcTwinSse sse_decode_abc_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  AbcTwinSync sse_decode_abc_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  AbcTwinSyncSse sse_decode_abc_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  AnotherMacroStructTwinNormal sse_decode_another_macro_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  AnotherTwinNormal sse_decode_another_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  AnotherTwinRustAsync sse_decode_another_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  AnotherTwinRustAsyncSse sse_decode_another_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  AnotherTwinSse sse_decode_another_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  AnotherTwinSync sse_decode_another_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  AnotherTwinSyncSse sse_decode_another_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationEnv sse_decode_application_env(SseDeserializer deserializer);
+
+  @protected
+  ApplicationEnvVar sse_decode_application_env_var(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationMessage sse_decode_application_message(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationMode sse_decode_application_mode(SseDeserializer deserializer);
+
+  @protected
+  ApplicationSettings sse_decode_application_settings(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinNormal sse_decode_attribute_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinRustAsync sse_decode_attribute_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinRustAsyncSse sse_decode_attribute_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinSse sse_decode_attribute_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinSync sse_decode_attribute_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinSyncSse sse_decode_attribute_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BTwinNormal sse_decode_b_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  BTwinRustAsync sse_decode_b_twin_rust_async(SseDeserializer deserializer);
+
+  @protected
+  BTwinRustAsyncSse sse_decode_b_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BTwinSse sse_decode_b_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  BTwinSync sse_decode_b_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  BTwinSyncSse sse_decode_b_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  BigBuffersTwinNormal sse_decode_big_buffers_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  BigBuffersTwinRustAsync sse_decode_big_buffers_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  BigBuffersTwinRustAsyncSse sse_decode_big_buffers_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BigBuffersTwinSse sse_decode_big_buffers_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BigBuffersTwinSync sse_decode_big_buffers_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  BigBuffersTwinSyncSse sse_decode_big_buffers_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BlobTwinNormal sse_decode_blob_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  BlobTwinRustAsync sse_decode_blob_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  BlobTwinRustAsyncSse sse_decode_blob_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BlobTwinSse sse_decode_blob_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  BlobTwinSync sse_decode_blob_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  BlobTwinSyncSse sse_decode_blob_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  bool sse_decode_bool(SseDeserializer deserializer);
+
+  @protected
+  ApplicationEnv sse_decode_box_application_env(SseDeserializer deserializer);
+
+  @protected
+  Duration sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer);
+
+  @protected
+  Object sse_decode_box_autoadd_DartOpaque(SseDeserializer deserializer);
+
+  @protected
+  HideData sse_decode_box_autoadd_RustOpaque_hide_data(
+      SseDeserializer deserializer);
+
+  @protected
+  ATwinNormal sse_decode_box_autoadd_a_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ATwinRustAsync sse_decode_box_autoadd_a_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ATwinRustAsyncSse sse_decode_box_autoadd_a_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ATwinSse sse_decode_box_autoadd_a_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  ATwinSync sse_decode_box_autoadd_a_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  ATwinSyncSse sse_decode_box_autoadd_a_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  AbcTwinNormal sse_decode_box_autoadd_abc_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  AbcTwinRustAsync sse_decode_box_autoadd_abc_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  AbcTwinRustAsyncSse sse_decode_box_autoadd_abc_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  AbcTwinSse sse_decode_box_autoadd_abc_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  AbcTwinSync sse_decode_box_autoadd_abc_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  AbcTwinSyncSse sse_decode_box_autoadd_abc_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationEnv sse_decode_box_autoadd_application_env(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationSettings sse_decode_box_autoadd_application_settings(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinNormal sse_decode_box_autoadd_attribute_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinRustAsync sse_decode_box_autoadd_attribute_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinRustAsyncSse
+      sse_decode_box_autoadd_attribute_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinSse sse_decode_box_autoadd_attribute_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinSync sse_decode_box_autoadd_attribute_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinSyncSse sse_decode_box_autoadd_attribute_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BTwinNormal sse_decode_box_autoadd_b_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  BTwinRustAsync sse_decode_box_autoadd_b_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  BTwinRustAsyncSse sse_decode_box_autoadd_b_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BTwinSse sse_decode_box_autoadd_b_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  BTwinSync sse_decode_box_autoadd_b_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  BTwinSyncSse sse_decode_box_autoadd_b_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  bool sse_decode_box_autoadd_bool(SseDeserializer deserializer);
+
+  @protected
+  CTwinNormal sse_decode_box_autoadd_c_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CTwinRustAsync sse_decode_box_autoadd_c_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  CTwinRustAsyncSse sse_decode_box_autoadd_c_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CTwinSse sse_decode_box_autoadd_c_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  CTwinSync sse_decode_box_autoadd_c_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  CTwinSyncSse sse_decode_box_autoadd_c_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinNormal sse_decode_box_autoadd_concatenate_with_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinRustAsync
+      sse_decode_box_autoadd_concatenate_with_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinRustAsyncSse
+      sse_decode_box_autoadd_concatenate_with_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinSse sse_decode_box_autoadd_concatenate_with_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinSync sse_decode_box_autoadd_concatenate_with_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinSyncSse
+      sse_decode_box_autoadd_concatenate_with_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinNormal
+      sse_decode_box_autoadd_custom_nested_error_2_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinRustAsync
+      sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinRustAsyncSse
+      sse_decode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinSse
+      sse_decode_box_autoadd_custom_nested_error_2_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinSync
+      sse_decode_box_autoadd_custom_nested_error_2_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinSyncSse
+      sse_decode_box_autoadd_custom_nested_error_2_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinNormal
+      sse_decode_box_autoadd_custom_nested_error_inner_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsync
+      sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsyncSse
+      sse_decode_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinSse
+      sse_decode_box_autoadd_custom_nested_error_inner_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinSync
+      sse_decode_box_autoadd_custom_nested_error_inner_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinSyncSse
+      sse_decode_box_autoadd_custom_nested_error_inner_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinNormal
+      sse_decode_box_autoadd_custom_nested_error_outer_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsync
+      sse_decode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsyncSse
+      sse_decode_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinSse
+      sse_decode_box_autoadd_custom_nested_error_outer_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinSync
+      sse_decode_box_autoadd_custom_nested_error_outer_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinSyncSse
+      sse_decode_box_autoadd_custom_nested_error_outer_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinNormal
+      sse_decode_box_autoadd_custom_struct_error_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinRustAsync
+      sse_decode_box_autoadd_custom_struct_error_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinRustAsyncSse
+      sse_decode_box_autoadd_custom_struct_error_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinSse sse_decode_box_autoadd_custom_struct_error_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinSync
+      sse_decode_box_autoadd_custom_struct_error_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinSyncSse
+      sse_decode_box_autoadd_custom_struct_error_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinNormal sse_decode_box_autoadd_custom_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinRustAsync
+      sse_decode_box_autoadd_custom_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinRustAsyncSse
+      sse_decode_box_autoadd_custom_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinSse sse_decode_box_autoadd_custom_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinSync sse_decode_box_autoadd_custom_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinSyncSse sse_decode_box_autoadd_custom_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinNormal sse_decode_box_autoadd_customized_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinRustAsync sse_decode_box_autoadd_customized_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinRustAsyncSse
+      sse_decode_box_autoadd_customized_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinSse sse_decode_box_autoadd_customized_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinSync sse_decode_box_autoadd_customized_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinSyncSse sse_decode_box_autoadd_customized_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinNormal
+      sse_decode_box_autoadd_dart_opaque_nested_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinRustAsync
+      sse_decode_box_autoadd_dart_opaque_nested_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinRustAsyncSse
+      sse_decode_box_autoadd_dart_opaque_nested_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinSse sse_decode_box_autoadd_dart_opaque_nested_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinSync sse_decode_box_autoadd_dart_opaque_nested_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinSyncSse
+      sse_decode_box_autoadd_dart_opaque_nested_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ElementTwinNormal sse_decode_box_autoadd_element_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinRustAsync sse_decode_box_autoadd_element_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinRustAsyncSse sse_decode_box_autoadd_element_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinSse sse_decode_box_autoadd_element_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinSync sse_decode_box_autoadd_element_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinSyncSse sse_decode_box_autoadd_element_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinNormal sse_decode_box_autoadd_empty_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinRustAsync sse_decode_box_autoadd_empty_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinRustAsyncSse sse_decode_box_autoadd_empty_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinSse sse_decode_box_autoadd_empty_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinSync sse_decode_box_autoadd_empty_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinSyncSse sse_decode_box_autoadd_empty_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinNormal sse_decode_box_autoadd_enum_dart_opaque_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinRustAsync
+      sse_decode_box_autoadd_enum_dart_opaque_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinRustAsyncSse
+      sse_decode_box_autoadd_enum_dart_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinSse sse_decode_box_autoadd_enum_dart_opaque_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinSync sse_decode_box_autoadd_enum_dart_opaque_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinSyncSse
+      sse_decode_box_autoadd_enum_dart_opaque_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinNormal sse_decode_box_autoadd_enum_opaque_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinRustAsync sse_decode_box_autoadd_enum_opaque_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSse
+      sse_decode_box_autoadd_enum_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinSse sse_decode_box_autoadd_enum_opaque_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinSync sse_decode_box_autoadd_enum_opaque_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinSyncSse sse_decode_box_autoadd_enum_opaque_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinNormal
+      sse_decode_box_autoadd_enum_with_item_mixed_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinRustAsync
+      sse_decode_box_autoadd_enum_with_item_mixed_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinRustAsyncSse
+      sse_decode_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinSse sse_decode_box_autoadd_enum_with_item_mixed_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinSync
+      sse_decode_box_autoadd_enum_with_item_mixed_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinSyncSse
+      sse_decode_box_autoadd_enum_with_item_mixed_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinNormal
+      sse_decode_box_autoadd_enum_with_item_struct_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinRustAsync
+      sse_decode_box_autoadd_enum_with_item_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinRustAsyncSse
+      sse_decode_box_autoadd_enum_with_item_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinSse
+      sse_decode_box_autoadd_enum_with_item_struct_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinSync
+      sse_decode_box_autoadd_enum_with_item_struct_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinSyncSse
+      sse_decode_box_autoadd_enum_with_item_struct_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinNormal
+      sse_decode_box_autoadd_enum_with_item_tuple_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinRustAsync
+      sse_decode_box_autoadd_enum_with_item_tuple_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinRustAsyncSse
+      sse_decode_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinSse sse_decode_box_autoadd_enum_with_item_tuple_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinSync
+      sse_decode_box_autoadd_enum_with_item_tuple_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinSyncSse
+      sse_decode_box_autoadd_enum_with_item_tuple_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EventTwinNormal sse_decode_box_autoadd_event_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EventTwinRustAsync sse_decode_box_autoadd_event_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  EventTwinRustAsyncSse sse_decode_box_autoadd_event_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EventTwinSse sse_decode_box_autoadd_event_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinNormal sse_decode_box_autoadd_exotic_optionals_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsync
+      sse_decode_box_autoadd_exotic_optionals_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse
+      sse_decode_box_autoadd_exotic_optionals_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSse sse_decode_box_autoadd_exotic_optionals_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSync sse_decode_box_autoadd_exotic_optionals_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSyncSse
+      sse_decode_box_autoadd_exotic_optionals_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  double sse_decode_box_autoadd_f_32(SseDeserializer deserializer);
+
+  @protected
+  double sse_decode_box_autoadd_f_64(SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinNormal sse_decode_box_autoadd_feature_chrono_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinRustAsync
+      sse_decode_box_autoadd_feature_chrono_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinSync sse_decode_box_autoadd_feature_chrono_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinNormal sse_decode_box_autoadd_feature_uuid_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinRustAsync sse_decode_box_autoadd_feature_uuid_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinSync sse_decode_box_autoadd_feature_uuid_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinNormal sse_decode_box_autoadd_feed_id_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinRustAsync sse_decode_box_autoadd_feed_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinRustAsyncSse sse_decode_box_autoadd_feed_id_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinSse sse_decode_box_autoadd_feed_id_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinSync sse_decode_box_autoadd_feed_id_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinSyncSse sse_decode_box_autoadd_feed_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_i_16(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_i_32(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_i_64(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_i_8(SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinNormal sse_decode_box_autoadd_kitchen_sink_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinRustAsync sse_decode_box_autoadd_kitchen_sink_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinRustAsyncSse
+      sse_decode_box_autoadd_kitchen_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinSse sse_decode_box_autoadd_kitchen_sink_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinSync sse_decode_box_autoadd_kitchen_sink_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinSyncSse sse_decode_box_autoadd_kitchen_sink_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ListOfNestedRawStringMirrored
+      sse_decode_box_autoadd_list_of_nested_raw_string_mirrored(
+          SseDeserializer deserializer);
+
+  @protected
+  MacroStruct sse_decode_box_autoadd_macro_struct(SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinNormal sse_decode_box_autoadd_measure_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinRustAsync sse_decode_box_autoadd_measure_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinRustAsyncSse sse_decode_box_autoadd_measure_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinSse sse_decode_box_autoadd_measure_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinSync sse_decode_box_autoadd_measure_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinSyncSse sse_decode_box_autoadd_measure_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinNormal sse_decode_box_autoadd_message_id_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinRustAsync sse_decode_box_autoadd_message_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinRustAsyncSse
+      sse_decode_box_autoadd_message_id_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinSse sse_decode_box_autoadd_message_id_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinSync sse_decode_box_autoadd_message_id_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinSyncSse sse_decode_box_autoadd_message_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinNormal sse_decode_box_autoadd_my_nested_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinRustAsync
+      sse_decode_box_autoadd_my_nested_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinRustAsyncSse
+      sse_decode_box_autoadd_my_nested_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinSse sse_decode_box_autoadd_my_nested_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinSync sse_decode_box_autoadd_my_nested_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinSyncSse
+      sse_decode_box_autoadd_my_nested_struct_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MySize sse_decode_box_autoadd_my_size(SseDeserializer deserializer);
+
+  @protected
+  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinNormal sse_decode_box_autoadd_my_tree_node_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinRustAsync sse_decode_box_autoadd_my_tree_node_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinRustAsyncSse
+      sse_decode_box_autoadd_my_tree_node_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinSse sse_decode_box_autoadd_my_tree_node_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinSync sse_decode_box_autoadd_my_tree_node_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinSyncSse sse_decode_box_autoadd_my_tree_node_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NestedRawStringMirrored sse_decode_box_autoadd_nested_raw_string_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinNormal sse_decode_box_autoadd_new_type_int_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinRustAsync sse_decode_box_autoadd_new_type_int_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinRustAsyncSse
+      sse_decode_box_autoadd_new_type_int_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinSse sse_decode_box_autoadd_new_type_int_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinSync sse_decode_box_autoadd_new_type_int_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinSyncSse sse_decode_box_autoadd_new_type_int_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NoteTwinNormal sse_decode_box_autoadd_note_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  NoteTwinRustAsync sse_decode_box_autoadd_note_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  NoteTwinRustAsyncSse sse_decode_box_autoadd_note_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NoteTwinSse sse_decode_box_autoadd_note_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NoteTwinSync sse_decode_box_autoadd_note_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  NoteTwinSyncSse sse_decode_box_autoadd_note_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  Numbers sse_decode_box_autoadd_numbers(SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinNormal sse_decode_box_autoadd_opaque_nested_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinRustAsync
+      sse_decode_box_autoadd_opaque_nested_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinRustAsyncSse
+      sse_decode_box_autoadd_opaque_nested_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinSse sse_decode_box_autoadd_opaque_nested_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinSync sse_decode_box_autoadd_opaque_nested_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinSyncSse sse_decode_box_autoadd_opaque_nested_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinNormal sse_decode_box_autoadd_opt_vecs_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinRustAsync sse_decode_box_autoadd_opt_vecs_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinRustAsyncSse sse_decode_box_autoadd_opt_vecs_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinSse sse_decode_box_autoadd_opt_vecs_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinSync sse_decode_box_autoadd_opt_vecs_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinSyncSse sse_decode_box_autoadd_opt_vecs_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringMirrored sse_decode_box_autoadd_raw_string_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, int) sse_decode_box_autoadd_record_string_i_32(
+      SseDeserializer deserializer);
+
+  @protected
+  Sequences sse_decode_box_autoadd_sequences(SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinNormal sse_decode_box_autoadd_some_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinRustAsync sse_decode_box_autoadd_some_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinRustAsyncSse
+      sse_decode_box_autoadd_some_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinSse sse_decode_box_autoadd_some_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinSync sse_decode_box_autoadd_some_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinSyncSse sse_decode_box_autoadd_some_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinNormal
+      sse_decode_box_autoadd_struct_with_comments_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinRustAsync
+      sse_decode_box_autoadd_struct_with_comments_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinRustAsyncSse
+      sse_decode_box_autoadd_struct_with_comments_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinSse
+      sse_decode_box_autoadd_struct_with_comments_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinSync
+      sse_decode_box_autoadd_struct_with_comments_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinSyncSse
+      sse_decode_box_autoadd_struct_with_comments_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinNormal sse_decode_box_autoadd_struct_with_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinRustAsync
+      sse_decode_box_autoadd_struct_with_enum_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinRustAsyncSse
+      sse_decode_box_autoadd_struct_with_enum_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinSse sse_decode_box_autoadd_struct_with_enum_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinSync sse_decode_box_autoadd_struct_with_enum_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinSyncSse
+      sse_decode_box_autoadd_struct_with_enum_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinNormal
+      sse_decode_box_autoadd_struct_with_one_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinRustAsync
+      sse_decode_box_autoadd_struct_with_one_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinRustAsyncSse
+      sse_decode_box_autoadd_struct_with_one_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinSse
+      sse_decode_box_autoadd_struct_with_one_field_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinSync
+      sse_decode_box_autoadd_struct_with_one_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinSyncSse
+      sse_decode_box_autoadd_struct_with_one_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinNormal
+      sse_decode_box_autoadd_struct_with_two_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinRustAsync
+      sse_decode_box_autoadd_struct_with_two_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinRustAsyncSse
+      sse_decode_box_autoadd_struct_with_two_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinSse
+      sse_decode_box_autoadd_struct_with_two_field_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinSync
+      sse_decode_box_autoadd_struct_with_two_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinSyncSse
+      sse_decode_box_autoadd_struct_with_two_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinNormal
+      sse_decode_box_autoadd_struct_with_zero_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinRustAsync
+      sse_decode_box_autoadd_struct_with_zero_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinRustAsyncSse
+      sse_decode_box_autoadd_struct_with_zero_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinSse
+      sse_decode_box_autoadd_struct_with_zero_field_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinSync
+      sse_decode_box_autoadd_struct_with_zero_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinSyncSse
+      sse_decode_box_autoadd_struct_with_zero_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinNormal sse_decode_box_autoadd_sum_with_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinRustAsync sse_decode_box_autoadd_sum_with_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinRustAsyncSse sse_decode_box_autoadd_sum_with_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinSse sse_decode_box_autoadd_sum_with_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinSync sse_decode_box_autoadd_sum_with_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinSyncSse sse_decode_box_autoadd_sum_with_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinNormal sse_decode_box_autoadd_test_id_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinRustAsync sse_decode_box_autoadd_test_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinRustAsyncSse sse_decode_box_autoadd_test_id_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSse sse_decode_box_autoadd_test_id_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSync sse_decode_box_autoadd_test_id_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSyncSse sse_decode_box_autoadd_test_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinNormal
+      sse_decode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsync
+      sse_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsyncSse
+      sse_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinSse
+      sse_decode_box_autoadd_tuple_struct_with_one_field_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinSync
+      sse_decode_box_autoadd_tuple_struct_with_one_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinSyncSse
+      sse_decode_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinNormal
+      sse_decode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsync
+      sse_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      sse_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinSse
+      sse_decode_box_autoadd_tuple_struct_with_two_field_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinSync
+      sse_decode_box_autoadd_tuple_struct_with_two_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinSyncSse
+      sse_decode_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_u_16(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_u_32(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_u_64(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_autoadd_u_8(SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinNormal sse_decode_box_autoadd_user_id_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinRustAsync sse_decode_box_autoadd_user_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinRustAsyncSse sse_decode_box_autoadd_user_id_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinSse sse_decode_box_autoadd_user_id_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinSync sse_decode_box_autoadd_user_id_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinSyncSse sse_decode_box_autoadd_user_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinNormal sse_decode_box_autoadd_weekdays_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinRustAsync sse_decode_box_autoadd_weekdays_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinRustAsyncSse sse_decode_box_autoadd_weekdays_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSse sse_decode_box_autoadd_weekdays_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSync sse_decode_box_autoadd_weekdays_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSyncSse sse_decode_box_autoadd_weekdays_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BlobTwinNormal sse_decode_box_blob_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  BlobTwinRustAsync sse_decode_box_blob_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  BlobTwinRustAsyncSse sse_decode_box_blob_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  BlobTwinSse sse_decode_box_blob_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  BlobTwinSync sse_decode_box_blob_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  BlobTwinSyncSse sse_decode_box_blob_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  bool sse_decode_box_bool(SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinNormal sse_decode_box_distance_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinRustAsync sse_decode_box_distance_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinRustAsyncSse sse_decode_box_distance_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinSse sse_decode_box_distance_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinSync sse_decode_box_distance_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinSyncSse sse_decode_box_distance_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinNormal sse_decode_box_exotic_optionals_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsync sse_decode_box_exotic_optionals_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse
+      sse_decode_box_exotic_optionals_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSse sse_decode_box_exotic_optionals_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSync sse_decode_box_exotic_optionals_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSyncSse sse_decode_box_exotic_optionals_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  double sse_decode_box_f_64(SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinNormal sse_decode_box_feed_id_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinRustAsync sse_decode_box_feed_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinRustAsyncSse sse_decode_box_feed_id_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinSse sse_decode_box_feed_id_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinSync sse_decode_box_feed_id_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinSyncSse sse_decode_box_feed_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_i_32(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_i_64(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_i_8(SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinNormal sse_decode_box_kitchen_sink_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinRustAsync sse_decode_box_kitchen_sink_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinRustAsyncSse sse_decode_box_kitchen_sink_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinSse sse_decode_box_kitchen_sink_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinSync sse_decode_box_kitchen_sink_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinSyncSse sse_decode_box_kitchen_sink_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MySize sse_decode_box_my_size(SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinNormal sse_decode_box_speed_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinRustAsync sse_decode_box_speed_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinRustAsyncSse sse_decode_box_speed_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinSse sse_decode_box_speed_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinSync sse_decode_box_speed_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinSyncSse sse_decode_box_speed_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_box_u_8(SseDeserializer deserializer);
+
+  @protected
+  U8Array1600 sse_decode_box_u_8_array_1600(SseDeserializer deserializer);
+
+  @protected
+  U8Array8 sse_decode_box_u_8_array_8(SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinNormal sse_decode_box_weekdays_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinRustAsync sse_decode_box_weekdays_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinRustAsyncSse sse_decode_box_weekdays_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSse sse_decode_box_weekdays_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSync sse_decode_box_weekdays_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSyncSse sse_decode_box_weekdays_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CTwinNormal sse_decode_c_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  CTwinRustAsync sse_decode_c_twin_rust_async(SseDeserializer deserializer);
+
+  @protected
+  CTwinRustAsyncSse sse_decode_c_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CTwinSse sse_decode_c_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  CTwinSync sse_decode_c_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  CTwinSyncSse sse_decode_c_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinNormal sse_decode_concatenate_with_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinRustAsync sse_decode_concatenate_with_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinRustAsyncSse
+      sse_decode_concatenate_with_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinSse sse_decode_concatenate_with_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinSync sse_decode_concatenate_with_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ConcatenateWithTwinSyncSse sse_decode_concatenate_with_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ContainsMirroredSubStructTwinNormal
+      sse_decode_contains_mirrored_sub_struct_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  ContainsMirroredSubStructTwinRustAsync
+      sse_decode_contains_mirrored_sub_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ContainsMirroredSubStructTwinRustAsyncSse
+      sse_decode_contains_mirrored_sub_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ContainsMirroredSubStructTwinSse
+      sse_decode_contains_mirrored_sub_struct_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ContainsMirroredSubStructTwinSync
+      sse_decode_contains_mirrored_sub_struct_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  ContainsMirroredSubStructTwinSyncSse
+      sse_decode_contains_mirrored_sub_struct_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomEnumErrorTwinNormal sse_decode_custom_enum_error_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomEnumErrorTwinRustAsync sse_decode_custom_enum_error_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomEnumErrorTwinRustAsyncSse
+      sse_decode_custom_enum_error_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomEnumErrorTwinSse sse_decode_custom_enum_error_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomEnumErrorTwinSync sse_decode_custom_enum_error_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomEnumErrorTwinSyncSse sse_decode_custom_enum_error_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomErrorTwinNormal sse_decode_custom_error_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomErrorTwinRustAsync sse_decode_custom_error_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomErrorTwinRustAsyncSse sse_decode_custom_error_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomErrorTwinSse sse_decode_custom_error_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomErrorTwinSync sse_decode_custom_error_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomErrorTwinSyncSse sse_decode_custom_error_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError1TwinNormal sse_decode_custom_nested_error_1_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError1TwinRustAsync
+      sse_decode_custom_nested_error_1_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError1TwinRustAsyncSse
+      sse_decode_custom_nested_error_1_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError1TwinSse sse_decode_custom_nested_error_1_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError1TwinSync sse_decode_custom_nested_error_1_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError1TwinSyncSse sse_decode_custom_nested_error_1_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinNormal sse_decode_custom_nested_error_2_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinRustAsync
+      sse_decode_custom_nested_error_2_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinRustAsyncSse
+      sse_decode_custom_nested_error_2_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinSse sse_decode_custom_nested_error_2_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinSync sse_decode_custom_nested_error_2_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedError2TwinSyncSse sse_decode_custom_nested_error_2_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinNormal
+      sse_decode_custom_nested_error_inner_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsync
+      sse_decode_custom_nested_error_inner_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsyncSse
+      sse_decode_custom_nested_error_inner_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinSse sse_decode_custom_nested_error_inner_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinSync sse_decode_custom_nested_error_inner_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorInnerTwinSyncSse
+      sse_decode_custom_nested_error_inner_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinNormal
+      sse_decode_custom_nested_error_outer_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsync
+      sse_decode_custom_nested_error_outer_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsyncSse
+      sse_decode_custom_nested_error_outer_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinSse sse_decode_custom_nested_error_outer_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinSync sse_decode_custom_nested_error_outer_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomNestedErrorOuterTwinSyncSse
+      sse_decode_custom_nested_error_outer_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorAnotherTwinNormal
+      sse_decode_custom_struct_error_another_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorAnotherTwinRustAsync
+      sse_decode_custom_struct_error_another_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorAnotherTwinRustAsyncSse
+      sse_decode_custom_struct_error_another_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorAnotherTwinSse
+      sse_decode_custom_struct_error_another_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorAnotherTwinSync
+      sse_decode_custom_struct_error_another_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorAnotherTwinSyncSse
+      sse_decode_custom_struct_error_another_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinNormal sse_decode_custom_struct_error_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinRustAsync sse_decode_custom_struct_error_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinRustAsyncSse
+      sse_decode_custom_struct_error_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinSse sse_decode_custom_struct_error_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinSync sse_decode_custom_struct_error_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructErrorTwinSyncSse sse_decode_custom_struct_error_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinNormal sse_decode_custom_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinRustAsync sse_decode_custom_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinRustAsyncSse sse_decode_custom_struct_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinSse sse_decode_custom_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinSync sse_decode_custom_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomStructTwinSyncSse sse_decode_custom_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinNormal sse_decode_customized_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinRustAsync sse_decode_customized_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinRustAsyncSse sse_decode_customized_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinSse sse_decode_customized_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinSync sse_decode_customized_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  CustomizedTwinSyncSse sse_decode_customized_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinNormal sse_decode_dart_opaque_nested_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinRustAsync sse_decode_dart_opaque_nested_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinRustAsyncSse
+      sse_decode_dart_opaque_nested_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinSse sse_decode_dart_opaque_nested_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinSync sse_decode_dart_opaque_nested_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueNestedTwinSyncSse sse_decode_dart_opaque_nested_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  dynamic sse_decode_dartabi(SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinNormal sse_decode_distance_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinRustAsync sse_decode_distance_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinRustAsyncSse sse_decode_distance_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinSse sse_decode_distance_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinSync sse_decode_distance_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  DistanceTwinSyncSse sse_decode_distance_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinNormal sse_decode_element_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinRustAsync sse_decode_element_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinRustAsyncSse sse_decode_element_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinSse sse_decode_element_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  ElementTwinSync sse_decode_element_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  ElementTwinSyncSse sse_decode_element_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinNormal sse_decode_empty_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinRustAsync sse_decode_empty_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinRustAsyncSse sse_decode_empty_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinSse sse_decode_empty_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinSync sse_decode_empty_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  EmptyTwinSyncSse sse_decode_empty_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinNormal sse_decode_enum_dart_opaque_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinRustAsync sse_decode_enum_dart_opaque_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinRustAsyncSse
+      sse_decode_enum_dart_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinSse sse_decode_enum_dart_opaque_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinSync sse_decode_enum_dart_opaque_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumDartOpaqueTwinSyncSse sse_decode_enum_dart_opaque_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinNormal sse_decode_enum_opaque_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinNormalArray5 sse_decode_enum_opaque_twin_normal_array_5(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinRustAsync sse_decode_enum_opaque_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinRustAsyncArray5 sse_decode_enum_opaque_twin_rust_async_array_5(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSse sse_decode_enum_opaque_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseArray5
+      sse_decode_enum_opaque_twin_rust_async_sse_array_5(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinSse sse_decode_enum_opaque_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinSseArray5 sse_decode_enum_opaque_twin_sse_array_5(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinSync sse_decode_enum_opaque_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinSyncArray5 sse_decode_enum_opaque_twin_sync_array_5(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinSyncSse sse_decode_enum_opaque_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumOpaqueTwinSyncSseArray5 sse_decode_enum_opaque_twin_sync_sse_array_5(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumSimpleTwinNormal sse_decode_enum_simple_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumSimpleTwinRustAsync sse_decode_enum_simple_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumSimpleTwinRustAsyncSse sse_decode_enum_simple_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumSimpleTwinSse sse_decode_enum_simple_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumSimpleTwinSync sse_decode_enum_simple_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumSimpleTwinSyncSse sse_decode_enum_simple_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinNormal sse_decode_enum_with_item_mixed_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinRustAsync
+      sse_decode_enum_with_item_mixed_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinRustAsyncSse
+      sse_decode_enum_with_item_mixed_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinSse sse_decode_enum_with_item_mixed_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinSync sse_decode_enum_with_item_mixed_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemMixedTwinSyncSse sse_decode_enum_with_item_mixed_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinNormal sse_decode_enum_with_item_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinRustAsync
+      sse_decode_enum_with_item_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinRustAsyncSse
+      sse_decode_enum_with_item_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinSse sse_decode_enum_with_item_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinSync sse_decode_enum_with_item_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemStructTwinSyncSse sse_decode_enum_with_item_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinNormal sse_decode_enum_with_item_tuple_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinRustAsync
+      sse_decode_enum_with_item_tuple_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinRustAsyncSse
+      sse_decode_enum_with_item_tuple_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinSse sse_decode_enum_with_item_tuple_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinSync sse_decode_enum_with_item_tuple_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithItemTupleTwinSyncSse sse_decode_enum_with_item_tuple_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EventTwinNormal sse_decode_event_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  EventTwinRustAsync sse_decode_event_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  EventTwinRustAsyncSse sse_decode_event_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EventTwinSse sse_decode_event_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinNormal sse_decode_exotic_optionals_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsync sse_decode_exotic_optionals_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse
+      sse_decode_exotic_optionals_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSse sse_decode_exotic_optionals_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSync sse_decode_exotic_optionals_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSyncSse sse_decode_exotic_optionals_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  double sse_decode_f_32(SseDeserializer deserializer);
+
+  @protected
+  double sse_decode_f_64(SseDeserializer deserializer);
+
+  @protected
+  F64Array16 sse_decode_f_64_array_16(SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinNormal sse_decode_feature_chrono_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinRustAsync sse_decode_feature_chrono_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureChronoTwinSync sse_decode_feature_chrono_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinNormal sse_decode_feature_uuid_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinRustAsync sse_decode_feature_uuid_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUuidTwinSync sse_decode_feature_uuid_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinNormal sse_decode_feed_id_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinRustAsync sse_decode_feed_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinRustAsyncSse sse_decode_feed_id_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinSse sse_decode_feed_id_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinSync sse_decode_feed_id_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  FeedIdTwinSyncSse sse_decode_feed_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_i_16(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  I32Array2 sse_decode_i_32_array_2(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_i_64(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_i_8(SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinNormal sse_decode_kitchen_sink_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinRustAsync sse_decode_kitchen_sink_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinRustAsyncSse sse_decode_kitchen_sink_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinSse sse_decode_kitchen_sink_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinSync sse_decode_kitchen_sink_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  KitchenSinkTwinSyncSse sse_decode_kitchen_sink_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<Duration> sse_decode_list_Chrono_Duration(SseDeserializer deserializer);
+
+  @protected
+  List<DateTime> sse_decode_list_Chrono_Local(SseDeserializer deserializer);
+
+  @protected
+  List<DateTime> sse_decode_list_Chrono_Naive(SseDeserializer deserializer);
+
+  @protected
+  List<Object> sse_decode_list_DartOpaque(SseDeserializer deserializer);
+
+  @protected
+  List<HideData> sse_decode_list_RustOpaque_hide_data(
+      SseDeserializer deserializer);
+
+  @protected
+  List<String> sse_decode_list_String(SseDeserializer deserializer);
+
+  @protected
+  List<ApplicationEnvVar> sse_decode_list_application_env_var(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ApplicationSettings> sse_decode_list_application_settings(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinNormal> sse_decode_list_attribute_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinRustAsync> sse_decode_list_attribute_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinRustAsyncSse> sse_decode_list_attribute_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSse> sse_decode_list_attribute_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSync> sse_decode_list_attribute_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSyncSse> sse_decode_list_attribute_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<bool> sse_decode_list_bool(SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinNormal> sse_decode_list_element_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinRustAsync> sse_decode_list_element_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinRustAsyncSse> sse_decode_list_element_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinSse> sse_decode_list_element_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinSync> sse_decode_list_element_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinSyncSse> sse_decode_list_element_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<EnumOpaqueTwinNormal> sse_decode_list_enum_opaque_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<EnumOpaqueTwinRustAsync> sse_decode_list_enum_opaque_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<EnumOpaqueTwinRustAsyncSse>
+      sse_decode_list_enum_opaque_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<EnumOpaqueTwinSse> sse_decode_list_enum_opaque_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<EnumOpaqueTwinSync> sse_decode_list_enum_opaque_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<EnumOpaqueTwinSyncSse> sse_decode_list_enum_opaque_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<MyEnum> sse_decode_list_my_enum(SseDeserializer deserializer);
+
+  @protected
+  List<MySize> sse_decode_list_my_size(SseDeserializer deserializer);
+
+  @protected
+  List<MyTreeNodeTwinNormal> sse_decode_list_my_tree_node_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<MyTreeNodeTwinRustAsync> sse_decode_list_my_tree_node_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<MyTreeNodeTwinRustAsyncSse>
+      sse_decode_list_my_tree_node_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<MyTreeNodeTwinSse> sse_decode_list_my_tree_node_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<MyTreeNodeTwinSync> sse_decode_list_my_tree_node_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<MyTreeNodeTwinSyncSse> sse_decode_list_my_tree_node_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<NestedRawStringMirrored> sse_decode_list_nested_raw_string_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  ListOfNestedRawStringMirrored sse_decode_list_of_nested_raw_string_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  List<String?> sse_decode_list_opt_String(SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinNormal?>
+      sse_decode_list_opt_box_autoadd_attribute_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinRustAsync?>
+      sse_decode_list_opt_box_autoadd_attribute_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinRustAsyncSse?>
+      sse_decode_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSse?> sse_decode_list_opt_box_autoadd_attribute_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSync?> sse_decode_list_opt_box_autoadd_attribute_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSyncSse?>
+      sse_decode_list_opt_box_autoadd_attribute_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<int?> sse_decode_list_opt_box_autoadd_i_32(SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinNormal?>
+      sse_decode_list_opt_box_autoadd_weekdays_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinRustAsync?>
+      sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinRustAsyncSse?>
+      sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinSse?> sse_decode_list_opt_box_autoadd_weekdays_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinSync?> sse_decode_list_opt_box_autoadd_weekdays_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinSyncSse?>
+      sse_decode_list_opt_box_autoadd_weekdays_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<Int32List?> sse_decode_list_opt_list_prim_i_32(
+      SseDeserializer deserializer);
+
+  @protected
+  List<PointTwinNormal> sse_decode_list_point_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<PointTwinRustAsync> sse_decode_list_point_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<PointTwinRustAsyncSse> sse_decode_list_point_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<PointTwinSse> sse_decode_list_point_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<PointTwinSync> sse_decode_list_point_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<PointTwinSyncSse> sse_decode_list_point_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  Float32List sse_decode_list_prim_f_32(SseDeserializer deserializer);
+
+  @protected
+  Float64List sse_decode_list_prim_f_64(SseDeserializer deserializer);
+
+  @protected
+  Int16List sse_decode_list_prim_i_16(SseDeserializer deserializer);
+
+  @protected
+  Int32List sse_decode_list_prim_i_32(SseDeserializer deserializer);
+
+  @protected
+  Int64List sse_decode_list_prim_i_64(SseDeserializer deserializer);
+
+  @protected
+  Int8List sse_decode_list_prim_i_8(SseDeserializer deserializer);
+
+  @protected
+  Uint16List sse_decode_list_prim_u_16(SseDeserializer deserializer);
+
+  @protected
+  Uint32List sse_decode_list_prim_u_32(SseDeserializer deserializer);
+
+  @protected
+  Uint64List sse_decode_list_prim_u_64(SseDeserializer deserializer);
+
+  @protected
+  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
+
+  @protected
+  List<RawStringEnumMirrored> sse_decode_list_raw_string_enum_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  List<RawStringMirrored> sse_decode_list_raw_string_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  List<(String, int)> sse_decode_list_record_string_i_32(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SumWithTwinNormal> sse_decode_list_sum_with_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SumWithTwinRustAsync> sse_decode_list_sum_with_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SumWithTwinRustAsyncSse> sse_decode_list_sum_with_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SumWithTwinSse> sse_decode_list_sum_with_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SumWithTwinSync> sse_decode_list_sum_with_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<SumWithTwinSyncSse> sse_decode_list_sum_with_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<TestIdTwinNormal> sse_decode_list_test_id_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<TestIdTwinRustAsync> sse_decode_list_test_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<TestIdTwinRustAsyncSse> sse_decode_list_test_id_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<TestIdTwinSse> sse_decode_list_test_id_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<TestIdTwinSync> sse_decode_list_test_id_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<TestIdTwinSyncSse> sse_decode_list_test_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinNormal> sse_decode_list_weekdays_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinRustAsync> sse_decode_list_weekdays_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinRustAsyncSse> sse_decode_list_weekdays_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinSse> sse_decode_list_weekdays_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinSync> sse_decode_list_weekdays_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<WeekdaysTwinSyncSse> sse_decode_list_weekdays_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  Log2TwinNormal sse_decode_log_2_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  Log2TwinRustAsync sse_decode_log_2_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  Log2TwinRustAsyncSse sse_decode_log_2_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  Log2TwinSse sse_decode_log_2_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  Log2TwinSync sse_decode_log_2_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  Log2TwinSyncSse sse_decode_log_2_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  LogTwinNormal sse_decode_log_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  LogTwinRustAsync sse_decode_log_twin_rust_async(SseDeserializer deserializer);
+
+  @protected
+  LogTwinRustAsyncSse sse_decode_log_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  LogTwinSse sse_decode_log_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  MacroStruct sse_decode_macro_struct(SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinNormal sse_decode_measure_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinRustAsync sse_decode_measure_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinRustAsyncSse sse_decode_measure_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinSse sse_decode_measure_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinSync sse_decode_measure_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinSyncSse sse_decode_measure_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinNormal sse_decode_message_id_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinRustAsync sse_decode_message_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinRustAsyncSse sse_decode_message_id_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinSse sse_decode_message_id_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinSync sse_decode_message_id_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MessageIdTwinSyncSse sse_decode_message_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinNormal sse_decode_mirror_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinRustAsync sse_decode_mirror_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinRustAsyncSse sse_decode_mirror_struct_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinSse sse_decode_mirror_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinSync sse_decode_mirror_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MirrorStructTwinSyncSse sse_decode_mirror_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinNormal
+      sse_decode_more_than_just_one_raw_string_struct_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinRustAsync
+      sse_decode_more_than_just_one_raw_string_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinRustAsyncSse
+      sse_decode_more_than_just_one_raw_string_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSse
+      sse_decode_more_than_just_one_raw_string_struct_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSync
+      sse_decode_more_than_just_one_raw_string_struct_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSyncSse
+      sse_decode_more_than_just_one_raw_string_struct_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyEnum sse_decode_my_enum(SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinNormal sse_decode_my_nested_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinRustAsync sse_decode_my_nested_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinRustAsyncSse
+      sse_decode_my_nested_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinSse sse_decode_my_nested_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinSync sse_decode_my_nested_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MyNestedStructTwinSyncSse sse_decode_my_nested_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MySize sse_decode_my_size(SseDeserializer deserializer);
+
+  @protected
+  MyStreamEntryTwinNormal sse_decode_my_stream_entry_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyStreamEntryTwinRustAsync sse_decode_my_stream_entry_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MyStreamEntryTwinRustAsyncSse sse_decode_my_stream_entry_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyStreamEntryTwinSse sse_decode_my_stream_entry_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyStruct sse_decode_my_struct(SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinRustAsync sse_decode_my_tree_node_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinRustAsyncSse sse_decode_my_tree_node_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinSse sse_decode_my_tree_node_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinSync sse_decode_my_tree_node_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MyTreeNodeTwinSyncSse sse_decode_my_tree_node_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NestedRawStringMirrored sse_decode_nested_raw_string_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  NewSimpleStruct sse_decode_new_simple_struct(SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinNormal sse_decode_new_type_int_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinRustAsync sse_decode_new_type_int_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinRustAsyncSse sse_decode_new_type_int_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinSse sse_decode_new_type_int_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinSync sse_decode_new_type_int_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinSyncSse sse_decode_new_type_int_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NoteTwinNormal sse_decode_note_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  NoteTwinRustAsync sse_decode_note_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  NoteTwinRustAsyncSse sse_decode_note_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NoteTwinSse sse_decode_note_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  NoteTwinSync sse_decode_note_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  NoteTwinSyncSse sse_decode_note_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  Numbers sse_decode_numbers(SseDeserializer deserializer);
+
+  @protected
+  OldSimpleStruct sse_decode_old_simple_struct(SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinNormal sse_decode_opaque_nested_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinRustAsync sse_decode_opaque_nested_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinRustAsyncSse sse_decode_opaque_nested_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinSse sse_decode_opaque_nested_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinSync sse_decode_opaque_nested_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  OpaqueNestedTwinSyncSse sse_decode_opaque_nested_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  String? sse_decode_opt_String(SseDeserializer deserializer);
+
+  @protected
+  Duration? sse_decode_opt_box_autoadd_Chrono_Duration(
+      SseDeserializer deserializer);
+
+  @protected
+  DateTime? sse_decode_opt_box_autoadd_Chrono_Naive(
+      SseDeserializer deserializer);
+
+  @protected
+  DateTime? sse_decode_opt_box_autoadd_Chrono_Utc(SseDeserializer deserializer);
+
+  @protected
+  Object? sse_decode_opt_box_autoadd_DartOpaque(SseDeserializer deserializer);
+
+  @protected
+  HideData? sse_decode_opt_box_autoadd_RustOpaque_hide_data(
+      SseDeserializer deserializer);
+
+  @protected
+  ApplicationEnv? sse_decode_opt_box_autoadd_application_env(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinNormal? sse_decode_opt_box_autoadd_attribute_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinRustAsync? sse_decode_opt_box_autoadd_attribute_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_attribute_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinSse? sse_decode_opt_box_autoadd_attribute_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinSync? sse_decode_opt_box_autoadd_attribute_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  AttributeTwinSyncSse? sse_decode_opt_box_autoadd_attribute_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  bool? sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer);
+
+  @protected
+  ElementTwinNormal? sse_decode_opt_box_autoadd_element_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinRustAsync? sse_decode_opt_box_autoadd_element_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_element_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ElementTwinSse? sse_decode_opt_box_autoadd_element_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinSync? sse_decode_opt_box_autoadd_element_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementTwinSyncSse? sse_decode_opt_box_autoadd_element_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinNormal?
+      sse_decode_opt_box_autoadd_exotic_optionals_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsync?
+      sse_decode_opt_box_autoadd_exotic_optionals_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_exotic_optionals_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSse? sse_decode_opt_box_autoadd_exotic_optionals_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSync?
+      sse_decode_opt_box_autoadd_exotic_optionals_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSyncSse?
+      sse_decode_opt_box_autoadd_exotic_optionals_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  double? sse_decode_opt_box_autoadd_f_32(SseDeserializer deserializer);
+
+  @protected
+  double? sse_decode_opt_box_autoadd_f_64(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_i_16(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_i_32(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_i_64(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_i_8(SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinNormal? sse_decode_opt_box_autoadd_measure_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinRustAsync? sse_decode_opt_box_autoadd_measure_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_measure_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinSse? sse_decode_opt_box_autoadd_measure_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinSync? sse_decode_opt_box_autoadd_measure_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  MeasureTwinSyncSse? sse_decode_opt_box_autoadd_measure_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinNormal? sse_decode_opt_box_autoadd_new_type_int_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinRustAsync?
+      sse_decode_opt_box_autoadd_new_type_int_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_new_type_int_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinSse? sse_decode_opt_box_autoadd_new_type_int_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinSync? sse_decode_opt_box_autoadd_new_type_int_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  NewTypeIntTwinSyncSse? sse_decode_opt_box_autoadd_new_type_int_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, int)? sse_decode_opt_box_autoadd_record_string_i_32(
+      SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_u_16(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_u_32(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_u_64(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_autoadd_u_8(SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinNormal? sse_decode_opt_box_autoadd_weekdays_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinRustAsync? sse_decode_opt_box_autoadd_weekdays_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_weekdays_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSse? sse_decode_opt_box_autoadd_weekdays_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSync? sse_decode_opt_box_autoadd_weekdays_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSyncSse? sse_decode_opt_box_autoadd_weekdays_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  bool? sse_decode_opt_box_bool(SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinNormal? sse_decode_opt_box_exotic_optionals_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsync?
+      sse_decode_opt_box_exotic_optionals_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse?
+      sse_decode_opt_box_exotic_optionals_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSse? sse_decode_opt_box_exotic_optionals_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSync? sse_decode_opt_box_exotic_optionals_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ExoticOptionalsTwinSyncSse? sse_decode_opt_box_exotic_optionals_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  double? sse_decode_opt_box_f_64(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_i_32(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_i_64(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_i_8(SseDeserializer deserializer);
+
+  @protected
+  int? sse_decode_opt_box_u_8(SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinNormal>? sse_decode_opt_list_attribute_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinRustAsync>? sse_decode_opt_list_attribute_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinRustAsyncSse>?
+      sse_decode_opt_list_attribute_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSse>? sse_decode_opt_list_attribute_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSync>? sse_decode_opt_list_attribute_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSyncSse>? sse_decode_opt_list_attribute_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinNormal>? sse_decode_opt_list_element_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinRustAsync>? sse_decode_opt_list_element_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinRustAsyncSse>?
+      sse_decode_opt_list_element_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinSse>? sse_decode_opt_list_element_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinSync>? sse_decode_opt_list_element_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<ElementTwinSyncSse>? sse_decode_opt_list_element_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinNormal?>?
+      sse_decode_opt_list_opt_box_autoadd_attribute_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinRustAsync?>?
+      sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinRustAsyncSse?>?
+      sse_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSse?>?
+      sse_decode_opt_list_opt_box_autoadd_attribute_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSync?>?
+      sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  List<AttributeTwinSyncSse?>?
+      sse_decode_opt_list_opt_box_autoadd_attribute_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  Float32List? sse_decode_opt_list_prim_f_32(SseDeserializer deserializer);
+
+  @protected
+  Float64List? sse_decode_opt_list_prim_f_64(SseDeserializer deserializer);
+
+  @protected
+  Int32List? sse_decode_opt_list_prim_i_32(SseDeserializer deserializer);
+
+  @protected
+  Int8List? sse_decode_opt_list_prim_i_8(SseDeserializer deserializer);
+
+  @protected
+  Uint8List? sse_decode_opt_list_prim_u_8(SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinNormal sse_decode_opt_vecs_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinRustAsync sse_decode_opt_vecs_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinRustAsyncSse sse_decode_opt_vecs_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinSse sse_decode_opt_vecs_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinSync sse_decode_opt_vecs_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  OptVecsTwinSyncSse sse_decode_opt_vecs_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  PointTwinNormal sse_decode_point_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  PointTwinNormalArray2 sse_decode_point_twin_normal_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  PointTwinRustAsync sse_decode_point_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  PointTwinRustAsyncArray2 sse_decode_point_twin_rust_async_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  PointTwinRustAsyncSse sse_decode_point_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  PointTwinRustAsyncSseArray2 sse_decode_point_twin_rust_async_sse_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  PointTwinSse sse_decode_point_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  PointTwinSseArray2 sse_decode_point_twin_sse_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  PointTwinSync sse_decode_point_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  PointTwinSyncArray2 sse_decode_point_twin_sync_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  PointTwinSyncSse sse_decode_point_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  PointTwinSyncSseArray2 sse_decode_point_twin_sync_sse_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringEnumMirrored sse_decode_raw_string_enum_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringItemStructTwinNormal sse_decode_raw_string_item_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringItemStructTwinRustAsync
+      sse_decode_raw_string_item_struct_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  RawStringItemStructTwinRustAsyncSse
+      sse_decode_raw_string_item_struct_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RawStringItemStructTwinSse sse_decode_raw_string_item_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringItemStructTwinSync sse_decode_raw_string_item_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringItemStructTwinSyncSse
+      sse_decode_raw_string_item_struct_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RawStringMirrored sse_decode_raw_string_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  (ApplicationSettings, RawStringEnumMirrored)
+      sse_decode_record_application_settings_raw_string_enum_mirrored(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, int) sse_decode_record_string_i_32(SseDeserializer deserializer);
+
+  @protected
+  Sequences sse_decode_sequences(SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinNormal sse_decode_some_struct_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinRustAsync sse_decode_some_struct_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinRustAsyncSse sse_decode_some_struct_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinSse sse_decode_some_struct_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinSync sse_decode_some_struct_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  SomeStructTwinSyncSse sse_decode_some_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinNormal sse_decode_speed_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinRustAsync sse_decode_speed_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinRustAsyncSse sse_decode_speed_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinSse sse_decode_speed_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinSync sse_decode_speed_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  SpeedTwinSyncSse sse_decode_speed_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinNormal sse_decode_struct_with_comments_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinRustAsync
+      sse_decode_struct_with_comments_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinRustAsyncSse
+      sse_decode_struct_with_comments_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinSse sse_decode_struct_with_comments_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinSync sse_decode_struct_with_comments_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithCommentsTwinSyncSse sse_decode_struct_with_comments_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinNormal sse_decode_struct_with_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinRustAsync sse_decode_struct_with_enum_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinRustAsyncSse
+      sse_decode_struct_with_enum_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinSse sse_decode_struct_with_enum_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinSync sse_decode_struct_with_enum_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithEnumTwinSyncSse sse_decode_struct_with_enum_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinNormal sse_decode_struct_with_one_field_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinRustAsync
+      sse_decode_struct_with_one_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinRustAsyncSse
+      sse_decode_struct_with_one_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinSse sse_decode_struct_with_one_field_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinSync sse_decode_struct_with_one_field_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithOneFieldTwinSyncSse sse_decode_struct_with_one_field_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinNormal sse_decode_struct_with_two_field_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinRustAsync
+      sse_decode_struct_with_two_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinRustAsyncSse
+      sse_decode_struct_with_two_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinSse sse_decode_struct_with_two_field_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinSync sse_decode_struct_with_two_field_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithTwoFieldTwinSyncSse sse_decode_struct_with_two_field_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinNormal sse_decode_struct_with_zero_field_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinRustAsync
+      sse_decode_struct_with_zero_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinRustAsyncSse
+      sse_decode_struct_with_zero_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinSse sse_decode_struct_with_zero_field_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinSync sse_decode_struct_with_zero_field_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  StructWithZeroFieldTwinSyncSse
+      sse_decode_struct_with_zero_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinNormal sse_decode_sum_with_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinNormalArray3 sse_decode_sum_with_twin_normal_array_3(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinRustAsync sse_decode_sum_with_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinRustAsyncArray3 sse_decode_sum_with_twin_rust_async_array_3(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinRustAsyncSse sse_decode_sum_with_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinRustAsyncSseArray3 sse_decode_sum_with_twin_rust_async_sse_array_3(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinSse sse_decode_sum_with_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinSseArray3 sse_decode_sum_with_twin_sse_array_3(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinSync sse_decode_sum_with_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinSyncArray3 sse_decode_sum_with_twin_sync_array_3(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinSyncSse sse_decode_sum_with_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  SumWithTwinSyncSseArray3 sse_decode_sum_with_twin_sync_sse_array_3(
+      SseDeserializer deserializer);
+
+  @protected
+  TestChronoTwinNormal sse_decode_test_chrono_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  TestChronoTwinRustAsync sse_decode_test_chrono_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  TestChronoTwinSync sse_decode_test_chrono_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinNormal sse_decode_test_id_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinNormalArray2 sse_decode_test_id_twin_normal_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinNormalArray4 sse_decode_test_id_twin_normal_array_4(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinRustAsync sse_decode_test_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinRustAsyncArray2 sse_decode_test_id_twin_rust_async_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinRustAsyncArray4 sse_decode_test_id_twin_rust_async_array_4(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinRustAsyncSse sse_decode_test_id_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinRustAsyncSseArray2 sse_decode_test_id_twin_rust_async_sse_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinRustAsyncSseArray4 sse_decode_test_id_twin_rust_async_sse_array_4(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSse sse_decode_test_id_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSseArray2 sse_decode_test_id_twin_sse_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSseArray4 sse_decode_test_id_twin_sse_array_4(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSync sse_decode_test_id_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSyncArray2 sse_decode_test_id_twin_sync_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSyncArray4 sse_decode_test_id_twin_sync_array_4(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSyncSse sse_decode_test_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSyncSseArray2 sse_decode_test_id_twin_sync_sse_array_2(
+      SseDeserializer deserializer);
+
+  @protected
+  TestIdTwinSyncSseArray4 sse_decode_test_id_twin_sync_sse_array_4(
+      SseDeserializer deserializer);
+
+  @protected
+  TestModelTwinNormal sse_decode_test_model_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  TestModelTwinRustAsync sse_decode_test_model_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  TestModelTwinRustAsyncSse sse_decode_test_model_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  TestModelTwinSse sse_decode_test_model_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  TestModelTwinSync sse_decode_test_model_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  TestModelTwinSyncSse sse_decode_test_model_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinNormal
+      sse_decode_tuple_struct_with_one_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsync
+      sse_decode_tuple_struct_with_one_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsyncSse
+      sse_decode_tuple_struct_with_one_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinSse
+      sse_decode_tuple_struct_with_one_field_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinSync
+      sse_decode_tuple_struct_with_one_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithOneFieldTwinSyncSse
+      sse_decode_tuple_struct_with_one_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinNormal
+      sse_decode_tuple_struct_with_two_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsync
+      sse_decode_tuple_struct_with_two_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      sse_decode_tuple_struct_with_two_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinSse
+      sse_decode_tuple_struct_with_two_field_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinSync
+      sse_decode_tuple_struct_with_two_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  TupleStructWithTwoFieldTwinSyncSse
+      sse_decode_tuple_struct_with_two_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_u_16(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_u_32(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_u_64(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_u_8(SseDeserializer deserializer);
+
+  @protected
+  U8Array1600 sse_decode_u_8_array_1600(SseDeserializer deserializer);
+
+  @protected
+  U8Array32 sse_decode_u_8_array_32(SseDeserializer deserializer);
+
+  @protected
+  U8Array5 sse_decode_u_8_array_5(SseDeserializer deserializer);
+
+  @protected
+  U8Array8 sse_decode_u_8_array_8(SseDeserializer deserializer);
+
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinNormal sse_decode_user_id_twin_normal(SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinRustAsync sse_decode_user_id_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinRustAsyncSse sse_decode_user_id_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinSse sse_decode_user_id_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinSync sse_decode_user_id_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  UserIdTwinSyncSse sse_decode_user_id_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_usize(SseDeserializer deserializer);
+
+  @protected
+  VecOfPrimitivePackTwinNormal sse_decode_vec_of_primitive_pack_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  VecOfPrimitivePackTwinRustAsync
+      sse_decode_vec_of_primitive_pack_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  VecOfPrimitivePackTwinRustAsyncSse
+      sse_decode_vec_of_primitive_pack_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  VecOfPrimitivePackTwinSse sse_decode_vec_of_primitive_pack_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  VecOfPrimitivePackTwinSync sse_decode_vec_of_primitive_pack_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  VecOfPrimitivePackTwinSyncSse sse_decode_vec_of_primitive_pack_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinNormal sse_decode_weekdays_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinRustAsync sse_decode_weekdays_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinRustAsyncSse sse_decode_weekdays_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSse sse_decode_weekdays_twin_sse(SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSync sse_decode_weekdays_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  WeekdaysTwinSyncSse sse_decode_weekdays_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_AnyhowException(
       AnyhowException raw) {
     throw UnimplementedError();
@@ -393,7 +8519,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_application_env> cst_encode_box_application_env(
       ApplicationEnv raw) {
     final ptr = wire.cst_new_box_application_env();
-    _cst_api_fill_to_wire_application_env(raw, ptr.ref);
+    cst_api_fill_to_wire_application_env(raw, ptr.ref);
     return ptr;
   }
 
@@ -429,7 +8555,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_a_twin_normal> cst_encode_box_autoadd_a_twin_normal(
       ATwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_a_twin_normal();
-    _cst_api_fill_to_wire_a_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_a_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -437,7 +8563,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_a_twin_rust_async>
       cst_encode_box_autoadd_a_twin_rust_async(ATwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_a_twin_rust_async();
-    _cst_api_fill_to_wire_a_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_a_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -445,7 +8571,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_a_twin_rust_async_sse>
       cst_encode_box_autoadd_a_twin_rust_async_sse(ATwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_a_twin_rust_async_sse();
-    _cst_api_fill_to_wire_a_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_a_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -453,7 +8579,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_a_twin_sse> cst_encode_box_autoadd_a_twin_sse(
       ATwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_a_twin_sse();
-    _cst_api_fill_to_wire_a_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_a_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -461,7 +8587,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_a_twin_sync> cst_encode_box_autoadd_a_twin_sync(
       ATwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_a_twin_sync();
-    _cst_api_fill_to_wire_a_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_a_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -469,7 +8595,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_a_twin_sync_sse> cst_encode_box_autoadd_a_twin_sync_sse(
       ATwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_a_twin_sync_sse();
-    _cst_api_fill_to_wire_a_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_a_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -477,7 +8603,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_abc_twin_normal> cst_encode_box_autoadd_abc_twin_normal(
       AbcTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_abc_twin_normal();
-    _cst_api_fill_to_wire_abc_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_abc_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -485,7 +8611,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_abc_twin_rust_async>
       cst_encode_box_autoadd_abc_twin_rust_async(AbcTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_abc_twin_rust_async();
-    _cst_api_fill_to_wire_abc_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_abc_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -493,7 +8619,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_abc_twin_rust_async_sse>
       cst_encode_box_autoadd_abc_twin_rust_async_sse(AbcTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_abc_twin_rust_async_sse();
-    _cst_api_fill_to_wire_abc_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_abc_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -501,7 +8627,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_abc_twin_sse> cst_encode_box_autoadd_abc_twin_sse(
       AbcTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_abc_twin_sse();
-    _cst_api_fill_to_wire_abc_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_abc_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -509,7 +8635,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_abc_twin_sync> cst_encode_box_autoadd_abc_twin_sync(
       AbcTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_abc_twin_sync();
-    _cst_api_fill_to_wire_abc_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_abc_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -517,7 +8643,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_abc_twin_sync_sse>
       cst_encode_box_autoadd_abc_twin_sync_sse(AbcTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_abc_twin_sync_sse();
-    _cst_api_fill_to_wire_abc_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_abc_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -525,7 +8651,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_application_env> cst_encode_box_autoadd_application_env(
       ApplicationEnv raw) {
     final ptr = wire.cst_new_box_autoadd_application_env();
-    _cst_api_fill_to_wire_application_env(raw, ptr.ref);
+    cst_api_fill_to_wire_application_env(raw, ptr.ref);
     return ptr;
   }
 
@@ -533,7 +8659,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_application_settings>
       cst_encode_box_autoadd_application_settings(ApplicationSettings raw) {
     final ptr = wire.cst_new_box_autoadd_application_settings();
-    _cst_api_fill_to_wire_application_settings(raw, ptr.ref);
+    cst_api_fill_to_wire_application_settings(raw, ptr.ref);
     return ptr;
   }
 
@@ -541,7 +8667,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_attribute_twin_normal>
       cst_encode_box_autoadd_attribute_twin_normal(AttributeTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_attribute_twin_normal();
-    _cst_api_fill_to_wire_attribute_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_attribute_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -550,7 +8676,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_attribute_twin_rust_async(
           AttributeTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_attribute_twin_rust_async();
-    _cst_api_fill_to_wire_attribute_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_attribute_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -559,7 +8685,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_attribute_twin_rust_async_sse(
           AttributeTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_attribute_twin_rust_async_sse();
-    _cst_api_fill_to_wire_attribute_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_attribute_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -567,7 +8693,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_attribute_twin_sse>
       cst_encode_box_autoadd_attribute_twin_sse(AttributeTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_attribute_twin_sse();
-    _cst_api_fill_to_wire_attribute_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_attribute_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -575,7 +8701,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_attribute_twin_sync>
       cst_encode_box_autoadd_attribute_twin_sync(AttributeTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_attribute_twin_sync();
-    _cst_api_fill_to_wire_attribute_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_attribute_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -583,7 +8709,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_attribute_twin_sync_sse>
       cst_encode_box_autoadd_attribute_twin_sync_sse(AttributeTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_attribute_twin_sync_sse();
-    _cst_api_fill_to_wire_attribute_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_attribute_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -591,7 +8717,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_b_twin_normal> cst_encode_box_autoadd_b_twin_normal(
       BTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_b_twin_normal();
-    _cst_api_fill_to_wire_b_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_b_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -599,7 +8725,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_b_twin_rust_async>
       cst_encode_box_autoadd_b_twin_rust_async(BTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_b_twin_rust_async();
-    _cst_api_fill_to_wire_b_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_b_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -607,7 +8733,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_b_twin_rust_async_sse>
       cst_encode_box_autoadd_b_twin_rust_async_sse(BTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_b_twin_rust_async_sse();
-    _cst_api_fill_to_wire_b_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_b_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -615,7 +8741,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_b_twin_sse> cst_encode_box_autoadd_b_twin_sse(
       BTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_b_twin_sse();
-    _cst_api_fill_to_wire_b_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_b_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -623,7 +8749,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_b_twin_sync> cst_encode_box_autoadd_b_twin_sync(
       BTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_b_twin_sync();
-    _cst_api_fill_to_wire_b_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_b_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -631,7 +8757,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_b_twin_sync_sse> cst_encode_box_autoadd_b_twin_sync_sse(
       BTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_b_twin_sync_sse();
-    _cst_api_fill_to_wire_b_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_b_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -644,7 +8770,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_c_twin_normal> cst_encode_box_autoadd_c_twin_normal(
       CTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_c_twin_normal();
-    _cst_api_fill_to_wire_c_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_c_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -652,7 +8778,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_c_twin_rust_async>
       cst_encode_box_autoadd_c_twin_rust_async(CTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_c_twin_rust_async();
-    _cst_api_fill_to_wire_c_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_c_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -660,7 +8786,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_c_twin_rust_async_sse>
       cst_encode_box_autoadd_c_twin_rust_async_sse(CTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_c_twin_rust_async_sse();
-    _cst_api_fill_to_wire_c_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_c_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -668,7 +8794,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_c_twin_sse> cst_encode_box_autoadd_c_twin_sse(
       CTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_c_twin_sse();
-    _cst_api_fill_to_wire_c_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_c_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -676,7 +8802,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_c_twin_sync> cst_encode_box_autoadd_c_twin_sync(
       CTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_c_twin_sync();
-    _cst_api_fill_to_wire_c_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_c_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -684,7 +8810,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_c_twin_sync_sse> cst_encode_box_autoadd_c_twin_sync_sse(
       CTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_c_twin_sync_sse();
-    _cst_api_fill_to_wire_c_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_c_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -693,7 +8819,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_concatenate_with_twin_normal(
           ConcatenateWithTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_concatenate_with_twin_normal();
-    _cst_api_fill_to_wire_concatenate_with_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -702,7 +8828,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_concatenate_with_twin_rust_async(
           ConcatenateWithTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_concatenate_with_twin_rust_async();
-    _cst_api_fill_to_wire_concatenate_with_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -711,7 +8837,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_concatenate_with_twin_rust_async_sse(
           ConcatenateWithTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_concatenate_with_twin_rust_async_sse();
-    _cst_api_fill_to_wire_concatenate_with_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -720,7 +8846,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_concatenate_with_twin_sse(
           ConcatenateWithTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_concatenate_with_twin_sse();
-    _cst_api_fill_to_wire_concatenate_with_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -729,7 +8855,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_concatenate_with_twin_sync(
           ConcatenateWithTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_concatenate_with_twin_sync();
-    _cst_api_fill_to_wire_concatenate_with_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -738,7 +8864,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_concatenate_with_twin_sync_sse(
           ConcatenateWithTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_concatenate_with_twin_sync_sse();
-    _cst_api_fill_to_wire_concatenate_with_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -747,7 +8873,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_nested_error_2_twin_normal(
           CustomNestedError2TwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_custom_nested_error_2_twin_normal();
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_2_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -757,7 +8883,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedError2TwinRustAsync raw) {
     final ptr =
         wire.cst_new_box_autoadd_custom_nested_error_2_twin_rust_async();
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -767,7 +8893,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedError2TwinRustAsyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_custom_nested_error_2_twin_rust_async_sse();
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async_sse(
+    cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -777,7 +8903,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_nested_error_2_twin_sse(
           CustomNestedError2TwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_custom_nested_error_2_twin_sse();
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_2_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -786,7 +8912,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_nested_error_2_twin_sync(
           CustomNestedError2TwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_custom_nested_error_2_twin_sync();
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_2_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -795,7 +8921,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_nested_error_2_twin_sync_sse(
           CustomNestedError2TwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_custom_nested_error_2_twin_sync_sse();
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_2_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -805,7 +8931,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedErrorInnerTwinNormal raw) {
     final ptr =
         wire.cst_new_box_autoadd_custom_nested_error_inner_twin_normal();
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -815,7 +8941,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedErrorInnerTwinRustAsync raw) {
     final ptr =
         wire.cst_new_box_autoadd_custom_nested_error_inner_twin_rust_async();
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async(
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async(
         raw, ptr.ref);
     return ptr;
   }
@@ -826,7 +8952,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedErrorInnerTwinRustAsyncSse raw) {
     final ptr = wire
         .cst_new_box_autoadd_custom_nested_error_inner_twin_rust_async_sse();
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async_sse(
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -836,7 +8962,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_nested_error_inner_twin_sse(
           CustomNestedErrorInnerTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_custom_nested_error_inner_twin_sse();
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -845,7 +8971,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_nested_error_inner_twin_sync(
           CustomNestedErrorInnerTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_custom_nested_error_inner_twin_sync();
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -855,7 +8981,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedErrorInnerTwinSyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_custom_nested_error_inner_twin_sync_sse();
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -865,7 +8991,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedErrorOuterTwinNormal raw) {
     final ptr =
         wire.cst_new_box_autoadd_custom_nested_error_outer_twin_normal();
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -875,7 +9001,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedErrorOuterTwinRustAsync raw) {
     final ptr =
         wire.cst_new_box_autoadd_custom_nested_error_outer_twin_rust_async();
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async(
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async(
         raw, ptr.ref);
     return ptr;
   }
@@ -886,7 +9012,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedErrorOuterTwinRustAsyncSse raw) {
     final ptr = wire
         .cst_new_box_autoadd_custom_nested_error_outer_twin_rust_async_sse();
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async_sse(
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -896,7 +9022,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_nested_error_outer_twin_sse(
           CustomNestedErrorOuterTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_custom_nested_error_outer_twin_sse();
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -905,7 +9031,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_nested_error_outer_twin_sync(
           CustomNestedErrorOuterTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_custom_nested_error_outer_twin_sync();
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -915,7 +9041,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomNestedErrorOuterTwinSyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_custom_nested_error_outer_twin_sync_sse();
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -924,7 +9050,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_struct_error_twin_normal(
           CustomStructErrorTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_error_twin_normal();
-    _cst_api_fill_to_wire_custom_struct_error_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -933,7 +9059,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_struct_error_twin_rust_async(
           CustomStructErrorTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_error_twin_rust_async();
-    _cst_api_fill_to_wire_custom_struct_error_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -943,7 +9069,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           CustomStructErrorTwinRustAsyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_custom_struct_error_twin_rust_async_sse();
-    _cst_api_fill_to_wire_custom_struct_error_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -952,7 +9078,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_struct_error_twin_sse(
           CustomStructErrorTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_error_twin_sse();
-    _cst_api_fill_to_wire_custom_struct_error_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -961,7 +9087,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_struct_error_twin_sync(
           CustomStructErrorTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_error_twin_sync();
-    _cst_api_fill_to_wire_custom_struct_error_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -970,7 +9096,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_struct_error_twin_sync_sse(
           CustomStructErrorTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_error_twin_sync_sse();
-    _cst_api_fill_to_wire_custom_struct_error_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -979,7 +9105,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_struct_twin_normal(
           CustomStructTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_twin_normal();
-    _cst_api_fill_to_wire_custom_struct_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -988,7 +9114,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_struct_twin_rust_async(
           CustomStructTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_twin_rust_async();
-    _cst_api_fill_to_wire_custom_struct_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -997,7 +9123,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_struct_twin_rust_async_sse(
           CustomStructTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_twin_rust_async_sse();
-    _cst_api_fill_to_wire_custom_struct_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1005,7 +9131,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_custom_struct_twin_sse>
       cst_encode_box_autoadd_custom_struct_twin_sse(CustomStructTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_twin_sse();
-    _cst_api_fill_to_wire_custom_struct_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1013,7 +9139,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_custom_struct_twin_sync>
       cst_encode_box_autoadd_custom_struct_twin_sync(CustomStructTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_twin_sync();
-    _cst_api_fill_to_wire_custom_struct_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1022,7 +9148,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_custom_struct_twin_sync_sse(
           CustomStructTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_custom_struct_twin_sync_sse();
-    _cst_api_fill_to_wire_custom_struct_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_custom_struct_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1030,7 +9156,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_customized_twin_normal>
       cst_encode_box_autoadd_customized_twin_normal(CustomizedTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_customized_twin_normal();
-    _cst_api_fill_to_wire_customized_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_customized_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1039,7 +9165,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_customized_twin_rust_async(
           CustomizedTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_customized_twin_rust_async();
-    _cst_api_fill_to_wire_customized_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_customized_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1048,7 +9174,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_customized_twin_rust_async_sse(
           CustomizedTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_customized_twin_rust_async_sse();
-    _cst_api_fill_to_wire_customized_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_customized_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1056,7 +9182,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_customized_twin_sse>
       cst_encode_box_autoadd_customized_twin_sse(CustomizedTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_customized_twin_sse();
-    _cst_api_fill_to_wire_customized_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_customized_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1064,7 +9190,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_customized_twin_sync>
       cst_encode_box_autoadd_customized_twin_sync(CustomizedTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_customized_twin_sync();
-    _cst_api_fill_to_wire_customized_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_customized_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1073,7 +9199,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_customized_twin_sync_sse(
           CustomizedTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_customized_twin_sync_sse();
-    _cst_api_fill_to_wire_customized_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_customized_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1082,7 +9208,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_dart_opaque_nested_twin_normal(
           DartOpaqueNestedTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_dart_opaque_nested_twin_normal();
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1091,7 +9217,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
           DartOpaqueNestedTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_dart_opaque_nested_twin_rust_async();
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1101,7 +9227,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           DartOpaqueNestedTwinRustAsyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_dart_opaque_nested_twin_rust_async_sse();
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1110,7 +9236,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_dart_opaque_nested_twin_sse(
           DartOpaqueNestedTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_dart_opaque_nested_twin_sse();
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1119,7 +9245,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_dart_opaque_nested_twin_sync(
           DartOpaqueNestedTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_dart_opaque_nested_twin_sync();
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1128,7 +9254,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_dart_opaque_nested_twin_sync_sse(
           DartOpaqueNestedTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_dart_opaque_nested_twin_sync_sse();
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1136,7 +9262,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_element_twin_normal>
       cst_encode_box_autoadd_element_twin_normal(ElementTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_element_twin_normal();
-    _cst_api_fill_to_wire_element_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_element_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1144,7 +9270,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_element_twin_rust_async>
       cst_encode_box_autoadd_element_twin_rust_async(ElementTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_element_twin_rust_async();
-    _cst_api_fill_to_wire_element_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_element_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1153,7 +9279,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_element_twin_rust_async_sse(
           ElementTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_element_twin_rust_async_sse();
-    _cst_api_fill_to_wire_element_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_element_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1161,7 +9287,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_element_twin_sse>
       cst_encode_box_autoadd_element_twin_sse(ElementTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_element_twin_sse();
-    _cst_api_fill_to_wire_element_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_element_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1169,7 +9295,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_element_twin_sync>
       cst_encode_box_autoadd_element_twin_sync(ElementTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_element_twin_sync();
-    _cst_api_fill_to_wire_element_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_element_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1177,7 +9303,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_element_twin_sync_sse>
       cst_encode_box_autoadd_element_twin_sync_sse(ElementTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_element_twin_sync_sse();
-    _cst_api_fill_to_wire_element_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_element_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1235,7 +9361,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_dart_opaque_twin_normal(
           EnumDartOpaqueTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_enum_dart_opaque_twin_normal();
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1244,7 +9370,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
           EnumDartOpaqueTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_enum_dart_opaque_twin_rust_async();
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1253,7 +9379,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_dart_opaque_twin_rust_async_sse(
           EnumDartOpaqueTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_dart_opaque_twin_rust_async_sse();
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1262,7 +9388,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_dart_opaque_twin_sse(
           EnumDartOpaqueTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_dart_opaque_twin_sse();
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1271,7 +9397,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_dart_opaque_twin_sync(
           EnumDartOpaqueTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_enum_dart_opaque_twin_sync();
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1280,7 +9406,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_dart_opaque_twin_sync_sse(
           EnumDartOpaqueTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_dart_opaque_twin_sync_sse();
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1288,7 +9414,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_enum_opaque_twin_normal>
       cst_encode_box_autoadd_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_enum_opaque_twin_normal();
-    _cst_api_fill_to_wire_enum_opaque_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1297,7 +9423,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_opaque_twin_rust_async(
           EnumOpaqueTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_enum_opaque_twin_rust_async();
-    _cst_api_fill_to_wire_enum_opaque_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1306,7 +9432,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_opaque_twin_rust_async_sse(
           EnumOpaqueTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_opaque_twin_rust_async_sse();
-    _cst_api_fill_to_wire_enum_opaque_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1314,7 +9440,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_enum_opaque_twin_sse>
       cst_encode_box_autoadd_enum_opaque_twin_sse(EnumOpaqueTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_opaque_twin_sse();
-    _cst_api_fill_to_wire_enum_opaque_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1322,7 +9448,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_enum_opaque_twin_sync>
       cst_encode_box_autoadd_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_enum_opaque_twin_sync();
-    _cst_api_fill_to_wire_enum_opaque_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1331,7 +9457,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_opaque_twin_sync_sse(
           EnumOpaqueTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_opaque_twin_sync_sse();
-    _cst_api_fill_to_wire_enum_opaque_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1340,7 +9466,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_mixed_twin_normal(
           EnumWithItemMixedTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_mixed_twin_normal();
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1349,7 +9475,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
           EnumWithItemMixedTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_mixed_twin_rust_async();
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1359,8 +9485,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           EnumWithItemMixedTwinRustAsyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_enum_with_item_mixed_twin_rust_async_sse();
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async_sse(
-        raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1369,7 +9494,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_mixed_twin_sse(
           EnumWithItemMixedTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_mixed_twin_sse();
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1378,7 +9503,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_mixed_twin_sync(
           EnumWithItemMixedTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_mixed_twin_sync();
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1387,7 +9512,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_mixed_twin_sync_sse(
           EnumWithItemMixedTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_mixed_twin_sync_sse();
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1396,7 +9521,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_struct_twin_normal(
           EnumWithItemStructTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_struct_twin_normal();
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_struct_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1406,7 +9531,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           EnumWithItemStructTwinRustAsync raw) {
     final ptr =
         wire.cst_new_box_autoadd_enum_with_item_struct_twin_rust_async();
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1416,7 +9541,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           EnumWithItemStructTwinRustAsyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_enum_with_item_struct_twin_rust_async_sse();
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async_sse(
+    cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -1426,7 +9551,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_struct_twin_sse(
           EnumWithItemStructTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_struct_twin_sse();
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_struct_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1435,7 +9560,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_struct_twin_sync(
           EnumWithItemStructTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_struct_twin_sync();
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_struct_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1444,7 +9569,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_struct_twin_sync_sse(
           EnumWithItemStructTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_struct_twin_sync_sse();
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_struct_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1453,7 +9578,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_tuple_twin_normal(
           EnumWithItemTupleTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_tuple_twin_normal();
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1462,7 +9587,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
           EnumWithItemTupleTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_tuple_twin_rust_async();
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1472,8 +9597,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           EnumWithItemTupleTwinRustAsyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_enum_with_item_tuple_twin_rust_async_sse();
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async_sse(
-        raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1482,7 +9606,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_tuple_twin_sse(
           EnumWithItemTupleTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_tuple_twin_sse();
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1491,7 +9615,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_tuple_twin_sync(
           EnumWithItemTupleTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_tuple_twin_sync();
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1500,7 +9624,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_enum_with_item_tuple_twin_sync_sse(
           EnumWithItemTupleTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_enum_with_item_tuple_twin_sync_sse();
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1508,7 +9632,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_event_twin_normal>
       cst_encode_box_autoadd_event_twin_normal(EventTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_event_twin_normal();
-    _cst_api_fill_to_wire_event_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_event_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1516,7 +9640,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_event_twin_rust_async>
       cst_encode_box_autoadd_event_twin_rust_async(EventTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_event_twin_rust_async();
-    _cst_api_fill_to_wire_event_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_event_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1525,7 +9649,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_event_twin_rust_async_sse(
           EventTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_event_twin_rust_async_sse();
-    _cst_api_fill_to_wire_event_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_event_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1533,7 +9657,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_event_twin_sse> cst_encode_box_autoadd_event_twin_sse(
       EventTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_event_twin_sse();
-    _cst_api_fill_to_wire_event_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_event_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1542,7 +9666,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_exotic_optionals_twin_normal(
           ExoticOptionalsTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_exotic_optionals_twin_normal();
-    _cst_api_fill_to_wire_exotic_optionals_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1551,7 +9675,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_exotic_optionals_twin_rust_async(
           ExoticOptionalsTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_exotic_optionals_twin_rust_async();
-    _cst_api_fill_to_wire_exotic_optionals_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1560,7 +9684,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_exotic_optionals_twin_rust_async_sse(
           ExoticOptionalsTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_exotic_optionals_twin_rust_async_sse();
-    _cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1569,7 +9693,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_exotic_optionals_twin_sse(
           ExoticOptionalsTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_exotic_optionals_twin_sse();
-    _cst_api_fill_to_wire_exotic_optionals_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1578,7 +9702,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_exotic_optionals_twin_sync(
           ExoticOptionalsTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_exotic_optionals_twin_sync();
-    _cst_api_fill_to_wire_exotic_optionals_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1587,7 +9711,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_exotic_optionals_twin_sync_sse(
           ExoticOptionalsTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_exotic_optionals_twin_sync_sse();
-    _cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1606,7 +9730,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_feature_chrono_twin_normal(
           FeatureChronoTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_feature_chrono_twin_normal();
-    _cst_api_fill_to_wire_feature_chrono_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_feature_chrono_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1615,7 +9739,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_feature_chrono_twin_rust_async(
           FeatureChronoTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_feature_chrono_twin_rust_async();
-    _cst_api_fill_to_wire_feature_chrono_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_feature_chrono_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1624,7 +9748,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_feature_chrono_twin_sync(
           FeatureChronoTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_feature_chrono_twin_sync();
-    _cst_api_fill_to_wire_feature_chrono_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_feature_chrono_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1633,7 +9757,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_feature_uuid_twin_normal(
           FeatureUuidTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_feature_uuid_twin_normal();
-    _cst_api_fill_to_wire_feature_uuid_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_feature_uuid_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1642,7 +9766,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_feature_uuid_twin_rust_async(
           FeatureUuidTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_feature_uuid_twin_rust_async();
-    _cst_api_fill_to_wire_feature_uuid_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_feature_uuid_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1650,7 +9774,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feature_uuid_twin_sync>
       cst_encode_box_autoadd_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_feature_uuid_twin_sync();
-    _cst_api_fill_to_wire_feature_uuid_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_feature_uuid_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1658,7 +9782,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_normal>
       cst_encode_box_autoadd_feed_id_twin_normal(FeedIdTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_feed_id_twin_normal();
-    _cst_api_fill_to_wire_feed_id_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1666,7 +9790,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_rust_async>
       cst_encode_box_autoadd_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_feed_id_twin_rust_async();
-    _cst_api_fill_to_wire_feed_id_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1675,7 +9799,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_feed_id_twin_rust_async_sse(
           FeedIdTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_feed_id_twin_rust_async_sse();
-    _cst_api_fill_to_wire_feed_id_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1683,7 +9807,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_sse>
       cst_encode_box_autoadd_feed_id_twin_sse(FeedIdTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_feed_id_twin_sse();
-    _cst_api_fill_to_wire_feed_id_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1691,7 +9815,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_sync>
       cst_encode_box_autoadd_feed_id_twin_sync(FeedIdTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_feed_id_twin_sync();
-    _cst_api_fill_to_wire_feed_id_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1699,7 +9823,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_sync_sse>
       cst_encode_box_autoadd_feed_id_twin_sync_sse(FeedIdTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_feed_id_twin_sync_sse();
-    _cst_api_fill_to_wire_feed_id_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1728,7 +9852,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_kitchen_sink_twin_normal(
           KitchenSinkTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_kitchen_sink_twin_normal();
-    _cst_api_fill_to_wire_kitchen_sink_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1737,7 +9861,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_kitchen_sink_twin_rust_async(
           KitchenSinkTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_kitchen_sink_twin_rust_async();
-    _cst_api_fill_to_wire_kitchen_sink_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1746,7 +9870,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_kitchen_sink_twin_rust_async_sse(
           KitchenSinkTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_kitchen_sink_twin_rust_async_sse();
-    _cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1754,7 +9878,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_kitchen_sink_twin_sse>
       cst_encode_box_autoadd_kitchen_sink_twin_sse(KitchenSinkTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_kitchen_sink_twin_sse();
-    _cst_api_fill_to_wire_kitchen_sink_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1762,7 +9886,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_kitchen_sink_twin_sync>
       cst_encode_box_autoadd_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_kitchen_sink_twin_sync();
-    _cst_api_fill_to_wire_kitchen_sink_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1771,7 +9895,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_kitchen_sink_twin_sync_sse(
           KitchenSinkTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_kitchen_sink_twin_sync_sse();
-    _cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1780,7 +9904,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_list_of_nested_raw_string_mirrored(
           ListOfNestedRawStringMirrored raw) {
     final ptr = wire.cst_new_box_autoadd_list_of_nested_raw_string_mirrored();
-    _cst_api_fill_to_wire_list_of_nested_raw_string_mirrored(raw, ptr.ref);
+    cst_api_fill_to_wire_list_of_nested_raw_string_mirrored(raw, ptr.ref);
     return ptr;
   }
 
@@ -1788,7 +9912,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_macro_struct> cst_encode_box_autoadd_macro_struct(
       MacroStruct raw) {
     final ptr = wire.cst_new_box_autoadd_macro_struct();
-    _cst_api_fill_to_wire_macro_struct(raw, ptr.ref);
+    cst_api_fill_to_wire_macro_struct(raw, ptr.ref);
     return ptr;
   }
 
@@ -1796,7 +9920,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_measure_twin_normal>
       cst_encode_box_autoadd_measure_twin_normal(MeasureTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_measure_twin_normal();
-    _cst_api_fill_to_wire_measure_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_measure_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1804,7 +9928,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_measure_twin_rust_async>
       cst_encode_box_autoadd_measure_twin_rust_async(MeasureTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_measure_twin_rust_async();
-    _cst_api_fill_to_wire_measure_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_measure_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1813,7 +9937,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_measure_twin_rust_async_sse(
           MeasureTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_measure_twin_rust_async_sse();
-    _cst_api_fill_to_wire_measure_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_measure_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1821,7 +9945,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_measure_twin_sse>
       cst_encode_box_autoadd_measure_twin_sse(MeasureTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_measure_twin_sse();
-    _cst_api_fill_to_wire_measure_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_measure_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1829,7 +9953,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_measure_twin_sync>
       cst_encode_box_autoadd_measure_twin_sync(MeasureTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_measure_twin_sync();
-    _cst_api_fill_to_wire_measure_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_measure_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1837,7 +9961,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_measure_twin_sync_sse>
       cst_encode_box_autoadd_measure_twin_sync_sse(MeasureTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_measure_twin_sync_sse();
-    _cst_api_fill_to_wire_measure_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_measure_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1845,7 +9969,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_message_id_twin_normal>
       cst_encode_box_autoadd_message_id_twin_normal(MessageIdTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_message_id_twin_normal();
-    _cst_api_fill_to_wire_message_id_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_message_id_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1854,7 +9978,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_message_id_twin_rust_async(
           MessageIdTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_message_id_twin_rust_async();
-    _cst_api_fill_to_wire_message_id_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_message_id_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1863,7 +9987,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_message_id_twin_rust_async_sse(
           MessageIdTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_message_id_twin_rust_async_sse();
-    _cst_api_fill_to_wire_message_id_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_message_id_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1871,7 +9995,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_message_id_twin_sse>
       cst_encode_box_autoadd_message_id_twin_sse(MessageIdTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_message_id_twin_sse();
-    _cst_api_fill_to_wire_message_id_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_message_id_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1879,7 +10003,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_message_id_twin_sync>
       cst_encode_box_autoadd_message_id_twin_sync(MessageIdTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_message_id_twin_sync();
-    _cst_api_fill_to_wire_message_id_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_message_id_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1888,7 +10012,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_message_id_twin_sync_sse(
           MessageIdTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_message_id_twin_sync_sse();
-    _cst_api_fill_to_wire_message_id_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_message_id_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1897,7 +10021,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_nested_struct_twin_normal(
           MyNestedStructTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_my_nested_struct_twin_normal();
-    _cst_api_fill_to_wire_my_nested_struct_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1906,7 +10030,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_nested_struct_twin_rust_async(
           MyNestedStructTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_my_nested_struct_twin_rust_async();
-    _cst_api_fill_to_wire_my_nested_struct_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1915,7 +10039,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_nested_struct_twin_rust_async_sse(
           MyNestedStructTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_my_nested_struct_twin_rust_async_sse();
-    _cst_api_fill_to_wire_my_nested_struct_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1924,7 +10048,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_nested_struct_twin_sse(
           MyNestedStructTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_my_nested_struct_twin_sse();
-    _cst_api_fill_to_wire_my_nested_struct_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1933,7 +10057,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_nested_struct_twin_sync(
           MyNestedStructTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_my_nested_struct_twin_sync();
-    _cst_api_fill_to_wire_my_nested_struct_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -1942,14 +10066,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_nested_struct_twin_sync_sse(
           MyNestedStructTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_my_nested_struct_twin_sync_sse();
-    _cst_api_fill_to_wire_my_nested_struct_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
   @protected
   ffi.Pointer<wire_cst_my_size> cst_encode_box_autoadd_my_size(MySize raw) {
     final ptr = wire.cst_new_box_autoadd_my_size();
-    _cst_api_fill_to_wire_my_size(raw, ptr.ref);
+    cst_api_fill_to_wire_my_size(raw, ptr.ref);
     return ptr;
   }
 
@@ -1957,7 +10081,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_my_struct> cst_encode_box_autoadd_my_struct(
       MyStruct raw) {
     final ptr = wire.cst_new_box_autoadd_my_struct();
-    _cst_api_fill_to_wire_my_struct(raw, ptr.ref);
+    cst_api_fill_to_wire_my_struct(raw, ptr.ref);
     return ptr;
   }
 
@@ -1966,7 +10090,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_tree_node_twin_normal(
           MyTreeNodeTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_my_tree_node_twin_normal();
-    _cst_api_fill_to_wire_my_tree_node_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -1975,7 +10099,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_tree_node_twin_rust_async(
           MyTreeNodeTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_my_tree_node_twin_rust_async();
-    _cst_api_fill_to_wire_my_tree_node_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -1984,7 +10108,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_tree_node_twin_rust_async_sse(
           MyTreeNodeTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_my_tree_node_twin_rust_async_sse();
-    _cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -1992,7 +10116,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_my_tree_node_twin_sse>
       cst_encode_box_autoadd_my_tree_node_twin_sse(MyTreeNodeTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_my_tree_node_twin_sse();
-    _cst_api_fill_to_wire_my_tree_node_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2000,7 +10124,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_my_tree_node_twin_sync>
       cst_encode_box_autoadd_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_my_tree_node_twin_sync();
-    _cst_api_fill_to_wire_my_tree_node_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2009,7 +10133,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_my_tree_node_twin_sync_sse(
           MyTreeNodeTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_my_tree_node_twin_sync_sse();
-    _cst_api_fill_to_wire_my_tree_node_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2018,7 +10142,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_nested_raw_string_mirrored(
           NestedRawStringMirrored raw) {
     final ptr = wire.cst_new_box_autoadd_nested_raw_string_mirrored();
-    _cst_api_fill_to_wire_nested_raw_string_mirrored(raw, ptr.ref);
+    cst_api_fill_to_wire_nested_raw_string_mirrored(raw, ptr.ref);
     return ptr;
   }
 
@@ -2027,7 +10151,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_new_type_int_twin_normal(
           NewTypeIntTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_new_type_int_twin_normal();
-    _cst_api_fill_to_wire_new_type_int_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_new_type_int_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2036,7 +10160,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_new_type_int_twin_rust_async(
           NewTypeIntTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_new_type_int_twin_rust_async();
-    _cst_api_fill_to_wire_new_type_int_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_new_type_int_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2045,7 +10169,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_new_type_int_twin_rust_async_sse(
           NewTypeIntTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_new_type_int_twin_rust_async_sse();
-    _cst_api_fill_to_wire_new_type_int_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_new_type_int_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2053,7 +10177,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_new_type_int_twin_sse>
       cst_encode_box_autoadd_new_type_int_twin_sse(NewTypeIntTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_new_type_int_twin_sse();
-    _cst_api_fill_to_wire_new_type_int_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_new_type_int_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2061,7 +10185,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_new_type_int_twin_sync>
       cst_encode_box_autoadd_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_new_type_int_twin_sync();
-    _cst_api_fill_to_wire_new_type_int_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_new_type_int_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2070,7 +10194,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_new_type_int_twin_sync_sse(
           NewTypeIntTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_new_type_int_twin_sync_sse();
-    _cst_api_fill_to_wire_new_type_int_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_new_type_int_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2078,7 +10202,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_note_twin_normal>
       cst_encode_box_autoadd_note_twin_normal(NoteTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_note_twin_normal();
-    _cst_api_fill_to_wire_note_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_note_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2086,7 +10210,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_note_twin_rust_async>
       cst_encode_box_autoadd_note_twin_rust_async(NoteTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_note_twin_rust_async();
-    _cst_api_fill_to_wire_note_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_note_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2095,7 +10219,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_note_twin_rust_async_sse(
           NoteTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_note_twin_rust_async_sse();
-    _cst_api_fill_to_wire_note_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_note_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2103,7 +10227,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_note_twin_sse> cst_encode_box_autoadd_note_twin_sse(
       NoteTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_note_twin_sse();
-    _cst_api_fill_to_wire_note_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_note_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2111,7 +10235,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_note_twin_sync> cst_encode_box_autoadd_note_twin_sync(
       NoteTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_note_twin_sync();
-    _cst_api_fill_to_wire_note_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_note_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2119,14 +10243,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_note_twin_sync_sse>
       cst_encode_box_autoadd_note_twin_sync_sse(NoteTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_note_twin_sync_sse();
-    _cst_api_fill_to_wire_note_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_note_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
   @protected
   ffi.Pointer<wire_cst_numbers> cst_encode_box_autoadd_numbers(Numbers raw) {
     final ptr = wire.cst_new_box_autoadd_numbers();
-    _cst_api_fill_to_wire_numbers(raw, ptr.ref);
+    cst_api_fill_to_wire_numbers(raw, ptr.ref);
     return ptr;
   }
 
@@ -2135,7 +10259,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_opaque_nested_twin_normal(
           OpaqueNestedTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_opaque_nested_twin_normal();
-    _cst_api_fill_to_wire_opaque_nested_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2144,7 +10268,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_opaque_nested_twin_rust_async(
           OpaqueNestedTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_opaque_nested_twin_rust_async();
-    _cst_api_fill_to_wire_opaque_nested_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2153,7 +10277,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_opaque_nested_twin_rust_async_sse(
           OpaqueNestedTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_opaque_nested_twin_rust_async_sse();
-    _cst_api_fill_to_wire_opaque_nested_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2161,7 +10285,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_opaque_nested_twin_sse>
       cst_encode_box_autoadd_opaque_nested_twin_sse(OpaqueNestedTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_opaque_nested_twin_sse();
-    _cst_api_fill_to_wire_opaque_nested_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2169,7 +10293,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_opaque_nested_twin_sync>
       cst_encode_box_autoadd_opaque_nested_twin_sync(OpaqueNestedTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_opaque_nested_twin_sync();
-    _cst_api_fill_to_wire_opaque_nested_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2178,7 +10302,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_opaque_nested_twin_sync_sse(
           OpaqueNestedTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_opaque_nested_twin_sync_sse();
-    _cst_api_fill_to_wire_opaque_nested_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2186,7 +10310,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_opt_vecs_twin_normal>
       cst_encode_box_autoadd_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_opt_vecs_twin_normal();
-    _cst_api_fill_to_wire_opt_vecs_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2195,7 +10319,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_opt_vecs_twin_rust_async(
           OptVecsTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_opt_vecs_twin_rust_async();
-    _cst_api_fill_to_wire_opt_vecs_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2204,7 +10328,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_opt_vecs_twin_rust_async_sse(
           OptVecsTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_opt_vecs_twin_rust_async_sse();
-    _cst_api_fill_to_wire_opt_vecs_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2212,7 +10336,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_opt_vecs_twin_sse>
       cst_encode_box_autoadd_opt_vecs_twin_sse(OptVecsTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_opt_vecs_twin_sse();
-    _cst_api_fill_to_wire_opt_vecs_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2220,7 +10344,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_opt_vecs_twin_sync>
       cst_encode_box_autoadd_opt_vecs_twin_sync(OptVecsTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_opt_vecs_twin_sync();
-    _cst_api_fill_to_wire_opt_vecs_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2228,7 +10352,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_opt_vecs_twin_sync_sse>
       cst_encode_box_autoadd_opt_vecs_twin_sync_sse(OptVecsTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_opt_vecs_twin_sync_sse();
-    _cst_api_fill_to_wire_opt_vecs_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2236,7 +10360,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_raw_string_mirrored>
       cst_encode_box_autoadd_raw_string_mirrored(RawStringMirrored raw) {
     final ptr = wire.cst_new_box_autoadd_raw_string_mirrored();
-    _cst_api_fill_to_wire_raw_string_mirrored(raw, ptr.ref);
+    cst_api_fill_to_wire_raw_string_mirrored(raw, ptr.ref);
     return ptr;
   }
 
@@ -2244,7 +10368,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_record_string_i_32>
       cst_encode_box_autoadd_record_string_i_32((String, int) raw) {
     final ptr = wire.cst_new_box_autoadd_record_string_i_32();
-    _cst_api_fill_to_wire_record_string_i_32(raw, ptr.ref);
+    cst_api_fill_to_wire_record_string_i_32(raw, ptr.ref);
     return ptr;
   }
 
@@ -2252,7 +10376,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_sequences> cst_encode_box_autoadd_sequences(
       Sequences raw) {
     final ptr = wire.cst_new_box_autoadd_sequences();
-    _cst_api_fill_to_wire_sequences(raw, ptr.ref);
+    cst_api_fill_to_wire_sequences(raw, ptr.ref);
     return ptr;
   }
 
@@ -2260,7 +10384,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_some_struct_twin_normal>
       cst_encode_box_autoadd_some_struct_twin_normal(SomeStructTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_some_struct_twin_normal();
-    _cst_api_fill_to_wire_some_struct_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_some_struct_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2269,7 +10393,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_some_struct_twin_rust_async(
           SomeStructTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_some_struct_twin_rust_async();
-    _cst_api_fill_to_wire_some_struct_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_some_struct_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2278,7 +10402,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_some_struct_twin_rust_async_sse(
           SomeStructTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_some_struct_twin_rust_async_sse();
-    _cst_api_fill_to_wire_some_struct_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_some_struct_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2286,7 +10410,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_some_struct_twin_sse>
       cst_encode_box_autoadd_some_struct_twin_sse(SomeStructTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_some_struct_twin_sse();
-    _cst_api_fill_to_wire_some_struct_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_some_struct_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2294,7 +10418,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_some_struct_twin_sync>
       cst_encode_box_autoadd_some_struct_twin_sync(SomeStructTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_some_struct_twin_sync();
-    _cst_api_fill_to_wire_some_struct_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_some_struct_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2303,7 +10427,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_some_struct_twin_sync_sse(
           SomeStructTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_some_struct_twin_sync_sse();
-    _cst_api_fill_to_wire_some_struct_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_some_struct_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2312,7 +10436,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_comments_twin_normal(
           StructWithCommentsTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_comments_twin_normal();
-    _cst_api_fill_to_wire_struct_with_comments_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_comments_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2321,7 +10445,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_comments_twin_rust_async(
           StructWithCommentsTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_comments_twin_rust_async();
-    _cst_api_fill_to_wire_struct_with_comments_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_comments_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2331,8 +10455,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithCommentsTwinRustAsyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_struct_with_comments_twin_rust_async_sse();
-    _cst_api_fill_to_wire_struct_with_comments_twin_rust_async_sse(
-        raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_comments_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2341,7 +10464,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_comments_twin_sse(
           StructWithCommentsTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_comments_twin_sse();
-    _cst_api_fill_to_wire_struct_with_comments_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_comments_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2350,7 +10473,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_comments_twin_sync(
           StructWithCommentsTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_comments_twin_sync();
-    _cst_api_fill_to_wire_struct_with_comments_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_comments_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2359,7 +10482,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_comments_twin_sync_sse(
           StructWithCommentsTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_comments_twin_sync_sse();
-    _cst_api_fill_to_wire_struct_with_comments_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_comments_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2368,7 +10491,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_enum_twin_normal(
           StructWithEnumTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_enum_twin_normal();
-    _cst_api_fill_to_wire_struct_with_enum_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2377,7 +10500,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_enum_twin_rust_async(
           StructWithEnumTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_enum_twin_rust_async();
-    _cst_api_fill_to_wire_struct_with_enum_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2386,7 +10509,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_enum_twin_rust_async_sse(
           StructWithEnumTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_enum_twin_rust_async_sse();
-    _cst_api_fill_to_wire_struct_with_enum_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2395,7 +10518,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_enum_twin_sse(
           StructWithEnumTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_enum_twin_sse();
-    _cst_api_fill_to_wire_struct_with_enum_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2404,7 +10527,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_enum_twin_sync(
           StructWithEnumTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_enum_twin_sync();
-    _cst_api_fill_to_wire_struct_with_enum_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2413,7 +10536,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_enum_twin_sync_sse(
           StructWithEnumTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_enum_twin_sync_sse();
-    _cst_api_fill_to_wire_struct_with_enum_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2422,7 +10545,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_one_field_twin_normal(
           StructWithOneFieldTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_one_field_twin_normal();
-    _cst_api_fill_to_wire_struct_with_one_field_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_one_field_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2432,7 +10555,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithOneFieldTwinRustAsync raw) {
     final ptr =
         wire.cst_new_box_autoadd_struct_with_one_field_twin_rust_async();
-    _cst_api_fill_to_wire_struct_with_one_field_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_one_field_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2442,7 +10565,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithOneFieldTwinRustAsyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_struct_with_one_field_twin_rust_async_sse();
-    _cst_api_fill_to_wire_struct_with_one_field_twin_rust_async_sse(
+    cst_api_fill_to_wire_struct_with_one_field_twin_rust_async_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -2452,7 +10575,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_one_field_twin_sse(
           StructWithOneFieldTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_one_field_twin_sse();
-    _cst_api_fill_to_wire_struct_with_one_field_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_one_field_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2461,7 +10584,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_one_field_twin_sync(
           StructWithOneFieldTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_one_field_twin_sync();
-    _cst_api_fill_to_wire_struct_with_one_field_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_one_field_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2470,7 +10593,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_one_field_twin_sync_sse(
           StructWithOneFieldTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_one_field_twin_sync_sse();
-    _cst_api_fill_to_wire_struct_with_one_field_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_one_field_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2479,7 +10602,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_two_field_twin_normal(
           StructWithTwoFieldTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_two_field_twin_normal();
-    _cst_api_fill_to_wire_struct_with_two_field_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_two_field_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2489,7 +10612,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithTwoFieldTwinRustAsync raw) {
     final ptr =
         wire.cst_new_box_autoadd_struct_with_two_field_twin_rust_async();
-    _cst_api_fill_to_wire_struct_with_two_field_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_two_field_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2499,7 +10622,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithTwoFieldTwinRustAsyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_struct_with_two_field_twin_rust_async_sse();
-    _cst_api_fill_to_wire_struct_with_two_field_twin_rust_async_sse(
+    cst_api_fill_to_wire_struct_with_two_field_twin_rust_async_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -2509,7 +10632,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_two_field_twin_sse(
           StructWithTwoFieldTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_two_field_twin_sse();
-    _cst_api_fill_to_wire_struct_with_two_field_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_two_field_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2518,7 +10641,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_two_field_twin_sync(
           StructWithTwoFieldTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_two_field_twin_sync();
-    _cst_api_fill_to_wire_struct_with_two_field_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_two_field_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2527,7 +10650,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_struct_with_two_field_twin_sync_sse(
           StructWithTwoFieldTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_struct_with_two_field_twin_sync_sse();
-    _cst_api_fill_to_wire_struct_with_two_field_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_struct_with_two_field_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2591,7 +10714,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_sum_with_twin_normal>
       cst_encode_box_autoadd_sum_with_twin_normal(SumWithTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_sum_with_twin_normal();
-    _cst_api_fill_to_wire_sum_with_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_sum_with_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2600,7 +10723,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_sum_with_twin_rust_async(
           SumWithTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_sum_with_twin_rust_async();
-    _cst_api_fill_to_wire_sum_with_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_sum_with_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2609,7 +10732,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_sum_with_twin_rust_async_sse(
           SumWithTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_sum_with_twin_rust_async_sse();
-    _cst_api_fill_to_wire_sum_with_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_sum_with_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2617,7 +10740,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_sum_with_twin_sse>
       cst_encode_box_autoadd_sum_with_twin_sse(SumWithTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_sum_with_twin_sse();
-    _cst_api_fill_to_wire_sum_with_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_sum_with_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2625,7 +10748,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_sum_with_twin_sync>
       cst_encode_box_autoadd_sum_with_twin_sync(SumWithTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_sum_with_twin_sync();
-    _cst_api_fill_to_wire_sum_with_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_sum_with_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2633,7 +10756,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_sum_with_twin_sync_sse>
       cst_encode_box_autoadd_sum_with_twin_sync_sse(SumWithTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_sum_with_twin_sync_sse();
-    _cst_api_fill_to_wire_sum_with_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_sum_with_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2641,7 +10764,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_test_id_twin_normal>
       cst_encode_box_autoadd_test_id_twin_normal(TestIdTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_test_id_twin_normal();
-    _cst_api_fill_to_wire_test_id_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_test_id_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2649,7 +10772,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_test_id_twin_rust_async>
       cst_encode_box_autoadd_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_test_id_twin_rust_async();
-    _cst_api_fill_to_wire_test_id_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_test_id_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2658,7 +10781,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_test_id_twin_rust_async_sse(
           TestIdTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_test_id_twin_rust_async_sse();
-    _cst_api_fill_to_wire_test_id_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_test_id_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2666,7 +10789,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_test_id_twin_sse>
       cst_encode_box_autoadd_test_id_twin_sse(TestIdTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_test_id_twin_sse();
-    _cst_api_fill_to_wire_test_id_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_test_id_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2674,7 +10797,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_test_id_twin_sync>
       cst_encode_box_autoadd_test_id_twin_sync(TestIdTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_test_id_twin_sync();
-    _cst_api_fill_to_wire_test_id_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_test_id_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2682,7 +10805,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_test_id_twin_sync_sse>
       cst_encode_box_autoadd_test_id_twin_sync_sse(TestIdTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_test_id_twin_sync_sse();
-    _cst_api_fill_to_wire_test_id_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_test_id_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2692,7 +10815,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithOneFieldTwinNormal raw) {
     final ptr =
         wire.cst_new_box_autoadd_tuple_struct_with_one_field_twin_normal();
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2702,7 +10825,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithOneFieldTwinRustAsync raw) {
     final ptr =
         wire.cst_new_box_autoadd_tuple_struct_with_one_field_twin_rust_async();
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(
         raw, ptr.ref);
     return ptr;
   }
@@ -2713,7 +10836,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithOneFieldTwinRustAsyncSse raw) {
     final ptr = wire
         .cst_new_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse();
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async_sse(
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -2723,7 +10846,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_tuple_struct_with_one_field_twin_sse(
           TupleStructWithOneFieldTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_tuple_struct_with_one_field_twin_sse();
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2733,7 +10856,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithOneFieldTwinSync raw) {
     final ptr =
         wire.cst_new_box_autoadd_tuple_struct_with_one_field_twin_sync();
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2743,7 +10866,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithOneFieldTwinSyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_tuple_struct_with_one_field_twin_sync_sse();
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync_sse(
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -2754,7 +10877,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithTwoFieldTwinNormal raw) {
     final ptr =
         wire.cst_new_box_autoadd_tuple_struct_with_two_field_twin_normal();
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2764,7 +10887,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithTwoFieldTwinRustAsync raw) {
     final ptr =
         wire.cst_new_box_autoadd_tuple_struct_with_two_field_twin_rust_async();
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(
         raw, ptr.ref);
     return ptr;
   }
@@ -2775,7 +10898,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithTwoFieldTwinRustAsyncSse raw) {
     final ptr = wire
         .cst_new_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse();
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async_sse(
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -2785,7 +10908,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_tuple_struct_with_two_field_twin_sse(
           TupleStructWithTwoFieldTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_tuple_struct_with_two_field_twin_sse();
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2795,7 +10918,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithTwoFieldTwinSync raw) {
     final ptr =
         wire.cst_new_box_autoadd_tuple_struct_with_two_field_twin_sync();
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2805,7 +10928,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           TupleStructWithTwoFieldTwinSyncSse raw) {
     final ptr =
         wire.cst_new_box_autoadd_tuple_struct_with_two_field_twin_sync_sse();
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync_sse(
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync_sse(
         raw, ptr.ref);
     return ptr;
   }
@@ -2834,7 +10957,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_user_id_twin_normal>
       cst_encode_box_autoadd_user_id_twin_normal(UserIdTwinNormal raw) {
     final ptr = wire.cst_new_box_autoadd_user_id_twin_normal();
-    _cst_api_fill_to_wire_user_id_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_user_id_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2842,7 +10965,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_user_id_twin_rust_async>
       cst_encode_box_autoadd_user_id_twin_rust_async(UserIdTwinRustAsync raw) {
     final ptr = wire.cst_new_box_autoadd_user_id_twin_rust_async();
-    _cst_api_fill_to_wire_user_id_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_user_id_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2851,7 +10974,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_autoadd_user_id_twin_rust_async_sse(
           UserIdTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_user_id_twin_rust_async_sse();
-    _cst_api_fill_to_wire_user_id_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_user_id_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2859,7 +10982,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_user_id_twin_sse>
       cst_encode_box_autoadd_user_id_twin_sse(UserIdTwinSse raw) {
     final ptr = wire.cst_new_box_autoadd_user_id_twin_sse();
-    _cst_api_fill_to_wire_user_id_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_user_id_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2867,7 +10990,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_user_id_twin_sync>
       cst_encode_box_autoadd_user_id_twin_sync(UserIdTwinSync raw) {
     final ptr = wire.cst_new_box_autoadd_user_id_twin_sync();
-    _cst_api_fill_to_wire_user_id_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_user_id_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2875,7 +10998,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_user_id_twin_sync_sse>
       cst_encode_box_autoadd_user_id_twin_sync_sse(UserIdTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_user_id_twin_sync_sse();
-    _cst_api_fill_to_wire_user_id_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_user_id_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2925,7 +11048,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_blob_twin_normal> cst_encode_box_blob_twin_normal(
       BlobTwinNormal raw) {
     final ptr = wire.cst_new_box_blob_twin_normal();
-    _cst_api_fill_to_wire_blob_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_blob_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2933,7 +11056,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_blob_twin_rust_async>
       cst_encode_box_blob_twin_rust_async(BlobTwinRustAsync raw) {
     final ptr = wire.cst_new_box_blob_twin_rust_async();
-    _cst_api_fill_to_wire_blob_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_blob_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2941,7 +11064,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_blob_twin_rust_async_sse>
       cst_encode_box_blob_twin_rust_async_sse(BlobTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_blob_twin_rust_async_sse();
-    _cst_api_fill_to_wire_blob_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_blob_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2949,7 +11072,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_blob_twin_sse> cst_encode_box_blob_twin_sse(
       BlobTwinSse raw) {
     final ptr = wire.cst_new_box_blob_twin_sse();
-    _cst_api_fill_to_wire_blob_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_blob_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2957,7 +11080,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_blob_twin_sync> cst_encode_box_blob_twin_sync(
       BlobTwinSync raw) {
     final ptr = wire.cst_new_box_blob_twin_sync();
-    _cst_api_fill_to_wire_blob_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_blob_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -2965,7 +11088,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_blob_twin_sync_sse> cst_encode_box_blob_twin_sync_sse(
       BlobTwinSyncSse raw) {
     final ptr = wire.cst_new_box_blob_twin_sync_sse();
-    _cst_api_fill_to_wire_blob_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_blob_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -2978,7 +11101,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_distance_twin_normal>
       cst_encode_box_distance_twin_normal(DistanceTwinNormal raw) {
     final ptr = wire.cst_new_box_distance_twin_normal();
-    _cst_api_fill_to_wire_distance_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_distance_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -2986,7 +11109,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_distance_twin_rust_async>
       cst_encode_box_distance_twin_rust_async(DistanceTwinRustAsync raw) {
     final ptr = wire.cst_new_box_distance_twin_rust_async();
-    _cst_api_fill_to_wire_distance_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_distance_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -2995,7 +11118,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_distance_twin_rust_async_sse(
           DistanceTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_distance_twin_rust_async_sse();
-    _cst_api_fill_to_wire_distance_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_distance_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3003,7 +11126,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_distance_twin_sse> cst_encode_box_distance_twin_sse(
       DistanceTwinSse raw) {
     final ptr = wire.cst_new_box_distance_twin_sse();
-    _cst_api_fill_to_wire_distance_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_distance_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3011,7 +11134,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_distance_twin_sync> cst_encode_box_distance_twin_sync(
       DistanceTwinSync raw) {
     final ptr = wire.cst_new_box_distance_twin_sync();
-    _cst_api_fill_to_wire_distance_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_distance_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -3019,7 +11142,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_distance_twin_sync_sse>
       cst_encode_box_distance_twin_sync_sse(DistanceTwinSyncSse raw) {
     final ptr = wire.cst_new_box_distance_twin_sync_sse();
-    _cst_api_fill_to_wire_distance_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_distance_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3028,7 +11151,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_exotic_optionals_twin_normal(
           ExoticOptionalsTwinNormal raw) {
     final ptr = wire.cst_new_box_exotic_optionals_twin_normal();
-    _cst_api_fill_to_wire_exotic_optionals_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -3037,7 +11160,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_exotic_optionals_twin_rust_async(
           ExoticOptionalsTwinRustAsync raw) {
     final ptr = wire.cst_new_box_exotic_optionals_twin_rust_async();
-    _cst_api_fill_to_wire_exotic_optionals_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -3046,7 +11169,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_exotic_optionals_twin_rust_async_sse(
           ExoticOptionalsTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_exotic_optionals_twin_rust_async_sse();
-    _cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3054,7 +11177,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_exotic_optionals_twin_sse>
       cst_encode_box_exotic_optionals_twin_sse(ExoticOptionalsTwinSse raw) {
     final ptr = wire.cst_new_box_exotic_optionals_twin_sse();
-    _cst_api_fill_to_wire_exotic_optionals_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3062,7 +11185,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_exotic_optionals_twin_sync>
       cst_encode_box_exotic_optionals_twin_sync(ExoticOptionalsTwinSync raw) {
     final ptr = wire.cst_new_box_exotic_optionals_twin_sync();
-    _cst_api_fill_to_wire_exotic_optionals_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -3071,7 +11194,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_exotic_optionals_twin_sync_sse(
           ExoticOptionalsTwinSyncSse raw) {
     final ptr = wire.cst_new_box_exotic_optionals_twin_sync_sse();
-    _cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3084,7 +11207,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_normal> cst_encode_box_feed_id_twin_normal(
       FeedIdTwinNormal raw) {
     final ptr = wire.cst_new_box_feed_id_twin_normal();
-    _cst_api_fill_to_wire_feed_id_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -3092,7 +11215,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_rust_async>
       cst_encode_box_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
     final ptr = wire.cst_new_box_feed_id_twin_rust_async();
-    _cst_api_fill_to_wire_feed_id_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -3100,7 +11223,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_rust_async_sse>
       cst_encode_box_feed_id_twin_rust_async_sse(FeedIdTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_feed_id_twin_rust_async_sse();
-    _cst_api_fill_to_wire_feed_id_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3108,7 +11231,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_sse> cst_encode_box_feed_id_twin_sse(
       FeedIdTwinSse raw) {
     final ptr = wire.cst_new_box_feed_id_twin_sse();
-    _cst_api_fill_to_wire_feed_id_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3116,7 +11239,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_sync> cst_encode_box_feed_id_twin_sync(
       FeedIdTwinSync raw) {
     final ptr = wire.cst_new_box_feed_id_twin_sync();
-    _cst_api_fill_to_wire_feed_id_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -3124,7 +11247,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_feed_id_twin_sync_sse>
       cst_encode_box_feed_id_twin_sync_sse(FeedIdTwinSyncSse raw) {
     final ptr = wire.cst_new_box_feed_id_twin_sync_sse();
-    _cst_api_fill_to_wire_feed_id_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_feed_id_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3147,7 +11270,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_kitchen_sink_twin_normal>
       cst_encode_box_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
     final ptr = wire.cst_new_box_kitchen_sink_twin_normal();
-    _cst_api_fill_to_wire_kitchen_sink_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -3156,7 +11279,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_kitchen_sink_twin_rust_async(
           KitchenSinkTwinRustAsync raw) {
     final ptr = wire.cst_new_box_kitchen_sink_twin_rust_async();
-    _cst_api_fill_to_wire_kitchen_sink_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -3165,7 +11288,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_box_kitchen_sink_twin_rust_async_sse(
           KitchenSinkTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_kitchen_sink_twin_rust_async_sse();
-    _cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3173,7 +11296,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_kitchen_sink_twin_sse>
       cst_encode_box_kitchen_sink_twin_sse(KitchenSinkTwinSse raw) {
     final ptr = wire.cst_new_box_kitchen_sink_twin_sse();
-    _cst_api_fill_to_wire_kitchen_sink_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3181,7 +11304,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_kitchen_sink_twin_sync>
       cst_encode_box_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
     final ptr = wire.cst_new_box_kitchen_sink_twin_sync();
-    _cst_api_fill_to_wire_kitchen_sink_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -3189,14 +11312,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_kitchen_sink_twin_sync_sse>
       cst_encode_box_kitchen_sink_twin_sync_sse(KitchenSinkTwinSyncSse raw) {
     final ptr = wire.cst_new_box_kitchen_sink_twin_sync_sse();
-    _cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
   @protected
   ffi.Pointer<wire_cst_my_size> cst_encode_box_my_size(MySize raw) {
     final ptr = wire.cst_new_box_my_size();
-    _cst_api_fill_to_wire_my_size(raw, ptr.ref);
+    cst_api_fill_to_wire_my_size(raw, ptr.ref);
     return ptr;
   }
 
@@ -3204,7 +11327,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_speed_twin_normal> cst_encode_box_speed_twin_normal(
       SpeedTwinNormal raw) {
     final ptr = wire.cst_new_box_speed_twin_normal();
-    _cst_api_fill_to_wire_speed_twin_normal(raw, ptr.ref);
+    cst_api_fill_to_wire_speed_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
@@ -3212,7 +11335,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_speed_twin_rust_async>
       cst_encode_box_speed_twin_rust_async(SpeedTwinRustAsync raw) {
     final ptr = wire.cst_new_box_speed_twin_rust_async();
-    _cst_api_fill_to_wire_speed_twin_rust_async(raw, ptr.ref);
+    cst_api_fill_to_wire_speed_twin_rust_async(raw, ptr.ref);
     return ptr;
   }
 
@@ -3220,7 +11343,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_speed_twin_rust_async_sse>
       cst_encode_box_speed_twin_rust_async_sse(SpeedTwinRustAsyncSse raw) {
     final ptr = wire.cst_new_box_speed_twin_rust_async_sse();
-    _cst_api_fill_to_wire_speed_twin_rust_async_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_speed_twin_rust_async_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3228,7 +11351,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_speed_twin_sse> cst_encode_box_speed_twin_sse(
       SpeedTwinSse raw) {
     final ptr = wire.cst_new_box_speed_twin_sse();
-    _cst_api_fill_to_wire_speed_twin_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_speed_twin_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3236,7 +11359,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_speed_twin_sync> cst_encode_box_speed_twin_sync(
       SpeedTwinSync raw) {
     final ptr = wire.cst_new_box_speed_twin_sync();
-    _cst_api_fill_to_wire_speed_twin_sync(raw, ptr.ref);
+    cst_api_fill_to_wire_speed_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -3244,7 +11367,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_speed_twin_sync_sse> cst_encode_box_speed_twin_sync_sse(
       SpeedTwinSyncSse raw) {
     final ptr = wire.cst_new_box_speed_twin_sync_sse();
-    _cst_api_fill_to_wire_speed_twin_sync_sse(raw, ptr.ref);
+    cst_api_fill_to_wire_speed_twin_sync_sse(raw, ptr.ref);
     return ptr;
   }
 
@@ -3429,7 +11552,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_application_env_var(List<ApplicationEnvVar> raw) {
     final ans = wire.cst_new_list_application_env_var(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_application_env_var(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_application_env_var(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3439,7 +11562,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_application_settings(List<ApplicationSettings> raw) {
     final ans = wire.cst_new_list_application_settings(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_application_settings(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_application_settings(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3449,7 +11572,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_attribute_twin_normal(List<AttributeTwinNormal> raw) {
     final ans = wire.cst_new_list_attribute_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_attribute_twin_normal(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_attribute_twin_normal(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3460,7 +11583,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<AttributeTwinRustAsync> raw) {
     final ans = wire.cst_new_list_attribute_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_attribute_twin_rust_async(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_attribute_twin_rust_async(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3471,7 +11594,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<AttributeTwinRustAsyncSse> raw) {
     final ans = wire.cst_new_list_attribute_twin_rust_async_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_attribute_twin_rust_async_sse(
+      cst_api_fill_to_wire_attribute_twin_rust_async_sse(
           raw[i], ans.ref.ptr[i]);
     }
     return ans;
@@ -3482,7 +11605,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_attribute_twin_sse(List<AttributeTwinSse> raw) {
     final ans = wire.cst_new_list_attribute_twin_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_attribute_twin_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_attribute_twin_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3492,7 +11615,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_attribute_twin_sync(List<AttributeTwinSync> raw) {
     final ans = wire.cst_new_list_attribute_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_attribute_twin_sync(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_attribute_twin_sync(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3502,7 +11625,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_attribute_twin_sync_sse(List<AttributeTwinSyncSse> raw) {
     final ans = wire.cst_new_list_attribute_twin_sync_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_attribute_twin_sync_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_attribute_twin_sync_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3521,7 +11644,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_element_twin_normal(List<ElementTwinNormal> raw) {
     final ans = wire.cst_new_list_element_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_element_twin_normal(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_element_twin_normal(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3531,7 +11654,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_element_twin_rust_async(List<ElementTwinRustAsync> raw) {
     final ans = wire.cst_new_list_element_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_element_twin_rust_async(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_element_twin_rust_async(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3542,7 +11665,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<ElementTwinRustAsyncSse> raw) {
     final ans = wire.cst_new_list_element_twin_rust_async_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_element_twin_rust_async_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_element_twin_rust_async_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3552,7 +11675,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<ElementTwinSse> raw) {
     final ans = wire.cst_new_list_element_twin_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_element_twin_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_element_twin_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3562,7 +11685,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_element_twin_sync(List<ElementTwinSync> raw) {
     final ans = wire.cst_new_list_element_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_element_twin_sync(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_element_twin_sync(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3572,7 +11695,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_element_twin_sync_sse(List<ElementTwinSyncSse> raw) {
     final ans = wire.cst_new_list_element_twin_sync_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_element_twin_sync_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_element_twin_sync_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3582,7 +11705,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_enum_opaque_twin_normal(List<EnumOpaqueTwinNormal> raw) {
     final ans = wire.cst_new_list_enum_opaque_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_enum_opaque_twin_normal(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_enum_opaque_twin_normal(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3593,7 +11716,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<EnumOpaqueTwinRustAsync> raw) {
     final ans = wire.cst_new_list_enum_opaque_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_enum_opaque_twin_rust_async(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_enum_opaque_twin_rust_async(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3604,7 +11727,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<EnumOpaqueTwinRustAsyncSse> raw) {
     final ans = wire.cst_new_list_enum_opaque_twin_rust_async_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_enum_opaque_twin_rust_async_sse(
+      cst_api_fill_to_wire_enum_opaque_twin_rust_async_sse(
           raw[i], ans.ref.ptr[i]);
     }
     return ans;
@@ -3615,7 +11738,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_enum_opaque_twin_sse(List<EnumOpaqueTwinSse> raw) {
     final ans = wire.cst_new_list_enum_opaque_twin_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_enum_opaque_twin_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_enum_opaque_twin_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3625,7 +11748,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_enum_opaque_twin_sync(List<EnumOpaqueTwinSync> raw) {
     final ans = wire.cst_new_list_enum_opaque_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_enum_opaque_twin_sync(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_enum_opaque_twin_sync(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3636,7 +11759,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<EnumOpaqueTwinSyncSse> raw) {
     final ans = wire.cst_new_list_enum_opaque_twin_sync_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_enum_opaque_twin_sync_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_enum_opaque_twin_sync_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3654,7 +11777,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_cst_list_my_size> cst_encode_list_my_size(List<MySize> raw) {
     final ans = wire.cst_new_list_my_size(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_my_size(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_my_size(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3664,7 +11787,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_my_tree_node_twin_normal(List<MyTreeNodeTwinNormal> raw) {
     final ans = wire.cst_new_list_my_tree_node_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_my_tree_node_twin_normal(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_my_tree_node_twin_normal(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3675,8 +11798,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<MyTreeNodeTwinRustAsync> raw) {
     final ans = wire.cst_new_list_my_tree_node_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_my_tree_node_twin_rust_async(
-          raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_my_tree_node_twin_rust_async(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3687,7 +11809,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<MyTreeNodeTwinRustAsyncSse> raw) {
     final ans = wire.cst_new_list_my_tree_node_twin_rust_async_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(
+      cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(
           raw[i], ans.ref.ptr[i]);
     }
     return ans;
@@ -3698,7 +11820,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_my_tree_node_twin_sse(List<MyTreeNodeTwinSse> raw) {
     final ans = wire.cst_new_list_my_tree_node_twin_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_my_tree_node_twin_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_my_tree_node_twin_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3708,7 +11830,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_my_tree_node_twin_sync(List<MyTreeNodeTwinSync> raw) {
     final ans = wire.cst_new_list_my_tree_node_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_my_tree_node_twin_sync(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_my_tree_node_twin_sync(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3719,7 +11841,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<MyTreeNodeTwinSyncSse> raw) {
     final ans = wire.cst_new_list_my_tree_node_twin_sync_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_my_tree_node_twin_sync_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_my_tree_node_twin_sync_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3730,7 +11852,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<NestedRawStringMirrored> raw) {
     final ans = wire.cst_new_list_nested_raw_string_mirrored(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_nested_raw_string_mirrored(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_nested_raw_string_mirrored(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3919,7 +12041,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_point_twin_normal(List<PointTwinNormal> raw) {
     final ans = wire.cst_new_list_point_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_point_twin_normal(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_point_twin_normal(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3929,7 +12051,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_point_twin_rust_async(List<PointTwinRustAsync> raw) {
     final ans = wire.cst_new_list_point_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_point_twin_rust_async(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_point_twin_rust_async(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3940,7 +12062,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<PointTwinRustAsyncSse> raw) {
     final ans = wire.cst_new_list_point_twin_rust_async_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_point_twin_rust_async_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_point_twin_rust_async_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3950,7 +12072,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<PointTwinSse> raw) {
     final ans = wire.cst_new_list_point_twin_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_point_twin_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_point_twin_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3960,7 +12082,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<PointTwinSync> raw) {
     final ans = wire.cst_new_list_point_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_point_twin_sync(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_point_twin_sync(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -3970,7 +12092,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_point_twin_sync_sse(List<PointTwinSyncSse> raw) {
     final ans = wire.cst_new_list_point_twin_sync_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_point_twin_sync_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_point_twin_sync_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4059,7 +12181,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<RawStringEnumMirrored> raw) {
     final ans = wire.cst_new_list_raw_string_enum_mirrored(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_raw_string_enum_mirrored(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_raw_string_enum_mirrored(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4069,7 +12191,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_raw_string_mirrored(List<RawStringMirrored> raw) {
     final ans = wire.cst_new_list_raw_string_mirrored(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_raw_string_mirrored(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_raw_string_mirrored(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4079,7 +12201,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_record_string_i_32(List<(String, int)> raw) {
     final ans = wire.cst_new_list_record_string_i_32(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_record_string_i_32(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_record_string_i_32(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4089,7 +12211,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_sum_with_twin_normal(List<SumWithTwinNormal> raw) {
     final ans = wire.cst_new_list_sum_with_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_sum_with_twin_normal(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_sum_with_twin_normal(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4099,7 +12221,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_sum_with_twin_rust_async(List<SumWithTwinRustAsync> raw) {
     final ans = wire.cst_new_list_sum_with_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_sum_with_twin_rust_async(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_sum_with_twin_rust_async(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4110,8 +12232,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<SumWithTwinRustAsyncSse> raw) {
     final ans = wire.cst_new_list_sum_with_twin_rust_async_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_sum_with_twin_rust_async_sse(
-          raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_sum_with_twin_rust_async_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4121,7 +12242,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_sum_with_twin_sse(List<SumWithTwinSse> raw) {
     final ans = wire.cst_new_list_sum_with_twin_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_sum_with_twin_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_sum_with_twin_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4131,7 +12252,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_sum_with_twin_sync(List<SumWithTwinSync> raw) {
     final ans = wire.cst_new_list_sum_with_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_sum_with_twin_sync(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_sum_with_twin_sync(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4141,7 +12262,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_sum_with_twin_sync_sse(List<SumWithTwinSyncSse> raw) {
     final ans = wire.cst_new_list_sum_with_twin_sync_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_sum_with_twin_sync_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_sum_with_twin_sync_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4151,7 +12272,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_test_id_twin_normal(List<TestIdTwinNormal> raw) {
     final ans = wire.cst_new_list_test_id_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_test_id_twin_normal(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_test_id_twin_normal(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4161,7 +12282,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_test_id_twin_rust_async(List<TestIdTwinRustAsync> raw) {
     final ans = wire.cst_new_list_test_id_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_test_id_twin_rust_async(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_test_id_twin_rust_async(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4172,7 +12293,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           List<TestIdTwinRustAsyncSse> raw) {
     final ans = wire.cst_new_list_test_id_twin_rust_async_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_test_id_twin_rust_async_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_test_id_twin_rust_async_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4182,7 +12303,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<TestIdTwinSse> raw) {
     final ans = wire.cst_new_list_test_id_twin_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_test_id_twin_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_test_id_twin_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4192,7 +12313,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_test_id_twin_sync(List<TestIdTwinSync> raw) {
     final ans = wire.cst_new_list_test_id_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_test_id_twin_sync(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_test_id_twin_sync(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -4202,7 +12323,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_test_id_twin_sync_sse(List<TestIdTwinSyncSse> raw) {
     final ans = wire.cst_new_list_test_id_twin_sync_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _cst_api_fill_to_wire_test_id_twin_sync_sse(raw[i], ans.ref.ptr[i]);
+      cst_api_fill_to_wire_test_id_twin_sync_sse(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -5133,37 +13254,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return ans;
   }
 
-  void _cst_api_fill_to_wire_a_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_a_twin_normal(
       ATwinNormal apiObj, wire_cst_a_twin_normal wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_a_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_a_twin_rust_async(
       ATwinRustAsync apiObj, wire_cst_a_twin_rust_async wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_a_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_a_twin_rust_async_sse(
       ATwinRustAsyncSse apiObj, wire_cst_a_twin_rust_async_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_a_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_a_twin_sse(
       ATwinSse apiObj, wire_cst_a_twin_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_a_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_a_twin_sync(
       ATwinSync apiObj, wire_cst_a_twin_sync wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_a_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_a_twin_sync_sse(
       ATwinSyncSse apiObj, wire_cst_a_twin_sync_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_abc_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_abc_twin_normal(
       AbcTwinNormal apiObj, wire_cst_abc_twin_normal wireObj) {
     if (apiObj is AbcTwinNormal_A) {
       var pre_field0 = cst_encode_box_autoadd_a_twin_normal(apiObj.field0);
@@ -5195,7 +13323,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_abc_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_abc_twin_rust_async(
       AbcTwinRustAsync apiObj, wire_cst_abc_twin_rust_async wireObj) {
     if (apiObj is AbcTwinRustAsync_A) {
       var pre_field0 = cst_encode_box_autoadd_a_twin_rust_async(apiObj.field0);
@@ -5227,7 +13356,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_abc_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_abc_twin_rust_async_sse(
       AbcTwinRustAsyncSse apiObj, wire_cst_abc_twin_rust_async_sse wireObj) {
     if (apiObj is AbcTwinRustAsyncSse_A) {
       var pre_field0 =
@@ -5262,7 +13392,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_abc_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_abc_twin_sse(
       AbcTwinSse apiObj, wire_cst_abc_twin_sse wireObj) {
     if (apiObj is AbcTwinSse_A) {
       var pre_field0 = cst_encode_box_autoadd_a_twin_sse(apiObj.field0);
@@ -5294,7 +13425,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_abc_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_abc_twin_sync(
       AbcTwinSync apiObj, wire_cst_abc_twin_sync wireObj) {
     if (apiObj is AbcTwinSync_A) {
       var pre_field0 = cst_encode_box_autoadd_a_twin_sync(apiObj.field0);
@@ -5326,7 +13458,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_abc_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_abc_twin_sync_sse(
       AbcTwinSyncSse apiObj, wire_cst_abc_twin_sync_sse wireObj) {
     if (apiObj is AbcTwinSyncSse_A) {
       var pre_field0 = cst_encode_box_autoadd_a_twin_sync_sse(apiObj.field0);
@@ -5358,56 +13491,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_another_macro_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_another_macro_struct_twin_normal(
       AnotherMacroStructTwinNormal apiObj,
       wire_cst_another_macro_struct_twin_normal wireObj) {
     wireObj.data = cst_encode_i_32(apiObj.data);
     wireObj.non_final_data = cst_encode_i_32(apiObj.nonFinalData);
   }
 
-  void _cst_api_fill_to_wire_another_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_another_twin_normal(
       AnotherTwinNormal apiObj, wire_cst_another_twin_normal wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_another_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_another_twin_rust_async(
       AnotherTwinRustAsync apiObj, wire_cst_another_twin_rust_async wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_another_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_another_twin_rust_async_sse(
       AnotherTwinRustAsyncSse apiObj,
       wire_cst_another_twin_rust_async_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_another_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_another_twin_sse(
       AnotherTwinSse apiObj, wire_cst_another_twin_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_another_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_another_twin_sync(
       AnotherTwinSync apiObj, wire_cst_another_twin_sync wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_another_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_another_twin_sync_sse(
       AnotherTwinSyncSse apiObj, wire_cst_another_twin_sync_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_application_env(
+  @protected
+  void cst_api_fill_to_wire_application_env(
       ApplicationEnv apiObj, wire_cst_application_env wireObj) {
     wireObj.vars = cst_encode_list_application_env_var(apiObj.vars);
   }
 
-  void _cst_api_fill_to_wire_application_env_var(
+  @protected
+  void cst_api_fill_to_wire_application_env_var(
       ApplicationEnvVar apiObj, wire_cst_application_env_var wireObj) {
     wireObj.field0 = cst_encode_String(apiObj.field0);
     wireObj.field1 = cst_encode_bool(apiObj.field1);
   }
 
-  void _cst_api_fill_to_wire_application_message(
+  @protected
+  void cst_api_fill_to_wire_application_message(
       ApplicationMessage apiObj, wire_cst_application_message wireObj) {
     if (apiObj is ApplicationMessage_DisplayMessage) {
       var pre_field0 = cst_encode_String(apiObj.field0);
@@ -5431,7 +13574,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_application_settings(
+  @protected
+  void cst_api_fill_to_wire_application_settings(
       ApplicationSettings apiObj, wire_cst_application_settings wireObj) {
     wireObj.name = cst_encode_String(apiObj.name);
     wireObj.version = cst_encode_String(apiObj.version);
@@ -5441,2103 +13585,2428 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_opt_box_autoadd_application_env(apiObj.envOptional);
   }
 
-  void _cst_api_fill_to_wire_attribute_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_attribute_twin_normal(
       AttributeTwinNormal apiObj, wire_cst_attribute_twin_normal wireObj) {
     wireObj.key = cst_encode_String(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_attribute_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_attribute_twin_rust_async(
       AttributeTwinRustAsync apiObj,
       wire_cst_attribute_twin_rust_async wireObj) {
     wireObj.key = cst_encode_String(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_attribute_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_attribute_twin_rust_async_sse(
       AttributeTwinRustAsyncSse apiObj,
       wire_cst_attribute_twin_rust_async_sse wireObj) {
     wireObj.key = cst_encode_String(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_attribute_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_attribute_twin_sse(
       AttributeTwinSse apiObj, wire_cst_attribute_twin_sse wireObj) {
     wireObj.key = cst_encode_String(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_attribute_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_attribute_twin_sync(
       AttributeTwinSync apiObj, wire_cst_attribute_twin_sync wireObj) {
     wireObj.key = cst_encode_String(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_attribute_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_attribute_twin_sync_sse(
       AttributeTwinSyncSse apiObj, wire_cst_attribute_twin_sync_sse wireObj) {
     wireObj.key = cst_encode_String(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_b_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_b_twin_normal(
       BTwinNormal apiObj, wire_cst_b_twin_normal wireObj) {
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_b_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_b_twin_rust_async(
       BTwinRustAsync apiObj, wire_cst_b_twin_rust_async wireObj) {
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_b_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_b_twin_rust_async_sse(
       BTwinRustAsyncSse apiObj, wire_cst_b_twin_rust_async_sse wireObj) {
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_b_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_b_twin_sse(
       BTwinSse apiObj, wire_cst_b_twin_sse wireObj) {
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_b_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_b_twin_sync(
       BTwinSync apiObj, wire_cst_b_twin_sync wireObj) {
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_b_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_b_twin_sync_sse(
       BTwinSyncSse apiObj, wire_cst_b_twin_sync_sse wireObj) {
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_big_buffers_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_big_buffers_twin_normal(
       BigBuffersTwinNormal apiObj, wire_cst_big_buffers_twin_normal wireObj) {
     wireObj.int64 = cst_encode_list_prim_i_64(apiObj.int64);
     wireObj.uint64 = cst_encode_list_prim_u_64(apiObj.uint64);
   }
 
-  void _cst_api_fill_to_wire_big_buffers_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_big_buffers_twin_rust_async(
       BigBuffersTwinRustAsync apiObj,
       wire_cst_big_buffers_twin_rust_async wireObj) {
     wireObj.int64 = cst_encode_list_prim_i_64(apiObj.int64);
     wireObj.uint64 = cst_encode_list_prim_u_64(apiObj.uint64);
   }
 
-  void _cst_api_fill_to_wire_big_buffers_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_big_buffers_twin_rust_async_sse(
       BigBuffersTwinRustAsyncSse apiObj,
       wire_cst_big_buffers_twin_rust_async_sse wireObj) {
     wireObj.int64 = cst_encode_list_prim_i_64(apiObj.int64);
     wireObj.uint64 = cst_encode_list_prim_u_64(apiObj.uint64);
   }
 
-  void _cst_api_fill_to_wire_big_buffers_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_big_buffers_twin_sse(
       BigBuffersTwinSse apiObj, wire_cst_big_buffers_twin_sse wireObj) {
     wireObj.int64 = cst_encode_list_prim_i_64(apiObj.int64);
     wireObj.uint64 = cst_encode_list_prim_u_64(apiObj.uint64);
   }
 
-  void _cst_api_fill_to_wire_big_buffers_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_big_buffers_twin_sync(
       BigBuffersTwinSync apiObj, wire_cst_big_buffers_twin_sync wireObj) {
     wireObj.int64 = cst_encode_list_prim_i_64(apiObj.int64);
     wireObj.uint64 = cst_encode_list_prim_u_64(apiObj.uint64);
   }
 
-  void _cst_api_fill_to_wire_big_buffers_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_big_buffers_twin_sync_sse(
       BigBuffersTwinSyncSse apiObj,
       wire_cst_big_buffers_twin_sync_sse wireObj) {
     wireObj.int64 = cst_encode_list_prim_i_64(apiObj.int64);
     wireObj.uint64 = cst_encode_list_prim_u_64(apiObj.uint64);
   }
 
-  void _cst_api_fill_to_wire_blob_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_blob_twin_normal(
       BlobTwinNormal apiObj, wire_cst_blob_twin_normal wireObj) {
     wireObj.field0 = cst_encode_u_8_array_1600(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_blob_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_blob_twin_rust_async(
       BlobTwinRustAsync apiObj, wire_cst_blob_twin_rust_async wireObj) {
     wireObj.field0 = cst_encode_u_8_array_1600(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_blob_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_blob_twin_rust_async_sse(
       BlobTwinRustAsyncSse apiObj, wire_cst_blob_twin_rust_async_sse wireObj) {
     wireObj.field0 = cst_encode_u_8_array_1600(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_blob_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_blob_twin_sse(
       BlobTwinSse apiObj, wire_cst_blob_twin_sse wireObj) {
     wireObj.field0 = cst_encode_u_8_array_1600(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_blob_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_blob_twin_sync(
       BlobTwinSync apiObj, wire_cst_blob_twin_sync wireObj) {
     wireObj.field0 = cst_encode_u_8_array_1600(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_blob_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_blob_twin_sync_sse(
       BlobTwinSyncSse apiObj, wire_cst_blob_twin_sync_sse wireObj) {
     wireObj.field0 = cst_encode_u_8_array_1600(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_box_application_env(
+  @protected
+  void cst_api_fill_to_wire_box_application_env(
       ApplicationEnv apiObj, ffi.Pointer<wire_cst_application_env> wireObj) {
-    _cst_api_fill_to_wire_application_env(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_application_env(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_a_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_a_twin_normal(
       ATwinNormal apiObj, ffi.Pointer<wire_cst_a_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_a_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_a_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_a_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_a_twin_rust_async(
       ATwinRustAsync apiObj, ffi.Pointer<wire_cst_a_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_a_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_a_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_a_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_a_twin_rust_async_sse(
       ATwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_a_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_a_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_a_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_a_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_a_twin_sse(
       ATwinSse apiObj, ffi.Pointer<wire_cst_a_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_a_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_a_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_a_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_a_twin_sync(
       ATwinSync apiObj, ffi.Pointer<wire_cst_a_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_a_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_a_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_a_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_a_twin_sync_sse(
       ATwinSyncSse apiObj, ffi.Pointer<wire_cst_a_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_a_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_a_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_abc_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_abc_twin_normal(
       AbcTwinNormal apiObj, ffi.Pointer<wire_cst_abc_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_abc_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_abc_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_abc_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_abc_twin_rust_async(
       AbcTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_abc_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_abc_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_abc_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_abc_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_abc_twin_rust_async_sse(
       AbcTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_abc_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_abc_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_abc_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_abc_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_abc_twin_sse(
       AbcTwinSse apiObj, ffi.Pointer<wire_cst_abc_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_abc_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_abc_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_abc_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_abc_twin_sync(
       AbcTwinSync apiObj, ffi.Pointer<wire_cst_abc_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_abc_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_abc_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_abc_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_abc_twin_sync_sse(
       AbcTwinSyncSse apiObj, ffi.Pointer<wire_cst_abc_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_abc_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_abc_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_application_env(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_application_env(
       ApplicationEnv apiObj, ffi.Pointer<wire_cst_application_env> wireObj) {
-    _cst_api_fill_to_wire_application_env(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_application_env(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_application_settings(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_application_settings(
       ApplicationSettings apiObj,
       ffi.Pointer<wire_cst_application_settings> wireObj) {
-    _cst_api_fill_to_wire_application_settings(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_application_settings(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_attribute_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_attribute_twin_normal(
       AttributeTwinNormal apiObj,
       ffi.Pointer<wire_cst_attribute_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_attribute_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_attribute_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_attribute_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_attribute_twin_rust_async(
       AttributeTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_attribute_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_attribute_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_attribute_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_attribute_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_attribute_twin_rust_async_sse(
       AttributeTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_attribute_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_attribute_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_attribute_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_attribute_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_attribute_twin_sse(
       AttributeTwinSse apiObj,
       ffi.Pointer<wire_cst_attribute_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_attribute_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_attribute_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_attribute_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_attribute_twin_sync(
       AttributeTwinSync apiObj,
       ffi.Pointer<wire_cst_attribute_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_attribute_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_attribute_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_attribute_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_attribute_twin_sync_sse(
       AttributeTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_attribute_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_attribute_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_attribute_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_b_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_b_twin_normal(
       BTwinNormal apiObj, ffi.Pointer<wire_cst_b_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_b_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_b_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_b_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_b_twin_rust_async(
       BTwinRustAsync apiObj, ffi.Pointer<wire_cst_b_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_b_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_b_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_b_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_b_twin_rust_async_sse(
       BTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_b_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_b_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_b_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_b_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_b_twin_sse(
       BTwinSse apiObj, ffi.Pointer<wire_cst_b_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_b_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_b_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_b_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_b_twin_sync(
       BTwinSync apiObj, ffi.Pointer<wire_cst_b_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_b_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_b_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_b_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_b_twin_sync_sse(
       BTwinSyncSse apiObj, ffi.Pointer<wire_cst_b_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_b_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_b_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_c_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_c_twin_normal(
       CTwinNormal apiObj, ffi.Pointer<wire_cst_c_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_c_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_c_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_c_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_c_twin_rust_async(
       CTwinRustAsync apiObj, ffi.Pointer<wire_cst_c_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_c_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_c_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_c_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_c_twin_rust_async_sse(
       CTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_c_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_c_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_c_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_c_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_c_twin_sse(
       CTwinSse apiObj, ffi.Pointer<wire_cst_c_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_c_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_c_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_c_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_c_twin_sync(
       CTwinSync apiObj, ffi.Pointer<wire_cst_c_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_c_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_c_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_c_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_c_twin_sync_sse(
       CTwinSyncSse apiObj, ffi.Pointer<wire_cst_c_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_c_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_c_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_normal(
       ConcatenateWithTwinNormal apiObj,
       ffi.Pointer<wire_cst_concatenate_with_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_concatenate_with_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_rust_async(
       ConcatenateWithTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_concatenate_with_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_concatenate_with_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_rust_async_sse(
       ConcatenateWithTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_concatenate_with_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_concatenate_with_twin_rust_async_sse(
+    cst_api_fill_to_wire_concatenate_with_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_sse(
       ConcatenateWithTwinSse apiObj,
       ffi.Pointer<wire_cst_concatenate_with_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_concatenate_with_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_sync(
       ConcatenateWithTwinSync apiObj,
       ffi.Pointer<wire_cst_concatenate_with_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_concatenate_with_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_concatenate_with_twin_sync_sse(
       ConcatenateWithTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_concatenate_with_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_concatenate_with_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_concatenate_with_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_normal(
       CustomNestedError2TwinNormal apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_2_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_normal(
-        apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_nested_error_2_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_rust_async(
       CustomNestedError2TwinRustAsync apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_2_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async(
+    cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
           CustomNestedError2TwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_custom_nested_error_2_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async_sse(
+    cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_sse(
       CustomNestedError2TwinSse apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_2_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_nested_error_2_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_sync(
       CustomNestedError2TwinSync apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_2_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_nested_error_2_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_2_twin_sync_sse(
       CustomNestedError2TwinSyncSse apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_2_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_2_twin_sync_sse(
+    cst_api_fill_to_wire_custom_nested_error_2_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_inner_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_normal(
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_normal(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_rust_async(
+      cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_rust_async(
           CustomNestedErrorInnerTwinRustAsync apiObj,
           ffi.Pointer<wire_cst_custom_nested_error_inner_twin_rust_async>
               wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async(
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(
           CustomNestedErrorInnerTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_custom_nested_error_inner_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async_sse(
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_sse(
       CustomNestedErrorInnerTwinSse apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_inner_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_sse(
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_sync(
       CustomNestedErrorInnerTwinSync apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_inner_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_sync(
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_sync(
         apiObj, wireObj.ref);
   }
 
-  void
-      _cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_sync_sse(
-          CustomNestedErrorInnerTwinSyncSse apiObj,
-          ffi.Pointer<wire_cst_custom_nested_error_inner_twin_sync_sse>
-              wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_inner_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_sync_sse(
+      CustomNestedErrorInnerTwinSyncSse apiObj,
+      ffi.Pointer<wire_cst_custom_nested_error_inner_twin_sync_sse> wireObj) {
+    cst_api_fill_to_wire_custom_nested_error_inner_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_outer_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_normal(
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_normal(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_rust_async(
+      cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_rust_async(
           CustomNestedErrorOuterTwinRustAsync apiObj,
           ffi.Pointer<wire_cst_custom_nested_error_outer_twin_rust_async>
               wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async(
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(
           CustomNestedErrorOuterTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_custom_nested_error_outer_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async_sse(
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_sse(
       CustomNestedErrorOuterTwinSse apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_outer_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_sse(
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_sync(
       CustomNestedErrorOuterTwinSync apiObj,
       ffi.Pointer<wire_cst_custom_nested_error_outer_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_sync(
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_sync(
         apiObj, wireObj.ref);
   }
 
-  void
-      _cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_sync_sse(
-          CustomNestedErrorOuterTwinSyncSse apiObj,
-          ffi.Pointer<wire_cst_custom_nested_error_outer_twin_sync_sse>
-              wireObj) {
-    _cst_api_fill_to_wire_custom_nested_error_outer_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_sync_sse(
+      CustomNestedErrorOuterTwinSyncSse apiObj,
+      ffi.Pointer<wire_cst_custom_nested_error_outer_twin_sync_sse> wireObj) {
+    cst_api_fill_to_wire_custom_nested_error_outer_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal apiObj,
       ffi.Pointer<wire_cst_custom_struct_error_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_error_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_rust_async(
       CustomStructErrorTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_custom_struct_error_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_error_twin_rust_async(
+    cst_api_fill_to_wire_custom_struct_error_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
-  void
-      _cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_rust_async_sse(
-          CustomStructErrorTwinRustAsyncSse apiObj,
-          ffi.Pointer<wire_cst_custom_struct_error_twin_rust_async_sse>
-              wireObj) {
-    _cst_api_fill_to_wire_custom_struct_error_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_rust_async_sse(
+      CustomStructErrorTwinRustAsyncSse apiObj,
+      ffi.Pointer<wire_cst_custom_struct_error_twin_rust_async_sse> wireObj) {
+    cst_api_fill_to_wire_custom_struct_error_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_sse(
       CustomStructErrorTwinSse apiObj,
       ffi.Pointer<wire_cst_custom_struct_error_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_error_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync apiObj,
       ffi.Pointer<wire_cst_custom_struct_error_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_error_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_error_twin_sync_sse(
       CustomStructErrorTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_custom_struct_error_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_error_twin_sync_sse(
-        apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_error_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_twin_normal(
       CustomStructTwinNormal apiObj,
       ffi.Pointer<wire_cst_custom_struct_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_twin_rust_async(
       CustomStructTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_custom_struct_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_twin_rust_async_sse(
       CustomStructTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_custom_struct_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_twin_rust_async_sse(
-        apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_twin_sse(
       CustomStructTwinSse apiObj,
       ffi.Pointer<wire_cst_custom_struct_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_twin_sync(
       CustomStructTwinSync apiObj,
       ffi.Pointer<wire_cst_custom_struct_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_custom_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_custom_struct_twin_sync_sse(
       CustomStructTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_custom_struct_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_custom_struct_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_custom_struct_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_customized_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_customized_twin_normal(
       CustomizedTwinNormal apiObj,
       ffi.Pointer<wire_cst_customized_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_customized_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_customized_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_customized_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_customized_twin_rust_async(
       CustomizedTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_customized_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_customized_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_customized_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_customized_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_customized_twin_rust_async_sse(
       CustomizedTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_customized_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_customized_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_customized_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_customized_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_customized_twin_sse(
       CustomizedTwinSse apiObj,
       ffi.Pointer<wire_cst_customized_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_customized_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_customized_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_customized_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_customized_twin_sync(
       CustomizedTwinSync apiObj,
       ffi.Pointer<wire_cst_customized_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_customized_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_customized_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_customized_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_customized_twin_sync_sse(
       CustomizedTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_customized_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_customized_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_customized_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal apiObj,
       ffi.Pointer<wire_cst_dart_opaque_nested_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_rust_async(
       DartOpaqueNestedTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_dart_opaque_nested_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async(
+    cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_rust_async_sse(
       DartOpaqueNestedTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_dart_opaque_nested_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async_sse(
+    cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_sse(
       DartOpaqueNestedTwinSse apiObj,
       ffi.Pointer<wire_cst_dart_opaque_nested_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync apiObj,
       ffi.Pointer<wire_cst_dart_opaque_nested_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_sync_sse(
       DartOpaqueNestedTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_dart_opaque_nested_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_dart_opaque_nested_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_dart_opaque_nested_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_element_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_element_twin_normal(
       ElementTwinNormal apiObj,
       ffi.Pointer<wire_cst_element_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_element_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_element_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_element_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_element_twin_rust_async(
       ElementTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_element_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_element_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_element_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_element_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_element_twin_rust_async_sse(
       ElementTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_element_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_element_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_element_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_element_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_element_twin_sse(
       ElementTwinSse apiObj, ffi.Pointer<wire_cst_element_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_element_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_element_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_element_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_element_twin_sync(
       ElementTwinSync apiObj, ffi.Pointer<wire_cst_element_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_element_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_element_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_element_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_element_twin_sync_sse(
       ElementTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_element_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_element_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_element_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_normal(
       EnumDartOpaqueTwinNormal apiObj,
       ffi.Pointer<wire_cst_enum_dart_opaque_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_rust_async(
       EnumDartOpaqueTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_enum_dart_opaque_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_rust_async_sse(
       EnumDartOpaqueTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_enum_dart_opaque_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async_sse(
+    cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_sse(
       EnumDartOpaqueTwinSse apiObj,
       ffi.Pointer<wire_cst_enum_dart_opaque_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_sync(
       EnumDartOpaqueTwinSync apiObj,
       ffi.Pointer<wire_cst_enum_dart_opaque_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_sync_sse(
       EnumDartOpaqueTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_enum_dart_opaque_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_dart_opaque_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_dart_opaque_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_normal(
       EnumOpaqueTwinNormal apiObj,
       ffi.Pointer<wire_cst_enum_opaque_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_enum_opaque_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_rust_async(
       EnumOpaqueTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_enum_opaque_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_enum_opaque_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_rust_async_sse(
       EnumOpaqueTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_enum_opaque_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_opaque_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_sse(
       EnumOpaqueTwinSse apiObj,
       ffi.Pointer<wire_cst_enum_opaque_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_opaque_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_sync(
       EnumOpaqueTwinSync apiObj,
       ffi.Pointer<wire_cst_enum_opaque_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_enum_opaque_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_opaque_twin_sync_sse(
       EnumOpaqueTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_enum_opaque_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_opaque_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_opaque_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal apiObj,
       ffi.Pointer<wire_cst_enum_with_item_mixed_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_rust_async(
       EnumWithItemMixedTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_enum_with_item_mixed_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async(
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(
           EnumWithItemMixedTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_enum_with_item_mixed_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async_sse(
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_sse(
       EnumWithItemMixedTwinSse apiObj,
       ffi.Pointer<wire_cst_enum_with_item_mixed_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_sync(
       EnumWithItemMixedTwinSync apiObj,
       ffi.Pointer<wire_cst_enum_with_item_mixed_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_sync_sse(
       EnumWithItemMixedTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_enum_with_item_mixed_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_mixed_twin_sync_sse(
+    cst_api_fill_to_wire_enum_with_item_mixed_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_normal(
       EnumWithItemStructTwinNormal apiObj,
       ffi.Pointer<wire_cst_enum_with_item_struct_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_normal(
-        apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_with_item_struct_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_rust_async(
       EnumWithItemStructTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_enum_with_item_struct_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async(
+    cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_rust_async_sse(
           EnumWithItemStructTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_enum_with_item_struct_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async_sse(
+    cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_sse(
       EnumWithItemStructTwinSse apiObj,
       ffi.Pointer<wire_cst_enum_with_item_struct_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_with_item_struct_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_sync(
       EnumWithItemStructTwinSync apiObj,
       ffi.Pointer<wire_cst_enum_with_item_struct_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_with_item_struct_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_sync_sse(
       EnumWithItemStructTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_enum_with_item_struct_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_struct_twin_sync_sse(
+    cst_api_fill_to_wire_enum_with_item_struct_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_normal(
       EnumWithItemTupleTwinNormal apiObj,
       ffi.Pointer<wire_cst_enum_with_item_tuple_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_rust_async(
       EnumWithItemTupleTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_enum_with_item_tuple_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async(
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(
           EnumWithItemTupleTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_enum_with_item_tuple_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async_sse(
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_sse(
       EnumWithItemTupleTwinSse apiObj,
       ffi.Pointer<wire_cst_enum_with_item_tuple_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_sync(
       EnumWithItemTupleTwinSync apiObj,
       ffi.Pointer<wire_cst_enum_with_item_tuple_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_sync_sse(
       EnumWithItemTupleTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_enum_with_item_tuple_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_enum_with_item_tuple_twin_sync_sse(
+    cst_api_fill_to_wire_enum_with_item_tuple_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_event_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_event_twin_normal(
       EventTwinNormal apiObj, ffi.Pointer<wire_cst_event_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_event_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_event_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_event_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_event_twin_rust_async(
       EventTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_event_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_event_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_event_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_event_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_event_twin_rust_async_sse(
       EventTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_event_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_event_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_event_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_event_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_event_twin_sse(
       EventTwinSse apiObj, ffi.Pointer<wire_cst_event_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_event_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_event_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_rust_async_sse(
       ExoticOptionalsTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(
+    cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_sse(
       ExoticOptionalsTwinSse apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_exotic_optionals_twin_sync_sse(
       ExoticOptionalsTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feature_chrono_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feature_chrono_twin_normal(
       FeatureChronoTwinNormal apiObj,
       ffi.Pointer<wire_cst_feature_chrono_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_feature_chrono_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feature_chrono_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feature_chrono_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feature_chrono_twin_rust_async(
       FeatureChronoTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_feature_chrono_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_feature_chrono_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feature_chrono_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feature_chrono_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feature_chrono_twin_sync(
       FeatureChronoTwinSync apiObj,
       ffi.Pointer<wire_cst_feature_chrono_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_feature_chrono_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feature_chrono_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feature_uuid_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feature_uuid_twin_normal(
       FeatureUuidTwinNormal apiObj,
       ffi.Pointer<wire_cst_feature_uuid_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_feature_uuid_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feature_uuid_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feature_uuid_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_feature_uuid_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_feature_uuid_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feature_uuid_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feature_uuid_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feature_uuid_twin_sync(
       FeatureUuidTwinSync apiObj,
       ffi.Pointer<wire_cst_feature_uuid_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_feature_uuid_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feature_uuid_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feed_id_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feed_id_twin_normal(
       FeedIdTwinNormal apiObj,
       ffi.Pointer<wire_cst_feed_id_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feed_id_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feed_id_twin_rust_async(
       FeedIdTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_feed_id_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feed_id_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feed_id_twin_rust_async_sse(
       FeedIdTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_feed_id_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feed_id_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feed_id_twin_sse(
       FeedIdTwinSse apiObj, ffi.Pointer<wire_cst_feed_id_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feed_id_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feed_id_twin_sync(
       FeedIdTwinSync apiObj, ffi.Pointer<wire_cst_feed_id_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_feed_id_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_feed_id_twin_sync_sse(
       FeedIdTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_feed_id_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_rust_async_sse(
       KitchenSinkTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_sse(
       KitchenSinkTwinSse apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_sync(
       KitchenSinkTwinSync apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_kitchen_sink_twin_sync_sse(
       KitchenSinkTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_list_of_nested_raw_string_mirrored(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_list_of_nested_raw_string_mirrored(
       ListOfNestedRawStringMirrored apiObj,
       ffi.Pointer<wire_cst_list_of_nested_raw_string_mirrored> wireObj) {
-    _cst_api_fill_to_wire_list_of_nested_raw_string_mirrored(
+    cst_api_fill_to_wire_list_of_nested_raw_string_mirrored(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_macro_struct(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_macro_struct(
       MacroStruct apiObj, ffi.Pointer<wire_cst_macro_struct> wireObj) {
-    _cst_api_fill_to_wire_macro_struct(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_macro_struct(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_measure_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_measure_twin_normal(
       MeasureTwinNormal apiObj,
       ffi.Pointer<wire_cst_measure_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_measure_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_measure_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_measure_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_measure_twin_rust_async(
       MeasureTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_measure_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_measure_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_measure_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_measure_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_measure_twin_rust_async_sse(
       MeasureTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_measure_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_measure_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_measure_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_measure_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_measure_twin_sse(
       MeasureTwinSse apiObj, ffi.Pointer<wire_cst_measure_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_measure_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_measure_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_measure_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_measure_twin_sync(
       MeasureTwinSync apiObj, ffi.Pointer<wire_cst_measure_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_measure_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_measure_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_measure_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_measure_twin_sync_sse(
       MeasureTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_measure_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_measure_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_measure_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_message_id_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_message_id_twin_normal(
       MessageIdTwinNormal apiObj,
       ffi.Pointer<wire_cst_message_id_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_message_id_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_message_id_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_message_id_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_message_id_twin_rust_async(
       MessageIdTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_message_id_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_message_id_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_message_id_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_message_id_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_message_id_twin_rust_async_sse(
       MessageIdTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_message_id_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_message_id_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_message_id_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_message_id_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_message_id_twin_sse(
       MessageIdTwinSse apiObj,
       ffi.Pointer<wire_cst_message_id_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_message_id_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_message_id_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_message_id_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_message_id_twin_sync(
       MessageIdTwinSync apiObj,
       ffi.Pointer<wire_cst_message_id_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_message_id_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_message_id_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_message_id_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_message_id_twin_sync_sse(
       MessageIdTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_message_id_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_message_id_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_message_id_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal apiObj,
       ffi.Pointer<wire_cst_my_nested_struct_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_my_nested_struct_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_rust_async(
       MyNestedStructTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_my_nested_struct_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_my_nested_struct_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_rust_async_sse(
       MyNestedStructTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_my_nested_struct_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_my_nested_struct_twin_rust_async_sse(
+    cst_api_fill_to_wire_my_nested_struct_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_sse(
       MyNestedStructTwinSse apiObj,
       ffi.Pointer<wire_cst_my_nested_struct_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_my_nested_struct_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_sync(
       MyNestedStructTwinSync apiObj,
       ffi.Pointer<wire_cst_my_nested_struct_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_my_nested_struct_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_nested_struct_twin_sync_sse(
       MyNestedStructTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_my_nested_struct_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_my_nested_struct_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_nested_struct_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_size(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_size(
       MySize apiObj, ffi.Pointer<wire_cst_my_size> wireObj) {
-    _cst_api_fill_to_wire_my_size(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_struct(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_struct(
       MyStruct apiObj, ffi.Pointer<wire_cst_my_struct> wireObj) {
-    _cst_api_fill_to_wire_my_struct(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_struct(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal apiObj,
       ffi.Pointer<wire_cst_my_tree_node_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_rust_async(
       MyTreeNodeTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_my_tree_node_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_rust_async_sse(
       MyTreeNodeTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_my_tree_node_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_sse(
       MyTreeNodeTwinSse apiObj,
       ffi.Pointer<wire_cst_my_tree_node_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_sync(
       MyTreeNodeTwinSync apiObj,
       ffi.Pointer<wire_cst_my_tree_node_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_tree_node_twin_sync_sse(
       MyTreeNodeTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_my_tree_node_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_tree_node_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_nested_raw_string_mirrored(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_nested_raw_string_mirrored(
       NestedRawStringMirrored apiObj,
       ffi.Pointer<wire_cst_nested_raw_string_mirrored> wireObj) {
-    _cst_api_fill_to_wire_nested_raw_string_mirrored(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_nested_raw_string_mirrored(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_new_type_int_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_new_type_int_twin_normal(
       NewTypeIntTwinNormal apiObj,
       ffi.Pointer<wire_cst_new_type_int_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_new_type_int_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_new_type_int_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_new_type_int_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_new_type_int_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_new_type_int_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_new_type_int_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_new_type_int_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_new_type_int_twin_rust_async_sse(
       NewTypeIntTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_new_type_int_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_new_type_int_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_new_type_int_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_new_type_int_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_new_type_int_twin_sse(
       NewTypeIntTwinSse apiObj,
       ffi.Pointer<wire_cst_new_type_int_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_new_type_int_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_new_type_int_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_new_type_int_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_new_type_int_twin_sync(
       NewTypeIntTwinSync apiObj,
       ffi.Pointer<wire_cst_new_type_int_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_new_type_int_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_new_type_int_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_new_type_int_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_new_type_int_twin_sync_sse(
       NewTypeIntTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_new_type_int_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_new_type_int_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_new_type_int_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_note_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_note_twin_normal(
       NoteTwinNormal apiObj, ffi.Pointer<wire_cst_note_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_note_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_note_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_note_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_note_twin_rust_async(
       NoteTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_note_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_note_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_note_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_note_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_note_twin_rust_async_sse(
       NoteTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_note_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_note_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_note_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_note_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_note_twin_sse(
       NoteTwinSse apiObj, ffi.Pointer<wire_cst_note_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_note_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_note_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_note_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_note_twin_sync(
       NoteTwinSync apiObj, ffi.Pointer<wire_cst_note_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_note_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_note_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_note_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_note_twin_sync_sse(
       NoteTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_note_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_note_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_note_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_numbers(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_numbers(
       Numbers apiObj, ffi.Pointer<wire_cst_numbers> wireObj) {
-    _cst_api_fill_to_wire_numbers(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_numbers(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_normal(
       OpaqueNestedTwinNormal apiObj,
       ffi.Pointer<wire_cst_opaque_nested_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_opaque_nested_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_rust_async(
       OpaqueNestedTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_opaque_nested_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_opaque_nested_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_rust_async_sse(
       OpaqueNestedTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_opaque_nested_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_opaque_nested_twin_rust_async_sse(
-        apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_sse(
       OpaqueNestedTwinSse apiObj,
       ffi.Pointer<wire_cst_opaque_nested_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_opaque_nested_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_sync(
       OpaqueNestedTwinSync apiObj,
       ffi.Pointer<wire_cst_opaque_nested_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_opaque_nested_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opaque_nested_twin_sync_sse(
       OpaqueNestedTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_opaque_nested_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_opaque_nested_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opaque_nested_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_normal(
       OptVecsTwinNormal apiObj,
       ffi.Pointer<wire_cst_opt_vecs_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_opt_vecs_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_rust_async(
       OptVecsTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_opt_vecs_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_opt_vecs_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_rust_async_sse(
       OptVecsTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_opt_vecs_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_opt_vecs_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_sse(
       OptVecsTwinSse apiObj, ffi.Pointer<wire_cst_opt_vecs_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_opt_vecs_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_sync(
       OptVecsTwinSync apiObj,
       ffi.Pointer<wire_cst_opt_vecs_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_opt_vecs_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_opt_vecs_twin_sync_sse(
       OptVecsTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_opt_vecs_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_opt_vecs_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_opt_vecs_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_raw_string_mirrored(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_raw_string_mirrored(
       RawStringMirrored apiObj,
       ffi.Pointer<wire_cst_raw_string_mirrored> wireObj) {
-    _cst_api_fill_to_wire_raw_string_mirrored(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_raw_string_mirrored(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_record_string_i_32(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_record_string_i_32(
       (String, int) apiObj, ffi.Pointer<wire_cst_record_string_i_32> wireObj) {
-    _cst_api_fill_to_wire_record_string_i_32(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_record_string_i_32(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_sequences(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_sequences(
       Sequences apiObj, ffi.Pointer<wire_cst_sequences> wireObj) {
-    _cst_api_fill_to_wire_sequences(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_sequences(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_some_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_some_struct_twin_normal(
       SomeStructTwinNormal apiObj,
       ffi.Pointer<wire_cst_some_struct_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_some_struct_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_some_struct_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_some_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_some_struct_twin_rust_async(
       SomeStructTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_some_struct_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_some_struct_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_some_struct_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_some_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_some_struct_twin_rust_async_sse(
       SomeStructTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_some_struct_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_some_struct_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_some_struct_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_some_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_some_struct_twin_sse(
       SomeStructTwinSse apiObj,
       ffi.Pointer<wire_cst_some_struct_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_some_struct_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_some_struct_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_some_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_some_struct_twin_sync(
       SomeStructTwinSync apiObj,
       ffi.Pointer<wire_cst_some_struct_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_some_struct_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_some_struct_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_some_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_some_struct_twin_sync_sse(
       SomeStructTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_some_struct_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_some_struct_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_some_struct_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal apiObj,
       ffi.Pointer<wire_cst_struct_with_comments_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_struct_with_comments_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_comments_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_rust_async(
       StructWithCommentsTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_struct_with_comments_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_struct_with_comments_twin_rust_async(
+    cst_api_fill_to_wire_struct_with_comments_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_rust_async_sse(
           StructWithCommentsTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_struct_with_comments_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_struct_with_comments_twin_rust_async_sse(
+    cst_api_fill_to_wire_struct_with_comments_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_sse(
       StructWithCommentsTwinSse apiObj,
       ffi.Pointer<wire_cst_struct_with_comments_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_struct_with_comments_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_comments_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync apiObj,
       ffi.Pointer<wire_cst_struct_with_comments_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_struct_with_comments_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_comments_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_sync_sse(
       StructWithCommentsTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_struct_with_comments_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_struct_with_comments_twin_sync_sse(
+    cst_api_fill_to_wire_struct_with_comments_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal apiObj,
       ffi.Pointer<wire_cst_struct_with_enum_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_struct_with_enum_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_rust_async(
       StructWithEnumTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_struct_with_enum_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_struct_with_enum_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_rust_async_sse(
       StructWithEnumTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_struct_with_enum_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_struct_with_enum_twin_rust_async_sse(
+    cst_api_fill_to_wire_struct_with_enum_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_sse(
       StructWithEnumTwinSse apiObj,
       ffi.Pointer<wire_cst_struct_with_enum_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_struct_with_enum_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_sync(
       StructWithEnumTwinSync apiObj,
       ffi.Pointer<wire_cst_struct_with_enum_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_struct_with_enum_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_enum_twin_sync_sse(
       StructWithEnumTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_struct_with_enum_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_struct_with_enum_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_enum_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal apiObj,
       ffi.Pointer<wire_cst_struct_with_one_field_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_struct_with_one_field_twin_normal(
-        apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_one_field_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_rust_async(
       StructWithOneFieldTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_struct_with_one_field_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_struct_with_one_field_twin_rust_async(
+    cst_api_fill_to_wire_struct_with_one_field_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_rust_async_sse(
           StructWithOneFieldTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_struct_with_one_field_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_struct_with_one_field_twin_rust_async_sse(
+    cst_api_fill_to_wire_struct_with_one_field_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_sse(
       StructWithOneFieldTwinSse apiObj,
       ffi.Pointer<wire_cst_struct_with_one_field_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_struct_with_one_field_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_one_field_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync apiObj,
       ffi.Pointer<wire_cst_struct_with_one_field_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_struct_with_one_field_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_one_field_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_sync_sse(
       StructWithOneFieldTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_struct_with_one_field_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_struct_with_one_field_twin_sync_sse(
+    cst_api_fill_to_wire_struct_with_one_field_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal apiObj,
       ffi.Pointer<wire_cst_struct_with_two_field_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_struct_with_two_field_twin_normal(
-        apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_two_field_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_rust_async(
       StructWithTwoFieldTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_struct_with_two_field_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_struct_with_two_field_twin_rust_async(
+    cst_api_fill_to_wire_struct_with_two_field_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_rust_async_sse(
           StructWithTwoFieldTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_struct_with_two_field_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_struct_with_two_field_twin_rust_async_sse(
+    cst_api_fill_to_wire_struct_with_two_field_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_sse(
       StructWithTwoFieldTwinSse apiObj,
       ffi.Pointer<wire_cst_struct_with_two_field_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_struct_with_two_field_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_two_field_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_sync(
       StructWithTwoFieldTwinSync apiObj,
       ffi.Pointer<wire_cst_struct_with_two_field_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_struct_with_two_field_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_struct_with_two_field_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_two_field_twin_sync_sse(
       StructWithTwoFieldTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_struct_with_two_field_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_struct_with_two_field_twin_sync_sse(
+    cst_api_fill_to_wire_struct_with_two_field_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_sum_with_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_sum_with_twin_normal(
       SumWithTwinNormal apiObj,
       ffi.Pointer<wire_cst_sum_with_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_sum_with_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_sum_with_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_sum_with_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_sum_with_twin_rust_async(
       SumWithTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_sum_with_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_sum_with_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_sum_with_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_sum_with_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_sum_with_twin_rust_async_sse(
       SumWithTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_sum_with_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_sum_with_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_sum_with_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_sum_with_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_sum_with_twin_sse(
       SumWithTwinSse apiObj, ffi.Pointer<wire_cst_sum_with_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_sum_with_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_sum_with_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_sum_with_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_sum_with_twin_sync(
       SumWithTwinSync apiObj,
       ffi.Pointer<wire_cst_sum_with_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_sum_with_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_sum_with_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_sum_with_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_sum_with_twin_sync_sse(
       SumWithTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_sum_with_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_sum_with_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_sum_with_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_test_id_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_test_id_twin_normal(
       TestIdTwinNormal apiObj,
       ffi.Pointer<wire_cst_test_id_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_test_id_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_test_id_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_test_id_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_test_id_twin_rust_async(
       TestIdTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_test_id_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_test_id_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_test_id_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_test_id_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_test_id_twin_rust_async_sse(
       TestIdTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_test_id_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_test_id_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_test_id_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_test_id_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_test_id_twin_sse(
       TestIdTwinSse apiObj, ffi.Pointer<wire_cst_test_id_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_test_id_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_test_id_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_test_id_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_test_id_twin_sync(
       TestIdTwinSync apiObj, ffi.Pointer<wire_cst_test_id_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_test_id_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_test_id_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_test_id_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_test_id_twin_sync_sse(
       TestIdTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_test_id_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_test_id_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_test_id_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void
-      _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
-          TupleStructWithOneFieldTwinNormal apiObj,
-          ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_normal>
-              wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
+      TupleStructWithOneFieldTwinNormal apiObj,
+      ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_normal> wireObj) {
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_normal(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+      cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
           TupleStructWithOneFieldTwinRustAsync apiObj,
           ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_rust_async>
               wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(
           TupleStructWithOneFieldTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async_sse(
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_sse(
       TupleStructWithOneFieldTwinSse apiObj,
       ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sse(
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync apiObj,
       ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync(
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(
+      cst_api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(
           TupleStructWithOneFieldTwinSyncSse apiObj,
           ffi.Pointer<wire_cst_tuple_struct_with_one_field_twin_sync_sse>
               wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync_sse(
+    cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void
-      _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_normal(
-          TupleStructWithTwoFieldTwinNormal apiObj,
-          ffi.Pointer<wire_cst_tuple_struct_with_two_field_twin_normal>
-              wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_normal(
+      TupleStructWithTwoFieldTwinNormal apiObj,
+      ffi.Pointer<wire_cst_tuple_struct_with_two_field_twin_normal> wireObj) {
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_normal(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+      cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
           TupleStructWithTwoFieldTwinRustAsync apiObj,
           ffi.Pointer<wire_cst_tuple_struct_with_two_field_twin_rust_async>
               wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(
+      cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(
           TupleStructWithTwoFieldTwinRustAsyncSse apiObj,
           ffi.Pointer<wire_cst_tuple_struct_with_two_field_twin_rust_async_sse>
               wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async_sse(
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_sse(
       TupleStructWithTwoFieldTwinSse apiObj,
       ffi.Pointer<wire_cst_tuple_struct_with_two_field_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sse(
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_sync(
       TupleStructWithTwoFieldTwinSync apiObj,
       ffi.Pointer<wire_cst_tuple_struct_with_two_field_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync(
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync(
         apiObj, wireObj.ref);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(
+      cst_api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(
           TupleStructWithTwoFieldTwinSyncSse apiObj,
           ffi.Pointer<wire_cst_tuple_struct_with_two_field_twin_sync_sse>
               wireObj) {
-    _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync_sse(
+    cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_user_id_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_user_id_twin_normal(
       UserIdTwinNormal apiObj,
       ffi.Pointer<wire_cst_user_id_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_user_id_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_user_id_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_user_id_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_user_id_twin_rust_async(
       UserIdTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_user_id_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_user_id_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_user_id_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_user_id_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_user_id_twin_rust_async_sse(
       UserIdTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_user_id_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_user_id_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_user_id_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_user_id_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_user_id_twin_sse(
       UserIdTwinSse apiObj, ffi.Pointer<wire_cst_user_id_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_user_id_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_user_id_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_user_id_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_user_id_twin_sync(
       UserIdTwinSync apiObj, ffi.Pointer<wire_cst_user_id_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_user_id_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_user_id_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_autoadd_user_id_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_user_id_twin_sync_sse(
       UserIdTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_user_id_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_user_id_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_user_id_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_blob_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_blob_twin_normal(
       BlobTwinNormal apiObj, ffi.Pointer<wire_cst_blob_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_blob_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_blob_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_blob_twin_rust_async(BlobTwinRustAsync apiObj,
+  @protected
+  void cst_api_fill_to_wire_box_blob_twin_rust_async(BlobTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_blob_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_blob_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_blob_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_blob_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_blob_twin_rust_async_sse(
       BlobTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_blob_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_blob_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_blob_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_blob_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_blob_twin_sse(
       BlobTwinSse apiObj, ffi.Pointer<wire_cst_blob_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_blob_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_blob_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_blob_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_blob_twin_sync(
       BlobTwinSync apiObj, ffi.Pointer<wire_cst_blob_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_blob_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_blob_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_blob_twin_sync_sse(BlobTwinSyncSse apiObj,
+  @protected
+  void cst_api_fill_to_wire_box_blob_twin_sync_sse(BlobTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_blob_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_blob_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_blob_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_distance_twin_normal(DistanceTwinNormal apiObj,
+  @protected
+  void cst_api_fill_to_wire_box_distance_twin_normal(DistanceTwinNormal apiObj,
       ffi.Pointer<wire_cst_distance_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_distance_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_distance_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_distance_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_distance_twin_rust_async(
       DistanceTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_distance_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_distance_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_distance_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_distance_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_distance_twin_rust_async_sse(
       DistanceTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_distance_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_distance_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_distance_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_distance_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_distance_twin_sse(
       DistanceTwinSse apiObj, ffi.Pointer<wire_cst_distance_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_distance_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_distance_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_distance_twin_sync(DistanceTwinSync apiObj,
+  @protected
+  void cst_api_fill_to_wire_box_distance_twin_sync(DistanceTwinSync apiObj,
       ffi.Pointer<wire_cst_distance_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_distance_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_distance_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_distance_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_distance_twin_sync_sse(
       DistanceTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_distance_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_distance_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_distance_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_exotic_optionals_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_exotic_optionals_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_exotic_optionals_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_exotic_optionals_twin_rust_async_sse(
       ExoticOptionalsTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(
+    cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(
         apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_exotic_optionals_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_exotic_optionals_twin_sse(
       ExoticOptionalsTwinSse apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_exotic_optionals_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_exotic_optionals_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_exotic_optionals_twin_sync_sse(
       ExoticOptionalsTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_exotic_optionals_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_feed_id_twin_normal(FeedIdTwinNormal apiObj,
+  @protected
+  void cst_api_fill_to_wire_box_feed_id_twin_normal(FeedIdTwinNormal apiObj,
       ffi.Pointer<wire_cst_feed_id_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_feed_id_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_feed_id_twin_rust_async(
       FeedIdTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_feed_id_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_feed_id_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_feed_id_twin_rust_async_sse(
       FeedIdTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_feed_id_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_feed_id_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_feed_id_twin_sse(
       FeedIdTwinSse apiObj, ffi.Pointer<wire_cst_feed_id_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_feed_id_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_feed_id_twin_sync(
       FeedIdTwinSync apiObj, ffi.Pointer<wire_cst_feed_id_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_feed_id_twin_sync_sse(FeedIdTwinSyncSse apiObj,
+  @protected
+  void cst_api_fill_to_wire_box_feed_id_twin_sync_sse(FeedIdTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_feed_id_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_feed_id_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_feed_id_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_kitchen_sink_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_kitchen_sink_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_box_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_kitchen_sink_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_kitchen_sink_twin_rust_async_sse(
       KitchenSinkTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_kitchen_sink_twin_sse(
-      KitchenSinkTwinSse apiObj,
+  @protected
+  void cst_api_fill_to_wire_box_kitchen_sink_twin_sse(KitchenSinkTwinSse apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_kitchen_sink_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_kitchen_sink_twin_sync(
       KitchenSinkTwinSync apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_kitchen_sink_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_box_kitchen_sink_twin_sync_sse(
       KitchenSinkTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_kitchen_sink_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_my_size(
+  @protected
+  void cst_api_fill_to_wire_box_my_size(
       MySize apiObj, ffi.Pointer<wire_cst_my_size> wireObj) {
-    _cst_api_fill_to_wire_my_size(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_speed_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_box_speed_twin_normal(
       SpeedTwinNormal apiObj, ffi.Pointer<wire_cst_speed_twin_normal> wireObj) {
-    _cst_api_fill_to_wire_speed_twin_normal(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_speed_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_speed_twin_rust_async(
-      SpeedTwinRustAsync apiObj,
+  @protected
+  void cst_api_fill_to_wire_box_speed_twin_rust_async(SpeedTwinRustAsync apiObj,
       ffi.Pointer<wire_cst_speed_twin_rust_async> wireObj) {
-    _cst_api_fill_to_wire_speed_twin_rust_async(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_speed_twin_rust_async(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_speed_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_box_speed_twin_rust_async_sse(
       SpeedTwinRustAsyncSse apiObj,
       ffi.Pointer<wire_cst_speed_twin_rust_async_sse> wireObj) {
-    _cst_api_fill_to_wire_speed_twin_rust_async_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_speed_twin_rust_async_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_speed_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_box_speed_twin_sse(
       SpeedTwinSse apiObj, ffi.Pointer<wire_cst_speed_twin_sse> wireObj) {
-    _cst_api_fill_to_wire_speed_twin_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_speed_twin_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_speed_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_box_speed_twin_sync(
       SpeedTwinSync apiObj, ffi.Pointer<wire_cst_speed_twin_sync> wireObj) {
-    _cst_api_fill_to_wire_speed_twin_sync(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_speed_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_speed_twin_sync_sse(SpeedTwinSyncSse apiObj,
+  @protected
+  void cst_api_fill_to_wire_box_speed_twin_sync_sse(SpeedTwinSyncSse apiObj,
       ffi.Pointer<wire_cst_speed_twin_sync_sse> wireObj) {
-    _cst_api_fill_to_wire_speed_twin_sync_sse(apiObj, wireObj.ref);
+    cst_api_fill_to_wire_speed_twin_sync_sse(apiObj, wireObj.ref);
   }
 
-  void _cst_api_fill_to_wire_box_u_8_array_1600(
+  @protected
+  void cst_api_fill_to_wire_box_u_8_array_1600(
       U8Array1600 apiObj, ffi.Pointer<wire_cst_list_prim_u_8> wireObj) {
     wireObj = cst_encode_u_8_array_1600(apiObj);
   }
 
-  void _cst_api_fill_to_wire_box_u_8_array_8(
+  @protected
+  void cst_api_fill_to_wire_box_u_8_array_8(
       U8Array8 apiObj, ffi.Pointer<wire_cst_list_prim_u_8> wireObj) {
     wireObj = cst_encode_u_8_array_8(apiObj);
   }
 
-  void _cst_api_fill_to_wire_c_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_c_twin_normal(
       CTwinNormal apiObj, wire_cst_c_twin_normal wireObj) {
     wireObj.c = cst_encode_bool(apiObj.c);
   }
 
-  void _cst_api_fill_to_wire_c_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_c_twin_rust_async(
       CTwinRustAsync apiObj, wire_cst_c_twin_rust_async wireObj) {
     wireObj.c = cst_encode_bool(apiObj.c);
   }
 
-  void _cst_api_fill_to_wire_c_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_c_twin_rust_async_sse(
       CTwinRustAsyncSse apiObj, wire_cst_c_twin_rust_async_sse wireObj) {
     wireObj.c = cst_encode_bool(apiObj.c);
   }
 
-  void _cst_api_fill_to_wire_c_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_c_twin_sse(
       CTwinSse apiObj, wire_cst_c_twin_sse wireObj) {
     wireObj.c = cst_encode_bool(apiObj.c);
   }
 
-  void _cst_api_fill_to_wire_c_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_c_twin_sync(
       CTwinSync apiObj, wire_cst_c_twin_sync wireObj) {
     wireObj.c = cst_encode_bool(apiObj.c);
   }
 
-  void _cst_api_fill_to_wire_c_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_c_twin_sync_sse(
       CTwinSyncSse apiObj, wire_cst_c_twin_sync_sse wireObj) {
     wireObj.c = cst_encode_bool(apiObj.c);
   }
 
-  void _cst_api_fill_to_wire_concatenate_with_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_concatenate_with_twin_normal(
       ConcatenateWithTwinNormal apiObj,
       wire_cst_concatenate_with_twin_normal wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_concatenate_with_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_concatenate_with_twin_rust_async(
       ConcatenateWithTwinRustAsync apiObj,
       wire_cst_concatenate_with_twin_rust_async wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_concatenate_with_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_concatenate_with_twin_rust_async_sse(
       ConcatenateWithTwinRustAsyncSse apiObj,
       wire_cst_concatenate_with_twin_rust_async_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_concatenate_with_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_concatenate_with_twin_sse(
       ConcatenateWithTwinSse apiObj,
       wire_cst_concatenate_with_twin_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_concatenate_with_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_concatenate_with_twin_sync(
       ConcatenateWithTwinSync apiObj,
       wire_cst_concatenate_with_twin_sync wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_concatenate_with_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_concatenate_with_twin_sync_sse(
       ConcatenateWithTwinSyncSse apiObj,
       wire_cst_concatenate_with_twin_sync_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_normal(
       ContainsMirroredSubStructTwinNormal apiObj,
       wire_cst_contains_mirrored_sub_struct_twin_normal wireObj) {
-    _cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
-    _cst_api_fill_to_wire_another_twin_normal(apiObj.test2, wireObj.test2);
+    cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
+    cst_api_fill_to_wire_another_twin_normal(apiObj.test2, wireObj.test2);
   }
 
-  void _cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_rust_async(
       ContainsMirroredSubStructTwinRustAsync apiObj,
       wire_cst_contains_mirrored_sub_struct_twin_rust_async wireObj) {
-    _cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
-    _cst_api_fill_to_wire_another_twin_rust_async(apiObj.test2, wireObj.test2);
+    cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
+    cst_api_fill_to_wire_another_twin_rust_async(apiObj.test2, wireObj.test2);
   }
 
-  void _cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_rust_async_sse(
       ContainsMirroredSubStructTwinRustAsyncSse apiObj,
       wire_cst_contains_mirrored_sub_struct_twin_rust_async_sse wireObj) {
-    _cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
-    _cst_api_fill_to_wire_another_twin_rust_async_sse(
+    cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
+    cst_api_fill_to_wire_another_twin_rust_async_sse(
         apiObj.test2, wireObj.test2);
   }
 
-  void _cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_sse(
       ContainsMirroredSubStructTwinSse apiObj,
       wire_cst_contains_mirrored_sub_struct_twin_sse wireObj) {
-    _cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
-    _cst_api_fill_to_wire_another_twin_sse(apiObj.test2, wireObj.test2);
+    cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
+    cst_api_fill_to_wire_another_twin_sse(apiObj.test2, wireObj.test2);
   }
 
-  void _cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_sync(
       ContainsMirroredSubStructTwinSync apiObj,
       wire_cst_contains_mirrored_sub_struct_twin_sync wireObj) {
-    _cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
-    _cst_api_fill_to_wire_another_twin_sync(apiObj.test2, wireObj.test2);
+    cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
+    cst_api_fill_to_wire_another_twin_sync(apiObj.test2, wireObj.test2);
   }
 
-  void _cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_contains_mirrored_sub_struct_twin_sync_sse(
       ContainsMirroredSubStructTwinSyncSse apiObj,
       wire_cst_contains_mirrored_sub_struct_twin_sync_sse wireObj) {
-    _cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
-    _cst_api_fill_to_wire_another_twin_sync_sse(apiObj.test2, wireObj.test2);
+    cst_api_fill_to_wire_raw_string_mirrored(apiObj.test, wireObj.test);
+    cst_api_fill_to_wire_another_twin_sync_sse(apiObj.test2, wireObj.test2);
   }
 
-  void _cst_api_fill_to_wire_custom_enum_error_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_custom_enum_error_twin_normal(
       CustomEnumErrorTwinNormal apiObj,
       wire_cst_custom_enum_error_twin_normal wireObj) {
     if (apiObj is CustomEnumErrorTwinNormal_One) {
@@ -7560,7 +16029,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_enum_error_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_custom_enum_error_twin_rust_async(
       CustomEnumErrorTwinRustAsync apiObj,
       wire_cst_custom_enum_error_twin_rust_async wireObj) {
     if (apiObj is CustomEnumErrorTwinRustAsync_One) {
@@ -7583,7 +16053,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_enum_error_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_enum_error_twin_rust_async_sse(
       CustomEnumErrorTwinRustAsyncSse apiObj,
       wire_cst_custom_enum_error_twin_rust_async_sse wireObj) {
     if (apiObj is CustomEnumErrorTwinRustAsyncSse_One) {
@@ -7606,7 +16077,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_enum_error_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_enum_error_twin_sse(
       CustomEnumErrorTwinSse apiObj,
       wire_cst_custom_enum_error_twin_sse wireObj) {
     if (apiObj is CustomEnumErrorTwinSse_One) {
@@ -7629,7 +16101,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_enum_error_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_custom_enum_error_twin_sync(
       CustomEnumErrorTwinSync apiObj,
       wire_cst_custom_enum_error_twin_sync wireObj) {
     if (apiObj is CustomEnumErrorTwinSync_One) {
@@ -7652,7 +16125,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_enum_error_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_enum_error_twin_sync_sse(
       CustomEnumErrorTwinSyncSse apiObj,
       wire_cst_custom_enum_error_twin_sync_sse wireObj) {
     if (apiObj is CustomEnumErrorTwinSyncSse_One) {
@@ -7675,7 +16149,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_error_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_custom_error_twin_normal(
       CustomErrorTwinNormal apiObj, wire_cst_custom_error_twin_normal wireObj) {
     if (apiObj is CustomErrorTwinNormal_Error0) {
       var pre_e = cst_encode_String(apiObj.e);
@@ -7697,7 +16172,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_error_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_custom_error_twin_rust_async(
       CustomErrorTwinRustAsync apiObj,
       wire_cst_custom_error_twin_rust_async wireObj) {
     if (apiObj is CustomErrorTwinRustAsync_Error0) {
@@ -7720,7 +16196,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_error_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_error_twin_rust_async_sse(
       CustomErrorTwinRustAsyncSse apiObj,
       wire_cst_custom_error_twin_rust_async_sse wireObj) {
     if (apiObj is CustomErrorTwinRustAsyncSse_Error0) {
@@ -7743,7 +16220,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_error_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_error_twin_sse(
       CustomErrorTwinSse apiObj, wire_cst_custom_error_twin_sse wireObj) {
     if (apiObj is CustomErrorTwinSse_Error0) {
       var pre_e = cst_encode_String(apiObj.e);
@@ -7765,7 +16243,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_error_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_custom_error_twin_sync(
       CustomErrorTwinSync apiObj, wire_cst_custom_error_twin_sync wireObj) {
     if (apiObj is CustomErrorTwinSync_Error0) {
       var pre_e = cst_encode_String(apiObj.e);
@@ -7787,7 +16266,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_error_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_error_twin_sync_sse(
       CustomErrorTwinSyncSse apiObj,
       wire_cst_custom_error_twin_sync_sse wireObj) {
     if (apiObj is CustomErrorTwinSyncSse_Error0) {
@@ -7810,7 +16290,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_1_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_1_twin_normal(
       CustomNestedError1TwinNormal apiObj,
       wire_cst_custom_nested_error_1_twin_normal wireObj) {
     if (apiObj is CustomNestedError1TwinNormal_CustomNested1) {
@@ -7832,7 +16313,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_1_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_1_twin_rust_async(
       CustomNestedError1TwinRustAsync apiObj,
       wire_cst_custom_nested_error_1_twin_rust_async wireObj) {
     if (apiObj is CustomNestedError1TwinRustAsync_CustomNested1) {
@@ -7855,7 +16337,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_1_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_1_twin_rust_async_sse(
       CustomNestedError1TwinRustAsyncSse apiObj,
       wire_cst_custom_nested_error_1_twin_rust_async_sse wireObj) {
     if (apiObj is CustomNestedError1TwinRustAsyncSse_CustomNested1) {
@@ -7878,7 +16361,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_1_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_1_twin_sse(
       CustomNestedError1TwinSse apiObj,
       wire_cst_custom_nested_error_1_twin_sse wireObj) {
     if (apiObj is CustomNestedError1TwinSse_CustomNested1) {
@@ -7898,7 +16382,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_1_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_1_twin_sync(
       CustomNestedError1TwinSync apiObj,
       wire_cst_custom_nested_error_1_twin_sync wireObj) {
     if (apiObj is CustomNestedError1TwinSync_CustomNested1) {
@@ -7919,7 +16404,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_1_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_1_twin_sync_sse(
       CustomNestedError1TwinSyncSse apiObj,
       wire_cst_custom_nested_error_1_twin_sync_sse wireObj) {
     if (apiObj is CustomNestedError1TwinSyncSse_CustomNested1) {
@@ -7942,7 +16428,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_2_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_2_twin_normal(
       CustomNestedError2TwinNormal apiObj,
       wire_cst_custom_nested_error_2_twin_normal wireObj) {
     if (apiObj is CustomNestedError2TwinNormal_CustomNested2) {
@@ -7963,7 +16450,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async(
       CustomNestedError2TwinRustAsync apiObj,
       wire_cst_custom_nested_error_2_twin_rust_async wireObj) {
     if (apiObj is CustomNestedError2TwinRustAsync_CustomNested2) {
@@ -7984,7 +16472,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_2_twin_rust_async_sse(
       CustomNestedError2TwinRustAsyncSse apiObj,
       wire_cst_custom_nested_error_2_twin_rust_async_sse wireObj) {
     if (apiObj is CustomNestedError2TwinRustAsyncSse_CustomNested2) {
@@ -8005,7 +16494,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_2_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_2_twin_sse(
       CustomNestedError2TwinSse apiObj,
       wire_cst_custom_nested_error_2_twin_sse wireObj) {
     if (apiObj is CustomNestedError2TwinSse_CustomNested2) {
@@ -8025,7 +16515,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_2_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_2_twin_sync(
       CustomNestedError2TwinSync apiObj,
       wire_cst_custom_nested_error_2_twin_sync wireObj) {
     if (apiObj is CustomNestedError2TwinSync_CustomNested2) {
@@ -8046,7 +16537,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_2_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_2_twin_sync_sse(
       CustomNestedError2TwinSyncSse apiObj,
       wire_cst_custom_nested_error_2_twin_sync_sse wireObj) {
     if (apiObj is CustomNestedError2TwinSyncSse_CustomNested2) {
@@ -8067,7 +16559,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_inner_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal apiObj,
       wire_cst_custom_nested_error_inner_twin_normal wireObj) {
     if (apiObj is CustomNestedErrorInnerTwinNormal_Three) {
@@ -8086,7 +16579,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async(
       CustomNestedErrorInnerTwinRustAsync apiObj,
       wire_cst_custom_nested_error_inner_twin_rust_async wireObj) {
     if (apiObj is CustomNestedErrorInnerTwinRustAsync_Three) {
@@ -8107,7 +16601,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_inner_twin_rust_async_sse(
       CustomNestedErrorInnerTwinRustAsyncSse apiObj,
       wire_cst_custom_nested_error_inner_twin_rust_async_sse wireObj) {
     if (apiObj is CustomNestedErrorInnerTwinRustAsyncSse_Three) {
@@ -8128,7 +16623,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_inner_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_inner_twin_sse(
       CustomNestedErrorInnerTwinSse apiObj,
       wire_cst_custom_nested_error_inner_twin_sse wireObj) {
     if (apiObj is CustomNestedErrorInnerTwinSse_Three) {
@@ -8147,7 +16643,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_inner_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_inner_twin_sync(
       CustomNestedErrorInnerTwinSync apiObj,
       wire_cst_custom_nested_error_inner_twin_sync wireObj) {
     if (apiObj is CustomNestedErrorInnerTwinSync_Three) {
@@ -8166,7 +16663,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_inner_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_inner_twin_sync_sse(
       CustomNestedErrorInnerTwinSyncSse apiObj,
       wire_cst_custom_nested_error_inner_twin_sync_sse wireObj) {
     if (apiObj is CustomNestedErrorInnerTwinSyncSse_Three) {
@@ -8185,7 +16683,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_outer_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal apiObj,
       wire_cst_custom_nested_error_outer_twin_normal wireObj) {
     if (apiObj is CustomNestedErrorOuterTwinNormal_One) {
@@ -8206,7 +16705,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async(
       CustomNestedErrorOuterTwinRustAsync apiObj,
       wire_cst_custom_nested_error_outer_twin_rust_async wireObj) {
     if (apiObj is CustomNestedErrorOuterTwinRustAsync_One) {
@@ -8227,7 +16727,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_outer_twin_rust_async_sse(
       CustomNestedErrorOuterTwinRustAsyncSse apiObj,
       wire_cst_custom_nested_error_outer_twin_rust_async_sse wireObj) {
     if (apiObj is CustomNestedErrorOuterTwinRustAsyncSse_One) {
@@ -8250,7 +16751,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_outer_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_outer_twin_sse(
       CustomNestedErrorOuterTwinSse apiObj,
       wire_cst_custom_nested_error_outer_twin_sse wireObj) {
     if (apiObj is CustomNestedErrorOuterTwinSse_One) {
@@ -8271,7 +16773,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_outer_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_outer_twin_sync(
       CustomNestedErrorOuterTwinSync apiObj,
       wire_cst_custom_nested_error_outer_twin_sync wireObj) {
     if (apiObj is CustomNestedErrorOuterTwinSync_One) {
@@ -8292,7 +16795,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_nested_error_outer_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_nested_error_outer_twin_sync_sse(
       CustomNestedErrorOuterTwinSyncSse apiObj,
       wire_cst_custom_nested_error_outer_twin_sync_sse wireObj) {
     if (apiObj is CustomNestedErrorOuterTwinSyncSse_One) {
@@ -8313,193 +16817,224 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_another_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_another_twin_normal(
       CustomStructErrorAnotherTwinNormal apiObj,
       wire_cst_custom_struct_error_another_twin_normal wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_another_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_another_twin_rust_async(
       CustomStructErrorAnotherTwinRustAsync apiObj,
       wire_cst_custom_struct_error_another_twin_rust_async wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_another_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_another_twin_rust_async_sse(
       CustomStructErrorAnotherTwinRustAsyncSse apiObj,
       wire_cst_custom_struct_error_another_twin_rust_async_sse wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_another_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_another_twin_sse(
       CustomStructErrorAnotherTwinSse apiObj,
       wire_cst_custom_struct_error_another_twin_sse wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_another_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_another_twin_sync(
       CustomStructErrorAnotherTwinSync apiObj,
       wire_cst_custom_struct_error_another_twin_sync wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_another_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_another_twin_sync_sse(
       CustomStructErrorAnotherTwinSyncSse apiObj,
       wire_cst_custom_struct_error_another_twin_sync_sse wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal apiObj,
       wire_cst_custom_struct_error_twin_normal wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_twin_rust_async(
       CustomStructErrorTwinRustAsync apiObj,
       wire_cst_custom_struct_error_twin_rust_async wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_twin_rust_async_sse(
       CustomStructErrorTwinRustAsyncSse apiObj,
       wire_cst_custom_struct_error_twin_rust_async_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_twin_sse(
       CustomStructErrorTwinSse apiObj,
       wire_cst_custom_struct_error_twin_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync apiObj,
       wire_cst_custom_struct_error_twin_sync wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_error_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_error_twin_sync_sse(
       CustomStructErrorTwinSyncSse apiObj,
       wire_cst_custom_struct_error_twin_sync_sse wireObj) {
     wireObj.a = cst_encode_String(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_twin_normal(
       CustomStructTwinNormal apiObj,
       wire_cst_custom_struct_twin_normal wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_twin_rust_async(
       CustomStructTwinRustAsync apiObj,
       wire_cst_custom_struct_twin_rust_async wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_twin_rust_async_sse(
       CustomStructTwinRustAsyncSse apiObj,
       wire_cst_custom_struct_twin_rust_async_sse wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_twin_sse(
       CustomStructTwinSse apiObj, wire_cst_custom_struct_twin_sse wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_twin_sync(
       CustomStructTwinSync apiObj, wire_cst_custom_struct_twin_sync wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_custom_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_custom_struct_twin_sync_sse(
       CustomStructTwinSyncSse apiObj,
       wire_cst_custom_struct_twin_sync_sse wireObj) {
     wireObj.message = cst_encode_String(apiObj.message);
   }
 
-  void _cst_api_fill_to_wire_customized_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_customized_twin_normal(
       CustomizedTwinNormal apiObj, wire_cst_customized_twin_normal wireObj) {
     wireObj.final_field = cst_encode_String(apiObj.finalField);
     wireObj.non_final_field = cst_encode_opt_String(apiObj.nonFinalField);
   }
 
-  void _cst_api_fill_to_wire_customized_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_customized_twin_rust_async(
       CustomizedTwinRustAsync apiObj,
       wire_cst_customized_twin_rust_async wireObj) {
     wireObj.final_field = cst_encode_String(apiObj.finalField);
     wireObj.non_final_field = cst_encode_opt_String(apiObj.nonFinalField);
   }
 
-  void _cst_api_fill_to_wire_customized_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_customized_twin_rust_async_sse(
       CustomizedTwinRustAsyncSse apiObj,
       wire_cst_customized_twin_rust_async_sse wireObj) {
     wireObj.final_field = cst_encode_String(apiObj.finalField);
     wireObj.non_final_field = cst_encode_opt_String(apiObj.nonFinalField);
   }
 
-  void _cst_api_fill_to_wire_customized_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_customized_twin_sse(
       CustomizedTwinSse apiObj, wire_cst_customized_twin_sse wireObj) {
     wireObj.final_field = cst_encode_String(apiObj.finalField);
     wireObj.non_final_field = cst_encode_opt_String(apiObj.nonFinalField);
   }
 
-  void _cst_api_fill_to_wire_customized_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_customized_twin_sync(
       CustomizedTwinSync apiObj, wire_cst_customized_twin_sync wireObj) {
     wireObj.final_field = cst_encode_String(apiObj.finalField);
     wireObj.non_final_field = cst_encode_opt_String(apiObj.nonFinalField);
   }
 
-  void _cst_api_fill_to_wire_customized_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_customized_twin_sync_sse(
       CustomizedTwinSyncSse apiObj, wire_cst_customized_twin_sync_sse wireObj) {
     wireObj.final_field = cst_encode_String(apiObj.finalField);
     wireObj.non_final_field = cst_encode_opt_String(apiObj.nonFinalField);
   }
 
-  void _cst_api_fill_to_wire_dart_opaque_nested_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal apiObj,
       wire_cst_dart_opaque_nested_twin_normal wireObj) {
     wireObj.first = cst_encode_DartOpaque(apiObj.first);
     wireObj.second = cst_encode_DartOpaque(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async(
       DartOpaqueNestedTwinRustAsync apiObj,
       wire_cst_dart_opaque_nested_twin_rust_async wireObj) {
     wireObj.first = cst_encode_DartOpaque(apiObj.first);
     wireObj.second = cst_encode_DartOpaque(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_dart_opaque_nested_twin_rust_async_sse(
       DartOpaqueNestedTwinRustAsyncSse apiObj,
       wire_cst_dart_opaque_nested_twin_rust_async_sse wireObj) {
     wireObj.first = cst_encode_DartOpaque(apiObj.first);
     wireObj.second = cst_encode_DartOpaque(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_dart_opaque_nested_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_dart_opaque_nested_twin_sse(
       DartOpaqueNestedTwinSse apiObj,
       wire_cst_dart_opaque_nested_twin_sse wireObj) {
     wireObj.first = cst_encode_DartOpaque(apiObj.first);
     wireObj.second = cst_encode_DartOpaque(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_dart_opaque_nested_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync apiObj,
       wire_cst_dart_opaque_nested_twin_sync wireObj) {
     wireObj.first = cst_encode_DartOpaque(apiObj.first);
     wireObj.second = cst_encode_DartOpaque(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_dart_opaque_nested_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_dart_opaque_nested_twin_sync_sse(
       DartOpaqueNestedTwinSyncSse apiObj,
       wire_cst_dart_opaque_nested_twin_sync_sse wireObj) {
     wireObj.first = cst_encode_DartOpaque(apiObj.first);
     wireObj.second = cst_encode_DartOpaque(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_distance_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_distance_twin_normal(
       DistanceTwinNormal apiObj, wire_cst_distance_twin_normal wireObj) {
     if (apiObj is DistanceTwinNormal_Unknown) {
       wireObj.tag = 0;
@@ -8514,7 +17049,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_distance_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_distance_twin_rust_async(
       DistanceTwinRustAsync apiObj, wire_cst_distance_twin_rust_async wireObj) {
     if (apiObj is DistanceTwinRustAsync_Unknown) {
       wireObj.tag = 0;
@@ -8529,7 +17065,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_distance_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_distance_twin_rust_async_sse(
       DistanceTwinRustAsyncSse apiObj,
       wire_cst_distance_twin_rust_async_sse wireObj) {
     if (apiObj is DistanceTwinRustAsyncSse_Unknown) {
@@ -8545,7 +17082,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_distance_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_distance_twin_sse(
       DistanceTwinSse apiObj, wire_cst_distance_twin_sse wireObj) {
     if (apiObj is DistanceTwinSse_Unknown) {
       wireObj.tag = 0;
@@ -8560,7 +17098,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_distance_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_distance_twin_sync(
       DistanceTwinSync apiObj, wire_cst_distance_twin_sync wireObj) {
     if (apiObj is DistanceTwinSync_Unknown) {
       wireObj.tag = 0;
@@ -8575,7 +17114,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_distance_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_distance_twin_sync_sse(
       DistanceTwinSyncSse apiObj, wire_cst_distance_twin_sync_sse wireObj) {
     if (apiObj is DistanceTwinSyncSse_Unknown) {
       wireObj.tag = 0;
@@ -8590,7 +17130,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_element_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_element_twin_normal(
       ElementTwinNormal apiObj, wire_cst_element_twin_normal wireObj) {
     wireObj.tag = cst_encode_opt_String(apiObj.tag);
     wireObj.text = cst_encode_opt_String(apiObj.text);
@@ -8599,7 +17140,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.children = cst_encode_opt_list_element_twin_normal(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_element_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_element_twin_rust_async(
       ElementTwinRustAsync apiObj, wire_cst_element_twin_rust_async wireObj) {
     wireObj.tag = cst_encode_opt_String(apiObj.tag);
     wireObj.text = cst_encode_opt_String(apiObj.text);
@@ -8609,7 +17151,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_opt_list_element_twin_rust_async(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_element_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_element_twin_rust_async_sse(
       ElementTwinRustAsyncSse apiObj,
       wire_cst_element_twin_rust_async_sse wireObj) {
     wireObj.tag = cst_encode_opt_String(apiObj.tag);
@@ -8620,7 +17163,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_opt_list_element_twin_rust_async_sse(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_element_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_element_twin_sse(
       ElementTwinSse apiObj, wire_cst_element_twin_sse wireObj) {
     wireObj.tag = cst_encode_opt_String(apiObj.tag);
     wireObj.text = cst_encode_opt_String(apiObj.text);
@@ -8629,7 +17173,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.children = cst_encode_opt_list_element_twin_sse(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_element_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_element_twin_sync(
       ElementTwinSync apiObj, wire_cst_element_twin_sync wireObj) {
     wireObj.tag = cst_encode_opt_String(apiObj.tag);
     wireObj.text = cst_encode_opt_String(apiObj.text);
@@ -8638,7 +17183,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.children = cst_encode_opt_list_element_twin_sync(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_element_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_element_twin_sync_sse(
       ElementTwinSyncSse apiObj, wire_cst_element_twin_sync_sse wireObj) {
     wireObj.tag = cst_encode_opt_String(apiObj.tag);
     wireObj.text = cst_encode_opt_String(apiObj.text);
@@ -8648,20 +17194,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_opt_list_element_twin_sync_sse(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_empty_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_empty_twin_normal(
       EmptyTwinNormal apiObj, wire_cst_empty_twin_normal wireObj) {}
-  void _cst_api_fill_to_wire_empty_twin_rust_async(
+
+  @protected
+  void cst_api_fill_to_wire_empty_twin_rust_async(
       EmptyTwinRustAsync apiObj, wire_cst_empty_twin_rust_async wireObj) {}
-  void _cst_api_fill_to_wire_empty_twin_rust_async_sse(
+
+  @protected
+  void cst_api_fill_to_wire_empty_twin_rust_async_sse(
       EmptyTwinRustAsyncSse apiObj,
       wire_cst_empty_twin_rust_async_sse wireObj) {}
-  void _cst_api_fill_to_wire_empty_twin_sse(
+
+  @protected
+  void cst_api_fill_to_wire_empty_twin_sse(
       EmptyTwinSse apiObj, wire_cst_empty_twin_sse wireObj) {}
-  void _cst_api_fill_to_wire_empty_twin_sync(
+
+  @protected
+  void cst_api_fill_to_wire_empty_twin_sync(
       EmptyTwinSync apiObj, wire_cst_empty_twin_sync wireObj) {}
-  void _cst_api_fill_to_wire_empty_twin_sync_sse(
+
+  @protected
+  void cst_api_fill_to_wire_empty_twin_sync_sse(
       EmptyTwinSyncSse apiObj, wire_cst_empty_twin_sync_sse wireObj) {}
-  void _cst_api_fill_to_wire_enum_dart_opaque_twin_normal(
+
+  @protected
+  void cst_api_fill_to_wire_enum_dart_opaque_twin_normal(
       EnumDartOpaqueTwinNormal apiObj,
       wire_cst_enum_dart_opaque_twin_normal wireObj) {
     if (apiObj is EnumDartOpaqueTwinNormal_Primitive) {
@@ -8680,7 +17239,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async(
       EnumDartOpaqueTwinRustAsync apiObj,
       wire_cst_enum_dart_opaque_twin_rust_async wireObj) {
     if (apiObj is EnumDartOpaqueTwinRustAsync_Primitive) {
@@ -8699,7 +17259,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_dart_opaque_twin_rust_async_sse(
       EnumDartOpaqueTwinRustAsyncSse apiObj,
       wire_cst_enum_dart_opaque_twin_rust_async_sse wireObj) {
     if (apiObj is EnumDartOpaqueTwinRustAsyncSse_Primitive) {
@@ -8719,7 +17280,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_dart_opaque_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_dart_opaque_twin_sse(
       EnumDartOpaqueTwinSse apiObj,
       wire_cst_enum_dart_opaque_twin_sse wireObj) {
     if (apiObj is EnumDartOpaqueTwinSse_Primitive) {
@@ -8738,7 +17300,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_dart_opaque_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_enum_dart_opaque_twin_sync(
       EnumDartOpaqueTwinSync apiObj,
       wire_cst_enum_dart_opaque_twin_sync wireObj) {
     if (apiObj is EnumDartOpaqueTwinSync_Primitive) {
@@ -8757,7 +17320,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_dart_opaque_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_dart_opaque_twin_sync_sse(
       EnumDartOpaqueTwinSyncSse apiObj,
       wire_cst_enum_dart_opaque_twin_sync_sse wireObj) {
     if (apiObj is EnumDartOpaqueTwinSyncSse_Primitive) {
@@ -8776,7 +17340,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_opaque_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_enum_opaque_twin_normal(
       EnumOpaqueTwinNormal apiObj, wire_cst_enum_opaque_twin_normal wireObj) {
     if (apiObj is EnumOpaqueTwinNormal_Struct) {
       var pre_field0 = cst_encode_RustOpaque_hide_data(apiObj.field0);
@@ -8816,7 +17381,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_opaque_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_enum_opaque_twin_rust_async(
       EnumOpaqueTwinRustAsync apiObj,
       wire_cst_enum_opaque_twin_rust_async wireObj) {
     if (apiObj is EnumOpaqueTwinRustAsync_Struct) {
@@ -8857,7 +17423,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_opaque_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_opaque_twin_rust_async_sse(
       EnumOpaqueTwinRustAsyncSse apiObj,
       wire_cst_enum_opaque_twin_rust_async_sse wireObj) {
     if (apiObj is EnumOpaqueTwinRustAsyncSse_Struct) {
@@ -8898,7 +17465,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_opaque_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_opaque_twin_sse(
       EnumOpaqueTwinSse apiObj, wire_cst_enum_opaque_twin_sse wireObj) {
     if (apiObj is EnumOpaqueTwinSse_Struct) {
       var pre_field0 = cst_encode_RustOpaque_hide_data(apiObj.field0);
@@ -8938,7 +17506,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_opaque_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_enum_opaque_twin_sync(
       EnumOpaqueTwinSync apiObj, wire_cst_enum_opaque_twin_sync wireObj) {
     if (apiObj is EnumOpaqueTwinSync_Struct) {
       var pre_field0 = cst_encode_RustOpaque_hide_data(apiObj.field0);
@@ -8978,7 +17547,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_opaque_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_opaque_twin_sync_sse(
       EnumOpaqueTwinSyncSse apiObj,
       wire_cst_enum_opaque_twin_sync_sse wireObj) {
     if (apiObj is EnumOpaqueTwinSyncSse_Struct) {
@@ -9019,7 +17589,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_mixed_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal apiObj,
       wire_cst_enum_with_item_mixed_twin_normal wireObj) {
     if (apiObj is EnumWithItemMixedTwinNormal_A) {
@@ -9042,7 +17613,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async(
       EnumWithItemMixedTwinRustAsync apiObj,
       wire_cst_enum_with_item_mixed_twin_rust_async wireObj) {
     if (apiObj is EnumWithItemMixedTwinRustAsync_A) {
@@ -9065,7 +17637,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_mixed_twin_rust_async_sse(
       EnumWithItemMixedTwinRustAsyncSse apiObj,
       wire_cst_enum_with_item_mixed_twin_rust_async_sse wireObj) {
     if (apiObj is EnumWithItemMixedTwinRustAsyncSse_A) {
@@ -9088,7 +17661,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_mixed_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_mixed_twin_sse(
       EnumWithItemMixedTwinSse apiObj,
       wire_cst_enum_with_item_mixed_twin_sse wireObj) {
     if (apiObj is EnumWithItemMixedTwinSse_A) {
@@ -9111,7 +17685,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_mixed_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_mixed_twin_sync(
       EnumWithItemMixedTwinSync apiObj,
       wire_cst_enum_with_item_mixed_twin_sync wireObj) {
     if (apiObj is EnumWithItemMixedTwinSync_A) {
@@ -9134,7 +17709,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_mixed_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_mixed_twin_sync_sse(
       EnumWithItemMixedTwinSyncSse apiObj,
       wire_cst_enum_with_item_mixed_twin_sync_sse wireObj) {
     if (apiObj is EnumWithItemMixedTwinSyncSse_A) {
@@ -9157,7 +17733,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_struct_twin_normal(
       EnumWithItemStructTwinNormal apiObj,
       wire_cst_enum_with_item_struct_twin_normal wireObj) {
     if (apiObj is EnumWithItemStructTwinNormal_A) {
@@ -9176,7 +17753,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async(
       EnumWithItemStructTwinRustAsync apiObj,
       wire_cst_enum_with_item_struct_twin_rust_async wireObj) {
     if (apiObj is EnumWithItemStructTwinRustAsync_A) {
@@ -9195,7 +17773,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_struct_twin_rust_async_sse(
       EnumWithItemStructTwinRustAsyncSse apiObj,
       wire_cst_enum_with_item_struct_twin_rust_async_sse wireObj) {
     if (apiObj is EnumWithItemStructTwinRustAsyncSse_A) {
@@ -9214,7 +17793,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_struct_twin_sse(
       EnumWithItemStructTwinSse apiObj,
       wire_cst_enum_with_item_struct_twin_sse wireObj) {
     if (apiObj is EnumWithItemStructTwinSse_A) {
@@ -9233,7 +17813,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_struct_twin_sync(
       EnumWithItemStructTwinSync apiObj,
       wire_cst_enum_with_item_struct_twin_sync wireObj) {
     if (apiObj is EnumWithItemStructTwinSync_A) {
@@ -9252,7 +17833,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_struct_twin_sync_sse(
       EnumWithItemStructTwinSyncSse apiObj,
       wire_cst_enum_with_item_struct_twin_sync_sse wireObj) {
     if (apiObj is EnumWithItemStructTwinSyncSse_A) {
@@ -9271,7 +17853,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_tuple_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_tuple_twin_normal(
       EnumWithItemTupleTwinNormal apiObj,
       wire_cst_enum_with_item_tuple_twin_normal wireObj) {
     if (apiObj is EnumWithItemTupleTwinNormal_A) {
@@ -9290,7 +17873,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async(
       EnumWithItemTupleTwinRustAsync apiObj,
       wire_cst_enum_with_item_tuple_twin_rust_async wireObj) {
     if (apiObj is EnumWithItemTupleTwinRustAsync_A) {
@@ -9309,7 +17893,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_tuple_twin_rust_async_sse(
       EnumWithItemTupleTwinRustAsyncSse apiObj,
       wire_cst_enum_with_item_tuple_twin_rust_async_sse wireObj) {
     if (apiObj is EnumWithItemTupleTwinRustAsyncSse_A) {
@@ -9328,7 +17913,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_tuple_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_tuple_twin_sse(
       EnumWithItemTupleTwinSse apiObj,
       wire_cst_enum_with_item_tuple_twin_sse wireObj) {
     if (apiObj is EnumWithItemTupleTwinSse_A) {
@@ -9347,7 +17933,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_tuple_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_tuple_twin_sync(
       EnumWithItemTupleTwinSync apiObj,
       wire_cst_enum_with_item_tuple_twin_sync wireObj) {
     if (apiObj is EnumWithItemTupleTwinSync_A) {
@@ -9366,7 +17953,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_enum_with_item_tuple_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_enum_with_item_tuple_twin_sync_sse(
       EnumWithItemTupleTwinSyncSse apiObj,
       wire_cst_enum_with_item_tuple_twin_sync_sse wireObj) {
     if (apiObj is EnumWithItemTupleTwinSyncSse_A) {
@@ -9385,32 +17973,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_event_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_event_twin_normal(
       EventTwinNormal apiObj, wire_cst_event_twin_normal wireObj) {
     wireObj.address = cst_encode_String(apiObj.address);
     wireObj.payload = cst_encode_String(apiObj.payload);
   }
 
-  void _cst_api_fill_to_wire_event_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_event_twin_rust_async(
       EventTwinRustAsync apiObj, wire_cst_event_twin_rust_async wireObj) {
     wireObj.address = cst_encode_String(apiObj.address);
     wireObj.payload = cst_encode_String(apiObj.payload);
   }
 
-  void _cst_api_fill_to_wire_event_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_event_twin_rust_async_sse(
       EventTwinRustAsyncSse apiObj,
       wire_cst_event_twin_rust_async_sse wireObj) {
     wireObj.address = cst_encode_String(apiObj.address);
     wireObj.payload = cst_encode_String(apiObj.payload);
   }
 
-  void _cst_api_fill_to_wire_event_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_event_twin_sse(
       EventTwinSse apiObj, wire_cst_event_twin_sse wireObj) {
     wireObj.address = cst_encode_String(apiObj.address);
     wireObj.payload = cst_encode_String(apiObj.payload);
   }
 
-  void _cst_api_fill_to_wire_exotic_optionals_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal apiObj,
       wire_cst_exotic_optionals_twin_normal wireObj) {
     wireObj.int32 = cst_encode_opt_box_autoadd_i_32(apiObj.int32);
@@ -9435,7 +18028,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_opt_box_autoadd_new_type_int_twin_normal(apiObj.newtypeint);
   }
 
-  void _cst_api_fill_to_wire_exotic_optionals_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync apiObj,
       wire_cst_exotic_optionals_twin_rust_async wireObj) {
     wireObj.int32 = cst_encode_opt_box_autoadd_i_32(apiObj.int32);
@@ -9461,7 +18055,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
             apiObj.newtypeint);
   }
 
-  void _cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_exotic_optionals_twin_rust_async_sse(
       ExoticOptionalsTwinRustAsyncSse apiObj,
       wire_cst_exotic_optionals_twin_rust_async_sse wireObj) {
     wireObj.int32 = cst_encode_opt_box_autoadd_i_32(apiObj.int32);
@@ -9487,7 +18082,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
             apiObj.newtypeint);
   }
 
-  void _cst_api_fill_to_wire_exotic_optionals_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_exotic_optionals_twin_sse(
       ExoticOptionalsTwinSse apiObj,
       wire_cst_exotic_optionals_twin_sse wireObj) {
     wireObj.int32 = cst_encode_opt_box_autoadd_i_32(apiObj.int32);
@@ -9512,7 +18108,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_opt_box_autoadd_new_type_int_twin_sse(apiObj.newtypeint);
   }
 
-  void _cst_api_fill_to_wire_exotic_optionals_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync apiObj,
       wire_cst_exotic_optionals_twin_sync wireObj) {
     wireObj.int32 = cst_encode_opt_box_autoadd_i_32(apiObj.int32);
@@ -9537,7 +18134,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_opt_box_autoadd_new_type_int_twin_sync(apiObj.newtypeint);
   }
 
-  void _cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_exotic_optionals_twin_sync_sse(
       ExoticOptionalsTwinSyncSse apiObj,
       wire_cst_exotic_optionals_twin_sync_sse wireObj) {
     wireObj.int32 = cst_encode_opt_box_autoadd_i_32(apiObj.int32);
@@ -9562,7 +18160,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         apiObj.newtypeint);
   }
 
-  void _cst_api_fill_to_wire_feature_chrono_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_feature_chrono_twin_normal(
       FeatureChronoTwinNormal apiObj,
       wire_cst_feature_chrono_twin_normal wireObj) {
     wireObj.utc = cst_encode_Chrono_Utc(apiObj.utc);
@@ -9571,7 +18170,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.naive = cst_encode_Chrono_Naive(apiObj.naive);
   }
 
-  void _cst_api_fill_to_wire_feature_chrono_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_feature_chrono_twin_rust_async(
       FeatureChronoTwinRustAsync apiObj,
       wire_cst_feature_chrono_twin_rust_async wireObj) {
     wireObj.utc = cst_encode_Chrono_Utc(apiObj.utc);
@@ -9580,7 +18180,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.naive = cst_encode_Chrono_Naive(apiObj.naive);
   }
 
-  void _cst_api_fill_to_wire_feature_chrono_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_feature_chrono_twin_sync(
       FeatureChronoTwinSync apiObj, wire_cst_feature_chrono_twin_sync wireObj) {
     wireObj.utc = cst_encode_Chrono_Utc(apiObj.utc);
     wireObj.local = cst_encode_Chrono_Local(apiObj.local);
@@ -9588,54 +18189,64 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.naive = cst_encode_Chrono_Naive(apiObj.naive);
   }
 
-  void _cst_api_fill_to_wire_feature_uuid_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_feature_uuid_twin_normal(
       FeatureUuidTwinNormal apiObj, wire_cst_feature_uuid_twin_normal wireObj) {
     wireObj.one = cst_encode_Uuid(apiObj.one);
   }
 
-  void _cst_api_fill_to_wire_feature_uuid_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync apiObj,
       wire_cst_feature_uuid_twin_rust_async wireObj) {
     wireObj.one = cst_encode_Uuid(apiObj.one);
   }
 
-  void _cst_api_fill_to_wire_feature_uuid_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_feature_uuid_twin_sync(
       FeatureUuidTwinSync apiObj, wire_cst_feature_uuid_twin_sync wireObj) {
     wireObj.one = cst_encode_Uuid(apiObj.one);
   }
 
-  void _cst_api_fill_to_wire_feed_id_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_feed_id_twin_normal(
       FeedIdTwinNormal apiObj, wire_cst_feed_id_twin_normal wireObj) {
     wireObj.field0 = cst_encode_u_8_array_8(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_feed_id_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_feed_id_twin_rust_async(
       FeedIdTwinRustAsync apiObj, wire_cst_feed_id_twin_rust_async wireObj) {
     wireObj.field0 = cst_encode_u_8_array_8(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_feed_id_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_feed_id_twin_rust_async_sse(
       FeedIdTwinRustAsyncSse apiObj,
       wire_cst_feed_id_twin_rust_async_sse wireObj) {
     wireObj.field0 = cst_encode_u_8_array_8(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_feed_id_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_feed_id_twin_sse(
       FeedIdTwinSse apiObj, wire_cst_feed_id_twin_sse wireObj) {
     wireObj.field0 = cst_encode_u_8_array_8(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_feed_id_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_feed_id_twin_sync(
       FeedIdTwinSync apiObj, wire_cst_feed_id_twin_sync wireObj) {
     wireObj.field0 = cst_encode_u_8_array_8(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_feed_id_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_feed_id_twin_sync_sse(
       FeedIdTwinSyncSse apiObj, wire_cst_feed_id_twin_sync_sse wireObj) {
     wireObj.field0 = cst_encode_u_8_array_8(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_kitchen_sink_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal apiObj, wire_cst_kitchen_sink_twin_normal wireObj) {
     if (apiObj is KitchenSinkTwinNormal_Empty) {
       wireObj.tag = 0;
@@ -9686,7 +18297,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_kitchen_sink_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync apiObj,
       wire_cst_kitchen_sink_twin_rust_async wireObj) {
     if (apiObj is KitchenSinkTwinRustAsync_Empty) {
@@ -9739,7 +18351,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(
       KitchenSinkTwinRustAsyncSse apiObj,
       wire_cst_kitchen_sink_twin_rust_async_sse wireObj) {
     if (apiObj is KitchenSinkTwinRustAsyncSse_Empty) {
@@ -9792,7 +18405,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_kitchen_sink_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_kitchen_sink_twin_sse(
       KitchenSinkTwinSse apiObj, wire_cst_kitchen_sink_twin_sse wireObj) {
     if (apiObj is KitchenSinkTwinSse_Empty) {
       wireObj.tag = 0;
@@ -9843,7 +18457,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_kitchen_sink_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_kitchen_sink_twin_sync(
       KitchenSinkTwinSync apiObj, wire_cst_kitchen_sink_twin_sync wireObj) {
     if (apiObj is KitchenSinkTwinSync_Empty) {
       wireObj.tag = 0;
@@ -9894,7 +18509,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(
       KitchenSinkTwinSyncSse apiObj,
       wire_cst_kitchen_sink_twin_sync_sse wireObj) {
     if (apiObj is KitchenSinkTwinSyncSse_Empty) {
@@ -9946,78 +18562,91 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_list_of_nested_raw_string_mirrored(
+  @protected
+  void cst_api_fill_to_wire_list_of_nested_raw_string_mirrored(
       ListOfNestedRawStringMirrored apiObj,
       wire_cst_list_of_nested_raw_string_mirrored wireObj) {
     wireObj.raw = cst_encode_list_nested_raw_string_mirrored(apiObj.raw);
   }
 
-  void _cst_api_fill_to_wire_log_2_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_log_2_twin_normal(
       Log2TwinNormal apiObj, wire_cst_log_2_twin_normal wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_log_2_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_log_2_twin_rust_async(
       Log2TwinRustAsync apiObj, wire_cst_log_2_twin_rust_async wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_log_2_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_log_2_twin_rust_async_sse(
       Log2TwinRustAsyncSse apiObj, wire_cst_log_2_twin_rust_async_sse wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_log_2_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_log_2_twin_sse(
       Log2TwinSse apiObj, wire_cst_log_2_twin_sse wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_log_2_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_log_2_twin_sync(
       Log2TwinSync apiObj, wire_cst_log_2_twin_sync wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_log_2_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_log_2_twin_sync_sse(
       Log2TwinSyncSse apiObj, wire_cst_log_2_twin_sync_sse wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_log_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_log_twin_normal(
       LogTwinNormal apiObj, wire_cst_log_twin_normal wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_log_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_log_twin_rust_async(
       LogTwinRustAsync apiObj, wire_cst_log_twin_rust_async wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_log_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_log_twin_rust_async_sse(
       LogTwinRustAsyncSse apiObj, wire_cst_log_twin_rust_async_sse wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_log_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_log_twin_sse(
       LogTwinSse apiObj, wire_cst_log_twin_sse wireObj) {
     wireObj.key = cst_encode_u_32(apiObj.key);
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_macro_struct(
+  @protected
+  void cst_api_fill_to_wire_macro_struct(
       MacroStruct apiObj, wire_cst_macro_struct wireObj) {
     wireObj.data = cst_encode_i_32(apiObj.data);
   }
 
-  void _cst_api_fill_to_wire_measure_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_measure_twin_normal(
       MeasureTwinNormal apiObj, wire_cst_measure_twin_normal wireObj) {
     if (apiObj is MeasureTwinNormal_Speed) {
       var pre_field0 = cst_encode_box_speed_twin_normal(apiObj.field0);
@@ -10035,7 +18664,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_measure_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_measure_twin_rust_async(
       MeasureTwinRustAsync apiObj, wire_cst_measure_twin_rust_async wireObj) {
     if (apiObj is MeasureTwinRustAsync_Speed) {
       var pre_field0 = cst_encode_box_speed_twin_rust_async(apiObj.field0);
@@ -10053,7 +18683,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_measure_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_measure_twin_rust_async_sse(
       MeasureTwinRustAsyncSse apiObj,
       wire_cst_measure_twin_rust_async_sse wireObj) {
     if (apiObj is MeasureTwinRustAsyncSse_Speed) {
@@ -10073,7 +18704,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_measure_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_measure_twin_sse(
       MeasureTwinSse apiObj, wire_cst_measure_twin_sse wireObj) {
     if (apiObj is MeasureTwinSse_Speed) {
       var pre_field0 = cst_encode_box_speed_twin_sse(apiObj.field0);
@@ -10091,7 +18723,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_measure_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_measure_twin_sync(
       MeasureTwinSync apiObj, wire_cst_measure_twin_sync wireObj) {
     if (apiObj is MeasureTwinSync_Speed) {
       var pre_field0 = cst_encode_box_speed_twin_sync(apiObj.field0);
@@ -10109,7 +18742,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_measure_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_measure_twin_sync_sse(
       MeasureTwinSyncSse apiObj, wire_cst_measure_twin_sync_sse wireObj) {
     if (apiObj is MeasureTwinSyncSse_Speed) {
       var pre_field0 = cst_encode_box_speed_twin_sync_sse(apiObj.field0);
@@ -10127,91 +18761,104 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_message_id_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_message_id_twin_normal(
       MessageIdTwinNormal apiObj, wire_cst_message_id_twin_normal wireObj) {
     wireObj.field0 = cst_encode_u_8_array_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_message_id_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_message_id_twin_rust_async(
       MessageIdTwinRustAsync apiObj,
       wire_cst_message_id_twin_rust_async wireObj) {
     wireObj.field0 = cst_encode_u_8_array_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_message_id_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_message_id_twin_rust_async_sse(
       MessageIdTwinRustAsyncSse apiObj,
       wire_cst_message_id_twin_rust_async_sse wireObj) {
     wireObj.field0 = cst_encode_u_8_array_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_message_id_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_message_id_twin_sse(
       MessageIdTwinSse apiObj, wire_cst_message_id_twin_sse wireObj) {
     wireObj.field0 = cst_encode_u_8_array_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_message_id_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_message_id_twin_sync(
       MessageIdTwinSync apiObj, wire_cst_message_id_twin_sync wireObj) {
     wireObj.field0 = cst_encode_u_8_array_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_message_id_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_message_id_twin_sync_sse(
       MessageIdTwinSyncSse apiObj, wire_cst_message_id_twin_sync_sse wireObj) {
     wireObj.field0 = cst_encode_u_8_array_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_mirror_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_mirror_struct_twin_normal(
       MirrorStructTwinNormal apiObj,
       wire_cst_mirror_struct_twin_normal wireObj) {
-    _cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
-    _cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
+    cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
+    cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
     wireObj.c = cst_encode_list_my_enum(apiObj.c);
     wireObj.d = cst_encode_list_application_settings(apiObj.d);
   }
 
-  void _cst_api_fill_to_wire_mirror_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_mirror_struct_twin_rust_async(
       MirrorStructTwinRustAsync apiObj,
       wire_cst_mirror_struct_twin_rust_async wireObj) {
-    _cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
-    _cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
+    cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
+    cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
     wireObj.c = cst_encode_list_my_enum(apiObj.c);
     wireObj.d = cst_encode_list_application_settings(apiObj.d);
   }
 
-  void _cst_api_fill_to_wire_mirror_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_mirror_struct_twin_rust_async_sse(
       MirrorStructTwinRustAsyncSse apiObj,
       wire_cst_mirror_struct_twin_rust_async_sse wireObj) {
-    _cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
-    _cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
+    cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
+    cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
     wireObj.c = cst_encode_list_my_enum(apiObj.c);
     wireObj.d = cst_encode_list_application_settings(apiObj.d);
   }
 
-  void _cst_api_fill_to_wire_mirror_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_mirror_struct_twin_sse(
       MirrorStructTwinSse apiObj, wire_cst_mirror_struct_twin_sse wireObj) {
-    _cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
-    _cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
+    cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
+    cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
     wireObj.c = cst_encode_list_my_enum(apiObj.c);
     wireObj.d = cst_encode_list_application_settings(apiObj.d);
   }
 
-  void _cst_api_fill_to_wire_mirror_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_mirror_struct_twin_sync(
       MirrorStructTwinSync apiObj, wire_cst_mirror_struct_twin_sync wireObj) {
-    _cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
-    _cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
+    cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
+    cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
     wireObj.c = cst_encode_list_my_enum(apiObj.c);
     wireObj.d = cst_encode_list_application_settings(apiObj.d);
   }
 
-  void _cst_api_fill_to_wire_mirror_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_mirror_struct_twin_sync_sse(
       MirrorStructTwinSyncSse apiObj,
       wire_cst_mirror_struct_twin_sync_sse wireObj) {
-    _cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
-    _cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
+    cst_api_fill_to_wire_application_settings(apiObj.a, wireObj.a);
+    cst_api_fill_to_wire_my_struct(apiObj.b, wireObj.b);
     wireObj.c = cst_encode_list_my_enum(apiObj.c);
     wireObj.d = cst_encode_list_application_settings(apiObj.d);
   }
 
-  void _cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_normal(
       MoreThanJustOneRawStringStructTwinNormal apiObj,
       wire_cst_more_than_just_one_raw_string_struct_twin_normal wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
@@ -10220,8 +18867,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_rust_async(
+      cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_rust_async(
           MoreThanJustOneRawStringStructTwinRustAsync apiObj,
           wire_cst_more_than_just_one_raw_string_struct_twin_rust_async
               wireObj) {
@@ -10231,8 +18879,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_rust_async_sse(
+      cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_rust_async_sse(
           MoreThanJustOneRawStringStructTwinRustAsyncSse apiObj,
           wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse
               wireObj) {
@@ -10242,7 +18891,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
-  void _cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_sse(
       MoreThanJustOneRawStringStructTwinSse apiObj,
       wire_cst_more_than_just_one_raw_string_struct_twin_sse wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
@@ -10251,7 +18901,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
-  void _cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_sync(
       MoreThanJustOneRawStringStructTwinSync apiObj,
       wire_cst_more_than_just_one_raw_string_struct_twin_sync wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
@@ -10260,7 +18911,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
-  void _cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_more_than_just_one_raw_string_struct_twin_sync_sse(
       MoreThanJustOneRawStringStructTwinSyncSse apiObj,
       wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse wireObj) {
     wireObj.regular = cst_encode_String(apiObj.regular);
@@ -10269,88 +18921,101 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.another = cst_encode_String(apiObj.another);
   }
 
-  void _cst_api_fill_to_wire_my_nested_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal apiObj,
       wire_cst_my_nested_struct_twin_normal wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_normal(
+    cst_api_fill_to_wire_my_tree_node_twin_normal(
         apiObj.treeNode, wireObj.tree_node);
     wireObj.weekday = cst_encode_weekdays_twin_normal(apiObj.weekday);
   }
 
-  void _cst_api_fill_to_wire_my_nested_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_my_nested_struct_twin_rust_async(
       MyNestedStructTwinRustAsync apiObj,
       wire_cst_my_nested_struct_twin_rust_async wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_rust_async(
+    cst_api_fill_to_wire_my_tree_node_twin_rust_async(
         apiObj.treeNode, wireObj.tree_node);
     wireObj.weekday = cst_encode_weekdays_twin_rust_async(apiObj.weekday);
   }
 
-  void _cst_api_fill_to_wire_my_nested_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_my_nested_struct_twin_rust_async_sse(
       MyNestedStructTwinRustAsyncSse apiObj,
       wire_cst_my_nested_struct_twin_rust_async_sse wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(
+    cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(
         apiObj.treeNode, wireObj.tree_node);
     wireObj.weekday = cst_encode_weekdays_twin_rust_async_sse(apiObj.weekday);
   }
 
-  void _cst_api_fill_to_wire_my_nested_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_my_nested_struct_twin_sse(
       MyNestedStructTwinSse apiObj,
       wire_cst_my_nested_struct_twin_sse wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_sse(
+    cst_api_fill_to_wire_my_tree_node_twin_sse(
         apiObj.treeNode, wireObj.tree_node);
     wireObj.weekday = cst_encode_weekdays_twin_sse(apiObj.weekday);
   }
 
-  void _cst_api_fill_to_wire_my_nested_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_my_nested_struct_twin_sync(
       MyNestedStructTwinSync apiObj,
       wire_cst_my_nested_struct_twin_sync wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_sync(
+    cst_api_fill_to_wire_my_tree_node_twin_sync(
         apiObj.treeNode, wireObj.tree_node);
     wireObj.weekday = cst_encode_weekdays_twin_sync(apiObj.weekday);
   }
 
-  void _cst_api_fill_to_wire_my_nested_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_my_nested_struct_twin_sync_sse(
       MyNestedStructTwinSyncSse apiObj,
       wire_cst_my_nested_struct_twin_sync_sse wireObj) {
-    _cst_api_fill_to_wire_my_tree_node_twin_sync_sse(
+    cst_api_fill_to_wire_my_tree_node_twin_sync_sse(
         apiObj.treeNode, wireObj.tree_node);
     wireObj.weekday = cst_encode_weekdays_twin_sync_sse(apiObj.weekday);
   }
 
-  void _cst_api_fill_to_wire_my_size(MySize apiObj, wire_cst_my_size wireObj) {
+  @protected
+  void cst_api_fill_to_wire_my_size(MySize apiObj, wire_cst_my_size wireObj) {
     wireObj.width = cst_encode_i_32(apiObj.width);
     wireObj.height = cst_encode_i_32(apiObj.height);
   }
 
-  void _cst_api_fill_to_wire_my_stream_entry_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_my_stream_entry_twin_normal(
       MyStreamEntryTwinNormal apiObj,
       wire_cst_my_stream_entry_twin_normal wireObj) {
     wireObj.hello = cst_encode_String(apiObj.hello);
   }
 
-  void _cst_api_fill_to_wire_my_stream_entry_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_my_stream_entry_twin_rust_async(
       MyStreamEntryTwinRustAsync apiObj,
       wire_cst_my_stream_entry_twin_rust_async wireObj) {
     wireObj.hello = cst_encode_String(apiObj.hello);
   }
 
-  void _cst_api_fill_to_wire_my_stream_entry_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_my_stream_entry_twin_rust_async_sse(
       MyStreamEntryTwinRustAsyncSse apiObj,
       wire_cst_my_stream_entry_twin_rust_async_sse wireObj) {
     wireObj.hello = cst_encode_String(apiObj.hello);
   }
 
-  void _cst_api_fill_to_wire_my_stream_entry_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_my_stream_entry_twin_sse(
       MyStreamEntryTwinSse apiObj, wire_cst_my_stream_entry_twin_sse wireObj) {
     wireObj.hello = cst_encode_String(apiObj.hello);
   }
 
-  void _cst_api_fill_to_wire_my_struct(
+  @protected
+  void cst_api_fill_to_wire_my_struct(
       MyStruct apiObj, wire_cst_my_struct wireObj) {
     wireObj.content = cst_encode_bool(apiObj.content);
   }
 
-  void _cst_api_fill_to_wire_my_tree_node_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal apiObj, wire_cst_my_tree_node_twin_normal wireObj) {
     wireObj.value_i32 = cst_encode_i_32(apiObj.valueI32);
     wireObj.value_vec_u8 = cst_encode_list_prim_u_8(apiObj.valueVecU8);
@@ -10359,7 +19024,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_list_my_tree_node_twin_normal(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_my_tree_node_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_my_tree_node_twin_rust_async(
       MyTreeNodeTwinRustAsync apiObj,
       wire_cst_my_tree_node_twin_rust_async wireObj) {
     wireObj.value_i32 = cst_encode_i_32(apiObj.valueI32);
@@ -10369,7 +19035,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_list_my_tree_node_twin_rust_async(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_my_tree_node_twin_rust_async_sse(
       MyTreeNodeTwinRustAsyncSse apiObj,
       wire_cst_my_tree_node_twin_rust_async_sse wireObj) {
     wireObj.value_i32 = cst_encode_i_32(apiObj.valueI32);
@@ -10379,7 +19046,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_list_my_tree_node_twin_rust_async_sse(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_my_tree_node_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_my_tree_node_twin_sse(
       MyTreeNodeTwinSse apiObj, wire_cst_my_tree_node_twin_sse wireObj) {
     wireObj.value_i32 = cst_encode_i_32(apiObj.valueI32);
     wireObj.value_vec_u8 = cst_encode_list_prim_u_8(apiObj.valueVecU8);
@@ -10387,7 +19055,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.children = cst_encode_list_my_tree_node_twin_sse(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_my_tree_node_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_my_tree_node_twin_sync(
       MyTreeNodeTwinSync apiObj, wire_cst_my_tree_node_twin_sync wireObj) {
     wireObj.value_i32 = cst_encode_i_32(apiObj.valueI32);
     wireObj.value_vec_u8 = cst_encode_list_prim_u_8(apiObj.valueVecU8);
@@ -10395,7 +19064,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.children = cst_encode_list_my_tree_node_twin_sync(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_my_tree_node_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_my_tree_node_twin_sync_sse(
       MyTreeNodeTwinSyncSse apiObj,
       wire_cst_my_tree_node_twin_sync_sse wireObj) {
     wireObj.value_i32 = cst_encode_i_32(apiObj.valueI32);
@@ -10405,136 +19075,159 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         cst_encode_list_my_tree_node_twin_sync_sse(apiObj.children);
   }
 
-  void _cst_api_fill_to_wire_nested_raw_string_mirrored(
+  @protected
+  void cst_api_fill_to_wire_nested_raw_string_mirrored(
       NestedRawStringMirrored apiObj,
       wire_cst_nested_raw_string_mirrored wireObj) {
-    _cst_api_fill_to_wire_raw_string_mirrored(apiObj.raw, wireObj.raw);
+    cst_api_fill_to_wire_raw_string_mirrored(apiObj.raw, wireObj.raw);
   }
 
-  void _cst_api_fill_to_wire_new_simple_struct(
+  @protected
+  void cst_api_fill_to_wire_new_simple_struct(
       NewSimpleStruct apiObj, wire_cst_new_simple_struct wireObj) {
     wireObj.field = cst_encode_i_32(apiObj.field);
   }
 
-  void _cst_api_fill_to_wire_new_type_int_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_new_type_int_twin_normal(
       NewTypeIntTwinNormal apiObj, wire_cst_new_type_int_twin_normal wireObj) {
     wireObj.field0 = cst_encode_i_64(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_new_type_int_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync apiObj,
       wire_cst_new_type_int_twin_rust_async wireObj) {
     wireObj.field0 = cst_encode_i_64(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_new_type_int_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_new_type_int_twin_rust_async_sse(
       NewTypeIntTwinRustAsyncSse apiObj,
       wire_cst_new_type_int_twin_rust_async_sse wireObj) {
     wireObj.field0 = cst_encode_i_64(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_new_type_int_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_new_type_int_twin_sse(
       NewTypeIntTwinSse apiObj, wire_cst_new_type_int_twin_sse wireObj) {
     wireObj.field0 = cst_encode_i_64(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_new_type_int_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_new_type_int_twin_sync(
       NewTypeIntTwinSync apiObj, wire_cst_new_type_int_twin_sync wireObj) {
     wireObj.field0 = cst_encode_i_64(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_new_type_int_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_new_type_int_twin_sync_sse(
       NewTypeIntTwinSyncSse apiObj,
       wire_cst_new_type_int_twin_sync_sse wireObj) {
     wireObj.field0 = cst_encode_i_64(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_note_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_note_twin_normal(
       NoteTwinNormal apiObj, wire_cst_note_twin_normal wireObj) {
     wireObj.day = cst_encode_box_weekdays_twin_normal(apiObj.day);
     wireObj.body = cst_encode_String(apiObj.body);
   }
 
-  void _cst_api_fill_to_wire_note_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_note_twin_rust_async(
       NoteTwinRustAsync apiObj, wire_cst_note_twin_rust_async wireObj) {
     wireObj.day = cst_encode_box_weekdays_twin_rust_async(apiObj.day);
     wireObj.body = cst_encode_String(apiObj.body);
   }
 
-  void _cst_api_fill_to_wire_note_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_note_twin_rust_async_sse(
       NoteTwinRustAsyncSse apiObj, wire_cst_note_twin_rust_async_sse wireObj) {
     wireObj.day = cst_encode_box_weekdays_twin_rust_async_sse(apiObj.day);
     wireObj.body = cst_encode_String(apiObj.body);
   }
 
-  void _cst_api_fill_to_wire_note_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_note_twin_sse(
       NoteTwinSse apiObj, wire_cst_note_twin_sse wireObj) {
     wireObj.day = cst_encode_box_weekdays_twin_sse(apiObj.day);
     wireObj.body = cst_encode_String(apiObj.body);
   }
 
-  void _cst_api_fill_to_wire_note_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_note_twin_sync(
       NoteTwinSync apiObj, wire_cst_note_twin_sync wireObj) {
     wireObj.day = cst_encode_box_weekdays_twin_sync(apiObj.day);
     wireObj.body = cst_encode_String(apiObj.body);
   }
 
-  void _cst_api_fill_to_wire_note_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_note_twin_sync_sse(
       NoteTwinSyncSse apiObj, wire_cst_note_twin_sync_sse wireObj) {
     wireObj.day = cst_encode_box_weekdays_twin_sync_sse(apiObj.day);
     wireObj.body = cst_encode_String(apiObj.body);
   }
 
-  void _cst_api_fill_to_wire_numbers(Numbers apiObj, wire_cst_numbers wireObj) {
+  @protected
+  void cst_api_fill_to_wire_numbers(Numbers apiObj, wire_cst_numbers wireObj) {
     wireObj.field0 = cst_encode_list_prim_i_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_old_simple_struct(
+  @protected
+  void cst_api_fill_to_wire_old_simple_struct(
       OldSimpleStruct apiObj, wire_cst_old_simple_struct wireObj) {
     wireObj.field = cst_encode_i_32(apiObj.field);
   }
 
-  void _cst_api_fill_to_wire_opaque_nested_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_opaque_nested_twin_normal(
       OpaqueNestedTwinNormal apiObj,
       wire_cst_opaque_nested_twin_normal wireObj) {
     wireObj.first = cst_encode_RustOpaque_hide_data(apiObj.first);
     wireObj.second = cst_encode_RustOpaque_hide_data(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_opaque_nested_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_opaque_nested_twin_rust_async(
       OpaqueNestedTwinRustAsync apiObj,
       wire_cst_opaque_nested_twin_rust_async wireObj) {
     wireObj.first = cst_encode_RustOpaque_hide_data(apiObj.first);
     wireObj.second = cst_encode_RustOpaque_hide_data(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_opaque_nested_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_opaque_nested_twin_rust_async_sse(
       OpaqueNestedTwinRustAsyncSse apiObj,
       wire_cst_opaque_nested_twin_rust_async_sse wireObj) {
     wireObj.first = cst_encode_RustOpaque_hide_data(apiObj.first);
     wireObj.second = cst_encode_RustOpaque_hide_data(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_opaque_nested_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_opaque_nested_twin_sse(
       OpaqueNestedTwinSse apiObj, wire_cst_opaque_nested_twin_sse wireObj) {
     wireObj.first = cst_encode_RustOpaque_hide_data(apiObj.first);
     wireObj.second = cst_encode_RustOpaque_hide_data(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_opaque_nested_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_opaque_nested_twin_sync(
       OpaqueNestedTwinSync apiObj, wire_cst_opaque_nested_twin_sync wireObj) {
     wireObj.first = cst_encode_RustOpaque_hide_data(apiObj.first);
     wireObj.second = cst_encode_RustOpaque_hide_data(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_opaque_nested_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_opaque_nested_twin_sync_sse(
       OpaqueNestedTwinSyncSse apiObj,
       wire_cst_opaque_nested_twin_sync_sse wireObj) {
     wireObj.first = cst_encode_RustOpaque_hide_data(apiObj.first);
     wireObj.second = cst_encode_RustOpaque_hide_data(apiObj.second);
   }
 
-  void _cst_api_fill_to_wire_opt_vecs_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_opt_vecs_twin_normal(
       OptVecsTwinNormal apiObj, wire_cst_opt_vecs_twin_normal wireObj) {
     wireObj.i32 = cst_encode_list_opt_box_autoadd_i_32(apiObj.i32);
     wireObj.enums =
@@ -10543,7 +19236,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.buffers = cst_encode_list_opt_list_prim_i_32(apiObj.buffers);
   }
 
-  void _cst_api_fill_to_wire_opt_vecs_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_opt_vecs_twin_rust_async(
       OptVecsTwinRustAsync apiObj, wire_cst_opt_vecs_twin_rust_async wireObj) {
     wireObj.i32 = cst_encode_list_opt_box_autoadd_i_32(apiObj.i32);
     wireObj.enums =
@@ -10552,7 +19246,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.buffers = cst_encode_list_opt_list_prim_i_32(apiObj.buffers);
   }
 
-  void _cst_api_fill_to_wire_opt_vecs_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_opt_vecs_twin_rust_async_sse(
       OptVecsTwinRustAsyncSse apiObj,
       wire_cst_opt_vecs_twin_rust_async_sse wireObj) {
     wireObj.i32 = cst_encode_list_opt_box_autoadd_i_32(apiObj.i32);
@@ -10563,7 +19258,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.buffers = cst_encode_list_opt_list_prim_i_32(apiObj.buffers);
   }
 
-  void _cst_api_fill_to_wire_opt_vecs_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_opt_vecs_twin_sse(
       OptVecsTwinSse apiObj, wire_cst_opt_vecs_twin_sse wireObj) {
     wireObj.i32 = cst_encode_list_opt_box_autoadd_i_32(apiObj.i32);
     wireObj.enums =
@@ -10572,7 +19268,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.buffers = cst_encode_list_opt_list_prim_i_32(apiObj.buffers);
   }
 
-  void _cst_api_fill_to_wire_opt_vecs_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_opt_vecs_twin_sync(
       OptVecsTwinSync apiObj, wire_cst_opt_vecs_twin_sync wireObj) {
     wireObj.i32 = cst_encode_list_opt_box_autoadd_i_32(apiObj.i32);
     wireObj.enums =
@@ -10581,7 +19278,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.buffers = cst_encode_list_opt_list_prim_i_32(apiObj.buffers);
   }
 
-  void _cst_api_fill_to_wire_opt_vecs_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_opt_vecs_twin_sync_sse(
       OptVecsTwinSyncSse apiObj, wire_cst_opt_vecs_twin_sync_sse wireObj) {
     wireObj.i32 = cst_encode_list_opt_box_autoadd_i_32(apiObj.i32);
     wireObj.enums =
@@ -10590,44 +19288,51 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.buffers = cst_encode_list_opt_list_prim_i_32(apiObj.buffers);
   }
 
-  void _cst_api_fill_to_wire_point_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_point_twin_normal(
       PointTwinNormal apiObj, wire_cst_point_twin_normal wireObj) {
     wireObj.x = cst_encode_f_32(apiObj.x);
     wireObj.y = cst_encode_f_32(apiObj.y);
   }
 
-  void _cst_api_fill_to_wire_point_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_point_twin_rust_async(
       PointTwinRustAsync apiObj, wire_cst_point_twin_rust_async wireObj) {
     wireObj.x = cst_encode_f_32(apiObj.x);
     wireObj.y = cst_encode_f_32(apiObj.y);
   }
 
-  void _cst_api_fill_to_wire_point_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_point_twin_rust_async_sse(
       PointTwinRustAsyncSse apiObj,
       wire_cst_point_twin_rust_async_sse wireObj) {
     wireObj.x = cst_encode_f_32(apiObj.x);
     wireObj.y = cst_encode_f_32(apiObj.y);
   }
 
-  void _cst_api_fill_to_wire_point_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_point_twin_sse(
       PointTwinSse apiObj, wire_cst_point_twin_sse wireObj) {
     wireObj.x = cst_encode_f_32(apiObj.x);
     wireObj.y = cst_encode_f_32(apiObj.y);
   }
 
-  void _cst_api_fill_to_wire_point_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_point_twin_sync(
       PointTwinSync apiObj, wire_cst_point_twin_sync wireObj) {
     wireObj.x = cst_encode_f_32(apiObj.x);
     wireObj.y = cst_encode_f_32(apiObj.y);
   }
 
-  void _cst_api_fill_to_wire_point_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_point_twin_sync_sse(
       PointTwinSyncSse apiObj, wire_cst_point_twin_sync_sse wireObj) {
     wireObj.x = cst_encode_f_32(apiObj.x);
     wireObj.y = cst_encode_f_32(apiObj.y);
   }
 
-  void _cst_api_fill_to_wire_raw_string_enum_mirrored(
+  @protected
+  void cst_api_fill_to_wire_raw_string_enum_mirrored(
       RawStringEnumMirrored apiObj, wire_cst_raw_string_enum_mirrored wireObj) {
     if (apiObj is RawStringEnumMirrored_Raw) {
       var pre_field0 =
@@ -10656,101 +19361,118 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_raw_string_item_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_raw_string_item_struct_twin_normal(
       RawStringItemStructTwinNormal apiObj,
       wire_cst_raw_string_item_struct_twin_normal wireObj) {
     wireObj.type = cst_encode_String(apiObj.type);
   }
 
-  void _cst_api_fill_to_wire_raw_string_item_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_raw_string_item_struct_twin_rust_async(
       RawStringItemStructTwinRustAsync apiObj,
       wire_cst_raw_string_item_struct_twin_rust_async wireObj) {
     wireObj.type = cst_encode_String(apiObj.type);
   }
 
-  void _cst_api_fill_to_wire_raw_string_item_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_raw_string_item_struct_twin_rust_async_sse(
       RawStringItemStructTwinRustAsyncSse apiObj,
       wire_cst_raw_string_item_struct_twin_rust_async_sse wireObj) {
     wireObj.type = cst_encode_String(apiObj.type);
   }
 
-  void _cst_api_fill_to_wire_raw_string_item_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_raw_string_item_struct_twin_sse(
       RawStringItemStructTwinSse apiObj,
       wire_cst_raw_string_item_struct_twin_sse wireObj) {
     wireObj.type = cst_encode_String(apiObj.type);
   }
 
-  void _cst_api_fill_to_wire_raw_string_item_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_raw_string_item_struct_twin_sync(
       RawStringItemStructTwinSync apiObj,
       wire_cst_raw_string_item_struct_twin_sync wireObj) {
     wireObj.type = cst_encode_String(apiObj.type);
   }
 
-  void _cst_api_fill_to_wire_raw_string_item_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_raw_string_item_struct_twin_sync_sse(
       RawStringItemStructTwinSyncSse apiObj,
       wire_cst_raw_string_item_struct_twin_sync_sse wireObj) {
     wireObj.type = cst_encode_String(apiObj.type);
   }
 
-  void _cst_api_fill_to_wire_raw_string_mirrored(
+  @protected
+  void cst_api_fill_to_wire_raw_string_mirrored(
       RawStringMirrored apiObj, wire_cst_raw_string_mirrored wireObj) {
     wireObj.value = cst_encode_String(apiObj.value);
   }
 
+  @protected
   void
-      _cst_api_fill_to_wire_record_application_settings_raw_string_enum_mirrored(
+      cst_api_fill_to_wire_record_application_settings_raw_string_enum_mirrored(
           (ApplicationSettings, RawStringEnumMirrored) apiObj,
           wire_cst_record_application_settings_raw_string_enum_mirrored
               wireObj) {
-    _cst_api_fill_to_wire_application_settings(apiObj.$1, wireObj.field0);
-    _cst_api_fill_to_wire_raw_string_enum_mirrored(apiObj.$2, wireObj.field1);
+    cst_api_fill_to_wire_application_settings(apiObj.$1, wireObj.field0);
+    cst_api_fill_to_wire_raw_string_enum_mirrored(apiObj.$2, wireObj.field1);
   }
 
-  void _cst_api_fill_to_wire_record_string_i_32(
+  @protected
+  void cst_api_fill_to_wire_record_string_i_32(
       (String, int) apiObj, wire_cst_record_string_i_32 wireObj) {
     wireObj.field0 = cst_encode_String(apiObj.$1);
     wireObj.field1 = cst_encode_i_32(apiObj.$2);
   }
 
-  void _cst_api_fill_to_wire_sequences(
+  @protected
+  void cst_api_fill_to_wire_sequences(
       Sequences apiObj, wire_cst_sequences wireObj) {
     wireObj.field0 = cst_encode_list_prim_i_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_some_struct_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_some_struct_twin_normal(
       SomeStructTwinNormal apiObj, wire_cst_some_struct_twin_normal wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_some_struct_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_some_struct_twin_rust_async(
       SomeStructTwinRustAsync apiObj,
       wire_cst_some_struct_twin_rust_async wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_some_struct_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_some_struct_twin_rust_async_sse(
       SomeStructTwinRustAsyncSse apiObj,
       wire_cst_some_struct_twin_rust_async_sse wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_some_struct_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_some_struct_twin_sse(
       SomeStructTwinSse apiObj, wire_cst_some_struct_twin_sse wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_some_struct_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_some_struct_twin_sync(
       SomeStructTwinSync apiObj, wire_cst_some_struct_twin_sync wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_some_struct_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_some_struct_twin_sync_sse(
       SomeStructTwinSyncSse apiObj,
       wire_cst_some_struct_twin_sync_sse wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_speed_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_speed_twin_normal(
       SpeedTwinNormal apiObj, wire_cst_speed_twin_normal wireObj) {
     if (apiObj is SpeedTwinNormal_Unknown) {
       wireObj.tag = 0;
@@ -10765,7 +19487,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_speed_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_speed_twin_rust_async(
       SpeedTwinRustAsync apiObj, wire_cst_speed_twin_rust_async wireObj) {
     if (apiObj is SpeedTwinRustAsync_Unknown) {
       wireObj.tag = 0;
@@ -10780,7 +19503,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_speed_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_speed_twin_rust_async_sse(
       SpeedTwinRustAsyncSse apiObj,
       wire_cst_speed_twin_rust_async_sse wireObj) {
     if (apiObj is SpeedTwinRustAsyncSse_Unknown) {
@@ -10796,7 +19520,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_speed_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_speed_twin_sse(
       SpeedTwinSse apiObj, wire_cst_speed_twin_sse wireObj) {
     if (apiObj is SpeedTwinSse_Unknown) {
       wireObj.tag = 0;
@@ -10811,7 +19536,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_speed_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_speed_twin_sync(
       SpeedTwinSync apiObj, wire_cst_speed_twin_sync wireObj) {
     if (apiObj is SpeedTwinSync_Unknown) {
       wireObj.tag = 0;
@@ -10826,7 +19552,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_speed_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_speed_twin_sync_sse(
       SpeedTwinSyncSse apiObj, wire_cst_speed_twin_sync_sse wireObj) {
     if (apiObj is SpeedTwinSyncSse_Unknown) {
       wireObj.tag = 0;
@@ -10841,219 +19568,263 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
-  void _cst_api_fill_to_wire_struct_with_comments_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal apiObj,
       wire_cst_struct_with_comments_twin_normal wireObj) {
     wireObj.field_with_comments = cst_encode_i_32(apiObj.fieldWithComments);
   }
 
-  void _cst_api_fill_to_wire_struct_with_comments_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_struct_with_comments_twin_rust_async(
       StructWithCommentsTwinRustAsync apiObj,
       wire_cst_struct_with_comments_twin_rust_async wireObj) {
     wireObj.field_with_comments = cst_encode_i_32(apiObj.fieldWithComments);
   }
 
-  void _cst_api_fill_to_wire_struct_with_comments_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_comments_twin_rust_async_sse(
       StructWithCommentsTwinRustAsyncSse apiObj,
       wire_cst_struct_with_comments_twin_rust_async_sse wireObj) {
     wireObj.field_with_comments = cst_encode_i_32(apiObj.fieldWithComments);
   }
 
-  void _cst_api_fill_to_wire_struct_with_comments_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_comments_twin_sse(
       StructWithCommentsTwinSse apiObj,
       wire_cst_struct_with_comments_twin_sse wireObj) {
     wireObj.field_with_comments = cst_encode_i_32(apiObj.fieldWithComments);
   }
 
-  void _cst_api_fill_to_wire_struct_with_comments_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync apiObj,
       wire_cst_struct_with_comments_twin_sync wireObj) {
     wireObj.field_with_comments = cst_encode_i_32(apiObj.fieldWithComments);
   }
 
-  void _cst_api_fill_to_wire_struct_with_comments_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_comments_twin_sync_sse(
       StructWithCommentsTwinSyncSse apiObj,
       wire_cst_struct_with_comments_twin_sync_sse wireObj) {
     wireObj.field_with_comments = cst_encode_i_32(apiObj.fieldWithComments);
   }
 
-  void _cst_api_fill_to_wire_struct_with_enum_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal apiObj,
       wire_cst_struct_with_enum_twin_normal wireObj) {
-    _cst_api_fill_to_wire_abc_twin_normal(apiObj.abc1, wireObj.abc1);
-    _cst_api_fill_to_wire_abc_twin_normal(apiObj.abc2, wireObj.abc2);
+    cst_api_fill_to_wire_abc_twin_normal(apiObj.abc1, wireObj.abc1);
+    cst_api_fill_to_wire_abc_twin_normal(apiObj.abc2, wireObj.abc2);
   }
 
-  void _cst_api_fill_to_wire_struct_with_enum_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_struct_with_enum_twin_rust_async(
       StructWithEnumTwinRustAsync apiObj,
       wire_cst_struct_with_enum_twin_rust_async wireObj) {
-    _cst_api_fill_to_wire_abc_twin_rust_async(apiObj.abc1, wireObj.abc1);
-    _cst_api_fill_to_wire_abc_twin_rust_async(apiObj.abc2, wireObj.abc2);
+    cst_api_fill_to_wire_abc_twin_rust_async(apiObj.abc1, wireObj.abc1);
+    cst_api_fill_to_wire_abc_twin_rust_async(apiObj.abc2, wireObj.abc2);
   }
 
-  void _cst_api_fill_to_wire_struct_with_enum_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_enum_twin_rust_async_sse(
       StructWithEnumTwinRustAsyncSse apiObj,
       wire_cst_struct_with_enum_twin_rust_async_sse wireObj) {
-    _cst_api_fill_to_wire_abc_twin_rust_async_sse(apiObj.abc1, wireObj.abc1);
-    _cst_api_fill_to_wire_abc_twin_rust_async_sse(apiObj.abc2, wireObj.abc2);
+    cst_api_fill_to_wire_abc_twin_rust_async_sse(apiObj.abc1, wireObj.abc1);
+    cst_api_fill_to_wire_abc_twin_rust_async_sse(apiObj.abc2, wireObj.abc2);
   }
 
-  void _cst_api_fill_to_wire_struct_with_enum_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_enum_twin_sse(
       StructWithEnumTwinSse apiObj,
       wire_cst_struct_with_enum_twin_sse wireObj) {
-    _cst_api_fill_to_wire_abc_twin_sse(apiObj.abc1, wireObj.abc1);
-    _cst_api_fill_to_wire_abc_twin_sse(apiObj.abc2, wireObj.abc2);
+    cst_api_fill_to_wire_abc_twin_sse(apiObj.abc1, wireObj.abc1);
+    cst_api_fill_to_wire_abc_twin_sse(apiObj.abc2, wireObj.abc2);
   }
 
-  void _cst_api_fill_to_wire_struct_with_enum_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_struct_with_enum_twin_sync(
       StructWithEnumTwinSync apiObj,
       wire_cst_struct_with_enum_twin_sync wireObj) {
-    _cst_api_fill_to_wire_abc_twin_sync(apiObj.abc1, wireObj.abc1);
-    _cst_api_fill_to_wire_abc_twin_sync(apiObj.abc2, wireObj.abc2);
+    cst_api_fill_to_wire_abc_twin_sync(apiObj.abc1, wireObj.abc1);
+    cst_api_fill_to_wire_abc_twin_sync(apiObj.abc2, wireObj.abc2);
   }
 
-  void _cst_api_fill_to_wire_struct_with_enum_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_enum_twin_sync_sse(
       StructWithEnumTwinSyncSse apiObj,
       wire_cst_struct_with_enum_twin_sync_sse wireObj) {
-    _cst_api_fill_to_wire_abc_twin_sync_sse(apiObj.abc1, wireObj.abc1);
-    _cst_api_fill_to_wire_abc_twin_sync_sse(apiObj.abc2, wireObj.abc2);
+    cst_api_fill_to_wire_abc_twin_sync_sse(apiObj.abc1, wireObj.abc1);
+    cst_api_fill_to_wire_abc_twin_sync_sse(apiObj.abc2, wireObj.abc2);
   }
 
-  void _cst_api_fill_to_wire_struct_with_one_field_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal apiObj,
       wire_cst_struct_with_one_field_twin_normal wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_struct_with_one_field_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_struct_with_one_field_twin_rust_async(
       StructWithOneFieldTwinRustAsync apiObj,
       wire_cst_struct_with_one_field_twin_rust_async wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_struct_with_one_field_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_one_field_twin_rust_async_sse(
       StructWithOneFieldTwinRustAsyncSse apiObj,
       wire_cst_struct_with_one_field_twin_rust_async_sse wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_struct_with_one_field_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_one_field_twin_sse(
       StructWithOneFieldTwinSse apiObj,
       wire_cst_struct_with_one_field_twin_sse wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_struct_with_one_field_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync apiObj,
       wire_cst_struct_with_one_field_twin_sync wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_struct_with_one_field_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_one_field_twin_sync_sse(
       StructWithOneFieldTwinSyncSse apiObj,
       wire_cst_struct_with_one_field_twin_sync_sse wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
   }
 
-  void _cst_api_fill_to_wire_struct_with_two_field_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal apiObj,
       wire_cst_struct_with_two_field_twin_normal wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_struct_with_two_field_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_struct_with_two_field_twin_rust_async(
       StructWithTwoFieldTwinRustAsync apiObj,
       wire_cst_struct_with_two_field_twin_rust_async wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_struct_with_two_field_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_two_field_twin_rust_async_sse(
       StructWithTwoFieldTwinRustAsyncSse apiObj,
       wire_cst_struct_with_two_field_twin_rust_async_sse wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_struct_with_two_field_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_two_field_twin_sse(
       StructWithTwoFieldTwinSse apiObj,
       wire_cst_struct_with_two_field_twin_sse wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_struct_with_two_field_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_struct_with_two_field_twin_sync(
       StructWithTwoFieldTwinSync apiObj,
       wire_cst_struct_with_two_field_twin_sync wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_struct_with_two_field_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_struct_with_two_field_twin_sync_sse(
       StructWithTwoFieldTwinSyncSse apiObj,
       wire_cst_struct_with_two_field_twin_sync_sse wireObj) {
     wireObj.a = cst_encode_i_32(apiObj.a);
     wireObj.b = cst_encode_i_32(apiObj.b);
   }
 
-  void _cst_api_fill_to_wire_struct_with_zero_field_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_struct_with_zero_field_twin_normal(
       StructWithZeroFieldTwinNormal apiObj,
       wire_cst_struct_with_zero_field_twin_normal wireObj) {}
-  void _cst_api_fill_to_wire_struct_with_zero_field_twin_rust_async(
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_zero_field_twin_rust_async(
       StructWithZeroFieldTwinRustAsync apiObj,
       wire_cst_struct_with_zero_field_twin_rust_async wireObj) {}
-  void _cst_api_fill_to_wire_struct_with_zero_field_twin_rust_async_sse(
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_zero_field_twin_rust_async_sse(
       StructWithZeroFieldTwinRustAsyncSse apiObj,
       wire_cst_struct_with_zero_field_twin_rust_async_sse wireObj) {}
-  void _cst_api_fill_to_wire_struct_with_zero_field_twin_sse(
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_zero_field_twin_sse(
       StructWithZeroFieldTwinSse apiObj,
       wire_cst_struct_with_zero_field_twin_sse wireObj) {}
-  void _cst_api_fill_to_wire_struct_with_zero_field_twin_sync(
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_zero_field_twin_sync(
       StructWithZeroFieldTwinSync apiObj,
       wire_cst_struct_with_zero_field_twin_sync wireObj) {}
-  void _cst_api_fill_to_wire_struct_with_zero_field_twin_sync_sse(
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_zero_field_twin_sync_sse(
       StructWithZeroFieldTwinSyncSse apiObj,
       wire_cst_struct_with_zero_field_twin_sync_sse wireObj) {}
-  void _cst_api_fill_to_wire_sum_with_twin_normal(
+
+  @protected
+  void cst_api_fill_to_wire_sum_with_twin_normal(
       SumWithTwinNormal apiObj, wire_cst_sum_with_twin_normal wireObj) {
     wireObj.x = cst_encode_u_32(apiObj.x);
   }
 
-  void _cst_api_fill_to_wire_sum_with_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_sum_with_twin_rust_async(
       SumWithTwinRustAsync apiObj, wire_cst_sum_with_twin_rust_async wireObj) {
     wireObj.x = cst_encode_u_32(apiObj.x);
   }
 
-  void _cst_api_fill_to_wire_sum_with_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_sum_with_twin_rust_async_sse(
       SumWithTwinRustAsyncSse apiObj,
       wire_cst_sum_with_twin_rust_async_sse wireObj) {
     wireObj.x = cst_encode_u_32(apiObj.x);
   }
 
-  void _cst_api_fill_to_wire_sum_with_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_sum_with_twin_sse(
       SumWithTwinSse apiObj, wire_cst_sum_with_twin_sse wireObj) {
     wireObj.x = cst_encode_u_32(apiObj.x);
   }
 
-  void _cst_api_fill_to_wire_sum_with_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_sum_with_twin_sync(
       SumWithTwinSync apiObj, wire_cst_sum_with_twin_sync wireObj) {
     wireObj.x = cst_encode_u_32(apiObj.x);
   }
 
-  void _cst_api_fill_to_wire_sum_with_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_sum_with_twin_sync_sse(
       SumWithTwinSyncSse apiObj, wire_cst_sum_with_twin_sync_sse wireObj) {
     wireObj.x = cst_encode_u_32(apiObj.x);
   }
 
-  void _cst_api_fill_to_wire_test_chrono_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_test_chrono_twin_normal(
       TestChronoTwinNormal apiObj, wire_cst_test_chrono_twin_normal wireObj) {
     wireObj.dt = cst_encode_opt_box_autoadd_Chrono_Utc(apiObj.dt);
     wireObj.dt2 = cst_encode_opt_box_autoadd_Chrono_Naive(apiObj.dt2);
     wireObj.du = cst_encode_opt_box_autoadd_Chrono_Duration(apiObj.du);
   }
 
-  void _cst_api_fill_to_wire_test_chrono_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_test_chrono_twin_rust_async(
       TestChronoTwinRustAsync apiObj,
       wire_cst_test_chrono_twin_rust_async wireObj) {
     wireObj.dt = cst_encode_opt_box_autoadd_Chrono_Utc(apiObj.dt);
@@ -11061,204 +19832,236 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.du = cst_encode_opt_box_autoadd_Chrono_Duration(apiObj.du);
   }
 
-  void _cst_api_fill_to_wire_test_chrono_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_test_chrono_twin_sync(
       TestChronoTwinSync apiObj, wire_cst_test_chrono_twin_sync wireObj) {
     wireObj.dt = cst_encode_opt_box_autoadd_Chrono_Utc(apiObj.dt);
     wireObj.dt2 = cst_encode_opt_box_autoadd_Chrono_Naive(apiObj.dt2);
     wireObj.du = cst_encode_opt_box_autoadd_Chrono_Duration(apiObj.du);
   }
 
-  void _cst_api_fill_to_wire_test_id_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_test_id_twin_normal(
       TestIdTwinNormal apiObj, wire_cst_test_id_twin_normal wireObj) {
     wireObj.field0 = cst_encode_i_32_array_2(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_test_id_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_test_id_twin_rust_async(
       TestIdTwinRustAsync apiObj, wire_cst_test_id_twin_rust_async wireObj) {
     wireObj.field0 = cst_encode_i_32_array_2(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_test_id_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_test_id_twin_rust_async_sse(
       TestIdTwinRustAsyncSse apiObj,
       wire_cst_test_id_twin_rust_async_sse wireObj) {
     wireObj.field0 = cst_encode_i_32_array_2(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_test_id_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_test_id_twin_sse(
       TestIdTwinSse apiObj, wire_cst_test_id_twin_sse wireObj) {
     wireObj.field0 = cst_encode_i_32_array_2(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_test_id_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_test_id_twin_sync(
       TestIdTwinSync apiObj, wire_cst_test_id_twin_sync wireObj) {
     wireObj.field0 = cst_encode_i_32_array_2(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_test_id_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_test_id_twin_sync_sse(
       TestIdTwinSyncSse apiObj, wire_cst_test_id_twin_sync_sse wireObj) {
     wireObj.field0 = cst_encode_i_32_array_2(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_test_model_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_test_model_twin_normal(
       TestModelTwinNormal apiObj, wire_cst_test_model_twin_normal wireObj) {
     wireObj.id = cst_encode_u_64(apiObj.id);
     wireObj.name = cst_encode_String(apiObj.name);
     wireObj.alias_enum = cst_encode_my_enum(apiObj.aliasEnum);
-    _cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
+    cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
   }
 
-  void _cst_api_fill_to_wire_test_model_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_test_model_twin_rust_async(
       TestModelTwinRustAsync apiObj,
       wire_cst_test_model_twin_rust_async wireObj) {
     wireObj.id = cst_encode_u_64(apiObj.id);
     wireObj.name = cst_encode_String(apiObj.name);
     wireObj.alias_enum = cst_encode_my_enum(apiObj.aliasEnum);
-    _cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
+    cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
   }
 
-  void _cst_api_fill_to_wire_test_model_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_test_model_twin_rust_async_sse(
       TestModelTwinRustAsyncSse apiObj,
       wire_cst_test_model_twin_rust_async_sse wireObj) {
     wireObj.id = cst_encode_u_64(apiObj.id);
     wireObj.name = cst_encode_String(apiObj.name);
     wireObj.alias_enum = cst_encode_my_enum(apiObj.aliasEnum);
-    _cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
+    cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
   }
 
-  void _cst_api_fill_to_wire_test_model_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_test_model_twin_sse(
       TestModelTwinSse apiObj, wire_cst_test_model_twin_sse wireObj) {
     wireObj.id = cst_encode_u_64(apiObj.id);
     wireObj.name = cst_encode_String(apiObj.name);
     wireObj.alias_enum = cst_encode_my_enum(apiObj.aliasEnum);
-    _cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
+    cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
   }
 
-  void _cst_api_fill_to_wire_test_model_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_test_model_twin_sync(
       TestModelTwinSync apiObj, wire_cst_test_model_twin_sync wireObj) {
     wireObj.id = cst_encode_u_64(apiObj.id);
     wireObj.name = cst_encode_String(apiObj.name);
     wireObj.alias_enum = cst_encode_my_enum(apiObj.aliasEnum);
-    _cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
+    cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
   }
 
-  void _cst_api_fill_to_wire_test_model_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_test_model_twin_sync_sse(
       TestModelTwinSyncSse apiObj, wire_cst_test_model_twin_sync_sse wireObj) {
     wireObj.id = cst_encode_u_64(apiObj.id);
     wireObj.name = cst_encode_String(apiObj.name);
     wireObj.alias_enum = cst_encode_my_enum(apiObj.aliasEnum);
-    _cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
+    cst_api_fill_to_wire_my_struct(apiObj.aliasStruct, wireObj.alias_struct);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal apiObj,
       wire_cst_tuple_struct_with_one_field_twin_normal wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(
       TupleStructWithOneFieldTwinRustAsync apiObj,
       wire_cst_tuple_struct_with_one_field_twin_rust_async wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async_sse(
       TupleStructWithOneFieldTwinRustAsyncSse apiObj,
       wire_cst_tuple_struct_with_one_field_twin_rust_async_sse wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sse(
       TupleStructWithOneFieldTwinSse apiObj,
       wire_cst_tuple_struct_with_one_field_twin_sse wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync apiObj,
       wire_cst_tuple_struct_with_one_field_twin_sync wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_one_field_twin_sync_sse(
       TupleStructWithOneFieldTwinSyncSse apiObj,
       wire_cst_tuple_struct_with_one_field_twin_sync_sse wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_two_field_twin_normal(
       TupleStructWithTwoFieldTwinNormal apiObj,
       wire_cst_tuple_struct_with_two_field_twin_normal wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
     wireObj.field1 = cst_encode_i_32(apiObj.field1);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(
       TupleStructWithTwoFieldTwinRustAsync apiObj,
       wire_cst_tuple_struct_with_two_field_twin_rust_async wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
     wireObj.field1 = cst_encode_i_32(apiObj.field1);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async_sse(
       TupleStructWithTwoFieldTwinRustAsyncSse apiObj,
       wire_cst_tuple_struct_with_two_field_twin_rust_async_sse wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
     wireObj.field1 = cst_encode_i_32(apiObj.field1);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sse(
       TupleStructWithTwoFieldTwinSse apiObj,
       wire_cst_tuple_struct_with_two_field_twin_sse wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
     wireObj.field1 = cst_encode_i_32(apiObj.field1);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync(
       TupleStructWithTwoFieldTwinSync apiObj,
       wire_cst_tuple_struct_with_two_field_twin_sync wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
     wireObj.field1 = cst_encode_i_32(apiObj.field1);
   }
 
-  void _cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_tuple_struct_with_two_field_twin_sync_sse(
       TupleStructWithTwoFieldTwinSyncSse apiObj,
       wire_cst_tuple_struct_with_two_field_twin_sync_sse wireObj) {
     wireObj.field0 = cst_encode_i_32(apiObj.field0);
     wireObj.field1 = cst_encode_i_32(apiObj.field1);
   }
 
-  void _cst_api_fill_to_wire_user_id_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_user_id_twin_normal(
       UserIdTwinNormal apiObj, wire_cst_user_id_twin_normal wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_user_id_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_user_id_twin_rust_async(
       UserIdTwinRustAsync apiObj, wire_cst_user_id_twin_rust_async wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_user_id_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_user_id_twin_rust_async_sse(
       UserIdTwinRustAsyncSse apiObj,
       wire_cst_user_id_twin_rust_async_sse wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_user_id_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_user_id_twin_sse(
       UserIdTwinSse apiObj, wire_cst_user_id_twin_sse wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_user_id_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_user_id_twin_sync(
       UserIdTwinSync apiObj, wire_cst_user_id_twin_sync wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_user_id_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_user_id_twin_sync_sse(
       UserIdTwinSyncSse apiObj, wire_cst_user_id_twin_sync_sse wireObj) {
     wireObj.value = cst_encode_u_32(apiObj.value);
   }
 
-  void _cst_api_fill_to_wire_vec_of_primitive_pack_twin_normal(
+  @protected
+  void cst_api_fill_to_wire_vec_of_primitive_pack_twin_normal(
       VecOfPrimitivePackTwinNormal apiObj,
       wire_cst_vec_of_primitive_pack_twin_normal wireObj) {
     wireObj.int8list = cst_encode_list_prim_i_8(apiObj.int8List);
@@ -11274,7 +20077,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.bool_list = cst_encode_list_bool(apiObj.boolList);
   }
 
-  void _cst_api_fill_to_wire_vec_of_primitive_pack_twin_rust_async(
+  @protected
+  void cst_api_fill_to_wire_vec_of_primitive_pack_twin_rust_async(
       VecOfPrimitivePackTwinRustAsync apiObj,
       wire_cst_vec_of_primitive_pack_twin_rust_async wireObj) {
     wireObj.int8list = cst_encode_list_prim_i_8(apiObj.int8List);
@@ -11290,7 +20094,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.bool_list = cst_encode_list_bool(apiObj.boolList);
   }
 
-  void _cst_api_fill_to_wire_vec_of_primitive_pack_twin_rust_async_sse(
+  @protected
+  void cst_api_fill_to_wire_vec_of_primitive_pack_twin_rust_async_sse(
       VecOfPrimitivePackTwinRustAsyncSse apiObj,
       wire_cst_vec_of_primitive_pack_twin_rust_async_sse wireObj) {
     wireObj.int8list = cst_encode_list_prim_i_8(apiObj.int8List);
@@ -11306,7 +20111,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.bool_list = cst_encode_list_bool(apiObj.boolList);
   }
 
-  void _cst_api_fill_to_wire_vec_of_primitive_pack_twin_sse(
+  @protected
+  void cst_api_fill_to_wire_vec_of_primitive_pack_twin_sse(
       VecOfPrimitivePackTwinSse apiObj,
       wire_cst_vec_of_primitive_pack_twin_sse wireObj) {
     wireObj.int8list = cst_encode_list_prim_i_8(apiObj.int8List);
@@ -11322,7 +20128,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.bool_list = cst_encode_list_bool(apiObj.boolList);
   }
 
-  void _cst_api_fill_to_wire_vec_of_primitive_pack_twin_sync(
+  @protected
+  void cst_api_fill_to_wire_vec_of_primitive_pack_twin_sync(
       VecOfPrimitivePackTwinSync apiObj,
       wire_cst_vec_of_primitive_pack_twin_sync wireObj) {
     wireObj.int8list = cst_encode_list_prim_i_8(apiObj.int8List);
@@ -11338,7 +20145,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.bool_list = cst_encode_list_bool(apiObj.boolList);
   }
 
-  void _cst_api_fill_to_wire_vec_of_primitive_pack_twin_sync_sse(
+  @protected
+  void cst_api_fill_to_wire_vec_of_primitive_pack_twin_sync_sse(
       VecOfPrimitivePackTwinSyncSse apiObj,
       wire_cst_vec_of_primitive_pack_twin_sync_sse wireObj) {
     wireObj.int8list = cst_encode_list_prim_i_8(apiObj.int8List);
@@ -11353,6 +20161,4596 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.float64list = cst_encode_list_prim_f_64(apiObj.float64List);
     wireObj.bool_list = cst_encode_list_bool(apiObj.boolList);
   }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          RwLockBoxFnStringString raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          RwLockBoxHelloTraitTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          RwLockBoxHelloTraitTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          RwLockBoxHelloTraitTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          RwLockBoxMyTraitTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+          RwLockBoxMyTraitTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          RwLockBoxMyTraitTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          RwLockBoxMyTraitTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          RwLockNonCloneSimpleTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          RwLockNonCloneSimpleTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          RwLockNonCloneSimpleTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          RwLockNonCloneSimpleTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          RwLockBoxHelloTraitTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          RwLockBoxHelloTraitTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          RwLockBoxHelloTraitTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          RwLockNonCloneSimpleTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          RwLockNonCloneSimpleTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          RwLockNonCloneSimpleTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          RwLockNonCloneSimpleTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          RwLockBoxHelloTraitTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+          RwLockBoxHelloTraitTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          RwLockBoxHelloTraitTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          RwLockNonCloneSimpleTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+          RwLockNonCloneSimpleTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          RwLockNonCloneSimpleTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+          RwLockNonCloneSimpleTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
+
+  @protected
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(void Function() raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_RwLockHideData(RwLockHideData raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinNormal(
+      BoxDartDebugTwinNormal raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
+      BoxDartDebugTwinRustAsync raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
+      BoxDartDebugTwinRustAsyncSse raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSse(
+      BoxDartDebugTwinSse raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSync(
+      BoxDartDebugTwinSync raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSyncSse(
+      BoxDartDebugTwinSyncSse raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_frb_opaque_return(FrbOpaqueReturn raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_frb_opaque_sync_return(
+      FrbOpaqueSyncReturn raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_hide_data(HideData raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_i_32(I32 raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_non_clone_data(NonCloneData raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_non_send_hide_data(NonSendHideData raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          RwLockBoxFnStringString raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+      RwLockBoxHelloTraitTwinNormal raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+      RwLockBoxHelloTraitTwinSse raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          RwLockBoxMyTraitTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+          RwLockBoxMyTraitTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          RwLockBoxMyTraitTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          RwLockBoxMyTraitTwinSyncSse raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+      RwLockNonCloneSimpleTwinSse raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+      RwLockNonCloneSimpleTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
+
+  @protected
+  int cst_encode_application_mode(ApplicationMode raw);
+
+  @protected
+  bool cst_encode_bool(bool raw);
+
+  @protected
+  int cst_encode_enum_simple_twin_normal(EnumSimpleTwinNormal raw);
+
+  @protected
+  int cst_encode_enum_simple_twin_rust_async(EnumSimpleTwinRustAsync raw);
+
+  @protected
+  int cst_encode_enum_simple_twin_rust_async_sse(
+      EnumSimpleTwinRustAsyncSse raw);
+
+  @protected
+  int cst_encode_enum_simple_twin_sse(EnumSimpleTwinSse raw);
+
+  @protected
+  int cst_encode_enum_simple_twin_sync(EnumSimpleTwinSync raw);
+
+  @protected
+  int cst_encode_enum_simple_twin_sync_sse(EnumSimpleTwinSyncSse raw);
+
+  @protected
+  double cst_encode_f_32(double raw);
+
+  @protected
+  double cst_encode_f_64(double raw);
+
+  @protected
+  int cst_encode_i_16(int raw);
+
+  @protected
+  int cst_encode_i_32(int raw);
+
+  @protected
+  int cst_encode_i_8(int raw);
+
+  @protected
+  int cst_encode_my_enum(MyEnum raw);
+
+  @protected
+  int cst_encode_u_16(int raw);
+
+  @protected
+  int cst_encode_u_32(int raw);
+
+  @protected
+  int cst_encode_u_8(int raw);
+
+  @protected
+  void cst_encode_unit(void raw);
+
+  @protected
+  int cst_encode_usize(int raw);
+
+  @protected
+  int cst_encode_weekdays_twin_normal(WeekdaysTwinNormal raw);
+
+  @protected
+  int cst_encode_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw);
+
+  @protected
+  int cst_encode_weekdays_twin_rust_async_sse(WeekdaysTwinRustAsyncSse raw);
+
+  @protected
+  int cst_encode_weekdays_twin_sse(WeekdaysTwinSse raw);
+
+  @protected
+  int cst_encode_weekdays_twin_sync(WeekdaysTwinSync raw);
+
+  @protected
+  int cst_encode_weekdays_twin_sync_sse(WeekdaysTwinSyncSse raw);
+
+  @protected
+  void sse_encode_AnyhowException(
+      AnyhowException self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          RwLockBoxFnStringString self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          RwLockBoxMyTraitTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+          RwLockBoxMyTraitTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          RwLockBoxMyTraitTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          RwLockBoxMyTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+          RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+      RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSse self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_Backtrace(String self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Chrono_Duration(Duration self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Chrono_Local(DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_DartFn_Inputs__Output_unit(
+      void Function() self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_DartOpaque(Object self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_DartOpaque_array_1(
+      ObjectArray1 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideData(
+      MutexHideData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideData(
+      RwLockHideData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinNormal(
+      BoxDartDebugTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
+      BoxDartDebugTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
+      BoxDartDebugTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinSse(
+      BoxDartDebugTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinSync(
+      BoxDartDebugTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinSyncSse(
+      BoxDartDebugTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_return(
+      FrbOpaqueReturn self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_sync_return(
+      FrbOpaqueSyncReturn self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_hide_data(HideData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_array_2(
+      HideDataArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_i_32(I32 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data(
+      NonCloneData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data(
+      NonSendHideData self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          RwLockBoxFnStringString self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
+      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
+      RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+      RwLockBoxMyTraitTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
+      RwLockBoxMyTraitTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+      RwLockBoxMyTraitTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+      RwLockBoxMyTraitTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+      RwLockStructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+      RwLockStructWithGoodAndOpaqueFieldTwinSync self,
+      SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_String(String self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Uuid(UuidValue self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_a_twin_normal(ATwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_a_twin_rust_async(
+      ATwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_a_twin_rust_async_sse(
+      ATwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_a_twin_sse(ATwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_a_twin_sync(ATwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_a_twin_sync_sse(ATwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_abc_twin_normal(AbcTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_abc_twin_rust_async(
+      AbcTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_abc_twin_rust_async_sse(
+      AbcTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_abc_twin_sse(AbcTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_abc_twin_sync(AbcTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_abc_twin_sync_sse(
+      AbcTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_another_macro_struct_twin_normal(
+      AnotherMacroStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_another_twin_normal(
+      AnotherTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_another_twin_rust_async(
+      AnotherTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_another_twin_rust_async_sse(
+      AnotherTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_another_twin_sse(
+      AnotherTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_another_twin_sync(
+      AnotherTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_another_twin_sync_sse(
+      AnotherTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_application_env(
+      ApplicationEnv self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_application_env_var(
+      ApplicationEnvVar self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_application_message(
+      ApplicationMessage self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_application_mode(
+      ApplicationMode self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_application_settings(
+      ApplicationSettings self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_attribute_twin_normal(
+      AttributeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_attribute_twin_rust_async(
+      AttributeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_attribute_twin_rust_async_sse(
+      AttributeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_attribute_twin_sse(
+      AttributeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_attribute_twin_sync(
+      AttributeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_attribute_twin_sync_sse(
+      AttributeTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_b_twin_normal(BTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_b_twin_rust_async(
+      BTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_b_twin_rust_async_sse(
+      BTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_b_twin_sse(BTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_b_twin_sync(BTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_b_twin_sync_sse(BTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_big_buffers_twin_normal(
+      BigBuffersTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_big_buffers_twin_rust_async(
+      BigBuffersTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_big_buffers_twin_rust_async_sse(
+      BigBuffersTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_big_buffers_twin_sse(
+      BigBuffersTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_big_buffers_twin_sync(
+      BigBuffersTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_big_buffers_twin_sync_sse(
+      BigBuffersTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_blob_twin_normal(
+      BlobTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_blob_twin_rust_async(
+      BlobTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_blob_twin_rust_async_sse(
+      BlobTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_blob_twin_sse(BlobTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_blob_twin_sync(BlobTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_blob_twin_sync_sse(
+      BlobTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_application_env(
+      ApplicationEnv self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_Chrono_Duration(
+      Duration self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_Chrono_Naive(
+      DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_Chrono_Utc(
+      DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_DartOpaque(Object self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data(
+      HideData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_a_twin_normal(
+      ATwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_a_twin_rust_async(
+      ATwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_a_twin_rust_async_sse(
+      ATwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_a_twin_sse(
+      ATwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_a_twin_sync(
+      ATwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_a_twin_sync_sse(
+      ATwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_abc_twin_normal(
+      AbcTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_abc_twin_rust_async(
+      AbcTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_abc_twin_rust_async_sse(
+      AbcTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_abc_twin_sse(
+      AbcTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_abc_twin_sync(
+      AbcTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_abc_twin_sync_sse(
+      AbcTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_application_env(
+      ApplicationEnv self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_application_settings(
+      ApplicationSettings self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_attribute_twin_normal(
+      AttributeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_attribute_twin_rust_async(
+      AttributeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_attribute_twin_rust_async_sse(
+      AttributeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_attribute_twin_sse(
+      AttributeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_attribute_twin_sync(
+      AttributeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_attribute_twin_sync_sse(
+      AttributeTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_b_twin_normal(
+      BTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_b_twin_rust_async(
+      BTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_b_twin_rust_async_sse(
+      BTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_b_twin_sse(
+      BTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_b_twin_sync(
+      BTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_b_twin_sync_sse(
+      BTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_bool(bool self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_c_twin_normal(
+      CTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_c_twin_rust_async(
+      CTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_c_twin_rust_async_sse(
+      CTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_c_twin_sse(
+      CTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_c_twin_sync(
+      CTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_c_twin_sync_sse(
+      CTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_concatenate_with_twin_normal(
+      ConcatenateWithTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_concatenate_with_twin_rust_async(
+      ConcatenateWithTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_concatenate_with_twin_rust_async_sse(
+      ConcatenateWithTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_concatenate_with_twin_sse(
+      ConcatenateWithTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_concatenate_with_twin_sync(
+      ConcatenateWithTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_concatenate_with_twin_sync_sse(
+      ConcatenateWithTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_2_twin_normal(
+      CustomNestedError2TwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_2_twin_rust_async(
+      CustomNestedError2TwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+      CustomNestedError2TwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_2_twin_sse(
+      CustomNestedError2TwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_2_twin_sync(
+      CustomNestedError2TwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_2_twin_sync_sse(
+      CustomNestedError2TwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_inner_twin_normal(
+      CustomNestedErrorInnerTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+      CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(
+      CustomNestedErrorInnerTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_inner_twin_sse(
+      CustomNestedErrorInnerTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_inner_twin_sync(
+      CustomNestedErrorInnerTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_inner_twin_sync_sse(
+      CustomNestedErrorInnerTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_outer_twin_normal(
+      CustomNestedErrorOuterTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+      CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(
+      CustomNestedErrorOuterTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_outer_twin_sse(
+      CustomNestedErrorOuterTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_outer_twin_sync(
+      CustomNestedErrorOuterTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_nested_error_outer_twin_sync_sse(
+      CustomNestedErrorOuterTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_error_twin_normal(
+      CustomStructErrorTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_error_twin_rust_async(
+      CustomStructErrorTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_error_twin_rust_async_sse(
+      CustomStructErrorTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_error_twin_sse(
+      CustomStructErrorTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_error_twin_sync(
+      CustomStructErrorTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_error_twin_sync_sse(
+      CustomStructErrorTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_twin_normal(
+      CustomStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_twin_rust_async(
+      CustomStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_twin_rust_async_sse(
+      CustomStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_twin_sse(
+      CustomStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_twin_sync(
+      CustomStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_custom_struct_twin_sync_sse(
+      CustomStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_customized_twin_normal(
+      CustomizedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_customized_twin_rust_async(
+      CustomizedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_customized_twin_rust_async_sse(
+      CustomizedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_customized_twin_sse(
+      CustomizedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_customized_twin_sync(
+      CustomizedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_customized_twin_sync_sse(
+      CustomizedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_dart_opaque_nested_twin_normal(
+      DartOpaqueNestedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
+      DartOpaqueNestedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_dart_opaque_nested_twin_rust_async_sse(
+      DartOpaqueNestedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_dart_opaque_nested_twin_sse(
+      DartOpaqueNestedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_dart_opaque_nested_twin_sync(
+      DartOpaqueNestedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_dart_opaque_nested_twin_sync_sse(
+      DartOpaqueNestedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_element_twin_normal(
+      ElementTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_element_twin_rust_async(
+      ElementTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_element_twin_rust_async_sse(
+      ElementTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_element_twin_sse(
+      ElementTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_element_twin_sync(
+      ElementTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_element_twin_sync_sse(
+      ElementTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_empty_twin_normal(
+      EmptyTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_empty_twin_rust_async(
+      EmptyTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_empty_twin_rust_async_sse(
+      EmptyTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_empty_twin_sse(
+      EmptyTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_empty_twin_sync(
+      EmptyTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_empty_twin_sync_sse(
+      EmptyTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_dart_opaque_twin_normal(
+      EnumDartOpaqueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
+      EnumDartOpaqueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_dart_opaque_twin_rust_async_sse(
+      EnumDartOpaqueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_dart_opaque_twin_sse(
+      EnumDartOpaqueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_dart_opaque_twin_sync(
+      EnumDartOpaqueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_dart_opaque_twin_sync_sse(
+      EnumDartOpaqueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_normal(
+      EnumOpaqueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_rust_async(
+      EnumOpaqueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_rust_async_sse(
+      EnumOpaqueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_sse(
+      EnumOpaqueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_sync(
+      EnumOpaqueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_sync_sse(
+      EnumOpaqueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_mixed_twin_normal(
+      EnumWithItemMixedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
+      EnumWithItemMixedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(
+      EnumWithItemMixedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_mixed_twin_sse(
+      EnumWithItemMixedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_mixed_twin_sync(
+      EnumWithItemMixedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_mixed_twin_sync_sse(
+      EnumWithItemMixedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_struct_twin_normal(
+      EnumWithItemStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_struct_twin_rust_async(
+      EnumWithItemStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_struct_twin_rust_async_sse(
+      EnumWithItemStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_struct_twin_sse(
+      EnumWithItemStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_struct_twin_sync(
+      EnumWithItemStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_struct_twin_sync_sse(
+      EnumWithItemStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_tuple_twin_normal(
+      EnumWithItemTupleTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
+      EnumWithItemTupleTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(
+      EnumWithItemTupleTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_tuple_twin_sse(
+      EnumWithItemTupleTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_tuple_twin_sync(
+      EnumWithItemTupleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_item_tuple_twin_sync_sse(
+      EnumWithItemTupleTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_event_twin_normal(
+      EventTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_event_twin_rust_async(
+      EventTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_event_twin_rust_async_sse(
+      EventTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_event_twin_sse(
+      EventTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_exotic_optionals_twin_rust_async_sse(
+      ExoticOptionalsTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_exotic_optionals_twin_sse(
+      ExoticOptionalsTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_exotic_optionals_twin_sync_sse(
+      ExoticOptionalsTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_f_32(double self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_f_64(double self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_chrono_twin_normal(
+      FeatureChronoTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_chrono_twin_rust_async(
+      FeatureChronoTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_chrono_twin_sync(
+      FeatureChronoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uuid_twin_normal(
+      FeatureUuidTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uuid_twin_rust_async(
+      FeatureUuidTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uuid_twin_sync(
+      FeatureUuidTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feed_id_twin_normal(
+      FeedIdTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feed_id_twin_rust_async(
+      FeedIdTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feed_id_twin_rust_async_sse(
+      FeedIdTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feed_id_twin_sse(
+      FeedIdTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feed_id_twin_sync(
+      FeedIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feed_id_twin_sync_sse(
+      FeedIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_i_16(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_i_64(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_i_8(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_kitchen_sink_twin_normal(
+      KitchenSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_kitchen_sink_twin_rust_async(
+      KitchenSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_kitchen_sink_twin_rust_async_sse(
+      KitchenSinkTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_kitchen_sink_twin_sse(
+      KitchenSinkTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_kitchen_sink_twin_sync(
+      KitchenSinkTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_kitchen_sink_twin_sync_sse(
+      KitchenSinkTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_list_of_nested_raw_string_mirrored(
+      ListOfNestedRawStringMirrored self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_macro_struct(
+      MacroStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_measure_twin_normal(
+      MeasureTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_measure_twin_rust_async(
+      MeasureTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_measure_twin_rust_async_sse(
+      MeasureTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_measure_twin_sse(
+      MeasureTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_measure_twin_sync(
+      MeasureTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_measure_twin_sync_sse(
+      MeasureTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_message_id_twin_normal(
+      MessageIdTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_message_id_twin_rust_async(
+      MessageIdTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_message_id_twin_rust_async_sse(
+      MessageIdTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_message_id_twin_sse(
+      MessageIdTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_message_id_twin_sync(
+      MessageIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_message_id_twin_sync_sse(
+      MessageIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_nested_struct_twin_normal(
+      MyNestedStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_nested_struct_twin_rust_async(
+      MyNestedStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_nested_struct_twin_rust_async_sse(
+      MyNestedStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_nested_struct_twin_sse(
+      MyNestedStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_nested_struct_twin_sync(
+      MyNestedStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_nested_struct_twin_sync_sse(
+      MyNestedStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_size(MySize self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct(
+      MyStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_tree_node_twin_normal(
+      MyTreeNodeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_tree_node_twin_rust_async(
+      MyTreeNodeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_tree_node_twin_rust_async_sse(
+      MyTreeNodeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_tree_node_twin_sse(
+      MyTreeNodeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_tree_node_twin_sync(
+      MyTreeNodeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_tree_node_twin_sync_sse(
+      MyTreeNodeTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_nested_raw_string_mirrored(
+      NestedRawStringMirrored self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_new_type_int_twin_normal(
+      NewTypeIntTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_new_type_int_twin_rust_async(
+      NewTypeIntTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_new_type_int_twin_rust_async_sse(
+      NewTypeIntTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_new_type_int_twin_sse(
+      NewTypeIntTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_new_type_int_twin_sync(
+      NewTypeIntTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_new_type_int_twin_sync_sse(
+      NewTypeIntTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_note_twin_normal(
+      NoteTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_note_twin_rust_async(
+      NoteTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_note_twin_rust_async_sse(
+      NoteTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_note_twin_sse(
+      NoteTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_note_twin_sync(
+      NoteTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_note_twin_sync_sse(
+      NoteTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_numbers(Numbers self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_normal(
+      OpaqueNestedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_rust_async_sse(
+      OpaqueNestedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_sse(
+      OpaqueNestedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_sync(
+      OpaqueNestedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_sync_sse(
+      OpaqueNestedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opt_vecs_twin_normal(
+      OptVecsTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opt_vecs_twin_rust_async(
+      OptVecsTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opt_vecs_twin_rust_async_sse(
+      OptVecsTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opt_vecs_twin_sse(
+      OptVecsTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opt_vecs_twin_sync(
+      OptVecsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_opt_vecs_twin_sync_sse(
+      OptVecsTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_raw_string_mirrored(
+      RawStringMirrored self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_record_string_i_32(
+      (String, int) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_sequences(
+      Sequences self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_some_struct_twin_normal(
+      SomeStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_some_struct_twin_rust_async(
+      SomeStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_some_struct_twin_rust_async_sse(
+      SomeStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_some_struct_twin_sse(
+      SomeStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_some_struct_twin_sync(
+      SomeStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_some_struct_twin_sync_sse(
+      SomeStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_comments_twin_normal(
+      StructWithCommentsTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_comments_twin_rust_async(
+      StructWithCommentsTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_comments_twin_rust_async_sse(
+      StructWithCommentsTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_comments_twin_sse(
+      StructWithCommentsTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_comments_twin_sync(
+      StructWithCommentsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_comments_twin_sync_sse(
+      StructWithCommentsTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_enum_twin_normal(
+      StructWithEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_enum_twin_rust_async(
+      StructWithEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_enum_twin_rust_async_sse(
+      StructWithEnumTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_enum_twin_sse(
+      StructWithEnumTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_enum_twin_sync(
+      StructWithEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_enum_twin_sync_sse(
+      StructWithEnumTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_one_field_twin_normal(
+      StructWithOneFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_one_field_twin_rust_async(
+      StructWithOneFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_one_field_twin_rust_async_sse(
+      StructWithOneFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_one_field_twin_sse(
+      StructWithOneFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_one_field_twin_sync(
+      StructWithOneFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_one_field_twin_sync_sse(
+      StructWithOneFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_two_field_twin_normal(
+      StructWithTwoFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_two_field_twin_rust_async(
+      StructWithTwoFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_two_field_twin_rust_async_sse(
+      StructWithTwoFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_two_field_twin_sse(
+      StructWithTwoFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_two_field_twin_sync(
+      StructWithTwoFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_two_field_twin_sync_sse(
+      StructWithTwoFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_zero_field_twin_normal(
+      StructWithZeroFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
+      StructWithZeroFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_zero_field_twin_rust_async_sse(
+      StructWithZeroFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_zero_field_twin_sse(
+      StructWithZeroFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_zero_field_twin_sync(
+      StructWithZeroFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_zero_field_twin_sync_sse(
+      StructWithZeroFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_sum_with_twin_normal(
+      SumWithTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_sum_with_twin_rust_async(
+      SumWithTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_sum_with_twin_rust_async_sse(
+      SumWithTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_sum_with_twin_sse(
+      SumWithTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_sum_with_twin_sync(
+      SumWithTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_sum_with_twin_sync_sse(
+      SumWithTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_test_id_twin_normal(
+      TestIdTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_test_id_twin_rust_async(
+      TestIdTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_test_id_twin_rust_async_sse(
+      TestIdTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_test_id_twin_sse(
+      TestIdTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_test_id_twin_sync(
+      TestIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_test_id_twin_sync_sse(
+      TestIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+      TupleStructWithOneFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+      TupleStructWithOneFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(
+      TupleStructWithOneFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sse(
+      TupleStructWithOneFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
+      TupleStructWithOneFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(
+      TupleStructWithOneFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+      TupleStructWithTwoFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+      TupleStructWithTwoFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(
+      TupleStructWithTwoFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sse(
+      TupleStructWithTwoFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
+      TupleStructWithTwoFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(
+      TupleStructWithTwoFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_u_16(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_u_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_u_64(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_u_8(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_user_id_twin_normal(
+      UserIdTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_user_id_twin_rust_async(
+      UserIdTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_user_id_twin_rust_async_sse(
+      UserIdTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_user_id_twin_sse(
+      UserIdTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_user_id_twin_sync(
+      UserIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_user_id_twin_sync_sse(
+      UserIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_weekdays_twin_normal(
+      WeekdaysTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_weekdays_twin_rust_async_sse(
+      WeekdaysTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_weekdays_twin_sse(
+      WeekdaysTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_weekdays_twin_sync(
+      WeekdaysTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_weekdays_twin_sync_sse(
+      WeekdaysTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_blob_twin_normal(
+      BlobTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_blob_twin_rust_async(
+      BlobTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_blob_twin_rust_async_sse(
+      BlobTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_blob_twin_sse(BlobTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_blob_twin_sync(
+      BlobTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_blob_twin_sync_sse(
+      BlobTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_bool(bool self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_distance_twin_normal(
+      DistanceTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_distance_twin_rust_async(
+      DistanceTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_distance_twin_rust_async_sse(
+      DistanceTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_distance_twin_sse(
+      DistanceTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_distance_twin_sync(
+      DistanceTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_distance_twin_sync_sse(
+      DistanceTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_exotic_optionals_twin_rust_async_sse(
+      ExoticOptionalsTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_exotic_optionals_twin_sse(
+      ExoticOptionalsTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_exotic_optionals_twin_sync_sse(
+      ExoticOptionalsTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_f_64(double self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_feed_id_twin_normal(
+      FeedIdTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_feed_id_twin_rust_async(
+      FeedIdTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_feed_id_twin_rust_async_sse(
+      FeedIdTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_feed_id_twin_sse(
+      FeedIdTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_feed_id_twin_sync(
+      FeedIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_feed_id_twin_sync_sse(
+      FeedIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_i_64(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_i_8(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_kitchen_sink_twin_normal(
+      KitchenSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_kitchen_sink_twin_rust_async(
+      KitchenSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_kitchen_sink_twin_rust_async_sse(
+      KitchenSinkTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_kitchen_sink_twin_sse(
+      KitchenSinkTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_kitchen_sink_twin_sync(
+      KitchenSinkTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_kitchen_sink_twin_sync_sse(
+      KitchenSinkTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_my_size(MySize self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_speed_twin_normal(
+      SpeedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_speed_twin_rust_async(
+      SpeedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_speed_twin_rust_async_sse(
+      SpeedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_speed_twin_sse(
+      SpeedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_speed_twin_sync(
+      SpeedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_speed_twin_sync_sse(
+      SpeedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_u_8(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_u_8_array_1600(
+      U8Array1600 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_u_8_array_8(U8Array8 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_weekdays_twin_normal(
+      WeekdaysTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_weekdays_twin_rust_async_sse(
+      WeekdaysTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_weekdays_twin_sse(
+      WeekdaysTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_weekdays_twin_sync(
+      WeekdaysTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_weekdays_twin_sync_sse(
+      WeekdaysTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_c_twin_normal(CTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_c_twin_rust_async(
+      CTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_c_twin_rust_async_sse(
+      CTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_c_twin_sse(CTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_c_twin_sync(CTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_c_twin_sync_sse(CTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_concatenate_with_twin_normal(
+      ConcatenateWithTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_concatenate_with_twin_rust_async(
+      ConcatenateWithTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_concatenate_with_twin_rust_async_sse(
+      ConcatenateWithTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_concatenate_with_twin_sse(
+      ConcatenateWithTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_concatenate_with_twin_sync(
+      ConcatenateWithTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_concatenate_with_twin_sync_sse(
+      ConcatenateWithTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_contains_mirrored_sub_struct_twin_normal(
+      ContainsMirroredSubStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_contains_mirrored_sub_struct_twin_rust_async(
+      ContainsMirroredSubStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_contains_mirrored_sub_struct_twin_rust_async_sse(
+      ContainsMirroredSubStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_contains_mirrored_sub_struct_twin_sse(
+      ContainsMirroredSubStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_contains_mirrored_sub_struct_twin_sync(
+      ContainsMirroredSubStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_contains_mirrored_sub_struct_twin_sync_sse(
+      ContainsMirroredSubStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_enum_error_twin_normal(
+      CustomEnumErrorTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_enum_error_twin_rust_async(
+      CustomEnumErrorTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_enum_error_twin_rust_async_sse(
+      CustomEnumErrorTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_enum_error_twin_sse(
+      CustomEnumErrorTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_enum_error_twin_sync(
+      CustomEnumErrorTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_enum_error_twin_sync_sse(
+      CustomEnumErrorTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_error_twin_normal(
+      CustomErrorTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_error_twin_rust_async(
+      CustomErrorTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_error_twin_rust_async_sse(
+      CustomErrorTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_error_twin_sse(
+      CustomErrorTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_error_twin_sync(
+      CustomErrorTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_error_twin_sync_sse(
+      CustomErrorTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_1_twin_normal(
+      CustomNestedError1TwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_1_twin_rust_async(
+      CustomNestedError1TwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_1_twin_rust_async_sse(
+      CustomNestedError1TwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_1_twin_sse(
+      CustomNestedError1TwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_1_twin_sync(
+      CustomNestedError1TwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_1_twin_sync_sse(
+      CustomNestedError1TwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_2_twin_normal(
+      CustomNestedError2TwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_2_twin_rust_async(
+      CustomNestedError2TwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_2_twin_rust_async_sse(
+      CustomNestedError2TwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_2_twin_sse(
+      CustomNestedError2TwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_2_twin_sync(
+      CustomNestedError2TwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_2_twin_sync_sse(
+      CustomNestedError2TwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_inner_twin_normal(
+      CustomNestedErrorInnerTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_inner_twin_rust_async(
+      CustomNestedErrorInnerTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_inner_twin_rust_async_sse(
+      CustomNestedErrorInnerTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_inner_twin_sse(
+      CustomNestedErrorInnerTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_inner_twin_sync(
+      CustomNestedErrorInnerTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_inner_twin_sync_sse(
+      CustomNestedErrorInnerTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_outer_twin_normal(
+      CustomNestedErrorOuterTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_outer_twin_rust_async(
+      CustomNestedErrorOuterTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_outer_twin_rust_async_sse(
+      CustomNestedErrorOuterTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_outer_twin_sse(
+      CustomNestedErrorOuterTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_outer_twin_sync(
+      CustomNestedErrorOuterTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_nested_error_outer_twin_sync_sse(
+      CustomNestedErrorOuterTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_another_twin_normal(
+      CustomStructErrorAnotherTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_another_twin_rust_async(
+      CustomStructErrorAnotherTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_another_twin_rust_async_sse(
+      CustomStructErrorAnotherTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_another_twin_sse(
+      CustomStructErrorAnotherTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_another_twin_sync(
+      CustomStructErrorAnotherTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_another_twin_sync_sse(
+      CustomStructErrorAnotherTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_twin_normal(
+      CustomStructErrorTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_twin_rust_async(
+      CustomStructErrorTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_twin_rust_async_sse(
+      CustomStructErrorTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_twin_sse(
+      CustomStructErrorTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_twin_sync(
+      CustomStructErrorTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_error_twin_sync_sse(
+      CustomStructErrorTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_twin_normal(
+      CustomStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_twin_rust_async(
+      CustomStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_twin_rust_async_sse(
+      CustomStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_twin_sse(
+      CustomStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_twin_sync(
+      CustomStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_custom_struct_twin_sync_sse(
+      CustomStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_customized_twin_normal(
+      CustomizedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_customized_twin_rust_async(
+      CustomizedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_customized_twin_rust_async_sse(
+      CustomizedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_customized_twin_sse(
+      CustomizedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_customized_twin_sync(
+      CustomizedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_customized_twin_sync_sse(
+      CustomizedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_dart_opaque_nested_twin_normal(
+      DartOpaqueNestedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_dart_opaque_nested_twin_rust_async(
+      DartOpaqueNestedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_dart_opaque_nested_twin_rust_async_sse(
+      DartOpaqueNestedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_dart_opaque_nested_twin_sse(
+      DartOpaqueNestedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_dart_opaque_nested_twin_sync(
+      DartOpaqueNestedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_dart_opaque_nested_twin_sync_sse(
+      DartOpaqueNestedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_dartabi(dynamic self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_distance_twin_normal(
+      DistanceTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_distance_twin_rust_async(
+      DistanceTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_distance_twin_rust_async_sse(
+      DistanceTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_distance_twin_sse(
+      DistanceTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_distance_twin_sync(
+      DistanceTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_distance_twin_sync_sse(
+      DistanceTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_element_twin_normal(
+      ElementTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_element_twin_rust_async(
+      ElementTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_element_twin_rust_async_sse(
+      ElementTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_element_twin_sse(
+      ElementTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_element_twin_sync(
+      ElementTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_element_twin_sync_sse(
+      ElementTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_empty_twin_normal(
+      EmptyTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_empty_twin_rust_async(
+      EmptyTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_empty_twin_rust_async_sse(
+      EmptyTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_empty_twin_sse(EmptyTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_empty_twin_sync(EmptyTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_empty_twin_sync_sse(
+      EmptyTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_dart_opaque_twin_normal(
+      EnumDartOpaqueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_dart_opaque_twin_rust_async(
+      EnumDartOpaqueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_dart_opaque_twin_rust_async_sse(
+      EnumDartOpaqueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_dart_opaque_twin_sse(
+      EnumDartOpaqueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_dart_opaque_twin_sync(
+      EnumDartOpaqueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_dart_opaque_twin_sync_sse(
+      EnumDartOpaqueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_normal(
+      EnumOpaqueTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_normal_array_5(
+      EnumOpaqueTwinNormalArray5 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_rust_async(
+      EnumOpaqueTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_rust_async_array_5(
+      EnumOpaqueTwinRustAsyncArray5 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_rust_async_sse(
+      EnumOpaqueTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_rust_async_sse_array_5(
+      EnumOpaqueTwinRustAsyncSseArray5 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_sse(
+      EnumOpaqueTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_sse_array_5(
+      EnumOpaqueTwinSseArray5 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_sync(
+      EnumOpaqueTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_sync_array_5(
+      EnumOpaqueTwinSyncArray5 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_sync_sse(
+      EnumOpaqueTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_opaque_twin_sync_sse_array_5(
+      EnumOpaqueTwinSyncSseArray5 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_simple_twin_normal(
+      EnumSimpleTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_simple_twin_rust_async(
+      EnumSimpleTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_simple_twin_rust_async_sse(
+      EnumSimpleTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_simple_twin_sse(
+      EnumSimpleTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_simple_twin_sync(
+      EnumSimpleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_simple_twin_sync_sse(
+      EnumSimpleTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_mixed_twin_normal(
+      EnumWithItemMixedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_mixed_twin_rust_async(
+      EnumWithItemMixedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_mixed_twin_rust_async_sse(
+      EnumWithItemMixedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_mixed_twin_sse(
+      EnumWithItemMixedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_mixed_twin_sync(
+      EnumWithItemMixedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_mixed_twin_sync_sse(
+      EnumWithItemMixedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_struct_twin_normal(
+      EnumWithItemStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_struct_twin_rust_async(
+      EnumWithItemStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_struct_twin_rust_async_sse(
+      EnumWithItemStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_struct_twin_sse(
+      EnumWithItemStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_struct_twin_sync(
+      EnumWithItemStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_struct_twin_sync_sse(
+      EnumWithItemStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_tuple_twin_normal(
+      EnumWithItemTupleTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_tuple_twin_rust_async(
+      EnumWithItemTupleTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_tuple_twin_rust_async_sse(
+      EnumWithItemTupleTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_tuple_twin_sse(
+      EnumWithItemTupleTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_tuple_twin_sync(
+      EnumWithItemTupleTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_item_tuple_twin_sync_sse(
+      EnumWithItemTupleTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_event_twin_normal(
+      EventTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_event_twin_rust_async(
+      EventTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_event_twin_rust_async_sse(
+      EventTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_event_twin_sse(EventTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_exotic_optionals_twin_rust_async_sse(
+      ExoticOptionalsTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_exotic_optionals_twin_sse(
+      ExoticOptionalsTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_exotic_optionals_twin_sync_sse(
+      ExoticOptionalsTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_f_32(double self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_f_64(double self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_f_64_array_16(F64Array16 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_chrono_twin_normal(
+      FeatureChronoTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_chrono_twin_rust_async(
+      FeatureChronoTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_chrono_twin_sync(
+      FeatureChronoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uuid_twin_normal(
+      FeatureUuidTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uuid_twin_rust_async(
+      FeatureUuidTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uuid_twin_sync(
+      FeatureUuidTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feed_id_twin_normal(
+      FeedIdTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feed_id_twin_rust_async(
+      FeedIdTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feed_id_twin_rust_async_sse(
+      FeedIdTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feed_id_twin_sse(
+      FeedIdTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feed_id_twin_sync(
+      FeedIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feed_id_twin_sync_sse(
+      FeedIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_16(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_32_array_2(I32Array2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_64(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_8(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_kitchen_sink_twin_normal(
+      KitchenSinkTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_kitchen_sink_twin_rust_async(
+      KitchenSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_kitchen_sink_twin_rust_async_sse(
+      KitchenSinkTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_kitchen_sink_twin_sse(
+      KitchenSinkTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_kitchen_sink_twin_sync(
+      KitchenSinkTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_kitchen_sink_twin_sync_sse(
+      KitchenSinkTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_Chrono_Duration(
+      List<Duration> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_Chrono_Local(
+      List<DateTime> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_Chrono_Naive(
+      List<DateTime> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_DartOpaque(List<Object> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data(
+      List<HideData> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_String(List<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_application_env_var(
+      List<ApplicationEnvVar> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_application_settings(
+      List<ApplicationSettings> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_attribute_twin_normal(
+      List<AttributeTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_attribute_twin_rust_async_sse(
+      List<AttributeTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_attribute_twin_sse(
+      List<AttributeTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_attribute_twin_sync(
+      List<AttributeTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_attribute_twin_sync_sse(
+      List<AttributeTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_bool(List<bool> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_element_twin_normal(
+      List<ElementTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_element_twin_rust_async(
+      List<ElementTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_element_twin_rust_async_sse(
+      List<ElementTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_element_twin_sse(
+      List<ElementTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_element_twin_sync(
+      List<ElementTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_element_twin_sync_sse(
+      List<ElementTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_enum_opaque_twin_normal(
+      List<EnumOpaqueTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_enum_opaque_twin_rust_async(
+      List<EnumOpaqueTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_enum_opaque_twin_rust_async_sse(
+      List<EnumOpaqueTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_enum_opaque_twin_sse(
+      List<EnumOpaqueTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_enum_opaque_twin_sync(
+      List<EnumOpaqueTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_enum_opaque_twin_sync_sse(
+      List<EnumOpaqueTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_my_size(List<MySize> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_my_tree_node_twin_normal(
+      List<MyTreeNodeTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_my_tree_node_twin_rust_async(
+      List<MyTreeNodeTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_my_tree_node_twin_rust_async_sse(
+      List<MyTreeNodeTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_my_tree_node_twin_sse(
+      List<MyTreeNodeTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_my_tree_node_twin_sync(
+      List<MyTreeNodeTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_my_tree_node_twin_sync_sse(
+      List<MyTreeNodeTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_nested_raw_string_mirrored(
+      List<NestedRawStringMirrored> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_of_nested_raw_string_mirrored(
+      ListOfNestedRawStringMirrored self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_String(List<String?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_attribute_twin_normal(
+      List<AttributeTwinNormal?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+      List<AttributeTwinRustAsyncSse?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_attribute_twin_sse(
+      List<AttributeTwinSse?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_attribute_twin_sync(
+      List<AttributeTwinSync?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_attribute_twin_sync_sse(
+      List<AttributeTwinSyncSse?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_i_32(
+      List<int?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_weekdays_twin_normal(
+      List<WeekdaysTwinNormal?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
+      List<WeekdaysTwinRustAsync?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(
+      List<WeekdaysTwinRustAsyncSse?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_weekdays_twin_sse(
+      List<WeekdaysTwinSse?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_weekdays_twin_sync(
+      List<WeekdaysTwinSync?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_box_autoadd_weekdays_twin_sync_sse(
+      List<WeekdaysTwinSyncSse?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_opt_list_prim_i_32(
+      List<Int32List?> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_point_twin_normal(
+      List<PointTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_point_twin_rust_async(
+      List<PointTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_point_twin_rust_async_sse(
+      List<PointTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_point_twin_sse(
+      List<PointTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_point_twin_sync(
+      List<PointTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_point_twin_sync_sse(
+      List<PointTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_f_32(Float32List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_f_64(Float64List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_i_16(Int16List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_i_32(Int32List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_i_64(Int64List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_i_8(Int8List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_u_16(Uint16List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_u_32(Uint32List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_u_64(Uint64List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_raw_string_enum_mirrored(
+      List<RawStringEnumMirrored> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_raw_string_mirrored(
+      List<RawStringMirrored> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_i_32(
+      List<(String, int)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_sum_with_twin_normal(
+      List<SumWithTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_sum_with_twin_rust_async(
+      List<SumWithTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_sum_with_twin_rust_async_sse(
+      List<SumWithTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_sum_with_twin_sse(
+      List<SumWithTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_sum_with_twin_sync(
+      List<SumWithTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_sum_with_twin_sync_sse(
+      List<SumWithTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_test_id_twin_normal(
+      List<TestIdTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_test_id_twin_rust_async(
+      List<TestIdTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_test_id_twin_rust_async_sse(
+      List<TestIdTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_test_id_twin_sse(
+      List<TestIdTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_test_id_twin_sync(
+      List<TestIdTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_test_id_twin_sync_sse(
+      List<TestIdTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_weekdays_twin_normal(
+      List<WeekdaysTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_weekdays_twin_rust_async(
+      List<WeekdaysTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_weekdays_twin_rust_async_sse(
+      List<WeekdaysTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_weekdays_twin_sse(
+      List<WeekdaysTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_weekdays_twin_sync(
+      List<WeekdaysTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_weekdays_twin_sync_sse(
+      List<WeekdaysTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_normal(
+      Log2TwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_rust_async(
+      Log2TwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_rust_async_sse(
+      Log2TwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_sse(Log2TwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_sync(Log2TwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_2_twin_sync_sse(
+      Log2TwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_twin_normal(LogTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_twin_rust_async(
+      LogTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_twin_rust_async_sse(
+      LogTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_log_twin_sse(LogTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_macro_struct(MacroStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_measure_twin_normal(
+      MeasureTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_measure_twin_rust_async(
+      MeasureTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_measure_twin_rust_async_sse(
+      MeasureTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_measure_twin_sse(
+      MeasureTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_measure_twin_sync(
+      MeasureTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_measure_twin_sync_sse(
+      MeasureTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_message_id_twin_normal(
+      MessageIdTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_message_id_twin_rust_async(
+      MessageIdTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_message_id_twin_rust_async_sse(
+      MessageIdTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_message_id_twin_sse(
+      MessageIdTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_message_id_twin_sync(
+      MessageIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_message_id_twin_sync_sse(
+      MessageIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_normal(
+      MirrorStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_rust_async(
+      MirrorStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_rust_async_sse(
+      MirrorStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_sse(
+      MirrorStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_sync(
+      MirrorStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_mirror_struct_twin_sync_sse(
+      MirrorStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_more_than_just_one_raw_string_struct_twin_normal(
+      MoreThanJustOneRawStringStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_more_than_just_one_raw_string_struct_twin_rust_async(
+      MoreThanJustOneRawStringStructTwinRustAsync self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_more_than_just_one_raw_string_struct_twin_rust_async_sse(
+      MoreThanJustOneRawStringStructTwinRustAsyncSse self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_more_than_just_one_raw_string_struct_twin_sse(
+      MoreThanJustOneRawStringStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_more_than_just_one_raw_string_struct_twin_sync(
+      MoreThanJustOneRawStringStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_more_than_just_one_raw_string_struct_twin_sync_sse(
+      MoreThanJustOneRawStringStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_enum(MyEnum self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_nested_struct_twin_normal(
+      MyNestedStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_nested_struct_twin_rust_async(
+      MyNestedStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_nested_struct_twin_rust_async_sse(
+      MyNestedStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_nested_struct_twin_sse(
+      MyNestedStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_nested_struct_twin_sync(
+      MyNestedStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_nested_struct_twin_sync_sse(
+      MyNestedStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_size(MySize self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_stream_entry_twin_normal(
+      MyStreamEntryTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_stream_entry_twin_rust_async(
+      MyStreamEntryTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_stream_entry_twin_rust_async_sse(
+      MyStreamEntryTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_stream_entry_twin_sse(
+      MyStreamEntryTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_tree_node_twin_normal(
+      MyTreeNodeTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_tree_node_twin_rust_async(
+      MyTreeNodeTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_tree_node_twin_rust_async_sse(
+      MyTreeNodeTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_tree_node_twin_sse(
+      MyTreeNodeTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_tree_node_twin_sync(
+      MyTreeNodeTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_tree_node_twin_sync_sse(
+      MyTreeNodeTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_nested_raw_string_mirrored(
+      NestedRawStringMirrored self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_new_simple_struct(
+      NewSimpleStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_new_type_int_twin_normal(
+      NewTypeIntTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_new_type_int_twin_rust_async(
+      NewTypeIntTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_new_type_int_twin_rust_async_sse(
+      NewTypeIntTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_new_type_int_twin_sse(
+      NewTypeIntTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_new_type_int_twin_sync(
+      NewTypeIntTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_new_type_int_twin_sync_sse(
+      NewTypeIntTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_note_twin_normal(
+      NoteTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_note_twin_rust_async(
+      NoteTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_note_twin_rust_async_sse(
+      NoteTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_note_twin_sse(NoteTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_note_twin_sync(NoteTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_note_twin_sync_sse(
+      NoteTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_numbers(Numbers self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_old_simple_struct(
+      OldSimpleStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opaque_nested_twin_normal(
+      OpaqueNestedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opaque_nested_twin_rust_async_sse(
+      OpaqueNestedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opaque_nested_twin_sse(
+      OpaqueNestedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opaque_nested_twin_sync(
+      OpaqueNestedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opaque_nested_twin_sync_sse(
+      OpaqueNestedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_String(String? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_Chrono_Duration(
+      Duration? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_Chrono_Naive(
+      DateTime? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_Chrono_Utc(
+      DateTime? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_DartOpaque(
+      Object? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data(
+      HideData? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_application_env(
+      ApplicationEnv? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_attribute_twin_normal(
+      AttributeTwinNormal? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_attribute_twin_rust_async(
+      AttributeTwinRustAsync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_attribute_twin_rust_async_sse(
+      AttributeTwinRustAsyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_attribute_twin_sse(
+      AttributeTwinSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_attribute_twin_sync(
+      AttributeTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_attribute_twin_sync_sse(
+      AttributeTwinSyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_bool(bool? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_element_twin_normal(
+      ElementTwinNormal? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_element_twin_rust_async(
+      ElementTwinRustAsync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_element_twin_rust_async_sse(
+      ElementTwinRustAsyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_element_twin_sse(
+      ElementTwinSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_element_twin_sync(
+      ElementTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_element_twin_sync_sse(
+      ElementTwinSyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_exotic_optionals_twin_rust_async_sse(
+      ExoticOptionalsTwinRustAsyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_exotic_optionals_twin_sse(
+      ExoticOptionalsTwinSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_exotic_optionals_twin_sync_sse(
+      ExoticOptionalsTwinSyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_f_32(double? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_f_64(double? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_i_16(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_i_32(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_i_64(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_i_8(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_measure_twin_normal(
+      MeasureTwinNormal? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_measure_twin_rust_async(
+      MeasureTwinRustAsync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_measure_twin_rust_async_sse(
+      MeasureTwinRustAsyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_measure_twin_sse(
+      MeasureTwinSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_measure_twin_sync(
+      MeasureTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_measure_twin_sync_sse(
+      MeasureTwinSyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_new_type_int_twin_normal(
+      NewTypeIntTwinNormal? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_new_type_int_twin_rust_async(
+      NewTypeIntTwinRustAsync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_new_type_int_twin_rust_async_sse(
+      NewTypeIntTwinRustAsyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_new_type_int_twin_sse(
+      NewTypeIntTwinSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_new_type_int_twin_sync(
+      NewTypeIntTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_new_type_int_twin_sync_sse(
+      NewTypeIntTwinSyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_record_string_i_32(
+      (String, int)? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_u_16(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_u_32(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_u_64(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_u_8(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_weekdays_twin_normal(
+      WeekdaysTwinNormal? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_weekdays_twin_rust_async_sse(
+      WeekdaysTwinRustAsyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_weekdays_twin_sse(
+      WeekdaysTwinSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_weekdays_twin_sync(
+      WeekdaysTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_weekdays_twin_sync_sse(
+      WeekdaysTwinSyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_bool(bool? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_exotic_optionals_twin_normal(
+      ExoticOptionalsTwinNormal? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_exotic_optionals_twin_rust_async_sse(
+      ExoticOptionalsTwinRustAsyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_exotic_optionals_twin_sse(
+      ExoticOptionalsTwinSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_exotic_optionals_twin_sync(
+      ExoticOptionalsTwinSync? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_exotic_optionals_twin_sync_sse(
+      ExoticOptionalsTwinSyncSse? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_f_64(double? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_i_32(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_i_64(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_i_8(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_u_8(int? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_attribute_twin_normal(
+      List<AttributeTwinNormal>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_attribute_twin_rust_async_sse(
+      List<AttributeTwinRustAsyncSse>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_attribute_twin_sse(
+      List<AttributeTwinSse>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_attribute_twin_sync(
+      List<AttributeTwinSync>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_attribute_twin_sync_sse(
+      List<AttributeTwinSyncSse>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_element_twin_normal(
+      List<ElementTwinNormal>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_element_twin_rust_async(
+      List<ElementTwinRustAsync>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_element_twin_rust_async_sse(
+      List<ElementTwinRustAsyncSse>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_element_twin_sse(
+      List<ElementTwinSse>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_element_twin_sync(
+      List<ElementTwinSync>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_element_twin_sync_sse(
+      List<ElementTwinSyncSse>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
+      List<AttributeTwinNormal?>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync?>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+      List<AttributeTwinRustAsyncSse?>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_opt_box_autoadd_attribute_twin_sse(
+      List<AttributeTwinSse?>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
+      List<AttributeTwinSync?>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_opt_box_autoadd_attribute_twin_sync_sse(
+      List<AttributeTwinSyncSse?>? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_prim_f_32(
+      Float32List? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_prim_f_64(
+      Float64List? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_prim_i_32(Int32List? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_prim_i_8(Int8List? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_list_prim_u_8(Uint8List? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_vecs_twin_normal(
+      OptVecsTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_vecs_twin_rust_async(
+      OptVecsTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_vecs_twin_rust_async_sse(
+      OptVecsTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_vecs_twin_sse(
+      OptVecsTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_vecs_twin_sync(
+      OptVecsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_vecs_twin_sync_sse(
+      OptVecsTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_normal(
+      PointTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_normal_array_2(
+      PointTwinNormalArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_rust_async(
+      PointTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_rust_async_array_2(
+      PointTwinRustAsyncArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_rust_async_sse(
+      PointTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_rust_async_sse_array_2(
+      PointTwinRustAsyncSseArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_sse(PointTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_sse_array_2(
+      PointTwinSseArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_sync(PointTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_sync_array_2(
+      PointTwinSyncArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_sync_sse(
+      PointTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_point_twin_sync_sse_array_2(
+      PointTwinSyncSseArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_enum_mirrored(
+      RawStringEnumMirrored self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_struct_twin_normal(
+      RawStringItemStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_struct_twin_rust_async(
+      RawStringItemStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_struct_twin_rust_async_sse(
+      RawStringItemStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_struct_twin_sse(
+      RawStringItemStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_struct_twin_sync(
+      RawStringItemStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_struct_twin_sync_sse(
+      RawStringItemStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_mirrored(
+      RawStringMirrored self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_application_settings_raw_string_enum_mirrored(
+      (ApplicationSettings, RawStringEnumMirrored) self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_i_32(
+      (String, int) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sequences(Sequences self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_some_struct_twin_normal(
+      SomeStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_some_struct_twin_rust_async(
+      SomeStructTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_some_struct_twin_rust_async_sse(
+      SomeStructTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_some_struct_twin_sse(
+      SomeStructTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_some_struct_twin_sync(
+      SomeStructTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_some_struct_twin_sync_sse(
+      SomeStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_speed_twin_normal(
+      SpeedTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_speed_twin_rust_async(
+      SpeedTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_speed_twin_rust_async_sse(
+      SpeedTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_speed_twin_sse(SpeedTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_speed_twin_sync(SpeedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_speed_twin_sync_sse(
+      SpeedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_comments_twin_normal(
+      StructWithCommentsTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_comments_twin_rust_async(
+      StructWithCommentsTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_comments_twin_rust_async_sse(
+      StructWithCommentsTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_comments_twin_sse(
+      StructWithCommentsTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_comments_twin_sync(
+      StructWithCommentsTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_comments_twin_sync_sse(
+      StructWithCommentsTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_enum_twin_normal(
+      StructWithEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_enum_twin_rust_async(
+      StructWithEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_enum_twin_rust_async_sse(
+      StructWithEnumTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_enum_twin_sse(
+      StructWithEnumTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_enum_twin_sync(
+      StructWithEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_enum_twin_sync_sse(
+      StructWithEnumTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_one_field_twin_normal(
+      StructWithOneFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_one_field_twin_rust_async(
+      StructWithOneFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_one_field_twin_rust_async_sse(
+      StructWithOneFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_one_field_twin_sse(
+      StructWithOneFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_one_field_twin_sync(
+      StructWithOneFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_one_field_twin_sync_sse(
+      StructWithOneFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_two_field_twin_normal(
+      StructWithTwoFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_two_field_twin_rust_async(
+      StructWithTwoFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_two_field_twin_rust_async_sse(
+      StructWithTwoFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_two_field_twin_sse(
+      StructWithTwoFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_two_field_twin_sync(
+      StructWithTwoFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_two_field_twin_sync_sse(
+      StructWithTwoFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_zero_field_twin_normal(
+      StructWithZeroFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_zero_field_twin_rust_async(
+      StructWithZeroFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_zero_field_twin_rust_async_sse(
+      StructWithZeroFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_zero_field_twin_sse(
+      StructWithZeroFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_zero_field_twin_sync(
+      StructWithZeroFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_zero_field_twin_sync_sse(
+      StructWithZeroFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_normal(
+      SumWithTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_normal_array_3(
+      SumWithTwinNormalArray3 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_rust_async(
+      SumWithTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_rust_async_array_3(
+      SumWithTwinRustAsyncArray3 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_rust_async_sse(
+      SumWithTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_rust_async_sse_array_3(
+      SumWithTwinRustAsyncSseArray3 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_sse(
+      SumWithTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_sse_array_3(
+      SumWithTwinSseArray3 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_sync(
+      SumWithTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_sync_array_3(
+      SumWithTwinSyncArray3 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_sync_sse(
+      SumWithTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_sum_with_twin_sync_sse_array_3(
+      SumWithTwinSyncSseArray3 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_chrono_twin_normal(
+      TestChronoTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_chrono_twin_rust_async(
+      TestChronoTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_chrono_twin_sync(
+      TestChronoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_normal(
+      TestIdTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_normal_array_2(
+      TestIdTwinNormalArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_normal_array_4(
+      TestIdTwinNormalArray4 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_rust_async(
+      TestIdTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_rust_async_array_2(
+      TestIdTwinRustAsyncArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_rust_async_array_4(
+      TestIdTwinRustAsyncArray4 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_rust_async_sse(
+      TestIdTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_rust_async_sse_array_2(
+      TestIdTwinRustAsyncSseArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_rust_async_sse_array_4(
+      TestIdTwinRustAsyncSseArray4 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_sse(
+      TestIdTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_sse_array_2(
+      TestIdTwinSseArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_sse_array_4(
+      TestIdTwinSseArray4 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_sync(
+      TestIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_sync_array_2(
+      TestIdTwinSyncArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_sync_array_4(
+      TestIdTwinSyncArray4 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_sync_sse(
+      TestIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_sync_sse_array_2(
+      TestIdTwinSyncSseArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_id_twin_sync_sse_array_4(
+      TestIdTwinSyncSseArray4 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_model_twin_normal(
+      TestModelTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_model_twin_rust_async(
+      TestModelTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_model_twin_rust_async_sse(
+      TestModelTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_model_twin_sse(
+      TestModelTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_model_twin_sync(
+      TestModelTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_test_model_twin_sync_sse(
+      TestModelTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_one_field_twin_normal(
+      TupleStructWithOneFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_one_field_twin_rust_async(
+      TupleStructWithOneFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_one_field_twin_rust_async_sse(
+      TupleStructWithOneFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_one_field_twin_sse(
+      TupleStructWithOneFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_one_field_twin_sync(
+      TupleStructWithOneFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_one_field_twin_sync_sse(
+      TupleStructWithOneFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_two_field_twin_normal(
+      TupleStructWithTwoFieldTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_two_field_twin_rust_async(
+      TupleStructWithTwoFieldTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_two_field_twin_rust_async_sse(
+      TupleStructWithTwoFieldTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_two_field_twin_sse(
+      TupleStructWithTwoFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_two_field_twin_sync(
+      TupleStructWithTwoFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_tuple_struct_with_two_field_twin_sync_sse(
+      TupleStructWithTwoFieldTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_16(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_64(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8_array_1600(U8Array1600 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8_array_5(U8Array5 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8_array_8(U8Array8 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_user_id_twin_normal(
+      UserIdTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_user_id_twin_rust_async(
+      UserIdTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_user_id_twin_rust_async_sse(
+      UserIdTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_user_id_twin_sse(
+      UserIdTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_user_id_twin_sync(
+      UserIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_user_id_twin_sync_sse(
+      UserIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_usize(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vec_of_primitive_pack_twin_normal(
+      VecOfPrimitivePackTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vec_of_primitive_pack_twin_rust_async(
+      VecOfPrimitivePackTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vec_of_primitive_pack_twin_rust_async_sse(
+      VecOfPrimitivePackTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vec_of_primitive_pack_twin_sse(
+      VecOfPrimitivePackTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vec_of_primitive_pack_twin_sync(
+      VecOfPrimitivePackTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_vec_of_primitive_pack_twin_sync_sse(
+      VecOfPrimitivePackTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_weekdays_twin_normal(
+      WeekdaysTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_weekdays_twin_rust_async_sse(
+      WeekdaysTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_weekdays_twin_sse(
+      WeekdaysTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_weekdays_twin_sync(
+      WeekdaysTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_weekdays_twin_sync_sse(
+      WeekdaysTwinSyncSse self, SseSerializer serializer);
 }
 
 // Section: wire_class
