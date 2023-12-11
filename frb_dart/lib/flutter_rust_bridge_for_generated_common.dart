@@ -5,6 +5,7 @@
 library;
 
 export 'dart:typed_data' hide Int64List, Uint64List;
+export 'dart:async' show FutureOr;
 
 export 'package:meta/meta.dart' show internal, protected, sealed;
 
