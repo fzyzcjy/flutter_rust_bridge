@@ -1,5 +1,6 @@
 #![allow(unused_variables)]
 
+use lazy_static::lazy_static;
 use std::hint::black_box;
 
 pub fn benchmark_void_twin_normal() {}
@@ -22,11 +23,18 @@ pub fn benchmark_binary_tree_input_twin_normal(tree: BenchmarkBinaryTreeTwinNorm
     black_box(tree);
 }
 
-pub fn benchmark_binary_tree_output_twin_normal(
-    depth: i32,
-    name: String,
-) -> BenchmarkBinaryTreeTwinNormal {
-    create_tree(depth, &name)
+lazy_static! {
+    static ref BINARY_TREES: HashMap<i32, BenchmarkBinaryTreeTwinNormal> = {
+        let mut m = HashMap::new();
+        for depth in vec![0, 5, 10].into_iter() {
+            m.insert(depth, create_tree(depth, "HelloWorld"));
+        }
+        m
+    };
+}
+
+pub fn benchmark_binary_tree_output_twin_normal(depth: i32) -> BenchmarkBinaryTreeTwinNormal {
+    BINARY_TREES.get(&depth).unwrap()
 }
 
 fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
