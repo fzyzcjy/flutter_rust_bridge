@@ -118,6 +118,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 array.inner().rust_api_type()
             )
                 .into(),
+            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "unimplemented!()".into(),
             _ => return None,
         })
     }
