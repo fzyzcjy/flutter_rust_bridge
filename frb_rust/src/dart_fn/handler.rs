@@ -1,11 +1,12 @@
 use super::DartFnFuture;
 use crate::codec::sse::Dart2RustMessageSse;
 use crate::for_generated::SseDeserializer;
-use crate::generalized_isolate::Channel;
-use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr, SendableMessagePortHandle};
+use crate::generalized_isolate::{Channel, IntoDart};
+use crate::platform_types::{
+    handle_to_message_port, DartAbi, PlatformGeneralizedUint8ListPtr, SendableMessagePortHandle,
+};
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::DartOpaque;
-use allo_isolate::IntoDart;
 use futures::channel::oneshot;
 use futures::channel::oneshot::Sender;
 use futures::FutureExt;
@@ -40,7 +41,7 @@ impl DartFnHandler {
         let (sender, receiver) = oneshot::channel::<Dart2RustMessageSse>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
 
-        let sender = Rust2DartSender::new(Channel::new(invoke_port));
+        let sender = Rust2DartSender::new(Channel::new(handle_to_message_port(&invoke_port)));
         let msg = {
             let mut ans = vec![dart_fn.into_dart(), call_id.into_dart()];
             ans.extend(args);
