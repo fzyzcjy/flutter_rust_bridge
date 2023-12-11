@@ -22,7 +22,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenera
                         .enumerate()
                         .map(|(idx, field)| {
                             let val =
-                                format!("_dco_decode_{}(raw[{}]),", field.ty.safe_ident(), idx + 1);
+                                format!("dco_decode_{}(raw[{}]),", field.ty.safe_ident(), idx + 1);
                             if st.is_fields_named {
                                 format!("{}: {}", field.name.dart_style(), val)
                             } else {

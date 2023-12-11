@@ -21,7 +21,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let decode_block = (self.ir.inputs.iter().enumerate())
             .map(|(i, ty)| {
                 format!(
-                    "final arg{i} = _dco_decode_{}(rawArg{i});\n",
+                    "final arg{i} = dco_decode_{}(rawArg{i});\n",
                     ty.safe_ident()
                 )
             })

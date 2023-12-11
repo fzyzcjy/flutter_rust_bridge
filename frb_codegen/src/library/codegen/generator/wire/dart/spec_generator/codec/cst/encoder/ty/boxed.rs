@@ -36,7 +36,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                         if empty_struct {
                             "".to_owned()
                         } else {
-                            format!("_cst_api_fill_to_wire_{inner_safe_ident}(raw, ptr.ref);")
+                            format!("cst_api_fill_to_wire_{inner_safe_ident}(raw, ptr.ref);")
                         }
                     )
                 },
@@ -59,7 +59,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
             && !is_empty_struct(self)
         {
             Some(format!(
-                "_cst_api_fill_to_wire_{inner_safe_ident}(apiObj, wireObj.ref);"
+                "cst_api_fill_to_wire_{inner_safe_ident}(apiObj, wireObj.ref);"
             ))
         } else {
             None

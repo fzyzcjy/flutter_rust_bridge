@@ -32,7 +32,7 @@ fn generate_impl_decode(
 ) -> WireDartOutputCode {
     let body = WireDartCodecDcoGenerator::new(ty.clone(), context).generate_impl_decode_body();
     let signature = format!(
-        "{dart_api_type} _dco_decode_{safe_ident}(dynamic raw)",
+        "{dart_api_type} dco_decode_{safe_ident}(dynamic raw)",
         dart_api_type =
             ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
         safe_ident = ty.safe_ident(),

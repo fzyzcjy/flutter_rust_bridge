@@ -75,7 +75,7 @@ fn generate_encode_api_fill_to_wire_func(
         };
 
         let signature = format!(
-            "void _cst_api_fill_to_wire_{}({} apiObj, {} wireObj)",
+            "void cst_api_fill_to_wire_{}({} apiObj, {} wireObj)",
             ty.safe_ident(),
             ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
             WireDartCodecCstGenerator::new(target_wire_type.clone(), context)

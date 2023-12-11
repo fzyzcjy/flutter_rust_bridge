@@ -17,7 +17,7 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGene
             .enumerate()
             .map(|(idx, field)| {
                 format!(
-                    "{}: _dco_decode_{}(arr[{}]),",
+                    "{}: dco_decode_{}(arr[{}]),",
                     field.name.dart_style(),
                     field.ty.safe_ident(),
                     idx

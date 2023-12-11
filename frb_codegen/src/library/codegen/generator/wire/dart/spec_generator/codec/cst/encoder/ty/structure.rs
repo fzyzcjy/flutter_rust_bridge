@@ -97,7 +97,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         let c_style = field.name.c_style();
 
         if field.ty.is_struct_or_enum_or_record() {
-            format!("_cst_api_fill_to_wire_{safe_ident}(apiObj.{dart_style}, wireObj.{c_style});")
+            format!("cst_api_fill_to_wire_{safe_ident}(apiObj.{dart_style}, wireObj.{c_style});")
         } else {
             format!("wireObj.{c_style} = cst_encode_{safe_ident}(apiObj.{dart_style});")
         }
