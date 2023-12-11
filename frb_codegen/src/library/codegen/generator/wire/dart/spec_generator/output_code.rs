@@ -93,7 +93,7 @@ impl WireDartOutputCode {
         let api_impl_class_methods = api_impl_class_methods
             .into_iter()
             .filter_map(|method| {
-                (method.body).map(|body| format!("{} {{ {body} }}", method.signature))
+                (method.body.as_ref()).map(|body| format!("{} {{ {body} }}", method.signature))
             })
             .join("\n\n");
 
