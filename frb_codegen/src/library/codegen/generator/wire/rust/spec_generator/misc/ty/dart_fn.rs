@@ -25,8 +25,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
 
         Acc::new_common(
             format!(
-                "
-                fn decode_{safe_ident}(
+                "fn decode_{safe_ident}(
                     dart_opaque: flutter_rust_bridge::DartOpaque,
                 ) -> impl Fn({parameter_types}) -> flutter_rust_bridge::DartFnFuture<{return_type}> {{
                     use flutter_rust_bridge::IntoDart;
@@ -42,8 +41,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
                             dart_opaque.clone(), {parameter_names}
                         ))
                     }}
-                }}
-                ",
+                }}",
                 parameter_types = parameter_types.join(", "),
             )
             .into(),
