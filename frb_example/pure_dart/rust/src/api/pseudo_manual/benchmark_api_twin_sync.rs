@@ -110,7 +110,7 @@ pub fn benchmark_binary_tree_output_protobuf_twin_sync(depth: i32) -> Vec<u8> {
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn benchmark_binary_tree_input_json_twin_sync(raw: String) {
-    let obj: BenchmarkBlobTwinSync = serde_json::from_str(&raw).unwrap();
+    let obj: BenchmarkBinaryTreeTwinSync = serde_json::from_str(&raw).unwrap();
     black_box(obj);
 }
 

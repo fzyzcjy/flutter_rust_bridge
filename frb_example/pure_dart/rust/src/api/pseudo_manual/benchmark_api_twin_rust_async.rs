@@ -104,7 +104,7 @@ pub async fn benchmark_binary_tree_output_protobuf_twin_rust_async(depth: i32) -
 }
 
 pub async fn benchmark_binary_tree_input_json_twin_rust_async(raw: String) {
-    let obj: BenchmarkBlobTwinRustAsync = serde_json::from_str(&raw).unwrap();
+    let obj: BenchmarkBinaryTreeTwinRustAsync = serde_json::from_str(&raw).unwrap();
     black_box(obj);
 }
 

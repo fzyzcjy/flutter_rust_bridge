@@ -110,7 +110,7 @@ pub fn benchmark_binary_tree_output_protobuf_twin_sse(depth: i32) -> Vec<u8> {
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn benchmark_binary_tree_input_json_twin_sse(raw: String) {
-    let obj: BenchmarkBlobTwinSse = serde_json::from_str(&raw).unwrap();
+    let obj: BenchmarkBinaryTreeTwinSse = serde_json::from_str(&raw).unwrap();
     black_box(obj);
 }
 

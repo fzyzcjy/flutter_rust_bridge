@@ -114,7 +114,7 @@ pub async fn benchmark_binary_tree_output_protobuf_twin_rust_async_sse(depth: i3
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn benchmark_binary_tree_input_json_twin_rust_async_sse(raw: String) {
-    let obj: BenchmarkBlobTwinRustAsyncSse = serde_json::from_str(&raw).unwrap();
+    let obj: BenchmarkBinaryTreeTwinRustAsyncSse = serde_json::from_str(&raw).unwrap();
     black_box(obj);
 }
 
