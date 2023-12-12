@@ -45,15 +45,28 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
       // input blob
       BlobInputSyncBenchmark(len, emitter: emitter),
       BlobInputSyncSseBenchmark(len, emitter: emitter),
+      BlobInputSyncProtobufBenchmark(len, emitter: emitter),
+      BlobInputSyncJsonBenchmark(len, emitter: emitter),
+
+      // output blob
       BlobOutputSyncBenchmark(len, emitter: emitter),
       BlobOutputSyncSseBenchmark(len, emitter: emitter),
+      BlobOutputSyncProtobufBenchmark(len, emitter: emitter),
+      BlobOutputSyncJsonBenchmark(len, emitter: emitter),
     ],
 
     for (final depth in [0, 5, 10]) ...[
+      // input binary tree
       BinaryTreeInputSyncBenchmark(depth, emitter: emitter),
       BinaryTreeInputSyncSseBenchmark(depth, emitter: emitter),
+      BinaryTreeInputSyncProtobufBenchmark(depth, emitter: emitter),
+      BinaryTreeInputSyncJsonBenchmark(depth, emitter: emitter),
+
+      // output binary tree
       BinaryTreeOutputSyncBenchmark(depth, emitter: emitter),
       BinaryTreeOutputSyncSseBenchmark(depth, emitter: emitter),
+      BinaryTreeOutputSyncProtobufBenchmark(depth, emitter: emitter),
+      BinaryTreeOutputSyncJsonBenchmark(depth, emitter: emitter),
     ],
   ];
 }
