@@ -1,4 +1,6 @@
 import 'package:benchmark_harness/benchmark_harness.dart';
+import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 
 abstract class MaybeAsyncBenchmarkBase {
   String get name;
@@ -52,3 +54,6 @@ class JsonEmitter extends ScoreEmitter {
     });
   }
 }
+
+// ignore: invalid_use_of_internal_member, invalid_use_of_protected_member
+late final RustLibWire rawWire = (RustLib.instance.api as RustLibApiImpl).wire;
