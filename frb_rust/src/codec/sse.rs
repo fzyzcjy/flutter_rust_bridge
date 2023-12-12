@@ -10,6 +10,7 @@ use byteorder::WriteBytesExt;
 use std::any::Any;
 use std::io::Cursor;
 
+/// Codec that does a simple serialization
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct SseCodec;
 
@@ -34,6 +35,8 @@ impl BaseCodec for SseCodec {
 }
 
 impl SseCodec {
+    // Only to be used by generated code, thus hidden in doc
+    #[doc(hidden)]
     pub fn encode(
         result_code: Rust2DartAction,
         data_fn: impl FnOnce(&mut SseSerializer),

@@ -1,5 +1,6 @@
 // Why put these code as boilerplate instead of putting in frb_rust crate directly?
 // Because we need to avoid the Rust's `orphan rule`.
+#[doc(hidden)]
 #[macro_export]
 macro_rules! frb_generated_boilerplate {
     () => {

@@ -10,6 +10,7 @@ pub(crate) mod codec;
 pub(crate) mod dart_fn;
 pub(crate) mod dart_opaque;
 pub(crate) mod ffi_binding;
+#[doc(hidden)]
 pub mod for_generated;
 pub(crate) mod rust_async;
 pub(crate) mod rust_opaque;
