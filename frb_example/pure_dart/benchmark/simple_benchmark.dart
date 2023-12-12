@@ -42,6 +42,9 @@ Future<void> main(List<String> args) async {
   final output = jsonEncode(emitter.items);
   print('Write reports to $pathOutput with output=$output');
   File(pathOutput).writeAsStringSync(output);
+ 
+  // To avoid dead code elimination
+  print(dummyValue);
 
   // to avoid hang forever
   exit(0);

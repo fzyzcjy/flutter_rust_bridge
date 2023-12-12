@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_use_of_internal_member, invalid_use_of_protected_member
 
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
@@ -82,7 +83,11 @@ class BlobOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
       : super('BlobOutputSyncProtobuf_Len$len');
 
   @override
-  void run() => benchmarkBlobOutputProtobufTwinSync(size: len);
+  void run() {
+    final raw = benchmarkBlobOutputProtobufTwinSync(size: len);
+    final proto = BlobProtobuf.fromBuffer(raw);
+    dummyValue ^= proto.hashCode;
+  }
 }
 
 class BlobInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
@@ -103,5 +108,11 @@ class BlobOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
       : super('BlobOutputSyncJson_Len$len');
 
   @override
-  void run() => benchmarkBlobOutputJsonTwinSync(size: len);
+  void run() {
+    final raw = benchmarkBlobOutputJsonTwinSync(size: len);
+    // TODO: Should use json_serialize to further generate Dart objects
+    // Otherwise this comparison is unfair (JSON does fewer amount of work)
+    final json = jsonDecode(raw);
+    dummyValue ^= json.hashCode;
+  }
 }
