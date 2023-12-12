@@ -21,10 +21,6 @@ pub struct BenchmarkBinaryTreeTwinNormal {
     pub right: Option<Box<BenchmarkBinaryTreeTwinNormal>>,
 }
 
-pub fn benchmark_binary_tree_input_twin_normal(tree: BenchmarkBinaryTreeTwinNormal) {
-    black_box(tree);
-}
-
 lazy_static! {
     static ref BINARY_TREES: HashMap<i32, BenchmarkBinaryTreeTwinNormal> = {
         let mut m = HashMap::new();
@@ -33,6 +29,10 @@ lazy_static! {
         }
         m
     };
+}
+
+pub fn benchmark_binary_tree_input_twin_normal(tree: BenchmarkBinaryTreeTwinNormal) {
+    black_box(tree);
 }
 
 pub fn benchmark_binary_tree_output_twin_normal(depth: i32) -> BenchmarkBinaryTreeTwinNormal {
