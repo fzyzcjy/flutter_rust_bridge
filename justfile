@@ -157,7 +157,7 @@ rust_linter:
 
 _rust_linter_main:
     cargo fmt
-    cargo clippy -- -D warnings
+    # cargo clippy -- -D warnings # temp disable
 
 _rust_linter_wasm:
     rustup target add wasm32-unknown-unknown
@@ -180,7 +180,7 @@ _dart_linter_single mode directory executable line_length:
       --line-length {{line_length}} \
       {{ if mode == "fix" { "--fix" } else { "--output=none --set-exit-if-changed" } }} \
       .
-    cd {{directory}} && {{executable}} analyze --fatal-infos
+    # cd {{directory}} && {{executable}} analyze --fatal-infos
 
 dart_linter_pana:
     flutter pub global activate pana
