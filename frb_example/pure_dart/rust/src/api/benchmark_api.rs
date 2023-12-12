@@ -98,7 +98,7 @@ pub fn benchmark_binary_tree_output_protobuf_twin_normal(depth: i32) -> Vec<u8> 
 }
 
 pub fn benchmark_binary_tree_input_json_twin_normal(raw: String) {
-    let obj: BenchmarkBlobTwinNormal = serde_json::from_str(&raw).unwrap();
+    let obj: BenchmarkBinaryTreeTwinNormal = serde_json::from_str(&raw).unwrap();
     black_box(obj);
 }
 
