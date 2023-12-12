@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message BinaryTreeProtobuf {
+  string name = 1;
+  BinaryTreeProtobuf left = 2;
+  BinaryTreeProtobuf right = 3;
+}
+
+message BlobProtobuf {
+  bytes first = 1;
+  bytes second = 2;
+  bytes third = 3;
+}
