@@ -130,8 +130,16 @@ class BinaryTreeInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
       : tree = _createTree(depth),
         super('BinaryTreeInputSyncJson_Depth$depth');
 
+  // Normally use `json_serializable`, but we only use for benchmark so manually write
+  static Map<String, dynamic> _toJson(dynamic tree) => {
+        'name': tree.name,
+        'left': tree.left,
+        'right': tree.right,
+      };
+
   @override
-  void run() => benchmarkBinaryTreeInputJsonTwinSync(raw: jsonEncode(tree));
+  void run() => benchmarkBinaryTreeInputJsonTwinSync(
+      raw: jsonEncode(tree, toEncodable: _toJson));
 }
 
 class BinaryTreeOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {

@@ -97,8 +97,16 @@ class BlobInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
       : blob = _createBlob(len),
         super('BlobInputSyncJsonBenchmark_Len$len');
 
+  // Normally use `json_serializable`, but we only use for benchmark so manually write
+  static Map<String, dynamic> _toJson(dynamic blob) => {
+        'first': blob.first,
+        'second': blob.second,
+        'third': blob.third,
+      };
+
   @override
-  void run() => benchmarkBlobInputJsonTwinSync(raw: jsonEncode(blob));
+  void run() => benchmarkBlobInputJsonTwinSync(
+      raw: jsonEncode(blob, toEncodable: _toJson));
 }
 
 class BlobOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
