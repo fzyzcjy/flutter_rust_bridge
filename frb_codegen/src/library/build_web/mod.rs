@@ -1,3 +1,5 @@
+//! Build web platform for a Flutter+Rust app
+
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::{bail, Context};

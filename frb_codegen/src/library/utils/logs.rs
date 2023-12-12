@@ -1,3 +1,5 @@
+//! Utilities related to logging
+
 use fern::colors::{Color, ColoredLevelConfig};
 use log::LevelFilter;
 
