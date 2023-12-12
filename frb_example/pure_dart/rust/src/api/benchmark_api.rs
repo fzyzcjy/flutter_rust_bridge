@@ -28,7 +28,7 @@ pub struct BenchmarkBinaryTreeTwinNormal {
 }
 
 impl BenchmarkBinaryTreeTwinNormal {
-    fn new(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
+    fn create(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
         if depth == 0 {
             BenchmarkBinaryTreeTwinNormal {
                 name: name.to_owned(),
@@ -38,15 +38,15 @@ impl BenchmarkBinaryTreeTwinNormal {
         } else {
             BenchmarkBinaryTreeTwinNormal {
                 name: name.to_owned(),
-                left: Some(Box::new(Self::new(depth - 1, name))),
-                right: Some(Box::new(Self::new(depth - 1, name))),
+                left: Some(Box::new(Self::create(depth - 1, name))),
+                right: Some(Box::new(Self::create(depth - 1, name))),
             }
         }
     }
 }
 
 impl BinaryTreeProtobuf {
-    fn new(depth: i32, name: &str) -> Self {
+    fn create(depth: i32, name: &str) -> Self {
         if depth == 0 {
             Self {
                 name: name.to_owned(),
@@ -57,8 +57,8 @@ impl BinaryTreeProtobuf {
         } else {
             Self {
                 name: name.to_owned(),
-                left: protobuf::SingularPtrField::some(Self::new(depth - 1, name)),
-                right: protobuf::SingularPtrField::some(Self::new(depth - 1, name)),
+                left: protobuf::SingularPtrField::some(Self::create(depth - 1, name)),
+                right: protobuf::SingularPtrField::some(Self::create(depth - 1, name)),
                 ..Default::default()
             }
         }
@@ -75,9 +75,9 @@ fn create_binary_tree_map<T>(creator: impl Fn(i32, &str) -> T) -> HashMap<i32, T
 
 lazy_static! {
     static ref BINARY_TREES: HashMap<i32, BenchmarkBinaryTreeTwinNormal> =
-        create_binary_tree_map(BenchmarkBinaryTreeTwinNormal::new);
+        create_binary_tree_map(BenchmarkBinaryTreeTwinNormal::create);
     static ref BINARY_TREES_PROTOBUF: HashMap<i32, BinaryTreeProtobuf> =
-        create_binary_tree_map(BinaryTreeProtobuf::new);
+        create_binary_tree_map(BinaryTreeProtobuf::create);
 }
 
 pub fn benchmark_binary_tree_input_twin_normal(tree: BenchmarkBinaryTreeTwinNormal) {
@@ -119,7 +119,7 @@ pub struct BenchmarkBlobTwinNormal {
 }
 
 impl BenchmarkBlobTwinNormal {
-    pub fn new(size: i32) -> Self {
+    pub fn create(size: i32) -> Self {
         let data = vec![0; size as _];
         Self {
             first: data.clone(),
@@ -134,7 +134,7 @@ pub fn benchmark_blob_input_twin_normal(blob: BenchmarkBlobTwinNormal) {
 }
 
 pub fn benchmark_blob_output_twin_normal(size: i32) -> BenchmarkBlobTwinNormal {
-    BenchmarkBlobTwinNormal::new(size)
+    BenchmarkBlobTwinNormal::create(size)
 }
 
 pub fn benchmark_blob_input_protobuf_twin_normal(raw: Vec<u8>) {
@@ -159,5 +159,5 @@ pub fn benchmark_blob_input_json_twin_normal(raw: String) {
 }
 
 pub fn benchmark_blob_output_json_twin_normal(size: i32) -> String {
-    serde_json::to_string(&BenchmarkBlobTwinNormal::new(size)).unwrap()
+    serde_json::to_string(&BenchmarkBlobTwinNormal::create(size)).unwrap()
 }
