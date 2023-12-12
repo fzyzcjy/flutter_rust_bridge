@@ -5,9 +5,9 @@ _Please list issues fixed by this PR here, using format "Fixes #the-issue-number
 ## Checklist
 
 - [ ] An issue to be fixed by this PR is listed above.
-- [ ] New tests are added to ensure new features are working. End-to-end tests are usually in the `./frb_example/pure_dart` example, more specifically, `rust/src/api.rs` and `dart/lib/main.dart`.
-- [ ] The code generator is run and the code is formatted (via `just precommit`).
-- [ ] If this PR adds/changes features, documentations (in the `./book` folder) are updated.
+- [ ] New tests are added to ensure new features are working. End-to-end tests are usually in the `./frb_example/pure_dart` example, more specifically, `rust/src/api/whatever.rs` and `test/api/whatever_test.dart`.
+- [ ] `./frb_internal precommit` is run (it internal runs code generator, does auto formatting, etc).
+- [ ] If this PR adds/changes features, documentations (in the `./website` folder) are updated.
 - [ ] CI is passing.
 
 ## Remark for PR creator
