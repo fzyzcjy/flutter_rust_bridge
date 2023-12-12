@@ -12,5 +12,5 @@ _Please list issues fixed by this PR here, using format "Fixes #the-issue-number
 
 ## Remark for PR creator
 
-- Justfile is a task runner for the command line interface that allows you to run shell commands from a file named `justfile` in your project directory. You can use Justfile after [installing it](https://github.com/casey/just). Note that commands written in `justfile` of this repository are expected to be run in `bash`, not `cmd` or `powershell`. Running `just ...` commands in `cmd` or `powershell` will produce errors as the syntax is not compatible. On Windows, you can use `git bash` if you have Git installed.
+- `./frb_internal --help` shows utilities for development.
 - If fzyzcjy does not reply for a few days, maybe he just did not see it, so please ping him.
