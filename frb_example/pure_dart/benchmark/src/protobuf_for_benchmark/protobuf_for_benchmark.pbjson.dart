@@ -18,8 +18,22 @@ const BinaryTreeProtobuf$json = {
   '1': 'BinaryTreeProtobuf',
   '2': [
     {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    {'1': 'left', '3': 2, '4': 1, '5': 11, '6': '.BinaryTreeProtobuf', '10': 'left'},
-    {'1': 'right', '3': 3, '4': 1, '5': 11, '6': '.BinaryTreeProtobuf', '10': 'right'},
+    {
+      '1': 'left',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.BinaryTreeProtobuf',
+      '10': 'left'
+    },
+    {
+      '1': 'right',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.BinaryTreeProtobuf',
+      '10': 'right'
+    },
   ],
 };
 
@@ -43,4 +57,3 @@ const BlobProtobuf$json = {
 final $typed_data.Uint8List blobProtobufDescriptor = $convert.base64Decode(
     'CgxCbG9iUHJvdG9idWYSFAoFZmlyc3QYASABKAxSBWZpcnN0EhYKBnNlY29uZBgCIAEoDFIGc2'
     'Vjb25kEhQKBXRoaXJkGAMgASgMUgV0aGlyZA==');
-
