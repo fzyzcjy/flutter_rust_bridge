@@ -1,0 +1,2 @@
+generate:
+    protoc --dart_out=../src/protobuf_for_benchmark protobuf_for_benchmark.proto
