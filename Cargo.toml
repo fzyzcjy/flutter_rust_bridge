@@ -9,7 +9,7 @@ members = [
 ]
 
 [workspace.package]
-version = "1.82.4"
+version = "1.82.5"
 edition = "2018"
 license = "MIT"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
