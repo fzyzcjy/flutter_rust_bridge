@@ -152,7 +152,10 @@ fn file_extension(p: &Path) -> &str {
     p.extension().unwrap_or_default().to_str().unwrap()
 }
 
-const CARGOKIT_PRELUDE: &[&str] = &["This is copied from cargokit, TODO", "TODO explain more"];
+const CARGOKIT_PRELUDE: &[&str] = &[
+    "This is copied from Cargokit (which is the official way to use it currently)", //
+    "Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin",
+];
 
 fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
     flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
