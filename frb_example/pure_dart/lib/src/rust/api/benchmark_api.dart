@@ -28,6 +28,26 @@ Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
     RustLib.instance.api
         .benchmarkBinaryTreeOutputTwinNormal(depth: depth, hint: hint);
 
+Future<void> benchmarkBinaryTreeInputProtobufTwinNormal(
+        {required Uint8List raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputProtobufTwinNormal(raw: raw, hint: hint);
+
+Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinNormal(
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputProtobufTwinNormal(depth: depth, hint: hint);
+
+Future<void> benchmarkBinaryTreeInputJsonTwinNormal(
+        {required String raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputJsonTwinNormal(raw: raw, hint: hint);
+
+Future<String> benchmarkBinaryTreeOutputJsonTwinNormal(
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputJsonTwinNormal(depth: depth, hint: hint);
+
 Future<void> benchmarkBlobInputTwinNormal(
         {required BenchmarkBlobTwinNormal blob, dynamic hint}) =>
     RustLib.instance.api.benchmarkBlobInputTwinNormal(blob: blob, hint: hint);
@@ -35,6 +55,25 @@ Future<void> benchmarkBlobInputTwinNormal(
 Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal(
         {required int size, dynamic hint}) =>
     RustLib.instance.api.benchmarkBlobOutputTwinNormal(size: size, hint: hint);
+
+Future<void> benchmarkBlobInputProtobufTwinNormal(
+        {required Uint8List raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobInputProtobufTwinNormal(raw: raw, hint: hint);
+
+Future<Uint8List> benchmarkBlobOutputProtobufTwinNormal(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobOutputProtobufTwinNormal(size: size, hint: hint);
+
+Future<void> benchmarkBlobInputJsonTwinNormal(
+        {required String raw, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBlobInputJsonTwinNormal(raw: raw, hint: hint);
+
+Future<String> benchmarkBlobOutputJsonTwinNormal(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobOutputJsonTwinNormal(size: size, hint: hint);
 
 class BenchmarkBinaryTreeTwinNormal {
   final String name;

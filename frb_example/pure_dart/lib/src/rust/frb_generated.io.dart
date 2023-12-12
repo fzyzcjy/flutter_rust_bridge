@@ -26357,6 +26357,45 @@ class RustLibWire implements BaseWire {
       _wire_next_user_id_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_user_id_twin_normal>)>();
 
+  void wire_benchmark_binary_tree_input_json_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_binary_tree_input_json_twin_normal(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_json_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_binary_tree_input_json_twin_normal');
+  late final _wire_benchmark_binary_tree_input_json_twin_normal =
+      _wire_benchmark_binary_tree_input_json_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_binary_tree_input_protobuf_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_binary_tree_input_protobuf_twin_normal(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+          'wire_benchmark_binary_tree_input_protobuf_twin_normal');
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_normal =
+      _wire_benchmark_binary_tree_input_protobuf_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
   void wire_benchmark_binary_tree_input_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> tree,
@@ -26377,6 +26416,40 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>)>();
 
+  void wire_benchmark_binary_tree_output_json_twin_normal(
+    int port_,
+    int depth,
+  ) {
+    return _wire_benchmark_binary_tree_output_json_twin_normal(
+      port_,
+      depth,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_json_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_json_twin_normal');
+  late final _wire_benchmark_binary_tree_output_json_twin_normal =
+      _wire_benchmark_binary_tree_output_json_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_binary_tree_output_protobuf_twin_normal(
+    int port_,
+    int depth,
+  ) {
+    return _wire_benchmark_binary_tree_output_protobuf_twin_normal(
+      port_,
+      depth,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_protobuf_twin_normal');
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_normal =
+      _wire_benchmark_binary_tree_output_protobuf_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
   void wire_benchmark_binary_tree_output_twin_normal(
     int port_,
     int depth,
@@ -26393,6 +26466,44 @@ class RustLibWire implements BaseWire {
   late final _wire_benchmark_binary_tree_output_twin_normal =
       _wire_benchmark_binary_tree_output_twin_normalPtr
           .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_blob_input_json_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_blob_input_json_twin_normal(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_json_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_blob_input_json_twin_normal');
+  late final _wire_benchmark_blob_input_json_twin_normal =
+      _wire_benchmark_blob_input_json_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_blob_input_protobuf_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_blob_input_protobuf_twin_normal(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_protobuf_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_blob_input_protobuf_twin_normal');
+  late final _wire_benchmark_blob_input_protobuf_twin_normal =
+      _wire_benchmark_blob_input_protobuf_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
   void wire_benchmark_blob_input_twin_normal(
     int port_,
@@ -26413,6 +26524,40 @@ class RustLibWire implements BaseWire {
       _wire_benchmark_blob_input_twin_normalPtr.asFunction<
           void Function(
               int, ffi.Pointer<wire_cst_benchmark_blob_twin_normal>)>();
+
+  void wire_benchmark_blob_output_json_twin_normal(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_json_twin_normal(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_json_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_blob_output_json_twin_normal');
+  late final _wire_benchmark_blob_output_json_twin_normal =
+      _wire_benchmark_blob_output_json_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_blob_output_protobuf_twin_normal(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_protobuf_twin_normal(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_protobuf_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_blob_output_protobuf_twin_normal');
+  late final _wire_benchmark_blob_output_protobuf_twin_normal =
+      _wire_benchmark_blob_output_protobuf_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
   void wire_benchmark_blob_output_twin_normal(
     int port_,

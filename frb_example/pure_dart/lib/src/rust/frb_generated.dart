@@ -292,14 +292,38 @@ abstract class RustLibApi extends BaseApi {
   Future<UserIdTwinNormal> nextUserIdTwinNormal(
       {required UserIdTwinNormal userId, dynamic hint});
 
+  Future<void> benchmarkBinaryTreeInputJsonTwinNormal(
+      {required String raw, dynamic hint});
+
+  Future<void> benchmarkBinaryTreeInputProtobufTwinNormal(
+      {required Uint8List raw, dynamic hint});
+
   Future<void> benchmarkBinaryTreeInputTwinNormal(
       {required BenchmarkBinaryTreeTwinNormal tree, dynamic hint});
+
+  Future<String> benchmarkBinaryTreeOutputJsonTwinNormal(
+      {required int depth, dynamic hint});
+
+  Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinNormal(
+      {required int depth, dynamic hint});
 
   Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
       {required int depth, dynamic hint});
 
+  Future<void> benchmarkBlobInputJsonTwinNormal(
+      {required String raw, dynamic hint});
+
+  Future<void> benchmarkBlobInputProtobufTwinNormal(
+      {required Uint8List raw, dynamic hint});
+
   Future<void> benchmarkBlobInputTwinNormal(
       {required BenchmarkBlobTwinNormal blob, dynamic hint});
+
+  Future<String> benchmarkBlobOutputJsonTwinNormal(
+      {required int size, dynamic hint});
+
+  Future<Uint8List> benchmarkBlobOutputProtobufTwinNormal(
+      {required int size, dynamic hint});
 
   Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal(
       {required int size, dynamic hint});
@@ -5105,6 +5129,58 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBinaryTreeInputJsonTwinNormal(
+      {required String raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(raw);
+        return wire.wire_benchmark_binary_tree_input_json_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputJsonTwinNormalConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputJsonTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_json_twin_normal",
+        argNames: ["raw"],
+      );
+
+  @override
+  Future<void> benchmarkBinaryTreeInputProtobufTwinNormal(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(raw);
+        return wire.wire_benchmark_binary_tree_input_protobuf_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputProtobufTwinNormalConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputProtobufTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_protobuf_twin_normal",
+        argNames: ["raw"],
+      );
+
+  @override
   Future<void> benchmarkBinaryTreeInputTwinNormal(
       {required BenchmarkBinaryTreeTwinNormal tree, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -5128,6 +5204,58 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "benchmark_binary_tree_input_twin_normal",
         argNames: ["tree"],
+      );
+
+  @override
+  Future<String> benchmarkBinaryTreeOutputJsonTwinNormal(
+      {required int depth, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(depth);
+        return wire.wire_benchmark_binary_tree_output_json_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputJsonTwinNormalConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputJsonTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_json_twin_normal",
+        argNames: ["depth"],
+      );
+
+  @override
+  Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinNormal(
+      {required int depth, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(depth);
+        return wire.wire_benchmark_binary_tree_output_protobuf_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputProtobufTwinNormalConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputProtobufTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_protobuf_twin_normal",
+        argNames: ["depth"],
       );
 
   @override
@@ -5156,6 +5284,56 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBlobInputJsonTwinNormal(
+      {required String raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(raw);
+        return wire.wire_benchmark_blob_input_json_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputJsonTwinNormalConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputJsonTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_json_twin_normal",
+        argNames: ["raw"],
+      );
+
+  @override
+  Future<void> benchmarkBlobInputProtobufTwinNormal(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(raw);
+        return wire.wire_benchmark_blob_input_protobuf_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputProtobufTwinNormalConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputProtobufTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_protobuf_twin_normal",
+        argNames: ["raw"],
+      );
+
+  @override
   Future<void> benchmarkBlobInputTwinNormal(
       {required BenchmarkBlobTwinNormal blob, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -5178,6 +5356,57 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "benchmark_blob_input_twin_normal",
         argNames: ["blob"],
+      );
+
+  @override
+  Future<String> benchmarkBlobOutputJsonTwinNormal(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_blob_output_json_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputJsonTwinNormalConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputJsonTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_json_twin_normal",
+        argNames: ["size"],
+      );
+
+  @override
+  Future<Uint8List> benchmarkBlobOutputProtobufTwinNormal(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_blob_output_protobuf_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputProtobufTwinNormalConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputProtobufTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_protobuf_twin_normal",
+        argNames: ["size"],
       );
 
   @override

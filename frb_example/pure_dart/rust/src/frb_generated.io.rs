@@ -16390,6 +16390,22 @@ pub extern "C" fn wire_next_user_id_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_json_twin_normal(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_binary_tree_input_json_twin_normal_impl(port_, raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_protobuf_twin_normal(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_binary_tree_input_protobuf_twin_normal_impl(port_, raw)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_binary_tree_input_twin_normal(
     port_: i64,
     tree: *mut wire_cst_benchmark_binary_tree_twin_normal,
@@ -16398,8 +16414,34 @@ pub extern "C" fn wire_benchmark_binary_tree_input_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_json_twin_normal(port_: i64, depth: i32) {
+    wire_benchmark_binary_tree_output_json_twin_normal_impl(port_, depth)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_protobuf_twin_normal(port_: i64, depth: i32) {
+    wire_benchmark_binary_tree_output_protobuf_twin_normal_impl(port_, depth)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_binary_tree_output_twin_normal(port_: i64, depth: i32) {
     wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_json_twin_normal(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_blob_input_json_twin_normal_impl(port_, raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_protobuf_twin_normal(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_blob_input_protobuf_twin_normal_impl(port_, raw)
 }
 
 #[no_mangle]
@@ -16408,6 +16450,16 @@ pub extern "C" fn wire_benchmark_blob_input_twin_normal(
     blob: *mut wire_cst_benchmark_blob_twin_normal,
 ) {
     wire_benchmark_blob_input_twin_normal_impl(port_, blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_json_twin_normal(port_: i64, size: i32) {
+    wire_benchmark_blob_output_json_twin_normal_impl(port_, size)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_protobuf_twin_normal(port_: i64, size: i32) {
+    wire_benchmark_blob_output_protobuf_twin_normal_impl(port_, size)
 }
 
 #[no_mangle]

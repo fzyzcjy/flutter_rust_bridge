@@ -363,6 +363,54 @@ fn wire_next_user_id_twin_normal_impl(
         },
     )
 }
+fn wire_benchmark_binary_tree_input_json_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: impl CstDecode<String> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_binary_tree_input_json_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_raw = raw.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_binary_tree_input_json_twin_normal(
+                            api_raw,
+                        ),
+                    )
+                })())
+            }
+        },
+    )
+}
+fn wire_benchmark_binary_tree_input_protobuf_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_binary_tree_input_protobuf_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_raw = raw.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_binary_tree_input_protobuf_twin_normal(
+                            api_raw,
+                        ),
+                    )
+                })())
+            }
+        },
+    )
+}
 fn wire_benchmark_binary_tree_input_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     tree: impl CstDecode<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
@@ -388,6 +436,40 @@ fn wire_benchmark_binary_tree_input_twin_normal_impl(
         },
     )
 }
+fn wire_benchmark_binary_tree_output_json_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_binary_tree_output_json_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_depth = depth.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_binary_tree_output_json_twin_normal(
+                            api_depth,
+                        ),
+                    )
+                })())
+            }
+        },
+    )
+}
+fn wire_benchmark_binary_tree_output_protobuf_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "benchmark_binary_tree_output_protobuf_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_depth = depth.cst_decode(); move |context|  {
+                    transform_result_dco((move ||  {
+                         Result::<_,()>::Ok(crate::api::benchmark_api::benchmark_binary_tree_output_protobuf_twin_normal(api_depth))
+                    })())
+                } })
+}
 fn wire_benchmark_binary_tree_output_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     depth: impl CstDecode<i32> + core::panic::UnwindSafe,
@@ -412,6 +494,52 @@ fn wire_benchmark_binary_tree_output_twin_normal_impl(
         },
     )
 }
+fn wire_benchmark_blob_input_json_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: impl CstDecode<String> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_blob_input_json_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_raw = raw.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_blob_input_json_twin_normal(api_raw),
+                    )
+                })())
+            }
+        },
+    )
+}
+fn wire_benchmark_blob_input_protobuf_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: impl CstDecode<Vec<u8>> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_blob_input_protobuf_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_raw = raw.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_blob_input_protobuf_twin_normal(
+                            api_raw,
+                        ),
+                    )
+                })())
+            }
+        },
+    )
+}
 fn wire_benchmark_blob_input_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: impl CstDecode<crate::api::benchmark_api::BenchmarkBlobTwinNormal> + core::panic::UnwindSafe,
@@ -428,6 +556,52 @@ fn wire_benchmark_blob_input_twin_normal_impl(
                 transform_result_dco((move || {
                     Result::<_, ()>::Ok(
                         crate::api::benchmark_api::benchmark_blob_input_twin_normal(api_blob),
+                    )
+                })())
+            }
+        },
+    )
+}
+fn wire_benchmark_blob_output_json_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_blob_output_json_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_size = size.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_blob_output_json_twin_normal(api_size),
+                    )
+                })())
+            }
+        },
+    )
+}
+fn wire_benchmark_blob_output_protobuf_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "benchmark_blob_output_protobuf_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_size = size.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::benchmark_api::benchmark_blob_output_protobuf_twin_normal(
+                            api_size,
+                        ),
                     )
                 })())
             }
