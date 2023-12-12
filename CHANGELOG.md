@@ -1,4 +1,4 @@
-## Unreleased
+## 1.82.5
 
 * Fix `rustfmt::skip` #1420 (thanks @rogurotus)
 
