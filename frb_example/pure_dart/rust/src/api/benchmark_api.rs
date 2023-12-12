@@ -1,6 +1,8 @@
 #![allow(unused_variables)]
 
+use crate::auxiliary::protobuf_for_benchmark::{BinaryTreeProtobuf, BlobProtobuf};
 use lazy_static::lazy_static;
+use protobuf::Message;
 use std::collections::HashMap;
 use std::hint::black_box;
 
@@ -59,11 +61,12 @@ pub fn benchmark_binary_tree_output_twin_normal(depth: i32) -> BenchmarkBinaryTr
 }
 
 pub fn benchmark_binary_tree_input_protobuf_twin_normal(raw: Vec<u8>) {
-    todo!()
+    let data = BinaryTreeProtobuf::parse_from_bytes(&raw).unwrap();
+    black_box(data);
 }
 
 pub fn benchmark_binary_tree_output_protobuf_twin_normal(depth: i32) -> Vec<u8> {
-    todo!()
+    BINARY_TREES.get(&depth).unwrap().write_to_bytes().unwrap()
 }
 
 pub fn benchmark_binary_tree_input_json_twin_normal(raw: String) {
@@ -103,11 +106,19 @@ pub fn benchmark_blob_output_twin_normal(size: i32) -> BenchmarkBlobTwinNormal {
 }
 
 pub fn benchmark_blob_input_protobuf_twin_normal(raw: Vec<u8>) {
-    todo!()
+    let data = BlobProtobuf::parse_from_bytes(&raw).unwrap();
+    black_box(data);
 }
 
 pub fn benchmark_blob_output_protobuf_twin_normal(size: i32) -> Vec<u8> {
-    todo!()
+    let data = vec![0; size as _];
+    let output = BlobProtobuf {
+        first: data.clone(),
+        second: data.clone(),
+        third: data,
+        ..Default::default()
+    };
+    output.write_to_bytes().unwrap()
 }
 
 pub fn benchmark_blob_input_json_twin_normal(raw: String) {
