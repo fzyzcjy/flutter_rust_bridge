@@ -73,7 +73,7 @@ class BlobInputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
         super('BlobInputSyncProtobufBenchmark_Len$len');
 
   @override
-  void run() => benchmarkBlobInputProtobufTwinSync(blob: blob);
+  void run() => benchmarkBlobInputProtobufTwinSync(raw: blob.writeToBuffer());
 }
 
 class BlobOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
@@ -98,7 +98,7 @@ class BlobInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
         super('BlobInputSyncJsonBenchmark_Len$len');
 
   @override
-  void run() => benchmarkBlobInputJsonTwinSync(blob: blob);
+  void run() => benchmarkBlobInputJsonTwinSync(raw: jsonEncode(blob));
 }
 
 class BlobOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {

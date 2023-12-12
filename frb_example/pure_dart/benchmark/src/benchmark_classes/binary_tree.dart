@@ -105,7 +105,8 @@ class BinaryTreeInputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
         super('BinaryTreeInputSyncProtobuf_Depth$depth');
 
   @override
-  void run() => benchmarkBinaryTreeInputTwinSyncProtobuf(tree: tree);
+  void run() =>
+      benchmarkBinaryTreeInputProtobufTwinSync(raw: tree.writeToBuffer());
 }
 
 class BinaryTreeOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
@@ -116,7 +117,7 @@ class BinaryTreeOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
 
   @override
   void run() {
-    final raw = benchmarkBinaryTreeOutputTwinSyncProtobuf(depth: depth);
+    final raw = benchmarkBinaryTreeOutputProtobufTwinSync(depth: depth);
     final proto = BinaryTreeProtobuf.fromBuffer(raw);
     dummyValue ^= proto.hashCode;
   }
@@ -130,7 +131,7 @@ class BinaryTreeInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
         super('BinaryTreeInputSyncJson_Depth$depth');
 
   @override
-  void run() => benchmarkBinaryTreeInputTwinSyncJson(tree: tree);
+  void run() => benchmarkBinaryTreeInputJsonTwinSync(raw: jsonEncode(tree));
 }
 
 class BinaryTreeOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
@@ -141,7 +142,7 @@ class BinaryTreeOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
 
   @override
   void run() {
-    final raw = benchmarkBinaryTreeOutputTwinSyncJson(depth: depth);
+    final raw = benchmarkBinaryTreeOutputJsonTwinSync(depth: depth);
     // TODO: Should use json_serialize to further generate Dart objects
     // Otherwise this comparison is unfair (JSON does fewer amount of work)
     final json = jsonDecode(raw);
