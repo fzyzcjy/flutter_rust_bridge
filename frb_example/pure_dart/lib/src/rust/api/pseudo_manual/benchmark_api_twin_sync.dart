@@ -25,6 +25,26 @@ BenchmarkBinaryTreeTwinSync benchmarkBinaryTreeOutputTwinSync(
     RustLib.instance.api
         .benchmarkBinaryTreeOutputTwinSync(depth: depth, hint: hint);
 
+void benchmarkBinaryTreeInputProtobufTwinSync(
+        {required Uint8List raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputProtobufTwinSync(raw: raw, hint: hint);
+
+Uint8List benchmarkBinaryTreeOutputProtobufTwinSync(
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputProtobufTwinSync(depth: depth, hint: hint);
+
+void benchmarkBinaryTreeInputJsonTwinSync(
+        {required String raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputJsonTwinSync(raw: raw, hint: hint);
+
+String benchmarkBinaryTreeOutputJsonTwinSync(
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputJsonTwinSync(depth: depth, hint: hint);
+
 void benchmarkBlobInputTwinSync(
         {required BenchmarkBlobTwinSync blob, dynamic hint}) =>
     RustLib.instance.api.benchmarkBlobInputTwinSync(blob: blob, hint: hint);
@@ -32,6 +52,23 @@ void benchmarkBlobInputTwinSync(
 BenchmarkBlobTwinSync benchmarkBlobOutputTwinSync(
         {required int size, dynamic hint}) =>
     RustLib.instance.api.benchmarkBlobOutputTwinSync(size: size, hint: hint);
+
+void benchmarkBlobInputProtobufTwinSync(
+        {required Uint8List raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobInputProtobufTwinSync(raw: raw, hint: hint);
+
+Uint8List benchmarkBlobOutputProtobufTwinSync(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobOutputProtobufTwinSync(size: size, hint: hint);
+
+void benchmarkBlobInputJsonTwinSync({required String raw, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBlobInputJsonTwinSync(raw: raw, hint: hint);
+
+String benchmarkBlobOutputJsonTwinSync({required int size, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobOutputJsonTwinSync(size: size, hint: hint);
 
 class BenchmarkBinaryTreeTwinSync {
   final String name;

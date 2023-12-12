@@ -30597,6 +30597,46 @@ class RustLibWire implements BaseWire {
       _wire_next_user_id_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_benchmark_binary_tree_input_json_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_binary_tree_input_json_twin_rust_async(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_json_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+          'wire_benchmark_binary_tree_input_json_twin_rust_async');
+  late final _wire_benchmark_binary_tree_input_json_twin_rust_async =
+      _wire_benchmark_binary_tree_input_json_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+          'wire_benchmark_binary_tree_input_protobuf_twin_rust_async');
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_rust_async =
+      _wire_benchmark_binary_tree_input_protobuf_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
   void wire_benchmark_binary_tree_input_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async> tree,
@@ -30619,6 +30659,40 @@ class RustLibWire implements BaseWire {
           void Function(int,
               ffi.Pointer<wire_cst_benchmark_binary_tree_twin_rust_async>)>();
 
+  void wire_benchmark_binary_tree_output_json_twin_rust_async(
+    int port_,
+    int depth,
+  ) {
+    return _wire_benchmark_binary_tree_output_json_twin_rust_async(
+      port_,
+      depth,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_json_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_json_twin_rust_async');
+  late final _wire_benchmark_binary_tree_output_json_twin_rust_async =
+      _wire_benchmark_binary_tree_output_json_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_binary_tree_output_protobuf_twin_rust_async(
+    int port_,
+    int depth,
+  ) {
+    return _wire_benchmark_binary_tree_output_protobuf_twin_rust_async(
+      port_,
+      depth,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_protobuf_twin_rust_async');
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_rust_async =
+      _wire_benchmark_binary_tree_output_protobuf_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
   void wire_benchmark_binary_tree_output_twin_rust_async(
     int port_,
     int depth,
@@ -30635,6 +30709,44 @@ class RustLibWire implements BaseWire {
   late final _wire_benchmark_binary_tree_output_twin_rust_async =
       _wire_benchmark_binary_tree_output_twin_rust_asyncPtr
           .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_blob_input_json_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_blob_input_json_twin_rust_async(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_json_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_blob_input_json_twin_rust_async');
+  late final _wire_benchmark_blob_input_json_twin_rust_async =
+      _wire_benchmark_blob_input_json_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_blob_input_protobuf_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_blob_input_protobuf_twin_rust_async(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_protobuf_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_blob_input_protobuf_twin_rust_async');
+  late final _wire_benchmark_blob_input_protobuf_twin_rust_async =
+      _wire_benchmark_blob_input_protobuf_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
   void wire_benchmark_blob_input_twin_rust_async(
     int port_,
@@ -30655,6 +30767,40 @@ class RustLibWire implements BaseWire {
       _wire_benchmark_blob_input_twin_rust_asyncPtr.asFunction<
           void Function(
               int, ffi.Pointer<wire_cst_benchmark_blob_twin_rust_async>)>();
+
+  void wire_benchmark_blob_output_json_twin_rust_async(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_json_twin_rust_async(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_json_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_blob_output_json_twin_rust_async');
+  late final _wire_benchmark_blob_output_json_twin_rust_async =
+      _wire_benchmark_blob_output_json_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_blob_output_protobuf_twin_rust_async(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_protobuf_twin_rust_async(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_protobuf_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_blob_output_protobuf_twin_rust_async');
+  late final _wire_benchmark_blob_output_protobuf_twin_rust_async =
+      _wire_benchmark_blob_output_protobuf_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
 
   void wire_benchmark_blob_output_twin_rust_async(
     int port_,
@@ -30723,6 +30869,54 @@ class RustLibWire implements BaseWire {
   late final _wire_benchmark_void_twin_rust_async =
       _wire_benchmark_void_twin_rust_asyncPtr.asFunction<void Function(int)>();
 
+  void wire_benchmark_binary_tree_input_json_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_input_json_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_json_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_input_json_twin_rust_async_sse');
+  late final _wire_benchmark_binary_tree_input_json_twin_rust_async_sse =
+      _wire_benchmark_binary_tree_input_json_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse');
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse =
+      _wire_benchmark_binary_tree_input_protobuf_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_benchmark_binary_tree_input_twin_rust_async_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -30744,6 +30938,54 @@ class RustLibWire implements BaseWire {
       'wire_benchmark_binary_tree_input_twin_rust_async_sse');
   late final _wire_benchmark_binary_tree_input_twin_rust_async_sse =
       _wire_benchmark_binary_tree_input_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_binary_tree_output_json_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_output_json_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_json_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_json_twin_rust_async_sse');
+  late final _wire_benchmark_binary_tree_output_json_twin_rust_async_sse =
+      _wire_benchmark_binary_tree_output_json_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse');
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse =
+      _wire_benchmark_binary_tree_output_protobuf_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_benchmark_binary_tree_output_twin_rust_async_sse(
@@ -30770,6 +31012,53 @@ class RustLibWire implements BaseWire {
       _wire_benchmark_binary_tree_output_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_benchmark_blob_input_json_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_input_json_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_json_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'wire_benchmark_blob_input_json_twin_rust_async_sse');
+  late final _wire_benchmark_blob_input_json_twin_rust_async_sse =
+      _wire_benchmark_blob_input_json_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_input_protobuf_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_input_protobuf_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_protobuf_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'wire_benchmark_blob_input_protobuf_twin_rust_async_sse');
+  late final _wire_benchmark_blob_input_protobuf_twin_rust_async_sse =
+      _wire_benchmark_blob_input_protobuf_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_benchmark_blob_input_twin_rust_async_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -30790,6 +31079,53 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('wire_benchmark_blob_input_twin_rust_async_sse');
   late final _wire_benchmark_blob_input_twin_rust_async_sse =
       _wire_benchmark_blob_input_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_output_json_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_output_json_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_json_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'wire_benchmark_blob_output_json_twin_rust_async_sse');
+  late final _wire_benchmark_blob_output_json_twin_rust_async_sse =
+      _wire_benchmark_blob_output_json_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_output_protobuf_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_output_protobuf_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_protobuf_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'wire_benchmark_blob_output_protobuf_twin_rust_async_sse');
+  late final _wire_benchmark_blob_output_protobuf_twin_rust_async_sse =
+      _wire_benchmark_blob_output_protobuf_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_benchmark_blob_output_twin_rust_async_sse(
@@ -30880,6 +31216,51 @@ class RustLibWire implements BaseWire {
       _wire_benchmark_void_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_benchmark_binary_tree_input_json_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_input_json_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_json_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_binary_tree_input_json_twin_sse');
+  late final _wire_benchmark_binary_tree_input_json_twin_sse =
+      _wire_benchmark_binary_tree_input_json_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_binary_tree_input_protobuf_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_input_protobuf_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'wire_benchmark_binary_tree_input_protobuf_twin_sse');
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_sse =
+      _wire_benchmark_binary_tree_input_protobuf_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_benchmark_binary_tree_input_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -30900,6 +31281,51 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('wire_benchmark_binary_tree_input_twin_sse');
   late final _wire_benchmark_binary_tree_input_twin_sse =
       _wire_benchmark_binary_tree_input_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_binary_tree_output_json_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_output_json_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_json_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_binary_tree_output_json_twin_sse');
+  late final _wire_benchmark_binary_tree_output_json_twin_sse =
+      _wire_benchmark_binary_tree_output_json_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_binary_tree_output_protobuf_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_output_protobuf_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'wire_benchmark_binary_tree_output_protobuf_twin_sse');
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_sse =
+      _wire_benchmark_binary_tree_output_protobuf_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_benchmark_binary_tree_output_twin_sse(
@@ -30924,6 +31350,50 @@ class RustLibWire implements BaseWire {
       _wire_benchmark_binary_tree_output_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_benchmark_blob_input_json_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_input_json_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_json_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_input_json_twin_sse');
+  late final _wire_benchmark_blob_input_json_twin_sse =
+      _wire_benchmark_blob_input_json_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_input_protobuf_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_input_protobuf_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_protobuf_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_input_protobuf_twin_sse');
+  late final _wire_benchmark_blob_input_protobuf_twin_sse =
+      _wire_benchmark_blob_input_protobuf_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_benchmark_blob_input_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -30944,6 +31414,50 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('wire_benchmark_blob_input_twin_sse');
   late final _wire_benchmark_blob_input_twin_sse =
       _wire_benchmark_blob_input_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_output_json_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_output_json_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_json_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_output_json_twin_sse');
+  late final _wire_benchmark_blob_output_json_twin_sse =
+      _wire_benchmark_blob_output_json_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_blob_output_protobuf_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_output_protobuf_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_protobuf_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_output_protobuf_twin_sse');
+  late final _wire_benchmark_blob_output_protobuf_twin_sse =
+      _wire_benchmark_blob_output_protobuf_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_benchmark_blob_output_twin_sse(
@@ -31033,6 +31547,40 @@ class RustLibWire implements BaseWire {
   late final _wire_benchmark_void_twin_sse = _wire_benchmark_void_twin_ssePtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  WireSyncRust2DartDco wire_benchmark_binary_tree_input_json_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_binary_tree_input_json_twin_sync(
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_json_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_binary_tree_input_json_twin_sync');
+  late final _wire_benchmark_binary_tree_input_json_twin_sync =
+      _wire_benchmark_binary_tree_input_json_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  WireSyncRust2DartDco wire_benchmark_binary_tree_input_protobuf_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_binary_tree_input_protobuf_twin_sync(
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_binary_tree_input_protobuf_twin_sync');
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_sync =
+      _wire_benchmark_binary_tree_input_protobuf_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
   WireSyncRust2DartDco wire_benchmark_binary_tree_input_twin_sync(
     ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync> tree,
   ) {
@@ -31051,6 +31599,36 @@ class RustLibWire implements BaseWire {
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_benchmark_binary_tree_twin_sync>)>();
 
+  WireSyncRust2DartDco wire_benchmark_binary_tree_output_json_twin_sync(
+    int depth,
+  ) {
+    return _wire_benchmark_binary_tree_output_json_twin_sync(
+      depth,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_json_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_json_twin_sync');
+  late final _wire_benchmark_binary_tree_output_json_twin_sync =
+      _wire_benchmark_binary_tree_output_json_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire_benchmark_binary_tree_output_protobuf_twin_sync(
+    int depth,
+  ) {
+    return _wire_benchmark_binary_tree_output_protobuf_twin_sync(
+      depth,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_protobuf_twin_sync');
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_sync =
+      _wire_benchmark_binary_tree_output_protobuf_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
   WireSyncRust2DartDco wire_benchmark_binary_tree_output_twin_sync(
     int depth,
   ) {
@@ -31065,6 +31643,40 @@ class RustLibWire implements BaseWire {
   late final _wire_benchmark_binary_tree_output_twin_sync =
       _wire_benchmark_binary_tree_output_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire_benchmark_blob_input_json_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_blob_input_json_twin_sync(
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_json_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_blob_input_json_twin_sync');
+  late final _wire_benchmark_blob_input_json_twin_sync =
+      _wire_benchmark_blob_input_json_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  WireSyncRust2DartDco wire_benchmark_blob_input_protobuf_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_blob_input_protobuf_twin_sync(
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_protobuf_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_blob_input_protobuf_twin_sync');
+  late final _wire_benchmark_blob_input_protobuf_twin_sync =
+      _wire_benchmark_blob_input_protobuf_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
   WireSyncRust2DartDco wire_benchmark_blob_input_twin_sync(
     ffi.Pointer<wire_cst_benchmark_blob_twin_sync> blob,
@@ -31083,6 +31695,36 @@ class RustLibWire implements BaseWire {
       _wire_benchmark_blob_input_twin_syncPtr.asFunction<
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_benchmark_blob_twin_sync>)>();
+
+  WireSyncRust2DartDco wire_benchmark_blob_output_json_twin_sync(
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_json_twin_sync(
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_json_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+          'wire_benchmark_blob_output_json_twin_sync');
+  late final _wire_benchmark_blob_output_json_twin_sync =
+      _wire_benchmark_blob_output_json_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire_benchmark_blob_output_protobuf_twin_sync(
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_protobuf_twin_sync(
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_protobuf_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+          'wire_benchmark_blob_output_protobuf_twin_sync');
+  late final _wire_benchmark_blob_output_protobuf_twin_sync =
+      _wire_benchmark_blob_output_protobuf_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_benchmark_blob_output_twin_sync(
     int size,
@@ -31141,6 +31783,49 @@ class RustLibWire implements BaseWire {
   late final _wire_benchmark_void_twin_sync = _wire_benchmark_void_twin_syncPtr
       .asFunction<WireSyncRust2DartDco Function()>();
 
+  WireSyncRust2DartSse wire_benchmark_binary_tree_input_json_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_input_json_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_json_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'wire_benchmark_binary_tree_input_json_twin_sync_sse');
+  late final _wire_benchmark_binary_tree_input_json_twin_sync_sse =
+      _wire_benchmark_binary_tree_input_json_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_benchmark_binary_tree_input_protobuf_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_input_protobuf_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_input_protobuf_twin_sync_sse');
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_sync_sse =
+      _wire_benchmark_binary_tree_input_protobuf_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
   WireSyncRust2DartSse wire_benchmark_binary_tree_input_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
@@ -31159,6 +31844,49 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('wire_benchmark_binary_tree_input_twin_sync_sse');
   late final _wire_benchmark_binary_tree_input_twin_sync_sse =
       _wire_benchmark_binary_tree_input_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_benchmark_binary_tree_output_json_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_output_json_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_json_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'wire_benchmark_binary_tree_output_json_twin_sync_sse');
+  late final _wire_benchmark_binary_tree_output_json_twin_sync_sse =
+      _wire_benchmark_binary_tree_output_json_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_benchmark_binary_tree_output_protobuf_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_binary_tree_output_protobuf_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_protobuf_twin_sync_sse');
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_sync_sse =
+      _wire_benchmark_binary_tree_output_protobuf_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_benchmark_binary_tree_output_twin_sync_sse(
@@ -31181,6 +31909,46 @@ class RustLibWire implements BaseWire {
       _wire_benchmark_binary_tree_output_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  WireSyncRust2DartSse wire_benchmark_blob_input_json_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_input_json_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_json_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_input_json_twin_sync_sse');
+  late final _wire_benchmark_blob_input_json_twin_sync_sse =
+      _wire_benchmark_blob_input_json_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_benchmark_blob_input_protobuf_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_input_protobuf_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_protobuf_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_input_protobuf_twin_sync_sse');
+  late final _wire_benchmark_blob_input_protobuf_twin_sync_sse =
+      _wire_benchmark_blob_input_protobuf_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
   WireSyncRust2DartSse wire_benchmark_blob_input_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
@@ -31199,6 +31967,46 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('wire_benchmark_blob_input_twin_sync_sse');
   late final _wire_benchmark_blob_input_twin_sync_sse =
       _wire_benchmark_blob_input_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_benchmark_blob_output_json_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_output_json_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_json_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_output_json_twin_sync_sse');
+  late final _wire_benchmark_blob_output_json_twin_sync_sse =
+      _wire_benchmark_blob_output_json_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_benchmark_blob_output_protobuf_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_benchmark_blob_output_protobuf_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_protobuf_twin_sync_ssePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_benchmark_blob_output_protobuf_twin_sync_sse');
+  late final _wire_benchmark_blob_output_protobuf_twin_sync_sse =
+      _wire_benchmark_blob_output_protobuf_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_benchmark_blob_output_twin_sync_sse(

@@ -27,6 +27,26 @@ BenchmarkBinaryTreeTwinSyncSse benchmarkBinaryTreeOutputTwinSyncSse(
     RustLib.instance.api
         .benchmarkBinaryTreeOutputTwinSyncSse(depth: depth, hint: hint);
 
+void benchmarkBinaryTreeInputProtobufTwinSyncSse(
+        {required Uint8List raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputProtobufTwinSyncSse(raw: raw, hint: hint);
+
+Uint8List benchmarkBinaryTreeOutputProtobufTwinSyncSse(
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputProtobufTwinSyncSse(depth: depth, hint: hint);
+
+void benchmarkBinaryTreeInputJsonTwinSyncSse(
+        {required String raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputJsonTwinSyncSse(raw: raw, hint: hint);
+
+String benchmarkBinaryTreeOutputJsonTwinSyncSse(
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeOutputJsonTwinSyncSse(depth: depth, hint: hint);
+
 void benchmarkBlobInputTwinSyncSse(
         {required BenchmarkBlobTwinSyncSse blob, dynamic hint}) =>
     RustLib.instance.api.benchmarkBlobInputTwinSyncSse(blob: blob, hint: hint);
@@ -34,6 +54,24 @@ void benchmarkBlobInputTwinSyncSse(
 BenchmarkBlobTwinSyncSse benchmarkBlobOutputTwinSyncSse(
         {required int size, dynamic hint}) =>
     RustLib.instance.api.benchmarkBlobOutputTwinSyncSse(size: size, hint: hint);
+
+void benchmarkBlobInputProtobufTwinSyncSse(
+        {required Uint8List raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobInputProtobufTwinSyncSse(raw: raw, hint: hint);
+
+Uint8List benchmarkBlobOutputProtobufTwinSyncSse(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobOutputProtobufTwinSyncSse(size: size, hint: hint);
+
+void benchmarkBlobInputJsonTwinSyncSse({required String raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobInputJsonTwinSyncSse(raw: raw, hint: hint);
+
+String benchmarkBlobOutputJsonTwinSyncSse({required int size, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobOutputJsonTwinSyncSse(size: size, hint: hint);
 
 class BenchmarkBinaryTreeTwinSyncSse {
   final String name;

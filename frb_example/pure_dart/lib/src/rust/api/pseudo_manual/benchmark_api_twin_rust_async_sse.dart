@@ -30,6 +30,26 @@ Future<BenchmarkBinaryTreeTwinRustAsyncSse>
         RustLib.instance.api.benchmarkBinaryTreeOutputTwinRustAsyncSse(
             depth: depth, hint: hint);
 
+Future<void> benchmarkBinaryTreeInputProtobufTwinRustAsyncSse(
+        {required Uint8List raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputProtobufTwinRustAsyncSse(raw: raw, hint: hint);
+
+Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinRustAsyncSse(
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBinaryTreeOutputProtobufTwinRustAsyncSse(
+        depth: depth, hint: hint);
+
+Future<void> benchmarkBinaryTreeInputJsonTwinRustAsyncSse(
+        {required String raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBinaryTreeInputJsonTwinRustAsyncSse(raw: raw, hint: hint);
+
+Future<String> benchmarkBinaryTreeOutputJsonTwinRustAsyncSse(
+        {required int depth, dynamic hint}) =>
+    RustLib.instance.api.benchmarkBinaryTreeOutputJsonTwinRustAsyncSse(
+        depth: depth, hint: hint);
+
 Future<void> benchmarkBlobInputTwinRustAsyncSse(
         {required BenchmarkBlobTwinRustAsyncSse blob, dynamic hint}) =>
     RustLib.instance.api
@@ -39,6 +59,26 @@ Future<BenchmarkBlobTwinRustAsyncSse> benchmarkBlobOutputTwinRustAsyncSse(
         {required int size, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkBlobOutputTwinRustAsyncSse(size: size, hint: hint);
+
+Future<void> benchmarkBlobInputProtobufTwinRustAsyncSse(
+        {required Uint8List raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobInputProtobufTwinRustAsyncSse(raw: raw, hint: hint);
+
+Future<Uint8List> benchmarkBlobOutputProtobufTwinRustAsyncSse(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobOutputProtobufTwinRustAsyncSse(size: size, hint: hint);
+
+Future<void> benchmarkBlobInputJsonTwinRustAsyncSse(
+        {required String raw, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobInputJsonTwinRustAsyncSse(raw: raw, hint: hint);
+
+Future<String> benchmarkBlobOutputJsonTwinRustAsyncSse(
+        {required int size, dynamic hint}) =>
+    RustLib.instance.api
+        .benchmarkBlobOutputJsonTwinRustAsyncSse(size: size, hint: hint);
 
 class BenchmarkBinaryTreeTwinRustAsyncSse {
   final String name;

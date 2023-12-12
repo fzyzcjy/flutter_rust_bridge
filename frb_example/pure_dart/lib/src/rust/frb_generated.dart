@@ -947,15 +947,39 @@ abstract class RustLibApi extends BaseApi {
   UserIdTwinSyncSse nextUserIdTwinSyncSse(
       {required UserIdTwinSyncSse userId, dynamic hint});
 
+  Future<void> benchmarkBinaryTreeInputJsonTwinRustAsync(
+      {required String raw, dynamic hint});
+
+  Future<void> benchmarkBinaryTreeInputProtobufTwinRustAsync(
+      {required Uint8List raw, dynamic hint});
+
   Future<void> benchmarkBinaryTreeInputTwinRustAsync(
       {required BenchmarkBinaryTreeTwinRustAsync tree, dynamic hint});
+
+  Future<String> benchmarkBinaryTreeOutputJsonTwinRustAsync(
+      {required int depth, dynamic hint});
+
+  Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinRustAsync(
+      {required int depth, dynamic hint});
 
   Future<BenchmarkBinaryTreeTwinRustAsync>
       benchmarkBinaryTreeOutputTwinRustAsync(
           {required int depth, dynamic hint});
 
+  Future<void> benchmarkBlobInputJsonTwinRustAsync(
+      {required String raw, dynamic hint});
+
+  Future<void> benchmarkBlobInputProtobufTwinRustAsync(
+      {required Uint8List raw, dynamic hint});
+
   Future<void> benchmarkBlobInputTwinRustAsync(
       {required BenchmarkBlobTwinRustAsync blob, dynamic hint});
+
+  Future<String> benchmarkBlobOutputJsonTwinRustAsync(
+      {required int size, dynamic hint});
+
+  Future<Uint8List> benchmarkBlobOutputProtobufTwinRustAsync(
+      {required int size, dynamic hint});
 
   Future<BenchmarkBlobTwinRustAsync> benchmarkBlobOutputTwinRustAsync(
       {required int size, dynamic hint});
@@ -968,15 +992,39 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> benchmarkVoidTwinRustAsync({dynamic hint});
 
+  Future<void> benchmarkBinaryTreeInputJsonTwinRustAsyncSse(
+      {required String raw, dynamic hint});
+
+  Future<void> benchmarkBinaryTreeInputProtobufTwinRustAsyncSse(
+      {required Uint8List raw, dynamic hint});
+
   Future<void> benchmarkBinaryTreeInputTwinRustAsyncSse(
       {required BenchmarkBinaryTreeTwinRustAsyncSse tree, dynamic hint});
+
+  Future<String> benchmarkBinaryTreeOutputJsonTwinRustAsyncSse(
+      {required int depth, dynamic hint});
+
+  Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinRustAsyncSse(
+      {required int depth, dynamic hint});
 
   Future<BenchmarkBinaryTreeTwinRustAsyncSse>
       benchmarkBinaryTreeOutputTwinRustAsyncSse(
           {required int depth, dynamic hint});
 
+  Future<void> benchmarkBlobInputJsonTwinRustAsyncSse(
+      {required String raw, dynamic hint});
+
+  Future<void> benchmarkBlobInputProtobufTwinRustAsyncSse(
+      {required Uint8List raw, dynamic hint});
+
   Future<void> benchmarkBlobInputTwinRustAsyncSse(
       {required BenchmarkBlobTwinRustAsyncSse blob, dynamic hint});
+
+  Future<String> benchmarkBlobOutputJsonTwinRustAsyncSse(
+      {required int size, dynamic hint});
+
+  Future<Uint8List> benchmarkBlobOutputProtobufTwinRustAsyncSse(
+      {required int size, dynamic hint});
 
   Future<BenchmarkBlobTwinRustAsyncSse> benchmarkBlobOutputTwinRustAsyncSse(
       {required int size, dynamic hint});
@@ -989,14 +1037,38 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> benchmarkVoidTwinRustAsyncSse({dynamic hint});
 
+  Future<void> benchmarkBinaryTreeInputJsonTwinSse(
+      {required String raw, dynamic hint});
+
+  Future<void> benchmarkBinaryTreeInputProtobufTwinSse(
+      {required Uint8List raw, dynamic hint});
+
   Future<void> benchmarkBinaryTreeInputTwinSse(
       {required BenchmarkBinaryTreeTwinSse tree, dynamic hint});
+
+  Future<String> benchmarkBinaryTreeOutputJsonTwinSse(
+      {required int depth, dynamic hint});
+
+  Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinSse(
+      {required int depth, dynamic hint});
 
   Future<BenchmarkBinaryTreeTwinSse> benchmarkBinaryTreeOutputTwinSse(
       {required int depth, dynamic hint});
 
+  Future<void> benchmarkBlobInputJsonTwinSse(
+      {required String raw, dynamic hint});
+
+  Future<void> benchmarkBlobInputProtobufTwinSse(
+      {required Uint8List raw, dynamic hint});
+
   Future<void> benchmarkBlobInputTwinSse(
       {required BenchmarkBlobTwinSse blob, dynamic hint});
+
+  Future<String> benchmarkBlobOutputJsonTwinSse(
+      {required int size, dynamic hint});
+
+  Future<Uint8List> benchmarkBlobOutputProtobufTwinSse(
+      {required int size, dynamic hint});
 
   Future<BenchmarkBlobTwinSse> benchmarkBlobOutputTwinSse(
       {required int size, dynamic hint});
@@ -1009,14 +1081,36 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> benchmarkVoidTwinSse({dynamic hint});
 
+  void benchmarkBinaryTreeInputJsonTwinSync(
+      {required String raw, dynamic hint});
+
+  void benchmarkBinaryTreeInputProtobufTwinSync(
+      {required Uint8List raw, dynamic hint});
+
   void benchmarkBinaryTreeInputTwinSync(
       {required BenchmarkBinaryTreeTwinSync tree, dynamic hint});
+
+  String benchmarkBinaryTreeOutputJsonTwinSync(
+      {required int depth, dynamic hint});
+
+  Uint8List benchmarkBinaryTreeOutputProtobufTwinSync(
+      {required int depth, dynamic hint});
 
   BenchmarkBinaryTreeTwinSync benchmarkBinaryTreeOutputTwinSync(
       {required int depth, dynamic hint});
 
+  void benchmarkBlobInputJsonTwinSync({required String raw, dynamic hint});
+
+  void benchmarkBlobInputProtobufTwinSync(
+      {required Uint8List raw, dynamic hint});
+
   void benchmarkBlobInputTwinSync(
       {required BenchmarkBlobTwinSync blob, dynamic hint});
+
+  String benchmarkBlobOutputJsonTwinSync({required int size, dynamic hint});
+
+  Uint8List benchmarkBlobOutputProtobufTwinSync(
+      {required int size, dynamic hint});
 
   BenchmarkBlobTwinSync benchmarkBlobOutputTwinSync(
       {required int size, dynamic hint});
@@ -1027,14 +1121,36 @@ abstract class RustLibApi extends BaseApi {
 
   void benchmarkVoidTwinSync({dynamic hint});
 
+  void benchmarkBinaryTreeInputJsonTwinSyncSse(
+      {required String raw, dynamic hint});
+
+  void benchmarkBinaryTreeInputProtobufTwinSyncSse(
+      {required Uint8List raw, dynamic hint});
+
   void benchmarkBinaryTreeInputTwinSyncSse(
       {required BenchmarkBinaryTreeTwinSyncSse tree, dynamic hint});
+
+  String benchmarkBinaryTreeOutputJsonTwinSyncSse(
+      {required int depth, dynamic hint});
+
+  Uint8List benchmarkBinaryTreeOutputProtobufTwinSyncSse(
+      {required int depth, dynamic hint});
 
   BenchmarkBinaryTreeTwinSyncSse benchmarkBinaryTreeOutputTwinSyncSse(
       {required int depth, dynamic hint});
 
+  void benchmarkBlobInputJsonTwinSyncSse({required String raw, dynamic hint});
+
+  void benchmarkBlobInputProtobufTwinSyncSse(
+      {required Uint8List raw, dynamic hint});
+
   void benchmarkBlobInputTwinSyncSse(
       {required BenchmarkBlobTwinSyncSse blob, dynamic hint});
+
+  String benchmarkBlobOutputJsonTwinSyncSse({required int size, dynamic hint});
+
+  Uint8List benchmarkBlobOutputProtobufTwinSyncSse(
+      {required int size, dynamic hint});
 
   BenchmarkBlobTwinSyncSse benchmarkBlobOutputTwinSyncSse(
       {required int size, dynamic hint});
@@ -10943,6 +11059,58 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBinaryTreeInputJsonTwinRustAsync(
+      {required String raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(raw);
+        return wire.wire_benchmark_binary_tree_input_json_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputJsonTwinRustAsyncConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputJsonTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_json_twin_rust_async",
+        argNames: ["raw"],
+      );
+
+  @override
+  Future<void> benchmarkBinaryTreeInputProtobufTwinRustAsync(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(raw);
+        return wire.wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputProtobufTwinRustAsyncConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputProtobufTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_protobuf_twin_rust_async",
+        argNames: ["raw"],
+      );
+
+  @override
   Future<void> benchmarkBinaryTreeInputTwinRustAsync(
       {required BenchmarkBinaryTreeTwinRustAsync tree, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -10967,6 +11135,58 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "benchmark_binary_tree_input_twin_rust_async",
         argNames: ["tree"],
+      );
+
+  @override
+  Future<String> benchmarkBinaryTreeOutputJsonTwinRustAsync(
+      {required int depth, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(depth);
+        return wire.wire_benchmark_binary_tree_output_json_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputJsonTwinRustAsyncConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputJsonTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_json_twin_rust_async",
+        argNames: ["depth"],
+      );
+
+  @override
+  Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinRustAsync(
+      {required int depth, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(depth);
+        return wire.wire_benchmark_binary_tree_output_protobuf_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputProtobufTwinRustAsyncConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputProtobufTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_protobuf_twin_rust_async",
+        argNames: ["depth"],
       );
 
   @override
@@ -10997,6 +11217,57 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBlobInputJsonTwinRustAsync(
+      {required String raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(raw);
+        return wire.wire_benchmark_blob_input_json_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputJsonTwinRustAsyncConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputJsonTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_json_twin_rust_async",
+        argNames: ["raw"],
+      );
+
+  @override
+  Future<void> benchmarkBlobInputProtobufTwinRustAsync(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(raw);
+        return wire.wire_benchmark_blob_input_protobuf_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputProtobufTwinRustAsyncConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputProtobufTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_protobuf_twin_rust_async",
+        argNames: ["raw"],
+      );
+
+  @override
   Future<void> benchmarkBlobInputTwinRustAsync(
       {required BenchmarkBlobTwinRustAsync blob, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -11019,6 +11290,58 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "benchmark_blob_input_twin_rust_async",
         argNames: ["blob"],
+      );
+
+  @override
+  Future<String> benchmarkBlobOutputJsonTwinRustAsync(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_blob_output_json_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputJsonTwinRustAsyncConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputJsonTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_json_twin_rust_async",
+        argNames: ["size"],
+      );
+
+  @override
+  Future<Uint8List> benchmarkBlobOutputProtobufTwinRustAsync(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_blob_output_protobuf_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputProtobufTwinRustAsyncConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputProtobufTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_protobuf_twin_rust_async",
+        argNames: ["size"],
       );
 
   @override
@@ -11119,6 +11442,65 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBinaryTreeInputJsonTwinRustAsyncSse(
+      {required String raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_input_json_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputJsonTwinRustAsyncSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputJsonTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_json_twin_rust_async_sse",
+        argNames: ["raw"],
+      );
+
+  @override
+  Future<void> benchmarkBinaryTreeInputProtobufTwinRustAsyncSse(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputProtobufTwinRustAsyncSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kBenchmarkBinaryTreeInputProtobufTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "benchmark_binary_tree_input_protobuf_twin_rust_async_sse",
+            argNames: ["raw"],
+          );
+
+  @override
   Future<void> benchmarkBinaryTreeInputTwinRustAsyncSse(
       {required BenchmarkBinaryTreeTwinRustAsyncSse tree, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -11146,6 +11528,65 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "benchmark_binary_tree_input_twin_rust_async_sse",
         argNames: ["tree"],
       );
+
+  @override
+  Future<String> benchmarkBinaryTreeOutputJsonTwinRustAsyncSse(
+      {required int depth, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(depth, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_output_json_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputJsonTwinRustAsyncSseConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputJsonTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_json_twin_rust_async_sse",
+        argNames: ["depth"],
+      );
+
+  @override
+  Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinRustAsyncSse(
+      {required int depth, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(depth, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputProtobufTwinRustAsyncSseConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kBenchmarkBinaryTreeOutputProtobufTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "benchmark_binary_tree_output_protobuf_twin_rust_async_sse",
+            argNames: ["depth"],
+          );
 
   @override
   Future<BenchmarkBinaryTreeTwinRustAsyncSse>
@@ -11177,6 +11618,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBlobInputJsonTwinRustAsyncSse(
+      {required String raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_input_json_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputJsonTwinRustAsyncSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputJsonTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_json_twin_rust_async_sse",
+        argNames: ["raw"],
+      );
+
+  @override
+  Future<void> benchmarkBlobInputProtobufTwinRustAsyncSse(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_input_protobuf_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputProtobufTwinRustAsyncSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputProtobufTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_protobuf_twin_rust_async_sse",
+        argNames: ["raw"],
+      );
+
+  @override
   Future<void> benchmarkBlobInputTwinRustAsyncSse(
       {required BenchmarkBlobTwinRustAsyncSse blob, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -11203,6 +11700,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "benchmark_blob_input_twin_rust_async_sse",
         argNames: ["blob"],
+      );
+
+  @override
+  Future<String> benchmarkBlobOutputJsonTwinRustAsyncSse(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(size, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_output_json_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputJsonTwinRustAsyncSseConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputJsonTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_json_twin_rust_async_sse",
+        argNames: ["size"],
+      );
+
+  @override
+  Future<Uint8List> benchmarkBlobOutputProtobufTwinRustAsyncSse(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(size, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_output_protobuf_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputProtobufTwinRustAsyncSseConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputProtobufTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_protobuf_twin_rust_async_sse",
+        argNames: ["size"],
       );
 
   @override
@@ -11317,6 +11870,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBinaryTreeInputJsonTwinSse(
+      {required String raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_input_json_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputJsonTwinSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputJsonTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_json_twin_sse",
+        argNames: ["raw"],
+      );
+
+  @override
+  Future<void> benchmarkBinaryTreeInputProtobufTwinSse(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_input_protobuf_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputProtobufTwinSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputProtobufTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_protobuf_twin_sse",
+        argNames: ["raw"],
+      );
+
+  @override
   Future<void> benchmarkBinaryTreeInputTwinSse(
       {required BenchmarkBinaryTreeTwinSse tree, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -11342,6 +11951,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "benchmark_binary_tree_input_twin_sse",
         argNames: ["tree"],
+      );
+
+  @override
+  Future<String> benchmarkBinaryTreeOutputJsonTwinSse(
+      {required int depth, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(depth, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_output_json_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputJsonTwinSseConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputJsonTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_json_twin_sse",
+        argNames: ["depth"],
+      );
+
+  @override
+  Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinSse(
+      {required int depth, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(depth, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_output_protobuf_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputProtobufTwinSseConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputProtobufTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_protobuf_twin_sse",
+        argNames: ["depth"],
       );
 
   @override
@@ -11373,6 +12038,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> benchmarkBlobInputJsonTwinSse(
+      {required String raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_input_json_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputJsonTwinSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputJsonTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_json_twin_sse",
+        argNames: ["raw"],
+      );
+
+  @override
+  Future<void> benchmarkBlobInputProtobufTwinSse(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_input_protobuf_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputProtobufTwinSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputProtobufTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_protobuf_twin_sse",
+        argNames: ["raw"],
+      );
+
+  @override
   Future<void> benchmarkBlobInputTwinSse(
       {required BenchmarkBlobTwinSse blob, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -11397,6 +12118,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kBenchmarkBlobInputTwinSseConstMeta => const TaskConstMeta(
         debugName: "benchmark_blob_input_twin_sse",
         argNames: ["blob"],
+      );
+
+  @override
+  Future<String> benchmarkBlobOutputJsonTwinSse(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(size, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_output_json_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputJsonTwinSseConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputJsonTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_json_twin_sse",
+        argNames: ["size"],
+      );
+
+  @override
+  Future<Uint8List> benchmarkBlobOutputProtobufTwinSse(
+      {required int size, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(size, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_output_protobuf_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputProtobufTwinSseConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputProtobufTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_protobuf_twin_sse",
+        argNames: ["size"],
       );
 
   @override
@@ -11508,6 +12285,56 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  void benchmarkBinaryTreeInputJsonTwinSync(
+      {required String raw, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_String(raw);
+        return wire.wire_benchmark_binary_tree_input_json_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputJsonTwinSyncConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputJsonTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_json_twin_sync",
+        argNames: ["raw"],
+      );
+
+  @override
+  void benchmarkBinaryTreeInputProtobufTwinSync(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_8(raw);
+        return wire.wire_benchmark_binary_tree_input_protobuf_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputProtobufTwinSyncConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputProtobufTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_protobuf_twin_sync",
+        argNames: ["raw"],
+      );
+
+  @override
   void benchmarkBinaryTreeInputTwinSync(
       {required BenchmarkBinaryTreeTwinSync tree, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -11530,6 +12357,56 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "benchmark_binary_tree_input_twin_sync",
         argNames: ["tree"],
+      );
+
+  @override
+  String benchmarkBinaryTreeOutputJsonTwinSync(
+      {required int depth, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_32(depth);
+        return wire.wire_benchmark_binary_tree_output_json_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputJsonTwinSyncConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputJsonTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_json_twin_sync",
+        argNames: ["depth"],
+      );
+
+  @override
+  Uint8List benchmarkBinaryTreeOutputProtobufTwinSync(
+      {required int depth, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_32(depth);
+        return wire.wire_benchmark_binary_tree_output_protobuf_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputProtobufTwinSyncConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputProtobufTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_protobuf_twin_sync",
+        argNames: ["depth"],
       );
 
   @override
@@ -11558,6 +12435,55 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  void benchmarkBlobInputJsonTwinSync({required String raw, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_String(raw);
+        return wire.wire_benchmark_blob_input_json_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputJsonTwinSyncConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputJsonTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_json_twin_sync",
+        argNames: ["raw"],
+      );
+
+  @override
+  void benchmarkBlobInputProtobufTwinSync(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_8(raw);
+        return wire.wire_benchmark_blob_input_protobuf_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputProtobufTwinSyncConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputProtobufTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_protobuf_twin_sync",
+        argNames: ["raw"],
+      );
+
+  @override
   void benchmarkBlobInputTwinSync(
       {required BenchmarkBlobTwinSync blob, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -11579,6 +12505,55 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kBenchmarkBlobInputTwinSyncConstMeta => const TaskConstMeta(
         debugName: "benchmark_blob_input_twin_sync",
         argNames: ["blob"],
+      );
+
+  @override
+  String benchmarkBlobOutputJsonTwinSync({required int size, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_blob_output_json_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputJsonTwinSyncConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputJsonTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_json_twin_sync",
+        argNames: ["size"],
+      );
+
+  @override
+  Uint8List benchmarkBlobOutputProtobufTwinSync(
+      {required int size, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_blob_output_protobuf_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputProtobufTwinSyncConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputProtobufTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_protobuf_twin_sync",
+        argNames: ["size"],
       );
 
   @override
@@ -11677,6 +12652,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  void benchmarkBinaryTreeInputJsonTwinSyncSse(
+      {required String raw, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_input_json_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputJsonTwinSyncSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputJsonTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_json_twin_sync_sse",
+        argNames: ["raw"],
+      );
+
+  @override
+  void benchmarkBinaryTreeInputProtobufTwinSyncSse(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_input_protobuf_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeInputProtobufTwinSyncSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeInputProtobufTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_input_protobuf_twin_sync_sse",
+        argNames: ["raw"],
+      );
+
+  @override
   void benchmarkBinaryTreeInputTwinSyncSse(
       {required BenchmarkBinaryTreeTwinSyncSse tree, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -11703,6 +12734,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "benchmark_binary_tree_input_twin_sync_sse",
         argNames: ["tree"],
+      );
+
+  @override
+  String benchmarkBinaryTreeOutputJsonTwinSyncSse(
+      {required int depth, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(depth, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_output_json_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputJsonTwinSyncSseConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputJsonTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_json_twin_sync_sse",
+        argNames: ["depth"],
+      );
+
+  @override
+  Uint8List benchmarkBinaryTreeOutputProtobufTwinSyncSse(
+      {required int depth, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(depth, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_binary_tree_output_protobuf_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBinaryTreeOutputProtobufTwinSyncSseConstMeta,
+      argValues: [depth],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBinaryTreeOutputProtobufTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_binary_tree_output_protobuf_twin_sync_sse",
+        argNames: ["depth"],
       );
 
   @override
@@ -11734,6 +12821,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  void benchmarkBlobInputJsonTwinSyncSse({required String raw, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_input_json_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputJsonTwinSyncSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputJsonTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_json_twin_sync_sse",
+        argNames: ["raw"],
+      );
+
+  @override
+  void benchmarkBlobInputProtobufTwinSyncSse(
+      {required Uint8List raw, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8(raw, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_input_protobuf_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobInputProtobufTwinSyncSseConstMeta,
+      argValues: [raw],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobInputProtobufTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_input_protobuf_twin_sync_sse",
+        argNames: ["raw"],
+      );
+
+  @override
   void benchmarkBlobInputTwinSyncSse(
       {required BenchmarkBlobTwinSyncSse blob, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -11759,6 +12901,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "benchmark_blob_input_twin_sync_sse",
         argNames: ["blob"],
+      );
+
+  @override
+  String benchmarkBlobOutputJsonTwinSyncSse({required int size, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(size, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_output_json_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputJsonTwinSyncSseConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputJsonTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_json_twin_sync_sse",
+        argNames: ["size"],
+      );
+
+  @override
+  Uint8List benchmarkBlobOutputProtobufTwinSyncSse(
+      {required int size, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(size, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_benchmark_blob_output_protobuf_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkBlobOutputProtobufTwinSyncSseConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkBlobOutputProtobufTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_blob_output_protobuf_twin_sync_sse",
+        argNames: ["size"],
       );
 
   @override

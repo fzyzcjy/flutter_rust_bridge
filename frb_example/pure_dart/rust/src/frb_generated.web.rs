@@ -12198,11 +12198,43 @@ pub fn wire_next_user_id_twin_sync_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_json_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: String,
+) {
+    wire_benchmark_binary_tree_input_json_twin_rust_async_impl(port_, raw)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: Box<[u8]>,
+) {
+    wire_benchmark_binary_tree_input_protobuf_twin_rust_async_impl(port_, raw)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_binary_tree_input_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     tree: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_benchmark_binary_tree_input_twin_rust_async_impl(port_, tree)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_json_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: i32,
+) {
+    wire_benchmark_binary_tree_output_json_twin_rust_async_impl(port_, depth)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_protobuf_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: i32,
+) {
+    wire_benchmark_binary_tree_output_protobuf_twin_rust_async_impl(port_, depth)
 }
 
 #[wasm_bindgen]
@@ -12214,11 +12246,43 @@ pub fn wire_benchmark_binary_tree_output_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_blob_input_json_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: String,
+) {
+    wire_benchmark_blob_input_json_twin_rust_async_impl(port_, raw)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_protobuf_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: Box<[u8]>,
+) {
+    wire_benchmark_blob_input_protobuf_twin_rust_async_impl(port_, raw)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_blob_input_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_benchmark_blob_input_twin_rust_async_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_json_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: i32,
+) {
+    wire_benchmark_blob_output_json_twin_rust_async_impl(port_, size)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_protobuf_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: i32,
+) {
+    wire_benchmark_blob_output_protobuf_twin_rust_async_impl(port_, size)
 }
 
 #[wasm_bindgen]
@@ -12251,6 +12315,36 @@ pub fn wire_benchmark_void_twin_rust_async(port_: flutter_rust_bridge::for_gener
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_json_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_json_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_binary_tree_input_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -12258,6 +12352,36 @@ pub fn wire_benchmark_binary_tree_input_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_benchmark_binary_tree_input_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_json_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_json_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]
@@ -12276,6 +12400,31 @@ pub fn wire_benchmark_binary_tree_output_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_blob_input_json_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_json_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_protobuf_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_protobuf_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_blob_input_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -12283,6 +12432,31 @@ pub fn wire_benchmark_blob_input_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_benchmark_blob_input_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_json_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_json_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_protobuf_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_protobuf_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]
@@ -12326,6 +12500,26 @@ pub fn wire_benchmark_void_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_json_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_json_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_protobuf_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_protobuf_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_binary_tree_input_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -12333,6 +12527,26 @@ pub fn wire_benchmark_binary_tree_input_twin_sse(
     data_len_: i32,
 ) {
     wire_benchmark_binary_tree_input_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_json_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_json_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_protobuf_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_protobuf_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -12346,6 +12560,26 @@ pub fn wire_benchmark_binary_tree_output_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_blob_input_json_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_json_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_protobuf_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_protobuf_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_blob_input_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -12353,6 +12587,26 @@ pub fn wire_benchmark_blob_input_twin_sse(
     data_len_: i32,
 ) {
     wire_benchmark_blob_input_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_json_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_json_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_protobuf_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_protobuf_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -12396,10 +12650,38 @@ pub fn wire_benchmark_void_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_json_twin_sync(
+    raw: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_input_json_twin_sync_impl(raw)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_protobuf_twin_sync(
+    raw: Box<[u8]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_input_protobuf_twin_sync_impl(raw)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_binary_tree_input_twin_sync(
     tree: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_binary_tree_input_twin_sync_impl(tree)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_json_twin_sync(
+    depth: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_output_json_twin_sync_impl(depth)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_protobuf_twin_sync(
+    depth: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_output_protobuf_twin_sync_impl(depth)
 }
 
 #[wasm_bindgen]
@@ -12410,10 +12692,38 @@ pub fn wire_benchmark_binary_tree_output_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_blob_input_json_twin_sync(
+    raw: String,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_input_json_twin_sync_impl(raw)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_protobuf_twin_sync(
+    raw: Box<[u8]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_input_protobuf_twin_sync_impl(raw)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_blob_input_twin_sync(
     blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_blob_input_twin_sync_impl(blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_json_twin_sync(
+    size: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_output_json_twin_sync_impl(size)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_protobuf_twin_sync(
+    size: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_output_protobuf_twin_sync_impl(size)
 }
 
 #[wasm_bindgen]
@@ -12443,12 +12753,48 @@ pub fn wire_benchmark_void_twin_sync() -> flutter_rust_bridge::for_generated::Wi
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_json_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_input_json_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_protobuf_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_input_protobuf_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_binary_tree_input_twin_sync_sse(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_benchmark_binary_tree_input_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_json_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_output_json_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_protobuf_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_output_protobuf_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -12461,12 +12807,48 @@ pub fn wire_benchmark_binary_tree_output_twin_sync_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_blob_input_json_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_input_json_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_protobuf_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_input_protobuf_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_blob_input_twin_sync_sse(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_benchmark_blob_input_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_json_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_output_json_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_protobuf_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_output_protobuf_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

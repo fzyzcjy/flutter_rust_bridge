@@ -22289,18 +22289,55 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_next_user_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
+  void wire_benchmark_binary_tree_input_json_twin_rust_async(
+          NativePortType port_, String raw) =>
+      wasmModule.wire_benchmark_binary_tree_input_json_twin_rust_async(
+          port_, raw);
+
+  void wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
+          NativePortType port_, Uint8List raw) =>
+      wasmModule.wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
+          port_, raw);
+
   void wire_benchmark_binary_tree_input_twin_rust_async(
           NativePortType port_, List<dynamic> tree) =>
       wasmModule.wire_benchmark_binary_tree_input_twin_rust_async(port_, tree);
+
+  void wire_benchmark_binary_tree_output_json_twin_rust_async(
+          NativePortType port_, int depth) =>
+      wasmModule.wire_benchmark_binary_tree_output_json_twin_rust_async(
+          port_, depth);
+
+  void wire_benchmark_binary_tree_output_protobuf_twin_rust_async(
+          NativePortType port_, int depth) =>
+      wasmModule.wire_benchmark_binary_tree_output_protobuf_twin_rust_async(
+          port_, depth);
 
   void wire_benchmark_binary_tree_output_twin_rust_async(
           NativePortType port_, int depth) =>
       wasmModule.wire_benchmark_binary_tree_output_twin_rust_async(
           port_, depth);
 
+  void wire_benchmark_blob_input_json_twin_rust_async(
+          NativePortType port_, String raw) =>
+      wasmModule.wire_benchmark_blob_input_json_twin_rust_async(port_, raw);
+
+  void wire_benchmark_blob_input_protobuf_twin_rust_async(
+          NativePortType port_, Uint8List raw) =>
+      wasmModule.wire_benchmark_blob_input_protobuf_twin_rust_async(port_, raw);
+
   void wire_benchmark_blob_input_twin_rust_async(
           NativePortType port_, List<dynamic> blob) =>
       wasmModule.wire_benchmark_blob_input_twin_rust_async(port_, blob);
+
+  void wire_benchmark_blob_output_json_twin_rust_async(
+          NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_blob_output_json_twin_rust_async(port_, size);
+
+  void wire_benchmark_blob_output_protobuf_twin_rust_async(
+          NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_blob_output_protobuf_twin_rust_async(
+          port_, size);
 
   void wire_benchmark_blob_output_twin_rust_async(
           NativePortType port_, int size) =>
@@ -22317,12 +22354,44 @@ class RustLibWire extends BaseWire {
   void wire_benchmark_void_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_benchmark_void_twin_rust_async(port_);
 
+  void wire_benchmark_binary_tree_input_json_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_input_json_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_benchmark_binary_tree_input_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_benchmark_binary_tree_input_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_output_json_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_output_json_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_binary_tree_output_twin_rust_async_sse(
@@ -22333,12 +22402,44 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_benchmark_binary_tree_output_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_benchmark_blob_input_json_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_input_json_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_input_protobuf_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_input_protobuf_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_benchmark_blob_input_twin_rust_async_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_benchmark_blob_input_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_output_json_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_output_json_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_output_protobuf_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_output_protobuf_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_blob_output_twin_rust_async_sse(
@@ -22373,12 +22474,44 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_benchmark_void_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_benchmark_binary_tree_input_json_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_input_json_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_input_protobuf_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_input_protobuf_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_benchmark_binary_tree_input_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_benchmark_binary_tree_input_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_output_json_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_output_json_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_output_protobuf_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_binary_tree_output_protobuf_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_binary_tree_output_twin_sse(
@@ -22389,12 +22522,44 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_benchmark_binary_tree_output_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_benchmark_blob_input_json_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_input_json_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_input_protobuf_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_input_protobuf_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_benchmark_blob_input_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_benchmark_blob_input_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_output_json_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_output_json_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_blob_output_protobuf_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_benchmark_blob_output_protobuf_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_benchmark_blob_output_twin_sse(
@@ -22430,16 +22595,49 @@ class RustLibWire extends BaseWire {
           port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_input_json_twin_sync(String raw) =>
+          wasmModule.wire_benchmark_binary_tree_input_json_twin_sync(raw);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_input_protobuf_twin_sync(Uint8List raw) =>
+          wasmModule.wire_benchmark_binary_tree_input_protobuf_twin_sync(raw);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_binary_tree_input_twin_sync(List<dynamic> tree) =>
           wasmModule.wire_benchmark_binary_tree_input_twin_sync(tree);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_output_json_twin_sync(int depth) =>
+          wasmModule.wire_benchmark_binary_tree_output_json_twin_sync(depth);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_output_protobuf_twin_sync(int depth) =>
+          wasmModule
+              .wire_benchmark_binary_tree_output_protobuf_twin_sync(depth);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_binary_tree_output_twin_sync(int depth) =>
           wasmModule.wire_benchmark_binary_tree_output_twin_sync(depth);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_input_json_twin_sync(String raw) =>
+          wasmModule.wire_benchmark_blob_input_json_twin_sync(raw);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_input_protobuf_twin_sync(Uint8List raw) =>
+          wasmModule.wire_benchmark_blob_input_protobuf_twin_sync(raw);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_blob_input_twin_sync(List<dynamic> blob) =>
           wasmModule.wire_benchmark_blob_input_twin_sync(blob);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_output_json_twin_sync(int size) =>
+          wasmModule.wire_benchmark_blob_output_json_twin_sync(size);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_output_protobuf_twin_sync(int size) =>
+          wasmModule.wire_benchmark_blob_output_protobuf_twin_sync(size);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_blob_output_twin_sync(int size) =>
@@ -22458,11 +22656,43 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_benchmark_void_twin_sync();
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_input_json_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_binary_tree_input_json_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_input_protobuf_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_binary_tree_input_protobuf_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_benchmark_binary_tree_input_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_benchmark_binary_tree_input_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_output_json_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_binary_tree_output_json_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_output_protobuf_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_binary_tree_output_protobuf_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -22474,11 +22704,43 @@ class RustLibWire extends BaseWire {
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_input_json_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_blob_input_json_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_input_protobuf_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_blob_input_protobuf_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_benchmark_blob_input_twin_sync_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_benchmark_blob_input_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_output_json_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_blob_output_json_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_output_protobuf_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_benchmark_blob_output_protobuf_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -31023,14 +31285,38 @@ class RustLibWasmModule implements WasmModule {
       wire_next_user_id_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
 
+  external void wire_benchmark_binary_tree_input_json_twin_rust_async(
+      NativePortType port_, String raw);
+
+  external void wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
+      NativePortType port_, Uint8List raw);
+
   external void wire_benchmark_binary_tree_input_twin_rust_async(
       NativePortType port_, List<dynamic> tree);
+
+  external void wire_benchmark_binary_tree_output_json_twin_rust_async(
+      NativePortType port_, int depth);
+
+  external void wire_benchmark_binary_tree_output_protobuf_twin_rust_async(
+      NativePortType port_, int depth);
 
   external void wire_benchmark_binary_tree_output_twin_rust_async(
       NativePortType port_, int depth);
 
+  external void wire_benchmark_blob_input_json_twin_rust_async(
+      NativePortType port_, String raw);
+
+  external void wire_benchmark_blob_input_protobuf_twin_rust_async(
+      NativePortType port_, Uint8List raw);
+
   external void wire_benchmark_blob_input_twin_rust_async(
       NativePortType port_, List<dynamic> blob);
+
+  external void wire_benchmark_blob_output_json_twin_rust_async(
+      NativePortType port_, int size);
+
+  external void wire_benchmark_blob_output_protobuf_twin_rust_async(
+      NativePortType port_, int size);
 
   external void wire_benchmark_blob_output_twin_rust_async(
       NativePortType port_, int size);
@@ -31043,7 +31329,31 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_benchmark_void_twin_rust_async(NativePortType port_);
 
+  external void wire_benchmark_binary_tree_input_json_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void wire_benchmark_binary_tree_input_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_binary_tree_output_json_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
@@ -31055,7 +31365,31 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
+  external void wire_benchmark_blob_input_json_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_blob_input_protobuf_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void wire_benchmark_blob_input_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_blob_output_json_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_blob_output_protobuf_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
@@ -31082,14 +31416,56 @@ class RustLibWasmModule implements WasmModule {
   external void wire_benchmark_void_twin_rust_async_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_benchmark_binary_tree_input_json_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_binary_tree_input_protobuf_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void wire_benchmark_binary_tree_input_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_benchmark_binary_tree_output_json_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_benchmark_binary_tree_output_protobuf_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_benchmark_binary_tree_output_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_benchmark_blob_input_json_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_benchmark_blob_input_protobuf_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void wire_benchmark_blob_input_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_benchmark_blob_output_json_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_benchmark_blob_output_protobuf_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_benchmark_blob_output_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
@@ -31104,13 +31480,37 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_input_json_twin_sync(String raw);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_input_protobuf_twin_sync(Uint8List raw);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_binary_tree_input_twin_sync(List<dynamic> tree);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_output_json_twin_sync(int depth);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_binary_tree_output_protobuf_twin_sync(int depth);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_binary_tree_output_twin_sync(int depth);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_input_json_twin_sync(String raw);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_input_protobuf_twin_sync(Uint8List raw);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_blob_input_twin_sync(List<dynamic> blob);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_output_json_twin_sync(int size);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_benchmark_blob_output_protobuf_twin_sync(int size);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_benchmark_blob_output_twin_sync(int size);
@@ -31125,7 +31525,31 @@ class RustLibWasmModule implements WasmModule {
       wire_benchmark_void_twin_sync();
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_input_json_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_input_protobuf_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_benchmark_binary_tree_input_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_output_json_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_binary_tree_output_protobuf_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -31137,7 +31561,31 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_input_json_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_input_protobuf_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_benchmark_blob_input_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_output_json_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_benchmark_blob_output_protobuf_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

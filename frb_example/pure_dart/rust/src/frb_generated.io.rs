@@ -18017,6 +18017,22 @@ pub extern "C" fn wire_next_user_id_twin_sync_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_json_twin_rust_async(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_binary_tree_input_json_twin_rust_async_impl(port_, raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_binary_tree_input_protobuf_twin_rust_async_impl(port_, raw)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_binary_tree_input_twin_rust_async(
     port_: i64,
     tree: *mut wire_cst_benchmark_binary_tree_twin_rust_async,
@@ -18025,8 +18041,37 @@ pub extern "C" fn wire_benchmark_binary_tree_input_twin_rust_async(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_json_twin_rust_async(port_: i64, depth: i32) {
+    wire_benchmark_binary_tree_output_json_twin_rust_async_impl(port_, depth)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_protobuf_twin_rust_async(
+    port_: i64,
+    depth: i32,
+) {
+    wire_benchmark_binary_tree_output_protobuf_twin_rust_async_impl(port_, depth)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_binary_tree_output_twin_rust_async(port_: i64, depth: i32) {
     wire_benchmark_binary_tree_output_twin_rust_async_impl(port_, depth)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_json_twin_rust_async(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_blob_input_json_twin_rust_async_impl(port_, raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_protobuf_twin_rust_async(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_blob_input_protobuf_twin_rust_async_impl(port_, raw)
 }
 
 #[no_mangle]
@@ -18035,6 +18080,16 @@ pub extern "C" fn wire_benchmark_blob_input_twin_rust_async(
     blob: *mut wire_cst_benchmark_blob_twin_rust_async,
 ) {
     wire_benchmark_blob_input_twin_rust_async_impl(port_, blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_json_twin_rust_async(port_: i64, size: i32) {
+    wire_benchmark_blob_output_json_twin_rust_async_impl(port_, size)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_protobuf_twin_rust_async(port_: i64, size: i32) {
+    wire_benchmark_blob_output_protobuf_twin_rust_async_impl(port_, size)
 }
 
 #[no_mangle]
@@ -18061,6 +18116,36 @@ pub extern "C" fn wire_benchmark_void_twin_rust_async(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_json_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_json_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_binary_tree_input_twin_rust_async_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -18068,6 +18153,36 @@ pub extern "C" fn wire_benchmark_binary_tree_input_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_benchmark_binary_tree_input_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_json_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_json_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_protobuf_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
@@ -18086,6 +18201,31 @@ pub extern "C" fn wire_benchmark_binary_tree_output_twin_rust_async_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_json_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_json_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_protobuf_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_protobuf_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_blob_input_twin_rust_async_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -18093,6 +18233,31 @@ pub extern "C" fn wire_benchmark_blob_input_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_benchmark_blob_input_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_json_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_json_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_protobuf_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_protobuf_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
@@ -18136,6 +18301,26 @@ pub extern "C" fn wire_benchmark_void_twin_rust_async_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_json_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_json_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_protobuf_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_input_protobuf_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_binary_tree_input_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -18143,6 +18328,26 @@ pub extern "C" fn wire_benchmark_binary_tree_input_twin_sse(
     data_len_: i32,
 ) {
     wire_benchmark_binary_tree_input_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_json_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_json_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_protobuf_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_binary_tree_output_protobuf_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -18156,6 +18361,26 @@ pub extern "C" fn wire_benchmark_binary_tree_output_twin_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_json_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_json_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_protobuf_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_input_protobuf_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_blob_input_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -18163,6 +18388,26 @@ pub extern "C" fn wire_benchmark_blob_input_twin_sse(
     data_len_: i32,
 ) {
     wire_benchmark_blob_input_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_json_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_json_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_protobuf_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_benchmark_blob_output_protobuf_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -18206,10 +18451,38 @@ pub extern "C" fn wire_benchmark_void_twin_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_json_twin_sync(
+    raw: *mut wire_cst_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_input_json_twin_sync_impl(raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_protobuf_twin_sync(
+    raw: *mut wire_cst_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_input_protobuf_twin_sync_impl(raw)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_binary_tree_input_twin_sync(
     tree: *mut wire_cst_benchmark_binary_tree_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_binary_tree_input_twin_sync_impl(tree)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_json_twin_sync(
+    depth: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_output_json_twin_sync_impl(depth)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_protobuf_twin_sync(
+    depth: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_binary_tree_output_protobuf_twin_sync_impl(depth)
 }
 
 #[no_mangle]
@@ -18220,10 +18493,38 @@ pub extern "C" fn wire_benchmark_binary_tree_output_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_json_twin_sync(
+    raw: *mut wire_cst_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_input_json_twin_sync_impl(raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_protobuf_twin_sync(
+    raw: *mut wire_cst_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_input_protobuf_twin_sync_impl(raw)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_blob_input_twin_sync(
     blob: *mut wire_cst_benchmark_blob_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_blob_input_twin_sync_impl(blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_json_twin_sync(
+    size: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_output_json_twin_sync_impl(size)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_protobuf_twin_sync(
+    size: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_benchmark_blob_output_protobuf_twin_sync_impl(size)
 }
 
 #[no_mangle]
@@ -18254,12 +18555,48 @@ pub extern "C" fn wire_benchmark_void_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_json_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_input_json_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_protobuf_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_input_protobuf_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_binary_tree_input_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_benchmark_binary_tree_input_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_json_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_output_json_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_protobuf_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_binary_tree_output_protobuf_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -18272,12 +18609,48 @@ pub extern "C" fn wire_benchmark_binary_tree_output_twin_sync_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_json_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_input_json_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_protobuf_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_input_protobuf_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_benchmark_blob_input_twin_sync_sse(
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_benchmark_blob_input_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_json_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_output_json_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_protobuf_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_blob_output_protobuf_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
