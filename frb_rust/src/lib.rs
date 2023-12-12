@@ -1,3 +1,5 @@
+//! Main documentation is in <https://github.com/fzyzcjy/flutter_rust_bridge>
+
 mod generalized_isolate;
 pub(crate) mod handler;
 mod misc;

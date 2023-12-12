@@ -1,3 +1,5 @@
+//! Main documentation is in <https://github.com/fzyzcjy/flutter_rust_bridge>
+//!
 //! A thin command line interface. Please avoid putting logic here
 //! (instead be in `lib.rs` and so on)
 
