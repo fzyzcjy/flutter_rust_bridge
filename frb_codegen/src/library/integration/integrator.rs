@@ -129,8 +129,10 @@ fn compute_cargokit_comments(path: &Path) -> Option<String> {
 
     let comment_leading = match file_extension(path) {
         "dart" | "md" | "gradle" | "" => "///",
-        "yaml" | "toml" | "sh" => "#",
-        "lock" | "cmake" | "ps1" | "cmd" => return None,
+        "yaml" | "toml" => "#",
+        // Do not add prelude for `sh`, since it can contain things like `#!/bin/bash`
+        // which must be at first line
+        "lock" | "cmake" | "sh" | "ps1" | "cmd" => return None,
         ext => unreachable!("unexpected file extension for path={:?} ext={}", path, ext),
     };
 
