@@ -14,7 +14,8 @@ pub fn benchmark_output_bytes_twin_normal(size: i32) -> Vec<u8> {
     vec![0; size as usize]
 }
 
-#[derive(Clone)]
+// The `serde` is only used for comparison test
+#[derive(Clone, serde::Serialize, serde::Deserialize)]
 pub struct BenchmarkBinaryTreeTwinNormal {
     pub name: String,
     pub left: Option<Box<BenchmarkBinaryTreeTwinNormal>>,
@@ -48,11 +49,12 @@ pub fn benchmark_binary_tree_output_protobuf_twin_normal(depth: i32) -> Vec<u8> 
 }
 
 pub fn benchmark_binary_tree_input_json_twin_normal(raw: String) {
-    todo!()
+    let obj: BenchmarkBlobTwinNormal = serde_json::from_str(&raw).unwrap();
+    black_box(obj);
 }
 
-pub fn benchmark_binary_tree_output_json_twin_normal(depth: i32) -> Vec<u8> {
-    todo!()
+pub fn benchmark_binary_tree_output_json_twin_normal(depth: i32) -> String {
+    serde_json::to_string(BINARY_TREES.get(&depth).unwrap()).unwrap()
 }
 
 fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
