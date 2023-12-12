@@ -22,6 +22,24 @@ pub struct BenchmarkBinaryTreeTwinNormal {
     pub right: Option<Box<BenchmarkBinaryTreeTwinNormal>>,
 }
 
+impl BenchmarkBinaryTreeTwinNormal {
+    fn new(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
+        if depth == 0 {
+            BenchmarkBinaryTreeTwinNormal {
+                name: name.to_owned(),
+                left: None,
+                right: None,
+            }
+        } else {
+            BenchmarkBinaryTreeTwinNormal {
+                name: name.to_owned(),
+                left: Some(Box::new(Self::new(depth - 1, name))),
+                right: Some(Box::new(Self::new(depth - 1, name))),
+            }
+        }
+    }
+}
+
 lazy_static! {
     static ref BINARY_TREES: HashMap<i32, BenchmarkBinaryTreeTwinNormal> = {
         let mut m = HashMap::new();
@@ -57,26 +75,21 @@ pub fn benchmark_binary_tree_output_json_twin_normal(depth: i32) -> String {
     serde_json::to_string(BINARY_TREES.get(&depth).unwrap()).unwrap()
 }
 
-fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
-    if depth == 0 {
-        BenchmarkBinaryTreeTwinNormal {
-            name: name.to_owned(),
-            left: None,
-            right: None,
-        }
-    } else {
-        BenchmarkBinaryTreeTwinNormal {
-            name: name.to_owned(),
-            left: Some(Box::new(create_tree(depth - 1, name))),
-            right: Some(Box::new(create_tree(depth - 1, name))),
-        }
-    }
-}
-
 pub struct BenchmarkBlobTwinNormal {
     pub first: Vec<u8>,
     pub second: Vec<u8>,
     pub third: Vec<u8>,
+}
+
+impl BenchmarkBlobTwinNormal {
+    pub fn new(size: i32) -> Self {
+        let data = vec![0; size as _];
+        Self {
+            first: data.clone(),
+            second: data.clone(),
+            third: data,
+        }
+    }
 }
 
 pub fn benchmark_blob_input_twin_normal(blob: BenchmarkBlobTwinNormal) {
@@ -84,12 +97,7 @@ pub fn benchmark_blob_input_twin_normal(blob: BenchmarkBlobTwinNormal) {
 }
 
 pub fn benchmark_blob_output_twin_normal(size: i32) -> BenchmarkBlobTwinNormal {
-    let data = vec![0; size as _];
-    BenchmarkBlobTwinNormal {
-        first: data.clone(),
-        second: data.clone(),
-        third: data,
-    }
+    BenchmarkBlobTwinNormal::new(size)
 }
 
 pub fn benchmark_blob_input_protobuf_twin_normal(raw: Vec<u8>) {
