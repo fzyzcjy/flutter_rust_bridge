@@ -39,6 +39,22 @@ pub fn benchmark_binary_tree_output_twin_normal(depth: i32) -> BenchmarkBinaryTr
     BINARY_TREES.get(&depth).unwrap().to_owned()
 }
 
+pub fn benchmark_binary_tree_input_protobuf_twin_normal(raw: Vec<u8>) {
+    todo!()
+}
+
+pub fn benchmark_binary_tree_output_protobuf_twin_normal(depth: i32) -> Vec<u8> {
+    todo!()
+}
+
+pub fn benchmark_binary_tree_input_json_twin_normal(raw: String) {
+    todo!()
+}
+
+pub fn benchmark_binary_tree_output_json_twin_normal(depth: i32) -> Vec<u8> {
+    todo!()
+}
+
 fn create_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
     if depth == 0 {
         BenchmarkBinaryTreeTwinNormal {
@@ -72,4 +88,20 @@ pub fn benchmark_blob_output_twin_normal(size: i32) -> BenchmarkBlobTwinNormal {
         second: data.clone(),
         third: data,
     }
+}
+
+pub fn benchmark_blob_input_protobuf_twin_normal(raw: Vec<u8>) {
+    todo!()
+}
+
+pub fn benchmark_blob_output_protobuf_twin_normal(size: i32) -> Vec<u8> {
+    todo!()
+}
+
+pub fn benchmark_blob_input_json_twin_normal(raw: String) {
+    todo!()
+}
+
+pub fn benchmark_blob_output_json_twin_normal(size: i32) -> String {
+    todo!()
 }
