@@ -19,7 +19,6 @@ use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
-use crate::utils::console::simple_progress;
 use itertools::Itertools;
 use log::trace;
 use std::path::{Path, PathBuf};

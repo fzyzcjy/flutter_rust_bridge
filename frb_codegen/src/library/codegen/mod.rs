@@ -15,7 +15,6 @@ use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as Conten
 use crate::codegen::dumper::Dumper;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::reader::CachedRustReader;
-use crate::utils::console::simple_progress;
 pub use config::config::{Config, MetaConfig};
 pub use config::config_parser::*;
 pub use dumper::internal_config::ConfigDumpContent;

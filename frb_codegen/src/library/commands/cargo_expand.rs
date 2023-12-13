@@ -1,7 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::library::commands::command_runner::execute_command;
-use crate::utils::console::simple_progress;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use log::{debug, info, warn};

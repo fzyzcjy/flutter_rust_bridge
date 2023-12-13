@@ -4,7 +4,6 @@ use crate::codegen::generator::wire::dart::internal_config::{
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
-use crate::utils::console::simple_progress;
 use anyhow::ensure;
 use lazy_static::lazy_static;
 use regex::Regex;
