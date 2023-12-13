@@ -10,7 +10,7 @@ use std::ops::AddAssign;
 enum_map!(
     Acc, TargetOrCommon;
     Common, Io, Web;
-    common, io, wasm;
+    common, io, web;
 );
 
 impl<T> AddAssign for Acc<Vec<T>> {
@@ -18,7 +18,7 @@ impl<T> AddAssign for Acc<Vec<T>> {
     fn add_assign(&mut self, rhs: Self) {
         self.common.extend(rhs.common);
         self.io.extend(rhs.io);
-        self.wasm.extend(rhs.wasm);
+        self.web.extend(rhs.web);
     }
 }
 
@@ -55,7 +55,7 @@ impl<T> Acc<T> {
         Acc {
             common: init(TargetOrCommon::Common),
             io: init(TargetOrCommon::Io),
-            wasm: init(TargetOrCommon::Web),
+            web: init(TargetOrCommon::Web),
         }
     }
 
@@ -83,7 +83,7 @@ impl<T> Acc<T> {
         Acc {
             common: mapper(self.common, TargetOrCommon::Common),
             io: mapper(self.io, TargetOrCommon::Io),
-            wasm: mapper(self.wasm, TargetOrCommon::Web),
+            web: mapper(self.web, TargetOrCommon::Web),
         }
     }
 
@@ -91,7 +91,7 @@ impl<T> Acc<T> {
         Acc {
             common: mapper(&self.common, TargetOrCommon::Common),
             io: mapper(&self.io, TargetOrCommon::Io),
-            wasm: mapper(&self.wasm, TargetOrCommon::Web),
+            web: mapper(&self.web, TargetOrCommon::Web),
         }
     }
 
@@ -103,7 +103,7 @@ impl<T> Acc<T> {
         Self {
             common: T::default(),
             io: value.clone(),
-            wasm: value,
+            web: value,
         }
     }
 }
@@ -121,9 +121,13 @@ impl<T: ToString> From<T> for Acc<Option<String>> {
 impl<T> Acc<Vec<T>> {
     #[inline]
     pub fn push_acc(&mut self, acc: Acc<T>) {
-        let Acc { common, io, wasm } = acc;
+        let Acc {
+            common,
+            io,
+            web: wasm,
+        } = acc;
         self.common.push(common);
         self.io.push(io);
-        self.wasm.push(wasm);
+        self.web.push(wasm);
     }
 }

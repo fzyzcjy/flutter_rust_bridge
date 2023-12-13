@@ -49,7 +49,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
 
     pub(crate) fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc {
-            wasm: self.context.config.web_enabled.then(|| {
+            web: self.context.config.web_enabled.then(|| {
                 let st = self.ir.get(self.context.ir_pack);
                 let values = (st.fields.iter().enumerate())
                     .map(|(index, field)| {

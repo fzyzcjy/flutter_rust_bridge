@@ -35,7 +35,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             },
             IrTypeDelegate::String => {
                 Acc {
-                    wasm: Some("self".into()),
+                    web: Some("self".into()),
                     io: Some("let vec: Vec<u8> = self.cst_decode(); String::from_utf8(vec).unwrap()".into()),
                     ..Default::default()
                 }
@@ -49,7 +49,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 if ir == &IrTypeDelegateTime::Duration {
                     return Acc {
                         io: Some("chrono::Duration::microseconds(self)".into()),
-                        wasm: Some("chrono::Duration::milliseconds(self)".into()),
+                        web: Some("chrono::Duration::milliseconds(self)".into()),
                         ..Default::default()
                     };
                 }

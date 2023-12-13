@@ -157,7 +157,7 @@ fn generate_boilerplate(
             },
             ..Default::default()
         }],
-        wasm: vec![WireDartOutputCode {
+        web: vec![WireDartOutputCode {
             header: DartBasicHeaderCode {
                 file_top,
                 import: format!(

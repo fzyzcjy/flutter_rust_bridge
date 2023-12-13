@@ -29,7 +29,7 @@ fn generate_impl_decode_misc() -> Acc<WireRustOutputCode> {
     Acc {
         common: "".into(),
         io: "".into(),
-        wasm: r#"
+        web: r#"
             impl<T> CstDecode<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue where JsValue: CstDecode<T> {
                 fn cst_decode(self) -> Option<T> {
                     (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
@@ -74,7 +74,7 @@ fn generate_impl_decode_jsvalue_for_type(
     generator
         .generate_impl_decode_jsvalue_body()
         .map(|body| Acc {
-            wasm: generate_impl_decode_code_block(
+            web: generate_impl_decode_code_block(
                 &ty.rust_api_type(),
                 "flutter_rust_bridge::for_generated::wasm_bindgen::JsValue",
                 body.as_ref(),

@@ -81,7 +81,7 @@ fn generate_rust_arc_function_pointer(
         io: generate_platform_impl(&format!(
             "wire._rust_arc_decrement_strong_count_{ty_safe_ident}Ptr"
         )),
-        wasm: generate_platform_impl(&format!(
+        web: generate_platform_impl(&format!(
             "wire.rust_arc_decrement_strong_count_{ty_safe_ident}"
         )),
     }

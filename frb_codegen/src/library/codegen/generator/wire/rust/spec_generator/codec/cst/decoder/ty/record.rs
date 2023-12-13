@@ -18,18 +18,18 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerat
             .iter()
             .enumerate()
             .map(|(idx, field)| Acc {
-                wasm: format!("self_.get({idx}).cst_decode()"),
+                web: format!("self_.get({idx}).cst_decode()"),
                 io: format!("self.{}.cst_decode()", field.name.rust_style()),
                 ..Default::default()
             })
             .collect();
         Acc {
             io: Some(format!("({},)", values.io.join(","))),
-            wasm: Some(format!(
+            web: Some(format!(
                 "let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
                 assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
                 ({},)",
-                values.wasm.join(",")
+                values.web.join(",")
             )),
             ..Default::default()
         }

@@ -27,7 +27,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                         array.get_delegate().safe_ident(),
                         length = array.length,
                     )),
-                    wasm: Some(format!(
+                    web: Some(format!(
                         "return {}.fromList(raw);",
                         ApiDartGenerator::new(
                             array.get_delegate(),
@@ -44,7 +44,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                     "return cst_encode_{}(utf8.encoder.convert(raw));",
                     uint8list_safe_ident()
                 )),
-                wasm: Some("return raw;".into()),
+                web: Some("return raw;".into()),
                 ..Default::default()
             },
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
@@ -75,13 +75,13 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::Naive => {
                     Acc {
                         io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
-                        wasm: Some("return cst_encode_i_64(raw.millisecondsSinceEpoch);".into()),
+                        web: Some("return cst_encode_i_64(raw.millisecondsSinceEpoch);".into()),
                         ..Default::default()
                     }
                 }
                 IrTypeDelegateTime::Duration => Acc {
                     io: Some("return cst_encode_i_64(raw.inMicroseconds);".into()),
-                    wasm: Some("return cst_encode_i_64(raw.inMilliseconds);".into()),
+                    web: Some("return cst_encode_i_64(raw.inMilliseconds);".into()),
                     ..Default::default()
                 },
             },

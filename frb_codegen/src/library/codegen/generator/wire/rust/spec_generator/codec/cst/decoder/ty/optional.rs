@@ -7,7 +7,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for OptionalWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
-            wasm: (!is_js_value(&self.ir.inner)
+            web: (!is_js_value(&self.ir.inner)
                 && !self.ir.is_primitive()
                 && !self.ir.is_boxed_primitive())
             .then(|| "self.map(CstDecode::cst_decode)".into()),

@@ -47,7 +47,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
                 };
 
                 Acc {
-                    wasm: format!("{field_} self_.get({idx}).cst_decode()"),
+                    web: format!("{field_} self_.get({idx}).cst_decode()"),
                     io: format!("{field_} self.{field_name}.cst_decode()"),
                     ..Default::default()
                 }
@@ -63,13 +63,13 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
                 ",
                 fields = fields.io.join(","),
             )),
-            wasm: Some(format!(
+            web: Some(format!(
                 "
                 let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
                 assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
                 {rust_api_type}{left}{fields}{right}
                 ",
-                fields = fields.wasm.join(","),
+                fields = fields.web.join(","),
                 len = api_struct.fields.len(),
             )),
             ..Default::default()

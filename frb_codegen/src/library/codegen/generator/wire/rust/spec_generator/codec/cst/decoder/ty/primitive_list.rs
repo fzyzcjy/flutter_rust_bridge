@@ -31,7 +31,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
-            wasm: Some("self.into_vec()".into()),
+            web: Some("self.into_vec()".into()),
             io: Some(
                 "unsafe {
                     let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);

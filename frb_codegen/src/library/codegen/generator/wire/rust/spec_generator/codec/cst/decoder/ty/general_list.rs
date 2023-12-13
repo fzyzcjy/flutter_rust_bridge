@@ -68,7 +68,7 @@ pub(crate) fn general_list_maybe_extra_pointer_indirection(ir: &IrTypeGeneralLis
 
 pub(crate) fn general_list_impl_decode_body() -> Acc<Option<String>> {
     Acc {
-        wasm: Some(DECODE_BODY_WASM.to_owned()),
+        web: Some(DECODE_BODY_WASM.to_owned()),
         io: Some(DECODE_BODY_IO.to_owned()),
         ..Default::default()
     }

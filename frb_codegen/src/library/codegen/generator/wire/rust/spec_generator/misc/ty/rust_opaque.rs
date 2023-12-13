@@ -45,7 +45,7 @@ pub(super) fn generate_rust_arc_functions(ir: IrType, inner: &IrType) -> Acc<Wir
 
     Acc {
         io: generate_impl(Target::Io),
-        wasm: generate_impl(Target::Web),
+        web: generate_impl(Target::Web),
         ..Default::default()
     }
 }

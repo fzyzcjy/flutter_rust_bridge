@@ -11,7 +11,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGene
         match self.ir {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Acc {
                 io: Some("return raw.toInt();".into()),
-                wasm: Some("return castNativeBigInt(raw);".into()),
+                web: Some("return castNativeBigInt(raw);".into()),
                 ..Default::default()
             },
             _ => "return raw;".into(),

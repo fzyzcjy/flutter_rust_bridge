@@ -73,7 +73,7 @@ fn auto_add_base_class_abstract_method(raw: WireDartCodecOutputSpec) -> WireDart
     let Acc {
         common,
         mut io,
-        mut wasm,
+        mut web,
     } = raw.inner;
 
     let extra_abstract_methods = (common.iter())
@@ -89,9 +89,9 @@ fn auto_add_base_class_abstract_method(raw: WireDartCodecOutputSpec) -> WireDart
     };
 
     io.push(extra_item.clone());
-    wasm.push(extra_item);
+    web.push(extra_item);
 
     WireDartCodecOutputSpec {
-        inner: Acc { common, io, wasm },
+        inner: Acc { common, io, web },
     }
 }

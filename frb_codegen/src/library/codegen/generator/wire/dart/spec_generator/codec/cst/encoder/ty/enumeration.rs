@@ -16,7 +16,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenera
             .join("\n");
 
         Acc {
-            wasm: Some(format!(
+            web: Some(format!(
                 "{variants}
 
                 throw Exception('unreachable');"

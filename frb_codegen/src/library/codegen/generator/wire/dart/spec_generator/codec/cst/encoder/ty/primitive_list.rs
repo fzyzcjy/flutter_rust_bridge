@@ -29,7 +29,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
                     _ => "raw",
                 }
             )),
-            wasm: Some(
+            web: Some(
                 match self.ir.primitive {
                     IrTypePrimitive::I64 | IrTypePrimitive::U64 => "return raw.inner;",
                     _ => "return raw;",

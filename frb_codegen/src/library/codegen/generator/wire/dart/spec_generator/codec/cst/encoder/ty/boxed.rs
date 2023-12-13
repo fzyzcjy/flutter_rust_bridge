@@ -41,7 +41,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                     )
                 },
             ),
-            wasm: Some(format!("return cst_encode_{inner_safe_ident}(raw);")),
+            web: Some(format!("return cst_encode_{inner_safe_ident}(raw);")),
             ..Default::default()
         }
     }

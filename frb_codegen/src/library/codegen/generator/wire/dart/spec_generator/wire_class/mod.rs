@@ -13,7 +13,7 @@ pub(super) fn generate(
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
     Ok(Acc {
         io: vec![io::generate(config, c_file_content)?],
-        wasm: vec![wasm::generate(config, rust_extern_funcs)],
+        web: vec![wasm::generate(config, rust_extern_funcs)],
         ..Default::default()
     })
 }

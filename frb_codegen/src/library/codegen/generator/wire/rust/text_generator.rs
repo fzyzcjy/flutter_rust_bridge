@@ -70,7 +70,7 @@ fn generate_text_from_merged_code(
         Acc {
             common: generate_text_common(&core_code.common, config)?,
             io: core_code.io.clone(),
-            wasm: core_code.wasm.clone(),
+            web: core_code.web.clone(),
         },
         config.web_enabled,
     ))
