@@ -13,6 +13,6 @@ pub(super) fn dart_wire_type_from_rust_wire_type_or_wasm(
             WireRustCodecCstGenerator::new(that.ir_type(), that.context().as_wire_rust_context())
                 .rust_wire_type(target)
         }
-        Target::Wasm => wasm_type,
+        Target::Web => wasm_type,
     }
 }

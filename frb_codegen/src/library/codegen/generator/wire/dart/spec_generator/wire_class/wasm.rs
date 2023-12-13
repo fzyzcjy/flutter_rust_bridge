@@ -12,7 +12,7 @@ pub(super) fn generate(
 ) -> WireDartOutputCode {
     let methods = rust_extern_funcs
         .iter()
-        .filter(|x| x.target == Target::Wasm)
+        .filter(|x| x.target == Target::Web)
         .map(generate_method)
         .collect_vec();
     generate_wire_class(config, &methods) + generate_wasm_module_class(config, &methods)

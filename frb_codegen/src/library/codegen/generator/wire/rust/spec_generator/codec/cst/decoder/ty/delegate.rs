@@ -88,7 +88,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             // ),
             IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => Acc::new(|target| match target {
                 TargetOrCommon::Common => None,
-                TargetOrCommon::Io | TargetOrCommon::Wasm => Some("unimplemented!()".into()),
+                TargetOrCommon::Io | TargetOrCommon::Web => Some("unimplemented!()".into()),
             }),
         }
     }
@@ -100,7 +100,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             }
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum { repr, .. }) => format!(
                 "(self.unchecked_into_f64() as {}).cst_decode()",
-                WireRustCodecCstGenerator::new(repr.clone(), self.context).rust_wire_type(Target::Wasm)
+                WireRustCodecCstGenerator::new(repr.clone(), self.context).rust_wire_type(Target::Web)
             )
                 .into(),
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
@@ -129,7 +129,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
 
     fn rust_wire_type(&self, target: Target) -> String {
         match (&self.ir, target) {
-            (IrTypeDelegate::String, Target::Wasm) => "String".into(),
+            (IrTypeDelegate::String, Target::Web) => "String".into(),
             // (IrTypeDelegate::StringList, Target::Io) => "wire_cst_StringList".to_owned(),
             // (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
             _ => WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context)

@@ -91,7 +91,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
+        if let Target::Web = target {
             match self.ir.primitive {
                 IrTypePrimitive::Bool | IrTypePrimitive::Unit => JS_VALUE.into(),
                 _ => format!("Box<[{}]>", self.ir.primitive.rust_api_type()),
@@ -102,7 +102,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm
+        target != Target::Web
     }
 }
 

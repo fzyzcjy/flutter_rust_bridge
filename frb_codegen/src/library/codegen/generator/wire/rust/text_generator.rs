@@ -83,7 +83,7 @@ fn generate_text_common(
     let mod_io = generate_text_common_mod_declaration("io", config, Target::Io)?;
 
     let mod_wasm = if config.web_enabled {
-        generate_text_common_mod_declaration("web", config, Target::Wasm)?
+        generate_text_common_mod_declaration("web", config, Target::Web)?
     } else {
         "".into()
     };
@@ -103,12 +103,12 @@ fn generate_text_common_mod_declaration(
 ) -> anyhow::Result<String> {
     let prelude = match target {
         Target::Io => "",
-        Target::Wasm => "/// cbindgen:ignore",
+        Target::Web => "/// cbindgen:ignore",
     };
 
     let cfg = match target {
         Target::Io => r#"not(target_family = "wasm")"#,
-        Target::Wasm => r#"target_family = "wasm""#,
+        Target::Web => r#"target_family = "wasm""#,
     };
 
     let mod_filename = config.rust_output_path[target.into()]

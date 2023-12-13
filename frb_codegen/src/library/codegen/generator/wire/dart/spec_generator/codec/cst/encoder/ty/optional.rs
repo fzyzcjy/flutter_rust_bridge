@@ -7,9 +7,9 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for OptionalWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
-            TargetOrCommon::Io | TargetOrCommon::Wasm => Some(format!(
+            TargetOrCommon::Io | TargetOrCommon::Web => Some(format!(
                 "return raw == null ? {} : cst_encode_{}(raw);",
-                if target == TargetOrCommon::Wasm {
+                if target == TargetOrCommon::Web {
                     "null"
                 } else {
                     "ffi.nullptr"
@@ -21,7 +21,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for OptionalWireDartCodecCstGener
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        if target == Target::Wasm {
+        if target == Target::Web {
             format!(
                 "{}?",
                 WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)

@@ -23,7 +23,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
                     "unsafe {{ {extra} flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }}",
                     extra = if exist_in_real_api { "" } else { "*" }
                 )),
-                (Io | Wasm, ir) if ir.is_array() => Some(format!(
+                (Io | Web, ir) if ir.is_array() => Some(format!(
                     "CstDecode::<{}>::cst_decode(self).into()",
                     box_inner.rust_api_type()
                 )),
@@ -113,7 +113,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        if target == Target::Wasm && self.ir.inner.is_primitive() {
+        if target == Target::Web && self.ir.inner.is_primitive() {
             JS_VALUE.into()
         } else {
             WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
@@ -122,7 +122,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        (target != Target::Wasm)
+        (target != Target::Web)
             || !is_js_value(&self.ir.inner)
                 && !self.ir.inner.is_array()
                 && !self.ir.inner.is_primitive()

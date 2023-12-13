@@ -53,7 +53,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGe
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm
+        target != Target::Web
     }
 }
 

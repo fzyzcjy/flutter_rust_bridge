@@ -62,7 +62,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
                 return None;
             }
 
-            let wasm = target == TargetOrCommon::Wasm;
+            let wasm = target == TargetOrCommon::Web;
             let variants = enu
                 .variants()
                 .iter()
@@ -212,7 +212,7 @@ fn generate_impl_cst_decode_body_variant(
                         String::new()
                     };
 
-                    if target != TargetOrCommon::Wasm {
+                    if target != TargetOrCommon::Web {
                         format!("{field_} ans.{field_name}.cst_decode()")
                     } else {
                         format!("{field_} self_.get({}).cst_decode()", idx + 1)
@@ -224,7 +224,7 @@ fn generate_impl_cst_decode_body_variant(
             let enum_name = &enu.name.rust_style();
             let variant_name = &variant.name;
 
-            if target == TargetOrCommon::Wasm {
+            if target == TargetOrCommon::Web {
                 format!("{idx} => {{ {enum_name}::{variant_name}{left}{fields}{right} }},")
             } else {
                 format!(

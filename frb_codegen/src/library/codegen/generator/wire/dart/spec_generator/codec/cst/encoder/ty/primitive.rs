@@ -22,7 +22,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGene
         match &self.ir {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => match target {
                 Target::Io => "int".into(),
-                Target::Wasm => "Object".into(),
+                Target::Web => "Object".into(),
             },
             _ => ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type(),

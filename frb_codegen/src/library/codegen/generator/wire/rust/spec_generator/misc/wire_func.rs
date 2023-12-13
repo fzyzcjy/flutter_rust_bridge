@@ -43,7 +43,7 @@ pub(crate) fn generate_wire_func(
     let func_name = wire_func_name(func);
 
     Acc::new(|target| match target {
-        TargetOrCommon::Io | TargetOrCommon::Wasm => ExternFunc {
+        TargetOrCommon::Io | TargetOrCommon::Web => ExternFunc {
             func_name: func_name.clone(),
             params: params.clone().get(target),
             return_type: return_type.clone(),

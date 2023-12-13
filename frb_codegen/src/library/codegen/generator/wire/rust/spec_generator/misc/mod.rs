@@ -89,7 +89,7 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, WriteBytesExt,
 
     Acc::new(|target| {
         let platform_imports = match target {
-            TargetOrCommon::Wasm => {
+            TargetOrCommon::Web => {
                 "use super::*;
                 use flutter_rust_bridge::for_generated::wasm_bindgen;
                 use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;\n"
@@ -138,7 +138,7 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
 
 fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
     Acc::new(|target| match target {
-        TargetOrCommon::Io | TargetOrCommon::Wasm => {
+        TargetOrCommon::Io | TargetOrCommon::Web => {
             vec![
                 generate_boilerplate_frb_initialize_rust(target).into(),
                 generate_boilerplate_dart_fn_deliver_output(target).into(),

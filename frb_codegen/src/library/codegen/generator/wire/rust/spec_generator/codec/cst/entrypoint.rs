@@ -67,7 +67,7 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
                         ),
                         dart_type: "THIS_TYPE_SHOULD_NOT_BE_USED".into(),
                     },
-                    TargetOrCommon::Io | TargetOrCommon::Wasm => {
+                    TargetOrCommon::Io | TargetOrCommon::Web => {
                         let target: Target = target.try_into().unwrap();
                         ExternFuncParam::new(
                             name.clone(),

@@ -30,11 +30,11 @@ impl ExternFunc {
     pub(crate) fn generate(&self) -> String {
         let call_convention = match self.target {
             Target::Io => "extern \"C\"",
-            Target::Wasm => "",
+            Target::Web => "",
         };
         let attribute = match self.target {
             Target::Io => "#[no_mangle]",
-            Target::Wasm => "#[wasm_bindgen]",
+            Target::Web => "#[wasm_bindgen]",
         };
         let ExternFunc {
             func_name, body, ..

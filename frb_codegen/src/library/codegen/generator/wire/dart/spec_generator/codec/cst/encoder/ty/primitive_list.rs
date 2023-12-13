@@ -45,7 +45,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCst
             Target::Io => {
                 format!("ffi.Pointer<wire_cst_{}>", self.ir.safe_ident())
             }
-            Target::Wasm => match self.ir.primitive {
+            Target::Web => match self.ir.primitive {
                 IrTypePrimitive::I64 | IrTypePrimitive::U64 => {
                     "Object /* BigInt64Array */".to_owned()
                 }

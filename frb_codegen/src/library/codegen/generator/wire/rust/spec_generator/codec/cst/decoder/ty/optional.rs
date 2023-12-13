@@ -19,7 +19,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for OptionalWireRustCodecCstGener
         let inner_generator = WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context);
 
         if inner_generator.rust_wire_is_pointer(target)
-            || (target == Target::Wasm)
+            || (target == Target::Web)
                 && (is_js_value(&self.ir.inner)
                     || self.ir.is_primitive()
                     || self.ir.is_boxed_primitive())
@@ -31,7 +31,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for OptionalWireRustCodecCstGener
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm
+        target != Target::Web
             || WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                 .rust_wire_is_pointer(target)
     }

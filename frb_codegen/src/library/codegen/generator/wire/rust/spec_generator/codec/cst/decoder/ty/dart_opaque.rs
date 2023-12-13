@@ -13,7 +13,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DartOpaqueWireRustCodecCstGen
                     "unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self) }"
                         .to_owned(),
                 ),
-                TargetOrCommon::Wasm => Some(
+                TargetOrCommon::Web => Some(
                     format!("unsafe {{ flutter_rust_bridge::for_generated::cst_decode_dart_opaque(&*{HANDLER_NAME}, self) }}"),
                 ),
                 TargetOrCommon::Common => None,

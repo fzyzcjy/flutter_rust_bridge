@@ -29,7 +29,7 @@ pub(super) fn generalized_rust_opaque_generate_impl_decode_body() -> &'static st
 pub(super) fn dart_opaque_or_generalized_rust_opaque_rust_wire_type(target: Target) -> String {
     match target {
         Target::Io => "*const std::ffi::c_void",
-        Target::Wasm => JS_VALUE,
+        Target::Web => JS_VALUE,
     }
     .into()
 }

@@ -25,5 +25,5 @@ pub(crate) fn generate_text_respecting_wasm_flag(
     raw: Acc<String>,
     wasm_enabled: bool,
 ) -> Acc<Option<String>> {
-    raw.map(|value, target| (target != TargetOrCommon::Wasm || wasm_enabled).then_some(value))
+    raw.map(|value, target| (target != TargetOrCommon::Web || wasm_enabled).then_some(value))
 }

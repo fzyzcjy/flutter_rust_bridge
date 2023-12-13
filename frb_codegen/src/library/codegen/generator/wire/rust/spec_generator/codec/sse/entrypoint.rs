@@ -75,7 +75,7 @@ pub(crate) fn create_port_param(target: TargetOrCommon) -> ExternFuncParam {
         // NOTE Though in `io`, i64 == our MessagePort, but it will affect the cbindgen
         // and ffigen and make code tricker, so we manually write down "i64" here.
         TargetOrCommon::Io => "i64",
-        TargetOrCommon::Common | TargetOrCommon::Wasm => {
+        TargetOrCommon::Common | TargetOrCommon::Web => {
             "flutter_rust_bridge::for_generated::MessagePort"
         }
     }
@@ -94,7 +94,7 @@ pub(crate) fn generate_platform_generalized_uint8list_params(
         ExternFuncParam {
             name: "ptr_".to_owned(),
             rust_type: match target {
-                TargetOrCommon::Common | TargetOrCommon::Wasm => {
+                TargetOrCommon::Common | TargetOrCommon::Web => {
                     "flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr".to_owned()
                 }
                 TargetOrCommon::Io => "*mut u8".to_owned(),

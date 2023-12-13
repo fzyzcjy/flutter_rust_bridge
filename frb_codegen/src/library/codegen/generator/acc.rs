@@ -9,7 +9,7 @@ use std::ops::AddAssign;
 // for code shared between all platforms.
 enum_map!(
     Acc, TargetOrCommon;
-    Common, Io, Wasm;
+    Common, Io, Web;
     common, io, wasm;
 );
 
@@ -55,7 +55,7 @@ impl<T> Acc<T> {
         Acc {
             common: init(TargetOrCommon::Common),
             io: init(TargetOrCommon::Io),
-            wasm: init(TargetOrCommon::Wasm),
+            wasm: init(TargetOrCommon::Web),
         }
     }
 
@@ -83,7 +83,7 @@ impl<T> Acc<T> {
         Acc {
             common: mapper(self.common, TargetOrCommon::Common),
             io: mapper(self.io, TargetOrCommon::Io),
-            wasm: mapper(self.wasm, TargetOrCommon::Wasm),
+            wasm: mapper(self.wasm, TargetOrCommon::Web),
         }
     }
 
@@ -91,7 +91,7 @@ impl<T> Acc<T> {
         Acc {
             common: mapper(&self.common, TargetOrCommon::Common),
             io: mapper(&self.io, TargetOrCommon::Io),
-            wasm: mapper(&self.wasm, TargetOrCommon::Wasm),
+            wasm: mapper(&self.wasm, TargetOrCommon::Web),
         }
     }
 

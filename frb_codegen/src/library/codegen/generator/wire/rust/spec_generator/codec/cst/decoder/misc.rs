@@ -33,6 +33,6 @@ pub(super) fn rust_wire_type_add_prefix_or_js_value<T: IrTypeTrait>(
 ) -> String {
     match target {
         Target::Io => format!("wire_cst_{}", ir.safe_ident()),
-        Target::Wasm => JS_VALUE.into(),
+        Target::Web => JS_VALUE.into(),
     }
 }

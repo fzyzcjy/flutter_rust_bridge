@@ -68,7 +68,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
 
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Wasm => {
+            Target::Web => {
                 if is_js_value(&self.ir.inner)
                     || self.ir.inner.is_array()
                     || self.ir.inner.is_primitive()

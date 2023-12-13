@@ -259,7 +259,7 @@ fn compute_path_map(path_common: &Path) -> TargetOrCommonMap<PathBuf> {
     TargetOrCommonMap {
         common: path_common.to_owned(),
         io: path_common.with_extension(format!("io.{extension}")),
-        wasm: path_common.with_extension(format!("web.{extension}")),
+        web: path_common.with_extension(format!("web.{extension}")),
     }
 }
 

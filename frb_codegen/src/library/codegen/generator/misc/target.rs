@@ -7,20 +7,20 @@ use strum_macros::{Display, EnumIter};
 #[derive(Debug, Clone, Copy, Eq, PartialEq, EnumIter, Display, Serialize, Hash)]
 pub enum Target {
     Io,
-    Wasm,
+    Web,
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq, EnumIter, Display, Serialize, Hash)]
 pub enum TargetOrCommon {
     Common,
     Io,
-    Wasm,
+    Web,
 }
 
 enum_map!(
     TargetOrCommonMap, TargetOrCommon;
-    Common, Io, Wasm;
-    common, io, wasm;
+    Common, Io, Web;
+    common, io, web;
 );
 
 impl TryFrom<TargetOrCommon> for Target {
@@ -30,7 +30,7 @@ impl TryFrom<TargetOrCommon> for Target {
         Ok(match src {
             TargetOrCommon::Common => bail!("Cannot convert TargetOrCommon::Common to Target"),
             TargetOrCommon::Io => Target::Io,
-            TargetOrCommon::Wasm => Target::Wasm,
+            TargetOrCommon::Web => Target::Web,
         })
     }
 }
@@ -39,7 +39,7 @@ impl From<Target> for TargetOrCommon {
     fn from(value: Target) -> Self {
         match value {
             Target::Io => TargetOrCommon::Io,
-            Target::Wasm => TargetOrCommon::Wasm,
+            Target::Web => TargetOrCommon::Web,
         }
     }
 }
@@ -48,7 +48,7 @@ impl TargetOrCommon {
     pub(crate) fn as_target_or(&self, when_common: Target) -> Target {
         match self {
             TargetOrCommon::Common => when_common,
-            TargetOrCommon::Io | TargetOrCommon::Wasm => (*self).try_into().unwrap(),
+            TargetOrCommon::Io | TargetOrCommon::Web => (*self).try_into().unwrap(),
         }
     }
 }
