@@ -105,9 +105,9 @@ fn read_files(
         .map(|rust_input_path| {
             let content =
                 cached_rust_reader.read_rust_file(rust_input_path, rust_crate_dir, dumper)?;
-            (rust_input_path.to_owned(), content)
+            Ok((rust_input_path.to_owned(), content))
         })
-        .collect_vec();
+        .collect::<anyhow::Result<Vec<(PathBuf, String)>>>()?;
 
     let _pb = simple_progress("Run syn".to_owned(), 0);
     contents
@@ -115,7 +115,7 @@ fn read_files(
         .map(|(rust_input_path, content)| {
             let ast = syn::parse_file(&content)?;
             Ok(FileData {
-                path: (*rust_input_path).clone(),
+                path: rust_input_path,
                 content,
                 ast,
             })
