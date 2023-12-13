@@ -21,9 +21,9 @@ pub(crate) fn section_header_comment_raw(section_name: &str) -> String {
     format!("\n\n// Section: {section_name}\n\n")
 }
 
-pub(crate) fn generate_text_respecting_wasm_flag(
+pub(crate) fn generate_text_respecting_web_flag(
     raw: Acc<String>,
-    wasm_enabled: bool,
+    web_enabled: bool,
 ) -> Acc<Option<String>> {
-    raw.map(|value, target| (target != TargetOrCommon::Web || wasm_enabled).then_some(value))
+    raw.map(|value, target| (target != TargetOrCommon::Web || web_enabled).then_some(value))
 }
