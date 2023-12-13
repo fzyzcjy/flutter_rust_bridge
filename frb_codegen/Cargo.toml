@@ -51,6 +51,7 @@ proc-macro2 = { version = "1.0.66", features = ["span-locations"]}
 include_dir = "0.7.3"
 indicatif = "0.17.7"
 indicatif-log-bridge = "0.2.2"
+notify = "6.1.1"
 
 [dev-dependencies]
 semver = "1.0.12"
