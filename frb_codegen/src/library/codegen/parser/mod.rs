@@ -110,8 +110,11 @@ fn read_files(
         })
         .collect::<anyhow::Result<Vec<(PathBuf, String)>>>()?;
 
-    contents
-        .into_iter()
+    syn_parse_files(contents)
+}
+
+fn syn_parse_files(contents: Vec<(PathBuf, String)>) -> anyhow::Result<Vec<FileData>> {
+    (contents.into_iter())
         .map(|(rust_input_path, content)| {
             let ast = syn::parse_file(&content)?;
             Ok(FileData {
