@@ -46,6 +46,10 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub config_file: Option<String>,
 
+    /// Automatically re-generate the output whenever the changes are detected on the input files
+    #[arg(long)]
+    pub watch: bool,
+
     /// Glob pattern of input Rust files
     #[arg(short, long)]
     pub rust_input: Option<String>,
