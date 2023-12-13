@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDart
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 
 mod io;
-mod wasm;
+mod web;
 
 pub(super) fn generate(
     config: &GeneratorWireDartInternalConfig,
@@ -13,7 +13,7 @@ pub(super) fn generate(
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
     Ok(Acc {
         io: vec![io::generate(config, c_file_content)?],
-        web: vec![wasm::generate(config, rust_extern_funcs)],
+        web: vec![web::generate(config, rust_extern_funcs)],
         ..Default::default()
     })
 }
