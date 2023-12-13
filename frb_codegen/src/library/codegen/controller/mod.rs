@@ -56,7 +56,7 @@ fn create_fs_watcher(
 
     let (tx, rx) = std::sync::mpsc::channel();
 
-    let mut debouncer = new_debouncer(Duration::from_secs(2), |event: DebounceEventResult| {
+    let mut debouncer = new_debouncer(Duration::from_secs(2), move |event: DebounceEventResult| {
         if is_event_interesting(&event, &exclude_paths) {
             info!("See interesting file change: {event:?}"); // TODO change to `debug` level
             tx.send(()).unwrap()
