@@ -31,7 +31,7 @@ fn run_watch(
             warn!("Error when running code generator: {e:?}");
         }
 
-        info!(
+        println!(
             "Watching file changes on {}...",
             (watching_paths.iter())
                 .map(|p| path_to_string(p).unwrap_or_default())
