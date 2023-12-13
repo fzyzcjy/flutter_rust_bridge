@@ -81,12 +81,14 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
         config_file.path()
     )?;
 
-    handle_output(&res)?;
+    if let Some(warning) = handle_output(&res)? {
+        warn!(warning);
+    }
 
     Ok(())
 }
 
-fn handle_output(res: &Output) -> anyhow::Result<()> {
+fn handle_output(res: &Output) -> anyhow::Result<Option<String>> {
     let stdout = String::from_utf8_lossy(&res.stdout);
     let stderr = String::from_utf8_lossy(&res.stderr);
 
@@ -106,13 +108,13 @@ fn handle_output(res: &Output) -> anyhow::Result<()> {
         //
         // It may emit SEVERE log messages for non-fatal errors though, so
         // we don't want to error out completely.
-        warn!(
+        return Ok(Some(format!(
             "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? output=\n{}",
             stdout
-        );
+        )));
     }
 
-    Ok(())
+    Ok(None)
 }
 
 fn parse_config(args: &FfigenToFileArgs) -> FfigenCommandConfig {
