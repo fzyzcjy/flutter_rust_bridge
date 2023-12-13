@@ -3,6 +3,7 @@ use crate::commands::command_runner::call_shell;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
+use itertools::Itertools;
 use log::{debug, warn};
 use serde::{Deserialize, Serialize};
 use std::fs;
@@ -108,20 +109,24 @@ fn handle_output(
         bail!("ffigen failed. {}", hint_link);
     }
 
-    if stdout.contains("[SEVERE]") {
-        let lines = stdout.split("\n");
-        if TODO {
-            // If ffigen can't find a header file it will generate broken
-            // bindings but still exit successfully. We can detect these broken
-            // bindings by looking for a "[SEVERE]" log message.
-            //
-            // It may emit SEVERE log messages for non-fatal errors though, so
-            // we don't want to error out completely.
-            return Ok(Some(format!(
-                "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? {}",
-                hint_link
-            )));
-        }
+    // This is usually not a problem
+    let nullability_message = "pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]";
+
+    let stdout_lines = stdout.split("\n").collect_vec();
+    if stdout_lines
+        .iter()
+        .any(|line| line.contains("[SEVERE]") && !line.contains(nullability_message))
+    {
+        // If ffigen can't find a header file it will generate broken
+        // bindings but still exit successfully. We can detect these broken
+        // bindings by looking for a "[SEVERE]" log message.
+        //
+        // It may emit SEVERE log messages for non-fatal errors though, so
+        // we don't want to error out completely.
+        return Ok(Some(format!(
+            "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? {}",
+            hint_link
+        )));
     }
 
     Ok(None)
