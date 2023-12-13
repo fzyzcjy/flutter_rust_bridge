@@ -6,7 +6,7 @@ default:
 # or lightweight scripts that is much easier to implement with justfile
 
 # Execute the in-tree version of `flutter_rust_bridge_codegen`
-flutter_rust_bridge_codegen *args:
+codegen *args:
     cd {{invocation_directory()}} && \
         cargo run \
         --manifest-path {{justfile_directory()}}/frb_codegen/Cargo.toml \
