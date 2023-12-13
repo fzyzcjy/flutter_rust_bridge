@@ -10,6 +10,7 @@ pub(crate) mod type_parser;
 
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -29,6 +30,7 @@ pub(crate) fn parse(
     config: &ParserInternalConfig,
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<IrPack> {
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
@@ -40,7 +42,7 @@ pub(crate) fn parse(
         dumper,
     )?;
 
-    let pb = simple_progress("Parse crate source graph".to_owned(), 1);
+    let pb = progress_bar_pack.parse_source_graph.start();
     let crate_map = source_graph::crates::Crate::parse(
         &config.rust_crate_dir.join("Cargo.toml"),
         cached_rust_reader,
@@ -99,8 +101,9 @@ fn read_files(
     rust_crate_dir: &Path,
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<Vec<FileData>> {
-    let _pb = simple_progress("Run cargo expand and extract".to_owned(), 1);
+    let _pb = progress_bar_pack.parse_cargo_expand.start();
     let contents = rust_input_paths
         .iter()
         .map(|rust_input_path| {

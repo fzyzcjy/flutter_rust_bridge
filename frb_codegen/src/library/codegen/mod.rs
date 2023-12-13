@@ -5,6 +5,7 @@ mod controller;
 pub(crate) mod dumper;
 mod generator;
 pub(crate) mod ir;
+mod misc;
 pub(crate) mod parser;
 mod polisher;
 mod preparer;
@@ -12,6 +13,7 @@ mod preparer;
 use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
+use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::utils::console::simple_progress;
 pub use config::config::{Config, MetaConfig};
@@ -36,25 +38,29 @@ pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
     Ok(())
 }
 
-fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::Result<()> {
+fn generate_once(
+    internal_config: &InternalConfig,
+    dumper: &Dumper,
+    progress_bar_pack: &GeneratorProgressBarPack,
+) -> anyhow::Result<()> {
     dumper.dump(ContentConfig, "internal_config.json", &internal_config)?;
 
     preparer::prepare(&internal_config.preparer)?;
 
     let mut cached_rust_reader = CachedRustReader::default();
 
-    let pb = simple_progress("Parse".to_owned(), 0);
+    let pb = progress_bar_pack.parse.start();
     let ir_pack = parser::parse(&internal_config.parser, &mut cached_rust_reader, &dumper)?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
     drop(pb);
 
-    let pb = simple_progress("Generate".to_owned(), 0);
+    let pb = progress_bar_pack.generate.start();
     let generator_output = generator::generate(&ir_pack, &internal_config.generator, &dumper)?;
     drop(pb);
 
     generator_output.output_texts.write_to_disk()?;
 
-    let pb = simple_progress("Polish".to_owned(), 0);
+    let pb = progress_bar_pack.polish.start();
     polisher::polish(
         &internal_config.polisher,
         generator_output.dart_needs_freezed,

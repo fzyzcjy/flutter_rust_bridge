@@ -7,6 +7,8 @@ lazy_static! {
     pub(super) static ref MULTI_PROGRESS: MultiProgress = MultiProgress::new();
 }
 
+pub(crate) struct SimpleProgressBar {}
+
 pub(crate) struct SimpleProgress {
     pb: ProgressBar,
 }

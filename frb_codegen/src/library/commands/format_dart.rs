@@ -8,8 +8,6 @@ use std::path::PathBuf;
 
 #[allow(clippy::vec_init_then_push)]
 pub fn format_dart(path: &[PathBuf], line_length: u32) -> anyhow::Result<()> {
-    let _pb = simple_progress("Run Dart formatter".to_owned(), 1);
-
     let path = normalize_windows_unc_paths(path)?;
     debug!("execute format_dart path={path:?} line_length={line_length}");
 

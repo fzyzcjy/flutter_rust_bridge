@@ -1,4 +1,5 @@
 use crate::codegen::generator::misc::target::TargetOrCommon;
+use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::polisher::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::commands::format_rust::format_rust;
@@ -49,25 +50,33 @@ fn warn_if_fail(r: anyhow::Result<()>, debug_name: &str) -> bool {
 fn execute_build_runner(
     needs_freezed: bool,
     config: &PolisherInternalConfig,
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     if !(needs_freezed && config.build_runner) {
         return Ok(());
     }
 
+    let _pb = progress_bar_pack.polish_dart_build_runner.start();
     dart_build_runner(&config.dart_root)
 }
 
 fn execute_dart_format(
     config: &PolisherInternalConfig,
     output_paths: &[PathBuf],
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
+    let _pb = progress_bar_pack.polish_dart_formatter.start();
     format_dart(
         &filter_paths_by_extension(output_paths, "dart"),
         config.dart_format_line_length,
     )
 }
 
-fn execute_rust_format(output_paths: &[PathBuf]) -> anyhow::Result<()> {
+fn execute_rust_format(
+    output_paths: &[PathBuf],
+    progress_bar_pack: &GeneratorProgressBarPack,
+) -> anyhow::Result<()> {
+    let _pb = progress_bar_pack.polish_rust_formatter.start();
     format_rust(&filter_paths_by_extension(output_paths, "rs"))
 }
 

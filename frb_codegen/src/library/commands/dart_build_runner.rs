@@ -10,7 +10,6 @@ use std::path::Path;
 use std::str::FromStr;
 
 pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
-    let _pb = simple_progress("Run Dart build_runner".to_owned(), 1);
     debug!("Running build_runner at dart_root={dart_root:?}");
 
     let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();

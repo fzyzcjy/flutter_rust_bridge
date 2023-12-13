@@ -2,6 +2,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
     DartOutputClassNamePack, GeneratorWireDartInternalConfig,
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 use crate::utils::console::simple_progress;
 use anyhow::ensure;
@@ -21,8 +22,9 @@ pub(crate) fn generate(
 fn execute_ffigen(
     config: &GeneratorWireDartInternalConfig,
     c_file_content: &str,
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<String> {
-    let _pb = simple_progress("Run ffigen".to_owned(), 1);
+    let _pb = progress_bar_pack.generate_ffigen.start();
     ffigen(FfigenArgs {
         c_file_content,
         dart_class_name: &config.dart_output_class_name_pack.wire_class_name,
