@@ -1,9 +1,9 @@
-use crate::binary::commands::GenerateCommandArgs;
+use crate::binary::commands::{GenerateCommandArgs, GenerateCommandArgsPrimary};
 use anyhow::{Context, Result};
 use lib_flutter_rust_bridge_codegen::codegen::Config;
 use log::debug;
 
-pub(crate) fn compute_codegen_config(args: GenerateCommandArgs) -> Result<Config> {
+pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result<Config> {
     if args == Default::default() {
         debug!("compute_codegen_config: mode=from_files_auto");
         return Config::from_files_auto();
@@ -18,7 +18,9 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgs) -> Result<Config
     compute_codegen_config_from_naive_command_args(args)
 }
 
-fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> Result<Config> {
+fn compute_codegen_config_from_naive_command_args(
+    args: GenerateCommandArgsPrimary,
+) -> Result<Config> {
     Ok(Config {
         base_dir: None,
         watch: Some(args.watch),

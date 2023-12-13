@@ -22,7 +22,7 @@ fn main() -> anyhow::Result<()> {
 fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
     debug!("cli={cli:?}");
     match cli.command {
-        Commands::Generate(args) => codegen::generate(compute_codegen_config(args)?)?,
+        Commands::Generate(args) => codegen::generate(compute_codegen_config(args.primary)?)?,
         Commands::Create(args) => integration::create(&args.name)?,
         Commands::BuildWeb(args) => build_web::build(args.dart_root, args.args)?,
         Commands::Integrate(args) => integration::integrate(!args.no_enable_integration_test)?,

@@ -46,7 +46,7 @@ pub(crate) struct GenerateCommandArgs {
 // Deliberately decoupled from `codegen::Config`,
 // because the command line arguments contains extra things like `--config-file`,
 // which is not a config to the real codegen.
-#[derive(Debug, Args, Default, Eq, PartialEq)]
+#[derive(Debug, Args, Default, Eq, PartialEq, Clone)]
 pub(crate) struct GenerateCommandArgsPrimary {
     /// Path to a YAML config file.
     ///
