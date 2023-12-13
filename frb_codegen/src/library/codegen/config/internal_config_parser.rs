@@ -78,6 +78,7 @@ impl InternalConfig {
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
                 watch: config.watch.unwrap_or(false),
+                watching_paths: TODO,
             },
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),

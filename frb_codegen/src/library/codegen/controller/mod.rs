@@ -30,14 +30,14 @@ fn run_watch(
         // If `recv` call ends, then we see at least one change
         fs_change_rx.recv()?;
         // Drain all other file changes
-        while let Some(_) = fs_change_rx.try_recv() {}
+        while let Ok(_) = fs_change_rx.try_recv()? {}
     }
 }
 
 fn create_fs_watcher(watching_paths: &[PathBuf]) -> anyhow::Result<Receiver<()>> {
     // ref: https://github.com/notify-rs/notify/blob/main/examples/monitor_raw.rs
     let (tx, rx) = std::sync::mpsc::channel();
-    let mut watcher = RecommendedWatcher::new(|_| tx.send(()), notify::Config::default())?;
+    let mut watcher = RecommendedWatcher::new(|_| tx.send(()).unwrap(), notify::Config::default())?;
     for path in watching_paths {
         watcher.watch(path, RecursiveMode::Recursive)?;
     }
