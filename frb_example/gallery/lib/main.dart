@@ -1,8 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_via_create/src/rust/api/simple.dart';
-import 'package:flutter_via_create/src/rust/frb_generated.dart';
+import 'package:frb_example_gallery/src/rust/api/simple.dart';
+import 'package:frb_example_gallery/src/rust/frb_generated.dart';
 
 Future<void> main() async {
   await RustLib.init();
