@@ -13,6 +13,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;
 use serde::Serialize;
@@ -39,6 +40,7 @@ pub(crate) fn generate(
     api_dart_actual_output_paths: &[PathBuf],
     rust_extern_funcs: &[ExternFunc],
     dumper: &Dumper,
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputSpec> {
     let cache = IrPackComputedCache::compute(context.ir_pack);
 
@@ -55,6 +57,7 @@ pub(crate) fn generate(
             c_file_content,
             api_dart_actual_output_paths,
             rust_extern_funcs,
+            progress_bar_pack,
         )?,
         rust2dart: auto_add_base_class_abstract_method(
             (CodecMode::iter().map(WireDartCodecEntrypoint::from))

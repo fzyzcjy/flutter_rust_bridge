@@ -18,21 +18,25 @@ pub(super) fn polish(
     config: &PolisherInternalConfig,
     needs_freezed: bool,
     output_paths: &[PathBuf],
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     execute_try_add_mod_to_lib(config);
     execute_duplicate_c_output(config)?;
 
     warn_if_fail(
-        execute_build_runner(needs_freezed, config),
+        execute_build_runner(needs_freezed, config, progress_bar_pack),
         "execute_build_runner",
     );
 
     // Even if formatting generated code fails, it is not a big problem, and our codegen should not fail.
     warn_if_fail(
-        execute_dart_format(config, output_paths),
+        execute_dart_format(config, output_paths, progress_bar_pack),
         "execute_dart_format",
     );
-    warn_if_fail(execute_rust_format(output_paths), "execute_rust_format");
+    warn_if_fail(
+        execute_rust_format(output_paths, progress_bar_pack),
+        "execute_rust_format",
+    );
 
     Ok(())
 }

@@ -10,6 +10,7 @@ use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::misc::GeneratorProgressBarPack;
 use anyhow::Result;
 use itertools::Itertools;
 use std::path::PathBuf;
@@ -24,6 +25,7 @@ pub(crate) fn generate(
     api_dart_config: &GeneratorApiDartInternalConfig,
     api_dart_actual_output_paths: &[PathBuf],
     dumper: &Dumper,
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> Result<GeneratorWireOutput> {
     let wire_rust_generator_context = WireRustGeneratorContext {
         ir_pack,
@@ -46,6 +48,7 @@ pub(crate) fn generate(
         rust_output.extern_struct_names,
         &rust_output.output_texts,
         dumper,
+        progress_bar_pack,
     )?;
 
     let dart_output = dart::generate(
@@ -54,6 +57,7 @@ pub(crate) fn generate(
         api_dart_actual_output_paths,
         &rust_output.extern_funcs,
         dumper,
+        progress_bar_pack,
     )?;
 
     Ok(GeneratorWireOutput {

@@ -11,8 +11,9 @@ use regex::Regex;
 pub(crate) fn generate(
     config: &GeneratorWireDartInternalConfig,
     c_file_content: &str,
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputCode> {
-    let content = execute_ffigen(config, c_file_content)?;
+    let content = execute_ffigen(config, c_file_content, progress_bar_pack)?;
     let content = postpare_modify(&content, &config.dart_output_class_name_pack);
     sanity_check(&content, &config.dart_output_class_name_pack)?;
     Ok(WireDartOutputCode::parse(&content))

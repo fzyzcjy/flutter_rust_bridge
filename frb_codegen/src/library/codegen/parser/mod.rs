@@ -39,6 +39,7 @@ pub(crate) fn parse(
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
+        progress_bar_pack,
     )?;
 
     let pb = progress_bar_pack.parse_source_graph.start();
@@ -129,6 +130,7 @@ fn read_files(
 mod tests {
     use crate::codegen::config::internal_config::RustInputPathPack;
     use crate::codegen::dumper::Dumper;
+    use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
     use crate::codegen::parser::parse;
     use crate::codegen::parser::reader::CachedRustReader;
@@ -223,6 +225,7 @@ mod tests {
             },
             &mut CachedRustReader::default(),
             &Dumper(&Default::default()),
+            &GeneratorProgressBarPack::new(),
         )?;
         json_golden_test(
             &serde_json::to_value(actual_ir)?,

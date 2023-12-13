@@ -42,6 +42,7 @@ mod tests {
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::api_dart::generate;
+    use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::{parser, Config};
     use crate::utils::logs::configure_opinionated_test_logging;
@@ -67,6 +68,7 @@ mod tests {
             &internal_config.parser,
             &mut cached_rust_reader,
             &Dumper(&Default::default()),
+            &GeneratorProgressBarPack::new(),
         )?;
         let actual = generate(
             &ir_pack,

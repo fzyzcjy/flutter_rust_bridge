@@ -15,9 +15,9 @@ pub(crate) struct SimpleProgressBar {
 }
 
 impl SimpleProgressBar {
-    pub fn new(message: String, level: usize) -> Self {
+    pub fn new(message: &str, level: usize) -> Self {
         Self {
-            message,
+            message: message.to_owned(),
             level,
             active_pb: Mutex::new(None),
         }

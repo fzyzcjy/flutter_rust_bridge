@@ -28,10 +28,11 @@ pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
     debug!("internal_config={internal_config:?}");
 
     let dumper = Dumper(&internal_config.dumper);
+    let progress_bar_pack = GeneratorProgressBarPack::new();
     dumper.dump(ContentConfig, "config.json", &config)?;
 
     controller::run(&internal_config.controller, &|| {
-        generate_once(&internal_config, &dumper)
+        generate_once(&internal_config, &dumper, &progress_bar_pack)
     })?;
 
     Ok(())
@@ -49,12 +50,22 @@ fn generate_once(
     let mut cached_rust_reader = CachedRustReader::default();
 
     let pb = progress_bar_pack.parse.start();
-    let ir_pack = parser::parse(&internal_config.parser, &mut cached_rust_reader, &dumper)?;
+    let ir_pack = parser::parse(
+        &internal_config.parser,
+        &mut cached_rust_reader,
+        &dumper,
+        progress_bar_pack,
+    )?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
     drop(pb);
 
     let pb = progress_bar_pack.generate.start();
-    let generator_output = generator::generate(&ir_pack, &internal_config.generator, &dumper)?;
+    let generator_output = generator::generate(
+        &ir_pack,
+        &internal_config.generator,
+        &dumper,
+        progress_bar_pack,
+    )?;
     drop(pb);
 
     generator_output.output_texts.write_to_disk()?;
@@ -64,6 +75,7 @@ fn generate_once(
         &internal_config.polisher,
         generator_output.dart_needs_freezed,
         &generator_output.output_texts.paths(),
+        progress_bar_pack,
     )?;
     drop(pb);
 

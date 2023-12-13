@@ -10,6 +10,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDart
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
@@ -36,9 +37,15 @@ pub(crate) fn generate(
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
     rust_extern_funcs: &[ExternFunc],
+    progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputSpecMisc> {
     Ok(WireDartOutputSpecMisc {
-        wire_class: super::wire_class::generate(context.config, c_file_content, rust_extern_funcs)?,
+        wire_class: super::wire_class::generate(
+            context.config,
+            c_file_content,
+            rust_extern_funcs,
+            progress_bar_pack,
+        )?,
         boilerplate: generate_boilerplate(api_dart_actual_output_paths, cache, context)?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
