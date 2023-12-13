@@ -29,17 +29,18 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     dumper.dump(ContentConfig, "config.json", &config)?;
     dumper.dump(ContentConfig, "internal_config.json", &internal_config)?;
 
-    {
-        let pb = simple_progress("Prepare".to_owned());
-        preparer::prepare(&internal_config.preparer)?;
-    }
+    preparer::prepare(&internal_config.preparer)?;
 
     let mut cached_rust_reader = CachedRustReader::default();
 
+    let pb = simple_progress("Parse".to_owned());
     let ir_pack = parser::parse(&internal_config.parser, &mut cached_rust_reader, &dumper)?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
+    drop(pb);
 
+    let pb = simple_progress("Generate".to_owned());
     let generator_output = generator::generate(&ir_pack, &internal_config.generator, &dumper)?;
+    drop(pb);
 
     generator_output.output_texts.write_to_disk()?;
 
