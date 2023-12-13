@@ -29,7 +29,9 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     let dumper = Dumper(&internal_config.dumper);
     dumper.dump(ContentConfig, "config.json", &config)?;
 
-    generate_once(&internal_config, &dumper)?;
+    controller::run(&internal_config.controller, &|| {
+        generate_once(&internal_config, &dumper)
+    })?;
 
     Ok(())
 }
