@@ -184,7 +184,15 @@ mod tests {
 
     #[test]
     pub fn test_handle_output_when_cannot_find_llvm_should_fail() {
-        let result = handle_output(true, "One line\n[SEVERE] Something\nAnother line", "");
-        assert_eq!(result, Ok(None));
+        let result = handle_output(
+            false,
+            "One line\nCouldn't find dynamic library in default locations.\nAnother line",
+            "",
+        );
+        assert!(result
+            .err()
+            .unwrap()
+            .to_string()
+            .contains("ffigen could not find LLVM"));
     }
 }
