@@ -32,11 +32,12 @@ impl IrTypeTrait for IrTypeDartFn {
     }
 
     fn rust_api_type(&self) -> String {
-        format!(
-            "impl Fn({}) -> flutter_rust_bridge::DartFnFuture<{}> + std::panic::UnwindSafe>",
-            self.inputs.iter().map(|x| x.rust_api_type()).join(", "),
-            self.output.rust_api_type()
-        )
+        "DART_FN_RUST_API_TYPE_NOT_USED".to_owned()
+        // format!(
+        //     "impl Fn({}) -> flutter_rust_bridge::DartFnFuture<{}> + std::panic::UnwindSafe>",
+        //     self.inputs.iter().map(|x| x.rust_api_type()).join(", "),
+        //     self.output.rust_api_type()
+        // )
     }
 }
 
