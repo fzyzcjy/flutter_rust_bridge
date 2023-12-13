@@ -82,7 +82,7 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
     )?;
 
     if let Some(warning) = handle_output(&res)? {
-        warn!(warning);
+        warn!("{}", warning);
     }
 
     Ok(())
@@ -163,9 +163,35 @@ pub(crate) struct FfigenCommandConfigHeaders {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::process::ExitStatus;
+
+    #[test]
+    pub fn test_handle_output_when_normal() {
+        let result = handle_output(&Output {
+            status: Default::default(),
+            stdout: vec![],
+            stderr: vec![],
+        });
+        assert_eq!(result, Ok(None));
+    }
 
     #[test]
     pub fn test_handle_output_when_has_severe_should_warn() {
-        todo!();
+        let result = handle_output(&Output {
+            status: Default::default(),
+            stdout: ("One line\n[SEVERE] Something\nAnother line".to_owned()).into_bytes(),
+            stderr: vec![],
+        });
+        assert_eq!(result, Ok(None));
+    }
+
+    #[test]
+    pub fn test_handle_output_when_cannot_find_llvm_should_fail() {
+        let result = handle_output(&Output {
+            status: ExitStatus::default(),
+            stdout: ("One line\n[SEVERE] Something\nAnother line".to_owned()).into_bytes(),
+            stderr: vec![],
+        });
+        assert_eq!(result, Ok(None));
     }
 }
