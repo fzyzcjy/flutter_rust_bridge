@@ -105,9 +105,7 @@ fn read_files(
         .map(|rust_input_path| {
             let content =
                 cached_rust_reader.read_rust_file(rust_input_path, rust_crate_dir, dumper)?;
-            log::info!("hi before syn parse");
             let ast = syn::parse_file(&content)?;
-            log::info!("hi after syn parse");
             Ok(FileData {
                 path: (*rust_input_path).clone(),
                 content,
