@@ -8,30 +8,31 @@ lazy_static! {
 }
 
 pub(crate) struct SimpleProgress {
-    pb: ProgressBar,
+    // pb: ProgressBar,
 }
 
 impl Drop for SimpleProgress {
     fn drop(&mut self) {
-        self.pb.finish();
+        // self.pb.finish();
     }
 }
 
 pub(crate) fn simple_progress(message: String, level: usize) -> SimpleProgress {
-    let style = ProgressStyle::with_template("{level.dim}{my_elapsed:.dim} {msg} {spinner}")
-        .unwrap()
-        .with_key("my_elapsed", |state: &ProgressState, w: &mut dyn Write| {
-            write!(w, "[{:.1}s]", state.elapsed().as_secs_f64()).unwrap()
-        })
-        .with_key("level", move |state: &ProgressState, w: &mut dyn Write| {
-            if level > 0 {
-                write!(w, "  └{} ", "──".repeat(level)).unwrap();
-            }
-        })
-        .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ ");
-    let pb = MULTI_PROGRESS.add(ProgressBar::new_spinner());
-    pb.set_style(style);
-    pb.enable_steady_tick(Duration::from_millis(50));
-    pb.set_message(message);
-    SimpleProgress { pb }
+    // let style = ProgressStyle::with_template("{level.dim}{my_elapsed:.dim} {msg} {spinner}")
+    //     .unwrap()
+    //     .with_key("my_elapsed", |state: &ProgressState, w: &mut dyn Write| {
+    //         write!(w, "[{:.1}s]", state.elapsed().as_secs_f64()).unwrap()
+    //     })
+    //     .with_key("level", move |state: &ProgressState, w: &mut dyn Write| {
+    //         if level > 0 {
+    //             write!(w, "  └{} ", "──".repeat(level)).unwrap();
+    //         }
+    //     })
+    //     .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ ");
+    // let pb = MULTI_PROGRESS.add(ProgressBar::new_spinner());
+    // pb.set_style(style);
+    // pb.enable_steady_tick(Duration::from_millis(50));
+    // pb.set_message(message);
+    // SimpleProgress { pb }
+    SimpleProgress {}
 }
