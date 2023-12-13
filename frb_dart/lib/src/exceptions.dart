@@ -38,11 +38,7 @@ class MissingHeaderException implements FrbException {
   /// Constructs an exception
   const MissingHeaderException();
 
-  static const _message = '''
-Buffers cannot be shared due to missing cross-origin headers.
-Make sure your web server responds with the following headers:
-- Cross-Origin-Opener-Policy: same-origin
-- Cross-Origin-Embedder-Policy: credentialless OR require-corp''';
+  static const _message = '''Buffers cannot be shared due to missing cross-origin headers. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/web-cross-origin for details.''';
 
   @override
   String toString() => _message;
