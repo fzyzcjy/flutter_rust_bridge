@@ -3,16 +3,16 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::Wir
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
-pub(super) fn dart_wire_type_from_rust_wire_type_or_wasm(
+pub(super) fn dart_wire_type_from_rust_wire_type_or_web(
     that: &impl WireDartCodecCstGeneratorImplTrait,
     target: Target,
-    wasm_type: String,
+    web_type: String,
 ) -> String {
     match target {
         Target::Io => {
             WireRustCodecCstGenerator::new(that.ir_type(), that.context().as_wire_rust_context())
                 .rust_wire_type(target)
         }
-        Target::Web => wasm_type,
+        Target::Web => web_type,
     }
 }

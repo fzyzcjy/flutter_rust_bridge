@@ -5,7 +5,7 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::misc::StructOrRecord;
 use crate::codegen::generator::misc::StructOrRecord::Struct;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_wasm;
+use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_web;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::structure::{IrStruct, IrTypeStructRef};
@@ -22,7 +22,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGene
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        dart_wire_type_from_rust_wire_type_or_wasm(self, target, "List<dynamic>".into())
+        dart_wire_type_from_rust_wire_type_or_web(self, target, "List<dynamic>".into())
     }
 }
 
