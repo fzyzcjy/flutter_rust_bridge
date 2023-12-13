@@ -3,7 +3,7 @@ use crate::codegen::ConfigDumpContent;
 use crate::library::commands::command_runner::execute_command;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
-use log::{info, warn};
+use log::{debug, info, warn};
 use std::collections::hash_map::Entry::{Occupied, Vacant};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
@@ -78,7 +78,7 @@ fn run_cargo_expand(
     dumper: &Dumper,
     _allow_auto_install: bool,
 ) -> Result<String> {
-    info!("Running cargo expand in '{rust_crate_dir:?}'");
+    debug!("Running cargo expand in '{rust_crate_dir:?}'");
     let args = vec![
         PathBuf::from("expand"),
         PathBuf::from("--lib"),
