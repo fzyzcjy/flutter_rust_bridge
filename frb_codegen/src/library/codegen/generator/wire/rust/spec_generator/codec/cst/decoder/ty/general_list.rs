@@ -68,7 +68,7 @@ pub(crate) fn general_list_maybe_extra_pointer_indirection(ir: &IrTypeGeneralLis
 
 pub(crate) fn general_list_impl_decode_body() -> Acc<Option<String>> {
     Acc {
-        web: Some(DECODE_BODY_WASM.to_owned()),
+        web: Some(DECODE_BODY_WEB.to_owned()),
         io: Some(DECODE_BODY_IO.to_owned()),
         ..Default::default()
     }
@@ -81,7 +81,7 @@ const DECODE_BODY_IO: &str = "
     };
     vec.into_iter().map(CstDecode::cst_decode).collect()
 ";
-const DECODE_BODY_WASM: &str =
+const DECODE_BODY_WEB: &str =
     "self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()";
 
 pub(crate) fn generate_list_generate_allocate_func(
@@ -92,7 +92,7 @@ pub(crate) fn generate_list_generate_allocate_func(
 ) -> ExternFunc {
     let list_generator = WireRustCodecCstGenerator::new(list.clone(), context);
 
-    // let wasm = false;
+    // let web = false;
     ExternFunc {
         func_name: format!("cst_new_{safe_ident}"),
         params: vec![ExternFuncParam {

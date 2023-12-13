@@ -65,7 +65,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             //         return ans;"
             //             .to_string(),
             //     ),
-            //     wasm: Some("return raw;".into()),
+            //     web: Some("return raw;".into()),
             //     ..Default::default()
             // },
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ref repr, .. }) => {
@@ -112,7 +112,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
     fn dart_wire_type(&self, target: Target) -> String {
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Web) => "String".into(),
-            // (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
+            // (IrTypeDelegate::StringList, Target::Web) => "List<String>".into(),
             // (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_cst_StringList>".to_owned(),
             _ => WireDartCodecCstGenerator::new(self.ir.get_delegate(), self.context)
                 .dart_wire_type(target),

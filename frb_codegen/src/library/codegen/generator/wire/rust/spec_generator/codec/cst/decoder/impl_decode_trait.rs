@@ -49,7 +49,7 @@ fn generate_impl_decode_for_type(
     raw.map(|body, target| {
         body.map(|body| {
             // When target==Common, it means things like `rust_wire_type` should be the same
-            // for Io or Wasm, so we can choose any.
+            // for Io or Web, so we can choose any.
             let target = target.as_target_or(Target::Io);
 
             let rust_wire_modifier = generator.rust_wire_modifier(target);

@@ -131,7 +131,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Web) => "String".into(),
             // (IrTypeDelegate::StringList, Target::Io) => "wire_cst_StringList".to_owned(),
-            // (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
+            // (IrTypeDelegate::StringList, Target::Web) => JS_VALUE.into(),
             _ => WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context)
                 .rust_wire_type(target),
         }

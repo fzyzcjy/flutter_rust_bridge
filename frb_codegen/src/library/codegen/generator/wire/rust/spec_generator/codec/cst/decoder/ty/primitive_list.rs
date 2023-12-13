@@ -51,14 +51,14 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
                     "let buf = self.dyn_into::<{}>().unwrap();
                     let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
                     flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()",
-                    rust_wasm_wire_type(&self.ir)
+                    rust_web_wire_type(&self.ir)
                 )
                     .into(),
             ),
             _ => Some(
                 format!(
                     "self.unchecked_into::<{}>().to_vec().into()",
-                    rust_wasm_wire_type(&self.ir)
+                    rust_web_wire_type(&self.ir)
                 )
                     .into(),
             ),
@@ -106,7 +106,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
     }
 }
 
-fn rust_wasm_wire_type(ir: &IrTypePrimitiveList) -> &str {
+fn rust_web_wire_type(ir: &IrTypePrimitiveList) -> &str {
     match &ir.primitive {
         IrTypePrimitive::U8 => "flutter_rust_bridge::for_generated::js_sys::Uint8Array",
         IrTypePrimitive::I8 => "flutter_rust_bridge::for_generated::js_sys::Int8Array",

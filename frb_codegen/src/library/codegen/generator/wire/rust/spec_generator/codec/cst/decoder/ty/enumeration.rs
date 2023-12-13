@@ -62,7 +62,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
                 return None;
             }
 
-            let wasm = target == TargetOrCommon::Web;
+            let web = target == TargetOrCommon::Web;
             let variants = enu
                 .variants()
                 .iter()
@@ -77,12 +77,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
                     {}
                     _ => unreachable!(),
                 }}",
-                if wasm {
+                if web {
                     "let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();"
                 } else {
                     ""
                 },
-                if wasm {
+                if web {
                     "_.get(0).unchecked_into_f64() as _"
                 } else {
                     ".tag"

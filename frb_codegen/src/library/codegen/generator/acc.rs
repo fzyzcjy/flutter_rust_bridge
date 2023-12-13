@@ -121,13 +121,9 @@ impl<T: ToString> From<T> for Acc<Option<String>> {
 impl<T> Acc<Vec<T>> {
     #[inline]
     pub fn push_acc(&mut self, acc: Acc<T>) {
-        let Acc {
-            common,
-            io,
-            web: wasm,
-        } = acc;
+        let Acc { common, io, web } = acc;
         self.common.push(common);
         self.io.push(io);
-        self.web.push(wasm);
+        self.web.push(web);
     }
 }

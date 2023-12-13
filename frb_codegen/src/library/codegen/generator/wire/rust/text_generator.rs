@@ -82,7 +82,7 @@ fn generate_text_common(
 ) -> anyhow::Result<String> {
     let mod_io = generate_text_common_mod_declaration("io", config, Target::Io)?;
 
-    let mod_wasm = if config.web_enabled {
+    let mod_web = if config.web_enabled {
         generate_text_common_mod_declaration("web", config, Target::Web)?
     } else {
         "".into()
@@ -91,7 +91,7 @@ fn generate_text_common(
     Ok(format!(
         "{core_code_common}
         {mod_io}
-        {mod_wasm}
+        {mod_web}
         ",
     ))
 }
