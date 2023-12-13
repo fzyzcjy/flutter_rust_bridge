@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1702451088379,
+  "lastUpdate": 1702451235527,
   "repoUrl": "https://github.com/fzyzcjy/flutter_rust_bridge",
   "entries": {
     "Flutter Rust Bridge Benchmark": [
@@ -14661,6 +14661,395 @@ window.BENCHMARK_DATA = {
           {
             "name": "PureDart_BinaryTreeOutputSyncJson_Depth10_Ubuntu",
             "value": 2920.77,
+            "unit": "Microseconds"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ch271828n@outlook.com",
+            "name": "fzyzcjy",
+            "username": "fzyzcjy"
+          },
+          "committer": {
+            "email": "ch271828n@outlook.com",
+            "name": "fzyzcjy",
+            "username": "fzyzcjy"
+          },
+          "distinct": true,
+          "id": "0e408d4ca3b7e142f651165da7c41c4564a436d0",
+          "message": "chore: codegen",
+          "timestamp": "2023-12-13T14:58:21+08:00",
+          "tree_id": "3be5a3b411fefd8792893d7dcdc7bf73553a7cd9",
+          "url": "https://github.com/fzyzcjy/flutter_rust_bridge/commit/0e408d4ca3b7e142f651165da7c41c4564a436d0"
+        },
+        "date": 1702451230044,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "PureDart_ComputePrime_Number90000049_Windows",
+            "value": 18.8040218668196,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_ComputePrime_Number9000000001_Windows",
+            "value": 223.12699065036475,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_ComputePrime_Number900000000013_Windows",
+            "value": 2056.19,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_VoidAsync_Windows",
+            "value": 8.340739906667167,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_VoidSync_Windows",
+            "value": 0.528987,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_VoidSyncRaw_Windows",
+            "value": 0.014549075195440969,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_VoidAsyncRawByIsolate_Windows",
+            "value": 404.31332120477055,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesAsync_Len0_Windows",
+            "value": 34.20863407792563,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSync_Len0_Windows",
+            "value": 0.6147225,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSyncRaw_Len0_Windows",
+            "value": 0.04659716141217058,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsync_Len0_Windows",
+            "value": 39.059643777829855,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesSync_Len0_Windows",
+            "value": 0.623992,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsyncRaw_Len0_Windows",
+            "value": 2.582820643948199,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncBenchmark_Len0_Windows",
+            "value": 0.778246,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncSseBenchmark_Len0_Windows",
+            "value": 0.66758325,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncProtobufBenchmark_Len0_Windows",
+            "value": 1.087105,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncJsonBenchmark_Len0_Windows",
+            "value": 2.426562,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSync_Len0_Windows",
+            "value": 1.172606,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncSse_Len0_Windows",
+            "value": 0.67027475,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncProtobuf_Len0_Windows",
+            "value": 0.7082525,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncJson_Len0_Windows",
+            "value": 2.2848109535853953,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesAsync_Len10000_Windows",
+            "value": 40.01426485004902,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSync_Len10000_Windows",
+            "value": 1.8990845504577247,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSyncRaw_Len10000_Windows",
+            "value": 1.4871965,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsync_Len10000_Windows",
+            "value": 71.36004567024655,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesSync_Len10000_Windows",
+            "value": 22.021975994506,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsyncRaw_Len10000_Windows",
+            "value": 6.1885896921224095,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncBenchmark_Len10000_Windows",
+            "value": 2.353888,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncSseBenchmark_Len10000_Windows",
+            "value": 55.80522796015207,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncProtobufBenchmark_Len10000_Windows",
+            "value": 35.05799574253725,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncJsonBenchmark_Len10000_Windows",
+            "value": 2108.374,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSync_Len10000_Windows",
+            "value": 58.939711928240804,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncSse_Len10000_Windows",
+            "value": 64.00319881889764,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncProtobuf_Len10000_Windows",
+            "value": 309.75863975670444,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncJson_Len10000_Windows",
+            "value": 2317.808,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesAsync_Len1000000_Windows",
+            "value": 262.35768625393496,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSync_Len1000000_Windows",
+            "value": 145.49010876706328,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSyncRaw_Len1000000_Windows",
+            "value": 175.22811837663866,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsync_Len1000000_Windows",
+            "value": 1806.313176895307,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesSync_Len1000000_Windows",
+            "value": 1981.565,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsyncRaw_Len1000000_Windows",
+            "value": 66.00759075907591,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncBenchmark_Len1000000_Windows",
+            "value": 197.43610223642173,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncSseBenchmark_Len1000000_Windows",
+            "value": 7955.70786516854,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncProtobufBenchmark_Len1000000_Windows",
+            "value": 5309.451685393258,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncJsonBenchmark_Len1000000_Windows",
+            "value": 213013.4,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSync_Len1000000_Windows",
+            "value": 6050.214285714285,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncSse_Len1000000_Windows",
+            "value": 8237.04,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncProtobuf_Len1000000_Windows",
+            "value": 31498.791666666668,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncJson_Len1000000_Windows",
+            "value": 247468.77777777778,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSync_Depth0_Windows",
+            "value": 0.87411425,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncSse_Depth0_Windows",
+            "value": 0.9108505,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncProtobuf_Depth0_Windows",
+            "value": 1.1405885,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncJson_Depth0_Windows",
+            "value": 2.414408,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSync_Depth0_Windows",
+            "value": 1.350886,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncSse_Depth0_Windows",
+            "value": 0.8046245,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncProtobuf_Depth0_Windows",
+            "value": 1.7726845,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncJson_Depth0_Windows",
+            "value": 2.461538,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSync_Depth5_Windows",
+            "value": 23.412541080859732,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncSse_Depth5_Windows",
+            "value": 22.422263777362225,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncProtobuf_Depth5_Windows",
+            "value": 28.390605875153,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncJson_Depth5_Windows",
+            "value": 78.97084962673303,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSync_Depth5_Windows",
+            "value": 63.27043136811774,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncSse_Depth5_Windows",
+            "value": 14.290113259320444,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncProtobuf_Depth5_Windows",
+            "value": 24.033195734434123,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncJson_Depth5_Windows",
+            "value": 90.67027149321267,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSync_Depth10_Windows",
+            "value": 759.9955,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncSse_Depth10_Windows",
+            "value": 711.175,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncProtobuf_Depth10_Windows",
+            "value": 886.19075,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncJson_Depth10_Windows",
+            "value": 2865.345,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSync_Depth10_Windows",
+            "value": 1951.5007496251874,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncSse_Depth10_Windows",
+            "value": 499.359325125399,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncProtobuf_Depth10_Windows",
+            "value": 668.91825,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncJson_Depth10_Windows",
+            "value": 3152.52375,
             "unit": "Microseconds"
           }
         ]
