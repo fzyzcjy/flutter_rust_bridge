@@ -81,11 +81,13 @@ impl InternalConfig {
             // in a non-input file, it may still cause the generated code to change.
             rust_crate_dir.clone(),
         ];
+        let controller_exclude_paths = rust_output_path.clone().into_vec();
 
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
                 watch: meta_config.watch,
                 watching_paths: controller_watching_paths,
+                exclude_paths: controller_exclude_paths,
             },
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),

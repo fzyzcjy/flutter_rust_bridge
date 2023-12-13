@@ -30,6 +30,15 @@ macro_rules! enum_map {
                     )*
                 }
             }
+
+            #[allow(dead_code)]
+            pub fn into_vec(self) -> Vec<T> {
+                vec![
+                    $(
+                        self.$enum_variants_snake,
+                    )*
+                ]
+            }
         }
     };
 }
