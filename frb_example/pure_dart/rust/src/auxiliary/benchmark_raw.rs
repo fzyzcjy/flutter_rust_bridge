@@ -37,7 +37,7 @@ pub unsafe extern "C" fn benchmark_raw_input_bytes(bytes: benchmark_raw_list_pri
 }
 
 #[no_mangle]
-pub extern "C" fn benchmark_raw_output_bytes(port: MessagePort, message_id: i32, size: i32) {
+pub extern "C" fn benchmark_raw_output_bytes(port: i64, message_id: i32, size: i32) {
     let vec = {
         let mut cursor = Cursor::new(vec![0; size as usize + 4]);
         cursor.write_i32::<BigEndian>(message_id).unwrap();
