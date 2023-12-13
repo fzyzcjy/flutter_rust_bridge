@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for DynamicWireDartCodecCstGenerator<'a> {
-    fn encode_func_body(&self) -> Acc<Option<String>> {
+    fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc::default()
     }
 

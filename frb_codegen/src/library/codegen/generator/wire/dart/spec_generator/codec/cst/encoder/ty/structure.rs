@@ -13,11 +13,11 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerator<'a> {
-    fn encode_func_body(&self) -> Acc<Option<String>> {
-        self.new_generalized_generator().encode_func_body()
+    fn generate_encode_func_body(&self) -> Acc<Option<String>> {
+        self.new_generalized_generator().generate_encode_func_body()
     }
 
-    fn encode_api_fill_to_wire_body(&self) -> Option<String> {
+    fn generate_encode_api_fill_to_wire_body(&self) -> Option<String> {
         self.new_generalized_generator().api_fill_to_wire_body()
     }
 
@@ -47,7 +47,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         Self { ir, context, mode }
     }
 
-    pub(crate) fn encode_func_body(&self) -> Acc<Option<String>> {
+    pub(crate) fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: self.context.config.wasm_enabled.then(|| {
                 let st = self.ir.get(self.context.ir_pack);

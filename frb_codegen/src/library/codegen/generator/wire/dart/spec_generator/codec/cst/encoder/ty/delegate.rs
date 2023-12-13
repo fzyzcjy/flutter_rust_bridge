@@ -12,7 +12,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator<'a> {
-    fn encode_func_body(&self) -> Acc<Option<String>> {
+    fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(ref array) => match &array.mode {
                 IrTypeDelegateArrayMode::General(_) => Acc::distribute(Some(format!(

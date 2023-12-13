@@ -22,9 +22,9 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub(crate) trait WireDartCodecCstGeneratorEncoderTrait {
-    fn encode_func_body(&self) -> Acc<Option<String>>;
+    fn generate_encode_func_body(&self) -> Acc<Option<String>>;
 
-    fn encode_api_fill_to_wire_body(&self) -> Option<String> {
+    fn generate_encode_api_fill_to_wire_body(&self) -> Option<String> {
         None
     }
 

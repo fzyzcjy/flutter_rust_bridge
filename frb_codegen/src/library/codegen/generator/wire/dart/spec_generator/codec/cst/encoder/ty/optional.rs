@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for OptionalWireDartCodecCstGenerator<'a> {
-    fn encode_func_body(&self) -> Acc<Option<String>> {
+    fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => Some(format!(
                 "return raw == null ? {} : cst_encode_{}(raw);",

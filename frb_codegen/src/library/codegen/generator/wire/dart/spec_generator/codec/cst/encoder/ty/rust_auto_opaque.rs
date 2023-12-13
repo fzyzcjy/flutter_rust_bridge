@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustAutoOpaqueWireDartCodecCstGenerator<'a> {
-    fn encode_func_body(&self) -> Acc<Option<String>> {
+    fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         let needs_move = self.ir.needs_move();
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member

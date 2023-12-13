@@ -10,7 +10,7 @@ use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'a> {
-    fn encode_func_body(&self) -> Acc<Option<String>> {
+    fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         let ir_safe_ident = self.ir.safe_ident();
         let inner_safe_ident = self.ir.inner.safe_ident();
         let empty_struct = is_empty_struct(self);
@@ -46,7 +46,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
         }
     }
 
-    fn encode_api_fill_to_wire_body(&self) -> Option<String> {
+    fn generate_encode_api_fill_to_wire_body(&self) -> Option<String> {
         let inner_safe_ident = self.ir.inner.safe_ident();
 
         if self.ir.inner.is_array() {

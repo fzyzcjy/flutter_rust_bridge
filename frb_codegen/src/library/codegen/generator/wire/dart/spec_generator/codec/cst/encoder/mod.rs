@@ -37,7 +37,7 @@ fn generate_encode_func(
 ) -> Acc<WireDartOutputCode> {
     let generator = WireDartCodecCstGenerator::new(ty.clone(), context);
     generator
-        .encode_func_body()
+        .generate_encode_func_body()
         .map(|raw_body, target: TargetOrCommon| {
             raw_body
                 .map(|body| {
@@ -67,7 +67,7 @@ fn generate_encode_api_fill_to_wire_func(
     context: WireDartCodecCstGeneratorContext,
 ) -> WireDartOutputCode {
     if let Some(body) =
-        WireDartCodecCstGenerator::new(ty.clone(), context).encode_api_fill_to_wire_body()
+        WireDartCodecCstGenerator::new(ty.clone(), context).generate_encode_api_fill_to_wire_body()
     {
         let target_wire_type = match ty {
             Optional(inner) => &inner.inner,

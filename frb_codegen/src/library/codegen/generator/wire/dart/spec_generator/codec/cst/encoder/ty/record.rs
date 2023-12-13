@@ -7,11 +7,11 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for RecordWireDartCodecCstGenerator<'a> {
-    fn encode_func_body(&self) -> Acc<Option<String>> {
-        self.new_generalized_generator().encode_func_body()
+    fn generate_encode_func_body(&self) -> Acc<Option<String>> {
+        self.new_generalized_generator().generate_encode_func_body()
     }
 
-    fn encode_api_fill_to_wire_body(&self) -> Option<String> {
+    fn generate_encode_api_fill_to_wire_body(&self) -> Option<String> {
         self.new_generalized_generator().api_fill_to_wire_body()
     }
 

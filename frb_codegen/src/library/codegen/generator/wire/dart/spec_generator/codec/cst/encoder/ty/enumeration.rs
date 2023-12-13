@@ -8,7 +8,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<'a> {
-    fn encode_func_body(&self) -> Acc<Option<String>> {
+    fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         let variants = (self.ir.get(self.context.ir_pack).variants())
             .iter()
             .enumerate()
@@ -25,7 +25,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenera
         }
     }
 
-    fn encode_api_fill_to_wire_body(&self) -> Option<String> {
+    fn generate_encode_api_fill_to_wire_body(&self) -> Option<String> {
         Some(
             self.ir
                 .get(self.context.ir_pack)
