@@ -22,7 +22,6 @@ use crate::utils::console::simple_progress;
 use itertools::Itertools;
 use log::trace;
 use std::path::{Path, PathBuf};
-use std::thread;
 use syn::File;
 use ConfigDumpContent::SourceGraph;
 
@@ -34,29 +33,23 @@ pub(crate) fn parse(
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
-    let file_data_arr_result = thread::spawn(|| {
-        let _pb = simple_progress("Run cargo expand and extract".to_owned(), 1);
-        read_files(
-            rust_input_paths,
-            &config.rust_crate_dir,
-            cached_rust_reader,
-            dumper,
-        )
-    });
+    let pb = simple_progress("Run cargo expand and extract".to_owned(), 1);
+    let file_data_arr = read_files(
+        rust_input_paths,
+        &config.rust_crate_dir,
+        cached_rust_reader,
+        dumper,
+    )?;
+    drop(pb);
 
-    let crate_map_result = thread::spawn(|| {
-        let _pb = simple_progress("Parse crate source graph".to_owned(), 1);
-        let crate_map = source_graph::crates::Crate::parse(
-            &config.rust_crate_dir.join("Cargo.toml"),
-            cached_rust_reader,
-            dumper,
-        )?;
-        dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
-        Ok(crate_map)
-    });
-
-    let file_data_arr = file_data_arr_result.join()??;
-    let crate_map = crate_map_result.join()??;
+    let pb = simple_progress("Parse crate source graph".to_owned(), 1);
+    let crate_map = source_graph::crates::Crate::parse(
+        &config.rust_crate_dir.join("Cargo.toml"),
+        cached_rust_reader,
+        dumper,
+    )?;
+    dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
+    drop(pb);
 
     let src_fns = file_data_arr
         .iter()
