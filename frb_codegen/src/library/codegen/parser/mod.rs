@@ -101,22 +101,14 @@ fn read_files(
     dumper: &Dumper,
 ) -> anyhow::Result<Vec<FileData>> {
     let _pb = simple_progress("Run cargo expand and extract".to_owned(), 1);
-    let contents = rust_input_paths
+    rust_input_paths
         .iter()
         .map(|rust_input_path| {
             let content =
                 cached_rust_reader.read_rust_file(rust_input_path, rust_crate_dir, dumper)?;
-            Ok((rust_input_path.to_owned(), content))
-        })
-        .collect::<anyhow::Result<Vec<(PathBuf, String)>>>()?;
-
-    let _pb = simple_progress("Run syn parse".to_owned(), 1);
-    contents
-        .into_iter()
-        .map(|(rust_input_path, content)| {
             let ast = syn::parse_file(&content)?;
             Ok(FileData {
-                path: rust_input_path,
+                path: (rust_input_path.clone()).to_owned(),
                 content,
                 ast,
             })
