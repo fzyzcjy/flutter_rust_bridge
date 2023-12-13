@@ -32,6 +32,7 @@ pub(crate) fn parse(
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
+    log::info!("hi 1");
     let file_data_arr = read_files(
         rust_input_paths,
         &config.rust_crate_dir,
@@ -39,6 +40,7 @@ pub(crate) fn parse(
         dumper,
     )?;
 
+    log::info!("hi 2");
     let crate_map = source_graph::crates::Crate::parse(
         &config.rust_crate_dir.join("Cargo.toml"),
         cached_rust_reader,
@@ -46,6 +48,7 @@ pub(crate) fn parse(
     )?;
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
 
+    log::info!("hi 3");
     let src_fns = file_data_arr
         .iter()
         .map(|file| extract_generalized_functions_from_file(&file.ast, &file.path))
@@ -54,13 +57,16 @@ pub(crate) fn parse(
         .flatten()
         .collect_vec();
 
+    log::info!("hi 4");
     let src_structs = crate_map.root_module().collect_structs();
     let src_enums = crate_map.root_module().collect_enums();
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
+    log::info!("hi 5");
     let mut type_parser = TypeParser::new(src_structs, src_enums, src_types);
     let mut function_parser = FunctionParser::new(&mut type_parser);
 
+    log::info!("hi 6");
     let ir_funcs = src_fns
         .iter()
         .map(|f| {
@@ -73,10 +79,13 @@ pub(crate) fn parse(
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
 
+    log::info!("hi 7");
     let has_executor = (file_data_arr.iter()).any(|file| parse_has_executor(&file.content));
 
+    log::info!("hi 8");
     let (struct_pool, enum_pool) = type_parser.consume();
 
+    log::info!("hi 9");
     Ok(IrPack {
         funcs: ir_funcs,
         struct_pool,
