@@ -4,7 +4,7 @@ use std::fmt::Write;
 use std::time::Duration;
 
 lazy_static! {
-    static ref MULTI_PROGRESS: MultiProgress = MultiProgress::new();
+    pub(super) static ref MULTI_PROGRESS: MultiProgress = MultiProgress::new();
 }
 
 pub(crate) struct SimpleProgress {

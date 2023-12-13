@@ -556,6 +556,7 @@ dependencies = [
  "glob",
  "include_dir",
  "indicatif",
+ "indicatif-log-bridge",
  "itertools",
  "lazy_static",
  "log",
@@ -778,6 +779,16 @@ dependencies = [
  "number_prefix",
  "portable-atomic",
  "unicode-width",
+]
+
+[[package]]
+name = "indicatif-log-bridge"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2963046f28a204e3e3fd7e754fd90a6235da05b5378f24707ff0ec9513725ce3"
+dependencies = [
+ "indicatif",
+ "log",
 ]
 
 [[package]]
