@@ -14,6 +14,7 @@ pub(crate) struct SimpleProgress {
 impl Drop for SimpleProgress {
     fn drop(&mut self) {
         self.pb.finish();
+        MULTI_PROGRESS.remove(&self.pb);
     }
 }
 
