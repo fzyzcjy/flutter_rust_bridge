@@ -20,11 +20,6 @@ use log::debug;
 
 /// Execute the main code generator
 pub fn generate(config: Config) -> anyhow::Result<()> {
-    let mut rt = tokio::runtime::Runtime::new().unwrap();
-    Ok(rt.block_on(async { generate_async(config).await })?)
-}
-
-async fn generate_async(config: Config) -> anyhow::Result<()> {
     debug!("config={config:?}");
 
     let internal_config = InternalConfig::parse(&config)?;
