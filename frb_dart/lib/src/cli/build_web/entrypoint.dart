@@ -97,7 +97,7 @@ BuildWebArgs _parseConfigToArgs(Config config) {
     output: config.output ?? _fallbackOutput(dartRoot: config.dartRoot),
     release: config.release,
     verbose: config.verbose,
-    rustCrateDir: config.rustCrateDir,
+    rustCrateDir: config.rustRoot,
     cargoBuildArgs: config.cargoBuildArgs,
     wasmBindgenArgs: config.wasmBindgenArgs,
     dartCompileJsEntrypoint: config.dartCompileJsEntrypoint,
