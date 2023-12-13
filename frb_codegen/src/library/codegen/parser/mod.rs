@@ -100,6 +100,7 @@ fn read_files(
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
 ) -> anyhow::Result<Vec<FileData>> {
+    let _pb = simple_progress("Run cargo expand and extract".to_owned(), 1);
     let contents = rust_input_paths
         .iter()
         .map(|rust_input_path| {
@@ -109,7 +110,7 @@ fn read_files(
         })
         .collect::<anyhow::Result<Vec<(PathBuf, String)>>>()?;
 
-    let _pb = simple_progress("Run syn".to_owned(), 1);
+    let _pb = simple_progress("Run syn parse".to_owned(), 1);
     contents
         .into_iter()
         .map(|(rust_input_path, content)| {
