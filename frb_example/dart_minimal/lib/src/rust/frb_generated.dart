@@ -56,9 +56,6 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> hi(
-      {required FutureOr<String> Function(String, String) a, dynamic hint});
-
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
 
@@ -69,32 +66,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  @override
-  Future<void> hi(
-      {required FutureOr<String> Function(String, String) a, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_DartFn_Inputs_String_String_Output_String(a, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_hi(port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kHiConstMeta,
-      argValues: [a],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHiConstMeta => const TaskConstMeta(
-        debugName: "hi",
-        argNames: ["a"],
-      );
 
   @override
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
@@ -120,52 +91,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  Future<void> Function(int, dynamic, dynamic)
-      encode_DartFn_Inputs_String_String_Output_String(
-          FutureOr<String> Function(String, String) raw) {
-    return (callId, rawArg0, rawArg1) async {
-      final arg0 = dco_decode_String(rawArg0);
-      final arg1 = dco_decode_String(rawArg1);
-
-      final rawOutput = await raw(arg0, arg1);
-
-      final serializer = SseSerializer(generalizedFrbRustBinding);
-      sse_encode_String(rawOutput, serializer);
-      final output = serializer.intoRaw();
-
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
-    };
-  }
-
-  @protected
-  FutureOr<String> Function(String, String)
-      dco_decode_DartFn_Inputs_String_String_Output_String(dynamic raw) {
-    throw UnimplementedError('');
-  }
-
-  @protected
-  Object dco_decode_DartOpaque(dynamic raw) {
-    return decodeDartOpaque(raw, generalizedFrbRustBinding);
-  }
-
-  @protected
-  String dco_decode_String(dynamic raw) {
-    return raw as String;
-  }
-
   @protected
   int dco_decode_i_32(dynamic raw) {
-    return raw as int;
-  }
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8(dynamic raw) {
-    return raw as Uint8List;
-  }
-
-  @protected
-  int dco_decode_u_8(dynamic raw) {
     return raw as int;
   }
 
@@ -175,45 +102,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  int dco_decode_usize(dynamic raw) {
-    return dcoDecodeI64OrU64(raw);
-  }
-
-  @protected
-  Object sse_decode_DartOpaque(SseDeserializer deserializer) {
-    var inner = sse_decode_usize(deserializer);
-    return decodeDartOpaque(inner, generalizedFrbRustBinding);
-  }
-
-  @protected
-  String sse_decode_String(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_u_8(deserializer);
-    return utf8.decoder.convert(inner);
-  }
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
   @protected
-  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint8List(len_);
-  }
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer) {
-    return deserializer.buffer.getUint8();
-  }
-
-  @protected
   void sse_decode_unit(SseDeserializer deserializer) {}
-
-  @protected
-  int sse_decode_usize(SseDeserializer deserializer) {
-    return deserializer.buffer.getUint64();
-  }
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
@@ -221,19 +115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs_String_String_Output_String(
-      FutureOr<String> Function(String, String) raw) {
-    return cst_encode_DartOpaque(
-        encode_DartFn_Inputs_String_String_Output_String(raw));
-  }
-
-  @protected
   int cst_encode_i_32(int raw) {
-    return raw;
-  }
-
-  @protected
-  int cst_encode_u_8(int raw) {
     return raw;
   }
 
@@ -243,53 +125,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  int cst_encode_usize(int raw) {
-    return raw;
-  }
-
-  @protected
-  void sse_encode_DartFn_Inputs_String_String_Output_String(
-      FutureOr<String> Function(String, String) self,
-      SseSerializer serializer) {
-    sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_String_Output_String(self), serializer);
-  }
-
-  @protected
-  void sse_encode_DartOpaque(Object self, SseSerializer serializer) {
-    sse_encode_usize(
-        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
-        serializer);
-  }
-
-  @protected
-  void sse_encode_String(String self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
-  }
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
   @protected
-  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint8List(self);
-  }
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer) {
-    serializer.buffer.putUint8(self);
-  }
-
-  @protected
   void sse_encode_unit(void self, SseSerializer serializer) {}
-
-  @protected
-  void sse_encode_usize(int self, SseSerializer serializer) {
-    serializer.buffer.putUint64(self);
-  }
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {

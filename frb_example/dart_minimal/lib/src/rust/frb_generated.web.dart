@@ -18,109 +18,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  FutureOr<String> Function(String, String)
-      dco_decode_DartFn_Inputs_String_String_Output_String(dynamic raw);
-
-  @protected
-  Object dco_decode_DartOpaque(dynamic raw);
-
-  @protected
-  String dco_decode_String(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
-  int dco_decode_usize(dynamic raw);
-
-  @protected
-  Object sse_decode_DartOpaque(SseDeserializer deserializer);
-
-  @protected
-  String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
-  int sse_decode_usize(SseDeserializer deserializer);
-
-  @protected
   bool sse_decode_bool(SseDeserializer deserializer);
-
-  @protected
-  DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
-    return raw;
-  }
-
-  @protected
-  String cst_encode_String(String raw) {
-    return raw;
-  }
-
-  @protected
-  Uint8List cst_encode_list_prim_u_8(Uint8List raw) {
-    return raw;
-  }
-
-  @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs_String_String_Output_String(
-      FutureOr<String> Function(String, String) raw);
 
   @protected
   int cst_encode_i_32(int raw);
 
   @protected
-  int cst_encode_u_8(int raw);
-
-  @protected
   void cst_encode_unit(void raw);
-
-  @protected
-  int cst_encode_usize(int raw);
-
-  @protected
-  void sse_encode_DartFn_Inputs_String_String_Output_String(
-      FutureOr<String> Function(String, String) self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_DartOpaque(Object self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
-
-  @protected
   void sse_encode_unit(void self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_usize(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -141,15 +63,8 @@ class RustLibWire extends BaseWire {
       wasmModule.dart_fn_deliver_output(
           call_id, ptr_, rust_vec_len_, data_len_);
 
-  void wire_hi(NativePortType port_, PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_, int data_len_) =>
-      wasmModule.wire_hi(port_, ptr_, rust_vec_len_, data_len_);
-
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
-
-  dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle) =>
-      wasmModule.dart_opaque_dart2rust_encode(handle);
 }
 
 @JS('wasm_bindgen')
@@ -170,10 +85,5 @@ class RustLibWasmModule implements WasmModule {
   external void dart_fn_deliver_output(int call_id,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_hi(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
   external void wire_minimal_adder(NativePortType port_, int a, int b);
-
-  external dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle);
 }

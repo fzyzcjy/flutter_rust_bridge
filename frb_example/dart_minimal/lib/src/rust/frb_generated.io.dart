@@ -19,111 +19,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  FutureOr<String> Function(String, String)
-      dco_decode_DartFn_Inputs_String_String_Output_String(dynamic raw);
-
-  @protected
-  Object dco_decode_DartOpaque(dynamic raw);
-
-  @protected
-  String dco_decode_String(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
-  int dco_decode_usize(dynamic raw);
-
-  @protected
-  Object sse_decode_DartOpaque(SseDeserializer deserializer);
-
-  @protected
-  String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
-  int sse_decode_usize(SseDeserializer deserializer);
-
-  @protected
   bool sse_decode_bool(SseDeserializer deserializer);
-
-  @protected
-  DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
-    return wire.dart_opaque_dart2rust_encode(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_String(String raw) {
-    return cst_encode_list_prim_u_8(utf8.encoder.convert(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_list_prim_u_8(Uint8List raw) {
-    final ans = wire.cst_new_list_prim_u_8(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs_String_String_Output_String(
-      FutureOr<String> Function(String, String) raw);
 
   @protected
   int cst_encode_i_32(int raw);
 
   @protected
-  int cst_encode_u_8(int raw);
-
-  @protected
   void cst_encode_unit(void raw);
-
-  @protected
-  int cst_encode_usize(int raw);
-
-  @protected
-  void sse_encode_DartFn_Inputs_String_String_Output_String(
-      FutureOr<String> Function(String, String) self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_DartOpaque(Object self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
-
-  @protected
   void sse_encode_unit(void self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_usize(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -193,27 +113,6 @@ class RustLibWire implements BaseWire {
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_hi(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_hi(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_hiPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_hi');
-  late final _wire_hi = _wire_hiPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
   void wire_minimal_adder(
     int port_,
     int a,
@@ -233,35 +132,6 @@ class RustLibWire implements BaseWire {
   late final _wire_minimal_adder =
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
 
-  ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
-    Object handle,
-  ) {
-    return _dart_opaque_dart2rust_encode(
-      handle,
-    );
-  }
-
-  late final _dart_opaque_dart2rust_encodePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
-          'dart_opaque_dart2rust_encode');
-  late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
-      .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
-
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_new_list_prim_u_8(
-    int len,
-  ) {
-    return _cst_new_list_prim_u_8(
-      len,
-    );
-  }
-
-  late final _cst_new_list_prim_u_8Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_cst_list_prim_u_8> Function(
-              ffi.Int32)>>('cst_new_list_prim_u_8');
-  late final _cst_new_list_prim_u_8 = _cst_new_list_prim_u_8Ptr
-      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8> Function(int)>();
-
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
@@ -271,11 +141,4 @@ class RustLibWire implements BaseWire {
           'dummy_method_to_enforce_bundling');
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
-}
-
-final class wire_cst_list_prim_u_8 extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  @ffi.Int32()
-  external int len;
 }

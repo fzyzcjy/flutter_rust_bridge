@@ -20,52 +20,8 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl CstDecode<flutter_rust_bridge::DartOpaque>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe {
-            flutter_rust_bridge::for_generated::cst_decode_dart_opaque(
-                &*FLUTTER_RUST_BRIDGE_HANDLER,
-                self,
-            )
-        }
-    }
-}
-impl CstDecode<String> for String {
-    fn cst_decode(self) -> String {
-        self
-    }
-}
-impl CstDecode<Vec<u8>> for Box<[u8]> {
-    fn cst_decode(self) -> Vec<u8> {
-        self.into_vec()
-    }
-}
-impl CstDecode<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> String {
-        self.as_string().expect("non-UTF-8 string, or not a string")
-    }
-}
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> i32 {
-        self.unchecked_into_f64() as _
-    }
-}
-impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<u8> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
-            .to_vec()
-            .into()
-    }
-}
-impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> u8 {
-        self.unchecked_into_f64() as _
-    }
-}
-impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> usize {
         self.unchecked_into_f64() as _
     }
 }
@@ -100,28 +56,6 @@ pub fn dart_fn_deliver_output(
 }
 
 #[wasm_bindgen]
-pub fn wire_hi(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_hi_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
 pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
-}
-
-#[wasm_bindgen]
-pub fn dart_opaque_dart2rust_encode(
-    handle: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> usize {
-    unsafe {
-        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
-            &*FLUTTER_RUST_BRIDGE_HANDLER,
-            handle,
-        ) as _
-    }
 }
