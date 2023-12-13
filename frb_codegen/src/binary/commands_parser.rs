@@ -135,6 +135,6 @@ mod tests {
             Commands::Generate(args) => args,
             _ => panic!(),
         };
-        compute_codegen_config(args).unwrap()
+        compute_codegen_config(args.primary).unwrap()
     }
 }

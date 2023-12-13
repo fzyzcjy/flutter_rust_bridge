@@ -9,13 +9,12 @@ pub(crate) mod parser;
 mod polisher;
 mod preparer;
 
-use crate::codegen::config::config::MetaConfig;
 use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::parser::reader::CachedRustReader;
 use crate::utils::console::simple_progress;
-pub use config::config::Config;
+pub use config::config::{Config, MetaConfig};
 pub use config::config_parser::*;
 pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
