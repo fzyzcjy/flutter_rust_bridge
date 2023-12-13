@@ -1,6 +1,6 @@
 use crate::binary::commands::{GenerateCommandArgs, GenerateCommandArgsPrimary};
 use anyhow::{Context, Result};
-use lib_flutter_rust_bridge_codegen::codegen::Config;
+use lib_flutter_rust_bridge_codegen::codegen::{Config, MetaConfig};
 use log::debug;
 
 pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result<Config> {
@@ -18,12 +18,15 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result
     compute_codegen_config_from_naive_command_args(args)
 }
 
+pub(crate) fn compute_codegen_meta_config(args: &GenerateCommandArgs) -> MetaConfig {
+    MetaConfig { watch: args.watch }
+}
+
 fn compute_codegen_config_from_naive_command_args(
     args: GenerateCommandArgsPrimary,
 ) -> Result<Config> {
     Ok(Config {
         base_dir: None,
-        watch: Some(args.watch),
         rust_input: args.rust_input.context("rust_input is required")?,
         dart_output: args.dart_output.context("dart_output is required")?,
         c_output: args.c_output,
