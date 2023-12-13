@@ -6,6 +6,4 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 #[frb(serialize)]
-pub fn hi(a: impl Fn(String, String) -> DartFnFuture<String> + UnwindSafe) {
-    a
-}
+pub fn hi(a: impl Fn(String, String) -> DartFnFuture<String> + UnwindSafe) {}
