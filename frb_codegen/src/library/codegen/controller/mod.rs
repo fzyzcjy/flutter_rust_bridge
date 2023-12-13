@@ -46,6 +46,7 @@ fn create_fs_watcher(
     let mut watcher = RecommendedWatcher::new(
         move |event| {
             if is_event_interesting(&event, &exclude_paths) {
+                info!("See interesting file change: {event:?}"); // TODO change to `debug` level
                 tx.send(()).unwrap()
             }
         },
