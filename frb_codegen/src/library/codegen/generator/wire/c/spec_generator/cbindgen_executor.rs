@@ -1,6 +1,7 @@
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
+use crate::utils::console::simple_progress;
 use crate::utils::file_utils::temp_change_file;
 
 pub(crate) fn execute(
@@ -8,6 +9,8 @@ pub(crate) fn execute(
     extern_struct_names: Vec<String>,
     rust_output_texts: &PathTexts,
 ) -> anyhow::Result<String> {
+    let _pb = simple_progress("Run cbindgen".to_owned(), 1);
+
     let changed_file_handles = rust_output_texts
         .0
         .iter()

@@ -3,6 +3,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
+use crate::utils::console::simple_progress;
 use anyhow::ensure;
 use lazy_static::lazy_static;
 use regex::Regex;
@@ -21,6 +22,7 @@ fn execute_ffigen(
     config: &GeneratorWireDartInternalConfig,
     c_file_content: &str,
 ) -> anyhow::Result<String> {
+    let _pb = simple_progress("Run ffigen".to_owned(), 1);
     ffigen(FfigenArgs {
         c_file_content,
         dart_class_name: &config.dart_output_class_name_pack.wire_class_name,
