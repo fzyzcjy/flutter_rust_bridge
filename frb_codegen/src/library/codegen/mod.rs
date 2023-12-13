@@ -28,21 +28,18 @@ pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
     debug!("internal_config={internal_config:?}");
 
     let dumper = Dumper(&internal_config.dumper);
-    let progress_bar_pack = GeneratorProgressBarPack::new();
     dumper.dump(ContentConfig, "config.json", &config)?;
 
     controller::run(&internal_config.controller, &|| {
-        generate_once(&internal_config, &dumper, &progress_bar_pack)
+        generate_once(&internal_config, &dumper)
     })?;
 
     Ok(())
 }
 
-fn generate_once(
-    internal_config: &InternalConfig,
-    dumper: &Dumper,
-    progress_bar_pack: &GeneratorProgressBarPack,
-) -> anyhow::Result<()> {
+fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::Result<()> {
+    let progress_bar_pack = GeneratorProgressBarPack::new();
+
     dumper.dump(ContentConfig, "internal_config.json", &internal_config)?;
 
     preparer::prepare(&internal_config.preparer)?;
@@ -54,7 +51,7 @@ fn generate_once(
         &internal_config.parser,
         &mut cached_rust_reader,
         &dumper,
-        progress_bar_pack,
+        &progress_bar_pack,
     )?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
     drop(pb);
@@ -64,7 +61,7 @@ fn generate_once(
         &ir_pack,
         &internal_config.generator,
         &dumper,
-        progress_bar_pack,
+        &progress_bar_pack,
     )?;
     drop(pb);
 
@@ -75,7 +72,7 @@ fn generate_once(
         &internal_config.polisher,
         generator_output.dart_needs_freezed,
         &generator_output.output_texts.paths(),
-        progress_bar_pack,
+        &progress_bar_pack,
     )?;
     drop(pb);
 
