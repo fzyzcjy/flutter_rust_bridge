@@ -21,8 +21,7 @@ pub(super) fn polish(
     execute_try_add_mod_to_lib(config);
     execute_duplicate_c_output(config)?;
 
-    let mut ok = true;
-    ok &= warn_if_fail(
+    warn_if_fail(
         execute_build_runner(needs_freezed, config),
         "execute_build_runner",
     );
@@ -33,10 +32,6 @@ pub(super) fn polish(
         "execute_dart_format",
     );
     warn_if_fail(execute_rust_format(output_paths), "execute_rust_format");
-
-    if !ok {
-        bail!("Some errors occurred, see logs above for more details");
-    }
 
     Ok(())
 }
