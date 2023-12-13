@@ -20,10 +20,10 @@ pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
 
 /// Execute the main code generator
-pub fn generate(config: Config) -> anyhow::Result<()> {
+pub fn generate(config: Config, watch: Option<bool>) -> anyhow::Result<()> {
     debug!("config={config:?}");
 
-    let internal_config = InternalConfig::parse(&config)?;
+    let internal_config = InternalConfig::parse(&config, watch)?;
     debug!("internal_config={internal_config:?}");
 
     let dumper = Dumper(&internal_config.dumper);

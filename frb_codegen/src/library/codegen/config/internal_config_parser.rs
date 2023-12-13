@@ -29,7 +29,7 @@ use std::path::{Path, PathBuf};
 use strum::IntoEnumIterator;
 
 impl InternalConfig {
-    pub(crate) fn parse(config: &Config) -> Result<Self> {
+    pub(crate) fn parse(config: &Config, watch: Option<bool>) -> Result<Self> {
         let base_dir = config
             .base_dir
             .as_ref()
@@ -83,7 +83,7 @@ impl InternalConfig {
 
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
-                watch: config.watch.unwrap_or(false),
+                watch: watch.unwrap_or_default(),
                 watching_paths: controller_watching_paths,
             },
             preparer: PreparerInternalConfig {
