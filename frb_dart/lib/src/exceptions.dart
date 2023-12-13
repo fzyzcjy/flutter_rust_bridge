@@ -42,9 +42,7 @@ class MissingHeaderException implements FrbException {
 Buffers cannot be shared due to missing cross-origin headers.
 Make sure your web server responds with the following headers:
 - Cross-Origin-Opener-Policy: same-origin
-- Cross-Origin-Embedder-Policy: credentialless OR require-corp
-
-If running from Flutter, consider `flutter build web` and running a custom static-file server.''';
+- Cross-Origin-Embedder-Policy: credentialless OR require-corp''';
 
   @override
   String toString() => _message;
