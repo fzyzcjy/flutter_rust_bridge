@@ -185,6 +185,14 @@ mod tests {
     }
 
     #[test]
+    pub fn test_handle_output_when_has_severe_but_known_no_problem() {
+        let result = handle_output(true, "One line
+[SEVERE] :     /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdlib.h:364:13: warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]
+Another line", "");
+        assert_eq!(result.unwrap(), None);
+    }
+
+    #[test]
     pub fn test_handle_output_when_cannot_find_llvm_should_fail() {
         let result = handle_output(
             false,
