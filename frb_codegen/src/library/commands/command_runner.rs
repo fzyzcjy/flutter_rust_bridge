@@ -112,19 +112,7 @@ pub(crate) fn execute_command<'a>(
             String::from_utf8_lossy(&result.stderr)
         );
         if stdout.contains("fatal error") {
-            warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", cmd, result);
-        } else if args_display.contains("ffigen") && stdout.contains("[SEVERE]") {
-            // HACK: If ffigen can't find a header file it will generate broken
-            // bindings but still exit successfully. We can detect these broken
-            // bindings by looking for a "[SEVERE]" log message.
-            //
-            // It may emit SEVERE log messages for non-fatal errors though, so
-            // we don't want to error out completely.
-
-            warn!(
-                "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? command={:?} output=\n{}",
-                cmd, String::from_utf8_lossy(&result.stdout)
-            );
+            warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} stdout={:?}", cmd, stdout);
         }
     } else {
         warn!(

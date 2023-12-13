@@ -3,7 +3,7 @@ use crate::commands::command_runner::call_shell;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
-use log::debug;
+use log::{debug, warn};
 use serde::{Deserialize, Serialize};
 use std::fs;
 use std::io::Write;
@@ -87,16 +87,26 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
 }
 
 fn handle_output(res: &Output) -> anyhow::Result<()> {
-    if !res.status.success() {
-        let stdout = String::from_utf8_lossy(&res.stdout);
-        let stderr = String::from_utf8_lossy(&res.stderr);
+    let stdout = String::from_utf8_lossy(&res.stdout);
+    let stderr = String::from_utf8_lossy(&res.stderr);
 
+    if !res.status.success() {
         let pat = "Couldn't find dynamic library in default locations.";
         if stderr.contains(pat) || stdout.contains(pat) {
             bail!("ffigen could not find LLVM. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/llvm for details.");
         }
 
         bail!("ffigen failed.");
+    }
+
+    if stdout.contains("[SEVERE]") {
+        // If ffigen can't find a header file it will generate broken
+        // bindings but still exit successfully. We can detect these broken
+        // bindings by looking for a "[SEVERE]" log message.
+        //
+        // It may emit SEVERE log messages for non-fatal errors though, so
+        // we don't want to error out completely.
+        warn!("The `ffigen` command emitted a SEVERE error. Maybe there is a problem? command={:?} output=\n{}", cmd, stdout);
     }
 
     Ok(())
