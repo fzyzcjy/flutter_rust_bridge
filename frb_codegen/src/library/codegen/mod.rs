@@ -27,6 +27,13 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     let dumper = Dumper(&internal_config.dumper);
     dumper.dump(ContentConfig, "config.json", &config)?;
+
+    generate_once(&internal_config, &dumper)?;
+
+    Ok(())
+}
+
+fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::Result<()> {
     dumper.dump(ContentConfig, "internal_config.json", &internal_config)?;
 
     preparer::prepare(&internal_config.preparer)?;
@@ -51,6 +58,4 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
         &generator_output.output_texts.paths(),
     )?;
     drop(pb);
-
-    Ok(())
 }
