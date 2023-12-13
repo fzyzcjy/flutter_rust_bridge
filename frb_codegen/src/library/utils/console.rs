@@ -24,7 +24,7 @@ impl SimpleProgressBar {
     }
 
     pub(crate) fn start(&self) -> SimpleProgressBarHandle {
-        let active_pb = self.active_pb.lock().unwrap();
+        let mut active_pb = self.active_pb.lock().unwrap();
         if active_pb.is_none() {
             *active_pb = Some(create_simple_progress_bar(self.message.clone(), self.level));
         }
