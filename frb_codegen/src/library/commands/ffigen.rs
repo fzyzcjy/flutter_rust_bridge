@@ -136,3 +136,13 @@ pub(crate) struct FfigenCommandConfigHeaders {
     pub entry_points: Vec<PathBuf>,
     pub include_directives: Vec<PathBuf>,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_parse_output() {
+        todo!();
+    }
+}
