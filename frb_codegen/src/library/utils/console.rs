@@ -12,7 +12,7 @@ impl Drop for SimpleProgress {
     }
 }
 
-pub(crate) fn simple_progress(message: &str) -> SimpleProgress {
+pub(crate) fn simple_progress(message: String) -> SimpleProgress {
     let style = ProgressStyle::with_template("{spinner} {my_elapsed:.dim} {wide_msg}")
         .unwrap()
         .with_key("my_elapsed", |state: &ProgressState, w: &mut dyn Write| {

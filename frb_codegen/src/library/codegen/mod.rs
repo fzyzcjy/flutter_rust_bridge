@@ -12,6 +12,7 @@ use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::parser::reader::CachedRustReader;
+use crate::utils::console::simple_progress;
 pub use config::config::Config;
 pub use config::config_parser::*;
 pub use dumper::internal_config::ConfigDumpContent;
@@ -28,7 +29,10 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     dumper.dump(ContentConfig, "config.json", &config)?;
     dumper.dump(ContentConfig, "internal_config.json", &internal_config)?;
 
-    preparer::prepare(&internal_config.preparer)?;
+    {
+        let pb = simple_progress("Prepare".to_owned());
+        preparer::prepare(&internal_config.preparer)?;
+    }
 
     let mut cached_rust_reader = CachedRustReader::default();
 
