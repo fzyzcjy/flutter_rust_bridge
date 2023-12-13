@@ -42,4 +42,8 @@ pub(crate) trait WireRustGeneratorMiscTrait {
     fn generate_wire_func_call_decode_wrapper(&self) -> Option<String> {
         None
     }
+
+    fn generate_wire_func_call_decode_type(&self) -> Option<String> {
+        None
+    }
 }
