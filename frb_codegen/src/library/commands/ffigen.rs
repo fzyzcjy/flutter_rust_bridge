@@ -196,6 +196,24 @@ Another line", "");
     }
 
     #[test]
+    pub fn test_handle_output_when_has_severe_stdbool_not_found() {
+        // Commonly seen problem, e.g. https://github.com/fzyzcjy/flutter_rust_bridge/issues/1083
+        let result = handle_output(
+            true,
+            r#"One line
+[SEVERE] : Header C:\Users\Someone\AppData\Local\Temp\.tmpvqq91Q.h: Total errors/warnings: 1.
+[SEVERE] :     C:\Users\Someone\AppData\Local\Temp\.tmpvqq91Q.h:1:10: fatal error: 'stdbool.h' file not found [Lexical or Preprocessor Issue]
+Another line"#,
+            "",
+        );
+        assert!(result
+            .err()
+            .unwrap()
+            .to_string()
+            .contains("TODO give a link"));
+    }
+
+    #[test]
     pub fn test_handle_output_when_cannot_find_llvm_should_fail() {
         let result = handle_output(
             false,
