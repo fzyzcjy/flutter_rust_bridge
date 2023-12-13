@@ -89,7 +89,7 @@ fn run_cargo_expand(
         PathBuf::from("--ugly"),
     ];
 
-    let output = execute_command("cargo", &args, Some(rust_crate_dir))
+    let output = execute_command("cargo", &args, Some(rust_crate_dir), None)
         .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
 
     let stdout = String::from_utf8(output.stdout)?;
@@ -117,6 +117,7 @@ fn install_cargo_expand() -> Result<()> {
     execute_command(
         "cargo",
         &vec!["install".into(), "cargo-expand".into()],
+        None,
         None,
     )?;
     Ok(())

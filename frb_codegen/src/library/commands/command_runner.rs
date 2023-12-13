@@ -3,6 +3,7 @@ use anyhow::{bail, Context};
 use itertools::Itertools;
 use log::debug;
 use log::warn;
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::process::Output;
@@ -22,11 +23,11 @@ use std::process::Output;
 macro_rules! command_run {
     ($binary:literal, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
-        $crate::library::commands::command_runner::execute_command($binary, args.iter(), None)
+        $crate::library::commands::command_runner::execute_command($binary, args.iter(), None, None)
     }};
     ($binary:literal in $pwd:expr, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
-        $crate::library::commands::command_runner::execute_command($binary, args.iter(), $pwd)
+        $crate::library::commands::command_runner::execute_command($binary, args.iter(), $pwd, None)
     }};
     ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
@@ -84,6 +85,7 @@ pub(crate) fn execute_command<'a>(
     bin: &str,
     args: impl IntoIterator<Item = &'a PathBuf>,
     current_dir: Option<&Path>,
+    envs: Option<HashMap<String, String>>,
 ) -> anyhow::Result<Output> {
     let args = args.into_iter().collect_vec();
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
@@ -92,6 +94,9 @@ pub(crate) fn execute_command<'a>(
 
     if let Some(current_dir) = current_dir {
         cmd.current_dir(normalize_windows_unc_path(&path_to_string(current_dir)?));
+    }
+    if let Some(envs) = envs {
+        cmd.envs(envs);
     }
 
     debug!(
