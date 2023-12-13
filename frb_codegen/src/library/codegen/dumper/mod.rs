@@ -5,7 +5,7 @@ use crate::codegen::generator::misc::PathTexts;
 use crate::utils::file_utils::create_dir_all_and_write;
 use crate::utils::path_utils::path_to_string;
 use convert_case::{Case, Casing};
-use log::info;
+use log::debug;
 use serde::Serialize;
 use std::path::Path;
 use strum::IntoEnumIterator;
@@ -90,7 +90,7 @@ impl Dumper<'_> {
             .dump_directory
             .join(content.to_string().to_case(Case::Snake))
             .join(name);
-        info!("Dumping {name} into {path:?}");
+        debug!("Dumping {name} into {path:?}");
 
         create_dir_all_and_write(path, str)
     }
