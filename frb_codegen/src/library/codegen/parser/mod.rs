@@ -34,10 +34,11 @@ pub(crate) fn parse(
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
-    let file_data_arr_raw = thread::spawn(|| {
+    let rust_crate_dir = config.rust_crate_dir.to_owned();
+    let file_data_arr_raw = thread::spawn(move || {
         read_files_raw(
             rust_input_paths,
-            &config.rust_crate_dir,
+            &rust_crate_dir,
             cached_rust_reader,
             dumper,
         )
@@ -52,7 +53,7 @@ pub(crate) fn parse(
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
     drop(pb);
 
-    let file_data_arr = syn_parse_files(file_data_arr_raw.join()??)?;
+    let file_data_arr = syn_parse_files(file_data_arr_raw.join().unwrap()?)?;
 
     let src_fns = file_data_arr
         .iter()
