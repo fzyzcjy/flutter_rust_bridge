@@ -1,5 +1,5 @@
 use crate::codegen::parser::source_graph::modules::{Enum, Module, Struct};
-use log::warn;
+use log::{debug, warn};
 use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
@@ -38,7 +38,7 @@ impl Module {
             for item in f(module) {
                 let (key, value) = extract_entry(item);
                 if let Some(old_value) = ans.get(&key) {
-                    warn!("Same key={key} has multiple values: {old_value:?} (thrown away) and {value:?} (used)");
+                    debug!("Same key={key} has multiple values: {old_value:?} (thrown away) and {value:?} (used). This may or may not be a problem.");
                 }
                 let _old_value = ans.insert(key, value);
             }
