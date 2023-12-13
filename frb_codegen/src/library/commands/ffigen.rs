@@ -8,6 +8,7 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::io::Write;
 use std::path::{Path, PathBuf};
+use std::process::Output;
 use std::str::FromStr;
 
 pub(crate) struct FfigenArgs<'a> {
@@ -80,12 +81,18 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
         config_file.path()
     )?;
 
+    handle_output(&res)?;
+
+    Ok(())
+}
+
+fn handle_output(res: &Output) -> anyhow::Result<()> {
     if !res.status.success() {
-        let out = String::from_utf8_lossy(&res.stdout);
-        let err = String::from_utf8_lossy(&res.stderr);
+        let stdout = String::from_utf8_lossy(&res.stdout);
+        let stderr = String::from_utf8_lossy(&res.stderr);
 
         let pat = "Couldn't find dynamic library in default locations.";
-        if err.contains(pat) || out.contains(pat) {
+        if stderr.contains(pat) || stdout.contains(pat) {
             bail!("ffigen could not find LLVM. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/llvm for details.");
         }
         bail!("ffigen failed:\nstderr: {err}\nstdout: {out}");
