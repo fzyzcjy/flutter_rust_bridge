@@ -23,9 +23,9 @@ pub(crate) fn simple_progress(message: String, level: usize) -> SimpleProgress {
         .with_key("my_elapsed", |state: &ProgressState, w: &mut dyn Write| {
             write!(w, "[{:.1}s]", state.elapsed().as_secs_f64()).unwrap()
         })
-        .with_key("level", |state: &ProgressState, w: &mut dyn Write| {
+        .with_key("level", move |state: &ProgressState, w: &mut dyn Write| {
             if level > 0 {
-                write!(w, "{} ", "--".repeat(level))
+                write!(w, "{} ", "--".repeat(level)).unwrap();
             }
         })
         .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ ");

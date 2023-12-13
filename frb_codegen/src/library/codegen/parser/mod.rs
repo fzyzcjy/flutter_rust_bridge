@@ -40,7 +40,7 @@ pub(crate) fn parse(
         dumper,
     )?;
 
-    let pb = simple_progress("Parse crate source graph".to_owned());
+    let pb = simple_progress("Parse crate source graph".to_owned(), 1);
     let crate_map = source_graph::crates::Crate::parse(
         &config.rust_crate_dir.join("Cargo.toml"),
         cached_rust_reader,
