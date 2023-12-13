@@ -152,17 +152,25 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
 }
 
 fn generate_boilerplate_frb_initialize_rust(target: TargetOrCommon) -> ExternFunc {
+    let message_port_type = match target {
+        TargetOrCommon::Common | TargetOrCommon::Web => {
+            "flutter_rust_bridge::for_generated::MessagePort"
+        }
+        // to make cbingen/ffigen happy
+        TargetOrCommon::Io => "i64",
+    };
+
     ExternFunc {
         func_name: "frb_initialize_rust".into(),
         params: vec![
             ExternFuncParam {
                 name: "dart_opaque_drop_port".to_owned(),
-                rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
+                rust_type: message_port_type.to_owned(),
                 dart_type: "NativePortType".to_owned(),
             },
             ExternFuncParam {
                 name: "dart_fn_invoke_port".to_owned(),
-                rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
+                rust_type: message_port_type.to_owned(),
                 dart_type: "NativePortType".to_owned(),
             },
         ],
