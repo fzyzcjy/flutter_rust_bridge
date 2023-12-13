@@ -10,7 +10,7 @@ pub struct Config {
     pub dart_output: String,
     pub c_output: Option<String>,
     pub duplicated_c_output: Option<Vec<String>>,
-    pub rust_crate_dir: Option<String>,
+    pub rust_root: Option<String>,
     pub rust_output: Option<String>,
     pub dart_entrypoint_class_name: Option<String>,
     pub dart_format_line_length: Option<u32>,

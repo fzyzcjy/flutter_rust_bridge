@@ -25,7 +25,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         dart_output: args.dart_output.context("dart_output is required")?,
         c_output: args.c_output,
         duplicated_c_output: args.duplicated_c_output,
-        rust_crate_dir: args.rust_crate_dir,
+        rust_root: args.rust_root,
         rust_output: args.rust_output,
         dart_entrypoint_class_name: args.dart_entrypoint_class_name,
         dart_format_line_length: args.dart_format_line_length,

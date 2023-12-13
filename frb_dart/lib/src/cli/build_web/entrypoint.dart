@@ -31,11 +31,10 @@ class Config {
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(
     abbr: 'c',
-    help: 'Directory of the crate',
-    valueHelp: 'CRATE',
+    help: 'Directory of the rust package',
     defaultsTo: 'rust',
   )
-  late String rustCrateDir;
+  late String rustRoot;
 
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(abbr: 'o', help: 'Output path', valueHelp: 'PKG')

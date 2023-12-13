@@ -54,15 +54,11 @@ impl InternalConfig {
             .collect();
 
         let rust_crate_dir = canonicalize_with_error_message(
-            &(config.rust_crate_dir.clone().map(PathBuf::from)).unwrap_or(find_rust_crate_dir(
+            &(config.rust_root.clone().map(PathBuf::from)).unwrap_or(find_rust_crate_dir(
                 rust_input_path_pack.one_rust_input_path(),
             )?),
         )?;
         let rust_output_path = compute_rust_output_path(config, &base_dir, &rust_crate_dir);
-        let _rust_wire_mod = compute_mod_from_rust_crate_path(
-            &rust_output_path[TargetOrCommon::Common],
-            &rust_crate_dir,
-        )?;
 
         let dart_root = canonicalize_with_error_message(
             &(config.dart_root.clone().map(PathBuf::from))

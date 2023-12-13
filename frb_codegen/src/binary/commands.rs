@@ -64,7 +64,7 @@ pub(crate) struct GenerateCommandArgs {
 
     /// Crate directory for your Rust project
     #[arg(long)]
-    pub rust_crate_dir: Option<String>,
+    pub rust_root: Option<String>,
 
     /// Output path of generated Rust code
     #[arg(long)]
