@@ -18,6 +18,7 @@ use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
+use crate::utils::console::simple_progress;
 use itertools::Itertools;
 use log::trace;
 use std::path::{Path, PathBuf};
@@ -39,12 +40,14 @@ pub(crate) fn parse(
         dumper,
     )?;
 
+    let pb = simple_progress("Parse crate source graph".to_owned());
     let crate_map = source_graph::crates::Crate::parse(
         &config.rust_crate_dir.join("Cargo.toml"),
         cached_rust_reader,
         dumper,
     )?;
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
+    drop(pb);
 
     let src_fns = file_data_arr
         .iter()
