@@ -22,18 +22,19 @@ class RustGenerator extends BaseGenerator {
   @override
   String generateDuplicateCode(String inputText, DuplicatorMode mode) {
     const sse = '#[flutter_rust_bridge::frb(serialize)]';
-    final prefix = switch (mode) {
-      DuplicatorMode.sync => '#[flutter_rust_bridge::frb(sync)] pub fn',
-      DuplicatorMode.rustAsync => 'pub async fn',
-      DuplicatorMode.sse => '$sse pub fn',
-      DuplicatorMode.syncSse => '$sse #[flutter_rust_bridge::frb(sync)] pub fn',
-      DuplicatorMode.rustAsyncSse => '$sse pub async fn',
-    };
+    String prefix(String raw) => switch (mode) {
+          DuplicatorMode.sync => '#[flutter_rust_bridge::frb(sync)] $raw',
+          DuplicatorMode.rustAsync => 'pub async fn',
+          DuplicatorMode.sse => '$sse $raw',
+          DuplicatorMode.syncSse =>
+            '$sse #[flutter_rust_bridge::frb(sync)] $raw',
+          DuplicatorMode.rustAsyncSse => '$sse pub async fn',
+        };
 
     var ans = inputText
         .replaceAllMapped(
-          RegExp(r'pub fn ([a-zA-Z0-9_-]+?)(_twin_normal)?\('),
-          (m) => '$prefix ${m.group(1)}${mode.postfix}(',
+          RegExp(r'(pub (async )?fn) ([a-zA-Z0-9_-]+?)(_twin_normal)?\('),
+          (m) => '${prefix(m.group(1)!)} ${m.group(3)}${mode.postfix}(',
         )
         // struct name, etc
         .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase)
