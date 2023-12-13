@@ -1,7 +1,7 @@
 use crate::codegen::config::internal_config::ControllerInternalConfig;
 use crate::utils::path_utils::path_to_string;
 use itertools::Itertools;
-use log::{info, warn};
+use log::{debug, info, warn};
 use notify::{Event, FsEventWatcher, RecommendedWatcher, RecursiveMode, Watcher};
 use notify_debouncer_mini::{new_debouncer, DebounceEventResult, Debouncer};
 use std::path::PathBuf;
@@ -58,7 +58,7 @@ fn create_fs_watcher(
         Duration::from_millis(300),
         move |event: DebounceEventResult| {
             if is_event_interesting(&event, &exclude_paths) {
-                info!("See interesting file change: {event:?}"); // TODO change to `debug` level
+                debug!("See interesting file change: {event:?}");
                 tx.send(()).unwrap()
             }
         },
