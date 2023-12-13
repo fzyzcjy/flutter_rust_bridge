@@ -50,16 +50,7 @@ fn wire_hi_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_a = <flutter_rust_bridge::DartFn<
-                fn(
-                    String,
-                    String,
-                )
-                    -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<
-                    'static,
-                    String,
-                >,
-            >>::sse_decode(&mut deserializer);
+            let api_a = <DART_FN_RUST_API_TYPE_NOT_USED>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
