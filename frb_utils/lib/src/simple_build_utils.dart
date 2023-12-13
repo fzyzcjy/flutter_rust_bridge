@@ -20,24 +20,30 @@ void simpleBuild(List<String> args) async {
   final cargoExtraArgs =
       Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']?.split(' ') ??
           const <String>[];
+  final skip = Platform.environment['FRB_SIMPLE_BUILD_SKIP'] == '1';
   final rustflags = Platform.environment['RUSTFLAGS'];
 
-  await runCommand(
-    'cargo',
-    [
-      if (cargoNightly) '+nightly',
-      'build',
-      '--release',
-      ...cargoExtraArgs,
-    ],
-    pwd: rustCrateDir.toFilePath(),
-    printCommandInStderr: true,
-    env: {
-      // Though runCommand auto pass environment variable to commands,
-      // we do this to explicitly show this important flag
-      if (rustflags != null) 'RUSTFLAGS': rustflags,
-    },
-  );
+  if (skip) {
+    print(
+        'frb_utils::simpleBuild SKIP BUILD since environment variable requires this');
+  } else {
+    await runCommand(
+      'cargo',
+      [
+        if (cargoNightly) '+nightly',
+        'build',
+        '--release',
+        ...cargoExtraArgs,
+      ],
+      pwd: rustCrateDir.toFilePath(),
+      printCommandInStderr: true,
+      env: {
+        // Though runCommand auto pass environment variable to commands,
+        // we do this to explicitly show this important flag
+        if (rustflags != null) 'RUSTFLAGS': rustflags,
+      },
+    );
+  }
 
   final dependencies = {
     rustCrateDir,
