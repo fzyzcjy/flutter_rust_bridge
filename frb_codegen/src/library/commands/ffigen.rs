@@ -106,7 +106,10 @@ fn handle_output(res: &Output) -> anyhow::Result<()> {
         //
         // It may emit SEVERE log messages for non-fatal errors though, so
         // we don't want to error out completely.
-        warn!("The `ffigen` command emitted a SEVERE error. Maybe there is a problem? command={:?} output=\n{}", cmd, stdout);
+        warn!(
+            "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? output=\n{}",
+            stdout
+        );
     }
 
     Ok(())
@@ -160,7 +163,7 @@ mod tests {
     use super::*;
 
     #[test]
-    pub fn test_parse_output() {
+    pub fn test_handle_output_when_has_severe_should_warn() {
         todo!();
     }
 }
