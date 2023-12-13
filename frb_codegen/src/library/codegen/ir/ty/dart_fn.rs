@@ -33,7 +33,7 @@ impl IrTypeTrait for IrTypeDartFn {
 
     fn rust_api_type(&self) -> String {
         format!(
-            "flutter_rust_bridge::DartFn<fn({}) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, {}>>",
+            "impl Fn({}) -> flutter_rust_bridge::DartFnFuture<{}> + std::panic::UnwindSafe>",
             self.inputs.iter().map(|x| x.rust_api_type()).join(", "),
             self.output.rust_api_type()
         )
