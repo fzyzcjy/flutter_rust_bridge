@@ -85,8 +85,7 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
         let out = String::from_utf8_lossy(&res.stdout);
         let pat = "Couldn't find dynamic library in default locations.";
         if err.contains(pat) || out.contains(pat) {
-            bail!("ffigen could not find LLVM. Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.: \
-                flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>");
+            bail!("ffigen could not find LLVM. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/llvm for details.");
         }
         bail!("ffigen failed:\nstderr: {err}\nstdout: {out}");
     }
