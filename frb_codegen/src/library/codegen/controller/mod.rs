@@ -1,6 +1,6 @@
 use crate::codegen::config::internal_config::ControllerInternalConfig;
 use log::{info, warn};
-use notify::{Event, RecommendedWatcher, RecursiveMode, Watcher};
+use notify::{Event, FsEventWatcher, RecommendedWatcher, RecursiveMode, Watcher};
 use std::path::PathBuf;
 use std::sync::mpsc::Receiver;
 
@@ -19,7 +19,7 @@ fn run_watch(
     run_inner: &impl Fn() -> anyhow::Result<()>,
     watching_paths: &[PathBuf],
 ) -> anyhow::Result<()> {
-    let fs_change_rx = create_fs_watcher(watching_paths)?;
+    let (_watcher, fs_change_rx) = create_fs_watcher(watching_paths)?;
 
     loop {
         if let Err(e) = run_inner() {
@@ -34,7 +34,7 @@ fn run_watch(
     }
 }
 
-fn create_fs_watcher(watching_paths: &[PathBuf]) -> anyhow::Result<Receiver<()>> {
+fn create_fs_watcher(watching_paths: &[PathBuf]) -> anyhow::Result<(FsEventWatcher, Receiver<()>)> {
     // ref: https://github.com/notify-rs/notify/blob/main/examples/monitor_raw.rs
     let (tx, rx) = std::sync::mpsc::channel();
     let mut watcher =
@@ -42,5 +42,5 @@ fn create_fs_watcher(watching_paths: &[PathBuf]) -> anyhow::Result<Receiver<()>>
     for path in watching_paths {
         watcher.watch(path, RecursiveMode::Recursive)?;
     }
-    Ok(rx)
+    Ok((watcher, rx))
 }
