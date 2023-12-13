@@ -61,7 +61,8 @@ fn create_fs_watcher(
 
 fn is_event_interesting(event: &notify::Result<Event>, exclude_paths: &[PathBuf]) -> bool {
     if let Ok(event) = event {
-        (event.paths.iter()).all(|p| !exclude_paths.contains(&p.canonicalize().unwrap()))
+        (event.paths.iter())
+            .all(|p| !exclude_paths.contains(&p.canonicalize().unwrap_or(p.clone())))
     } else {
         false
     }
