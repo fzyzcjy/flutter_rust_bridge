@@ -39,12 +39,9 @@ fn run_watch(
         );
 
         // If `recv` call ends, then we see at least one change
-        info!("call recv");
         fs_change_rx.recv()?;
         // Drain all other file changes
-        while let Ok(_) = fs_change_rx.try_recv() {
-            info!("loop inside recv");
-        }
+        while let Ok(_) = fs_change_rx.try_recv() {}
     }
 }
 
