@@ -61,4 +61,6 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
         &generator_output.output_texts.paths(),
     )?;
     drop(pb);
+
+    Ok(())
 }
