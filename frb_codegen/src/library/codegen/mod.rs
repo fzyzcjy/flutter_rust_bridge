@@ -1,6 +1,7 @@
 //! Code generator for `flutter_rust_bridge`
 
 pub(crate) mod config;
+mod controller;
 pub(crate) mod dumper;
 mod generator;
 pub(crate) mod ir;
