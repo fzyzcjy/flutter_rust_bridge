@@ -26047,7 +26047,8 @@ class RustLibWire implements BaseWire {
   }
 
   late final _benchmark_raw_output_bytesPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int32, ffi.Int32)>>(
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
       'benchmark_raw_output_bytes');
   late final _benchmark_raw_output_bytes =
       _benchmark_raw_output_bytesPtr.asFunction<void Function(int, int, int)>();
