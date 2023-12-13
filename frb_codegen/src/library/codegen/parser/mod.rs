@@ -109,7 +109,7 @@ fn read_files(
         })
         .collect::<anyhow::Result<Vec<(PathBuf, String)>>>()?;
 
-    let _pb = simple_progress("Run syn".to_owned(), 0);
+    let _pb = simple_progress("Run syn".to_owned(), 1);
     contents
         .into_iter()
         .map(|(rust_input_path, content)| {
