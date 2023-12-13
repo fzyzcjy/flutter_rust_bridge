@@ -38,9 +38,6 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
     drop(pb);
 
-    println!("hi exit!");
-    std::process::exit(0);
-
     let pb = simple_progress("Generate".to_owned(), 0);
     let generator_output = generator::generate(&ir_pack, &internal_config.generator, &dumper)?;
     drop(pb);
