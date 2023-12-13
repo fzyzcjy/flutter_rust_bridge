@@ -15,7 +15,7 @@ typedef struct wire_cst_list_prim_u_8 {
   int32_t len;
 } wire_cst_list_prim_u_8;
 
-void frb_initialize_rust(MessagePort dart_opaque_drop_port, MessagePort dart_fn_invoke_port);
+void frb_initialize_rust(int64_t dart_opaque_drop_port, int64_t dart_fn_invoke_port);
 
 void dart_fn_deliver_output(int32_t call_id,
                             uint8_t *ptr_,
