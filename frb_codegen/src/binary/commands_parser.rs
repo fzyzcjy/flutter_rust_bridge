@@ -21,6 +21,7 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgs) -> Result<Config
 fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> Result<Config> {
     Ok(Config {
         base_dir: None,
+        watch: Some(args.watch),
         rust_input: args.rust_input.context("rust_input is required")?,
         dart_output: args.dart_output.context("dart_output is required")?,
         c_output: args.c_output,

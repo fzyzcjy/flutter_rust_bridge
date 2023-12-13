@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Config {
     pub base_dir: Option<String>,
+    pub watch: Option<bool>,
     pub rust_input: String,
     pub dart_output: String,
     pub c_output: Option<String>,
