@@ -38,6 +38,7 @@ pub(crate) fn generate(
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::config::config::MetaConfig;
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::api_dart::generate;
@@ -60,7 +61,7 @@ mod tests {
         env::set_current_dir(&test_fixture_dir)?;
 
         let config = Config::from_files_auto()?;
-        let internal_config = InternalConfig::parse(&config)?;
+        let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
         let mut cached_rust_reader = CachedRustReader::default();
         let ir_pack = parser::parse(
             &internal_config.parser,

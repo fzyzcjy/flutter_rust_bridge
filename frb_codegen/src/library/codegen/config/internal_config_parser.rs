@@ -1,3 +1,4 @@
+use crate::codegen::config::config::MetaConfig;
 use crate::codegen::config::internal_config::{
     ControllerInternalConfig, GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig,
     RustInputPathPack,
@@ -29,7 +30,7 @@ use std::path::{Path, PathBuf};
 use strum::IntoEnumIterator;
 
 impl InternalConfig {
-    pub(crate) fn parse(config: &Config) -> Result<Self> {
+    pub(crate) fn parse(config: &Config, meta_config: &MetaConfig) -> Result<Self> {
         let base_dir = config
             .base_dir
             .as_ref()
@@ -83,7 +84,7 @@ impl InternalConfig {
 
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
-                watch: config.watch.unwrap_or(false),
+                watch: meta_config.watch,
                 watching_paths: controller_watching_paths,
             },
             preparer: PreparerInternalConfig {
@@ -311,6 +312,7 @@ fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePa
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::config::config::MetaConfig;
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::codegen::Config;
     use crate::utils::logs::configure_opinionated_test_logging;
@@ -343,7 +345,7 @@ mod tests {
 
         let config = Config::from_files_auto()?;
 
-        let internal_config = InternalConfig::parse(&config)?;
+        let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
 
         let actual_string = serde_json::to_string_pretty(&internal_config)?;
         let actual_json: Value = serde_json::from_str(&actual_string)?;

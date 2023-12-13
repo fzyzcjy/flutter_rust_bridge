@@ -9,6 +9,7 @@ pub(crate) mod parser;
 mod polisher;
 mod preparer;
 
+use crate::codegen::config::config::MetaConfig;
 use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
@@ -20,10 +21,10 @@ pub use dumper::internal_config::ConfigDumpContent;
 use log::debug;
 
 /// Execute the main code generator
-pub fn generate(config: Config) -> anyhow::Result<()> {
-    debug!("config={config:?}");
+pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
+    debug!("config={config:?} meta_config={meta_config:?}");
 
-    let internal_config = InternalConfig::parse(&config)?;
+    let internal_config = InternalConfig::parse(&config, &meta_config)?;
     debug!("internal_config={internal_config:?}");
 
     let dumper = Dumper(&internal_config.dumper);

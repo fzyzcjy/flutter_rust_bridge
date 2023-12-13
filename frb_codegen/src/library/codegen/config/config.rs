@@ -28,3 +28,8 @@ pub struct Config {
     pub dump: Option<Vec<ConfigDumpContent>>,
     pub dump_all: Option<bool>,
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct MetaConfig {
+    pub watch: bool,
+}
