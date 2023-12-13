@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::dart::DartLang;
 use crate::codegen::generator::codec::sse::lang::Lang;
+use crate::codegen::generator::codec::sse::misc::with_sse_extra_types;
 use crate::codegen::generator::codec::sse::ty::{CodecSseTy, CodecSseTyContext};
 use crate::codegen::generator::codec::structs::EncodeOrDecode;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecOutputSpec;
@@ -19,6 +20,8 @@ pub(super) fn generate_encode_or_decode(
     types: &[IrType],
     mode: EncodeOrDecode,
 ) -> WireDartCodecOutputSpec {
+    let types = with_sse_extra_types(types);
+
     let mut inner = Default::default();
     inner += (types.iter())
         .map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
