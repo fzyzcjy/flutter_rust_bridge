@@ -107,16 +107,19 @@ fn handle_output(
     }
 
     if stdout.contains("[SEVERE]") {
-        // If ffigen can't find a header file it will generate broken
-        // bindings but still exit successfully. We can detect these broken
-        // bindings by looking for a "[SEVERE]" log message.
-        //
-        // It may emit SEVERE log messages for non-fatal errors though, so
-        // we don't want to error out completely.
-        return Ok(Some(format!(
-            "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? output=\n{}",
-            stdout
-        )));
+        let lines = stdout.split("\n");
+        if TODO {
+            // If ffigen can't find a header file it will generate broken
+            // bindings but still exit successfully. We can detect these broken
+            // bindings by looking for a "[SEVERE]" log message.
+            //
+            // It may emit SEVERE log messages for non-fatal errors though, so
+            // we don't want to error out completely.
+            return Ok(Some(format!(
+                "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? output=\n{}",
+                stdout
+            )));
+        }
     }
 
     Ok(None)
