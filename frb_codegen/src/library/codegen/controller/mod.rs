@@ -1,4 +1,5 @@
 use crate::codegen::config::internal_config::ControllerInternalConfig;
+use crate::utils::path_utils::path_to_string;
 use log::{info, warn};
 use notify::{Event, FsEventWatcher, RecommendedWatcher, RecursiveMode, Watcher};
 use std::path::PathBuf;
@@ -27,7 +28,13 @@ fn run_watch(
             warn!("Error when running code generator: {e:?}");
         }
 
-        info!("Watching file changes...");
+        info!(
+            "Watching file changes on {}...",
+            (watching_paths.iter())
+                .map(|p| path_to_string(p).unwrap_or_default())
+                .join(", ")
+        );
+
         // If `recv` call ends, then we see at least one change
         fs_change_rx.recv()?;
         // Drain all other file changes
