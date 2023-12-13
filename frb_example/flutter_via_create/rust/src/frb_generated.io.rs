@@ -35,10 +35,7 @@ impl<T> NewWithNullPtr for *mut T {
 }
 
 #[no_mangle]
-pub extern "C" fn frb_initialize_rust(
-    dart_opaque_drop_port: flutter_rust_bridge::for_generated::MessagePort,
-    dart_fn_invoke_port: flutter_rust_bridge::for_generated::MessagePort,
-) {
+pub extern "C" fn frb_initialize_rust(dart_opaque_drop_port: i64, dart_fn_invoke_port: i64) {
     flutter_rust_bridge::for_generated::handler_initialize(
         &*FLUTTER_RUST_BRIDGE_HANDLER,
         dart_opaque_drop_port,
