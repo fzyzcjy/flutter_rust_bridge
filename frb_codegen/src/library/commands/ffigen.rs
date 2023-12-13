@@ -173,13 +173,13 @@ mod tests {
     #[test]
     pub fn test_handle_output_when_normal() {
         let result = handle_output(true, "", "");
-        assert_eq!(result, Ok(None));
+        assert_eq!(result.unwrap(), None);
     }
 
     #[test]
     pub fn test_handle_output_when_has_severe_should_warn() {
         let result = handle_output(true, "One line\n[SEVERE] Something\nAnother line", "");
-        assert_eq!(result, Ok(None));
+        assert_eq!(result.unwrap(), None);
     }
 
     #[test]
