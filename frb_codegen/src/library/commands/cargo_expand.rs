@@ -1,6 +1,7 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::library::commands::command_runner::execute_command;
+use crate::utils::console::simple_progress;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use log::{debug, info, warn};
@@ -78,7 +79,9 @@ fn run_cargo_expand(
     dumper: &Dumper,
     _allow_auto_install: bool,
 ) -> Result<String> {
+    let _pb = simple_progress("Run cargo-expand".to_owned());
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
+
     let args = vec![
         PathBuf::from("expand"),
         PathBuf::from("--lib"),
