@@ -14,6 +14,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
@@ -95,12 +96,13 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
             .map(|field| {
                 let gen = WireRustGenerator::new(field.ty.clone(), context);
 
-                let mut expr = format!("{name}.cst_decode()", name = field.name.rust_style());
+                let name = field.name.rust_style();
+                let mut expr = format!("{name}.cst_decode()");
                 if let Some(wrapper) = gen.generate_wire_func_call_decode_wrapper() {
                     expr = format!("{wrapper}({expr})");
                 }
 
-                format!("let api_{name} = {wire_func_call_decode};")
+                format!("let api_{name} = {expr};")
             })
             .join("")
     }
