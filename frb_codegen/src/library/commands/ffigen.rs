@@ -81,18 +81,23 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
         config_file.path()
     )?;
 
-    if let Some(warning) = handle_output(&res)? {
+    if let Some(warning) = handle_output(
+        res.status.success(),
+        &String::from_utf8_lossy(&res.stdout).into_owned(),
+        &String::from_utf8_lossy(&res.stderr).into_owned(),
+    )? {
         warn!("{}", warning);
     }
 
     Ok(())
 }
 
-fn handle_output(res: &Output) -> anyhow::Result<Option<String>> {
-    let stdout = String::from_utf8_lossy(&res.stdout);
-    let stderr = String::from_utf8_lossy(&res.stderr);
-
-    if !res.status.success() {
+fn handle_output(
+    status_success: bool,
+    stdout: &str,
+    stderr: &str,
+) -> anyhow::Result<Option<String>> {
+    if !status_success {
         let pat = "Couldn't find dynamic library in default locations.";
         if stderr.contains(pat) || stdout.contains(pat) {
             bail!("ffigen could not find LLVM. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/llvm for details.");
@@ -167,31 +172,19 @@ mod tests {
 
     #[test]
     pub fn test_handle_output_when_normal() {
-        let result = handle_output(&Output {
-            status: Default::default(),
-            stdout: vec![],
-            stderr: vec![],
-        });
+        let result = handle_output(true, "", "");
         assert_eq!(result, Ok(None));
     }
 
     #[test]
     pub fn test_handle_output_when_has_severe_should_warn() {
-        let result = handle_output(&Output {
-            status: Default::default(),
-            stdout: ("One line\n[SEVERE] Something\nAnother line".to_owned()).into_bytes(),
-            stderr: vec![],
-        });
+        let result = handle_output(true, "One line\n[SEVERE] Something\nAnother line", "");
         assert_eq!(result, Ok(None));
     }
 
     #[test]
     pub fn test_handle_output_when_cannot_find_llvm_should_fail() {
-        let result = handle_output(&Output {
-            status: ExitStatus::default(),
-            stdout: ("One line\n[SEVERE] Something\nAnother line".to_owned()).into_bytes(),
-            stderr: vec![],
-        });
+        let result = handle_output(true, "One line\n[SEVERE] Something\nAnother line", "");
         assert_eq!(result, Ok(None));
     }
 }
