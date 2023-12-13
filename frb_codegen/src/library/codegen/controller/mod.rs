@@ -20,7 +20,7 @@ fn run_watch(
     watching_paths: &[PathBuf],
     exclude_paths: &[PathBuf],
 ) -> anyhow::Result<()> {
-    let (_watcher, fs_change_rx) = create_fs_watcher(watching_paths, exclude_paths)?;
+    let (_watcher, fs_change_rx) = create_fs_watcher(watching_paths, exclude_paths.to_owned())?;
 
     loop {
         if let Err(e) = run_inner() {
@@ -37,7 +37,7 @@ fn run_watch(
 
 fn create_fs_watcher(
     watching_paths: &[PathBuf],
-    exclude_paths: &[PathBuf],
+    exclude_paths: Vec<PathBuf>,
 ) -> anyhow::Result<(FsEventWatcher, Receiver<()>)> {
     // ref: https://github.com/notify-rs/notify/blob/main/examples/monitor_raw.rs
 
@@ -45,7 +45,7 @@ fn create_fs_watcher(
 
     let mut watcher = RecommendedWatcher::new(
         move |event| {
-            if is_event_interesting(&event, exclude_paths) {
+            if is_event_interesting(&event, &exclude_paths) {
                 tx.send(()).unwrap()
             }
         },
