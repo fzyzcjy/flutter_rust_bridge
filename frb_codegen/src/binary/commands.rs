@@ -40,6 +40,7 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub watch: bool,
 
+    #[clap(flatten)]
     pub primary: GenerateCommandArgsPrimary,
 }
 
