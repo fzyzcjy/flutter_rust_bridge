@@ -112,9 +112,8 @@ fn handle_output(
     // This is usually not a problem
     let nullability_message = "missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]";
 
-    let stdout_lines = stdout.split("\n").collect_vec();
-    let severe_lines = stdout_lines
-        .iter()
+    let severe_lines = stdout
+        .split("\n")
         .filter(|line| {
             line.contains("[SEVERE]")
                 && !line.contains("Total errors/warnings")
