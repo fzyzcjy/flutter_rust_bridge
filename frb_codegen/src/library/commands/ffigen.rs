@@ -97,13 +97,15 @@ fn handle_output(
     stdout: &str,
     stderr: &str,
 ) -> anyhow::Result<Option<String>> {
+    let hint_link = "Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/ffigen-troubleshooting for details";
+
     if !status_success {
         let pat = "Couldn't find dynamic library in default locations.";
         if stderr.contains(pat) || stdout.contains(pat) {
-            bail!("ffigen could not find LLVM. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/llvm for details.");
+            bail!("ffigen could not find LLVM. {}", hint_link);
         }
 
-        bail!("ffigen failed.");
+        bail!("ffigen failed. {}", hint_link);
     }
 
     if stdout.contains("[SEVERE]") {
@@ -116,8 +118,8 @@ fn handle_output(
             // It may emit SEVERE log messages for non-fatal errors though, so
             // we don't want to error out completely.
             return Ok(Some(format!(
-                "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? output=\n{}",
-                stdout
+                "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? {}",
+                hint_link
             )));
         }
     }
