@@ -33,12 +33,14 @@ pub(crate) fn parse(
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
+    let pb = simple_progress("Run cargo expand and extract".to_owned(), 1);
     let file_data_arr = read_files(
         rust_input_paths,
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
     )?;
+    drop(pb);
 
     let pb = simple_progress("Parse crate source graph".to_owned(), 1);
     let crate_map = source_graph::crates::Crate::parse(
@@ -100,7 +102,6 @@ fn read_files(
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
 ) -> anyhow::Result<Vec<FileData>> {
-    let _pb = simple_progress("Run cargo expand and extract".to_owned(), 1);
     rust_input_paths
         .iter()
         .map(|rust_input_path| {
