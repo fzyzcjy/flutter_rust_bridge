@@ -9,7 +9,7 @@ pub(super) fn run(
     run_inner: &impl Fn() -> anyhow::Result<()>,
 ) -> anyhow::Result<()> {
     if config.watch {
-        run_watch(run_inner, &config.watching_paths)
+        run_watch(run_inner, &config.watching_paths, &config.exclude_paths)
     } else {
         run_inner()
     }
@@ -18,8 +18,9 @@ pub(super) fn run(
 fn run_watch(
     run_inner: &impl Fn() -> anyhow::Result<()>,
     watching_paths: &[PathBuf],
+    exclude_paths: &[PathBuf],
 ) -> anyhow::Result<()> {
-    let (_watcher, fs_change_rx) = create_fs_watcher(watching_paths)?;
+    let (_watcher, fs_change_rx) = create_fs_watcher(watching_paths, exclude_paths)?;
 
     loop {
         if let Err(e) = run_inner() {
@@ -34,13 +35,34 @@ fn run_watch(
     }
 }
 
-fn create_fs_watcher(watching_paths: &[PathBuf]) -> anyhow::Result<(FsEventWatcher, Receiver<()>)> {
+fn create_fs_watcher(
+    watching_paths: &[PathBuf],
+    exclude_paths: &[PathBuf],
+) -> anyhow::Result<(FsEventWatcher, Receiver<()>)> {
     // ref: https://github.com/notify-rs/notify/blob/main/examples/monitor_raw.rs
+
     let (tx, rx) = std::sync::mpsc::channel();
-    let mut watcher =
-        RecommendedWatcher::new(move |_| tx.send(()).unwrap(), notify::Config::default())?;
+
+    let mut watcher = RecommendedWatcher::new(
+        move |event| {
+            if is_event_interesting(&event, exclude_paths) {
+                tx.send(()).unwrap()
+            }
+        },
+        notify::Config::default(),
+    )?;
+
     for path in watching_paths {
         watcher.watch(path, RecursiveMode::Recursive)?;
     }
+
     Ok((watcher, rx))
+}
+
+fn is_event_interesting(event: &notify::Result<Event>, exclude_paths: &[PathBuf]) -> bool {
+    if let Ok(event) = event {
+        event.paths.iter().all(|p| !exclude_paths.contains(p))
+    } else {
+        false
+    }
 }
