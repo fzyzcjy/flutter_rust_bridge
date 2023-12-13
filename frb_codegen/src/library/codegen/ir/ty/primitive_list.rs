@@ -14,6 +14,9 @@ impl IrTypeTrait for IrTypePrimitiveList {
         ir_context: &impl IrContext,
     ) {
         IrType::Primitive(self.primitive.clone()).visit_types(f, ir_context);
+
+        // SSE codec needs i32 for length
+        IrType::Primitive(IrTypePrimitive::I32).visit_types(f, ir_context);
     }
 
     fn safe_ident(&self) -> String {
