@@ -33,13 +33,12 @@ pub(crate) fn parse(
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
-    let file_data_arr_raw = read_files_raw(
+    let file_data_arr = read_files(
         rust_input_paths,
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
     )?;
-    let file_data_arr = syn_parse_files(file_data_arr_raw)?;
 
     let pb = simple_progress("Parse crate source graph".to_owned(), 1);
     let crate_map = source_graph::crates::Crate::parse(
@@ -95,20 +94,22 @@ struct FileData {
     ast: File,
 }
 
-fn read_files_raw(
+fn read_files(
     rust_input_paths: &[PathBuf],
     rust_crate_dir: &Path,
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
-) -> anyhow::Result<Vec<(PathBuf, String)>> {
-    rust_input_paths
+) -> anyhow::Result<Vec<FileData>> {
+    let contents = rust_input_paths
         .iter()
         .map(|rust_input_path| {
             let content =
                 cached_rust_reader.read_rust_file(rust_input_path, rust_crate_dir, dumper)?;
             Ok((rust_input_path.to_owned(), content))
         })
-        .collect()
+        .collect::<anyhow::Result<Vec<(PathBuf, String)>>>()?;
+
+    syn_parse_files(contents)
 }
 
 fn syn_parse_files(contents: Vec<(PathBuf, String)>) -> anyhow::Result<Vec<FileData>> {
