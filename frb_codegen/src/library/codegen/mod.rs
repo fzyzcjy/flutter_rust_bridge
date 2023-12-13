@@ -44,11 +44,13 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     generator_output.output_texts.write_to_disk()?;
 
+    let pb = simple_progress("Polish".to_owned(), 0);
     polisher::polish(
         &internal_config.polisher,
         generator_output.dart_needs_freezed,
         &generator_output.output_texts.paths(),
     )?;
+    drop(pb);
 
     Ok(())
 }
