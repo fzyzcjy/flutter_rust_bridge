@@ -48,6 +48,6 @@ fn generate_text_from_merged_code(
 ) -> anyhow::Result<Acc<Option<String>>> {
     Ok(generate_text_respecting_wasm_flag(
         core_code,
-        config.wasm_enabled,
+        config.web_enabled,
     ))
 }

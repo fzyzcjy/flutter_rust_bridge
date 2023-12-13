@@ -21,7 +21,7 @@ pub struct Config {
     pub dart_root: Option<String>,
     pub build_runner: Option<bool>,
     pub extra_headers: Option<String>,
-    pub wasm: Option<bool>,
+    pub web: Option<bool>,
     pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
     pub default_external_library_loader_web_prefix: Option<String>,

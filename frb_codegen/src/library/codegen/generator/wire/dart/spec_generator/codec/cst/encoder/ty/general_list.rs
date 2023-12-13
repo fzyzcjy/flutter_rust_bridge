@@ -35,7 +35,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
                     format!("cst_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
                 }
             )),
-            wasm: self.context.config.wasm_enabled.then(|| {
+            wasm: self.context.config.web_enabled.then(|| {
                 format!(
                     "return raw.map(cst_encode_{}).toList();",
                     self.ir.inner.safe_ident()

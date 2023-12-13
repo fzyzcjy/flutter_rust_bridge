@@ -72,7 +72,7 @@ fn generate_text_from_merged_code(
             io: core_code.io.clone(),
             wasm: core_code.wasm.clone(),
         },
-        config.wasm_enabled,
+        config.web_enabled,
     ))
 }
 
@@ -82,7 +82,7 @@ fn generate_text_common(
 ) -> anyhow::Result<String> {
     let mod_io = generate_text_common_mod_declaration("io", config, Target::Io)?;
 
-    let mod_wasm = if config.wasm_enabled {
+    let mod_wasm = if config.web_enabled {
         generate_text_common_mod_declaration("web", config, Target::Wasm)?
     } else {
         "".into()

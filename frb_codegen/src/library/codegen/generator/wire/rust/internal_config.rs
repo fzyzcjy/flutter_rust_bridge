@@ -7,6 +7,6 @@ use std::path::PathBuf;
 pub(crate) struct GeneratorWireRustInternalConfig {
     pub rust_input_path_pack: RustInputPathPack,
     pub rust_crate_dir: PathBuf,
-    pub wasm_enabled: bool,
+    pub web_enabled: bool,
     pub rust_output_path: TargetOrCommonMap<PathBuf>,
 }

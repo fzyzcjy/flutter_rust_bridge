@@ -106,9 +106,9 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub extra_headers: Option<String>,
 
-    /// Disable WASM module generation.
+    /// Disable web module generation.
     #[arg(long)]
-    pub no_wasm: bool,
+    pub no_web: bool,
 
     /// Skip dependencies check.
     #[arg(long)]

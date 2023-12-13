@@ -72,7 +72,7 @@ impl InternalConfig {
         let default_external_library_loader =
             compute_default_external_library_loader(&rust_crate_dir, &dart_root, config);
 
-        let wasm_enabled = config.wasm.unwrap_or(true);
+        let web_enabled = config.web.unwrap_or(true);
         let dart_enums_style = config.dart_enums_style.unwrap_or(true);
         let dart3 = config.dart3.unwrap_or(true);
 
@@ -99,7 +99,7 @@ impl InternalConfig {
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorWireDartInternalConfig {
                         dart_root: dart_root.clone(),
-                        wasm_enabled,
+                        web_enabled,
                         llvm_path: config
                             .llvm_path
                             .clone()
@@ -116,7 +116,7 @@ impl InternalConfig {
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
                         rust_crate_dir: rust_crate_dir.clone(),
-                        wasm_enabled,
+                        web_enabled,
                         rust_output_path: rust_output_path.clone(),
                     },
                     c: GeneratorWireCInternalConfig {
@@ -131,7 +131,7 @@ impl InternalConfig {
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
-                wasm_enabled,
+                web_enabled,
                 dart_root,
                 rust_crate_dir,
                 rust_output_path,

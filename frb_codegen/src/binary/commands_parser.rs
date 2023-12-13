@@ -36,7 +36,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         dart_root: args.dart_root,
         build_runner: Some(!args.no_build_runner),
         extra_headers: args.extra_headers,
-        wasm: Some(!args.no_wasm),
+        web: Some(!args.no_web),
         deps_check: Some(!args.no_deps_check),
         dart3: Some(!args.no_dart3),
         default_external_library_loader_web_prefix: args.default_external_library_loader_web_prefix,
