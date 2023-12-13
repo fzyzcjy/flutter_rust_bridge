@@ -52,6 +52,7 @@ include_dir = "0.7.3"
 indicatif = "0.17.7"
 indicatif-log-bridge = "0.2.2"
 notify = "6.1.1"
+notify-debouncer-mini = "0.4.1"
 
 [dev-dependencies]
 semver = "1.0.12"

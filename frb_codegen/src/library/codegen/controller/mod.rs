@@ -3,8 +3,10 @@ use crate::utils::path_utils::path_to_string;
 use itertools::Itertools;
 use log::{info, warn};
 use notify::{Event, FsEventWatcher, RecommendedWatcher, RecursiveMode, Watcher};
+use notify_debouncer_mini::{new_debouncer, DebounceEventResult, Debouncer};
 use std::path::PathBuf;
 use std::sync::mpsc::Receiver;
+use std::time::Duration;
 
 pub(super) fn run(
     config: &ControllerInternalConfig,
@@ -49,31 +51,30 @@ fn run_watch(
 fn create_fs_watcher(
     watching_paths: &[PathBuf],
     exclude_paths: Vec<PathBuf>,
-) -> anyhow::Result<(FsEventWatcher, Receiver<()>)> {
+) -> anyhow::Result<(Debouncer<RecommendedWatcher>, Receiver<()>)> {
     // ref: https://github.com/notify-rs/notify/blob/main/examples/monitor_raw.rs
 
     let (tx, rx) = std::sync::mpsc::channel();
 
-    let mut watcher = RecommendedWatcher::new(
-        move |event| {
-            if is_event_interesting(&event, &exclude_paths) {
-                info!("See interesting file change: {event:?}"); // TODO change to `debug` level
-                tx.send(()).unwrap()
-            }
-        },
-        notify::Config::default(),
-    )?;
+    let mut debouncer = new_debouncer(Duration::from_secs(2), |event: DebounceEventResult| {
+        if is_event_interesting(&event, &exclude_paths) {
+            info!("See interesting file change: {event:?}"); // TODO change to `debug` level
+            tx.send(()).unwrap()
+        }
+    })
+    .unwrap();
 
     for path in watching_paths {
-        watcher.watch(path, RecursiveMode::Recursive)?;
+        debouncer.watcher().watch(path, RecursiveMode::Recursive)?;
     }
 
-    Ok((watcher, rx))
+    Ok((debouncer, rx))
 }
 
-fn is_event_interesting(event: &notify::Result<Event>, exclude_paths: &[PathBuf]) -> bool {
+fn is_event_interesting(event: &DebounceEventResult, exclude_paths: &[PathBuf]) -> bool {
     if let Ok(event) = event {
-        (event.paths.iter())
+        (event.iter())
+            .map(|e| e.path.clone())
             .all(|p| !exclude_paths.contains(&p.canonicalize().unwrap_or(p.clone())))
     } else {
         false
