@@ -12098,15 +12098,21 @@ pub fn wire_use_msgid_twin_sync_sse(
 #[wasm_bindgen]
 pub fn wire_func_async_simple_add_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: i32,
-    b: i32,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_func_async_simple_add_twin_sse_impl(port_, a, b)
+    wire_func_async_simple_add_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_async_void_twin_sse(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_func_async_void_twin_sse_impl(port_)
+pub fn wire_func_async_void_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_func_async_void_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -13387,133 +13393,171 @@ pub fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_loopback_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_loopback_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_loopback_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_multi_times_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    num_times: i32,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_multi_times_twin_rust_async_sse_impl(port_, callback, num_times)
+    wire_rust_call_dart_multi_times_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_one_arg_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_one_arg_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_one_arg_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_return_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_return_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_return_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_simple_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_simple_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_simple_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_two_args_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_two_args_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_two_args_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse_impl(port_, input, callback)
+    wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_loopback_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_loopback_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_loopback_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_multi_times_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    num_times: i32,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_multi_times_twin_sse_impl(port_, callback, num_times)
+    wire_rust_call_dart_multi_times_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_one_arg_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_one_arg_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_one_arg_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_return_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_return_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_return_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_simple_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_simple_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_simple_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_two_args_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_two_args_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_two_args_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_with_dart_opaque_arg_twin_sse_impl(port_, input, callback)
+    wire_rust_call_dart_with_dart_opaque_arg_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_with_dart_opaque_result_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_with_dart_opaque_result_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_with_dart_opaque_result_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

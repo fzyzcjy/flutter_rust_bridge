@@ -22221,11 +22221,20 @@ class RustLibWire extends BaseWire {
               ptr_, rust_vec_len_, data_len_);
 
   void wire_func_async_simple_add_twin_sse(
-          NativePortType port_, int a, int b) =>
-      wasmModule.wire_func_async_simple_add_twin_sse(port_, a, b);
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_async_simple_add_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_func_async_void_twin_sse(NativePortType port_) =>
-      wasmModule.wire_func_async_void_twin_sse(port_);
+  void wire_func_async_void_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_async_void_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_customized_struct_twin_rust_async(
           NativePortType port_, List<dynamic> val) =>
@@ -23075,82 +23084,133 @@ class RustLibWire extends BaseWire {
           port_, callback);
 
   void wire_rust_call_dart_loopback_twin_rust_async_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_loopback_twin_rust_async_sse(
-          port_, callback);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_multi_times_twin_rust_async_sse(
-          NativePortType port_, DartOpaqueWireType callback, int num_times) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_multi_times_twin_rust_async_sse(
-          port_, callback, num_times);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_one_arg_twin_rust_async_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_one_arg_twin_rust_async_sse(
-          port_, callback);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_return_twin_rust_async_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_return_twin_rust_async_sse(
-          port_, callback);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_simple_twin_rust_async_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_simple_twin_rust_async_sse(
-          port_, callback);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_two_args_twin_rust_async_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_two_args_twin_rust_async_sse(
-          port_, callback);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
           NativePortType port_,
-          DartOpaqueWireType input,
-          DartOpaqueWireType callback) =>
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
-          port_, input, callback);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule
           .wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
-              port_, callback);
+              port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_loopback_twin_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_loopback_twin_sse(port_, callback);
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_call_dart_loopback_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_multi_times_twin_sse(
-          NativePortType port_, DartOpaqueWireType callback, int num_times) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_multi_times_twin_sse(
-          port_, callback, num_times);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_one_arg_twin_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_one_arg_twin_sse(port_, callback);
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_call_dart_one_arg_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_return_twin_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_return_twin_sse(port_, callback);
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_call_dart_return_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_simple_twin_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_simple_twin_sse(port_, callback);
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_call_dart_simple_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_two_args_twin_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
-      wasmModule.wire_rust_call_dart_two_args_twin_sse(port_, callback);
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_call_dart_two_args_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_rust_call_dart_with_dart_opaque_arg_twin_sse(NativePortType port_,
-          DartOpaqueWireType input, DartOpaqueWireType callback) =>
+  void wire_rust_call_dart_with_dart_opaque_arg_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_with_dart_opaque_arg_twin_sse(
-          port_, input, callback);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_call_dart_with_dart_opaque_result_twin_sse(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
       wasmModule.wire_rust_call_dart_with_dart_opaque_result_twin_sse(
-          port_, callback);
+          port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_sync_accept_dart_opaque_twin_sse(
@@ -31243,10 +31303,11 @@ class RustLibWasmModule implements WasmModule {
       wire_use_msgid_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
 
-  external void wire_func_async_simple_add_twin_sse(
-      NativePortType port_, int a, int b);
+  external void wire_func_async_simple_add_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_func_async_void_twin_sse(NativePortType port_);
+  external void wire_func_async_void_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_handle_customized_struct_twin_rust_async(
       NativePortType port_, List<dynamic> val);
@@ -31830,56 +31891,82 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, DartOpaqueWireType callback);
 
   external void wire_rust_call_dart_loopback_twin_rust_async_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_rust_call_dart_multi_times_twin_rust_async_sse(
-      NativePortType port_, DartOpaqueWireType callback, int num_times);
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_rust_call_dart_one_arg_twin_rust_async_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_rust_call_dart_return_twin_rust_async_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_rust_call_dart_simple_twin_rust_async_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_rust_call_dart_two_args_twin_rust_async_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
       NativePortType port_,
-      DartOpaqueWireType input,
-      DartOpaqueWireType callback);
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
-  external void wire_rust_call_dart_loopback_twin_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+  external void wire_rust_call_dart_loopback_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_rust_call_dart_multi_times_twin_sse(
-      NativePortType port_, DartOpaqueWireType callback, int num_times);
+  external void wire_rust_call_dart_multi_times_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_rust_call_dart_one_arg_twin_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+  external void wire_rust_call_dart_one_arg_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_rust_call_dart_return_twin_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+  external void wire_rust_call_dart_return_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_rust_call_dart_simple_twin_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+  external void wire_rust_call_dart_simple_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_rust_call_dart_two_args_twin_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+  external void wire_rust_call_dart_two_args_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_rust_call_dart_with_dart_opaque_arg_twin_sse(
       NativePortType port_,
-      DartOpaqueWireType input,
-      DartOpaqueWireType callback);
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_rust_call_dart_with_dart_opaque_result_twin_sse(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_sync_accept_dart_opaque_twin_sse(

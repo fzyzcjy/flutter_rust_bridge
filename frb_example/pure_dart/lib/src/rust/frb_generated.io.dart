@@ -30363,37 +30363,46 @@ class RustLibWire implements BaseWire {
 
   void wire_func_async_simple_add_twin_sse(
     int port_,
-    int a,
-    int b,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_func_async_simple_add_twin_sse(
       port_,
-      a,
-      b,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_func_async_simple_add_twin_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
-      'wire_func_async_simple_add_twin_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_func_async_simple_add_twin_sse');
   late final _wire_func_async_simple_add_twin_sse =
       _wire_func_async_simple_add_twin_ssePtr
-          .asFunction<void Function(int, int, int)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_func_async_void_twin_sse(
     int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_func_async_void_twin_sse(
       port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
-  late final _wire_func_async_void_twin_ssePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_func_async_void_twin_sse');
-  late final _wire_func_async_void_twin_sse =
-      _wire_func_async_void_twin_ssePtr.asFunction<void Function(int)>();
+  late final _wire_func_async_void_twin_ssePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_func_async_void_twin_sse');
+  late final _wire_func_async_void_twin_sse = _wire_func_async_void_twin_ssePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_handle_customized_struct_twin_rust_async(
     int port_,
@@ -33112,305 +33121,361 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_call_dart_loopback_twin_rust_async_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_loopback_twin_rust_async_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_loopback_twin_rust_async_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_loopback_twin_rust_async_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_loopback_twin_rust_async_sse');
   late final _wire_rust_call_dart_loopback_twin_rust_async_sse =
       _wire_rust_call_dart_loopback_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_multi_times_twin_rust_async_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
-    int num_times,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_multi_times_twin_rust_async_sse(
       port_,
-      callback,
-      num_times,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_multi_times_twin_rust_async_ssePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Int32)>>(
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'wire_rust_call_dart_multi_times_twin_rust_async_sse');
   late final _wire_rust_call_dart_multi_times_twin_rust_async_sse =
       _wire_rust_call_dart_multi_times_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_one_arg_twin_rust_async_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_one_arg_twin_rust_async_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_one_arg_twin_rust_async_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_one_arg_twin_rust_async_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_one_arg_twin_rust_async_sse');
   late final _wire_rust_call_dart_one_arg_twin_rust_async_sse =
       _wire_rust_call_dart_one_arg_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_return_twin_rust_async_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_return_twin_rust_async_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_return_twin_rust_async_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_return_twin_rust_async_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_return_twin_rust_async_sse');
   late final _wire_rust_call_dart_return_twin_rust_async_sse =
       _wire_rust_call_dart_return_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_simple_twin_rust_async_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_simple_twin_rust_async_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_simple_twin_rust_async_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_simple_twin_rust_async_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_simple_twin_rust_async_sse');
   late final _wire_rust_call_dart_simple_twin_rust_async_sse =
       _wire_rust_call_dart_simple_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_two_args_twin_rust_async_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_two_args_twin_rust_async_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_two_args_twin_rust_async_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_two_args_twin_rust_async_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_two_args_twin_rust_async_sse');
   late final _wire_rust_call_dart_two_args_twin_rust_async_sse =
       _wire_rust_call_dart_two_args_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
     int port_,
-    ffi.Pointer<ffi.Void> input,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
       port_,
-      input,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_ssePtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
-                      ffi.Pointer<ffi.Void>)>>(
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
           'wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse');
   late final _wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse =
       _wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_ssePtr
-          .asFunction<
-              void Function(
-                  int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_ssePtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
           'wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse');
   late final _wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse =
       _wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_loopback_twin_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_loopback_twin_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_loopback_twin_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_loopback_twin_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_loopback_twin_sse');
   late final _wire_rust_call_dart_loopback_twin_sse =
       _wire_rust_call_dart_loopback_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_multi_times_twin_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
-    int num_times,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_multi_times_twin_sse(
       port_,
-      callback,
-      num_times,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_multi_times_twin_ssePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
               ffi.Int32)>>('wire_rust_call_dart_multi_times_twin_sse');
   late final _wire_rust_call_dart_multi_times_twin_sse =
       _wire_rust_call_dart_multi_times_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_one_arg_twin_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_one_arg_twin_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_one_arg_twin_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_one_arg_twin_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_one_arg_twin_sse');
   late final _wire_rust_call_dart_one_arg_twin_sse =
       _wire_rust_call_dart_one_arg_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_return_twin_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_return_twin_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_return_twin_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_return_twin_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_return_twin_sse');
   late final _wire_rust_call_dart_return_twin_sse =
       _wire_rust_call_dart_return_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_simple_twin_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_simple_twin_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_simple_twin_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_simple_twin_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_simple_twin_sse');
   late final _wire_rust_call_dart_simple_twin_sse =
       _wire_rust_call_dart_simple_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_two_args_twin_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_two_args_twin_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_two_args_twin_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_two_args_twin_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_two_args_twin_sse');
   late final _wire_rust_call_dart_two_args_twin_sse =
       _wire_rust_call_dart_two_args_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_with_dart_opaque_arg_twin_sse(
     int port_,
-    ffi.Pointer<ffi.Void> input,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_with_dart_opaque_arg_twin_sse(
       port_,
-      input,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_with_dart_opaque_arg_twin_ssePtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_with_dart_opaque_arg_twin_sse');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_call_dart_with_dart_opaque_arg_twin_sse');
   late final _wire_rust_call_dart_with_dart_opaque_arg_twin_sse =
-      _wire_rust_call_dart_with_dart_opaque_arg_twin_ssePtr.asFunction<
-          void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+      _wire_rust_call_dart_with_dart_opaque_arg_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_call_dart_with_dart_opaque_result_twin_sse(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _wire_rust_call_dart_with_dart_opaque_result_twin_sse(
       port_,
-      callback,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
   late final _wire_rust_call_dart_with_dart_opaque_result_twin_ssePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
       'wire_rust_call_dart_with_dart_opaque_result_twin_sse');
   late final _wire_rust_call_dart_with_dart_opaque_result_twin_sse =
       _wire_rust_call_dart_with_dart_opaque_result_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_sync_accept_dart_opaque_twin_sse(
     ffi.Pointer<ffi.Uint8> ptr_,

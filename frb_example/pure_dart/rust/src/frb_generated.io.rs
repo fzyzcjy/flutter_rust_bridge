@@ -17919,13 +17919,23 @@ pub extern "C" fn wire_use_msgid_twin_sync_sse(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_async_simple_add_twin_sse(port_: i64, a: i32, b: i32) {
-    wire_func_async_simple_add_twin_sse_impl(port_, a, b)
+pub extern "C" fn wire_func_async_simple_add_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_func_async_simple_add_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_async_void_twin_sse(port_: i64) {
-    wire_func_async_void_twin_sse_impl(port_)
+pub extern "C" fn wire_func_async_void_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_func_async_void_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -19165,133 +19175,171 @@ pub extern "C" fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async(
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_loopback_twin_rust_async_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_loopback_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_loopback_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_multi_times_twin_rust_async_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
-    num_times: i32,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_multi_times_twin_rust_async_sse_impl(port_, callback, num_times)
+    wire_rust_call_dart_multi_times_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_one_arg_twin_rust_async_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_one_arg_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_one_arg_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_return_twin_rust_async_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_return_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_return_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_simple_twin_rust_async_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_simple_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_simple_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_two_args_twin_rust_async_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_two_args_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_two_args_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
     port_: i64,
-    input: *const std::ffi::c_void,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse_impl(port_, input, callback)
+    wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse_impl(port_, callback)
+    wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_loopback_twin_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_loopback_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_loopback_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_multi_times_twin_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
-    num_times: i32,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_multi_times_twin_sse_impl(port_, callback, num_times)
+    wire_rust_call_dart_multi_times_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_one_arg_twin_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_one_arg_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_one_arg_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_return_twin_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_return_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_return_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_simple_twin_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_simple_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_simple_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_two_args_twin_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_two_args_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_two_args_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_with_dart_opaque_arg_twin_sse(
     port_: i64,
-    input: *const std::ffi::c_void,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_with_dart_opaque_arg_twin_sse_impl(port_, input, callback)
+    wire_rust_call_dart_with_dart_opaque_arg_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_with_dart_opaque_result_twin_sse(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    wire_rust_call_dart_with_dart_opaque_result_twin_sse_impl(port_, callback)
+    wire_rust_call_dart_with_dart_opaque_result_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]

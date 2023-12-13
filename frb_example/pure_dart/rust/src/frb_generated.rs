@@ -4781,18 +4781,31 @@ fn wire_use_msgid_twin_sync_sse_impl(
 }
 fn wire_func_async_simple_add_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<i32> + core::panic::UnwindSafe,
-    b: impl CstDecode<i32> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_async_simple_add_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.cst_decode();let api_b = b.cst_decode(); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_async_simple_add_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_a = <i32>::sse_decode(&mut deserializer);
+let api_b = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::async_misc_twin_sse::func_async_simple_add_twin_sse(api_a, api_b).await)
                     })().await)
                 } })
 }
-fn wire_func_async_void_twin_sse_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_async_void_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {
-                    transform_result_dco((move || async move {
+fn wire_func_async_void_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_async_void_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::async_misc_twin_sse::func_async_void_twin_sse().await)
                     })().await)
                 } })
@@ -6619,164 +6632,244 @@ fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_impl(
 }
 fn wire_rust_call_dart_loopback_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_loopback_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_loopback_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_loopback_twin_rust_async_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_multi_times_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-    num_times: impl CstDecode<i32> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_multi_times_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode());let api_num_times = num_times.cst_decode(); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_multi_times_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs__Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
+let api_num_times = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_multi_times_twin_rust_async_sse(api_callback, api_num_times).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_one_arg_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_one_arg_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_Output_unit(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_one_arg_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs_String_Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_one_arg_twin_rust_async_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_return_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_return_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_String(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_return_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs__Output_String(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_return_twin_rust_async_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_simple_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_simple_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_simple_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs__Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_simple_twin_rust_async_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_two_args_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_two_args_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_two_args_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_two_args_twin_rust_async_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode();let api_callback = decode_DartFn_Inputs_DartOpaque_Output_unit(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_input = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
+let api_callback = decode_DartFn_Inputs_DartOpaque_Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(api_input, api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_result_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_DartOpaque(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_result_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs__Output_DartOpaque(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_loopback_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_loopback_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_loopback_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_loopback_twin_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_multi_times_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-    num_times: impl CstDecode<i32> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_multi_times_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode());let api_num_times = num_times.cst_decode(); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_multi_times_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs__Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
+let api_num_times = <i32>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_multi_times_twin_sse(api_callback, api_num_times).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_one_arg_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_one_arg_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_Output_unit(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_one_arg_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs_String_Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_one_arg_twin_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_return_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_return_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_String(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_return_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs__Output_String(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_return_twin_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_simple_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_simple_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_unit(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_simple_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs__Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_simple_twin_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_two_args_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_two_args_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_two_args_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_two_args_twin_sse(api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_with_dart_opaque_arg_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_arg_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_input = input.cst_decode();let api_callback = decode_DartFn_Inputs_DartOpaque_Output_unit(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_arg_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_input = <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer);
+let api_callback = decode_DartFn_Inputs_DartOpaque_Output_unit(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_with_dart_opaque_arg_twin_sse(api_input, api_callback).await)
                     })().await)
                 } })
 }
 fn wire_rust_call_dart_with_dart_opaque_result_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl CstDecode<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_result_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_callback = decode_DartFn_Inputs__Output_DartOpaque(callback.cst_decode()); move |context| async move {
-                    transform_result_dco((move || async move {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_with_dart_opaque_result_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_callback = decode_DartFn_Inputs__Output_DartOpaque(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::dart_fn_twin_sse::rust_call_dart_with_dart_opaque_result_twin_sse(api_callback).await)
                     })().await)
                 } })

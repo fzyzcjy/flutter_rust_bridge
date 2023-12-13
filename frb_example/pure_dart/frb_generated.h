@@ -4844,9 +4844,15 @@ WireSyncRust2DartSse wire_use_msgid_twin_sync_sse(uint8_t *ptr_,
                                                   int32_t rust_vec_len_,
                                                   int32_t data_len_);
 
-void wire_func_async_simple_add_twin_sse(int64_t port_, int32_t a, int32_t b);
+void wire_func_async_simple_add_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
 
-void wire_func_async_void_twin_sse(int64_t port_);
+void wire_func_async_void_twin_sse(int64_t port_,
+                                   uint8_t *ptr_,
+                                   int32_t rust_vec_len_,
+                                   int32_t data_len_);
 
 void wire_handle_customized_struct_twin_rust_async(int64_t port_,
                                                    struct wire_cst_customized_twin_rust_async *val);
@@ -5326,46 +5332,85 @@ void wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async(int64_t port_,
 void wire_rust_call_dart_with_dart_opaque_result_twin_rust_async(int64_t port_,
                                                                  const void *callback);
 
-void wire_rust_call_dart_loopback_twin_rust_async_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_loopback_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
 
 void wire_rust_call_dart_multi_times_twin_rust_async_sse(int64_t port_,
-                                                         const void *callback,
-                                                         int32_t num_times);
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
 
-void wire_rust_call_dart_one_arg_twin_rust_async_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_one_arg_twin_rust_async_sse(int64_t port_,
+                                                     uint8_t *ptr_,
+                                                     int32_t rust_vec_len_,
+                                                     int32_t data_len_);
 
-void wire_rust_call_dart_return_twin_rust_async_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_return_twin_rust_async_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
 
-void wire_rust_call_dart_simple_twin_rust_async_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_simple_twin_rust_async_sse(int64_t port_,
+                                                    uint8_t *ptr_,
+                                                    int32_t rust_vec_len_,
+                                                    int32_t data_len_);
 
-void wire_rust_call_dart_two_args_twin_rust_async_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_two_args_twin_rust_async_sse(int64_t port_,
+                                                      uint8_t *ptr_,
+                                                      int32_t rust_vec_len_,
+                                                      int32_t data_len_);
 
 void wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(int64_t port_,
-                                                                  const void *input,
-                                                                  const void *callback);
+                                                                  uint8_t *ptr_,
+                                                                  int32_t rust_vec_len_,
+                                                                  int32_t data_len_);
 
 void wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(int64_t port_,
-                                                                     const void *callback);
+                                                                     uint8_t *ptr_,
+                                                                     int32_t rust_vec_len_,
+                                                                     int32_t data_len_);
 
-void wire_rust_call_dart_loopback_twin_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_loopback_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
 
 void wire_rust_call_dart_multi_times_twin_sse(int64_t port_,
-                                              const void *callback,
-                                              int32_t num_times);
+                                              uint8_t *ptr_,
+                                              int32_t rust_vec_len_,
+                                              int32_t data_len_);
 
-void wire_rust_call_dart_one_arg_twin_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_one_arg_twin_sse(int64_t port_,
+                                          uint8_t *ptr_,
+                                          int32_t rust_vec_len_,
+                                          int32_t data_len_);
 
-void wire_rust_call_dart_return_twin_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_return_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
 
-void wire_rust_call_dart_simple_twin_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_simple_twin_sse(int64_t port_,
+                                         uint8_t *ptr_,
+                                         int32_t rust_vec_len_,
+                                         int32_t data_len_);
 
-void wire_rust_call_dart_two_args_twin_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_two_args_twin_sse(int64_t port_,
+                                           uint8_t *ptr_,
+                                           int32_t rust_vec_len_,
+                                           int32_t data_len_);
 
 void wire_rust_call_dart_with_dart_opaque_arg_twin_sse(int64_t port_,
-                                                       const void *input,
-                                                       const void *callback);
+                                                       uint8_t *ptr_,
+                                                       int32_t rust_vec_len_,
+                                                       int32_t data_len_);
 
-void wire_rust_call_dart_with_dart_opaque_result_twin_sse(int64_t port_, const void *callback);
+void wire_rust_call_dart_with_dart_opaque_result_twin_sse(int64_t port_,
+                                                          uint8_t *ptr_,
+                                                          int32_t rust_vec_len_,
+                                                          int32_t data_len_);
 
 WireSyncRust2DartSse wire_sync_accept_dart_opaque_twin_sse(uint8_t *ptr_,
                                                            int32_t rust_vec_len_,

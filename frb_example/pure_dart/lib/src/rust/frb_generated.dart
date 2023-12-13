@@ -10753,12 +10753,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_i_32(a);
-        var arg1 = cst_encode_i_32(b);
-        return wire.wire_func_async_simple_add_twin_sse(port_, arg0, arg1);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(a, serializer);
+        sse_encode_i_32(b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_func_async_simple_add_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_32,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kFuncAsyncSimpleAddTwinSseConstMeta,
@@ -10777,10 +10780,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> funcAsyncVoidTwinSse({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_func_async_void_twin_sse(port_);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_func_async_void_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kFuncAsyncVoidTwinSseConstMeta,
@@ -14542,14 +14549,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 =
-            cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
-                callback);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
+            callback, serializer);
+        final raw_ = serializer.intoRaw();
         return wire.wire_rust_call_dart_loopback_twin_rust_async_sse(
-            port_, arg0);
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartLoopbackTwinRustAsyncSseConstMeta,
@@ -14572,13 +14580,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
-        var arg1 = cst_encode_i_32(numTimes);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs__Output_unit(callback, serializer);
+        sse_encode_i_32(numTimes, serializer);
+        final raw_ = serializer.intoRaw();
         return wire.wire_rust_call_dart_multi_times_twin_rust_async_sse(
-            port_, arg0, arg1);
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartMultiTimesTwinRustAsyncSseConstMeta,
@@ -14599,12 +14609,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required FutureOr<void> Function(String) callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs_String_Output_unit(callback);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs_String_Output_unit(callback, serializer);
+        final raw_ = serializer.intoRaw();
         return wire.wire_rust_call_dart_one_arg_twin_rust_async_sse(
-            port_, arg0);
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartOneArgTwinRustAsyncSseConstMeta,
@@ -14625,11 +14637,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required FutureOr<String> Function() callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_String(callback);
-        return wire.wire_rust_call_dart_return_twin_rust_async_sse(port_, arg0);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs__Output_String(callback, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_call_dart_return_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartReturnTwinRustAsyncSseConstMeta,
@@ -14650,11 +14665,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required FutureOr<void> Function() callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
-        return wire.wire_rust_call_dart_simple_twin_rust_async_sse(port_, arg0);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs__Output_unit(callback, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_call_dart_simple_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartSimpleTwinRustAsyncSseConstMeta,
@@ -14678,14 +14696,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 =
-            cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
-                callback);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
+            callback, serializer);
+        final raw_ = serializer.intoRaw();
         return wire.wire_rust_call_dart_two_args_twin_rust_async_sse(
-            port_, arg0);
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartTwoArgsTwinRustAsyncSseConstMeta,
@@ -14708,14 +14727,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartOpaque(input);
-        var arg1 = cst_encode_DartFn_Inputs_DartOpaque_Output_unit(callback);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartOpaque(input, serializer);
+        sse_encode_DartFn_Inputs_DartOpaque_Output_unit(callback, serializer);
+        final raw_ = serializer.intoRaw();
         return wire
             .wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse(
-                port_, arg0, arg1);
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartWithDartOpaqueArgTwinRustAsyncSseConstMeta,
@@ -14736,13 +14757,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required FutureOr<Object> Function() callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_DartOpaque(callback);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs__Output_DartOpaque(callback, serializer);
+        final raw_ = serializer.intoRaw();
         return wire
             .wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_sse(
-                port_, arg0);
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_DartOpaque,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_DartOpaque,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartWithDartOpaqueResultTwinRustAsyncSseConstMeta,
@@ -14768,13 +14791,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 =
-            cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
-                callback);
-        return wire.wire_rust_call_dart_loopback_twin_sse(port_, arg0);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
+            callback, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_call_dart_loopback_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartLoopbackTwinSseConstMeta,
@@ -14797,12 +14822,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
-        var arg1 = cst_encode_i_32(numTimes);
-        return wire.wire_rust_call_dart_multi_times_twin_sse(port_, arg0, arg1);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs__Output_unit(callback, serializer);
+        sse_encode_i_32(numTimes, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_call_dart_multi_times_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartMultiTimesTwinSseConstMeta,
@@ -14823,11 +14851,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required FutureOr<void> Function(String) callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs_String_Output_unit(callback);
-        return wire.wire_rust_call_dart_one_arg_twin_sse(port_, arg0);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs_String_Output_unit(callback, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_call_dart_one_arg_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartOneArgTwinSseConstMeta,
@@ -14847,11 +14878,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required FutureOr<String> Function() callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_String(callback);
-        return wire.wire_rust_call_dart_return_twin_sse(port_, arg0);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs__Output_String(callback, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_call_dart_return_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartReturnTwinSseConstMeta,
@@ -14871,11 +14905,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required FutureOr<void> Function() callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
-        return wire.wire_rust_call_dart_simple_twin_sse(port_, arg0);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs__Output_unit(callback, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_call_dart_simple_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartSimpleTwinSseConstMeta,
@@ -14898,13 +14935,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 =
-            cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
-                callback);
-        return wire.wire_rust_call_dart_two_args_twin_sse(port_, arg0);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
+            callback, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_call_dart_two_args_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartTwoArgsTwinSseConstMeta,
@@ -14926,13 +14965,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartOpaque(input);
-        var arg1 = cst_encode_DartFn_Inputs_DartOpaque_Output_unit(callback);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartOpaque(input, serializer);
+        sse_encode_DartFn_Inputs_DartOpaque_Output_unit(callback, serializer);
+        final raw_ = serializer.intoRaw();
         return wire.wire_rust_call_dart_with_dart_opaque_arg_twin_sse(
-            port_, arg0, arg1);
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartWithDartOpaqueArgTwinSseConstMeta,
@@ -14953,12 +14994,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required FutureOr<Object> Function() callback, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_DartOpaque(callback);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_DartFn_Inputs__Output_DartOpaque(callback, serializer);
+        final raw_ = serializer.intoRaw();
         return wire.wire_rust_call_dart_with_dart_opaque_result_twin_sse(
-            port_, arg0);
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_DartOpaque,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_DartOpaque,
         decodeErrorData: null,
       ),
       constMeta: kRustCallDartWithDartOpaqueResultTwinSseConstMeta,
