@@ -4,10 +4,6 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for DartFnWireRustCodecCstGenerator<'a> {
-    fn generate_wire_func_call_decode_wrapper(&self) -> Option<String> {
-        Some(format!("decode_{}", self.ir.safe_ident()))
-    }
-
     fn generate_wire_func_param_api_type(&self) -> Option<String> {
         Some(self.ir.get_delegate().rust_api_type())
     }

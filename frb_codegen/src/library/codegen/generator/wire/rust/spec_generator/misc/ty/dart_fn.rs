@@ -47,4 +47,8 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
             .into(),
         )
     }
+
+    fn generate_wire_func_call_decode_wrapper(&self) -> Option<String> {
+        Some(format!("decode_{}", self.ir.safe_ident()))
+    }
 }

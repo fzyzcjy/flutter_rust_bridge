@@ -38,4 +38,8 @@ pub(crate) trait WireRustGeneratorMiscTrait {
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
         Default::default()
     }
+
+    fn generate_wire_func_call_decode_wrapper(&self) -> Option<String> {
+        None
+    }
 }
