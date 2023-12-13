@@ -1,6 +1,7 @@
 //! Utilities
 
 pub(crate) mod basic_code;
+pub(crate) mod console;
 pub(crate) mod control_utils;
 pub(crate) mod dart_keywords;
 pub(crate) mod dart_repository;
