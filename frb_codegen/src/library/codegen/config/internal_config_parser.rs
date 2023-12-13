@@ -75,10 +75,16 @@ impl InternalConfig {
 
         let dump_directory = rust_crate_dir.join("target").join("frb_dump");
 
+        let controller_watching_paths = vec![
+            // The whole crate needs to be watched, because e.g. when a struct definition changes
+            // in a non-input file, it may still cause the generated code to change.
+            rust_crate_dir.clone(),
+        ];
+
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
                 watch: config.watch.unwrap_or(false),
-                watching_paths: TODO,
+                watching_paths: controller_watching_paths,
             },
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),
