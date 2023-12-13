@@ -12,6 +12,7 @@ exclude = [
   "frb_example/deliberate_bad/rust",
   "frb_example/flutter_via_create/rust",
   "frb_example/flutter_via_integrate/rust",
+  "frb_example/gallery/rust",
 ]
 
 [workspace.package]
