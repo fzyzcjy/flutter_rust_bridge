@@ -168,7 +168,6 @@ pub(crate) struct FfigenCommandConfigHeaders {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::process::ExitStatus;
 
     #[test]
     pub fn test_handle_output_when_normal() {
@@ -179,7 +178,10 @@ mod tests {
     #[test]
     pub fn test_handle_output_when_has_severe_should_warn() {
         let result = handle_output(true, "One line\n[SEVERE] Something\nAnother line", "");
-        assert_eq!(result.unwrap(), None);
+        assert!(result
+            .unwrap()
+            .unwrap()
+            .contains("The `ffigen` command emitted a SEVERE error."));
     }
 
     #[test]
