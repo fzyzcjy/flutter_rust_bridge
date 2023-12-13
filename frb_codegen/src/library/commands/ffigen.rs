@@ -95,7 +95,8 @@ fn handle_output(res: &Output) -> anyhow::Result<()> {
         if stderr.contains(pat) || stdout.contains(pat) {
             bail!("ffigen could not find LLVM. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/llvm for details.");
         }
-        bail!("ffigen failed:\nstderr: {err}\nstdout: {out}");
+
+        bail!("ffigen failed.");
     }
 
     Ok(())
