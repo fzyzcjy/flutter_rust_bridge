@@ -1,5 +1,6 @@
 use crate::codegen::config::internal_config::{
-    GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, RustInputPathPack,
+    ControllerInternalConfig, GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig,
+    RustInputPathPack,
 };
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
@@ -75,6 +76,9 @@ impl InternalConfig {
         let dump_directory = rust_crate_dir.join("target").join("frb_dump");
 
         Ok(InternalConfig {
+            controller: ControllerInternalConfig {
+                watch: config.watch.unwrap_or(false),
+            },
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),
                 deps_check: config.deps_check.unwrap_or(true),

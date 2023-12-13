@@ -11,11 +11,17 @@ use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct InternalConfig {
+    pub controller: ControllerInternalConfig,
     pub preparer: PreparerInternalConfig,
     pub parser: ParserInternalConfig,
     pub generator: GeneratorInternalConfig,
     pub polisher: PolisherInternalConfig,
     pub dumper: DumperInternalConfig,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub(crate) struct ControllerInternalConfig {
+    pub watch: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
