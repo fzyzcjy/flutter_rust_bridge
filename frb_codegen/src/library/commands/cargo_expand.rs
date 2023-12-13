@@ -79,7 +79,7 @@ fn run_cargo_expand(
     dumper: &Dumper,
     _allow_auto_install: bool,
 ) -> Result<String> {
-    let _pb = simple_progress("Run cargo-expand".to_owned());
+    let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
     let args = vec![

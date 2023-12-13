@@ -17,11 +17,16 @@ impl Drop for SimpleProgress {
     }
 }
 
-pub(crate) fn simple_progress(message: String) -> SimpleProgress {
-    let style = ProgressStyle::with_template("{spinner} {my_elapsed:.dim} {wide_msg}")
+pub(crate) fn simple_progress(message: String, level: usize) -> SimpleProgress {
+    let style = ProgressStyle::with_template("{spinner} {level}{my_elapsed:.dim} {wide_msg}")
         .unwrap()
         .with_key("my_elapsed", |state: &ProgressState, w: &mut dyn Write| {
             write!(w, "[{:.1}s]", state.elapsed().as_secs_f64()).unwrap()
+        })
+        .with_key("level", |state: &ProgressState, w: &mut dyn Write| {
+            if level > 0 {
+                write!(w, "{} ", "--".repeat(level))
+            }
         })
         .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ ");
     let pb = MULTI_PROGRESS.add(ProgressBar::new_spinner());

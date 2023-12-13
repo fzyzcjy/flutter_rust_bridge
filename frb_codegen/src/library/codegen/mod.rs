@@ -33,12 +33,12 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     let mut cached_rust_reader = CachedRustReader::default();
 
-    let pb = simple_progress("Parse".to_owned());
+    let pb = simple_progress("Parse".to_owned(), 0);
     let ir_pack = parser::parse(&internal_config.parser, &mut cached_rust_reader, &dumper)?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
     drop(pb);
 
-    let pb = simple_progress("Generate".to_owned());
+    let pb = simple_progress("Generate".to_owned(), 0);
     let generator_output = generator::generate(&ir_pack, &internal_config.generator, &dumper)?;
     drop(pb);
 
