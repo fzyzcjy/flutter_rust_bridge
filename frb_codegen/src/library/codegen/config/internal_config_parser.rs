@@ -79,7 +79,7 @@ impl InternalConfig {
         let controller_watching_paths = vec![
             // The whole crate needs to be watched, because e.g. when a struct definition changes
             // in a non-input file, it may still cause the generated code to change.
-            rust_crate_dir.clone(),
+            rust_crate_dir.join("src"),
         ];
         let controller_exclude_paths = rust_output_path.clone().into_vec();
 
