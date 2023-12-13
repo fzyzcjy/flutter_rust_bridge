@@ -14,7 +14,7 @@ pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
 
     let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();
     let out = command_run!(
-        call_shell[Some(dart_root)],
+        call_shell[Some(dart_root), None],
         *repo.toolchain.as_run_command(),
         *repo.command_extra_args(),
         "run",

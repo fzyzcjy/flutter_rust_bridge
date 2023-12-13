@@ -14,7 +14,7 @@ pub fn format_dart(path: &[PathBuf], line_length: u32) -> anyhow::Result<()> {
     debug!("execute format_dart path={path:?} line_length={line_length}");
 
     let res = command_run!(
-        call_shell[None],
+        call_shell[None, None],
         "dart",
         "format",
         "--line-length",

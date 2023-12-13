@@ -25,9 +25,12 @@ macro_rules! command_run {
         let args = $crate::command_args!($($rest)*);
         $crate::library::commands::command_runner::execute_command($binary, args.iter(), None, None)
     }};
-    ($binary:literal in $pwd:expr, $($rest:tt)*) => {{
+    ($binary:literal in $pwd:expr, envs = $envs:expr, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
-        $crate::library::commands::command_runner::execute_command($binary, args.iter(), $pwd, None)
+        $crate::library::commands::command_runner::execute_command($binary, args.iter(), $pwd, $envs)
+    }};
+    ($binary:literal in $pwd:expr, $($rest:tt)*) => {{
+        $crate::command_run!($binary in $pwd, envs = None, $($rest)*)
     }};
     ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
@@ -70,15 +73,19 @@ macro_rules! command_args {
 }
 
 #[allow(clippy::vec_init_then_push)]
-pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&Path>) -> anyhow::Result<Output> {
+pub(crate) fn call_shell(
+    cmd: &[PathBuf],
+    pwd: Option<&Path>,
+    envs: Option<HashMap<String, String>>,
+) -> anyhow::Result<Output> {
     let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
     #[cfg(windows)]
     {
-        command_run!("powershell" in pwd, "-noprofile", "-command", format!("& {}", cmd))
+        command_run!("powershell" in pwd, envs = envs, "-noprofile", "-command", format!("& {}", cmd))
     }
 
     #[cfg(not(windows))]
-    command_run!("sh" in pwd, "-c", cmd)
+    command_run!("sh" in pwd, envs = envs, "-c", cmd)
 }
 
 pub(crate) fn execute_command<'a>(

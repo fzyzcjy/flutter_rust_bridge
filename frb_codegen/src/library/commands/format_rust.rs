@@ -11,7 +11,7 @@ pub fn format_rust(path: &[PathBuf]) -> anyhow::Result<()> {
     let path = normalize_windows_unc_paths(path)?;
     debug!("execute format_rust path={path:?}");
     check_exit_code(&command_run!(
-        call_shell[None],
+        call_shell[None, None],
         "rustfmt",
         // otherwise cannot understand `async move`
         "--edition",
