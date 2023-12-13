@@ -180,6 +180,12 @@ impl SseDecode for usize {
     }
 }
 
+impl SseDecode for bool {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_u8().unwrap() != 0
+    }
+}
+
 // Section: rust2dart
 
 impl SseEncode for flutter_rust_bridge::DartOpaque {
@@ -225,6 +231,12 @@ impl SseEncode for usize {
             .cursor
             .write_u64::<NativeEndian>(self as _)
             .unwrap();
+    }
+}
+
+impl SseEncode for bool {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_u8(self as _).unwrap();
     }
 }
 

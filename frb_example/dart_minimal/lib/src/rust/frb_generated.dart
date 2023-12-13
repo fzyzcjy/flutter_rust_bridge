@@ -216,6 +216,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  bool sse_decode_bool(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
   DartOpaqueWireType cst_encode_DartFn_Inputs_String_String_Output_String(
       FutureOr<String> Function(String, String) raw) {
     return cst_encode_DartOpaque(
@@ -284,5 +289,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_usize(int self, SseSerializer serializer) {
     serializer.buffer.putUint64(self);
+  }
+
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer) {
+    serializer.buffer.putUint8(self ? 1 : 0);
   }
 }
