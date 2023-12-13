@@ -108,3 +108,27 @@ macro_rules! frb_generated_boilerplate {
         }
     };
 }
+
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_default_handler {
+    () => {
+        #[cfg(not(target_family = "wasm"))]
+        $crate::for_generated::lazy_static! {
+            pub static ref FLUTTER_RUST_BRIDGE_HANDLER:
+            $crate::DefaultHandler<$crate::for_generated::SimpleThreadPool>
+            = $crate::DefaultHandler::new_simple(Default::default());
+        }
+
+        #[cfg(target_family = "wasm")]
+        thread_local! {
+            pub static THREAD_POOL: $crate::for_generated::SimpleThreadPool = Default::default();
+        }
+
+        #[cfg(target_family = "wasm")]
+        $crate::for_generated::lazy_static! {
+            pub static ref FLUTTER_RUST_BRIDGE_HANDLER: $crate::DefaultHandler<&'static std::thread::LocalKey<$crate::for_generated::SimpleThreadPool>>
+                = $crate::DefaultHandler::new_simple(&THREAD_POOL);
+        }
+    }
+}

@@ -205,27 +205,8 @@ fn generate_boilerplate_dart_fn_deliver_output(target: TargetOrCommon) -> Extern
 
 fn generate_executor(ir_pack: &IrPack) -> String {
     if ir_pack.has_executor {
-        "/* nothing since executor detected */".to_string()
+        "/* nothing since executor detected */".to_owned()
     } else {
-        r#"
-                #[cfg(not(target_family = "wasm"))]
-                flutter_rust_bridge::for_generated::lazy_static! {
-                    pub static ref FLUTTER_RUST_BRIDGE_HANDLER:
-                    flutter_rust_bridge::DefaultHandler<flutter_rust_bridge::for_generated::SimpleThreadPool>
-                    = flutter_rust_bridge::DefaultHandler::new_simple(Default::default());
-                }
-
-                #[cfg(target_family = "wasm")]
-                thread_local! {
-                    pub static THREAD_POOL: flutter_rust_bridge::for_generated::SimpleThreadPool = Default::default();
-                }
-
-                #[cfg(target_family = "wasm")]
-                flutter_rust_bridge::for_generated::lazy_static! {
-                    pub static ref FLUTTER_RUST_BRIDGE_HANDLER:
-                    flutter_rust_bridge::DefaultHandler<&'static std::thread::LocalKey<flutter_rust_bridge::for_generated::SimpleThreadPool>>
-                    = flutter_rust_bridge::DefaultHandler::new_simple(&THREAD_POOL);
-                }
-            "#.to_string()
+        r#"flutter_rust_bridge::frb_generated_default_handler!();"#.to_owned()
     }
 }
