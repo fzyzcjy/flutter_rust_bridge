@@ -110,13 +110,14 @@ fn handle_output(
     }
 
     // This is usually not a problem
-    let nullability_message = "pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]";
+    let nullability_message = "missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]";
 
     let stdout_lines = stdout.split("\n").collect_vec();
-    if stdout_lines
-        .iter()
-        .any(|line| line.contains("[SEVERE]") && !line.contains(nullability_message))
-    {
+    if stdout_lines.iter().any(|line| {
+        line.contains("[SEVERE]")
+            && !line.contains("Total errors/warnings")
+            && !line.contains(nullability_message)
+    }) {
         // If ffigen can't find a header file it will generate broken
         // bindings but still exit successfully. We can detect these broken
         // bindings by looking for a "[SEVERE]" log message.
@@ -197,7 +198,9 @@ mod tests {
     #[test]
     pub fn test_handle_output_when_has_severe_but_known_no_problem() {
         let result = handle_output(true, "One line
-[SEVERE] :     /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdlib.h:364:13: warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]
+Input Headers: [/var/folders/j5/j6ymn7yd70564hzt31pq_0g80000gn/T/.tmps09Sia.h]
+[SEVERE] : Header /var/folders/j5/j6ymn7yd70564hzt31pq_0g80000gn/T/.tmps09Sia.h: Total errors/warnings: 182.
+[SEVERE] :     /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdlib.h:134:25: warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]
 Another line", "");
         assert_eq!(result.unwrap(), None);
     }
