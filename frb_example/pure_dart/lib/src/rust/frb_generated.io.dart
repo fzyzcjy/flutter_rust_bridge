@@ -26063,7 +26063,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _frb_initialize_rustPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
           'frb_initialize_rust');
   late final _frb_initialize_rust =
       _frb_initialize_rustPtr.asFunction<void Function(int, int)>();

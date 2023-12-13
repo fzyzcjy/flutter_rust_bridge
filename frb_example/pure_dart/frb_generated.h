@@ -4210,7 +4210,7 @@ int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
 
 void benchmark_raw_output_bytes(MessagePort port, int32_t message_id, int32_t size);
 
-void frb_initialize_rust(MessagePort dart_opaque_drop_port, MessagePort dart_fn_invoke_port);
+void frb_initialize_rust(int64_t dart_opaque_drop_port, int64_t dart_fn_invoke_port);
 
 void dart_fn_deliver_output(int32_t call_id,
                             uint8_t *ptr_,
