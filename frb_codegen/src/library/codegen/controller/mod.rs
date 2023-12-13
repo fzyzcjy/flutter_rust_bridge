@@ -37,7 +37,8 @@ fn run_watch(
 fn create_fs_watcher(watching_paths: &[PathBuf]) -> anyhow::Result<Receiver<()>> {
     // ref: https://github.com/notify-rs/notify/blob/main/examples/monitor_raw.rs
     let (tx, rx) = std::sync::mpsc::channel();
-    let mut watcher = RecommendedWatcher::new(|_| tx.send(()).unwrap(), notify::Config::default())?;
+    let mut watcher =
+        RecommendedWatcher::new(move |_| tx.send(()).unwrap(), notify::Config::default())?;
     for path in watching_paths {
         watcher.watch(path, RecursiveMode::Recursive)?;
     }
