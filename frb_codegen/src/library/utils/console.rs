@@ -1,25 +1,50 @@
 use indicatif::{MultiProgress, ProgressBar, ProgressState, ProgressStyle};
 use lazy_static::lazy_static;
 use std::fmt::Write;
+use std::sync::Mutex;
 use std::time::Duration;
 
 lazy_static! {
     pub(super) static ref MULTI_PROGRESS: MultiProgress = MultiProgress::new();
 }
 
-pub(crate) struct SimpleProgressBar {}
-
-pub(crate) struct SimpleProgress {
-    pb: ProgressBar,
+pub(crate) struct SimpleProgressBar {
+    message: String,
+    level: usize,
+    active_pb: Mutex<Option<ProgressBar>>,
 }
 
-impl Drop for SimpleProgress {
-    fn drop(&mut self) {
-        self.pb.finish();
+impl SimpleProgressBar {
+    pub fn new(message: String, level: usize) -> Self {
+        Self {
+            message,
+            level,
+            active_pb: Mutex::new(None),
+        }
+    }
+
+    pub(crate) fn start(&self) -> SimpleProgressBarHandle {
+        let active_pb = self.active_pb.lock().unwrap();
+        if active_pb.is_none() {
+            *active_pb = Some(create_simple_progress_bar(self.message.clone(), self.level));
+        }
+        SimpleProgressBarHandle {
+            pb: active_pb.as_ref().unwrap().to_owned(),
+        }
     }
 }
 
-pub(crate) fn simple_progress(message: String, level: usize) -> SimpleProgress {
+pub(crate) struct SimpleProgressBarHandle {
+    pb: ProgressBar,
+}
+
+impl Drop for SimpleProgressBarHandle {
+    fn drop(&mut self) {
+        self.pb.finish()
+    }
+}
+
+fn create_simple_progress_bar(message: String, level: usize) -> ProgressBar {
     let style = ProgressStyle::with_template("{level:.dim}{my_elapsed:.dim} {msg} {spinner}")
         .unwrap()
         .with_key("my_elapsed", |state: &ProgressState, w: &mut dyn Write| {
@@ -35,5 +60,5 @@ pub(crate) fn simple_progress(message: String, level: usize) -> SimpleProgress {
     pb.set_style(style);
     pb.enable_steady_tick(Duration::from_millis(50));
     pb.set_message(message);
-    SimpleProgress { pb }
+    pb
 }
