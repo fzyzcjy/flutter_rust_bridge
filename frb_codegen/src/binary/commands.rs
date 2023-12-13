@@ -34,21 +34,26 @@ pub(crate) enum Commands {
     InternalGenerate(InternalGenerateCommandArgs),
 }
 
+#[derive(Debug, Args, Default, Eq, PartialEq)]
+pub(crate) struct GenerateCommandArgs {
+    /// Automatically re-generate the output whenever the changes are detected on the input files
+    #[arg(long)]
+    pub watch: bool,
+
+    pub primary: GenerateCommandArgsPrimary,
+}
+
 // Deliberately decoupled from `codegen::Config`,
 // because the command line arguments contains extra things like `--config-file`,
 // which is not a config to the real codegen.
 #[derive(Debug, Args, Default, Eq, PartialEq)]
-pub(crate) struct GenerateCommandArgs {
+pub(crate) struct GenerateCommandArgsPrimary {
     /// Path to a YAML config file.
     ///
     /// If present, other options and flags will be ignored.
     /// Accepts the same options as the CLI, but uses snake_case keys.
     #[arg(long)]
     pub config_file: Option<String>,
-
-    /// Automatically re-generate the output whenever the changes are detected on the input files
-    #[arg(long)]
-    pub watch: bool,
 
     /// Glob pattern of input Rust files
     #[arg(short, long)]
