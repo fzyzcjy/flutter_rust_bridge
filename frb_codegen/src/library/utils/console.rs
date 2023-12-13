@@ -1,6 +1,11 @@
-use indicatif::{ProgressBar, ProgressState, ProgressStyle};
+use indicatif::{MultiProgress, ProgressBar, ProgressState, ProgressStyle};
+use lazy_static::lazy_static;
 use std::fmt::Write;
 use std::time::Duration;
+
+lazy_static! {
+    static ref MULTI_PROGRESS: MultiProgress = MultiProgress::new();
+}
 
 pub(crate) struct SimpleProgress {
     pb: ProgressBar,
@@ -19,7 +24,7 @@ pub(crate) fn simple_progress(message: String) -> SimpleProgress {
             write!(w, "[{:.1}s]", state.elapsed().as_secs_f64()).unwrap()
         })
         .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ ");
-    let pb = ProgressBar::new_spinner();
+    let pb = MULTI_PROGRESS.add(ProgressBar::new_spinner());
     pb.set_style(style);
     pb.enable_steady_tick(Duration::from_millis(50));
     pb.set_message(message);
