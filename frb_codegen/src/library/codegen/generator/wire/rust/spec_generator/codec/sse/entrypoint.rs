@@ -2,7 +2,9 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::misc::has_port_argument;
-use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
+use crate::codegen::generator::wire::rust::spec_generator::base::{
+    WireRustGenerator, WireRustGeneratorContext,
+};
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypointTrait, WireRustCodecOutputSpec,
 };
@@ -10,6 +12,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::sse::body::gen
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
@@ -52,13 +55,21 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
     fn generate_func_call_decode(
         &self,
         func: &IrFunc,
-        _context: WireRustGeneratorContext,
+        context: WireRustGeneratorContext,
     ) -> String {
         let primary = (func.inputs.iter())
             .map(|field| {
+                let gen = WireRustGenerator::new(field.ty.clone(), context);
+
                 let name = field.name.rust_style();
                 let rust_api_type = field.ty.rust_api_type();
-                format!("let api_{name} = <{rust_api_type}>::sse_decode(&mut deserializer);")
+
+                let mut expr = format!("<{rust_api_type}>::sse_decode(&mut deserializer)");
+                if let Some(wrapper) = gen.generate_wire_func_call_decode_wrapper() {
+                    expr = format!("{wrapper}({expr})");
+                }
+
+                format!("let api_{name} = {expr};")
             })
             .join("\n");
         format!(
