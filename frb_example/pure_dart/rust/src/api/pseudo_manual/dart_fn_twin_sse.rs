@@ -13,18 +13,21 @@ pub struct DemoStructForRustCallDartTwinSse {
     pub name: String,
 }
 
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_simple_twin_sse(callback: impl Fn() -> DartFnFuture<()> + UnwindSafe) {
     println!("rust_call_dart_simple before");
     callback().await;
     println!("rust_call_dart_simple after");
 }
 
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_one_arg_twin_sse(
     callback: impl Fn(String) -> DartFnFuture<()> + UnwindSafe,
 ) {
     callback("a".to_owned()).await;
 }
 
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_two_args_twin_sse(
     callback: impl Fn(String, DemoStructForRustCallDartTwinSse) -> DartFnFuture<()> + UnwindSafe,
 ) {
@@ -37,6 +40,7 @@ pub async fn rust_call_dart_two_args_twin_sse(
     .await;
 }
 
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_return_twin_sse(
     callback: impl Fn() -> DartFnFuture<String> + UnwindSafe,
 ) {
@@ -44,6 +48,7 @@ pub async fn rust_call_dart_return_twin_sse(
     assert_eq!(&result, "a");
 }
 
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_loopback_twin_sse(
     callback: impl Fn(DemoStructForRustCallDartTwinSse) -> DartFnFuture<DemoStructForRustCallDartTwinSse>
         + UnwindSafe,
@@ -52,6 +57,7 @@ pub async fn rust_call_dart_loopback_twin_sse(
     assert_eq!(&result.name, "a");
 }
 
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_with_dart_opaque_arg_twin_sse(
     input: DartOpaque,
     callback: impl Fn(DartOpaque) -> DartFnFuture<()> + UnwindSafe,
@@ -59,12 +65,14 @@ pub async fn rust_call_dart_with_dart_opaque_arg_twin_sse(
     callback(input).await
 }
 
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_with_dart_opaque_result_twin_sse(
     callback: impl Fn() -> DartFnFuture<DartOpaque> + UnwindSafe,
 ) -> DartOpaque {
     callback().await
 }
 
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_multi_times_twin_sse(
     callback: impl Fn() -> DartFnFuture<()> + UnwindSafe,
     num_times: i32,
