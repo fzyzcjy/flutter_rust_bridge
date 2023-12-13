@@ -206,11 +206,9 @@ Another line", "");
 Another line"#,
             "",
         );
-        assert!(result
-            .err()
-            .unwrap()
-            .to_string()
-            .contains("TODO give a link"));
+        assert!(result.err().unwrap().to_string().contains(
+            "TODO give a link - indeed, create a page about ffigen, and this is a section"
+        ));
     }
 
     #[test]
