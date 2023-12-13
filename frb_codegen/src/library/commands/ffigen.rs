@@ -113,11 +113,15 @@ fn handle_output(
     let nullability_message = "missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]";
 
     let stdout_lines = stdout.split("\n").collect_vec();
-    if stdout_lines.iter().any(|line| {
-        line.contains("[SEVERE]")
-            && !line.contains("Total errors/warnings")
-            && !line.contains(nullability_message)
-    }) {
+    let severe_lines = stdout_lines
+        .iter()
+        .filter(|line| {
+            line.contains("[SEVERE]")
+                && !line.contains("Total errors/warnings")
+                && !line.contains(nullability_message)
+        })
+        .collect_vec();
+    if !severe_lines.is_empty() {
         // If ffigen can't find a header file it will generate broken
         // bindings but still exit successfully. We can detect these broken
         // bindings by looking for a "[SEVERE]" log message.
@@ -125,8 +129,9 @@ fn handle_output(
         // It may emit SEVERE log messages for non-fatal errors though, so
         // we don't want to error out completely.
         return Ok(Some(format!(
-            "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? {}",
-            hint_link
+            "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? {}\nLogs containing SEVERE:\n{}",
+            hint_link,
+            severe_lines.join("\n"),
         )));
     }
 
