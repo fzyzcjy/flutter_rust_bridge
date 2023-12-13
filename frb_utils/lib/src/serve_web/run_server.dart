@@ -28,6 +28,7 @@ Future<String> runServer(ServeWebConfig config,
           'runServer.Response: code=${res.statusCode} mimeType=${res.mimeType}');
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
+        // TODO add back this flag `shouldRelaxCoep` after refactor
         'Cross-Origin-Embedder-Policy': 'credentialless',
         // shouldRelaxCoep ? 'credentialless' : 'require-corp',
         // TODO rm
