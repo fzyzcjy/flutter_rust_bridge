@@ -25,7 +25,7 @@ pub(crate) fn simple_progress(message: String, level: usize) -> SimpleProgress {
         })
         .with_key("level", move |state: &ProgressState, w: &mut dyn Write| {
             if level > 0 {
-                write!(w, "└{} ", "──".repeat(level)).unwrap();
+                write!(w, "  └{} ", "──".repeat(level)).unwrap();
             }
         })
         .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ ");
