@@ -24,7 +24,8 @@ where
     F: Future + Send + 'static,
     F::Output: Send + 'static,
 {
-    todo!()
+    // wasm_bindgen runs everything on the same thread and only has spawn_local
+    spawn_local(future)
 }
 
 pub fn spawn_local<F>(future: F) -> JoinHandle<F::Output>
