@@ -19,12 +19,6 @@ impl DataFrame {
     pub fn lazy(self) -> LazyFrame {
         LazyFrame::new(self.0 .0.lazy())
     }
-
-    pub fn to_json(&self) -> String {
-        // super naive handwritten to_json, because Polars does not have good support on WASM, while we
-        // want the gallery to be full-platform
-        self.0 .0.get()
-    }
 }
 
 #[frb(opaque)]
