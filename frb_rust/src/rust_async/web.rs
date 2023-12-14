@@ -1,3 +1,4 @@
+use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
 use futures::channel::oneshot;
 use std::future::Future;
@@ -45,7 +46,7 @@ where
     handle
 }
 
-pub fn spawn_blocking<F, R>(f: F) -> JoinHandle<R>
+pub fn spawn_blocking<F, R>(f: F, thread_pool: &impl BaseThreadPool) -> JoinHandle<R>
 where
     F: FnOnce() -> R + Send + 'static,
     R: Send + 'static,
