@@ -15,3 +15,4 @@ crossbeam = "0.8"
 # Polars on WASM https://www.reddit.com/r/rust/comments/yb58hk/how_to_use_polars_with_wasm/
 polars-core = { version = "0.35.4", features = ["fmt_no_tty"] }
 polars-lazy = "0.35.4"
+polars-json = "0.35.4"
