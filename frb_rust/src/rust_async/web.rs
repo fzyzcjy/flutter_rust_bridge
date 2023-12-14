@@ -37,7 +37,7 @@ where
     let (sender, receiver) = oneshot::channel::<F::Output>();
     wasm_bindgen_futures::spawn_local(async || {
         let output = future().await;
-        sender.send(output);
+        sender.send(output).unwrap();
     });
     JoinHandle(receiver)
 }
