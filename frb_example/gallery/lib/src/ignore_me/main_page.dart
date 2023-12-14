@@ -40,16 +40,31 @@ class MainPageWidget extends StatelessWidget {
     required String title,
     required String subtitle,
   }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: () {
-          // TODO
-        },
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-          child: Text('TODO'),
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(8),
+          onTap: () {
+            // TODO
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // TODO icon
+                Icon(
+                  Icons.android_outlined,
+                  color: Colors.green,
+                  size: 64,
+                ),
+                Text(title),
+                const SizedBox(height: 4),
+                Text(subtitle),
+              ],
+            ),
+          ),
         ),
       ),
     );
