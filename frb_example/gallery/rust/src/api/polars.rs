@@ -1,5 +1,5 @@
 use crate::ignore_me::polars_related;
-use flutter_rust_bridge::{frb, DartSafe};
+use flutter_rust_bridge::{frb, DartDynamic, DartSafe, IntoDart};
 use polars_core::prelude::*;
 use polars_lazy::prelude::*;
 use std::panic::AssertUnwindSafe;
@@ -18,6 +18,20 @@ impl DataFrame {
     #[frb(sync)]
     pub fn lazy(self) -> LazyFrame {
         LazyFrame::new(self.0 .0.lazy())
+    }
+
+    pub fn get_column_names(&self) -> Vec<String> {
+        self.0 .0.get_column_names().into_iter().cloned().collect()
+    }
+
+    pub fn get_column(&self, name: String) -> anyhow::Result<Vec<DartDynamic>> {
+        Ok((self.0 .0.column(&name)?.iter())
+            .map(|value| match value {
+                AnyValue::Float64(value) => value.into_dart(),
+                AnyValue::Utf8Owned(value) => value.into_dart(),
+                _ => unimplemented!("not implemented for this simple demo"),
+            })
+            .collect())
     }
 }
 
