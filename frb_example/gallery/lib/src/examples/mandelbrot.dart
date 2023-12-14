@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ class MandelbrotPageBody extends StatefulWidget {
 
 class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   Uint8List? image;
-  Timer? runningTimer;
+  var running = false;
 
   @override
   void initState() {
@@ -23,20 +22,22 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
 
   void start() {
     stop();
-    runningTimer = Timer.periodic(const Duration(milliseconds: 500), (_) async {
-      final receivedImage = await drawMandelbrot(
-        imageSize: const Size(width: 50, height: 50),
-        zoomPoint: examplePoint,
-        scale: generateScale(),
-        numThreads: 4,
-      );
-      if (mounted) setState(() => image = receivedImage);
-    });
+    running = true;
+    () async {
+      while (running) {
+        final receivedImage = await drawMandelbrot(
+          imageSize: const Size(width: 50, height: 50),
+          zoomPoint: examplePoint,
+          scale: generateScale(),
+          numThreads: 4,
+        );
+        if (mounted) setState(() => image = receivedImage);
+      }
+    }();
   }
 
   void stop() {
-    runningTimer?.cancel();
-    runningTimer = null;
+    running = false;
   }
 
   @override
