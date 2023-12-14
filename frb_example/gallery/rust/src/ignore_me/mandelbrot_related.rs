@@ -30,14 +30,23 @@ use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 /// return `None`.
 fn escape_time(c: Complex<f64>, limit: usize) -> Option<usize> {
     let mut z = Complex { re: 0.0, im: 0.0 };
+    let mut ans = None;
     for i in 0..limit {
         if z.norm_sqr() > 4.0 {
-            return Some(i);
+            // NOTE: Normal mandelbrot should NOT compute like this,
+            // but should immediately return once find the answer.
+            // However, here we just want to let Rust compute something heavy
+            // and have *predictable* time. Otherwise, different images are generated
+            // with different computation time, and thus the user will be confused why
+            // their changed parameters does not reflect change of computation time (because
+            // indeed the computation is influenced by the specific image).
+            if ans.is_none() {
+                ans = Some(i);
+            }
         }
         z = z * z + c;
     }
-
-    None
+    ans
 }
 
 /// Given the row and column of a pixel in the output image, return the
