@@ -13,7 +13,7 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   void initState() {
     super.initState();
     () async {
-      // TODO support positional arguments
+      // TODO support positional arguments (not hard)
       final df = await (await readSampleDataset())
           .lazy()
           .filter(predicate: col(name: "sepal_length").gt(other: lit(t: 5)))
@@ -28,6 +28,29 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Text('hi');
+    return Row(
+      children: [
+        _buildDartCodeSection(),
+        _buildRustCodeSection(),
+        _buildInputSection(),
+        _buildOutputSection(),
+      ],
+    );
+  }
+
+  Widget _buildDartCodeSection() {
+    return Text('TODO');
+  }
+
+  Widget _buildRustCodeSection() {
+    return Text('TODO');
+  }
+
+  Widget _buildInputSection() {
+    return Text('TODO');
+  }
+
+  Widget _buildOutputSection() {
+    return Text('TODO');
   }
 }
