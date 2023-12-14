@@ -36,12 +36,12 @@ where
     F: Future + 'static,
     F::Output: 'static,
 {
-    let (sender, receiver) = oneshot::channel::<F::Output>();
+    let (sender, handle) = JoinHandle::create_pair();
     wasm_bindgen_futures::spawn_local(async {
         let output = future.await;
         sender.send(output);
     });
-    JoinHandle(AssertUnwindSafe(receiver))
+    handle
 }
 
 pub fn spawn_blocking<F, R>(f: F) -> JoinHandle<R>
@@ -55,6 +55,13 @@ where
 // ref: async-std's implementation
 // https://github.com/async-rs/async-std/blob/8fea0500990c9d8977cbeef55bc9003cca39abc8/src/task/join_handle.rs#L23
 pub struct JoinHandle<T>(AssertUnwindSafe<oneshot::Receiver<T>>);
+
+impl<T> JoinHandle<T> {
+    fn create_pair() -> (oneshot::channel::Sender<T>, Self) {
+        let (sender, receiver) = oneshot::channel::<F::Output>();
+        (sender, Self(AssertUnwindSafe(receiver)))
+    }
+}
 
 impl<T> Future for JoinHandle<T> {
     // tokio uses `super::Result<T>`
