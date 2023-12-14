@@ -46,19 +46,29 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   Widget _buildDartCodeSection() {
     return Column(
       children: [
-        SizedBox(
-          width: 64,
-          child: TextField(
-            controller: _valueController,
-            onChanged: (_) => _executeQuery(),
-          ),
-        ),
-        Text('''df
-  .lazy()
-  .filter(col("sepal_length").gt(lit($_value)))
+        Text.rich(
+          TextSpan(
+            children: [
+              const TextSpan(
+                text: '''df.lazy()
+  .filter(col("sepal_length").gt(lit(''',
+              ),
+              WidgetSpan(
+                child: SizedBox(
+                  width: 32,
+                  child: TextField(
+                    controller: _valueController,
+                    onChanged: (_) => _executeQuery(),
+                  ),
+                ),
+              ),
+              const TextSpan(text: ''')))
   .groupBy(col("species"))
   .agg(col("*").sum())
-  .collect();'''),
+  .collect();''')
+            ],
+          ),
+        ),
       ],
     );
   }
