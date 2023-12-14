@@ -158,8 +158,10 @@ fn wire_LazyFrame_collect_impl(
             move |context| {
                 transform_result_dco((move || {
                     let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                        crate::api::polars::LazyFrame::collect(api_that),
+                    Result::<_, anyhow::Error>::Ok(
+                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                            crate::api::polars::LazyFrame::collect(api_that),
+                        ),
                     )
                 })())
             }

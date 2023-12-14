@@ -40,8 +40,8 @@ impl LazyFrame {
         )
     }
 
-    pub fn collect(self) -> anyhow::Result<DataFrame> {
-        Ok(DataFrame::new(self.0 .0.collect()?))
+    pub fn collect(self) -> DataFrame {
+        DataFrame::new(self.0 .0.collect().unwrap())
     }
 }
 

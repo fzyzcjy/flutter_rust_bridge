@@ -266,7 +266,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       codec: DcoCodec(
         decodeSuccessData:
             dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame,
-        decodeErrorData: dco_decode_AnyhowException,
+        decodeErrorData: null,
       ),
       constMeta: kLazyFrameCollectConstMeta,
       argValues: [that],
