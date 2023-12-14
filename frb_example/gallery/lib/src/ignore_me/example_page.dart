@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Usually do not use inheritance, but we are just doing a minimal demo ;)
 class ExampleBasePage extends StatelessWidget {
   const ExampleBasePage({super.key});
 

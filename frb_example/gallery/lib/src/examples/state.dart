@@ -1,11 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:frb_example_gallery/src/ignore_me/example_page.dart';
 
-class StatePage extends StatelessWidget {
+class StatePage extends ExampleBasePage {
   const StatePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ExampleBasePage();
-  }
 }
