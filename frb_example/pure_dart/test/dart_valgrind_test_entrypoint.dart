@@ -9,6 +9,7 @@ import 'package:test_core/src/util/print_sink.dart';
 
 import 'api/array_test.dart' as array_test;
 import 'api/async_misc_test.dart' as async_misc_test;
+import 'api/async_spawn_test.dart' as async_spawn_test;
 import 'api/attribute_test.dart' as attribute_test;
 import 'api/chrono_type_test.dart' as chrono_type_test;
 import 'api/comment_test.dart' as comment_test;
@@ -347,6 +348,7 @@ Future<void> main() async {
 Future<void> callFileEntrypoints() async {
   await array_test.main(skipRustLibInit: true);
   await async_misc_test.main(skipRustLibInit: true);
+  await async_spawn_test.main(skipRustLibInit: true);
   await attribute_test.main(skipRustLibInit: true);
   await chrono_type_test.main(skipRustLibInit: true);
   await comment_test.main(skipRustLibInit: true);
