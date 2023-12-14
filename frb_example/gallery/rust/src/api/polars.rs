@@ -1,3 +1,4 @@
+use crate::ignore_me::polars_related::create_df_iris;
 use polars_core::prelude::*;
 use polars_lazy::prelude::*;
 
@@ -9,9 +10,8 @@ static SAMPLE_DATASET: &'static str = include_str!("../ignore_me/iris.csv");
 
 pub fn hello_polars() -> String {
     // demo from https://pola-rs.github.io/polars/
-    let df = LazyCsvReader::new("docs/data/iris.csv")
-        .has_header(true)
-        .finish()?
+    let df = create_df_iris()
+        .lazy()
         .filter(col("sepal_length").gt(lit(5)))
         .group_by(vec![col("species")])
         .agg([col("*").sum()])
