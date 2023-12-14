@@ -14,22 +14,38 @@ class MainPageWidget extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text('Gallery')),
         body: Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildButton(
-                title: 'Mandelbrot',
-                subtitle: 'Use Rust to write algorithms',
-              ),
-              _buildButton(
-                title: 'Polars',
-                subtitle: 'Use Rust well-developed libraries in Dart',
-              ),
-              _buildButton(
-                title: 'State',
-                subtitle: 'State in Rust, UI in Dart',
-              ),
-            ],
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1000),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildButton(
+                  title: 'Polars',
+                  subtitle: 'Use well-developed Rust libraries in Dart',
+                  icon: const Icon(
+                    Icons.folder_outlined,
+                    color: Colors.blue,
+                  ),
+                ),
+                _buildButton(
+                  title: 'Mandelbrot',
+                  subtitle: 'Use Rust to write algorithms',
+                  icon: const Icon(
+                    // Icons.query_stats_outlined,
+                    Icons.center_focus_strong_outlined,
+                    color: Colors.green,
+                  ),
+                ),
+                _buildButton(
+                  title: 'State',
+                  subtitle: 'State in Rust, UI in Dart',
+                  icon: const Icon(
+                    Icons.article_outlined,
+                    color: Colors.cyan,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -39,6 +55,7 @@ class MainPageWidget extends StatelessWidget {
   Widget _buildButton({
     required String title,
     required String subtitle,
+    required Widget icon,
   }) {
     return Expanded(
       child: Padding(
@@ -49,19 +66,27 @@ class MainPageWidget extends StatelessWidget {
             // TODO
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // TODO icon
-                Icon(
-                  Icons.android_outlined,
-                  color: Colors.green,
-                  size: 64,
+                IconTheme.merge(
+                  data: const IconThemeData(size: 64),
+                  child: icon,
                 ),
-                Text(title),
-                const SizedBox(height: 4),
-                Text(subtitle),
+                const SizedBox(height: 8),
+                Text(
+                  title,
+                  style: const TextStyle(fontSize: 20),
+                ),
+                const SizedBox(height: 8),
+                SizedBox(
+                  height: 64,
+                  child: Text(
+                    subtitle,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ],
             ),
           ),
