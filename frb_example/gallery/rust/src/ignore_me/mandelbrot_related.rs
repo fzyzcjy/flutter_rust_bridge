@@ -4,7 +4,7 @@
 //! https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs and
 //! https://github.com/Ducolnd/rust-mandelbrot/blob/master/src/main.rs
 
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 
 use anyhow::*;
 use flutter_rust_bridge::for_generated::futures::future::try_join_all;
@@ -159,8 +159,14 @@ pub async fn mandelbrot(
 
     let band_rows = bounds.1 / (num_threads as usize) + 1;
 
-    let mut pixels = vec![0; bounds.0 * bounds.1];
-    let bands = Mutex::new(pixels.chunks_mut(band_rows * bounds.0).enumerate());
+    let mut pixels = Arc::new(Mutex::new(vec![0; bounds.0 * bounds.1]));
+
+    let pixels_cloned = Arc::clone(&pixels);
+    let bands = Mutex::new(
+        (pixels_cloned.lock().unwrap())
+            .chunks_mut(band_rows * bounds.0)
+            .enumerate(),
+    );
 
     let mut join_handles = vec![];
     for _ in 0..num_threads {
@@ -196,7 +202,7 @@ pub async fn mandelbrot(
 
     try_join_all(join_handles).await?;
 
-    write_image(&colorize(&pixels), bounds)
+    write_image(&colorize(&pixels.lock().unwrap()), bounds)
 }
 
 // pub fn tree_preorder_traversal(root: TreeNode) -> Vec<String> {
