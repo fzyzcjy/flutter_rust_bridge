@@ -305,7 +305,7 @@ fn wire_col_impl(
     )
 }
 fn wire_lit_impl(
-    t: impl CstDecode<i32> + core::panic::UnwindSafe,
+    t: impl CstDecode<f64> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {

@@ -265,7 +265,7 @@ pub fn wire_col(name: String) -> flutter_rust_bridge::for_generated::WireSyncRus
 }
 
 #[wasm_bindgen]
-pub fn wire_lit(t: i32) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+pub fn wire_lit(t: f64) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_lit_impl(t)
 }
 

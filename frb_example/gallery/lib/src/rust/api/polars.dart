@@ -12,7 +12,7 @@ Future<RwLockDataFrame> readSampleDataset({dynamic hint}) =>
 RwLockExpr col({required String name, dynamic hint}) =>
     RustLib.instance.api.col(name: name, hint: hint);
 
-RwLockExpr lit({required int t, dynamic hint}) =>
+RwLockExpr lit({required double t, dynamic hint}) =>
     RustLib.instance.api.lit(t: t, hint: hint);
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>

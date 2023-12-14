@@ -10,6 +10,7 @@ class PolarsPageBody extends StatefulWidget {
 }
 
 class _PolarsPageBodyState extends State<PolarsPageBody> {
+  final _valueController = TextEditingController(text: '5');
   SimpleTable? _outputTable;
 
   @override
@@ -22,7 +23,9 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
     // TODO support positional arguments (not hard)
     final df = await (await readSampleDataset())
         .lazy()
-        .filter(predicate: col(name: "sepal_length").gt(other: lit(t: 5)))
+        .filter(
+            predicate: col(name: "sepal_length").gt(
+                other: lit(t: double.tryParse(_valueController.text) ?? 5.0)))
         .groupBy(expr: col(name: "species"))
         .agg(expr: col(name: "*").sum())
         .collect();
@@ -41,7 +44,13 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   }
 
   Widget _buildDartCodeSection() {
-    return Text('TODO');
+    return SizedBox(
+      width: 64,
+      child: TextField(
+        controller: _valueController,
+        onChanged: (_) => _executeQuery(),
+      ),
+    );
   }
 
   Widget _buildOutputSection() {

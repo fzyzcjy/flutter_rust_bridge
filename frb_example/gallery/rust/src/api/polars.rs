@@ -102,6 +102,6 @@ pub fn col(name: String) -> Expr {
 }
 
 #[frb(sync)]
-pub fn lit(t: i32) -> Expr {
+pub fn lit(t: f64) -> Expr {
     Expr::new(polars_lazy::prelude::lit(t))
 }

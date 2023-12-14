@@ -408,7 +408,7 @@ class RustLibWire extends BaseWire {
       wire_col(String name) => wasmModule.wire_col(name);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_lit(int t) => wasmModule.wire_lit(t);
+      wire_lit(double t) => wasmModule.wire_lit(t);
 
   void wire_read_sample_dataset(NativePortType port_) =>
       wasmModule.wire_read_sample_dataset(port_);
@@ -515,7 +515,7 @@ class RustLibWasmModule implements WasmModule {
       wire_col(String name);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_lit(int t);
+      wire_lit(double t);
 
   external void wire_read_sample_dataset(NativePortType port_);
 

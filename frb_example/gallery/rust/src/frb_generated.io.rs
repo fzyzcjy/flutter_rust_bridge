@@ -243,7 +243,7 @@ pub extern "C" fn wire_col(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_lit(t: i32) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+pub extern "C" fn wire_lit(t: f64) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_lit_impl(t)
 }
 

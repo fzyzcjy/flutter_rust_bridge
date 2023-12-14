@@ -95,7 +95,7 @@ abstract class RustLibApi extends BaseApi {
 
   RwLockExpr col({required String name, dynamic hint});
 
-  RwLockExpr lit({required int t, dynamic hint});
+  RwLockExpr lit({required double t, dynamic hint});
 
   Future<RwLockDataFrame> readSampleDataset({dynamic hint});
 
@@ -432,10 +432,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockExpr lit({required int t, dynamic hint}) {
+  RwLockExpr lit({required double t, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_i_32(t);
+        var arg0 = cst_encode_f_64(t);
         return wire.wire_lit(arg0);
       },
       codec: DcoCodec(

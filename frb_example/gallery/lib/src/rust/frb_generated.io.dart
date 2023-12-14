@@ -642,7 +642,7 @@ class RustLibWire implements BaseWire {
       WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
   WireSyncRust2DartDco wire_lit(
-    int t,
+    double t,
   ) {
     return _wire_lit(
       t,
@@ -650,10 +650,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_litPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Double)>>(
           'wire_lit');
   late final _wire_lit =
-      _wire_litPtr.asFunction<WireSyncRust2DartDco Function(int)>();
+      _wire_litPtr.asFunction<WireSyncRust2DartDco Function(double)>();
 
   void wire_read_sample_dataset(
     int port_,
