@@ -196,14 +196,6 @@ pub fn wire_DataFrame_lazy(
 }
 
 #[wasm_bindgen]
-pub fn wire_DataFrame_write_json(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_DataFrame_write_json_impl(port_, that)
-}
-
-#[wasm_bindgen]
 pub fn wire_Expr_gt(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,

@@ -36,11 +36,6 @@ class RwLockDataFrame extends RustOpaque {
       RustLib.instance.api.dataFrameLazy(
         that: this,
       );
-
-  Future<String> writeJson({dynamic hint}) =>
-      RustLib.instance.api.dataFrameWriteJson(
-        that: this,
-      );
 }
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>

@@ -86,28 +86,6 @@ fn wire_DataFrame_lazy_impl(
         },
     )
 }
-fn wire_DataFrame_write_json_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>
-        + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "DataFrame_write_json",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_that = that.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    let api_that = api_that.rust_auto_opaque_decode_ref()?;
-                    crate::api::polars::DataFrame::write_json(&api_that)
-                })())
-            }
-        },
-    )
-}
 fn wire_Expr_gt_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>

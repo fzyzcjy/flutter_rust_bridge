@@ -60,10 +60,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  RwLockDataFrame dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
-      dynamic raw);
-
-  @protected
   RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw);
 
   @protected
@@ -132,10 +128,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockVecExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      SseDeserializer deserializer);
-
-  @protected
-  RwLockDataFrame sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
       SseDeserializer deserializer);
 
   @protected
@@ -250,10 +242,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RwLockVecExpr raw);
 
   @protected
-  PlatformPointer cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
-      RwLockDataFrame raw);
-
-  @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame raw);
 
@@ -309,10 +297,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
       RwLockVecExpr self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
-      RwLockDataFrame self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockDataFrame(
@@ -393,9 +377,6 @@ class RustLibWire extends BaseWire {
 
   void wire_DataFrame_lazy(NativePortType port_, Object that) =>
       wasmModule.wire_DataFrame_lazy(port_, that);
-
-  void wire_DataFrame_write_json(NativePortType port_, Object that) =>
-      wasmModule.wire_DataFrame_write_json(port_, that);
 
   void wire_Expr_gt(NativePortType port_, Object that, Object other) =>
       wasmModule.wire_Expr_gt(port_, that, other);
@@ -508,8 +489,6 @@ class RustLibWasmModule implements WasmModule {
       int num_threads);
 
   external void wire_DataFrame_lazy(NativePortType port_, Object that);
-
-  external void wire_DataFrame_write_json(NativePortType port_, Object that);
 
   external void wire_Expr_gt(NativePortType port_, Object that, Object other);
 

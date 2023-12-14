@@ -172,11 +172,6 @@ pub extern "C" fn wire_DataFrame_lazy(port_: i64, that: *const std::ffi::c_void)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_DataFrame_write_json(port_: i64, that: *const std::ffi::c_void) {
-    wire_DataFrame_write_json_impl(port_, that)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_Expr_gt(
     port_: i64,
     that: *const std::ffi::c_void,

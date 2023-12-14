@@ -67,9 +67,6 @@ abstract class RustLibApi extends BaseApi {
   Future<RwLockLazyFrame> dataFrameLazy(
       {required RwLockDataFrame that, dynamic hint});
 
-  Future<String> dataFrameWriteJson(
-      {required RwLockDataFrame that, dynamic hint});
-
   Future<RwLockExpr> exprGt(
       {required RwLockExpr that, required RwLockExpr other, dynamic hint});
 
@@ -206,30 +203,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kDataFrameLazyConstMeta => const TaskConstMeta(
         debugName: "DataFrame_lazy",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<String> dataFrameWriteJson(
-      {required RwLockDataFrame that, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(that);
-        return wire.wire_DataFrame_write_json(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_String,
-        decodeErrorData: dco_decode_AnyhowException,
-      ),
-      constMeta: kDataFrameWriteJsonConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kDataFrameWriteJsonConstMeta => const TaskConstMeta(
-        debugName: "DataFrame_write_json",
         argNames: ["that"],
       );
 
@@ -539,12 +512,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RwLockDataFrame dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
-      dynamic raw) {
-    return RwLockDataFrame.dcoDecode(raw);
-  }
-
-  @protected
   RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw) {
     return RwLockDataFrame.dcoDecode(raw);
   }
@@ -675,13 +642,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockVecExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
       SseDeserializer deserializer) {
     return RwLockVecExpr.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  RwLockDataFrame sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
-      SseDeserializer deserializer) {
-    return RwLockDataFrame.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -820,13 +780,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  PlatformPointer cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
-      RwLockDataFrame raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.cstEncode(move: false);
-  }
-
-  @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame raw) {
     // ignore: invalid_use_of_internal_member
@@ -920,12 +873,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
       RwLockVecExpr self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
-  }
-
-  @protected
-  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
-      RwLockDataFrame self, SseSerializer serializer) {
-    sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
