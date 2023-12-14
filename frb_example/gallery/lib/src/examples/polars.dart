@@ -54,6 +54,8 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   }
 
   Widget _buildOutputSection() {
-    return Text('$_outputTable');
+    return _outputTable == null
+        ? const SizedBox()
+        : SimpleTableWidget(data: _outputTable!);
   }
 }
