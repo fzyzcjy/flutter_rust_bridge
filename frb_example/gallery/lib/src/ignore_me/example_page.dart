@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ExamplePage extends StatelessWidget {
+  final String name;
   final String title;
   final String subtitle;
   final Widget icon;
@@ -8,6 +9,7 @@ class ExamplePage extends StatelessWidget {
 
   const ExamplePage({
     super.key,
+    required this.name,
     required this.title,
     required this.subtitle,
     required this.icon,

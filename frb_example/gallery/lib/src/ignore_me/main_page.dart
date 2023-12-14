@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:frb_example_gallery/src/examples/mandelbrot.dart';
 import 'package:frb_example_gallery/src/examples/polars.dart';
 import 'package:frb_example_gallery/src/ignore_me/example_page.dart';
@@ -17,66 +18,78 @@ class MainPageWidget extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: const Text('Gallery')),
-        body: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 1000),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildButton(
-                  page: const ExamplePage(
-                    title: 'Mandelbrot',
-                    subtitle: 'Example: Use Rust to write algorithms',
-                    icon: Icon(
-                      // Icons.query_stats_outlined,
-                      Icons.center_focus_strong_outlined,
-                      color: Colors.green,
-                    ),
-                    body: MandelbrotPageBody(),
-                  ),
-                ),
-                _buildButton(
-                  page: const ExamplePage(
-                    title: 'Polars',
-                    subtitle:
-                        'Example: Use well-developed Rust libraries in Dart',
-                    icon: Icon(
-                      Icons.subject_outlined,
-                      color: Colors.blue,
-                    ),
-                    body: PolarsPageBody(),
-                  ),
-                ),
-                // _buildButton(
-                //   page: const ExamplePage(
-                //     title: 'State',
-                //     subtitle: 'Example: State in Rust, UI in Dart',
-                //     icon: Icon(
-                //       Icons.article_outlined,
-                //       color: Colors.cyan,
-                //     ),
-                //     body: StatePageBody(),
-                //   ),
-                // ),
-              ],
-            ),
-          ),
+        body: const _MainPageWidgetInner(),
+      ),
+    );
+  }
+}
+
+class _MainPageWidgetInner extends StatefulWidget {
+  const _MainPageWidgetInner();
+
+  @override
+  State<_MainPageWidgetInner> createState() => _MainPageWidgetInnerState();
+}
+
+class _MainPageWidgetInnerState extends State<_MainPageWidgetInner> {
+  @override
+  void initState() {
+    super.initState();
+
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      final urlGalleryPage = Uri.base.queryParameters["gallery_page"];
+      final page = kPages.where((x) => x.name == urlGalleryPage).firstOrNull;
+      if (page != null) _jumpPage(page);
+    });
+  }
+
+  static const kPages = [
+    ExamplePage(
+      name: 'mandelbrot',
+      title: 'Mandelbrot',
+      subtitle: 'Example: Use Rust to write algorithms',
+      icon: Icon(
+        // Icons.query_stats_outlined,
+        Icons.center_focus_strong_outlined,
+        color: Colors.green,
+      ),
+      body: MandelbrotPageBody(),
+    ),
+    ExamplePage(
+      name: 'polars',
+      title: 'Polars',
+      subtitle: 'Example: Use well-developed Rust libraries in Dart',
+      icon: Icon(
+        Icons.subject_outlined,
+        color: Colors.blue,
+      ),
+      body: PolarsPageBody(),
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 1000),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (final page in kPages) _buildButton(page),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildButton({
-    required ExamplePage page,
-  }) {
+  Widget _buildButton(ExamplePage page) {
     return Builder(
       builder: (context) => Expanded(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: InkWell(
             borderRadius: BorderRadius.circular(8),
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => page)),
+            onTap: () => _jumpPage(page),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
               child: Column(
@@ -109,5 +122,9 @@ class MainPageWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _jumpPage(ExamplePage page) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
   }
 }
