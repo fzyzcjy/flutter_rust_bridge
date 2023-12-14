@@ -7,12 +7,16 @@
 use std::sync::Mutex;
 
 use anyhow::*;
+use flutter_rust_bridge::for_generated::futures::future::try_join_all;
+use flutter_rust_bridge::spawn_blocking_with;
 use image::codecs::png::PngEncoder;
 use image::*;
 use num::Complex;
+use polars_core::prelude::LhsNumOps;
 
 use crate::api::mandelbrot::{Point, Size};
 use crate::api::*;
+use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
 /// iterations to decide.
@@ -143,7 +147,7 @@ fn write_image(pixels: &[u8], bounds: (usize, usize)) -> Result<Vec<u8>> {
     Ok(buf)
 }
 
-pub fn mandelbrot(
+pub async fn mandelbrot(
     image_size: Size,
     zoom_point: Point,
     scale: f64,
@@ -179,16 +183,15 @@ pub fn mandelbrot(
             }
         };
 
-        #[cfg(not(target_family = "wasm"))]
-        crossbeam::scope(|scope| {
-            for _ in 0..num_threads {
-                scope.spawn(|_| worker());
-            }
-        })
-        .unwrap();
+        let mut join_handles = vec![];
+        for _ in 0..num_threads {
+            join_handles.push(spawn_blocking_with(
+                || worker(),
+                FLUTTER_RUST_BRIDGE_HANDLER.thread_pool(),
+            ));
+        }
 
-        #[cfg(target_family = "wasm")]
-        worker();
+        try_join_all(join_handles).await?;
     }
 
     write_image(&colorize(&pixels), bounds)
