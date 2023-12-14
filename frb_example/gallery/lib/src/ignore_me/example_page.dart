@@ -18,9 +18,15 @@ class ExamplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TODO'),
+        title: Text(title),
       ),
-      body: Text('TODO'),
+      body: Column(
+        children: [
+          icon,
+          Text(subtitle),
+          body,
+        ],
+      ),
     );
   }
 }
