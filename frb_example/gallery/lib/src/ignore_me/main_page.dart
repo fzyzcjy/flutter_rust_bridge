@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frb_example_gallery/src/rust/api/simple.dart';
 
 class MainPageWidget extends StatelessWidget {
   const MainPageWidget({super.key});
@@ -6,6 +7,11 @@ class MainPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        colorScheme: const ColorScheme.light(
+          background: Colors.white,
+        ),
+      ),
       home: Scaffold(
         appBar: AppBar(title: const Text('flutter_rust_bridge Gallery')),
         body: Center(
