@@ -61,7 +61,7 @@ const examplePoint = Point(
 var _scale = 1.0;
 
 double generateScale() {
-  _scale *= 0.8;
+  _scale *= 0.9;
   if (_scale < 1e-9) _scale = 1.0;
   return _scale;
 }
