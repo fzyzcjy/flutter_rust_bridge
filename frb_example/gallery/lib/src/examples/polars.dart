@@ -13,7 +13,13 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   void initState() {
     super.initState();
     () async {
-      final msg = await helloPolars();
+      final msg = (await readSampleDataset())
+          .lazy()
+          .filter(col("sepal_length").gt(lit(5)))
+          .group_by(vec![col("species")])
+          .agg([col("*").sum()])
+          .collect()
+          .unwrap();
       print('helloPolars=$msg');
     }();
   }
