@@ -182,6 +182,7 @@ pub fn mandelbrot(
             }
         };
 
+        // TODO Use higher-level APIs, instead of this low-level one which results in a lot of extra code
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             worker();
         }));
