@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 Future<void> main() async {
   final lib = ffi.DynamicLibrary.open(
     // 'rust/target/debug/libfrb_example_dart_minimal.dylib',
-    '/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/bug/rust/target/debug/libfrb_example_dart_minimal.dylib',
+    '/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/bug_dcharkes/rust/target/debug/libfrb_example_dart_minimal.dylib',
     // '/Users/dacoharkes/src/fzyzcjy/flutter_rust_bridge/bug/rust/target/debug/libfrb_example_dart_minimal.dylib',
   );
   final binding = UseRustBindings(lib);
