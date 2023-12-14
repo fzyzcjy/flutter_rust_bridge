@@ -226,22 +226,20 @@ impl PoolState {
 impl Default for WorkerPool {
     fn default() -> Self {
         Self::new(
-            4,
-            // get_wasm_hardware_concurrency(),
+            get_wasm_hardware_concurrency(),
             script_path().expect("fail to get script path"),
         )
         .expect("fail to create WorkerPool")
     }
 }
 
-// TODO
-// fn get_wasm_hardware_concurrency() -> usize {
-//     let mut key;
-//     let global_object = js_sys::global();
-//     let global = global_object.as_ref();
-//     key = wasm_bindgen::JsValue::from_str("navigator");
-//     let navigator = js_sys::Reflect::get(&global, &key).unwrap();
-//     key = wasm_bindgen::JsValue::from_str("hardwareConcurrency");
-//     let hardware_concurrency = js_sys::Reflect::get(&navigator, &key).unwrap();
-//     hardware_concurrency.as_f64().unwrap() as usize
-// }
+fn get_wasm_hardware_concurrency() -> usize {
+    let mut key;
+    let global_object = js_sys::global();
+    let global = global_object.as_ref();
+    key = wasm_bindgen::JsValue::from_str("navigator");
+    let navigator = js_sys::Reflect::get(&global, &key).unwrap();
+    key = wasm_bindgen::JsValue::from_str("hardwareConcurrency");
+    let hardware_concurrency = js_sys::Reflect::get(&navigator, &key).unwrap();
+    hardware_concurrency.as_f64().unwrap() as usize
+}
