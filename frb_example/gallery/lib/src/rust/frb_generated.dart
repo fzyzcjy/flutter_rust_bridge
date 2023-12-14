@@ -64,6 +64,12 @@ abstract class RustLibApi extends BaseApi {
       required int numThreads,
       dynamic hint});
 
+  Future<List<dynamic>> dataFrameGetColumn(
+      {required RwLockDataFrame that, required String name, dynamic hint});
+
+  List<String> dataFrameGetColumnNames(
+      {required RwLockDataFrame that, dynamic hint});
+
   RwLockLazyFrame dataFrameLazy({required RwLockDataFrame that, dynamic hint});
 
   RwLockExpr exprGt(
@@ -166,6 +172,55 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kDrawMandelbrotConstMeta => const TaskConstMeta(
         debugName: "draw_mandelbrot",
         argNames: ["imageSize", "zoomPoint", "scale", "numThreads"],
+      );
+
+  @override
+  Future<List<dynamic>> dataFrameGetColumn(
+      {required RwLockDataFrame that, required String name, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(that);
+        var arg1 = cst_encode_String(name);
+        return wire.wire_DataFrame_get_column(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_dartabi,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kDataFrameGetColumnConstMeta,
+      argValues: [that, name],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDataFrameGetColumnConstMeta => const TaskConstMeta(
+        debugName: "DataFrame_get_column",
+        argNames: ["that", "name"],
+      );
+
+  @override
+  List<String> dataFrameGetColumnNames(
+      {required RwLockDataFrame that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(that);
+        return wire.wire_DataFrame_get_column_names(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kDataFrameGetColumnNamesConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDataFrameGetColumnNamesConstMeta => const TaskConstMeta(
+        debugName: "DataFrame_get_column_names",
+        argNames: ["that"],
       );
 
   @override
@@ -483,6 +538,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  RwLockDataFrame dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      dynamic raw) {
+    return RwLockDataFrame.dcoDecode(raw);
+  }
+
+  @protected
   RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw) {
     return RwLockDataFrame.dcoDecode(raw);
   }
@@ -519,6 +580,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  dynamic dco_decode_dartabi(dynamic raw) {
+    return raw;
+  }
+
+  @protected
   double dco_decode_f_64(dynamic raw) {
     return raw as double;
   }
@@ -526,6 +592,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_i_32(dynamic raw) {
     return raw as int;
+  }
+
+  @protected
+  List<String> dco_decode_list_String(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_String).toList();
+  }
+
+  @protected
+  List<dynamic> dco_decode_list_dartabi(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_dartabi).toList();
   }
 
   @protected
@@ -605,6 +681,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  RwLockDataFrame sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer) {
+    return RwLockDataFrame.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   RwLockDataFrame sse_decode_RustOpaque_stdsyncRwLockDataFrame(
       SseDeserializer deserializer) {
     return RwLockDataFrame.sseDecode(
@@ -649,6 +732,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  dynamic sse_decode_dartabi(SseDeserializer deserializer) {
+    throw UnimplementedError('');
+  }
+
+  @protected
   double sse_decode_f_64(SseDeserializer deserializer) {
     return deserializer.buffer.getFloat64();
   }
@@ -656,6 +744,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  List<String> sse_decode_list_String(SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <String>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_String(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<dynamic> sse_decode_list_dartabi(SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <dynamic>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_dartabi(deserializer));
+    }
+    return ans_;
   }
 
   @protected
@@ -722,6 +830,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       RwLockLazyGroupBy raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
   }
 
   @protected
@@ -808,6 +923,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
@@ -847,6 +968,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_dartabi(dynamic self, SseSerializer serializer) {
+    throw UnimplementedError('');
+  }
+
+  @protected
   void sse_encode_f_64(double self, SseSerializer serializer) {
     serializer.buffer.putFloat64(self);
   }
@@ -854,6 +980,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
+  }
+
+  @protected
+  void sse_encode_list_String(List<String> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_String(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_dartabi(List<dynamic> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_dartabi(item, serializer);
+    }
   }
 
   @protected

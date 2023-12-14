@@ -31,6 +31,26 @@ impl CstDecode<String> for String {
         self
     }
 }
+impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> Vec<String> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<flutter_rust_bridge::for_generated::DartAbi>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<flutter_rust_bridge::for_generated::DartAbi> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<u8>> for Box<[u8]> {
     fn cst_decode(self) -> Vec<u8> {
         self.into_vec()
@@ -178,6 +198,22 @@ pub fn wire_draw_mandelbrot(
     num_threads: i32,
 ) {
     wire_draw_mandelbrot_impl(port_, image_size, zoom_point, scale, num_threads)
+}
+
+#[wasm_bindgen]
+pub fn wire_DataFrame_get_column(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    name: String,
+) {
+    wire_DataFrame_get_column_impl(port_, that, name)
+}
+
+#[wasm_bindgen]
+pub fn wire_DataFrame_get_column_names(
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_DataFrame_get_column_names_impl(that)
 }
 
 #[wasm_bindgen]

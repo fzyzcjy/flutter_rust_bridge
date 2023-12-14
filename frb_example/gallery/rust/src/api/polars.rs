@@ -20,6 +20,7 @@ impl DataFrame {
         LazyFrame::new(self.0 .0.lazy())
     }
 
+    #[frb(sync)]
     pub fn get_column_names(&self) -> Vec<String> {
         self.0 .0.get_column_names().into_iter().cloned().collect()
     }
