@@ -13,6 +13,9 @@ impl DataFrame {
     pub fn lazy(self) -> LazyFrame {
         LazyFrame(self.0.lazy())
     }
+
+    // bare-minimal handwritten one to avoid more dependencies to the demo
+    pub fn to_json(self) -> String {}
 }
 
 #[frb(opaque)]
