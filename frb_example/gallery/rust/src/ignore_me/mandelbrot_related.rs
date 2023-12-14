@@ -7,15 +7,12 @@
 use std::sync::Mutex;
 
 use anyhow::*;
-use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::transfer;
 use image::codecs::png::PngEncoder;
 use image::*;
 use num::Complex;
 
 use crate::api::simple::{Point, Size};
 use crate::api::*;
-use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
 /// iterations to decide.
@@ -182,9 +179,16 @@ pub fn mandelbrot(
             }
         };
 
-        (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
-            worker();
-        }));
+        #[cfg(not(target_family = "wasm"))]
+        crossbeam::scope(|scope| {
+            for _ in 0..num_threads {
+                scope.spawn(|_| worker());
+            }
+        })
+        .unwrap();
+
+        #[cfg(target_family = "wasm")]
+        worker();
     }
 
     write_image(&colorize(&pixels), bounds)
