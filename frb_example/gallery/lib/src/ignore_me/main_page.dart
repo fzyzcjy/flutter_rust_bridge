@@ -21,7 +21,8 @@ class MainPageWidget extends StatelessWidget {
               children: [
                 _buildButton(
                   title: 'Polars',
-                  subtitle: 'Use well-developed Rust libraries in Dart',
+                  subtitle:
+                      'Example: Use well-developed Rust libraries in Dart',
                   icon: const Icon(
                     Icons.folder_outlined,
                     color: Colors.blue,
@@ -29,7 +30,7 @@ class MainPageWidget extends StatelessWidget {
                 ),
                 _buildButton(
                   title: 'Mandelbrot',
-                  subtitle: 'Use Rust to write algorithms',
+                  subtitle: 'Example: Use Rust to write algorithms',
                   icon: const Icon(
                     // Icons.query_stats_outlined,
                     Icons.center_focus_strong_outlined,
@@ -38,7 +39,7 @@ class MainPageWidget extends StatelessWidget {
                 ),
                 _buildButton(
                   title: 'State',
-                  subtitle: 'State in Rust, UI in Dart',
+                  subtitle: 'Example: State in Rust, UI in Dart',
                   icon: const Icon(
                     Icons.article_outlined,
                     color: Colors.cyan,
