@@ -24,7 +24,10 @@ impl LazyFrame {
     }
 
     pub fn group_by(self, expr: Vec<Expr>) -> LazyGroupBy {
-        LazyGroupBy(self.0.group_by(expr.into_iter().map(|x| x.0).collect()))
+        LazyGroupBy(
+            self.0
+                .group_by(expr.into_iter().map(|x| x.0).collect::<Vec<_>>()),
+        )
     }
 
     pub fn collect(self) -> anyhow::Result<DataFrame> {
@@ -37,7 +40,10 @@ pub struct LazyGroupBy(polars_lazy::prelude::LazyGroupBy);
 
 impl LazyGroupBy {
     pub fn agg(self, expr: Vec<Expr>) -> LazyFrame {
-        LazyFrame(self.0.agg(expr.into_iter().map(|x| x.0).collect()))
+        LazyFrame(
+            self.0
+                .agg(expr.into_iter().map(|x| x.0).collect::<Vec<_>>()),
+        )
     }
 }
 
@@ -50,7 +56,7 @@ pub struct Expr(polars_lazy::prelude::Expr);
 
 impl Expr {
     pub fn gt(self, other: Expr) -> Expr {
-        Expr(self.0.gt(other))
+        Expr(self.0.gt(other.0))
     }
 
     pub fn sum(self) -> Expr {
