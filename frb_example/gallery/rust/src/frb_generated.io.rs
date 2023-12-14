@@ -131,6 +131,11 @@ pub extern "C" fn wire_draw_mandelbrot(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_hello_polars(port_: i64) {
+    wire_hello_polars_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn cst_new_box_autoadd_point() -> *mut wire_cst_point {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_point::new_with_null_ptr())
 }

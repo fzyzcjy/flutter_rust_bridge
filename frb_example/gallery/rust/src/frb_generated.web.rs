@@ -145,3 +145,8 @@ pub fn wire_draw_mandelbrot(
 ) {
     wire_draw_mandelbrot_impl(port_, image_size, zoom_point, scale, num_threads)
 }
+
+#[wasm_bindgen]
+pub fn wire_hello_polars(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_hello_polars_impl(port_)
+}
