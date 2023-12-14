@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:frb_example_gallery/src/ignore_me/example_page.dart';
 
-class PolarsPage extends StatelessWidget {
-  const PolarsPage({super.key});
+class PolarsPageBody extends StatelessWidget {
+  const PolarsPageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ExamplePage();
+    return Text('hi');
   }
 }

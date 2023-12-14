@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frb_example_gallery/src/examples/mandelbrot.dart';
+import 'package:frb_example_gallery/src/examples/polars.dart';
+import 'package:frb_example_gallery/src/examples/state.dart';
 import 'package:frb_example_gallery/src/ignore_me/example_page.dart';
 
 class MainPageWidget extends StatelessWidget {
@@ -29,6 +32,7 @@ class MainPageWidget extends StatelessWidget {
                       Icons.folder_outlined,
                       color: Colors.blue,
                     ),
+                    body: PolarsPageBody(),
                   ),
                 ),
                 _buildButton(
@@ -40,6 +44,7 @@ class MainPageWidget extends StatelessWidget {
                       Icons.center_focus_strong_outlined,
                       color: Colors.green,
                     ),
+                    body: MandelbrotPageBody(),
                   ),
                 ),
                 _buildButton(
@@ -50,6 +55,7 @@ class MainPageWidget extends StatelessWidget {
                       Icons.article_outlined,
                       color: Colors.cyan,
                     ),
+                    body: StatePageBody(),
                   ),
                 ),
               ],

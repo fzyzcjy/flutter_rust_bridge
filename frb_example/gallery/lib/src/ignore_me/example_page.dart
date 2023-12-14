@@ -4,12 +4,14 @@ class ExamplePage extends StatelessWidget {
   final String title;
   final String subtitle;
   final Widget icon;
+  final Widget body;
 
   const ExamplePage({
     super.key,
     required this.title,
     required this.subtitle,
     required this.icon,
+    required this.body,
   });
 
   @override
