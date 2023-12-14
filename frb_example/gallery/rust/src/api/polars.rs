@@ -54,7 +54,7 @@ impl LazyGroupBy {
 
     #[frb(sync)]
     pub fn agg(self, expr: Expr) -> LazyFrame {
-        LazyFrame::new(self.0 .0.agg(vec![expr]))
+        LazyFrame::new(self.0 .0.agg(vec![expr.0 .0]))
     }
 }
 
