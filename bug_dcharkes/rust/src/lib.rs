@@ -15,6 +15,6 @@ pub unsafe extern "C" fn NewPersistentHandle(
 #[no_mangle]
 pub unsafe extern "C" fn HandleFromPersistent(
     persistent_handle: *mut std::ffi::c_void,
-) -> Dart_Handle {
-    Dart_HandleFromPersistent_DL.unwrap()(persistent_handle as _)
+) -> usize {
+    Dart_HandleFromPersistent_DL.unwrap()(persistent_handle as _) as _
 }

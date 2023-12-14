@@ -8,4 +8,4 @@ intptr_t InitializeApiDL(void *data);
 
 void *NewPersistentHandle(Dart_Handle non_persistent_handle);
 
-Dart_Handle HandleFromPersistent(void *persistent_handle);
+uintptr_t HandleFromPersistent(void *persistent_handle);
