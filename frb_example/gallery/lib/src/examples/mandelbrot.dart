@@ -56,38 +56,56 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Column(
-          children: [
-            for (final candidateNumThreads in [1, 2, 4])
-              TextButton(
-                onPressed: () {
-                  numThreads = candidateNumThreads;
-                  start();
-                },
-                child: Text('Start ($candidateNumThreads threads)'),
+        Expanded(
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 64),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  for (final candidateNumThreads in [1, 2, 4])
+                    TextButton(
+                      onPressed: () {
+                        numThreads = candidateNumThreads;
+                        start();
+                      },
+                      child: Text('Start ($candidateNumThreads threads)'),
+                    ),
+                  TextButton(onPressed: stop, child: const Text('Stop')),
+                  SizedBox(
+                    width: 128,
+                    child: Slider(
+                      value: size,
+                      onChanged: (newValue) => setState(() => size = newValue),
+                      min: 100,
+                      max: 1000,
+                    ),
+                  ),
+                  if (computeTime != null)
+                    SizedBox(
+                      width: 128,
+                      child: Text(
+                          'Compute time: ${computeTime!.inMilliseconds}ms'),
+                    ),
+                ],
               ),
-            TextButton(onPressed: stop, child: const Text('Stop')),
-            Slider(
-              value: size,
-              onChanged: (newValue) => setState(() => size = newValue),
-              min: 100,
-              max: 1000,
             ),
-          ],
-        ),
-        if (computeTime != null)
-          SizedBox(
-            width: 128,
-            child: Text('Compute time: ${computeTime!.inMilliseconds}ms'),
           ),
-        image != null
-            ? SizedBox.square(
-                dimension: size,
-                child: AnimatedReplaceableImage(
-                  image: MemoryImage(image!),
-                ),
-              )
-            : Container(),
+        ),
+        Expanded(
+          child: image != null
+              ? Align(
+                  alignment: Alignment.centerLeft,
+                  child: SizedBox.square(
+                    dimension: size,
+                    child: AnimatedReplaceableImage(
+                      image: MemoryImage(image!),
+                    ),
+                  ),
+                )
+              : Container(),
+        ),
       ],
     );
   }

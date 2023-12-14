@@ -12,6 +12,7 @@ class MainPageWidget extends StatelessWidget {
       theme: ThemeData(
         colorScheme: const ColorScheme.light(
           background: Colors.white,
+          primary: Colors.blue,
         ),
       ),
       home: Scaffold(

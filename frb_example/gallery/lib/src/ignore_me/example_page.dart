@@ -20,13 +20,7 @@ class ExamplePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Column(
-        children: [
-          icon,
-          Text(subtitle),
-          body,
-        ],
-      ),
+      body: body,
     );
   }
 }
