@@ -37,41 +37,14 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _buildCodeSection(),
-        _buildOutputSection(),
-      ],
-    );
-  }
-
-  Widget _buildCodeSection() {
-    return Column(
-      children: [
-        Text("Dart uses Polar's API"),
-        Text.rich(
-          TextSpan(
-            children: [
-              const TextSpan(
-                text: '''df.lazy()
-  .filter(col("sepal_length").gt(lit(''',
-              ),
-              WidgetSpan(
-                child: SizedBox(
-                  width: 32,
-                  child: TextField(
-                    controller: _valueController,
-                    onChanged: (_) => _executeQuery(),
-                  ),
-                ),
-              ),
-              const TextSpan(text: ''')))
-  .groupBy(col("species"))
-  .agg(col("*").sum())
-  .collect();''')
-            ],
+        SizedBox(
+          width: 32,
+          child: TextField(
+            controller: _valueController,
+            onChanged: (_) => _executeQuery(),
           ),
         ),
-        Text("Rust is a thin wrapper around Polar's API"),
-        Text('TODO'),
+        _buildOutputSection(),
       ],
     );
   }

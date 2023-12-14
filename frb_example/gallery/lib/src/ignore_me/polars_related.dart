@@ -37,18 +37,26 @@ class SimpleTableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DataTable(
-      columns: <DataColumn>[
-        for (final name in data.names) DataColumn(label: Text(name)),
-      ],
-      rows: <DataRow>[
-        for (final row in data.data)
-          DataRow(
-            cells: <DataCell>[
-              for (final value in row) DataCell(Text(value)),
-            ],
-          ),
-      ],
+    return Theme(
+      data: Theme.of(context).copyWith(
+        dividerTheme: DividerThemeData(
+          color: Colors.grey.shade200,
+        ),
+      ),
+      child: DataTable(
+        columns: <DataColumn>[
+          for (final name in data.names) DataColumn(label: Text(name)),
+        ],
+        rows: <DataRow>[
+          for (final row in data.data)
+            DataRow(
+              // color: MaterialStateColor.resolveWith((_) => Colors.green),
+              cells: <DataCell>[
+                for (final value in row) DataCell(Text(value)),
+              ],
+            ),
+        ],
+      ),
     );
   }
 }
