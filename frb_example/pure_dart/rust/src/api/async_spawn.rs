@@ -11,7 +11,7 @@ pub async fn simple_use_async_spawn(arg: String) -> String {
 
 pub async fn simple_use_async_spawn_blocking(arg: String) -> String {
     // ref demo in https://docs.rs/tokio/latest/tokio/task/fn.spawn_blocking.html
-    let handle = flutter_rust_bridge::spawn_blocking(
+    let handle = flutter_rust_bridge::spawn_blocking_with(
         move || arg.repeat(2),
         FLUTTER_RUST_BRIDGE_HANDLER.thread_pool(),
     );

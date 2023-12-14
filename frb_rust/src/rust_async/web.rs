@@ -46,7 +46,7 @@ where
     handle
 }
 
-pub fn spawn_blocking<F, R>(f: F, thread_pool: &impl BaseThreadPool) -> JoinHandle<R>
+pub fn spawn_blocking_with<F, R>(f: F, thread_pool: &impl BaseThreadPool) -> JoinHandle<R>
 where
     F: FnOnce() -> R + Send + 'static,
     R: Send + 'static,
