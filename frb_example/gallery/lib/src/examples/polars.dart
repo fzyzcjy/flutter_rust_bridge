@@ -19,13 +19,13 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
     _executeQuery();
   }
 
+  double get _value => double.tryParse(_valueController.text) ?? 5.0;
+
   Future<void> _executeQuery() async {
     // TODO support positional arguments (not hard)
     final df = await (await readSampleDataset())
         .lazy()
-        .filter(
-            predicate: col(name: "sepal_length").gt(
-                other: lit(t: double.tryParse(_valueController.text) ?? 5.0)))
+        .filter(predicate: col(name: "sepal_length").gt(other: lit(t: _value)))
         .groupBy(expr: col(name: "species"))
         .agg(expr: col(name: "*").sum())
         .collect();
@@ -44,12 +44,22 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   }
 
   Widget _buildDartCodeSection() {
-    return SizedBox(
-      width: 64,
-      child: TextField(
-        controller: _valueController,
-        onChanged: (_) => _executeQuery(),
-      ),
+    return Column(
+      children: [
+        SizedBox(
+          width: 64,
+          child: TextField(
+            controller: _valueController,
+            onChanged: (_) => _executeQuery(),
+          ),
+        ),
+        Text('''df
+  .lazy()
+  .filter(col("sepal_length").gt(lit($_value)))
+  .groupBy(col("species"))
+  .agg(col("*").sum())
+  .collect();'''),
+      ],
     );
   }
 
