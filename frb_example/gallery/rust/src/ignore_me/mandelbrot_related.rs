@@ -166,10 +166,11 @@ pub async fn mandelbrot(
     for _ in 0..num_threads {
         join_handles.push(spawn_blocking_with(
             move || loop {
-                match {
+                let next_chunk = {
                     let mut guard = bands.lock().unwrap();
                     guard.next()
-                } {
+                };
+                match next_chunk {
                     None => {
                         return;
                     }
