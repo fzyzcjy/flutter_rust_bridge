@@ -24,9 +24,10 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
 
   void start() {
     stop();
-    runner = SimpleRunner(() async {
+    runner =
+        SimpleRunner(minDuration: const Duration(milliseconds: 33), () async {
       final receivedImage = await drawMandelbrot(
-        imageSize: const Size(width: 100, height: 100),
+        imageSize: const Size(width: 200, height: 200),
         zoomPoint: examplePoint,
         scale: generateScale(),
         numThreads: numThreads,

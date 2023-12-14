@@ -61,7 +61,7 @@ const examplePoint = Point(
 var _scale = 1.0;
 
 double generateScale() {
-  _scale *= 0.9;
+  _scale *= 0.95;
   if (_scale < 1e-9) _scale = 1.0;
   return _scale;
 }
@@ -69,10 +69,16 @@ double generateScale() {
 class SimpleRunner {
   var _running = true;
 
-  SimpleRunner(Future<void> Function() run) {
+  SimpleRunner(Future<void> Function() run, {required Duration minDuration}) {
     () async {
       while (_running) {
+        final watch = Stopwatch()..start();
         await run();
+        watch.stop();
+        final actualDuration = watch.elapsed;
+        if (minDuration > actualDuration) {
+          await Future.delayed(minDuration - actualDuration);
+        }
       }
     }();
   }
