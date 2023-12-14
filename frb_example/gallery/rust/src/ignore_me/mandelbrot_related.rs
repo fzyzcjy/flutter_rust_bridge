@@ -8,6 +8,7 @@ use std::sync::{Arc, Mutex};
 
 use anyhow::*;
 use flutter_rust_bridge::for_generated::futures::future::try_join_all;
+use flutter_rust_bridge::for_generated::futures::StreamExt;
 use flutter_rust_bridge::spawn_blocking_with;
 use image::codecs::png::PngEncoder;
 use image::*;
@@ -157,52 +158,33 @@ pub async fn mandelbrot(
     let upper_left = Complex::new(zoom_point.x - scale, zoom_point.y - scale);
     let lower_right = Complex::new(zoom_point.x + scale, zoom_point.y + scale);
 
-    let band_rows = bounds.1 / (num_threads as usize) + 1;
-
-    let mut pixels = Arc::new(Mutex::new(vec![0; bounds.0 * bounds.1]));
-
-    let pixels_cloned = Arc::clone(&pixels);
-    let bands = Mutex::new(
-        (pixels_cloned.lock().unwrap())
-            .chunks_mut(band_rows * bounds.0)
-            .enumerate(),
-    );
+    let band_rows = bounds.1 / (num_threads as usize);
 
     let mut join_handles = vec![];
-    for _ in 0..num_threads {
+    for i in 0..num_threads {
         join_handles.push(spawn_blocking_with(
             move || loop {
-                let next_chunk = {
-                    let mut guard = bands.lock().unwrap();
-                    guard.next()
-                };
-                match next_chunk {
-                    None => {
-                        return;
-                    }
-                    Some((i, band)) => {
-                        let top = band_rows * i;
-                        let height = band.len() / bounds.0;
-                        let band_bounds = (bounds.0, height);
-                        let band_upper_left =
-                            pixel_to_point(bounds, (0, top), upper_left, lower_right);
-                        let band_lower_right = pixel_to_point(
-                            bounds,
-                            (bounds.0, top + height),
-                            upper_left,
-                            lower_right,
-                        );
-                        render(band, band_bounds, band_upper_left, band_lower_right);
-                    }
-                }
+                let top = band_rows * i;
+                let bottom = usize::min(band_rows * (i + 1), bounds.1);
+                let height = bottom - top;
+                let mut band = vec![0; bounds.0 * height];
+
+                let band_bounds = (bounds.0, height);
+                let band_upper_left = pixel_to_point(bounds, (0, top), upper_left, lower_right);
+                let band_lower_right =
+                    pixel_to_point(bounds, (bounds.0, top + height), upper_left, lower_right);
+                render(&mut band, band_bounds, band_upper_left, band_lower_right);
+
+                band
             },
             FLUTTER_RUST_BRIDGE_HANDLER.thread_pool(),
         ));
     }
 
-    try_join_all(join_handles).await?;
+    let bands_arr = try_join_all(join_handles).await?;
+    let pixels = bands_arr.concat();
 
-    write_image(&colorize(&pixels.lock().unwrap()), bounds)
+    write_image(&colorize(&pixels), bounds)
 }
 
 // pub fn tree_preorder_traversal(root: TreeNode) -> Vec<String> {
