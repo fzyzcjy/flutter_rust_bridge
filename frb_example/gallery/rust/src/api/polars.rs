@@ -76,7 +76,7 @@ impl Expr {
     }
 
     pub fn gt(self, other: Expr) -> Expr {
-        Expr::new(self.0 .0.gt(other.0))
+        Expr::new(self.0 .0.gt(other.0 .0))
     }
 
     pub fn sum(self) -> Expr {
