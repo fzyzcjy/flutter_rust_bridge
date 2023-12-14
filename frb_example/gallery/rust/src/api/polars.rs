@@ -57,3 +57,24 @@ impl LazyGroupBy {
 pub fn read_sample_dataset() -> DataFrame {
     DataFrame(polars_related::create_df_iris())
 }
+
+#[frb(opaque)]
+pub struct Expr(polars_lazy::prelude::Expr);
+
+impl Expr {
+    pub fn gt(self, other: Expr) -> Expr {
+        Expr(self.0.gt(other))
+    }
+
+    pub fn sum(self) -> Expr {
+        Expr(self.0.sum())
+    }
+}
+
+pub fn col(name: String) -> Expr {
+    Expr(polars_lazy::prelude::col(&name))
+}
+
+pub fn lit(t: i32) -> Expr {
+    Expr(polars_lazy::prelude::lit(t))
+}
