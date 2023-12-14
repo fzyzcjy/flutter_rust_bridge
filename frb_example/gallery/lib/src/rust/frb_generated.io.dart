@@ -34,10 +34,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_RwLockLazyGroupByPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr;
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockVecExprPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExprPtr;
-
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
 
@@ -57,10 +53,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  RwLockVecExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      dynamic raw);
-
-  @protected
   RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw);
 
   @protected
@@ -71,9 +63,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockLazyGroupBy dco_decode_RustOpaque_stdsyncRwLockLazyGroupBy(dynamic raw);
-
-  @protected
-  RwLockVecExpr dco_decode_RustOpaque_stdsyncRwLockVecExpr(dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -128,10 +117,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  RwLockVecExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      SseDeserializer deserializer);
-
-  @protected
   RwLockDataFrame sse_decode_RustOpaque_stdsyncRwLockDataFrame(
       SseDeserializer deserializer);
 
@@ -145,10 +130,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockLazyGroupBy sse_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
-      SseDeserializer deserializer);
-
-  @protected
-  RwLockVecExpr sse_decode_RustOpaque_stdsyncRwLockVecExpr(
       SseDeserializer deserializer);
 
   @protected
@@ -260,10 +241,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RwLockLazyGroupBy raw);
 
   @protected
-  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr raw);
-
-  @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame raw);
 
@@ -277,9 +254,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy raw);
-
-  @protected
-  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockVecExpr(RwLockVecExpr raw);
 
   @protected
   double cst_encode_f_64(double raw);
@@ -317,10 +291,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RwLockLazyGroupBy self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr self, SseSerializer serializer);
-
-  @protected
   void sse_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame self, SseSerializer serializer);
 
@@ -335,10 +305,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -469,30 +435,26 @@ class RustLibWire implements BaseWire {
       void Function(int, ffi.Pointer<wire_cst_size>,
           ffi.Pointer<wire_cst_point>, double, int)>();
 
-  void wire_DataFrame_lazy(
-    int port_,
+  WireSyncRust2DartDco wire_DataFrame_lazy(
     ffi.Pointer<ffi.Void> that,
   ) {
     return _wire_DataFrame_lazy(
-      port_,
       that,
     );
   }
 
   late final _wire_DataFrame_lazyPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_DataFrame_lazy');
+      ffi.NativeFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<ffi.Void>)>>('wire_DataFrame_lazy');
   late final _wire_DataFrame_lazy = _wire_DataFrame_lazyPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
 
-  void wire_Expr_gt(
-    int port_,
+  WireSyncRust2DartDco wire_Expr_gt(
     ffi.Pointer<ffi.Void> that,
     ffi.Pointer<ffi.Void> other,
   ) {
     return _wire_Expr_gt(
-      port_,
       that,
       other,
     );
@@ -500,27 +462,26 @@ class RustLibWire implements BaseWire {
 
   late final _wire_Expr_gtPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>>('wire_Expr_gt');
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>('wire_Expr_gt');
   late final _wire_Expr_gt = _wire_Expr_gtPtr.asFunction<
-      void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+      WireSyncRust2DartDco Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
-  void wire_Expr_sum(
-    int port_,
+  WireSyncRust2DartDco wire_Expr_sum(
     ffi.Pointer<ffi.Void> that,
   ) {
     return _wire_Expr_sum(
-      port_,
       that,
     );
   }
 
   late final _wire_Expr_sumPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_Expr_sum');
-  late final _wire_Expr_sum =
-      _wire_Expr_sumPtr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      ffi.NativeFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<ffi.Void>)>>('wire_Expr_sum');
+  late final _wire_Expr_sum = _wire_Expr_sumPtr
+      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
 
   void wire_LazyFrame_collect(
     int port_,
@@ -539,13 +500,11 @@ class RustLibWire implements BaseWire {
   late final _wire_LazyFrame_collect = _wire_LazyFrame_collectPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_LazyFrame_filter(
-    int port_,
+  WireSyncRust2DartDco wire_LazyFrame_filter(
     ffi.Pointer<ffi.Void> that,
     ffi.Pointer<ffi.Void> predicate,
   ) {
     return _wire_LazyFrame_filter(
-      port_,
       that,
       predicate,
     );
@@ -553,18 +512,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_LazyFrame_filterPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
               ffi.Pointer<ffi.Void>)>>('wire_LazyFrame_filter');
   late final _wire_LazyFrame_filter = _wire_LazyFrame_filterPtr.asFunction<
-      void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+      WireSyncRust2DartDco Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
-  void wire_LazyFrame_group_by(
-    int port_,
+  WireSyncRust2DartDco wire_LazyFrame_group_by(
     ffi.Pointer<ffi.Void> that,
     ffi.Pointer<ffi.Void> expr,
   ) {
     return _wire_LazyFrame_group_by(
-      port_,
       that,
       expr,
     );
@@ -572,18 +530,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_LazyFrame_group_byPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
               ffi.Pointer<ffi.Void>)>>('wire_LazyFrame_group_by');
   late final _wire_LazyFrame_group_by = _wire_LazyFrame_group_byPtr.asFunction<
-      void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+      WireSyncRust2DartDco Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
-  void wire_LazyGroupBy_agg(
-    int port_,
+  WireSyncRust2DartDco wire_LazyGroupBy_agg(
     ffi.Pointer<ffi.Void> that,
     ffi.Pointer<ffi.Void> expr,
   ) {
     return _wire_LazyGroupBy_agg(
-      port_,
       that,
       expr,
     );
@@ -591,42 +548,40 @@ class RustLibWire implements BaseWire {
 
   late final _wire_LazyGroupBy_aggPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
               ffi.Pointer<ffi.Void>)>>('wire_LazyGroupBy_agg');
   late final _wire_LazyGroupBy_agg = _wire_LazyGroupBy_aggPtr.asFunction<
-      void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+      WireSyncRust2DartDco Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
-  void wire_col(
-    int port_,
+  WireSyncRust2DartDco wire_col(
     ffi.Pointer<wire_cst_list_prim_u_8> name,
   ) {
     return _wire_col(
-      port_,
       name,
     );
   }
 
   late final _wire_colPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>('wire_col');
-  late final _wire_col = _wire_colPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_u_8>)>>('wire_col');
+  late final _wire_col = _wire_colPtr.asFunction<
+      WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
-  void wire_lit(
-    int port_,
+  WireSyncRust2DartDco wire_lit(
     int t,
   ) {
     return _wire_lit(
-      port_,
       t,
     );
   }
 
   late final _wire_litPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
           'wire_lit');
-  late final _wire_lit = _wire_litPtr.asFunction<void Function(int, int)>();
+  late final _wire_lit =
+      _wire_litPtr.asFunction<WireSyncRust2DartDco Function(int)>();
 
   void wire_read_sample_dataset(
     int port_,
@@ -760,36 +715,6 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy');
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExprPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr');
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr =
-      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExprPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExprPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr');
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr =
-      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExprPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<wire_cst_point> cst_new_box_autoadd_point() {

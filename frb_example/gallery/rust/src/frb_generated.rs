@@ -61,84 +61,75 @@ fn wire_draw_mandelbrot_impl(
     )
 }
 fn wire_DataFrame_lazy_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>
         + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "DataFrame_lazy",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_that = that.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                            crate::api::polars::DataFrame::lazy(api_that),
-                        ),
-                    )
-                })())
-            }
+            transform_result_dco((move || {
+                let api_that = api_that.rust_auto_opaque_decode_owned()?;
+                Result::<_, anyhow::Error>::Ok(
+                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                        crate::api::polars::DataFrame::lazy(api_that),
+                    ),
+                )
+            })())
         },
     )
 }
 fn wire_Expr_gt_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
         + core::panic::UnwindSafe,
     other: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
         + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "Expr_gt",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_that = that.cst_decode();
             let api_other = other.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                    let api_other = api_other.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                            crate::api::polars::Expr::gt(api_that, api_other),
-                        ),
-                    )
-                })())
-            }
+            transform_result_dco((move || {
+                let api_that = api_that.rust_auto_opaque_decode_owned()?;
+                let api_other = api_other.rust_auto_opaque_decode_owned()?;
+                Result::<_, anyhow::Error>::Ok(
+                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                        crate::api::polars::Expr::gt(api_that, api_other),
+                    ),
+                )
+            })())
         },
     )
 }
 fn wire_Expr_sum_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
         + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "Expr_sum",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_that = that.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                            crate::api::polars::Expr::sum(api_that),
-                        ),
-                    )
-                })())
-            }
+            transform_result_dco((move || {
+                let api_that = api_that.rust_auto_opaque_decode_owned()?;
+                Result::<_, anyhow::Error>::Ok(
+                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                        crate::api::polars::Expr::sum(api_that),
+                    ),
+                )
+            })())
         },
     )
 }
@@ -169,140 +160,121 @@ fn wire_LazyFrame_collect_impl(
     )
 }
 fn wire_LazyFrame_filter_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>
         + core::panic::UnwindSafe,
     predicate: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
         + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "LazyFrame_filter",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_that = that.cst_decode();
             let api_predicate = predicate.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                    let api_predicate = api_predicate.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                            crate::api::polars::LazyFrame::filter(api_that, api_predicate),
-                        ),
-                    )
-                })())
-            }
+            transform_result_dco((move || {
+                let api_that = api_that.rust_auto_opaque_decode_owned()?;
+                let api_predicate = api_predicate.rust_auto_opaque_decode_owned()?;
+                Result::<_, anyhow::Error>::Ok(
+                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                        crate::api::polars::LazyFrame::filter(api_that, api_predicate),
+                    ),
+                )
+            })())
         },
     )
 }
 fn wire_LazyFrame_group_by_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>
         + core::panic::UnwindSafe,
-    expr: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>>>
+    expr: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
         + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "LazyFrame_group_by",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_that = that.cst_decode();
             let api_expr = expr.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                    let api_expr = api_expr.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                            crate::api::polars::LazyFrame::group_by(api_that, api_expr),
-                        ),
-                    )
-                })())
-            }
+            transform_result_dco((move || {
+                let api_that = api_that.rust_auto_opaque_decode_owned()?;
+                let api_expr = api_expr.rust_auto_opaque_decode_owned()?;
+                Result::<_, anyhow::Error>::Ok(
+                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                        crate::api::polars::LazyFrame::group_by(api_that, api_expr),
+                    ),
+                )
+            })())
         },
     )
 }
 fn wire_LazyGroupBy_agg_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>>>
         + core::panic::UnwindSafe,
-    expr: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>>>
+    expr: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
         + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "LazyGroupBy_agg",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_that = that.cst_decode();
             let api_expr = expr.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                    let api_expr = api_expr.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                            crate::api::polars::LazyGroupBy::agg(api_that, api_expr),
-                        ),
-                    )
-                })())
-            }
+            transform_result_dco((move || {
+                let api_that = api_that.rust_auto_opaque_decode_owned()?;
+                let api_expr = api_expr.rust_auto_opaque_decode_owned()?;
+                Result::<_, anyhow::Error>::Ok(
+                    flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                        crate::api::polars::LazyGroupBy::agg(api_that, api_expr),
+                    ),
+                )
+            })())
         },
     )
 }
 fn wire_col_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     name: impl CstDecode<String> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "col",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_name = name.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    Result::<_, ()>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                            crate::api::polars::col(api_name),
-                        ),
-                    )
-                })())
-            }
+            transform_result_dco((move || {
+                Result::<_, ()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                    crate::api::polars::col(api_name),
+                ))
+            })())
         },
     )
 }
 fn wire_lit_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     t: impl CstDecode<i32> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "lit",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let api_t = t.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    Result::<_, ()>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                            crate::api::polars::lit(api_t),
-                        ),
-                    )
-                })())
-            }
+            transform_result_dco((move || {
+                Result::<_, ()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                    crate::api::polars::lit(api_t),
+                ))
+            })())
         },
     )
 }
@@ -377,13 +349,6 @@ impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>
 }
 
 impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return unsafe { flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner) };
-    }
-}
-
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner) };
@@ -529,14 +494,6 @@ impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>
 }
 
 impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);

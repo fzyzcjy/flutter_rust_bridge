@@ -13,14 +13,14 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   void initState() {
     super.initState();
     () async {
-      final msg = (await readSampleDataset())
+      // TODO support positional arguments
+      final df = await (await readSampleDataset())
           .lazy()
-          .filter(col("sepal_length").gt(lit(5)))
-          .group_by(vec![col("species")])
-          .agg([col("*").sum()])
-          .collect()
-          .unwrap();
-      print('helloPolars=$msg');
+          .filter(predicate: col(name: "sepal_length").gt(other: lit(t: 5)))
+          .groupBy(expr: col(name: "species"))
+          .agg(expr: col(name: "*").sum())
+          .collect();
+      print('helloPolars=$df');
     }();
   }
 

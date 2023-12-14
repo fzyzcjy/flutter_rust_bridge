@@ -44,13 +44,6 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>>>
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>>>
-    for *const std::ffi::c_void
-{
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>> {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
-    }
-}
 impl CstDecode<String> for *mut wire_cst_list_prim_u_8 {
     fn cst_decode(self) -> String {
         let vec: Vec<u8> = self.cst_decode();
@@ -167,22 +160,25 @@ pub extern "C" fn wire_draw_mandelbrot(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_DataFrame_lazy(port_: i64, that: *const std::ffi::c_void) {
-    wire_DataFrame_lazy_impl(port_, that)
+pub extern "C" fn wire_DataFrame_lazy(
+    that: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_DataFrame_lazy_impl(that)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_Expr_gt(
-    port_: i64,
     that: *const std::ffi::c_void,
     other: *const std::ffi::c_void,
-) {
-    wire_Expr_gt_impl(port_, that, other)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_Expr_gt_impl(that, other)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_Expr_sum(port_: i64, that: *const std::ffi::c_void) {
-    wire_Expr_sum_impl(port_, that)
+pub extern "C" fn wire_Expr_sum(
+    that: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_Expr_sum_impl(that)
 }
 
 #[no_mangle]
@@ -192,39 +188,38 @@ pub extern "C" fn wire_LazyFrame_collect(port_: i64, that: *const std::ffi::c_vo
 
 #[no_mangle]
 pub extern "C" fn wire_LazyFrame_filter(
-    port_: i64,
     that: *const std::ffi::c_void,
     predicate: *const std::ffi::c_void,
-) {
-    wire_LazyFrame_filter_impl(port_, that, predicate)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_LazyFrame_filter_impl(that, predicate)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_LazyFrame_group_by(
-    port_: i64,
     that: *const std::ffi::c_void,
     expr: *const std::ffi::c_void,
-) {
-    wire_LazyFrame_group_by_impl(port_, that, expr)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_LazyFrame_group_by_impl(that, expr)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_LazyGroupBy_agg(
-    port_: i64,
     that: *const std::ffi::c_void,
     expr: *const std::ffi::c_void,
-) {
-    wire_LazyGroupBy_agg_impl(port_, that, expr)
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_LazyGroupBy_agg_impl(that, expr)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_col(port_: i64, name: *mut wire_cst_list_prim_u_8) {
-    wire_col_impl(port_, name)
+pub extern "C" fn wire_col(
+    name: *mut wire_cst_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_col_impl(name)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_lit(port_: i64, t: i32) {
-    wire_lit_impl(port_, t)
+pub extern "C" fn wire_lit(t: i32) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_lit_impl(t)
 }
 
 #[no_mangle]
@@ -316,28 +311,6 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGr
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             std::sync::RwLock<LazyGroupBy>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<Vec<Expr>>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<Vec<Expr>>,
         >(ptr);
     }
 }

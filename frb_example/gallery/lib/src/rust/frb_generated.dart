@@ -64,35 +64,32 @@ abstract class RustLibApi extends BaseApi {
       required int numThreads,
       dynamic hint});
 
-  Future<RwLockLazyFrame> dataFrameLazy(
-      {required RwLockDataFrame that, dynamic hint});
+  RwLockLazyFrame dataFrameLazy({required RwLockDataFrame that, dynamic hint});
 
-  Future<RwLockExpr> exprGt(
+  RwLockExpr exprGt(
       {required RwLockExpr that, required RwLockExpr other, dynamic hint});
 
-  Future<RwLockExpr> exprSum({required RwLockExpr that, dynamic hint});
+  RwLockExpr exprSum({required RwLockExpr that, dynamic hint});
 
   Future<RwLockDataFrame> lazyFrameCollect(
       {required RwLockLazyFrame that, dynamic hint});
 
-  Future<RwLockLazyFrame> lazyFrameFilter(
+  RwLockLazyFrame lazyFrameFilter(
       {required RwLockLazyFrame that,
       required RwLockExpr predicate,
       dynamic hint});
 
-  Future<RwLockLazyGroupBy> lazyFrameGroupBy(
-      {required RwLockLazyFrame that,
-      required RwLockVecExpr expr,
-      dynamic hint});
+  RwLockLazyGroupBy lazyFrameGroupBy(
+      {required RwLockLazyFrame that, required RwLockExpr expr, dynamic hint});
 
-  Future<RwLockLazyFrame> lazyGroupByAgg(
+  RwLockLazyFrame lazyGroupByAgg(
       {required RwLockLazyGroupBy that,
-      required RwLockVecExpr expr,
+      required RwLockExpr expr,
       dynamic hint});
 
-  Future<RwLockExpr> col({required String name, dynamic hint});
+  RwLockExpr col({required String name, dynamic hint});
 
-  Future<RwLockExpr> lit({required int t, dynamic hint});
+  RwLockExpr lit({required int t, dynamic hint});
 
   Future<RwLockDataFrame> readSampleDataset({dynamic hint});
 
@@ -130,15 +127,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockLazyGroupByPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockVecExpr;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockVecExpr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockVecExprPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -181,13 +169,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockLazyFrame> dataFrameLazy(
-      {required RwLockDataFrame that, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  RwLockLazyFrame dataFrameLazy({required RwLockDataFrame that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(that);
-        return wire.wire_DataFrame_lazy(port_, arg0);
+        return wire.wire_DataFrame_lazy(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData:
@@ -207,13 +194,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockExpr> exprGt(
+  RwLockExpr exprGt(
       {required RwLockExpr that, required RwLockExpr other, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(that);
         var arg1 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(other);
-        return wire.wire_Expr_gt(port_, arg0, arg1);
+        return wire.wire_Expr_gt(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr,
@@ -232,11 +219,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockExpr> exprSum({required RwLockExpr that, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  RwLockExpr exprSum({required RwLockExpr that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(that);
-        return wire.wire_Expr_sum(port_, arg0);
+        return wire.wire_Expr_sum(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr,
@@ -281,17 +268,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockLazyFrame> lazyFrameFilter(
+  RwLockLazyFrame lazyFrameFilter(
       {required RwLockLazyFrame that,
       required RwLockExpr predicate,
       dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(that);
         var arg1 =
             cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(predicate);
-        return wire.wire_LazyFrame_filter(port_, arg0, arg1);
+        return wire.wire_LazyFrame_filter(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData:
@@ -311,16 +298,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockLazyGroupBy> lazyFrameGroupBy(
-      {required RwLockLazyFrame that,
-      required RwLockVecExpr expr,
-      dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  RwLockLazyGroupBy lazyFrameGroupBy(
+      {required RwLockLazyFrame that, required RwLockExpr expr, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(that);
-        var arg1 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(expr);
-        return wire.wire_LazyFrame_group_by(port_, arg0, arg1);
+        var arg1 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(expr);
+        return wire.wire_LazyFrame_group_by(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData:
@@ -340,16 +325,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockLazyFrame> lazyGroupByAgg(
+  RwLockLazyFrame lazyGroupByAgg(
       {required RwLockLazyGroupBy that,
-      required RwLockVecExpr expr,
+      required RwLockExpr expr,
       dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 =
             cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(that);
-        var arg1 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(expr);
-        return wire.wire_LazyGroupBy_agg(port_, arg0, arg1);
+        var arg1 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(expr);
+        return wire.wire_LazyGroupBy_agg(arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData:
@@ -369,11 +354,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockExpr> col({required String name, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  RwLockExpr col({required String name, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_String(name);
-        return wire.wire_col(port_, arg0);
+        return wire.wire_col(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr,
@@ -392,11 +377,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockExpr> lit({required int t, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+  RwLockExpr lit({required int t, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         var arg0 = cst_encode_i_32(t);
-        return wire.wire_lit(port_, arg0);
+        return wire.wire_lit(arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr,
@@ -469,14 +454,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get rust_arc_decrement_strong_count_RwLockLazyGroupBy => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy;
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockVecExpr =>
-          wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockVecExpr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr;
-
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     return AnyhowException(raw as String);
@@ -506,12 +483,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RwLockVecExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      dynamic raw) {
-    return RwLockVecExpr.dcoDecode(raw);
-  }
-
-  @protected
   RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw) {
     return RwLockDataFrame.dcoDecode(raw);
   }
@@ -530,11 +501,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockLazyGroupBy dco_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
       dynamic raw) {
     return RwLockLazyGroupBy.dcoDecode(raw);
-  }
-
-  @protected
-  RwLockVecExpr dco_decode_RustOpaque_stdsyncRwLockVecExpr(dynamic raw) {
-    return RwLockVecExpr.dcoDecode(raw);
   }
 
   @protected
@@ -639,13 +605,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RwLockVecExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      SseDeserializer deserializer) {
-    return RwLockVecExpr.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   RwLockDataFrame sse_decode_RustOpaque_stdsyncRwLockDataFrame(
       SseDeserializer deserializer) {
     return RwLockDataFrame.sseDecode(
@@ -670,13 +629,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockLazyGroupBy sse_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
       SseDeserializer deserializer) {
     return RwLockLazyGroupBy.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  RwLockVecExpr sse_decode_RustOpaque_stdsyncRwLockVecExpr(
-      SseDeserializer deserializer) {
-    return RwLockVecExpr.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -773,13 +725,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.cstEncode(move: true);
-  }
-
-  @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame raw) {
     // ignore: invalid_use_of_internal_member
@@ -802,13 +747,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.cstEncode();
-  }
-
-  @protected
-  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -870,12 +808,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr self, SseSerializer serializer) {
-    sse_encode_usize(self.sseEncode(move: true), serializer);
-  }
-
-  @protected
   void sse_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
@@ -896,12 +828,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy self, SseSerializer serializer) {
-    sse_encode_usize(self.sseEncode(move: null), serializer);
-  }
-
-  @protected
-  void sse_encode_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 

@@ -9,10 +9,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<RwLockDataFrame> readSampleDataset({dynamic hint}) =>
     RustLib.instance.api.readSampleDataset(hint: hint);
 
-Future<RwLockExpr> col({required String name, dynamic hint}) =>
+RwLockExpr col({required String name, dynamic hint}) =>
     RustLib.instance.api.col(name: name, hint: hint);
 
-Future<RwLockExpr> lit({required int t, dynamic hint}) =>
+RwLockExpr lit({required int t, dynamic hint}) =>
     RustLib.instance.api.lit(t: t, hint: hint);
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>
@@ -32,8 +32,7 @@ class RwLockDataFrame extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_RwLockDataFramePtr,
   );
 
-  Future<RwLockLazyFrame> lazy({dynamic hint}) =>
-      RustLib.instance.api.dataFrameLazy(
+  RwLockLazyFrame lazy({dynamic hint}) => RustLib.instance.api.dataFrameLazy(
         that: this,
       );
 }
@@ -55,13 +54,13 @@ class RwLockExpr extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_RwLockExprPtr,
   );
 
-  Future<RwLockExpr> gt({required RwLockExpr other, dynamic hint}) =>
+  RwLockExpr gt({required RwLockExpr other, dynamic hint}) =>
       RustLib.instance.api.exprGt(
         that: this,
         other: other,
       );
 
-  Future<RwLockExpr> sum({dynamic hint}) => RustLib.instance.api.exprSum(
+  RwLockExpr sum({dynamic hint}) => RustLib.instance.api.exprSum(
         that: this,
       );
 }
@@ -88,15 +87,13 @@ class RwLockLazyFrame extends RustOpaque {
         that: this,
       );
 
-  Future<RwLockLazyFrame> filter(
-          {required RwLockExpr predicate, dynamic hint}) =>
+  RwLockLazyFrame filter({required RwLockExpr predicate, dynamic hint}) =>
       RustLib.instance.api.lazyFrameFilter(
         that: this,
         predicate: predicate,
       );
 
-  Future<RwLockLazyGroupBy> groupBy(
-          {required RwLockVecExpr expr, dynamic hint}) =>
+  RwLockLazyGroupBy groupBy({required RwLockExpr expr, dynamic hint}) =>
       RustLib.instance.api.lazyFrameGroupBy(
         that: this,
         expr: expr,
@@ -121,27 +118,9 @@ class RwLockLazyGroupBy extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_RwLockLazyGroupByPtr,
   );
 
-  Future<RwLockLazyFrame> agg({required RwLockVecExpr expr, dynamic hint}) =>
+  RwLockLazyFrame agg({required RwLockExpr expr, dynamic hint}) =>
       RustLib.instance.api.lazyGroupByAgg(
         that: this,
         expr: expr,
       );
-}
-
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>>
-@sealed
-class RwLockVecExpr extends RustOpaque {
-  RwLockVecExpr.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
-
-  RwLockVecExpr.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_RwLockVecExpr,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_RwLockVecExpr,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_RwLockVecExprPtr,
-  );
 }

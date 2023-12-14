@@ -15,6 +15,7 @@ impl DataFrame {
         Self(AssertUnwindSafe(inner))
     }
 
+    #[frb(sync)]
     pub fn lazy(self) -> LazyFrame {
         LazyFrame::new(self.0 .0.lazy())
     }
@@ -28,16 +29,14 @@ impl LazyFrame {
         Self(AssertUnwindSafe(inner))
     }
 
+    #[frb(sync)]
     pub fn filter(self, predicate: Expr) -> LazyFrame {
         Self::new(self.0 .0.filter(predicate.0 .0))
     }
 
-    pub fn group_by(self, expr: Vec<Expr>) -> LazyGroupBy {
-        LazyGroupBy::new(
-            self.0
-                 .0
-                .group_by(expr.into_iter().map(|x| x.0 .0).collect::<Vec<_>>()),
-        )
+    #[frb(sync)]
+    pub fn group_by(self, expr: Expr) -> LazyGroupBy {
+        LazyGroupBy::new(self.0 .0.group_by(vec![expr.0 .0]))
     }
 
     pub fn collect(self) -> DataFrame {
@@ -53,12 +52,9 @@ impl LazyGroupBy {
         Self(AssertUnwindSafe(inner))
     }
 
-    pub fn agg(self, expr: Vec<Expr>) -> LazyFrame {
-        LazyFrame::new(
-            self.0
-                 .0
-                .agg(expr.into_iter().map(|x| x.0 .0).collect::<Vec<_>>()),
-        )
+    #[frb(sync)]
+    pub fn agg(self, expr: Expr) -> LazyFrame {
+        LazyFrame::new(self.0 .0.agg(vec![expr]))
     }
 }
 
@@ -75,19 +71,23 @@ impl Expr {
         Self(AssertUnwindSafe(inner))
     }
 
+    #[frb(sync)]
     pub fn gt(self, other: Expr) -> Expr {
         Expr::new(self.0 .0.gt(other.0 .0))
     }
 
+    #[frb(sync)]
     pub fn sum(self) -> Expr {
         Expr::new(self.0 .0.sum())
     }
 }
 
+#[frb(sync)]
 pub fn col(name: String) -> Expr {
     Expr::new(polars_lazy::prelude::col(&name))
 }
 
+#[frb(sync)]
 pub fn lit(t: i32) -> Expr {
     Expr::new(polars_lazy::prelude::lit(t))
 }

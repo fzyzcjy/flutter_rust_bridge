@@ -33,10 +33,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_RwLockLazyGroupByPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy;
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockVecExprPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr;
-
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
 
@@ -56,10 +52,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
-  RwLockVecExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      dynamic raw);
-
-  @protected
   RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw);
 
   @protected
@@ -70,9 +62,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockLazyGroupBy dco_decode_RustOpaque_stdsyncRwLockLazyGroupBy(dynamic raw);
-
-  @protected
-  RwLockVecExpr dco_decode_RustOpaque_stdsyncRwLockVecExpr(dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -127,10 +116,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  RwLockVecExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      SseDeserializer deserializer);
-
-  @protected
   RwLockDataFrame sse_decode_RustOpaque_stdsyncRwLockDataFrame(
       SseDeserializer deserializer);
 
@@ -144,10 +129,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RwLockLazyGroupBy sse_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
-      SseDeserializer deserializer);
-
-  @protected
-  RwLockVecExpr sse_decode_RustOpaque_stdsyncRwLockVecExpr(
       SseDeserializer deserializer);
 
   @protected
@@ -238,10 +219,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RwLockLazyGroupBy raw);
 
   @protected
-  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr raw);
-
-  @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame raw);
 
@@ -255,9 +232,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy raw);
-
-  @protected
-  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockVecExpr(RwLockVecExpr raw);
 
   @protected
   double cst_encode_f_64(double raw);
@@ -295,10 +269,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RwLockLazyGroupBy self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr self, SseSerializer serializer);
-
-  @protected
   void sse_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame self, SseSerializer serializer);
 
@@ -313,10 +283,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_stdsyncRwLockVecExpr(
-      RwLockVecExpr self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -375,33 +341,36 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_draw_mandelbrot(
           port_, image_size, zoom_point, scale, num_threads);
 
-  void wire_DataFrame_lazy(NativePortType port_, Object that) =>
-      wasmModule.wire_DataFrame_lazy(port_, that);
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_DataFrame_lazy(Object that) => wasmModule.wire_DataFrame_lazy(that);
 
-  void wire_Expr_gt(NativePortType port_, Object that, Object other) =>
-      wasmModule.wire_Expr_gt(port_, that, other);
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_Expr_gt(Object that, Object other) =>
+          wasmModule.wire_Expr_gt(that, other);
 
-  void wire_Expr_sum(NativePortType port_, Object that) =>
-      wasmModule.wire_Expr_sum(port_, that);
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_Expr_sum(Object that) => wasmModule.wire_Expr_sum(that);
 
   void wire_LazyFrame_collect(NativePortType port_, Object that) =>
       wasmModule.wire_LazyFrame_collect(port_, that);
 
-  void wire_LazyFrame_filter(
-          NativePortType port_, Object that, Object predicate) =>
-      wasmModule.wire_LazyFrame_filter(port_, that, predicate);
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_LazyFrame_filter(Object that, Object predicate) =>
+          wasmModule.wire_LazyFrame_filter(that, predicate);
 
-  void wire_LazyFrame_group_by(
-          NativePortType port_, Object that, Object expr) =>
-      wasmModule.wire_LazyFrame_group_by(port_, that, expr);
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_LazyFrame_group_by(Object that, Object expr) =>
+          wasmModule.wire_LazyFrame_group_by(that, expr);
 
-  void wire_LazyGroupBy_agg(NativePortType port_, Object that, Object expr) =>
-      wasmModule.wire_LazyGroupBy_agg(port_, that, expr);
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_LazyGroupBy_agg(Object that, Object expr) =>
+          wasmModule.wire_LazyGroupBy_agg(that, expr);
 
-  void wire_col(NativePortType port_, String name) =>
-      wasmModule.wire_col(port_, name);
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_col(String name) => wasmModule.wire_col(name);
 
-  void wire_lit(NativePortType port_, int t) => wasmModule.wire_lit(port_, t);
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_lit(int t) => wasmModule.wire_lit(t);
 
   void wire_read_sample_dataset(NativePortType port_) =>
       wasmModule.wire_read_sample_dataset(port_);
@@ -451,16 +420,6 @@ class RustLibWire extends BaseWire {
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
               ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(ptr);
 }
 
 @JS('wasm_bindgen')
@@ -488,26 +447,31 @@ class RustLibWasmModule implements WasmModule {
       double scale,
       int num_threads);
 
-  external void wire_DataFrame_lazy(NativePortType port_, Object that);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_DataFrame_lazy(Object that);
 
-  external void wire_Expr_gt(NativePortType port_, Object that, Object other);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_Expr_gt(Object that, Object other);
 
-  external void wire_Expr_sum(NativePortType port_, Object that);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_Expr_sum(Object that);
 
   external void wire_LazyFrame_collect(NativePortType port_, Object that);
 
-  external void wire_LazyFrame_filter(
-      NativePortType port_, Object that, Object predicate);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_LazyFrame_filter(Object that, Object predicate);
 
-  external void wire_LazyFrame_group_by(
-      NativePortType port_, Object that, Object expr);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_LazyFrame_group_by(Object that, Object expr);
 
-  external void wire_LazyGroupBy_agg(
-      NativePortType port_, Object that, Object expr);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_LazyGroupBy_agg(Object that, Object expr);
 
-  external void wire_col(NativePortType port_, String name);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_col(String name);
 
-  external void wire_lit(NativePortType port_, int t);
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_lit(int t);
 
   external void wire_read_sample_dataset(NativePortType port_);
 
@@ -540,10 +504,4 @@ class RustLibWasmModule implements WasmModule {
   external void
       rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
           dynamic ptr);
-
-  external void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-      dynamic ptr);
-
-  external void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
-      dynamic ptr);
 }
