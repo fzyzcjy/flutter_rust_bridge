@@ -62,6 +62,6 @@ impl<T> Future for JoinHandle<T> {
     type Output = anyhow::Result<T>;
 
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
-        self.0.poll(cx)
+        Pin::new(&mut self.0).poll(cx)
     }
 }
