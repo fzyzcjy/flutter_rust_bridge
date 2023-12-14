@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frb_example_gallery/src/ignore_me/polars_related.dart';
 import 'package:frb_example_gallery/src/rust/api/polars.dart';
 
 class PolarsPageBody extends StatefulWidget {
@@ -9,21 +10,23 @@ class PolarsPageBody extends StatefulWidget {
 }
 
 class _PolarsPageBodyState extends State<PolarsPageBody> {
+  SimpleTable? _outputTable;
+
   @override
   void initState() {
     super.initState();
-    () async {
-      // TODO support positional arguments (not hard)
-      final df = await (await readSampleDataset())
-          .lazy()
-          .filter(predicate: col(name: "sepal_length").gt(other: lit(t: 5)))
-          .groupBy(expr: col(name: "species"))
-          .agg(expr: col(name: "*").sum())
-          .collect();
-      for (final colName in df.getColumnNames()) {
-        print('colName=$colName values=${await df.getColumn(name: colName)}');
-      }
-    }();
+    () async {}();
+  }
+
+  Future<void> _executeQuery() async {
+    // TODO support positional arguments (not hard)
+    final df = await (await readSampleDataset())
+        .lazy()
+        .filter(predicate: col(name: "sepal_length").gt(other: lit(t: 5)))
+        .groupBy(expr: col(name: "species"))
+        .agg(expr: col(name: "*").sum())
+        .collect();
+    _outputTable = await convertToSimpleTable(df);
   }
 
   @override
@@ -51,6 +54,6 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   }
 
   Widget _buildOutputSection() {
-    return Text('TODO');
+    return Text('$_outputTable');
   }
 }
