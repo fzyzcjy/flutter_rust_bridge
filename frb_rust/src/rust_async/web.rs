@@ -1,6 +1,5 @@
 use std::future::Future;
 use std::panic::RefUnwindSafe;
-use wasm_bindgen_futures::spawn_local;
 
 pub trait BaseAsyncRuntime: RefUnwindSafe {
     fn spawn<F>(&self, future: F)
@@ -16,7 +15,7 @@ impl BaseAsyncRuntime for SimpleAsyncRuntime {
     where
         F: Future<Output = ()> + 'static,
     {
-        spawn_local(future)
+        wasm_bindgen_futures::spawn_local(future)
     }
 }
 
@@ -25,6 +24,15 @@ where
     F: Future + Send + 'static,
     F::Output: Send + 'static,
 {
+    todo!()
+}
+
+pub fn spawn_local<F>(future: F) -> JoinHandle<F::Output>
+where
+    F: Future + 'static,
+    F::Output: 'static,
+{
+    let (sender, receiver) = futures::channel::oneshot::channel::<F::Output>();
     todo!()
 }
 

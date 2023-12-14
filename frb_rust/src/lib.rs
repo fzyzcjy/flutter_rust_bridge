@@ -26,6 +26,6 @@ pub use crate::handler::handler::Handler;
 pub use crate::handler::implementation::handler::DefaultHandler;
 pub use crate::misc::dart_dynamic::DartDynamic;
 pub use crate::misc::into_into_dart::IntoIntoDart;
-pub use crate::rust_async::{spawn, spawn_blocking, JoinHandle};
+pub use crate::rust_async::{spawn, spawn_blocking, spawn_local, JoinHandle};
 pub use crate::rust_opaque::{DartSafe, RustOpaque};
 pub use flutter_rust_bridge_macros::frb;
