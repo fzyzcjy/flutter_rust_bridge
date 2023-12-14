@@ -12,4 +12,6 @@ anyhow = { version = "1.0.75", features = ["backtrace"] }
 num = "0.4"
 image = "0.24.3"
 crossbeam = "0.8"
-polars = { version = "0.35.4", features = ["lazy"] }
+# Polars on WASM https://www.reddit.com/r/rust/comments/yb58hk/how_to_use_polars_with_wasm/
+polars-core = "0.35.4"
+polars-lazy = "0.35.4"
