@@ -13,7 +13,7 @@ class MandelbrotPageBody extends StatefulWidget {
 
 class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   Uint8List? image;
-  var running = false;
+  SimpleRunner? runner;
 
   @override
   void initState() {
@@ -22,22 +22,20 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
 
   void start() {
     stop();
-    running = true;
-    () async {
-      while (running) {
-        final receivedImage = await drawMandelbrot(
-          imageSize: const Size(width: 50, height: 50),
-          zoomPoint: examplePoint,
-          scale: generateScale(),
-          numThreads: 4,
-        );
-        if (mounted) setState(() => image = receivedImage);
-      }
-    }();
+    runner = SimpleRunner(() async {
+      final receivedImage = await drawMandelbrot(
+        imageSize: const Size(width: 50, height: 50),
+        zoomPoint: examplePoint,
+        scale: generateScale(),
+        numThreads: 4,
+      );
+      if (mounted) setState(() => image = receivedImage);
+    });
   }
 
   void stop() {
-    running = false;
+    runner?.dispose();
+    runner = null;
   }
 
   @override

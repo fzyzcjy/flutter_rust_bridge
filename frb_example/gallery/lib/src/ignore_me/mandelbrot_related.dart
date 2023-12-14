@@ -55,3 +55,19 @@ double generateScale() {
   if (_scale < 1e-9) _scale = 1.0;
   return _scale;
 }
+
+class SimpleRunner {
+  var _running = true;
+
+  SimpleRunner(Future<void> Function() run) {
+    () async {
+      while (_running) {
+        await run();
+      }
+    }();
+  }
+
+  void dispose() {
+    _running = false;
+  }
+}
