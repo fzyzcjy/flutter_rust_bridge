@@ -40,7 +40,7 @@ class UseRustBindings {
   late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr
       .asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
-  int naive_NewPersistentHandle(
+  ffi.Pointer<ffi.Void> naive_NewPersistentHandle(
     Object non_persistent_handle,
   ) {
     return _naive_NewPersistentHandle(
@@ -49,13 +49,13 @@ class UseRustBindings {
   }
 
   late final _naive_NewPersistentHandlePtr =
-      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
           'naive_NewPersistentHandle');
-  late final _naive_NewPersistentHandle =
-      _naive_NewPersistentHandlePtr.asFunction<int Function(Object)>();
+  late final _naive_NewPersistentHandle = _naive_NewPersistentHandlePtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
 
-  int naive_HandleFromPersistent(
-    int persistent_handle,
+  Object naive_HandleFromPersistent(
+    ffi.Pointer<ffi.Void> persistent_handle,
   ) {
     return _naive_HandleFromPersistent(
       persistent_handle,
@@ -63,8 +63,8 @@ class UseRustBindings {
   }
 
   late final _naive_HandleFromPersistentPtr =
-      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.UintPtr)>>(
+      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.Pointer<ffi.Void>)>>(
           'naive_HandleFromPersistent');
-  late final _naive_HandleFromPersistent =
-      _naive_HandleFromPersistentPtr.asFunction<int Function(int)>();
+  late final _naive_HandleFromPersistent = _naive_HandleFromPersistentPtr
+      .asFunction<Object Function(ffi.Pointer<ffi.Void>)>();
 }

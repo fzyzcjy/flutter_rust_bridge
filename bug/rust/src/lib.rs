@@ -7,7 +7,7 @@ pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> is
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn naive_NewPersistentHandle(non_persistent_handle: Dart_Handle) -> usize {
+pub unsafe extern "C" fn naive_NewPersistentHandle(non_persistent_handle: Dart_Handle) -> *mut std::ffi::c_void {
     println!("hi naive_NewPersistentHandle START non_persistent_handle={non_persistent_handle:?}");
     let persistent_handle = Dart_NewPersistentHandle_DL.unwrap()(non_persistent_handle);
     println!("hi naive_NewPersistentHandle END non_persistent_handle={non_persistent_handle:?} persistent_handle={persistent_handle:?}");
@@ -15,7 +15,7 @@ pub unsafe extern "C" fn naive_NewPersistentHandle(non_persistent_handle: Dart_H
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn naive_HandleFromPersistent(persistent_handle: usize) -> usize {
+pub unsafe extern "C" fn naive_HandleFromPersistent(persistent_handle: *mut std::ffi::c_void) -> Dart_Handle {
     println!("hi naive_HandleFromPersistent START persistent_handle={persistent_handle:?}");
     let ans = Dart_HandleFromPersistent_DL.unwrap()(persistent_handle as _);
     println!(
