@@ -41,37 +41,26 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Card(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          child: Column(
-            children: [
-              const Text('Example 1',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              Container(height: 8),
-              const Text(
-                  'Image generated (periodically) by Rust and displayed by Flutter/Dart'),
-              Container(height: 24),
-              (image != null
-                  ? SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: Center(
-                          child: AnimatedReplaceableImage(
-                              image: MemoryImage(image))))
-                  : Container()),
-              Container(height: 4),
-              const Text('Mandelbrot Set',
-                  style: TextStyle(fontSize: 11, color: Colors.grey)),
-              const Text('classical image requiring lots of computing',
-                  style: TextStyle(fontSize: 11, color: Colors.grey)),
-              Container(height: 8),
-            ],
-          ),
+    return Row(
+      children: [
+        Column(
+          children: [
+            TextButton(onPressed: start, child: const Text('Start')),
+            TextButton(onPressed: stop, child: const Text('Stop')),
+          ],
         ),
-      ),
+        image != null
+            ? SizedBox(
+                width: 50,
+                height: 50,
+                child: Center(
+                  child: AnimatedReplaceableImage(
+                    image: MemoryImage(image!),
+                  ),
+                ),
+              )
+            : Container(),
+      ],
     );
   }
 }
