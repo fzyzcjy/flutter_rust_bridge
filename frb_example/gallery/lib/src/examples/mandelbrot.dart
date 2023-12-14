@@ -15,7 +15,7 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   Uint8List? image;
   Duration? computeTime;
   SimpleRunner? runner;
-  var size = 200.0;
+  var size = 300.0;
   var numThreads = 1;
 
   @override
@@ -63,32 +63,33 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
               padding: const EdgeInsets.only(right: 64),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  for (final candidateNumThreads in [1, 2, 4])
-                    TextButton(
-                      onPressed: () {
-                        numThreads = candidateNumThreads;
-                        start();
-                      },
-                      child: Text('Start ($candidateNumThreads threads)'),
-                    ),
-                  TextButton(onPressed: stop, child: const Text('Stop')),
-                  SizedBox(
-                    width: 200,
-                    child: Slider(
-                      value: size,
-                      onChanged: (newValue) => setState(() => size = newValue),
-                      min: 100,
-                      max: 1000,
-                      inactiveColor: Colors.blue.shade100,
-                    ),
+                  _buildSlider(
+                    label: 'Num threads',
+                    value: numThreads.toDouble(),
+                    onChanged: (newValue) =>
+                        setState(() => numThreads = newValue.round()),
+                    min: 1,
+                    max: 4,
+                    divisions: 3,
                   ),
-                  if (computeTime != null)
-                    SizedBox(
-                      width: 128,
-                      child: Text(
-                          'Compute time: ${computeTime!.inMilliseconds}ms'),
-                    ),
+                  _buildSlider(
+                    label: 'Image size',
+                    value: size,
+                    onChanged: (newValue) => setState(() => size = newValue),
+                    min: 100,
+                    max: 1000,
+                  ),
+                  const SizedBox(height: 32),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextButton(onPressed: start, child: const Text('Start')),
+                      const SizedBox(width: 32),
+                      TextButton(onPressed: stop, child: const Text('Stop')),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -97,24 +98,64 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
         Expanded(
           child: Align(
             alignment: Alignment.centerLeft,
-            child: SizedBox.square(
-              dimension: size,
-              child: image != null
-                  ? AnimatedReplaceableImage(
-                      image: MemoryImage(image!),
-                    )
-                  : Container(
-                      color: Colors.grey.shade100,
-                      padding: const EdgeInsets.all(16),
-                      child: const Center(
-                        child: Text(
-                          'Use buttons on the left to start animation',
-                          style: TextStyle(color: Colors.grey),
-                          textAlign: TextAlign.center,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (computeTime != null)
+                  Text('Time: ${computeTime!.inMilliseconds}ms'),
+                const SizedBox(height: 8),
+                SizedBox.square(
+                  dimension: size,
+                  child: image != null
+                      ? AnimatedReplaceableImage(
+                          image: MemoryImage(image!),
+                        )
+                      : Container(
+                          color: Colors.grey.shade100,
+                          padding: const EdgeInsets.all(16),
+                          child: const Center(
+                            child: Text(
+                              'Use buttons on the left to start animation',
+                              style: TextStyle(color: Colors.grey),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
+                ),
+              ],
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSlider({
+    required String label,
+    required double value,
+    required ValueChanged<double>? onChanged,
+    required double min,
+    required double max,
+    int? divisions,
+  }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(width: 32),
+        SizedBox(
+          width: 100,
+          child: Text(label),
+        ),
+        SizedBox(
+          width: 200,
+          child: Slider(
+            value: value,
+            onChanged: onChanged,
+            min: min,
+            max: max,
+            divisions: divisions,
+            label: value.round().toString(),
+            inactiveColor: Colors.blue.shade100,
           ),
         ),
       ],
