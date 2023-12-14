@@ -157,10 +157,9 @@ pub async fn mandelbrot(
     let upper_left = Complex::new(zoom_point.x - scale, zoom_point.y - scale);
     let lower_right = Complex::new(zoom_point.x + scale, zoom_point.y + scale);
 
-    let mut pixels = vec![0; bounds.0 * bounds.1];
-
     let band_rows = bounds.1 / (num_threads as usize) + 1;
 
+    let mut pixels = vec![0; bounds.0 * bounds.1];
     let bands = Mutex::new(pixels.chunks_mut(band_rows * bounds.0).enumerate());
 
     let mut join_handles = vec![];
