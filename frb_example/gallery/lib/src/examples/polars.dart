@@ -37,15 +37,16 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _buildDartCodeSection(),
+        _buildCodeSection(),
         _buildOutputSection(),
       ],
     );
   }
 
-  Widget _buildDartCodeSection() {
+  Widget _buildCodeSection() {
     return Column(
       children: [
+        Text("Dart uses Polar's API"),
         Text.rich(
           TextSpan(
             children: [
@@ -69,6 +70,8 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
             ],
           ),
         ),
+        Text("Rust is a thin wrapper around Polar's API"),
+        Text('TODO'),
       ],
     );
   }
