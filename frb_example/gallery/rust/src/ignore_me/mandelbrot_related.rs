@@ -11,6 +11,7 @@ use image::codecs::png::PngEncoder;
 use image::*;
 use num::Complex;
 
+use crate::api::simple::{Point, Size};
 use crate::api::*;
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
