@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frb_example_gallery/src/rust/api/simple.dart';
+import 'package:frb_example_gallery/src/rust/api/mandelbrot.dart';
 
 class AnimatedReplaceableImage extends StatefulWidget {
   final ImageProvider image;

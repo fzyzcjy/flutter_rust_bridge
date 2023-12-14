@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:frb_example_gallery/src/ignore_me/mandelbrot_related.dart';
-import 'package:frb_example_gallery/src/rust/api/simple.dart';
+import 'package:frb_example_gallery/src/rust/api/mandelbrot.dart';
 
 class MandelbrotPageBody extends StatefulWidget {
   const MandelbrotPageBody({super.key});
