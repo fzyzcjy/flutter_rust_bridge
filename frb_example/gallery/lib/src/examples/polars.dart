@@ -35,22 +35,12 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
     return Row(
       children: [
         _buildDartCodeSection(),
-        _buildRustCodeSection(),
-        _buildInputSection(),
         _buildOutputSection(),
       ],
     );
   }
 
   Widget _buildDartCodeSection() {
-    return Text('TODO');
-  }
-
-  Widget _buildRustCodeSection() {
-    return Text('TODO');
-  }
-
-  Widget _buildInputSection() {
     return Text('TODO');
   }
 
