@@ -35,10 +35,10 @@ impl CstDecode<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
-impl CstDecode<crate::api::simple::Point>
+impl CstDecode<crate::api::mandelbrot::Point>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> crate::api::simple::Point {
+    fn cst_decode(self) -> crate::api::mandelbrot::Point {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -48,16 +48,16 @@ impl CstDecode<crate::api::simple::Point>
             "Expected 2 elements, got {}",
             self_.length()
         );
-        crate::api::simple::Point {
+        crate::api::mandelbrot::Point {
             x: self_.get(0).cst_decode(),
             y: self_.get(1).cst_decode(),
         }
     }
 }
-impl CstDecode<crate::api::simple::Size>
+impl CstDecode<crate::api::mandelbrot::Size>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> crate::api::simple::Size {
+    fn cst_decode(self) -> crate::api::mandelbrot::Size {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -67,7 +67,7 @@ impl CstDecode<crate::api::simple::Size>
             "Expected 2 elements, got {}",
             self_.length()
         );
-        crate::api::simple::Size {
+        crate::api::mandelbrot::Size {
             width: self_.get(0).cst_decode(),
             height: self_.get(1).cst_decode(),
         }

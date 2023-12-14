@@ -21,16 +21,16 @@ impl CstDecode<String> for *mut wire_cst_list_prim_u_8 {
         String::from_utf8(vec).unwrap()
     }
 }
-impl CstDecode<crate::api::simple::Point> for *mut wire_cst_point {
-    fn cst_decode(self) -> crate::api::simple::Point {
+impl CstDecode<crate::api::mandelbrot::Point> for *mut wire_cst_point {
+    fn cst_decode(self) -> crate::api::mandelbrot::Point {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::simple::Point>::cst_decode(*wrap).into()
+        CstDecode::<crate::api::mandelbrot::Point>::cst_decode(*wrap).into()
     }
 }
-impl CstDecode<crate::api::simple::Size> for *mut wire_cst_size {
-    fn cst_decode(self) -> crate::api::simple::Size {
+impl CstDecode<crate::api::mandelbrot::Size> for *mut wire_cst_size {
+    fn cst_decode(self) -> crate::api::mandelbrot::Size {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::simple::Size>::cst_decode(*wrap).into()
+        CstDecode::<crate::api::mandelbrot::Size>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8 {
@@ -41,17 +41,17 @@ impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8 {
         }
     }
 }
-impl CstDecode<crate::api::simple::Point> for wire_cst_point {
-    fn cst_decode(self) -> crate::api::simple::Point {
-        crate::api::simple::Point {
+impl CstDecode<crate::api::mandelbrot::Point> for wire_cst_point {
+    fn cst_decode(self) -> crate::api::mandelbrot::Point {
+        crate::api::mandelbrot::Point {
             x: self.x.cst_decode(),
             y: self.y.cst_decode(),
         }
     }
 }
-impl CstDecode<crate::api::simple::Size> for wire_cst_size {
-    fn cst_decode(self) -> crate::api::simple::Size {
-        crate::api::simple::Size {
+impl CstDecode<crate::api::mandelbrot::Size> for wire_cst_size {
+    fn cst_decode(self) -> crate::api::mandelbrot::Size {
+        crate::api::mandelbrot::Size {
             width: self.width.cst_decode(),
             height: self.height.cst_decode(),
         }

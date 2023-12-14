@@ -30,8 +30,8 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 fn wire_draw_mandelbrot_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    image_size: impl CstDecode<crate::api::simple::Size> + core::panic::UnwindSafe,
-    zoom_point: impl CstDecode<crate::api::simple::Point> + core::panic::UnwindSafe,
+    image_size: impl CstDecode<crate::api::mandelbrot::Size> + core::panic::UnwindSafe,
+    zoom_point: impl CstDecode<crate::api::mandelbrot::Point> + core::panic::UnwindSafe,
     scale: impl CstDecode<f64> + core::panic::UnwindSafe,
     num_threads: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
@@ -48,7 +48,7 @@ fn wire_draw_mandelbrot_impl(
             let api_num_threads = num_threads.cst_decode();
             move |context| {
                 transform_result_dco((move || {
-                    crate::api::simple::draw_mandelbrot(
+                    crate::api::mandelbrot::draw_mandelbrot(
                         api_image_size,
                         api_zoom_point,
                         api_scale,
@@ -113,19 +113,19 @@ impl SseDecode for Vec<u8> {
     }
 }
 
-impl SseDecode for crate::api::simple::Point {
+impl SseDecode for crate::api::mandelbrot::Point {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_x = <f64>::sse_decode(deserializer);
         let mut var_y = <f64>::sse_decode(deserializer);
-        return crate::api::simple::Point { x: var_x, y: var_y };
+        return crate::api::mandelbrot::Point { x: var_x, y: var_y };
     }
 }
 
-impl SseDecode for crate::api::simple::Size {
+impl SseDecode for crate::api::mandelbrot::Size {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_width = <i32>::sse_decode(deserializer);
         let mut var_height = <i32>::sse_decode(deserializer);
-        return crate::api::simple::Size {
+        return crate::api::mandelbrot::Size {
             width: var_width,
             height: var_height,
         };
@@ -146,7 +146,7 @@ impl SseDecode for bool {
 
 // Section: rust2dart
 
-impl flutter_rust_bridge::IntoDart for crate::api::simple::Point {
+impl flutter_rust_bridge::IntoDart for crate::api::mandelbrot::Point {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         vec![
             self.x.into_into_dart().into_dart(),
@@ -155,13 +155,15 @@ impl flutter_rust_bridge::IntoDart for crate::api::simple::Point {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::simple::Point {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::simple::Point> for crate::api::simple::Point {
-    fn into_into_dart(self) -> crate::api::simple::Point {
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::mandelbrot::Point {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::mandelbrot::Point>
+    for crate::api::mandelbrot::Point
+{
+    fn into_into_dart(self) -> crate::api::mandelbrot::Point {
         self
     }
 }
-impl flutter_rust_bridge::IntoDart for crate::api::simple::Size {
+impl flutter_rust_bridge::IntoDart for crate::api::mandelbrot::Size {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         vec![
             self.width.into_into_dart().into_dart(),
@@ -170,9 +172,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::simple::Size {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::simple::Size {}
-impl flutter_rust_bridge::IntoIntoDart<crate::api::simple::Size> for crate::api::simple::Size {
-    fn into_into_dart(self) -> crate::api::simple::Size {
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::mandelbrot::Size {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::mandelbrot::Size>
+    for crate::api::mandelbrot::Size
+{
+    fn into_into_dart(self) -> crate::api::mandelbrot::Size {
         self
     }
 }
@@ -210,14 +214,14 @@ impl SseEncode for Vec<u8> {
     }
 }
 
-impl SseEncode for crate::api::simple::Point {
+impl SseEncode for crate::api::mandelbrot::Point {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <f64>::sse_encode(self.x, serializer);
         <f64>::sse_encode(self.y, serializer);
     }
 }
 
-impl SseEncode for crate::api::simple::Size {
+impl SseEncode for crate::api::mandelbrot::Size {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.width, serializer);
         <i32>::sse_encode(self.height, serializer);
