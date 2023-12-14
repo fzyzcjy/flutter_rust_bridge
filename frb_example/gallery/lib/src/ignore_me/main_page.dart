@@ -17,9 +17,18 @@ class MainPageWidget extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _buildButton(),
-              _buildButton(),
-              _buildButton(),
+              _buildButton(
+                title: 'Mandelbrot',
+                subtitle: 'Use Rust to write algorithms',
+              ),
+              _buildButton(
+                title: 'Polars',
+                subtitle: 'Use Rust well-developed libraries in Dart',
+              ),
+              _buildButton(
+                title: 'State',
+                subtitle: 'State in Rust, UI in Dart',
+              ),
             ],
           ),
         ),
@@ -27,7 +36,10 @@ class MainPageWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildButton() {
+  Widget _buildButton({
+    required String title,
+    required String subtitle,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: InkWell(
