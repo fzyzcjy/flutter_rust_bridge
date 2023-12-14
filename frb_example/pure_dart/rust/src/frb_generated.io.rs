@@ -16371,6 +16371,16 @@ pub extern "C" fn wire_func_async_void_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_simple_use_async_spawn(port_: i64) {
+    wire_simple_use_async_spawn_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_simple_use_async_spawn_blocking(port_: i64) {
+    wire_simple_use_async_spawn_blocking_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_customized_struct_twin_normal(
     port_: i64,
     val: *mut wire_cst_customized_twin_normal,

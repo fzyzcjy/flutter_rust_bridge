@@ -302,6 +302,48 @@ fn wire_func_async_void_twin_normal_impl(port_: flutter_rust_bridge::for_generat
         },
     )
 }
+fn wire_simple_use_async_spawn_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "simple_use_async_spawn",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| async move {
+                transform_result_dco(
+                    (move || async move {
+                        Result::<_, ()>::Ok(crate::api::async_spawn::simple_use_async_spawn().await)
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
+fn wire_simple_use_async_spawn_blocking_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "simple_use_async_spawn_blocking",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| async move {
+                transform_result_dco(
+                    (move || async move {
+                        Result::<_, ()>::Ok(
+                            crate::api::async_spawn::simple_use_async_spawn_blocking().await,
+                        )
+                    })()
+                    .await,
+                )
+            }
+        },
+    )
+}
 fn wire_handle_customized_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     val: impl CstDecode<crate::api::attribute::CustomizedTwinNormal> + core::panic::UnwindSafe,

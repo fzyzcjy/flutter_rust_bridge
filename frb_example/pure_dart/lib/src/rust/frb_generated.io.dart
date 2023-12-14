@@ -5,6 +5,7 @@
 
 import 'api/array.dart';
 import 'api/async_misc.dart';
+import 'api/async_spawn.dart';
 import 'api/attribute.dart';
 import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
@@ -26319,6 +26320,34 @@ class RustLibWire implements BaseWire {
           'wire_func_async_void_twin_normal');
   late final _wire_func_async_void_twin_normal =
       _wire_func_async_void_twin_normalPtr.asFunction<void Function(int)>();
+
+  void wire_simple_use_async_spawn(
+    int port_,
+  ) {
+    return _wire_simple_use_async_spawn(
+      port_,
+    );
+  }
+
+  late final _wire_simple_use_async_spawnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_simple_use_async_spawn');
+  late final _wire_simple_use_async_spawn =
+      _wire_simple_use_async_spawnPtr.asFunction<void Function(int)>();
+
+  void wire_simple_use_async_spawn_blocking(
+    int port_,
+  ) {
+    return _wire_simple_use_async_spawn_blocking(
+      port_,
+    );
+  }
+
+  late final _wire_simple_use_async_spawn_blockingPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_simple_use_async_spawn_blocking');
+  late final _wire_simple_use_async_spawn_blocking =
+      _wire_simple_use_async_spawn_blockingPtr.asFunction<void Function(int)>();
 
   void wire_handle_customized_struct_twin_normal(
     int port_,
