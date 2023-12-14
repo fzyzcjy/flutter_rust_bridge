@@ -77,9 +77,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Size dco_decode_box_autoadd_size(dynamic raw);
 
   @protected
-  dynamic dco_decode_dartabi(dynamic raw);
-
-  @protected
   double dco_decode_f_64(dynamic raw);
 
   @protected
@@ -87,9 +84,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<String> dco_decode_list_String(dynamic raw);
-
-  @protected
-  List<dynamic> dco_decode_list_dartabi(dynamic raw);
 
   @protected
   Uint8List dco_decode_list_prim_u_8(dynamic raw);
@@ -158,9 +152,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Size sse_decode_box_autoadd_size(SseDeserializer deserializer);
 
   @protected
-  dynamic sse_decode_dartabi(SseDeserializer deserializer);
-
-  @protected
   double sse_decode_f_64(SseDeserializer deserializer);
 
   @protected
@@ -168,9 +159,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer);
-
-  @protected
-  List<dynamic> sse_decode_list_dartabi(SseDeserializer deserializer);
 
   @protected
   Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
@@ -216,11 +204,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_String(List<String> raw) {
     return raw.map(cst_encode_String).toList();
-  }
-
-  @protected
-  List<dynamic> cst_encode_list_dartabi(List<dynamic> raw) {
-    return raw.map(cst_encode_dartabi).toList();
   }
 
   @protected
@@ -338,9 +321,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_box_autoadd_size(Size self, SseSerializer serializer);
 
   @protected
-  void sse_encode_dartabi(dynamic self, SseSerializer serializer);
-
-  @protected
   void sse_encode_f_64(double self, SseSerializer serializer);
 
   @protected
@@ -348,9 +328,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_dartabi(List<dynamic> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);

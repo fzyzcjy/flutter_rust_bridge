@@ -40,17 +40,6 @@ impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen
             .collect()
     }
 }
-impl CstDecode<Vec<flutter_rust_bridge::for_generated::DartAbi>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<flutter_rust_bridge::for_generated::DartAbi> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<u8>> for Box<[u8]> {
     fn cst_decode(self) -> Vec<u8> {
         self.into_vec()

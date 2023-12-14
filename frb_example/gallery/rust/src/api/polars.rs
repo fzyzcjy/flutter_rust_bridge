@@ -27,13 +27,10 @@ impl DataFrame {
             .collect()
     }
 
-    pub fn get_column(&self, name: String) -> anyhow::Result<Vec<DartDynamic>> {
+    // TODO: Can use `DartDynamic` instead
+    pub fn get_column(&self, name: String) -> anyhow::Result<Vec<String>> {
         Ok((self.0 .0.column(&name)?.iter())
-            .map(|value| match value {
-                AnyValue::Float64(value) => value.into_dart(),
-                AnyValue::Utf8Owned(value) => value.into_dart(),
-                _ => unimplemented!("not implemented for this simple demo"),
-            })
+            .map(|value| value.to_string())
             .collect())
     }
 }

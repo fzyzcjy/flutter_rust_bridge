@@ -71,15 +71,6 @@ impl CstDecode<Vec<String>> for *mut wire_cst_list_String {
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<Vec<flutter_rust_bridge::for_generated::DartAbi>> for *mut wire_cst_list_dartabi {
-    fn cst_decode(self) -> Vec<flutter_rust_bridge::for_generated::DartAbi> {
-        let vec = unsafe {
-            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
-            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(CstDecode::cst_decode).collect()
-    }
-}
 impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8 {
     fn cst_decode(self) -> Vec<u8> {
         unsafe {
@@ -372,18 +363,6 @@ pub extern "C" fn cst_new_list_String(len: i32) -> *mut wire_cst_list_String {
 }
 
 #[no_mangle]
-pub extern "C" fn cst_new_list_dartabi(len: i32) -> *mut wire_cst_list_dartabi {
-    let wrap = wire_cst_list_dartabi {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <UNREACHABLE_RUST_WIRE_TYPE>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
 pub extern "C" fn cst_new_list_prim_u_8(len: i32) -> *mut wire_cst_list_prim_u_8 {
     let ans = wire_cst_list_prim_u_8 {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
@@ -396,12 +375,6 @@ pub extern "C" fn cst_new_list_prim_u_8(len: i32) -> *mut wire_cst_list_prim_u_8
 #[derive(Clone)]
 pub struct wire_cst_list_String {
     ptr: *mut *mut wire_cst_list_prim_u_8,
-    len: i32,
-}
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_cst_list_dartabi {
-    ptr: *mut UNREACHABLE_RUST_WIRE_TYPE,
     len: i32,
 }
 #[repr(C)]

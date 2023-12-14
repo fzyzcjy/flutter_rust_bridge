@@ -78,9 +78,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Size dco_decode_box_autoadd_size(dynamic raw);
 
   @protected
-  dynamic dco_decode_dartabi(dynamic raw);
-
-  @protected
   double dco_decode_f_64(dynamic raw);
 
   @protected
@@ -88,9 +85,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<String> dco_decode_list_String(dynamic raw);
-
-  @protected
-  List<dynamic> dco_decode_list_dartabi(dynamic raw);
 
   @protected
   Uint8List dco_decode_list_prim_u_8(dynamic raw);
@@ -159,9 +153,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Size sse_decode_box_autoadd_size(SseDeserializer deserializer);
 
   @protected
-  dynamic sse_decode_dartabi(SseDeserializer deserializer);
-
-  @protected
   double sse_decode_f_64(SseDeserializer deserializer);
 
   @protected
@@ -169,9 +160,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer);
-
-  @protected
-  List<dynamic> sse_decode_list_dartabi(SseDeserializer deserializer);
 
   @protected
   Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
@@ -224,16 +212,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.cst_new_list_String(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       ans.ref.ptr[i] = cst_encode_String(raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_dartabi> cst_encode_list_dartabi(
-      List<dynamic> raw) {
-    final ans = wire.cst_new_list_dartabi(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      cst_api_fill_to_wire_dartabi(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -369,9 +347,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_box_autoadd_size(Size self, SseSerializer serializer);
 
   @protected
-  void sse_encode_dartabi(dynamic self, SseSerializer serializer);
-
-  @protected
   void sse_encode_f_64(double self, SseSerializer serializer);
 
   @protected
@@ -379,9 +354,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_dartabi(List<dynamic> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);
@@ -852,21 +824,6 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_String = _cst_new_list_StringPtr
       .asFunction<ffi.Pointer<wire_cst_list_String> Function(int)>();
 
-  ffi.Pointer<wire_cst_list_dartabi> cst_new_list_dartabi(
-    int len,
-  ) {
-    return _cst_new_list_dartabi(
-      len,
-    );
-  }
-
-  late final _cst_new_list_dartabiPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_cst_list_dartabi> Function(
-              ffi.Int32)>>('cst_new_list_dartabi');
-  late final _cst_new_list_dartabi = _cst_new_list_dartabiPtr
-      .asFunction<ffi.Pointer<wire_cst_list_dartabi> Function(int)>();
-
   ffi.Pointer<wire_cst_list_prim_u_8> cst_new_list_prim_u_8(
     int len,
   ) {
@@ -918,13 +875,6 @@ final class wire_cst_list_prim_u_8 extends ffi.Struct {
 
 final class wire_cst_list_String extends ffi.Struct {
   external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8>> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-final class wire_cst_list_dartabi extends ffi.Struct {
-  external ffi.Pointer<ffi.Int> ptr;
 
   @ffi.Int32()
   external int len;

@@ -32,7 +32,7 @@ class RwLockDataFrame extends RustOpaque {
         RustLib.instance.api.rust_arc_decrement_strong_count_RwLockDataFramePtr,
   );
 
-  Future<List<dynamic>> getColumn({required String name, dynamic hint}) =>
+  Future<List<String>> getColumn({required String name, dynamic hint}) =>
       RustLib.instance.api.dataFrameGetColumn(
         that: this,
         name: name,
