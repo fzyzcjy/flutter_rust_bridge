@@ -8,9 +8,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart call simpleUseAsyncSpawn', () async {
-    await simpleUseAsyncSpawn();
+    expect(await simpleUseAsyncSpawn(arg: 'a'), 'aa');
   });
+
   test('dart call simpleUseAsyncSpawnBlocking', () async {
-    await simpleUseAsyncSpawnBlocking();
+    expect(await simpleUseAsyncSpawnBlocking(arg: 'a'), 'aa');
   });
 }
