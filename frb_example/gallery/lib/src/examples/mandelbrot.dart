@@ -15,6 +15,7 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   Uint8List? image;
   Duration? computeTime;
   SimpleRunner? runner;
+  var size = 200.0;
   var numThreads = 1;
 
   @override
@@ -29,7 +30,7 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
         SimpleRunner(minDuration: const Duration(milliseconds: 33), () async {
       final watch = Stopwatch()..start();
       final receivedImage = await drawMandelbrot(
-        imageSize: const Size(width: 200, height: 200),
+        imageSize: Size(width: size.round(), height: size.round()),
         zoomPoint: examplePoint,
         scale: generateScale(),
         numThreads: numThreads,
@@ -65,6 +66,12 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
                 child: Text('Start ($candidateNumThreads threads)'),
               ),
             TextButton(onPressed: stop, child: const Text('Stop')),
+            Slider(
+              value: size,
+              onChanged: (newValue) => size = newValue,
+              min: 100,
+              max: 1000,
+            ),
           ],
         ),
         if (computeTime != null)
@@ -73,9 +80,8 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
             child: Text('Compute time: ${computeTime!.inMilliseconds}ms'),
           ),
         image != null
-            ? SizedBox(
-                width: 200,
-                height: 200,
+            ? SizedBox.square(
+                dimension: size,
                 child: AnimatedReplaceableImage(
                   image: MemoryImage(image!),
                 ),
