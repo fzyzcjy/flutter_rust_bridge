@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frb_example_gallery/src/examples/mandelbrot.dart';
+import 'package:frb_example_gallery/src/examples/polars.dart';
+import 'package:frb_example_gallery/src/examples/state.dart';
 
 class MainPageWidget extends StatelessWidget {
   const MainPageWidget({super.key});
@@ -27,6 +30,7 @@ class MainPageWidget extends StatelessWidget {
                     Icons.folder_outlined,
                     color: Colors.blue,
                   ),
+                  page: const PolarsPage(),
                 ),
                 _buildButton(
                   title: 'Mandelbrot',
@@ -36,6 +40,7 @@ class MainPageWidget extends StatelessWidget {
                     Icons.center_focus_strong_outlined,
                     color: Colors.green,
                   ),
+                  page: const MandelbrotPage(),
                 ),
                 _buildButton(
                   title: 'State',
@@ -44,6 +49,7 @@ class MainPageWidget extends StatelessWidget {
                     Icons.article_outlined,
                     color: Colors.cyan,
                   ),
+                  page: const StatePage(),
                 ),
               ],
             ),
@@ -57,38 +63,40 @@ class MainPageWidget extends StatelessWidget {
     required String title,
     required String subtitle,
     required Widget icon,
+    required Widget page,
   }) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(8),
-          onTap: () {
-            // TODO
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconTheme.merge(
-                  data: const IconThemeData(size: 64),
-                  child: icon,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  title,
-                  style: const TextStyle(fontSize: 20),
-                ),
-                const SizedBox(height: 8),
-                SizedBox(
-                  height: 64,
-                  child: Text(
-                    subtitle,
-                    textAlign: TextAlign.center,
+    return Builder(
+      builder: (context) => Expanded(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(8),
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => page)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconTheme.merge(
+                    data: const IconThemeData(size: 64),
+                    child: icon,
                   ),
-                ),
-              ],
+                  const SizedBox(height: 8),
+                  Text(
+                    title,
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    height: 64,
+                    child: Text(
+                      subtitle,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
