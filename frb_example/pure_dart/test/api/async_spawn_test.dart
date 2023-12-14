@@ -1,11 +1,16 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "syncSse", "rustAsyncSse"]}
 
-import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
+import 'package:frb_example_pure_dart/src/rust/api/async_spawn.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  TODO;
+  test('dart call simpleUseAsyncSpawn', () async {
+    await simpleUseAsyncSpawn();
+  });
+  test('dart call simpleUseAsyncSpawnBlocking', () async {
+    await simpleUseAsyncSpawnBlocking();
+  });
 }
