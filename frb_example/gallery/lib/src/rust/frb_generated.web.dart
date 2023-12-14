@@ -18,8 +18,65 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockDataFramePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockExprPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockLazyFramePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockLazyGroupByPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockVecExprPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr;
+
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
+
+  @protected
+  RwLockDataFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      dynamic raw);
+
+  @protected
+  RwLockExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(dynamic raw);
+
+  @protected
+  RwLockLazyFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      dynamic raw);
+
+  @protected
+  RwLockLazyGroupBy dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      dynamic raw);
+
+  @protected
+  RwLockVecExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      dynamic raw);
+
+  @protected
+  RwLockDataFrame dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      dynamic raw);
+
+  @protected
+  RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw);
+
+  @protected
+  RwLockExpr dco_decode_RustOpaque_stdsyncRwLockExpr(dynamic raw);
+
+  @protected
+  RwLockLazyFrame dco_decode_RustOpaque_stdsyncRwLockLazyFrame(dynamic raw);
+
+  @protected
+  RwLockLazyGroupBy dco_decode_RustOpaque_stdsyncRwLockLazyGroupBy(dynamic raw);
+
+  @protected
+  RwLockVecExpr dco_decode_RustOpaque_stdsyncRwLockVecExpr(dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -52,7 +109,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void dco_decode_unit(dynamic raw);
 
   @protected
+  int dco_decode_usize(dynamic raw);
+
+  @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
+
+  @protected
+  RwLockDataFrame sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockLazyFrame sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockLazyGroupBy sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockVecExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockDataFrame sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockDataFrame sse_decode_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockExpr sse_decode_RustOpaque_stdsyncRwLockExpr(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockLazyFrame sse_decode_RustOpaque_stdsyncRwLockLazyFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockLazyGroupBy sse_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockVecExpr sse_decode_RustOpaque_stdsyncRwLockVecExpr(
+      SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -83,6 +187,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_usize(SseDeserializer deserializer);
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
@@ -123,6 +230,48 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
+      RwLockExpr raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockExpr(RwLockExpr raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockVecExpr(RwLockVecExpr raw);
+
+  @protected
   double cst_encode_f_64(double raw);
 
   @protected
@@ -135,8 +284,55 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
+  int cst_encode_usize(int raw);
+
+  @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
+      RwLockExpr self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockExpr(
+      RwLockExpr self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -169,6 +365,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_unit(void self, SseSerializer serializer);
 
   @protected
+  void sse_encode_usize(int self, SseSerializer serializer);
+
+  @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
 }
 
@@ -192,8 +391,95 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_draw_mandelbrot(
           port_, image_size, zoom_point, scale, num_threads);
 
-  void wire_hello_polars(NativePortType port_) =>
-      wasmModule.wire_hello_polars(port_);
+  void wire_DataFrame_lazy(NativePortType port_, Object that) =>
+      wasmModule.wire_DataFrame_lazy(port_, that);
+
+  void wire_DataFrame_write_json(NativePortType port_, Object that) =>
+      wasmModule.wire_DataFrame_write_json(port_, that);
+
+  void wire_Expr_gt(NativePortType port_, Object that, Object other) =>
+      wasmModule.wire_Expr_gt(port_, that, other);
+
+  void wire_Expr_sum(NativePortType port_, Object that) =>
+      wasmModule.wire_Expr_sum(port_, that);
+
+  void wire_LazyFrame_collect(NativePortType port_, Object that) =>
+      wasmModule.wire_LazyFrame_collect(port_, that);
+
+  void wire_LazyFrame_filter(
+          NativePortType port_, Object that, Object predicate) =>
+      wasmModule.wire_LazyFrame_filter(port_, that, predicate);
+
+  void wire_LazyFrame_group_by(
+          NativePortType port_, Object that, Object expr) =>
+      wasmModule.wire_LazyFrame_group_by(port_, that, expr);
+
+  void wire_LazyGroupBy_agg(NativePortType port_, Object that, Object expr) =>
+      wasmModule.wire_LazyGroupBy_agg(port_, that, expr);
+
+  void wire_col(NativePortType port_, String name) =>
+      wasmModule.wire_col(port_, name);
+
+  void wire_lit(NativePortType port_, int t) => wasmModule.wire_lit(port_, t);
+
+  void wire_read_sample_dataset(NativePortType port_) =>
+      wasmModule.wire_read_sample_dataset(port_);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(ptr);
 }
 
 @JS('wasm_bindgen')
@@ -221,5 +507,64 @@ class RustLibWasmModule implements WasmModule {
       double scale,
       int num_threads);
 
-  external void wire_hello_polars(NativePortType port_);
+  external void wire_DataFrame_lazy(NativePortType port_, Object that);
+
+  external void wire_DataFrame_write_json(NativePortType port_, Object that);
+
+  external void wire_Expr_gt(NativePortType port_, Object that, Object other);
+
+  external void wire_Expr_sum(NativePortType port_, Object that);
+
+  external void wire_LazyFrame_collect(NativePortType port_, Object that);
+
+  external void wire_LazyFrame_filter(
+      NativePortType port_, Object that, Object predicate);
+
+  external void wire_LazyFrame_group_by(
+      NativePortType port_, Object that, Object expr);
+
+  external void wire_LazyGroupBy_agg(
+      NativePortType port_, Object that, Object expr);
+
+  external void wire_col(NativePortType port_, String name);
+
+  external void wire_lit(NativePortType port_, int t);
+
+  external void wire_read_sample_dataset(NativePortType port_);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+          dynamic ptr);
+
+  external void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr(
+      dynamic ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr(
+      dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+          dynamic ptr);
+
+  external void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+      dynamic ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+      dynamic ptr);
 }

@@ -19,8 +19,65 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockDataFramePtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFramePtr;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockExprPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExprPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockLazyFramePtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFramePtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockLazyGroupByPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockVecExprPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExprPtr;
+
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
+
+  @protected
+  RwLockDataFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      dynamic raw);
+
+  @protected
+  RwLockExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(dynamic raw);
+
+  @protected
+  RwLockLazyFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      dynamic raw);
+
+  @protected
+  RwLockLazyGroupBy dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      dynamic raw);
+
+  @protected
+  RwLockVecExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      dynamic raw);
+
+  @protected
+  RwLockDataFrame dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      dynamic raw);
+
+  @protected
+  RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw);
+
+  @protected
+  RwLockExpr dco_decode_RustOpaque_stdsyncRwLockExpr(dynamic raw);
+
+  @protected
+  RwLockLazyFrame dco_decode_RustOpaque_stdsyncRwLockLazyFrame(dynamic raw);
+
+  @protected
+  RwLockLazyGroupBy dco_decode_RustOpaque_stdsyncRwLockLazyGroupBy(dynamic raw);
+
+  @protected
+  RwLockVecExpr dco_decode_RustOpaque_stdsyncRwLockVecExpr(dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -53,7 +110,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void dco_decode_unit(dynamic raw);
 
   @protected
+  int dco_decode_usize(dynamic raw);
+
+  @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
+
+  @protected
+  RwLockDataFrame sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockLazyFrame sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockLazyGroupBy sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockVecExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockDataFrame sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockDataFrame sse_decode_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockExpr sse_decode_RustOpaque_stdsyncRwLockExpr(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockLazyFrame sse_decode_RustOpaque_stdsyncRwLockLazyFrame(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockLazyGroupBy sse_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      SseDeserializer deserializer);
+
+  @protected
+  RwLockVecExpr sse_decode_RustOpaque_stdsyncRwLockVecExpr(
+      SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -84,6 +188,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_usize(SseDeserializer deserializer);
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
@@ -145,6 +252,48 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
+      RwLockExpr raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr raw);
+
+  @protected
+  PlatformPointer cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockExpr(RwLockExpr raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy raw);
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockVecExpr(RwLockVecExpr raw);
+
+  @protected
   double cst_encode_f_64(double raw);
 
   @protected
@@ -157,8 +306,55 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
+  int cst_encode_usize(int raw);
+
+  @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
+      RwLockExpr self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockExpr(
+      RwLockExpr self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -189,6 +385,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_usize(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -286,19 +485,345 @@ class RustLibWire implements BaseWire {
       void Function(int, ffi.Pointer<wire_cst_size>,
           ffi.Pointer<wire_cst_point>, double, int)>();
 
-  void wire_hello_polars(
+  void wire_DataFrame_lazy(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_DataFrame_lazy(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_DataFrame_lazyPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_DataFrame_lazy');
+  late final _wire_DataFrame_lazy = _wire_DataFrame_lazyPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_DataFrame_write_json(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_DataFrame_write_json(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_DataFrame_write_jsonPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_DataFrame_write_json');
+  late final _wire_DataFrame_write_json = _wire_DataFrame_write_jsonPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_Expr_gt(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+    ffi.Pointer<ffi.Void> other,
+  ) {
+    return _wire_Expr_gt(
+      port_,
+      that,
+      other,
+    );
+  }
+
+  late final _wire_Expr_gtPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('wire_Expr_gt');
+  late final _wire_Expr_gt = _wire_Expr_gtPtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+
+  void wire_Expr_sum(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_Expr_sum(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_Expr_sumPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_Expr_sum');
+  late final _wire_Expr_sum =
+      _wire_Expr_sumPtr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_LazyFrame_collect(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_LazyFrame_collect(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_LazyFrame_collectPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_LazyFrame_collect');
+  late final _wire_LazyFrame_collect = _wire_LazyFrame_collectPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_LazyFrame_filter(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+    ffi.Pointer<ffi.Void> predicate,
+  ) {
+    return _wire_LazyFrame_filter(
+      port_,
+      that,
+      predicate,
+    );
+  }
+
+  late final _wire_LazyFrame_filterPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('wire_LazyFrame_filter');
+  late final _wire_LazyFrame_filter = _wire_LazyFrame_filterPtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+
+  void wire_LazyFrame_group_by(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+    ffi.Pointer<ffi.Void> expr,
+  ) {
+    return _wire_LazyFrame_group_by(
+      port_,
+      that,
+      expr,
+    );
+  }
+
+  late final _wire_LazyFrame_group_byPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('wire_LazyFrame_group_by');
+  late final _wire_LazyFrame_group_by = _wire_LazyFrame_group_byPtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+
+  void wire_LazyGroupBy_agg(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+    ffi.Pointer<ffi.Void> expr,
+  ) {
+    return _wire_LazyGroupBy_agg(
+      port_,
+      that,
+      expr,
+    );
+  }
+
+  late final _wire_LazyGroupBy_aggPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('wire_LazyGroupBy_agg');
+  late final _wire_LazyGroupBy_agg = _wire_LazyGroupBy_aggPtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+
+  void wire_col(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> name,
+  ) {
+    return _wire_col(
+      port_,
+      name,
+    );
+  }
+
+  late final _wire_colPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>('wire_col');
+  late final _wire_col = _wire_colPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_lit(
+    int port_,
+    int t,
+  ) {
+    return _wire_lit(
+      port_,
+      t,
+    );
+  }
+
+  late final _wire_litPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_lit');
+  late final _wire_lit = _wire_litPtr.asFunction<void Function(int, int)>();
+
+  void wire_read_sample_dataset(
     int port_,
   ) {
-    return _wire_hello_polars(
+    return _wire_read_sample_dataset(
       port_,
     );
   }
 
-  late final _wire_hello_polarsPtr =
+  late final _wire_read_sample_datasetPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_hello_polars');
-  late final _wire_hello_polars =
-      _wire_hello_polarsPtr.asFunction<void Function(int)>();
+          'wire_read_sample_dataset');
+  late final _wire_read_sample_dataset =
+      _wire_read_sample_datasetPtr.asFunction<void Function(int)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFramePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFramePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFramePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFramePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExprPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExprPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExprPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExprPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFramePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFramePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFramePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFramePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExprPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExprPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExprPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExprPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<wire_cst_point> cst_new_box_autoadd_point() {
     return _cst_new_box_autoadd_point();

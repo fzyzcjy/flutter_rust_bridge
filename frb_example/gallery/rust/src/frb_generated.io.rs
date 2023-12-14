@@ -4,6 +4,7 @@
 // Section: imports
 
 use super::*;
+use crate::api::polars::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -13,6 +14,41 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 impl CstDecode<anyhow::Error> for *mut wire_cst_list_prim_u_8 {
     fn cst_decode(self) -> anyhow::Error {
         unimplemented!()
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>
+    for *const std::ffi::c_void
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
+    for *const std::ffi::c_void
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>
+    for *const std::ffi::c_void
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>>>
+    for *const std::ffi::c_void
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>>>
+    for *const std::ffi::c_void
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
 }
 impl CstDecode<String> for *mut wire_cst_list_prim_u_8 {
@@ -131,8 +167,184 @@ pub extern "C" fn wire_draw_mandelbrot(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_hello_polars(port_: i64) {
-    wire_hello_polars_impl(port_)
+pub extern "C" fn wire_DataFrame_lazy(port_: i64, that: *const std::ffi::c_void) {
+    wire_DataFrame_lazy_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_DataFrame_write_json(port_: i64, that: *const std::ffi::c_void) {
+    wire_DataFrame_write_json_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_Expr_gt(
+    port_: i64,
+    that: *const std::ffi::c_void,
+    other: *const std::ffi::c_void,
+) {
+    wire_Expr_gt_impl(port_, that, other)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_Expr_sum(port_: i64, that: *const std::ffi::c_void) {
+    wire_Expr_sum_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_LazyFrame_collect(port_: i64, that: *const std::ffi::c_void) {
+    wire_LazyFrame_collect_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_LazyFrame_filter(
+    port_: i64,
+    that: *const std::ffi::c_void,
+    predicate: *const std::ffi::c_void,
+) {
+    wire_LazyFrame_filter_impl(port_, that, predicate)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_LazyFrame_group_by(
+    port_: i64,
+    that: *const std::ffi::c_void,
+    expr: *const std::ffi::c_void,
+) {
+    wire_LazyFrame_group_by_impl(port_, that, expr)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_LazyGroupBy_agg(
+    port_: i64,
+    that: *const std::ffi::c_void,
+    expr: *const std::ffi::c_void,
+) {
+    wire_LazyGroupBy_agg_impl(port_, that, expr)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_col(port_: i64, name: *mut wire_cst_list_prim_u_8) {
+    wire_col_impl(port_, name)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_lit(port_: i64, t: i32) {
+    wire_lit_impl(port_, t)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_read_sample_dataset(port_: i64) {
+    wire_read_sample_dataset_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<DataFrame>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<DataFrame>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Expr>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Expr>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<LazyFrame>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<LazyFrame>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<LazyGroupBy>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<LazyGroupBy>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Vec<Expr>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Vec<Expr>>,
+        >(ptr);
+    }
 }
 
 #[no_mangle]

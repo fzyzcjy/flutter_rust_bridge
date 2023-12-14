@@ -64,7 +64,84 @@ abstract class RustLibApi extends BaseApi {
       required int numThreads,
       dynamic hint});
 
-  Future<String> helloPolars({dynamic hint});
+  Future<RwLockLazyFrame> dataFrameLazy(
+      {required RwLockDataFrame that, dynamic hint});
+
+  Future<String> dataFrameWriteJson(
+      {required RwLockDataFrame that, dynamic hint});
+
+  Future<RwLockExpr> exprGt(
+      {required RwLockExpr that, required RwLockExpr other, dynamic hint});
+
+  Future<RwLockExpr> exprSum({required RwLockExpr that, dynamic hint});
+
+  Future<RwLockDataFrame> lazyFrameCollect(
+      {required RwLockLazyFrame that, dynamic hint});
+
+  Future<RwLockLazyFrame> lazyFrameFilter(
+      {required RwLockLazyFrame that,
+      required RwLockExpr predicate,
+      dynamic hint});
+
+  Future<RwLockLazyGroupBy> lazyFrameGroupBy(
+      {required RwLockLazyFrame that,
+      required RwLockVecExpr expr,
+      dynamic hint});
+
+  Future<RwLockLazyFrame> lazyGroupByAgg(
+      {required RwLockLazyGroupBy that,
+      required RwLockVecExpr expr,
+      dynamic hint});
+
+  Future<RwLockExpr> col({required String name, dynamic hint});
+
+  Future<RwLockExpr> lit({required int t, dynamic hint});
+
+  Future<RwLockDataFrame> readSampleDataset({dynamic hint});
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockDataFrame;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockDataFrame;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockDataFramePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockExpr;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockExpr;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockExprPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockLazyFrame;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockLazyFrame;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockLazyFramePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockLazyGroupBy;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockLazyGroupBy;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockLazyGroupByPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockVecExpr;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockVecExpr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockVecExprPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -107,30 +184,390 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> helloPolars({dynamic hint}) {
+  Future<RwLockLazyFrame> dataFrameLazy(
+      {required RwLockDataFrame that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_hello_polars(port_);
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(that);
+        return wire.wire_DataFrame_lazy(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame,
+        decodeErrorData: null,
+      ),
+      constMeta: kDataFrameLazyConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDataFrameLazyConstMeta => const TaskConstMeta(
+        debugName: "DataFrame_lazy",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<String> dataFrameWriteJson(
+      {required RwLockDataFrame that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(that);
+        return wire.wire_DataFrame_write_json(port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kDataFrameWriteJsonConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDataFrameWriteJsonConstMeta => const TaskConstMeta(
+        debugName: "DataFrame_write_json",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<RwLockExpr> exprGt(
+      {required RwLockExpr that, required RwLockExpr other, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(that);
+        var arg1 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(other);
+        return wire.wire_Expr_gt(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr,
         decodeErrorData: null,
       ),
-      constMeta: kHelloPolarsConstMeta,
+      constMeta: kExprGtConstMeta,
+      argValues: [that, other],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExprGtConstMeta => const TaskConstMeta(
+        debugName: "Expr_gt",
+        argNames: ["that", "other"],
+      );
+
+  @override
+  Future<RwLockExpr> exprSum({required RwLockExpr that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(that);
+        return wire.wire_Expr_sum(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr,
+        decodeErrorData: null,
+      ),
+      constMeta: kExprSumConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExprSumConstMeta => const TaskConstMeta(
+        debugName: "Expr_sum",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<RwLockDataFrame> lazyFrameCollect(
+      {required RwLockLazyFrame that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(that);
+        return wire.wire_LazyFrame_collect(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kLazyFrameCollectConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLazyFrameCollectConstMeta => const TaskConstMeta(
+        debugName: "LazyFrame_collect",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<RwLockLazyFrame> lazyFrameFilter(
+      {required RwLockLazyFrame that,
+      required RwLockExpr predicate,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(that);
+        var arg1 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(predicate);
+        return wire.wire_LazyFrame_filter(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame,
+        decodeErrorData: null,
+      ),
+      constMeta: kLazyFrameFilterConstMeta,
+      argValues: [that, predicate],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLazyFrameFilterConstMeta => const TaskConstMeta(
+        debugName: "LazyFrame_filter",
+        argNames: ["that", "predicate"],
+      );
+
+  @override
+  Future<RwLockLazyGroupBy> lazyFrameGroupBy(
+      {required RwLockLazyFrame that,
+      required RwLockVecExpr expr,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(that);
+        var arg1 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(expr);
+        return wire.wire_LazyFrame_group_by(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy,
+        decodeErrorData: null,
+      ),
+      constMeta: kLazyFrameGroupByConstMeta,
+      argValues: [that, expr],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLazyFrameGroupByConstMeta => const TaskConstMeta(
+        debugName: "LazyFrame_group_by",
+        argNames: ["that", "expr"],
+      );
+
+  @override
+  Future<RwLockLazyFrame> lazyGroupByAgg(
+      {required RwLockLazyGroupBy that,
+      required RwLockVecExpr expr,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(that);
+        var arg1 = cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(expr);
+        return wire.wire_LazyGroupBy_agg(port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame,
+        decodeErrorData: null,
+      ),
+      constMeta: kLazyGroupByAggConstMeta,
+      argValues: [that, expr],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLazyGroupByAggConstMeta => const TaskConstMeta(
+        debugName: "LazyGroupBy_agg",
+        argNames: ["that", "expr"],
+      );
+
+  @override
+  Future<RwLockExpr> col({required String name, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(name);
+        return wire.wire_col(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr,
+        decodeErrorData: null,
+      ),
+      constMeta: kColConstMeta,
+      argValues: [name],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kColConstMeta => const TaskConstMeta(
+        debugName: "col",
+        argNames: ["name"],
+      );
+
+  @override
+  Future<RwLockExpr> lit({required int t, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(t);
+        return wire.wire_lit(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr,
+        decodeErrorData: null,
+      ),
+      constMeta: kLitConstMeta,
+      argValues: [t],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLitConstMeta => const TaskConstMeta(
+        debugName: "lit",
+        argNames: ["t"],
+      );
+
+  @override
+  Future<RwLockDataFrame> readSampleDataset({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_read_sample_dataset(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame,
+        decodeErrorData: null,
+      ),
+      constMeta: kReadSampleDatasetConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHelloPolarsConstMeta => const TaskConstMeta(
-        debugName: "hello_polars",
+  TaskConstMeta get kReadSampleDatasetConstMeta => const TaskConstMeta(
+        debugName: "read_sample_dataset",
         argNames: [],
       );
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockDataFrame => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockDataFrame => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockExpr =>
+          wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockExpr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockLazyFrame => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockLazyFrame => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockLazyGroupBy => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockLazyGroupBy => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockVecExpr =>
+          wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockVecExpr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     return AnyhowException(raw as String);
+  }
+
+  @protected
+  RwLockDataFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      dynamic raw) {
+    return RwLockDataFrame.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(dynamic raw) {
+    return RwLockExpr.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockLazyFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      dynamic raw) {
+    return RwLockLazyFrame.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockLazyGroupBy dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      dynamic raw) {
+    return RwLockLazyGroupBy.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockVecExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      dynamic raw) {
+    return RwLockVecExpr.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockDataFrame dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      dynamic raw) {
+    return RwLockDataFrame.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw) {
+    return RwLockDataFrame.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockExpr dco_decode_RustOpaque_stdsyncRwLockExpr(dynamic raw) {
+    return RwLockExpr.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockLazyFrame dco_decode_RustOpaque_stdsyncRwLockLazyFrame(dynamic raw) {
+    return RwLockLazyFrame.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockLazyGroupBy dco_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      dynamic raw) {
+    return RwLockLazyGroupBy.dcoDecode(raw);
+  }
+
+  @protected
+  RwLockVecExpr dco_decode_RustOpaque_stdsyncRwLockVecExpr(dynamic raw) {
+    return RwLockVecExpr.dcoDecode(raw);
   }
 
   @protected
@@ -196,9 +633,91 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int dco_decode_usize(dynamic raw) {
+    return dcoDecodeI64OrU64(raw);
+  }
+
+  @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer) {
     var inner = sse_decode_String(deserializer);
     return AnyhowException(inner);
+  }
+
+  @protected
+  RwLockDataFrame sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer) {
+    return RwLockDataFrame.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
+      SseDeserializer deserializer) {
+    return RwLockExpr.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockLazyFrame sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      SseDeserializer deserializer) {
+    return RwLockLazyFrame.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockLazyGroupBy sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      SseDeserializer deserializer) {
+    return RwLockLazyGroupBy.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockVecExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      SseDeserializer deserializer) {
+    return RwLockVecExpr.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockDataFrame sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer) {
+    return RwLockDataFrame.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockDataFrame sse_decode_RustOpaque_stdsyncRwLockDataFrame(
+      SseDeserializer deserializer) {
+    return RwLockDataFrame.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockExpr sse_decode_RustOpaque_stdsyncRwLockExpr(
+      SseDeserializer deserializer) {
+    return RwLockExpr.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockLazyFrame sse_decode_RustOpaque_stdsyncRwLockLazyFrame(
+      SseDeserializer deserializer) {
+    return RwLockLazyFrame.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockLazyGroupBy sse_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      SseDeserializer deserializer) {
+    return RwLockLazyGroupBy.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockVecExpr sse_decode_RustOpaque_stdsyncRwLockVecExpr(
+      SseDeserializer deserializer) {
+    return RwLockVecExpr.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -256,8 +775,89 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_decode_unit(SseDeserializer deserializer) {}
 
   @protected
+  int sse_decode_usize(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint64();
+  }
+
+  @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
     return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
+      RwLockExpr raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockExpr(RwLockExpr raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
   }
 
   @protected
@@ -281,10 +881,81 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_usize(int raw) {
+    return raw;
+  }
+
+  @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer) {
     throw UnimplementedError(
         'not yet supported in serialized mode, feel free to create an issue');
+  }
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
+      RwLockExpr self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockDataFrame(
+      RwLockDataFrame self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockExpr(
+      RwLockExpr self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockLazyFrame(
+      RwLockLazyFrame self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
+      RwLockLazyGroupBy self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockVecExpr(
+      RwLockVecExpr self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
@@ -337,6 +1008,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer) {}
+
+  @protected
+  void sse_encode_usize(int self, SseSerializer serializer) {
+    serializer.buffer.putUint64(self);
+  }
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {

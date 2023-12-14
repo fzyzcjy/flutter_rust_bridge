@@ -4,6 +4,7 @@
 // Section: imports
 
 use super::*;
+use crate::api::polars::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::for_generated::wasm_bindgen;
@@ -78,6 +79,41 @@ impl CstDecode<anyhow::Error> for flutter_rust_bridge::for_generated::wasm_bindg
         unimplemented!()
     }
 }
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Vec<Expr>>> {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
 impl CstDecode<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
@@ -102,6 +138,11 @@ impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::Js
 }
 impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> u8 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> usize {
         self.unchecked_into_f64() as _
     }
 }
@@ -147,6 +188,190 @@ pub fn wire_draw_mandelbrot(
 }
 
 #[wasm_bindgen]
-pub fn wire_hello_polars(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_hello_polars_impl(port_)
+pub fn wire_DataFrame_lazy(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_DataFrame_lazy_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_DataFrame_write_json(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_DataFrame_write_json_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_Expr_gt(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    other: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_Expr_gt_impl(port_, that, other)
+}
+
+#[wasm_bindgen]
+pub fn wire_Expr_sum(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_Expr_sum_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_LazyFrame_collect(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_LazyFrame_collect_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_LazyFrame_filter(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    predicate: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_LazyFrame_filter_impl(port_, that, predicate)
+}
+
+#[wasm_bindgen]
+pub fn wire_LazyFrame_group_by(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expr: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_LazyFrame_group_by_impl(port_, that, expr)
+}
+
+#[wasm_bindgen]
+pub fn wire_LazyGroupBy_agg(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expr: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_LazyGroupBy_agg_impl(port_, that, expr)
+}
+
+#[wasm_bindgen]
+pub fn wire_col(port_: flutter_rust_bridge::for_generated::MessagePort, name: String) {
+    wire_col_impl(port_, name)
+}
+
+#[wasm_bindgen]
+pub fn wire_lit(port_: flutter_rust_bridge::for_generated::MessagePort, t: i32) {
+    wire_lit_impl(port_, t)
+}
+
+#[wasm_bindgen]
+pub fn wire_read_sample_dataset(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_read_sample_dataset_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<DataFrame>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<DataFrame>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr(ptr: *const std::ffi::c_void) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Expr>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr(ptr: *const std::ffi::c_void) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Expr>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<LazyFrame>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<LazyFrame>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<LazyGroupBy>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<LazyGroupBy>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Vec<Expr>>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockVecExpr(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Vec<Expr>>,
+        >(ptr);
+    }
 }
