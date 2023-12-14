@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:frb_example_gallery/src/examples/mandelbrot.dart';
 import 'package:frb_example_gallery/src/examples/polars.dart';
 import 'package:frb_example_gallery/src/ignore_me/example_page.dart';
@@ -9,6 +8,10 @@ class MainPageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final urlGalleryPage = Uri.base.queryParameters["gallery_page"];
+    final page = _kPages.where((x) => x.name == urlGalleryPage).firstOrNull ??
+        const _MainPageWidgetInner();
+
     return MaterialApp(
       theme: ThemeData(
         colorScheme: const ColorScheme.light(
@@ -16,10 +19,7 @@ class MainPageWidget extends StatelessWidget {
           primary: Colors.blue,
         ),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Gallery')),
-        body: const _MainPageWidgetInner(),
-      ),
+      home: page,
     );
   }
 }
@@ -33,54 +33,18 @@ class _MainPageWidgetInner extends StatefulWidget {
 
 class _MainPageWidgetInnerState extends State<_MainPageWidgetInner> {
   @override
-  void initState() {
-    super.initState();
-
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      final urlGalleryPage = Uri.base.queryParameters["gallery_page"];
-      final page = kPages.where((x) => x.name == urlGalleryPage).firstOrNull;
-      if (page != null) {
-        print('hi replacement');
-        Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (_) => page));
-      }
-    });
-  }
-
-  static const kPages = [
-    ExamplePage(
-      name: 'mandelbrot',
-      title: 'Mandelbrot',
-      subtitle: 'Example: Use Rust to write algorithms',
-      icon: Icon(
-        // Icons.query_stats_outlined,
-        Icons.center_focus_strong_outlined,
-        color: Colors.green,
-      ),
-      body: MandelbrotPageBody(),
-    ),
-    ExamplePage(
-      name: 'polars',
-      title: 'Polars',
-      subtitle: 'Example: Use well-developed Rust libraries in Dart',
-      icon: Icon(
-        Icons.subject_outlined,
-        color: Colors.blue,
-      ),
-      body: PolarsPageBody(),
-    ),
-  ];
-
-  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 1000),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            for (final page in kPages) _buildButton(page),
-          ],
+    return Scaffold(
+      appBar: AppBar(title: const Text('Gallery')),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1000),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (final page in _kPages) _buildButton(page),
+            ],
+          ),
         ),
       ),
     );
@@ -127,3 +91,27 @@ class _MainPageWidgetInnerState extends State<_MainPageWidgetInner> {
     );
   }
 }
+
+const _kPages = [
+  ExamplePage(
+    name: 'mandelbrot',
+    title: 'Mandelbrot',
+    subtitle: 'Example: Use Rust to write algorithms',
+    icon: Icon(
+      // Icons.query_stats_outlined,
+      Icons.center_focus_strong_outlined,
+      color: Colors.green,
+    ),
+    body: MandelbrotPageBody(),
+  ),
+  ExamplePage(
+    name: 'polars',
+    title: 'Polars',
+    subtitle: 'Example: Use well-developed Rust libraries in Dart',
+    icon: Icon(
+      Icons.subject_outlined,
+      color: Colors.blue,
+    ),
+    body: PolarsPageBody(),
+  ),
+];
