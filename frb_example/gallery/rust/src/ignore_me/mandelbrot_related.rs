@@ -9,7 +9,7 @@ use std::sync::{Arc, Mutex};
 use anyhow::*;
 use flutter_rust_bridge::for_generated::futures::future::try_join_all;
 use flutter_rust_bridge::for_generated::futures::StreamExt;
-use flutter_rust_bridge::spawn_blocking_with;
+use flutter_rust_bridge::{spawn_blocking_with, JoinHandle};
 use image::codecs::png::PngEncoder;
 use image::*;
 use num::Complex;
@@ -154,16 +154,17 @@ pub async fn mandelbrot(
     scale: f64,
     num_threads: i32,
 ) -> Result<Vec<u8>> {
+    let num_threads = num_threads as usize;
     let bounds = (image_size.width as usize, image_size.height as usize);
     let upper_left = Complex::new(zoom_point.x - scale, zoom_point.y - scale);
     let lower_right = Complex::new(zoom_point.x + scale, zoom_point.y + scale);
 
-    let band_rows = bounds.1 / (num_threads as usize);
+    let band_rows = bounds.1 / num_threads;
 
     let mut join_handles = vec![];
     for i in 0..num_threads {
         join_handles.push(spawn_blocking_with(
-            move || loop {
+            move || {
                 let top = band_rows * i;
                 let bottom = usize::min(band_rows * (i + 1), bounds.1);
                 let height = bottom - top;
