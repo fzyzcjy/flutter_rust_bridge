@@ -1,3 +1,4 @@
+use futures::channel::oneshot;
 use std::future::Future;
 use std::panic::RefUnwindSafe;
 
@@ -33,8 +34,12 @@ where
     F: Future + 'static,
     F::Output: 'static,
 {
-    let (sender, receiver) = futures::channel::oneshot::channel::<F::Output>();
-    todo!()
+    let (sender, receiver) = oneshot::channel::<F::Output>();
+    wasm_bindgen_futures::spawn_local(async || {
+        let output = future().await;
+        sender.send(output);
+    });
+    JoinHandle(receiver)
 }
 
 pub fn spawn_blocking<F, R>(f: F) -> JoinHandle<R>
@@ -45,4 +50,4 @@ where
     todo!()
 }
 
-pub struct JoinHandle<T>;
+pub struct JoinHandle<T>(oneshot::Receiver<T>);
