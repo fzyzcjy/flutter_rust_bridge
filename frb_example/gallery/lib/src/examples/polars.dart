@@ -15,7 +15,7 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
   @override
   void initState() {
     super.initState();
-    () async {}();
+    _executeQuery();
   }
 
   Future<void> _executeQuery() async {
@@ -26,7 +26,8 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
         .groupBy(expr: col(name: "species"))
         .agg(expr: col(name: "*").sum())
         .collect();
-    _outputTable = await convertToSimpleTable(df);
+    final table = await convertToSimpleTable(df);
+    setState(() => _outputTable = table);
   }
 
   @override

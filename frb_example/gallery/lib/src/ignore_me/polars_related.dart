@@ -11,10 +11,11 @@ Future<SimpleTable> convertToSimpleTable(RwLockDataFrame df) async {
 
 SimpleTable _transpose(SimpleTable raw) {
   if (raw.isEmpty) return [];
-  final ans = List<List<String>>.generate(raw[0].length, (_) => []);
+  final numRows = raw[0].length;
+  final ans = List<List<String>>.generate(numRows, (_) => []);
   for (var colIndex = 0; colIndex < raw.length; ++colIndex) {
-    for (var rowIndex = 0; rowIndex <= raw[0].length; ++rowIndex) {
-      ans[rowIndex][colIndex] = raw[colIndex][rowIndex];
+    for (var rowIndex = 0; rowIndex < numRows; ++rowIndex) {
+      ans[rowIndex].add(raw[colIndex][rowIndex]);
     }
   }
   return ans;
