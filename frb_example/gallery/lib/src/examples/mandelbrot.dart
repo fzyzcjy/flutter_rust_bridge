@@ -74,12 +74,13 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
                     ),
                   TextButton(onPressed: stop, child: const Text('Stop')),
                   SizedBox(
-                    width: 128,
+                    width: 200,
                     child: Slider(
                       value: size,
                       onChanged: (newValue) => setState(() => size = newValue),
                       min: 100,
                       max: 1000,
+                      inactiveColor: Colors.blue.shade100,
                     ),
                   ),
                   if (computeTime != null)
@@ -94,17 +95,27 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
           ),
         ),
         Expanded(
-          child: image != null
-              ? Align(
-                  alignment: Alignment.centerLeft,
-                  child: SizedBox.square(
-                    dimension: size,
-                    child: AnimatedReplaceableImage(
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: SizedBox.square(
+              dimension: size,
+              child: image != null
+                  ? AnimatedReplaceableImage(
                       image: MemoryImage(image!),
+                    )
+                  : Container(
+                      color: Colors.grey.shade100,
+                      padding: const EdgeInsets.all(16),
+                      child: const Center(
+                        child: Text(
+                          'Use buttons on the left to start animation',
+                          style: TextStyle(color: Colors.grey),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
                     ),
-                  ),
-                )
-              : Container(),
+            ),
+          ),
         ),
       ],
     );
