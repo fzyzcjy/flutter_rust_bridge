@@ -36,7 +36,7 @@ fn wire_draw_mandelbrot_impl(
     scale: impl CstDecode<f64> + core::panic::UnwindSafe,
     num_threads: impl CstDecode<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "draw_mandelbrot",
             port: Some(port_),
@@ -47,15 +47,19 @@ fn wire_draw_mandelbrot_impl(
             let api_zoom_point = zoom_point.cst_decode();
             let api_scale = scale.cst_decode();
             let api_num_threads = num_threads.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    crate::api::mandelbrot::draw_mandelbrot(
-                        api_image_size,
-                        api_zoom_point,
-                        api_scale,
-                        api_num_threads,
-                    )
-                })())
+            move |context| async move {
+                transform_result_dco(
+                    (move || async move {
+                        crate::api::mandelbrot::draw_mandelbrot(
+                            api_image_size,
+                            api_zoom_point,
+                            api_scale,
+                            api_num_threads,
+                        )
+                        .await
+                    })()
+                    .await,
+                )
             }
         },
     )
