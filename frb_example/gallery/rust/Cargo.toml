@@ -8,3 +8,7 @@ crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
+anyhow = { version = "1.0.75", features = ["backtrace"] }
+num = "0.4"
+image = "0.24.3"
+crossbeam = "0.8"

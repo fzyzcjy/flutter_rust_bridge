@@ -1,4 +1,20 @@
-#[flutter_rust_bridge::frb(sync)] // Synchronous mode for simplicity of the demo
-pub fn greet(name: String) -> String {
-    format!("Hello, {name}!")
+pub fn draw_mandelbrot(
+    image_size: Size,
+    zoom_point: Point,
+    scale: f64,
+    num_threads: i32,
+) -> anyhow::Result<Vec<u8>> {
+    crate::ignore_me::mandelbrot_related::mandelbrot(image_size, zoom_point, scale, num_threads)
+}
+
+#[derive(Debug, Clone)]
+pub struct Size {
+    pub width: i32,
+    pub height: i32,
+}
+
+#[derive(Debug, Clone)]
+pub struct Point {
+    pub x: f64,
+    pub y: f64,
 }
