@@ -20,7 +20,6 @@ uuid = { workspace = true, optional = true }
 log = "0.4"
 backtrace = { workspace = true }
 futures = { version = "0.3.29", optional = true }
-futures-channel = { version = "0.3.29", optional = true }
 byteorder = "1.5.0"
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
@@ -60,4 +59,4 @@ default = ["chrono", "wasm-start", "rust-async"]
 uuid = ["dep:uuid", "allo-isolate/uuid"]
 chrono = ["dep:chrono", "allo-isolate/chrono"]
 wasm-start = ["console_error_panic_hook"]
-rust-async = ["dep:tokio", "dep:futures", "dep:futures-channel"]
+rust-async = ["dep:tokio", "dep:futures"]
