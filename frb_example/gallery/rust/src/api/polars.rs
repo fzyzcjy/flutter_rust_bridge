@@ -22,7 +22,9 @@ impl DataFrame {
 
     #[frb(sync)]
     pub fn get_column_names(&self) -> Vec<String> {
-        self.0 .0.get_column_names().into_iter().cloned().collect()
+        (self.0 .0.get_column_names().into_iter())
+            .map(|x| x.to_owned())
+            .collect()
     }
 
     pub fn get_column(&self, name: String) -> anyhow::Result<Vec<DartDynamic>> {
