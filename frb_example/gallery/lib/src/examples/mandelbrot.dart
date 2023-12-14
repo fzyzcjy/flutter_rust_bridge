@@ -14,6 +14,7 @@ class MandelbrotPageBody extends StatefulWidget {
 class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   Uint8List? image;
   SimpleRunner? runner;
+  var numThreads = 1;
 
   @override
   void initState() {
@@ -27,7 +28,7 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
         imageSize: const Size(width: 50, height: 50),
         zoomPoint: examplePoint,
         scale: generateScale(),
-        numThreads: 4,
+        numThreads: numThreads,
       );
       if (mounted) setState(() => image = receivedImage);
     });
@@ -44,7 +45,14 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
       children: [
         Column(
           children: [
-            TextButton(onPressed: start, child: const Text('Start')),
+            for (final candidateNumThreads in [1, 2, 4])
+              TextButton(
+                onPressed: () {
+                  numThreads = candidateNumThreads;
+                  start();
+                },
+                child: Text('Start ($candidateNumThreads threads)'),
+              ),
             TextButton(onPressed: stop, child: const Text('Stop')),
           ],
         ),
