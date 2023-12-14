@@ -40,7 +40,7 @@ class MainPageWidget extends StatelessWidget {
                     subtitle:
                         'Example: Use well-developed Rust libraries in Dart',
                     icon: Icon(
-                      Icons.folder_outlined,
+                      Icons.subject_outlined,
                       color: Colors.blue,
                     ),
                     body: PolarsPageBody(),
