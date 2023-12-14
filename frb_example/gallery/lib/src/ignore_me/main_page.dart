@@ -39,7 +39,11 @@ class _MainPageWidgetInnerState extends State<_MainPageWidgetInner> {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       final urlGalleryPage = Uri.base.queryParameters["gallery_page"];
       final page = kPages.where((x) => x.name == urlGalleryPage).firstOrNull;
-      if (page != null) _jumpPage(page);
+      if (page != null) {
+        print('hi replacement');
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (_) => page));
+      }
     });
   }
 
@@ -83,48 +87,43 @@ class _MainPageWidgetInnerState extends State<_MainPageWidgetInner> {
   }
 
   Widget _buildButton(ExamplePage page) {
-    return Builder(
-      builder: (context) => Expanded(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(8),
-            onTap: () => _jumpPage(page),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconTheme.merge(
-                    data: const IconThemeData(size: 64),
-                    child: page.icon,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    page.title,
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                  const SizedBox(height: 8),
-                  SizedBox(
-                    height: 64,
-                    child: Text(
-                      page.subtitle,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 14,
-                      ),
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(8),
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => page)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconTheme.merge(
+                  data: const IconThemeData(size: 64),
+                  child: page.icon,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  page.title,
+                  style: const TextStyle(fontSize: 20),
+                ),
+                const SizedBox(height: 8),
+                SizedBox(
+                  height: 64,
+                  child: Text(
+                    page.subtitle,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 14,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
       ),
     );
-  }
-
-  void _jumpPage(ExamplePage page) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
   }
 }
