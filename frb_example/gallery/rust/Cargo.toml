@@ -12,11 +12,4 @@ anyhow = { version = "1.0.75", features = ["backtrace"] }
 num = "0.4"
 image = "0.24.3"
 crossbeam = "0.8"
-
-[dependencies.polars]
-version = "0.35.4"
-features = [
-    "lazy", "abs", "cum_agg", "product", "describe", "dtype-binary", "json",
-    "dtype-u8", "dtype-u16", "dtype-i8", "dtype-i16", "dtype-datetime", "dtype-struct",
-    "cross_join", "semi_anti_join", "rolling_window"
-]
+polars = { version = "0.35.4", features = ["lazy"] }
