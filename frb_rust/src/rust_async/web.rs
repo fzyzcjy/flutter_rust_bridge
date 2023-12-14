@@ -63,8 +63,8 @@ where
 pub struct JoinHandle<T>(AssertUnwindSafe<oneshot::Receiver<T>>);
 
 impl<T> JoinHandle<T> {
-    fn create_pair() -> (oneshot::channel::Sender<T>, Self) {
-        let (sender, receiver) = oneshot::channel::<F::Output>();
+    fn create_pair() -> (oneshot::Sender<T>, Self) {
+        let (sender, receiver) = oneshot::channel::<T>();
         (sender, Self(AssertUnwindSafe(receiver)))
     }
 }
