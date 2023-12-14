@@ -19,11 +19,8 @@ pub fn hello_polars() -> String {
     format!("{}", df)
 }
 
-pub(crate) type PDataFrame = polars_core::prelude::DataFrame;
-pub(crate) type PLazyFrame = polars_lazy::prelude::LazyFrame;
-
 #[frb(opaque)]
-pub struct DataFrame(PDataFrame);
+pub struct DataFrame(polars_core::prelude::DataFrame);
 
 impl DataFrame {
     pub fn lazy(self) -> LazyFrame {
@@ -32,23 +29,28 @@ impl DataFrame {
 }
 
 #[frb(opaque)]
-pub struct LazyFrame(PLazyFrame);
+pub struct LazyFrame(polars_lazy::prelude::LazyFrame);
 
 impl LazyFrame {
     pub fn filter(self, predicate: Expr) -> LazyFrame {
         Self(self.0.filter(predicate))
     }
 
-    pub fn group_by() {
-        todo!()
+    pub fn group_by(self, expr: Vec<Expr>) -> LazyGroupBy {
+        LazyGroupBy(self.0.group_by(expr))
     }
 
-    pub fn agg() {
-        todo!()
+    pub fn collect(self) -> anyhow::Result<DataFrame> {
+        Ok(DataFrame(self.0.collect()?))
     }
+}
 
-    pub fn collect() {
-        todo!()
+#[frb(opaque)]
+pub struct LazyGroupBy(polars_lazy::prelude::LazyGroupBy);
+
+impl LazyGroupBy {
+    pub fn agg(self, expr: Vec<Expr>) -> LazyFrame {
+        LazyFrame(self.0.agg(expr))
     }
 }
 
