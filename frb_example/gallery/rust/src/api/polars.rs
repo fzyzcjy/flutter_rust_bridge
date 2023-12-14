@@ -13,10 +13,6 @@ impl DataFrame {
     pub fn lazy(self) -> LazyFrame {
         LazyFrame(self.0.lazy())
     }
-
-    pub fn write_json(&self) -> anyhow::Result<String> {
-        todo!()
-    }
 }
 
 #[frb(opaque)]
