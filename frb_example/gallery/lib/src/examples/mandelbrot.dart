@@ -29,8 +29,9 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
     runner =
         SimpleRunner(minDuration: const Duration(milliseconds: 33), () async {
       final watch = Stopwatch()..start();
+      final effectiveSize = (size.round() ~/ numThreads) * numThreads;
       final receivedImage = await drawMandelbrot(
-        imageSize: Size(width: size.round(), height: size.round()),
+        imageSize: Size(width: effectiveSize, height: effectiveSize),
         zoomPoint: examplePoint,
         scale: generateScale(),
         numThreads: numThreads,
@@ -68,7 +69,7 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
             TextButton(onPressed: stop, child: const Text('Stop')),
             Slider(
               value: size,
-              onChanged: (newValue) => size = newValue,
+              onChanged: (newValue) => setState(() => size = newValue),
               min: 100,
               max: 1000,
             ),
