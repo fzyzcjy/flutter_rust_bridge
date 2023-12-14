@@ -13,6 +13,7 @@ class MandelbrotPageBody extends StatefulWidget {
 
 class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   Uint8List? image;
+  Duration? computeTime;
   SimpleRunner? runner;
   var numThreads = 1;
 
@@ -26,13 +27,21 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
     stop();
     runner =
         SimpleRunner(minDuration: const Duration(milliseconds: 33), () async {
+      final watch = Stopwatch()..start();
       final receivedImage = await drawMandelbrot(
         imageSize: const Size(width: 200, height: 200),
         zoomPoint: examplePoint,
         scale: generateScale(),
         numThreads: numThreads,
       );
-      if (mounted) setState(() => image = receivedImage);
+      watch.stop();
+
+      if (mounted) {
+        setState(() {
+          image = receivedImage;
+          computeTime = watch.elapsed;
+        });
+      }
     });
   }
 
@@ -58,6 +67,11 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
             TextButton(onPressed: stop, child: const Text('Stop')),
           ],
         ),
+        if (computeTime != null)
+          SizedBox(
+            width: 128,
+            child: Text('Compute time: ${computeTime!.inMilliseconds}ms'),
+          ),
         image != null
             ? SizedBox(
                 width: 200,
