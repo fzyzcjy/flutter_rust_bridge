@@ -1,3 +1,4 @@
+use crate::transfer;
 use futures::channel::oneshot;
 use std::future::Future;
 use std::panic::{AssertUnwindSafe, RefUnwindSafe};
@@ -49,7 +50,12 @@ where
     F: FnOnce() -> R + Send + 'static,
     R: Send + 'static,
 {
-    todo!()
+    let (sender, handle) = JoinHandle::create_pair();
+    thread_pool.execute(transfer!(|| {
+        let output = f();
+        sender.send(output);
+    }));
+    handle
 }
 
 // ref: async-std's implementation
