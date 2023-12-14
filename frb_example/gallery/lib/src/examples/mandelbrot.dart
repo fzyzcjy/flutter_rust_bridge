@@ -25,7 +25,7 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
     stop();
     runner = SimpleRunner(() async {
       final receivedImage = await drawMandelbrot(
-        imageSize: const Size(width: 50, height: 50),
+        imageSize: const Size(width: 200, height: 200),
         zoomPoint: examplePoint,
         scale: generateScale(),
         numThreads: numThreads,
@@ -58,8 +58,8 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
         ),
         image != null
             ? SizedBox(
-                width: 50,
-                height: 50,
+                width: 200,
+                height: 200,
                 child: Center(
                   child: AnimatedReplaceableImage(
                     image: MemoryImage(image!),
