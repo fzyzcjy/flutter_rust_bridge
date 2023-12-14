@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frb_example_gallery/src/rust/api/simple.dart';
 
 class MainPageWidget extends StatelessWidget {
   const MainPageWidget({super.key});
@@ -13,10 +12,32 @@ class MainPageWidget extends StatelessWidget {
         ),
       ),
       home: Scaffold(
-        appBar: AppBar(title: const Text('flutter_rust_bridge Gallery')),
+        appBar: AppBar(title: const Text('Gallery')),
         body: Center(
-          child: Text(
-              'Action: Call Rust `greet("Tom")`\nResult: `${greet(name: "Tom")}`'),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildButton(),
+              _buildButton(),
+              _buildButton(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildButton() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 32),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: () {
+          // TODO
+        },
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+          child: Text('TODO'),
         ),
       ),
     );
