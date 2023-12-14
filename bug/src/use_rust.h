@@ -8,4 +8,4 @@ intptr_t init_frb_dart_api_dl(void *data);
 
 void *naive_NewPersistentHandle(Dart_Handle non_persistent_handle);
 
-Dart_Handle naive_HandleFromPersistent(void *persistent_handle);
+uintptr_t naive_HandleFromPersistent(void *persistent_handle);

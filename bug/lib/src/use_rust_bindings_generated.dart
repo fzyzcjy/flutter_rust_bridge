@@ -54,7 +54,7 @@ class UseRustBindings {
   late final _naive_NewPersistentHandle = _naive_NewPersistentHandlePtr
       .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
 
-  Object naive_HandleFromPersistent(
+  int naive_HandleFromPersistent(
     ffi.Pointer<ffi.Void> persistent_handle,
   ) {
     return _naive_HandleFromPersistent(
@@ -63,8 +63,8 @@ class UseRustBindings {
   }
 
   late final _naive_HandleFromPersistentPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.Pointer<ffi.Void>)>>(
           'naive_HandleFromPersistent');
   late final _naive_HandleFromPersistent = _naive_HandleFromPersistentPtr
-      .asFunction<Object Function(ffi.Pointer<ffi.Void>)>();
+      .asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 }

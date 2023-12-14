@@ -15,7 +15,7 @@ pub unsafe extern "C" fn naive_NewPersistentHandle(non_persistent_handle: Dart_H
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn naive_HandleFromPersistent(persistent_handle: *mut std::ffi::c_void) -> Dart_Handle {
+pub unsafe extern "C" fn naive_HandleFromPersistent(persistent_handle: *mut std::ffi::c_void) -> usize {
     println!("hi naive_HandleFromPersistent START persistent_handle={persistent_handle:?}");
     let ans = Dart_HandleFromPersistent_DL.unwrap()(persistent_handle as _);
     println!(
