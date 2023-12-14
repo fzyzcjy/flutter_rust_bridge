@@ -1,4 +1,4 @@
-use futures::channel::oneshot;
+use futures_channel::oneshot;
 use std::future::Future;
 use std::panic::RefUnwindSafe;
 use std::pin::Pin;
