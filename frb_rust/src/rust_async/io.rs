@@ -1,5 +1,7 @@
 use std::future::Future;
 use std::panic::{AssertUnwindSafe, RefUnwindSafe};
+pub use tokio::spawn;
+pub use tokio::task::spawn_blocking;
 use tokio::task::JoinHandle;
 
 pub trait BaseAsyncRuntime: RefUnwindSafe {
