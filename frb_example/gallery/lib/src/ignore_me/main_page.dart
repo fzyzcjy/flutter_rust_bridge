@@ -25,18 +25,6 @@ class MainPageWidget extends StatelessWidget {
               children: [
                 _buildButton(
                   page: const ExamplePage(
-                    title: 'Polars',
-                    subtitle:
-                        'Example: Use well-developed Rust libraries in Dart',
-                    icon: Icon(
-                      Icons.folder_outlined,
-                      color: Colors.blue,
-                    ),
-                    body: PolarsPageBody(),
-                  ),
-                ),
-                _buildButton(
-                  page: const ExamplePage(
                     title: 'Mandelbrot',
                     subtitle: 'Example: Use Rust to write algorithms',
                     icon: Icon(
@@ -49,15 +37,27 @@ class MainPageWidget extends StatelessWidget {
                 ),
                 _buildButton(
                   page: const ExamplePage(
-                    title: 'State',
-                    subtitle: 'Example: State in Rust, UI in Dart',
+                    title: 'Polars',
+                    subtitle:
+                        'Example: Use well-developed Rust libraries in Dart',
                     icon: Icon(
-                      Icons.article_outlined,
-                      color: Colors.cyan,
+                      Icons.folder_outlined,
+                      color: Colors.blue,
                     ),
-                    body: StatePageBody(),
+                    body: PolarsPageBody(),
                   ),
                 ),
+                // _buildButton(
+                //   page: const ExamplePage(
+                //     title: 'State',
+                //     subtitle: 'Example: State in Rust, UI in Dart',
+                //     icon: Icon(
+                //       Icons.article_outlined,
+                //       color: Colors.cyan,
+                //     ),
+                //     body: StatePageBody(),
+                //   ),
+                // ),
               ],
             ),
           ),
