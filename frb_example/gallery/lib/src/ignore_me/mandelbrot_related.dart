@@ -34,10 +34,20 @@ class AnimatedReplaceableImageState extends State<AnimatedReplaceableImage> {
   Widget build(BuildContext context) {
     return Image(
       image: widget.image,
+      fit: BoxFit.fill,
       frameBuilder: (BuildContext context, Widget child, int? frame,
               bool wasSynchronouslyLoaded) =>
           (frame == null && previousImage != null)
-              ? Stack(children: [Image(image: previousImage!), child])
+              ? Stack(
+                  fit: StackFit.passthrough,
+                  children: [
+                    Image(
+                      image: previousImage!,
+                      fit: BoxFit.fill,
+                    ),
+                    child,
+                  ],
+                )
               : child,
     );
   }
