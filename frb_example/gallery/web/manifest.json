@@ -1,6 +1,6 @@
 {
-    "name": "flutter_via_create",
-    "short_name": "flutter_via_create",
+    "name": "frb_example_gallery",
+    "short_name": "frb_example_gallery",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

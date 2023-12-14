@@ -1,4 +1,4 @@
-# flutter_via_create
+# frb_example_gallery
 
 A new Flutter project.
 
