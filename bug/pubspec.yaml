@@ -13,7 +13,7 @@ dependencies:
 dev_dependencies:
   lints: ^2.1.0
   test: ^1.24.0
-  ffigen: ^8.0.0 # TODO use 10.x
+  ffigen: ^10.0.0 # NOTE VERSION
 
 ffigen:
   # Run with `flutter pub run ffigen --config ffigen.yaml`.
