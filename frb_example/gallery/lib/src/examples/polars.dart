@@ -20,7 +20,9 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
           .groupBy(expr: col(name: "species"))
           .agg(expr: col(name: "*").sum())
           .collect();
-      print('helloPolars=$df');
+      for (final colName in df.getColumnNames()) {
+        print('colName=$colName values=${await df.getColumn(name: colName)}');
+      }
     }();
   }
 
