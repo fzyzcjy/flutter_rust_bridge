@@ -1,4 +1,4 @@
-pub fn draw_mandelbrot(
+pub async fn draw_mandelbrot(
     image_size: Size,
     zoom_point: Point,
     scale: f64,
