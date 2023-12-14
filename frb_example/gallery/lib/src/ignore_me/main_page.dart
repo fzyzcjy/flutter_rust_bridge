@@ -97,6 +97,9 @@ class MainPageWidget extends StatelessWidget {
                     child: Text(
                       page.subtitle,
                       textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
                   ),
                 ],
