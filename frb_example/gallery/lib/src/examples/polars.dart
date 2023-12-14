@@ -10,7 +10,7 @@ class PolarsPageBody extends StatefulWidget {
 }
 
 class _PolarsPageBodyState extends State<PolarsPageBody> {
-  final _valueController = TextEditingController(text: '5');
+  var _value = 5.0;
   SimpleTable? _outputTable;
 
   @override
@@ -18,8 +18,6 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
     super.initState();
     _executeQuery();
   }
-
-  double get _value => double.tryParse(_valueController.text) ?? 5.0;
 
   Future<void> _executeQuery() async {
     // TODO support positional arguments (not hard)
@@ -35,17 +33,32 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          width: 32,
-          child: TextField(
-            controller: _valueController,
-            onChanged: (_) => _executeQuery(),
+    return Center(
+      child: Column(
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(width: 32),
+              const Text('Input'),
+              const SizedBox(width: 24),
+              Text(_value.toStringAsFixed(1)),
+              SizedBox(
+                width: 200,
+                child: Slider(
+                  value: _value,
+                  onChanged: (newValue) => setState(() => _value = newValue),
+                  onChangeEnd: (_) => _executeQuery(),
+                  min: 0.1,
+                  max: 7.0,
+                  inactiveColor: Colors.blue.shade100,
+                ),
+              ),
+            ],
           ),
-        ),
-        _buildOutputSection(),
-      ],
+          _buildOutputSection(),
+        ],
+      ),
     );
   }
 
