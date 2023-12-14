@@ -52,16 +52,15 @@ where
     todo!()
 }
 
-// ref: async-std uses naive futures_channel::oneshot::Receiver
-// in the JoinHandle
+// ref: async-std's implementation
 // https://github.com/async-rs/async-std/blob/8fea0500990c9d8977cbeef55bc9003cca39abc8/src/task/join_handle.rs#L23
 pub struct JoinHandle<T>(oneshot::Receiver<T>);
 
 impl<T> Future for JoinHandle<T> {
     // tokio uses `super::Result<T>`
-    type Output = anyhow::Result<T>;
+    type Output = Result<T, oneshot::Canceled>;
 
-    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
+    fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
         Pin::new(&mut self.0).poll(cx)
     }
 }
