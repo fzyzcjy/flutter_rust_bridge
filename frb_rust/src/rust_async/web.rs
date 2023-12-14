@@ -1,6 +1,6 @@
 use futures::channel::oneshot;
 use std::future::Future;
-use std::panic::RefUnwindSafe;
+use std::panic::{AssertUnwindSafe, RefUnwindSafe};
 use std::pin::Pin;
 use std::task::{Context, Poll};
 
@@ -41,7 +41,7 @@ where
         let output = future.await;
         sender.send(output);
     });
-    JoinHandle(receiver)
+    JoinHandle(AssertUnwindSafe(receiver))
 }
 
 pub fn spawn_blocking<F, R>(f: F) -> JoinHandle<R>
@@ -54,13 +54,13 @@ where
 
 // ref: async-std's implementation
 // https://github.com/async-rs/async-std/blob/8fea0500990c9d8977cbeef55bc9003cca39abc8/src/task/join_handle.rs#L23
-pub struct JoinHandle<T>(oneshot::Receiver<T>);
+pub struct JoinHandle<T>(AssertUnwindSafe<oneshot::Receiver<T>>);
 
 impl<T> Future for JoinHandle<T> {
     // tokio uses `super::Result<T>`
     type Output = Result<T, oneshot::Canceled>;
 
     fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
-        Pin::new(&mut self.0).poll(cx)
+        Pin::new(&mut self.0 .0).poll(cx)
     }
 }
