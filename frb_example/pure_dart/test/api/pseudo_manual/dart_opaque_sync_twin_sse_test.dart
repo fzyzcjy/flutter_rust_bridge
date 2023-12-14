@@ -4,10 +4,9 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "syncSse", "rustAsyncSse"]}
 
-@Skip('see https://github.com/dart-lang/sdk/issues/54263')
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/dart_opaque_twin_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/dart_opaque_sync_twin_sse.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/dart_opaque_twin_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 

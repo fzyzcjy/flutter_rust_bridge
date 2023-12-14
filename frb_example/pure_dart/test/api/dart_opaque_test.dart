@@ -1,4 +1,3 @@
-// @Skip('see https://github.com/dart-lang/sdk/issues/54263')
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
