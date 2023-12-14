@@ -1,5 +1,6 @@
 pub mod array;
 pub mod async_misc;
+pub mod async_spawn;
 pub mod attribute;
 pub mod benchmark_api;
 pub mod chrono_type;
