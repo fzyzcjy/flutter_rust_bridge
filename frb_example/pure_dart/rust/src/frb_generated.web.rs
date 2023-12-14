@@ -10348,15 +10348,19 @@ pub fn wire_func_async_void_twin_normal(port_: flutter_rust_bridge::for_generate
 }
 
 #[wasm_bindgen]
-pub fn wire_simple_use_async_spawn(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_simple_use_async_spawn_impl(port_)
+pub fn wire_simple_use_async_spawn(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: String,
+) {
+    wire_simple_use_async_spawn_impl(port_, arg)
 }
 
 #[wasm_bindgen]
 pub fn wire_simple_use_async_spawn_blocking(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: String,
 ) {
-    wire_simple_use_async_spawn_blocking_impl(port_)
+    wire_simple_use_async_spawn_blocking_impl(port_, arg)
 }
 
 #[wasm_bindgen]

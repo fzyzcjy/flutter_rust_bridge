@@ -21239,11 +21239,11 @@ class RustLibWire extends BaseWire {
   void wire_func_async_void_twin_normal(NativePortType port_) =>
       wasmModule.wire_func_async_void_twin_normal(port_);
 
-  void wire_simple_use_async_spawn(NativePortType port_) =>
-      wasmModule.wire_simple_use_async_spawn(port_);
+  void wire_simple_use_async_spawn(NativePortType port_, String arg) =>
+      wasmModule.wire_simple_use_async_spawn(port_, arg);
 
-  void wire_simple_use_async_spawn_blocking(NativePortType port_) =>
-      wasmModule.wire_simple_use_async_spawn_blocking(port_);
+  void wire_simple_use_async_spawn_blocking(NativePortType port_, String arg) =>
+      wasmModule.wire_simple_use_async_spawn_blocking(port_, arg);
 
   void wire_handle_customized_struct_twin_normal(
           NativePortType port_, List<dynamic> val) =>
@@ -30646,9 +30646,10 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_func_async_void_twin_normal(NativePortType port_);
 
-  external void wire_simple_use_async_spawn(NativePortType port_);
+  external void wire_simple_use_async_spawn(NativePortType port_, String arg);
 
-  external void wire_simple_use_async_spawn_blocking(NativePortType port_);
+  external void wire_simple_use_async_spawn_blocking(
+      NativePortType port_, String arg);
 
   external void wire_handle_customized_struct_twin_normal(
       NativePortType port_, List<dynamic> val);

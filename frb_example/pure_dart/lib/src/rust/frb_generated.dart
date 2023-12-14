@@ -287,9 +287,10 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> funcAsyncVoidTwinNormal({dynamic hint});
 
-  Future<void> simpleUseAsyncSpawn({dynamic hint});
+  Future<String> simpleUseAsyncSpawn({required String arg, dynamic hint});
 
-  Future<void> simpleUseAsyncSpawnBlocking({dynamic hint});
+  Future<String> simpleUseAsyncSpawnBlocking(
+      {required String arg, dynamic hint});
 
   Future<void> handleCustomizedStructTwinNormal(
       {required CustomizedTwinNormal val, dynamic hint});
@@ -5201,17 +5202,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> simpleUseAsyncSpawn({dynamic hint}) {
+  Future<String> simpleUseAsyncSpawn({required String arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_simple_use_async_spawn(port_);
+        var arg0 = cst_encode_String(arg);
+        return wire.wire_simple_use_async_spawn(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+        decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
       constMeta: kSimpleUseAsyncSpawnConstMeta,
-      argValues: [],
+      argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
@@ -5219,21 +5221,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kSimpleUseAsyncSpawnConstMeta => const TaskConstMeta(
         debugName: "simple_use_async_spawn",
-        argNames: [],
+        argNames: ["arg"],
       );
 
   @override
-  Future<void> simpleUseAsyncSpawnBlocking({dynamic hint}) {
+  Future<String> simpleUseAsyncSpawnBlocking(
+      {required String arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_simple_use_async_spawn_blocking(port_);
+        var arg0 = cst_encode_String(arg);
+        return wire.wire_simple_use_async_spawn_blocking(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+        decodeSuccessData: dco_decode_String,
         decodeErrorData: null,
       ),
       constMeta: kSimpleUseAsyncSpawnBlockingConstMeta,
-      argValues: [],
+      argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
@@ -5242,7 +5246,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kSimpleUseAsyncSpawnBlockingConstMeta =>
       const TaskConstMeta(
         debugName: "simple_use_async_spawn_blocking",
-        argNames: [],
+        argNames: ["arg"],
       );
 
   @override

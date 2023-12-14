@@ -6,8 +6,9 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> simpleUseAsyncSpawn({dynamic hint}) =>
-    RustLib.instance.api.simpleUseAsyncSpawn(hint: hint);
+Future<String> simpleUseAsyncSpawn({required String arg, dynamic hint}) =>
+    RustLib.instance.api.simpleUseAsyncSpawn(arg: arg, hint: hint);
 
-Future<void> simpleUseAsyncSpawnBlocking({dynamic hint}) =>
-    RustLib.instance.api.simpleUseAsyncSpawnBlocking(hint: hint);
+Future<String> simpleUseAsyncSpawnBlocking(
+        {required String arg, dynamic hint}) =>
+    RustLib.instance.api.simpleUseAsyncSpawnBlocking(arg: arg, hint: hint);

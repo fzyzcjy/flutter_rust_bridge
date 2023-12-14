@@ -302,7 +302,10 @@ fn wire_func_async_void_twin_normal_impl(port_: flutter_rust_bridge::for_generat
         },
     )
 }
-fn wire_simple_use_async_spawn_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
+fn wire_simple_use_async_spawn_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<String> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "simple_use_async_spawn",
@@ -310,10 +313,13 @@ fn wire_simple_use_async_spawn_impl(port_: flutter_rust_bridge::for_generated::M
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
+            let api_arg = arg.cst_decode();
             move |context| async move {
                 transform_result_dco(
                     (move || async move {
-                        Result::<_, ()>::Ok(crate::api::async_spawn::simple_use_async_spawn().await)
+                        Result::<_, ()>::Ok(
+                            crate::api::async_spawn::simple_use_async_spawn(api_arg).await,
+                        )
                     })()
                     .await,
                 )
@@ -323,6 +329,7 @@ fn wire_simple_use_async_spawn_impl(port_: flutter_rust_bridge::for_generated::M
 }
 fn wire_simple_use_async_spawn_blocking_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -331,11 +338,12 @@ fn wire_simple_use_async_spawn_blocking_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
+            let api_arg = arg.cst_decode();
             move |context| async move {
                 transform_result_dco(
                     (move || async move {
                         Result::<_, ()>::Ok(
-                            crate::api::async_spawn::simple_use_async_spawn_blocking().await,
+                            crate::api::async_spawn::simple_use_async_spawn_blocking(api_arg).await,
                         )
                     })()
                     .await,

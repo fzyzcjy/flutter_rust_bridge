@@ -4244,9 +4244,9 @@ void wire_func_async_simple_add_twin_normal(int64_t port_, int32_t a, int32_t b)
 
 void wire_func_async_void_twin_normal(int64_t port_);
 
-void wire_simple_use_async_spawn(int64_t port_);
+void wire_simple_use_async_spawn(int64_t port_, struct wire_cst_list_prim_u_8 *arg);
 
-void wire_simple_use_async_spawn_blocking(int64_t port_);
+void wire_simple_use_async_spawn_blocking(int64_t port_, struct wire_cst_list_prim_u_8 *arg);
 
 void wire_handle_customized_struct_twin_normal(int64_t port_,
                                                struct wire_cst_customized_twin_normal *val);

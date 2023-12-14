@@ -26323,31 +26323,40 @@ class RustLibWire implements BaseWire {
 
   void wire_simple_use_async_spawn(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> arg,
   ) {
     return _wire_simple_use_async_spawn(
       port_,
+      arg,
     );
   }
 
-  late final _wire_simple_use_async_spawnPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_simple_use_async_spawn');
-  late final _wire_simple_use_async_spawn =
-      _wire_simple_use_async_spawnPtr.asFunction<void Function(int)>();
+  late final _wire_simple_use_async_spawnPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_simple_use_async_spawn');
+  late final _wire_simple_use_async_spawn = _wire_simple_use_async_spawnPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
   void wire_simple_use_async_spawn_blocking(
     int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> arg,
   ) {
     return _wire_simple_use_async_spawn_blocking(
       port_,
+      arg,
     );
   }
 
-  late final _wire_simple_use_async_spawn_blockingPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_simple_use_async_spawn_blocking');
+  late final _wire_simple_use_async_spawn_blockingPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_simple_use_async_spawn_blocking');
   late final _wire_simple_use_async_spawn_blocking =
-      _wire_simple_use_async_spawn_blockingPtr.asFunction<void Function(int)>();
+      _wire_simple_use_async_spawn_blockingPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
   void wire_handle_customized_struct_twin_normal(
     int port_,
