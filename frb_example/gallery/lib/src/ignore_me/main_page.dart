@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frb_example_gallery/src/examples/mandelbrot.dart';
-import 'package:frb_example_gallery/src/examples/polars.dart';
-import 'package:frb_example_gallery/src/examples/state.dart';
+import 'package:frb_example_gallery/src/ignore_me/example_page.dart';
 
 class MainPageWidget extends StatelessWidget {
   const MainPageWidget({super.key});
@@ -23,33 +21,36 @@ class MainPageWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _buildButton(
-                  title: 'Polars',
-                  subtitle:
-                      'Example: Use well-developed Rust libraries in Dart',
-                  icon: const Icon(
-                    Icons.folder_outlined,
-                    color: Colors.blue,
+                  page: const ExamplePage(
+                    title: 'Polars',
+                    subtitle:
+                        'Example: Use well-developed Rust libraries in Dart',
+                    icon: Icon(
+                      Icons.folder_outlined,
+                      color: Colors.blue,
+                    ),
                   ),
-                  page: const PolarsPage(),
                 ),
                 _buildButton(
-                  title: 'Mandelbrot',
-                  subtitle: 'Example: Use Rust to write algorithms',
-                  icon: const Icon(
-                    // Icons.query_stats_outlined,
-                    Icons.center_focus_strong_outlined,
-                    color: Colors.green,
+                  page: const ExamplePage(
+                    title: 'Mandelbrot',
+                    subtitle: 'Example: Use Rust to write algorithms',
+                    icon: Icon(
+                      // Icons.query_stats_outlined,
+                      Icons.center_focus_strong_outlined,
+                      color: Colors.green,
+                    ),
                   ),
-                  page: const MandelbrotPage(),
                 ),
                 _buildButton(
-                  title: 'State',
-                  subtitle: 'Example: State in Rust, UI in Dart',
-                  icon: const Icon(
-                    Icons.article_outlined,
-                    color: Colors.cyan,
+                  page: const ExamplePage(
+                    title: 'State',
+                    subtitle: 'Example: State in Rust, UI in Dart',
+                    icon: Icon(
+                      Icons.article_outlined,
+                      color: Colors.cyan,
+                    ),
                   ),
-                  page: const StatePage(),
                 ),
               ],
             ),
@@ -60,10 +61,7 @@ class MainPageWidget extends StatelessWidget {
   }
 
   Widget _buildButton({
-    required String title,
-    required String subtitle,
-    required Widget icon,
-    required Widget page,
+    required ExamplePage page,
   }) {
     return Builder(
       builder: (context) => Expanded(
@@ -80,18 +78,18 @@ class MainPageWidget extends StatelessWidget {
                 children: [
                   IconTheme.merge(
                     data: const IconThemeData(size: 64),
-                    child: icon,
+                    child: page.icon,
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    title,
+                    page.title,
                     style: const TextStyle(fontSize: 20),
                   ),
                   const SizedBox(height: 8),
                   SizedBox(
                     height: 64,
                     child: Text(
-                      subtitle,
+                      page.subtitle,
                       textAlign: TextAlign.center,
                     ),
                   ),

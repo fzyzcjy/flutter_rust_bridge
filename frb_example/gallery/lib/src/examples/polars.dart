@@ -6,6 +6,6 @@ class PolarsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExampleBasePage();
+    return ExamplePage();
   }
 }
