@@ -161,38 +161,40 @@ pub async fn mandelbrot(
 
     let band_rows = bounds.1 / (num_threads as usize) + 1;
 
-    {
-        let bands = Mutex::new(pixels.chunks_mut(band_rows * bounds.0).enumerate());
-        let worker = || loop {
-            match {
-                let mut guard = bands.lock().unwrap();
-                guard.next()
-            } {
-                None => {
-                    return;
-                }
-                Some((i, band)) => {
-                    let top = band_rows * i;
-                    let height = band.len() / bounds.0;
-                    let band_bounds = (bounds.0, height);
-                    let band_upper_left = pixel_to_point(bounds, (0, top), upper_left, lower_right);
-                    let band_lower_right =
-                        pixel_to_point(bounds, (bounds.0, top + height), upper_left, lower_right);
-                    render(band, band_bounds, band_upper_left, band_lower_right);
-                }
-            }
-        };
+    let bands = Mutex::new(pixels.chunks_mut(band_rows * bounds.0).enumerate());
 
-        let mut join_handles = vec![];
-        for _ in 0..num_threads {
-            join_handles.push(spawn_blocking_with(
-                || worker(),
-                FLUTTER_RUST_BRIDGE_HANDLER.thread_pool(),
-            ));
-        }
-
-        try_join_all(join_handles).await?;
+    let mut join_handles = vec![];
+    for _ in 0..num_threads {
+        join_handles.push(spawn_blocking_with(
+            move || loop {
+                match {
+                    let mut guard = bands.lock().unwrap();
+                    guard.next()
+                } {
+                    None => {
+                        return;
+                    }
+                    Some((i, band)) => {
+                        let top = band_rows * i;
+                        let height = band.len() / bounds.0;
+                        let band_bounds = (bounds.0, height);
+                        let band_upper_left =
+                            pixel_to_point(bounds, (0, top), upper_left, lower_right);
+                        let band_lower_right = pixel_to_point(
+                            bounds,
+                            (bounds.0, top + height),
+                            upper_left,
+                            lower_right,
+                        );
+                        render(band, band_bounds, band_upper_left, band_lower_right);
+                    }
+                }
+            },
+            FLUTTER_RUST_BRIDGE_HANDLER.thread_pool(),
+        ));
     }
+
+    try_join_all(join_handles).await?;
 
     write_image(&colorize(&pixels), bounds)
 }
