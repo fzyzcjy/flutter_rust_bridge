@@ -17,8 +17,9 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   var numThreads = 1;
 
   @override
-  void initState() {
-    super.initState();
+  void dispose() {
+    stop();
+    super.dispose();
   }
 
   void start() {
