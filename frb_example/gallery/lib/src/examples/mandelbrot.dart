@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   @override
   void initState() {
     super.initState();
-    runPeriodically(() async {
+    Timer.periodic(const Duration(milliseconds: 500), (_) async {
       final receivedImage = await drawMandelbrot(
         imageSize: const Size(width: 50, height: 50),
         zoomPoint: examplePoint,

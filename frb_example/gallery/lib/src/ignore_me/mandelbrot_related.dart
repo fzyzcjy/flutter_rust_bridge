@@ -93,6 +93,3 @@ double generateScale() {
   if (_scale < 1e-9) _scale = 1.0;
   return _scale;
 }
-
-void runPeriodically(void Function() callback) =>
-    Timer.periodic(const Duration(milliseconds: 500), (timer) => callback());
