@@ -28,35 +28,77 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire_greet_impl(
-    name: impl CstDecode<String> + core::panic::UnwindSafe,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+fn wire_draw_mandelbrot_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    image_size: impl CstDecode<crate::api::simple::Size> + core::panic::UnwindSafe,
+    zoom_point: impl CstDecode<crate::api::simple::Point> + core::panic::UnwindSafe,
+    scale: impl CstDecode<f64> + core::panic::UnwindSafe,
+    num_threads: impl CstDecode<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "greet",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+            debug_name: "draw_mandelbrot",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_name = name.cst_decode();
-            transform_result_dco((move || {
-                Result::<_, ()>::Ok(crate::api::simple::greet(api_name))
-            })())
+            let api_image_size = image_size.cst_decode();
+            let api_zoom_point = zoom_point.cst_decode();
+            let api_scale = scale.cst_decode();
+            let api_num_threads = num_threads.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    crate::api::simple::draw_mandelbrot(
+                        api_image_size,
+                        api_zoom_point,
+                        api_scale,
+                        api_num_threads,
+                    )
+                })())
+            }
         },
     )
 }
 
 // Section: dart2rust
 
+impl CstDecode<f64> for f64 {
+    fn cst_decode(self) -> f64 {
+        self
+    }
+}
+impl CstDecode<i32> for i32 {
+    fn cst_decode(self) -> i32 {
+        self
+    }
+}
 impl CstDecode<u8> for u8 {
     fn cst_decode(self) -> u8 {
         self
     }
 }
+impl SseDecode for anyhow::Error {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
+    }
+}
+
 impl SseDecode for String {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <Vec<u8>>::sse_decode(deserializer);
         return String::from_utf8(inner).unwrap();
+    }
+}
+
+impl SseDecode for f64 {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_f64::<NativeEndian>().unwrap()
+    }
+}
+
+impl SseDecode for i32 {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
     }
 }
 
@@ -71,19 +113,28 @@ impl SseDecode for Vec<u8> {
     }
 }
 
-impl SseDecode for u8 {
+impl SseDecode for crate::api::simple::Point {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_u8().unwrap()
+        let mut var_x = <f64>::sse_decode(deserializer);
+        let mut var_y = <f64>::sse_decode(deserializer);
+        return crate::api::simple::Point { x: var_x, y: var_y };
     }
 }
 
-impl SseDecode for () {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {}
+impl SseDecode for crate::api::simple::Size {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_width = <i32>::sse_decode(deserializer);
+        let mut var_height = <i32>::sse_decode(deserializer);
+        return crate::api::simple::Size {
+            width: var_width,
+            height: var_height,
+        };
+    }
 }
 
-impl SseDecode for i32 {
+impl SseDecode for u8 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
+        deserializer.cursor.read_u8().unwrap()
     }
 }
 
@@ -95,9 +146,58 @@ impl SseDecode for bool {
 
 // Section: rust2dart
 
+impl flutter_rust_bridge::IntoDart for crate::api::simple::Point {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::simple::Point {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::simple::Point> for crate::api::simple::Point {
+    fn into_into_dart(self) -> crate::api::simple::Point {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::simple::Size {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.width.into_into_dart().into_dart(),
+            self.height.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::simple::Size {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::simple::Size> for crate::api::simple::Size {
+    fn into_into_dart(self) -> crate::api::simple::Size {
+        self
+    }
+}
+
+impl SseEncode for anyhow::Error {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(format!("{:?}", self), serializer);
+    }
+}
+
 impl SseEncode for String {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<u8>>::sse_encode(self.into_bytes(), serializer);
+    }
+}
+
+impl SseEncode for f64 {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_f64::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode for i32 {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
     }
 }
 
@@ -110,19 +210,23 @@ impl SseEncode for Vec<u8> {
     }
 }
 
-impl SseEncode for u8 {
+impl SseEncode for crate::api::simple::Point {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_u8(self).unwrap();
+        <f64>::sse_encode(self.x, serializer);
+        <f64>::sse_encode(self.y, serializer);
     }
 }
 
-impl SseEncode for () {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {}
+impl SseEncode for crate::api::simple::Size {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.width, serializer);
+        <i32>::sse_encode(self.height, serializer);
+    }
 }
 
-impl SseEncode for i32 {
+impl SseEncode for u8 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
+        serializer.cursor.write_u8(self).unwrap();
     }
 }
 
