@@ -15,7 +15,7 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
   Uint8List? image;
   Duration? computeTime;
   SimpleRunner? runner;
-  var size = 300.0;
+  var size = 150.0;
   var numThreads = 1;
 
   @override
