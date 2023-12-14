@@ -1,4 +1,4 @@
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "syncSse", "rustAsyncSse"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "syncSse", "rustAsyncSse"]}
 
 import 'package:frb_example_pure_dart/src/rust/api/async_spawn.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';

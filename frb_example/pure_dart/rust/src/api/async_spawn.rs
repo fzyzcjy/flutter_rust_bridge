@@ -1,4 +1,4 @@
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "syncSse", "rustAsyncSse"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "syncSse", "rustAsyncSse"]}
 
 pub async fn simple_use_async_spawn(arg: String) -> String {
     // ref demo in https://docs.rs/tokio/latest/tokio/task/fn.spawn.html
