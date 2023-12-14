@@ -51,6 +51,7 @@ pub fn read_sample_dataset() -> DataFrame {
     DataFrame(polars_related::create_df_iris())
 }
 
+// Instead of opaque, we can also use the translatable types mode
 #[frb(opaque)]
 pub struct Expr(polars_lazy::prelude::Expr);
 
