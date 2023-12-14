@@ -4,6 +4,7 @@
 //! https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs and
 //! https://github.com/Ducolnd/rust-mandelbrot/blob/master/src/main.rs
 
+use std::panic::AssertUnwindSafe;
 use std::sync::{Arc, Mutex};
 
 use anyhow::*;
@@ -182,7 +183,7 @@ pub async fn mandelbrot(
         ));
     }
 
-    let bands_arr = try_join_all(join_handles).await?;
+    let bands_arr = AssertUnwindSafe(try_join_all(join_handles)).await?;
     let pixels = bands_arr.concat();
 
     write_image(&colorize(&pixels), bounds)
