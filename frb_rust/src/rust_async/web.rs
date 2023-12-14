@@ -1,6 +1,8 @@
 use futures::channel::oneshot;
 use std::future::Future;
 use std::panic::RefUnwindSafe;
+use std::pin::Pin;
+use std::task::{Context, Poll};
 
 pub trait BaseAsyncRuntime: RefUnwindSafe {
     fn spawn<F>(&self, future: F)
@@ -50,4 +52,16 @@ where
     todo!()
 }
 
+// ref: async-std uses naive futures_channel::oneshot::Receiver
+// in the JoinHandle
+// https://github.com/async-rs/async-std/blob/8fea0500990c9d8977cbeef55bc9003cca39abc8/src/task/join_handle.rs#L23
 pub struct JoinHandle<T>(oneshot::Receiver<T>);
+
+impl<T> Future for JoinHandle<T> {
+    // tokio uses `super::Result<T>`
+    type Output = anyhow::Result<T>;
+
+    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
+        self.0.poll(cx)
+    }
+}
