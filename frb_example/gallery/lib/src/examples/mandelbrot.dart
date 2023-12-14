@@ -12,24 +12,22 @@ class MandelbrotPageBody extends StatefulWidget {
 }
 
 class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
-  Uint8List? exampleImage;
+  Uint8List? image;
 
   @override
   void initState() {
     super.initState();
-    runPeriodically(_callExampleFfiOne);
+    runPeriodically(() async {
+      final receivedImage = await drawMandelbrot(
+        imageSize: const Size(width: 50, height: 50),
+        zoomPoint: examplePoint,
+        scale: generateScale(),
+        numThreads: 4,
+      );
+      if (mounted) setState(() => image = receivedImage);
+    });
   }
 
   @override
-  Widget build(BuildContext context) => buildPageUi(exampleImage);
-
-  Future<void> _callExampleFfiOne() async {
-    final receivedImage = await drawMandelbrot(
-      imageSize: const Size(width: 50, height: 50),
-      zoomPoint: examplePoint,
-      scale: generateScale(),
-      numThreads: 4,
-    );
-    if (mounted) setState(() => exampleImage = receivedImage);
-  }
+  Widget build(BuildContext context) => buildPageUi(image);
 }
