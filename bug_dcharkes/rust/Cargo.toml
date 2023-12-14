@@ -1,0 +1,16 @@
+[package]
+name = "frb_example_dart_minimal"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[workspace]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+dart-sys = { version = "4.0.2" }
+
+[build-dependencies]
+cbindgen = "0.26.0"
