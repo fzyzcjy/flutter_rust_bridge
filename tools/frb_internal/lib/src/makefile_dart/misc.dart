@@ -58,6 +58,7 @@ Future<void> precommit(PrecommitConfig config) async {
     await pubGetAll();
 
     await generateInternal(const GenerateConfig(setExitIfChanged: false));
+   
     for (final package in kDartExamplePackages) {
       await generateRunFrbCodegenCommandGenerate(
           GeneratePackageConfig(setExitIfChanged: false, package: package));
