@@ -43,6 +43,10 @@ impl DartOpaqueNonClone {
     pub(super) fn create_dart_handle(&self) -> GeneralizedDartHandle {
         (self.persistent_handle.as_ref().unwrap().as_ref()).create_dart_handle()
     }
+
+    pub(crate) fn dart_handler_port(&self) -> &SendableMessagePortHandle {
+        &self.dart_handler_port
+    }
 }
 
 impl Drop for DartOpaqueNonClone {

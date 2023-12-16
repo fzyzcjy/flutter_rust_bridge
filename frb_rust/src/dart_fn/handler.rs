@@ -32,13 +32,13 @@ impl DartFnHandler {
         dart_fn: DartOpaque,
         args: Vec<DartAbi>,
     ) -> DartFnFuture<Dart2RustMessageSse> {
-        let invoke_port = TODO;
+        let dart_handler_port = dart_fn.dart_handler_port();
 
         let call_id = self.next_call_id.fetch_add(1, Ordering::Relaxed);
         let (sender, receiver) = oneshot::channel::<Dart2RustMessageSse>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
 
-        let sender = Rust2DartSender::new(Channel::new(handle_to_message_port(&invoke_port)));
+        let sender = Rust2DartSender::new(Channel::new(handle_to_message_port(&dart_handler_port)));
         let msg = {
             let mut ans = vec![dart_fn.into_dart(), call_id.into_dart()];
             ans.extend(args);

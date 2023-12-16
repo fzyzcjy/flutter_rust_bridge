@@ -59,6 +59,10 @@ impl DartOpaque {
             arc: Arc::from_raw(raw as _),
         }
     }
+
+    pub(crate) fn dart_handler_port(&self) -> &SendableMessagePortHandle {
+        self.arc.dart_handler_port()
+    }
 }
 
 impl Clone for DartOpaque {
