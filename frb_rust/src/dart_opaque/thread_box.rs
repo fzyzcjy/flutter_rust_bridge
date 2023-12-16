@@ -14,8 +14,7 @@ use std::thread::ThreadId;
 ///
 /// Therefore, even though it is `Send`/`Sync` among threads,
 /// it is just a blackbox on all other threads, so we are safe.
-// TODO this comment is for thread_id
-/// The ID of the thread on which it was created.
+pub struct ThreadBox<T>(GuardedBox<T, ThreadGuard>);
 
 /// # Safety
 ///
