@@ -19,7 +19,7 @@ abstract class BaseApiImpl<W extends BaseWire> implements BaseApi {
   final GeneralizedFrbRustBinding generalizedFrbRustBinding;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  final PortManager portManager;
+  final DartHandlerPortManager portManager;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   BaseApiImpl({
@@ -36,5 +36,5 @@ typedef ApiImplConstructor<A extends BaseApiImpl, W extends BaseWire> = A
   required BaseHandler handler,
   required W wire,
   required GeneralizedFrbRustBinding generalizedFrbRustBinding,
-  required PortManager portManager,
+  required DartHandlerPortManager portManager,
 });

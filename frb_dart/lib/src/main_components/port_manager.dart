@@ -3,29 +3,23 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:flutter_rust_bridge/src/misc/dart_fn.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
+import 'package:flutter_rust_bridge/src/utils/base_lazy_port_manager.dart';
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-class PortManager {
-  final DartOpaqueDropPortManager _dartOpaqueDropPortManager;
-  final DartFnInvokePortManager _dartFnInvokePortManager;
+/// {@macro flutter_rust_bridge.internal}
+class DartHandlerPortManager extends BaseLazyPortManager {
+  final GeneralizedFrbRustBinding _generalizedFrbRustBinding;
+  final BaseHandler _handler;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  PortManager(
-      GeneralizedFrbRustBinding generalizedFrbRustBinding, BaseHandler handler)
-      : _dartOpaqueDropPortManager =
-            DartOpaqueDropPortManager(generalizedFrbRustBinding),
-        _dartFnInvokePortManager =
-            DartFnInvokePortManager(handler, generalizedFrbRustBinding);
+  /// {@macro flutter_rust_bridge.internal}
+  DartHandlerPortManager(this._generalizedFrbRustBinding, this._handler);
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  NativePortType get dartOpaqueDropPort => _dartOpaqueDropPortManager.port;
+  @override
+  void onData(Object? message) {
+    TODO;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  NativePortType get dartFnInvokePort => _dartFnInvokePortManager.port;
+    // TODO drop port
+    // _generalizedFrbRustBinding.dartOpaqueDropThreadBoxPersistentHandle(message)
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void dispose() {
-    _dartOpaqueDropPortManager.dispose();
-    _dartFnInvokePortManager.dispose();
+    // TODO invoke port
   }
 }
