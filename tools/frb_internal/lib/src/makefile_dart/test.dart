@@ -105,8 +105,10 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
       'cargo ${effectiveEnableCoverage ? "llvm-cov --lcov --output-path lcov.info" : "test"}',
       relativePwd: package,
       extraEnv: {
-        // Because we have another CI to run the codegen and check outputs
-        'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
+        // If we are doing codecov, then we need to enable all tests;
+        // otherwise, we can rely on other CIs to check code generation
+        // and skip this heavy test.
+        if (!effectiveEnableCoverage) 'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
         if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
         ...kEnvEnableRustBacktrace,
       });
