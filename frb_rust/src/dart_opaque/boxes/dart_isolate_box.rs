@@ -19,7 +19,7 @@ impl<T: Debug> DartIsolateBox<T> {
 
 #[delegate(self.0)]
 impl<T: Debug> DartIsolateBox<T> {
-    pub fn check_guard(&self) -> bool {}
+    pub fn check_context(&self) -> bool {}
 
     pub fn into_inner(self) -> T {}
 }
