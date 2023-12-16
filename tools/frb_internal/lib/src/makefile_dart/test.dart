@@ -219,4 +219,4 @@ Future<void> testFlutterWeb(TestDartConfig config) async {
 
 Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
 
-const kEnvEnableRustBacktrace = {'RUST_BACKTRACE': '1'};
+const kEnvEnableRustBacktrace = {'RUST_BACKTRACE': 'full'};
