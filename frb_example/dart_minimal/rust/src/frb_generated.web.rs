@@ -20,16 +20,9 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl CstDecode<flutter_rust_bridge::DartOpaque>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
+impl CstDecode<flutter_rust_bridge::DartOpaque> for usize {
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe {
-            flutter_rust_bridge::for_generated::cst_decode_dart_opaque(
-                &*FLUTTER_RUST_BRIDGE_HANDLER,
-                self,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::decode_dart_opaque(self as _) }
     }
 }
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -61,18 +54,12 @@ pub fn dart_fn_deliver_output(
 }
 
 #[wasm_bindgen]
-pub fn wire_hi_1(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
+pub fn wire_hi_1(port_: flutter_rust_bridge::for_generated::MessagePort, callback: usize) {
     wire_hi_1_impl(port_, callback)
 }
 
 #[wasm_bindgen]
-pub fn wire_hi_2(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
+pub fn wire_hi_2(port_: flutter_rust_bridge::for_generated::MessagePort, opaque: usize) {
     wire_hi_2_impl(port_, opaque)
 }
 

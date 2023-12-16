@@ -12,7 +12,7 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::decode_dart_opaque(self as _) }
     }
 }
 pub trait NewWithNullPtr {

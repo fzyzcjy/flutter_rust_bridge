@@ -24,7 +24,7 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
             match lang {
                 Lang::DartLang(_) => "decodeDartOpaque(inner, generalizedFrbRustBinding)",
                 Lang::RustLang(_) => {
-                    "unsafe { flutter_rust_bridge::for_generated::sse_decode_dart_opaque(inner) }"
+                    "unsafe { flutter_rust_bridge::for_generated::decode_dart_opaque(inner) }"
                 }
             },
         ))
