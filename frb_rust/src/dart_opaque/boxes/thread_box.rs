@@ -1,4 +1,4 @@
-use crate::dart_opaque::guarded_box::{GuardedBox, GuardedBoxGuard};
+use crate::dart_opaque::boxes::guarded_box::{GuardedBox, GuardedBoxGuard};
 use log::warn;
 use std::fmt::{Debug, Formatter};
 use std::thread::ThreadId;

@@ -1,4 +1,4 @@
-use super::thread_box::ThreadBox;
+use super::boxes::thread_box::ThreadBox;
 use super::{GeneralizedAutoDropDartPersistentHandle, GeneralizedDartHandle};
 use crate::dart_opaque::action::DartHandlerPortAction;
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
