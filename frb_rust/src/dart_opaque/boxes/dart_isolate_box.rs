@@ -1,9 +1,7 @@
 use crate::dart_opaque::auto_drop_dart_persistent_handle::AutoDropDartPersistentHandle;
 use crate::dart_opaque::boxes::guarded_box::{GuardedBox, GuardedBoxContext};
 use delegate_attr::delegate;
-use log::warn;
-use std::fmt::{Debug, Formatter};
-use std::thread::ThreadId;
+use std::fmt::Debug;
 
 /// Only allows manipulation of inner value at the Dart Isolate which it is created.
 /// See the documentation of [GuardedBox] for more details.
@@ -11,6 +9,7 @@ use std::thread::ThreadId;
 pub struct DartIsolateBox<T: Debug>(GuardedBox<T, GuardedBoxContextDartIsolate>);
 
 impl<T: Debug> DartIsolateBox<T> {
+    #[allow(unused)]
     pub fn new(inner: T) -> Self {
         Self(GuardedBox::new(inner))
     }

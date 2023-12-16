@@ -1,7 +1,6 @@
 use crate::dart_opaque::boxes::guarded_box::{GuardedBox, GuardedBoxContext};
 use delegate_attr::delegate;
-use log::warn;
-use std::fmt::{Debug, Formatter};
+use std::fmt::Debug;
 use std::thread::ThreadId;
 
 /// Only allows manipulation of the inner value at the thread which it is created.
@@ -10,6 +9,7 @@ use std::thread::ThreadId;
 pub struct ThreadBox<T: Debug>(GuardedBox<T, GuardedBoxContextThread>);
 
 impl<T: Debug> ThreadBox<T> {
+    #[allow(unused)]
     pub fn new(inner: T) -> Self {
         Self(GuardedBox::new(inner))
     }

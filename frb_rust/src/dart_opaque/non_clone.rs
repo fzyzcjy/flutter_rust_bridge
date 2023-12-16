@@ -1,4 +1,3 @@
-use super::boxes::thread_box::ThreadBox;
 use super::{
     GeneralizedAutoDropDartPersistentHandle, GeneralizedDartHandle, GeneralizedDartHandleBox,
 };
