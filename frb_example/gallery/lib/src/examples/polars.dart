@@ -56,15 +56,11 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
               ),
             ],
           ),
-          _buildOutputSection(),
+          _outputTable == null
+              ? const SizedBox()
+              : SimpleTableWidget(data: _outputTable!),
         ],
       ),
     );
-  }
-
-  Widget _buildOutputSection() {
-    return _outputTable == null
-        ? const SizedBox()
-        : SimpleTableWidget(data: _outputTable!);
   }
 }
