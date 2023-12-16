@@ -50,7 +50,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
-    return wire.dart_opaque_dart2rust_encode(raw);
+    return wire.dart_opaque_dart2rust_encode(raw, TODO);
   }
 
   @protected
@@ -187,17 +187,20 @@ class RustLibWire implements BaseWire {
 
   ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
     Object handle,
+    int drop_port,
   ) {
     return _dart_opaque_dart2rust_encode(
       handle,
+      drop_port,
     );
   }
 
-  late final _dart_opaque_dart2rust_encodePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
-          'dart_opaque_dart2rust_encode');
+  late final _dart_opaque_dart2rust_encodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Handle, ffi.Int64)>>('dart_opaque_dart2rust_encode');
   late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
-      .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
+      .asFunction<ffi.Pointer<ffi.Void> Function(Object, int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();

@@ -21,7 +21,7 @@ void wire_hi_2(int64_t port_, const void *opaque);
 
 void wire_minimal_adder(int64_t port_, int32_t a, int32_t b);
 
-const void *dart_opaque_dart2rust_encode(Dart_Handle handle);
+const void *dart_opaque_dart2rust_encode(Dart_Handle handle, int64_t drop_port);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) dart_fn_deliver_output);

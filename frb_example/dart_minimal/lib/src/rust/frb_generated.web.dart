@@ -104,8 +104,9 @@ class RustLibWire extends BaseWire {
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
 
-  dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle) =>
-      wasmModule.dart_opaque_dart2rust_encode(handle);
+  dynamic /* usize */ dart_opaque_dart2rust_encode(
+          Object handle, Object drop_port) =>
+      wasmModule.dart_opaque_dart2rust_encode(handle, drop_port);
 }
 
 @JS('wasm_bindgen')
@@ -129,5 +130,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 
-  external dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle);
+  external dynamic /* usize */ dart_opaque_dart2rust_encode(
+      Object handle, Object drop_port);
 }

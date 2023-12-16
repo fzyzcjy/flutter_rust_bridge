@@ -238,7 +238,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_DartOpaque(Object self, SseSerializer serializer) {
     sse_encode_usize(
-        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
+        PlatformPointerUtil.ptrToInt(
+            wire.dart_opaque_dart2rust_encode(self, TODO)),
         serializer);
   }
 
