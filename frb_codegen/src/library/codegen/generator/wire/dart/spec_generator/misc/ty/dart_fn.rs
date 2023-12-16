@@ -12,7 +12,7 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
         let num_params = self.ir.inputs.len();
         let raw_parameter_names = (0..num_params).map(|i| format!("rawArg{i}")).join(", ");
         let parameter_names = (0..num_params).map(|i| format!("arg{i}")).join(", ");
-        let repeated_dynamics = (0..num_params).map(|i| format!("dynamic")).join(", ");
+        let repeated_dynamics = (0..num_params).map(|_i| "dynamic".to_string()).join(", ");
         let decode_block = (self.ir.inputs.iter().enumerate())
             .map(|(i, ty)| {
                 format!(

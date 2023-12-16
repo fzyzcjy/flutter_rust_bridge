@@ -1,8 +1,8 @@
 use crate::codegen::config::internal_config::ControllerInternalConfig;
 use crate::utils::path_utils::path_to_string;
 use itertools::Itertools;
-use log::{debug, info, warn};
-use notify::{Event, FsEventWatcher, RecommendedWatcher, RecursiveMode, Watcher};
+use log::{debug, warn};
+use notify::{RecommendedWatcher, RecursiveMode, Watcher};
 use notify_debouncer_mini::{new_debouncer, DebounceEventResult, Debouncer};
 use std::path::PathBuf;
 use std::sync::mpsc::Receiver;
@@ -41,7 +41,7 @@ fn run_watch(
         // If `recv` call ends, then we see at least one change
         fs_change_rx.recv()?;
         // Drain all other file changes
-        while let Ok(_) = fs_change_rx.try_recv() {}
+        while fs_change_rx.try_recv().is_ok() {}
     }
 }
 

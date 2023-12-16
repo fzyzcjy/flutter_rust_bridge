@@ -50,7 +50,7 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     let ir_pack = parser::parse(
         &internal_config.parser,
         &mut cached_rust_reader,
-        &dumper,
+        dumper,
         &progress_bar_pack,
     )?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
@@ -60,7 +60,7 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     let generator_output = generator::generate(
         &ir_pack,
         &internal_config.generator,
-        &dumper,
+        dumper,
         &progress_bar_pack,
     )?;
     drop(pb);

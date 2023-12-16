@@ -1,9 +1,9 @@
 use super::DartFnFuture;
 use crate::codec::sse::Dart2RustMessageSse;
-use crate::for_generated::SseDeserializer;
+
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::platform_types::{
-    handle_to_message_port, DartAbi, PlatformGeneralizedUint8ListPtr, SendableMessagePortHandle,
+    handle_to_message_port, DartAbi, SendableMessagePortHandle,
 };
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::DartOpaque;
@@ -14,7 +14,7 @@ use log::warn;
 use std::collections::HashMap;
 use std::panic;
 use std::panic::AssertUnwindSafe;
-use std::pin::Pin;
+
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Mutex;
 

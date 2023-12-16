@@ -31,7 +31,6 @@ pub(crate) fn generate(
             .filter_map(|ty| {
                 WireRustCodecCstGenerator::new(ty.clone(), context).generate_decoder_class()
             })
-            .map(|x| x.into())
             .collect(),
     );
     inner += Acc::new_io(generate_impl_new_with_nullptr(types, context));

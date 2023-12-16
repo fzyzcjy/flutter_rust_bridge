@@ -1,5 +1,5 @@
 use crate::codegen::parser::source_graph::modules::{Enum, Module, Struct};
-use log::{debug, warn};
+use log::{debug};
 use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;

@@ -87,15 +87,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire extends BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void frb_initialize_rust(NativePortType dart_opaque_drop_port,
-          NativePortType dart_fn_invoke_port) =>
+  @override
+  void frb_initialize_rust(NativePortType dartOpaqueDropPort,
+          NativePortType dartFnInvokePort) =>
       wasmModule.frb_initialize_rust(
-          dart_opaque_drop_port, dart_fn_invoke_port);
+          dartOpaqueDropPort, dartFnInvokePort);
 
-  void dart_fn_deliver_output(int call_id, PlatformGeneralizedUint8ListPtr ptr_,
+  void dart_fn_deliver_output(int callId, PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_) =>
       wasmModule.dart_fn_deliver_output(
-          call_id, ptr_, rust_vec_len_, data_len_);
+          callId, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_greet(String name) => wasmModule.wire_greet(name);
@@ -114,9 +115,9 @@ class RustLibWasmModule implements WasmModule {
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
   external void frb_initialize_rust(
-      NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
+      NativePortType dartOpaqueDropPort, NativePortType dartFnInvokePort);
 
-  external void dart_fn_deliver_output(int call_id,
+  external void dart_fn_deliver_output(int callId,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */

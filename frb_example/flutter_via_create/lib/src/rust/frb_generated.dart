@@ -90,90 +90,108 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["name"],
       );
 
+  @override
   @protected
   String dco_decode_String(dynamic raw) {
     return raw as String;
   }
 
+  @override
   @protected
   Uint8List dco_decode_list_prim_u_8(dynamic raw) {
     return raw as Uint8List;
   }
 
+  @override
   @protected
   int dco_decode_u_8(dynamic raw) {
     return raw as int;
   }
 
+  @override
   @protected
   void dco_decode_unit(dynamic raw) {
     return;
   }
 
+  @override
   @protected
   String sse_decode_String(SseDeserializer deserializer) {
     var inner = sse_decode_list_prim_u_8(deserializer);
     return utf8.decoder.convert(inner);
   }
 
+  @override
   @protected
   Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint8List(len_);
   }
 
+  @override
   @protected
   int sse_decode_u_8(SseDeserializer deserializer) {
     return deserializer.buffer.getUint8();
   }
 
+  @override
   @protected
   void sse_decode_unit(SseDeserializer deserializer) {}
 
+  @override
   @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
+  @override
   @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
     return deserializer.buffer.getUint8() != 0;
   }
 
+  @override
   @protected
   int cst_encode_u_8(int raw) {
     return raw;
   }
 
+  @override
   @protected
   void cst_encode_unit(void raw) {
     return raw;
   }
 
+  @override
   @protected
   void sse_encode_String(String self, SseSerializer serializer) {
     sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
   }
 
+  @override
   @protected
   void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
   }
 
+  @override
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer) {
     serializer.buffer.putUint8(self);
   }
 
+  @override
   @protected
   void sse_encode_unit(void self, SseSerializer serializer) {}
 
+  @override
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
+  @override
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {
     serializer.buffer.putUint8(self ? 1 : 0);

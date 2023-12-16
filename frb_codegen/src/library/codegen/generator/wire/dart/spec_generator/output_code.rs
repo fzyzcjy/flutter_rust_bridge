@@ -91,7 +91,7 @@ impl WireDartOutputCode {
         };
 
         let api_impl_class_methods = api_impl_class_methods
-            .into_iter()
+            .iter()
             .map(|method| {
                 let DartApiImplClassMethod { signature, body } = method;
                 format!(

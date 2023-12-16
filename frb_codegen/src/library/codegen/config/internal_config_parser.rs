@@ -5,7 +5,7 @@ use crate::codegen::config::internal_config::{
 };
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
+use crate::codegen::generator::misc::target::{TargetOrCommonMap};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::{
     DartOutputClassNamePack, GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
@@ -21,7 +21,7 @@ use crate::utils::path_utils::{
     canonicalize_with_error_message, find_dart_package_dir, find_rust_crate_dir, glob_path,
     path_to_string,
 };
-use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
+
 use anyhow::{ensure, Context, Result};
 use itertools::Itertools;
 use log::debug;

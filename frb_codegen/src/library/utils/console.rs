@@ -50,7 +50,7 @@ fn create_simple_progress_bar(message: String, level: usize) -> ProgressBar {
         .with_key("my_elapsed", |state: &ProgressState, w: &mut dyn Write| {
             write!(w, "[{:.1}s]", state.elapsed().as_secs_f64()).unwrap()
         })
-        .with_key("level", move |state: &ProgressState, w: &mut dyn Write| {
+        .with_key("level", move |_state: &ProgressState, w: &mut dyn Write| {
             if level > 0 {
                 write!(w, "  └{} ", "──".repeat(level)).unwrap();
             }

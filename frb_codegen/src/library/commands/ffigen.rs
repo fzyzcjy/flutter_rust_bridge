@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::io::Write;
 use std::path::{Path, PathBuf};
-use std::process::Output;
+
 use std::str::FromStr;
 
 pub(crate) struct FfigenArgs<'a> {
@@ -85,8 +85,8 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
 
     if let Some(warning) = handle_output(
         res.status.success(),
-        &String::from_utf8_lossy(&res.stdout).into_owned(),
-        &String::from_utf8_lossy(&res.stderr).into_owned(),
+        &String::from_utf8_lossy(&res.stdout),
+        &String::from_utf8_lossy(&res.stderr),
     )? {
         warn!("{}", warning);
     }
@@ -114,7 +114,7 @@ fn handle_output(
     let nullability_message = "missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [Nullability Issue]";
 
     let severe_lines = stdout
-        .split("\n")
+        .split('\n')
         .filter(|line| {
             line.contains("[SEVERE]")
                 && !line.contains("Total errors/warnings")

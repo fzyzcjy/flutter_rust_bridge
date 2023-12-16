@@ -3,7 +3,7 @@
 use crate::api::benchmark_api::benchmark_input_bytes_twin_normal;
 use byteorder::{BigEndian, WriteBytesExt};
 use flutter_rust_bridge::for_generated::{
-    new_leak_vec_ptr, vec_from_leak_ptr, Channel, MessagePort,
+    new_leak_vec_ptr, vec_from_leak_ptr, Channel,
 };
 use flutter_rust_bridge::{IntoDart, ZeroCopyBuffer};
 use std::io::Cursor;

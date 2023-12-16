@@ -3,8 +3,8 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::handler::DartFnHandler;
 use crate::dart_fn::DartFnFuture;
-use crate::for_generated::SseDeserializer;
-use crate::generalized_isolate::Channel;
+
+
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -15,14 +15,14 @@ use crate::handler::implementation::error_listener::{
 };
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::platform_types::SendableMessagePortHandle;
-use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr};
-use crate::rust2dart::sender::Rust2DartSender;
+use crate::platform_types::{DartAbi};
+
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use crate::DartOpaque;
-use futures::channel::oneshot::Sender;
+
 use log::warn;
-use std::collections::HashMap;
+
 use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;

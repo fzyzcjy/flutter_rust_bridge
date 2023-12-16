@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use cbindgen::ExportConfig;
+
 use itertools::Itertools;
 use serde::Serialize;
 

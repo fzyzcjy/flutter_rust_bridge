@@ -356,20 +356,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire extends BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void frb_initialize_rust(NativePortType dart_opaque_drop_port,
-          NativePortType dart_fn_invoke_port) =>
+  @override
+  void frb_initialize_rust(NativePortType dartOpaqueDropPort,
+          NativePortType dartFnInvokePort) =>
       wasmModule.frb_initialize_rust(
-          dart_opaque_drop_port, dart_fn_invoke_port);
+          dartOpaqueDropPort, dartFnInvokePort);
 
-  void dart_fn_deliver_output(int call_id, PlatformGeneralizedUint8ListPtr ptr_,
+  void dart_fn_deliver_output(int callId, PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_) =>
       wasmModule.dart_fn_deliver_output(
-          call_id, ptr_, rust_vec_len_, data_len_);
+          callId, ptr_, rust_vec_len_, data_len_);
 
-  void wire_draw_mandelbrot(NativePortType port_, List<dynamic> image_size,
-          List<dynamic> zoom_point, double scale, int num_threads) =>
+  void wire_draw_mandelbrot(NativePortType port_, List<dynamic> imageSize,
+          List<dynamic> zoomPoint, double scale, int numThreads) =>
       wasmModule.wire_draw_mandelbrot(
-          port_, image_size, zoom_point, scale, num_threads);
+          port_, imageSize, zoomPoint, scale, numThreads);
 
   void wire_DataFrame_get_column(
           NativePortType port_, Object that, String name) =>
@@ -473,17 +474,17 @@ class RustLibWasmModule implements WasmModule {
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
   external void frb_initialize_rust(
-      NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
+      NativePortType dartOpaqueDropPort, NativePortType dartFnInvokePort);
 
-  external void dart_fn_deliver_output(int call_id,
+  external void dart_fn_deliver_output(int callId,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_draw_mandelbrot(
       NativePortType port_,
-      List<dynamic> image_size,
-      List<dynamic> zoom_point,
+      List<dynamic> imageSize,
+      List<dynamic> zoomPoint,
       double scale,
-      int num_threads);
+      int numThreads);
 
   external void wire_DataFrame_get_column(
       NativePortType port_, Object that, String name);

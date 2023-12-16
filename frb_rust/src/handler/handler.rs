@@ -2,10 +2,10 @@ use crate::codec::sse::Dart2RustMessageSse;
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::DartFnFuture;
-use crate::for_generated::SseDeserializer;
+
 use crate::platform_types::SendableMessagePortHandle;
 use crate::platform_types::{message_port_to_handle, DartAbi};
-use crate::platform_types::{MessagePort, PlatformGeneralizedUint8ListPtr};
+use crate::platform_types::{MessagePort};
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::DartOpaque;
 use std::future::Future;

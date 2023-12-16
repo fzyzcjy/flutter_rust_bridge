@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::sse::ty::delegate::{
-    simple_delegate_decode, simple_delegate_encode,
+    simple_delegate_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
 
@@ -14,7 +14,7 @@ impl<'a> CodecSseTyTrait for DartFnCodecSseTy<'a> {
         })
     }
 
-    fn generate_decode(&self, lang: &Lang) -> Option<String> {
+    fn generate_decode(&self, _lang: &Lang) -> Option<String> {
         None
     }
 }
