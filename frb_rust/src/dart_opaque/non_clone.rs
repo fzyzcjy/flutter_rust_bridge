@@ -12,16 +12,19 @@ pub(super) struct DartOpaqueNonClone {
     persistent_handle: Option<ThreadBox<GeneralizedAutoDropDartPersistentHandle>>,
 
     /// The port to drop object (when we cannot drop in current thread)
-    drop_port: SendableMessagePortHandle,
+    dart_handler_port: SendableMessagePortHandle,
 }
 
 impl DartOpaqueNonClone {
-    pub(super) fn new(handle: GeneralizedDartHandle, drop_port: SendableMessagePortHandle) -> Self {
+    pub(super) fn new(
+        handle: GeneralizedDartHandle,
+        dart_handler_port: SendableMessagePortHandle,
+    ) -> Self {
         let auto_drop_persistent_handle =
             GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
         Self {
             persistent_handle: Some(ThreadBox::new(auto_drop_persistent_handle)),
-            drop_port,
+            dart_handler_port,
         }
     }
 
@@ -47,7 +50,10 @@ impl Drop for DartOpaqueNonClone {
         if let Some(persistent_handle) = self.persistent_handle.take() {
             // If we forget to do so, ThreadBox will panic because it requires things to be dropped on creation thread
             if !persistent_handle.is_on_creation_thread() {
-                drop_thread_box_persistent_handle_via_port(persistent_handle, &self.drop_port)
+                drop_thread_box_persistent_handle_via_port(
+                    persistent_handle,
+                    &self.dart_handler_port,
+                )
             }
         }
     }

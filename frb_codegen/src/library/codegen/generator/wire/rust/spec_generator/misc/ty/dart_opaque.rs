@@ -25,7 +25,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartOpaqueWireRustGenerator<'a> {
                             dart_type: "Object".into(),
                         },
                         ExternFuncParam {
-                            name: "drop_port".to_owned(),
+                            name: "dart_handler_port".to_owned(),
                             rust_type: match target {
                                 Target::Io => "i64",
                                 Target::Web => "flutter_rust_bridge::for_generated::MessagePort",
@@ -37,7 +37,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartOpaqueWireRustGenerator<'a> {
                         Target::Io => "*const std::ffi::c_void",
                         Target::Web => "usize",
                     }.into()),
-                    body: format!("unsafe {{ flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(&*{HANDLER_NAME}, handle, drop_port) as _ }}"),
+                    body: format!("unsafe {{ flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(&*{HANDLER_NAME}, handle, dart_handler_port) as _ }}"),
                     target,
                 };
                 vec![func].into()
