@@ -1,4 +1,15 @@
 {
+  "controller": {
+    "exclude_paths": [
+      "{the-working-directory}/src/frb_generated.rs",
+      "{the-working-directory}/src/frb_generated.io.rs",
+      "{the-working-directory}/src/frb_generated.web.rs"
+    ],
+    "watch": false,
+    "watching_paths": [
+      "{the-working-directory}/src"
+    ]
+  },
   "dumper": {
     "dump_contents": [],
     "dump_directory": "{the-working-directory}/target/frb_dump"
@@ -17,14 +28,14 @@
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
           "io": "{the-working-directory}/src/frb_generated.io.rs",
-          "wasm": "{the-working-directory}/src/frb_generated.web.rs"
+          "web": "{the-working-directory}/src/frb_generated.web.rs"
         }
       },
       "dart": {
         "dart_impl_output_path": {
           "common": "{the-working-directory}/my_dart_folder/frb_generated.dart",
           "io": "{the-working-directory}/my_dart_folder/frb_generated.io.dart",
-          "wasm": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
+          "web": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
         },
         "dart_output_class_name_pack": {
           "api_class_name": "RustLibApi",
@@ -56,7 +67,7 @@
           "C:/Program Files/llvm",
           "C:/msys64/mingw64"
         ],
-        "wasm_enabled": true
+        "web_enabled": true
       },
       "rust": {
         "rust_crate_dir": "{the-working-directory}",
@@ -69,9 +80,9 @@
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
           "io": "{the-working-directory}/src/frb_generated.io.rs",
-          "wasm": "{the-working-directory}/src/frb_generated.web.rs"
+          "web": "{the-working-directory}/src/frb_generated.web.rs"
         },
-        "wasm_enabled": true
+        "web_enabled": true
       }
     }
   },
@@ -95,9 +106,9 @@
     "rust_output_path": {
       "common": "{the-working-directory}/src/frb_generated.rs",
       "io": "{the-working-directory}/src/frb_generated.io.rs",
-      "wasm": "{the-working-directory}/src/frb_generated.web.rs"
+      "web": "{the-working-directory}/src/frb_generated.web.rs"
     },
-    "wasm_enabled": true
+    "web_enabled": true
   },
   "preparer": {
     "dart_root": "{the-working-directory}",
