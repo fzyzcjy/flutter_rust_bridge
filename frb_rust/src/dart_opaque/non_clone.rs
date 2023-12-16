@@ -6,6 +6,8 @@ use crate::generalized_isolate::Channel;
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::{handle_to_message_port, SendableMessagePortHandle};
 use log::warn;
+#[cfg(wasm)]
+use wasm_bindgen::prelude::*;
 
 #[derive(Debug)]
 pub(super) struct DartOpaqueNonClone {
