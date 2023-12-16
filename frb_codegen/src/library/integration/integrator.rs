@@ -160,7 +160,8 @@ const CARGOKIT_PRELUDE: &[&str] = &[
 fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
     flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
     flutter_pub_add(&["flutter_rust_bridge".into(), "--path=../../frb_dart".into()])?;
-    flutter_pub_add(&["ffigen:^8.0.0".into(), "--dev".into()])?;
+    // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
+    flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
     if enable_integration_test {
         flutter_pub_add(&[
             "integration_test".into(),
