@@ -214,11 +214,11 @@ jobs:
 
   test_rust:
     name: 'Test :: Rust'
-    runs-on: ${{ matrix.image_and_version.image }}
+    runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
       matrix:
-        image_and_version:
+        info:
           # run on various platforms
           - image: macos-11
             version: ''
@@ -239,7 +239,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: ${{ matrix.image_and_version.version || env.FRB_MAIN_RUST_VERSION }}
+          toolchain: ${{ matrix.info.version || env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt
       # TODO cache (for rust-toolchain, also for cargo build)
       - uses: dart-lang/setup-dart@v1
