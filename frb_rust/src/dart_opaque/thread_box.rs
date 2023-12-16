@@ -22,11 +22,6 @@ pub struct ThreadBox<T: Debug> {
 
 impl<T: Debug> ThreadBox<T> {
     pub fn new(inner: T) -> Self {
-        println!(
-            "hi ThreadBox::new thread_id={:?} backtrace={:#?}",
-            std::thread::current().id(),
-            std::backtrace::Backtrace::force_capture(),
-        );
         Self {
             inner: Some(inner),
             thread_id: std::thread::current().id(),
