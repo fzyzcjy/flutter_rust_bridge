@@ -90,6 +90,7 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
     // Because we have another CI to run the codegen and check outputs
     'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
     if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
+    ...kEnvEnableRustBacktrace,
   });
 }
 
@@ -106,7 +107,8 @@ Future<void> testDartNative(TestDartConfig config) async {
     extraFlags += '--enable-vm-service ';
   }
 
-  await exec('${dartMode.name} $extraFlags test', relativePwd: config.package);
+  await exec('${dartMode.name} $extraFlags test',
+      relativePwd: config.package, extraEnv: kEnvEnableRustBacktrace);
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
@@ -114,11 +116,13 @@ Future<void> testDartWeb(TestDartConfig config) async {
 
   final package = config.package;
   if (package == 'frb_dart') {
-    await exec('dart test -p chrome', relativePwd: package);
+    await exec('dart test -p chrome',
+        relativePwd: package, extraEnv: kEnvEnableRustBacktrace);
   } else {
     await exec(
         'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart',
-        relativePwd: 'frb_utils');
+        relativePwd: 'frb_utils',
+        extraEnv: kEnvEnableRustBacktrace);
   }
 }
 
@@ -145,6 +149,7 @@ Future<void> testDartValgrind(TestDartConfig config) async {
     '$valgrindCommand build/valgrind_test_output/dart_valgrind_test_entrypoint.exe',
     relativePwd: config.package,
     checkExitCode: false,
+    extraEnv: kEnvEnableRustBacktrace,
   );
 
   checkValgrindOutput(output.stdout);
@@ -205,3 +210,5 @@ Future<void> testFlutterWeb(TestDartConfig config) async {
 }
 
 Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
+
+const kEnvEnableRustBacktrace = {'RUST_BACKTRACE': '1'};
