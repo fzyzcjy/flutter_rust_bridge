@@ -1,10 +1,9 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::generate_code_header;
-use crate::codegen::generator::misc::target::{TargetOrCommon};
+use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
-
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::generate_platform_generalized_uint8list_params;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
@@ -14,7 +13,6 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
-
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;

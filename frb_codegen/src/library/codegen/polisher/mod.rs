@@ -5,7 +5,7 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 use crate::library::commands::format_dart::format_dart;
-use anyhow::{Context};
+use anyhow::Context;
 use itertools::Itertools;
 use log::warn;
 use std::fs;

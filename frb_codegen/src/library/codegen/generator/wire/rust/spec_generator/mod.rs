@@ -1,16 +1,13 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::codec::structs::EncodeOrDecode::{Decode, Encode};
-
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypoint, WireRustCodecOutputSpec,
 };
-
 use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
 use crate::codegen::ir::pack::IrPackComputedCache;
-
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;
 use serde::Serialize;

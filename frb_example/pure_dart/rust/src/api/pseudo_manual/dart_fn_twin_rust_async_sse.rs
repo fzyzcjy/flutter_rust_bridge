@@ -5,9 +5,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "syncSse"]}
 
 use flutter_rust_bridge::{DartFnFuture, DartOpaque};
-
 use std::panic::UnwindSafe;
-
 
 pub struct DemoStructForRustCallDartTwinRustAsyncSse {
     pub name: String,

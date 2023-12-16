@@ -1,6 +1,4 @@
-use crate::codegen::generator::codec::sse::ty::delegate::{
-    simple_delegate_encode,
-};
+use crate::codegen::generator::codec::sse::ty::delegate::simple_delegate_encode;
 use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for DartFnCodecSseTy<'a> {

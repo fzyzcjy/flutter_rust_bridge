@@ -10,7 +10,6 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::io::Write;
 use std::path::{Path, PathBuf};
-
 use std::str::FromStr;
 
 pub(crate) struct FfigenArgs<'a> {

@@ -1,6 +1,6 @@
 /// This is copied from cargokit, TODO
 /// TODO explain more
-/// 
+///
 
 import 'package:collection/collection.dart';
 import 'package:logging/logging.dart';

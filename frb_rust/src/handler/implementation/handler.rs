@@ -3,8 +3,6 @@ use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::handler::DartFnHandler;
 use crate::dart_fn::DartFnFuture;
-
-
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -14,15 +12,12 @@ use crate::handler::implementation::error_listener::{
     handle_non_sync_panic_error, NoOpErrorListener,
 };
 use crate::handler::implementation::executor::SimpleExecutor;
+use crate::platform_types::DartAbi;
 use crate::platform_types::SendableMessagePortHandle;
-use crate::platform_types::{DartAbi};
-
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use crate::DartOpaque;
-
 use log::warn;
-
 use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;

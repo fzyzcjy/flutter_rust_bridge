@@ -3,7 +3,7 @@ use crate::commands::command_runner::call_shell;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
-use log::{debug};
+use log::debug;
 use std::collections::HashMap;
 use std::path::Path;
 use std::str::FromStr;

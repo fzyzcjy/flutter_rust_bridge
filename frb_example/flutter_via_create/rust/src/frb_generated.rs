@@ -39,9 +39,9 @@ fn wire_greet_impl(
         },
         move || {
             let api_name = name.cst_decode();
-            transform_result_dco((move || {
+            transform_result_dco({
                 Result::<_, ()>::Ok(crate::api::simple::greet(api_name))
-            })())
+            })
         },
     )
 }
@@ -56,7 +56,7 @@ impl CstDecode<u8> for u8 {
 impl SseDecode for String {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <Vec<u8>>::sse_decode(deserializer);
-        return String::from_utf8(inner).unwrap();
+        String::from_utf8(inner).unwrap()
     }
 }
 
@@ -67,7 +67,7 @@ impl SseDecode for Vec<u8> {
         for idx_ in 0..len_ {
             ans_.push(<u8>::sse_decode(deserializer));
         }
-        return ans_;
+        ans_
     }
 }
 

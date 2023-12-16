@@ -88,15 +88,13 @@ class RustLibWire extends BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
   @override
-  void frb_initialize_rust(NativePortType dartOpaqueDropPort,
-          NativePortType dartFnInvokePort) =>
-      wasmModule.frb_initialize_rust(
-          dartOpaqueDropPort, dartFnInvokePort);
+  void frb_initialize_rust(
+          NativePortType dartOpaqueDropPort, NativePortType dartFnInvokePort) =>
+      wasmModule.frb_initialize_rust(dartOpaqueDropPort, dartFnInvokePort);
 
   void dart_fn_deliver_output(int callId, PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_) =>
-      wasmModule.dart_fn_deliver_output(
-          callId, ptr_, rust_vec_len_, data_len_);
+      wasmModule.dart_fn_deliver_output(callId, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_greet(String name) => wasmModule.wire_greet(name);

@@ -4,9 +4,9 @@
 //! https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs and
 //! https://github.com/Ducolnd/rust-mandelbrot/blob/master/src/main.rs
 
-use std::panic::AssertUnwindSafe;
-use std::sync::{Arc, Mutex};
-
+use crate::api::mandelbrot::{Point, Size};
+use crate::api::*;
+use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::*;
 use flutter_rust_bridge::for_generated::futures::future::try_join_all;
 use flutter_rust_bridge::for_generated::futures::StreamExt;
@@ -15,10 +15,8 @@ use image::codecs::png::PngEncoder;
 use image::*;
 use num::Complex;
 use polars_core::prelude::LhsNumOps;
-
-use crate::api::mandelbrot::{Point, Size};
-use crate::api::*;
-use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
+use std::panic::AssertUnwindSafe;
+use std::sync::{Arc, Mutex};
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
 /// iterations to decide.
