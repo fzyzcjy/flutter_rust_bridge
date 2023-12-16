@@ -31,16 +31,14 @@ pub unsafe extern "C" fn dart_opaque_rust2dart_decode(ptr: usize) -> Generalized
 unsafe fn dart_opaque_rust2dart_decode_inner(ptr: usize) -> GeneralizedDartHandle {
     let opaque = DartOpaque::from_raw(ptr as _);
     println!(
-        "hi dart_opaque_rust2dart_decode_inner BEFORE ptr={ptr} thread_id={:?} Dart_CurrentIsolate={:?} backtrace={:?}",
+        "hi dart_opaque_rust2dart_decode_inner BEFORE ptr={ptr} thread_id={:?} backtrace={:?}",
         std::thread::current().id(),
-        dart_sys::Dart_CurrentIsolate_DL.unwrap()(),
         std::backtrace::Backtrace::force_capture(),
     );
     let ans = opaque.create_dart_handle();
     println!(
-        "hi dart_opaque_rust2dart_decode_inner AFTER ptr={ptr} ans={ans:?} thread_id={:?} Dart_CurrentIsolate={:?} backtrace={:?}",
+        "hi dart_opaque_rust2dart_decode_inner AFTER ptr={ptr} ans={ans:?} thread_id={:?} backtrace={:?}",
         std::thread::current().id(),
-        dart_sys::Dart_CurrentIsolate_DL.unwrap()(),
         std::backtrace::Backtrace::force_capture(),
     );
     ans
