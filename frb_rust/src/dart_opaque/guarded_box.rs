@@ -1,3 +1,4 @@
+use log::warn;
 use std::fmt::Debug;
 
 #[derive(Debug)]
@@ -43,14 +44,14 @@ impl<T: Debug, G: GuardedBoxGuard> GuardedBox<T, G> {
     }
 }
 
-impl<T: Debug> AsRef<T> for GuardedBox<T> {
+impl<T: Debug, G: GuardedBoxGuard> AsRef<T> for GuardedBox<T, G> {
     fn as_ref(&self) -> &T {
         self.ensure_guard();
         self.inner.as_ref().unwrap()
     }
 }
 
-impl<T: Debug> Drop for GuardedBox<T> {
+impl<T: Debug, G: GuardedBoxGuard> Drop for GuardedBox<T, G> {
     fn drop(&mut self) {
         if self.inner.is_some() && !self.check_guard() {
             if std::thread::panicking() {

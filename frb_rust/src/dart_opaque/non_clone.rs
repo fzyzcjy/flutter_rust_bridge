@@ -37,7 +37,7 @@ impl DartOpaqueNonClone {
         // to avoid (auto) invoking ThreadBox.drop during its panicking,
         // which causes either leak or abort.
         // In addition, here we have more user friendly error message.
-        if !(self.persistent_handle.as_ref().unwrap()).is_on_creation_thread() {
+        if !(self.persistent_handle.as_ref().unwrap()).check_guard() {
             panic!("DartOpaque can only be used on the creation thread");
         }
 
@@ -57,7 +57,7 @@ impl Drop for DartOpaqueNonClone {
     fn drop(&mut self) {
         if let Some(persistent_handle) = self.persistent_handle.take() {
             // If we forget to do so, ThreadBox will panic because it requires things to be dropped on creation thread
-            if !persistent_handle.is_on_creation_thread() {
+            if !persistent_handle.check_guard() {
                 drop_thread_box_persistent_handle_via_port(
                     persistent_handle,
                     &self.dart_handler_port,

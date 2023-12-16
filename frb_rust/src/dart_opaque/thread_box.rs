@@ -14,7 +14,28 @@ use std::thread::ThreadId;
 ///
 /// Therefore, even though it is `Send`/`Sync` among threads,
 /// it is just a blackbox on all other threads, so we are safe.
-pub struct ThreadBox<T>(GuardedBox<T, ThreadGuard>);
+#[derive(Debug)]
+pub struct ThreadBox<T: Debug>(GuardedBox<T, ThreadGuard>);
+
+impl<T: Debug> ThreadBox<T> {
+    pub fn new(inner: T) -> Self {
+        Self(GuardedBox::new(inner))
+    }
+
+    pub fn check_guard(&self) -> bool {
+        self.0.check_guard()
+    }
+
+    pub fn into_inner(mut self) -> T {
+        self.0.into_inner()
+    }
+}
+
+impl<T: Debug> AsRef<T> for ThreadBox<T> {
+    fn as_ref(&self) -> &T {
+        self.0.as_ref()
+    }
+}
 
 /// # Safety
 ///
@@ -31,7 +52,7 @@ pub(crate) struct ThreadGuard(ThreadId);
 
 impl GuardedBoxGuard for ThreadGuard {
     fn new() -> Self {
-        std::thread::current().id()
+        Self(std::thread::current().id())
     }
 
     fn check(&self) -> bool {
