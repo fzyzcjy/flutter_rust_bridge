@@ -3,13 +3,11 @@
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables
 
+import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-import 'api/minimal.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -240,8 +238,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_DartOpaque(Object self, SseSerializer serializer) {
     sse_encode_usize(
-        PlatformPointerUtil.ptrToInt(
-            wire.dart_opaque_dart2rust_encode(self, TODO)),
+        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(
+            self, portManager.dartHandlerPort)),
         serializer);
   }
 

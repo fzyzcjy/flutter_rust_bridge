@@ -50,7 +50,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
-    return wire.dart_opaque_dart2rust_encode(raw, TODO);
+    return wire.dart_opaque_dart2rust_encode(raw, portManager.dartHandlerPort);
   }
 
   @protected
