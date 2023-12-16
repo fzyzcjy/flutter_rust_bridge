@@ -1,10 +1,23 @@
 use super::{DartOpaque, GeneralizedDartHandle};
 use crate::platform_types::{message_port_to_handle, MessagePort};
 
+/// # Safety
+///
+/// This should never be called manually.
+#[cfg(wasm)]
+pub unsafe fn decode_dart_opaque(raw: wasm_bindgen::JsValue) -> DartOpaque {
+    #[cfg(target_pointer_width = "64")]
+    {
+        compile_error!("64-bit pointers are not supported.");
+    }
+
+    DartOpaque::from_raw((raw.as_f64().unwrap() as usize) as _)
+}
 
 /// # Safety
 ///
 /// This should never be called manually.
+#[cfg(not(wasm))]
 pub unsafe fn decode_dart_opaque(raw: usize) -> DartOpaque {
     DartOpaque::from_raw(raw as _)
 }
