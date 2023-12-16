@@ -135,8 +135,10 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
 // ref: https://github.com/mobxjs/mobx.dart/blob/52515a1d82f15a2b2eb48822d030647e217134cc/tool/coverage.sh#L12
 Future<void> _formatDartCoverage({required String package}) async {
   await exec('dart pub global activate coverage');
+
+  final reportOn = '${exec.pwd}/frb_dart';
   await exec(
-    'format_coverage --lcov --in=coverage --out=coverage/lcov.txt --packages=.dart_tool/package_config.json --report-on=lib',
+    'format_coverage --lcov --in=coverage --out=coverage/lcov.txt --packages=.dart_tool/package_config.json --report-on=$reportOn',
     relativePwd: package,
   );
 }
