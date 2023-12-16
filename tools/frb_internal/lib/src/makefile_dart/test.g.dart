@@ -41,15 +41,11 @@ TestRustConfig parseTestRustConfig(List<String> args) {
 
 TestDartConfig _$parseTestDartConfigResult(ArgResults result) => TestDartConfig(
       package: result['package'] as String,
-      coverage: result['coverage'] as bool,
     );
 
 ArgParser _$populateTestDartConfigParser(ArgParser parser) => parser
   ..addOption(
     'package',
-  )
-  ..addFlag(
-    'coverage',
   );
 
 final _$parserForTestDartConfig = _$populateTestDartConfigParser(ArgParser());
@@ -57,6 +53,28 @@ final _$parserForTestDartConfig = _$populateTestDartConfigParser(ArgParser());
 TestDartConfig parseTestDartConfig(List<String> args) {
   final result = _$parserForTestDartConfig.parse(args);
   return _$parseTestDartConfigResult(result);
+}
+
+TestDartNativeConfig _$parseTestDartNativeConfigResult(ArgResults result) =>
+    TestDartNativeConfig(
+      package: result['package'] as String,
+      coverage: result['coverage'] as bool,
+    );
+
+ArgParser _$populateTestDartNativeConfigParser(ArgParser parser) => parser
+  ..addOption(
+    'package',
+  )
+  ..addFlag(
+    'coverage',
+  );
+
+final _$parserForTestDartNativeConfig =
+    _$populateTestDartNativeConfigParser(ArgParser());
+
+TestDartNativeConfig parseTestDartNativeConfig(List<String> args) {
+  final result = _$parserForTestDartNativeConfig.parse(args);
+  return _$parseTestDartNativeConfigResult(result);
 }
 
 T _$enumValueHelper<T>(Map<T, String> enumValues, String source) =>

@@ -13,8 +13,11 @@ List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand('test-rust', testRust, _$populateTestRustConfigParser,
         _$parseTestRustConfigResult),
-    SimpleConfigCommand('test-dart-native', testDartNative,
-        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+    SimpleConfigCommand(
+        'test-dart-native',
+        testDartNative,
+        _$populateTestDartNativeConfigParser,
+        _$parseTestDartNativeConfigResult),
     SimpleConfigCommand('test-dart-web', testDartWeb,
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
     SimpleConfigCommand('test-dart-valgrind', testDartValgrind,
@@ -47,9 +50,16 @@ class TestRustConfig {
 @CliOptions()
 class TestDartConfig {
   final String package;
+
+  const TestDartConfig({required this.package});
+}
+
+@CliOptions()
+class TestDartNativeConfig {
+  final String package;
   final bool coverage;
 
-  const TestDartConfig({required this.package, required this.coverage});
+  const TestDartNativeConfig({required this.package, required this.coverage});
 }
 
 enum Sanitizer {
@@ -98,7 +108,7 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
   });
 }
 
-Future<void> testDartNative(TestDartConfig config) async {
+Future<void> testDartNative(TestDartNativeConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
   final dartMode = kDartModeOfPackage[config.package]!;
@@ -126,10 +136,8 @@ Future<void> testDartWeb(TestDartConfig config) async {
 
   final package = config.package;
   if (package == 'frb_dart') {
-    await exec(
-        'dart test -p chrome ${config.coverage ? ' --coverage="coverage"' : ""}',
-        relativePwd: package,
-        extraEnv: kEnvEnableRustBacktrace);
+    await exec('dart test -p chrome',
+        relativePwd: package, extraEnv: kEnvEnableRustBacktrace);
   } else {
     await exec(
         'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart',
