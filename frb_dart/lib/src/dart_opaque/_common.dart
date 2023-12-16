@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -8,7 +9,7 @@ Object decodeDartOpaque(
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-PlatformPointer encodeDartOpaque(Object raw, int dartHandlerPort,
+PlatformPointer encodeDartOpaque(Object raw, MessagePort dartHandlerPort,
     GeneralizedFrbRustBinding generalizedFrbRustBinding) {
   return generalizedFrbRustBinding.dartOpaqueDart2RustEncode(
       raw, dartHandlerPort);
