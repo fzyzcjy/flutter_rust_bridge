@@ -39,9 +39,10 @@ class _PolarsPageBodyState extends State<PolarsPageBody> {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(width: 32),
-              const Text('Input'),
-              const SizedBox(width: 24),
+              const Padding(
+                padding: EdgeInsets.only(left: 32, right: 24),
+                child: Text('Input'),
+              ),
               Text(_value.toStringAsFixed(1)),
               SizedBox(
                 width: 200,
