@@ -97,6 +97,9 @@ Future<void> testRust(TestRustConfig config) async {
 }
 
 Future<void> testRustPackage(TestRustConfig config, String package) async {
+  await runPubGetIfNotRunYet('frb_example/dart_minimal');
+  await runPubGetIfNotRunYet('frb_example/pure_dart');
+
   await exec('cargo build', relativePwd: package);
 
   final effectiveEnableCoverage = config.coverage && package == 'frb_codegen';
