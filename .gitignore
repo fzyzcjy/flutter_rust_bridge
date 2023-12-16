@@ -9,3 +9,4 @@ Makefile
 *.log
 .vscode
 .fvm/flutter_sdk
+coverage/
