@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:flutter_rust_bridge/src/generalized_isolate/_web.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 import 'package:js/js.dart';
 
@@ -29,10 +28,6 @@ class GeneralizedFrbRustBinding {
       _dart_opaque_drop_thread_box_persistent_handle(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  int newDartOpaque(Object obj, NativePortType port) =>
-      throw UnimplementedError();
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2DartDco(WireSyncRust2DartDco raw) {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -42,7 +37,7 @@ class GeneralizedFrbRustBinding {
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.dart_opaque_dart2rust_encode")
 external int _dart_opaque_dart2rust_encode(
-    Object object, MessagePort dartHandlerPort);
+    Object object, NativePortType dartHandlerPort);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.dart_opaque_rust2dart_decode")
