@@ -82,7 +82,7 @@ pub async fn run_opaque_with_delay_twin_rust_async_sse(opaque: RustOpaque<HideDa
     // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
     // (But if on native, or on WASM + async mode, it is OK)
     #[cfg(not(target_family = "wasm"))]
-    sleep(Duration::from_millis(1000));
+    std::thread::sleep(std::time::Duration::from_millis(1000));
 
     opaque.hide_data()
 }

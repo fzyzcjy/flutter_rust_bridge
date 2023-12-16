@@ -111,7 +111,7 @@ pub async fn handle_optional_increment_twin_rust_async_sse(
             opt.attributes_nullable
         },
         zerocopy: Some({
-            let mut list = opt.zerocopy.unwrap_or_else(|| vec![]);
+            let mut list = opt.zerocopy.unwrap_or_default();
             list.push(0);
             list
         }),

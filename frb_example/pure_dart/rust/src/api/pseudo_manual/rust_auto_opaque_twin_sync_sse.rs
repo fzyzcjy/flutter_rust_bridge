@@ -157,6 +157,7 @@ pub fn rust_auto_opaque_trait_object_arg_own_twin_sync_sse(
     assert_eq!(arg.func_hello(), expect);
 }
 
+#[allow(clippy::borrowed_box)]
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse(

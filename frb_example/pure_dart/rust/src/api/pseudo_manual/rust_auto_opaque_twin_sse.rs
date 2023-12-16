@@ -136,6 +136,7 @@ pub fn rust_auto_opaque_trait_object_arg_own_twin_sse(
     assert_eq!(arg.func_hello(), expect);
 }
 
+#[allow(clippy::borrowed_box)]
 #[flutter_rust_bridge::frb(serialize)]
 pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sse(
     arg: &Box<dyn HelloTraitTwinSse>,
