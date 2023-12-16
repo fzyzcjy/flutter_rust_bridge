@@ -32,7 +32,7 @@ impl<T: Debug> AsRef<T> for DartIsolateBox<T> {
 pub(crate) struct GuardedBoxContextDartIsolate(dart_sys::Dart_Isolate);
 
 impl GuardedBoxContext for GuardedBoxContextDartIsolate {
-    fn new() -> Self {
+    fn current() -> Self {
         Self(unsafe { dart_sys::Dart_CurrentIsolate_DL.unwrap()() })
     }
 }

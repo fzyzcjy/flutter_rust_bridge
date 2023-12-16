@@ -45,7 +45,7 @@ unsafe impl<T: Debug> Sync for ThreadBox<T> {}
 pub(crate) struct GuardedBoxContextThread(ThreadId);
 
 impl GuardedBoxContext for GuardedBoxContextThread {
-    fn new() -> Self {
+    fn current() -> Self {
         Self(std::thread::current().id())
     }
 }

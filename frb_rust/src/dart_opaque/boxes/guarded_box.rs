@@ -13,19 +13,19 @@ pub(crate) struct GuardedBox<T: Debug, C: GuardedBoxContext> {
 }
 
 pub(crate) trait GuardedBoxContext: Debug + Eq {
-    fn new() -> Self;
+    fn current() -> Self;
 }
 
 impl<T: Debug, C: GuardedBoxContext> GuardedBox<T, C> {
     pub fn new(inner: T) -> Self {
         Self {
             inner: Some(inner),
-            context: C::new(),
+            context: C::current(),
         }
     }
 
     pub fn check_context(&self) -> bool {
-        self.context == C::new()
+        self.context == C::current()
     }
 
     fn ensure_context(&self) {
@@ -37,7 +37,7 @@ impl<T: Debug, C: GuardedBoxContext> GuardedBox<T, C> {
     fn panic_because_context_failed(&self) -> ! {
         panic!(
             "GuardedBox can only be used when the context is the same as the context when it is created. current={:?} creation={:?}",
-            C::new(), self.context,
+            C::current(), self.context,
         )
     }
 
