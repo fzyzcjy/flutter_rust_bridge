@@ -1,9 +1,9 @@
 use crate::dart_opaque::DartOpaque;
-use crate::generalized_isolate::PortLike;
+
 use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
 use crate::rust_opaque::{DartSafe, RustOpaque};
-use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array, Uint8Array};
+use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
 use wasm_bindgen::JsValue;
 
 pub trait IntoDart {
@@ -91,7 +91,7 @@ impl IntoDart for Vec<uuid::Uuid> {
         for id in self {
             let _ = buffer.write(id.as_bytes());
         }
-        Uint8Array::from(buffer.as_slice()).into()
+        js_sys::Uint8Array::from(buffer.as_slice()).into()
     }
 }
 

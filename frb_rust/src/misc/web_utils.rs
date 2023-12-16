@@ -1,4 +1,4 @@
-use crate::platform_types::MessagePort;
+
 use wasm_bindgen::prelude::*;
 
 #[macro_export]

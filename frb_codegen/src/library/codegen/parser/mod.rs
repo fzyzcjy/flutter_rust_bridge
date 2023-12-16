@@ -194,6 +194,7 @@ mod tests {
         body("library/codegen/parser/mod/generics", None)
     }
 
+    #[allow(clippy::type_complexity)]
     fn body(
         fixture_name: &str,
         rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,

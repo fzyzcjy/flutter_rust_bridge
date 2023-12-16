@@ -1,6 +1,6 @@
 use super::{BaseCodec, Rust2DartMessageTrait};
-use crate::for_generated::into_leak_vec_ptr;
-use crate::for_generated::vec_from_leak_ptr;
+
+
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
 use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartSse};
@@ -98,7 +98,7 @@ impl Dart2RustMessageSse {
     /// This should never be called manually.
     pub unsafe fn from_wire(
         ptr: PlatformGeneralizedUint8ListPtr,
-        rust_vec_len: i32,
+        _rust_vec_len: i32,
         data_len: i32,
     ) -> Self {
         #[cfg(not(wasm))]

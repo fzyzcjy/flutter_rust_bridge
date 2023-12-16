@@ -1,5 +1,5 @@
 use crate::generalized_isolate::IntoDart;
-use crate::generalized_isolate::PortLike;
+
 use crate::platform_types::handle_to_message_port;
 use crate::platform_types::MessagePort;
 use crate::platform_types::{message_port_to_handle, SendableMessagePortHandle};
@@ -15,6 +15,7 @@ impl Channel {
     pub fn new(port: MessagePort) -> Self {
         Self { port }
     }
+
     pub fn post(&self, msg: impl IntoDart) -> bool {
         self.port
             .post_message(&msg.into_dart())
@@ -23,11 +24,13 @@ impl Channel {
             })
             .is_ok()
     }
-    pub(crate) fn broadcast_name(&self) -> Option<String> {
-        self.port
-            .dyn_ref::<BroadcastChannel>()
-            .map(|channel| channel.name())
-    }
+
+    // TODO unused, rm?
+    // pub(crate) fn broadcast_name(&self) -> Option<String> {
+    //     self.port
+    //         .dyn_ref::<BroadcastChannel>()
+    //         .map(|channel| channel.name())
+    // }
 }
 
 // TODO the name should reflect "broadcast" channel?

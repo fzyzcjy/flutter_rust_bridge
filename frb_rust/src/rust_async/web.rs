@@ -41,7 +41,7 @@ where
     let (sender, handle) = JoinHandle::create_pair();
     wasm_bindgen_futures::spawn_local(async {
         let output = future.await;
-        sender.send(output);
+        sender.send(output).unwrap();
     });
     handle
 }
@@ -54,7 +54,7 @@ where
     let (sender, handle) = JoinHandle::create_pair();
     thread_pool.execute(transfer!(|| {
         let output = f();
-        sender.send(output);
+        sender.send(output).unwrap();
     }));
     handle
 }
