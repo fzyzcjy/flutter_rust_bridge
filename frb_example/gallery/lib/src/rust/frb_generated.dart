@@ -466,7 +466,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta: kReadSampleDatasetConstMeta,
-      argValues: const [],
+      argValues: [],
       apiImpl: this,
       hint: hint,
     ));
@@ -477,205 +477,171 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: [],
       );
 
-  @override
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockDataFrame => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame;
 
-  @override
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_RwLockDataFrame => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame;
 
-  @override
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockExpr =>
           wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr;
 
-  @override
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_RwLockExpr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr;
 
-  @override
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockLazyFrame => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame;
 
-  @override
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_RwLockLazyFrame => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame;
 
-  @override
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockLazyGroupBy => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy;
 
-  @override
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_RwLockLazyGroupBy => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy;
 
-  @override
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
     return AnyhowException(raw as String);
   }
 
-  @override
   @protected
   RwLockDataFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
       dynamic raw) {
     return RwLockDataFrame.dcoDecode(raw);
   }
 
-  @override
   @protected
   RwLockExpr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(dynamic raw) {
     return RwLockExpr.dcoDecode(raw);
   }
 
-  @override
   @protected
   RwLockLazyFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
       dynamic raw) {
     return RwLockLazyFrame.dcoDecode(raw);
   }
 
-  @override
   @protected
   RwLockLazyGroupBy dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
       dynamic raw) {
     return RwLockLazyGroupBy.dcoDecode(raw);
   }
 
-  @override
   @protected
   RwLockDataFrame dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
       dynamic raw) {
     return RwLockDataFrame.dcoDecode(raw);
   }
 
-  @override
   @protected
   RwLockDataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw) {
     return RwLockDataFrame.dcoDecode(raw);
   }
 
-  @override
   @protected
   RwLockExpr dco_decode_RustOpaque_stdsyncRwLockExpr(dynamic raw) {
     return RwLockExpr.dcoDecode(raw);
   }
 
-  @override
   @protected
   RwLockLazyFrame dco_decode_RustOpaque_stdsyncRwLockLazyFrame(dynamic raw) {
     return RwLockLazyFrame.dcoDecode(raw);
   }
 
-  @override
   @protected
   RwLockLazyGroupBy dco_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
       dynamic raw) {
     return RwLockLazyGroupBy.dcoDecode(raw);
   }
 
-  @override
   @protected
   String dco_decode_String(dynamic raw) {
     return raw as String;
   }
 
-  @override
   @protected
   Point dco_decode_box_autoadd_point(dynamic raw) {
     return dco_decode_point(raw);
   }
 
-  @override
   @protected
   Size dco_decode_box_autoadd_size(dynamic raw) {
     return dco_decode_size(raw);
   }
 
-  @override
   @protected
   double dco_decode_f_64(dynamic raw) {
     return raw as double;
   }
 
-  @override
   @protected
   int dco_decode_i_32(dynamic raw) {
     return raw as int;
   }
 
-  @override
   @protected
   List<String> dco_decode_list_String(dynamic raw) {
     return (raw as List<dynamic>).map(dco_decode_String).toList();
   }
 
-  @override
   @protected
   Uint8List dco_decode_list_prim_u_8(dynamic raw) {
     return raw as Uint8List;
   }
 
-  @override
   @protected
   Point dco_decode_point(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) {
+    if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    }
     return Point(
       x: dco_decode_f_64(arr[0]),
       y: dco_decode_f_64(arr[1]),
     );
   }
 
-  @override
   @protected
   Size dco_decode_size(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 2) {
+    if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    }
     return Size(
       width: dco_decode_i_32(arr[0]),
       height: dco_decode_i_32(arr[1]),
     );
   }
 
-  @override
   @protected
   int dco_decode_u_8(dynamic raw) {
     return raw as int;
   }
 
-  @override
   @protected
   void dco_decode_unit(dynamic raw) {
     return;
   }
 
-  @override
   @protected
   int dco_decode_usize(dynamic raw) {
     return dcoDecodeI64OrU64(raw);
   }
 
-  @override
   @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer) {
     var inner = sse_decode_String(deserializer);
     return AnyhowException(inner);
   }
 
-  @override
   @protected
   RwLockDataFrame sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
       SseDeserializer deserializer) {
@@ -683,7 +649,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
-  @override
   @protected
   RwLockExpr sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
       SseDeserializer deserializer) {
@@ -691,7 +656,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
-  @override
   @protected
   RwLockLazyFrame sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
       SseDeserializer deserializer) {
@@ -699,7 +663,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
-  @override
   @protected
   RwLockLazyGroupBy sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
       SseDeserializer deserializer) {
@@ -707,7 +670,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
-  @override
   @protected
   RwLockDataFrame sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
       SseDeserializer deserializer) {
@@ -715,7 +677,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
-  @override
   @protected
   RwLockDataFrame sse_decode_RustOpaque_stdsyncRwLockDataFrame(
       SseDeserializer deserializer) {
@@ -723,7 +684,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
-  @override
   @protected
   RwLockExpr sse_decode_RustOpaque_stdsyncRwLockExpr(
       SseDeserializer deserializer) {
@@ -731,7 +691,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
-  @override
   @protected
   RwLockLazyFrame sse_decode_RustOpaque_stdsyncRwLockLazyFrame(
       SseDeserializer deserializer) {
@@ -739,7 +698,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
-  @override
   @protected
   RwLockLazyGroupBy sse_decode_RustOpaque_stdsyncRwLockLazyGroupBy(
       SseDeserializer deserializer) {
@@ -747,38 +705,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
-  @override
   @protected
   String sse_decode_String(SseDeserializer deserializer) {
     var inner = sse_decode_list_prim_u_8(deserializer);
     return utf8.decoder.convert(inner);
   }
 
-  @override
   @protected
   Point sse_decode_box_autoadd_point(SseDeserializer deserializer) {
     return (sse_decode_point(deserializer));
   }
 
-  @override
   @protected
   Size sse_decode_box_autoadd_size(SseDeserializer deserializer) {
     return (sse_decode_size(deserializer));
   }
 
-  @override
   @protected
   double sse_decode_f_64(SseDeserializer deserializer) {
     return deserializer.buffer.getFloat64();
   }
 
-  @override
   @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
 
-  @override
   @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
@@ -789,52 +741,44 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return ans_;
   }
 
-  @override
   @protected
   Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint8List(len_);
   }
 
-  @override
   @protected
   Point sse_decode_point(SseDeserializer deserializer) {
-    var varX = sse_decode_f_64(deserializer);
-    var varY = sse_decode_f_64(deserializer);
-    return Point(x: varX, y: varY);
+    var var_x = sse_decode_f_64(deserializer);
+    var var_y = sse_decode_f_64(deserializer);
+    return Point(x: var_x, y: var_y);
   }
 
-  @override
   @protected
   Size sse_decode_size(SseDeserializer deserializer) {
-    var varWidth = sse_decode_i_32(deserializer);
-    var varHeight = sse_decode_i_32(deserializer);
-    return Size(width: varWidth, height: varHeight);
+    var var_width = sse_decode_i_32(deserializer);
+    var var_height = sse_decode_i_32(deserializer);
+    return Size(width: var_width, height: var_height);
   }
 
-  @override
   @protected
   int sse_decode_u_8(SseDeserializer deserializer) {
     return deserializer.buffer.getUint8();
   }
 
-  @override
   @protected
   void sse_decode_unit(SseDeserializer deserializer) {}
 
-  @override
   @protected
   int sse_decode_usize(SseDeserializer deserializer) {
     return deserializer.buffer.getUint64();
   }
 
-  @override
   @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
     return deserializer.buffer.getUint8() != 0;
   }
 
-  @override
   @protected
   PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame raw) {
@@ -842,7 +786,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw.cstEncode(move: true);
   }
 
-  @override
   @protected
   PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
       RwLockExpr raw) {
@@ -850,7 +793,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw.cstEncode(move: true);
   }
 
-  @override
   @protected
   PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
       RwLockLazyFrame raw) {
@@ -858,7 +800,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw.cstEncode(move: true);
   }
 
-  @override
   @protected
   PlatformPointer cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy raw) {
@@ -866,7 +807,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw.cstEncode(move: true);
   }
 
-  @override
   @protected
   PlatformPointer cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame raw) {
@@ -874,7 +814,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw.cstEncode(move: false);
   }
 
-  @override
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame raw) {
@@ -882,14 +821,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw.cstEncode();
   }
 
-  @override
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockExpr(RwLockExpr raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
-  @override
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyFrame(
       RwLockLazyFrame raw) {
@@ -897,7 +834,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw.cstEncode();
   }
 
-  @override
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy raw) {
@@ -905,37 +841,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw.cstEncode();
   }
 
-  @override
   @protected
   double cst_encode_f_64(double raw) {
     return raw;
   }
 
-  @override
   @protected
   int cst_encode_i_32(int raw) {
     return raw;
   }
 
-  @override
   @protected
   int cst_encode_u_8(int raw) {
     return raw;
   }
 
-  @override
   @protected
   void cst_encode_unit(void raw) {
     return raw;
   }
 
-  @override
   @protected
   int cst_encode_usize(int raw) {
     return raw;
   }
 
-  @override
   @protected
   void sse_encode_AnyhowException(
       AnyhowException self, SseSerializer serializer) {
@@ -943,100 +873,85 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         'not yet supported in serialized mode, feel free to create an issue');
   }
 
-  @override
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
-  @override
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(
       RwLockExpr self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
-  @override
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
       RwLockLazyFrame self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
-  @override
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
-  @override
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
-  @override
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockDataFrame(
       RwLockDataFrame self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
-  @override
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockExpr(
       RwLockExpr self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
-  @override
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockLazyFrame(
       RwLockLazyFrame self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
-  @override
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockLazyGroupBy(
       RwLockLazyGroupBy self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
-  @override
   @protected
   void sse_encode_String(String self, SseSerializer serializer) {
     sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
   }
 
-  @override
   @protected
   void sse_encode_box_autoadd_point(Point self, SseSerializer serializer) {
     sse_encode_point(self, serializer);
   }
 
-  @override
   @protected
   void sse_encode_box_autoadd_size(Size self, SseSerializer serializer) {
     sse_encode_size(self, serializer);
   }
 
-  @override
   @protected
   void sse_encode_f_64(double self, SseSerializer serializer) {
     serializer.buffer.putFloat64(self);
   }
 
-  @override
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
-  @override
   @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
@@ -1045,44 +960,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  @override
   @protected
   void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
   }
 
-  @override
   @protected
   void sse_encode_point(Point self, SseSerializer serializer) {
     sse_encode_f_64(self.x, serializer);
     sse_encode_f_64(self.y, serializer);
   }
 
-  @override
   @protected
   void sse_encode_size(Size self, SseSerializer serializer) {
     sse_encode_i_32(self.width, serializer);
     sse_encode_i_32(self.height, serializer);
   }
 
-  @override
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer) {
     serializer.buffer.putUint8(self);
   }
 
-  @override
   @protected
   void sse_encode_unit(void self, SseSerializer serializer) {}
 
-  @override
   @protected
   void sse_encode_usize(int self, SseSerializer serializer) {
     serializer.buffer.putUint64(self);
   }
 
-  @override
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {
     serializer.buffer.putUint8(self ? 1 : 0);

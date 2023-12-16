@@ -4,11 +4,15 @@
 #![allow(
     non_camel_case_types,
     unused,
+    non_snake_case,
+    clippy::needless_return,
+    clippy::redundant_closure_call,
     clippy::redundant_closure,
     clippy::useless_conversion,
     clippy::unit_arg,
+    clippy::unused_unit,
     clippy::double_parens,
-    non_snake_case,
+    clippy::let_and_return,
     clippy::too_many_arguments
 )]
 
@@ -37,9 +41,9 @@ fn wire_make_data_race_impl(port_: flutter_rust_bridge::for_generated::MessagePo
         },
         move || {
             move |context| {
-                transform_result_dco({
+                transform_result_dco((move || {
                     Result::<_, ()>::Ok(crate::api::simple::make_data_race())
-                })
+                })())
             }
         },
     )
@@ -53,9 +57,9 @@ fn wire_make_heap_use_after_free_impl(port_: flutter_rust_bridge::for_generated:
         },
         move || {
             move |context| {
-                transform_result_dco({
+                transform_result_dco((move || {
                     Result::<_, ()>::Ok(crate::api::simple::make_heap_use_after_free())
-                })
+                })())
             }
         },
     )
@@ -69,9 +73,9 @@ fn wire_make_memory_leak_impl(port_: flutter_rust_bridge::for_generated::Message
         },
         move || {
             move |context| {
-                transform_result_dco({
+                transform_result_dco((move || {
                     Result::<_, ()>::Ok(crate::api::simple::make_memory_leak())
-                })
+                })())
             }
         },
     )
@@ -85,9 +89,9 @@ fn wire_make_stack_buffer_overflow_impl(port_: flutter_rust_bridge::for_generate
         },
         move || {
             move |context| {
-                transform_result_dco({
+                transform_result_dco((move || {
                     Result::<_, ()>::Ok(crate::api::simple::make_stack_buffer_overflow())
-                })
+                })())
             }
         },
     )
@@ -103,9 +107,9 @@ fn wire_make_use_of_uninitialized_value_impl(
         },
         move || {
             move |context| {
-                transform_result_dco({
+                transform_result_dco((move || {
                     Result::<_, ()>::Ok(crate::api::simple::make_use_of_uninitialized_value())
-                })
+                })())
             }
         },
     )

@@ -4,11 +4,15 @@
 #![allow(
     non_camel_case_types,
     unused,
+    non_snake_case,
+    clippy::needless_return,
+    clippy::redundant_closure_call,
     clippy::redundant_closure,
     clippy::useless_conversion,
     clippy::unit_arg,
+    clippy::unused_unit,
     clippy::double_parens,
-    non_snake_case,
+    clippy::let_and_return,
     clippy::too_many_arguments
 )]
 
@@ -39,9 +43,9 @@ fn wire_greet_impl(
         },
         move || {
             let api_name = name.cst_decode();
-            transform_result_dco({
+            transform_result_dco((move || {
                 Result::<_, ()>::Ok(crate::api::simple::greet(api_name))
-            })
+            })())
         },
     )
 }
@@ -56,7 +60,7 @@ impl CstDecode<u8> for u8 {
 impl SseDecode for String {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <Vec<u8>>::sse_decode(deserializer);
-        String::from_utf8(inner).unwrap()
+        return String::from_utf8(inner).unwrap();
     }
 }
 
@@ -67,7 +71,7 @@ impl SseDecode for Vec<u8> {
         for idx_ in 0..len_ {
             ans_.push(<u8>::sse_decode(deserializer));
         }
-        ans_
+        return ans_;
     }
 }
 
