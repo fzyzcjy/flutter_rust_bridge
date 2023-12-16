@@ -1,7 +1,7 @@
 use crate::codec::sse::Dart2RustMessageSse;
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::dart_fn::{DartFn, DartFnFuture};
+use crate::dart_fn::DartFnFuture;
 use crate::platform_types::MessagePort;
 use crate::platform_types::SendableMessagePortHandle;
 use crate::platform_types::{message_port_to_handle, DartAbi};
@@ -67,7 +67,7 @@ pub trait Handler {
 
     fn dart_fn_invoke(
         &self,
-        dart_fn: DartFn,
+        dart_fn: DartOpaque,
         args: Vec<DartAbi>,
     ) -> DartFnFuture<Dart2RustMessageSse>;
 
