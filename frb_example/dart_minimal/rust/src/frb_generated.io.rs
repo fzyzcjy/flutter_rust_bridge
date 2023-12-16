@@ -60,13 +60,13 @@ pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
 #[no_mangle]
 pub extern "C" fn dart_opaque_dart2rust_encode(
     handle: flutter_rust_bridge::for_generated::dart_sys::Dart_Handle,
-    drop_port: i64,
+    dart_handler_port: i64,
 ) -> *const std::ffi::c_void {
     unsafe {
         flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
             &*FLUTTER_RUST_BRIDGE_HANDLER,
             handle,
-            drop_port,
+            dart_handler_port,
         ) as _
     }
 }

@@ -187,11 +187,11 @@ class RustLibWire implements BaseWire {
 
   ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
     Object handle,
-    int drop_port,
+    int dart_handler_port,
   ) {
     return _dart_opaque_dart2rust_encode(
       handle,
-      drop_port,
+      dart_handler_port,
     );
   }
 
