@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for DartOpaqueWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new_common(Some(
-            "return encodeDartOpaque(self, portManager.dartHandlerPort, generalizedFrbRustBinding);"
+            "return encodeDartOpaque(raw, portManager.dartHandlerPort, generalizedFrbRustBinding);"
                 .to_owned(),
         ))
     }
