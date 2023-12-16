@@ -38,7 +38,7 @@ impl CstDecode<chrono::Duration> for i64 {
 }
 impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::decode_dart_opaque(self as _) }
     }
 }
 impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_cst_list_DartOpaque {
@@ -16268,15 +16268,6 @@ impl Default for wire_cst_vec_of_primitive_pack_twin_sync_sse {
 }
 
 #[no_mangle]
-pub extern "C" fn frb_initialize_rust(dart_opaque_drop_port: i64, dart_fn_invoke_port: i64) {
-    flutter_rust_bridge::for_generated::handler_initialize(
-        &*FLUTTER_RUST_BRIDGE_HANDLER,
-        dart_opaque_drop_port,
-        dart_fn_invoke_port,
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn dart_fn_deliver_output(
     call_id: i32,
     ptr_: *mut u8,
@@ -29249,18 +29240,6 @@ pub extern "C" fn wire_handle_nested_uuids_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_handle_uuid_twin_normal(port_: i64, id: *mut wire_cst_list_prim_u_8) {
     wire_handle_uuid_twin_normal_impl(port_, id)
-}
-
-#[no_mangle]
-pub extern "C" fn dart_opaque_dart2rust_encode(
-    handle: flutter_rust_bridge::for_generated::dart_sys::Dart_Handle,
-) -> *const std::ffi::c_void {
-    unsafe {
-        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
-            &*FLUTTER_RUST_BRIDGE_HANDLER,
-            handle,
-        ) as _
-    }
 }
 
 #[no_mangle]

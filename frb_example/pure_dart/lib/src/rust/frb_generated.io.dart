@@ -8894,11 +8894,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
-    return wire.dart_opaque_dart2rust_encode(raw);
-  }
-
-  @protected
   ffi.Pointer<wire_cst_list_DartOpaque> cst_encode_DartOpaque_array_1(
       ObjectArray1 raw) {
     return cst_encode_list_DartOpaque(raw);
@@ -8945,8 +8940,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<DartOpaqueWireType> cst_encode_box_autoadd_DartOpaque(
-      Object raw) {
+  ffi.Pointer<PlatformPointer> cst_encode_box_autoadd_DartOpaque(Object raw) {
     return wire.cst_new_box_autoadd_DartOpaque(cst_encode_DartOpaque(raw));
   }
 
@@ -12986,7 +12980,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<DartOpaqueWireType> cst_encode_opt_box_autoadd_DartOpaque(
+  ffi.Pointer<PlatformPointer> cst_encode_opt_box_autoadd_DartOpaque(
       Object? raw) {
     return raw == null ? ffi.nullptr : cst_encode_box_autoadd_DartOpaque(raw);
   }
@@ -21275,78 +21269,81 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
       FutureOr<void> Function(Object) raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs_String_Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs_String_Output_unit(
       FutureOr<void> Function(String) raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsync)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsyncSse)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinSse)
               raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_DartOpaque(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_DartOpaque(
       FutureOr<Object> Function() raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_String(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_String(
       FutureOr<String> Function() raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(
       FutureOr<void> Function() raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
           FutureOr<DemoStructForRustCallDartTwinNormal> Function(
                   DemoStructForRustCallDartTwinNormal)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
           FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
                   DemoStructForRustCallDartTwinRustAsync)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
           FutureOr<DemoStructForRustCallDartTwinRustAsyncSse> Function(
                   DemoStructForRustCallDartTwinRustAsyncSse)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
           FutureOr<DemoStructForRustCallDartTwinSse> Function(
                   DemoStructForRustCallDartTwinSse)
               raw);
+
+  @protected
+  PlatformPointer cst_encode_DartOpaque(Object raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw);
@@ -26053,22 +26050,6 @@ class RustLibWire implements BaseWire {
       'benchmark_raw_output_bytes');
   late final _benchmark_raw_output_bytes =
       _benchmark_raw_output_bytesPtr.asFunction<void Function(int, int, int)>();
-
-  void frb_initialize_rust(
-    int dart_opaque_drop_port,
-    int dart_fn_invoke_port,
-  ) {
-    return _frb_initialize_rust(
-      dart_opaque_drop_port,
-      dart_fn_invoke_port,
-    );
-  }
-
-  late final _frb_initialize_rustPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
-          'frb_initialize_rust');
-  late final _frb_initialize_rust =
-      _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
 
   void dart_fn_deliver_output(
     int call_id,
@@ -55727,20 +55708,6 @@ class RustLibWire implements BaseWire {
       'wire_handle_uuid_twin_normal');
   late final _wire_handle_uuid_twin_normal = _wire_handle_uuid_twin_normalPtr
       .asFunction<void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
-
-  ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
-    Object handle,
-  ) {
-    return _dart_opaque_dart2rust_encode(
-      handle,
-    );
-  }
-
-  late final _dart_opaque_dart2rust_encodePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
-          'dart_opaque_dart2rust_encode');
-  late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
-      .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
     ffi.Pointer<ffi.Void> ptr,

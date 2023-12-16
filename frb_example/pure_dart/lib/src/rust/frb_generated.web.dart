@@ -8892,11 +8892,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
-    return raw;
-  }
-
-  @protected
   List<dynamic> cst_encode_DartOpaque_array_1(ObjectArray1 raw) {
     return cst_encode_list_DartOpaque(raw);
   }
@@ -9409,7 +9404,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  DartOpaqueWireType cst_encode_box_autoadd_DartOpaque(Object raw) {
+  PlatformPointer cst_encode_box_autoadd_DartOpaque(Object raw) {
     return cst_encode_DartOpaque(raw);
   }
 
@@ -14665,7 +14660,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  DartOpaqueWireType? cst_encode_opt_box_autoadd_DartOpaque(Object? raw) {
+  PlatformPointer? cst_encode_opt_box_autoadd_DartOpaque(Object? raw) {
     return raw == null ? null : cst_encode_box_autoadd_DartOpaque(raw);
   }
 
@@ -16487,78 +16482,81 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
       FutureOr<void> Function(Object) raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs_String_Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs_String_Output_unit(
       FutureOr<void> Function(String) raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsync)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsyncSse)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinSse)
               raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_DartOpaque(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_DartOpaque(
       FutureOr<Object> Function() raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_String(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_String(
       FutureOr<String> Function() raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(
       FutureOr<void> Function() raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
           FutureOr<DemoStructForRustCallDartTwinNormal> Function(
                   DemoStructForRustCallDartTwinNormal)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
           FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
                   DemoStructForRustCallDartTwinRustAsync)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
           FutureOr<DemoStructForRustCallDartTwinRustAsyncSse> Function(
                   DemoStructForRustCallDartTwinRustAsyncSse)
               raw);
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
           FutureOr<DemoStructForRustCallDartTwinSse> Function(
                   DemoStructForRustCallDartTwinSse)
               raw);
+
+  @protected
+  PlatformPointer cst_encode_DartOpaque(Object raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw);
@@ -21186,11 +21184,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire extends BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void frb_initialize_rust(NativePortType dart_opaque_drop_port,
-          NativePortType dart_fn_invoke_port) =>
-      wasmModule.frb_initialize_rust(
-          dart_opaque_drop_port, dart_fn_invoke_port);
-
   void dart_fn_deliver_output(int call_id, PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_) =>
       wasmModule.dart_fn_deliver_output(
@@ -21378,56 +21371,56 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_return_dart_dynamic_twin_normal(port_);
 
   void wire_rust_call_dart_loopback_twin_normal(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_loopback_twin_normal(port_, callback);
 
   void wire_rust_call_dart_multi_times_twin_normal(
-          NativePortType port_, DartOpaqueWireType callback, int num_times) =>
+          NativePortType port_, PlatformPointer callback, int num_times) =>
       wasmModule.wire_rust_call_dart_multi_times_twin_normal(
           port_, callback, num_times);
 
   void wire_rust_call_dart_one_arg_twin_normal(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_one_arg_twin_normal(port_, callback);
 
   void wire_rust_call_dart_return_twin_normal(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_return_twin_normal(port_, callback);
 
   void wire_rust_call_dart_simple_twin_normal(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_simple_twin_normal(port_, callback);
 
   void wire_rust_call_dart_two_args_twin_normal(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_two_args_twin_normal(port_, callback);
 
   void wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
           NativePortType port_,
-          DartOpaqueWireType input,
-          DartOpaqueWireType callback) =>
+          PlatformPointer input,
+          PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
           port_, input, callback);
 
   void wire_rust_call_dart_with_dart_opaque_result_twin_normal(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_with_dart_opaque_result_twin_normal(
           port_, callback);
 
   void wire_async_accept_dart_opaque_twin_normal(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_async_accept_dart_opaque_twin_normal(port_, opaque);
 
   void wire_clone_dart_opaque_twin_normal(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_clone_dart_opaque_twin_normal(port_, opaque);
 
   void wire_create_enum_dart_opaque_twin_normal(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_create_enum_dart_opaque_twin_normal(port_, opaque);
 
   void wire_create_nested_dart_opaque_twin_normal(NativePortType port_,
-          DartOpaqueWireType opaque1, DartOpaqueWireType opaque2) =>
+          PlatformPointer opaque1, PlatformPointer opaque2) =>
       wasmModule.wire_create_nested_dart_opaque_twin_normal(
           port_, opaque1, opaque2);
 
@@ -21447,19 +21440,19 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_loop_back_array_get_twin_normal(port_, opaque);
 
   void wire_loop_back_array_twin_normal(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_loop_back_array_twin_normal(port_, opaque);
 
   void wire_loop_back_option_get_twin_normal(
-          NativePortType port_, DartOpaqueWireType? opaque) =>
+          NativePortType port_, PlatformPointer? opaque) =>
       wasmModule.wire_loop_back_option_get_twin_normal(port_, opaque);
 
   void wire_loop_back_option_twin_normal(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_loop_back_option_twin_normal(port_, opaque);
 
   void wire_loop_back_twin_normal(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_loop_back_twin_normal(port_, opaque);
 
   void wire_loop_back_vec_get_twin_normal(
@@ -21467,35 +21460,35 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_loop_back_vec_get_twin_normal(port_, opaque);
 
   void wire_loop_back_vec_twin_normal(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_loop_back_vec_twin_normal(port_, opaque);
 
   void wire_panic_unwrap_dart_opaque_twin_normal(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_panic_unwrap_dart_opaque_twin_normal(port_, opaque);
 
   void wire_set_static_dart_opaque_twin_normal(
-          NativePortType port_, int id, DartOpaqueWireType opaque) =>
+          NativePortType port_, int id, PlatformPointer opaque) =>
       wasmModule.wire_set_static_dart_opaque_twin_normal(port_, id, opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_accept_dart_opaque_twin_normal(DartOpaqueWireType opaque) =>
+      wire_sync_accept_dart_opaque_twin_normal(PlatformPointer opaque) =>
           wasmModule.wire_sync_accept_dart_opaque_twin_normal(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_loopback_twin_normal(DartOpaqueWireType opaque) =>
+      wire_sync_loopback_twin_normal(PlatformPointer opaque) =>
           wasmModule.wire_sync_loopback_twin_normal(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_option_dart_opaque_twin_normal(DartOpaqueWireType opaque) =>
+      wire_sync_option_dart_opaque_twin_normal(PlatformPointer opaque) =>
           wasmModule.wire_sync_option_dart_opaque_twin_normal(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_option_loopback_twin_normal(DartOpaqueWireType? opaque) =>
+      wire_sync_option_loopback_twin_normal(PlatformPointer? opaque) =>
           wasmModule.wire_sync_option_loopback_twin_normal(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_unwrap_dart_opaque_twin_normal(DartOpaqueWireType opaque) =>
+      wire_unwrap_dart_opaque_twin_normal(PlatformPointer opaque) =>
           wasmModule.wire_unwrap_dart_opaque_twin_normal(opaque);
 
   void wire_func_enum_simple_twin_normal(NativePortType port_, int arg) =>
@@ -23054,39 +23047,39 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_return_dart_dynamic_twin_sync();
 
   void wire_rust_call_dart_loopback_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_loopback_twin_rust_async(port_, callback);
 
   void wire_rust_call_dart_multi_times_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType callback, int num_times) =>
+          NativePortType port_, PlatformPointer callback, int num_times) =>
       wasmModule.wire_rust_call_dart_multi_times_twin_rust_async(
           port_, callback, num_times);
 
   void wire_rust_call_dart_one_arg_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_one_arg_twin_rust_async(port_, callback);
 
   void wire_rust_call_dart_return_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_return_twin_rust_async(port_, callback);
 
   void wire_rust_call_dart_simple_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_simple_twin_rust_async(port_, callback);
 
   void wire_rust_call_dart_two_args_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_two_args_twin_rust_async(port_, callback);
 
   void wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async(
           NativePortType port_,
-          DartOpaqueWireType input,
-          DartOpaqueWireType callback) =>
+          PlatformPointer input,
+          PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async(
           port_, input, callback);
 
   void wire_rust_call_dart_with_dart_opaque_result_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType callback) =>
+          NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_rust_call_dart_with_dart_opaque_result_twin_rust_async(
           port_, callback);
 
@@ -23254,19 +23247,19 @@ class RustLibWire extends BaseWire {
               ptr_, rust_vec_len_, data_len_);
 
   void wire_async_accept_dart_opaque_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_async_accept_dart_opaque_twin_rust_async(port_, opaque);
 
   void wire_clone_dart_opaque_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_clone_dart_opaque_twin_rust_async(port_, opaque);
 
   void wire_create_enum_dart_opaque_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_create_enum_dart_opaque_twin_rust_async(port_, opaque);
 
   void wire_create_nested_dart_opaque_twin_rust_async(NativePortType port_,
-          DartOpaqueWireType opaque1, DartOpaqueWireType opaque2) =>
+          PlatformPointer opaque1, PlatformPointer opaque2) =>
       wasmModule.wire_create_nested_dart_opaque_twin_rust_async(
           port_, opaque1, opaque2);
 
@@ -23287,19 +23280,19 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_loop_back_array_get_twin_rust_async(port_, opaque);
 
   void wire_loop_back_array_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_loop_back_array_twin_rust_async(port_, opaque);
 
   void wire_loop_back_option_get_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType? opaque) =>
+          NativePortType port_, PlatformPointer? opaque) =>
       wasmModule.wire_loop_back_option_get_twin_rust_async(port_, opaque);
 
   void wire_loop_back_option_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_loop_back_option_twin_rust_async(port_, opaque);
 
   void wire_loop_back_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_loop_back_twin_rust_async(port_, opaque);
 
   void wire_loop_back_vec_get_twin_rust_async(
@@ -23307,15 +23300,15 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_loop_back_vec_get_twin_rust_async(port_, opaque);
 
   void wire_loop_back_vec_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_loop_back_vec_twin_rust_async(port_, opaque);
 
   void wire_panic_unwrap_dart_opaque_twin_rust_async(
-          NativePortType port_, DartOpaqueWireType opaque) =>
+          NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_panic_unwrap_dart_opaque_twin_rust_async(port_, opaque);
 
   void wire_set_static_dart_opaque_twin_rust_async(
-          NativePortType port_, int id, DartOpaqueWireType opaque) =>
+          NativePortType port_, int id, PlatformPointer opaque) =>
       wasmModule.wire_set_static_dart_opaque_twin_rust_async(port_, id, opaque);
 
   void wire_async_accept_dart_opaque_twin_rust_async_sse(
@@ -23574,20 +23567,20 @@ class RustLibWire extends BaseWire {
           port_, ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_async_accept_dart_opaque_twin_sync(DartOpaqueWireType opaque) =>
+      wire_async_accept_dart_opaque_twin_sync(PlatformPointer opaque) =>
           wasmModule.wire_async_accept_dart_opaque_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_clone_dart_opaque_twin_sync(DartOpaqueWireType opaque) =>
+      wire_clone_dart_opaque_twin_sync(PlatformPointer opaque) =>
           wasmModule.wire_clone_dart_opaque_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_create_enum_dart_opaque_twin_sync(DartOpaqueWireType opaque) =>
+      wire_create_enum_dart_opaque_twin_sync(PlatformPointer opaque) =>
           wasmModule.wire_create_enum_dart_opaque_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_create_nested_dart_opaque_twin_sync(
-              DartOpaqueWireType opaque1, DartOpaqueWireType opaque2) =>
+              PlatformPointer opaque1, PlatformPointer opaque2) =>
           wasmModule.wire_create_nested_dart_opaque_twin_sync(opaque1, opaque2);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -23607,19 +23600,19 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_loop_back_array_get_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_array_twin_sync(DartOpaqueWireType opaque) =>
+      wire_loop_back_array_twin_sync(PlatformPointer opaque) =>
           wasmModule.wire_loop_back_array_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_option_get_twin_sync(DartOpaqueWireType? opaque) =>
+      wire_loop_back_option_get_twin_sync(PlatformPointer? opaque) =>
           wasmModule.wire_loop_back_option_get_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_option_twin_sync(DartOpaqueWireType opaque) =>
+      wire_loop_back_option_twin_sync(PlatformPointer opaque) =>
           wasmModule.wire_loop_back_option_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_twin_sync(DartOpaqueWireType opaque) =>
+      wire_loop_back_twin_sync(PlatformPointer opaque) =>
           wasmModule.wire_loop_back_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -23627,16 +23620,15 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_loop_back_vec_get_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_vec_twin_sync(DartOpaqueWireType opaque) =>
+      wire_loop_back_vec_twin_sync(PlatformPointer opaque) =>
           wasmModule.wire_loop_back_vec_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_panic_unwrap_dart_opaque_twin_sync(DartOpaqueWireType opaque) =>
+      wire_panic_unwrap_dart_opaque_twin_sync(PlatformPointer opaque) =>
           wasmModule.wire_panic_unwrap_dart_opaque_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_set_static_dart_opaque_twin_sync(
-              int id, DartOpaqueWireType opaque) =>
+      wire_set_static_dart_opaque_twin_sync(int id, PlatformPointer opaque) =>
           wasmModule.wire_set_static_dart_opaque_twin_sync(id, opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -30251,9 +30243,6 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuid_twin_normal(NativePortType port_, Uint8List id) =>
       wasmModule.wire_handle_uuid_twin_normal(port_, id);
 
-  dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle) =>
-      wasmModule.dart_opaque_dart2rust_encode(handle);
-
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr);
 
@@ -30605,9 +30594,6 @@ class RustLibWasmModule implements WasmModule {
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
-  external void frb_initialize_rust(
-      NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
-
   external void dart_fn_deliver_output(int call_id,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
@@ -30744,42 +30730,40 @@ class RustLibWasmModule implements WasmModule {
   external void wire_return_dart_dynamic_twin_normal(NativePortType port_);
 
   external void wire_rust_call_dart_loopback_twin_normal(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_multi_times_twin_normal(
-      NativePortType port_, DartOpaqueWireType callback, int num_times);
+      NativePortType port_, PlatformPointer callback, int num_times);
 
   external void wire_rust_call_dart_one_arg_twin_normal(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_return_twin_normal(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_simple_twin_normal(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_two_args_twin_normal(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
-      NativePortType port_,
-      DartOpaqueWireType input,
-      DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer input, PlatformPointer callback);
 
   external void wire_rust_call_dart_with_dart_opaque_result_twin_normal(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_async_accept_dart_opaque_twin_normal(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_clone_dart_opaque_twin_normal(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_create_enum_dart_opaque_twin_normal(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
-  external void wire_create_nested_dart_opaque_twin_normal(NativePortType port_,
-      DartOpaqueWireType opaque1, DartOpaqueWireType opaque2);
+  external void wire_create_nested_dart_opaque_twin_normal(
+      NativePortType port_, PlatformPointer opaque1, PlatformPointer opaque2);
 
   external void wire_drop_static_dart_opaque_twin_normal(
       NativePortType port_, int id);
@@ -30794,43 +30778,43 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> opaque);
 
   external void wire_loop_back_array_twin_normal(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_loop_back_option_get_twin_normal(
-      NativePortType port_, DartOpaqueWireType? opaque);
+      NativePortType port_, PlatformPointer? opaque);
 
   external void wire_loop_back_option_twin_normal(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_loop_back_twin_normal(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_loop_back_vec_get_twin_normal(
       NativePortType port_, List<dynamic> opaque);
 
   external void wire_loop_back_vec_twin_normal(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_panic_unwrap_dart_opaque_twin_normal(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_set_static_dart_opaque_twin_normal(
-      NativePortType port_, int id, DartOpaqueWireType opaque);
+      NativePortType port_, int id, PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_accept_dart_opaque_twin_normal(DartOpaqueWireType opaque);
+      wire_sync_accept_dart_opaque_twin_normal(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_loopback_twin_normal(DartOpaqueWireType opaque);
+      wire_sync_loopback_twin_normal(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_option_dart_opaque_twin_normal(DartOpaqueWireType opaque);
+      wire_sync_option_dart_opaque_twin_normal(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_option_loopback_twin_normal(DartOpaqueWireType? opaque);
+      wire_sync_option_loopback_twin_normal(PlatformPointer? opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_unwrap_dart_opaque_twin_normal(DartOpaqueWireType opaque);
+      wire_unwrap_dart_opaque_twin_normal(PlatformPointer opaque);
 
   external void wire_func_enum_simple_twin_normal(
       NativePortType port_, int arg);
@@ -31877,30 +31861,28 @@ class RustLibWasmModule implements WasmModule {
       wire_return_dart_dynamic_twin_sync();
 
   external void wire_rust_call_dart_loopback_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_multi_times_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType callback, int num_times);
+      NativePortType port_, PlatformPointer callback, int num_times);
 
   external void wire_rust_call_dart_one_arg_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_return_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_simple_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_two_args_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async(
-      NativePortType port_,
-      DartOpaqueWireType input,
-      DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer input, PlatformPointer callback);
 
   external void wire_rust_call_dart_with_dart_opaque_result_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType callback);
+      NativePortType port_, PlatformPointer callback);
 
   external void wire_rust_call_dart_loopback_twin_rust_async_sse(
       NativePortType port_,
@@ -32005,18 +31987,16 @@ class RustLibWasmModule implements WasmModule {
           int rust_vec_len_, int data_len_);
 
   external void wire_async_accept_dart_opaque_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_clone_dart_opaque_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_create_enum_dart_opaque_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_create_nested_dart_opaque_twin_rust_async(
-      NativePortType port_,
-      DartOpaqueWireType opaque1,
-      DartOpaqueWireType opaque2);
+      NativePortType port_, PlatformPointer opaque1, PlatformPointer opaque2);
 
   external void wire_drop_static_dart_opaque_twin_rust_async(
       NativePortType port_, int id);
@@ -32031,28 +32011,28 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> opaque);
 
   external void wire_loop_back_array_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_loop_back_option_get_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType? opaque);
+      NativePortType port_, PlatformPointer? opaque);
 
   external void wire_loop_back_option_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_loop_back_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_loop_back_vec_get_twin_rust_async(
       NativePortType port_, List<dynamic> opaque);
 
   external void wire_loop_back_vec_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_panic_unwrap_dart_opaque_twin_rust_async(
-      NativePortType port_, DartOpaqueWireType opaque);
+      NativePortType port_, PlatformPointer opaque);
 
   external void wire_set_static_dart_opaque_twin_rust_async(
-      NativePortType port_, int id, DartOpaqueWireType opaque);
+      NativePortType port_, int id, PlatformPointer opaque);
 
   external void wire_async_accept_dart_opaque_twin_rust_async_sse(
       NativePortType port_,
@@ -32181,17 +32161,17 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_async_accept_dart_opaque_twin_sync(DartOpaqueWireType opaque);
+      wire_async_accept_dart_opaque_twin_sync(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_clone_dart_opaque_twin_sync(DartOpaqueWireType opaque);
+      wire_clone_dart_opaque_twin_sync(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_create_enum_dart_opaque_twin_sync(DartOpaqueWireType opaque);
+      wire_create_enum_dart_opaque_twin_sync(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_create_nested_dart_opaque_twin_sync(
-          DartOpaqueWireType opaque1, DartOpaqueWireType opaque2);
+          PlatformPointer opaque1, PlatformPointer opaque2);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_drop_static_dart_opaque_twin_sync(int id);
@@ -32206,28 +32186,28 @@ class RustLibWasmModule implements WasmModule {
       wire_loop_back_array_get_twin_sync(List<dynamic> opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_array_twin_sync(DartOpaqueWireType opaque);
+      wire_loop_back_array_twin_sync(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_option_get_twin_sync(DartOpaqueWireType? opaque);
+      wire_loop_back_option_get_twin_sync(PlatformPointer? opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_option_twin_sync(DartOpaqueWireType opaque);
+      wire_loop_back_option_twin_sync(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_twin_sync(DartOpaqueWireType opaque);
+      wire_loop_back_twin_sync(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_loop_back_vec_get_twin_sync(List<dynamic> opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_loop_back_vec_twin_sync(DartOpaqueWireType opaque);
+      wire_loop_back_vec_twin_sync(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_panic_unwrap_dart_opaque_twin_sync(DartOpaqueWireType opaque);
+      wire_panic_unwrap_dart_opaque_twin_sync(PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_set_static_dart_opaque_twin_sync(int id, DartOpaqueWireType opaque);
+      wire_set_static_dart_opaque_twin_sync(int id, PlatformPointer opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_async_accept_dart_opaque_twin_sync_sse(
@@ -36590,8 +36570,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_uuid_twin_normal(
       NativePortType port_, Uint8List id);
-
-  external dynamic /* usize */ dart_opaque_dart2rust_encode(Object handle);
 
   external void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);

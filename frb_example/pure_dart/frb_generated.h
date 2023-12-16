@@ -4210,8 +4210,6 @@ int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
 
 void benchmark_raw_output_bytes(int64_t port, int32_t message_id, int32_t size);
 
-void frb_initialize_rust(int64_t dart_opaque_drop_port, int64_t dart_fn_invoke_port);
-
 void dart_fn_deliver_output(int32_t call_id,
                             uint8_t *ptr_,
                             int32_t rust_vec_len_,
@@ -9446,8 +9444,6 @@ void wire_handle_nested_uuids_twin_normal(int64_t port_,
 
 void wire_handle_uuid_twin_normal(int64_t port_, struct wire_cst_list_prim_u_8 *id);
 
-const void *dart_opaque_dart2rust_encode(Dart_Handle handle);
-
 void rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(const void *ptr);
@@ -11626,9 +11622,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_sync);
     dummy_var ^= ((int64_t) (void*) cst_new_list_weekdays_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) dart_fn_deliver_output);
-    dummy_var ^= ((int64_t) (void*) dart_opaque_dart2rust_encode);
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
-    dummy_var ^= ((int64_t) (void*) frb_initialize_rust);
     dummy_var ^= ((int64_t) (void*) get_dart_object);
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_MutexHideData);

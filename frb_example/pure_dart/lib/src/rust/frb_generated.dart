@@ -66075,20 +66075,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
       FutureOr<void> Function(Object) raw) {
     return cst_encode_DartOpaque(
         encode_DartFn_Inputs_DartOpaque_Output_unit(raw));
   }
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs_String_Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs_String_Output_unit(
       FutureOr<void> Function(String) raw) {
     return cst_encode_DartOpaque(encode_DartFn_Inputs_String_Output_unit(raw));
   }
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
               raw) {
@@ -66098,7 +66098,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsync)
@@ -66109,7 +66109,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
           FutureOr<void> Function(
                   String, DemoStructForRustCallDartTwinRustAsyncSse)
@@ -66120,7 +66120,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
           FutureOr<void> Function(String, DemoStructForRustCallDartTwinSse)
               raw) {
@@ -66130,25 +66130,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_DartOpaque(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_DartOpaque(
       FutureOr<Object> Function() raw) {
     return cst_encode_DartOpaque(encode_DartFn_Inputs__Output_DartOpaque(raw));
   }
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_String(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_String(
       FutureOr<String> Function() raw) {
     return cst_encode_DartOpaque(encode_DartFn_Inputs__Output_String(raw));
   }
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(
       FutureOr<void> Function() raw) {
     return cst_encode_DartOpaque(encode_DartFn_Inputs__Output_unit(raw));
   }
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
           FutureOr<DemoStructForRustCallDartTwinNormal> Function(
                   DemoStructForRustCallDartTwinNormal)
@@ -66159,7 +66159,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
           FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
                   DemoStructForRustCallDartTwinRustAsync)
@@ -66170,7 +66170,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
           FutureOr<DemoStructForRustCallDartTwinRustAsyncSse> Function(
                   DemoStructForRustCallDartTwinRustAsyncSse)
@@ -66181,7 +66181,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType
+  PlatformPointer
       cst_encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
           FutureOr<DemoStructForRustCallDartTwinSse> Function(
                   DemoStructForRustCallDartTwinSse)
@@ -66189,6 +66189,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return cst_encode_DartOpaque(
         encode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
             raw));
+  }
+
+  @protected
+  PlatformPointer cst_encode_DartOpaque(Object raw) {
+    return encodeDartOpaque(
+        raw, portManager.dartHandlerPort, generalizedFrbRustBinding);
   }
 
   @protected
@@ -66992,7 +66998,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_DartOpaque(Object self, SseSerializer serializer) {
     sse_encode_usize(
-        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self)),
+        PlatformPointerUtil.ptrToInt(encodeDartOpaque(
+            self, portManager.dartHandlerPort, generalizedFrbRustBinding)),
         serializer);
   }
 
