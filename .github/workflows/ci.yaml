@@ -248,7 +248,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-rust
+      - run: ./frb_internal test-rust --coverage
 
       # report
       - uses: codecov/codecov-action@v3
@@ -294,7 +294,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-dart-native --package ${{ matrix.package }}
+      - run: ./frb_internal test-dart-native --package ${{ matrix.package }} --coverage
 
       # report
       - uses: codecov/codecov-action@v3
@@ -345,7 +345,7 @@ jobs:
           sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
 
       # execute
-      - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
+      - run: ./frb_internal test-dart-web --package ${{ matrix.package }} --coverage
 
       # report
       - uses: codecov/codecov-action@v3

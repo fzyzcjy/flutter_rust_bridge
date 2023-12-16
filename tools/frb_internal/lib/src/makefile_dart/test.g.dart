@@ -21,11 +21,15 @@ TestConfig parseTestConfig(List<String> args) {
 
 TestRustConfig _$parseTestRustConfigResult(ArgResults result) => TestRustConfig(
       updateGoldens: result['update-goldens'] as bool,
+      coverage: result['coverage'] as bool,
     );
 
 ArgParser _$populateTestRustConfigParser(ArgParser parser) => parser
   ..addFlag(
     'update-goldens',
+  )
+  ..addFlag(
+    'coverage',
   );
 
 final _$parserForTestRustConfig = _$populateTestRustConfigParser(ArgParser());
@@ -37,11 +41,15 @@ TestRustConfig parseTestRustConfig(List<String> args) {
 
 TestDartConfig _$parseTestDartConfigResult(ArgResults result) => TestDartConfig(
       package: result['package'] as String,
+      coverage: result['coverage'] as bool,
     );
 
 ArgParser _$populateTestDartConfigParser(ArgParser parser) => parser
   ..addOption(
     'package',
+  )
+  ..addFlag(
+    'coverage',
   );
 
 final _$parserForTestDartConfig = _$populateTestDartConfigParser(ArgParser());

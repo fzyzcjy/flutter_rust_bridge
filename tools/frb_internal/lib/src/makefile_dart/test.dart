@@ -39,15 +39,17 @@ class TestConfig {
 @CliOptions()
 class TestRustConfig {
   final bool updateGoldens;
+  final bool coverage;
 
-  const TestRustConfig({required this.updateGoldens});
+  const TestRustConfig({required this.updateGoldens, required this.coverage});
 }
 
 @CliOptions()
 class TestDartConfig {
   final String package;
+  final bool coverage;
 
-  const TestDartConfig({required this.package});
+  const TestDartConfig({required this.package, required this.coverage});
 }
 
 enum Sanitizer {
@@ -86,6 +88,8 @@ Future<void> testRust(TestRustConfig config) async {
 
 Future<void> testRustPackage(TestRustConfig config, String package) async {
   await exec('cargo build', relativePwd: package);
+
+  // TODO test coverage
   await exec('cargo test', relativePwd: package, extraEnv: {
     // Because we have another CI to run the codegen and check outputs
     'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
@@ -107,8 +111,10 @@ Future<void> testDartNative(TestDartConfig config) async {
     extraFlags += '--enable-vm-service ';
   }
 
-  await exec('${dartMode.name} $extraFlags test',
-      relativePwd: config.package, extraEnv: kEnvEnableRustBacktrace);
+  await exec(
+      '${dartMode.name} $extraFlags test ${config.coverage ? " --coverage" : ""}',
+      relativePwd: config.package,
+      extraEnv: kEnvEnableRustBacktrace);
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
@@ -116,7 +122,7 @@ Future<void> testDartWeb(TestDartConfig config) async {
 
   final package = config.package;
   if (package == 'frb_dart') {
-    await exec('dart test -p chrome',
+    await exec('dart test -p chrome ${config.coverage ? " --coverage" : ""}',
         relativePwd: package, extraEnv: kEnvEnableRustBacktrace);
   } else {
     await exec(
