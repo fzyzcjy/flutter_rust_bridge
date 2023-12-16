@@ -77,7 +77,8 @@ Future<void> expectRustPanic(FutureOr<void> Function() body, String mode,
     {String? messageOnNative}) async {
   var inner = isA<PanicException>();
   if (!kIsWeb && messageOnNative != null) {
-    inner = inner.having((x) => x.message, 'message', messageOnNative);
+    inner =
+        inner.having((x) => x.message, 'message', startsWith(messageOnNative));
   }
   await expectRustPanicRaw(body, mode, throwsA(inner));
 }

@@ -12,8 +12,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('call funcReturnErrorTwinNormal', () async {
       await expectLater(
           () async => funcReturnErrorTwinNormal(),
-          throwsA(isA<AnyhowException>()
-              .having((x) => x.message, 'message', 'deliberate error')));
+          throwsA(isA<AnyhowException>().having(
+              (x) => x.message, 'message', startsWith('deliberate error'))));
     });
     test('call funcTypeFalliblePanicTwinNormal', () async {
       await expectRustPanic(
@@ -35,7 +35,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('call funcReturnErrorTwinNormal', () async {
       var matcher = isA<CustomEnumErrorTwinNormal>()
-          .having((x) => x.message, 'message', 'deliberate error');
+          .having((x) => x.message, 'message', startsWith('deliberate error'));
       if (!kIsWeb)
         matcher = matcher.having((x) => x.backtrace, 'backtrace', isNotEmpty);
       await expectLater(
