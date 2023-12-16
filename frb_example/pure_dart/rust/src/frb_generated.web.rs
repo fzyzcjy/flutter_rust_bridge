@@ -46,7 +46,9 @@ impl CstDecode<chrono::Duration> for i64 {
         chrono::Duration::milliseconds(self)
     }
 }
-impl CstDecode<flutter_rust_bridge::DartOpaque> for usize {
+impl CstDecode<flutter_rust_bridge::DartOpaque>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
         unsafe { flutter_rust_bridge::for_generated::decode_dart_opaque(self as _) }
     }
@@ -10598,7 +10600,7 @@ pub fn wire_return_dart_dynamic_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_loopback_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_loopback_twin_normal_impl(port_, callback)
 }
@@ -10606,7 +10608,7 @@ pub fn wire_rust_call_dart_loopback_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_multi_times_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     num_times: i32,
 ) {
     wire_rust_call_dart_multi_times_twin_normal_impl(port_, callback, num_times)
@@ -10615,7 +10617,7 @@ pub fn wire_rust_call_dart_multi_times_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_one_arg_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_one_arg_twin_normal_impl(port_, callback)
 }
@@ -10623,7 +10625,7 @@ pub fn wire_rust_call_dart_one_arg_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_return_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_return_twin_normal_impl(port_, callback)
 }
@@ -10631,7 +10633,7 @@ pub fn wire_rust_call_dart_return_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_simple_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_simple_twin_normal_impl(port_, callback)
 }
@@ -10639,7 +10641,7 @@ pub fn wire_rust_call_dart_simple_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_two_args_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_two_args_twin_normal_impl(port_, callback)
 }
@@ -10647,8 +10649,8 @@ pub fn wire_rust_call_dart_two_args_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: usize,
-    callback: usize,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_with_dart_opaque_arg_twin_normal_impl(port_, input, callback)
 }
@@ -10656,7 +10658,7 @@ pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_with_dart_opaque_result_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_with_dart_opaque_result_twin_normal_impl(port_, callback)
 }
@@ -10664,7 +10666,7 @@ pub fn wire_rust_call_dart_with_dart_opaque_result_twin_normal(
 #[wasm_bindgen]
 pub fn wire_async_accept_dart_opaque_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_async_accept_dart_opaque_twin_normal_impl(port_, opaque)
 }
@@ -10672,7 +10674,7 @@ pub fn wire_async_accept_dart_opaque_twin_normal(
 #[wasm_bindgen]
 pub fn wire_clone_dart_opaque_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_clone_dart_opaque_twin_normal_impl(port_, opaque)
 }
@@ -10680,7 +10682,7 @@ pub fn wire_clone_dart_opaque_twin_normal(
 #[wasm_bindgen]
 pub fn wire_create_enum_dart_opaque_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_create_enum_dart_opaque_twin_normal_impl(port_, opaque)
 }
@@ -10688,8 +10690,8 @@ pub fn wire_create_enum_dart_opaque_twin_normal(
 #[wasm_bindgen]
 pub fn wire_create_nested_dart_opaque_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque1: usize,
-    opaque2: usize,
+    opaque1: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    opaque2: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_create_nested_dart_opaque_twin_normal_impl(port_, opaque1, opaque2)
 }
@@ -10729,7 +10731,7 @@ pub fn wire_loop_back_array_get_twin_normal(
 #[wasm_bindgen]
 pub fn wire_loop_back_array_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_array_twin_normal_impl(port_, opaque)
 }
@@ -10737,7 +10739,7 @@ pub fn wire_loop_back_array_twin_normal(
 #[wasm_bindgen]
 pub fn wire_loop_back_option_get_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_option_get_twin_normal_impl(port_, opaque)
 }
@@ -10745,7 +10747,7 @@ pub fn wire_loop_back_option_get_twin_normal(
 #[wasm_bindgen]
 pub fn wire_loop_back_option_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_option_twin_normal_impl(port_, opaque)
 }
@@ -10753,7 +10755,7 @@ pub fn wire_loop_back_option_twin_normal(
 #[wasm_bindgen]
 pub fn wire_loop_back_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_twin_normal_impl(port_, opaque)
 }
@@ -10769,7 +10771,7 @@ pub fn wire_loop_back_vec_get_twin_normal(
 #[wasm_bindgen]
 pub fn wire_loop_back_vec_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_vec_twin_normal_impl(port_, opaque)
 }
@@ -10777,7 +10779,7 @@ pub fn wire_loop_back_vec_twin_normal(
 #[wasm_bindgen]
 pub fn wire_panic_unwrap_dart_opaque_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_panic_unwrap_dart_opaque_twin_normal_impl(port_, opaque)
 }
@@ -10786,42 +10788,42 @@ pub fn wire_panic_unwrap_dart_opaque_twin_normal(
 pub fn wire_set_static_dart_opaque_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     id: i32,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_set_static_dart_opaque_twin_normal_impl(port_, id, opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_accept_dart_opaque_twin_normal(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_accept_dart_opaque_twin_normal_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_loopback_twin_normal(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_loopback_twin_normal_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_option_dart_opaque_twin_normal(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_option_dart_opaque_twin_normal_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_sync_option_loopback_twin_normal(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_sync_option_loopback_twin_normal_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_unwrap_dart_opaque_twin_normal(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_unwrap_dart_opaque_twin_normal_impl(opaque)
 }
@@ -13324,7 +13326,7 @@ pub fn wire_return_dart_dynamic_twin_sync(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_loopback_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_loopback_twin_rust_async_impl(port_, callback)
 }
@@ -13332,7 +13334,7 @@ pub fn wire_rust_call_dart_loopback_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_multi_times_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     num_times: i32,
 ) {
     wire_rust_call_dart_multi_times_twin_rust_async_impl(port_, callback, num_times)
@@ -13341,7 +13343,7 @@ pub fn wire_rust_call_dart_multi_times_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_one_arg_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_one_arg_twin_rust_async_impl(port_, callback)
 }
@@ -13349,7 +13351,7 @@ pub fn wire_rust_call_dart_one_arg_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_return_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_return_twin_rust_async_impl(port_, callback)
 }
@@ -13357,7 +13359,7 @@ pub fn wire_rust_call_dart_return_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_simple_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_simple_twin_rust_async_impl(port_, callback)
 }
@@ -13365,7 +13367,7 @@ pub fn wire_rust_call_dart_simple_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_two_args_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_two_args_twin_rust_async_impl(port_, callback)
 }
@@ -13373,8 +13375,8 @@ pub fn wire_rust_call_dart_two_args_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    input: usize,
-    callback: usize,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async_impl(port_, input, callback)
 }
@@ -13382,7 +13384,7 @@ pub fn wire_rust_call_dart_with_dart_opaque_arg_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_with_dart_opaque_result_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: usize,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_with_dart_opaque_result_twin_rust_async_impl(port_, callback)
 }
@@ -13605,7 +13607,7 @@ pub fn wire_unwrap_dart_opaque_twin_sse(
 #[wasm_bindgen]
 pub fn wire_async_accept_dart_opaque_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_async_accept_dart_opaque_twin_rust_async_impl(port_, opaque)
 }
@@ -13613,7 +13615,7 @@ pub fn wire_async_accept_dart_opaque_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_clone_dart_opaque_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_clone_dart_opaque_twin_rust_async_impl(port_, opaque)
 }
@@ -13621,7 +13623,7 @@ pub fn wire_clone_dart_opaque_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_create_enum_dart_opaque_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_create_enum_dart_opaque_twin_rust_async_impl(port_, opaque)
 }
@@ -13629,8 +13631,8 @@ pub fn wire_create_enum_dart_opaque_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_create_nested_dart_opaque_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque1: usize,
-    opaque2: usize,
+    opaque1: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    opaque2: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_create_nested_dart_opaque_twin_rust_async_impl(port_, opaque1, opaque2)
 }
@@ -13670,7 +13672,7 @@ pub fn wire_loop_back_array_get_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_loop_back_array_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_array_twin_rust_async_impl(port_, opaque)
 }
@@ -13678,7 +13680,7 @@ pub fn wire_loop_back_array_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_loop_back_option_get_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_option_get_twin_rust_async_impl(port_, opaque)
 }
@@ -13686,7 +13688,7 @@ pub fn wire_loop_back_option_get_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_loop_back_option_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_option_twin_rust_async_impl(port_, opaque)
 }
@@ -13694,7 +13696,7 @@ pub fn wire_loop_back_option_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_loop_back_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_twin_rust_async_impl(port_, opaque)
 }
@@ -13710,7 +13712,7 @@ pub fn wire_loop_back_vec_get_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_loop_back_vec_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_loop_back_vec_twin_rust_async_impl(port_, opaque)
 }
@@ -13718,7 +13720,7 @@ pub fn wire_loop_back_vec_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_panic_unwrap_dart_opaque_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_panic_unwrap_dart_opaque_twin_rust_async_impl(port_, opaque)
 }
@@ -13727,7 +13729,7 @@ pub fn wire_panic_unwrap_dart_opaque_twin_rust_async(
 pub fn wire_set_static_dart_opaque_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     id: i32,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_set_static_dart_opaque_twin_rust_async_impl(port_, id, opaque)
 }
@@ -14054,29 +14056,29 @@ pub fn wire_set_static_dart_opaque_twin_sse(
 
 #[wasm_bindgen]
 pub fn wire_async_accept_dart_opaque_twin_sync(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_async_accept_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_clone_dart_opaque_twin_sync(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_clone_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_create_enum_dart_opaque_twin_sync(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_create_enum_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_create_nested_dart_opaque_twin_sync(
-    opaque1: usize,
-    opaque2: usize,
+    opaque1: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    opaque2: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_create_nested_dart_opaque_twin_sync_impl(opaque1, opaque2)
 }
@@ -14111,28 +14113,28 @@ pub fn wire_loop_back_array_get_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_array_twin_sync(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_array_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_option_get_twin_sync(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_option_get_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_option_twin_sync(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_option_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_loop_back_twin_sync(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_twin_sync_impl(opaque)
 }
@@ -14146,14 +14148,14 @@ pub fn wire_loop_back_vec_get_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_loop_back_vec_twin_sync(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_loop_back_vec_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]
 pub fn wire_panic_unwrap_dart_opaque_twin_sync(
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_panic_unwrap_dart_opaque_twin_sync_impl(opaque)
 }
@@ -14161,7 +14163,7 @@ pub fn wire_panic_unwrap_dart_opaque_twin_sync(
 #[wasm_bindgen]
 pub fn wire_set_static_dart_opaque_twin_sync(
     id: i32,
-    opaque: usize,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_set_static_dart_opaque_twin_sync_impl(id, opaque)
 }

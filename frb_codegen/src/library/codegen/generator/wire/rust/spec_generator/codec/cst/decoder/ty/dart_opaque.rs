@@ -17,10 +17,6 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DartOpaqueWireRustCodecCstGen
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        match target {
-            Target::Io => "*const std::ffi::c_void",
-            Target::Web => "usize",
-        }
-        .into()
+        dart_opaque_or_generalized_rust_opaque_rust_wire_type(target)
     }
 }
