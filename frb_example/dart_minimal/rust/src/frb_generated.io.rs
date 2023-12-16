@@ -10,6 +10,11 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
+impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
+    fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self) }
+    }
+}
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }
@@ -18,15 +23,6 @@ impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
     }
-}
-
-#[no_mangle]
-pub extern "C" fn frb_initialize_rust(dart_opaque_drop_port: i64, dart_fn_invoke_port: i64) {
-    flutter_rust_bridge::for_generated::handler_initialize(
-        &*FLUTTER_RUST_BRIDGE_HANDLER,
-        dart_opaque_drop_port,
-        dart_fn_invoke_port,
-    )
 }
 
 #[no_mangle]
@@ -47,6 +43,28 @@ pub extern "C" fn dart_fn_deliver_output(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_hi_1(port_: i64, callback: *const std::ffi::c_void) {
+    wire_hi_1_impl(port_, callback)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_hi_2(port_: i64, opaque: *const std::ffi::c_void) {
+    wire_hi_2_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn dart_opaque_dart2rust_encode(
+    handle: flutter_rust_bridge::for_generated::dart_sys::Dart_Handle,
+) -> *const std::ffi::c_void {
+    unsafe {
+        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
+            &*FLUTTER_RUST_BRIDGE_HANDLER,
+            handle,
+        ) as _
+    }
 }

@@ -19,10 +19,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  FutureOr<void> Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
+
+  @protected
+  Object dco_decode_DartOpaque(dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
+
+  @protected
+  int dco_decode_usize(dynamic raw);
+
+  @protected
+  Object sse_decode_DartOpaque(SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
@@ -31,7 +43,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
+  int sse_decode_usize(SseDeserializer deserializer);
+
+  @protected
   bool sse_decode_bool(SseDeserializer deserializer);
+
+  @protected
+  DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
+    return wire.dart_opaque_dart2rust_encode(raw);
+  }
+
+  @protected
+  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(
+      FutureOr<void> Function() raw);
 
   @protected
   int cst_encode_i_32(int raw);
@@ -40,10 +64,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
+  int cst_encode_usize(int raw);
+
+  @protected
+  void sse_encode_DartFn_Inputs__Output_unit(
+      FutureOr<void> Function() self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_DartOpaque(Object self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_usize(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -76,22 +113,6 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
-  void frb_initialize_rust(
-    int dart_opaque_drop_port,
-    int dart_fn_invoke_port,
-  ) {
-    return _frb_initialize_rust(
-      dart_opaque_drop_port,
-      dart_fn_invoke_port,
-    );
-  }
-
-  late final _frb_initialize_rustPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
-          'frb_initialize_rust');
-  late final _frb_initialize_rust =
-      _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
-
   void dart_fn_deliver_output(
     int call_id,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -113,6 +134,38 @@ class RustLibWire implements BaseWire {
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_hi_1(
+    int port_,
+    ffi.Pointer<ffi.Void> callback,
+  ) {
+    return _wire_hi_1(
+      port_,
+      callback,
+    );
+  }
+
+  late final _wire_hi_1Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>('wire_hi_1');
+  late final _wire_hi_1 =
+      _wire_hi_1Ptr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_hi_2(
+    int port_,
+    ffi.Pointer<ffi.Void> opaque,
+  ) {
+    return _wire_hi_2(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_hi_2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>('wire_hi_2');
+  late final _wire_hi_2 =
+      _wire_hi_2Ptr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
   void wire_minimal_adder(
     int port_,
     int a,
@@ -131,6 +184,20 @@ class RustLibWire implements BaseWire {
       'wire_minimal_adder');
   late final _wire_minimal_adder =
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
+
+  ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
+    Object handle,
+  ) {
+    return _dart_opaque_dart2rust_encode(
+      handle,
+    );
+  }
+
+  late final _dart_opaque_dart2rust_encodePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
+          'dart_opaque_dart2rust_encode');
+  late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
