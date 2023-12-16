@@ -1,5 +1,8 @@
+use crate::dart_opaque::boxes::thread_box::ThreadBox;
+
 #[derive(Debug, Clone)]
 pub struct GeneralizedAutoDropDartPersistentHandle(wasm_bindgen::JsValue);
+pub type GeneralizedDartHandleBox = ThreadBox;
 /// cbindgen:ignore
 pub type GeneralizedDartHandle = wasm_bindgen::JsValue;
 
