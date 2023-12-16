@@ -73,7 +73,10 @@ fn drop_thread_box_persistent_handle_via_port(
     let channel = Channel::new(handle_to_message_port(drop_port));
     let ptr = new_leak_box_ptr(persistent_handle) as usize;
 
-    let msg = [DartHandlerPortAction::DartOpaqueDrop, ptr.into_dart()];
+    let msg = [
+        DartHandlerPortAction::DartOpaqueDrop.into_dart(),
+        ptr.into_dart(),
+    ];
 
     if !channel.post(msg) {
         warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");

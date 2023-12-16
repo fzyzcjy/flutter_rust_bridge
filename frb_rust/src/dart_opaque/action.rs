@@ -1,3 +1,4 @@
+use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

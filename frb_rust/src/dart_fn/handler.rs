@@ -42,7 +42,7 @@ impl DartFnHandler {
         let sender = Rust2DartSender::new(Channel::new(handle_to_message_port(&dart_handler_port)));
         let msg = {
             let mut ans = vec![
-                DartHandlerPortAction::DartFnInvoke,
+                DartHandlerPortAction::DartFnInvoke.into_dart(),
                 dart_fn.into_dart(),
                 call_id.into_dart(),
             ];
