@@ -42,8 +42,9 @@ class TestConfig {
 @CliOptions()
 class TestRustConfig {
   final bool updateGoldens;
+  final bool coverage;
 
-  const TestRustConfig({required this.updateGoldens});
+  const TestRustConfig({required this.updateGoldens, required this.coverage});
 }
 
 @CliOptions()
