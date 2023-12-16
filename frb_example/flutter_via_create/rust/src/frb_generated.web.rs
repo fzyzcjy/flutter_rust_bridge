@@ -49,18 +49,6 @@ impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 }
 
 #[wasm_bindgen]
-pub fn frb_initialize_rust(
-    dart_opaque_drop_port: flutter_rust_bridge::for_generated::MessagePort,
-    dart_fn_invoke_port: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    flutter_rust_bridge::for_generated::handler_initialize(
-        &*FLUTTER_RUST_BRIDGE_HANDLER,
-        dart_opaque_drop_port,
-        dart_fn_invoke_port,
-    )
-}
-
-#[wasm_bindgen]
 pub fn dart_fn_deliver_output(
     call_id: i32,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,

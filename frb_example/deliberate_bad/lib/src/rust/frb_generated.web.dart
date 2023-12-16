@@ -47,11 +47,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire extends BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void frb_initialize_rust(NativePortType dart_opaque_drop_port,
-          NativePortType dart_fn_invoke_port) =>
-      wasmModule.frb_initialize_rust(
-          dart_opaque_drop_port, dart_fn_invoke_port);
-
   void dart_fn_deliver_output(int call_id, PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_) =>
       wasmModule.dart_fn_deliver_output(
@@ -84,9 +79,6 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
-
-  external void frb_initialize_rust(
-      NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
 
   external void dart_fn_deliver_output(int call_id,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);

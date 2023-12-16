@@ -404,22 +404,6 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
-  void frb_initialize_rust(
-    int dart_opaque_drop_port,
-    int dart_fn_invoke_port,
-  ) {
-    return _frb_initialize_rust(
-      dart_opaque_drop_port,
-      dart_fn_invoke_port,
-    );
-  }
-
-  late final _frb_initialize_rustPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
-          'frb_initialize_rust');
-  late final _frb_initialize_rust =
-      _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
-
   void dart_fn_deliver_output(
     int call_id,
     ffi.Pointer<ffi.Uint8> ptr_,
