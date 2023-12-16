@@ -1,6 +1,6 @@
 use super::{DartOpaque, GeneralizedDartHandle};
 use crate::platform_types::{message_port_to_handle, MessagePort};
-use crate::Handler;
+
 
 /// # Safety
 ///
