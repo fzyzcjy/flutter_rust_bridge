@@ -41,7 +41,6 @@ mod tests {
     use crate::binary::test_utils::set_cwd_test_fixture;
     use crate::main_given_cli;
     use clap::Parser;
-    use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
     use serial_test::serial;
     use std::env;
 
