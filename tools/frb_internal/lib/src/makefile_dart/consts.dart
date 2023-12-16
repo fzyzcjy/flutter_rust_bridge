@@ -2,16 +2,24 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
-const kRustPackages = [
+const kRustPackagesAllowWeb = [
   'frb_rust',
-  'frb_codegen',
-  'frb_macros',
   'frb_example/dart_minimal/rust',
   'frb_example/pure_dart/rust',
   'frb_example/deliberate_bad/rust',
   'frb_example/flutter_via_create/rust',
   'frb_example/flutter_via_integrate/rust',
   'frb_example/gallery/rust',
+];
+
+const kRustPackagesDisallowWeb = [
+  'frb_codegen',
+  'frb_macros',
+];
+
+const kRustPackages = [
+  ...kRustPackagesAllowWeb,
+  ...kRustPackagesDisallowWeb,
 ];
 
 const kDartExamplePackages = [

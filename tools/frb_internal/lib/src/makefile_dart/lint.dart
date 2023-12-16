@@ -55,9 +55,11 @@ Future<void> lintRustClippy(LintConfig config) async {
         relativePwd: package);
   }
 
-  await exec(
-      'cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix --allow-dirty" : ""} -- -D warnings',
-      relativePwd: 'frb_rust');
+  for (final package in kRustPackagesAllowWeb) {
+    await exec(
+        'cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix --allow-dirty" : ""} -- -D warnings',
+        relativePwd: package);
+  }
 }
 
 Future<void> lintDart(LintConfig config) async {
