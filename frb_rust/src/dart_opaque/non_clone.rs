@@ -85,8 +85,19 @@ fn drop_thread_box_persistent_handle_via_port(
     };
 }
 
+#[cfg(not(wasm))]
 #[no_mangle]
 pub unsafe extern "C" fn dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
+    dart_opaque_drop_thread_box_persistent_handle_inner(ptr)
+}
+
+#[cfg(wasm)]
+#[wasm_bindgen]
+pub unsafe extern "C" fn dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
+    dart_opaque_drop_thread_box_persistent_handle_inner(ptr)
+}
+
+unsafe fn dart_opaque_drop_thread_box_persistent_handle_inner(ptr: usize) {
     let value: ThreadBox<GeneralizedAutoDropDartPersistentHandle> = *box_from_leak_ptr(ptr as _);
     drop(value);
 }
