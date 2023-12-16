@@ -10,7 +10,7 @@ impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
             &self.ir.get_delegate(),
             match lang {
                 Lang::DartLang(_) => {
-                    "PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self))"
+                    "PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(self, TODO))"
                 }
                 Lang::RustLang(_) => "self.encode()",
             },
