@@ -27,7 +27,7 @@ impl<T: Debug> ThreadBox<T> {
 impl<T: Debug> ThreadBox<T> {
     pub fn check_guard(&self) -> bool {}
 
-    pub fn into_inner(mut self) -> T {}
+    pub fn into_inner(self) -> T {}
 }
 
 #[delegate(self.0)]
