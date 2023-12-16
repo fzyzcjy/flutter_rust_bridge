@@ -183,23 +183,6 @@ class RustLibWire implements BaseWire {
   late final _wire_minimal_adder =
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
 
-  ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
-    Object handle,
-    int dart_handler_port,
-  ) {
-    return _dart_opaque_dart2rust_encode(
-      handle,
-      dart_handler_port,
-    );
-  }
-
-  late final _dart_opaque_dart2rust_encodePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Void> Function(
-              ffi.Handle, ffi.Int64)>>('dart_opaque_dart2rust_encode');
-  late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
-      .asFunction<ffi.Pointer<ffi.Void> Function(Object, int)>();
-
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }

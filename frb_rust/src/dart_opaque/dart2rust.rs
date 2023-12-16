@@ -33,7 +33,6 @@ pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
 ///
 /// This should never be called manually.
 pub unsafe fn dart_opaque_dart2rust_encode<H: Handler>(
-    handler: &H,
     handle: GeneralizedDartHandle,
     drop_port: MessagePort,
 ) -> *const std::ffi::c_void {

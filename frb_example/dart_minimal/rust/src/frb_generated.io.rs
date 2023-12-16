@@ -56,17 +56,3 @@ pub extern "C" fn wire_hi_2(port_: i64, opaque: *const std::ffi::c_void) {
 pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
 }
-
-#[no_mangle]
-pub extern "C" fn dart_opaque_dart2rust_encode(
-    handle: flutter_rust_bridge::for_generated::dart_sys::Dart_Handle,
-    dart_handler_port: i64,
-) -> *const std::ffi::c_void {
-    unsafe {
-        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
-            &*FLUTTER_RUST_BRIDGE_HANDLER,
-            handle,
-            dart_handler_port,
-        ) as _
-    }
-}

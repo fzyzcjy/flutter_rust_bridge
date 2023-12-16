@@ -80,17 +80,3 @@ pub fn wire_hi_2(
 pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
 }
-
-#[wasm_bindgen]
-pub fn dart_opaque_dart2rust_encode(
-    handle: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    dart_handler_port: flutter_rust_bridge::for_generated::MessagePort,
-) -> usize {
-    unsafe {
-        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
-            &*FLUTTER_RUST_BRIDGE_HANDLER,
-            handle,
-            dart_handler_port,
-        ) as _
-    }
-}
