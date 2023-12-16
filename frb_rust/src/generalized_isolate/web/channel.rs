@@ -3,8 +3,6 @@ use crate::generalized_isolate::IntoDart;
 use crate::platform_types::handle_to_message_port;
 use crate::platform_types::MessagePort;
 use crate::platform_types::{message_port_to_handle, SendableMessagePortHandle};
-use wasm_bindgen::JsCast;
-use web_sys::BroadcastChannel;
 
 #[derive(Clone)]
 pub struct Channel {
