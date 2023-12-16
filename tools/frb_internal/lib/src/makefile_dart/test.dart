@@ -112,7 +112,7 @@ Future<void> testDartNative(TestDartConfig config) async {
   }
 
   await exec(
-      '${dartMode.name} $extraFlags test ${config.coverage ? " --coverage" : ""}',
+      '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
       relativePwd: config.package,
       extraEnv: kEnvEnableRustBacktrace);
 }
@@ -122,8 +122,10 @@ Future<void> testDartWeb(TestDartConfig config) async {
 
   final package = config.package;
   if (package == 'frb_dart') {
-    await exec('dart test -p chrome ${config.coverage ? " --coverage" : ""}',
-        relativePwd: package, extraEnv: kEnvEnableRustBacktrace);
+    await exec(
+        'dart test -p chrome ${config.coverage ? ' --coverage="coverage"' : ""}',
+        relativePwd: package,
+        extraEnv: kEnvEnableRustBacktrace);
   } else {
     await exec(
         'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart',
