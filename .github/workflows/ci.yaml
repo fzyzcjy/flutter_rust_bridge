@@ -254,6 +254,8 @@ jobs:
       - uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          verbose: true
 
   test_dart_native:
     name: 'Test :: Dart :: Native'
@@ -300,6 +302,9 @@ jobs:
       - uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          files: ${{ matrix.package }}/coverage/lcov.txt
+          verbose: true
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
