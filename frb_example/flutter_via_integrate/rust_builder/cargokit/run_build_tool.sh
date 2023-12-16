@@ -1,7 +1,3 @@
-# This is copied from cargokit, TODO
-# TODO explain more
-# 
-
 #!/bin/bash
 
 set -e

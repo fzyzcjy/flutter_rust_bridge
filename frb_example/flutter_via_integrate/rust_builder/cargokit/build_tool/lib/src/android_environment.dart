@@ -1,6 +1,5 @@
-/// This is copied from cargokit, TODO
-/// TODO explain more
-///
+/// This is copied from Cargokit (which is the official way to use it currently)
+/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
 
 import 'dart:io';
 import 'dart:isolate';
