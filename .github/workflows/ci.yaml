@@ -508,7 +508,7 @@ jobs:
       - run: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
   test_flutter_native_desktop:
-    name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }}'
+    name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
