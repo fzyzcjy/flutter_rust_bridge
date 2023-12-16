@@ -257,6 +257,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
+          files: frb_codegen/lcov.info
           verbose: true
 
   test_dart_native:
