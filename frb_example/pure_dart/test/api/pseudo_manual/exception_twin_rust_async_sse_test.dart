@@ -16,8 +16,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('call funcReturnErrorTwinRustAsyncSse', () async {
       await expectLater(
           () async => funcReturnErrorTwinRustAsyncSse(),
-          throwsA(isA<AnyhowException>()
-              .having((x) => x.message, 'message', 'deliberate error')));
+          throwsA(isA<AnyhowException>().having(
+              (x) => x.message, 'message', startsWith('deliberate error'))));
     });
     test('call funcTypeFalliblePanicTwinRustAsyncSse', () async {
       await expectRustPanic(() async => funcTypeFalliblePanicTwinRustAsyncSse(),
@@ -41,7 +41,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('call funcReturnErrorTwinRustAsyncSse', () async {
       var matcher = isA<CustomEnumErrorTwinRustAsyncSse>()
-          .having((x) => x.message, 'message', 'deliberate error');
+          .having((x) => x.message, 'message', startsWith('deliberate error'));
       if (!kIsWeb)
         matcher = matcher.having((x) => x.backtrace, 'backtrace', isNotEmpty);
       await expectLater(

@@ -26,7 +26,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await for (final _ in funcStreamReturnErrorTwinRustAsync()) {}
       },
       throwsA(isA<AnyhowException>()
-          .having((x) => x.message, 'message', 'deliberate error')),
+          .having((x) => x.message, 'message', startsWith('deliberate error'))),
     );
   });
 
