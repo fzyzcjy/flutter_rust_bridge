@@ -17,6 +17,7 @@ mod auto_drop_dart_persistent_handle;
 
 pub(crate) mod action;
 pub(crate) mod dart2rust;
+mod guarded_box;
 mod non_clone;
 pub(crate) mod rust2dart;
 mod thread_box;
