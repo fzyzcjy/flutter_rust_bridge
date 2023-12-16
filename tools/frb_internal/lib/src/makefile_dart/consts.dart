@@ -11,6 +11,7 @@ const kRustPackages = [
   'frb_example/deliberate_bad/rust',
   'frb_example/flutter_via_create/rust',
   'frb_example/flutter_via_integrate/rust',
+  'frb_example/gallery/rust',
 ];
 
 const kDartExamplePackages = [
@@ -19,6 +20,7 @@ const kDartExamplePackages = [
   'frb_example/deliberate_bad',
   'frb_example/flutter_via_create',
   'frb_example/flutter_via_integrate',
+  'frb_example/gallery',
 ];
 
 const kDartNonExamplePackages = [
@@ -43,6 +45,7 @@ const kDartModeOfPackage = {
   'frb_example/deliberate_bad': DartMode.dart,
   'frb_example/flutter_via_create': DartMode.flutter,
   'frb_example/flutter_via_integrate': DartMode.flutter,
+  'frb_example/gallery': DartMode.flutter,
 };
 
 final exec = SimpleExecutor(

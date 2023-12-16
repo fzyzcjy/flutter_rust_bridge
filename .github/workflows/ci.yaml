@@ -529,6 +529,10 @@ jobs:
           - image: ubuntu-latest
             platform: linux
             package: frb_example/flutter_via_integrate
+          # only slightly test `gallery`, since mainly used on web
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example/gallery
 
     steps:
       # setup
@@ -557,6 +561,7 @@ jobs:
         package:
           - frb_example/flutter_via_create
           # no `frb_example/flutter_via_integrate` since it is similar to `flutter_via_create`
+          - frb_example/gallery
 
     steps:
       - uses: catchpoint/workflow-telemetry-action@v1
