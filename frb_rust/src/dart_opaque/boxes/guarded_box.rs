@@ -1,63 +1,64 @@
 use log::warn;
 use std::fmt::Debug;
 
-/// Only allows manipulation of [inner] value when the [guard] allows so.
+/// Only allows manipulation of [inner] value when the [context] is the same
+/// as the context when it is created.
+///
 /// It is a "black box" that nobody can open it otherwise.
 #[derive(Debug)]
-pub(crate) struct GuardedBox<T: Debug, G: GuardedBoxGuard> {
+pub(crate) struct GuardedBox<T: Debug, C: GuardedBoxContext> {
     // `Option` is used for correct drop.
     inner: Option<T>,
-    guard: G,
+    context: C,
 }
 
-pub(crate) trait GuardedBoxGuard: Debug {
+pub(crate) trait GuardedBoxContext: Debug + Eq {
     fn new() -> Self;
-
-    fn check(&self) -> bool;
-
-    fn check_failure_message(&self) -> String;
 }
 
-impl<T: Debug, G: GuardedBoxGuard> GuardedBox<T, G> {
+impl<T: Debug, C: GuardedBoxContext> GuardedBox<T, C> {
     pub fn new(inner: T) -> Self {
         Self {
             inner: Some(inner),
-            guard: G::new(),
+            context: C::new(),
         }
     }
 
-    pub fn check_guard(&self) -> bool {
-        self.guard.check()
+    pub fn check_context(&self) -> bool {
+        self.context == C::new()
     }
 
-    fn ensure_guard(&self) {
-        if !self.check_guard() {
-            self.panic_because_guard_failed()
+    fn ensure_context(&self) {
+        if !self.check_context() {
+            self.panic_because_context_failed()
         }
     }
 
-    fn panic_because_guard_failed(&self) -> ! {
-        panic!("{}", self.guard.check_failure_message())
+    fn panic_because_context_failed(&self) -> ! {
+        panic!(
+            "GuardedBox can only be used when the context is the same as the context when it is created. current={:?} creation={:?}",
+            C::new(), self.context,
+        )
     }
 
     pub fn into_inner(mut self) -> T {
-        self.ensure_guard();
+        self.ensure_context();
         self.inner.take().unwrap()
     }
 }
 
-impl<T: Debug, G: GuardedBoxGuard> AsRef<T> for GuardedBox<T, G> {
+impl<T: Debug, C: GuardedBoxContext> AsRef<T> for GuardedBox<T, C> {
     fn as_ref(&self) -> &T {
-        self.ensure_guard();
+        self.ensure_context();
         self.inner.as_ref().unwrap()
     }
 }
 
-impl<T: Debug, G: GuardedBoxGuard> Drop for GuardedBox<T, G> {
+impl<T: Debug, C: GuardedBoxContext> Drop for GuardedBox<T, C> {
     fn drop(&mut self) {
-        if self.inner.is_some() && !self.check_guard() {
+        if self.inner.is_some() && !self.check_context() {
             if std::thread::panicking() {
-                let msg = "GuardedBox.drop cannot drop data because the guard failed. \
+                let msg = "GuardedBox.drop cannot drop data because the context is different. \
 However, system is already panicking so we cannot panic twice. \
 Therefore, we have to make a memory leak for the data.";
                 warn!("{}", msg);
@@ -65,7 +66,7 @@ Therefore, we have to make a memory leak for the data.";
 
                 std::mem::forget(self.inner.take());
             } else {
-                self.panic_because_guard_failed()
+                self.panic_because_context_failed()
             }
         }
     }
