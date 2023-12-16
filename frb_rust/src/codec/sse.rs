@@ -1,6 +1,5 @@
 use super::{BaseCodec, Rust2DartMessageTrait};
 
-
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
 use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartSse};
@@ -67,7 +66,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
         #[cfg(not(wasm))]
         {
             let WireSyncRust2DartSse { ptr, len } = raw;
-            Self(vec_from_leak_ptr(ptr, len))
+            Self(crate::for_generated::vec_from_leak_ptr(ptr, len))
         }
 
         #[cfg(wasm)]
@@ -77,7 +76,7 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
     fn into_raw_wire_sync(self) -> Self::WireSyncRust2DartType {
         #[cfg(not(wasm))]
         {
-            let (ptr, len) = into_leak_vec_ptr(self.0);
+            let (ptr, len) = crate::for_generated::into_leak_vec_ptr(self.0);
             WireSyncRust2DartSse { ptr, len }
         }
 
@@ -96,13 +95,14 @@ impl Dart2RustMessageSse {
     /// # Safety
     ///
     /// This should never be called manually.
+    #[allow(unused)]
     pub unsafe fn from_wire(
         ptr: PlatformGeneralizedUint8ListPtr,
-        _rust_vec_len: i32,
+        rust_vec_len: i32,
         data_len: i32,
     ) -> Self {
         #[cfg(not(wasm))]
-        let vec = vec_from_leak_ptr(ptr, rust_vec_len);
+        let vec = crate::for_generated::vec_from_leak_ptr(ptr, rust_vec_len);
         #[cfg(wasm)]
         let vec = js_sys::Uint8Array::new(&ptr).to_vec();
 
