@@ -58,8 +58,13 @@ Future<RunCommandOutput> runCommand(
 
   final exitCode = await process.exitCode;
   if ((checkExitCode ?? true) && (exitCode != 0)) {
-    throw ProcessException(command, arguments,
-        'Bad exit code ($exitCode). stderr=${stderrText.join("")}', exitCode);
+    const envKey = 'FRB_DART_RUN_COMMAND_STDERR';
+    final enableStderr = Platform.environment[envKey] == '1';
+    final info = enableStderr
+        ? 'stderr=${stderrText.join("")}'
+        : 'If you want to see extra information, set $envKey=1';
+    throw ProcessException(
+        command, arguments, 'Bad exit code ($exitCode). $info', exitCode);
   }
 
   return RunCommandOutput(
