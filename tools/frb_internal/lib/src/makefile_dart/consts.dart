@@ -68,8 +68,19 @@ final exec = SimpleExecutor(
 /// But there seems to be a bug currently.
 /// Temporary workaround before https://github.com/dart-lang/sdk/issues/54160 is fixed.
 Future<void> runPubGetIfNotRunYet(String package) async {
-  if (!await Directory('${exec.pwd}/$package/.dart_tool').exists()) {
-    final cmd = switch (kDartModeOfPackage[package]!) {
+  final mode = kDartModeOfPackage[package]!;
+
+  await _runPubGetIfNotRunYetRaw(package, mode);
+
+  final packageCargokitBuildTool = '$package/rust_builder/cargokit/build_tool';
+  await _runPubGetIfNotRunYetRaw(packageCargokitBuildTool, mode);
+}
+
+Future<void> _runPubGetIfNotRunYetRaw(String package, DartMode mode) async {
+  final dirPackage = '${exec.pwd}/$package';
+  if ((await Directory(dirPackage).exists()) &&
+      (!await Directory('$dirPackage/.dart_tool').exists())) {
+    final cmd = switch (mode) {
       DartMode.dart => 'dart --enable-experiment=native-assets',
       DartMode.flutter => 'flutter',
     };
