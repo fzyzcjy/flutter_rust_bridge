@@ -42,7 +42,8 @@ where
     let (sender, handle) = JoinHandle::create_pair();
     wasm_bindgen_futures::spawn_local(async {
         let output = future.await;
-        (sender.send(output)).unwrap_or_else(|_| panic!("Fail to send output in spawn_local"));
+        (sender.send(output).await)
+            .unwrap_or_else(|_| panic!("Fail to send output in spawn_local"));
     });
     handle
 }
