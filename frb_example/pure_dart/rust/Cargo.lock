@@ -171,6 +171,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "delegate-attr"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "51aac4c99b2e6775164b412ea33ae8441b2fde2dbf05a20bc0052a63d08c475b"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "errno"
 version = "0.3.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -200,6 +211,7 @@ dependencies = [
  "chrono",
  "console_error_panic_hook",
  "dart-sys",
+ "delegate-attr",
  "flutter_rust_bridge_macros",
  "futures",
  "js-sys",

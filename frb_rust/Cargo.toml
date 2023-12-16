@@ -21,6 +21,7 @@ log = "0.4"
 backtrace = { workspace = true }
 futures = { version = "0.3.29", optional = true }
 byteorder = "1.5.0"
+delegate-attr = "0.3.0"
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
 allo-isolate = { workspace = true, features = ["anyhow", "backtrace", "zero-copy"] }
