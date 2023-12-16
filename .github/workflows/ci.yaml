@@ -248,14 +248,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-rust --coverage
-
-      # report
-      - uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        with:
-          verbose: true
+      - run: ./frb_internal test-rust
 
   test_dart_native:
     name: 'Test :: Dart :: Native'
