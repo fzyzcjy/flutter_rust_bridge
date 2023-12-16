@@ -231,7 +231,7 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
   await exec(
-      'flutter test integration_test/simple_test.dart --verbose ${config.flutterTestArgs ?? ""}',
+      'flutter test integration_test/simple_test.dart --verbose --reporter=expanded ${config.flutterTestArgs ?? ""}',
       relativePwd: config.package);
 }
 
