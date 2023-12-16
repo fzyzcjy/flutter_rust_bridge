@@ -34,9 +34,12 @@ pub struct DartOpaque {
 }
 
 impl DartOpaque {
-    pub fn new(handle: GeneralizedDartHandle, drop_port: SendableMessagePortHandle) -> Self {
+    pub fn new(
+        handle: GeneralizedDartHandle,
+        dart_handler_port: SendableMessagePortHandle,
+    ) -> Self {
         Self {
-            arc: Arc::new(DartOpaqueNonClone::new(handle, drop_port)),
+            arc: Arc::new(DartOpaqueNonClone::new(handle, dart_handler_port)),
         }
     }
 

@@ -68,9 +68,9 @@ impl Drop for DartOpaqueNonClone {
 /// Drop by sending to a Dart port and let the handler there call [dart_opaque_drop_thread_box_persistent_handle]
 fn drop_thread_box_persistent_handle_via_port(
     persistent_handle: ThreadBox<GeneralizedAutoDropDartPersistentHandle>,
-    drop_port: &SendableMessagePortHandle,
+    dart_handler_port: &SendableMessagePortHandle,
 ) {
-    let channel = Channel::new(handle_to_message_port(drop_port));
+    let channel = Channel::new(handle_to_message_port(dart_handler_port));
     let ptr = new_leak_box_ptr(persistent_handle) as usize;
 
     let msg = [
