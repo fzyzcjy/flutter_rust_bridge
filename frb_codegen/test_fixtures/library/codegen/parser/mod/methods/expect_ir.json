@@ -23,6 +23,10 @@
   },
   "funcs": [
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": null,
       "inputs": [
@@ -66,6 +70,10 @@
       "rust_async": false
     },
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": null,
       "inputs": [],
@@ -86,6 +94,10 @@
       "rust_async": false
     },
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": null,
       "inputs": [
@@ -129,8 +141,41 @@
         }
       },
       "rust_async": false
+    },
+    {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "error_output": null,
+      "inputs": [],
+      "mode": "Normal",
+      "name": "crate::api/MyStruct_example_static_method",
+      "output": {
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
+      },
+      "owner": {
+        "Method": {
+          "actual_method_name": "example_static_method",
+          "enum_or_struct_name": "crate::api/MyStruct",
+          "mode": "Static"
+        }
+      },
+      "rust_async": false
     }
   ],
   "has_executor": false,
-  "struct_pool": {}
+  "struct_pool": {
+    "crate::api/MyStruct": {
+      "comments": [],
+      "dart_metadata": [],
+      "fields": [],
+      "is_fields_named": true,
+      "name": "crate::api/MyStruct",
+      "wrapper_name": null
+    }
+  }
 }
