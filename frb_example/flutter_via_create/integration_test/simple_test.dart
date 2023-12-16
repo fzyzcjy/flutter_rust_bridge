@@ -3,7 +3,7 @@ import 'package:flutter_via_create/main.dart';
 import 'package:flutter_via_create/src/rust/frb_generated.dart';
 import 'package:integration_test/integration_test.dart';
 
-Future<void> main() async {
+void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   setUpAll(() async => await RustLib.init());
   testWidgets('Can call rust function', (WidgetTester tester) async {
