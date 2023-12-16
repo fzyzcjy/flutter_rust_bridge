@@ -9,7 +9,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DartOpaqueWireRustCodecCstGen
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Web => Some(
-                "unsafe { flutter_rust_bridge::for_generated::decode_dart_opaque(self as _) }"
+                "unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }"
                     .to_owned(),
             ),
             TargetOrCommon::Common => None,

@@ -50,7 +50,7 @@ impl CstDecode<flutter_rust_bridge::DartOpaque>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe { flutter_rust_bridge::for_generated::decode_dart_opaque(self as _) }
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }
     }
 }
 impl CstDecode<String> for String {

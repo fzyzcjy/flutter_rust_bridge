@@ -38,7 +38,7 @@ impl CstDecode<chrono::Duration> for i64 {
 }
 impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe { flutter_rust_bridge::for_generated::decode_dart_opaque(self as _) }
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }
     }
 }
 impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_cst_list_DartOpaque {
