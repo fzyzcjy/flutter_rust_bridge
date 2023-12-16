@@ -140,8 +140,7 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         dart_fn: DartOpaque,
         args: Vec<DartAbi>,
     ) -> DartFnFuture<Dart2RustMessageSse> {
-        self.dart_fn_handler
-            .invoke(dart_fn, args, self.dart_fn_invoke_port())
+        self.dart_fn_handler.invoke(dart_fn, args)
     }
 
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {
