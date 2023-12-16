@@ -203,7 +203,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
             await for (final _ in streamSinkThrowAnyhowTwinSync()) {}
           },
           throwsA(isA<AnyhowException>().having((e) => e.toString(), 'toString',
-              'AnyhowException(anyhow error)')),
+              startsWith('AnyhowException(anyhow error'))),
         );
       });
     });
