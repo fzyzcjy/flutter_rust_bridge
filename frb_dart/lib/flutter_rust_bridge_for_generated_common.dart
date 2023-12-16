@@ -25,4 +25,3 @@ export 'src/manual_impl/_common.dart';
 export 'src/misc/rust_opaque.dart';
 export 'src/rust_arc/_common.dart';
 export 'src/task.dart';
-export 'src/utils/misc_utils.dart';
