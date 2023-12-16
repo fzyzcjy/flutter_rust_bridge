@@ -1,4 +1,5 @@
 use crate::dart_opaque::boxes::guarded_box::{GuardedBox, GuardedBoxGuard};
+use delegate_attr::delegate;
 use log::warn;
 use std::fmt::{Debug, Formatter};
 use std::thread::ThreadId;
@@ -20,20 +21,18 @@ impl<T: Debug> ThreadBox<T> {
     pub fn new(inner: T) -> Self {
         Self(GuardedBox::new(inner))
     }
-
-    pub fn check_guard(&self) -> bool {
-        self.0.check_guard()
-    }
-
-    pub fn into_inner(mut self) -> T {
-        self.0.into_inner()
-    }
 }
 
+#[delegate(self.0)]
+impl<T: Debug> ThreadBox<T> {
+    pub fn check_guard(&self) -> bool {}
+
+    pub fn into_inner(mut self) -> T {}
+}
+
+#[delegate(self.0)]
 impl<T: Debug> AsRef<T> for ThreadBox<T> {
-    fn as_ref(&self) -> &T {
-        self.0.as_ref()
-    }
+    fn as_ref(&self) -> &T {}
 }
 
 /// # Safety
