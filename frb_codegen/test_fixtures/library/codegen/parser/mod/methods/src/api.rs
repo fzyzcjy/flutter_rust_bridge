@@ -1,4 +1,4 @@
-pub struct MyStruct;
+pub struct MyStruct {}
 
 impl MyStruct {
     pub fn example_static_method() {}
