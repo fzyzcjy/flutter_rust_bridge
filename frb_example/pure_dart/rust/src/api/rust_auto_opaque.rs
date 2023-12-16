@@ -123,6 +123,7 @@ pub fn rust_auto_opaque_trait_object_arg_own_twin_normal(
     assert_eq!(arg.func_hello(), expect);
 }
 
+#[allow(clippy::borrowed_box)]
 pub fn rust_auto_opaque_trait_object_arg_borrow_twin_normal(
     arg: &Box<dyn HelloTraitTwinNormal>,
     expect: String,

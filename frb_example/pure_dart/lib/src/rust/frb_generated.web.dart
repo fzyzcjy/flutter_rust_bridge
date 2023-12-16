@@ -197,6 +197,7 @@ import 'api/uuid_type.dart';
 import 'auxiliary/new_module_system/sub_module.dart';
 import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
+import 'dart:async';
 import 'dart:convert';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';

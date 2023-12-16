@@ -66,7 +66,20 @@ pub(crate) fn generate(
     })
 }
 
-const FILE_ATTRIBUTES: &str = r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#;
+const FILE_ATTRIBUTES: &str = r#"#![allow(
+non_camel_case_types,
+unused,
+non_snake_case,
+clippy::needless_return,
+clippy::redundant_closure_call,
+clippy::redundant_closure,
+clippy::useless_conversion,
+clippy::unit_arg,
+clippy::unused_unit,
+clippy::double_parens,
+clippy::let_and_return,
+clippy::too_many_arguments
+)]"#;
 
 fn generate_imports(
     types: &[IrType],
