@@ -9,6 +9,10 @@ typedef struct Result_JsValue Result_JsValue;
 
 typedef Dart_Handle GeneralizedDartHandle;
 
+typedef PortLike MessagePort;
+
+typedef int64_t MessagePort;
+
 typedef Dart_CObject *WireSyncRust2DartDco;
 
 typedef struct WireSyncRust2DartSse {
@@ -21,6 +25,14 @@ extern struct Result_JsValue post_message(const PortLike *this_, const JsValue *
 extern struct Result_JsValue close(const PortLike *this_);
 
 extern void js_console_error(const str *msg);
+
+/**
+ * # Safety
+ *
+ * This should never be called manually.
+ */
+const void *dart_opaque_dart2rust_encode(GeneralizedDartHandle handle,
+                                         MessagePort dart_handler_port);
 
 void dart_opaque_drop_thread_box_persistent_handle(uintptr_t ptr);
 

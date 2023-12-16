@@ -233,6 +233,26 @@ class MultiPackageCBinding {
   late final _js_console_error =
       _js_console_errorPtr.asFunction<void Function(ffi.Pointer<ffi.Int>)>();
 
+  /// # Safety
+  ///
+  /// This should never be called manually.
+  ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
+    Object handle,
+    int dart_handler_port,
+  ) {
+    return _dart_opaque_dart2rust_encode(
+      handle,
+      dart_handler_port,
+    );
+  }
+
+  late final _dart_opaque_dart2rust_encodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Handle, MessagePort)>>('dart_opaque_dart2rust_encode');
+  late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(Object, int)>();
+
   void dart_opaque_drop_thread_box_persistent_handle(
     int ptr,
   ) {
@@ -577,4 +597,6 @@ final class WireSyncRust2DartSse extends ffi.Struct {
   external int len;
 }
 
+typedef MessagePort = ffi.Int;
+typedef DartMessagePort = int;
 typedef WireSyncRust2DartDco = ffi.Pointer<Dart_CObject>;
