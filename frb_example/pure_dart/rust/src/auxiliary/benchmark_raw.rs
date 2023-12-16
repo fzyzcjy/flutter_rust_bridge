@@ -1,10 +1,7 @@
 #![allow(non_camel_case_types)]
 
 use crate::api::benchmark_api::benchmark_input_bytes_twin_normal;
-use byteorder::{BigEndian, WriteBytesExt};
-use flutter_rust_bridge::for_generated::{new_leak_vec_ptr, vec_from_leak_ptr, Channel};
-use flutter_rust_bridge::{IntoDart, ZeroCopyBuffer};
-use std::io::Cursor;
+use flutter_rust_bridge::for_generated::{new_leak_vec_ptr, vec_from_leak_ptr};
 
 #[no_mangle]
 pub extern "C" fn benchmark_raw_void_sync() {}
@@ -35,7 +32,7 @@ pub unsafe extern "C" fn benchmark_raw_input_bytes(bytes: benchmark_raw_list_pri
 }
 
 #[no_mangle]
-pub extern "C" fn benchmark_raw_output_bytes(port: i64, message_id: i32, size: i32) {
+pub extern "C" fn benchmark_raw_output_bytes(_port: i64, _message_id: i32, _size: i32) {
     #[cfg(target_arch = "wasm32")]
     unimplemented!();
 

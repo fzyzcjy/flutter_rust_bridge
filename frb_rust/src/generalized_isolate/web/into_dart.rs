@@ -1,5 +1,4 @@
 use crate::dart_opaque::DartOpaque;
-
 use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
 use crate::rust_opaque::{DartSafe, RustOpaque};

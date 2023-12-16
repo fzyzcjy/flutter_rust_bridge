@@ -6,8 +6,6 @@ use flutter_rust_bridge::{opaque_dyn, DartSafe, RustOpaque};
 use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
-use std::thread::sleep;
-use std::time::Duration;
 
 /// Opaque types
 pub trait DartDebugTwinNormal: DartSafe + Debug + Send + Sync {}

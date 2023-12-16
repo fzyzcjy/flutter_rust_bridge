@@ -5,7 +5,6 @@
 //! https://github.com/Ducolnd/rust-mandelbrot/blob/master/src/main.rs
 
 use crate::api::mandelbrot::{Point, Size};
-
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::*;
 use flutter_rust_bridge::for_generated::futures::future::try_join_all;
@@ -13,7 +12,6 @@ use flutter_rust_bridge::spawn_blocking_with;
 use image::codecs::png::PngEncoder;
 use image::*;
 use num::Complex;
-
 use std::panic::AssertUnwindSafe;
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`

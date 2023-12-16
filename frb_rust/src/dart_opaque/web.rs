@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 #[derive(Debug, Clone)]
 pub struct GeneralizedAutoDropDartPersistentHandle(wasm_bindgen::JsValue);
 /// cbindgen:ignore

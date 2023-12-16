@@ -1,6 +1,4 @@
-
 use wasm_bindgen::prelude::*;
-
 
 #[cfg(feature = "wasm-start")]
 #[wasm_bindgen(start)]

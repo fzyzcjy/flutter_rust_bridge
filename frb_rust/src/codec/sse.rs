@@ -1,5 +1,4 @@
 use super::{BaseCodec, Rust2DartMessageTrait};
-
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
 use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartSse};
