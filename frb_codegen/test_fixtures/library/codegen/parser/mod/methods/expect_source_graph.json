@@ -3,7 +3,7 @@
   "name": "example",
   "root_module": {
     "info": {
-      "file_path": "{the-working-directory}/src/main.rs",
+      "file_path": "{the-working-directory}/src/lib.rs",
       "module_path": [
         "crate"
       ],

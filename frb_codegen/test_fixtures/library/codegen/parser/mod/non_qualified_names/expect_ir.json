@@ -2,6 +2,10 @@
   "enum_pool": {},
   "funcs": [
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": null,
       "inputs": [
@@ -47,6 +51,10 @@
       "rust_async": false
     },
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": {
         "data": "String",

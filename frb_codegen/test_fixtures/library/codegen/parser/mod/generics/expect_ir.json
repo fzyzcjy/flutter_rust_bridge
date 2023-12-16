@@ -22,6 +22,7 @@
                   },
                   "ty": {
                     "data": {
+                      "namespace": null,
                       "segments": [
                         {
                           "args": null,
@@ -60,6 +61,7 @@
                   },
                   "ty": {
                     "data": {
+                      "namespace": null,
                       "segments": [
                         {
                           "args": null,
@@ -87,6 +89,10 @@
   },
   "funcs": [
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": null,
       "inputs": [
@@ -100,18 +106,22 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericEnum",
-                  "is_exception": false
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericEnum>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericEnum",
+                  "type": "Unencodable"
                 },
-                "safe_ident": "my_generic_enum",
-                "type": "EnumRef"
-              }
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
             },
-            "safe_ident": "box_autoadd_my_generic_enum",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericEnum",
+            "type": "RustAutoOpaque"
           }
         }
       ],
@@ -126,6 +136,10 @@
       "rust_async": false
     },
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": null,
       "inputs": [
@@ -139,18 +153,22 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericEnum",
-                  "is_exception": false
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericEnum>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericEnum",
+                  "type": "Unencodable"
                 },
-                "safe_ident": "my_generic_enum",
-                "type": "EnumRef"
-              }
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
             },
-            "safe_ident": "box_autoadd_my_generic_enum",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericEnum",
+            "type": "RustAutoOpaque"
           }
         }
       ],
@@ -165,6 +183,10 @@
       "rust_async": false
     },
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": null,
       "inputs": [
@@ -178,18 +200,22 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericStruct",
-                  "is_exception": false
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericStruct>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericStruct",
+                  "type": "Unencodable"
                 },
-                "safe_ident": "my_generic_struct",
-                "type": "StructRef"
-              }
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
             },
-            "safe_ident": "box_autoadd_my_generic_struct",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericStruct",
+            "type": "RustAutoOpaque"
           }
         }
       ],
@@ -204,6 +230,10 @@
       "rust_async": false
     },
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": null,
       "inputs": [
@@ -217,18 +247,22 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericStruct",
-                  "is_exception": false
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericStruct>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericStruct",
+                  "type": "Unencodable"
                 },
-                "safe_ident": "my_generic_struct",
-                "type": "StructRef"
-              }
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
             },
-            "safe_ident": "box_autoadd_my_generic_struct",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericStruct",
+            "type": "RustAutoOpaque"
           }
         }
       ],
@@ -243,6 +277,10 @@
       "rust_async": false
     },
     {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
       "comments": [],
       "error_output": null,
       "inputs": [
@@ -256,18 +294,22 @@
           },
           "ty": {
             "data": {
-              "exist_in_real_api": false,
               "inner": {
-                "data": {
-                  "ident": "crate::api/MyGenericStruct",
-                  "is_exception": false
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericStruct>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericStruct",
+                  "type": "Unencodable"
                 },
-                "safe_ident": "my_generic_struct",
-                "type": "StructRef"
-              }
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
             },
-            "safe_ident": "box_autoadd_my_generic_struct",
-            "type": "Boxed"
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericStruct",
+            "type": "RustAutoOpaque"
           }
         }
       ],
@@ -298,6 +340,7 @@
           },
           "ty": {
             "data": {
+              "namespace": null,
               "segments": [
                 {
                   "args": null,
@@ -323,6 +366,7 @@
               "exist_in_real_api": true,
               "inner": {
                 "data": {
+                  "namespace": null,
                   "segments": [
                     {
                       "args": null,
