@@ -187,7 +187,6 @@ class MandelbrotPageUI extends StatelessWidget {
         ),
       ],
     );
-    return const Placeholder();
   }
 
   Widget _buildSlider({
