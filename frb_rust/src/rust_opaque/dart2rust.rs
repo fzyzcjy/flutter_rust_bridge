@@ -11,6 +11,9 @@ pub unsafe fn cst_decode_rust_opaque<T: DartSafe>(ptr: *const core::ffi::c_void)
     decode_rust_opaque_inner(ptr as _)
 }
 
+/// # Safety
+///
+/// This should never be called manually.
 #[cfg(wasm)]
 pub unsafe fn cst_decode_rust_opaque<T: DartSafe>(raw: wasm_bindgen::JsValue) -> RustOpaque<T> {
     #[cfg(target_pointer_width = "64")]
@@ -21,10 +24,16 @@ pub unsafe fn cst_decode_rust_opaque<T: DartSafe>(raw: wasm_bindgen::JsValue) ->
     decode_rust_opaque_inner((raw.as_f64().unwrap() as usize) as _)
 }
 
+/// # Safety
+///
+/// This should never be called manually.
 pub unsafe fn sse_decode_rust_opaque<T: DartSafe>(ptr: usize) -> RustOpaque<T> {
     decode_rust_opaque_inner(ptr as _)
 }
 
+/// # Safety
+///
+/// This should never be called manually.
 unsafe fn decode_rust_opaque_inner<T: DartSafe>(ptr: *const T) -> RustOpaque<T> {
     assert!(!ptr.is_null());
     RustOpaque {

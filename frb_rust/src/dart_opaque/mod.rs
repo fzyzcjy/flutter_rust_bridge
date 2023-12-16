@@ -51,6 +51,9 @@ impl DartOpaque {
         Arc::into_raw(self.arc) as _
     }
 
+    /// # Safety
+    ///
+    /// This should never be called manually.
     pub unsafe fn from_raw(raw: *const std::ffi::c_void) -> Self {
         Self {
             arc: Arc::from_raw(raw as _),

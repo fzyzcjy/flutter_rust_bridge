@@ -22,9 +22,11 @@ impl BaseCodec for SseCodec {
         Self::encode(Rust2DartAction::Panic, |serializer| {
             // NOTE roughly copied from the auto-generated serialization of String
             let bytes = msg.into_bytes();
-            (serializer.cursor).write_i32::<NativeEndian>(bytes.len() as _);
+            (serializer.cursor)
+                .write_i32::<NativeEndian>(bytes.len() as _)
+                .unwrap();
             for byte in bytes {
-                serializer.cursor.write_u8(byte);
+                serializer.cursor.write_u8(byte).unwrap();
             }
         })
     }
@@ -84,12 +86,16 @@ impl Rust2DartMessageTrait for Rust2DartMessageSse {
     }
 }
 
+#[derive(Debug)]
 pub struct Dart2RustMessageSse {
     vec: Vec<u8>,
     data_len: i32,
 }
 
 impl Dart2RustMessageSse {
+    /// # Safety
+    ///
+    /// This should never be called manually.
     pub unsafe fn from_wire(
         ptr: PlatformGeneralizedUint8ListPtr,
         rust_vec_len: i32,

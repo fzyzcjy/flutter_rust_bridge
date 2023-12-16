@@ -52,10 +52,10 @@ impl DartFnHandler {
 
     pub(crate) fn handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {
         // NOTE This [catch_unwind] should also be put outside **ALL** code, see comments above for reasonk
-        panic::catch_unwind(move || {
+        let _ = panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
                 if let Some(completer) = (self.completers.lock().unwrap()).remove(&call_id) {
-                    completer.send(message);
+                    completer.send(message).unwrap();
                 }
             });
             if let Err(err) = catch_unwind_result {
