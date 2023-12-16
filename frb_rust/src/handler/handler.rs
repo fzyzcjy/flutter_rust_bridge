@@ -15,12 +15,6 @@ use std::panic::UnwindSafe;
 /// This API is not guaranteed to be stable following semver (since things are going to be
 /// added, and for every addition/change, it is a breaking change for this trait).
 pub trait Handler {
-    fn initialize(&self, config: HandlerConfig);
-
-    fn dart_opaque_drop_port(&self) -> SendableMessagePortHandle;
-
-    fn dart_fn_invoke_port(&self) -> SendableMessagePortHandle;
-
     /// Prepares the arguments, executes a Rust function and sets up its return value.
     ///
     /// Why separate `PrepareFn` and `TaskFn`: because some things cannot be [`Send`] (e.g. raw
@@ -80,12 +74,6 @@ pub trait Handler {
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse);
 }
 
-#[derive(Clone, Debug)]
-pub struct HandlerConfig {
-    pub dart_opaque_drop_port: SendableMessagePortHandle,
-    pub dart_fn_invoke_port: SendableMessagePortHandle,
-}
-
 /// Supporting information for a task
 #[derive(Clone)]
 pub struct TaskInfo {
@@ -131,15 +119,4 @@ impl<Rust2DartCodec: BaseCodec> TaskContext<Rust2DartCodec> {
     pub fn rust2dart_context(&self) -> &TaskRust2DartContext<Rust2DartCodec> {
         &self.rust2dart_context
     }
-}
-
-pub fn handler_initialize<H: Handler>(
-    handler: &H,
-    dart_opaque_drop_port: MessagePort,
-    dart_fn_invoke_port: MessagePort,
-) {
-    handler.initialize(HandlerConfig {
-        dart_opaque_drop_port: message_port_to_handle(&dart_opaque_drop_port),
-        dart_fn_invoke_port: message_port_to_handle(&dart_fn_invoke_port),
-    })
 }

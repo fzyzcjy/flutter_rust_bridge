@@ -6,7 +6,6 @@ use crate::dart_fn::DartFnFuture;
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
-use crate::handler::handler::HandlerConfig;
 use crate::handler::handler::{Handler, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_listener::{
     handle_non_sync_panic_error, NoOpErrorListener,
@@ -44,7 +43,6 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
 pub struct SimpleHandler<E: Executor, EL: ErrorListener> {
     executor: E,
     error_listener: EL,
-    config: Mutex<Option<HandlerConfig>>,
     dart_fn_handler: DartFnHandler,
 }
 
@@ -54,49 +52,12 @@ impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
         SimpleHandler {
             executor,
             error_listener,
-            config: Mutex::new(None),
             dart_fn_handler: DartFnHandler::new(),
         }
     }
 }
 
 impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
-    fn initialize(&self, config: HandlerConfig) {
-        // Again, as mentioned below, ensure panics never cross FFI boundary
-        let _ = panic::catch_unwind(|| {
-            if let Ok(mut self_config) = self.config.lock() {
-                if self_config.is_some() {
-                    // internal link: https://github.com/fzyzcjy/yplusplus/issues/11352
-                    // (If you are interested in more details, create an issue and let me write a doc for it)
-                    let msg = "SimpleHandler.initialize is called multiple times.
-This is problematic *if* you are running two *live* FRB Dart instances while one FRB Rust instance. Thus:
-* If you are hot-restarting Dart (Flutter), it is usually normal and you can ignore this message.
-* If you are running `dart test`, try `dart test --concurrency=1` to avoid 'two live instance' problem, and then ignore this message.";
-                    warn!("{}", msg);
-                    println!("{}", msg); // when users do not enable log
-                }
-
-                *self_config = Some(config);
-            }
-        });
-    }
-
-    fn dart_opaque_drop_port(&self) -> SendableMessagePortHandle {
-        (self.config.lock().expect("cannot get config lock"))
-            .as_ref()
-            .expect("no handler config")
-            .dart_opaque_drop_port
-            .to_owned()
-    }
-
-    fn dart_fn_invoke_port(&self) -> SendableMessagePortHandle {
-        (self.config.lock().expect("cannot get config lock"))
-            .as_ref()
-            .expect("no handler config")
-            .dart_fn_invoke_port
-            .to_owned()
-    }
-
     fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn>(
         &self,
         task_info: TaskInfo,
