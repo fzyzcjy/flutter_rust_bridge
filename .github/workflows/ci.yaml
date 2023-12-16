@@ -230,9 +230,7 @@ jobs:
           - image: ubuntu-latest
             version: nightly
           - image: ubuntu-latest
-            version: nightly-2023-06-28 # pre https://github.com/rust-lang/rust/issues/113152
-          - image: ubuntu-latest
-            version: nightly-2023-07-26 # post https://github.com/rust-lang/rust/issues/113152
+            version: nightly-2023-12-16
           # TODO(@fzyzcjy, @gutenfries): add MSRV here, as well as other locked versions as needed
 
     steps:
