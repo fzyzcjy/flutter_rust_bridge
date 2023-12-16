@@ -48,16 +48,17 @@ Future<void> lintRustFormat(LintConfig config) async {
 Future<void> lintRustClippy(LintConfig config) async {
   for (final package in kRustPackages) {
     if (config.fix) {
-      await exec('cargo fix --allow-dirty', relativePwd: package);
+      await exec('cargo fix --allow-dirty --allow-staged',
+          relativePwd: package);
     }
     await exec(
-        'cargo clippy ${config.fix ? "--fix --allow-dirty" : ""} -- -D warnings',
+        'cargo clippy ${config.fix ? "--fix --allow-dirty --allow-staged" : ""} -- -D warnings',
         relativePwd: package);
   }
 
   for (final package in kRustPackagesAllowWeb) {
     await exec(
-        'cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix --allow-dirty" : ""} -- -D warnings',
+        'cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix --allow-dirty --allow-staged" : ""} -- -D warnings',
         relativePwd: package);
   }
 }
