@@ -4,16 +4,8 @@ use log::warn;
 use std::fmt::{Debug, Formatter};
 use std::thread::ThreadId;
 
-/// Only allows manipulation at the thread which it is created.
+/// Only allows manipulation of the inner value at the thread which it is created.
 /// See the documentation of [GuardedBox] for more details.
-///
-/// # Safety
-///
-/// The inner value can never be (1) used or (2) dropped
-/// on any thread except for the creation thread.
-///
-/// Therefore, even though it is `Send`/`Sync` among threads,
-/// it is just a blackbox on all other threads, so we are safe.
 #[derive(Debug)]
 pub struct ThreadBox<T: Debug>(GuardedBox<T, GuardedBoxContextThread>);
 
@@ -37,12 +29,16 @@ impl<T: Debug> AsRef<T> for ThreadBox<T> {
 
 /// # Safety
 ///
-/// See documentation of `ThreadBox` struct
+/// The inner value can never be (1) used or (2) dropped
+/// on any thread except for the creation thread.
+///
+/// Therefore, even though it is `Send`/`Sync` among threads,
+/// it is just a blackbox on all other threads, so we are safe.
 unsafe impl<T: Debug> Send for ThreadBox<T> {}
 
 /// # Safety
 ///
-/// See documentation of `ThreadBox` struct
+/// See documentation for `Send`
 unsafe impl<T: Debug> Sync for ThreadBox<T> {}
 
 #[derive(Debug, PartialEq, Eq)]

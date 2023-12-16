@@ -5,7 +5,8 @@ use log::warn;
 use std::fmt::{Debug, Formatter};
 use std::thread::ThreadId;
 
-/// Only allows manipulation at the Dart Isolate which it is created.
+/// Only allows manipulation of inner value at the Dart Isolate which it is created.
+/// See the documentation of [GuardedBox] for more details.
 #[derive(Debug)]
 pub struct DartIsolateBox<T: Debug>(GuardedBox<T, GuardedBoxContextDartIsolate>);
 
