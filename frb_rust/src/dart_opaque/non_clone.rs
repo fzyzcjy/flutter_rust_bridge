@@ -3,8 +3,8 @@ use super::{GeneralizedAutoDropDartPersistentHandle, GeneralizedDartHandle};
 use crate::dart_opaque::action::DartHandlerPortAction;
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::Channel;
+use crate::generalized_isolate::IntoDart;
 use crate::platform_types::{handle_to_message_port, SendableMessagePortHandle};
-use allo_isolate::IntoDart;
 use log::warn;
 
 #[derive(Debug)]
