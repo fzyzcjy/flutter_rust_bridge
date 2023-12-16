@@ -58,7 +58,8 @@ mod tests {
     }
 
     fn body_execute_generate(name: &str) -> anyhow::Result<()> {
-        configure_opinionated_test_logging();
+        // if want verbose log, enable it
+        // configure_opinionated_test_logging();
 
         if env::var("FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST").unwrap_or_default() == "1" {
             return Ok(());
