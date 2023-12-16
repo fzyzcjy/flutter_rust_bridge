@@ -579,7 +579,6 @@ dependencies = [
  "chrono",
  "clap 4.4.8",
  "convert_case",
- "delegate-attr",
  "derivative",
  "enum-iterator",
  "enum_dispatch",

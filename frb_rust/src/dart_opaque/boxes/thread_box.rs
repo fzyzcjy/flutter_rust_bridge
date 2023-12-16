@@ -5,7 +5,7 @@ use std::fmt::{Debug, Formatter};
 use std::thread::ThreadId;
 
 /// Only allows manipulation at the thread which it is created.
-/// It is a "black box" that nobody can open it when it is on another thread.
+/// See the documentation of [GuardedBox] for more details.
 ///
 /// # Safety
 ///

@@ -2,6 +2,7 @@ use log::warn;
 use std::fmt::Debug;
 
 /// Only allows manipulation of [inner] value when the [guard] allows so.
+/// It is a "black box" that nobody can open it otherwise.
 #[derive(Debug)]
 pub(crate) struct GuardedBox<T: Debug, G: GuardedBoxGuard> {
     // `Option` is used for correct drop.
