@@ -1,5 +1,7 @@
 use super::{DartOpaque, GeneralizedDartHandle};
 use crate::platform_types::{message_port_to_handle, MessagePort};
+#[cfg(wasm)]
+use wasm_bindgen::prelude::*;
 
 /// # Safety
 ///
@@ -33,6 +35,7 @@ pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
 ///
 /// This should never be called manually.
 #[cfg(wasm)]
+#[wasm_bindgen]
 pub unsafe fn dart_opaque_dart2rust_encode(
     handle: GeneralizedDartHandle,
     dart_handler_port: MessagePort,
