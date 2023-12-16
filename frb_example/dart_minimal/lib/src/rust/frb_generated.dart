@@ -56,10 +56,6 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> hi1({required FutureOr<void> Function() callback, dynamic hint});
-
-  Future<Object> hi2({required Object opaque, dynamic hint});
-
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
 
@@ -70,53 +66,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  @override
-  Future<void> hi1(
-      {required FutureOr<void> Function() callback, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
-        return wire.wire_hi_1(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kHi1ConstMeta,
-      argValues: [callback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHi1ConstMeta => const TaskConstMeta(
-        debugName: "hi_1",
-        argNames: ["callback"],
-      );
-
-  @override
-  Future<Object> hi2({required Object opaque, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_DartOpaque(opaque);
-        return wire.wire_hi_2(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_DartOpaque,
-        decodeErrorData: null,
-      ),
-      constMeta: kHi2ConstMeta,
-      argValues: [opaque],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHi2ConstMeta => const TaskConstMeta(
-        debugName: "hi_2",
-        argNames: ["opaque"],
-      );
 
   @override
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
@@ -142,33 +91,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  Future<void> Function(
-    int,
-  ) encode_DartFn_Inputs__Output_unit(FutureOr<void> Function() raw) {
-    return (
-      callId,
-    ) async {
-      final rawOutput = await raw();
-
-      final serializer = SseSerializer(generalizedFrbRustBinding);
-      sse_encode_unit(rawOutput, serializer);
-      final output = serializer.intoRaw();
-
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
-    };
-  }
-
-  @protected
-  FutureOr<void> Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw) {
-    throw UnimplementedError('');
-  }
-
-  @protected
-  Object dco_decode_DartOpaque(dynamic raw) {
-    return decodeDartOpaque(raw, generalizedFrbRustBinding);
-  }
-
   @protected
   int dco_decode_i_32(dynamic raw) {
     return raw as int;
@@ -180,17 +102,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  int dco_decode_usize(dynamic raw) {
-    return dcoDecodeI64OrU64(raw);
-  }
-
-  @protected
-  Object sse_decode_DartOpaque(SseDeserializer deserializer) {
-    var inner = sse_decode_usize(deserializer);
-    return decodeDartOpaque(inner, generalizedFrbRustBinding);
-  }
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
@@ -199,25 +110,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_decode_unit(SseDeserializer deserializer) {}
 
   @protected
-  int sse_decode_usize(SseDeserializer deserializer) {
-    return deserializer.buffer.getUint64();
-  }
-
-  @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
     return deserializer.buffer.getUint8() != 0;
-  }
-
-  @protected
-  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(
-      FutureOr<void> Function() raw) {
-    return cst_encode_DartOpaque(encode_DartFn_Inputs__Output_unit(raw));
-  }
-
-  @protected
-  PlatformPointer cst_encode_DartOpaque(Object raw) {
-    return encodeDartOpaque(
-        raw, portManager.dartHandlerPort, generalizedFrbRustBinding);
   }
 
   @protected
@@ -231,36 +125,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  int cst_encode_usize(int raw) {
-    return raw;
-  }
-
-  @protected
-  void sse_encode_DartFn_Inputs__Output_unit(
-      FutureOr<void> Function() self, SseSerializer serializer) {
-    sse_encode_DartOpaque(encode_DartFn_Inputs__Output_unit(self), serializer);
-  }
-
-  @protected
-  void sse_encode_DartOpaque(Object self, SseSerializer serializer) {
-    sse_encode_usize(
-        PlatformPointerUtil.ptrToInt(encodeDartOpaque(
-            self, portManager.dartHandlerPort, generalizedFrbRustBinding)),
-        serializer);
-  }
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer) {}
-
-  @protected
-  void sse_encode_usize(int self, SseSerializer serializer) {
-    serializer.buffer.putUint64(self);
-  }
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {

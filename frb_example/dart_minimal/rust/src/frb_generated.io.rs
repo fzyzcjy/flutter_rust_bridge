@@ -10,11 +10,6 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
-    fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe { flutter_rust_bridge::for_generated::decode_dart_opaque(self as _) }
-    }
-}
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }
@@ -40,16 +35,6 @@ pub extern "C" fn dart_fn_deliver_output(
         )
     };
     FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_hi_1(port_: i64, callback: *const std::ffi::c_void) {
-    wire_hi_1_impl(port_, callback)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_hi_2(port_: i64, opaque: *const std::ffi::c_void) {
-    wire_hi_2_impl(port_, opaque)
 }
 
 #[no_mangle]

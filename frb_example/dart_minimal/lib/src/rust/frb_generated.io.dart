@@ -19,22 +19,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  FutureOr<void> Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
-
-  @protected
-  Object dco_decode_DartOpaque(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
-
-  @protected
-  int dco_decode_usize(dynamic raw);
-
-  @protected
-  Object sse_decode_DartOpaque(SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
@@ -43,17 +31,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
-  int sse_decode_usize(SseDeserializer deserializer);
-
-  @protected
   bool sse_decode_bool(SseDeserializer deserializer);
-
-  @protected
-  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(
-      FutureOr<void> Function() raw);
-
-  @protected
-  PlatformPointer cst_encode_DartOpaque(Object raw);
 
   @protected
   int cst_encode_i_32(int raw);
@@ -62,23 +40,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
-  int cst_encode_usize(int raw);
-
-  @protected
-  void sse_encode_DartFn_Inputs__Output_unit(
-      FutureOr<void> Function() self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_DartOpaque(Object self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_usize(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -131,38 +96,6 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('dart_fn_deliver_output');
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_hi_1(
-    int port_,
-    ffi.Pointer<ffi.Void> callback,
-  ) {
-    return _wire_hi_1(
-      port_,
-      callback,
-    );
-  }
-
-  late final _wire_hi_1Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>('wire_hi_1');
-  late final _wire_hi_1 =
-      _wire_hi_1Ptr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
-
-  void wire_hi_2(
-    int port_,
-    ffi.Pointer<ffi.Void> opaque,
-  ) {
-    return _wire_hi_2(
-      port_,
-      opaque,
-    );
-  }
-
-  late final _wire_hi_2Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>('wire_hi_2');
-  late final _wire_hi_2 =
-      _wire_hi_2Ptr.asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_minimal_adder(
     int port_,
