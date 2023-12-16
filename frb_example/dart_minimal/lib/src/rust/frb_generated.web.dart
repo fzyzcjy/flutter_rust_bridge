@@ -48,13 +48,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
-    return raw;
-  }
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(
+      FutureOr<void> Function() raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(
-      FutureOr<void> Function() raw);
+  PlatformPointer cst_encode_DartOpaque(Object raw);
 
   @protected
   int cst_encode_i_32(int raw);
@@ -95,10 +93,10 @@ class RustLibWire extends BaseWire {
       wasmModule.dart_fn_deliver_output(
           call_id, ptr_, rust_vec_len_, data_len_);
 
-  void wire_hi_1(NativePortType port_, DartOpaqueWireType callback) =>
+  void wire_hi_1(NativePortType port_, PlatformPointer callback) =>
       wasmModule.wire_hi_1(port_, callback);
 
-  void wire_hi_2(NativePortType port_, DartOpaqueWireType opaque) =>
+  void wire_hi_2(NativePortType port_, PlatformPointer opaque) =>
       wasmModule.wire_hi_2(port_, opaque);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
@@ -124,9 +122,9 @@ class RustLibWasmModule implements WasmModule {
   external void dart_fn_deliver_output(int call_id,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_hi_1(NativePortType port_, DartOpaqueWireType callback);
+  external void wire_hi_1(NativePortType port_, PlatformPointer callback);
 
-  external void wire_hi_2(NativePortType port_, DartOpaqueWireType opaque);
+  external void wire_hi_2(NativePortType port_, PlatformPointer opaque);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 

@@ -49,13 +49,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  DartOpaqueWireType cst_encode_DartOpaque(Object raw) {
-    return wire.dart_opaque_dart2rust_encode(raw, portManager.dartHandlerPort);
-  }
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(
+      FutureOr<void> Function() raw);
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(
-      FutureOr<void> Function() raw);
+  PlatformPointer cst_encode_DartOpaque(Object raw);
 
   @protected
   int cst_encode_i_32(int raw);

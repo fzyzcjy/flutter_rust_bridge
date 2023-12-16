@@ -209,9 +209,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DartOpaqueWireType cst_encode_DartFn_Inputs__Output_unit(
+  PlatformPointer cst_encode_DartFn_Inputs__Output_unit(
       FutureOr<void> Function() raw) {
     return cst_encode_DartOpaque(encode_DartFn_Inputs__Output_unit(raw));
+  }
+
+  @protected
+  PlatformPointer cst_encode_DartOpaque(Object raw) {
+    return PlatformPointerUtil.ptrToInt(
+        wire.dart_opaque_dart2rust_encode(raw, portManager.dartHandlerPort));
   }
 
   @protected
