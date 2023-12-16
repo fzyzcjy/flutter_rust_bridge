@@ -216,7 +216,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer cst_encode_DartOpaque(Object raw) {
-    return wire.dart_opaque_dart2rust_encode(raw, portManager.dartHandlerPort);
+    return encodeDartOpaque(
+        self, portManager.dartHandlerPort, generalizedFrbRustBinding);
   }
 
   @protected
@@ -243,8 +244,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_DartOpaque(Object self, SseSerializer serializer) {
     sse_encode_usize(
-        PlatformPointerUtil.ptrToInt(wire.dart_opaque_dart2rust_encode(
-            self, portManager.dartHandlerPort)),
+        PlatformPointerUtil.ptrToInt(encodeDartOpaque(
+            self, portManager.dartHandlerPort, generalizedFrbRustBinding)),
         serializer);
   }
 
