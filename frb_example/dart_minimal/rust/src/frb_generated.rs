@@ -101,21 +101,19 @@ fn wire_minimal_adder_impl(
 // Section: related_funcs
 
 fn decode_DartFn_Inputs__Output_unit(
-    dart_opaque: flutter_rust_bridge::DartOpaque,
+    dart_fn: flutter_rust_bridge::for_generated::DartFn,
 ) -> impl Fn() -> flutter_rust_bridge::DartFnFuture<()> {
     use flutter_rust_bridge::IntoDart;
 
-    async fn body(dart_opaque: flutter_rust_bridge::DartOpaque) -> () {
+    async fn body(dart_fn: flutter_rust_bridge::for_generated::DartFn) -> () {
         let args = vec![];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
-            .dart_fn_invoke(dart_opaque, args)
+            .dart_fn_invoke(dart_fn, args)
             .await;
         <()>::sse_decode_single(message)
     }
 
-    move || {
-        flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(dart_opaque.clone()))
-    }
+    move || flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(dart_fn.clone()))
 }
 
 // Section: dart2rust

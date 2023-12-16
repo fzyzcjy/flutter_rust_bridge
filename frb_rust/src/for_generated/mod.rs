@@ -11,6 +11,7 @@ pub use crate::codec::sse::{
     Dart2RustMessageSse, Rust2DartMessageSse, SseDeserializer, SseSerializer,
 };
 pub use crate::codec::{cst::CstCodec, dco::DcoCodec, sse::SseCodec, BaseCodec};
+pub use crate::dart_fn::DartFn;
 pub use crate::dart_opaque::dart2rust::dart_opaque_dart2rust_encode;
 pub use crate::dart_opaque::dart2rust::{cst_decode_dart_opaque, sse_decode_dart_opaque};
 pub use crate::generalized_isolate::Channel;
