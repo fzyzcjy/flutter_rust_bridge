@@ -1,3 +1,4 @@
+use crate::dart_opaque::auto_drop_dart_persistent_handle::AutoDropDartPersistentHandle;
 use crate::dart_opaque::boxes::guarded_box::{GuardedBox, GuardedBoxContext};
 use delegate_attr::delegate;
 use log::warn;
@@ -5,9 +6,6 @@ use std::fmt::{Debug, Formatter};
 use std::thread::ThreadId;
 
 /// Only allows manipulation at the Dart Isolate which it is created.
-///
-/// Only *after* knowing [T] is safe to be worked with within a single isolate,
-/// we can unsafe impl [Send] or [Sync].
 #[derive(Debug)]
 pub struct DartIsolateBox<T: Debug>(GuardedBox<T, GuardedBoxContextDartIsolate>);
 
@@ -37,3 +35,17 @@ impl GuardedBoxContext for GuardedBoxContextDartIsolate {
         Self(unsafe { dart_sys::Dart_CurrentIsolate_DL.unwrap()() })
     }
 }
+
+/// # Safety
+///
+/// We can safely implement Send/Sync because `AutoDropDartPersistentHandle` is a Dart VM object
+/// that cna be used on the same isolate.
+///
+/// Note we *cannot** implement Send/Sync for arbitrary `DartIsolatedBox<T>`,
+/// because if `T` is e.g. unrelated to Dart VM, then surely we are still unsafe.
+unsafe impl Send for DartIsolateBox<AutoDropDartPersistentHandle> {}
+
+/// # Safety
+///
+/// See documentation for `Send`
+unsafe impl Sync for DartIsolateBox<AutoDropDartPersistentHandle> {}
