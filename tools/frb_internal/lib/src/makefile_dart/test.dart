@@ -115,6 +115,10 @@ Future<void> testDartNative(TestDartConfig config) async {
       '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
       relativePwd: config.package,
       extraEnv: kEnvEnableRustBacktrace);
+
+  if (config.coverage) {
+    await _formatDartCoverage(package: config.package);
+  }
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
@@ -132,6 +136,15 @@ Future<void> testDartWeb(TestDartConfig config) async {
         relativePwd: 'frb_utils',
         extraEnv: kEnvEnableRustBacktrace);
   }
+}
+
+Future<void> _formatDartCoverage({required String package}) async {
+  // ref: https://github.com/rrousselGit/riverpod/blob/67d26d2a47a7351d6676012c44eb53dd6ff79787/scripts/coverage.sh#L10
+  // ref: https://github.com/mobxjs/mobx.dart/blob/52515a1d82f15a2b2eb48822d030647e217134cc/tool/coverage.sh#L12
+  await exec(
+    'format_coverage --lcov --in=coverage --out=coverage/lcov.txt --packages=.dart_tool/package_config.json --report-on=lib',
+    relativePwd: package,
+  );
 }
 
 /// ref https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
