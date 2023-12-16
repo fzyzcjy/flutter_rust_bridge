@@ -28,11 +28,6 @@ abstract class BaseApiImpl<W extends BaseWire> implements BaseApi {
     required this.generalizedFrbRustBinding,
     required this.portManager,
   });
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  @override
-  void frbInitializeRust(FrbInitializeRustData data) =>
-      wire.frb_initialize_rust(data.dartOpaqueDropPort, data.dartFnInvokePort);
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
