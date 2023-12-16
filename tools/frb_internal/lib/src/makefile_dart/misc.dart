@@ -68,9 +68,9 @@ Future<void> precommit(PrecommitConfig config) async {
   await miscNormalizePubspec();
 
   if (config.mode == PrecommitMode.slow) {
-    await pubGetAll();
     await generateInternal(const GenerateConfig(setExitIfChanged: false));
     await testRust(const TestRustConfig(updateGoldens: true));
+    await pubGetAll();
   }
 }
 
