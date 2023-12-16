@@ -59,5 +59,16 @@ unsafe fn dart_opaque_dart2rust_encode_inner(
     handle: GeneralizedDartHandle,
     dart_handler_port: MessagePort,
 ) -> *const std::ffi::c_void {
-    DartOpaque::new(handle, message_port_to_handle(&dart_handler_port)).into_raw()
+    println!(
+        "hi dart_opaque_dart2rust_encode_inner BEFORE thread_id={:?} backtrace={:#?}",
+        std::thread::current().id(),
+        std::backtrace::Backtrace::force_capture(),
+    );
+    let ans = DartOpaque::new(handle, message_port_to_handle(&dart_handler_port)).into_raw();
+    println!(
+        "hi dart_opaque_dart2rust_encode_inner AFTER thread_id={:?} backtrace={:#?}",
+        std::thread::current().id(),
+        std::backtrace::Backtrace::force_capture(),
+    );
+    ans
 }
