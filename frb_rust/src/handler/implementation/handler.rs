@@ -12,15 +12,12 @@ use crate::handler::implementation::error_listener::{
 };
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::platform_types::DartAbi;
-
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use crate::DartOpaque;
-
 use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;
-
 
 /// The default handler used by the generated code.
 pub type DefaultHandler<TP> =
