@@ -99,13 +99,17 @@ Future<void> testRust(TestRustConfig config) async {
 Future<void> testRustPackage(TestRustConfig config, String package) async {
   await exec('cargo build', relativePwd: package);
 
-  // TODO test coverage
-  await exec('cargo test', relativePwd: package, extraEnv: {
-    // Because we have another CI to run the codegen and check outputs
-    'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
-    if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
-    ...kEnvEnableRustBacktrace,
-  });
+  final effectiveEnableCoverage = config.coverage && package == 'frb_codegen';
+
+  await exec(
+      'cargo ${effectiveEnableCoverage ? "llvm-cov --lcov --output-path lcov.info" : "test"}',
+      relativePwd: package,
+      extraEnv: {
+        // Because we have another CI to run the codegen and check outputs
+        'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
+        if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
+        ...kEnvEnableRustBacktrace,
+      });
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {

@@ -10,3 +10,4 @@ Makefile
 .vscode
 .fvm/flutter_sdk
 coverage/
+lcov.info
