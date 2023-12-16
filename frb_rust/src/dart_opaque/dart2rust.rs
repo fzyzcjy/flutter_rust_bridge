@@ -1,4 +1,5 @@
 use super::{DartOpaque, GeneralizedDartHandle};
+use crate::platform_types::{message_port_to_handle, MessagePort};
 use crate::Handler;
 
 /// # Safety
@@ -34,7 +35,7 @@ pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
 pub unsafe fn dart_opaque_dart2rust_encode<H: Handler>(
     handler: &H,
     handle: GeneralizedDartHandle,
+    drop_port: MessagePort,
 ) -> *const std::ffi::c_void {
-    let drop_port = handler.dart_opaque_drop_port();
-    DartOpaque::new(handle, drop_port).into_raw()
+    DartOpaque::new(handle, message_port_to_handle(&drop_port)).into_raw()
 }
