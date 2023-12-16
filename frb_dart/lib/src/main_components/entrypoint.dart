@@ -46,8 +46,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
     handler ??= BaseHandler();
     final generalizedFrbRustBinding =
         GeneralizedFrbRustBinding(externalLibrary);
-    final portManager =
-        DartHandlerPortManager(generalizedFrbRustBinding, handler);
+    final portManager = PortManager(generalizedFrbRustBinding, handler);
     api ??= _createDefaultApi(
         handler, generalizedFrbRustBinding, portManager, externalLibrary);
 
@@ -92,7 +91,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
   A _createDefaultApi(
     BaseHandler handler,
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
-    DartHandlerPortManager portManager,
+    PortManager portManager,
     ExternalLibrary externalLibrary,
   ) {
     return apiImplConstructor(
@@ -106,7 +105,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
 
 class _EntrypointState<A extends BaseApi> {
   final GeneralizedFrbRustBinding generalizedFrbRustBinding;
-  final DartHandlerPortManager portManager;
+  final PortManager portManager;
   final A api;
 
   _EntrypointState({
