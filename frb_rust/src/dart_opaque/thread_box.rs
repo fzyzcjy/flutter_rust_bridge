@@ -3,7 +3,6 @@ use log::warn;
 use std::fmt::{Debug, Formatter};
 use std::thread::ThreadId;
 
-// TODO the comments
 /// Only allows manipulation at the thread which it is created.
 /// It is a "black box" that nobody can open it when it is on another thread.
 ///
