@@ -1,8 +1,10 @@
 use super::thread_box::ThreadBox;
 use super::{GeneralizedAutoDropDartPersistentHandle, GeneralizedDartHandle};
+use crate::dart_opaque::action::DartHandlerPortAction;
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::Channel;
 use crate::platform_types::{handle_to_message_port, SendableMessagePortHandle};
+use allo_isolate::IntoDart;
 use log::warn;
 
 #[derive(Debug)]
@@ -71,7 +73,9 @@ fn drop_thread_box_persistent_handle_via_port(
     let channel = Channel::new(handle_to_message_port(drop_port));
     let ptr = new_leak_box_ptr(persistent_handle) as usize;
 
-    if !channel.post(ptr) {
+    let msg = [DartHandlerPortAction::DartOpaqueDrop, ptr.into_dart()];
+
+    if !channel.post(msg) {
         warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
         // In case logs are disabled
         println!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");

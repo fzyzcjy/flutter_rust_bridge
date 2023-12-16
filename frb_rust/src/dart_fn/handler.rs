@@ -1,5 +1,6 @@
 use super::DartFnFuture;
 use crate::codec::sse::Dart2RustMessageSse;
+use crate::dart_opaque::action::DartHandlerPortAction;
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
 use crate::rust2dart::sender::Rust2DartSender;
@@ -40,7 +41,11 @@ impl DartFnHandler {
 
         let sender = Rust2DartSender::new(Channel::new(handle_to_message_port(&dart_handler_port)));
         let msg = {
-            let mut ans = vec![dart_fn.into_dart(), call_id.into_dart()];
+            let mut ans = vec![
+                DartHandlerPortAction::DartFnInvoke,
+                dart_fn.into_dart(),
+                call_id.into_dart(),
+            ];
             ans.extend(args);
             ans
         };

@@ -15,10 +15,12 @@ pub use io::*;
 #[cfg(not(wasm))]
 mod auto_drop_dart_persistent_handle;
 
+pub(crate) mod action;
 pub(crate) mod dart2rust;
 mod non_clone;
 pub(crate) mod rust2dart;
 mod thread_box;
+
 use non_clone::DartOpaqueNonClone;
 
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
