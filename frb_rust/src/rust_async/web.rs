@@ -1,7 +1,6 @@
 use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
 use futures::channel::oneshot;
-use futures::TryFutureExt;
 use std::future::Future;
 use std::panic::{AssertUnwindSafe, RefUnwindSafe};
 use std::pin::Pin;
