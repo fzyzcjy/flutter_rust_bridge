@@ -2,7 +2,7 @@ use crate::codec::sse::Dart2RustMessageSse;
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::dart_fn::handler::DartFnHandler;
-use crate::dart_fn::DartFnFuture;
+use crate::dart_fn::{DartFn, DartFnFuture};
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -137,11 +137,10 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
 
     fn dart_fn_invoke(
         &self,
-        dart_fn: DartOpaque,
+        dart_fn: DartFn,
         args: Vec<DartAbi>,
     ) -> DartFnFuture<Dart2RustMessageSse> {
-        self.dart_fn_handler
-            .invoke(dart_fn, args, self.dart_fn_invoke_port())
+        self.dart_fn_handler.invoke(dart_fn, args)
     }
 
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {
