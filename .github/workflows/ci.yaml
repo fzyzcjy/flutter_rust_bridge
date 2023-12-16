@@ -353,7 +353,7 @@ jobs:
           sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
 
       # execute
-      - run: ./frb_internal test-dart-web --package ${{ matrix.package }} --coverage
+      - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
 
       # report
       - uses: codecov/codecov-action@v3
