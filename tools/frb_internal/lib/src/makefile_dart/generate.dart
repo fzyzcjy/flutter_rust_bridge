@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
+import 'package:yaml/yaml.dart';
 
 part 'generate.g.dart';
 
@@ -36,6 +38,11 @@ List<Command<void>> createCommands() {
         _$populateGenerateConfigParser, _$parseGenerateConfigResult),
     SimpleConfigCommand('generate-internal-book-help', generateInternalBookHelp,
         _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand(
+        'generate-internal-contributor',
+        generateInternalContributor,
+        _$populateGenerateConfigParser,
+        _$parseGenerateConfigResult),
     SimpleConfigCommand(
         'generate-internal-dart-source',
         generateInternalDartSource,
@@ -73,6 +80,7 @@ Future<void> generateInternal(GenerateConfig config) async {
   await generateInternalBookHelp(config);
   await generateInternalDartSource(config);
   await generateInternalBuildRunner(config);
+  await generateInternalContributor(config);
 }
 
 Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
@@ -122,6 +130,49 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
           .writeAsStringSync('```\n${resp.stdout}```');
     }
   });
+}
+
+Future<void> generateInternalContributor(GenerateConfig config) async {
+  final customRaw = loadYaml(
+      File('${exec.pwd}/.all-contributors-custom.yaml').readAsStringSync());
+  final customConverted = [
+    for (final item in customRaw)
+      {
+        'login': (item as Map<dynamic, dynamic>).keys.single,
+        'customMessage': item.values.single,
+      }
+  ];
+  print('customConverted=$customConverted');
+
+  final fileAllContributorsrc = File('${exec.pwd}/.all-contributorsrc');
+  final allContributorsrcOld =
+      jsonDecode(fileAllContributorsrc.readAsStringSync());
+
+  final contributorNamesNew = [
+    'fzyzcjy',
+    for (final item in customConverted) item['login'],
+  ];
+  final allContributorsrcNew = {
+    ...allContributorsrcOld,
+    'contributors': [
+      for (final login in contributorNamesNew)
+        allContributorsrcOld['contributors']
+            .where((x) => x['login'] == login)
+            .single
+    ]
+  };
+  fileAllContributorsrc.writeAsStringSync(
+      const JsonEncoder.withIndent('  ').convert(allContributorsrcNew));
+
+  final messageTextNew = [
+    for (final item in customConverted)
+      '* [${item["login"]}](https://github.com/${item["login"]}): ${item["customMessage"]}\n',
+  ].join('');
+
+  File('${exec.pwd}/website/docs/generated/_contributor-custom-message.mdx')
+      .writeAsStringSync(messageTextNew);
+
+  await exec('all-contributors generate');
 }
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {

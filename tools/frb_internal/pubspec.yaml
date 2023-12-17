@@ -17,6 +17,7 @@ dependencies:
     path: ../../frb_dart
   path: ^1.8.1
   meta: ^1.8.0
+  yaml: ^3.1.2
 
 dev_dependencies:
   build_runner: ^2.2.0
