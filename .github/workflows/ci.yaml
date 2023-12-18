@@ -296,12 +296,11 @@ jobs:
       - run: ./frb_internal test-rust --coverage
 
       # report
-      - uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
         with:
-          files: frb_codegen/lcov.info
-          verbose: true
+          name: ${{ matrix.info.image }}-${{ matrix.info.version }}-frb_codegen-lcov.info
+          path: frb_codegen/lcov.info
 
   test_dart_native:
     name: 'Test :: Dart :: Native'
@@ -347,12 +346,11 @@ jobs:
       - run: ./frb_internal test-dart-native --package ${{ matrix.package }} --coverage
 
       # report
-      - uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
         with:
-          files: ${{ matrix.package }}/coverage/lcov.txt
-          verbose: true
+          name: ${{ matrix.image }}-${{ matrix.package }}-coverage-lcov.txt
+          path: ${{ matrix.package }}/coverage/lcov.txt
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
@@ -401,11 +399,6 @@ jobs:
 
       # execute
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
-
-      # report
-      - uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   test_dart_valgrind:
     name: 'Test :: Dart :: Valgrind'
@@ -655,3 +648,26 @@ jobs:
 
       # execute
       - run: ./frb_internal test-flutter-web --package ${{ matrix.package }}
+
+  # ----------------------------------- misc -----------------------------------
+
+  misc_codecov:
+    name: 'Misc :: Codecov'
+    runs-on: ubuntu-latest
+    needs:
+      - test_rust
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: downloaded-artifacts/
+
+      - run: tree downloaded-artifacts
+
+      - uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          directory: downloaded-artifacts
+          verbose: true
