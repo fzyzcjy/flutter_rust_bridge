@@ -192,7 +192,7 @@ jobs:
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: rust_lcov.info
+          name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package TODO }}--rust_lcov.info
           path: frb_codegen/lcov.info
 
   generate_internal:
@@ -226,7 +226,7 @@ jobs:
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: rust_lcov.info
+          name: ${{ github.job }}--rust_lcov.info
           path: frb_codegen/lcov.info
 
   # ----------------------------------- bench -----------------------------------
@@ -318,7 +318,7 @@ jobs:
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: lcov.info
+          name: ${{ github.job }}--${{ matrix.info.image }}--${{ matrix.info.version }}--lcov.info
           path: frb_codegen/lcov.info
 
   test_dart_native:
@@ -368,7 +368,7 @@ jobs:
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: coverage
+          name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package TODO }}--coverage
           path: ${{ matrix.package }}/coverage/
 
   test_dart_web:
@@ -673,11 +673,11 @@ jobs:
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: coverage
+          name: ${{ github.job }}--${{ matrix.package TODO }}--coverage
           path: ${{ matrix.package }}/coverage/
       - uses: actions/upload-artifact@v4
         with:
-          name: rust_lcov.info
+          name: ${{ github.job }}--${{ matrix.package TODO }}--rust_lcov.info
           path: frb_codegen/lcov.info
 
   # ----------------------------------- misc -----------------------------------
