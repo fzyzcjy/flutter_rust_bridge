@@ -35,8 +35,7 @@ Image credit: [Simpsons contributor](https://en.wikipedia.org/wiki/User:Simpsons
 
 </details>
 
-<iframe src="../gallery/?gallery_page=mandelbrot" style={{width: '100%', height: '500px'}}/>
-<br/>
+TODO
 
 <small>
 Remarks:
@@ -56,8 +55,7 @@ please visit [Desdaemon/polars_dart](https://github.com/Desdaemon/polars_dart).
 and is [semi-outdated](https://github.com/Desdaemon/polars_dart/issues/3#issuecomment-1705913689),
 but can still be used as a reference.)
 
-<iframe src="../gallery/?gallery_page=polars" style={{width: '100%', height: '500px'}}/>
-<br/>
+TODO
 
 All source code can be found in `frb_example/gallery.`
 Remember to ignore all `ignore_me` folders, which contain code unrelated to the purpose of the demos.
