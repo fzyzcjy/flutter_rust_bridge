@@ -265,7 +265,7 @@ jobs:
         with:
           name: Flutter Rust Bridge Benchmark
           tool: customSmallerIsBetter
-          output-file-path: frb_example--pure_dart/build/simple_benchmark/benchmark_result.json
+          output-file-path: frb_example/pure_dart/build/simple_benchmark/benchmark_result.json
           auto-push: false
       - name: Push benchmark result
         # Warn: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#run-only-on-your-branches
