@@ -322,17 +322,40 @@ Future<void> generateWebsiteMerge() async {
   await exec('cp -r website/build/ $_kWebsiteDir');
   await exec('cp -r website/v1_mdbook/book/ $_kWebsiteDir/v1');
   await exec('cp -r frb_example/gallery/build/web/ $_kWebsiteDir/demo');
-  // _generateWebsiteMergeDemoIndexHtml();
+  _generateWebsiteMergeDemoIndexHtml();
   await exec('ls -al $_kWebsiteDir');
 }
 
-// TODO
-// void _generateWebsiteMergeDemoIndexHtml() {
-//   final htmlDocusaurus =
-//       File('${exec.pwd}/website/build/demo/index.html').readAsStringSync();
-//   final ans = TODO;
-//   File('${exec.pwd}/$_kWebsiteDir/demo/index.html').writeAsStringSync(ans);
-// }
+void _generateWebsiteMergeDemoIndexHtml() {
+  // https://docs.flutter.dev/deployment/web#hostelement
+  const bodyCode = '''
+    <script src="enable-threads.js"></script>
+    <script src="flutter.js" defer></script>
+
+    <!-- Ensure your flutter target is present on the page... -->
+    <div id="flutter_host">Loading...</div>
+
+    <script>
+      window.addEventListener("load", function (ev) {
+        _flutter.loader.loadEntrypoint({
+          onEntrypointLoaded: async function(engineInitializer) {
+            let appRunner = await engineInitializer.initializeEngine({
+              // Pass a reference to "div#flutter_host" into the Flutter engine.
+              hostElement: document.querySelector("#flutter_host")
+            });
+            await appRunner.runApp();
+          }
+        });
+      });
+    </script>
+  ''';
+
+  final htmlDocusaurus =
+      File('${exec.pwd}/website/build/demo/index.html').readAsStringSync();
+  final ans =
+      htmlDocusaurus.replaceFirst('FLUTTER_WEB_APP_PLACEHOLDER', bodyCode);
+  File('${exec.pwd}/$_kWebsiteDir/demo/index.html').writeAsStringSync(ans);
+}
 
 Future<void> generateWebsiteServe() async {
   await exec('python -m http.server 8765',

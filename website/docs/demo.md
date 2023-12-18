@@ -13,25 +13,7 @@ When you want a UI framework (Flutter) for your Rust system.
 
 ## TODO
 
-<script src="enable-threads.js"></script>
-
-<script src="flutter.js"></script>
-
-<div id="flutter_host">Loading Flutter web app...</div>
-
-<script>
-  window.addEventListener("load", function (ev) {
-    _flutter.loader.loadEntrypoint({
-      onEntrypointLoaded: async function(engineInitializer) {
-        let appRunner = await engineInitializer.initializeEngine({
-          // Pass a reference to "div#flutter_host" into the Flutter engine.
-          hostElement: document.querySelector("#flutter_host")
-        });
-        await appRunner.runApp();
-      }
-    });
-  });
-</script>
+FLUTTER_WEB_APP_PLACEHOLDER
 
 ## Mandelbrot
 
