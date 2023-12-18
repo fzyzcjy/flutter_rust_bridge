@@ -328,7 +328,7 @@ Future<void> generateWebsiteMerge() async {
 }
 
 void _replaceFile(String path, String Function(String) replacer) {
-  final file = File(path);
+  final file = File('${exec.pwd}/$path');
   file.writeAsStringSync(replacer(file.readAsStringSync()));
 }
 
