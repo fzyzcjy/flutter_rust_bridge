@@ -303,17 +303,17 @@ Future<void> generateWebsiteBuild() async {
   await exec('yarn install --frozen-lockfile', relativePwd: 'website');
   await exec('yarn build', relativePwd: 'website');
 
-  await exec('flutter build web --base-href /gallery/',
+  await exec('flutter build web --base-href /flutter_rust_bridge/gallery/',
       relativePwd: 'frb_example/gallery');
 
   await exec('mdbook build .', relativePwd: 'website/v1_mdbook');
 }
 
 Future<void> generateWebsiteMerge() async {
-  await exec('mkdir -p website/merged_target/v1');
-  await exec('cp -r website/build/ website/merged_target');
-  await exec('cp -r website/v1_mdbook/book/ website/merged_target/v1');
-  await exec(
-      'cp -r frb_example/gallery/build/web/ website/merged_target/gallery');
-  await exec('ls -al website/merged_target/');
+  const dirMergedTarget = 'website/merged_target/flutter_rust_bridge';
+  await exec('mkdir -p $dirMergedTarget');
+  await exec('cp -r website/build/ $dirMergedTarget');
+  await exec('cp -r website/v1_mdbook/book/ $dirMergedTarget/v1');
+  await exec('cp -r frb_example/gallery/build/web/ $dirMergedTarget/gallery');
+  await exec('ls -al $dirMergedTarget');
 }
