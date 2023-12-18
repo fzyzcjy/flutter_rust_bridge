@@ -44,7 +44,7 @@ following dependencies are also needed:
 - `freezed` (dev)
 - `freezed_annotation`
 
-Their usage is explained in [Using `build_runner`](../generate/build_runner.md).
+Their usage is explained in [Using `build_runner`](../../generate/build-runner).
 
 ```bash
 flutter pub add flutter_rust_bridge

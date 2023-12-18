@@ -1,6 +1,6 @@
 # Integrating with Web
 
-Refer to the [Web setup](../template/setup_web.md) page for required installables.
+Refer to the [Web setup](../template/setup/web) page for required installables.
 
 Once you have installed the required dependencies, you will need to create a wrapper
 to consume the bridge files. In the case of `DynamicLibrary`

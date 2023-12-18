@@ -137,7 +137,7 @@ Then, in each `jniLibs` architecture directory, put the corresponding `libc++_sh
 
 ## Issues on Web?
 
-Check out [Limitations on WASM](./wasm_limitations.md) for some common problems and solutions
+Check out [Limitations on WASM](./miscellaneous/wasm-limitations) for some common problems and solutions
 to adapt existing code to WASM.
 
 ## Other problems?

@@ -34,5 +34,5 @@ then you need to modify this in `lib.rs`:
 
 If you don't need to run Flutter Web in development
 mode and would rather build in release mode once
-in a while, [read here](../build_wasm.md) for instructions on how to build your WASM
+in a while, [read here](../../miscellaneous/archived/build-wasm) for instructions on how to build your WASM
 binary without `flutter_rust_bridge_serve`.
