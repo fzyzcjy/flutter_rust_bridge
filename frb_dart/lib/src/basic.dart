@@ -48,7 +48,10 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   void _sanityCheckSingleton() {
     if (_instances.contains(runtimeType)) {
-      return;
+      throw Exception(
+        'Subclasses of `FlutterRustBridgeBase` should be singletons - '
+        'there should not be two instances (runtimeType=$runtimeType)',
+      );
     }
     _instances.add(runtimeType);
   }

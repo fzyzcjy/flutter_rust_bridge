@@ -4,6 +4,7 @@ use crate::generator::rust::ty::*;
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_rust_generator_struct;
+use crate::utils::misc::BlockIndex;
 
 use super::{ExternFuncCollector, NO_PARAMS};
 
@@ -30,7 +31,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
             {
                 compile_error!("64-bit pointers are not supported.");
             }
-
+    
             unsafe {
                 support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
             }"#
@@ -54,7 +55,19 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         obj
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
+    fn convert_to_dart(&self, obj: String) -> String {
+        format!("{obj}.into_dart()")
+    }
+
+    fn structs(&self) -> String {
+        "".to_owned()
+    }
+
+    fn allocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
         let rust_wire = self.ir.rust_wire_type(crate::target::Target::Io);
 
         Acc {
@@ -72,7 +85,11 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         }
     }
 
-    fn related_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
+    fn related_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
         let mut generate_impl = |target| {
             [
                 collector.generate(

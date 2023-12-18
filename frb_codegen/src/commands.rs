@@ -51,7 +51,6 @@ pub(crate) struct BindgenRustToDartArg<'a> {
     pub dart_class_name: &'a str,
     pub c_struct_names: Vec<String>,
     pub exclude_symbols: Vec<String>,
-    pub extra_forward_declarations: Vec<String>,
     pub llvm_install_path: &'a [String],
     pub llvm_compiler_opts: &'a str,
 }
@@ -65,7 +64,6 @@ pub(crate) fn bindgen_rust_to_dart(
         arg.c_output_path,
         arg.c_struct_names,
         arg.exclude_symbols,
-        arg.extra_forward_declarations,
     )?;
     ffigen(
         arg.c_output_path,
@@ -82,29 +80,22 @@ fn cbindgen(
     c_output_path: &str,
     c_struct_names: Vec<String>,
     exclude_symbols: Vec<String>,
-    extra_forward_definitions: Vec<String>,
 ) -> CommandResult {
-    let mut declarations = "".to_string();
-    declarations += extra_forward_definitions
-        .iter()
-        .map(|s| format!("\n{};", s))
-        .collect::<String>()
-        .as_str();
-    declarations.push_str("\n\ntypedef struct _Dart_Handle* Dart_Handle;"); // copied from `dart-sdk/dart_api.h`, to convert Dart_Handle to Object.
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
-    let cbindgen_config = cbindgen::Config {
+    let config = cbindgen::Config {
         language: cbindgen::Language::C,
-        header: Some("#pragma once\n".to_owned()),
         sys_includes: vec![
             "stdbool.h".to_string(),
             "stdint.h".to_string(),
             "stdlib.h".to_string(),
         ],
         no_includes: true,
-        after_includes: Some(declarations),
+        // copied from: dart-sdk/dart_api.h
+        // used to convert Dart_Handle to Object.
+        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
         export: cbindgen::ExportConfig {
             include: c_struct_names
                 .iter()
@@ -116,7 +107,7 @@ fn cbindgen(
         ..Default::default()
     };
 
-    debug!("cbindgen config: {:#?}", cbindgen_config);
+    debug!("cbindgen config: {:#?}", config);
 
     let canonical = Path::new(rust_crate_dir).canonicalize()?;
     let mut path = canonical.to_str().unwrap();
@@ -125,7 +116,8 @@ fn cbindgen(
     if path.starts_with(r"\\?\") {
         path = &path[r"\\?\".len()..];
     }
-    if cbindgen::generate_with_config(path, cbindgen_config)?.write_to_file(c_output_path) {
+
+    if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
         Ok(())
     } else {
         Err(anyhow::anyhow!("cbindgen failed writing file"))?
@@ -183,6 +175,7 @@ fn ffigen(
     let mut config_file = tempfile::NamedTempFile::new()?;
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
+
     let repo = DartRepository::from_str(dart_root).unwrap();
     let res = command_run!(
         call_shell[Some(dart_root)],
@@ -192,7 +185,6 @@ fn ffigen(
         "--config",
         config_file.path()
     )?;
-
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
         let out = String::from_utf8_lossy(&res.stdout);

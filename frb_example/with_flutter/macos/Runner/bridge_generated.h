@@ -79,17 +79,17 @@ void wire_off_topic_deliberately_return_error(int64_t port_);
 
 void wire_off_topic_deliberately_panic(int64_t port_);
 
-struct wire_Point *new_box_autoadd_point(void);
+struct wire_Point *new_box_autoadd_point_0(void);
 
-struct wire_Size *new_box_autoadd_size(void);
+struct wire_Size *new_box_autoadd_size_0(void);
 
-struct wire_TreeNode *new_box_autoadd_tree_node(void);
+struct wire_TreeNode *new_box_autoadd_tree_node_0(void);
 
-struct wire_list_size *new_list_size(int32_t len);
+struct wire_list_size *new_list_size_0(int32_t len);
 
-struct wire_list_tree_node *new_list_tree_node(int32_t len);
+struct wire_list_tree_node *new_list_tree_node_0(int32_t len);
 
-struct wire_uint_8_list *new_uint_8_list(int32_t len);
+struct wire_uint_8_list *new_uint_8_list_0(int32_t len);
 
 void free_WireSyncReturn(WireSyncReturn ptr);
 
@@ -107,12 +107,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_complex_struct);
     dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_return_error);
     dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_panic);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_point);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_size);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node);
-    dummy_var ^= ((int64_t) (void*) new_list_size);
-    dummy_var ^= ((int64_t) (void*) new_list_tree_node);
-    dummy_var ^= ((int64_t) (void*) new_uint_8_list);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_point_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_size_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node_0);
+    dummy_var ^= ((int64_t) (void*) new_list_size_0);
+    dummy_var ^= ((int64_t) (void*) new_list_tree_node_0);
+    dummy_var ^= ((int64_t) (void*) new_uint_8_list_0);
     dummy_var ^= ((int64_t) (void*) free_WireSyncReturn);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) get_dart_object);

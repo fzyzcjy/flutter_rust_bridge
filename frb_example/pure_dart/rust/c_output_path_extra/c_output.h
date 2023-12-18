@@ -1,11 +1,6 @@
-#pragma once
-
-
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
-
-
 typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct DartCObject DartCObject;
@@ -983,157 +978,157 @@ struct wire_NonSendHideData new_NonSendHideData(void);
 
 struct wire_RwLockHideData new_RwLockHideData(void);
 
-struct wire_StringList *new_StringList(int32_t len);
+struct wire_StringList *new_StringList_0(int32_t len);
 
-struct wire_ApplicationEnv *new_box_application_env(void);
+struct wire_ApplicationEnv *new_box_application_env_0(void);
 
-int64_t *new_box_autoadd_Chrono_Utc(int64_t value);
+int64_t *new_box_autoadd_Chrono_Utc_0(int64_t value);
 
-struct wire_DartOpaque *new_box_autoadd_DartOpaque(void);
+struct wire_DartOpaque *new_box_autoadd_DartOpaque_0(void);
 
-struct wire_HideData *new_box_autoadd_HideData(void);
+struct wire_HideData *new_box_autoadd_HideData_0(void);
 
-struct wire___record__String_i32 *new_box_autoadd___record__String_i32(void);
+struct wire___record__String_i32 *new_box_autoadd___record__String_i32_0(void);
 
-struct wire_A *new_box_autoadd_a(void);
+struct wire_A *new_box_autoadd_a_0(void);
 
-struct wire_Abc *new_box_autoadd_abc(void);
+struct wire_Abc *new_box_autoadd_abc_0(void);
 
-struct wire_ApplicationEnv *new_box_autoadd_application_env(void);
+struct wire_ApplicationEnv *new_box_autoadd_application_env_0(void);
 
-struct wire_ApplicationSettings *new_box_autoadd_application_settings(void);
+struct wire_ApplicationSettings *new_box_autoadd_application_settings_0(void);
 
-struct wire_Attribute *new_box_autoadd_attribute(void);
+struct wire_Attribute *new_box_autoadd_attribute_0(void);
 
-struct wire_B *new_box_autoadd_b(void);
+struct wire_B *new_box_autoadd_b_0(void);
 
-bool *new_box_autoadd_bool(bool value);
+bool *new_box_autoadd_bool_0(bool value);
 
-struct wire_C *new_box_autoadd_c(void);
+struct wire_C *new_box_autoadd_c_0(void);
 
-struct wire_ConcatenateWith *new_box_autoadd_concatenate_with(void);
+struct wire_ConcatenateWith *new_box_autoadd_concatenate_with_0(void);
 
-struct wire_CustomStruct *new_box_autoadd_custom_struct(void);
+struct wire_CustomStruct *new_box_autoadd_custom_struct_0(void);
 
-struct wire_Customized *new_box_autoadd_customized(void);
+struct wire_Customized *new_box_autoadd_customized_0(void);
 
-struct wire_DartOpaqueNested *new_box_autoadd_dart_opaque_nested(void);
+struct wire_DartOpaqueNested *new_box_autoadd_dart_opaque_nested_0(void);
 
-struct wire_Empty *new_box_autoadd_empty(void);
+struct wire_Empty *new_box_autoadd_empty_0(void);
 
-struct wire_EnumDartOpaque *new_box_autoadd_enum_dart_opaque(void);
+struct wire_EnumDartOpaque *new_box_autoadd_enum_dart_opaque_0(void);
 
-struct wire_EnumOpaque *new_box_autoadd_enum_opaque(void);
+struct wire_EnumOpaque *new_box_autoadd_enum_opaque_0(void);
 
-struct wire_Event *new_box_autoadd_event(void);
+struct wire_Event *new_box_autoadd_event_0(void);
 
-struct wire_ExoticOptionals *new_box_autoadd_exotic_optionals(void);
+struct wire_ExoticOptionals *new_box_autoadd_exotic_optionals_0(void);
 
-double *new_box_autoadd_f64(double value);
+double *new_box_autoadd_f64_0(double value);
 
-struct wire_FeatureChrono *new_box_autoadd_feature_chrono(void);
+struct wire_FeatureChrono *new_box_autoadd_feature_chrono_0(void);
 
-struct wire_FeatureUuid *new_box_autoadd_feature_uuid(void);
+struct wire_FeatureUuid *new_box_autoadd_feature_uuid_0(void);
 
-struct wire_FeedId *new_box_autoadd_feed_id(void);
+struct wire_FeedId *new_box_autoadd_feed_id_0(void);
 
-int32_t *new_box_autoadd_i32(int32_t value);
+int32_t *new_box_autoadd_i32_0(int32_t value);
 
-int64_t *new_box_autoadd_i64(int64_t value);
+int64_t *new_box_autoadd_i64_0(int64_t value);
 
-struct wire_KitchenSink *new_box_autoadd_kitchen_sink(void);
+struct wire_KitchenSink *new_box_autoadd_kitchen_sink_0(void);
 
-struct wire_Measure *new_box_autoadd_measure(void);
+struct wire_Measure *new_box_autoadd_measure_0(void);
 
-struct wire_MessageId *new_box_autoadd_message_id(void);
+struct wire_MessageId *new_box_autoadd_message_id_0(void);
 
-struct wire_MyEnumFreezed *new_box_autoadd_my_enum_freezed(void);
+struct wire_MyEnumFreezed *new_box_autoadd_my_enum_freezed_0(void);
 
-struct wire_MyNestedStruct *new_box_autoadd_my_nested_struct(void);
+struct wire_MyNestedStruct *new_box_autoadd_my_nested_struct_0(void);
 
-struct wire_MySize *new_box_autoadd_my_size(void);
+struct wire_MySize *new_box_autoadd_my_size_0(void);
 
-struct wire_MySizeFreezed *new_box_autoadd_my_size_freezed(void);
+struct wire_MySizeFreezed *new_box_autoadd_my_size_freezed_0(void);
 
-struct wire_MyStruct *new_box_autoadd_my_struct(void);
+struct wire_MyStruct *new_box_autoadd_my_struct_0(void);
 
-struct wire_MyTreeNode *new_box_autoadd_my_tree_node(void);
+struct wire_MyTreeNode *new_box_autoadd_my_tree_node_0(void);
 
-struct wire_NewTypeInt *new_box_autoadd_new_type_int(void);
+struct wire_NewTypeInt *new_box_autoadd_new_type_int_0(void);
 
-struct wire_Note *new_box_autoadd_note(void);
+struct wire_Note *new_box_autoadd_note_0(void);
 
-struct wire_Numbers *new_box_autoadd_numbers(void);
+struct wire_Numbers *new_box_autoadd_numbers_0(void);
 
-struct wire_OpaqueNested *new_box_autoadd_opaque_nested(void);
+struct wire_OpaqueNested *new_box_autoadd_opaque_nested_0(void);
 
 struct wire_OptVecs *new_box_autoadd_opt_vecs_0(void);
 
 struct wire_Sequences *new_box_autoadd_sequences_0(void);
 
-struct wire_SomeStruct *new_box_autoadd_some_struct(void);
+struct wire_SomeStruct *new_box_autoadd_some_struct_0(void);
 
-struct wire_StructWithEnum *new_box_autoadd_struct_with_enum(void);
+struct wire_StructWithEnum *new_box_autoadd_struct_with_enum_0(void);
 
-struct wire_SumWith *new_box_autoadd_sum_with(void);
+struct wire_SumWith *new_box_autoadd_sum_with_0(void);
 
-struct wire_TestId *new_box_autoadd_test_id(void);
+struct wire_TestId *new_box_autoadd_test_id_0(void);
 
-struct wire_UserId *new_box_autoadd_user_id(void);
+struct wire_UserId *new_box_autoadd_user_id_0(void);
 
 int32_t *new_box_autoadd_weekdays_0(int32_t value);
 
 struct wire_Blob *new_box_blob_0(void);
 
-bool *new_box_bool(bool value);
+bool *new_box_bool_0(bool value);
 
-struct wire_Distance *new_box_distance(void);
+struct wire_Distance *new_box_distance_0(void);
 
-struct wire_ExoticOptionals *new_box_exotic_optionals(void);
+struct wire_ExoticOptionals *new_box_exotic_optionals_0(void);
 
-double *new_box_f64(double value);
+double *new_box_f64_0(double value);
 
-int32_t *new_box_i32(int32_t value);
+int32_t *new_box_i32_0(int32_t value);
 
-int64_t *new_box_i64(int64_t value);
+int64_t *new_box_i64_0(int64_t value);
 
-int8_t *new_box_i8(int8_t value);
+int8_t *new_box_i8_0(int8_t value);
 
-struct wire_KitchenSink *new_box_kitchen_sink(void);
+struct wire_KitchenSink *new_box_kitchen_sink_0(void);
 
-struct wire_MySize *new_box_my_size(void);
+struct wire_MySize *new_box_my_size_0(void);
 
-struct wire_MySizeFreezed *new_box_my_size_freezed(void);
+struct wire_MySizeFreezed *new_box_my_size_freezed_0(void);
 
-struct wire_Speed *new_box_speed(void);
+struct wire_Speed *new_box_speed_0(void);
 
-uint8_t *new_box_u8(uint8_t value);
+uint8_t *new_box_u8_0(uint8_t value);
 
-int32_t *new_box_weekdays(int32_t value);
+int32_t *new_box_weekdays_0(int32_t value);
 
-struct wire_float_32_list *new_float_32_list(int32_t len);
+struct wire_float_32_list *new_float_32_list_0(int32_t len);
 
-struct wire_float_64_list *new_float_64_list(int32_t len);
+struct wire_float_64_list *new_float_64_list_0(int32_t len);
 
-struct wire_int_32_list *new_int_32_list(int32_t len);
+struct wire_int_32_list *new_int_32_list_0(int32_t len);
 
-struct wire_int_64_list *new_int_64_list(int32_t len);
+struct wire_int_64_list *new_int_64_list_0(int32_t len);
 
-struct wire_int_8_list *new_int_8_list(int32_t len);
+struct wire_int_8_list *new_int_8_list_0(int32_t len);
 
-struct wire_list_DartOpaque *new_list_DartOpaque(int32_t len);
+struct wire_list_DartOpaque *new_list_DartOpaque_0(int32_t len);
 
-struct wire_list_HideData *new_list_HideData(int32_t len);
+struct wire_list_HideData *new_list_HideData_0(int32_t len);
 
-struct wire_list___record__String_i32 *new_list___record__String_i32(int32_t len);
+struct wire_list___record__String_i32 *new_list___record__String_i32_0(int32_t len);
 
-struct wire_list_application_env_var *new_list_application_env_var(int32_t len);
+struct wire_list_application_env_var *new_list_application_env_var_0(int32_t len);
 
-struct wire_list_attribute *new_list_attribute(int32_t len);
+struct wire_list_attribute *new_list_attribute_0(int32_t len);
 
-struct wire_list_my_size *new_list_my_size(int32_t len);
+struct wire_list_my_size *new_list_my_size_0(int32_t len);
 
-struct wire_list_my_tree_node *new_list_my_tree_node(int32_t len);
+struct wire_list_my_tree_node *new_list_my_tree_node_0(int32_t len);
 
 struct wire_list_opt_String *new_list_opt_String_0(int32_t len);
 
@@ -1147,9 +1142,9 @@ struct wire_list_opt_int_32_list *new_list_opt_int_32_list_0(int32_t len);
 
 struct wire_list_test_id *new_list_test_id_0(int32_t len);
 
-struct wire_list_weekdays *new_list_weekdays(int32_t len);
+struct wire_list_weekdays *new_list_weekdays_0(int32_t len);
 
-struct wire_uint_8_list *new_uint_8_list(int32_t len);
+struct wire_uint_8_list *new_uint_8_list_0(int32_t len);
 
 void drop_opaque_BoxDartDebug(const void *ptr);
 

@@ -14,10 +14,6 @@ impl IrTypeSyncReturn {
     pub fn into_inner(self) -> IrType {
         *self.0
     }
-
-    pub fn inner(&self) -> &IrType {
-        &self.0
-    }
 }
 
 #[delegate(self.0)]

@@ -1,4 +1,3 @@
-pub(crate) mod all_configs;
 pub(crate) mod opts;
 pub mod opts_parser;
 pub(crate) mod raw_opts;

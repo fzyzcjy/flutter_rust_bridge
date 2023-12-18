@@ -9,7 +9,6 @@ impl TypeRustGeneratorTrait for TypePrimitiveGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         "self".into()
     }
-
     fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         use IrTypePrimitive::*;
         Some(match self.ir {

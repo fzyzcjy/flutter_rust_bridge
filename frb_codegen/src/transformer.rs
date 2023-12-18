@@ -2,35 +2,41 @@ use log::debug;
 
 use crate::ir::IrType::*;
 use crate::ir::*;
-pub fn transform(src_func: &mut IrFunc) {
-    *src_func = IrFunc {
-        inputs: src_func
-            .inputs
-            .iter()
-            .map(|f| transform_func_input_add_boxed(f.clone()))
-            .collect(),
-        ..src_func.clone()
-    };
+
+pub fn transform(src: IrFile) -> IrFile {
+    let dst_funcs = src
+        .funcs
+        .into_iter()
+        .map(|src_func| IrFunc {
+            inputs: src_func
+                .inputs
+                .into_iter()
+                .map(transform_func_input_add_boxed)
+                .collect(),
+            ..src_func
+        })
+        .collect();
+
+    IrFile {
+        funcs: dst_funcs,
+        ..src
+    }
 }
 
 fn transform_func_input_add_boxed(input: IrField) -> IrField {
-    if input.ty.is_struct_ref_or_enum_ref_or_record() {
+    if input.ty.is_struct() {
         debug!(
             "transform_func_input_add_boxed wrap Boxed to field={:?}",
             input
         );
         IrField {
-            ty: tranform_input_type(&input.ty),
+            ty: Boxed(IrTypeBoxed {
+                exist_in_real_api: false, // <--
+                inner: Box::new(input.ty.clone()),
+            }),
             ..input
         }
     } else {
         input
     }
-}
-
-pub fn tranform_input_type(input_type: &IrType) -> IrType {
-    Boxed(IrTypeBoxed {
-        exist_in_real_api: false, // <--
-        inner: Box::new(input_type.clone()),
-    })
 }

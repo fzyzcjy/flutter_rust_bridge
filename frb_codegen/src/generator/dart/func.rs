@@ -1,5 +1,3 @@
-use crate::utils::misc::BlockIndex;
-
 use super::*;
 
 #[derive(Debug)]
@@ -11,8 +9,8 @@ pub(crate) struct GeneratedApiMethod {
 
 pub(crate) fn generate_api_func(
     func: &IrFunc,
-    config: &Opts,
-    all_configs: &AllConfigs,
+    ir_file: &IrFile,
+    common_api2wire_body: &str,
 ) -> GeneratedApiFunc {
     let raw_func_param_list = func
         .inputs
@@ -28,6 +26,7 @@ pub(crate) fn generate_api_func(
         })
         .collect::<Vec<_>>();
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_owned()]].concat();
+
     let prepare_args = func
         .inputs
         .iter()
@@ -38,9 +37,14 @@ pub(crate) fn generate_api_func(
                 format!("var arg{index} = {};", input.name.dart_style())
             } else {
                 let func = format!("api2wire_{}", input.ty.safe_ident());
-                let prefix = get_api2wire_prefix(&func, config, &input.ty, true, all_configs);
                 format!(
-                    "var arg{index} = {prefix}{func}({});",
+                    "var arg{index} = {}{}({});",
+                    if common_api2wire_body.contains(&func) {
+                        ""
+                    } else {
+                        "_platform."
+                    },
+                    func,
                     &input.name.dart_style()
                 )
             }
@@ -104,7 +108,7 @@ pub(crate) fn generate_api_func(
     } else {
         None
     };
-    let mut parse_success_data = if (f.is_static_method()
+    let parse_success_data = if (f.is_static_method()
         && f.struct_name().unwrap() == {
             if let IrType::StructRef(IrTypeStructRef { name, .. }) = &func.output {
                 name.clone()
@@ -113,29 +117,21 @@ pub(crate) fn generate_api_func(
             }
         })
         // If struct has a method with first element `input0`
-        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), config,all_configs))
+        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), ir_file))
         //If output is a struct with methods
         || (func_output_struct_name.is_some()
-            && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), config,all_configs))
+            && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_file))
     {
         format!("(d) => _wire2api_{}(d)", func.output.safe_ident())
     } else {
         format!("_wire2api_{}", func.output.safe_ident())
     };
 
-    let mut parse_error_data = if let Some(error_output) = &func.error_output {
+    let parse_error_data = if let Some(error_output) = &func.error_output {
         format!("_wire2api_{}", error_output.safe_ident())
     } else {
         "null".to_string()
     };
-
-    if config.shared {
-        parse_success_data = parse_success_data.replace("_wire2api_", "wire2api_");
-        parse_error_data = parse_error_data.replace("_wire2api_", "wire2api_");
-    } else if all_configs.is_type_shared(&func.output, true) {
-        parse_success_data = parse_success_data.replace("_wire2api_", "_sharedImpl.wire2api_");
-        parse_error_data = parse_error_data.replace("_wire2api_", "_sharedImpl.wire2api_");
-    }
 
     let is_sync = matches!(func.mode, IrFuncMode::Sync);
     let implementation = format!(
@@ -188,77 +184,6 @@ pub(crate) fn generate_api_func(
         companion_field_signature,
         companion_field_implementation,
     }
-}
-
-pub(crate) fn get_api2wire_prefix(
-    api2wire_func: &str,
-    config: &Opts,
-    ir_type: &IrType,
-    for_dart_common_file: bool,
-    all_configs: &AllConfigs,
-) -> String {
-    let dart_api2wire_funcs = all_configs.get_dart_api2wire_funcs(config.block_index);
-    let common_api2wire_body = if let Some(dart_api2wire_funcs) = dart_api2wire_funcs {
-        dart_api2wire_funcs.common.clone()
-    } else {
-        "".into()
-    };
-    let shared_dart_api2wire_funcs = all_configs.get_dart_api2wire_funcs(BlockIndex::new_shared());
-
-    let prefix = if common_api2wire_body.contains(api2wire_func) {
-        ""
-    } else {
-        match shared_dart_api2wire_funcs {
-            // multi-blocks case with `shared_dart_api2wire_funcs` initialized
-            Some(shared_dart_api2wire_funcs) => {
-                if config.shared {
-                    if for_dart_common_file {
-                        "_platform."
-                    } else {
-                        ""
-                    }
-                } else if all_configs.is_type_shared(ir_type, true) {
-                    let shared_common_api2wire_body = &shared_dart_api2wire_funcs.common;
-                    if shared_common_api2wire_body.contains(api2wire_func) {
-                        ""
-                    } else {
-                        "_sharedPlatform."
-                    }
-                } else if common_api2wire_body.contains(api2wire_func) {
-                    ""
-                } else if for_dart_common_file {
-                    "_platform."
-                } else {
-                    ""
-                }
-            }
-            // single block case, or multi-blocks case with `shared_dart_api2wire_funcs` NOT initilaized yet
-            _ => {
-                if for_dart_common_file {
-                    "_platform."
-                } else {
-                    ""
-                }
-            }
-        }
-    };
-
-    prefix.into()
-}
-
-pub(crate) fn get_api_to_fill_wire_prefix(
-    config: &Opts,
-    ir_type: &IrType,
-    all_configs: &AllConfigs,
-) -> String {
-    if config.shared {
-        ""
-    } else if all_configs.is_type_shared(ir_type, true) {
-        "_sharedPlatform"
-    } else {
-        "_"
-    }
-    .into()
 }
 
 pub(crate) fn generate_opaque_getters(ty: &IrType) -> GeneratedApiFunc {

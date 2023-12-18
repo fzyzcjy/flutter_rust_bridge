@@ -22,7 +22,6 @@ pub trait TypeDartGeneratorTrait {
 pub struct TypeGeneratorContext<'a> {
     pub ir_file: &'a IrFile,
     pub config: &'a Opts,
-    pub all_configs: &'a AllConfigs,
 }
 
 #[macro_export]
@@ -32,26 +31,6 @@ macro_rules! type_dart_generator_struct {
         pub struct $cls<'a> {
             pub ir: $ir_cls,
             pub context: $crate::generator::dart::ty::TypeGeneratorContext<'a>,
-        }
-
-        impl $cls<'_> {
-            #[allow(unused)]
-            fn get_context(&self) -> &TypeGeneratorContext {
-                &self.context
-            }
-            #[allow(unused)]
-            fn is_type_shared_by_safe_ident(&self, ty: &$crate::ir::IrType) -> bool {
-                self.get_context().all_configs.is_type_shared(ty, true)
-            }
-            #[allow(unused)]
-            fn get_private_prefix(&self) -> String {
-                if self.get_context().config.shared {
-                    ""
-                } else {
-                    "_"
-                }
-                .into()
-            }
         }
     };
 }
@@ -76,13 +55,8 @@ pub enum TypeDartGenerator<'a> {
 }
 
 impl<'a> TypeDartGenerator<'a> {
-    pub fn new(ty: IrType, config: &'a Opts, all_configs: &'a AllConfigs) -> Self {
-        let ir_file = all_configs.get_ir_file(config.block_index).unwrap();
-        let context = TypeGeneratorContext {
-            ir_file,
-            config,
-            all_configs,
-        };
+    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
+        let context = TypeGeneratorContext { ir_file, config };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
             Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),

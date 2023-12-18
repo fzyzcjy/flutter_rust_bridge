@@ -4,6 +4,7 @@ use crate::generator::rust::ty::*;
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_rust_generator_struct;
+use crate::utils::misc::BlockIndex;
 
 use super::{ExternFuncCollector, NO_PARAMS};
 
@@ -22,7 +23,11 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         }
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
+    fn allocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
         let rust_wire = self.ir.rust_wire_type(crate::target::Target::Io);
 
         Acc {

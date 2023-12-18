@@ -23,12 +23,14 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         let as_primitive = self.ir.inner.is_primitive().then(|| {
             format!(
-                "return inner.new_{}(api2wire_{}(raw));",
+                "return inner.new_{}_{}(api2wire_{}(raw));",
                 self.ir.safe_ident(),
+                self.context.config.block_index,
                 self.ir.inner.safe_ident()
             )
         });
         let ident = self.ir.safe_ident();
+        let context = self.context.config.block_index;
         let inner = self.ir.inner.safe_ident();
         let empty_struct = is_empty_struct(self);
         Acc {
@@ -37,14 +39,13 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                     format!("return api2wire_{inner}(raw);")
                 } else if empty_struct {
                     format!(
-                        "final ptr = inner.new_{ident}();
+                        "final ptr = inner.new_{ident}_{context}();
                         return ptr;",
                     )
                 } else {
-                    let prefix = if self.context.config.shared { "" } else { "_" };
                     format!(
-                        "final ptr = inner.new_{ident}();
-                        {prefix}api_fill_to_wire_{inner}(raw, ptr.ref);
+                        "final ptr = inner.new_{ident}_{context}();
+                        _api_fill_to_wire_{inner}(raw, ptr.ref);
                         return ptr;"
                     )
                 }
@@ -65,10 +66,8 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
             ));
         }
         (!self.ir.inner.is_primitive() && !is_empty_struct(self)).then(|| {
-            let prefix = if self.context.config.shared { "" } else { "_" };
             format!(
-                "{}api_fill_to_wire_{}(apiObj, wireObj.ref);",
-                prefix,
+                "_api_fill_to_wire_{}(apiObj, wireObj.ref);",
                 self.ir.inner.safe_ident()
             )
         })
@@ -82,11 +81,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
             | EnumRef(_)
             | Primitive(IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize)
             | Delegate(IrTypeDelegate::Array(_) | IrTypeDelegate::PrimitiveEnum { .. }) => {
-                format!(
-                    "return {}wire2api_{}(raw);",
-                    self.get_private_prefix(),
-                    self.ir.inner.safe_ident()
-                )
+                format!("return _wire2api_{}(raw);", self.ir.inner.safe_ident())
             }
             #[cfg(feature = "chrono")]
             Delegate(IrTypeDelegate::Time(time)) => gen_wire2api_chrono(time),

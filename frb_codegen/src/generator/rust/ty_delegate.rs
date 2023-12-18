@@ -5,6 +5,7 @@ use crate::generator::rust::{
 use crate::ir::*;
 use crate::target::{Acc, Target};
 use crate::type_rust_generator_struct;
+use crate::utils::misc::BlockIndex;
 
 use super::get_into_into_dart;
 
@@ -57,19 +58,10 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
             },
-            IrTypeDelegate::StringList =>{
-                let x = self.ir.get_delegate();
-                let prefix = self.get_wire2api_prefix(&x);
-                // REPLACE PREFIX TO WIRE2API_BODY_IO AND WIRE2API_BODY_WASM
-                let wire2api_body_io =
-                    TypeGeneralListGenerator::WIRE2API_BODY_IO.replace("Wire2Api", &prefix);
-                let wire2api_body_wasm =
-                    TypeGeneralListGenerator::WIRE2API_BODY_WASM.replace("Wire2Api", &prefix);
-                Acc {
-                    io: Some(wire2api_body_io),
-                    wasm: Some(wire2api_body_wasm),
-                    ..Default::default()
-                }
+            IrTypeDelegate::StringList => Acc {
+                io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
+                wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
+                ..Default::default()
             },
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 let enu = ir.get(self.context.ir_file);
@@ -116,7 +108,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::TimeList(_) => {
                 Acc::distribute(
                     Some(
-                        "let vec: Vec<i64> = self.wire2api(); vec.into_iter().map(Wire2Api::wire2api).collect()".to_string()
+                        "let vec: Vec<i64> = self.wire2api(); vec.into_iter().map(Wire2Api::wire2api).collect()".into()
                     )
                 )
             }
@@ -149,7 +141,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         }
     }
 
-    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
+    fn allocate_funcs(
+        &self,
+        collector: &mut ExternFuncCollector,
+        _: BlockIndex,
+    ) -> Acc<Option<String>> {
         match &self.ir {
             list @ IrTypeDelegate::StringList => Acc {
                 io: Some(generate_list_allocate_func(
@@ -157,6 +153,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     &self.ir.safe_ident(),
                     list,
                     &list.get_delegate(),
+                    self.context.config.block_index,
                 )),
                 ..Default::default()
             },

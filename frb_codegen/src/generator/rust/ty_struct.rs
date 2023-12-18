@@ -23,17 +23,9 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     String::new()
                 };
 
-                let shared_mod_name = self.get_type_share_module(&field.ty);
                 Acc {
-                    io: if !self.context.config.shared && shared_mod_name.is_some() {
-                        format!(
-                            "{field_} {}::Wire2Api::wire2api(self.{field_name})",
-                            shared_mod_name.unwrap()
-                        )
-                    } else {
-                        format!("{field_} self.{field_name}.wire2api()")
-                    },
                     wasm: format!("{field_} self_.get({idx}).wire2api()"),
+                    io: format!("{field_} self.{field_name}.wire2api()"),
                     ..Default::default()
                 }
             })
@@ -136,8 +128,8 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 };
                 let gen = TypeRustGenerator::new(
                     field.ty.clone(),
+                    self.context.ir_file,
                     self.context.config,
-                    self.context.all_configs,
                 );
 
                 gen.convert_to_dart(format!("self{unwrap}.{field_ref}"))

@@ -6,10 +6,10 @@ Basically, just specify all input Rust files and all output locations and we are
 
 ```shell
 flutter_rust_bridge_codegen \
-  --rust-input "$REPO_DIR/native/src/api_block_1.rs" "$REPO_DIR/native/src/api_block_2.rs" \
-  --dart-output "$REPO_DIR/lib/bridge_generated_api_block_1.dart" "$REPO_DIR/lib/bridge_generated_api_block_2.dart" \
-  --class-name ApiBlock1Class ApiBlock2Class \
-  --rust-output generated_api_block_1 generated_api_block_2
+  --rust-input "$REPO_DIR/native/src/api_1.rs" "$REPO_DIR/native/src/api_2.rs" \
+  --dart-output "$REPO_DIR/lib/bridge_generated_api_1.dart" "$REPO_DIR/lib/bridge_generated_api_2.dart" \
+  --class-name ApiClass1 ApiClass2 \
+  --rust-output generated_api_1 generated_api_2
 ```
 
 For more details, have a look at [this article](../article/generate_multiple_files.md).
