@@ -301,7 +301,7 @@ Future<RunCommandOutput> executeFrbCodegen(
       return await exec(
         'cargo run --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
         relativePwd: relativePwd,
-        extraEnv: {'RUST_BACKTRACE': '1'},
+        extraEnv: {'RUST_BACKTRACE': '1', ...rustEnvMap},
       );
     },
   );
