@@ -275,9 +275,9 @@ const sidebars = {
                 id: 'manual/index',
             },
             items: [
-                'manual/changelog',
                 'manual/troubleshooting',
                 'manual/ffigen-troubleshooting',
+                'manual/changelog',
                 {
                     type: 'category',
                     // title too long
