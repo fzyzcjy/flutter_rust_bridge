@@ -189,7 +189,7 @@ Future<T> withLlvmCovReport<T>(
           relativePwd: relativeRustPwd))
       .stdout;
   final envMap = Map.fromEntries(rawEnvs.trim().split('\n').map((line) {
-    final m = RegExp(r""""^(\w+)=['"]?(.+?)['"]?$""").firstMatch(line)!;
+    final m = RegExp(r"""^(\w+)=['"]?(.+?)['"]?$""").firstMatch(line)!;
     return MapEntry(m.group(1)!, m.group(2)!);
   }));
   print('envMap=$envMap');
