@@ -10,7 +10,7 @@
 
 ## What's new in V2
 
-Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/whats-new) for information and update guide.
+Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new) for information and update guide.
 
 ## 🚀 Advantages
 

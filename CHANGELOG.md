@@ -1,6 +1,6 @@
 ## 2.0.0-dev.1
 
-* Please refer to TODO for what's changed in V2.
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 
 ## 1.82.6
 
