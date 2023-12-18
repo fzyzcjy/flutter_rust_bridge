@@ -160,11 +160,11 @@
 ## 1.65.0
 
 * Support empty structs #1071 (thanks @alexthe2)
-* Fix Optional<DateTime> #1079 (thanks @alexthe2)
+* Fix `Optional<DateTime>` #1079 (thanks @alexthe2)
 
 ## 1.64.0
 
-* Support Option<Datetime> #1066 (thanks @alexthe2)
+* Support `Option<Datetime>` #1066 (thanks @alexthe2)
 
 ## 1.63.1
 
