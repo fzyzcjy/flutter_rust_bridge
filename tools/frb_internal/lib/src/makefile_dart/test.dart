@@ -4,6 +4,7 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
     as dart_sanitizer_tester;
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
@@ -54,6 +55,7 @@ class TestRustConfig {
 
 @CliOptions()
 class TestDartConfig {
+  @CliOption(convert: convertConfigPackage)
   final String package;
 
   const TestDartConfig({required this.package});
@@ -61,6 +63,7 @@ class TestDartConfig {
 
 @CliOptions()
 class TestDartNativeConfig {
+  @CliOption(convert: convertConfigPackage)
   final String package;
   final bool coverage;
 
@@ -76,6 +79,7 @@ enum Sanitizer {
 
 @CliOptions()
 class TestDartSanitizerConfig {
+  @CliOption(convert: convertConfigPackage)
   final String package;
   final bool useLocalSanitizedDartBinary;
   final Sanitizer sanitizer;
@@ -90,6 +94,7 @@ class TestDartSanitizerConfig {
 @CliOptions()
 class TestFlutterConfig {
   final String? flutterTestArgs;
+  @CliOption(convert: convertConfigPackage)
   final String package;
 
   const TestFlutterConfig({this.flutterTestArgs, required this.package});
@@ -97,6 +102,7 @@ class TestFlutterConfig {
 
 @CliOptions()
 class TestFlutterWebConfig {
+  @CliOption(convert: convertConfigPackage)
   final String package;
   final bool coverage;
 

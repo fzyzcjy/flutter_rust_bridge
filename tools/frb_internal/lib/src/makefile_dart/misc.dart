@@ -81,3 +81,9 @@ Future<void> pubGetAll() async {
         relativePwd: package);
   }
 }
+
+String convertConfigPackage(String raw) {
+  final ans = raw.replaceAll('--', '/');
+  if (raw != ans) print('convertConfigPackage: $raw -> $ans');
+  return ans;
+}

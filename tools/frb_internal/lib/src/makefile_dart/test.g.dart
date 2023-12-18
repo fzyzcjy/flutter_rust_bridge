@@ -40,7 +40,7 @@ TestRustConfig parseTestRustConfig(List<String> args) {
 }
 
 TestDartConfig _$parseTestDartConfigResult(ArgResults result) => TestDartConfig(
-      package: result['package'] as String,
+      package: convertConfigPackage(result['package'] as String),
     );
 
 ArgParser _$populateTestDartConfigParser(ArgParser parser) => parser
@@ -57,7 +57,7 @@ TestDartConfig parseTestDartConfig(List<String> args) {
 
 TestDartNativeConfig _$parseTestDartNativeConfigResult(ArgResults result) =>
     TestDartNativeConfig(
-      package: result['package'] as String,
+      package: convertConfigPackage(result['package'] as String),
       coverage: result['coverage'] as bool,
     );
 
@@ -91,7 +91,7 @@ T _$enumValueHelper<T>(Map<T, String> enumValues, String source) =>
 TestDartSanitizerConfig _$parseTestDartSanitizerConfigResult(
         ArgResults result) =>
     TestDartSanitizerConfig(
-      package: result['package'] as String,
+      package: convertConfigPackage(result['package'] as String),
       useLocalSanitizedDartBinary:
           result['use-local-sanitized-dart-binary'] as bool,
       sanitizer: _$enumValueHelper(
@@ -130,7 +130,7 @@ TestDartSanitizerConfig parseTestDartSanitizerConfig(List<String> args) {
 TestFlutterConfig _$parseTestFlutterConfigResult(ArgResults result) =>
     TestFlutterConfig(
       flutterTestArgs: result['flutter-test-args'] as String?,
-      package: result['package'] as String,
+      package: convertConfigPackage(result['package'] as String),
     );
 
 ArgParser _$populateTestFlutterConfigParser(ArgParser parser) => parser
@@ -151,7 +151,7 @@ TestFlutterConfig parseTestFlutterConfig(List<String> args) {
 
 TestFlutterWebConfig _$parseTestFlutterWebConfigResult(ArgResults result) =>
     TestFlutterWebConfig(
-      package: result['package'] as String,
+      package: convertConfigPackage(result['package'] as String),
       coverage: result['coverage'] as bool,
     );
 

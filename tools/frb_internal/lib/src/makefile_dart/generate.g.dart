@@ -31,7 +31,7 @@ GenerateConfig parseGenerateConfig(List<String> args) {
 GeneratePackageConfig _$parseGeneratePackageConfigResult(ArgResults result) =>
     GeneratePackageConfig(
       setExitIfChanged: result['set-exit-if-changed'] as bool,
-      package: result['package'] as String,
+      package: convertConfigPackage(result['package'] as String),
       coverage: result['coverage'] as bool,
     );
 

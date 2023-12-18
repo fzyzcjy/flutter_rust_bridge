@@ -11,6 +11,7 @@ import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
@@ -85,6 +86,7 @@ class GeneratePackageConfig implements GenerateConfig {
   @override
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
+  @CliOption(convert: convertConfigPackage)
   final String package;
   @override
   final bool coverage;
