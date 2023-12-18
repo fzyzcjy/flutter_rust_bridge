@@ -47,8 +47,8 @@ Future<void> precommit(PrecommitConfig config) async {
   if (config.mode == PrecommitMode.slow) {
     await Future.wait([
       for (final package in kDartExamplePackages)
-        generateRunFrbCodegenCommandGenerate(
-            GeneratePackageConfig(setExitIfChanged: false, package: package)),
+        generateRunFrbCodegenCommandGenerate(GeneratePackageConfig(
+            setExitIfChanged: false, package: package, coverage: false)),
     ]);
   }
 
@@ -66,7 +66,8 @@ Future<void> precommit(PrecommitConfig config) async {
   ]);
 
   if (config.mode == PrecommitMode.slow) {
-    await generateInternal(const GenerateConfig(setExitIfChanged: false));
+    await generateInternal(
+        const GenerateConfig(setExitIfChanged: false, coverage: false));
     await testRust(const TestRustConfig(updateGoldens: true, coverage: false));
     await pubGetAll();
   }
