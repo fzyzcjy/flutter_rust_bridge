@@ -69,8 +69,11 @@ Future<void> releaseUpdateGit() async {
 
 Future<void> releaseUpdateGithub() async {
   final versionInfo = _computeVersionInfo();
+
+  File('${exec.pwd}temp.txt').writeAsStringSync(_extractChangelog().$2);
+
   await exec('gh release create v${versionInfo.newVersion} '
-      '--notes-file $TODO '
+      '--notes-file temp.txt '
       '--draft '
       '--title v${versionInfo.newVersion}');
   print(

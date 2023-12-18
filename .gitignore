@@ -11,3 +11,4 @@ Makefile
 .fvm/flutter_sdk
 coverage/
 lcov.info
+temp.txt
