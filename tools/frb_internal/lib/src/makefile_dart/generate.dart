@@ -51,6 +51,8 @@ List<Command<void>> createCommands() {
         _$populateGenerateConfigParser,
         _$parseGenerateConfigResult),
     SimpleCommand('generate-website', generateWebsite),
+    SimpleCommand('generate-website-build', generateWebsiteBuild),
+    SimpleCommand('generate-website-merge', generateWebsiteMerge),
   ];
 }
 
@@ -293,6 +295,11 @@ Future<void> _maybeSetExitIfChanged(GenerateConfig config,
 }
 
 Future<void> generateWebsite() async {
+  await generateWebsiteBuild();
+  await generateWebsiteMerge();
+}
+
+Future<void> generateWebsiteBuild() async {
   await exec('yarn install --frozen-lockfile', relativePwd: 'website');
   await exec('yarn build', relativePwd: 'website');
 
@@ -300,7 +307,9 @@ Future<void> generateWebsite() async {
       relativePwd: 'frb_example/gallery');
 
   await exec('mdbook build .', relativePwd: 'website/v1_mdbook');
+}
 
+Future<void> generateWebsiteMerge() async {
   await exec('mkdir -p website/merged_target/v1');
   await exec('cp -r website/build/ website/merged_target');
   await exec('cp -r website/v1_mdbook/book/ website/merged_target/v1');
