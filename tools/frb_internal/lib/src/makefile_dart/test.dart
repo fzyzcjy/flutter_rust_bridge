@@ -163,14 +163,13 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
 }
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
-Future<void> withLlvmCovReport(
-  Future<void> Function(Map<String, String> envMap) inner, {
+Future<T> withLlvmCovReport(
+  Future<T> Function(Map<String, String> envMap) inner, {
   required bool enable,
   required String relativeRustPwd,
 }) async {
   if (!enable) {
-    await inner({});
-    return;
+    return await inner({});
   }
 
   // `--release`, since our dart tests by default build rust release libs
@@ -188,7 +187,7 @@ Future<void> withLlvmCovReport(
   await exec('cargo llvm-cov clean --workspace $cargoLlvmCovCommonArgs',
       relativePwd: relativeRustPwd, extraEnv: envMap);
 
-  await inner(envMap);
+  final ans = await inner(envMap);
 
   await exec(
       'cargo llvm-cov report --lcov '
@@ -197,6 +196,8 @@ Future<void> withLlvmCovReport(
       '$cargoLlvmCovCommonArgs',
       relativePwd: relativeRustPwd,
       extraEnv: envMap);
+
+  return ans;
 }
 
 // ref: https://github.com/rrousselGit/riverpod/blob/67d26d2a47a7351d6676012c44eb53dd6ff79787/scripts/coverage.sh#L10
