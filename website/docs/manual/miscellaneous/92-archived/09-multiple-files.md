@@ -12,5 +12,5 @@ flutter_rust_bridge_codegen \
   --rust-output generated_api_1 generated_api_2
 ```
 
-For more details, have a look at [this article](../article/generate_multiple_files.md).
+For more details, have a look at [this article](generate-multiple-files).
 

@@ -34,4 +34,4 @@ of [Corrosion](https://github.com/corrosion-rs/corrosion), which is used by `rus
 ```
 
 Alternatively, you can install Corrosion permanently on your system.
-Refer to the [Linux troubleshooting notes](../template/setup_desktop.md) here.
+Refer to the [Linux troubleshooting notes](../template/setup/desktop) here.

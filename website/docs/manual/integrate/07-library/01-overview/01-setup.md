@@ -7,7 +7,7 @@ To start developing your Dart/Flutter library, you will need to download some de
 The rest of this guide assumes you have the following tools installed on any development machines:
 - [Flutter](https://docs.flutter.dev/get-started/install)
 - [rustup](https://rustup.rs)
-- [Melos](https://melos.invertase.dev) (needed for our monorepo, see [here](melos.md))
+- [Melos](https://melos.invertase.dev) (needed for our monorepo, see [here](melos))
   - `dart pub global activate melos` to install once Dart/Flutter are installed
 
 ### Optional
@@ -44,4 +44,4 @@ We will be using the following structure for our repository, assuming our librar
 - `platform-build/` the output (build) folder for all created Flutter binaries
 - `analysis_options.yaml` to enable consistent Dart analysis in our Dart/Flutter libraries
 - `Cargo.toml` so IDEs can find our Rust project under `packages/library_name/native`
-- `melos.yaml` to configure the monorepo, see more [here](library/melos.md)
+- `melos.yaml` to configure the monorepo, see more [here](melos)

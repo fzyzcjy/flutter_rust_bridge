@@ -8,7 +8,7 @@ In the end, if you choose to publish to pub.dev, users can simply run:
 
 But you also don't need to publish your library either!
 You can just use your library internally in a monorepo,
-[as described later on](melos.md).
+[as described later on](melos).
 
 ## High Level Design
 We will build out our library from scratch, piece by piece, allowing you to include

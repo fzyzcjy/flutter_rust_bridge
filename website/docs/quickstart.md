@@ -111,7 +111,7 @@ import DirectoryStructureBriefList from './snippets/_directory-structure-brief-l
 
 <DirectoryStructureBriefExplain/>
 
-For more details, please see [this page](guide/miscellaneous/directory).
+For more details, please see [this page](guides/miscellaneous/directory).
 
 ## 3. Run it
 
@@ -151,7 +151,7 @@ Then, you will see a greeting from Rust, displayed in Flutter (Dart).
 ## 4. Modify it
 
 Suppose we add a *super*-simple Rust function in `rust/src/api/simple.rs`
-(see [next chapter](feature) for all features):
+(see [next chapter](guides) for all features):
 
 ```rust
 pub fn hello(a: String) -> String { a.repeat(2) }
@@ -181,7 +181,7 @@ flutter_rust_bridge_codegen generate --watch
 
 If you need to install LLVM,
 which is required by the popular Google official package `ffigen`,
-please refer to [this doc](manual/miscellaneous/llvm).
+please refer to [this doc](manual/ffigen-troubleshooting).
 
 ## What's next
 
@@ -189,4 +189,4 @@ import Intuition from './snippets/_tip-use-intuition.mdx';
 
 <Intuition/>
 
-[The feature chapter](feature) introduces all features, customizations, common scenario how-tos, etc.
+[The guides chapter](guides) introduces all features, customizations, common scenario how-tos, etc.

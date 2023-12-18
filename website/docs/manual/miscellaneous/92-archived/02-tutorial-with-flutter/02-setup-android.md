@@ -41,7 +41,7 @@ or edit one of the `gradle.properties` that resides within the `android` folder.
 the JNI without additional configuration.
 Version 2.7.0 of cargo-ndk introduced changes that broke support for NDK
 version 22, so 2.6.0 must be used if you are on a Rust version below 1.68. If you still want to use cargo-ndk 2.7.0 or above on Rust versions below 1.68 with
-a workaround, see [this article](./alternative_ndk.md).
+a workaround, see [this article](./alternative-ndk).
 
 Rust < 1.68:
 ```shell

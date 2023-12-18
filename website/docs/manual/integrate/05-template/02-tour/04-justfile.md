@@ -11,7 +11,7 @@ Running `just` by default runs the `gen` and `lint` tasks.
 ## `just gen`
 
 Generates the Rust bindings and puts them into the correct folders.
-The [Generating new code](generate.md) section goes into detail how to modify
+The [Generating new code](../generate) section goes into detail how to modify
 this task to perform side jobs as well.
 
 ## `just lint`

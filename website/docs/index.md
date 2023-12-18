@@ -17,7 +17,7 @@ hide_title: true
 
 ## What's new in V2
 
-Please visit [this page](TODO) for information and update guide.
+Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/whats-new) for information and update guide.
 
 ## 🚀 Advantages
 

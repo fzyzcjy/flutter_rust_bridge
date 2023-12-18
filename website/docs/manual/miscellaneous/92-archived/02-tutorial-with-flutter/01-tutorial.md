@@ -28,9 +28,9 @@ git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd flutter_rust_brid
 
 This step is optional, since I have generated the source code already (in quickstart). Even if you do it, you should not see anything changed.
 
-As soon as you make any modification to `api.rs`, you need to run codegen again. More information about requirements for code generation can be seen in the [Installing dependencies](integrate/deps.md) section.
+As soon as you make any modification to `api.rs`, you need to run codegen again. More information about requirements for code generation can be seen in the `Installing dependencies` section.
 
-At this step you may need to [setup dependencies](./integrate/deps.md).
+At this step you may need to `setup dependencies`.
 
 ## Run app
 
@@ -39,7 +39,7 @@ At this step you may need to [setup dependencies](./integrate/deps.md).
 The [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/ci.yaml) is useful if you want details of each command. The `flutter_android_test`, `flutter_ios_test`, `flutter_windows_test`, `flutter_macos_test` and `flutter_linux_test` demonstrates the exact commands needed to run this tutorial codebase from a brand new machine.
 
 ### Android app
-See [Android setup](tutorial/setup_android.md)
+See `Android setup`
 
 ### iOS app
 
@@ -62,4 +62,4 @@ Same as Windows. (P.S. Under the hood, `cargo-xcode` is used to automate the pro
 ### Web (as a webpage)
 
 Install `flutter_rust_bridge_serve` to simplify the process of building and serving a WASM binary.
-See [Web setup](template/setup_web.md) for more details.
+See `Web setup` for more details.

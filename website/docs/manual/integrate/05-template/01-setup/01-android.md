@@ -1,6 +1,6 @@
 # Android setup
 
-Before trying this, ensure you can [run the example project](../tutorial/setup_android.md)
+Before trying this, ensure you can run the example project.
 
 ## Rust targets
 

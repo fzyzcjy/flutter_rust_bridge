@@ -40,7 +40,7 @@ you need to manually create four text files to redirect calls from libgcc to lib
    ```
 
 ## More details on NDK with flutter_rust_bridge
-For more details on how NDK works with `flutter_rust_bridge`, have a look at this [article](../integrate/android_tasks.md) please.
+For more details on how NDK works with `flutter_rust_bridge`, have a look at this article (integrate/android_tasks) please.
 
 [cargo-ndk]: https://github.com/bbqsrc/cargo-ndk
 [unable to find library -lgcc error]:https://github.com/bbqsrc/cargo-ndk/issues/22

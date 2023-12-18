@@ -5,7 +5,7 @@ There are roughly two components, let's call them "core" and "compilation":
 * **Core**:
   By using the core code generator (`flutter_rust_bridge_codegen generate`) and support library,
   the Rust code can be seamlessly called from/to Flutter (Dart) code.
-  That's what we mainly talk about in the [features](../../feature) chapter.
+  That's what we mainly talk about in the [guides](../../guides) chapter.
 * **Compilation**:
   This component makes *any* Rust code be compiled/bundled with *any* Flutter (Dart) code.
 
