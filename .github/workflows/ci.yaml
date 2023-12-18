@@ -368,12 +368,8 @@ jobs:
       # report
       - uses: actions/upload-artifact@v3
         with:
-          name: lcov.txt
-          path: ${{ matrix.package }}/coverage/lcov.txt
-      - uses: actions/upload-artifact@v3
-        with:
-          name: rust_lcov.info
-          path: ${{ matrix.package }}/coverage/rust_lcov.info
+          name: coverage
+          path: ${{ matrix.package }}/coverage/
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
