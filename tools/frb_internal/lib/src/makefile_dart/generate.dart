@@ -11,7 +11,6 @@ import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
@@ -293,17 +292,10 @@ Future<RunCommandOutput> executeFrbCodegen(
   required String relativePwd,
   required bool coverage,
 }) async {
-  return await withLlvmCovReport(
-    enable: coverage,
-    relativeRustPwd: 'frb_codegen',
-    reportPath: 'frb_codegen/lcov.info',
-    (rustEnvMap) async {
-      return await exec(
-        'cargo run --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
-        relativePwd: relativePwd,
-        extraEnv: {'RUST_BACKTRACE': '1', ...rustEnvMap},
-      );
-    },
+  return await exec(
+    'cargo ${coverage ? "llvm-cov run --lcov --output-path lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+    relativePwd: relativePwd,
+    extraEnv: {'RUST_BACKTRACE': '1'},
   );
 }
 
