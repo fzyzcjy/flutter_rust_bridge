@@ -11,11 +11,9 @@ Rust makes it easy to write multi-thread code, algorithms, data-intensive operat
 * **Logic in Rust, UI in Dart**: 
 When you want a UI framework (Flutter) for your Rust system.
 
-## TODO
+## Introduction
 
-<div id="flutter_host">Loading...</div>
-
-## Mandelbrot
+### Mandelbrot
 
 In this demo,
 let us draw a [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set)
@@ -39,8 +37,6 @@ Image credit: [Simpsons contributor](https://en.wikipedia.org/wiki/User:Simpsons
 
 </details>
 
-TODO
-
 <small>
 Remarks:
 The mandelbrot set was the only demo since 2021.10 in V1 version.
@@ -48,7 +44,7 @@ The Rust code is deliberately not implemented the usual way,
 in order to ensure the computation speed is homogeneous for intuitive comparison.
 </small>
 
-## Polars
+### Polars
 
 `Polars` is a popular library for data processing written in Rust,
 and in this demo, we shows how it is called from Dart easily.
@@ -59,7 +55,10 @@ please visit [Desdaemon/polars_dart](https://github.com/Desdaemon/polars_dart).
 and is [semi-outdated](https://github.com/Desdaemon/polars_dart/issues/3#issuecomment-1705913689),
 but can still be used as a reference.)
 
-TODO
+## Demo
+
+<div id="flutter_host" style={{height: '500px'}}>Loading Flutter web app...</div>
 
 All source code can be found in `frb_example/gallery.`
 Remember to ignore all `ignore_me` folders, which contain code unrelated to the purpose of the demos.
+
