@@ -73,10 +73,10 @@ jobs:
     steps:
       # setup
       - uses: actions/checkout@v4
-      - uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
         with:
-          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
-          architecture: x64
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - uses: actions/setup-node@v3
         with:
           node-version: 18
