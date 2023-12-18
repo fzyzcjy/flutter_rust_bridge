@@ -312,11 +312,24 @@ Future<void> generateWebsiteBuild() async {
 
 Future<void> generateWebsiteMerge() async {
   const kWebsiteDir = 'website/merged_target/flutter_rust_bridge';
+
   await exec('mkdir -p $kWebsiteDir');
   await exec('cp -r website/build/ $kWebsiteDir');
   await exec('cp -r website/v1_mdbook/book/ $kWebsiteDir/v1');
   await exec('cp -r frb_example/gallery/build/web/ $kWebsiteDir/gallery');
+
+  // https://github.com/orgs/community/discussions/13309
+  _replaceFile(
+      '$kWebsiteDir/gallery/index.html',
+      (String text) => text.replaceFirst('<script src="flutter.js"',
+          '<script src="enable-threads.js"></script>\n<script src="flutter.js"'));
+
   await exec('ls -al $kWebsiteDir');
+}
+
+void _replaceFile(String path, String Function(String) replacer) {
+  final file = File(path);
+  file.writeAsStringSync(replacer(file.readAsStringSync()));
 }
 
 Future<void> generateWebsiteServe() async {
