@@ -69,7 +69,13 @@ Future<void> releaseUpdateGit() async {
 
 Future<void> releaseUpdateGithub() async {
   final versionInfo = _computeVersionInfo();
-  throw UnimplementedError();
+  await exec('gh release create v${versionInfo.newVersion} '
+      '--notes-file $TODO '
+      '--draft '
+      '--title v${versionInfo.newVersion}');
+  print(
+      'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.');
+  await exec('open https://github.com/fzyzcjy/flutter_rust_bridge/releases');
 }
 
 Future<void> releasePublishAll() async {
