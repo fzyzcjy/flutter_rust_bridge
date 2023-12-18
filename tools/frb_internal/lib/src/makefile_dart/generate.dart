@@ -182,7 +182,14 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
 
 Future<void> generateInternalReadme(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    TODO;
+    final dirBase = '${exec.pwd}/website/docs/';
+    const prelude =
+        '# [flutter_rust_bridge](https://github.com/fzyzcjy/flutter_rust_bridge)\n';
+    final text = prelude +
+        File('$dirBase/snippets/_readme-one.md').readAsStringSync() +
+        File('$dirBase/generated/_contributor-custom-message.md')
+            .readAsStringSync();
+    File('${exec.pwd}/README.md').writeAsStringSync(text);
   });
 }
 
