@@ -49,7 +49,7 @@ fn execute_dart_command(
         ans.extend(args);
         ans
     };
-    let status = dart_run(&repo, dart_root, dart_run_args)?;
+    let status = dart_run(&repo, dart_root, dart_coverage, dart_run_args)?;
 
     if !status.success() {
         bail!("Fail to execute command, please see logs above for details.")
@@ -61,11 +61,12 @@ fn execute_dart_command(
 fn dart_run(
     repo: &DartRepository,
     current_dir: &Path,
+    dart_coverage: bool,
     args: Vec<String>,
-) -> std::io::Result<ExitStatus> {
-    Command::new("dart")
+) -> anyhow::Result<ExitStatus> {
+    Ok(Command::new("dart")
         .current_dir(current_dir)
         .args(repo.command_extra_args())
         .args(args)
-        .status()
+        .status()?)
 }
