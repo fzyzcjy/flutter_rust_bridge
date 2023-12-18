@@ -3,6 +3,7 @@
 ## 2.0.0-dev.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* The 2.0.0-dev.1 will contain bugs and missing features, because I have to have a real (pre-)release before I can start working on the last part of tests and functionalities. So it is a chicken-and-egg problem ;) But I expect 2.0.0-dev.2 (or -dev.3) to be stable.
 
 ## 1.82.6
 
