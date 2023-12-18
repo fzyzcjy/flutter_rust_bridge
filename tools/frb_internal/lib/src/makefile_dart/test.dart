@@ -132,8 +132,9 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {
-  await withLlvmCovReport(package: config.package, enable: config.coverage,
-      (rustEnvMap) async {
+  await withLlvmCovReport(
+      relativeRustPwd: path.join(config.package, 'rust'),
+      enable: config.coverage, (rustEnvMap) async {
     await runPubGetIfNotRunYet(config.package);
 
     final dartMode = kDartModeOfPackage[config.package]!;
@@ -165,14 +166,12 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
 Future<void> withLlvmCovReport(
   Future<void> Function(Map<String, String> envMap) inner, {
   required bool enable,
-  required String package,
+  required String relativeRustPwd,
 }) async {
   if (!enable) {
     await inner({});
     return;
   }
-
-  final relativeRustPwd = path.join(package, 'rust');
 
   // `--release`, since our dart tests by default build rust release libs
   const cargoLlvmCovCommonArgs = '--release';
