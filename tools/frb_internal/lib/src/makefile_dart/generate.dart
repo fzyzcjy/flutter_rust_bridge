@@ -304,7 +304,12 @@ Future<void> generateWebsiteBuild() async {
   await exec('yarn install --frozen-lockfile', relativePwd: 'website');
   await exec('yarn build', relativePwd: 'website');
 
-  await exec('flutter build web --base-href /flutter_rust_bridge/gallery/',
+  await exec(
+      'flutter build web '
+      '--base-href /flutter_rust_bridge/gallery/ '
+      // Pwa seems to have conflict with the enable-threads.js hack
+      // enable-threads.js: https://github.com/orgs/community/discussions/13309
+      '--pwa-strategy none',
       relativePwd: 'frb_example/gallery');
 
   await exec('mdbook build .', relativePwd: 'website/v1_mdbook');
