@@ -111,16 +111,16 @@ jobs:
           - macos-11
           - ubuntu-20.04
         package:
-          - frb_example/dart_minimal
-          - frb_example/pure_dart
-          - frb_example/deliberate_bad
-          - frb_example/flutter_via_create
-          - frb_example/flutter_via_integrate
+          - frb_example--dart_minimal
+          - frb_example--pure_dart
+          - frb_example--deliberate_bad
+          - frb_example--flutter_via_create
+          - frb_example--flutter_via_integrate
         exclude:
-          - {image: windows-2019, package: frb_example/deliberate_bad}
-          - {image: macos-11, package: frb_example/deliberate_bad}
-          - {image: windows-2019, package: frb_example/flutter_via_integrate}
-          - {image: macos-11, package: frb_example/flutter_via_integrate}
+          - {image: windows-2019, package: frb_example--deliberate_bad}
+          - {image: macos-11, package: frb_example--deliberate_bad}
+          - {image: windows-2019, package: frb_example--flutter_via_integrate}
+          - {image: macos-11, package: frb_example--flutter_via_integrate}
 
     steps:
       # setup
@@ -164,8 +164,8 @@ jobs:
           - windows-2019
           - ubuntu-20.04
         package:
-          - frb_example/flutter_via_create
-          - frb_example/flutter_via_integrate
+          - frb_example--flutter_via_create
+          - frb_example--flutter_via_integrate
 
     steps:
       # setup
@@ -265,7 +265,7 @@ jobs:
         with:
           name: Flutter Rust Bridge Benchmark
           tool: customSmallerIsBetter
-          output-file-path: frb_example/pure_dart/build/simple_benchmark/benchmark_result.json
+          output-file-path: frb_example--pure_dart/build/simple_benchmark/benchmark_result.json
           auto-push: false
       - name: Push benchmark result
         # Warn: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#run-only-on-your-branches
@@ -334,17 +334,17 @@ jobs:
         package:
           - frb_dart
           - frb_utils
-          - tools/frb_internal
-          - frb_example/dart_minimal
-          - frb_example/pure_dart
-          - frb_example/deliberate_bad
+          - tools--frb_internal
+          - frb_example--dart_minimal
+          - frb_example--pure_dart
+          - frb_example--deliberate_bad
         exclude:
           - {image: windows-2019, package: frb_utils}
           - {image: macos-11, package: frb_utils}
-          - {image: windows-2019, package: tools/frb_internal}
-          - {image: macos-11, package: tools/frb_internal}
-          - {image: windows-2019, package: frb_example/deliberate_bad}
-          - {image: macos-11, package: frb_example/deliberate_bad}
+          - {image: windows-2019, package: tools--frb_internal}
+          - {image: macos-11, package: tools--frb_internal}
+          - {image: windows-2019, package: frb_example--deliberate_bad}
+          - {image: macos-11, package: frb_example--deliberate_bad}
 
     steps:
       # setup
@@ -379,9 +379,9 @@ jobs:
       matrix:
         package:
           - frb_dart
-          - frb_example/dart_minimal
-          - frb_example/pure_dart
-          # no need for `frb_example/deliberate_bad`
+          - frb_example--dart_minimal
+          - frb_example--pure_dart
+          # no need for `frb_example--deliberate_bad`
 
     steps:
       # setup
@@ -408,8 +408,8 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target
-            frb_example/pure_dart/rust/target/
-            frb_example/pure_dart/.local-chromium
+            frb_example--pure_dart/rust/target/
+            frb_example--pure_dart/.local-chromium
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - name: Install crates
         if: steps.test-cache.outputs.cache-hit != 'true'
@@ -426,9 +426,9 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - frb_example/dart_minimal
-          - frb_example/pure_dart
-          # no `frb_example/deliberate_bad`
+          - frb_example--dart_minimal
+          - frb_example--pure_dart
+          # no `frb_example--deliberate_bad`
 
     steps:
       # setup
@@ -462,9 +462,9 @@ jobs:
           # Since it is unlikely we will have thread issues, we temporarily disable TSAN now.
           # - tsan
         package:
-          - frb_example/dart_minimal
-          - frb_example/pure_dart
-          - frb_example/deliberate_bad
+          - frb_example--dart_minimal
+          - frb_example--pure_dart
+          - frb_example--deliberate_bad
 
     steps:
       # setup
@@ -496,8 +496,8 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - frb_example/flutter_via_create
-          # no `frb_example/flutter_via_integrate` since it is similar to `flutter_via_create`
+          - frb_example--flutter_via_create
+          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "pixel"
           - "Nexus 6"
@@ -554,8 +554,8 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - frb_example/flutter_via_create
-          # no `frb_example/flutter_via_integrate` since it is similar to `flutter_via_create`
+          - frb_example--flutter_via_create
+          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "iPad (9th generation) Simulator (16.2)"
           - "iPhone 12 Pro Max Simulator (16.2)"
@@ -592,21 +592,21 @@ jobs:
         info:
           - image: windows-2019
             platform: windows
-            package: frb_example/flutter_via_create
+            package: frb_example--flutter_via_create
           - image: macos-13
             platform: macos
-            package: frb_example/flutter_via_create
+            package: frb_example--flutter_via_create
           - image: ubuntu-latest
             platform: linux
-            package: frb_example/flutter_via_create
+            package: frb_example--flutter_via_create
           # only slightly test `flutter_via_integrate` since quite similar to `flutter_via_create`
           - image: ubuntu-latest
             platform: linux
-            package: frb_example/flutter_via_integrate
+            package: frb_example--flutter_via_integrate
           # only slightly test `gallery`, since mainly used on web
           - image: ubuntu-latest
             platform: linux
-            package: frb_example/gallery
+            package: frb_example--gallery
 
     steps:
       # setup
@@ -635,9 +635,9 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - frb_example/flutter_via_create
-          # no `frb_example/flutter_via_integrate` since it is similar to `flutter_via_create`
-          - frb_example/gallery
+          - frb_example--flutter_via_create
+          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
+          - frb_example--gallery
 
     steps:
       - uses: catchpoint/workflow-telemetry-action@v1
