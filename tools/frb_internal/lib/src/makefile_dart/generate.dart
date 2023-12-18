@@ -173,7 +173,7 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
         '* [${item["login"]}](https://github.com/${item["login"]}): ${item["customMessage"]}\n',
     ].join('');
 
-    File('${exec.pwd}/website/docs/generated/_contributor-custom-message.mdx')
+    File('${exec.pwd}/website/docs/generated/_contributor-custom-message.md')
         .writeAsStringSync(messageTextNew);
 
     await exec('all-contributors generate');
