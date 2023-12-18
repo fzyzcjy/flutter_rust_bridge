@@ -43,6 +43,8 @@ List<Command<void>> createCommands() {
         generateInternalContributor,
         _$populateGenerateConfigParser,
         _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate-internal-readme', generateInternalReadme,
+        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
     SimpleConfigCommand(
         'generate-internal-dart-source',
         generateInternalDartSource,
@@ -81,6 +83,7 @@ Future<void> generateInternal(GenerateConfig config) async {
   await generateInternalDartSource(config);
   await generateInternalBuildRunner(config);
   await generateInternalContributor(config);
+  await generateInternalReadme(config);
 }
 
 Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
@@ -174,6 +177,12 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
         .writeAsStringSync(messageTextNew);
 
     await exec('all-contributors generate');
+  });
+}
+
+Future<void> generateInternalReadme(GenerateConfig config) async {
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    TODO;
   });
 }
 
