@@ -1,42 +1,24 @@
 [package]
-name = "flutter_rust_bridge_example_single_block_test"
-version = "1.0.0"
-edition.workspace = true
+name = "frb_example_pure_dart"
+version = "0.1.0"
+edition = "2021"
 
 [lib]
-name = "flutter_rust_bridge_example_pure_dart"
 crate-type = ["cdylib"]
 
-[features]
-wasm-start = ["flutter_rust_bridge/wasm-start"]
-
-[build-dependencies]
-flutter_rust_bridge_codegen = { workspace = true, features = [
-  "chrono",
-  "uuid",
-] }
-
 [dependencies]
-anyhow = { workspace = true, features = ["backtrace"] }
-lazy_static = { workspace = true }
-chrono = { workspace = true }
-flutter_rust_bridge = { workspace = true, features = [
-  "chrono",
-  "uuid",
-  "worker-max",
-] }
-uuid = { workspace = true }
-log = "0.4"
-backtrace = { workspace = true }
-
-[target.'cfg(target_family = "wasm")'.dependencies]
-console_log = { version = "0.2", features = ["color"] }
-console_error_panic_hook = "0.1"
-
-[target.'cfg(not(target_family = "wasm"))'.dependencies]
-env_logger = "0.10.0"
-static_init = "1.0.3"
-
-[dependencies.external-lib] # used for demo of external types mirroring
-path = "./external"
-package = "flutter_rust_bridge_example_external"
+anyhow = { version = "1.0.64", features = ["backtrace"] }
+flutter_rust_bridge = { path = "../../../frb_rust", features = ["chrono", "uuid" ] }
+log = "0.4.19"
+backtrace = "0.3.68"
+chrono = "0.4.26"
+uuid = "1.4.1"
+frb_example_pure_dart_exapmle_external_lib = { path = "./example_external_lib" }
+wasm-bindgen = "0.2.88" # TODO temp experiment
+byteorder = "1.5.0"
+lazy_static = "1.4.0"
+tempfile = "3.8.1"
+futures = "0.3.29"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0" # Only used for comparison test
+protobuf = "=2.28.0" # Only used for comparison test

@@ -1,0 +1,9 @@
+generate:
+    just generate-rust
+    just generate-dart
+
+generate-rust:
+    protoc --rust_out=../../rust/src/auxiliary protobuf_for_benchmark.proto
+
+generate-dart:
+    protoc --dart_out=../src/protobuf_for_benchmark protobuf_for_benchmark.proto

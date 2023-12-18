@@ -1,0 +1,77 @@
+Execute the main code generator
+
+Usage: flutter_rust_bridge_codegen generate [OPTIONS]
+
+Options:
+      --config-file <CONFIG_FILE>
+          Path to a YAML config file.
+          
+          If present, other options and flags will be ignored. Accepts the same options as the CLI, but uses snake_case keys.
+
+  -r, --rust-input <RUST_INPUT>
+          Glob pattern of input Rust files
+
+  -d, --dart-output <DART_OUTPUT>
+          Directory of output generated Dart code
+
+  -c, --c-output <C_OUTPUT>
+          Output path of generated C header
+
+      --duplicated-c-output <DUPLICATED_C_OUTPUT>
+          Duplicate the files generated at the location `--c-output` specifies
+
+      --rust-crate-dir <RUST_CRATE_DIR>
+          Crate directory for your Rust project
+
+      --rust-output <RUST_OUTPUT>
+          Output path of generated Rust code
+
+      --dart-entrypoint-class-name <DART_ENTRYPOINT_CLASS_NAME>
+          Generated dart entrypoint class name
+
+      --dart-format-line-length <DART_FORMAT_LINE_LENGTH>
+          Line length for Dart formatting
+
+      --no-dart-enums-style
+          The generated Dart enums will not have their variant names camelCased
+
+      --no-add-mod-to-lib
+          Skip automatically adding `mod frb_generated;` to `lib.rs`
+
+      --llvm-path <LLVM_PATH>...
+          Path to the installed LLVM
+
+      --llvm-compiler-opts <LLVM_COMPILER_OPTS>
+          LLVM compiler opts
+
+      --dart-root <DART_ROOT>...
+          Path to root of Dart project, otherwise inferred from --dart-output
+
+      --no-build-runner
+          Skip running build_runner even when codegen-required code is detected
+
+      --extra-headers <EXTRA_HEADERS>
+          extra_headers is used to add dependencies header
+
+      --no-wasm
+          Disable WASM module generation
+
+      --no-deps-check
+          Skip dependencies check
+
+      --default-external-library-loader-web-prefix <DEFAULT_EXTERNAL_LIBRARY_LOADER_WEB_PREFIX>
+          The value for defaultExternalLibraryLoader.webPrefix
+
+      --no-dart3
+          Disable language features introduced in Dart 3
+
+      --dump [<DUMP>...]
+          A list of data to be dumped. If specified without a value, defaults to all
+          
+          [possible values: config, source, source-graph, ir, generator-info, generator-spec, generator-text]
+
+      --dump-all
+          Dump all internal data. Same as `--dump` with all possible choices chosen
+
+  -h, --help
+          Print help (see a summary with '-h')

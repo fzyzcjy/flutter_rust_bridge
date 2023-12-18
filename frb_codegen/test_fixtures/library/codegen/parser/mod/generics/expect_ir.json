@@ -1,0 +1,406 @@
+{
+  "enum_pool": {
+    "crate::api/MyGenericEnum": {
+      "comments": [],
+      "mode": "Complex",
+      "name": "crate::api/MyGenericEnum",
+      "variants": [
+        {
+          "comments": [],
+          "kind": {
+            "Struct": {
+              "comments": [],
+              "dart_metadata": [],
+              "fields": [
+                {
+                  "comments": [],
+                  "default": null,
+                  "is_final": true,
+                  "name": "field0",
+                  "settings": {
+                    "is_in_mirrored_enum": false
+                  },
+                  "ty": {
+                    "data": {
+                      "namespace": null,
+                      "segments": [
+                        {
+                          "args": null,
+                          "ident": "A"
+                        }
+                      ],
+                      "string": "A"
+                    },
+                    "safe_ident": "A",
+                    "type": "Unencodable"
+                  }
+                }
+              ],
+              "is_fields_named": false,
+              "name": "crate::api::MyGenericEnum/One",
+              "wrapper_name": null
+            }
+          },
+          "name": "One",
+          "wrapper_name": "MyGenericEnum_One"
+        },
+        {
+          "comments": [],
+          "kind": {
+            "Struct": {
+              "comments": [],
+              "dart_metadata": [],
+              "fields": [
+                {
+                  "comments": [],
+                  "default": null,
+                  "is_final": true,
+                  "name": "field0",
+                  "settings": {
+                    "is_in_mirrored_enum": false
+                  },
+                  "ty": {
+                    "data": {
+                      "namespace": null,
+                      "segments": [
+                        {
+                          "args": null,
+                          "ident": "B"
+                        }
+                      ],
+                      "string": "B"
+                    },
+                    "safe_ident": "B",
+                    "type": "Unencodable"
+                  }
+                }
+              ],
+              "is_fields_named": false,
+              "name": "crate::api::MyGenericEnum/Two",
+              "wrapper_name": null
+            }
+          },
+          "name": "Two",
+          "wrapper_name": "MyGenericEnum_Two"
+        }
+      ],
+      "wrapper_name": null
+    }
+  },
+  "funcs": [
+    {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "arg",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "data": {
+              "inner": {
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericEnum>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericEnum",
+                  "type": "Unencodable"
+                },
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
+            },
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericEnum",
+            "type": "RustAutoOpaque"
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/func_enum_bool",
+      "output": {
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
+      },
+      "owner": "Function",
+      "rust_async": false
+    },
+    {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "arg",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "data": {
+              "inner": {
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericEnum>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericEnum",
+                  "type": "Unencodable"
+                },
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
+            },
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericEnum",
+            "type": "RustAutoOpaque"
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/func_enum_string",
+      "output": {
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
+      },
+      "owner": "Function",
+      "rust_async": false
+    },
+    {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "arg",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "data": {
+              "inner": {
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericStruct>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericStruct",
+                  "type": "Unencodable"
+                },
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
+            },
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericStruct",
+            "type": "RustAutoOpaque"
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/func_struct_bool",
+      "output": {
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
+      },
+      "owner": "Function",
+      "rust_async": false
+    },
+    {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "arg",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "data": {
+              "inner": {
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericStruct>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericStruct",
+                  "type": "Unencodable"
+                },
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
+            },
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericStruct",
+            "type": "RustAutoOpaque"
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/func_struct_string",
+      "output": {
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
+      },
+      "owner": "Function",
+      "rust_async": false
+    },
+    {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "arg",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "data": {
+              "inner": {
+                "inner": {
+                  "data": {
+                    "namespace": null,
+                    "segments": [],
+                    "string": "std::sync::RwLock<crate::api::MyGenericStruct>"
+                  },
+                  "safe_ident": "stdsyncRwLockcrateapiMyGenericStruct",
+                  "type": "Unencodable"
+                },
+                "namespace": "crate::api"
+              },
+              "ownership_mode": "Owned"
+            },
+            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericStruct",
+            "type": "RustAutoOpaque"
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/func_struct_string_repeated",
+      "output": {
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
+      },
+      "owner": "Function",
+      "rust_async": false
+    }
+  ],
+  "has_executor": false,
+  "struct_pool": {
+    "crate::api/MyGenericStruct": {
+      "comments": [],
+      "dart_metadata": [],
+      "fields": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "generic_field",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "data": {
+              "namespace": null,
+              "segments": [
+                {
+                  "args": null,
+                  "ident": "T"
+                }
+              ],
+              "string": "T"
+            },
+            "safe_ident": "T",
+            "type": "Unencodable"
+          }
+        },
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "generic_boxed_field",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "data": {
+              "exist_in_real_api": true,
+              "inner": {
+                "data": {
+                  "namespace": null,
+                  "segments": [
+                    {
+                      "args": null,
+                      "ident": "T"
+                    }
+                  ],
+                  "string": "T"
+                },
+                "safe_ident": "T",
+                "type": "Unencodable"
+              }
+            },
+            "safe_ident": "box_T",
+            "type": "Boxed"
+          }
+        },
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "normal_field",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "data": "I32",
+            "safe_ident": "i_32",
+            "type": "Primitive"
+          }
+        }
+      ],
+      "is_fields_named": true,
+      "name": "crate::api/MyGenericStruct",
+      "wrapper_name": null
+    }
+  }
+}

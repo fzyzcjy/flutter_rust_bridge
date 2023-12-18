@@ -1,0 +1,37 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima */
+:root {
+    --ifm-color-primary: #2196f3;
+    --ifm-color-primary-dark: #0d89ec;
+    --ifm-color-primary-darker: #0c81df;
+    --ifm-color-primary-darkest: #0a6bb7;
+    --ifm-color-primary-light: #3ba2f4;
+    --ifm-color-primary-lighter: #48a9f5;
+    --ifm-color-primary-lightest: #70bbf7;
+    --docusaurus-highlighted-code-line-bg: rgb(230, 230, 230);
+}
+
+[data-theme='dark'] {
+    --ifm-color-primary: #2196f3;
+    --ifm-color-primary-dark: #0d89ec;
+    --ifm-color-primary-darker: #0c81df;
+    --ifm-color-primary-darkest: #0a6bb7;
+    --ifm-color-primary-light: #3ba2f4;
+    --ifm-color-primary-lighter: #48a9f5;
+    --ifm-color-primary-lightest: #70bbf7;
+    --docusaurus-highlighted-code-line-bg: rgb(100, 100, 100);
+}
+
+/* https://dev.to/sajclarke_62/using-tailwindcss-v3-in-docusaurus-in-5-steps-5c26 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.my-hide-nav nav {
+    display: none;
+}

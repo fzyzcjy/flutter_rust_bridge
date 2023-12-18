@@ -1,0 +1,17 @@
+[package]
+name = "rust_lib"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+flutter_rust_bridge = { path = "../../../frb_rust" }
+anyhow = { version = "1.0.75", features = ["backtrace"] }
+num = "0.4"
+image = "0.24.3"
+crossbeam = "0.8"
+# Polars on WASM https://www.reddit.com/r/rust/comments/yb58hk/how_to_use_polars_with_wasm/
+polars-core = { version = "0.35.4", features = ["fmt_no_tty"] }
+polars-lazy = "0.35.4"

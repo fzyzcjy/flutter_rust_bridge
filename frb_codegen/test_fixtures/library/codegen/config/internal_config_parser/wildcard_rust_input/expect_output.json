@@ -1,0 +1,117 @@
+{
+  "controller": {
+    "exclude_paths": [
+      "{the-working-directory}/src/frb_generated.rs",
+      "{the-working-directory}/src/frb_generated.io.rs",
+      "{the-working-directory}/src/frb_generated.web.rs"
+    ],
+    "watch": false,
+    "watching_paths": [
+      "{the-working-directory}/src"
+    ]
+  },
+  "dumper": {
+    "dump_contents": [],
+    "dump_directory": "{the-working-directory}/target/frb_dump"
+  },
+  "generator": {
+    "api_dart": {
+      "dart3": true,
+      "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
+      "dart_entrypoint_class_name": "RustLib",
+      "dart_enums_style": true
+    },
+    "wire": {
+      "c": {
+        "c_output_path": "{the-working-directory}/frb_generated.h",
+        "rust_crate_dir": "{the-working-directory}",
+        "rust_output_path": {
+          "common": "{the-working-directory}/src/frb_generated.rs",
+          "io": "{the-working-directory}/src/frb_generated.io.rs",
+          "web": "{the-working-directory}/src/frb_generated.web.rs"
+        }
+      },
+      "dart": {
+        "dart_impl_output_path": {
+          "common": "{the-working-directory}/my_dart_folder/frb_generated.dart",
+          "io": "{the-working-directory}/my_dart_folder/frb_generated.io.dart",
+          "web": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
+        },
+        "dart_output_class_name_pack": {
+          "api_class_name": "RustLibApi",
+          "api_impl_class_name": "RustLibApiImpl",
+          "api_impl_platform_class_name": "RustLibApiImplPlatform",
+          "entrypoint_class_name": "RustLib",
+          "wasm_module_name": "RustLibWasmModule",
+          "wire_class_name": "RustLibWire"
+        },
+        "dart_root": "{the-working-directory}",
+        "default_external_library_loader": {
+          "io_directory": "target/release/",
+          "stem": "UNKNOWN",
+          "web_prefix": "pkg/"
+        },
+        "extra_headers": "",
+        "llvm_compiler_opts": "",
+        "llvm_path": [
+          "/opt/homebrew/opt/llvm",
+          "/usr/local/opt/llvm",
+          "/usr/lib/llvm-9",
+          "/usr/lib/llvm-10",
+          "/usr/lib/llvm-11",
+          "/usr/lib/llvm-12",
+          "/usr/lib/llvm-13",
+          "/usr/lib/llvm-14",
+          "/usr/lib/",
+          "/usr/lib64/",
+          "C:/Program Files/llvm",
+          "C:/msys64/mingw64"
+        ],
+        "web_enabled": true
+      },
+      "rust": {
+        "rust_crate_dir": "{the-working-directory}",
+        "rust_input_path_pack": {
+          "rust_input_paths": [
+            "{the-working-directory}/src/api/apple.rs",
+            "{the-working-directory}/src/api/orange.rs"
+          ]
+        },
+        "rust_output_path": {
+          "common": "{the-working-directory}/src/frb_generated.rs",
+          "io": "{the-working-directory}/src/frb_generated.io.rs",
+          "web": "{the-working-directory}/src/frb_generated.web.rs"
+        },
+        "web_enabled": true
+      }
+    }
+  },
+  "parser": {
+    "rust_crate_dir": "{the-working-directory}",
+    "rust_input_path_pack": {
+      "rust_input_paths": [
+        "{the-working-directory}/src/api/apple.rs",
+        "{the-working-directory}/src/api/orange.rs"
+      ]
+    }
+  },
+  "polisher": {
+    "add_mod_to_lib": true,
+    "build_runner": true,
+    "c_output_path": "{the-working-directory}/frb_generated.h",
+    "dart_format_line_length": 80,
+    "dart_root": "{the-working-directory}",
+    "duplicated_c_output_path": [],
+    "rust_crate_dir": "{the-working-directory}",
+    "rust_output_path": {
+      "common": "{the-working-directory}/src/frb_generated.rs",
+      "io": "{the-working-directory}/src/frb_generated.io.rs",
+      "web": "{the-working-directory}/src/frb_generated.web.rs"
+    },
+    "web_enabled": true
+  },
+  "preparer": {
+    "dart_root": "{the-working-directory}",
+    "deps_check": true
+  }
+}

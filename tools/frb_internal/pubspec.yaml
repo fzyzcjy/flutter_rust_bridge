@@ -1,0 +1,26 @@
+name: flutter_rust_bridge_internal
+description: Tools for development of flutter_rust_bridge (not for end users)
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.2.0
+
+dependencies:
+  args: ^2.1.1
+  build_cli_annotations: ^2.1.0
+  collection: ^1.15.0
+  dio: ^5.4.0
+  glob: ^2.1.2
+  recase: ^4.0.0
+  flutter_rust_bridge:
+    path: ../../frb_dart
+  path: ^1.8.1
+  meta: ^1.8.0
+  yaml: ^3.1.2
+
+dev_dependencies:
+  build_runner: ^2.2.0
+  build_cli: ^2.2.0
+  flutter_lints: ^3.0.1
+  test: ^1.24.0

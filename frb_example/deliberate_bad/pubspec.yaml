@@ -1,0 +1,18 @@
+name: frb_example_deliberate_bad
+description: flutter rust bridge example
+version: 1.0.0
+publish_to: none
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+dependencies:
+  lints: ^2.0.1
+  flutter_rust_bridge:
+    path: ../../frb_dart
+  flutter_rust_bridge_utils:
+    path: ../../frb_utils
+  flutter_rust_bridge_internal:
+    path: ../../tools/frb_internal
+dev_dependencies:
+  test: ^1.21.4
+  build_runner: ^2.4.4
+  ffigen: ^8.0.0

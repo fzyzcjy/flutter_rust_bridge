@@ -1,0 +1,25 @@
+{
+  "enum_pool": {},
+  "funcs": [
+    {
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "error_output": null,
+      "inputs": [],
+      "mode": "Normal",
+      "name": "crate::api/first_function",
+      "output": {
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
+      },
+      "owner": "Function",
+      "rust_async": false
+    }
+  ],
+  "has_executor": false,
+  "struct_pool": {}
+}

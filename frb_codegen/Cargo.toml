@@ -17,31 +17,41 @@ name = "flutter_rust_bridge_codegen"
 path = "src/main.rs"
 
 [dependencies]
-anyhow = {workspace = true}
-thiserror = {workspace = true}
+anyhow = { workspace = true }
 cargo_metadata = "0.14.1"
 convert_case = "0.5.0"
-delegate-attr = "0.3.0"
 enum_dispatch = "0.3.8"
 itertools = "0.10.3"
-lazy_static = {workspace = true}
+lazy_static = { workspace = true }
 log = "0.4"
-fern = { version = "0.6.0", features = ["date-based","colored"] }
+fern = { version = "0.6.0", features = ["date-based", "colored"] }
 atty = "0.2.14"
 chrono = "0.4"
 pathdiff = "0.2.1"
 quote = "1.0"
 regex = "1.5.4"
-serde = {version = "1.0", features = ["derive"]}
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.107"
 serde_yaml = "0.8"
+strum = "0.24.1"
 strum_macros = "0.24.3"
-syn = {version = "2.0.26", features = ["full", "extra-traits"]}
+syn = { version = "2.0.26", features = ["full", "extra-traits"] }
 tempfile = "3.2.0"
 toml = "0.5.8"
 topological-sort = "0.2.2"
 enum-iterator = "1.4.0"
-clap = { version = "4.1.8", features = ["derive"] }
+clap = { version = "4.4.8", features = ["derive"] }
 cbindgen = "0.24.3"
+serial_test = "2.0.0"
+glob = "0.3.1"
+derivative = "2.2.0"
+paste = "1.0.14"
+proc-macro2 = { version = "1.0.66", features = ["span-locations"]}
+include_dir = "0.7.3"
+indicatif = "0.17.7"
+indicatif-log-bridge = "0.2.2"
+notify = "6.1.1"
+notify-debouncer-mini = "0.4.1"
 
 [dev-dependencies]
 semver = "1.0.12"
@@ -50,13 +60,8 @@ semver = "1.0.12"
 bin-dir = "{bin}{binary-ext}"
 
 [package.metadata.binstall.overrides]
-i686-pc-windows-msvc = {pkg-fmt = "zip"}
-x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
+i686-pc-windows-msvc = { pkg-fmt = "zip" }
+x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
 
 [features]
-default = ["chrono", "serde", "uuid", "anyhow/backtrace"]
-serde = []
-chrono = []
-uuid = []
-# When disabled, name qualifiers are discarded, e.g. my_library::SyncReturn == flutter_rust_bridge::SyncReturn
-qualified_names = []
+default = ["anyhow/backtrace"]

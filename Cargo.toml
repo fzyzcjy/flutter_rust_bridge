@@ -3,14 +3,21 @@ members = [
   "frb_codegen",
   "frb_rust",
   "frb_macros",
+]
+exclude = [
+  # Exclude example packages to ensure the example mimics how a typical user will use it.
+  # For example, the `target` directory is different with and without workspaces.
+  "frb_example/dart_minimal/rust",
   "frb_example/pure_dart/rust",
-  "frb_example/pure_dart_multi/rust",
-  "frb_example/with_flutter/rust",
+  "frb_example/deliberate_bad/rust",
+  "frb_example/flutter_via_create/rust",
+  "frb_example/flutter_via_integrate/rust",
+  "frb_example/gallery/rust",
 ]
 
 [workspace.package]
 version = "1.82.6"
-edition = "2018"
+edition = "2021"
 license = "MIT"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
 repository = "https://github.com/fzyzcjy/flutter_rust_bridge"

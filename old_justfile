@@ -1,0 +1,209 @@
+# TODO migrate this file
+
+sed := if os() == "macos" {
+    "sed -i ''"
+} else {
+    "sed -i"
+}
+
+library_file_ext := if os() == "macos" { "dylib" } else { "so" }
+
+dir_example_pure_dart := "frb_example/pure_dart"
+dir_example_pure_dart_multi := "frb_example/pure_dart_multi"
+dir_example_with_flutter := "frb_example/with_flutter"
+
+# ============================ installation ============================
+
+install_ffigen_dependency:
+    # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
+    {{ if os() == "linux" { "sudo apt update && sudo apt-get install -y libclang-dev" } else { "" } }}
+
+install_ffigen:
+    dart pub global activate ffigen
+
+install_prerequisite_for_integration_test_linux:
+    sudo apt update && sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libglu1-mesa
+
+install_corrosion_linux:
+    #!/usr/bin/env bash
+    set -euxo pipefail
+
+    cd ..
+    git clone https://github.com/corrosion-rs/corrosion.git
+    cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
+    cmake --build build --config Release
+    sudo cmake --install build --config Release
+
+# ============================ build & test ============================
+
+flutter_example_with_flutter_integration_test:
+    flutter config --enable-{{ os() }}-desktop
+    cd {{dir_example_with_flutter}} && flutter pub get
+    cd {{dir_example_with_flutter}} && flutter test -d {{ os() }} integration_test/main.dart --verbose
+
+# ============================ code generators ============================
+
+cargo_run_codegen := if env_var_or_default("FRB_TEST_USE_RELEASE_VERSION", "false") == "true" {
+    "flutter_rust_bridge_codegen"
+} else {
+    "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
+}
+
+# ============================ linters ============================
+# moved
+
+# ============================ (some of) CI ============================
+
+# ============================ misc ============================
+
+clean:
+    cd frb_dart && flutter clean
+    cd {{dir_example_pure_dart}}/dart && flutter clean
+    cd {{dir_example_pure_dart_multi}}/dart && flutter clean
+    cd {{dir_example_with_flutter}} && flutter clean
+    cargo clean
+
+serve *args:
+    cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
+
+use_flutter_rust_bridge_release:
+    cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
+    cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
+    cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
+    cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
+
+configure_ndk:
+    #!/usr/bin/env bash
+    set -euxo pipefail
+
+    if [ "$(uname)" == "Darwin" ]; then
+        # Do something under Mac OS X platform
+        ANDROID_HOME=$HOME/Library/Android/sdk
+        SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+        echo y | $SDKMANAGER "ndk;21.4.7075529"
+        ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        # Do something under GNU/Linux platform
+        ANDROID_ROOT=/usr/local/lib/android
+        ANDROID_SDK_ROOT=${ANDROID_ROOT}/sdk
+        SDKMANAGER=${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager
+        echo "y" | $SDKMANAGER "ndk;21.4.7075529"
+        ANDROID_NDK_ROOT=${ANDROID_SDK_ROOT}/ndk-bundle
+        ln -sfn $ANDROID_SDK_ROOT/ndk/21.4.7075529 $ANDROID_NDK_ROOT
+    fi
+# ============================ precommit ============================
+
+precommit: dart_pub_get generate_all rust_linter dart_linter normalize_pubspec_lock
+
+# ============================ releasing new versions ============================
+
+release old_version new_version:
+    just _release_sanity_check_version {{old_version}} {{new_version}}
+    just _release_update_version {{old_version}} {{new_version}}
+    just precommit
+    just _release_update_scoop
+    just _release_update_git {{old_version}} {{new_version}}
+    just _release_update_github {{old_version}} {{new_version}}
+    just _release_publish_all
+
+_release_sanity_check_version old_version new_version:
+    grep -q 'version = "{{old_version}}"' Cargo.toml
+    grep -q '{{new_version}}' CHANGELOG.md
+
+_release_update_version old_version new_version:
+    {{sed}} 's/version = "{{old_version}}"/version = "{{new_version}}"/g' Cargo.toml
+    {{sed}} 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
+
+_release_update_scoop:
+    cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json
+
+_release_update_git old_version new_version:
+    git add --all
+    git status && git diff --staged | grep ''
+    git commit -m "bump from {{old_version}} to {{new_version}}"
+    git push
+
+_release_update_github old_version new_version:
+    awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft --title v{{new_version}}
+    echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'
+    open https://github.com/fzyzcjy/flutter_rust_bridge/releases
+
+_release_publish_all:
+    (cd frb_codegen && cargo publish)
+    (cd frb_rust && cargo publish)
+    (cd frb_macros && cargo publish)
+    (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
+
+install_ndk:
+    just _install_crate cargo-ndk
+
+install_lipo:
+    just _install_crate cargo-lipo
+
+install_expand:
+    just _install_crate cargo-expand
+
+_install_crate name="cargo-lipo":
+    #!/usr/bin/env bash
+    set -euxo pipefail
+
+    PACKAGE_NAME={{name}}
+    echo $PACKAGE_NAME
+    VERSION=$(cargo search $PACKAGE_NAME | grep "$PACKAGE_NAME" | cut -d '"' -f 2)
+    echo $VERSION
+
+    if ! [ -x "$(command -v $PACKAGE_NAME)" ]; then
+      echo "$PACKAGE_NAME not found. Installing version $VERSION ..."
+      cargo install $PACKAGE_NAME --version $VERSION
+    elif ! $PACKAGE_NAME --version | grep -q $VERSION; then
+      echo "Updating $PACKAGE_NAME to version $VERSION ..."
+      cargo install $PACKAGE_NAME --version $VERSION --force
+    else
+      echo "Already installed the correct version of $PACKAGE_NAME."
+    fi
+
+_noop:
+    echo "this is noop"
+
+docker_build_codegen:
+    docker build -t fzyzcjy/flutter_rust_bridge_codegen:latest .
+
+docker_debug_codegen:
+    docker run -it --entrypoint /bin/bash fzyzcjy/flutter_rust_bridge_codegen:latest
+
+# ============================ to be migrated ============================
+
+# TODO - @Desdaemon
+#dylib := if os() == "windows" {
+#    "flutter_rust_bridge_example.dll"
+#} else if os() == "macos" {
+#    "libflutter_rust_bridge_example.dylib"
+#} else {
+#    "libflutter_rust_bridge_example.so"
+#}
+#path_relative_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
+#dir_tools := justfile_directory() / "tools"
+#test: test-support test-pure test-integration
+#test-pure:
+#    cd {{dir_example_pure_dart}}/rust && cargo b
+#    cd {{dir_example_pure_dart}}/dart && \
+#        dart pub get && \
+#        dart lib/main.dart ../../../target/debug/{{dylib}}
+## TODO: Make ASan tests work for other platforms
+#test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
+#    ./tools/dartsdk/fetch.sh
+#    cd {{dir_example_pure_dart}}/rust && cargo +nightly b --target x86_64-unknown-linux-gnu
+#    cd {{dir_example_pure_dart}}/dart && \
+#        {{dir_tools}}/dartsdk/x64/dart pub get && \
+#        {{dir_tools}}/dartsdk/x64/dart lib/main.dart  ../../../{{path_relative_linux_so}}
+#test-pure-web *args:
+#    cd {{dir_example_pure_dart}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
+#test-flutter-web *args:
+#    cd {{dir_example_with_flutter}} && just serve -c rust {{args}}
+#test-integration:
+#    cd {{dir_example_with_flutter}} && flutter test integration_test/main.dart
+#test-support platform="chrome":
+#    cd frb_dart && dart pub get && \
+#        dart test test/*.dart && \
+#        dart test -p {{platform}} test/*.dart
+

@@ -1,0 +1,9 @@
+Create a new Flutter + Rust project
+
+Usage: flutter_rust_bridge_codegen create <NAME>
+
+Arguments:
+  <NAME>  Name of the new project
+
+Options:
+  -h, --help  Print help

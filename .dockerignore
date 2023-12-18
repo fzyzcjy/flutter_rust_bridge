@@ -1,0 +1,19 @@
+# Ignore everything
+*
+
+# Allow files and directories
+!/frb_codegen
+!/frb_rust/Cargo.toml
+!/frb_rust/src
+!/frb_macros/Cargo.toml
+!/frb_macros/src
+!/frb_example/pure_dart/rust/Cargo.toml
+!/frb_example/pure_dart/rust/src
+!/frb_example/pure_dart/rust/example_external_lib/Cargo.toml
+!/frb_example/pure_dart/rust/example_external_lib/src
+!/frb_example/pure_dart_multi/rust/Cargo.toml
+!/frb_example/pure_dart_multi/rust/src
+!/frb_example/with_flutter/rust/Cargo.toml
+!/frb_example/with_flutter/rust/src
+!/Cargo.toml
+!/Cargo.lock
