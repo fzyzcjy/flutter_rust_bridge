@@ -5,11 +5,17 @@ import ShowMeTheCode from "@site/src/components/ShowMeTheCode";
 export default class Page extends React.Component {
     render() {
         return (
-            <Layout>
-                <div style={{margin: '32px'}}>
-                    <ShowMeTheCode/>
-                </div>
-            </Layout>
+            <div className="my-hide-nav">
+                <Layout>
+                    <div style={{
+                        padding: '32px',
+                        scale: '8.0',
+                        transformOrigin: 'top left',
+                    }}>
+                        <ShowMeTheCode/>
+                    </div>
+                </Layout>
+            </div>
         );
     }
 }
