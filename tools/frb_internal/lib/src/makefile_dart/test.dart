@@ -180,7 +180,10 @@ Future<void> _withLlvmCodeCovReport(
   await inner(envMap);
 
   await exec(
-      'cargo llvm-cov report --lcov --output-path ../lcov.info $cargoLlvmCovCommonArgs',
+      'cargo llvm-cov report --lcov '
+      '--output-path ../lcov.info '
+      "--ignore-filename-regex '.*/frb_example/.*' "
+      '$cargoLlvmCovCommonArgs',
       relativePwd: relativeRustPwd,
       extraEnv: envMap);
 }
