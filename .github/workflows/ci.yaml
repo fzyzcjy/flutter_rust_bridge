@@ -340,6 +340,8 @@ jobs:
         with:
           sdk: stable
           architecture: x64
+      # suggested way of installing llvm-cov https://github.com/taiki-e/cargo-llvm-cov#on-github-actions
+      - uses: taiki-e/install-action@cargo-llvm-cov
 
       # execute
       - run: ./frb_internal test-dart-native --package ${{ matrix.package }} --coverage
