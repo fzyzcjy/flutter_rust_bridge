@@ -1,3 +1,11 @@
+## 1.82.6
+
+* Bump README (since before 2.0 stable version, the 1.x will be the default page on pub.dev etc)
+
+## 1.82.5
+
+* Fix `rustfmt::skip` #1420 (thanks @rogurotus)
+
 ## 1.82.4
 
 * Fix `Result<SyncReturn(T), E>` #1407 (thanks @rogurotus)

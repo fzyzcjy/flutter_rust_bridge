@@ -13,7 +13,7 @@ repository:
   homepage: https://fzyzcjy.github.io/flutter_rust_bridge/
 
   # A comma-separated list of topics to set on the repository
-  topics: dart, rust, ffi, flutter, bindgen, hacktoberfest
+  topics: dart, rust, ffi, flutter, bindgen
 
   # Either `true` to make the repository private, or `false` to make it public.
   private: false
