@@ -41,6 +41,7 @@ Future<RunCommandOutput> runCommand(
     runInShell: shell,
     workingDirectory: pwd,
     environment: env,
+    includeParentEnvironment: true,
   );
 
   final stdoutText = <String>[];
