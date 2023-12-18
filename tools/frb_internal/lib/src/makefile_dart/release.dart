@@ -86,15 +86,27 @@ Future<void> releasePublishAll() async {
       'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org');
 }
 
-_VersionInfo _computeVersionInfo() {
+_VersionInfo _computeVersionInfo() => _extractChangelog().$1;
+
+(_VersionInfo, String) _extractChangelog() {
   final lines = File('${exec.pwd}CHANGELOG.md').readAsStringSync().split('\n');
   final versions = lines
-      .map((line) => RegExp(r'^## (\d.+)$').firstMatch(line)?.group(1))
+      .mapIndexed((index, line) {
+        final version = RegExp(r'^## (\d.+)$').firstMatch(line)?.group(1);
+        return version == null ? null : (index, version);
+      })
       .whereNotNull()
       .toList();
-  return _VersionInfo(
-    newVersion: versions[0],
-    oldVersion: versions[1],
+
+  final newVersion = versions[0];
+  final oldVersion = versions[1];
+
+  return (
+    _VersionInfo(
+      newVersion: newVersion.$2,
+      oldVersion: oldVersion.$2,
+    ),
+    lines.sublist(newVersion.$1 + 1, oldVersion.$1).join("\n").trim(),
   );
 }
 
