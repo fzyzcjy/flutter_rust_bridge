@@ -19,5 +19,5 @@ dependencies:
   collection: ^1.16.0
 dev_dependencies:
   build_runner: ^2.4.7
-  freezed: ^2.1.0+1
+  freezed: ^2.4.6
   ffigen: ^9.0.0
