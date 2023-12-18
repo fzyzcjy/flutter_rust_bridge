@@ -120,8 +120,8 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {
-  await _withLlvmCodeCovReport(
-      relativePwd: config.package, enable: config.coverage, (rustEnvMap) async {
+  await _withLlvmCodeCovReport(package: config.package, enable: config.coverage,
+      (rustEnvMap) async {
     await runPubGetIfNotRunYet(config.package);
 
     final dartMode = kDartModeOfPackage[config.package]!;
@@ -153,18 +153,20 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
 Future<void> _withLlvmCodeCovReport(
   Future<void> Function(Map<String, String> envMap) inner, {
   required bool enable,
-  required String relativePwd,
+  required String package,
 }) async {
   if (!enable) {
     await inner({});
     return;
   }
 
+  final relativeRustPwd = '$package/rust';
+
   // `--release`, since our dart tests by default build rust release libs
   const cargoLlvmCovCommonArgs = '--release';
 
   final rawEnvs = (await exec('cargo llvm-cov show-env $cargoLlvmCovCommonArgs',
-          relativePwd: relativePwd))
+          relativePwd: relativeRustPwd))
       .stdout;
   final envMap = Map.fromEntries(rawEnvs.trim().split('\n').map((line) {
     final m = RegExp(r"^(\w+)='?(.+?)'?$").firstMatch(line)!;
@@ -173,12 +175,12 @@ Future<void> _withLlvmCodeCovReport(
   print('envMap=$envMap');
 
   await exec('cargo llvm-cov clean --workspace $cargoLlvmCovCommonArgs',
-      relativePwd: relativePwd, extraEnv: envMap);
+      relativePwd: relativeRustPwd, extraEnv: envMap);
 
   await inner(envMap);
 
   await exec('cargo llvm-cov report --lcov $cargoLlvmCovCommonArgs',
-      relativePwd: relativePwd, extraEnv: envMap);
+      relativePwd: relativeRustPwd, extraEnv: envMap);
 }
 
 // ref: https://github.com/rrousselGit/riverpod/blob/67d26d2a47a7351d6676012c44eb53dd6ff79787/scripts/coverage.sh#L10
