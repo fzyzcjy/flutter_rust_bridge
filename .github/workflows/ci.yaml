@@ -697,6 +697,8 @@ jobs:
       - test_flutter_web
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
