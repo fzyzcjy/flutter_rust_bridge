@@ -7,6 +7,11 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 List<Command<void>> createCommands() {
   return [
     SimpleCommand('release', release),
+    SimpleCommand('release-update-version', releaseUpdateVersion),
+    SimpleCommand('release-update-scoop', releaseUpdateScoop),
+    SimpleCommand('release-update-git', releaseUpdateGit),
+    SimpleCommand('release-update-github', releaseUpdateGithub),
+    SimpleCommand('release-publish-all', releasePublishAll),
   ];
 }
 
@@ -18,39 +23,41 @@ class _VersionInfo {
 }
 
 Future<void> release() async {
+  await releaseUpdateVersion();
+  await releaseUpdateScoop();
+  await releaseUpdateGit();
+  await releaseUpdateGithub();
+  await releasePublishAll();
+}
+
+Future<void> releaseUpdateVersion() async {
   final versionInfo = _computeVersionInfo();
-  await _releaseUpdateVersion(versionInfo);
-  await _releaseUpdateScoop();
-  await _releaseUpdateGit(versionInfo);
-  await _releaseUpdateGitHub(versionInfo);
-  await _releasePublishAll();
-}
-
-_VersionInfo _computeVersionInfo() {
-  return TODO;
-}
-
-Future<void> _releaseUpdateVersion(_VersionInfo versionInfo) async {
   TODO;
 }
 
-Future<void> _releaseUpdateScoop() async {
+Future<void> releaseUpdateScoop() async {
   await exec(
       'cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json');
 }
 
-Future<void> _releaseUpdateGit(_VersionInfo versionInfo) async {
+Future<void> releaseUpdateGit() async {
+  final versionInfo = _computeVersionInfo();
   TODO;
 }
 
-Future<void> _releaseUpdateGitHub(_VersionInfo versionInfo) async {
+Future<void> releaseUpdateGithub() async {
+  final versionInfo = _computeVersionInfo();
   TODO;
 }
 
-Future<void> _releasePublishAll() async {
+Future<void> releasePublishAll() async {
   await exec('cd frb_codegen && cargo publish');
   await exec('cd frb_rust && cargo publish');
   await exec('cd frb_macros && cargo publish');
   await exec(
       'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org');
+}
+
+_VersionInfo _computeVersionInfo() {
+  return TODO;
 }
