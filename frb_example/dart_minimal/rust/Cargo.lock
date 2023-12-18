@@ -176,7 +176,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.82.4"
+version = "1.82.6"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -205,7 +205,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.82.4"
+version = "1.82.6"
 
 [[package]]
 name = "frb_example_dart_minimal"
