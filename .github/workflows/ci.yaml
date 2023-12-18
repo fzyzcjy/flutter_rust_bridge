@@ -710,5 +710,5 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
-          directory: .
+          directory: downloaded-artifacts
           verbose: true
