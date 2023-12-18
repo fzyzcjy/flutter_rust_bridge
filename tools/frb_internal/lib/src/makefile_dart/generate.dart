@@ -299,6 +299,6 @@ Future<void> generateWebsite() async {
   await exec('mdbook build .', relativePwd: 'website/v1_mdbook');
 
   await exec('mkdir -p website/merged_target/v1');
-  await exec('cp -r website/build website/merged_target');
-  await exec('cp -r website/v1_mdbook/book website/merged_target/v1');
+  await exec('cp -r website/build/ website/merged_target');
+  await exec('cp -r website/v1_mdbook/book/ website/merged_target/v1');
 }
