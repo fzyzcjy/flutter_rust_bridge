@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
@@ -118,7 +119,7 @@ Future<void> generateInternalRust(GenerateConfig config) async {
       await runPubGetIfNotRunYet(package);
     }
 
-    await exec('cargo run -- internal-generate', relativePwd: 'frb_codegen');
+    await executeFrbCodegen('internal-generate', relativePwd: 'frb_codegen');
   });
 }
 
@@ -131,7 +132,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
       ('integrate', ''),
       ('build-web', '--dart-root ${exec.pwd}frb_example/pure_dart'),
     ]) {
-      final resp = await exec('cargo run -- $cmd $extraArgs --help',
+      final resp = await executeFrbCodegen('$cmd $extraArgs --help',
           relativePwd: 'frb_codegen');
       File('${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx')
           .writeAsStringSync('```\n${resp.stdout}```');
@@ -262,11 +263,11 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
   });
 }
 
-Future<void> executeFrbCodegen({
+Future<RunCommandOutput> executeFrbCodegen(
+  String cmd, {
   required String relativePwd,
-  required String cmd,
 }) async {
-  await exec(
+  return await exec(
     'cargo run --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
     relativePwd: relativePwd,
     extraEnv: {'RUST_BACKTRACE': '1'},
