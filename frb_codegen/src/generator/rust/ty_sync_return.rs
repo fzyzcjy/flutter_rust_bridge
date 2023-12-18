@@ -18,8 +18,8 @@ impl<'a> TypeSyncReturnGenerator<'a> {
         TypeSyncReturnGenerator {
             inner: Box::new(TypeRustGenerator::new(
                 ir.into_inner(),
-                context.ir_file,
                 context.config,
+                context.all_configs,
             )),
         }
     }
@@ -35,18 +35,8 @@ impl<'a> TypeRustGeneratorTrait for TypeSyncReturnGenerator<'a> {
     fn self_access(&self, obj: String) -> String {}
     fn convert_to_dart(&self, obj: String) -> String {}
     fn structs(&self) -> String {}
-    fn allocate_funcs(
-        &self,
-        _collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
-    ) -> Acc<Option<String>> {
-    }
-    fn related_funcs(
-        &self,
-        _collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
-    ) -> Acc<Option<String>> {
-    }
+    fn allocate_funcs(&self, _collector: &mut ExternFuncCollector) -> Acc<Option<String>> {}
+    fn related_funcs(&self, _collector: &mut ExternFuncCollector) -> Acc<Option<String>> {}
     fn impl_intodart(&self) -> String {}
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {}
     fn imports(&self) -> Option<String> {}

@@ -2,6 +2,7 @@ use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
+use crate::utils::misc::BlockIndex;
 
 type_dart_generator_struct!(TypeRecordGenerator, IrTypeRecord);
 
@@ -32,7 +33,12 @@ impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
                     &field.ty.safe_ident(),
                     &format!("${}", idx + 1),
                     field.name.rust_style(),
-                    field.ty.is_struct(),
+                    field.ty.is_struct_ref_or_enum_ref_or_record(),
+                    self.context.config.shared,
+                    self.is_type_shared_by_safe_ident(&field.ty),
+                    self.context
+                        .all_configs
+                        .get_dart_api2wire_funcs(BlockIndex::new_shared()),
                 )
             })
             .collect::<Vec<_>>()

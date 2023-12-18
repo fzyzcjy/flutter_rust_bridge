@@ -241,6 +241,7 @@ impl<'a> TypeParser<'a> {
         &mut self,
         type_path: &TypePath,
     ) -> std::result::Result<IrType, String> {
+        log::debug!("everything start for path:`{type_path:?}`"); // TODO: delete
         match &type_path {
             TypePath { qself: None, path } => {
                 let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
@@ -309,9 +310,10 @@ impl<'a> TypeParser<'a> {
 
                     [(name, None)] if self.src_structs.contains_key(&name.to_string()) => {
                         let ident_string = name.to_string();
-                        if !self.parsing_or_parsed_struct_names.contains(&ident_string) {
-                            self.parsing_or_parsed_struct_names
-                                .insert(ident_string.to_owned());
+                        if self
+                            .parsing_or_parsed_struct_names
+                            .insert(ident_string.to_owned())
+                        {
                             let api_struct = match self.parse_struct_core(&ident_string) {
                                 Some(ir_struct) => ir_struct,
                                 None => {
@@ -339,18 +341,25 @@ impl<'a> TypeParser<'a> {
 
                     [(name, _)] if self.src_enums.contains_key(&name.to_string()) => {
                         let ident_string = name.to_string();
+                        log::debug!("the str is:{ident_string}"); // TODO: delete
                         if self.parsed_enums.insert(ident_string.to_owned()) {
+                            log::debug!("check 1"); // TODO: delete
                             let enu = self.parse_enum_core(&ident_string);
+                            log::debug!("`{enu:?}` would be inserted"); // TODO: delete
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }
 
+                        log::debug!("check 2"); // TODO: delete
                         let enum_ref = IrTypeEnumRef {
                             name: ident_string.to_owned(),
                             is_exception: false,
                         };
-                        let enu = self.enum_pool.get(&ident_string);
-                        let is_struct = enu.map(IrEnum::is_struct).unwrap_or(true);
-                        if is_struct {
+                        if self
+                            .enum_pool
+                            .get(&ident_string)
+                            .map(IrEnum::is_struct)
+                            .unwrap_or(true)
+                        {
                             Ok(EnumRef(enum_ref))
                         } else {
                             Ok(Delegate(IrTypeDelegate::PrimitiveEnum {
@@ -552,7 +561,7 @@ impl<'a> TypeParser<'a> {
         );
         IrType::Record(IrTypeRecord {
             inner: IrTypeStructRef {
-                name: safe_ident,
+                name: safe_ident.clone(),
                 freezed: false,
                 empty: false,
                 is_exception: false,
@@ -569,7 +578,6 @@ impl<'a> TypeParser<'a> {
         } else {
             None
         };
-
         let path = src_enum.path.clone();
         let comments = extract_comments(&src_enum.src.attrs);
         let variants = src_enum
@@ -621,6 +629,8 @@ impl<'a> TypeParser<'a> {
                 },
             })
             .collect();
+        log::debug!("test 2"); // TODO: delete
+
         IrEnum::new(name, wrapper_name, path, comments, variants, false)
     }
 

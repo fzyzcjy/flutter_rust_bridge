@@ -1,6 +1,6 @@
 use crate::{ir::IrTypeDynamic, target::Acc, type_dart_generator_struct};
 
-use super::TypeDartGeneratorTrait;
+use super::{TypeDartGeneratorTrait, TypeGeneratorContext};
 
 type_dart_generator_struct!(TypeDynamicGenerator, IrTypeDynamic);
 

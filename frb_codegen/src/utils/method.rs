@@ -1,4 +1,6 @@
-use crate::ir::IrFile;
+use crate::config::all_configs::AllConfigs;
+
+use crate::Opts;
 
 const STATIC_METHOD_MARKER: &str = "__static_method__";
 const METHOD_MARKER: &str = "__method__";
@@ -6,32 +8,32 @@ const METHOD_MARKER: &str = "__method__";
 pub(crate) struct MethodNamingUtil;
 
 impl MethodNamingUtil {
-    // Is the function name for a non static method?
+    /// Is the function name for a non static method?
     fn is_non_static_method(s: &str) -> bool {
         s.contains(METHOD_MARKER)
     }
 
-    // Is the function name for a static method?
+    /// Is the function name for a static method?
     fn is_static_method(s: &str) -> bool {
         s.contains(STATIC_METHOD_MARKER)
     }
 
-    // Returns the name of the struct that this method is for
+    /// Returns the name of the struct that this method is for
     fn static_method_return_struct_name(s: &str) -> String {
         s.split(STATIC_METHOD_MARKER).last().unwrap().to_string()
     }
 
-    // Returns the name of method itself
+    /// Returns the name of method itself
     fn static_method_return_method_name(s: &str) -> String {
         s.split(STATIC_METHOD_MARKER).next().unwrap().to_string()
     }
 
-    // Returns the name of the struct that this method is for
+    /// Returns the name of the struct that this method is for
     fn non_static_method_return_struct_name(s: &str) -> String {
         s.split(METHOD_MARKER).last().unwrap().to_string()
     }
 
-    // Returns the name of method itself
+    /// Returns the name of method itself
     fn non_static_method_return_method_name(s: &str) -> String {
         s.split(METHOD_MARKER).next().unwrap().to_string()
     }
@@ -44,12 +46,15 @@ impl MethodNamingUtil {
         format!("{s}{METHOD_MARKER}{struct_name}")
     }
 
-    //Does `ir_file` has any methods directed for `struct_name`?
-    pub fn has_methods(struct_name: &str, ir_file: &IrFile) -> bool {
-        ir_file.funcs.iter().any(|f| {
-            let f = FunctionName::deserialize(&f.name);
-            f.is_method_for_struct(struct_name) || f.is_static_method_for_struct(struct_name)
-        })
+    /// Does `ir_file` has any methods directed for `struct_name`?
+    pub fn has_methods(struct_name: &str, config: &Opts, all_configs: &AllConfigs) -> bool {
+        all_configs
+            .get_funcs(config.block_index, true)
+            .iter()
+            .any(|f| {
+                let f = FunctionName::deserialize(&f.name);
+                f.is_method_for_struct(struct_name) || f.is_static_method_for_struct(struct_name)
+            })
     }
 }
 

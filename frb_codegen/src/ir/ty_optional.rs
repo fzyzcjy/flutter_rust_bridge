@@ -34,6 +34,18 @@ impl IrTypeOptional {
     pub fn is_boxed_primitive(&self) -> bool {
         matches!(&*self.inner, Boxed(boxed) if boxed.exist_in_real_api && boxed.inner.is_primitive())
     }
+
+    pub fn is_list(&self) -> bool {
+        matches!(&*self.inner, GeneralList(_) | PrimitiveList(_))
+    }
+
+    pub fn is_delegate(&self) -> bool {
+        matches!(&*self.inner, Delegate(_))
+    }
+
+    pub fn needs_initialization(&self) -> bool {
+        !(self.is_primitive() || self.is_delegate())
+    }
 }
 
 impl IrTypeTrait for IrTypeOptional {
@@ -73,6 +85,6 @@ impl IrTypeTrait for IrTypeOptional {
     }
 
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
-        self.inner.visit_types(f, ir_file);
+        self.inner.visit_self_types_recursively(f, ir_file);
     }
 }

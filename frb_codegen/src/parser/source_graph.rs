@@ -35,7 +35,6 @@ impl Crate {
     pub fn new(manifest_path: &str) -> ParserResult<Self> {
         let mut cmd = MetadataCommand::new();
         cmd.manifest_path(manifest_path);
-
         let metadata = cmd.exec().unwrap();
 
         let root_package = metadata.root_package().unwrap();

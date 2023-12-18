@@ -15,8 +15,8 @@ impl<'a> TypeSyncReturnGenerator<'a> {
         TypeSyncReturnGenerator {
             inner: Box::new(TypeDartGenerator::new(
                 ir.into_inner(),
-                context.ir_file,
                 context.config,
+                context.all_configs,
             )),
         }
     }

@@ -202,12 +202,12 @@ impl IrTypeDelegate {
 
 impl IrTypeTrait for IrTypeDelegate {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
-        self.get_delegate().visit_types(f, ir_file);
+        self.get_delegate().visit_self_types_recursively(f, ir_file);
 
         // extras
         #[cfg(feature = "chrono")]
         if let Self::TimeList(ir) = self {
-            IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_file);
+            IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_self_types_recursively(f, ir_file);
         }
     }
 

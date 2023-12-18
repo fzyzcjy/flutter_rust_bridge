@@ -3,7 +3,6 @@ use crate::generator::rust::{generate_import, generate_list_allocate_func, Exter
 use crate::ir::*;
 use crate::target::{Acc, Target};
 use crate::type_rust_generator_struct;
-use crate::utils::misc::BlockIndex;
 
 type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
@@ -20,9 +19,15 @@ impl TypeGeneralListGenerator<'_> {
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
+        let prefix = self.get_wire2api_prefix(&self.ir.inner);
+        // Replace prefix to WIRE2API_BODY_IO and WIRE2API_BODY_WASM
+        let wire2api_body_io =
+            TypeGeneralListGenerator::WIRE2API_BODY_IO.replace("Wire2Api", &prefix);
+        let wire2api_body_wasm =
+            TypeGeneralListGenerator::WIRE2API_BODY_WASM.replace("Wire2Api", &prefix);
         Acc {
-            wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
-            io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
+            io: Some(wire2api_body_io),
+            wasm: Some(wire2api_body_wasm),
             ..Default::default()
         }
     }
@@ -38,24 +43,23 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
         ])
     }
 
-    fn allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        _: BlockIndex,
-    ) -> Acc<Option<String>> {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         Acc {
             io: Some(generate_list_allocate_func(
                 collector,
                 &self.ir.safe_ident(),
                 &self.ir,
                 &self.ir.inner,
-                self.context.config.block_index,
             )),
             ..Default::default()
         }
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
+        generate_import(
+            &self.ir.inner,
+            self.context.config,
+            self.context.all_configs,
+        )
     }
 }

@@ -1,13 +1,28 @@
 use super::NO_PARAMS;
+
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{generate_import, ExternFuncCollector};
 use crate::ir::*;
 use crate::target::Acc;
 use crate::target::Target::*;
 use crate::type_rust_generator_struct;
-use crate::utils::misc::BlockIndex;
 
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
+
+// TODO: delete
+// impl TypeBoxedGenerator<'_> {
+//     fn as_struct_generator(&self) -> TypeStructRefGenerator {
+//         let generator = TypeStructRefGenerator {
+//             if let StructRef::Named { name, .. } = &self.ir.inner {
+//                 ir: self.context.ir_file.get_struct(name).unwrap().clone(),
+//             } else {
+//                 unreachable!()
+//             },
+//             ir: self.ir.inner.inner.clone(),
+//             context: self.context.clone(),
+//         };
+//     }
+// }
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
@@ -54,8 +69,8 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     fn wrapper_struct(&self) -> Option<String> {
         let src = TypeRustGenerator::new(
             *self.ir.inner.clone(),
-            self.context.ir_file,
             self.context.config,
+            self.context.all_configs,
         );
         src.wrapper_struct()
     }
@@ -64,15 +79,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         format!("(*{obj})")
     }
 
-    fn allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        block_index: BlockIndex,
-    ) -> Acc<Option<String>> {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         if self.ir.inner.is_array() {
             return Acc::default();
         }
-        let func_name = format!("new_{}_{}", self.ir.safe_ident(), block_index);
+        let func_name = format!("new_{}", self.ir.safe_ident());
         if self.ir.inner.is_primitive() {
             Acc {
                 io: Some(collector.generate(
@@ -105,6 +116,15 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
+        generate_import(
+            &self.ir.inner,
+            self.context.config,
+            self.context.all_configs,
+        )
     }
+
+    // TODO: delete
+    // fn wire_struct_fields(&self) -> Option<Vec<String>> {
+    // self.as_struct_generator().wire_struct_fields()
+    // }
 }

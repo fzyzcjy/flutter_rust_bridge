@@ -1,0 +1,11 @@
+rust_input: [src/api_block_1.rs, src/api_block_2.rs, src/api_block_3.rs]
+dart_output: [../dart/lib/bridge_generated_api_block_1.dart, ../dart/lib/bridge_generated_api_block_2.dart, ../dart/lib/bridge_generated_api_block_3.dart]
+rust_output: [src/generated_api_block_1.rs, src/generated_api_block_2.rs, src/generated_api_block_3.rs]
+class_name: [ApiBlock1Class, ApiBlock2Class, ApiBlock3Class]
+wasm: true
+dart_decl_output: ../dart/lib/bridge_definitions.dart
+dart_format_line_length: 120
+c_output: [c_output_path/c_output_1.h, c_output_path/c_output_2.h, c_output_path/c_output_3.h]
+extra_c_output_path: [./extra_c_output_path_1/, extra_c_output_path_2, extra_c_output_path_3/]
+dart3: true
+dart_enums_style: false

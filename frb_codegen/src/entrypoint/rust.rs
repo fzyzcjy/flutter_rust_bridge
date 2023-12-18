@@ -1,20 +1,22 @@
 use crate::commands;
+use crate::config::all_configs::AllConfigs;
 use crate::target::{Acc, Target};
-use crate::{command_run, generator, ir, others, Opts};
+use crate::{command_run, generator, others, Opts};
 use std::ffi::OsStr;
 use std::fs;
 use std::path::Path;
 
 pub(crate) fn generate_rust_code(
     config: &Opts,
-    ir_file: &ir::IrFile,
+    all_configs: &AllConfigs,
 ) -> anyhow::Result<generator::rust::Output> {
     let rust_output_paths = config.get_rust_output_paths();
 
     let rust_output_dir = Path::new(&rust_output_paths.base_path).parent().unwrap();
     fs::create_dir_all(rust_output_dir)?;
 
-    let generated_rust = ir_file.generate_rust(config);
+    let generated_rust = all_configs.generate_rust(config);
+
     write_rust_modules(config, &generated_rust)?;
 
     if !config.skip_add_mod_to_lib {

@@ -26,14 +26,10 @@ impl TypeRustGeneratorTrait for TypeOptionalListGenerator<'_> {
             "len: i32".to_string(),
         ])
     }
-    fn allocate_funcs(
-        &self,
-        collector: &mut super::ExternFuncCollector,
-        block_index: crate::utils::misc::BlockIndex,
-    ) -> Acc<Option<String>> {
+    fn allocate_funcs(&self, collector: &mut super::ExternFuncCollector) -> Acc<Option<String>> {
         Acc {
             io: Some(collector.generate(
-                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                &format!("new_{}_{}", self.ir.safe_ident(), self.context.config.block_index),
                 [("len: i32", "int")],
                 Some(&format!("*mut {}", self.ir.rust_wire_type(Target::Io))),
                 &format!(
@@ -47,6 +43,10 @@ impl TypeRustGeneratorTrait for TypeOptionalListGenerator<'_> {
         }
     }
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
+        generate_import(
+            &self.ir.inner,
+            self.context.config,
+            self.context.all_configs,
+        )
     }
 }

@@ -42,6 +42,7 @@ topological-sort = "0.2.2"
 enum-iterator = "1.4.0"
 clap = { version = "4.1.8", features = ["derive"] }
 cbindgen = "0.24.3"
+extend = "1.2.0"
 
 [dev-dependencies]
 semver = "1.0.12"

@@ -1,16 +1,15 @@
-use crate::ir::IrFile;
-use crate::parser::{self, ParserResult};
-use crate::utils::misc::{read_rust_file, BlockIndex};
+use crate::utils::misc::{BlockIndex, PathExt};
 use convert_case::{Case, Casing};
+
 use std::path::{Path, PathBuf};
 
 /// Parsed configs, mainly used for internal logic
-#[derive(Debug, Clone, serde::Serialize)]
+#[derive(Debug, Clone, serde::Serialize, PartialEq, Eq)]
 pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
     pub dart_decl_output_path: Option<String>,
-    pub c_output_path: Vec<String>,
+    pub c_output_paths: Vec<String>,
     pub rust_crate_dir: String,
     pub rust_output_path: String,
     pub class_name: String,
@@ -30,18 +29,10 @@ pub struct Opts {
     pub extra_headers: String,
     pub dart3: bool,
     pub keep_going: bool,
+    pub shared: bool, // it is true if this Opts instance is for auto-generated shared API block. Otherwise, it is false,
 }
 
 impl Opts {
-    pub fn get_ir_file(&self) -> ParserResult<IrFile> {
-        // info!("Phase: Parse source code to AST");
-        let source_rust_content = read_rust_file(&PathBuf::from(&self.rust_input_path));
-        let file_ast = syn::parse_file(&source_rust_content)?;
-
-        // info!("Phase: Parse AST to IR");
-        parser::parse(&source_rust_content, file_ast, &self.manifest_path)
-    }
-
     pub fn dart_api_class_name(&self) -> &str {
         &self.class_name
     }
@@ -134,6 +125,15 @@ impl Opts {
                 .to_owned()
                 .to_case(Case::Camel)
         }
+    }
+
+    pub fn get_name(&self) -> String {
+        let suffix = if self.shared {
+            "shared"
+        } else {
+            Path::new(&self.rust_input_path).get_file_name()
+        };
+        format!("config block: {}", suffix)
     }
 }
 

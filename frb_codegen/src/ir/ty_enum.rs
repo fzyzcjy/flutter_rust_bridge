@@ -11,8 +11,8 @@ pub struct IrTypeEnumRef {
 
 impl IrTypeEnumRef {
     #[inline]
-    pub fn get<'a>(&self, file: &'a IrFile) -> &'a IrEnum {
-        &file.enum_pool[&self.name]
+    pub fn get<'a>(&self, ir_file: &'a IrFile) -> &'a IrEnum {
+        &ir_file.enum_pool[&self.name]
     }
 }
 
@@ -23,7 +23,7 @@ impl IrTypeTrait for IrTypeEnumRef {
             if let IrVariantKind::Struct(st) = &variant.kind {
                 st.fields
                     .iter()
-                    .for_each(|field| field.ty.visit_types(f, ir_file));
+                    .for_each(|field| field.ty.visit_self_types_recursively(f, ir_file));
             }
         }
     }
@@ -86,7 +86,7 @@ impl IrEnum {
         is_exception: bool,
     ) -> Self {
         fn wrap_box(ty: &mut IrType) {
-            if ty.is_struct() {
+            if ty.is_struct_ref_or_enum_ref_or_record() {
                 *ty = IrType::Boxed(IrTypeBoxed {
                     exist_in_real_api: false,
                     inner: Box::new(ty.clone()),
@@ -125,7 +125,6 @@ impl IrEnum {
         self.is_struct
     }
 }
-
 crate::ir! {
 pub struct IrVariant {
     pub name: IrIdent,

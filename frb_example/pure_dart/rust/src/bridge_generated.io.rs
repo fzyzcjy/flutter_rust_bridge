@@ -1114,7 +1114,7 @@ pub extern "C" fn new_RwLockHideData() -> wire_RwLockHideData {
 }
 
 #[no_mangle]
-pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
+pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
     let wrap = wire_StringList {
         ptr: support::new_leak_vec_ptr(<*mut wire_uint_8_list>::new_with_null_ptr(), len),
         len,
@@ -1123,207 +1123,207 @@ pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
+pub extern "C" fn new_box_application_env() -> *mut wire_ApplicationEnv {
     support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_Chrono_Utc_0(value: i64) -> *mut i64 {
+pub extern "C" fn new_box_autoadd_Chrono_Utc(value: i64) -> *mut i64 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_DartOpaque_0() -> *mut wire_DartOpaque {
+pub extern "C" fn new_box_autoadd_DartOpaque() -> *mut wire_DartOpaque {
     support::new_leak_box_ptr(wire_DartOpaque::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_HideData_0() -> *mut wire_HideData {
+pub extern "C" fn new_box_autoadd_HideData() -> *mut wire_HideData {
     support::new_leak_box_ptr(wire_HideData::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd___record__String_i32_0() -> *mut wire___record__String_i32 {
+pub extern "C" fn new_box_autoadd___record__String_i32() -> *mut wire___record__String_i32 {
     support::new_leak_box_ptr(wire___record__String_i32::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_a_0() -> *mut wire_A {
+pub extern "C" fn new_box_autoadd_a() -> *mut wire_A {
     support::new_leak_box_ptr(wire_A::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_abc_0() -> *mut wire_Abc {
+pub extern "C" fn new_box_autoadd_abc() -> *mut wire_Abc {
     support::new_leak_box_ptr(wire_Abc::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_application_env_0() -> *mut wire_ApplicationEnv {
+pub extern "C" fn new_box_autoadd_application_env() -> *mut wire_ApplicationEnv {
     support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_application_settings_0() -> *mut wire_ApplicationSettings {
+pub extern "C" fn new_box_autoadd_application_settings() -> *mut wire_ApplicationSettings {
     support::new_leak_box_ptr(wire_ApplicationSettings::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_attribute_0() -> *mut wire_Attribute {
+pub extern "C" fn new_box_autoadd_attribute() -> *mut wire_Attribute {
     support::new_leak_box_ptr(wire_Attribute::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_b_0() -> *mut wire_B {
+pub extern "C" fn new_box_autoadd_b() -> *mut wire_B {
     support::new_leak_box_ptr(wire_B::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
+pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_c_0() -> *mut wire_C {
+pub extern "C" fn new_box_autoadd_c() -> *mut wire_C {
     support::new_leak_box_ptr(wire_C::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_concatenate_with_0() -> *mut wire_ConcatenateWith {
+pub extern "C" fn new_box_autoadd_concatenate_with() -> *mut wire_ConcatenateWith {
     support::new_leak_box_ptr(wire_ConcatenateWith::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_custom_struct_0() -> *mut wire_CustomStruct {
+pub extern "C" fn new_box_autoadd_custom_struct() -> *mut wire_CustomStruct {
     support::new_leak_box_ptr(wire_CustomStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_customized_0() -> *mut wire_Customized {
+pub extern "C" fn new_box_autoadd_customized() -> *mut wire_Customized {
     support::new_leak_box_ptr(wire_Customized::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_dart_opaque_nested_0() -> *mut wire_DartOpaqueNested {
+pub extern "C" fn new_box_autoadd_dart_opaque_nested() -> *mut wire_DartOpaqueNested {
     support::new_leak_box_ptr(wire_DartOpaqueNested::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_empty_0() -> *mut wire_Empty {
+pub extern "C" fn new_box_autoadd_empty() -> *mut wire_Empty {
     support::new_leak_box_ptr(wire_Empty::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_enum_dart_opaque_0() -> *mut wire_EnumDartOpaque {
+pub extern "C" fn new_box_autoadd_enum_dart_opaque() -> *mut wire_EnumDartOpaque {
     support::new_leak_box_ptr(wire_EnumDartOpaque::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_enum_opaque_0() -> *mut wire_EnumOpaque {
+pub extern "C" fn new_box_autoadd_enum_opaque() -> *mut wire_EnumOpaque {
     support::new_leak_box_ptr(wire_EnumOpaque::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_event_0() -> *mut wire_Event {
+pub extern "C" fn new_box_autoadd_event() -> *mut wire_Event {
     support::new_leak_box_ptr(wire_Event::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_exotic_optionals_0() -> *mut wire_ExoticOptionals {
+pub extern "C" fn new_box_autoadd_exotic_optionals() -> *mut wire_ExoticOptionals {
     support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_f64_0(value: f64) -> *mut f64 {
+pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_feature_chrono_0() -> *mut wire_FeatureChrono {
+pub extern "C" fn new_box_autoadd_feature_chrono() -> *mut wire_FeatureChrono {
     support::new_leak_box_ptr(wire_FeatureChrono::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_feature_uuid_0() -> *mut wire_FeatureUuid {
+pub extern "C" fn new_box_autoadd_feature_uuid() -> *mut wire_FeatureUuid {
     support::new_leak_box_ptr(wire_FeatureUuid::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_feed_id_0() -> *mut wire_FeedId {
+pub extern "C" fn new_box_autoadd_feed_id() -> *mut wire_FeedId {
     support::new_leak_box_ptr(wire_FeedId::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_i32_0(value: i32) -> *mut i32 {
+pub extern "C" fn new_box_autoadd_i32(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_i64_0(value: i64) -> *mut i64 {
+pub extern "C" fn new_box_autoadd_i64(value: i64) -> *mut i64 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_kitchen_sink_0() -> *mut wire_KitchenSink {
+pub extern "C" fn new_box_autoadd_kitchen_sink() -> *mut wire_KitchenSink {
     support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_measure_0() -> *mut wire_Measure {
+pub extern "C" fn new_box_autoadd_measure() -> *mut wire_Measure {
     support::new_leak_box_ptr(wire_Measure::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_message_id_0() -> *mut wire_MessageId {
+pub extern "C" fn new_box_autoadd_message_id() -> *mut wire_MessageId {
     support::new_leak_box_ptr(wire_MessageId::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_enum_freezed_0() -> *mut wire_MyEnumFreezed {
+pub extern "C" fn new_box_autoadd_my_enum_freezed() -> *mut wire_MyEnumFreezed {
     support::new_leak_box_ptr(wire_MyEnumFreezed::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_nested_struct_0() -> *mut wire_MyNestedStruct {
+pub extern "C" fn new_box_autoadd_my_nested_struct() -> *mut wire_MyNestedStruct {
     support::new_leak_box_ptr(wire_MyNestedStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_size_0() -> *mut wire_MySize {
+pub extern "C" fn new_box_autoadd_my_size() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_size_freezed_0() -> *mut wire_MySizeFreezed {
+pub extern "C" fn new_box_autoadd_my_size_freezed() -> *mut wire_MySizeFreezed {
     support::new_leak_box_ptr(wire_MySizeFreezed::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_struct_0() -> *mut wire_MyStruct {
+pub extern "C" fn new_box_autoadd_my_struct() -> *mut wire_MyStruct {
     support::new_leak_box_ptr(wire_MyStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_tree_node_0() -> *mut wire_MyTreeNode {
+pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_MyTreeNode {
     support::new_leak_box_ptr(wire_MyTreeNode::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut wire_NewTypeInt {
+pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_NewTypeInt {
     support::new_leak_box_ptr(wire_NewTypeInt::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_note_0() -> *mut wire_Note {
+pub extern "C" fn new_box_autoadd_note() -> *mut wire_Note {
     support::new_leak_box_ptr(wire_Note::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_numbers_0() -> *mut wire_Numbers {
+pub extern "C" fn new_box_autoadd_numbers() -> *mut wire_Numbers {
     support::new_leak_box_ptr(wire_Numbers::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_opaque_nested_0() -> *mut wire_OpaqueNested {
+pub extern "C" fn new_box_autoadd_opaque_nested() -> *mut wire_OpaqueNested {
     support::new_leak_box_ptr(wire_OpaqueNested::new_with_null_ptr())
 }
 
@@ -1333,32 +1333,32 @@ pub extern "C" fn new_box_autoadd_opt_vecs_0() -> *mut wire_OptVecs {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_sequences_0() -> *mut wire_Sequences {
+pub extern "C" fn new_box_autoadd_sequences() -> *mut wire_Sequences {
     support::new_leak_box_ptr(wire_Sequences::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_some_struct_0() -> *mut wire_SomeStruct {
+pub extern "C" fn new_box_autoadd_some_struct() -> *mut wire_SomeStruct {
     support::new_leak_box_ptr(wire_SomeStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_struct_with_enum_0() -> *mut wire_StructWithEnum {
+pub extern "C" fn new_box_autoadd_struct_with_enum() -> *mut wire_StructWithEnum {
     support::new_leak_box_ptr(wire_StructWithEnum::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_sum_with_0() -> *mut wire_SumWith {
+pub extern "C" fn new_box_autoadd_sum_with() -> *mut wire_SumWith {
     support::new_leak_box_ptr(wire_SumWith::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_test_id_0() -> *mut wire_TestId {
+pub extern "C" fn new_box_autoadd_test_id() -> *mut wire_TestId {
     support::new_leak_box_ptr(wire_TestId::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_user_id_0() -> *mut wire_UserId {
+pub extern "C" fn new_box_autoadd_user_id() -> *mut wire_UserId {
     support::new_leak_box_ptr(wire_UserId::new_with_null_ptr())
 }
 
@@ -1368,77 +1368,77 @@ pub extern "C" fn new_box_autoadd_weekdays_0(value: i32) -> *mut i32 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_blob_0() -> *mut wire_Blob {
+pub extern "C" fn new_box_blob() -> *mut wire_Blob {
     support::new_leak_box_ptr(wire_Blob::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_bool_0(value: bool) -> *mut bool {
+pub extern "C" fn new_box_bool(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_distance_0() -> *mut wire_Distance {
+pub extern "C" fn new_box_distance() -> *mut wire_Distance {
     support::new_leak_box_ptr(wire_Distance::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_exotic_optionals_0() -> *mut wire_ExoticOptionals {
+pub extern "C" fn new_box_exotic_optionals() -> *mut wire_ExoticOptionals {
     support::new_leak_box_ptr(wire_ExoticOptionals::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_f64_0(value: f64) -> *mut f64 {
+pub extern "C" fn new_box_f64(value: f64) -> *mut f64 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_i32_0(value: i32) -> *mut i32 {
+pub extern "C" fn new_box_i32(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_i64_0(value: i64) -> *mut i64 {
+pub extern "C" fn new_box_i64(value: i64) -> *mut i64 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_i8_0(value: i8) -> *mut i8 {
+pub extern "C" fn new_box_i8(value: i8) -> *mut i8 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_kitchen_sink_0() -> *mut wire_KitchenSink {
+pub extern "C" fn new_box_kitchen_sink() -> *mut wire_KitchenSink {
     support::new_leak_box_ptr(wire_KitchenSink::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_my_size_0() -> *mut wire_MySize {
+pub extern "C" fn new_box_my_size() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_my_size_freezed_0() -> *mut wire_MySizeFreezed {
+pub extern "C" fn new_box_my_size_freezed() -> *mut wire_MySizeFreezed {
     support::new_leak_box_ptr(wire_MySizeFreezed::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_speed_0() -> *mut wire_Speed {
+pub extern "C" fn new_box_speed() -> *mut wire_Speed {
     support::new_leak_box_ptr(wire_Speed::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_u8_0(value: u8) -> *mut u8 {
+pub extern "C" fn new_box_u8(value: u8) -> *mut u8 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_weekdays_0(value: i32) -> *mut i32 {
+pub extern "C" fn new_box_weekdays(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
-pub extern "C" fn new_float_32_list_0(len: i32) -> *mut wire_float_32_list {
+pub extern "C" fn new_float_32_list(len: i32) -> *mut wire_float_32_list {
     let ans = wire_float_32_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1447,7 +1447,7 @@ pub extern "C" fn new_float_32_list_0(len: i32) -> *mut wire_float_32_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_float_64_list_0(len: i32) -> *mut wire_float_64_list {
+pub extern "C" fn new_float_64_list(len: i32) -> *mut wire_float_64_list {
     let ans = wire_float_64_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1456,7 +1456,7 @@ pub extern "C" fn new_float_64_list_0(len: i32) -> *mut wire_float_64_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_int_32_list_0(len: i32) -> *mut wire_int_32_list {
+pub extern "C" fn new_int_32_list(len: i32) -> *mut wire_int_32_list {
     let ans = wire_int_32_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1465,7 +1465,7 @@ pub extern "C" fn new_int_32_list_0(len: i32) -> *mut wire_int_32_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_int_64_list_0(len: i32) -> *mut wire_int_64_list {
+pub extern "C" fn new_int_64_list(len: i32) -> *mut wire_int_64_list {
     let ans = wire_int_64_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1474,7 +1474,7 @@ pub extern "C" fn new_int_64_list_0(len: i32) -> *mut wire_int_64_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
+pub extern "C" fn new_int_8_list(len: i32) -> *mut wire_int_8_list {
     let ans = wire_int_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1483,7 +1483,7 @@ pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_DartOpaque_0(len: i32) -> *mut wire_list_DartOpaque {
+pub extern "C" fn new_list_DartOpaque(len: i32) -> *mut wire_list_DartOpaque {
     let wrap = wire_list_DartOpaque {
         ptr: support::new_leak_vec_ptr(<wire_DartOpaque>::new_with_null_ptr(), len),
         len,
@@ -1492,7 +1492,7 @@ pub extern "C" fn new_list_DartOpaque_0(len: i32) -> *mut wire_list_DartOpaque {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_HideData_0(len: i32) -> *mut wire_list_HideData {
+pub extern "C" fn new_list_HideData(len: i32) -> *mut wire_list_HideData {
     let wrap = wire_list_HideData {
         ptr: support::new_leak_vec_ptr(<wire_HideData>::new_with_null_ptr(), len),
         len,
@@ -1501,7 +1501,7 @@ pub extern "C" fn new_list_HideData_0(len: i32) -> *mut wire_list_HideData {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list___record__String_i32_0(len: i32) -> *mut wire_list___record__String_i32 {
+pub extern "C" fn new_list___record__String_i32(len: i32) -> *mut wire_list___record__String_i32 {
     let wrap = wire_list___record__String_i32 {
         ptr: support::new_leak_vec_ptr(<wire___record__String_i32>::new_with_null_ptr(), len),
         len,
@@ -1510,7 +1510,7 @@ pub extern "C" fn new_list___record__String_i32_0(len: i32) -> *mut wire_list___
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_application_env_var_0(len: i32) -> *mut wire_list_application_env_var {
+pub extern "C" fn new_list_application_env_var(len: i32) -> *mut wire_list_application_env_var {
     let wrap = wire_list_application_env_var {
         ptr: support::new_leak_vec_ptr(<wire_ApplicationEnvVar>::new_with_null_ptr(), len),
         len,
@@ -1519,7 +1519,7 @@ pub extern "C" fn new_list_application_env_var_0(len: i32) -> *mut wire_list_app
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_attribute_0(len: i32) -> *mut wire_list_attribute {
+pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
     let wrap = wire_list_attribute {
         ptr: support::new_leak_vec_ptr(<wire_Attribute>::new_with_null_ptr(), len),
         len,
@@ -1528,7 +1528,7 @@ pub extern "C" fn new_list_attribute_0(len: i32) -> *mut wire_list_attribute {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_my_size_0(len: i32) -> *mut wire_list_my_size {
+pub extern "C" fn new_list_my_size(len: i32) -> *mut wire_list_my_size {
     let wrap = wire_list_my_size {
         ptr: support::new_leak_vec_ptr(<wire_MySize>::new_with_null_ptr(), len),
         len,
@@ -1537,7 +1537,7 @@ pub extern "C" fn new_list_my_size_0(len: i32) -> *mut wire_list_my_size {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_my_tree_node_0(len: i32) -> *mut wire_list_my_tree_node {
+pub extern "C" fn new_list_my_tree_node(len: i32) -> *mut wire_list_my_tree_node {
     let wrap = wire_list_my_tree_node {
         ptr: support::new_leak_vec_ptr(<wire_MyTreeNode>::new_with_null_ptr(), len),
         len,
@@ -1555,7 +1555,7 @@ pub extern "C" fn new_list_opt_String_0(len: i32) -> *mut wire_list_opt_String {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_opt_box_autoadd_attribute_0(
+pub extern "C" fn new_list_opt_box_autoadd_attribute(
     len: i32,
 ) -> *mut wire_list_opt_box_autoadd_attribute {
     let wrap = wire_list_opt_box_autoadd_attribute {
@@ -1595,7 +1595,7 @@ pub extern "C" fn new_list_opt_int_32_list_0(len: i32) -> *mut wire_list_opt_int
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_test_id_0(len: i32) -> *mut wire_list_test_id {
+pub extern "C" fn new_list_test_id(len: i32) -> *mut wire_list_test_id {
     let wrap = wire_list_test_id {
         ptr: support::new_leak_vec_ptr(<wire_TestId>::new_with_null_ptr(), len),
         len,
@@ -1604,7 +1604,7 @@ pub extern "C" fn new_list_test_id_0(len: i32) -> *mut wire_list_test_id {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_weekdays_0(len: i32) -> *mut wire_list_weekdays {
+pub extern "C" fn new_list_weekdays(len: i32) -> *mut wire_list_weekdays {
     let wrap = wire_list_weekdays {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
@@ -1613,7 +1613,7 @@ pub extern "C" fn new_list_weekdays_0(len: i32) -> *mut wire_list_weekdays {
 }
 
 #[no_mangle]
-pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
+pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,

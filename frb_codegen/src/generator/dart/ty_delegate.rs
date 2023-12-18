@@ -4,6 +4,8 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 
+use super::func::get_api2wire_prefix;
+
 type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
@@ -16,11 +18,10 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 ))),
                 IrTypeDelegateArray::PrimitiveArray { length, .. } => Acc {
                     io: Some(format!(
-                        "final ans = inner.new_{}_{}({length});
+                        "final ans = inner.new_{}({length});
                         ans.ref.ptr.asTypedList({length}).setAll(0, raw);
                         return ans;",
                         array.get_delegate().safe_ident(),
-                        self.context.config.block_index,
                     )),
                     wasm: Some(format!(
                         "return {}.fromList(raw);",
@@ -46,12 +47,18 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             IrTypeDelegate::StringList => Acc {
                 io: Some(format!(
-                    "final ans = inner.new_StringList_{}(raw.length);
+                    "final ans = inner.new_StringList(raw.length);
                     for (var i = 0; i < raw.length; i++){{
-                        ans.ref.ptr[i] = api2wire_String(raw[i]);
+                        ans.ref.ptr[i] = {prefix}api2wire_String(raw[i]);
                     }}
                     return ans;",
-                    self.context.config.block_index
+                    prefix = get_api2wire_prefix(
+                        "api2wire_String",
+                        self.context.config,
+                        &IrType::Delegate(IrTypeDelegate::String),
+                        false,
+                        self.get_context().all_configs
+                    )
                 )),
                 wasm: Some("return raw;".into()),
                 ..Default::default()
@@ -100,11 +107,22 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     array.dart_api_type(),
                     general.safe_ident(),
                 ),
-                IrTypeDelegateArray::PrimitiveArray { .. } => format!(
-                    r"return {}(_wire2api_{}(raw));",
-                    array.dart_api_type(),
-                    array.get_delegate().safe_ident(),
-                ),
+                IrTypeDelegateArray::PrimitiveArray { .. } => {
+                    let delegated_type = array.get_delegate();
+                    let prefix = if self.context.config.shared {
+                        ""
+                    } else if !self.is_type_shared_by_safe_ident(&delegated_type) {
+                        "_"
+                    } else {
+                        "_sharedImpl."
+                    };
+                    format!(
+                        r"return {}({}wire2api_{}(raw));",
+                        array.dart_api_type(),
+                        prefix,
+                        delegated_type.safe_ident(),
+                    )
+                }
             },
 
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(
