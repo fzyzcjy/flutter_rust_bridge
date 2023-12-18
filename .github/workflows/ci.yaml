@@ -299,7 +299,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.info.image }}-${{ matrix.info.version }}-frb_codegen-lcov.info
+          name: lcov.info
           path: frb_codegen/lcov.info
 
   test_dart_native:
@@ -349,7 +349,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.image }}-${{ matrix.package }}-coverage-lcov.txt
+          name: lcov.txt
           path: ${{ matrix.package }}/coverage/lcov.txt
 
   test_dart_web:
