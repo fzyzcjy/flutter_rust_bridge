@@ -28,6 +28,11 @@ jobs:
         with:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: nightly
+          target: wasm32-unknown-unknown
+          components: rust-src,rustfmt
       - uses: actions/setup-node@v3
         with:
           node-version: 18
