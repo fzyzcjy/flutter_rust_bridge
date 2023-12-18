@@ -219,13 +219,17 @@ Future<T> withLlvmCovReport<T>(
 // ref: https://github.com/rrousselGit/riverpod/blob/67d26d2a47a7351d6676012c44eb53dd6ff79787/scripts/coverage.sh#L10
 // ref: https://github.com/mobxjs/mobx.dart/blob/52515a1d82f15a2b2eb48822d030647e217134cc/tool/coverage.sh#L12
 Future<void> _formatDartCoverage({required String package}) async {
-  await exec('dart pub global activate coverage');
+  await _installDartCoverage();
 
   final reportOn = '${exec.pwd}/frb_dart';
   await exec(
     'format_coverage --lcov --in=coverage --out=coverage/lcov.txt --packages=.dart_tool/package_config.json --report-on=$reportOn',
     relativePwd: package,
   );
+}
+
+Future<void> _installDartCoverage() async {
+  await exec('dart pub global activate coverage');
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
@@ -314,6 +318,7 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
 Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
+  await _installDartCoverage();
 
   await executeFrbCodegen('build-web --dart-coverage',
       relativePwd: config.package, coverage: config.coverage);
