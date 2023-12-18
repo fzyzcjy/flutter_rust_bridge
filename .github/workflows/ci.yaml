@@ -148,7 +148,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: rust_lcov.info
-          path: ${{ matrix.package }}/coverage/rust_lcov.info
+          path: frb_codegen/lcov.info
 
   generate_run_frb_codegen_command_integrate:
     name: 'Generate :: FRB Codegen :: Command Integrate'
@@ -193,7 +193,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: rust_lcov.info
-          path: ${{ matrix.package }}/coverage/rust_lcov.info
+          path: frb_codegen/lcov.info
 
   generate_internal:
     name: 'Generate :: Internal'
@@ -227,7 +227,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: rust_lcov.info
-          path: frb_internal/coverage/rust_lcov.info
+          path: frb_codegen/lcov.info
 
   # ----------------------------------- bench -----------------------------------
 
@@ -677,7 +677,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: rust_lcov.info
-          path: ${{ matrix.package }}/coverage/rust_lcov.info
+          path: frb_codegen/lcov.info
 
   # ----------------------------------- misc -----------------------------------
 

@@ -294,13 +294,17 @@ Future<RunCommandOutput> executeFrbCodegen(
   required bool coverage,
 }) async {
   return await withLlvmCovReport(
-      relativeRustPwd: 'frb_codegen', enable: coverage, (rustEnvMap) async {
-    return await exec(
-      'cargo run --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
-      relativePwd: relativePwd,
-      extraEnv: {'RUST_BACKTRACE': '1'},
-    );
-  });
+    enable: coverage,
+    relativeRustPwd: 'frb_codegen',
+    reportPath: 'frb_codegen/lcov.info',
+    (rustEnvMap) async {
+      return await exec(
+        'cargo run --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+        relativePwd: relativePwd,
+        extraEnv: {'RUST_BACKTRACE': '1'},
+      );
+    },
+  );
 }
 
 Future<void> _renameDirIfExists(String src, String dst) async {

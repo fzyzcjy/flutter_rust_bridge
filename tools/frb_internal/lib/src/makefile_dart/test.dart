@@ -8,7 +8,6 @@ import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart
     as dart_sanitizer_tester;
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
-import 'package:path/path.dart' as path;
 
 part 'test.g.dart';
 
@@ -140,29 +139,32 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       ].contains(config.package);
 
   await withLlvmCovReport(
-      relativeRustPwd: path.join(config.package, 'rust'),
-      enable: enableRustCoverage, (rustEnvMap) async {
-    await runPubGetIfNotRunYet(config.package);
+    relativeRustPwd: '${config.package}/rust',
+    enable: enableRustCoverage,
+    reportPath: '${config.package}/coverage/rust_lcov.info',
+    (rustEnvMap) async {
+      await runPubGetIfNotRunYet(config.package);
 
-    final dartMode = kDartModeOfPackage[config.package]!;
+      final dartMode = kDartModeOfPackage[config.package]!;
 
-    var extraFlags = '';
-    if (dartMode == DartMode.dart) {
-      extraFlags += '--enable-experiment=native-assets ';
-    }
-    if (config.package == 'frb_example/pure_dart') {
-      extraFlags += '--enable-vm-service ';
-    }
+      var extraFlags = '';
+      if (dartMode == DartMode.dart) {
+        extraFlags += '--enable-experiment=native-assets ';
+      }
+      if (config.package == 'frb_example/pure_dart') {
+        extraFlags += '--enable-vm-service ';
+      }
 
-    await exec(
-      '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
-      relativePwd: config.package,
-      extraEnv: {
-        ...kEnvEnableRustBacktrace,
-        ...rustEnvMap,
-      },
-    );
-  });
+      await exec(
+        '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
+        relativePwd: config.package,
+        extraEnv: {
+          ...kEnvEnableRustBacktrace,
+          ...rustEnvMap,
+        },
+      );
+    },
+  );
 
   if (config.coverage) {
     await _formatDartCoverage(package: config.package);
@@ -174,6 +176,7 @@ Future<T> withLlvmCovReport<T>(
   Future<T> Function(Map<String, String> envMap) inner, {
   required bool enable,
   required String relativeRustPwd,
+  required String reportPath,
 }) async {
   if (!enable) {
     return await inner({});
@@ -198,7 +201,7 @@ Future<T> withLlvmCovReport<T>(
 
   await exec(
       'cargo llvm-cov report --lcov '
-      '--output-path ../coverage/rust_lcov.info '
+      '--output-path ${exec.pwd}/$reportPath '
       "--ignore-filename-regex '.*/frb_example/.*' "
       '$cargoLlvmCovCommonArgs',
       relativePwd: relativeRustPwd,
