@@ -10,5 +10,7 @@ import ShowMeTheCode from '@site/src/components/ShowMeTheCode';
 ## `<ShowMeTheCode/>`
 
 <Html2Canvas>
-    <ShowMeTheCode/>
+    <div style={{padding: '8px'}}>
+        <ShowMeTheCode/>
+    </div>
 </Html2Canvas>

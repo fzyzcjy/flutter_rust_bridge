@@ -5,7 +5,7 @@ import CodeBlock from '@theme/CodeBlock';
 export default function ShowMeTheCode() {
     return (
         <div style={{display: 'flex', flexDirection: 'row', position: 'relative'}}>
-            <div style={{paddingRight: '28px', width: '350px', borderRight: '1px solid #ddd'}}>
+            <div style={{paddingRight: '28px', width: '300px', borderRight: '1px solid #ddd'}}>
             </div>
             <div style={{paddingLeft: '28px'}}>
                 <SectionTitle color="#4caf50">1. Simple</SectionTitle>
@@ -43,7 +43,7 @@ export default function ShowMeTheCode() {
                         color="#cfeeff"
                         hintColor="#03a9f4"
                         hint="Complex but auto-translatable">
-                        {"{ A { name: (String, i32), children: Option<Vec<Tree>> }, B }"}
+                        {"{ A {name:(String,i32),children:Option<Vec<Tree>>}, B }"}
                     </MyMark>
                     {"\n\n"}
                     <MyMark
