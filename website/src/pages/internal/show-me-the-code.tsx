@@ -5,7 +5,7 @@ import ShowMeTheCode from "@site/src/components/ShowMeTheCode";
 /**
  * How to take screenshot:
  * 1. Follow https://davidaugustat.com/web/take-ultra-high-resolution-screenshots-in-chrome
- *    to create a super large device (e.g. 8000x8000)
+ *    to create a super large device (e.g. 7900x6950)
  * 2. Chrome's "capture screenshot"
  */
 export default class Page extends React.Component {
