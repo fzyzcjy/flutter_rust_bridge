@@ -120,31 +120,37 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {
-  await runPubGetIfNotRunYet(config.package);
+  await _withLlvmCodeCovReport(relativePwd: config.package, (rustEnvMap) async {
+    await runPubGetIfNotRunYet(config.package);
 
-  final dartMode = kDartModeOfPackage[config.package]!;
+    final dartMode = kDartModeOfPackage[config.package]!;
 
-  var extraFlags = '';
-  if (dartMode == DartMode.dart) {
-    extraFlags += '--enable-experiment=native-assets ';
-  }
-  if (config.package == 'frb_example/pure_dart') {
-    extraFlags += '--enable-vm-service ';
-  }
+    var extraFlags = '';
+    if (dartMode == DartMode.dart) {
+      extraFlags += '--enable-experiment=native-assets ';
+    }
+    if (config.package == 'frb_example/pure_dart') {
+      extraFlags += '--enable-vm-service ';
+    }
 
-  await exec(
+    await exec(
       '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
       relativePwd: config.package,
-      extraEnv: kEnvEnableRustBacktrace);
+      extraEnv: {
+        ...kEnvEnableRustBacktrace,
+        ...rustEnvMap,
+      },
+    );
 
-  if (config.coverage) {
-    await _formatDartCoverage(package: config.package);
-  }
+    if (config.coverage) {
+      await _formatDartCoverage(package: config.package);
+    }
+  });
 }
 
-// https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
+// Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
 Future<void> _withLlvmCodeCovReport(
-  Future<void> Function() inner, {
+  Future<void> Function(Map<String, String> envMap) inner, {
   required String relativePwd,
 }) async {
   final rawEnvs =
@@ -155,7 +161,11 @@ Future<void> _withLlvmCodeCovReport(
   }));
   print('envMap=$envMap');
 
-  TODO;
+  await exec('cargo llvm-cov clean --workspace', relativePwd: relativePwd);
+
+  await inner(envMap);
+
+  await exec('cargo llvm-cov report --lcov', relativePwd: relativePwd);
 }
 
 // ref: https://github.com/rrousselGit/riverpod/blob/67d26d2a47a7351d6676012c44eb53dd6ff79787/scripts/coverage.sh#L10
