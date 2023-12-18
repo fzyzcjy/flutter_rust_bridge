@@ -223,7 +223,7 @@ Future<void> _formatDartCoverage({required String package}) async {
 
   final reportOn = '${exec.pwd}/frb_dart';
   await exec(
-    'format_coverage --lcov --in=coverage --out=coverage/lcov.txt --packages=.dart_tool/package_config.json --report-on=$reportOn',
+    'format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
     relativePwd: package,
   );
 }
