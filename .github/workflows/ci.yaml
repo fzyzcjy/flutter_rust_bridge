@@ -346,11 +346,14 @@ jobs:
       - run: ./frb_internal test-dart-native --package ${{ matrix.package }} --coverage
 
       # report
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         with:
           name: lcov.txt
           path: ${{ matrix.package }}/coverage/lcov.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: rust_lcov.info
+          path: ${{ matrix.package }}/coverage/rust_lcov.info
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
