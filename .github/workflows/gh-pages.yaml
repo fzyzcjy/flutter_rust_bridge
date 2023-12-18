@@ -8,6 +8,7 @@ on:
     paths:
       - "website/**"
       - "frb_example/gallery/**"
+      - "tools/frb_internal" # the script
 
 env:
   FRB_MAIN_FLUTTER_VERSION: 3.16.0
