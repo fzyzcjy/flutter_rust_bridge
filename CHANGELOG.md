@@ -1,3 +1,7 @@
+## 2.0.0-dev.1
+
+* Please refer to TODO for what's changed in V2.
+
 ## 1.82.6
 
 * Bump README (since before 2.0 stable version, the 1.x will be the default page on pub.dev etc)
