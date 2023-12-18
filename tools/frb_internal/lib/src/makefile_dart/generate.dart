@@ -212,10 +212,7 @@ Future<void> generateRunFrbCodegenCommandGenerate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runPubGetIfNotRunYet(config.package);
-    await executeFrbCodegen(
-      relativePwd: config.package,
-      cmd: 'generate',
-    );
+    await executeFrbCodegen('generate', relativePwd: config.package);
   });
 }
 
@@ -243,13 +240,13 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 
     switch (config.package) {
       case 'frb_example/flutter_via_create':
-        await executeFrbCodegen(
-            relativePwd: 'frb_example', cmd: 'create flutter_via_create');
+        await executeFrbCodegen('create flutter_via_create',
+            relativePwd: 'frb_example');
 
       case 'frb_example/flutter_via_integrate':
         await exec('flutter create flutter_via_integrate',
             relativePwd: 'frb_example');
-        await executeFrbCodegen(relativePwd: config.package, cmd: 'integrate');
+        await executeFrbCodegen('integrate', relativePwd: config.package);
 
       default:
         throw Exception('Do not know how to handle package ${config.package}');
@@ -305,8 +302,8 @@ Future<void> generateWebsiteBuild() async {
   await exec('yarn install --frozen-lockfile', relativePwd: 'website');
   await exec('yarn build', relativePwd: 'website');
 
-  await executeFrbCodegen(
-      cmd: 'build-web --release', relativePwd: 'frb_example/gallery');
+  await executeFrbCodegen('build-web --release',
+      relativePwd: 'frb_example/gallery');
   await exec(
       'flutter build web '
       '--base-href /flutter_rust_bridge/demo/ '
