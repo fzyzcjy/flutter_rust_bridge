@@ -1,0 +1,31 @@
+flutter_rust_bridge_serve 1.82.6
+Develop Rust WASM modules with cross-origin isolation.
+
+USAGE:
+	flutter_rust_bridge_serve [OPTIONS] [..REST]
+	flutter_rust_bridge_serve --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]
+
+OPTIONS:
+-p, --port=<PORT>             HTTP port to listen to
+                              (defaults to "8080")
+-r, --root=<ROOT>             Root of the Flutter/Dart output
+-c, --crate=<CRATE>           Directory of the crate
+                              (defaults to "native")
+-d, --dart-input=<ENTRY>      Run "dart compile" with the specified input instead of "flutter build"
+-w, --wasm-output=<PKG>       WASM output path
+-v, --[no-]verbose            Display more verbose information
+    --[no-]relax-coep         Set COEP to credentialless
+                              Defaults to true for Flutter
+    --[no-]open               Open the webpage in a browser
+                              (defaults to on)
+    --run-tests               Run tests in headless Chromium
+    --release                 Compile in release mode
+    --[no-]weak-refs          Enable the weak references proposal
+                              Requires wasm-bindgen in path
+    --[no-]reference-types    Enable the reference types proposal
+                              Requires wasm-bindgen in path
+-h, --help                    Print this help message
+    --[no-]build              Whether to build the library.
+                              (defaults to on)
+    --features                A comma-separated list of features to pass to `cargo build`.
+    --no-default-features     Whether to disable all features, useful with --features
