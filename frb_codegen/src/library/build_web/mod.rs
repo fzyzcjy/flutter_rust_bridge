@@ -5,7 +5,7 @@ use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::{bail, Context};
 use log::debug;
 use std::path::{Path, PathBuf};
-use std::process::Command;
+use std::process::{Command, ExitStatus};
 use std::str::FromStr;
 use std::{env, fs};
 
@@ -38,20 +38,34 @@ fn execute_dart_command(
 ) -> anyhow::Result<()> {
     let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
 
-    let status = Command::new("dart")
-        .current_dir(dart_root)
-        .args(repo.command_extra_args())
-        .arg("run")
-        .arg("flutter_rust_bridge")
-        .arg("build-web")
-        .arg("--dart-root")
-        .arg(dart_root)
-        .args(args)
-        .status()?;
+    let dart_run_args = {
+        let mut ans = vec![
+            "run".to_owned(),
+            "flutter_rust_bridge".to_owned(),
+            "build-web".to_owned(),
+            "--dart-root".to_owned(),
+            path_to_string(dart_root)?,
+        ];
+        ans.extend(args);
+        ans
+    };
+    let status = dart_run(&repo, dart_root, dart_run_args)?;
 
     if !status.success() {
         bail!("Fail to execute command, please see logs above for details.")
     }
 
     Ok(())
+}
+
+fn dart_run(
+    repo: &DartRepository,
+    current_dir: &Path,
+    args: Vec<String>,
+) -> std::io::Result<ExitStatus> {
+    Command::new("dart")
+        .current_dir(current_dir)
+        .args(repo.command_extra_args())
+        .args(args)
+        .status()
 }
