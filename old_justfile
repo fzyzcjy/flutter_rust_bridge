@@ -97,10 +97,6 @@ precommit: dart_pub_get generate_all rust_linter dart_linter normalize_pubspec_l
 
 # ============================ releasing new versions ============================
 
-_release_update_version old_version new_version:
-    {{sed}} 's/version = "{{old_version}}"/version = "{{new_version}}"/g' Cargo.toml
-    {{sed}} 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
-
 _release_update_git old_version new_version:
     git add --all
     git status && git diff --staged | grep ''

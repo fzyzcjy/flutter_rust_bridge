@@ -40,7 +40,17 @@ Future<void> release() async {
 
 Future<void> releaseUpdateVersion() async {
   final versionInfo = _computeVersionInfo();
-  throw UnimplementedError();
+
+  _simpleReplaceFile(
+    'Cargo.toml',
+    '\nversion = "${versionInfo.oldVersion}"\n',
+    '\nversion = "${versionInfo.newVersion}"\n',
+  );
+  _simpleReplaceFile(
+    'frb_dart/pubspec.yaml',
+    '\nversion: ${versionInfo.oldVersion}\n',
+    '\nversion: ${versionInfo.newVersion}\n',
+  );
 }
 
 Future<void> releaseUpdateScoop() async {
@@ -76,4 +86,13 @@ _VersionInfo _computeVersionInfo() {
     newVersion: versions[0],
     oldVersion: versions[1],
   );
+}
+
+void _simpleReplaceFile(String relativePath, String from, String replace) {
+  _simpleActFile(relativePath, (x) => x.replaceAll(from, replace));
+}
+
+void _simpleActFile(String relativePath, String Function(String) replacer) {
+  final file = File('${exec.pwd}$relativePath');
+  file.writeAsStringSync(replacer(file.readAsStringSync()));
 }
