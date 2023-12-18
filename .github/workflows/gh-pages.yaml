@@ -15,6 +15,7 @@ concurrency:
 
 jobs:
   deploy:
+    name: 'Deploy'
     runs-on: ubuntu-latest
     steps:
       # setup
