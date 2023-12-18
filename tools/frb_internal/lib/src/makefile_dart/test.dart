@@ -142,11 +142,11 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
         ...rustEnvMap,
       },
     );
-
-    if (config.coverage) {
-      await _formatDartCoverage(package: config.package);
-    }
   });
+
+  if (config.coverage) {
+    await _formatDartCoverage(package: config.package);
+  }
 }
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
