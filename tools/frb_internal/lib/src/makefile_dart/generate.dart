@@ -327,7 +327,10 @@ Future<void> generateWebsiteMerge() async {
 }
 
 Future<void> _generateWebsiteMergeDemoIndexHtml() async {
-  TODO;
+  final htmlDocusaurus =
+      File('${exec.pwd}/website/build/demo/index.html').readAsStringSync();
+  final ans = TODO;
+  File('${exec.pwd}/$_kWebsiteDir/demo/index.html').writeAsStringSync(ans);
 }
 
 Future<void> generateWebsiteServe() async {
