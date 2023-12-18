@@ -295,4 +295,10 @@ Future<void> _maybeSetExitIfChanged(GenerateConfig config,
 Future<void> generateWebsite() async {
   await exec('yarn install --frozen-lockfile', relativePwd: 'website');
   await exec('yarn build', relativePwd: 'website');
+
+  await exec('mdbook build .', relativePwd: 'website/v1_mdbook');
+
+  await exec('mkdir -p website/merged_target/v1');
+  await exec('cp -r website/build website/merged_target');
+  await exec('cp -r website/v1_mdbook/book website/merged_target/v1');
 }

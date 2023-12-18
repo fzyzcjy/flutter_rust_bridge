@@ -6,33 +6,36 @@ on:
     branches:
       - master
     paths:
-      - "book/**"
-  pull_request:
-    paths:
-      - "book/**"
+      - "website/**"
+      - "frb_example/gallery/**"
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
+      # setup
       - uses: actions/checkout@v4
-
-      # ref https://github.com/peaceiris/actions-mdbook
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+          cache-dependency-path: website/yarn.lock
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: "latest"
-
       - name: Setup `mdbook-mermaid`
         run: cargo install mdbook-mermaid
 
-      - run: mdbook build ./book
+      # execute
+      - run: ./frb_internal generate-website
 
+      # deploy
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book/book
+          publish_dir: ./website/merged_target

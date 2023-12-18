@@ -78,6 +78,12 @@ jobs:
           node-version: 18
           cache: yarn
           cache-dependency-path: website/yarn.lock
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: "latest"
+      - name: Setup `mdbook-mermaid`
+        run: cargo install mdbook-mermaid
 
       # execute
       - run: ./frb_internal generate-website
