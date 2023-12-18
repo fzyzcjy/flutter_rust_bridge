@@ -309,7 +309,7 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
 
-  await executeFrbCodegen('build-web --coverage',
+  await executeFrbCodegen('build-web --dart-coverage',
       relativePwd: config.package, coverage: config.coverage);
 
   await exec(
