@@ -57,6 +57,11 @@ but can still be used as a reference.)
 
 ## Demo
 
+:::info
+Expect the demo to be slow to load, ugly on small devices, etc.
+Since the focus is the library instead of the demo, the demo code is super naive and minimal.
+:::
+
 import FrbExampleGallery from "@site/src/components/FrbExampleGallery";
 
 <FrbExampleGallery />
