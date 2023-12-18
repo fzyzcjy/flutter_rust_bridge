@@ -22,7 +22,12 @@ export default class FrbExampleGallery extends React.Component {
 
     render() {
         return (
-            <div id="flutter_host" style={{height: '500px', border: '1px solid #ccc'}}>Loading Flutter web app...</div>
+            <>
+                <script src="enable-threads.js"></script>
+                <script src="flutter.js" defer></script>
+                <div id="flutter_host" style={{height: '500px', border: '1px solid #ccc'}}>Loading Flutter web app...
+                </div>
+            </>
         )
     }
 }
