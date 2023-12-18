@@ -654,8 +654,10 @@ jobs:
   misc_codecov:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
+    # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
       - test_rust
+      - test_dart_native
 
     steps:
       - name: Download artifacts
