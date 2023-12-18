@@ -160,20 +160,24 @@ Future<void> _withLlvmCodeCovReport(
     return;
   }
 
-  final rawEnvs =
-      (await exec('cargo llvm-cov show-env', relativePwd: relativePwd)).stdout;
+  // `--release`, since our dart tests by default build rust release libs
+  const cargoLlvmCovCommonArgs = '--release';
+
+  final rawEnvs = (await exec('cargo llvm-cov show-env $cargoLlvmCovCommonArgs',
+          relativePwd: relativePwd))
+      .stdout;
   final envMap = Map.fromEntries(rawEnvs.trim().split('\n').map((line) {
     final m = RegExp(r"^(\w+)='?(.+?)'?$").firstMatch(line)!;
     return MapEntry(m.group(1)!, m.group(2)!);
   }));
   print('envMap=$envMap');
 
-  await exec('cargo llvm-cov clean --workspace',
+  await exec('cargo llvm-cov clean --workspace $cargoLlvmCovCommonArgs',
       relativePwd: relativePwd, extraEnv: envMap);
 
   await inner(envMap);
 
-  await exec('cargo llvm-cov report --lcov',
+  await exec('cargo llvm-cov report --lcov $cargoLlvmCovCommonArgs',
       relativePwd: relativePwd, extraEnv: envMap);
 }
 
