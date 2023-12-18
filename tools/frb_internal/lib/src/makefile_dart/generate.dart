@@ -306,7 +306,7 @@ Future<void> generateWebsiteBuild() async {
 
   await exec(
       'flutter build web '
-      '--base-href /flutter_rust_bridge/gallery/ '
+      '--base-href /flutter_rust_bridge/demo/ '
       // Pwa seems to have conflict with the enable-threads.js hack
       // enable-threads.js: https://github.com/orgs/community/discussions/13309
       '--pwa-strategy none',
@@ -315,26 +315,19 @@ Future<void> generateWebsiteBuild() async {
   await exec('mdbook build .', relativePwd: 'website/v1_mdbook');
 }
 
+const _kWebsiteDir = 'website/merged_target/flutter_rust_bridge';
+
 Future<void> generateWebsiteMerge() async {
-  const kWebsiteDir = 'website/merged_target/flutter_rust_bridge';
-
-  await exec('mkdir -p $kWebsiteDir');
-  await exec('cp -r website/build/ $kWebsiteDir');
-  await exec('cp -r website/v1_mdbook/book/ $kWebsiteDir/v1');
-  await exec('cp -r frb_example/gallery/build/web/ $kWebsiteDir/gallery');
-
-  // https://github.com/orgs/community/discussions/13309
-  _replaceFile(
-      '$kWebsiteDir/gallery/index.html',
-      (String text) => text.replaceFirst('<script src="flutter.js"',
-          '<script src="enable-threads.js"></script>\n<script src="flutter.js"'));
-
-  await exec('ls -al $kWebsiteDir');
+  await exec('mkdir -p $_kWebsiteDir');
+  await exec('cp -r website/build/ $_kWebsiteDir');
+  await exec('cp -r website/v1_mdbook/book/ $_kWebsiteDir/v1');
+  await exec('cp -r frb_example/gallery/build/web/ $_kWebsiteDir/demo');
+  _generateWebsiteMergeDemoIndexHtml();
+  await exec('ls -al $_kWebsiteDir');
 }
 
-void _replaceFile(String path, String Function(String) replacer) {
-  final file = File('${exec.pwd}/$path');
-  file.writeAsStringSync(replacer(file.readAsStringSync()));
+Future<void> _generateWebsiteMergeDemoIndexHtml() async {
+  TODO;
 }
 
 Future<void> generateWebsiteServe() async {
