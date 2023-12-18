@@ -684,8 +684,12 @@ jobs:
     runs-on: ubuntu-latest
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
+      - generate_run_frb_codegen_command_generate
+      - generate_run_frb_codegen_command_integrate
+      - generate_internal
       - test_rust
       - test_dart_native
+      - test_flutter_web
 
     steps:
       - name: Download artifacts
