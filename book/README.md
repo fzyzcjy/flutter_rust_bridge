@@ -1,0 +1,1 @@
+This folder should have been deleted, but the `logo.png` and `flutter_favorite.png` are used in pub.dev and crates.io package descriptions, thus we cannot remove them.
