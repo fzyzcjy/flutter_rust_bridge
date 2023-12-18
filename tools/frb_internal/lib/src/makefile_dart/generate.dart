@@ -322,16 +322,17 @@ Future<void> generateWebsiteMerge() async {
   await exec('cp -r website/build/ $_kWebsiteDir');
   await exec('cp -r website/v1_mdbook/book/ $_kWebsiteDir/v1');
   await exec('cp -r frb_example/gallery/build/web/ $_kWebsiteDir/demo');
-  _generateWebsiteMergeDemoIndexHtml();
+  // _generateWebsiteMergeDemoIndexHtml();
   await exec('ls -al $_kWebsiteDir');
 }
 
-Future<void> _generateWebsiteMergeDemoIndexHtml() async {
-  final htmlDocusaurus =
-      File('${exec.pwd}/website/build/demo/index.html').readAsStringSync();
-  final ans = TODO;
-  File('${exec.pwd}/$_kWebsiteDir/demo/index.html').writeAsStringSync(ans);
-}
+// TODO
+// void _generateWebsiteMergeDemoIndexHtml() {
+//   final htmlDocusaurus =
+//       File('${exec.pwd}/website/build/demo/index.html').readAsStringSync();
+//   final ans = TODO;
+//   File('${exec.pwd}/$_kWebsiteDir/demo/index.html').writeAsStringSync(ans);
+// }
 
 Future<void> generateWebsiteServe() async {
   await exec('python -m http.server 8765',
