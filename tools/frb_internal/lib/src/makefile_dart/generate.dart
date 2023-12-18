@@ -53,6 +53,7 @@ List<Command<void>> createCommands() {
     SimpleCommand('generate-website', generateWebsite),
     SimpleCommand('generate-website-build', generateWebsiteBuild),
     SimpleCommand('generate-website-merge', generateWebsiteMerge),
+    SimpleCommand('generate-website-serve', generateWebsiteServe),
   ];
 }
 
@@ -310,10 +311,15 @@ Future<void> generateWebsiteBuild() async {
 }
 
 Future<void> generateWebsiteMerge() async {
-  const dirMergedTarget = 'website/merged_target/flutter_rust_bridge';
-  await exec('mkdir -p $dirMergedTarget');
-  await exec('cp -r website/build/ $dirMergedTarget');
-  await exec('cp -r website/v1_mdbook/book/ $dirMergedTarget/v1');
-  await exec('cp -r frb_example/gallery/build/web/ $dirMergedTarget/gallery');
-  await exec('ls -al $dirMergedTarget');
+  await exec('mkdir -p $_kWebsiteDir');
+  await exec('cp -r website/build/ $_kWebsiteDir');
+  await exec('cp -r website/v1_mdbook/book/ $_kWebsiteDir/v1');
+  await exec('cp -r frb_example/gallery/build/web/ $_kWebsiteDir/gallery');
+  await exec('ls -al $_kWebsiteDir');
 }
+
+Future<void> generateWebsiteServe() async {
+  await exec('python -m http.server 8765', relativePwd: _kWebsiteDir);
+}
+
+const _kWebsiteDir = 'website/merged_target/flutter_rust_bridge';
