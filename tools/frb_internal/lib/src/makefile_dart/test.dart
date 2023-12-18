@@ -132,7 +132,7 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {
-  await _withLlvmCodeCovReport(package: config.package, enable: config.coverage,
+  await withLlvmCovReport(package: config.package, enable: config.coverage,
       (rustEnvMap) async {
     await runPubGetIfNotRunYet(config.package);
 
@@ -162,7 +162,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
 }
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
-Future<void> _withLlvmCodeCovReport(
+Future<void> withLlvmCovReport(
   Future<void> Function(Map<String, String> envMap) inner, {
   required bool enable,
   required String package,
