@@ -133,46 +133,48 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
 }
 
 Future<void> generateInternalContributor(GenerateConfig config) async {
-  final customRaw = loadYaml(
-      File('${exec.pwd}/.all-contributors-custom.yaml').readAsStringSync());
-  final customConverted = [
-    for (final item in customRaw)
-      {
-        'login': (item as Map<dynamic, dynamic>).keys.single,
-        'customMessage': item.values.single,
-      }
-  ];
-  print('customConverted=$customConverted');
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    final customRaw = loadYaml(
+        File('${exec.pwd}/.all-contributors-custom.yaml').readAsStringSync());
+    final customConverted = [
+      for (final item in customRaw)
+        {
+          'login': (item as Map<dynamic, dynamic>).keys.single,
+          'customMessage': item.values.single,
+        }
+    ];
+    print('customConverted=$customConverted');
 
-  final fileAllContributorsrc = File('${exec.pwd}/.all-contributorsrc');
-  final allContributorsrcOld =
-      jsonDecode(fileAllContributorsrc.readAsStringSync());
+    final fileAllContributorsrc = File('${exec.pwd}/.all-contributorsrc');
+    final allContributorsrcOld =
+        jsonDecode(fileAllContributorsrc.readAsStringSync());
 
-  final contributorNamesNew = [
-    'fzyzcjy',
-    for (final item in customConverted) item['login'],
-  ];
-  final allContributorsrcNew = {
-    ...allContributorsrcOld,
-    'contributors': [
-      for (final login in contributorNamesNew)
-        allContributorsrcOld['contributors']
-            .where((x) => x['login'] == login)
-            .single
-    ]
-  };
-  fileAllContributorsrc.writeAsStringSync(
-      const JsonEncoder.withIndent('  ').convert(allContributorsrcNew));
+    final contributorNamesNew = [
+      'fzyzcjy',
+      for (final item in customConverted) item['login'],
+    ];
+    final allContributorsrcNew = {
+      ...allContributorsrcOld,
+      'contributors': [
+        for (final login in contributorNamesNew)
+          allContributorsrcOld['contributors']
+              .where((x) => x['login'] == login)
+              .single
+      ]
+    };
+    fileAllContributorsrc.writeAsStringSync(
+        const JsonEncoder.withIndent('  ').convert(allContributorsrcNew));
 
-  final messageTextNew = [
-    for (final item in customConverted)
-      '* [${item["login"]}](https://github.com/${item["login"]}): ${item["customMessage"]}\n',
-  ].join('');
+    final messageTextNew = [
+      for (final item in customConverted)
+        '* [${item["login"]}](https://github.com/${item["login"]}): ${item["customMessage"]}\n',
+    ].join('');
 
-  File('${exec.pwd}/website/docs/generated/_contributor-custom-message.mdx')
-      .writeAsStringSync(messageTextNew);
+    File('${exec.pwd}/website/docs/generated/_contributor-custom-message.mdx')
+        .writeAsStringSync(messageTextNew);
 
-  await exec('all-contributors generate');
+    await exec('all-contributors generate');
+  });
 }
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
