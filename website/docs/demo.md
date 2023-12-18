@@ -57,8 +57,9 @@ but can still be used as a reference.)
 
 ## Demo
 
-<div id="flutter_host" style={{height: '500px', border: '1px solid #ccc'}}>Loading Flutter web app...</div>
-<br/>
+import FrbExampleGallery from "@site/src/components/FrbExampleGallery";
+
+<FrbExampleGallery />
 
 All source code can be found in `frb_example/gallery.`
 Remember to ignore all `ignore_me` folders, which contain code unrelated to the purpose of the demos.
