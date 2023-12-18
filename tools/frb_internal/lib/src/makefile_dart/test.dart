@@ -132,9 +132,16 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {
+  final enableRustCoverage = config.coverage &&
+      !const [
+        'frb_dart',
+        'frb_utils',
+        'tools/frb_internal',
+      ].contains(config.package);
+
   await withLlvmCovReport(
       relativeRustPwd: path.join(config.package, 'rust'),
-      enable: config.coverage, (rustEnvMap) async {
+      enable: enableRustCoverage, (rustEnvMap) async {
     await runPubGetIfNotRunYet(config.package);
 
     final dartMode = kDartModeOfPackage[config.package]!;
