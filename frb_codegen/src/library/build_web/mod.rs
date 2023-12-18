@@ -96,6 +96,7 @@ fn dart_run(
             "-o",
             "coverage/coverage.json",
             "--resume-isolates",
+            // TODO this scope-output?
             "--scope-output=foo",
         )?;
         println!("hi 2");
