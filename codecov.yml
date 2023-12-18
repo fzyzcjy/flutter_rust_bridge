@@ -1,0 +1,9 @@
+codecov:
+  require_ci_to_pass: true
+
+# also ref https://github.com/rrousselGit/riverpod/blob/master/codecov.yml
+ignore:
+  - "**/example/"
+  - "**/*.g.dart"
+  - "**/*.freezed.dart"
+  - "**/test/"
