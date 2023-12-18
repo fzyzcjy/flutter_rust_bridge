@@ -651,6 +651,8 @@ jobs:
 
   # ----------------------------------- misc -----------------------------------
 
+  # Why one separate codecov job: Otherwise, when some jobs upload artifact while some not,
+  # the (partial) coverage will show up and be very low - which surely does not reflect actual coverage.
   misc_codecov:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
