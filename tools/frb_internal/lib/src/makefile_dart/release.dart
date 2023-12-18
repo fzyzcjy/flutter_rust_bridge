@@ -32,7 +32,7 @@ Future<void> release() async {
 
 Future<void> releaseUpdateVersion() async {
   final versionInfo = _computeVersionInfo();
-  TODO;
+  throw UnimplementedError();
 }
 
 Future<void> releaseUpdateScoop() async {
@@ -42,12 +42,12 @@ Future<void> releaseUpdateScoop() async {
 
 Future<void> releaseUpdateGit() async {
   final versionInfo = _computeVersionInfo();
-  TODO;
+  throw UnimplementedError();
 }
 
 Future<void> releaseUpdateGithub() async {
   final versionInfo = _computeVersionInfo();
-  TODO;
+  throw UnimplementedError();
 }
 
 Future<void> releasePublishAll() async {
@@ -59,5 +59,5 @@ Future<void> releasePublishAll() async {
 }
 
 _VersionInfo _computeVersionInfo() {
-  return TODO;
+  throw UnimplementedError();
 }
