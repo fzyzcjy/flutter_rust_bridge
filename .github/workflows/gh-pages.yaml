@@ -9,6 +9,9 @@ on:
       - "website/**"
       - "frb_example/gallery/**"
 
+env:
+  FRB_MAIN_DART_VERSION: 3.2.0
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
@@ -20,6 +23,10 @@ jobs:
     steps:
       # setup
       - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
       - uses: actions/setup-node@v3
         with:
           node-version: 18
