@@ -332,6 +332,7 @@ Future<void> generateWebsiteMerge() async {
   await exec('cp -r website/build/ $_kWebsiteDir');
   await exec('cp -r website/v1_mdbook/book/ $_kWebsiteDir/v1');
   await exec('cp -r frb_example/gallery/build/web/* $_kWebsiteDir/demo');
+  await exec('rm $_kWebsiteDir/demo/pkg/.gitignore');
   _generateWebsiteMergeDemoIndexHtml();
   await exec('ls -al $_kWebsiteDir ; ls -al $_kWebsiteDir/demo');
 }
