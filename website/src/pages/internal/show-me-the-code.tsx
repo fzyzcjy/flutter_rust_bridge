@@ -4,9 +4,12 @@ import ShowMeTheCode from "@site/src/components/ShowMeTheCode";
 
 /**
  * How to take screenshot:
- * 1. Follow https://davidaugustat.com/web/take-ultra-high-resolution-screenshots-in-chrome
- *    to create a super large device (e.g. 8000x8000)
- * 2. Chrome's "capture screenshot"
+ * 1. Open Chrome devtools
+ * 2. Click "toggle device toolbar"
+ * 3. Choose "Dimensions: Responsive"
+ * 4. Adjust dimension to appropreate (e.g. 7884x6758 seems good)
+ * 5. Click "capture screenshot" (inside right-top menu)
+ * rough ref: https://davidaugustat.com/web/take-ultra-high-resolution-screenshots-in-chrome
  */
 export default class Page extends React.Component {
     render() {
