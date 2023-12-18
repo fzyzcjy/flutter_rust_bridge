@@ -214,11 +214,12 @@ and add one ourselves. In the <strong>Build Settings</strong> tab, set the
 <h1 id="for-multi-blocks"><a class="header" href="#for-multi-blocks">For multi-blocks</a></h1>
 <p>If there are <a href="https://cjycode.com/flutter_rust_bridge/feature/multiple_files.html">multi-blocks</a>:</p>
 <ul>
-<li>For iOS, just add the 1st generated block-header files in <code>Runner-Bridging-Header.h</code>.</li>
-<li>For MacOS, just add the 1st generated block-header files as <strong>Objective-C Bridging Header</strong>.</li>
+<li>For iOS, just add the shared C header file(<code>#import &quot;bridge_generated_shared.h&quot;</code> as default) along with <code>#import &quot;GeneratedPluginRegistrant.h&quot;</code> in <code>Runner-Bridging-Header.h</code>. And there is no need for other C header files.</li>
+<li>For MacOS, just set the shared C header file as <strong>Objective-C Bridging Header</strong>.</li>
 </ul>
-<p>For all cases, the <code>AppDelegate.swift</code> should be the same as that in the single-block case.
-<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/1014">related issue</a></p>
+<p>For all cases, the <code>AppDelegate.swift</code> should be the same as that in the single-block case. Because <code>dummy_method_to_enforce_bundling</code> is defined in the shared generated C header file, which is acted as a manager controlling all C header files for regular Api blocks.
+<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/1014">isssue #1014</a>
+<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/1111">isssue #1111</a></p>
 
                     </main>
 
