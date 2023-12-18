@@ -9,11 +9,12 @@ on:
       - "website/**"
       - "frb_example/gallery/**"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       # setup
       - uses: actions/checkout@v4
