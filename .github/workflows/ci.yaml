@@ -63,7 +63,6 @@ jobs:
       # execute
       - run: ./frb_internal lint-dart
 
-  # TODO: use gh-pages.yaml instead
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   lint_docusaurus:
     name: 'Lint :: Docusaurus'
