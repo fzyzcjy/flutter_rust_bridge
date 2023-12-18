@@ -15,4 +15,4 @@ here we also document an alternative solution (object pool):
 By using object pools,
 you only pass around a "object handle" (just a few integers) between Rust and Dart,
 and the Rust side will convert that handle from and to the real object.
-For installation, please refer to [cancelable tasks](cancelable_task.md).
+For installation, please refer to [cancelable tasks](cancel).

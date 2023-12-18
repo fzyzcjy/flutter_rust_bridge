@@ -16,6 +16,6 @@ to satisfy your needs.
 
 Some typical scenarios are:
 
-* [Testing and mocking](../../how-to/test)
-* [Inspection](../../how-to/inspect)
-* [Load Rust library](../../how-to/load-library)
+* [Testing and mocking](../how-to/test)
+* [Inspection](../how-to/inspect)
+* [Load Rust library](../how-to/load-library)

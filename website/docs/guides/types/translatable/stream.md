@@ -14,7 +14,7 @@ The `StreamSink` can be placed at any location. For example, `fn f(a: i32, b: St
 
 ## Examples
 
-See [logging examples](logging.md) which uses streams extensively.
+See [logging examples](../../how-to/logging) which uses streams extensively.
 
 ## Streaming from Dart/Flutter to Rust
 

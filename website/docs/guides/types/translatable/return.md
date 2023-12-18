@@ -10,7 +10,7 @@ In addition, Rust has `panic` in addition to Result error, thus:
 
 * When Rust panic occurs, a `PanicException` will be thrown in Dart.
 
-If you want to see stack traces (backtraces), [this doc page](stack_trace.md) discusses how to configure it.
+If you want to see stack traces (backtraces), [this doc page](../../how-to/stack-trace) discusses how to configure it.
 
 ## Example
 

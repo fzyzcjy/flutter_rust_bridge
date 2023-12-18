@@ -18,5 +18,5 @@ Becomes:
 Future<void> useImportedThings({required MyStruct myStruct, required MyEnum myEnum});
 ```
 
-Remark: If you are curious about `Future`, have a look at [this](async_dart.md).
+Remark: If you are curious about `Future`, have a look at [this](../../../concurrency/async-dart).
 

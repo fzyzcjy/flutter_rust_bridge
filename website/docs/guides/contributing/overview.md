@@ -118,7 +118,7 @@ If you want to know more details, here is a table.
 | Rust Wire | `rust/src/frb_generated.rs`                                            | `fn wire_f(ptr: *mut u8, len: i32) { f(codec.decode(ptr, len)) }` | Generated     |
 | Rust API  | `rust/src/api/minimal.rs`                                              | `fn f(arg: String) { user_code }`                                 | User provided |
 
-More details are discussed in the concrete submodules, [CST codec](submodule/cst-codec) and [DCO codec](submodule/dco-codec).
+More details are discussed in the concrete submodules, [CST codec](submodules/cst-codec) and [DCO codec](submodules/dco-codec).
 
 ## The codec
 
@@ -129,6 +129,6 @@ If you like, you can only implement for one codec.
 
 During the function call, codecs are used to convert between normal Dart/Rust data
 and the corresponding Dart/Rust "wire" data.
-Currently, we have three codecs. A brief introduction is in [this page](../feature/miscellaneous/codec).
+Currently, we have three codecs. A brief introduction is in [this page](../miscellaneous/codec).
 
 Therefore, if you see modules named `cst`, `dco`, `sse`, they correspond to the codecs.

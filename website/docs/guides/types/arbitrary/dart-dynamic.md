@@ -67,7 +67,7 @@ assert(values[2] == "Hello there!");
 [`DartDynamic`] is not supported as parameters, and structs that transitively include them may not be used in parameter positions either.
 If you only care about accepting or returning an opaque Dart object without interacting with it, consider [`DartOpaque`].
 
-This type is meant to be used only as an esacpe hatch, if your data cannot be expressed as either a fixed [struct](./lang_struct.md) or [enum](./lang_enum.md).
+This type is meant to be used only as an esacpe hatch, if your data cannot be expressed as either a fixed [struct](../translatable/detailed/struct) or [enum](../translatable/detailed/enum).
 
-[`DartOpaque`]: ./lang_dart_opaque.md
+[`DartOpaque`]: ./dart-opaque
 [`DartDynamic`]: https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/type.DartDynamic.html

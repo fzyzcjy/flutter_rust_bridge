@@ -1,6 +1,6 @@
 # Report errors
 
-To configure to report errors to your backend, in addition to telling Dart, we can simply use a [custom Handler](../func/handler):
+To configure to report errors to your backend, in addition to telling Dart, we can simply use a [custom Handler](../custom/rust):
 
 ```rust
 pub struct MyErrorHandler(ReportDartErrorHandler);
