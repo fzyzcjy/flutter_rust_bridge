@@ -1,5 +1,7 @@
 //! Build web platform for a Flutter+Rust app
 
+use crate::command_run;
+use crate::library::commands::command_runner::{call_shell, check_exit_code};
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::{bail, Context};
@@ -58,15 +60,45 @@ fn execute_dart_command(
     Ok(())
 }
 
+// ref: https://pub.dev/packages/coverage
 fn dart_run(
     repo: &DartRepository,
     current_dir: &Path,
     dart_coverage: bool,
     args: Vec<String>,
 ) -> anyhow::Result<ExitStatus> {
-    Ok(Command::new("dart")
+    let handle = Command::new("dart")
         .current_dir(current_dir)
         .args(repo.command_extra_args())
+        .args(if dart_coverage {
+            vec![
+                "--pause-isolates-on-exit",
+                "--disable-service-auth-codes",
+                "--enable-vm-service=8181",
+            ]
+        } else {
+            vec![]
+        })
         .args(args)
-        .status()?)
+        .spawn()?;
+
+    if dart_coverage {
+        let res = command_run!(
+            call_shell[None, None],
+            "dart",
+            "pub",
+            "global",
+            "run",
+            "coverage:collect_coverage",
+            "--wait-paused",
+            "--uri=http://127.0.0.1:8181/",
+            "-o",
+            "coverage/coverage.json",
+            "--resume-isolates",
+            "--scope-output=foo",
+        )?;
+        check_exit_code(&res)?;
+    }
+
+    Ok(handle.wait_with_output()?.status)
 }
