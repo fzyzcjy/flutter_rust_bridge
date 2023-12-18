@@ -95,7 +95,7 @@ const config = {
                             },
                             {
                                 label: 'v1',
-                                href: 'v1',
+                                href: 'https://fzyzcjy.github.io/flutter_rust_bridge/v1',
                             },
                             // ... more items
                         ],
