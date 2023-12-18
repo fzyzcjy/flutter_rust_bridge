@@ -25,7 +25,7 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
   * **Safety**: Focus on your code, and forget memory safety, malloc/free, or undefined behavior completely.
   * **Other features**: Support whole folders as input, and the output folder will preserve hierarchy. Methods (not only functions).
 * **Quick setup, but fully customizable**: Run a one-liner command, then get a ready-to-use project (or integrate into existing projects). Provide sensible defaults, but everything can be customized.
-* **Solid CI**: We have CI for Valgrind, sanitizers (ASAN/MSAN/LSAN), testing for each platform, benchmarking, etc.
+* **Solid CI**: We have CI for Valgrind, sanitizers (ASAN/MSAN/LSAN), testing for each platform, benchmarking, codecov, etc.
 * **Fast**: It is only a thin (though feature-rich) wrapper, benchmarked on CI, and even has multiple codecs for best performance under different workloads.
 * **Lightweight**: You are free to use your favorite Flutter and Rust libraries and toolchains (e.g. runner, debugger).
 * **Cross-platform**: Android, iOS, Windows, Linux, MacOS, and Web.
