@@ -333,39 +333,40 @@ Future<void> generateWebsiteMerge() async {
   await exec('cp -r website/v1_mdbook/book/ $_kWebsiteDir/v1');
   await exec('cp -r frb_example/gallery/build/web/* $_kWebsiteDir/demo');
   await exec('rm $_kWebsiteDir/demo/pkg/.gitignore');
-  _generateWebsiteMergeDemoIndexHtml();
+  // _generateWebsiteMergeDemoIndexHtml();
   await exec('ls -al $_kWebsiteDir ; ls -al $_kWebsiteDir/demo');
 }
 
-void _generateWebsiteMergeDemoIndexHtml() {
-  // https://docs.flutter.dev/deployment/web#hostelement
-  const headCode = '''
-  <script src="enable-threads.js"></script>
-  <script src="flutter.js" defer></script>
-  ''';
-  const bodyCode = '''
-    <script>
-      window.addEventListener("load", function (ev) {
-        _flutter.loader.loadEntrypoint({
-          onEntrypointLoaded: async function(engineInitializer) {
-            let appRunner = await engineInitializer.initializeEngine({
-              // Pass a reference to "div#flutter_host" into the Flutter engine.
-              hostElement: document.querySelector("#flutter_host")
-            });
-            await appRunner.runApp();
-          }
-        });
-      });
-    </script>
-  ''';
-
-  final htmlDocusaurus =
-      File('${exec.pwd}/website/build/demo/index.html').readAsStringSync();
-  final ans = htmlDocusaurus
-      .replaceFirst('</head>', '$headCode</head>')
-      .replaceFirst('</body>', '$bodyCode</body>');
-  File('${exec.pwd}/$_kWebsiteDir/demo/index.html').writeAsStringSync(ans);
-}
+// TODO rm
+// void _generateWebsiteMergeDemoIndexHtml() {
+//   // https://docs.flutter.dev/deployment/web#hostelement
+//   const headCode = '''
+//   <script src="enable-threads.js"></script>
+//   <script src="flutter.js" defer></script>
+//   ''';
+//   const bodyCode = '''
+//     <script>
+//       window.addEventListener("load", function (ev) {
+//         _flutter.loader.loadEntrypoint({
+//           onEntrypointLoaded: async function(engineInitializer) {
+//             let appRunner = await engineInitializer.initializeEngine({
+//               // Pass a reference to "div#flutter_host" into the Flutter engine.
+//               hostElement: document.querySelector("#flutter_host")
+//             });
+//             await appRunner.runApp();
+//           }
+//         });
+//       });
+//     </script>
+//   ''';
+//
+//   final htmlDocusaurus =
+//       File('${exec.pwd}/website/build/demo/index.html').readAsStringSync();
+//   final ans = htmlDocusaurus
+//       .replaceFirst('</head>', '$headCode</head>')
+//       .replaceFirst('</body>', '$bodyCode</body>');
+//   File('${exec.pwd}/$_kWebsiteDir/demo/index.html').writeAsStringSync(ans);
+// }
 
 Future<void> generateWebsiteServe() async {
   await exec('python -m http.server 8765',
