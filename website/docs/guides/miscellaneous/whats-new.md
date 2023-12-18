@@ -3,7 +3,8 @@
 ## Changelog
 
 :::tip
-For a more vivid illustration, I suggest glancing through [the homepage](../../../).
+For a more vivid illustration, I suggest glancing through [the homepage](https://github.com/fzyzcjy/flutter_rust_bridge),
+where there are lists of features (advantages) and a quick show-me-the-code.
 :::
 
 ### Primary changes
