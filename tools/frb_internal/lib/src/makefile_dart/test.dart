@@ -181,7 +181,7 @@ Future<void> _withLlvmCodeCovReport(
 
   await exec(
       'cargo llvm-cov report --lcov '
-      '--output-path ../lcov.info '
+      '--output-path ../coverage/rust_lcov.info '
       "--ignore-filename-regex '.*/frb_example/.*' "
       '$cargoLlvmCovCommonArgs',
       relativePwd: relativeRustPwd,
