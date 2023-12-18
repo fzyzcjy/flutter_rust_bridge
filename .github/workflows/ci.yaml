@@ -139,6 +139,8 @@ jobs:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
+      # suggested way of installing llvm-cov https://github.com/taiki-e/cargo-llvm-cov#on-github-actions
+      - uses: taiki-e/install-action@cargo-llvm-cov
 
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage
@@ -183,6 +185,8 @@ jobs:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
+      # suggested way of installing llvm-cov https://github.com/taiki-e/cargo-llvm-cov#on-github-actions
+      - uses: taiki-e/install-action@cargo-llvm-cov
 
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-integrate --set-exit-if-changed --package ${{ matrix.package }} --coverage
@@ -216,6 +220,8 @@ jobs:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
+      # suggested way of installing llvm-cov https://github.com/taiki-e/cargo-llvm-cov#on-github-actions
+      - uses: taiki-e/install-action@cargo-llvm-cov
 
       # execute
       - run: ./frb_internal generate-internal --set-exit-if-changed --coverage
@@ -654,6 +660,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+      # suggested way of installing llvm-cov https://github.com/taiki-e/cargo-llvm-cov#on-github-actions
+      - uses: taiki-e/install-action@cargo-llvm-cov
       - run: |-
           rustup toolchain install nightly
           rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
