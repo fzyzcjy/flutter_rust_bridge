@@ -31,8 +31,11 @@ List<Command<void>> createCommands() {
         _$parseTestDartSanitizerConfigResult),
     SimpleConfigCommand('test-flutter-native', testFlutterNative,
         _$populateTestFlutterConfigParser, _$parseTestFlutterConfigResult),
-    SimpleConfigCommand('test-flutter-web', testFlutterWeb,
-        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+    SimpleConfigCommand(
+        'test-flutter-web',
+        testFlutterWeb,
+        _$populateTestFlutterWebConfigParser,
+        _$parseTestFlutterWebConfigResult),
   ];
 }
 
@@ -90,6 +93,14 @@ class TestFlutterConfig {
   final String package;
 
   const TestFlutterConfig({this.flutterTestArgs, required this.package});
+}
+
+@CliOptions()
+class TestFlutterWebConfig {
+  final String package;
+  final bool coverage;
+
+  const TestFlutterWebConfig({required this.package, required this.coverage});
 }
 
 Future<void> testRust(TestRustConfig config) async {
@@ -283,7 +294,7 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
       relativePwd: config.package);
 }
 
-Future<void> testFlutterWeb(TestDartConfig config) async {
+Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
 

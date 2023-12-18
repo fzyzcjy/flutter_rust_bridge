@@ -148,3 +148,25 @@ TestFlutterConfig parseTestFlutterConfig(List<String> args) {
   final result = _$parserForTestFlutterConfig.parse(args);
   return _$parseTestFlutterConfigResult(result);
 }
+
+TestFlutterWebConfig _$parseTestFlutterWebConfigResult(ArgResults result) =>
+    TestFlutterWebConfig(
+      package: result['package'] as String,
+      coverage: result['coverage'] as bool,
+    );
+
+ArgParser _$populateTestFlutterWebConfigParser(ArgParser parser) => parser
+  ..addOption(
+    'package',
+  )
+  ..addFlag(
+    'coverage',
+  );
+
+final _$parserForTestFlutterWebConfig =
+    _$populateTestFlutterWebConfigParser(ArgParser());
+
+TestFlutterWebConfig parseTestFlutterWebConfig(List<String> args) {
+  final result = _$parserForTestFlutterWebConfig.parse(args);
+  return _$parseTestFlutterWebConfigResult(result);
+}

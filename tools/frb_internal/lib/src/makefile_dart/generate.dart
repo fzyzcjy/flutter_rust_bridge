@@ -53,8 +53,16 @@ List<Command<void>> createCommands() {
         generateInternalDartSource,
         _$populateGenerateConfigParser,
         _$parseGenerateConfigResult),
-    SimpleCommand('generate-website', generateWebsite),
-    SimpleCommand('generate-website-build', generateWebsiteBuild),
+    SimpleConfigCommand(
+        'generate-website',
+        generateWebsite,
+        _$populateGenerateWebsiteConfigParser,
+        _$parseGenerateWebsiteConfigResult),
+    SimpleConfigCommand(
+        'generate-website-build',
+        generateWebsiteBuild,
+        _$populateGenerateWebsiteConfigParser,
+        _$parseGenerateWebsiteConfigResult),
     SimpleCommand('generate-website-merge', generateWebsiteMerge),
     SimpleCommand('generate-website-serve', generateWebsiteServe),
   ];
@@ -64,9 +72,11 @@ List<Command<void>> createCommands() {
 class GenerateConfig {
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
+  final bool coverage;
 
   const GenerateConfig({
     required this.setExitIfChanged,
+    required this.coverage,
   });
 }
 
@@ -76,10 +86,22 @@ class GeneratePackageConfig implements GenerateConfig {
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
   final String package;
+  @override
+  final bool coverage;
 
   const GeneratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
+    required this.coverage,
+  });
+}
+
+@CliOptions()
+class GenerateWebsiteConfig {
+  final bool coverage;
+
+  const GenerateWebsiteConfig({
+    required this.coverage,
   });
 }
 
@@ -301,17 +323,17 @@ Future<void> _maybeSetExitIfChanged(GenerateConfig config,
   }
 }
 
-Future<void> generateWebsite() async {
-  await generateWebsiteBuild();
+Future<void> generateWebsite(GenerateWebsiteConfig config) async {
+  await generateWebsiteBuild(config);
   await generateWebsiteMerge();
 }
 
-Future<void> generateWebsiteBuild() async {
+Future<void> generateWebsiteBuild(GenerateWebsiteConfig config) async {
   await exec('yarn install --frozen-lockfile', relativePwd: 'website');
   await exec('yarn build', relativePwd: 'website');
 
   await executeFrbCodegen('build-web --release',
-      relativePwd: 'frb_example/gallery');
+      relativePwd: 'frb_example/gallery', coverage: config.coverage);
   await exec(
       'flutter build web '
       '--base-href /flutter_rust_bridge/demo/ '
