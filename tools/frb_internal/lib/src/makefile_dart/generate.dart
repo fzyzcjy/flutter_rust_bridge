@@ -292,7 +292,10 @@ Future<RunCommandOutput> executeFrbCodegen(
   required String relativePwd,
   required bool coverage,
 }) async {
-  TODO(coverage);
+  // TODO
+  // TODO
+  // TODO
+  // TODO(coverage);
 
   return await exec(
     'cargo run --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
