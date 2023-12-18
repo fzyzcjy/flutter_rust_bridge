@@ -42,7 +42,6 @@ fn execute_dart_command(
 
     let dart_run_args = {
         let mut ans = vec![
-            "run".to_owned(),
             "flutter_rust_bridge".to_owned(),
             "build-web".to_owned(),
             "--dart-root".to_owned(),
@@ -70,6 +69,7 @@ fn dart_run(
     let handle = Command::new("dart")
         .current_dir(current_dir)
         .args(repo.command_extra_args())
+        .arg("run")
         .args(if dart_coverage {
             vec![
                 "--pause-isolates-on-exit",
