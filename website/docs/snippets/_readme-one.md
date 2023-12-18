@@ -29,8 +29,10 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/wh
 * **Cross-platform**: Android, iOS, Windows, Linux, MacOS, and Web.
 * **Pure-Dart compatible:** Despite the name, this package is 100% compatible with pure Dart.
 
+### Why Flutter + Rust?
+
 <details>
-<summary>Why Flutter + Rust?</summary>
+<summary>Click to expand</summary>
 
 Firstly, super briefly introduce each component (you can find much more in a lot of blogs and posts):
 
