@@ -48,7 +48,7 @@ fn execute_dart_command(
             "--dart-root".to_owned(),
             path_to_string(dart_root)?,
         ];
-        ans.extend(args);
+        ans.extend(args.to_owned());
         ans
     };
     let status = dart_run(&repo, dart_root, dart_coverage, dart_run_args)?;
@@ -84,7 +84,7 @@ fn dart_run(
 
     if dart_coverage {
         let res = command_run!(
-            call_shell[None, Some(current_dir)],
+            call_shell[Some(current_dir), None],
             "dart",
             "pub",
             "global",
