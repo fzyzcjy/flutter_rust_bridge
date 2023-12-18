@@ -60,6 +60,7 @@ fn execute_dart_command(
 }
 
 // ref: https://pub.dev/packages/coverage
+#[allow(clippy::vec_init_then_push)]
 fn dart_run(
     repo: &DartRepository,
     current_dir: &Path,
