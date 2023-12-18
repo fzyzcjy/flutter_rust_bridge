@@ -97,25 +97,9 @@ precommit: dart_pub_get generate_all rust_linter dart_linter normalize_pubspec_l
 
 # ============================ releasing new versions ============================
 
-release old_version new_version:
-    just _release_sanity_check_version {{old_version}} {{new_version}}
-    just _release_update_version {{old_version}} {{new_version}}
-    just precommit
-    just _release_update_scoop
-    just _release_update_git {{old_version}} {{new_version}}
-    just _release_update_github {{old_version}} {{new_version}}
-    just _release_publish_all
-
-_release_sanity_check_version old_version new_version:
-    grep -q 'version = "{{old_version}}"' Cargo.toml
-    grep -q '{{new_version}}' CHANGELOG.md
-
 _release_update_version old_version new_version:
     {{sed}} 's/version = "{{old_version}}"/version = "{{new_version}}"/g' Cargo.toml
     {{sed}} 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
-
-_release_update_scoop:
-    cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json
 
 _release_update_git old_version new_version:
     git add --all
@@ -127,12 +111,6 @@ _release_update_github old_version new_version:
     awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft --title v{{new_version}}
     echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'
     open https://github.com/fzyzcjy/flutter_rust_bridge/releases
-
-_release_publish_all:
-    (cd frb_codegen && cargo publish)
-    (cd frb_rust && cargo publish)
-    (cd frb_macros && cargo publish)
-    (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
 
 install_ndk:
     just _install_crate cargo-ndk
