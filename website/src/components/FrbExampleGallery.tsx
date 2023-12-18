@@ -4,8 +4,6 @@ import React from 'react';
 export default function FrbExampleGallery() {
     return (
         <>
-            <script src="enable-threads.js"></script>
-            <script src="flutter.js" defer></script>
             <div id="flutter_host" style={{height: '500px', border: '1px solid #ccc'}}>Loading Flutter web app...
             </div>
             <FlutterInitializer/>
@@ -16,6 +14,19 @@ export default function FrbExampleGallery() {
 class FlutterInitializer extends React.Component {
     componentDidMount() {
         console.log('FrbExampleGallery.FlutterInitializer componentDidMount');
+
+        {
+            const script = document.createElement("script");
+            script.src = 'enable-threads.js';
+            document.body.appendChild(script);
+        }
+
+        {
+            const script = document.createElement("script");
+            script.src = 'flutter.js';
+            // script.defer = true; // TODO
+            document.body.appendChild(script);
+        }
 
         window.addEventListener("load", function (ev) {
             console.log('FrbExampleGallery.FlutterInitializer call flutter-loadEntrypoint');
