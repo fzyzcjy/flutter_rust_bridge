@@ -12,6 +12,10 @@
 
 Want to combine the best between [Flutter](https://flutter.dev/), a cross-platform hot-reload rapid-development UI toolkit, and [Rust](https://www.rust-lang.org/), a language empowering everyone to build reliable and efficient software? Here it comes!
 
+## 🎉 flutter_rust_bridge v2 is there! This is the old v1 version.
+
+Please visit https://github.com/fzyzcjy/flutter_rust_bridge for latest information.
+
 ## 🚀 Advantages
 
 * **Memory-safe**: Never need to think about malloc/free.
