@@ -5,6 +5,8 @@ import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+
+// ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
     as frb_example_pure_dart_generator;
@@ -119,7 +121,8 @@ Future<void> generateInternalRust(GenerateConfig config) async {
       await runPubGetIfNotRunYet(package);
     }
 
-    await executeFrbCodegen('internal-generate', relativePwd: 'frb_codegen');
+    await executeFrbCodegen('internal-generate',
+        relativePwd: 'frb_codegen', coverage: config.coverage);
   });
 }
 
@@ -133,7 +136,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
       ('build-web', '--dart-root ${exec.pwd}frb_example/pure_dart'),
     ]) {
       final resp = await executeFrbCodegen('$cmd $extraArgs --help',
-          relativePwd: 'frb_codegen');
+          relativePwd: 'frb_codegen', coverage: config.coverage);
       File('${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx')
           .writeAsStringSync('```\n${resp.stdout}```');
     }
@@ -212,7 +215,8 @@ Future<void> generateRunFrbCodegenCommandGenerate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runPubGetIfNotRunYet(config.package);
-    await executeFrbCodegen('generate', relativePwd: config.package);
+    await executeFrbCodegen('generate',
+        relativePwd: config.package, coverage: config.coverage);
   });
 }
 
@@ -241,12 +245,13 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     switch (config.package) {
       case 'frb_example/flutter_via_create':
         await executeFrbCodegen('create flutter_via_create',
-            relativePwd: 'frb_example');
+            relativePwd: 'frb_example', coverage: config.coverage);
 
       case 'frb_example/flutter_via_integrate':
         await exec('flutter create flutter_via_integrate',
             relativePwd: 'frb_example');
-        await executeFrbCodegen('integrate', relativePwd: config.package);
+        await executeFrbCodegen('integrate',
+            relativePwd: config.package, coverage: config.coverage);
 
       default:
         throw Exception('Do not know how to handle package ${config.package}');
@@ -263,7 +268,10 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 Future<RunCommandOutput> executeFrbCodegen(
   String cmd, {
   required String relativePwd,
+  required bool coverage,
 }) async {
+  TODO(coverage);
+
   return await exec(
     'cargo run --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
     relativePwd: relativePwd,

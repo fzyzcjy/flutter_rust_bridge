@@ -287,7 +287,8 @@ Future<void> testFlutterWeb(TestDartConfig config) async {
   await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
 
-  await executeFrbCodegen('build-web', relativePwd: config.package);
+  await executeFrbCodegen('build-web',
+      relativePwd: config.package, coverage: config.coverage);
 
   await exec(
       'flutter drive '
