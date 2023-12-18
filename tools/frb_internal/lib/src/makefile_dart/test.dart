@@ -319,6 +319,10 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
       '-d web-server '
       '--verbose',
       relativePwd: config.package);
+
+  if (config.coverage) {
+    await _formatDartCoverage(package: config.package);
+  }
 }
 
 Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
