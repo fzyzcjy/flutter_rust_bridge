@@ -16,12 +16,14 @@ class FlutterInitializer extends React.Component {
         console.log('FrbExampleGallery.FlutterInitializer componentDidMount');
 
         {
+            console.log('FrbExampleGallery.FlutterInitializer add enable-threads.js script');
             const script = document.createElement("script");
             script.src = '/flutter_rust_bridge/demo/enable-threads.js';
             document.body.appendChild(script);
         }
 
         {
+            console.log('FrbExampleGallery.FlutterInitializer add flutter.js script');
             const script = document.createElement("script");
             script.src = '/flutter_rust_bridge/demo/flutter.js';
             // script.defer = true; // TODO
