@@ -1,6 +1,9 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
@@ -20,9 +23,14 @@ class _VersionInfo {
   final String newVersion;
 
   const _VersionInfo({required this.oldVersion, required this.newVersion});
+
+  @override
+  String toString() =>
+      '_VersionInfo{oldVersion: $oldVersion, newVersion: $newVersion}';
 }
 
 Future<void> release() async {
+  print('Version info: ${_computeVersionInfo()}');
   await releaseUpdateVersion();
   await releaseUpdateScoop();
   await releaseUpdateGit();
@@ -59,5 +67,13 @@ Future<void> releasePublishAll() async {
 }
 
 _VersionInfo _computeVersionInfo() {
-  throw UnimplementedError();
+  final lines = File('${exec.pwd}CHANGELOG.md').readAsStringSync().split('\n');
+  final versions = lines
+      .map((line) => RegExp(r'^## (\d.+)$').firstMatch(line)?.group(1))
+      .whereNotNull()
+      .toList();
+  return _VersionInfo(
+    newVersion: versions[0],
+    oldVersion: versions[1],
+  );
 }
