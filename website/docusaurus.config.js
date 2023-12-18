@@ -85,6 +85,22 @@ const config = {
                     // },
                     // {to: '/blog', label: 'Blog', position: 'left'},
                     {
+                        type: 'dropdown',
+                        label: 'v2',
+                        position: 'right',
+                        items: [
+                            {
+                                label: 'v2 (current)',
+                                href: '/flutter_rust_bridge',
+                            },
+                            {
+                                label: 'v1',
+                                href: 'v1',
+                            },
+                            // ... more items
+                        ],
+                    },
+                    {
                         href: 'https://github.com/fzyzcjy/flutter_rust_bridge',
                         label: 'GitHub',
                         position: 'right',
