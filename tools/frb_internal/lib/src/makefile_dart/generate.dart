@@ -293,7 +293,7 @@ Future<RunCommandOutput> executeFrbCodegen(
   required bool coverage,
 }) async {
   return await exec(
-    'cargo ${coverage ? "llvm-cov run --lcov --output-path ${exec.pwd}/frb_codegen/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+    'cargo ${coverage ? "llvm-cov run --lcov --output-path ${exec.pwd}frb_codegen/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
     relativePwd: relativePwd,
     extraEnv: {'RUST_BACKTRACE': '1'},
   );
