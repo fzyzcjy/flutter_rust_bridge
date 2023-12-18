@@ -26,6 +26,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1
         with:
@@ -50,6 +52,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
@@ -107,6 +111,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -143,6 +149,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -166,6 +174,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -200,6 +210,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -251,6 +263,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -303,6 +317,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -339,6 +355,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1
         with:
@@ -389,6 +407,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -423,6 +443,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -458,6 +480,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
@@ -512,6 +536,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - name: "Start Simulator"
         run: |
@@ -558,6 +584,8 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
@@ -586,6 +614,8 @@ jobs:
 
     steps:
       - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
