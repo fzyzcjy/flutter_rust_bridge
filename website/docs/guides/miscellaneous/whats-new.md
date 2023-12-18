@@ -3,7 +3,7 @@
 ## Changelog
 
 :::tip
-For a more vivid illustration, I suggest glancing through [the homepage](../../).
+For a more vivid illustration, I suggest glancing through [the homepage](../../../).
 :::
 
 ### Primary changes
