@@ -6,7 +6,9 @@ export default class Page extends React.Component {
     render() {
         return (
             <Layout>
-                <ShowMeTheCode/>
+                <div style={{margin: '32px'}}>
+                    <ShowMeTheCode/>
+                </div>
             </Layout>
         );
     }
