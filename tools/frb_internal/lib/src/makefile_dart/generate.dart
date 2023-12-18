@@ -328,12 +328,11 @@ Future<void> generateWebsiteMerge() async {
 
 void _generateWebsiteMergeDemoIndexHtml() {
   // https://docs.flutter.dev/deployment/web#hostelement
+  const headCode = '''
+  <script src="enable-threads.js"></script>
+  <script src="flutter.js" defer></script>
+  ''';
   const bodyCode = '''
-    
-
-    <!-- Ensure your flutter target is present on the page... -->
-    <div id="flutter_host">Loading...</div>
-
     <script>
       window.addEventListener("load", function (ev) {
         _flutter.loader.loadEntrypoint({
@@ -352,9 +351,8 @@ void _generateWebsiteMergeDemoIndexHtml() {
   final htmlDocusaurus =
       File('${exec.pwd}/website/build/demo/index.html').readAsStringSync();
   final ans = htmlDocusaurus
-      .replaceFirst('FLUTTER_WEB_APP_PLACEHOLDER', bodyCode)
-      .replaceFirst('</head>',
-          '<script src="enable-threads.js"></script>\n<script src="flutter.js" defer></script>\n</head>');
+      .replaceFirst('</head>', '$headCode</head>')
+      .replaceFirst('</body>', '$bodyCode</body>');
   File('${exec.pwd}/$_kWebsiteDir/demo/index.html').writeAsStringSync(ans);
 }
 

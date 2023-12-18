@@ -13,7 +13,7 @@ When you want a UI framework (Flutter) for your Rust system.
 
 ## TODO
 
-FLUTTER_WEB_APP_PLACEHOLDER
+<div id="flutter_host">Loading...</div>
 
 ## Mandelbrot
 
