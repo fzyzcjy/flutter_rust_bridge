@@ -318,7 +318,8 @@ Future<void> generateWebsiteBuild() async {
 const _kWebsiteDir = 'website/merged_target/flutter_rust_bridge';
 
 Future<void> generateWebsiteMerge() async {
-  await exec('mkdir -p $_kWebsiteDir');
+  await exec('rm -rf website/merged_target');
+  await exec('mkdir -p website/merged_target');
   await exec('cp -r website/build/ $_kWebsiteDir');
   await exec('cp -r website/v1_mdbook/book/ $_kWebsiteDir/v1');
   await exec('cp -r frb_example/gallery/build/web/ $_kWebsiteDir/demo');
