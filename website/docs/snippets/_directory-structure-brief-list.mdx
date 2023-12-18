@@ -1,0 +1,8 @@
+* `/lib`: Dart source code
+    * 🐤 `main.dart`: Flutter app entrypoint code
+    * `src/rust`: Auto generated glue, mirroring the whole Rust crate
+* `/rust`: Rust source code
+    * 🦀 `src/api/simple.rs`: Write your Flutter-facing code anywhere within `api` folder
+    * `frb_generated.*.rs`: Auto generated glue
+* `/android`, `/ios`, `/linux`, `/macos`, `/web`, `/windows`, `/integration_test`, `/test`, `/test_driver`: Other standard Flutter folders
+* `/rust_builder`: Ignore it (glue to build Rust with Flutter)
