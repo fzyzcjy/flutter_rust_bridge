@@ -84,7 +84,7 @@ fn dart_run(
 
     if dart_coverage {
         let res = command_run!(
-            call_shell[None, None],
+            call_shell[None, Some(current_dir)],
             "dart",
             "pub",
             "global",
