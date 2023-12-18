@@ -67,10 +67,11 @@ jobs:
 
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   lint_docusaurus:
-    name: 'Lint :: Docusaurus'
+    name: 'Lint :: Website'
     runs-on: ubuntu-latest
 
     steps:
+      # setup
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
@@ -78,12 +79,8 @@ jobs:
           cache: yarn
           cache-dependency-path: website/yarn.lock
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-        working-directory: ./website
-      - name: Test build website
-        run: yarn build
-        working-directory: ./website
+      # execute
+      - run: ./frb_internal generate-website
 
   # ----------------------------------- codegen -----------------------------------
 

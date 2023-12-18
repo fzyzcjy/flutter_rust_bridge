@@ -50,6 +50,7 @@ List<Command<void>> createCommands() {
         generateInternalDartSource,
         _$populateGenerateConfigParser,
         _$parseGenerateConfigResult),
+    SimpleCommand('generate-website', generateWebsite),
   ];
 }
 
@@ -289,4 +290,9 @@ Future<void> _maybeSetExitIfChanged(GenerateConfig config,
   if (config.setExitIfChanged) {
     await exec('git diff --exit-code ${extraArgs ?? ""}');
   }
+}
+
+Future<void> generateWebsite() async {
+  await exec('yarn install --frozen-lockfile', relativePwd: 'website');
+  await exec('yarn build', relativePwd: 'website');
 }
