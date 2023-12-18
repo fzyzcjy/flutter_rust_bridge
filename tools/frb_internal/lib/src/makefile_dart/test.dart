@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
@@ -138,6 +140,22 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   if (config.coverage) {
     await _formatDartCoverage(package: config.package);
   }
+}
+
+// https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
+Future<void> _withLlvmCodeCovReport(
+  Future<void> Function() inner, {
+  required String relativePwd,
+}) async {
+  final rawEnvs =
+      (await exec('cargo llvm-cov show-env', relativePwd: relativePwd)).stdout;
+  final envMap = Map.fromEntries(rawEnvs.trim().split('\n').map((line) {
+    final index = line.indexOf('=');
+    return MapEntry(line.substring(0, index), line.substring(index + 1));
+  }));
+  print('envMap=$envMap');
+
+  TODO;
 }
 
 // ref: https://github.com/rrousselGit/riverpod/blob/67d26d2a47a7351d6676012c44eb53dd6ff79787/scripts/coverage.sh#L10
