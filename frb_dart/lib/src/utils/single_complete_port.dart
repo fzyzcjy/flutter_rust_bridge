@@ -32,58 +32,61 @@ import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.
 ///
 /// Returns the `SendPort` expecting the single message.
 SendPort singleCompletePort<R, P>(
-  Completer<R> completer, {
-  FutureOr<R> Function(P message)? callback,
-  Duration? timeout,
-  FutureOr<R> Function()? onTimeout,
-}) {
-  if (callback == null && timeout == null) {
-    return _singleCallbackPort<Object>((response) {
-      _castComplete<R>(completer, response);
-    });
-  }
-  var responsePort = RawReceivePort();
-  Timer? timer;
-  if (callback == null) {
-    responsePort.handler = (response) {
-      responsePort.close();
-      timer?.cancel();
-      _castComplete<R>(completer, response);
-    };
-  } else {
-    var zone = Zone.current;
-    var action = zone.registerUnaryCallback((response) {
-      try {
-        // Also catch it if callback throws.
-        completer.complete(callback(response as P));
-      } catch (error, stack) {
-        completer.completeError(error, stack);
-      }
-    });
-    responsePort.handler = (response) {
-      responsePort.close();
-      timer?.cancel();
-      zone.runUnary(action, response as P);
-    };
-  }
-  if (timeout != null) {
-    timer = Timer(timeout, () {
-      responsePort.close();
-      if (onTimeout != null) {
-        /// workaround for incomplete generic parameters promotion.
-        /// example is available in 'TimeoutFirst with invalid null' test
-        try {
-          completer.complete(Future.sync(onTimeout));
-        } catch (e, st) {
-          completer.completeError(e, st);
-        }
-      } else {
-        completer
-            .completeError(TimeoutException('Future not completed', timeout));
-      }
-    });
-  }
-  return responsePort.sendPort;
+  Completer<R> completer,
+  // {
+  // FutureOr<R> Function(P message)? callback,
+  // Duration? timeout,
+  // FutureOr<R> Function()? onTimeout,
+  // }
+) {
+  // NOTE: Since we never use those complex arguments, we comment out that part
+  // if (callback == null && timeout == null) {
+  return _singleCallbackPort<Object>((response) {
+    _castComplete<R>(completer, response);
+  });
+  // }
+  // var responsePort = RawReceivePort();
+  // Timer? timer;
+  // if (callback == null) {
+  //   responsePort.handler = (response) {
+  //     responsePort.close();
+  //     timer?.cancel();
+  //     _castComplete<R>(completer, response);
+  //   };
+  // } else {
+  //   var zone = Zone.current;
+  //   var action = zone.registerUnaryCallback((response) {
+  //     try {
+  //       // Also catch it if callback throws.
+  //       completer.complete(callback(response as P));
+  //     } catch (error, stack) {
+  //       completer.completeError(error, stack);
+  //     }
+  //   });
+  //   responsePort.handler = (response) {
+  //     responsePort.close();
+  //     timer?.cancel();
+  //     zone.runUnary(action, response as P);
+  //   };
+  // }
+  // if (timeout != null) {
+  //   timer = Timer(timeout, () {
+  //     responsePort.close();
+  //     if (onTimeout != null) {
+  //       /// workaround for incomplete generic parameters promotion.
+  //       /// example is available in 'TimeoutFirst with invalid null' test
+  //       try {
+  //         completer.complete(Future.sync(onTimeout));
+  //       } catch (e, st) {
+  //         completer.completeError(e, st);
+  //       }
+  //     } else {
+  //       completer
+  //           .completeError(TimeoutException('Future not completed', timeout));
+  //     }
+  //   });
+  // }
+  // return responsePort.sendPort;
 }
 
 /// Helper function for [singleCallbackPort].
