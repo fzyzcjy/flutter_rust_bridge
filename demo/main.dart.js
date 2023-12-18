@@ -19757,8 +19757,7 @@ this.d=c},
 eO:function eO(a,b,c){this.f=a
 this.a=b
 this.d=c},
-arP(a,b,c){var s=A.apY(new A.a6n(a,b),t.K)
-return s},
+arP(a,b,c){return A.apY(new A.a6n(a,b),t.K)},
 apY(a,b){var s,r,q={}
 q.a=a
 s=new MessageChannel()
