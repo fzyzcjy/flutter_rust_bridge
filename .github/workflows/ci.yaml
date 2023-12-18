@@ -673,6 +673,10 @@ jobs:
       # report
       - uses: actions/upload-artifact@v3
         with:
+          name: coverage
+          path: ${{ matrix.package }}/coverage/
+      - uses: actions/upload-artifact@v3
+        with:
           name: rust_lcov.info
           path: frb_codegen/lcov.info
 
