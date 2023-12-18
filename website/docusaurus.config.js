@@ -73,7 +73,7 @@ const config = {
                 title: 'Flutter Rust Bridge',
                 logo: {
                     alt: 'Logo',
-                    src: 'https://raw.githubusercontent.com/fzyzcjy/flutter_rust_bridge/master/book/logo.png',
+                    src: 'https://raw.githubusercontent.com/fzyzcjy/flutter_rust_bridge/master/website/misc/logo.png',
                 },
                 items: [
                     // TODO
