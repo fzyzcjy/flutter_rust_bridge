@@ -83,6 +83,7 @@ fn dart_run(
         .spawn()?;
 
     if dart_coverage {
+        println!("hi 1");
         let res = command_run!(
             call_shell[Some(current_dir), None],
             "dart",
@@ -97,8 +98,10 @@ fn dart_run(
             "--resume-isolates",
             "--scope-output=foo",
         )?;
+        println!("hi 2");
         check_exit_code(&res)?;
     }
 
+    println!("hi 3");
     Ok(handle.wait_with_output()?.status)
 }

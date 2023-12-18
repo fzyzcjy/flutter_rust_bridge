@@ -306,7 +306,7 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
 }
 
 Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
-  await _runFlutterDoctor();
+  // await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
 
   await executeFrbCodegen('build-web --dart-coverage',
