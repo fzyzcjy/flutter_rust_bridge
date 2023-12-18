@@ -168,11 +168,13 @@ Future<void> _withLlvmCodeCovReport(
   }));
   print('envMap=$envMap');
 
-  await exec('cargo llvm-cov clean --workspace', relativePwd: relativePwd);
+  await exec('cargo llvm-cov clean --workspace',
+      relativePwd: relativePwd, extraEnv: envMap);
 
   await inner(envMap);
 
-  await exec('cargo llvm-cov report --lcov', relativePwd: relativePwd);
+  await exec('cargo llvm-cov report --lcov',
+      relativePwd: relativePwd, extraEnv: envMap);
 }
 
 // ref: https://github.com/rrousselGit/riverpod/blob/67d26d2a47a7351d6676012c44eb53dd6ff79787/scripts/coverage.sh#L10
