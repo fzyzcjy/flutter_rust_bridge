@@ -50,7 +50,7 @@ Typical scenarios to combine them include:
 
 ## 🧭 Show me the code
 
-TODO
+![show-me-the-code](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/website/misc/show-me-the-code.png)
 
 ## 💡 Documentation
 
