@@ -28,7 +28,9 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             codegen::generate(config, meta_config)?
         }
         Commands::Create(args) => integration::create(&args.name)?,
-        Commands::BuildWeb(args) => build_web::build(args.dart_root, args.args)?,
+        Commands::BuildWeb(args) => {
+            build_web::build(args.dart_root, args.dart_coverage, args.args)?
+        }
         Commands::Integrate(args) => integration::integrate(!args.no_enable_integration_test)?,
         Commands::InternalGenerate(_args) => internal::generate()?,
     }

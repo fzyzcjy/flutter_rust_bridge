@@ -161,6 +161,10 @@ pub(crate) struct BuildWebCommandArgs {
     #[arg(long)]
     pub dart_root: Option<PathBuf>,
 
+    /// Run Dart code with coverage
+    #[arg(long, hide = true)]
+    pub dart_coverage: bool,
+
     // https://stackoverflow.com/questions/72399790/clap-capture-all-remaining-arguments-in-one-field-in-derive-api
     #[arg(trailing_var_arg = true, allow_hyphen_values = true, hide = true)]
     pub(crate) args: Vec<String>,

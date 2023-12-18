@@ -12,10 +12,14 @@ use std::{env, fs};
 // We make the core build-web logic in Dart, and Rust is just a wrapper.
 // This is because, in the future, the build-web logic may be packaged with user libraries
 // and invoked in machines without flutter_rust_bridge_codegen binary.
-pub fn build(dart_root: Option<PathBuf>, args: Vec<String>) -> anyhow::Result<()> {
+pub fn build(
+    dart_root: Option<PathBuf>,
+    dart_coverage: bool,
+    args: Vec<String>,
+) -> anyhow::Result<()> {
     let dart_root = parse_dart_root(dart_root)?;
     debug!("build dart_root={dart_root:?} args={args:?}");
-    execute_dart_command(&dart_root, &args)
+    execute_dart_command(&dart_root, &args, dart_coverage)
 }
 
 fn parse_dart_root(dart_root: Option<PathBuf>) -> anyhow::Result<PathBuf> {
@@ -27,7 +31,11 @@ fn parse_dart_root(dart_root: Option<PathBuf>) -> anyhow::Result<PathBuf> {
         })
 }
 
-fn execute_dart_command(dart_root: &Path, args: &[String]) -> anyhow::Result<()> {
+fn execute_dart_command(
+    dart_root: &Path,
+    args: &[String],
+    dart_coverage: bool,
+) -> anyhow::Result<()> {
     let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
 
     let status = Command::new("dart")
