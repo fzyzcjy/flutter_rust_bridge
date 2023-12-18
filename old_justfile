@@ -97,12 +97,6 @@ precommit: dart_pub_get generate_all rust_linter dart_linter normalize_pubspec_l
 
 # ============================ releasing new versions ============================
 
-_release_update_git old_version new_version:
-    git add --all
-    git status && git diff --staged | grep ''
-    git commit -m "bump from {{old_version}} to {{new_version}}"
-    git push
-
 _release_update_github old_version new_version:
     awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft --title v{{new_version}}
     echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'

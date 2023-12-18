@@ -60,7 +60,11 @@ Future<void> releaseUpdateScoop() async {
 
 Future<void> releaseUpdateGit() async {
   final versionInfo = _computeVersionInfo();
-  throw UnimplementedError();
+  await exec('git add --all');
+  await exec('git status && git diff --staged | grep ""');
+  await exec(
+      'git commit -m "bump from ${versionInfo.oldVersion} to ${versionInfo.newVersion}"');
+  await exec('git push');
 }
 
 Future<void> releaseUpdateGithub() async {
