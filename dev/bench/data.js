@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1702883475690,
+  "lastUpdate": 1702884382900,
   "repoUrl": "https://github.com/fzyzcjy/flutter_rust_bridge",
   "entries": {
     "Flutter Rust Bridge Benchmark": [
@@ -1555,6 +1555,395 @@ window.BENCHMARK_DATA = {
           {
             "name": "PureDart_BinaryTreeOutputSyncJson_Depth10_Macos",
             "value": 3506.0157342657344,
+            "unit": "Microseconds"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ch271828n@outlook.com",
+            "name": "fzyzcjy",
+            "username": "fzyzcjy"
+          },
+          "committer": {
+            "email": "ch271828n@outlook.com",
+            "name": "fzyzcjy",
+            "username": "fzyzcjy"
+          },
+          "distinct": true,
+          "id": "df964f87ae2e712e04fef9e565108803d0867de6",
+          "message": "fix: rust wasm",
+          "timestamp": "2023-12-18T15:19:42+08:00",
+          "tree_id": "047b3fbca0315c4f30c117ed568a1c67f6d3677c",
+          "url": "https://github.com/fzyzcjy/flutter_rust_bridge/commit/df964f87ae2e712e04fef9e565108803d0867de6"
+        },
+        "date": 1702884377293,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "PureDart_ComputePrime_Number90000049_Ubuntu",
+            "value": 18.60339102202407,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_ComputePrime_Number9000000001_Ubuntu",
+            "value": 205.57435687198935,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_ComputePrime_Number900000000013_Ubuntu",
+            "value": 2060.747,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_VoidAsync_Ubuntu",
+            "value": 26.370902666068933,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_VoidSync_Ubuntu",
+            "value": 0.33803006847879724,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_VoidSyncRaw_Ubuntu",
+            "value": 0.01459496769526887,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_VoidAsyncRawByIsolate_Ubuntu",
+            "value": 178.21901452374587,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesAsync_Len0_Ubuntu",
+            "value": 27.11601453401665,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSync_Len0_Ubuntu",
+            "value": 0.3849760643075611,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSyncRaw_Len0_Ubuntu",
+            "value": 0.0473527579317669,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsync_Len0_Ubuntu",
+            "value": 27.278168005564723,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesSync_Len0_Ubuntu",
+            "value": 0.4419267624645859,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsyncRaw_Len0_Ubuntu",
+            "value": 2.0416631788271467,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncBenchmark_Len0_Ubuntu",
+            "value": 0.49167257320783125,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncSseBenchmark_Len0_Ubuntu",
+            "value": 0.46431970870123535,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncProtobufBenchmark_Len0_Ubuntu",
+            "value": 0.88808625,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncJsonBenchmark_Len0_Ubuntu",
+            "value": 1.9211975394012304,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSync_Len0_Ubuntu",
+            "value": 0.9479465,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncSse_Len0_Ubuntu",
+            "value": 0.4703573409285318,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncProtobuf_Len0_Ubuntu",
+            "value": 0.581628,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncJson_Len0_Ubuntu",
+            "value": 2.075325,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesAsync_Len10000_Ubuntu",
+            "value": 29.78561961070487,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSync_Len10000_Ubuntu",
+            "value": 1.5330847334576332,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSyncRaw_Len10000_Ubuntu",
+            "value": 1.155702,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsync_Len10000_Ubuntu",
+            "value": 49.42514703701873,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesSync_Len10000_Ubuntu",
+            "value": 26.42174230975479,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsyncRaw_Len10000_Ubuntu",
+            "value": 2.911915997047317,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncBenchmark_Len10000_Ubuntu",
+            "value": 1.7449341275329362,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncSseBenchmark_Len10000_Ubuntu",
+            "value": 52.776196976060476,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncProtobufBenchmark_Len10000_Ubuntu",
+            "value": 32.555088,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncJsonBenchmark_Len10000_Ubuntu",
+            "value": 2067.146,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSync_Len10000_Ubuntu",
+            "value": 56.74484356894554,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncSse_Len10000_Ubuntu",
+            "value": 60.237505249895,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncProtobuf_Len10000_Ubuntu",
+            "value": 293.13057827521885,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncJson_Len10000_Ubuntu",
+            "value": 2283.083,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesAsync_Len1000000_Ubuntu",
+            "value": 156.6156918017383,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSync_Len1000000_Ubuntu",
+            "value": 120.15898906614089,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_InputBytesSyncRaw_Len1000000_Ubuntu",
+            "value": 117.87287040300787,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsync_Len1000000_Ubuntu",
+            "value": 1795.4443447037702,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesSync_Len1000000_Ubuntu",
+            "value": 1915.7458770614692,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_OutputBytesAsyncRaw_Len1000000_Ubuntu",
+            "value": 65.50358628369305,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncBenchmark_Len1000000_Ubuntu",
+            "value": 138.77629154439364,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncSseBenchmark_Len1000000_Ubuntu",
+            "value": 5178.9875,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncProtobufBenchmark_Len1000000_Ubuntu",
+            "value": 3875.6013986013986,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobInputSyncJsonBenchmark_Len1000000_Ubuntu",
+            "value": 209082.3,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSync_Len1000000_Ubuntu",
+            "value": 7641.148351648351,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncSse_Len1000000_Ubuntu",
+            "value": 6964.251748251748,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncProtobuf_Len1000000_Ubuntu",
+            "value": 28148.86111111111,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BlobOutputSyncJson_Len1000000_Ubuntu",
+            "value": 241205.77777777778,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSync_Depth0_Ubuntu",
+            "value": 0.59357675,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncSse_Depth0_Ubuntu",
+            "value": 0.59864425,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncProtobuf_Depth0_Ubuntu",
+            "value": 0.91241,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncJson_Depth0_Ubuntu",
+            "value": 1.9465782767108617,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSync_Depth0_Ubuntu",
+            "value": 1.0682905,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncSse_Depth0_Ubuntu",
+            "value": 0.55912125,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncProtobuf_Depth0_Ubuntu",
+            "value": 1.5006965,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncJson_Depth0_Ubuntu",
+            "value": 2.236387,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSync_Depth5_Ubuntu",
+            "value": 19.4297100623195,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncSse_Depth5_Ubuntu",
+            "value": 19.549602690976453,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncProtobuf_Depth5_Ubuntu",
+            "value": 23.36756097841462,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncJson_Depth5_Ubuntu",
+            "value": 75.36824539693254,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSync_Depth5_Ubuntu",
+            "value": 48.51033027789902,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncSse_Depth5_Ubuntu",
+            "value": 13.082504046227745,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncProtobuf_Depth5_Ubuntu",
+            "value": 22.609822901770983,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncJson_Depth5_Ubuntu",
+            "value": 90.13585716203517,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSync_Depth10_Ubuntu",
+            "value": 652.36325,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncSse_Depth10_Ubuntu",
+            "value": 580.649,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncProtobuf_Depth10_Ubuntu",
+            "value": 824.684,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeInputSyncJson_Depth10_Ubuntu",
+            "value": 2450.334,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSync_Depth10_Ubuntu",
+            "value": 1852.6544227886056,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncSse_Depth10_Ubuntu",
+            "value": 403.3630509156772,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncProtobuf_Depth10_Ubuntu",
+            "value": 718.266,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_BinaryTreeOutputSyncJson_Depth10_Ubuntu",
+            "value": 2859.83125,
             "unit": "Microseconds"
           }
         ]
