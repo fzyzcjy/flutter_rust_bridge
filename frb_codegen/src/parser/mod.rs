@@ -5,6 +5,7 @@ pub(crate) mod ty;
 use std::borrow::Cow;
 use std::collections::HashMap;
 use std::default::Default as _;
+
 use std::string::String;
 
 use anyhow::Context;
@@ -12,11 +13,12 @@ use log::debug;
 use quote::quote;
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
-use syn::token::Colon;
+use syn::token::{Colon, Comma};
 use syn::*;
 use topological_sort::TopologicalSort;
 
 use crate::ir::*;
+use crate::utils::misc::{filter_type_content, read_rust_file, BlockIndex};
 
 use crate::generator::rust::HANDLER_NAME;
 use crate::parser::source_graph::Crate;
@@ -99,18 +101,38 @@ pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> 
     ret
 }
 
-pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> ParserResult<IrFile> {
-    let crate_map = Crate::new(manifest_path)?;
+/// Read a single rust file, and parse it into an IrFile.
+pub fn parse_a_rust_file(
+    manifest_path: &str,
+    rust_file_path: &str,
+    block_index: BlockIndex,
+    only_parse_these_types_names: Option<&[&str]>,
+) -> ParserResult<IrFile> {
+    log::debug!("the rust path is:{rust_file_path}"); // TODO: delete
+    let mut source_rust_content = read_rust_file(rust_file_path);
+    if let Some(types_names) = only_parse_these_types_names {
+        source_rust_content = filter_type_content(&source_rust_content, types_names);
+    };
+    let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
-    let mut src_fns = extract_fns_from_file(&file);
-    src_fns.extend(extract_methods_from_file(&file)?);
+    let mut src_fns = extract_fns_from_file(&file_ast);
+    src_fns.extend(extract_methods_from_file(&file_ast)?);
+    let crate_map = Crate::new(manifest_path)?;
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();
     let src_types = crate_map.root_module.collect_types_to_pool();
     let src_types = topo_resolve(src_types);
 
+    // TODO: what is inside `src_types`,
+    // TODO: what if directly use `src_enums` and `src_structs` inside `parser.parse`,
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
-    parser.parse(source_rust_content, src_fns)
+    parser.parse(
+        manifest_path,
+        rust_file_path,
+        &source_rust_content,
+        src_fns,
+        block_index,
+    )
 }
 
 struct Parser<'a> {
@@ -124,22 +146,32 @@ impl<'a> Parser<'a> {
 }
 
 impl<'a> Parser<'a> {
-    fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> ParserResult<IrFile> {
+    fn parse(
+        mut self,
+        manifest_path: &str,
+        rust_file_path: &str,
+        source_rust_content: &str,
+        src_fns: Vec<ItemFn>,
+        block_index: BlockIndex,
+    ) -> ParserResult<IrFile> {
         let funcs = src_fns
             .iter()
             .map(|f| self.parse_function(f))
             .collect::<ParserResult<Vec<_>>>()?;
-
         let has_executor = source_rust_content.contains(HANDLER_NAME);
-
-        let (struct_pool, enum_pool) = self.type_parser.consume();
-
-        Ok(IrFile {
+        // TODO: does the 2 contains fields of struct/enum? if fields are also struct/enum, should we add them?
+        // TODO: what if also `consume` type_parser.types?
+        let (struct_pool, enum_pool) = self.type_parser.consume(); // TODO: delete
+        Ok(IrFile::new(
+            manifest_path,
+            rust_file_path,
             funcs,
+            None,
             struct_pool,
             enum_pool,
             has_executor,
-        })
+            block_index,
+        ))
     }
 
     /// Attempts to parse the type from the return part of a function signature. There is a special
@@ -259,8 +291,9 @@ impl<'a> Parser<'a> {
                 };
                 let arg_type = self.try_parse_fn_arg_type(&pat_type.ty).with_context(|| {
                     format!(
-                        "Failed to parse function argument type `{}`",
-                        type_to_string(&pat_type.ty)
+                        "Failed to parse function argument type `{}` in function `{}`",
+                        type_to_string(&pat_type.ty),
+                        func_name
                     )
                 })?;
                 match arg_type {
@@ -297,8 +330,9 @@ impl<'a> Parser<'a> {
             ReturnType::Type(_, ty) => {
                 let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
                     format!(
-                        "Failed to parse function output type `{}`",
-                        type_to_string(ty)
+                        "Failed to parse function output type `{}` in function `{}`",
+                        type_to_string(ty),
+                        func_name
                     )
                 })?;
                 match output_type {
@@ -363,16 +397,23 @@ fn extract_methods_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
             for item in &item_impl.items {
                 if let ImplItem::Fn(item_method) = item {
                     if let Visibility::Public(_) = &item_method.vis {
-                        let f = item_method_to_function(item_impl, item_method)?
-                            .context("Unsupported item implementation")?;
-                        src_fns.push(f);
+                        let f = item_method_to_function(item_impl, item_method);
+                        if f.is_err() {
+                            log::warn!(
+                                "For `{:?}`, the item implementation is unsupported",
+                                item_method
+                            );
+                            continue; // continue, don't break
+                        }
+
+                        src_fns.push(f.unwrap());
                     }
                 }
             }
         }
     }
 
-    Ok(src_fns)
+    Ok(src_fns.into_iter().flatten().collect())
 }
 
 // Converts an item implementation (something like fn(&self, ...)) into a function where `&self` is a named parameter to `&Self`
@@ -383,6 +424,57 @@ fn item_method_to_function(
     if let Type::Path(p) = item_impl.self_ty.as_ref() {
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
         let span = item_method.sig.ident.span();
+
+        // get/check inputs for mutability first
+        let mut is_mut = false;
+        let inputs: Punctuated<FnArg, Comma> = item_method
+            .sig
+            .inputs
+            .iter()
+            .enumerate()
+            .map(|(i, input)| -> ParserResult<_> {
+                let mut segments = Punctuated::new();
+                segments.push(PathSegment {
+                    ident: Ident::new(struct_name.as_str(), span),
+                    arguments: PathArguments::None,
+                });
+                if let FnArg::Receiver(Receiver { mutability, .. }) = input {
+                    if i == 0 && mutability.is_some() {
+                        is_mut = true;
+                    }
+                    Ok(FnArg::Typed(PatType {
+                        attrs: vec![],
+                        pat: Box::new(Pat::Ident(PatIdent {
+                            attrs: vec![],
+                            by_ref: Some(syn::token::Ref { span }),
+                            mutability: *mutability,
+                            ident: Ident::new("that", span),
+                            subpat: None,
+                        })),
+                        colon_token: Colon { spans: [span] },
+                        ty: Box::new(Type::Path(TypePath {
+                            qself: None,
+                            path: Path {
+                                leading_colon: None,
+                                segments,
+                            },
+                        })),
+                    }))
+                } else {
+                    Ok(input.clone())
+                }
+            })
+            .collect::<ParserResult<Punctuated<_, _>>>()?;
+
+        if is_mut {
+            log::warn!(
+                "Mutable method detected: `{}::{}`, which won't be generated",
+                struct_name,
+                item_method.sig.ident
+            );
+            return Ok(None);
+        }
+
         let is_static_method = {
             let Signature { inputs, .. } = &item_method.sig;
             {
@@ -420,9 +512,7 @@ fn item_method_to_function(
             Ident::new(
                 &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                    crate::utils::method::MethodInfo::NonStatic {
-                        struct_name: struct_name.clone(),
-                    },
+                    crate::utils::method::MethodInfo::NonStatic { struct_name },
                 )
                 .serialize(),
                 span,
@@ -441,43 +531,7 @@ fn item_method_to_function(
                 ident: method_name,
                 generics: item_method.sig.generics.clone(),
                 paren_token: item_method.sig.paren_token,
-                inputs: item_method
-                    .sig
-                    .inputs
-                    .iter()
-                    .map(|input| -> ParserResult<_> {
-                        if let FnArg::Receiver(Receiver { mutability, .. }) = input {
-                            let mut segments = Punctuated::new();
-                            segments.push(PathSegment {
-                                ident: Ident::new(struct_name.as_str(), span),
-                                arguments: PathArguments::None,
-                            });
-                            if mutability.is_some() {
-                                return Err(Error::NoMutSelf);
-                            }
-                            Ok(FnArg::Typed(PatType {
-                                attrs: vec![],
-                                pat: Box::new(Pat::Ident(PatIdent {
-                                    attrs: vec![],
-                                    by_ref: Some(syn::token::Ref { span }),
-                                    mutability: *mutability,
-                                    ident: Ident::new("that", span),
-                                    subpat: None,
-                                })),
-                                colon_token: Colon { spans: [span] },
-                                ty: Box::new(Type::Path(TypePath {
-                                    qself: None,
-                                    path: Path {
-                                        leading_colon: None,
-                                        segments,
-                                    },
-                                })),
-                            }))
-                        } else {
-                            Ok(input.clone())
-                        }
-                    })
-                    .collect::<ParserResult<Punctuated<_, _>>>()?,
+                inputs,
                 variadic: None,
                 output: item_method.sig.output.clone(),
             },

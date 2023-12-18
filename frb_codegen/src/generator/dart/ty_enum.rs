@@ -1,6 +1,7 @@
 use itertools::Itertools;
 
 use crate::generator::dart::dart_comments;
+use crate::generator::dart::func::get_api2wire_prefix;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::target::Acc;
@@ -22,8 +23,17 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     IrVariantKind::Struct(st) => (st.fields)
                         .iter()
                         .map(|field| {
+                            let api2wire_func = format!("api2wire_{}", field.ty.safe_ident());
+                            let prefix = get_api2wire_prefix(
+                                &api2wire_func,
+                                self.context.config,
+                                &field.ty,
+                                false,
+                                self.get_context().all_configs,
+                            );
                             format!(
-                                ",api2wire_{}(raw.{})",
+                                ",{}api2wire_{}(raw.{})",
+                                prefix,
                                 field.ty.safe_ident(),
                                 field.name.dart_style()
                             )
@@ -71,9 +81,19 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 .fields
                                 .iter()
                                 .map(|field| {
+                                    let api2wire_func =
+                                        format!("api2wire_{}", field.ty.safe_ident());
+                                    let prefix = get_api2wire_prefix(
+                                        &api2wire_func,
+                                        self.context.config,
+                                        &field.ty,
+                                        false,
+                                        self.get_context().all_configs,
+                                    );
                                     format!(
-                                        "var pre_{} = api2wire_{}(apiObj.{});",
+                                        "var pre_{} = {}api2wire_{}(apiObj.{});",
                                         field.name.rust_style(),
+                                        prefix,
                                         field.ty.safe_ident(),
                                         field.name.dart_style()
                                     )
@@ -127,21 +147,27 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             .map(|(idx, variant)| {
                 let args = match &variant.kind {
                     IrVariantKind::Value => "".to_owned(),
-                    IrVariantKind::Struct(st) => st
-                        .fields
-                        .iter()
-                        .enumerate()
-                        .map(|(idx, field)| {
-                            let val =
-                                format!("_wire2api_{}(raw[{}]),", field.ty.safe_ident(), idx + 1);
-                            if st.is_fields_named {
-                                format!("{}: {}", field.name.dart_style(), val)
-                            } else {
-                                val
-                            }
-                        })
-                        .collect::<Vec<_>>()
-                        .join(""),
+                    IrVariantKind::Struct(st) => {
+                        let prefix = self.get_private_prefix();
+                        st.fields
+                            .iter()
+                            .enumerate()
+                            .map(|(idx, field)| {
+                                let val = format!(
+                                    "{}wire2api_{}(raw[{}]),",
+                                    prefix,
+                                    field.ty.safe_ident(),
+                                    idx + 1
+                                );
+                                if st.is_fields_named {
+                                    format!("{}: {}", field.name.dart_style(), val)
+                                } else {
+                                    val
+                                }
+                            })
+                            .collect::<Vec<_>>()
+                            .join("")
+                    }
                 };
                 format!("case {}: return {}({});", idx, variant.wrapper_name, args)
             })

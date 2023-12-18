@@ -123,6 +123,17 @@ pub struct RawOpts {
     #[serde(default = "r#true")]
     pub dart3: bool,
 
+    // Output path of auto-generated rust file, which is used to store shared stuff among regular API blocks.
+    // Thus, this field is only used in multi-blocks case.
+    // It could be something like `"my_shared.rs"`, `./another_shared_name.rs`,
+    // directory is not supported --- like `custom_directory/my_shared.rs` would be treated as `./my_shared.rs`.
+    // If this field is initialized as `None` in multi-blocks case,
+    // path `.[regular_block_directory]/<BRIDGE_GENERATED_SHARED>.rs` should be used afterwards
+    // Here `regular_block_directory` is from field `rust_output`, from which
+    // it should be sured that all generated files for regular blocks are in the same directory.
+    #[clap(short, long)]
+    pub shared_rust_output: Option<String>,
+
     /// If set, the program will delay error reporting until all codegen operations have completed.
     #[arg(long)]
     #[serde(default)]

@@ -2,7 +2,7 @@ use anyhow::Context;
 #[cfg(feature = "serde")]
 use lib_flutter_rust_bridge_codegen::dump;
 use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
+    frb_codegen_multi, init_logger, parse_configs_and_symbols, RawOpts,
 };
 use log::{debug, error, info};
 
@@ -14,20 +14,19 @@ fn main() -> anyhow::Result<()> {
     #[cfg(feature = "serde")]
     let dump_config = raw_opts.dump.clone();
 
-    let configs = config_parse(raw_opts);
-    debug!("configs={:?}", configs);
+    let (all_configs, all_symbols) = parse_configs_and_symbols(raw_opts)?;
+    debug!("configs={:?}", all_configs);
 
+    // dump config(s)
     #[cfg(feature = "serde")]
     if let Some(dump) = dump_config {
-        return dump::dump_multi(&configs, dump).context("Failed to dump config");
+        return dump::dump_multi(&all_configs, dump).context("Failed to dump config");
     }
 
-    // generation of rust api for ffi
-    let all_symbols = get_symbols_if_no_duplicates(&configs)?;
-
+    // parse config(s)
     let mut errors = vec![];
-    for (config_index, config) in configs.iter().enumerate() {
-        if let Err(err) = frb_codegen_multi(&configs, config_index, &all_symbols) {
+    for config in all_configs.iter_all() {
+        if let Err(err) = frb_codegen_multi(config, &all_configs, &all_symbols) {
             if config.keep_going {
                 errors.push((&config.rust_input_path, err));
                 continue;
@@ -55,18 +54,13 @@ mod tests {
 
     use lazy_static::lazy_static;
     use lib_flutter_rust_bridge_codegen::{
-        config_parse, frb_codegen, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger,
-        RawOpts,
+        frb_codegen, frb_codegen_multi, init_logger, parse_configs_and_symbols, RawOpts,
     };
+    use log::error;
 
     lazy_static! {
         static ref LOGGER: () = init_logger(".", true).unwrap();
     }
-
-    // #[cfg(windows)]
-    // const DART: &str = "dart.bat";
-    // #[cfg(not(windows))]
-    const DART: &str = "dart";
 
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
     fn set_dir() {
@@ -75,6 +69,99 @@ mod tests {
                 std::env::set_current_dir("frb_codegen").unwrap();
             }
         }
+    }
+
+    fn run_cargo_test_command(test_case: &str) -> std::process::ExitStatus {
+        let status = std::process::Command::new("cargo")
+            .current_dir(format!("../frb_example/{test_case}/rust"))
+            .arg("build")
+            .spawn()
+            .map_err(|e| {
+                if e.kind() == std::io::ErrorKind::NotFound {
+                    format!(
+                        "`{test_case}`: Failed to execute 'cargo': program not found on {OS}",
+                        OS = std::env::consts::OS
+                    )
+                } else {
+                    format!(
+                        "`{test_case}`: Failed to execute 'cargo': {error} on {OS}",
+                        error = e,
+                        OS = std::env::consts::OS
+                    )
+                }
+            })
+            .unwrap()
+            .wait()
+            .map_err(|e| {
+                format!(
+                    "`{test_case}`: Failed to wait for 'cargo': {error} on {OS}",
+                    error = e,
+                    OS = std::env::consts::OS
+                )
+            })
+            .unwrap();
+        status
+    }
+
+    fn run_dart_test_command(test_case: &str, absolute_path: PathBuf) -> std::process::ExitStatus {
+        // 1.decide which dart command is valid in the specific system
+        let mut dart = if cfg!(target_os = "windows") {
+            "dart.bat"
+        } else {
+            "dart"
+        };
+        // check command validation
+        if std::process::Command::new(dart)
+            .arg("--version")
+            .status()
+            .is_err()
+        {
+            dart = if cfg!(target_os = "windows") {
+                "dart"
+            } else {
+                "dart.bat"
+            };
+
+            // check command validation again
+            if std::process::Command::new(dart)
+                .arg("--version")
+                .status()
+                .is_err()
+            {
+                panic!("Failed to find 'dart' or 'dart.bat' command in the system path.");
+            }
+        }
+
+        // 2. do the dart test check
+        let status = std::process::Command::new(dart)
+            .arg(format!("../frb_example/{test_case}/dart/lib/main.dart"))
+            .arg(absolute_path)
+            .spawn()
+            .map_err(|e| {
+                if e.kind() == std::io::ErrorKind::NotFound {
+                    format!(
+                        "`{test_case}`: Failed to execute '{dart}': program not found on {OS}",
+                        OS = std::env::consts::OS
+                    )
+                } else {
+                    format!(
+                        "`{test_case}`: Failed to execute '{dart}': {error} on {OS}",
+                        error = e,
+                        OS = std::env::consts::OS
+                    )
+                }
+            })
+            .unwrap()
+            .wait()
+            .map_err(|e| {
+                format!(
+                    "`{test_case}`: Failed to wait for '{dart}': {error} on {OS}",
+                    error = e,
+                    OS = std::env::consts::OS
+                )
+            })
+            .unwrap();
+        status
     }
 
     /// When the `frb_example/pure_dart` fails to build, i.e. the `cargo build` there fails,
@@ -90,14 +177,14 @@ mod tests {
     /// Then that `build.rs` is temporarily disabled and cargo build can run.
     #[test]
     fn pure_dart() {
+        let test_case = "pure_dart";
+
         assert!(cfg!(feature = "chrono"));
         assert!(cfg!(feature = "uuid"));
 
-        use std::process::Command;
-
         set_dir();
 
-        let _ = *LOGGER;
+        *LOGGER;
 
         // Options for frb_codegen
         let raw_opts = RawOpts {
@@ -106,21 +193,13 @@ mod tests {
         };
 
         // get opts from raw opts
-        let all_configs = config_parse(raw_opts);
+        let (all_configs, all_symbols) = parse_configs_and_symbols(raw_opts).unwrap();
 
         // generation of rust api for ffi (single block)
-        let all_symbols = get_symbols_if_no_duplicates(&all_configs).unwrap();
-        assert_eq!(all_configs.len(), 1);
+        assert!(!all_configs.is_multi_blocks_case());
         frb_codegen(&all_configs[0], &all_symbols).unwrap();
 
-        let status = Command::new("cargo")
-            .current_dir("../frb_example/pure_dart/rust")
-            .arg("build")
-            .spawn()
-            .expect("failed to execute cargo")
-            .wait()
-            .expect("failed to wait for cargo to finish");
-        assert!(status.success(), "cargo build failed");
+        let _status = run_cargo_test_command(test_case);
 
         let output_path = PathBuf::from(
             #[cfg(target_os = "macos")]
@@ -130,7 +209,7 @@ mod tests {
             #[cfg(target_os = "windows")]
             "../target/debug/flutter_rust_bridge_example_pure_dart.dll",
         );
-        let absolute_path = fs::canonicalize(&output_path).expect("Failed to get absolute path");
+        let absolute_path = fs::canonicalize(output_path).expect("Failed to get absolute path");
         println!("Absolute path to output: {:?}", absolute_path);
 
         if absolute_path.exists() {
@@ -139,89 +218,44 @@ mod tests {
             println!("Output file does not exist");
         }
 
-        let status = Command::new(DART)
-            .arg("../frb_example/pure_dart/dart/lib/main.dart")
-            .arg(absolute_path)
-            .spawn()
-            .expect("failed to execute pure_dart")
-            .wait()
-            .expect("failed to wait for pure_dart");
-        assert!(status.success(), "pure_dart failed");
+        let status = run_dart_test_command(test_case, absolute_path);
+        assert!(status.success());
     }
 
     /// See the documentation for the `pure_dart` test
     #[test]
     fn pure_dart_multi() {
-        use std::process::Command;
+        let test_case = "pure_dart_multi";
 
         set_dir();
-
-        /// Path of input Rust code
-        const RUST_INPUT_1: &str = "../frb_example/pure_dart_multi/rust/src/api_1.rs";
-        const RUST_INPUT_2: &str = "../frb_example/pure_dart_multi/rust/src/api_2.rs";
-        /// Path of output generated Dart code
-        const DART_OUTPUT_1: &str =
-            "../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart";
-        const DART_OUTPUT_2: &str =
-            "../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart";
-        /// Path of output Rust code
-        const RUST_OUTPUT_1: &str = "../frb_example/pure_dart_multi/rust/src/generated_api_1.rs";
-        const RUST_OUTPUT_2: &str = "../frb_example/pure_dart_multi/rust/src/generated_api_2.rs";
-        /// Class name to use in dart, corresponding to each Rust block
-        const CLASS_NAME_1: &str = "ApiClass1";
-        const CLASS_NAME_2: &str = "ApiClass2";
-
-        let _ = *LOGGER;
+        *LOGGER;
 
         // Options for frb_codegen
-        let mut raw_opts = RawOpts {
-            // Path of input Rust code
-            rust_input: vec![RUST_INPUT_1.to_string(), RUST_INPUT_2.to_string()],
-            // Path of output generated Dart code
-            dart_output: vec![DART_OUTPUT_1.to_string(), DART_OUTPUT_2.to_string()],
-            // Path of output Rust code
-            rust_output: Some(vec![RUST_OUTPUT_1.to_string(), RUST_OUTPUT_2.to_string()]),
-            wasm: true,
-            // Class name of each Rust block of api
-            class_name: Some(vec![CLASS_NAME_1.to_string(), CLASS_NAME_2.to_string()]),
-            dart_format_line_length: 120,
-            // for other options use defaults
+        let raw_opts = RawOpts {
+            config_file: Some(
+                "../frb_example/pure_dart_multi/rust/.flutter_rust_bridge.yml".into(),
+            ),
             ..Default::default()
         };
 
-        if cfg!(feature = "c-output") {
-            raw_opts.c_output = Some(vec![
-                // each field should contain head file name
-                "../frb_example/pure_dart_multi/rust/c_output_path/c_output_1.h".into(),
-                "../frb_example/pure_dart_multi/rust/c_output_path/c_output_2.h".into(),
-            ]);
-        }
-
-        if cfg!(feature = "extra-c-output-path") {
-            raw_opts.extra_c_output_path = Some(vec![
-                // For test, the below 2 paths format are made a little different
-                "../frb_example/pure_dart_multi/rust/./extra_c_output_path_1/".into(),
-                "../frb_example/pure_dart_multi/rust/extra_c_output_path_2".into(),
-            ]);
-        }
-
         // get opts from raw opts
-        let configs = config_parse(raw_opts);
+        let (all_configs, all_symbols) = parse_configs_and_symbols(raw_opts).unwrap();
 
-        // generation of rust api for ffi (multi-blocks)
-        let all_symbols = get_symbols_if_no_duplicates(&configs).unwrap();
-        for config_index in 0..configs.len() {
-            frb_codegen_multi(&configs, config_index, &all_symbols).unwrap()
+        // parse config(s)
+        let mut errors = vec![];
+        for config in all_configs.iter_all() {
+            if let Err(err) = frb_codegen_multi(config, &all_configs, &all_symbols) {
+                if config.keep_going {
+                    errors.push((&config.rust_input_path, err));
+                    continue;
+                }
+                error!("Fatal error encountered. Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
+                panic!()
+            }
         }
 
-        let status = Command::new("cargo")
-            .current_dir("../frb_example/pure_dart_multi/rust")
-            .arg("build")
-            .spawn()
-            .expect("failed to execute cargo")
-            .wait()
-            .expect("failed to wait for cargo to finish");
-        assert!(status.success(), "cargo build failed");
+        let _status = run_cargo_test_command(test_case);
+
         let output_path = PathBuf::from(
             #[cfg(target_os = "macos")]
             "../target/debug/libflutter_rust_bridge_example_pure_dart_multi.dylib",
@@ -230,7 +264,7 @@ mod tests {
             #[cfg(target_os = "windows")]
             "../target/debug/flutter_rust_bridge_example_pure_dart_multi.dll",
         );
-        let absolute_path = fs::canonicalize(&output_path).expect("Failed to get absolute path");
+        let absolute_path = fs::canonicalize(output_path).expect("Failed to get absolute path");
         println!("Absolute path to output: {:?}", absolute_path);
 
         if absolute_path.exists() {
@@ -239,13 +273,7 @@ mod tests {
             println!("Output file does not exist");
         }
 
-        let status = Command::new(DART)
-            .arg("../frb_example/pure_dart_multi/dart/lib/main.dart")
-            .arg(absolute_path)
-            .spawn()
-            .expect("failed to execute pure_dart")
-            .wait()
-            .expect("failed to wait for pure_dart");
-        assert!(status.success(), "pure_dart failed");
+        let status = run_dart_test_command(test_case, absolute_path);
+        assert!(status.success());
     }
 }

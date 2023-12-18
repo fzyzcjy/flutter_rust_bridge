@@ -1,6 +1,6 @@
 use crate::{ir::IrTypeDynamic, target::Acc, type_rust_generator_struct};
 
-use super::TypeRustGeneratorTrait;
+use super::{TypeGeneratorContext, TypeRustGeneratorTrait};
 
 type_rust_generator_struct!(TypeDynamicGenerator, IrTypeDynamic);
 

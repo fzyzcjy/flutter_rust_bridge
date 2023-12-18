@@ -1,6 +1,11 @@
+#pragma once
+
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+
+
 typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct DartCObject DartCObject;
@@ -99,25 +104,25 @@ void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_
 
 void wire_sum_static__static_method__SumWith(int64_t port_, uint32_t x, uint32_t y);
 
-struct wire_BoxedPoint *new_box_autoadd_boxed_point_0(void);
+struct wire_BoxedPoint *new_box_autoadd_boxed_point(void);
 
-struct wire_Point *new_box_autoadd_point_0(void);
+struct wire_Point *new_box_autoadd_point(void);
 
-struct wire_Size *new_box_autoadd_size_0(void);
+struct wire_Size *new_box_autoadd_size(void);
 
-struct wire_SumWith *new_box_autoadd_sum_with_0(void);
+struct wire_SumWith *new_box_autoadd_sum_with(void);
 
-struct wire_TreeNode *new_box_autoadd_tree_node_0(void);
+struct wire_TreeNode *new_box_autoadd_tree_node(void);
 
-struct wire_UserId *new_box_autoadd_user_id_0(void);
+struct wire_UserId *new_box_autoadd_user_id(void);
 
-struct wire_Point *new_box_point_0(void);
+struct wire_Point *new_box_point(void);
 
-struct wire_list_size *new_list_size_0(int32_t len);
+struct wire_list_size *new_list_size(int32_t len);
 
-struct wire_list_tree_node *new_list_tree_node_0(int32_t len);
+struct wire_list_tree_node *new_list_tree_node(int32_t len);
 
-struct wire_uint_8_list *new_uint_8_list_0(int32_t len);
+struct wire_uint_8_list *new_uint_8_list(int32_t len);
 
 void free_WireSyncReturn(WireSyncReturn ptr);
 
@@ -139,16 +144,16 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__BoxedPoint);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_sum_static__static_method__SumWith);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_boxed_point_0);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_point_0);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_size_0);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with_0);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node_0);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_user_id_0);
-    dummy_var ^= ((int64_t) (void*) new_box_point_0);
-    dummy_var ^= ((int64_t) (void*) new_list_size_0);
-    dummy_var ^= ((int64_t) (void*) new_list_tree_node_0);
-    dummy_var ^= ((int64_t) (void*) new_uint_8_list_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_boxed_point);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_point);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_size);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_user_id);
+    dummy_var ^= ((int64_t) (void*) new_box_point);
+    dummy_var ^= ((int64_t) (void*) new_list_size);
+    dummy_var ^= ((int64_t) (void*) new_list_tree_node);
+    dummy_var ^= ((int64_t) (void*) new_uint_8_list);
     dummy_var ^= ((int64_t) (void*) free_WireSyncReturn);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) get_dart_object);

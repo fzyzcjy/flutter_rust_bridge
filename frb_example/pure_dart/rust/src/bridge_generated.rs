@@ -3408,11 +3408,11 @@ impl rust2dart::IntoIntoDart<EnumDartOpaque> for EnumDartOpaque {
 impl support::IntoDart for EnumOpaque {
     fn into_dart(self) -> support::DartAbi {
         match self {
-            Self::Struct(field0) => vec![0.into_dart(), field0.into_dart()],
-            Self::Primitive(field0) => vec![1.into_dart(), field0.into_dart()],
-            Self::TraitObj(field0) => vec![2.into_dart(), field0.into_dart()],
-            Self::Mutex(field0) => vec![3.into_dart(), field0.into_dart()],
-            Self::RwLock(field0) => vec![4.into_dart(), field0.into_dart()],
+            Self::Struct(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Primitive(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+            Self::TraitObj(field0) => vec![2.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Mutex(field0) => vec![3.into_dart(), field0.into_into_dart().into_dart()],
+            Self::RwLock(field0) => vec![4.into_dart(), field0.into_into_dart().into_dart()],
         }
         .into_dart()
     }
@@ -3841,7 +3841,11 @@ impl rust2dart::IntoIntoDart<OldSimpleStruct> for OldSimpleStruct {
 
 impl support::IntoDart for OpaqueNested {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.first.into_dart(), self.second.into_dart()].into_dart()
+        vec![
+            self.first.into_into_dart().into_dart(),
+            self.second.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for OpaqueNested {}
