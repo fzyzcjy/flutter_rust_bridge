@@ -296,7 +296,8 @@ Future<void> generateWebsite() async {
   await exec('yarn install --frozen-lockfile', relativePwd: 'website');
   await exec('yarn build', relativePwd: 'website');
 
-  await exec('flutter build web', relativePwd: 'frb_example/gallery');
+  await exec('flutter build web --base-href /gallery/',
+      relativePwd: 'frb_example/gallery');
 
   await exec('mdbook build .', relativePwd: 'website/v1_mdbook');
 
