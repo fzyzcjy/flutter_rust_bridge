@@ -296,8 +296,7 @@ jobs:
       - run: ./frb_internal test-rust --coverage
 
       # report
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         with:
           name: lcov.info
           path: frb_codegen/lcov.info
