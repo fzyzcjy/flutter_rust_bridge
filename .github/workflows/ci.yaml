@@ -1,14 +1,8 @@
 name: CI
 
 on:
-  push:
-    paths-ignore:
-      - "docs/**"
-      - "**/*.md"
-  pull_request:
-    paths-ignore:
-      - "docs/**"
-      - "**/*.md"
+  push: {}
+  pull_request: {}
   workflow_dispatch: {}
 
 env:
@@ -64,6 +58,26 @@ jobs:
 
       # execute
       - run: ./frb_internal lint-dart
+
+  # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
+  lint_docusaurus:
+    name: 'Lint :: Docusaurus'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+          cache-dependency-path: website/yarn.lock
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        working-directory: ./website
+      - name: Test build website
+        run: yarn build
+        working-directory: ./website
 
   # ----------------------------------- codegen -----------------------------------
 
