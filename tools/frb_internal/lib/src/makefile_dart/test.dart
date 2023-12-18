@@ -179,8 +179,10 @@ Future<void> _withLlvmCodeCovReport(
 
   await inner(envMap);
 
-  await exec('cargo llvm-cov report --lcov $cargoLlvmCovCommonArgs',
-      relativePwd: relativeRustPwd, extraEnv: envMap);
+  await exec(
+      'cargo llvm-cov report --lcov --output-path lcov.info $cargoLlvmCovCommonArgs',
+      relativePwd: relativeRustPwd,
+      extraEnv: envMap);
 }
 
 // ref: https://github.com/rrousselGit/riverpod/blob/67d26d2a47a7351d6676012c44eb53dd6ff79787/scripts/coverage.sh#L10
