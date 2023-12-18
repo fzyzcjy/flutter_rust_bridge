@@ -178,7 +178,7 @@
 <p>Author: @dbsxdbsx</p>
 </blockquote>
 <p>This article describes some thoughts and implementations about the feature of generating multiple files.</p>
-<p>Before, like the <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs">pure_dart's api.rs</a>, all Apis are exposed together in a single file(block). This is not bad when the whole project is simple. But it would become quite hard to maintain or develop, when the project becomes more and more complex, especially when it is a team project. Therefore, it is time to reconstruct the code --- classify the exposed Api into proper blocks(files).</p>
+<p>Before, like the <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/src/api.rs">pure_dart's api.rs</a>, all APIs are exposed together in a single file(block). This is not bad when the whole project is simple. But it would become quite hard to maintain or develop, when the project becomes more and more complex, especially when it is a team project. Therefore, it is time to reconstruct code --- classify the exposed Api into proper blocks(files).</p>
 <p>(Before going on reading, make sure that you are quite familiar with how to use <a href="https://github.com/Desdaemon/flutter_rust_bridge_template">template</a> to generate code with flutter_rust_bridge. If not, take a look at the former chapters or <a href="https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart">the basic example</a> again, please.)</p>
 <h2 id="try-to-classify-api-into-different-blocksfiles"><a class="header" href="#try-to-classify-api-into-different-blocksfiles">Try to classify Api into different blocks(files)</a></h2>
 <p>Suppose, you only have two Api in <code>api.rs</code> originally, like this:</p>
@@ -191,10 +191,10 @@ pub fn simple_add(a: i32, b: i32) -&gt; i32 {
 pub fn simple_minus(a: i32, b: i32) -&gt; i32 {
     a - b
 }</code></pre>
-<p>Now you want to classify these 2 Api into 2 blocks for some reason-- say, you put the <code>simple_add</code> Api into file <code>api_block_1.rs</code> and the other into <code>api_block_2.rs</code>. And then make a little modification in <code>lib.rs</code>:</p>
-<pre><code class="language-rust noplayground">mod api_block_1;
-mod api_block_2;</code></pre>
-<p>Ok, now the question is how to deal with them with flutter_rust_bridge. From the <a href="https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/justfile#L11">template justfile</a>, we know code from a single Api file called <code>api_rs</code> can be generated with a command like this:</p>
+<p>Now you want to classify these 2 Api into 2 blocks for some reason-- say, you put the <code>simple_add</code> Api into file <code>api_1.rs</code> and the other into <code>api_2.rs</code>. And then make a little modification in <code>lib.rs</code>:</p>
+<pre><code class="language-rust noplayground">mod api_1;
+mod api_2;</code></pre>
+<p>Ok, now the question is how to deal with them with flutter_rust_bridge? From the <a href="https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/justfile#L11">template justfile</a>, we know code from a single API file called <code>api_rs</code> can be generated with a command like this:</p>
 <pre><code>gen:
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
         --rust-input &quot;$REPO_DIR/native/src/api.rs&quot; \
@@ -205,86 +205,86 @@ mod api_block_2;</code></pre>
 <p>Then, to generate code within 2 blocks(files), you may come out with an approach like this:</p>
 <pre><code>gen:
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input &quot;$REPO_DIR/native/src/api_block_1.rs&quot; \
-        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_block_1.dart&quot; \
+        --rust-input &quot;$REPO_DIR/native/src/api_1.rs&quot; \
+        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_1.dart&quot; \
 
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input &quot;$REPO_DIR/native/src/api_block_2.rs&quot; \
-        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_block_2.dart&quot; \
+        --rust-input &quot;$REPO_DIR/native/src/api_2.rs&quot; \
+        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_2.dart&quot; \
 ...
 </code></pre>
-<p>But here comes a problem, how to use them in Dart? Like <code>await Api.simpleAdd(1,2)</code> or
-<code>await Api.simpleMinus(1,2)</code> as before? The point here is, to thoroughly decouple Api from different blocks (which is the main reason for using multiple blocks of Api), <strong>flag <code>class-name</code> is needed</strong>. So the command should be modified like this:</p>
+<p>But here comes a problem, how to use them in dart? Like <code>await API.simpleAdd(1,2)</code> or
+<code>await API.simpleMinus(1,2)</code> as before? The point here is, to thoroughly decouple Api from different blocks (which is the main reason for using multiple blocks of API), <strong>flag <code>class-name</code> is needed</strong>. So the command should be modified like this:</p>
 <pre><code>gen:
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input &quot;$REPO_DIR/native/src/api_block_1.rs&quot; \
-        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_block_1.dart&quot; \
-        --class-name ApiBlock1Class
+        --rust-input &quot;$REPO_DIR/native/src/api_1.rs&quot; \
+        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_1.dart&quot; \
+        --class-name ApiClass1
 
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input &quot;$REPO_DIR/native/src/api_block_2.rs&quot; \
-        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_block_2.dart&quot; \
-        --class-name ApiBlock2Class
+        --rust-input &quot;$REPO_DIR/native/src/api_2.rs&quot; \
+        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_2.dart&quot; \
+        --class-name ApiClass2
 ...
 </code></pre>
-<p>(The class name <code>ApiBlock1Class</code> and <code>ApiBlock2Class</code> are chosen arbitrarily here.)</p>
-<p>So now it seems to be perfect to generate code and use Api in Dart like <code>ApiBlock1Class.simpleAdd(1,2)</code> or <code>ApiBlock2Class.simpleMinus(1,2)</code>.</p>
-<p>But actually, the above command is still not enough to generate code correctly. Because multiple blocks need to be translated respectively through FFI. So on the Rust side, instead of generating code to a single file <a href="https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/native/src/bridge_generated.rs"><code>bridge_generated.rs</code></a>, now there are 2 files needed. But, what are the names of these 2 auto-generated Rust files?
+<p>(The class name <code>ApiClass1</code> and <code>ApiClass2</code> are chosen arbitrarily here.)</p>
+<p>So now it seems to be perfect to generate code and using Api in Dart like <code>ApiClass1.simpleAdd(1,2)</code> or <code>ApiClass2.simpleMinus(1,2)</code>.</p>
+<p>But actually, the above command is still not enough to generate code correctly. Because multiple blocks need to be translated respectively through FFI. So on the rust side, instead of generating code to a single file <a href="https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/native/src/bridge_generated.rs"><code>bridge_generated.rs</code></a>, now there are 2 files needed. But, what are the names of these 2 auto-generated rust files?
 Here, for less misunderstanding, flutter_rust_bridge decides to ask for another compulsory flag <code>rust-output</code>. So the command should be modified like this:</p>
 <pre><code>gen:
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input &quot;$REPO_DIR/native/src/api_block_1.rs&quot; \
-        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_block_1.dart&quot; \
-        --class-name ApiBlock1Class \
-        --rust-output generated_api_block_1
+        --rust-input &quot;$REPO_DIR/native/src/api_1.rs&quot; \
+        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_1.dart&quot; \
+        --class-name ApiClass1 \
+        --rust-output generated_api_1
 
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input &quot;$REPO_DIR/native/src/api_block_2.rs&quot; \
-        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_block_2.dart&quot; \
-        --class-name ApiBlock2Class \
-        --rust-output generated_api_block_2
+        --rust-input &quot;$REPO_DIR/native/src/api_2.rs&quot; \
+        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_2.dart&quot; \
+        --class-name ApiClass2 \
+        --rust-output generated_api_2
 ...
 </code></pre>
-<p>(Still, the Rust output name <code>generated_api_block_1</code> and <code>generated_api_block_2</code> are chosen arbitrarily here.)</p>
-<p>That is, flutter_rust_bridge asks you to manually define the generated Rust file names, feel free to choose any name you like.</p>
+<p>(Still, the rust output name <code>generated_api_1</code> and <code>generated_api_2</code> are chosen arbitrarily here.)</p>
+<p>That is, flutter_rust_bridge asks you to manually define the generated rust file names, feel free to choose any name you like.</p>
 <h2 id="some-issues-with-separate-commands"><a class="header" href="#some-issues-with-separate-commands">Some issues with separate commands</a></h2>
 <p>Based on the last commands we come up with, everything seems to be fine --- the code generated, you can use them in Dart, and the whole project is compilable. And you would also notice some changes in <code>lib.rs</code>:</p>
-<pre><code class="language-rust noplayground">mod api_block_1;
-mod api_block_2;
-mod generated_api_block_1; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
-mod generated_api_block_2; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */</code></pre>
+<pre><code class="language-rust noplayground">mod api_1;
+mod api_2;
+mod generated_api_1; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
+mod generated_api_2; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */</code></pre>
 <p>But actually, it is not good enough.</p>
 <h3 id="issue-from-explicit-api-conflict"><a class="header" href="#issue-from-explicit-api-conflict">issue from explicit Api conflict</a></h3>
-<p>Let's say one day, you decide to add another Api, say <code>simpleDivide</code>. But when you compile the whole project, the Dart compiler just complains &quot;The symbol <code>simpleDivide</code> has already been defined ...&quot;. Then you check whether this <code>simpleDivide</code> is defined duplicated. Finally, you find that it's already defined in another block. This situation occurs quite often, when the other block is in charge of someone else, especially in a big project. It is easy to see that the whole routine is a little inefficient since you don't realize the Api conflict until doing compiling when you've probably coded a lot with this &quot;newly defined&quot; Api --- and the more time compiling takes, the more inefficient.</p>
+<p>Let's say one day, you decide to add another API, say <code>simpleDivide</code>. But when you compile the whole project, the Dart compiler just complains &quot;The symbol <code>simpleDivide</code> has already been defined ...&quot;. Then you check whether this <code>simpleDivide</code> is defined duplicated. Finally, you find that it's already defined in another block. This situation occurs quite a lot, when the other block is in the charge of someone else, especially in a big project. It is easy to see that the whole routine is a little inefficient since you don't realize the Api conflict until doing compiling when you've probably coded a lot with this &quot;new defined&quot; Api --- and the more time compiling takes, the more inefficient.</p>
 <h3 id="issue-from-implicit-api-conflict"><a class="header" href="#issue-from-implicit-api-conflict">issue from implicit Api conflict</a></h3>
-<p>And what makes the Api conflict issue more catastrophic? Say you define another Api with parameter <code>String</code> in <code>api_block_1.rs</code>:</p>
+<p>And what makes the Api conflict issue more catastrophic? Say you define another Api with parameter <code>String</code> in <code>api_1.rs</code>:</p>
 <pre><code class="language-rust noplayground">pub fn test_string_1(s1: String) {
     println!(&quot;test implicit parameter conflicts {}&quot;, s1);
 }</code></pre>
-<p>And then you put another Api with parameter <code>String</code> in <code>api_block_2.rs</code>:</p>
+<p>And then you put another Api with parameter <code>String</code> in <code>api_2.rs</code>:</p>
 <pre><code class="language-rust noplayground">pub fn test_string_2(s2: String) {
     println!(&quot;test implicit parameter conflicts {}&quot;, s2);
 }</code></pre>
-<p>These 2 Apis don't violate the uniqueness required by FFI. They should be compilable with no error. But the truth is no! Why? Because for the <code>String</code> parameter, flutter_rust_bridge would automatically generate Api like this:</p>
+<p>These 2 Apis don't violate the uniqueness required by FFI. They should be compilable with no error. But the truth is no! Why? Because for the <code>String</code> parameter, flutter_rust_bridge would automatically generate API like this:</p>
 <pre><code class="language-rust noplayground">#[no_mangle]
 pub extern &quot;C&quot; fn new_uint_8_list(len: i32) -&gt; *mut wire_uint_8_list</code></pre>
-<p>which is used to let Rust code easily cooperate with Dart through FFI. So if there are 2 Apis both taking <code>String</code> as parameters over blocks, you should notice a similar panic like &quot;the symbol <code>new_uint_8_list</code> is already defined ...&quot; during compiling(<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/511">issue #511</a>).</p>
-<p>(Actually, since version <a href="https://github.com/fzyzcjy/flutter_rust_bridge/releases/tag/v1.37.0">1.37</a>, even with the separated commands with no Api defined, the whole project is still not compilable with error &quot;symbol <code>free_WireSyncReturnStruct</code> is already defined... &quot;, the symbol <code>free_WireSyncReturnStruct</code> is another implicitly Api generated by flutter_rust_bridge. Let alone the case with Api taking customized defined types as parameters, <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/987#issuecomment-1385089679">issue #987</a>)</p>
+<p>which is used to let rust code easily cooperate with Dart through FFI. So if there are 2 APIs both taking <code>String</code> as parameters over blocks, you should notice a similar panic like &quot;the symbol <code>new_uint_8_list</code> is already defined ...&quot; during compiling(<a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/511">issue #511</a>).</p>
+<p>(Actually, since version <a href="https://github.com/fzyzcjy/flutter_rust_bridge/releases/tag/v1.37.0">1.37</a>, even with the separated commands with no Api defined, the whole project is still not compilable with error &quot;symbol <code>free_WireSyncReturnStruct</code> is already defined... &quot;, the symbol <code>free_WireSyncReturnStruct</code> is another implicitly Api generated by flutter_rust_bridge.)</p>
 <p>So these kinds of explicit/implicit Api conflicts are annoying and frustrating. How to resolve it?</p>
-<p>Theoretically, the conflict can be detected earlier during generating code, when flutter_rust_bridge knows every detail about Api. But the key is that <strong>flutter_rust_bridge has to know all Api over all blocks before generating code</strong>. That is, with the separated command stated above, flutter_rust_bridge can't do the check for you in practice. Therefore, it is necessary to unite the separated commands into ONE command.</p>
-<h2 id="correct-command-for-generating-code-with-multiple-blocks"><a class="header" href="#correct-command-for-generating-code-with-multiple-blocks">Correct command for generating code with multiple blocks</a></h2>
+<p>Theoretically, the conflict can be detected earlier during generating code, when flutter_rust_bridge knows every detail about API. But the key is that <strong>flutter_rust_bridge has to know all Api over all blocks before generating code</strong>. That is, with the separated command stated above, flutter_rust_bridge can't do the check for you in practice. Therefore, it is necessary to unite the separated commands into ONE command.</p>
+<h2 id="correct-command-for-generating-code-with-multiple-blocks"><a class="header" href="#correct-command-for-generating-code-with-multiple-blocks">correct command for generating code with multiple blocks</a></h2>
 <p>Now comes the joined command to resolve the above issue:</p>
 <pre><code>gen:
     export REPO_DIR=&quot;$PWD&quot;; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input &quot;$REPO_DIR/native/src/api_block_1.rs&quot; &quot;$REPO_DIR/native/src/api_block_2.rs&quot; \
-        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_block_1.dart&quot; &quot;$REPO_DIR/lib/bridge_generated_api_block_2.dart&quot; \
-        --class-name ApiBlock1Class ApiBlock2Class \
-        --rust-output generated_api_block_1 generated_api_block_2
+        --rust-input &quot;$REPO_DIR/native/src/api_1.rs&quot; &quot;$REPO_DIR/native/src/api_2.rs&quot; \
+        --dart-output &quot;$REPO_DIR/lib/bridge_generated_api_1.dart&quot; &quot;$REPO_DIR/lib/bridge_generated_api_2.dart&quot; \
+        --class-name ApiClass1 ApiClass2 \
+        --rust-output generated_api_1 generated_api_2
 ...
 </code></pre>
 <p>Here, with just 1 command, flutter_rust_bridge would smartly check if there are conflicts over all Api over all blocks, be it defined explicitly or implicitly.</p>
-<p>That is, for the explicitly defined Apis like <code>simple_add</code> and <code>simple_minus</code>, if there are duplicated ones, flutter_rust_bridge would throw a panic like &quot;thread 'main' panicked at 'symbol [simple_add] has already been defined'...&quot;, and you are responsible to fix it. And for the implicitly defined Api like <code>new_uint_8_list</code>, since it is essentially used for multiple blocks, flutter_rust_bridge would define it in a new auto-generated file called <code>bridge_generated_shares.rs</code> as default, whatever the type is shared as input, output or both among Apis. So you don't need to worry about it(Note: in the <a href="https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart_multi/rust/build.rs">multi_block example</a> example, <code>new_uint_8_list</code> is actually defined in <code>bridge_generated_shares.io.rs</code> since flag <code>--wasm</code> is used).</p>
-<p>To sum up, <strong>there are 4 compulsory flags when you deal with multiple blocks.</strong> They are <code>rust-input</code>, <code>dart-output</code>, <code>class-name</code>, and <code>rust-output</code>. Also, the number of fields following each flag should be consistent. You can try to <code>cargo build</code> with fewer flags or inconsistent fields to see what kind of panic would be popped up with the <a href="https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart_multi/rust/build.rs">multi_block example</a> when doing generation.</p>
+<p>That is, for the explicitly defined APIs like <code>simple_add</code> and <code>simple_minus</code>, if there are duplicated ones, flutter_rust_bridge would throw a panic like &quot;thread 'main' panicked at 'symbol [simple_add] has already been defined'...&quot;, and you are responsible to fix it. And for the implicitly defined API like <code>new_uint_8_list</code>, since it is essential, flutter_rust_bridge would try to work around it by adding suffix starting from 0, like <code>new_uint_8_list_0</code> and <code>new_uint_8_list_1</code>.</p>
+<p>To sum up, <strong>there are 4 compulsory flags when you deal with multiple blocks.</strong> They are <code>rust-input</code>, <code>dart-output</code>, <code>class-name</code> and <code>rust-output</code>. Also, the number of fields following each flag should be consistent. You can try to <code>cargo build</code> with fewer flags or inconsistent fields to see what kind of panic would be popped up with the <a href="https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart_multi/rust/build.rs">pure_dart_multi</a> example when doing generation.</p>
 <h2 id="bizarre-weird-but-compilable-command-with-the-disorder"><a class="header" href="#bizarre-weird-but-compilable-command-with-the-disorder">bizarre, weird but compilable command with the disorder</a></h2>
 <p><strong>Flutter_rust_bridge doesn't do semantic correction over all flags.</strong> So, it is syntactically correct with the following generation command:</p>
 <pre><code>gen:
@@ -294,59 +294,7 @@ pub extern &quot;C&quot; fn new_uint_8_list(len: i32) -&gt; *mut wire_uint_8_lis
         --class-name ApiClassOrange ApiClassApple \
         --rust-output generated_api_apple generated_api_orange
 </code></pre>
-<p>NOTE: the suffix <code>apple</code> and <code>orange</code> are quite disordered for each flag here on purpose. It is compilable and usable. But as you should know, it is not a good practice, semantically. It is all up to you to decide the field names for each flag, so beware of it!</p>
-<h2 id="more-about-the-auto-generated-shared-block"><a class="header" href="#more-about-the-auto-generated-shared-block">More about the auto-generated shared block</a></h2>
-<h3 id="shared-rust-files"><a class="header" href="#shared-rust-files">Shared Rust files</a></h3>
-<p>As mentioned above, flutter_rust_bridge would automatically generate a new file called <code>bridge_generated_shares.rs</code> for the shared types --- To make it clear and short, let's call all the related generated stuff(the Rust files, Dart files, and C files) the shared (Api) block; and on the contrary, those normally generated stuff is called regular (Api) block.</p>
-<p>In a shared block, there is stuff including any shared types like primitive, customized defined types(structs, enums)list(vector), even the type is wrapped with <code>option</code>, or <code>SyncReturn</code>. And note: For a shared customized type, please DON'T define it in any regular Api block, since it is both not a good practice semantically and also lead to unexplainable issue with code generation(It is planed to throw an error when this happens in future version).
-Note: It is NOT ok to define a shared customized type in any regular API block, since it is not a good practice semantically and can lead to unexplainable issues with code generation in flutter_rust_bridge. In future versions, an error will be thrown if this happens.</p>
-<p>Currently, for the generated name of the shared block, flutter_rust_bridge would automatically name it <code>bridge_generated_shares.rs</code> as default. But you can also customize it with flag <code>shared_rust_output</code> like <code>---shared_rust_output my_shared.rs&quot;</code>, <code>--shared_rust_output ./another_shared_name.rs</code>. <strong>Be aware that the directory is not supported</strong>---For a shared_rust_output field like <code>custom_directory/my_shared.rs</code>, it would be treated as <code>./my_shared.rs</code>. The reason is that it is hard to handle the generation logic for the shared block in a directory that is not the same as those of the regular blocks. And yes, when there are multiple regular blocks, please put ALL of them in the SAME directory---That is, make sure <code>rust_output</code> and <code>shared_rust_output</code> don't contain any path string.</p>
-<p>Note: For a shared used customized type(struct/enum), DON'T define it in ANY regular Api definition file(referred by flag <code>rust-input</code>). Because it is not a good practice, also it would generate issued Rust files.</p>
-<h3 id="shared-dart-file"><a class="header" href="#shared-dart-file">Shared Dart file</a></h3>
-<p>For the generated Dart files, all the generated stuff is just like the Rust files. And to use a customized type that is shared, just like for the regular one, the shared Api object needs to be defined, like this:</p>
-<pre><code class="language-dart">// This file initializes the dynamic library and connects it with the stub
-// generated by flutter_rust_bridge_codegen.
-
-import 'dart:ffi';
-import 'dart:io' as io;
-
-import 'gened_api_1.dart';
-import 'gened_api_2.dart';
-
-const _base = 'native';
-
-// On MacOS, the dynamic library is not bundled with the binary,
-// but rather directly **linked** against the binary.
-final _dylib = io.Platform.isWindows ? '$_base.dll' : 'lib$_base.so';
-
-final api1 = Api1Impl(io.Platform.isIOS || io.Platform.isMacOS
-    ? DynamicLibrary.executable()
-    : DynamicLibrary.open(_dylib));
-
-final api2 = Api2Impl(io.Platform.isIOS || io.Platform.isMacOS
-    ? DynamicLibrary.executable()
-    : DynamicLibrary.open(_dylib));
-
-final apiShare = BridgeGeneratedSharesImpl(
-    io.Platform.isIOS || io.Platform.isMacOS
-        ? DynamicLibrary.executable()
-        : DynamicLibrary.open(_dylib));
-
-</code></pre>
-<p>Here, <code>apiShare</code> is responsible for any shared types. For example, if there is a shared type named <code>SharedStructInBlock1And2</code>, now it can be used with <code>bridge</code> as the shared Api object, like this:</p>
-<pre><code class="language-dart">    var obj = SharedStructInBlock1And2(bridge: apiShared, name: &quot;newString&quot;, id: 2, num: 2.2);
-    // using methods
-    expect(&quot;msg_1&quot;, await obj.testMethod(message: &quot;msg&quot;, num: 1));
-    // using static methods directly by class name
-    expect(&quot;msg&quot;, await SharedStructInBlock1And2.testStaticMethod(bridge: api1, message: &quot;msg&quot;));
-</code></pre>
-<h3 id="shared-c-header-file"><a class="header" href="#shared-c-header-file">Shared C header file</a></h3>
-<p>Besides, for the generated C (header) files, like the corresponding generated Rust and Dart files, there would be also an auto-generated C file with the name <code>bridge_generated_shared.h</code>(the name would also be changed by flag <code>shared_rust_output</code>) besides the other C files for regular blocks.</p>
-<p>This shared C file, besides all shared types and Apis, also includes ALL the headers of all regular C files. That is, it could be treated as the manager of all C files.</p>
-<p>Generally, the C files are transparent to users, since they are generated in temporary folders as default(when not using <code>c-output-path</code> and <code>extra-c-output-path</code>). But if the platform is iOS/MacOS, then it is inevitable to take care of them(For more details with iOS/MacOS, please refer to the section &quot;For multi-blocks&quot; in <a href="https://cjycode.com/flutter_rust_bridge/integrate/ios_headers.html#for-multi-blocks">ios_headers</a>).</p>
-<h3 id="something-not-implemented"><a class="header" href="#something-not-implemented">Something not implemented</a></h3>
-<p>Currently, those complex types like <code>stream</code>, and <code>opaque</code>, are not yet supported to be used as shared types. For <code>enum</code>, it is supported to be shared, but the methods of this kind of type are not supported to be generated in Dart yet.</p>
-<p>Besides, the method within a shared type may be incompatible with flags <code>extra-headers</code> and <code>no-use-bridge-in-method</code>.</p>
+<p>NOTE: the suffix <code>apple</code> and <code>orange</code> are quite disordered for each flag here on purpose. It is compilable and usable. But as you should know, it is not a good practice, semantically. It is all up to you to decide the field names for each flag, so be beware of it!</p>
 
                     </main>
 
