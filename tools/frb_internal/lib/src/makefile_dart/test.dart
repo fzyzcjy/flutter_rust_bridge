@@ -163,8 +163,8 @@ Future<void> _withLlvmCodeCovReport(
   final rawEnvs =
       (await exec('cargo llvm-cov show-env', relativePwd: relativePwd)).stdout;
   final envMap = Map.fromEntries(rawEnvs.trim().split('\n').map((line) {
-    final index = line.indexOf('=');
-    return MapEntry(line.substring(0, index), line.substring(index + 1));
+    final m = RegExp(r"^(\w+)='?(.+?)'?$").firstMatch(line)!;
+    return MapEntry(m.group(1)!, m.group(2)!);
   }));
   print('envMap=$envMap');
 
