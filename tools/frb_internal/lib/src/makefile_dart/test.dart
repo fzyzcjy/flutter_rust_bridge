@@ -163,7 +163,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
 }
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
-Future<T> withLlvmCovReport(
+Future<T> withLlvmCovReport<T>(
   Future<T> Function(Map<String, String> envMap) inner, {
   required bool enable,
   required String relativeRustPwd,
