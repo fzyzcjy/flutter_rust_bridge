@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart
     as dart_sanitizer_tester;
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
+import 'package:path/path.dart' as path;
 
 part 'test.g.dart';
 
@@ -171,7 +172,7 @@ Future<void> _withLlvmCodeCovReport(
     return;
   }
 
-  final relativeRustPwd = '$package/rust';
+  final relativeRustPwd = path.join(package, 'rust');
 
   // `--release`, since our dart tests by default build rust release libs
   const cargoLlvmCovCommonArgs = '--release';
