@@ -2,6 +2,7 @@
 
 import 'package:args/command_runner.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 List<Command<void>> createCommands() {
@@ -46,7 +47,10 @@ Future<void> _quickstartStepCreate() async {
 }
 
 Future<void> _quickstartStepRun() async {
-  throw UnimplementedError();
+  await flutterIntegrationTestRaw(
+    flutterTestArgs: TODO,
+    relativePwd: _kPackageName,
+  );
 }
 
 Future<void> _quickstartStepModifyAndGenerate() async {
