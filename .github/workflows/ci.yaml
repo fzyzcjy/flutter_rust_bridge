@@ -148,7 +148,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
-          path: frb_codegen/lcov.info
+          path: target/coverage
 
   generate_run_frb_codegen_command_integrate:
     name: 'Generate :: FRB Codegen :: Command Integrate'
@@ -193,7 +193,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
-          path: frb_codegen/lcov.info
+          path: target/coverage
 
   generate_internal:
     name: 'Generate :: Internal'
@@ -227,7 +227,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--coverage
-          path: frb_codegen/lcov.info
+          path: target/coverage
 
   # ----------------------------------- bench -----------------------------------
 
@@ -319,7 +319,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.info.image }}--${{ matrix.info.version }}--coverage
-          path: frb_codegen/lcov.info
+          path: target/coverage
 
   test_dart_native:
     name: 'Test :: Dart :: Native'
@@ -369,7 +369,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
-          path: ${{ matrix.package }}/coverage/
+          path: target/coverage
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
@@ -673,12 +673,8 @@ jobs:
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.job }}--${{ matrix.package }}--coverage-primary
-          path: ${{ matrix.package }}/coverage/
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ${{ github.job }}--${{ matrix.package }}--coverage-frb_codegen
-          path: frb_codegen/lcov.info
+          name: ${{ github.job }}--${{ matrix.package }}--coverage
+          path: target/coverage
 
   # ----------------------------------- misc -----------------------------------
 

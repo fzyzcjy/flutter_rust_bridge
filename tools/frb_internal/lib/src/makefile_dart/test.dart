@@ -124,7 +124,7 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
   final effectiveEnableCoverage = config.coverage && package == 'frb_codegen';
 
   await exec(
-      'cargo ${effectiveEnableCoverage ? "llvm-cov --lcov --output-path lcov.info" : "test"}',
+      'cargo ${effectiveEnableCoverage ? "llvm-cov --lcov --output-path ${exec.pwd}target/coverage/rust/lcov.info" : "test"}',
       relativePwd: package,
       extraEnv: {
         // If we are doing codecov, then we need to enable all tests;
@@ -147,7 +147,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   await withLlvmCovReport(
     relativeRustPwd: '${config.package}/rust',
     enable: enableRustCoverage,
-    reportPath: '${config.package}/coverage/rust_lcov.info',
+    reportPath: '${exec.pwd}target/coverage/rust/lcov.info',
     (rustEnvMap) async {
       await runPubGetIfNotRunYet(config.package);
 
@@ -223,7 +223,7 @@ Future<void> _formatDartCoverage({required String package}) async {
 
   final reportOn = '${exec.pwd}/frb_dart';
   await exec(
-    'format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
+    'format_coverage --lcov --in=coverage --out=${exec.pwd}target/coverage/dart/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
     relativePwd: package,
   );
 }
