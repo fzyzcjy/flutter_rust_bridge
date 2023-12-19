@@ -57,10 +57,7 @@ jobs:
       - if: matrix.codegen_install_mode == 'cargo-binstall'
         uses: cargo-bins/cargo-binstall@main
       - if: runner.os == 'Windows' && matrix.codegen_install_mode == 'scoop'
-        shell: pwsh
-        run: |
-          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-          Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+        uses: MinoruSekine/setup-scoop@main
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
         run: sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
