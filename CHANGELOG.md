@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-dev.1
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* This is a separate version, because cargo publish seems not to understand frb_codegen's template Cargo.toml files, so need to publish version to test.
+
 ## 2.0.0-dev.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
