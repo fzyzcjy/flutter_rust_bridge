@@ -68,6 +68,7 @@
 * [jaiakash](https://github.com/jaiakash): Fix doc link.
 * [feber](https://github.com/feber): Fix doc link.
 * [satvikpendem](https://github.com/satvikpendem): Little co-work #989.
+* [wxitcode](https://github.com/wxitcode): Fix a typo.
 * [rustui](https://github.com/rustui): Fix a typo.
 * [escwxyz](https://github.com/escwxyz): Fix a typo.
 * [eltociear](https://github.com/eltociear): Fix a typo.
