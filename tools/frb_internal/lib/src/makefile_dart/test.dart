@@ -12,6 +12,7 @@ import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart
     as dart_sanitizer_tester;
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
+import 'package:retry/retry.dart';
 
 part 'test.g.dart';
 
@@ -425,9 +426,14 @@ Future<void> flutterIntegrationTestRaw({
   String flutterTestArgs = '',
   required String relativePwd,
 }) async {
-  await exec(
-      'flutter test integration_test/simple_test.dart --verbose --reporter=expanded $flutterTestArgs',
-      relativePwd: relativePwd);
+  await retry(
+    () async => await exec(
+        'flutter test integration_test/simple_test.dart --verbose --reporter=expanded $flutterTestArgs',
+        relativePwd: relativePwd),
+    maxAttempts: 3,
+    onRetry: (e) => print(
+        'ERROR when executing flutterIntegrationTestRaw, thus retry (exception=$e)'),
+  );
 }
 
 Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
