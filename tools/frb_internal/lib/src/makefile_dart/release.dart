@@ -5,12 +5,14 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 List<Command<void>> createCommands() {
   return [
     SimpleCommand('release', release),
     SimpleCommand('release-update-version', releaseUpdateVersion),
+    SimpleCommand('release-update-code', releaseUpdateCode),
     SimpleCommand('release-update-scoop', releaseUpdateScoop),
     SimpleCommand('release-update-git', releaseUpdateGit),
     SimpleCommand('release-update-github', releaseUpdateGithub),
@@ -32,6 +34,7 @@ class _VersionInfo {
 Future<void> release() async {
   print('Version info: ${_computeVersionInfo()}');
   await releaseUpdateVersion();
+  await releaseUpdateCode();
   await releaseUpdateScoop();
   await releaseUpdateGit();
   await releaseUpdateGithub();
@@ -51,6 +54,11 @@ Future<void> releaseUpdateVersion() async {
     '\nversion: ${versionInfo.oldVersion}\n',
     '\nversion: ${versionInfo.newVersion}\n',
   );
+}
+
+Future<void> releaseUpdateCode() async {
+  await pubGetAll();
+  // TODO
 }
 
 Future<void> releaseUpdateScoop() async {
