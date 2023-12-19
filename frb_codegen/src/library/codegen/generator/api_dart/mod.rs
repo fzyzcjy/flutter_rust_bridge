@@ -78,10 +78,9 @@ mod tests {
 
         let output_texts = actual.output_texts;
         assert_eq!(output_texts.0.len(), 1);
-        text_golden_test(
-            output_texts.0[0].text.clone(),
-            &test_fixture_dir.join("expect_output.dart"),
-        )?;
+
+        let raw_text = (output_texts.0[0].text).replace(env!("CARGO_PKG_VERSION"), "{VERSION}");
+        text_golden_test(raw_text, &test_fixture_dir.join("expect_output.dart"))?;
 
         Ok(())
     }
