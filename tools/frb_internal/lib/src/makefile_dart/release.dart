@@ -128,8 +128,8 @@ Future<void> releaseUpdateGithub() async {
 
 Future<void> releasePublishAll() async {
   await exec('cd frb_codegen && cargo publish');
-  await exec('cd frb_rust && cargo publish');
   await exec('cd frb_macros && cargo publish');
+  await exec('cd frb_rust && cargo publish');
   await exec(
       'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org');
 }
