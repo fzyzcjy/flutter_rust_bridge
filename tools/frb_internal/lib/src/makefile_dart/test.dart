@@ -127,7 +127,8 @@ class MimicQuickstartTester {
 
     await _quickstartStepCreate();
     await _quickstartStepRun();
-    await _quickstartStepModifyAndGenerate();
+    await _quickstartStepModify();
+    await _quickstartStepGenerate();
     // Run again after modification
     await _quickstartStepRun();
   }
@@ -166,7 +167,7 @@ class MimicQuickstartTester {
     );
   }
 
-  Future<void> _quickstartStepModifyAndGenerate() async {
+  Future<void> _quickstartStepModify() async {
     const kExtraRustSrc =
         '''pub fn hello(a: String) -> String { a.repeat(2) }''';
     const kExtraDartTestPrelude = '''
@@ -192,6 +193,10 @@ class MimicQuickstartTester {
     for (final path in [pathRustSrc, pathDartTest]) {
       print('path=$path content=${File(path).readAsStringSync()}');
     }
+  }
+
+  Future<void> _quickstartStepGenerate() async {
+    TODO;
   }
 }
 
