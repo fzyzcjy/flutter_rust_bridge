@@ -196,7 +196,9 @@ class MimicQuickstartTester {
   }
 
   Future<void> _quickstartStepGenerate() async {
-    TODO;
+    await executeFrbCodegen('generate',
+        relativePwd: 'frb_example/$_kMimicQuickstartPackageName',
+        coverage: false);
   }
 }
 
