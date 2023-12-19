@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:args/command_runner.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 List<Command<void>> createCommands() {
@@ -22,17 +21,18 @@ enum InstallMode {
   homebrew,
 }
 
-Future<void> _quickstartStepInstall(InstallMode mode) async {
-  switch (mode) {
-    case InstallMode.cargoInstall:
-      await exec('cargo install flutter_rust_bridge_codegen');
-    case InstallMode.cargoBinstall:
-      await exec('cargo binstall flutter_rust_bridge_codegen');
-    case InstallMode.scoop:
-      await exec(
-          'scoop bucket add frb https://github.com/Desdaemon/scoop-repo');
-      await exec('scoop install flutter_rust_bridge_codegen');
-    case InstallMode.homebrew:
-      await exec('brew install desdaemon/repo/flutter_rust_bridge_codegen');
-  }
-}
+// TODO
+// Future<void> _quickstartStepInstall(InstallMode mode) async {
+//   switch (mode) {
+//     case InstallMode.cargoInstall:
+//       await exec('cargo install flutter_rust_bridge_codegen');
+//     case InstallMode.cargoBinstall:
+//       await exec('cargo binstall flutter_rust_bridge_codegen');
+//     case InstallMode.scoop:
+//       await exec(
+//           'scoop bucket add frb https://github.com/Desdaemon/scoop-repo');
+//       await exec('scoop install flutter_rust_bridge_codegen');
+//     case InstallMode.homebrew:
+//       await exec('brew install desdaemon/repo/flutter_rust_bridge_codegen');
+//   }
+// }
