@@ -209,7 +209,7 @@ Future<T> withLlvmCovReport<T>(
 
   await exec(
       'cargo llvm-cov report --lcov '
-      '--output-path ${exec.pwd}/$reportPath '
+      '--output-path $reportPath '
       "--ignore-filename-regex '.*/frb_example/.*' "
       '$cargoLlvmCovCommonArgs',
       relativePwd: relativeRustPwd,
