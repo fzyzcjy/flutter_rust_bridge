@@ -164,7 +164,7 @@ void simpleReplaceFile(
   String replace, {
   int? expectReplaceCount = 1,
 }) {
-  _simpleActFile(path, (x) {
+  simpleActFile(path, (x) {
     var actualReplaceCount = 0;
     final ans = x.replaceAllMapped(from, (match) {
       ++actualReplaceCount;
@@ -182,7 +182,7 @@ void simpleReplaceFile(
   });
 }
 
-void _simpleActFile(String path, String Function(String) replacer) {
+void simpleActFile(String path, String Function(String) replacer) {
   final file = File(path);
   file.writeAsStringSync(replacer(file.readAsStringSync()));
 }

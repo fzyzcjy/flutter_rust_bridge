@@ -183,8 +183,7 @@ class MimicQuickstartTester {
     final pathDartTest =
         '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/integration_test/simple_test.dart';
 
-    simpleReplaceFile(
-        pathRustSrc, RegExp(r'$', multiLine: true), kExtraRustSrc);
+    simpleActFile(pathRustSrc, (x) => x + kExtraRustSrc);
     simpleReplaceFile(
         pathDartTest, 'testWidgets(', '$kExtraDartTest\ntestWidgets(');
 
