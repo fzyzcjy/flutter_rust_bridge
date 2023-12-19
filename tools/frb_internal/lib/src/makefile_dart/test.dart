@@ -124,10 +124,16 @@ class MimicQuickstartTester {
 
   Future<void> test() async {
     _prepareDir();
+
     await _quickstartStepCreate();
-    await _quickstartStepRun();
+
+    // Since we will run after modify and generate, there is no need to run (again) here.
+    // await _quickstartStepRun();
+
     await _quickstartStepModify();
+
     await _quickstartStepGenerate();
+
     // Run again after modification
     await _quickstartStepRun();
   }
