@@ -7,6 +7,7 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
     as dart_sanitizer_tester;
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
@@ -16,6 +17,7 @@ part 'test.g.dart';
 
 List<Command<void>> createCommands() {
   return [
+    SimpleCommand('test-mimic-quickstart', testMimicQuickstart),
     SimpleConfigCommand('test-rust', testRust, _$populateTestRustConfigParser,
         _$parseTestRustConfigResult),
     SimpleConfigCommand(
@@ -109,6 +111,61 @@ class TestFlutterWebConfig {
   final bool coverage;
 
   const TestFlutterWebConfig({required this.package, required this.coverage});
+}
+
+Future<void> testMimicQuickstart() async {
+  await _quickstartStepCreate();
+  await _quickstartStepRun();
+  await _quickstartStepModifyAndGenerate();
+  await _quickstartStepRun(); // Run again after modification
+}
+
+const _kMimicQuickstartPackageName = 'my_app';
+
+Future<void> _quickstartStepCreate() async {
+  await exec(
+      'flutter_rust_bridge_codegen create $_kMimicQuickstartPackageName');
+}
+
+Future<void> _quickstartStepRun() async {
+  final String deviceId;
+  if (Platform.isWindows) {
+    deviceId = 'windows';
+  } else if (Platform.isMacOS) {
+    deviceId = 'macos';
+  } else if (Platform.isLinux) {
+    deviceId = 'linux';
+  } else {
+    throw UnimplementedError();
+  }
+
+  await flutterIntegrationTestRaw(
+    flutterTestArgs: '--device-id $deviceId',
+    relativePwd: _kMimicQuickstartPackageName,
+  );
+}
+
+Future<void> _quickstartStepModifyAndGenerate() async {
+  const kExtraRustSrc = '''pub fn hello(a: String) -> String { a.repeat(2) }''';
+  const kExtraDartTest = '''
+  testWidgets('Can call the new function', (WidgetTester tester) async {
+    var result = await hello(a: "Hi");
+    expect(result, 'HiHi');
+  });
+  ''';
+
+  final pathRustSrc =
+      '${exec.pwd}$_kMimicQuickstartPackageName/rust/src/api/simple.rs';
+  final pathDartTest =
+      '${exec.pwd}$_kMimicQuickstartPackageName/integration_test/simple_test.dart';
+
+  simpleReplaceFile(pathRustSrc, RegExp(r'$', multiLine: true), kExtraRustSrc);
+  simpleReplaceFile(
+      pathDartTest, 'testWidgets(', '$kExtraDartTest\ntestWidgets(');
+
+  for (final path in [pathRustSrc, pathDartTest]) {
+    print('path=$path content=${File(path).readAsStringSync()}');
+  }
 }
 
 Future<void> testRust(TestRustConfig config) async {
