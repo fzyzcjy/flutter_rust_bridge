@@ -269,13 +269,13 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 
     switch (config.package) {
       case 'frb_example/flutter_via_create':
-        await executeFrbCodegen('create flutter_via_create',
+        await executeFrbCodegen('create flutter_via_create --local',
             relativePwd: 'frb_example', coverage: config.coverage);
 
       case 'frb_example/flutter_via_integrate':
         await exec('flutter create flutter_via_integrate',
             relativePwd: 'frb_example');
-        await executeFrbCodegen('integrate',
+        await executeFrbCodegen('integrate --local',
             relativePwd: config.package, coverage: config.coverage);
 
       default:
