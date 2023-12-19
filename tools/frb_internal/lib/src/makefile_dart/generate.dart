@@ -221,10 +221,11 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
         '* [${item["login"]}](https://github.com/${item["login"]}): ${item["customMessage"]}\n',
     ].join('');
 
-    File('${exec.pwd}/website/docs/generated/_contributor-custom-message.md')
-        .writeAsStringSync(messageTextNew);
+    final pathTarget =
+        '${exec.pwd}website/docs/generated/_contributor-custom-message.md';
+    File(pathTarget).writeAsStringSync(messageTextNew);
 
-    await exec('all-contributors generate');
+    await exec('all-contributors generate --files $pathTarget');
   });
 }
 
