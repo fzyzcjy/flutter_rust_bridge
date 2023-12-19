@@ -114,7 +114,7 @@ class TestFlutterWebConfig {
 }
 
 Future<void> testMimicQuickstart() async =>
-    await MimicQuickstartTester(postRelease: false).test();
+    await const MimicQuickstartTester(postRelease: false).test();
 
 class MimicQuickstartTester {
   final bool postRelease;
@@ -172,7 +172,7 @@ class MimicQuickstartTester {
     const kExtraRustSrc =
         '''pub fn hello(a: String) -> String { a.repeat(2) }''';
     const kExtraDartTestPrelude = '''
-    import 'package:flutter_via_integrate/src/rust/api/simple.dart';
+    import 'package:$_kMimicQuickstartPackageName/src/rust/api/simple.dart';
     ''';
     const kExtraDartTestBody = '''
   testWidgets('Can call the new function', (WidgetTester tester) async {
