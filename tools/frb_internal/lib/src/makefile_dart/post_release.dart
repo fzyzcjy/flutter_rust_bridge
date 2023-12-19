@@ -5,10 +5,10 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 
 List<Command<void>> createCommands() {
   return [
-    SimpleCommand('TODO', postReleaseWhat),
+    SimpleCommand('post-release-mimic-quickstart', postReleaseMimicQuickstart),
   ];
 }
 
-Future<void> postReleaseWhat() async {
+Future<void> postReleaseMimicQuickstart() async {
   // TODO
 }
