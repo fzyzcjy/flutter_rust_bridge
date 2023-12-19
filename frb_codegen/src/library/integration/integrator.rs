@@ -164,9 +164,12 @@ fn pub_add_dependencies(
     flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
 
     flutter_pub_add(&if enable_local_dependency {
-        ["flutter_rust_bridge".into(), "--path=../../frb_dart".into()]
+        vec![
+            "flutter_rust_bridge".to_owned(),
+            "--path=../../frb_dart".to_owned(),
+        ]
     } else {
-        [format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
+        vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
     })?;
 
     // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
