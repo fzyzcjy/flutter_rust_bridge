@@ -329,9 +329,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7a81dae078cea95a014a339291cec439d2f232ebe854a9d672b796c6afafa9b7"
 
 [[package]]
-name = "dart-sys"
-version = "4.1.0"
-source = "git+https://github.com/dart-sys/dart-sys.git?rev=7b97972#7b9797230a90edb0ae34b5cce3f0dd7f38a2ebbc"
+name = "dart-sys-fork"
+version = "4.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "933dafff26172b719bb9695dd3715a1e7792f62dcdc8a5d4c740db7e0fedee8b"
 dependencies = [
  "cc",
 ]
@@ -434,7 +435,7 @@ dependencies = [
  "cc",
  "chrono",
  "console_error_panic_hook",
- "dart-sys",
+ "dart-sys-fork",
  "delegate-attr",
  "flutter_rust_bridge_macros",
  "futures",
