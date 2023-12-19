@@ -26,8 +26,11 @@ jobs:
           - windows-2019
           - macos-11
           - ubuntu-20.04
-        install:
-          TODO
+        codegen_install_mode:
+          - cargo-install
+          - cargo-binstall
+          - scoop
+          - homebrew
 
     steps:
       # setup
@@ -45,4 +48,4 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-mimic-quickstart --post-release
+      - run: ./frb_internal post-release-mimic-quickstart --codegen-install-mode ${{ matrix.codegen_install_mode }}
