@@ -140,14 +140,12 @@ class MimicQuickstartTester {
         relativePwd: 'frb_example',
         coverage: false);
 
-    if (!postRelease) {
-      // avoid workspace issue (only exist in our setup, not in real user's)
-      simpleReplaceFile(
-        '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/rust/Cargo.toml',
-        '[lib]',
-        '[workspace]\n\n[lib]',
-      );
-    }
+    // avoid workspace issue (only exist in our setup, not in real user's)
+    simpleReplaceFile(
+      '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/rust/Cargo.toml',
+      '[lib]',
+      '[workspace]\n\n[lib]',
+    );
   }
 
   Future<void> _quickstartStepRun() async {
