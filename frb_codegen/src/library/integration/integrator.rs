@@ -117,7 +117,7 @@ fn replace_file_content(raw: &[u8], package_name: &str, enable_local_dependency:
                 &if enable_local_dependency {
                     r#"{ path = "../../../frb_rust" }"#.to_owned()
                 } else {
-                    format!(r#""{}""#, env!("CARGO_PKG_VERSION"))
+                    format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
                 },
             )
             .into_bytes(),
