@@ -47,12 +47,12 @@ Future<void> releaseUpdateVersion() async {
   final versionInfo = _computeVersionInfo();
 
   _simpleReplaceFile(
-    'Cargo.toml',
+    '${exec.pwd}Cargo.toml',
     '\nversion = "${versionInfo.oldVersion}"\n',
     '\nversion = "${versionInfo.newVersion}"\n',
   );
   _simpleReplaceFile(
-    'frb_dart/pubspec.yaml',
+    '${exec.pwd}frb_dart/pubspec.yaml',
     '\nversion: ${versionInfo.oldVersion}\n',
     '\nversion: ${versionInfo.newVersion}\n',
   );
@@ -141,11 +141,11 @@ _VersionInfo _computeVersionInfo() => _extractChangelog().$1;
   );
 }
 
-void _simpleReplaceFile(String relativePath, String from, String replace) {
-  _simpleActFile(relativePath, (x) => x.replaceAll(from, replace));
+void _simpleReplaceFile(String path, String from, String replace) {
+  _simpleActFile(path, (x) => x.replaceAll(from, replace));
 }
 
-void _simpleActFile(String relativePath, String Function(String) replacer) {
-  final file = File('${exec.pwd}$relativePath');
+void _simpleActFile(String path, String Function(String) replacer) {
+  final file = File(path);
   file.writeAsStringSync(replacer(file.readAsStringSync()));
 }
