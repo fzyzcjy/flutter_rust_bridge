@@ -118,6 +118,8 @@ Future<void> testMimicQuickstart() async =>
 
 class MimicQuickstartTester {
   Future<void> test() async {
+    Directory('${exec.pwd}frb_example').createSync(recursive: true);
+
     await _quickstartStepCreate();
     await _quickstartStepRun();
     await _quickstartStepModifyAndGenerate();
@@ -129,7 +131,8 @@ class MimicQuickstartTester {
 
   Future<void> _quickstartStepCreate() async {
     await exec(
-        'flutter_rust_bridge_codegen create $_kMimicQuickstartPackageName');
+        'flutter_rust_bridge_codegen create $_kMimicQuickstartPackageName',
+        relativePwd: 'frb_example');
   }
 
   Future<void> _quickstartStepRun() async {
@@ -146,7 +149,7 @@ class MimicQuickstartTester {
 
     await flutterIntegrationTestRaw(
       flutterTestArgs: '--device-id $deviceId',
-      relativePwd: _kMimicQuickstartPackageName,
+      relativePwd: 'frb_example/$_kMimicQuickstartPackageName',
     );
   }
 
@@ -161,9 +164,9 @@ class MimicQuickstartTester {
   ''';
 
     final pathRustSrc =
-        '${exec.pwd}$_kMimicQuickstartPackageName/rust/src/api/simple.rs';
+        '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/rust/src/api/simple.rs';
     final pathDartTest =
-        '${exec.pwd}$_kMimicQuickstartPackageName/integration_test/simple_test.dart';
+        '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/integration_test/simple_test.dart';
 
     simpleReplaceFile(
         pathRustSrc, RegExp(r'$', multiLine: true), kExtraRustSrc);
