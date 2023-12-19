@@ -31,7 +31,7 @@ cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0'
 <TabItem value="Cargo-Binstall">
 
 ```shell
-cargo binstall flutter_rust_bridge_codegen
+cargo binstall 'flutter_rust_bridge_codegen@^2.0.0-dev.0'
 ```
 
 </TabItem>
