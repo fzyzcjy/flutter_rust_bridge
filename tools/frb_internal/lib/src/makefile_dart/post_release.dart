@@ -2,6 +2,7 @@
 
 import 'package:args/command_runner.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
@@ -16,6 +17,7 @@ Future<void> postReleaseMimicQuickstart() async {
   await _quickstartStepCreate();
   await _quickstartStepRun();
   await _quickstartStepModifyAndGenerate();
+  await _quickstartStepRun(); // Run again after modification
 }
 
 const _kPackageName = 'my_app';
@@ -54,5 +56,17 @@ Future<void> _quickstartStepRun() async {
 }
 
 Future<void> _quickstartStepModifyAndGenerate() async {
-  throw UnimplementedError();
+  const kExtraRustSrc = TODO;
+  const kExtraDartTest = TODO;
+
+  simpleReplaceFile(
+    '${exec.pwd}$_kPackageName/rust/src/api/simple.rs',
+    RegExp(r'$', multiLine: true),
+    kExtraRustSrc,
+  );
+  simpleReplaceFile(
+    '${exec.pwd}$_kPackageName/integration_test/simple_test.dart',
+    'testWidgets(',
+    '$kExtraDartTest\ntestWidgets(',
+  );
 }
