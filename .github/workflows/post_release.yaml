@@ -48,6 +48,11 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       - uses: cargo-bins/cargo-binstall@main
+      - if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+          Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
       # execute
       - run: ./frb_internal post-release-mimic-quickstart --codegen-install-mode ${{ matrix.codegen_install_mode }}
