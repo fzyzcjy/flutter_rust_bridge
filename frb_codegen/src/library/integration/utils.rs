@@ -2,13 +2,13 @@ use anyhow::Result;
 use include_dir::{Dir, DirEntry};
 use log::debug;
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 // ref: `Dir::extract`
 pub(super) fn extract_dir_and_modify(
     d: &Dir,
     base_path: &Path,
-    modifier: &impl Fn(&Path, &[u8], Option<Vec<u8>>) -> Option<Vec<u8>>,
+    modifier: &impl Fn(&Path, &[u8], Option<Vec<u8>>) -> Option<(PathBuf, Vec<u8>)>,
     filter: &impl Fn(&Path) -> bool,
 ) -> Result<()> {
     for entry in d.entries() {
@@ -25,8 +25,10 @@ pub(super) fn extract_dir_and_modify(
             }
             DirEntry::File(f) => {
                 debug!("Write to {path:?}");
-                if let Some(data) = modifier(&path, f.contents(), fs::read(&path).ok()) {
-                    fs::write(&path, data)?;
+                if let Some((modified_path, modified_data)) =
+                    modifier(&path, f.contents(), fs::read(&path).ok())
+                {
+                    fs::write(&modified_path, modified_data)?;
                 }
             }
         }

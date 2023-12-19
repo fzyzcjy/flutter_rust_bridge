@@ -8,7 +8,7 @@ use itertools::Itertools;
 use log::{debug, warn};
 use serde_yaml::Value;
 use std::ffi::OsStr;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::{env, fs};
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
@@ -70,13 +70,20 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 }
 
 fn modify_file(
-    path: &Path,
+    path_raw: &Path,
     src_raw: &[u8],
     existing_content: Option<Vec<u8>>,
     package_name: &str,
     enable_local_dependency: bool,
-) -> Option<Vec<u8>> {
+) -> Option<(PathBuf, Vec<u8>)> {
     let src = replace_file_content(src_raw, package_name, enable_local_dependency);
+
+    let path =
+        if (path_raw.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
+            path_raw.with_extension("")
+        } else {
+            path_raw.to_owned()
+        };
 
     if let Some(existing_content) = existing_content {
         if path.file_name() == Some(OsStr::new("main.dart")) {
@@ -101,11 +108,11 @@ fn modify_file(
 
     if path.iter().contains(&OsStr::new("cargokit")) {
         if let Some(comments) = compute_cargokit_comments(path) {
-            return Some([comments.as_bytes(), &src].concat());
+            return Some((path.to_owned(), [comments.as_bytes(), &src].concat()));
         }
     }
 
-    Some(src)
+    Some((path.to_owned(), src))
 }
 
 fn replace_file_content(raw: &[u8], package_name: &str, enable_local_dependency: bool) -> Vec<u8> {
