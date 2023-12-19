@@ -26,7 +26,7 @@ export default function ShowMeTheCode() {
                     marginBottom: '20px',
                 }}></div>
                 <SectionTitle color="#2196f3">2. Fancy</SectionTitle>
-                <p>Let's see how fancy we can support:</p>
+                <p>Let's see how fancy we can support (see left for explanations):</p>
                 <CodeBlock language="rust">
                     <b>struct</b>
                     {" Garden "}
