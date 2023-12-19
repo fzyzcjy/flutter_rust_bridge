@@ -5,7 +5,7 @@ This guide shows how to upgrade a project using flutter_rust_bridge V1 to V2.
 One way is as follows:
 
 * Follow the [quickstart](../../quickstart) to integrate V2 boilerplate into the existing project (in a few commands).
-* Move original Rust code to `rust/src/api/simple.rs`.
+* Move original Rust code (e.g. in `api.rs`) to `rust/src/api/simple.rs`. (You can also split into multiple files, e.g. `apple.rs`, `orange.rs`, etc.)
 * Run code generator (whenever your code changes).
 * Fix compilation errors (usually just a rename or relocation) and runtime exceptions (usually have hints).
 
