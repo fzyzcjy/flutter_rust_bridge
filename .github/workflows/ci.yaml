@@ -652,6 +652,7 @@ jobs:
           - image: windows-2019
             platform: windows
             package: frb_example--flutter_via_create
+          # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
           - image: macos-13
             platform: macos
             package: frb_example--flutter_via_create
