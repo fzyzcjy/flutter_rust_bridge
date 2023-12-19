@@ -141,8 +141,24 @@ _VersionInfo _computeVersionInfo() => _extractChangelog().$1;
   );
 }
 
-void _simpleReplaceFile(String path, String from, String replace) {
-  _simpleActFile(path, (x) => x.replaceAll(from, replace));
+void _simpleReplaceFile(
+  String path,
+  String from,
+  String replace, {
+  int expectReplaceCount = 1,
+}) {
+  _simpleActFile(path, (x) {
+    var actualReplaceCount = 0;
+    final ans = x.replaceAllMapped(from, (match) {
+      ++actualReplaceCount;
+      return replace;
+    });
+    if (expectReplaceCount != actualReplaceCount) {
+      throw Exception(
+          'expectReplaceCount=$expectReplaceCount actualReplaceCount=$actualReplaceCount');
+    }
+    return ans;
+  });
 }
 
 void _simpleActFile(String path, String Function(String) replacer) {
