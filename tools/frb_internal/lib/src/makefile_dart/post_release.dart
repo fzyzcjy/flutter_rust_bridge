@@ -1,38 +1,52 @@
 // ignore_for_file: avoid_print
 
 import 'package:args/command_runner.dart';
+import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+
+part 'post_release.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleCommand('post-release-mimic-quickstart', postReleaseMimicQuickstart),
+    SimpleConfigCommand(
+        'post-release-mimic-quickstart',
+        postReleaseMimicQuickstart,
+        _$populatePostReleaseConfigParser,
+        _$parsePostReleaseConfigResult),
   ];
 }
 
-Future<void> postReleaseMimicQuickstart() async {
-  // await _quickstartStepInstall(config.installMode);
-  throw UnimplementedError();
+@CliOptions()
+class PostReleaseConfig {
+  final CodegenInstallMode codegenInstallMode;
+
+  const PostReleaseConfig({required this.codegenInstallMode});
 }
 
-enum InstallMode {
+Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
+  await _quickstartStepInstall(config.codegenInstallMode);
+  TODO;
+}
+
+enum CodegenInstallMode {
   cargoInstall,
   cargoBinstall,
   scoop,
   homebrew,
 }
 
-// TODO
-// Future<void> _quickstartStepInstall(InstallMode mode) async {
-//   switch (mode) {
-//     case InstallMode.cargoInstall:
-//       await exec('cargo install flutter_rust_bridge_codegen');
-//     case InstallMode.cargoBinstall:
-//       await exec('cargo binstall flutter_rust_bridge_codegen');
-//     case InstallMode.scoop:
-//       await exec(
-//           'scoop bucket add frb https://github.com/Desdaemon/scoop-repo');
-//       await exec('scoop install flutter_rust_bridge_codegen');
-//     case InstallMode.homebrew:
-//       await exec('brew install desdaemon/repo/flutter_rust_bridge_codegen');
-//   }
-// }
+Future<void> _quickstartStepInstall(CodegenInstallMode mode) async {
+  switch (mode) {
+    case CodegenInstallMode.cargoInstall:
+      await exec('cargo install flutter_rust_bridge_codegen');
+    case CodegenInstallMode.cargoBinstall:
+      await exec('cargo binstall flutter_rust_bridge_codegen');
+    case CodegenInstallMode.scoop:
+      await exec(
+          'scoop bucket add frb https://github.com/Desdaemon/scoop-repo');
+      await exec('scoop install flutter_rust_bridge_codegen');
+    case CodegenInstallMode.homebrew:
+      await exec('brew install desdaemon/repo/flutter_rust_bridge_codegen');
+  }
+}
