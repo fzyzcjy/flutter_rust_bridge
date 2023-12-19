@@ -17,7 +17,7 @@ exclude = [
 
 [workspace.package]
 version = "1.82.6"
-edition = "2021"
+edition = "2018"
 license = "MIT"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
 repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
