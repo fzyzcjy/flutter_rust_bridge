@@ -96,7 +96,7 @@ fn modify_file(
                     )
                 })
                 .unwrap_or_default();
-            return Some([&src, commented_existing_content.as_bytes()].concat());
+            return Some((path, [&src, commented_existing_content.as_bytes()].concat()));
         }
 
         warn!(
@@ -107,12 +107,12 @@ fn modify_file(
     }
 
     if path.iter().contains(&OsStr::new("cargokit")) {
-        if let Some(comments) = compute_cargokit_comments(path) {
-            return Some((path.to_owned(), [comments.as_bytes(), &src].concat()));
+        if let Some(comments) = compute_cargokit_comments(&path) {
+            return Some((path, [comments.as_bytes(), &src].concat()));
         }
     }
 
-    Some((path.to_owned(), src))
+    Some((path, src))
 }
 
 fn replace_file_content(raw: &[u8], package_name: &str, enable_local_dependency: bool) -> Vec<u8> {
