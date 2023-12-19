@@ -51,8 +51,19 @@ Future<void> _quickstartStepCreate() async {
 }
 
 Future<void> _quickstartStepRun() async {
+  final String deviceId;
+  if (Platform.isWindows) {
+    deviceId = 'windows';
+  } else if (Platform.isMacOS) {
+    deviceId = 'macos';
+  } else if (Platform.isLinux) {
+    deviceId = 'linux';
+  } else {
+    throw UnimplementedError();
+  }
+
   await flutterIntegrationTestRaw(
-    flutterTestArgs: TODO,
+    flutterTestArgs: '--device-id $deviceId',
     relativePwd: _kPackageName,
   );
 }
