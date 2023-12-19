@@ -155,7 +155,10 @@ void _simpleReplaceFile(
     });
     if (expectReplaceCount != actualReplaceCount) {
       throw Exception(
-          'expectReplaceCount=$expectReplaceCount actualReplaceCount=$actualReplaceCount');
+        'expectReplaceCount=$expectReplaceCount '
+        'actualReplaceCount=$actualReplaceCount '
+        'path=$path from=$from replace=$replace',
+      );
     }
     return ans;
   });
