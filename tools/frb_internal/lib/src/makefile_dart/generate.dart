@@ -178,8 +178,8 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
 
 Future<void> generateInternalContributor(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    final customRaw = loadYaml(
-        File('${exec.pwd}/.all-contributors-custom.yaml').readAsStringSync());
+    final customPath = '${exec.pwd}/.all-contributors-custom.yaml';
+    final customRaw = loadYaml(File(customPath).readAsStringSync());
     final customConverted = [
       for (final item in customRaw)
         {
@@ -206,6 +206,13 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
               .single
       ]
     };
+
+    if (allContributorsrcNew['contributors'].length !=
+        allContributorsrcOld['contributors'].length) {
+      throw Exception(
+          'num contributors does not agree, maybe you forget to put contributors in $customPath?');
+    }
+
     fileAllContributorsrc.writeAsStringSync(
         const JsonEncoder.withIndent('  ').convert(allContributorsrcNew));
 
