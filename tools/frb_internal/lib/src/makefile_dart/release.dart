@@ -52,6 +52,12 @@ Future<void> releaseUpdateVersion() async {
     '\nversion = "${versionInfo.newVersion}"\n',
   );
   _simpleReplaceFile(
+    '${exec.pwd}Cargo.toml',
+    ', version = "=${versionInfo.oldVersion}" }\n',
+    ', version = "=${versionInfo.newVersion}" }\n',
+    expectReplaceCount: 3,
+  );
+  _simpleReplaceFile(
     '${exec.pwd}frb_dart/pubspec.yaml',
     '\nversion: ${versionInfo.oldVersion}\n',
     '\nversion: ${versionInfo.newVersion}\n',
