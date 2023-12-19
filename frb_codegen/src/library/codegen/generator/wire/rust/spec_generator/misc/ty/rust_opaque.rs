@@ -22,7 +22,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
 
 pub(super) fn generate_rust_arc_functions(ir: IrType, inner: &IrType) -> Acc<WireRustOutputCode> {
     let generate_impl = |target| -> WireRustOutputCode {
-        ["increment", "decrement"].into_iter()
+        ["increment", "decrement"].iter()
             .map(|op|
                      ExternFunc {
                          func_name: format!("rust_arc_{op}_strong_count_{}", ir.safe_ident()),
