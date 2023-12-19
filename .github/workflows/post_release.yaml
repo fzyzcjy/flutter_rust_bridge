@@ -64,5 +64,9 @@ jobs:
       - if: runner.os == 'Linux'
         uses: pyvista/setup-headless-display-action@v1
 
+      # Note: Do *NOT* run locally, only for the post-release CI,
+      # in order to avoid the posibility that it uses the master branch code to "cheat"
+      - run: rm -rf ./frb_codegen ./frb_dart ./frb_rust
+
       # execute
       - run: ./frb_internal post-release-mimic-quickstart --codegen-install-mode ${{ matrix.codegen_install_mode }}
