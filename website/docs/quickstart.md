@@ -38,6 +38,10 @@ cargo binstall 'flutter_rust_bridge_codegen@^2.0.0-dev.0'
 
 <TabItem value="Scoop">
 
+:::caution
+It installs v1 instead of v2.0.0-dev.x currently, so please wait a bit until the v2.0.0 stable is released :)
+:::
+
 <small>Remark: Thanks @Desdaemon for scripts to publish to brew/scoop</small>
 
 ```shell
@@ -48,6 +52,10 @@ scoop install flutter_rust_bridge_codegen
 </TabItem>
 
 <TabItem value="Homebrew">
+
+:::caution
+It installs v1 instead of v2.0.0-dev.x currently, so please wait a bit until the v2.0.0 stable is released :)
+:::
 
 <small>Remark: Thanks @Desdaemon for scripts to publish to brew/scoop</small>
 
