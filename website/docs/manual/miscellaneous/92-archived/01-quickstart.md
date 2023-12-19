@@ -28,7 +28,7 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 
 Then run the code generator.
 
-<small>Remark: It needs some installation steps. You may refer to [the tutorial](tutorial_with_flutter.md), [create new projects from a template](template.md) or [integrating with existing projects](integrate.md) for details.</small>
+<small>Remark: It needs some installation steps. You may refer to `the tutorial`, `create new projects from a template` or `integrating with existing projects` for details.</small>
 
 ```bash
 flutter_rust_bridge_codegen --rust-input path/to/api.rs \
