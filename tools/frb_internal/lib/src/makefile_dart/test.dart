@@ -114,9 +114,13 @@ class TestFlutterWebConfig {
 }
 
 Future<void> testMimicQuickstart() async =>
-    await MimicQuickstartTester().test();
+    await MimicQuickstartTester(postRelease: false).test();
 
 class MimicQuickstartTester {
+  final bool postRelease;
+
+  const MimicQuickstartTester({required this.postRelease});
+
   Future<void> test() async {
     Directory('${exec.pwd}frb_example').createSync(recursive: true);
     await exec('rm -rf ${exec.pwd}frb_example/$_kMimicQuickstartPackageName/');
@@ -131,15 +135,19 @@ class MimicQuickstartTester {
   static const _kMimicQuickstartPackageName = 'my_app';
 
   Future<void> _quickstartStepCreate() async {
-    await executeFrbCodegen('create $_kMimicQuickstartPackageName --local',
-        relativePwd: 'frb_example', coverage: false);
+    await executeFrbCodegen(
+        'create $_kMimicQuickstartPackageName ${postRelease ? "" : "--local"}',
+        relativePwd: 'frb_example',
+        coverage: false);
 
-    // avoid workspace issue (only exist in our setup, not in real user's)
-    simpleReplaceFile(
-      '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/rust/Cargo.toml',
-      '[lib]',
-      '[workspace]\n\n[lib]',
-    );
+    if (!postRelease) {
+      // avoid workspace issue (only exist in our setup, not in real user's)
+      simpleReplaceFile(
+        '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/rust/Cargo.toml',
+        '[lib]',
+        '[workspace]\n\n[lib]',
+      );
+    }
   }
 
   Future<void> _quickstartStepRun() async {
