@@ -78,10 +78,10 @@ Future<void> precommit(PrecommitConfig config) async {
 }
 
 Future<void> pubGetAll() async {
-  await Future.wait([
-    for (final package in kDartPackages)
-      exec('${kDartModeOfPackage[package]!.name} pub get', relativePwd: package)
-  ]);
+  for (final package in kDartPackages) {
+    await exec('${kDartModeOfPackage[package]!.name} pub get',
+        relativePwd: package);
+  }
 }
 
 Future<void> cargoFetchAll() async {
