@@ -131,7 +131,7 @@ class MimicQuickstartTester {
   static const _kMimicQuickstartPackageName = 'my_app';
 
   Future<void> _quickstartStepCreate() async {
-    await executeFrbCodegen('create $_kMimicQuickstartPackageName',
+    await executeFrbCodegen('create $_kMimicQuickstartPackageName --local',
         relativePwd: 'frb_example', coverage: false);
   }
 
