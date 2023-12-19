@@ -12,7 +12,12 @@ List<Command<void>> createCommands() {
 
 Future<void> postReleaseMimicQuickstart() async {
   await _stepInstall(config.installMode);
+  await _stepCreate();
+  await _stepRun();
+  await _stepModifyAndGenerate();
 }
+
+const _kPackageName = 'my_app';
 
 enum InstallMode {
   cargoInstall,
@@ -34,4 +39,16 @@ Future<void> _stepInstall(InstallMode mode) async {
     case InstallMode.homebrew:
       await exec('brew install desdaemon/repo/flutter_rust_bridge_codegen');
   }
+}
+
+Future<void> _stepCreate() async {
+  await exec('flutter_rust_bridge_codegen create $_kPackageName');
+}
+
+Future<void> _stepRun() async {
+  throw UnimplementedError();
+}
+
+Future<void> _stepModifyAndGenerate() async {
+  throw UnimplementedError();
 }
