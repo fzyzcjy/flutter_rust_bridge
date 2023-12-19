@@ -226,7 +226,7 @@ const sidebars = {
                         {
                             type: 'link',
                             label: 'Dashboard',
-                            href: 'dashboard',
+                            href: 'https://fzyzcjy.github.io/flutter_rust_bridge/guides/performance/dashboard',
                         },
                         {
                             type: 'link',
