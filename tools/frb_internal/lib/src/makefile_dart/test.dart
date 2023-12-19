@@ -117,7 +117,8 @@ Future<void> testMimicQuickstart() async {
   await _quickstartStepCreate();
   await _quickstartStepRun();
   await _quickstartStepModifyAndGenerate();
-  await _quickstartStepRun(); // Run again after modification
+  // Run again after modification
+  await _quickstartStepRun();
 }
 
 const _kMimicQuickstartPackageName = 'my_app';
