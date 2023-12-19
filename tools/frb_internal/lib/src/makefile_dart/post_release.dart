@@ -11,10 +11,10 @@ List<Command<void>> createCommands() {
 }
 
 Future<void> postReleaseMimicQuickstart() async {
-  await _stepInstall(config.installMode);
-  await _stepCreate();
-  await _stepRun();
-  await _stepModifyAndGenerate();
+  await _quickstartStepInstall(config.installMode);
+  await _quickstartStepCreate();
+  await _quickstartStepRun();
+  await _quickstartStepModifyAndGenerate();
 }
 
 const _kPackageName = 'my_app';
@@ -26,7 +26,7 @@ enum InstallMode {
   homebrew,
 }
 
-Future<void> _stepInstall(InstallMode mode) async {
+Future<void> _quickstartStepInstall(InstallMode mode) async {
   switch (mode) {
     case InstallMode.cargoInstall:
       await exec('cargo install flutter_rust_bridge_codegen');
@@ -41,14 +41,14 @@ Future<void> _stepInstall(InstallMode mode) async {
   }
 }
 
-Future<void> _stepCreate() async {
+Future<void> _quickstartStepCreate() async {
   await exec('flutter_rust_bridge_codegen create $_kPackageName');
 }
 
-Future<void> _stepRun() async {
+Future<void> _quickstartStepRun() async {
   throw UnimplementedError();
 }
 
-Future<void> _stepModifyAndGenerate() async {
+Future<void> _quickstartStepModifyAndGenerate() async {
   throw UnimplementedError();
 }
