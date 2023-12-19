@@ -12,3 +12,4 @@ Makefile
 coverage/
 lcov.info
 temp.txt
+frb_example/my_app
