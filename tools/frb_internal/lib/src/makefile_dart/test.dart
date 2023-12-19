@@ -130,9 +130,8 @@ class MimicQuickstartTester {
   static const _kMimicQuickstartPackageName = 'my_app';
 
   Future<void> _quickstartStepCreate() async {
-    await exec(
-        'flutter_rust_bridge_codegen create $_kMimicQuickstartPackageName',
-        relativePwd: 'frb_example');
+    await executeFrbCodegen('create $_kMimicQuickstartPackageName',
+        relativePwd: 'frb_example', coverage: false);
   }
 
   Future<void> _quickstartStepRun() async {
