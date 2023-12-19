@@ -76,10 +76,10 @@ Future<void> precommit(PrecommitConfig config) async {
 }
 
 Future<void> pubGetAll() async {
-  for (final package in kDartPackages) {
-    await exec('${kDartModeOfPackage[package]!.name} pub get',
-        relativePwd: package);
-  }
+  await Future.wait([
+    for (final package in kDartPackages)
+      exec('${kDartModeOfPackage[package]!.name} pub get', relativePwd: package)
+  ]);
 }
 
 String convertConfigPackage(String raw) {
