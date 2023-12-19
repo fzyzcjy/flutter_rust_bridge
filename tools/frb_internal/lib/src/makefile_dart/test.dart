@@ -122,16 +122,20 @@ class MimicQuickstartTester {
   const MimicQuickstartTester({required this.postRelease});
 
   Future<void> test() async {
-    Directory('${exec.pwd}frb_example').createSync(recursive: true);
-    Directory('${exec.pwd}frb_example/$_kMimicQuickstartPackageName/')
-        .deleteSync(recursive: true);
-
+    _prepareDir();
     await _quickstartStepCreate();
     await _quickstartStepRun();
     await _quickstartStepModify();
     await _quickstartStepGenerate();
     // Run again after modification
     await _quickstartStepRun();
+  }
+
+  void _prepareDir() {
+    Directory('${exec.pwd}frb_example').createSync(recursive: true);
+    final targetDir =
+        Directory('${exec.pwd}frb_example/$_kMimicQuickstartPackageName/');
+    if (targetDir.existsSync()) targetDir.deleteSync(recursive: true);
   }
 
   static const _kMimicQuickstartPackageName = 'my_app';
