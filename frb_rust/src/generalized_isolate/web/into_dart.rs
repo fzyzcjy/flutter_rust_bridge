@@ -3,6 +3,7 @@ use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
 use crate::rust_opaque::{DartSafe, RustOpaque};
 use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
+use std::iter::FromIterator;
 use wasm_bindgen::JsValue;
 
 pub trait IntoDart {
