@@ -15,7 +15,7 @@ chrono = { workspace = true, optional = true }
 threadpool = "1.8.1"
 lazy_static = { workspace = true }
 parking_lot = "0.12.1"
-flutter_rust_bridge_macros = "=2.0.0-dev.1"
+flutter_rust_bridge_macros = { workspace = true }
 uuid = { workspace = true, optional = true }
 log = "0.4"
 backtrace = { workspace = true }
