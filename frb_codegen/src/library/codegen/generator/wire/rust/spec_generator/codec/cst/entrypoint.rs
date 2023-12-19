@@ -17,6 +17,7 @@ use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
+use std::convert::TryInto;
 
 pub(crate) struct CstWireRustCodecEntrypoint {}
 

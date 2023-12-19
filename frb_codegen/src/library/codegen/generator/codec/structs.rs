@@ -58,7 +58,7 @@ macro_rules! codegen_codec_structs {
                 pub(crate) inner: Acc<Vec<$code>>,
             }
 
-            impl FromIterator<[<$partial_name OutputSpec>]> for [<$partial_name OutputSpec>] {
+            impl std::iter::FromIterator<[<$partial_name OutputSpec>]> for [<$partial_name OutputSpec>] {
                 fn from_iter<T: IntoIterator<Item = Self>>(iter: T) -> Self {
                     Self {
                         inner: iter.into_iter().map(|x| x.inner).collect(),

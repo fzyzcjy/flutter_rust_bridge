@@ -19,6 +19,7 @@ use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;
+use std::convert::TryInto;
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
