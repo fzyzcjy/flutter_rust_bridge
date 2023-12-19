@@ -290,7 +290,8 @@ jobs:
       matrix:
         image:
           - windows-2019
-          - macos-11
+          # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
+          - macos-13
           - ubuntu-latest
 
     steps:
