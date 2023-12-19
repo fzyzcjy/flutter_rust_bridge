@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
@@ -56,17 +58,22 @@ Future<void> _quickstartStepRun() async {
 }
 
 Future<void> _quickstartStepModifyAndGenerate() async {
-  const kExtraRustSrc = TODO;
-  const kExtraDartTest = TODO;
+  const kExtraRustSrc = '''
+  TODO
+  ''';
+  const kExtraDartTest = '''
+  TODO
+  ''';
 
+  final pathRustSrc = '${exec.pwd}$_kPackageName/rust/src/api/simple.rs';
+  final pathDartTest =
+      '${exec.pwd}$_kPackageName/integration_test/simple_test.dart';
+
+  simpleReplaceFile(pathRustSrc, RegExp(r'$', multiLine: true), kExtraRustSrc);
   simpleReplaceFile(
-    '${exec.pwd}$_kPackageName/rust/src/api/simple.rs',
-    RegExp(r'$', multiLine: true),
-    kExtraRustSrc,
-  );
-  simpleReplaceFile(
-    '${exec.pwd}$_kPackageName/integration_test/simple_test.dart',
-    'testWidgets(',
-    '$kExtraDartTest\ntestWidgets(',
-  );
+      pathDartTest, 'testWidgets(', '$kExtraDartTest\ntestWidgets(');
+
+  for (final path in [pathRustSrc, pathDartTest]) {
+    print('path=$path content=${File(path).readAsStringSync()}');
+  }
 }
