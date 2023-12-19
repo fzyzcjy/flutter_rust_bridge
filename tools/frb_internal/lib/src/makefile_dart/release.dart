@@ -58,7 +58,7 @@ Future<void> releaseUpdateVersion() async {
 
 Future<void> releaseUpdateCode() async {
   await pubGetAll();
-  // TODO
+  await cargoFetchAll();
 }
 
 Future<void> releaseUpdateScoop() async {

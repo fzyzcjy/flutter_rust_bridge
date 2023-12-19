@@ -18,6 +18,7 @@ List<Command<void>> createCommands() {
     SimpleConfigCommand('precommit', precommit, _$populatePrecommitConfigParser,
         _$parsePrecommitConfigResult),
     SimpleCommand('pub-get-all', pubGetAll),
+    SimpleCommand('cargo-fetch-all', cargoFetchAll),
   ];
 }
 
@@ -70,6 +71,7 @@ Future<void> precommit(PrecommitConfig config) async {
         const GenerateConfig(setExitIfChanged: false, coverage: false));
     await testRust(const TestRustConfig(updateGoldens: true, coverage: false));
     await pubGetAll();
+    await cargoFetchAll();
   }
 
   await miscNormalizePubspec();
@@ -80,6 +82,12 @@ Future<void> pubGetAll() async {
     for (final package in kDartPackages)
       exec('${kDartModeOfPackage[package]!.name} pub get', relativePwd: package)
   ]);
+}
+
+Future<void> cargoFetchAll() async {
+  for (final package in kRustPackages) {
+    await exec('cargo fetch', relativePwd: package);
+  }
 }
 
 String convertConfigPackage(String raw) {
