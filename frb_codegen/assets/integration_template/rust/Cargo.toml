@@ -7,4 +7,4 @@ edition = "2018"
 crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
-flutter_rust_bridge = { path = "../../../frb_rust" }
+flutter_rust_bridge = REPLACE_ME_RUST_FRB_DEPENDENCY

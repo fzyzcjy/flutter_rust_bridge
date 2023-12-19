@@ -26,7 +26,13 @@ pub fn integrate(enable_integration_test: bool, enable_local_dependency: bool) -
         &INTEGRATION_TEMPLATE_DIR,
         &dart_root,
         &|path, src_raw, existing_content| {
-            modify_file(path, src_raw, existing_content, &package_name)
+            modify_file(
+                path,
+                src_raw,
+                existing_content,
+                &package_name,
+                enable_local_dependency,
+            )
         },
         &|path| filter_file(path, enable_integration_test),
     )?;
@@ -68,8 +74,9 @@ fn modify_file(
     src_raw: &[u8],
     existing_content: Option<Vec<u8>>,
     package_name: &str,
+    enable_local_dependency: bool,
 ) -> Option<Vec<u8>> {
-    let src = replace_file_content(src_raw, package_name);
+    let src = replace_file_content(src_raw, package_name, enable_local_dependency);
 
     if let Some(existing_content) = existing_content {
         if path.file_name() == Some(OsStr::new("main.dart")) {
@@ -101,10 +108,18 @@ fn modify_file(
     Some(src)
 }
 
-fn replace_file_content(raw: &[u8], package_name: &str) -> Vec<u8> {
+fn replace_file_content(raw: &[u8], package_name: &str, enable_local_dependency: bool) -> Vec<u8> {
     match String::from_utf8(raw.to_owned()) {
         Ok(raw_str) => raw_str
             .replace("REPLACE_ME_PACKAGE_NAME", package_name)
+            .replace(
+                "REPLACE_ME_RUST_FRB_DEPENDENCY",
+                &if enable_local_dependency {
+                    r#"{ path = "../../../frb_rust" }"#.to_owned()
+                } else {
+                    format!(r#""{}""#, env!("CARGO_PKG_VERSION"))
+                },
+            )
             .into_bytes(),
         Err(e) => e.into_bytes(),
     }
