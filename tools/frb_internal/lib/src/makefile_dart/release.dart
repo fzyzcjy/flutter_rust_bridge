@@ -73,6 +73,14 @@ Future<void> releaseUpdateCode() async {
 void _updateVersionInText() {
   final versionInfo = _computeVersionInfo();
 
+  for (final package in ['flutter_rust_bridge', 'flutter_rust_bridge_macros']) {
+    _simpleReplaceFile(
+      '${exec.pwd}frb_codegen/assets/integration_template/rust/Cargo.lock',
+      '[[package]]\nname = "$package"\nversion = "${versionInfo.oldVersion}"',
+      '[[package]]\nname = "$package"\nversion = "${versionInfo.newVersion}"',
+    );
+  }
+
   for (final relativePatter in [
     'frb_codegen/assets/integration_template/**',
     ...kDartExamplePackages.expand((x) => ['$x/lib/**', '$x/rust/src/**']),
