@@ -16,7 +16,7 @@ static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
 
 /// Integrate Rust into existing Flutter project.
 // ref: https://matejknopp.com/post/flutter_plugin_in_rust_with_no_prebuilt_binaries/
-pub fn integrate(enable_integration_test: bool) -> Result<()> {
+pub fn integrate(enable_integration_test: bool, enable_local_dependency: bool) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 

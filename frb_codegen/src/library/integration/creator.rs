@@ -5,7 +5,7 @@ use std::path::Path;
 use std::{env, fs};
 
 /// Create a new Flutter + Rust project.
-pub fn create(name: &str) -> anyhow::Result<()> {
+pub fn create(name: &str, enable_local_dependency: bool) -> anyhow::Result<()> {
     debug!("create name={name}");
 
     flutter_create(name)?;
@@ -16,7 +16,7 @@ pub fn create(name: &str) -> anyhow::Result<()> {
     remove_unnecessary_files(&dart_root)?;
 
     info!("Step: Inject flutter_rust_bridge related code");
-    integrator::integrate(true)
+    integrator::integrate(true, enable_local_dependency)
 }
 
 fn remove_unnecessary_files(dart_root: &Path) -> anyhow::Result<()> {
