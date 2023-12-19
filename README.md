@@ -54,7 +54,7 @@ Typical scenarios to combine them include:
 
 * **UI framework for Rust**: When you want a UI framework for your Rust system.
 * **Use arbitrary Rust libraries in Flutter**: When the desired functionality only has a library in Rust, not Dart (Flutter).
-* **Need high-performance code for Flutter**: Rust makes it easy and performant to write multi-thread code, algorithms, data-intensive operations, etc.
+* **Need high-performance code for Flutter**: Rust makes it easy and performant to write multi-thread code, algorithms, data-intensive operations, SIMD code, etc.
 * ...
 
 </details>
