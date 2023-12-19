@@ -177,7 +177,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.82.6"
+version = "2.0.0-dev.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -206,7 +206,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.82.6"
+version = "2.0.0-dev.0"
 
 [[package]]
 name = "frb_example_deliberate_bad"
