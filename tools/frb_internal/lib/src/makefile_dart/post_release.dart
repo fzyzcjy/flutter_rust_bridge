@@ -1,11 +1,7 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io';
-
 import 'package:args/command_runner.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 List<Command<void>> createCommands() {
@@ -15,7 +11,8 @@ List<Command<void>> createCommands() {
 }
 
 Future<void> postReleaseMimicQuickstart() async {
-  await _quickstartStepInstall(config.installMode);
+  // await _quickstartStepInstall(config.installMode);
+  throw UnimplementedError();
 }
 
 enum InstallMode {

@@ -1,3 +1,5 @@
+# NOTE: Please keep in sync with `ci.yaml`
+#
 # Ensure doc's steps can work correctly, where users use the released versions
 # instead of the code in master branch
 name: Post-Release
@@ -14,7 +16,36 @@ env:
   FRB_MAIN_FLUTTER_VERSION: 3.16.0
 
 jobs:
+  test_mimic_quickstart:
+    name: 'Test :: MimicQuickstart'
+    runs-on: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - windows-2019
+          - macos-11
+          - ubuntu-20.04
+        install:
+          TODO
 
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+          architecture: x64
+
+      # execute
+      - run: ./frb_internal test-mimic-quickstart --post-release
 
   # -------------------------- test --------------------------
   valgrind_test:
