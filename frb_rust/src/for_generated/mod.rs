@@ -32,7 +32,7 @@ pub use crate::web_transfer::transfer_closure::TransferClosure;
 pub use byteorder;
 pub use cast::*;
 #[cfg(not(wasm))]
-pub use dart_sys;
+pub use dart_sys_fork as dart_sys;
 pub use futures;
 #[cfg(wasm)]
 pub use js_sys;

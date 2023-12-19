@@ -3,7 +3,7 @@ use crate::codec::sse::Rust2DartMessageSse;
 use crate::codec::Rust2DartMessageTrait;
 use crate::platform_types::{WireSyncRust2DartDco, WireSyncRust2DartSse};
 pub use allo_isolate::*;
-use dart_sys::Dart_InitializeApiDL;
+use dart_sys_fork::Dart_InitializeApiDL;
 
 /// # Safety
 ///
