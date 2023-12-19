@@ -58,11 +58,12 @@ Future<void> _quickstartStepRun() async {
 }
 
 Future<void> _quickstartStepModifyAndGenerate() async {
-  const kExtraRustSrc = '''
-  TODO
-  ''';
+  const kExtraRustSrc = '''pub fn hello(a: String) -> String { a.repeat(2) }''';
   const kExtraDartTest = '''
-  TODO
+  testWidgets('Can call the new function', (WidgetTester tester) async {
+    var result = await hello(a: "Hi");
+    expect(result, 'HiHi');
+  });
   ''';
 
   final pathRustSrc = '${exec.pwd}$_kPackageName/rust/src/api/simple.rs';
