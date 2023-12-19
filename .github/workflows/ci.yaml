@@ -304,6 +304,15 @@ jobs:
       # execute
       - run: ./frb_internal test-mimic-quickstart
 
+      # for debug
+      - if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
+      - if: ${{ failure() }}
+        name: Sleep forever
+        run: sleep 1000000
+
   test_rust:
     name: 'Test :: Rust'
     runs-on: ${{ matrix.info.image }}
