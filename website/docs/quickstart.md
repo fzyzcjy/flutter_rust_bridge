@@ -23,7 +23,7 @@ install `flutter_rust_bridge` using any method:
 <TabItem value="Default">
 
 ```shell
-cargo install flutter_rust_bridge_codegen
+cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0'
 ```
 
 </TabItem>

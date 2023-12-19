@@ -40,7 +40,7 @@ enum CodegenInstallMode {
 Future<void> _quickstartStepInstall(CodegenInstallMode mode) async {
   switch (mode) {
     case CodegenInstallMode.cargoInstall:
-      await exec('cargo install flutter_rust_bridge_codegen');
+      await exec("cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0'");
     case CodegenInstallMode.cargoBinstall:
       await exec('cargo binstall flutter_rust_bridge_codegen');
     case CodegenInstallMode.scoop:
