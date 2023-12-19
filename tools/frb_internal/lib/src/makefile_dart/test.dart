@@ -147,6 +147,7 @@ class MimicQuickstartTester {
       relativePwd: 'frb_example',
       coverage: false,
       postRelease: postRelease,
+      coverageName: 'MimicQuickstartStepCreate',
     );
 
     // avoid workspace issue (only exist in our setup, not in real user's)
@@ -204,9 +205,12 @@ class MimicQuickstartTester {
   }
 
   Future<void> _quickstartStepGenerate() async {
-    await executeFrbCodegen('generate',
-        relativePwd: 'frb_example/$_kMimicQuickstartPackageName',
-        coverage: false);
+    await executeFrbCodegen(
+      'generate',
+      relativePwd: 'frb_example/$_kMimicQuickstartPackageName',
+      coverage: false,
+      coverageName: 'MimicQuickstartStepGenerate',
+    );
   }
 }
 
@@ -441,8 +445,12 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   await runPubGetIfNotRunYet(config.package);
   await _installDartCoverage();
 
-  await executeFrbCodegen('build-web --dart-coverage',
-      relativePwd: config.package, coverage: config.coverage);
+  await executeFrbCodegen(
+    'build-web --dart-coverage',
+    relativePwd: config.package,
+    coverage: config.coverage,
+    coverageName: 'TestFlutterWeb',
+  );
 
   await exec(
       'flutter drive '

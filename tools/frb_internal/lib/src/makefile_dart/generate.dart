@@ -146,8 +146,12 @@ Future<void> generateInternalRust(GenerateConfig config) async {
       await runPubGetIfNotRunYet(package);
     }
 
-    await executeFrbCodegen('internal-generate',
-        relativePwd: 'frb_codegen', coverage: config.coverage);
+    await executeFrbCodegen(
+      'internal-generate',
+      relativePwd: 'frb_codegen',
+      coverage: config.coverage,
+      coverageName: 'GenerateInternalRust',
+    );
   });
 }
 
@@ -160,8 +164,12 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
       ('integrate', ''),
       ('build-web', '--dart-root ${exec.pwd}frb_example/pure_dart'),
     ]) {
-      final resp = await executeFrbCodegen('$cmd $extraArgs --help',
-          relativePwd: 'frb_codegen', coverage: config.coverage);
+      final resp = await executeFrbCodegen(
+        '$cmd $extraArgs --help',
+        relativePwd: 'frb_codegen',
+        coverage: config.coverage,
+        coverageName: 'GenerateInternalBookHelp',
+      );
       File('${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx')
           .writeAsStringSync('```\n${resp.stdout}```');
     }
@@ -240,8 +248,12 @@ Future<void> generateRunFrbCodegenCommandGenerate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runPubGetIfNotRunYet(config.package);
-    await executeFrbCodegen('generate',
-        relativePwd: config.package, coverage: config.coverage);
+    await executeFrbCodegen(
+      'generate',
+      relativePwd: config.package,
+      coverage: config.coverage,
+      coverageName: 'GenerateRunFrbCodegenCommandGenerate',
+    );
   });
 }
 
@@ -269,14 +281,22 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 
     switch (config.package) {
       case 'frb_example/flutter_via_create':
-        await executeFrbCodegen('create flutter_via_create --local',
-            relativePwd: 'frb_example', coverage: config.coverage);
+        await executeFrbCodegen(
+          'create flutter_via_create --local',
+          relativePwd: 'frb_example',
+          coverage: config.coverage,
+          coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+        );
 
       case 'frb_example/flutter_via_integrate':
         await exec('flutter create flutter_via_integrate',
             relativePwd: 'frb_example');
-        await executeFrbCodegen('integrate --local',
-            relativePwd: config.package, coverage: config.coverage);
+        await executeFrbCodegen(
+          'integrate --local',
+          relativePwd: config.package,
+          coverage: config.coverage,
+          coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+        );
 
       default:
         throw Exception('Do not know how to handle package ${config.package}');
@@ -295,6 +315,7 @@ Future<RunCommandOutput> executeFrbCodegen(
   required String relativePwd,
   required bool coverage,
   bool postRelease = false,
+  required String coverageName,
 }) async {
   if (postRelease) {
     assert(!coverage);
@@ -302,7 +323,7 @@ Future<RunCommandOutput> executeFrbCodegen(
         relativePwd: relativePwd);
   } else {
     return await exec(
-      'cargo ${coverage ? "llvm-cov run --lcov --output-path ${getCoverageDir('rust')}/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+      'cargo ${coverage ? "llvm-cov run --lcov --output-path ${getCoverageDir(coverageName)}/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
       relativePwd: relativePwd,
       extraEnv: {'RUST_BACKTRACE': '1'},
     );
@@ -340,8 +361,12 @@ Future<void> generateWebsiteBuild(GenerateWebsiteConfig config) async {
   await exec('yarn install --frozen-lockfile', relativePwd: 'website');
   await exec('yarn build', relativePwd: 'website');
 
-  await executeFrbCodegen('build-web --release',
-      relativePwd: 'frb_example/gallery', coverage: config.coverage);
+  await executeFrbCodegen(
+    'build-web --release',
+    relativePwd: 'frb_example/gallery',
+    coverage: config.coverage,
+    coverageName: 'GenerateWebsiteBuild',
+  );
   await exec(
       'flutter build web '
       '--base-href /flutter_rust_bridge/demo/ '
