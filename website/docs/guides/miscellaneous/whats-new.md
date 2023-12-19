@@ -37,7 +37,6 @@ where there are lists of features (advantages) and a quick show-me-the-code.
     * Add some unit tests for `frb_codegen`.
 * Improve error stack trace of `frb_codegen` (replace `thiserror` with `anyhow`).
 * Generate hashCode/equals for non-freezed structs.
-* Generate hashCode/equals for non-freezed structs.
 * Remove global internal thread pool, thus users can arbitrarily customize thread pool easily.
 * Refactor the scripts for repository contributors and the CI.
 * Automatically install `cargo expand` if not installed.
