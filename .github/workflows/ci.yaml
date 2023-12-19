@@ -291,7 +291,7 @@ jobs:
         image:
           - windows-2019
           - macos-11
-          - ubuntu-20.04
+          - ubuntu-latest
 
     steps:
       # setup
