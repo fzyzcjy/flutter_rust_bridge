@@ -171,7 +171,10 @@ class MimicQuickstartTester {
   Future<void> _quickstartStepModifyAndGenerate() async {
     const kExtraRustSrc =
         '''pub fn hello(a: String) -> String { a.repeat(2) }''';
-    const kExtraDartTest = '''
+    const kExtraDartTestPrelude = '''
+    import 'package:flutter_via_integrate/src/rust/api/simple.dart';
+    ''';
+    const kExtraDartTestBody = '''
   testWidgets('Can call the new function', (WidgetTester tester) async {
     var result = await hello(a: "Hi");
     expect(result, 'HiHi');
@@ -184,8 +187,9 @@ class MimicQuickstartTester {
         '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/integration_test/simple_test.dart';
 
     simpleActFile(pathRustSrc, (x) => x + kExtraRustSrc);
+    simpleActFile(pathDartTest, (x) => kExtraDartTestPrelude + x);
     simpleReplaceFile(
-        pathDartTest, 'testWidgets(', '$kExtraDartTest\ntestWidgets(');
+        pathDartTest, 'testWidgets(', '$kExtraDartTestBody\ntestWidgets(');
 
     for (final path in [pathRustSrc, pathDartTest]) {
       print('path=$path content=${File(path).readAsStringSync()}');
