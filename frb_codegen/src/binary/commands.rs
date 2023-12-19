@@ -145,6 +145,9 @@ pub(crate) struct GenerateCommandArgsPrimary {
 pub(crate) struct CreateCommandArgs {
     /// Name of the new project
     pub(crate) name: String,
+
+    #[clap(flatten)]
+    pub common: CreateOrIntegrateCommandCommonArgs,
 }
 
 #[derive(Debug, Args)]
@@ -152,6 +155,16 @@ pub(crate) struct IntegrateCommandArgs {
     /// Generate code related to integration test
     #[arg(long)]
     pub(crate) no_enable_integration_test: bool,
+
+    #[clap(flatten)]
+    pub common: CreateOrIntegrateCommandCommonArgs,
+}
+
+#[derive(Debug, Args)]
+pub(crate) struct CreateOrIntegrateCommandCommonArgs {
+    /// Use local version instead of the release version
+    #[arg(long, hide = true)]
+    pub local: bool,
 }
 
 #[derive(Debug, Args)]
