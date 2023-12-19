@@ -119,6 +119,7 @@ Future<void> testMimicQuickstart() async =>
 class MimicQuickstartTester {
   Future<void> test() async {
     Directory('${exec.pwd}frb_example').createSync(recursive: true);
+    await exec('rm -rf ${exec.pwd}frb_example/$_kMimicQuickstartPackageName/');
 
     await _quickstartStepCreate();
     await _quickstartStepRun();
