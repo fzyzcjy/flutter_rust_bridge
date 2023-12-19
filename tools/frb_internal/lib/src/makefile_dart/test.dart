@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
@@ -124,7 +126,7 @@ Future<void> testRustPackage(TestRustConfig config, String package) async {
   final effectiveEnableCoverage = config.coverage && package == 'frb_codegen';
 
   await exec(
-      'cargo ${effectiveEnableCoverage ? "llvm-cov --lcov --output-path ${exec.pwd}target/coverage/rust/lcov.info" : "test"}',
+      'cargo ${effectiveEnableCoverage ? "llvm-cov --lcov --output-path ${getCoverageDir('rust')}/lcov.info" : "test"}',
       relativePwd: package,
       extraEnv: {
         // If we are doing codecov, then we need to enable all tests;
@@ -147,7 +149,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   await withLlvmCovReport(
     relativeRustPwd: '${config.package}/rust',
     enable: enableRustCoverage,
-    reportPath: '${exec.pwd}target/coverage/rust/lcov.info',
+    reportPath: '${getCoverageDir('rust')}/lcov.info',
     (rustEnvMap) async {
       await runPubGetIfNotRunYet(config.package);
 
@@ -223,13 +225,19 @@ Future<void> _formatDartCoverage({required String package}) async {
 
   final reportOn = '${exec.pwd}/frb_dart';
   await exec(
-    'format_coverage --lcov --in=coverage --out=${exec.pwd}target/coverage/dart/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
+    'format_coverage --lcov --in=coverage --out=${getCoverageDir('dart')}/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
     relativePwd: package,
   );
 }
 
 Future<void> _installDartCoverage() async {
   await exec('dart pub global activate coverage');
+}
+
+String getCoverageDir(String lang) {
+  final ans = '${exec.pwd}target/coverage/$lang';
+  Directory(ans).createSync(recursive: true);
+  return ans;
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {

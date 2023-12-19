@@ -12,6 +12,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
@@ -295,7 +296,7 @@ Future<RunCommandOutput> executeFrbCodegen(
   required bool coverage,
 }) async {
   return await exec(
-    'cargo ${coverage ? "llvm-cov run --lcov --output-path ${exec.pwd}target/coverage/rust/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+    'cargo ${coverage ? "llvm-cov run --lcov --output-path ${getCoverageDir('rust')}/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
     relativePwd: relativePwd,
     extraEnv: {'RUST_BACKTRACE': '1'},
   );
