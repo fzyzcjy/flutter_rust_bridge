@@ -16,7 +16,7 @@ distribution as a library author *much* more convenient.
 In the meantime, however, we will need to work around these limitations. There are
 many ways to distribute the binaries ourselves, outside of pub.dev, but in this
 subsection, we will cover using GitHub releases because it easily integrates with
-our CI/CD solution, GitHub Actions (more on this [later](../ci)).
+our CI/CD solution, GitHub Actions (more on this [later](ci)).
 
 ## How it works
 If you look in your Flutter wrapper's pubspec (`/packages/flutter_library_name/pubspec.yaml`),
@@ -50,7 +50,7 @@ platform specific binaries into `/platform-build` and package them up appropriat
 based on the target platform.
 Example: on iOS/macOS, this bundle is an XCFramework, on Windows/Linux, it is a `.tar.gz`.
 2. These binaries are uploaded to somewhere online; as mentioned previously, we will use
-GitHub releases in this guide (which is [automated in ci](../ci)).
+GitHub releases in this guide (which is [automated in ci](ci)).
 3. When the Dart tooling builds our library (such as when an application consuming
 our library is built), it invokes the platform specific build process.
 We hijack this build process by downloading a copy of the binaries for the needed platform,
