@@ -294,12 +294,19 @@ Future<RunCommandOutput> executeFrbCodegen(
   String cmd, {
   required String relativePwd,
   required bool coverage,
+  bool postRelease = false,
 }) async {
-  return await exec(
-    'cargo ${coverage ? "llvm-cov run --lcov --output-path ${getCoverageDir('rust')}/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
-    relativePwd: relativePwd,
-    extraEnv: {'RUST_BACKTRACE': '1'},
-  );
+  if (postRelease) {
+    assert(!coverage);
+    return await exec('flutter_rust_bridge_codegen $cmd',
+        relativePwd: relativePwd);
+  } else {
+    return await exec(
+      'cargo ${coverage ? "llvm-cov run --lcov --output-path ${getCoverageDir('rust')}/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+      relativePwd: relativePwd,
+      extraEnv: {'RUST_BACKTRACE': '1'},
+    );
+  }
 }
 
 Future<void> _renameDirIfExists(String src, String dst) async {

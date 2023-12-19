@@ -142,9 +142,11 @@ class MimicQuickstartTester {
 
   Future<void> _quickstartStepCreate() async {
     await executeFrbCodegen(
-        'create $_kMimicQuickstartPackageName ${postRelease ? "" : "--local"}',
-        relativePwd: 'frb_example',
-        coverage: false);
+      'create $_kMimicQuickstartPackageName ${postRelease ? "" : "--local"}',
+      relativePwd: 'frb_example',
+      coverage: false,
+      postRelease: postRelease,
+    );
 
     // avoid workspace issue (only exist in our setup, not in real user's)
     simpleReplaceFile(
