@@ -318,9 +318,18 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
   await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
 
+  await flutterIntegrationTestRaw(
+      relativePwd: config.package,
+      flutterTestArgs: config.flutterTestArgs ?? '');
+}
+
+Future<void> flutterIntegrationTestRaw({
+  String flutterTestArgs = '',
+  required String relativePwd,
+}) async {
   await exec(
-      'flutter test integration_test/simple_test.dart --verbose --reporter=expanded ${config.flutterTestArgs ?? ""}',
-      relativePwd: config.package);
+      'flutter test integration_test/simple_test.dart --verbose --reporter=expanded $flutterTestArgs',
+      relativePwd: relativePwd);
 }
 
 Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
