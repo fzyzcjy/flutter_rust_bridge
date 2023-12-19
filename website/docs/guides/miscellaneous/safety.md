@@ -30,7 +30,7 @@ which is in production and it works quite well.
 If I observe any problems, I will surely fix it in this library,
 but again I have not seen any safety-related issues.
 
-## Unsafe implementation: Limited & encapsulated
+## Unsafe implementation: Carefully limited & encapsulated
 
 The vast majority of the code are written in safe Rust and (safe) Dart.
 The `unsafe` code mainly happens when we need to leak a Rust Vec/Arc/Box into a raw pointer,
