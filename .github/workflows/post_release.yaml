@@ -1,6 +1,4 @@
-# NOTE: Please keep in sync with `ci.yaml`
-#
-# Ensure README.md's steps can work correctly, where users use the released versions
+# Ensure doc's steps can work correctly, where users use the released versions
 # instead of the code in master branch
 name: Post-Release
 
@@ -11,9 +9,13 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  FRB_TEST_USE_RELEASE_VERSION: true
+  FRB_MAIN_RUST_VERSION: 1.74.0
+  FRB_MAIN_DART_VERSION: 3.2.0
+  FRB_MAIN_FLUTTER_VERSION: 3.16.0
 
 jobs:
+
+
   # -------------------------- test --------------------------
   valgrind_test:
     name: Valgrind test
