@@ -18,6 +18,10 @@ const config = {
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'fzyzcjy', // Usually your GitHub org/user name.
     projectName: 'flutter_rust_bridge', // Usually your repo name.
+ 
+    // https://docusaurus.io/docs/api/docusaurus-config#trailingSlash
+    // https://github.com/facebook/docusaurus/issues/3372
+    trailingSlash: false,
 
     // Even if you don't use internalization, you can use this field to set useful
     // metadata like html lang. For example, if your site is Chinese, you may want
