@@ -3,6 +3,7 @@
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 part 'post_release.g.dart';
@@ -26,7 +27,7 @@ class PostReleaseConfig {
 
 Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
   await _quickstartStepInstall(config.codegenInstallMode);
-  TODO;
+  await const MimicQuickstartTester(postRelease: true).test();
 }
 
 enum CodegenInstallMode {
