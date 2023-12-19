@@ -33,7 +33,7 @@ pub fn integrate(enable_integration_test: bool, enable_local_dependency: bool) -
 
     modify_permissions(&dart_root)?;
 
-    pub_add_dependencies(enable_integration_test)?;
+    pub_add_dependencies(enable_integration_test, enable_local_dependency)?;
 
     format_dart(&[dart_root], 80)?;
 
@@ -157,9 +157,18 @@ const CARGOKIT_PRELUDE: &[&str] = &[
     "Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin",
 ];
 
-fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
+fn pub_add_dependencies(
+    enable_integration_test: bool,
+    enable_local_dependency: bool,
+) -> Result<()> {
     flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
-    flutter_pub_add(&["flutter_rust_bridge".into(), "--path=../../frb_dart".into()])?;
+
+    flutter_pub_add(&if enable_local_dependency {
+        ["flutter_rust_bridge".into(), "--path=../../frb_dart".into()]
+    } else {
+        [format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
+    })?;
+
     // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
     flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
     if enable_integration_test {
