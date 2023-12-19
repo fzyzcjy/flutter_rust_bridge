@@ -193,8 +193,11 @@ please refer to [this doc](manual/ffigen-troubleshooting).
 
 ## What's next
 
+On one hand, if you like to see a live demo, please visit [the next page](demo).
+
+On the other hand, [the guides chapter](guides) introduces all features, customizations, common scenario how-tos, etc.
+There are a lot of documentations, but there is no need to learn all in details. Instead:
+
 import Intuition from './snippets/_tip-use-intuition.mdx';
 
 <Intuition/>
-
-[The guides chapter](guides) introduces all features, customizations, common scenario how-tos, etc.
