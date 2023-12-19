@@ -133,6 +133,13 @@ class MimicQuickstartTester {
   Future<void> _quickstartStepCreate() async {
     await executeFrbCodegen('create $_kMimicQuickstartPackageName --local',
         relativePwd: 'frb_example', coverage: false);
+
+    // avoid workspace issue (only exist in our setup, not in real user's)
+    simpleReplaceFile(
+      '${exec.pwd}frb_example/$_kMimicQuickstartPackageName/rust/Cargo.toml',
+      '[lib]',
+      '[workspace]\n\n[lib]',
+    );
   }
 
   Future<void> _quickstartStepRun() async {
