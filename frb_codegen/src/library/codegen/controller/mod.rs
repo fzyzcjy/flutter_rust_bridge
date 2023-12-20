@@ -95,6 +95,7 @@ mod tests {
     use super::*;
     use serial_test::serial;
     use std::fs;
+    use std::sync::Mutex;
     use tempfile::tempdir;
 
     #[serial]
@@ -103,7 +104,7 @@ mod tests {
         let temp_dir = tempdir()?;
         fs::create_dir_all(temp_dir.path().join("my_folder"))?;
 
-        let mut run_inner_count = 0;
+        let run_inner_count = Mutex::new(0);
 
         run(
             &ControllerInternalConfig {
@@ -113,16 +114,17 @@ mod tests {
                 max_count: Some(2),
             },
             &|| {
-                run_inner_count += 1;
+                let mut run_inner_count = run_inner_count.lock().unwrap();
+                *run_inner_count += 1;
                 fs::write(
-                    (temp_dir.path().join("my_folder")).join(format!("{}.txt", run_inner_count))?,
+                    (temp_dir.path().join("my_folder")).join(format!("{}.txt", run_inner_count)),
                     "content",
                 )?;
                 Ok(())
             },
         )?;
 
-        assert_eq!(run_inner_count, 2);
+        assert_eq!(*run_inner_count.lock().unwrap(), 2);
 
         Ok(())
     }

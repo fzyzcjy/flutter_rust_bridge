@@ -87,6 +87,7 @@ impl InternalConfig {
                 watch: meta_config.watch,
                 watching_paths: controller_watching_paths,
                 exclude_paths: controller_exclude_paths,
+                max_count: None,
             },
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),
