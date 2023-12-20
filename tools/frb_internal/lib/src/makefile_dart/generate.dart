@@ -231,12 +231,15 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
 }
 
 void _replaceCustomMessageText(String customMessageText) {
-  simpleReplaceFileSection(
+  simpleActFile(
     '${exec.pwd}README.md',
-    prelude:
-        '<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->',
-    postlude: '<!-- CUSTOM-MESSAGE:END -->',
-    inside: customMessageText,
+    (raw) => simpleReplaceSection(
+      raw,
+      prelude:
+          '<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->',
+      postlude: '<!-- CUSTOM-MESSAGE:END -->',
+      inside: customMessageText,
+    ),
   );
 }
 
@@ -244,14 +247,17 @@ Future<void> generateInternalReadme(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     final readmeText = File('${exec.pwd}README.md').readAsStringSync();
 
-    const kPrelude = '''---
+    {
+      const kPrelude = '''---
 title: Introduction
 hide_title: true
 ---
 
 ''';
-    File('${exec.pwd}/website/docs/index.md')
-        .writeAsStringSync(kPrelude + readmeText);
+      var text = kPrelude + simpleReplaceFileSection(readmeText);
+
+      File('${exec.pwd}/website/docs/index.md').writeAsStringSync(text);
+    }
   });
 }
 

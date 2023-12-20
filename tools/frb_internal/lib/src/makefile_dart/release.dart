@@ -158,14 +158,13 @@ _VersionInfo _computeVersionInfo() => _extractChangelog().$1;
   );
 }
 
-void simpleReplaceFileSection(
-  String path, {
+String simpleReplaceSection(
+  String raw, {
   required String prelude,
   required String postlude,
   required String inside,
 }) {
-  simpleReplaceFile(
-    path,
+  return raw.replaceAll(
     RegExp('$prelude(.|\n)*?$postlude', multiLine: true),
     '$prelude\n$inside\n$postlude',
   );
