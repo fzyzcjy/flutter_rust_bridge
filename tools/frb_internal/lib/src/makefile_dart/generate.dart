@@ -237,7 +237,7 @@ void _replaceCustomMessageText(String customMessageText) {
   simpleReplaceFile(
     '${exec.pwd}README.md',
     RegExp('$kPrelude(.|\n)*?$kPostlude', multiLine: true),
-    '$kPrelude\n\n$customMessageText\n\n$kPostlude',
+    '$kPrelude\n\n$customMessageText\n$kPostlude',
   );
 }
 
