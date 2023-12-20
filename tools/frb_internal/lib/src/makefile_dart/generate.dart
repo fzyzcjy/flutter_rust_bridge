@@ -224,8 +224,7 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
     File('${exec.pwd}/website/docs/generated/_contributor-custom-message.md')
         .writeAsStringSync(messageTextNew);
 
-    await exec(
-        'all-contributors generate --files website/docs/snippets/_readme-one.md --files website/docs/snippets/_readme-one.md');
+    await exec('all-contributors generate');
   });
 
   await generateInternalReadme(config);
