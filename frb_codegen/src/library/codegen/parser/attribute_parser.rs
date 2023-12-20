@@ -201,19 +201,20 @@ impl Parse for FrbAttributeDartMetadata {
     }
 }
 
-#[derive(Clone, Debug)]
-struct DartImports(Vec<IrDartImport>);
-
-impl Parse for DartImports {
-    fn parse(input: ParseStream<'_>) -> Result<Self> {
-        let content;
-        parenthesized!(content in input);
-        let imports = Punctuated::<IrDartImport, Token![,]>::parse_terminated(&content)?
-            .into_iter()
-            .collect();
-        Ok(Self(imports))
-    }
-}
+// TODO unused, rm?
+// #[derive(Clone, Debug)]
+// struct DartImports(Vec<IrDartImport>);
+//
+// impl Parse for DartImports {
+//     fn parse(input: ParseStream<'_>) -> Result<Self> {
+//         let content;
+//         parenthesized!(content in input);
+//         let imports = Punctuated::<IrDartImport, Token![,]>::parse_terminated(&content)?
+//             .into_iter()
+//             .collect();
+//         Ok(Self(imports))
+//     }
+// }
 
 impl Parse for IrDartImport {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
