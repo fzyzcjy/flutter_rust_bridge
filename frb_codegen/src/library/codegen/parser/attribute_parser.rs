@@ -354,6 +354,7 @@ mod tests {
     use crate::codegen::parser::attribute_parser::{
         FrbAttribute, FrbAttributeDefaultValue, FrbAttributeMirror, FrbAttributes, NamedOption,
     };
+    use crate::if_then_some;
     use quote::quote;
     use syn::ItemFn;
 
@@ -374,12 +375,9 @@ mod tests {
     #[test]
     fn test_mirror() -> anyhow::Result<()> {
         let parsed = parse("#[frb(mirror(Apple, Orange))]")?;
-        if let FrbAttribute::Mirror(FrbAttributeMirror(paths)) = &parsed.0[0] {
-            let path = &paths[0];
-            assert_eq!(quote!(#path).to_string(), "Apple");
-        } else {
-            unreachable!()
-        }
+        let paths = if_then_some!(let FrbAttribute::Mirror(FrbAttributeMirror(paths)) = &parsed.0[0], paths);
+        let path = &paths.unwrap()[0];
+        assert_eq!(quote!(#path).to_string(), "Apple");
         Ok(())
     }
 
@@ -406,23 +404,17 @@ mod tests {
         let parsed = parse(
             r#"#[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]"#,
         )?;
-        if let FrbAttribute::Metadata(NamedOption { value, .. }) = &parsed.0[0] {
-            assert_eq!(value.0[0].content, "freezed");
-            assert_eq!(value.0[1].content, "immutable");
-        } else {
-            unreachable!()
-        }
+        let value = if_then_some!(let FrbAttribute::Metadata(NamedOption { value, .. }) = &parsed.0[0], value).unwrap();
+        assert_eq!(value.0[0].content, "freezed");
+        assert_eq!(value.0[1].content, "immutable");
         Ok(())
     }
 
     #[test]
     fn test_default() -> anyhow::Result<()> {
         let parsed = parse(r#"#[frb(default = "Weekdays.Sunday")]"#)?;
-        if let FrbAttribute::Default(value) = &parsed.0[0] {
-            assert!(matches!(value, FrbAttributeDefaultValue::Str(_)));
-        } else {
-            unreachable!()
-        }
+        let value = if_then_some!(let FrbAttribute::Default(value) = &parsed.0[0], value).unwrap();
+        assert!(matches!(value, FrbAttributeDefaultValue::Str(_)));
         Ok(())
     }
 
