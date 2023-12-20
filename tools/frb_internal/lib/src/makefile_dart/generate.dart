@@ -236,7 +236,7 @@ void _replaceCustomMessageText(String customMessageText) {
   const kPostlude = '<!-- CUSTOM-MESSAGE:END -->';
   simpleReplaceFile(
     '${exec.pwd}README.md',
-    RegExp('$kPrelude.*?$kPostlude', multiLine: true),
+    RegExp('$kPrelude(.|\n)*?$kPostlude', multiLine: true),
     '$kPrelude\n\n$customMessageText\n\n$kPostlude',
   );
 }
