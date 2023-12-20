@@ -24,9 +24,9 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
 
 ## 🚀 Advantages
 
-<img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
-
-* **Officially `Flutter Favorite`**
+* **In one sentence**
+  * Just write down some normal Rust code (possibly with unencodable types, closure, `&mut`, async, etc), and call it from Flutter as if it is normal Dart(Flutter) code; the bridge will generate all needed glues in between.
+* **Officially `Flutter Favorite`** <img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
   * This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites), and is in the first batch of 7 packages at its [rebooting](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1).
 * **Simpleness**
   * **Rapid setup**: Only a one-liner command to integrate into your project.
@@ -43,6 +43,7 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
   * Other features, e.g. support whole folders as input, pure-Dart compatible, methods (not only functions), ...
 * **Reliability**
   * **Solid CI**: Valgrind & sanitizers (ASAN/MSAN/LSAN) for memory/UB-related bugs, testing per platform, benchmarking, codecov, etc, all guaranteed by CI.
+  * **Used by many people**: See [here](https://fzyzcjy.github.io/flutter_rust_bridge/guides/users) for an incomplete list.
   * **Easy to code-review & convince yourself**: This package simply simulates how humans write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to track.
   * **Fast**: It is only a thin (though feature-rich) wrapper, benchmarked on CI, and even has multiple codecs for best performance under different workloads.
 
