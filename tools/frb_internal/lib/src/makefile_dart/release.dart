@@ -158,6 +158,19 @@ _VersionInfo _computeVersionInfo() => _extractChangelog().$1;
   );
 }
 
+void simpleReplaceFileSection(
+  String path, {
+  required String prelude,
+  required String postlude,
+  required String inside,
+}) {
+  simpleReplaceFile(
+    path,
+    RegExp('$prelude(.|\n)*?$postlude', multiLine: true),
+    '$prelude\n$inside\n$postlude',
+  );
+}
+
 void simpleReplaceFile(
   String path,
   Pattern from,

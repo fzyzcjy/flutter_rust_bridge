@@ -222,7 +222,7 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
         '* [${item["login"]}](https://github.com/${item["login"]}): ${item["customMessage"]}\n',
     ].join('');
 
-    _replaceCustomMessageText(messageTextNew);
+    _replaceCustomMessageText('\n$messageTextNew');
 
     await exec('all-contributors generate');
   });
@@ -231,13 +231,12 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
 }
 
 void _replaceCustomMessageText(String customMessageText) {
-  const kPrelude =
-      '<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->';
-  const kPostlude = '<!-- CUSTOM-MESSAGE:END -->';
-  simpleReplaceFile(
+  simpleReplaceFileSection(
     '${exec.pwd}README.md',
-    RegExp('$kPrelude(.|\n)*?$kPostlude', multiLine: true),
-    '$kPrelude\n\n$customMessageText\n$kPostlude',
+    prelude:
+        '<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->',
+    postlude: '<!-- CUSTOM-MESSAGE:END -->',
+    inside: customMessageText,
   );
 }
 
