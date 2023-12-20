@@ -467,7 +467,7 @@ mod tests {
                 },
             ),
         ] {
-            let value = FrbAttributeDefaultValue::parse(syn::parse_str(text)?)?;
+            let value: FrbAttributeDefaultValue = syn::parse_str(text)?;
             assert_eq!(value.to_ir_default_value(), expect_ir_default_value);
             assert!(!serde_json::to_string(&value)?.is_empty());
         }
