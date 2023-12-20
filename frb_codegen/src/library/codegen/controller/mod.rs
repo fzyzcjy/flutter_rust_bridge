@@ -94,19 +94,27 @@ fn is_event_interesting(event: &DebounceEventResult, exclude_paths: &[PathBuf]) 
 mod tests {
     use super::*;
     use serial_test::serial;
+    use std::fs;
+    use tempfile::tempdir;
 
     #[serial]
     #[test]
     fn test_run_with_watch() -> anyhow::Result<()> {
+        let temp_dir = tempdir()?;
+        fs::create_dir_all(temp_dir.path().join("my_folder"))?;
+
         run(
             &ControllerInternalConfig {
                 watch: true,
-                watching_paths: vec![],
+                watching_paths: vec![temp_dir.path().join("my_folder")],
                 exclude_paths: vec![],
                 max_count: Some(2),
             },
             &|| Ok(()),
         )?;
+
+        todo!();
+
         Ok(())
     }
 }
