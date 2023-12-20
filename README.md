@@ -1,7 +1,8 @@
-# [flutter_rust_bridge](https://github.com/fzyzcjy/flutter_rust_bridge)
-[![Rust Package](https://img.shields.io/crates/v/flutter_rust_bridge.svg)](https://crates.io/crates/flutter_rust_bridge)
-[![Flutter Package](https://img.shields.io/pub/v/flutter_rust_bridge.svg)](https://pub.dev/packages/flutter_rust_bridge)
-[![Stars](https://img.shields.io/github/stars/fzyzcjy/flutter_rust_bridge)](https://github.com/fzyzcjy/flutter_rust_bridge)
+# [flutter_rust_bridge v2](https://github.com/fzyzcjy/flutter_rust_bridge): Flutter/Dart <-> Rust, feature-rich, but seamless and simple.
+
+[![Rust Package](https://img.shields.io/crates/v/flutter_rust_bridge.svg?color=blue)](https://crates.io/crates/flutter_rust_bridge)
+[![Flutter Package](https://img.shields.io/pub/v/flutter_rust_bridge.svg?include_prereleases&color=blue)](https://pub.dev/packages/flutter_rust_bridge)
+[![Stars](https://img.shields.io/github/stars/fzyzcjy/flutter_rust_bridge?logo=github)](https://github.com/fzyzcjy/flutter_rust_bridge)
 [![CI](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![Post-Release](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![codecov](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge/graph/badge.svg?token=Q7EUTZMDIF)](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge)
@@ -24,20 +25,27 @@ The 2.0.0-dev.1 will contain bugs and missing features, because I have to have a
 
 ## 🚀 Advantages
 
-* **Officially `Flutter Favorite`**: This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites), and is in the first batch of 7 packages at its [rebooting](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1).
-* **Seamless communication**: Call Rust from Dart, as if calling the same language.
+<img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
+
+* **Officially `Flutter Favorite`**
+  * This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites), and is in the first batch of 7 packages at its [rebooting](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1).
+* **Simpleness**
+  * **Rapid setup**: Only a one-liner command to integrate into your project.
+  * **Write your code naturally**: Use your intuition and write the code you want. The bridge understands many advanced grammars (see below), allowing seamless calling Rust from Dart.
+  * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
+* **Powerfuless**
   * **Arbitrary types**: Use arbitrary Rust and Dart types, even if they are not serializable or non-clone.
   * **Async & sync** x Rust & Dart: Multi modes for various needs - Avoid blocking the main thread, or sync API (e.g. used in Widget.build); Async runtime for IO bound tasks, or thread pools for CPU-heavy computations.
   * **Two-way road**: Not only can Dart call Rust - Rust can also call Dart.
   * **Auto-translatable types**: Lots of types can be further translated to Dart native types, e.g. complex `enum`s and `struct`s, zero-copy big arrays, errors (`Result`), and `Stream`s (iterator).
-  * **Safety**: Focus on your code, and forget memory safety, malloc/free, or undefined behavior completely.
-  * **Other features**: Support whole folders as input, and the output folder will preserve hierarchy. Methods (not only functions).
-* **Quick setup, but fully customizable**: Run a one-liner command, then get a ready-to-use project (or integrate into existing projects). Provide sensible defaults, but everything can be customized.
-* **Solid CI**: We have CI for Valgrind, sanitizers (ASAN/MSAN/LSAN), testing for each platform, benchmarking, codecov, etc.
-* **Fast**: It is only a thin (though feature-rich) wrapper, benchmarked on CI, and even has multiple codecs for best performance under different workloads.
-* **Lightweight**: You are free to use your favorite Flutter and Rust libraries and toolchains (e.g. runner, debugger).
-* **Cross-platform**: Android, iOS, Windows, Linux, MacOS, and Web.
-* **Pure-Dart compatible:** Despite the name, this package is 100% compatible with pure Dart.
+  * **Auto safety**: Focus on your code, and forget memory safety, malloc/free, or undefined behavior completely.
+  * **Customizable & bare-metal mode**: Provide sensible defaults, but everything (loader, handler, ...) can be customized. You can even only throw all away and only use the bare minimum calling.
+  * **Cross-platform**: Support Android, iOS, Windows, Linux, MacOS, and Web.
+  * Other features, e.g. support whole folders as input, pure-Dart compatible, methods (not only functions), ...
+* **Reliability**
+  * **Solid CI**: Valgrind & sanitizers (ASAN/MSAN/LSAN) for memory/UB-related bugs, testing per platform, benchmarking, codecov, etc, all guaranteed by CI.
+  * **Easy to code-review & convince yourself**: This package simply simulates how humans write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to track.
+  * **Fast**: It is only a thin (though feature-rich) wrapper, benchmarked on CI, and even has multiple codecs for best performance under different workloads.
 
 ### Why Flutter + Rust?
 
@@ -62,11 +70,54 @@ Typical scenarios to combine them include:
 
 ## 🧭 Show me the code
 
-<!-- SHOW-ME-THE-CODE:START -->
+### Example 1: Simple
 
-![show-me-the-code](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/website/misc/show-me-the-code.png)
+Simple Rust...
 
-<!-- SHOW-ME-THE-CODE:END -->
+```rust
+fn f(a: String, b: Vec<String>) -> MyStruct { ... }
+```
+
+...called from Dart, without manual intervention.
+
+```dart
+print(f(a: 'Hello', b: ['Tom']));
+```
+
+### Example 2: Fancy
+
+Let's see how fancy we can support:
+
+```rust
+// ↱ Arbitrarily fancy Rust types
+struct Garden { land: whatever::fancy::Land }
+
+// ↱ Complex but auto-translatable
+enum Tree { A { name: (String, i32), children: Option<Vec<Tree>> }, B }
+
+// ↱ Support functions & methods
+impl Garden {
+    // ↱ Allow async & sync Rust
+    async fn plant(
+        // ↱ Support T/&T/&mut T
+        &mut self,
+        tree: Tree,
+        // ↱ Rust can also call Dart
+        chooser: impl Fn(String) -> bool,
+        // ↱ Error translation ; zero copy
+    ) -> Result<Vec<u8>, FancyError> {
+        ...
+    }
+}
+```
+
+Still seamlessly call in Dart:
+
+```dart
+var tree = Tree.a(('x', 42), [Tree.b()]);
+// ↱ Async & sync Dart
+print(await garden.plant(tree, (a) => true));
+```
 
 ## 💡 Documentation
 

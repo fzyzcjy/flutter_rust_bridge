@@ -20,11 +20,15 @@ export default class Page extends React.Component {
             <div className="my-hide-nav">
                 <Layout>
                     <div style={{
-                        padding: '32px',
+                        padding: '16px',
                         scale: '4.0',
                         transformOrigin: 'top left',
                     }}>
-                        <ShowMeTheCode/>
+                        <div style={{
+                            width: '650px',
+                        }}>
+                            <ShowMeTheCode/>
+                        </div>
                     </div>
                 </Layout>
             </div>

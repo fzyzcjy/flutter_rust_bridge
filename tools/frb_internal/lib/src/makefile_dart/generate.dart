@@ -262,19 +262,19 @@ hide_title: true
 
 ''';
 
-      const kShowMeTheCode = '''
-import ShowMeTheCode from "@site/src/components/ShowMeTheCode";
+//       const kShowMeTheCode = '''
+// import ShowMeTheCode from "@site/src/components/ShowMeTheCode";
+//
+// <ShowMeTheCode/>
+// ''';
 
-<ShowMeTheCode/>
-''';
-
-      final text = kPrelude +
-          simpleReplaceSection(
-            readmeText,
-            prelude: '<!-- SHOW-ME-THE-CODE:START -->',
-            postlude: '<!-- SHOW-ME-THE-CODE:END -->',
-            inside: kShowMeTheCode,
-          );
+      final text = kPrelude + readmeText;
+      // simpleReplaceSection(
+      //   readmeText,
+      //   prelude: '<!-- SHOW-ME-THE-CODE:START -->',
+      //   postlude: '<!-- SHOW-ME-THE-CODE:END -->',
+      //   inside: kShowMeTheCode,
+      // );
 
       File('${exec.pwd}/website/docs/index.md').writeAsStringSync(text);
     }
