@@ -85,7 +85,9 @@ fn is_event_interesting(event: &DebounceEventResult, exclude_paths: &[PathBuf]) 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use serial_test::serial;
 
+    #[serial]
     #[test]
     fn test_run_with_watch() -> anyhow::Result<()> {
         run(
