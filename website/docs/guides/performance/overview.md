@@ -2,7 +2,10 @@
 
 :::info
 The automatically submitted benchmark data (from CI) is overriden by the deploy-webpage CI,
-so you cannot see the full history of benchmark results, but only see recent few commits currently.
+so you cannot see the full history of benchmark results, but only see recent few commits currently,
+or even see nothing (missing page)...
+
+But anyway, it can be reproduced using one command: https://github.com/fzyzcjy/flutter_rust_bridge/blob/7666268b8a665352092a5410942d907f5c1e3061/.github/workflows/ci.yaml#L269
 
 TODO: Remove this hint after it is fixed.
 :::
