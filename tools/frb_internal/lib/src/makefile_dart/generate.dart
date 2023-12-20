@@ -12,6 +12,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
@@ -221,13 +222,23 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
         '* [${item["login"]}](https://github.com/${item["login"]}): ${item["customMessage"]}\n',
     ].join('');
 
-    File('${exec.pwd}/website/docs/generated/_contributor-custom-message.md')
-        .writeAsStringSync(messageTextNew);
+    _replaceCustomMessageText(messageTextNew);
 
     await exec('all-contributors generate');
   });
 
   await generateInternalReadme(config);
+}
+
+void _replaceCustomMessageText(String customMessageText) {
+  const kPrelude =
+      '<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->';
+  const kPostlude = '<!-- CUSTOM-MESSAGE:END -->';
+  simpleReplaceFile(
+    '${exec.pwd}README.md',
+    RegExp('$kPrelude.*?$kPostlude', multiLine: true),
+    '$kPrelude\n\n$customMessageText\n\n$kPostlude',
+  );
 }
 
 Future<void> generateInternalReadme(GenerateConfig config) async {

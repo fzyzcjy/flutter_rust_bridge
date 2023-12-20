@@ -192,6 +192,8 @@ Secondly, thanks goes to these wonderful contributors ([emoji key](https://allco
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->
+
 More specifically, thanks for all these contributions:
 
 * [Desdaemon](https://github.com/Desdaemon): Support not only simple enums but also enums with fields which gets translated to native enum or sealed freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support tuple type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option. Impl list of dates and optionals. Parameter defaults. Refactor CLI. Refactor codegen errors.
@@ -269,3 +271,5 @@ More specifically, thanks for all these contributions:
 * [escwxyz](https://github.com/escwxyz): Fix a typo.
 * [eltociear](https://github.com/eltociear): Fix a typo.
 * [thesimplekid](https://github.com/thesimplekid): Fix a typo.
+
+<!-- CUSTOM-MESSAGE:END -->
