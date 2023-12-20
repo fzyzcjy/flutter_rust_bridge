@@ -3,6 +3,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for UnencodableWireRustCodecCstGenerator<'a> {
+    #[cfg_attr(coverage_nightly, coverage(off))]
     fn rust_wire_type(&self, _target: Target) -> String {
         unreachable!()
     }

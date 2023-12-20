@@ -62,6 +62,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                     IrTypeDelegateTime::Naive => codegen_naive,
                     IrTypeDelegateTime::Utc => codegen_utc.as_str(),
                     IrTypeDelegateTime::Local => codegen_local.as_str(),
+                    #[cfg_attr(coverage_nightly, coverage(off))]
                     IrTypeDelegateTime::Duration => unreachable!(),
                 };
                 Acc {

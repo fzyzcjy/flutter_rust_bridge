@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for UnencodableWireDartCodecCstGenerator<'a> {
+    #[cfg_attr(coverage_nightly, coverage(off))]
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         unreachable!()
     }
