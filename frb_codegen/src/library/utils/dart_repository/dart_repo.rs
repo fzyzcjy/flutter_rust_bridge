@@ -9,7 +9,6 @@ use std::path::PathBuf;
 use std::str::FromStr;
 
 /// represents a dart / flutter repository
-#[derive(Debug)]
 pub(crate) struct DartRepository {
     pub(crate) at: PathBuf,
     pub(crate) toolchain: DartToolchain,
