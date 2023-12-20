@@ -13,7 +13,12 @@ pub(super) fn run(
     run_inner: &impl Fn() -> anyhow::Result<()>,
 ) -> anyhow::Result<()> {
     if config.watch {
-        run_watch(run_inner, &config.watching_paths, &config.exclude_paths)
+        run_watch(
+            run_inner,
+            &config.watching_paths,
+            &config.exclude_paths,
+            config.max_count.unwrap_or(10000000),
+        )
     } else {
         run_inner()
     }
@@ -23,10 +28,11 @@ fn run_watch(
     run_inner: &impl Fn() -> anyhow::Result<()>,
     watching_paths: &[PathBuf],
     exclude_paths: &[PathBuf],
+    max_count: usize,
 ) -> anyhow::Result<()> {
     let (_watcher, fs_change_rx) = create_fs_watcher(watching_paths, exclude_paths.to_owned())?;
 
-    loop {
+    for _i in 0..max_count {
         if let Err(e) = run_inner() {
             warn!("Error when running code generator: {e:?}");
         }
@@ -43,6 +49,8 @@ fn run_watch(
         // Drain all other file changes
         while fs_change_rx.try_recv().is_ok() {}
     }
+
+    Ok(())
 }
 
 fn create_fs_watcher(
@@ -95,6 +103,7 @@ mod tests {
                 watch: true,
                 watching_paths: vec![],
                 exclude_paths: vec![],
+                max_count: Some(2),
             },
             &|| Ok(()),
         )?;

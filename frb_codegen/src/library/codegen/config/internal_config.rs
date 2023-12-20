@@ -24,6 +24,7 @@ pub(crate) struct ControllerInternalConfig {
     pub watch: bool,
     pub watching_paths: Vec<PathBuf>,
     pub exclude_paths: Vec<PathBuf>,
+    pub max_count: Option<usize>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
