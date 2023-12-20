@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Translate, {translate} from '@docusaurus/Translate';
 import {PageMetadata} from '@docusaurus/theme-common';
 import Layout from '@theme/Layout';
 
 // noinspection JSUnusedGlobalSymbols
 export default function NotFound() {
+  const [pathname, setPathname] = useState('');
+  useEffect(() => setPathname(window.location.pathname));
+
+  const v1Url = pathname.replace(/^\/flutter_rust_bridge/,"/flutter_rust_bridge/v1");
+
   return (
     <>
       <PageMetadata
@@ -25,19 +30,8 @@ export default function NotFound() {
                 </Translate>
               </h1>
               <p>
-                <Translate
-                  id="theme.NotFound.p1"
-                  description="The first paragraph of the 404 page">
-                  We could not find what you were looking for.
-                </Translate>
-              </p>
-              <p>
-                <Translate
-                  id="theme.NotFound.p2"
-                  description="The 2nd paragraph of the 404 page">
-                  Please contact the owner of the site that linked you to the
-                  original URL and let them know their link is broken.
-                </Translate>
+                If you are using flutter_rust_bridge v1.x, try to visit:&nbsp;
+                <a href={v1Url}>{v1Url}</a>
               </p>
             </div>
           </div>

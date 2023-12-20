@@ -25,7 +25,7 @@ export default function ShowMeTheCode() {
             <SectionTitle color="#2196f3">2. Fancy</SectionTitle>
             <p>Let's see how fancy we can support:</p>
             <CodeBlock language="rust">
-                {" ".repeat(14)}<Comment color="#388e3c">Arbitrarily fancy Rust types</Comment>
+                {" ".repeat(0)}<Comment color="#388e3c">Arbitrarily fancy Rust types</Comment>
                 {"\n"}
                 <b>struct</b>
                 {" Garden "}
@@ -33,7 +33,7 @@ export default function ShowMeTheCode() {
                     {"{ land: whatever::fancy::Land }"}
                 </MyMark>
                 {"\n\n"}
-                {" ".repeat(10)}<Comment color="#1976d2">Complex but auto-translatable</Comment>
+                {" ".repeat(0)}<Comment color="#1976d2">Complex but auto-translatable</Comment>
                 {"\n"}
                 <b>enum</b>
                 {" Tree "}
@@ -61,14 +61,14 @@ export default function ShowMeTheCode() {
                     <b>&mut</b>
                 </MyMark>
                 {" self,\n        tree: Tree,\n"}
-                {" ".repeat(17)}<Comment color="#c2185b">Rust can also call Dart</Comment>
+                {" ".repeat(8)}<Comment color="#c2185b">Rust can also call Dart</Comment>
                 {"\n        chooser: "}
                 <MyMark color="#ffe0eb">
                     <b>impl Fn</b>
                     {"(String) -> bool"}
                 </MyMark>
                 {",\n"}
-                {" ".repeat(9)}<Comment color="#0288d1">Error translation ; zero copy</Comment>
+                {" ".repeat(8)}<Comment color="#0288d1">Error translation ; zero copy</Comment>
                 {"\n    ) -> "}
                 <MyMark color="#b9f6ca">
                     {"Result"}
@@ -83,7 +83,7 @@ export default function ShowMeTheCode() {
             <CodeBlock>
                 <b>var</b>
                 {" tree = Tree.a(('x', 42), [Tree.b()]);\n"}
-                {" ".repeat(6)}<Comment color="#7b1fa2">Async & sync Dart</Comment>
+                {" ".repeat(0)}<Comment color="#7b1fa2">Async & sync Dart</Comment>
                 {"\n"}
                 <b>print</b>
                 {"("}
@@ -124,7 +124,8 @@ const Comment = ({children, color}) => {
         <span style={{
             color: color,
         }}>
-            {"/* "}
+            {"// "}
+            {/*{"/* "}*/}
             {/*<span style={{*/}
             {/*    height: '10px',*/}
             {/*    width: '10px',*/}
@@ -134,7 +135,6 @@ const Comment = ({children, color}) => {
             {/*    marginRight: '8px',*/}
             {/*}}/>*/}
             {children}
-            {" */"}
         </span>
     )
 }

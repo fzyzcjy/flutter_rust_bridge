@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-If you like one-liner:
+If you like to setup in one command:
 
 ```shell
 cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
