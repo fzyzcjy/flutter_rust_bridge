@@ -19,9 +19,9 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
 
 ## 🚀 Advantages
 
-<img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
-
-* **Officially `Flutter Favorite`**
+* **In one sentence**
+  * Just write down some normal Rust code (possibly with unencodable types, closure, `&mut`, async, etc), and call it from Flutter as if it is normal Dart(Flutter) code; the bridge will generate all needed glues in between.
+* **Officially `Flutter Favorite`** <img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
   * This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites), and is in the first batch of 7 packages at its [rebooting](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1).
 * **Simpleness**
   * **Rapid setup**: Only a one-liner command to integrate into your project.
