@@ -435,12 +435,38 @@ mod tests {
 
     #[test]
     fn test_frb_attribute_default_value() -> anyhow::Result<()> {
-        for (text, expect_ir_default_value) in vec![(
-            "TODO",
-            IrDefaultValue::String {
-                content: "TODO".to_string(),
-            },
-        )] {
+        for (text, expect_ir_default_value) in vec![
+            (
+                "\"Hello\"",
+                IrDefaultValue::String {
+                    content: "TODO".to_string(),
+                },
+            ),
+            (
+                "true",
+                IrDefaultValue::String {
+                    content: "TODO".to_string(),
+                },
+            ),
+            (
+                "100",
+                IrDefaultValue::String {
+                    content: "TODO".to_string(),
+                },
+            ),
+            (
+                "1.5",
+                IrDefaultValue::String {
+                    content: "TODO".to_string(),
+                },
+            ),
+            (
+                "100,200",
+                IrDefaultValue::String {
+                    content: "TODO".to_string(),
+                },
+            ),
+        ] {
             let value = FrbAttributeDefaultValue::parse(syn::parse_str(text)?)?;
             assert_eq!(value.to_ir_default_value(), expect_ir_default_value);
             assert!(!serde_json::to_string(&value)?.is_empty());
