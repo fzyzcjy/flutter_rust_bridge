@@ -1,6 +1,4 @@
-# Demo & Scenarios
-
-TODO: This is somehow dup w/ readme?
+# Demo
 
 Some scenarios when using Rust and Dart include:
 
@@ -10,6 +8,8 @@ When there is a library only existing in Rust but not in Dart.
 Rust makes it easy to write multi-thread code, algorithms, data-intensive operations, etc.
 * **Logic in Rust, UI in Dart**: 
 When you want a UI framework (Flutter) for your Rust system.
+
+We briefly demonstrate two of them here.
 
 ## Introduction
 
