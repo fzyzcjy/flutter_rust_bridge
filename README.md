@@ -5,6 +5,7 @@
 [![CI](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![Post-Release](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![codecov](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge/graph/badge.svg?token=Q7EUTZMDIF)](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge)
+[![All Contributors](https://img.shields.io/badge/all_contributors-76-orange.svg?style=flat-square)](#contributors-)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7)](https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&utm_medium=referral&utm_content=fzyzcjy/flutter_rust_bridge&utm_campaign=Badge_Grade_Settings)
 
 [<img src="https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/website/misc/flutter_favorite.png" width="200" />](https://flutter.dev/docs/development/packages-and-plugins/favorites)
@@ -79,10 +80,6 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 Firstly, I want to sincerely thank Dart, Flutter and Rust (alphabetical order). Dart provides a solid foundation for productive UI development, Flutter enables developers to make cross-platform apps with ease, and Rust empowers everyone to build reliable and efficient software. Without the languages and frameworks, this bridge connects absolutely nothing. Besides, I also want to express my thanks for conferring the official [Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites) honor to the package. In addition, I also want to say thanks to the Dart, Flutter and Rust team members as well as community members, who have helped me during the development of flutter_rust_bridge by valuable discussions, insights, and actions.
 
 Secondly, thanks goes to these wonderful contributors ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
-
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-76-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->

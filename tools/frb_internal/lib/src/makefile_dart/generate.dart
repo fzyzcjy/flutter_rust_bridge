@@ -224,6 +224,13 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
 
     _replaceCustomMessageText('\n$messageTextNew');
 
+    final numContributors = allContributorsrcNew['contributors'].length;
+    simpleReplaceFile(
+      '${exec.pwd}README.md',
+      RegExp(r'https://img.shields.io/badge/all_contributors-(\d+)-orange.svg'),
+      'https://img.shields.io/badge/all_contributors-$numContributors-orange.svg',
+    );
+
     await exec('all-contributors generate');
   });
 
