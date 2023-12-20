@@ -213,6 +213,7 @@ const sidebars = {
                         'guides/how-to/object-pool',
                     ],
                 },
+                'guides/users',
                 {
                     type: 'category',
                     label: 'Performance',

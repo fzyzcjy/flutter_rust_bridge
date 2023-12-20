@@ -38,6 +38,7 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
   * Other features, e.g. support whole folders as input, pure-Dart compatible, methods (not only functions), ...
 * **Reliability**
   * **Solid CI**: Valgrind & sanitizers (ASAN/MSAN/LSAN) for memory/UB-related bugs, testing per platform, benchmarking, codecov, etc, all guaranteed by CI.
+  * **Used by many people**: See [here](https://fzyzcjy.github.io/flutter_rust_bridge/guides/users) for an incomplete list.
   * **Easy to code-review & convince yourself**: This package simply simulates how humans write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to track.
   * **Fast**: It is only a thin (though feature-rich) wrapper, benchmarked on CI, and even has multiple codecs for best performance under different workloads.
 
