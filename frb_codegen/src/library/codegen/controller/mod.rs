@@ -81,3 +81,21 @@ fn is_event_interesting(event: &DebounceEventResult, exclude_paths: &[PathBuf]) 
         false
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_run_with_watch() -> anyhow::Result<()> {
+        run(
+            &ControllerInternalConfig {
+                watch: true,
+                watching_paths: vec![],
+                exclude_paths: vec![],
+            },
+            &|| Ok(()),
+        )?;
+        Ok(())
+    }
+}
