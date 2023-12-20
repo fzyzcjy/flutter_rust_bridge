@@ -22,6 +22,11 @@ List<Command<void>> createCommands() {
     SimpleConfigCommand('test-rust', testRust, _$populateTestRustConfigParser,
         _$parseTestRustConfigResult),
     SimpleConfigCommand(
+        'test-rust-package',
+        testRustPackage,
+        _$populateTestRustPackageConfigParser,
+        _$parseTestRustPackageConfigResult),
+    SimpleConfigCommand(
         'test-dart-native',
         testDartNative,
         _$populateTestDartNativeConfigParser,
@@ -56,6 +61,19 @@ class TestRustConfig {
   final bool coverage;
 
   const TestRustConfig({required this.updateGoldens, required this.coverage});
+}
+
+@CliOptions()
+class TestRustPackageConfig {
+  final String package;
+  final bool updateGoldens;
+  final bool coverage;
+
+  const TestRustPackageConfig({
+    required this.package,
+    required this.updateGoldens,
+    required this.coverage,
+  });
 }
 
 @CliOptions()
@@ -222,21 +240,26 @@ class MimicQuickstartTester {
 
 Future<void> testRust(TestRustConfig config) async {
   for (final package in kRustPackages) {
-    await testRustPackage(config, package);
+    await testRustPackage(TestRustPackageConfig(
+      package: package,
+      updateGoldens: config.updateGoldens,
+      coverage: config.coverage,
+    ));
   }
 }
 
-Future<void> testRustPackage(TestRustConfig config, String package) async {
+Future<void> testRustPackage(TestRustPackageConfig config) async {
   await runPubGetIfNotRunYet('frb_example/dart_minimal');
   await runPubGetIfNotRunYet('frb_example/pure_dart');
 
-  await exec('cargo build', relativePwd: package);
+  await exec('cargo build', relativePwd: config.package);
 
-  final effectiveEnableCoverage = config.coverage && package == 'frb_codegen';
+  final effectiveEnableCoverage =
+      config.coverage && config.package == 'frb_codegen';
 
   await exec(
       'cargo ${effectiveEnableCoverage ? "llvm-cov --lcov --output-path ${getCoverageDir('rust')}/lcov.info" : "test"}',
-      relativePwd: package,
+      relativePwd: config.package,
       extraEnv: {
         // If we are doing codecov, then we need to enable all tests;
         // otherwise, we can rely on other CIs to check code generation
