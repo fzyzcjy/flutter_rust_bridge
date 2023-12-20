@@ -243,9 +243,16 @@ void _replaceCustomMessageText(String customMessageText) {
 
 Future<void> generateInternalReadme(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    // TODO will have other transforms, etc
-    final text = File('${exec.pwd}README.md').readAsStringSync();
-    File('${exec.pwd}/website/docs/index.md').writeAsStringSync(text);
+    final readmeText = File('${exec.pwd}README.md').readAsStringSync();
+
+    const kPrelude = '''---
+title: Introduction
+hide_title: true
+---
+
+''';
+    File('${exec.pwd}/website/docs/index.md')
+        .writeAsStringSync(kPrelude + readmeText);
   });
 }
 
