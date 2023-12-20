@@ -352,11 +352,13 @@ fn serialize_punctuated<S: Serializer>(
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::ir::default::IrDefaultValue;
     use crate::codegen::parser::attribute_parser::{
         FrbAttribute, FrbAttributeDefaultValue, FrbAttributeMirror, FrbAttributes, NamedOption,
     };
     use crate::if_then_some;
     use quote::quote;
+    use syn::parse::Parse;
     use syn::ItemFn;
 
     #[test]
@@ -429,5 +431,20 @@ mod tests {
         let code = raw.to_owned() + " fn f() {}";
         let fn_ast: ItemFn = syn::parse_str(&code)?;
         FrbAttributes::parse(&fn_ast.attrs)
+    }
+
+    #[test]
+    fn test_frb_attribute_default_value() -> anyhow::Result<()> {
+        for (text, expect_ir_default_value) in vec![(
+            "TODO",
+            IrDefaultValue::String {
+                content: "TODO".to_string(),
+            },
+        )] {
+            let value = FrbAttributeDefaultValue::parse(syn::parse_str(text)?)?;
+            assert_eq!(value.to_ir_default_value(), expect_ir_default_value);
+            assert!(!serde_json::to_string(&value)?.is_empty());
+        }
+        Ok(())
     }
 }
