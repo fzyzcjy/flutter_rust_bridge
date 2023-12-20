@@ -1,5 +1,3 @@
-#![cfg_attr(coverage_nightly, feature(coverage_attribute))]
-
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };

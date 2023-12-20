@@ -1,5 +1,3 @@
-#![cfg_attr(coverage_nightly, feature(coverage_attribute))]
-
 use crate::codegen::generator::codec::sse::ty::*;
 
 impl<'a> CodecSseTyTrait for UnencodableCodecSseTy<'a> {
