@@ -3,3 +3,7 @@ generate-advantages:
 
 _inkscape-export stem w h:
     /Applications/Inkscape.app/Contents/MacOS/inkscape --export-filename="{{stem}}.png" "{{stem}}.svg" -w {{w}} -h {{h}}
+
+# GitHub requires 1280×640px, thus 2:1 aspect ratio
+generate-logo-github-social:
+    convert logo.png -gravity center -background white -extent 2500x1250 -crop 2500x1250 logo_github_social.png
