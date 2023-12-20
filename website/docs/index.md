@@ -22,12 +22,6 @@ hide_title: true
 
 Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new) for information and update guide.
 
-## 🚧 V2 will still be WIP for few days
-
-Please use the old v1 https://cjycode.com/flutter_rust_bridge/v1/ currently.
-
-The 2.0.0-dev.1 will contain bugs and missing features, because I have to have a real (pre-)release before I can start working on the last part of tests and functionalities. So it is a chicken-and-egg problem ;) But I expect 2.0.0-dev.2 (or -dev.3) to be stable.
-
 ## 🚀 Advantages
 
 <img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
