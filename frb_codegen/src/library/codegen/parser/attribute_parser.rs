@@ -438,31 +438,31 @@ mod tests {
             (
                 "\"Hello\"",
                 IrDefaultValue::String {
-                    content: "TODO".to_string(),
+                    content: "Hello".to_string(),
                 },
             ),
             (
                 "true",
-                IrDefaultValue::String {
-                    content: "TODO".to_string(),
+                IrDefaultValue::Others {
+                    dart_literal: "true".to_string(),
                 },
             ),
             (
                 "100",
-                IrDefaultValue::String {
-                    content: "TODO".to_string(),
+                IrDefaultValue::Others {
+                    dart_literal: "100".to_string(),
                 },
             ),
             (
                 "1.5",
-                IrDefaultValue::String {
-                    content: "TODO".to_string(),
+                IrDefaultValue::Others {
+                    dart_literal: "1.5".to_string(),
                 },
             ),
             (
-                "100,200",
-                IrDefaultValue::String {
-                    content: "TODO".to_string(),
+                "[100,200]",
+                IrDefaultValue::Others {
+                    dart_literal: "const [100,200]".to_string(),
                 },
             ),
         ] {
