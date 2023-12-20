@@ -27,15 +27,15 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
   * **Rapid setup**: Only a one-liner command to integrate into your project.
   * **Write your code naturally**: Use your intuition and write the code you want. The bridge understands many advanced grammars (see below), allowing seamless calling Rust from Dart.
   * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
-* **Powerfuless**
+* **Powerfulness**
   * **Arbitrary types**: Use arbitrary Rust and Dart types, even if they are not serializable or non-clone.
-  * **Async & sync** x Rust & Dart: Multi modes for various needs - Avoid blocking the main thread, or sync API (e.g. used in Widget.build); Async runtime for IO bound tasks, or thread pools for CPU-heavy computations.
+  * **Async & sync** x Rust & Dart: Multi modes for various needs - Async Dart to avoid blocking the main thread, sync Dart to create sync API for places needed (e.g. Widget.build); Async Rust for IO bound tasks, or sync Rust (thread pools) for CPU-heavy computations.
   * **Two-way road**: Not only can Dart call Rust - Rust can also call Dart.
   * **Auto-translatable types**: Lots of types can be further translated to Dart native types, e.g. complex `enum`s and `struct`s, zero-copy big arrays, errors (`Result`), and `Stream`s (iterator).
   * **Auto safety**: Focus on your code, and forget memory safety, malloc/free, or undefined behavior completely.
   * **Customizable & bare-metal mode**: Provide sensible defaults, but everything (loader, handler, ...) can be customized. You can even only throw all away and only use the bare minimum calling.
   * **Cross-platform**: Support Android, iOS, Windows, Linux, MacOS, and Web.
-  * Other features, e.g. support whole folders as input, pure-Dart compatible, methods (not only functions), ...
+  * Other features, e.g. support whole folders as input, pure-Dart compatible, instance and static methods, ...
 * **Reliability**
   * **Solid CI**: Valgrind & sanitizers (ASAN/MSAN/LSAN) for memory/UB-related bugs, testing per platform, benchmarking, codecov, etc, all guaranteed by CI.
   * **Used by many people**: See [here](https://fzyzcjy.github.io/flutter_rust_bridge/guides/users) for an incomplete list.
