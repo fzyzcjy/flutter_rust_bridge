@@ -5,6 +5,7 @@
       "{the-working-directory}/src/frb_generated.io.rs",
       "{the-working-directory}/src/frb_generated.web.rs"
     ],
+    "max_count": null,
     "watch": false,
     "watching_paths": [
       "{the-working-directory}/src"
