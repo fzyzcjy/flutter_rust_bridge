@@ -23,68 +23,58 @@ export default function ShowMeTheCode() {
             {/*    marginBottom: '20px',*/}
             {/*}}></div>*/}
             <SectionTitle color="#2196f3">2. Fancy</SectionTitle>
-            <p>Let's see how fancy we can support (see left for explanations):</p>
+            <p>Let's see how fancy we can support:</p>
             <CodeBlock language="rust">
+                {" ".repeat(14)}<Comment color="#388e3c">Arbitrarily fancy Rust types</Comment>
+                {"\n"}
                 <b>struct</b>
                 {" Garden "}
-                <MyMark
-                    color="#CBF6D3"
-                    hintColor="#4caf50"
-                    hint="Arbitrarily fancy Rust types">
+                <MyMark color="#CBF6D3">
                     {"{ land: whatever::fancy::Land }"}
                 </MyMark>
                 {"\n\n"}
+                {" ".repeat(10)}<Comment color="#1976d2">Complex but auto-translatable</Comment>
+                {"\n"}
                 <b>enum</b>
                 {" Tree "}
-                <MyMark
-                    color="#cfeeff"
-                    hintColor="#03a9f4"
-                    hint="Complex but auto-translatable">
-                    {"{ A {name:(String,i32),children:Option<Vec<Tree>>}, B }"}
+                <MyMark color="#cfeeff">
+                    {"{ A { name: (String, i32), children: Option<Vec<Tree>> }, B }"}
                 </MyMark>
                 {"\n\n"}
-                <MyMark
-                    color="#ffecb3"
-                    hintColor="#ffc107"
-                    hint="Support functions & methods">
+                {" ".repeat(0)}<Comment color="#e65100">Support functions & methods</Comment>
+                {"\n"}
+                <MyMark color="#ffecb3">
                     <b>impl</b>
                 </MyMark>
-                {" Garden {\n    "}
-                <MyMark
-                    color="#bbdefb"
-                    hintColor="#03a9f4"
-                    hint="Allow async & sync Rust">
+                {" Garden {\n"}
+                {" ".repeat(4)}<Comment color="#1976d2">Allow async & sync Rust</Comment>
+                {"\n    "}
+                <MyMark color="#bbdefb">
                     <b>async</b>
                 </MyMark>
                 {" "}
                 <b>fn</b>
-                {" plant(\n        "}
-                <MyMark
-                    color="#dcedc8"
-                    hintColor="#8bc34a"
-                    hint="Support T/&T/&mut T">
+                {" plant(\n"}
+                {" ".repeat(8)}<Comment color="#689f38">Support T/&T/&mut T</Comment>
+                {"\n        "}
+                <MyMark color="#dcedc8">
                     <b>&mut</b>
                 </MyMark>
-                {" self,\n        tree: Tree,\n        chooser: "}
-                <MyMark
-                    color="#ffe0eb"
-                    hintColor="#e91e63"
-                    hint="Rust can also call Dart">
+                {" self,\n        tree: Tree,\n"}
+                {" ".repeat(17)}<Comment color="#c2185b">Rust can also call Dart</Comment>
+                {"\n        chooser: "}
+                <MyMark color="#ffe0eb">
                     <b>impl Fn</b>
                     {"(String) -> bool"}
                 </MyMark>
-                {",\n    ) -> "}
-                <MyMark
-                    color="#b9f6ca"
-                    hintColor="#00bcd4"
-                    hint="Error translation ; zero copy">
+                {",\n"}
+                {" ".repeat(9)}<Comment color="#0288d1">Error translation ; zero copy</Comment>
+                {"\n    ) -> "}
+                <MyMark color="#b9f6ca">
                     {"Result"}
                 </MyMark>
                 {"<"}
-                <MyMark
-                    color="#b2ebf2"
-                    hintColor={null}
-                    hint={null}>
+                <MyMark color="#b2ebf2">
                     {"Vec<u8>"}
                 </MyMark>
                 {", FancyError> {\n        ...\n    }\n}"}
@@ -93,12 +83,11 @@ export default function ShowMeTheCode() {
             <CodeBlock>
                 <b>var</b>
                 {" tree = Tree.a(('x', 42), [Tree.b()]);\n"}
+                {" ".repeat(6)}<Comment color="#7b1fa2">Async & sync Dart</Comment>
+                {"\n"}
                 <b>print</b>
                 {"("}
-                <MyMark
-                    color="#fcd2ff"
-                    hintColor="#9c27b0"
-                    hint="Async & sync Dart">
+                <MyMark color="#fcd2ff">
                     <b>await</b>
                 </MyMark>
                 {" garden.plant(tree, (a) => "}
@@ -106,7 +95,8 @@ export default function ShowMeTheCode() {
                 {"));"}
             </CodeBlock>
         </div>
-    );
+    )
+        ;
 }
 
 const SectionTitle = ({children, color}) => {
@@ -129,25 +119,48 @@ const SectionTitle = ({children, color}) => {
     // </div>
 }
 
-const Item = ({children, color}) => {
+const Comment = ({children, color}) => {
     return (
-        <div>
-            <span style={{
-                height: '10px',
-                width: '10px',
-                backgroundColor: color,
-                borderRadius: '50%',
-                display: 'inline-block',
-                marginRight: '8px',
-            }}/>
-            <span style={{
-                // fontFamily: '"Open Sans", sans-serif',
-            }}>{children}</span>
-        </div>
+        <span style={{
+            color: color,
+        }}>
+            {"/* "}
+            {/*<span style={{*/}
+            {/*    height: '10px',*/}
+            {/*    width: '10px',*/}
+            {/*    backgroundColor: color,*/}
+            {/*    borderRadius: '50%',*/}
+            {/*    display: 'inline-block',*/}
+            {/*    marginRight: '8px',*/}
+            {/*}}/>*/}
+            {children}
+            {" */"}
+        </span>
     )
 }
 
-const MyMark = ({children, color, hintColor, hint}) => {
+// const Item = ({children, color}) => {
+//     return (
+//         <div>
+//             <span style={{
+//                 height: '10px',
+//                 width: '10px',
+//                 backgroundColor: color,
+//                 borderRadius: '50%',
+//                 display: 'inline-block',
+//                 marginRight: '8px',
+//             }}/>
+//             <span style={{
+//                 // fontFamily: '"Open Sans", sans-serif',
+//             }}>{children}</span>
+//         </div>
+//     )
+// }
+
+const MyMark = ({
+                    children, color,
+                    ...rest
+                }) => {
     return (
         <>
             <span style={{background: color}}>{children}</span>
