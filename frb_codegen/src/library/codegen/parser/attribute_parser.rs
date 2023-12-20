@@ -358,7 +358,6 @@ mod tests {
     };
     use crate::if_then_some;
     use quote::quote;
-    use syn::parse::Parse;
     use syn::ItemFn;
 
     #[test]
