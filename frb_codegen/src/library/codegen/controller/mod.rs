@@ -103,6 +103,8 @@ mod tests {
         let temp_dir = tempdir()?;
         fs::create_dir_all(temp_dir.path().join("my_folder"))?;
 
+        let mut run_inner_count = 0;
+
         run(
             &ControllerInternalConfig {
                 watch: true,
@@ -110,10 +112,17 @@ mod tests {
                 exclude_paths: vec![],
                 max_count: Some(2),
             },
-            &|| Ok(()),
+            &|| {
+                run_inner_count += 1;
+                fs::write(
+                    (temp_dir.path().join("my_folder")).join(format!("{}.txt", run_inner_count))?,
+                    "content",
+                )?;
+                Ok(())
+            },
         )?;
 
-        todo!();
+        assert_eq!(run_inner_count, 2);
 
         Ok(())
     }
