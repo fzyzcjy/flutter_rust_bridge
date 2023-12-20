@@ -61,15 +61,18 @@ Typical scenarios to combine them include:
 
 ## 🧭 Show me the code
 
+<!-- SHOW-ME-THE-CODE:START -->
+
 ![show-me-the-code](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/website/misc/show-me-the-code.png)
+
+<!-- SHOW-ME-THE-CODE:END -->
 
 ## 💡 Documentation
 
 Check out [the documentation](https://fzyzcjy.github.io/flutter_rust_bridge/) for [quickstart](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart), [full guides](https://fzyzcjy.github.io/flutter_rust_bridge/guide) and more.
 
-<!-- TODO -->
-<!-- ## 📎 P.S. Achieve ~60 FPS, no matter how janky the Flutter app was due to build/layout -->
-<!-- Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smooth. -->
+## 📎 P.S. Achieve ~60 FPS, no matter how janky the Flutter app was due to build/layout
+Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smooth.
 
 ## ✨ Acknowledgments and contributors
 

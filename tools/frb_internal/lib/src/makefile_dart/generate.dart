@@ -254,7 +254,20 @@ hide_title: true
 ---
 
 ''';
-      var text = kPrelude + simpleReplaceFileSection(readmeText);
+
+      const kShowMeTheCode = '''
+import ShowMeTheCode from "@site/src/components/ShowMeTheCode";
+
+<ShowMeTheCode/>
+''';
+
+      final text = kPrelude +
+          simpleReplaceSection(
+            readmeText,
+            prelude: '<!-- SHOW-ME-THE-CODE:START -->',
+            postlude: '<!-- SHOW-ME-THE-CODE:END -->',
+            inside: kShowMeTheCode,
+          );
 
       File('${exec.pwd}/website/docs/index.md').writeAsStringSync(text);
     }
