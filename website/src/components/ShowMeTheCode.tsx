@@ -6,11 +6,15 @@ export default function ShowMeTheCode() {
     return (
         <div>
             <SectionTitle color="#4caf50">1. Simple</SectionTitle>
-            <p style={{margin: '4px', marginLeft: '0px'}}>Simple Rust...</p>
+            <p style={{
+                margin: '4px 0px',
+            }}>Simple Rust...</p>
             <CodeBlock language="rust">
                 {"fn f(a: String, b: Vec<String>) -> MyStruct { ... }"}
             </CodeBlock>
-            <p style={{margin: '4px', marginTop: '-12px', marginLeft: '0px'}}>
+            <p style={{
+                margin: '4px', marginTop: '-12px', marginLeft: '0px',
+            }}>
                 ...called from Dart, without manual intervention.</p>
             <CodeBlock language="dart">
                 {"print(f(a: 'Hello', b: ['Tom']));"}
@@ -23,7 +27,9 @@ export default function ShowMeTheCode() {
             {/*    marginBottom: '20px',*/}
             {/*}}></div>*/}
             <SectionTitle color="#2196f3">2. Fancy</SectionTitle>
-            <p>Let's see how fancy we can support:</p>
+            <p style={{
+                margin: '4px 0px',
+            }}>Let's see how fancy we can support:</p>
             <CodeBlock language="rust">
                 {" ".repeat(0)}<Comment color="#388e3c">Arbitrarily fancy Rust types</Comment>
                 {"\n"}
@@ -43,34 +49,34 @@ export default function ShowMeTheCode() {
                 {"\n\n"}
                 {" ".repeat(0)}<Comment color="#e65100">Support functions & methods</Comment>
                 {"\n"}
-                <MyMark color="#ffecb3">
+                <MyMark color="#ffe0b2">
                     <b>impl</b>
                 </MyMark>
                 {" Garden {\n"}
-                {" ".repeat(4)}<Comment color="#1976d2">Allow async & sync Rust</Comment>
+                {" ".repeat(4)}<Comment color="#c2185b">Allow async & sync Rust</Comment>
                 {"\n    "}
-                <MyMark color="#bbdefb">
+                <MyMark color="#ffe0eb">
                     <b>async</b>
                 </MyMark>
                 {" "}
                 <b>fn</b>
                 {" plant(\n"}
-                {" ".repeat(8)}<Comment color="#689f38">Support T/&T/&mut T</Comment>
+                {" ".repeat(8)}<Comment color="#fbc02d">Support T/&T/&mut T</Comment>
                 {"\n        "}
-                <MyMark color="#dcedc8">
+                <MyMark color="#fff9c4">
                     <b>&mut</b>
                 </MyMark>
                 {" self,\n        tree: Tree,\n"}
-                {" ".repeat(8)}<Comment color="#c2185b">Rust can also call Dart</Comment>
+                {" ".repeat(8)}<Comment color="#689f38">Rust can also call Dart</Comment>
                 {"\n        chooser: "}
-                <MyMark color="#ffe0eb">
+                <MyMark color="#dcedc8">
                     <b>impl Fn</b>
                     {"(String) -> bool"}
                 </MyMark>
                 {",\n"}
                 {" ".repeat(8)}<Comment color="#0288d1">Error translation ; zero copy</Comment>
                 {"\n    ) -> "}
-                <MyMark color="#b9f6ca">
+                <MyMark color="#b2ebf2">
                     {"Result"}
                 </MyMark>
                 {"<"}
@@ -79,7 +85,9 @@ export default function ShowMeTheCode() {
                 </MyMark>
                 {", FancyError> {\n        ...\n    }\n}"}
             </CodeBlock>
-            <p>Still seamlessly call in Dart:</p>
+            <p style={{
+                margin: '4px', marginTop: '-12px', marginLeft: '0px',
+            }}>Still seamlessly call in Dart:</p>
             <CodeBlock>
                 <b>var</b>
                 {" tree = Tree.a(('x', 42), [Tree.b()]);\n"}
@@ -122,10 +130,12 @@ const SectionTitle = ({children, color}) => {
 const Comment = ({children, color}) => {
     return (
         <span style={{
-            color: color,
+            // color: color,
+            color: '#888',
         }}>
-            {"// "}
-            {/*{"/* "}*/}
+                {"// "}
+            <b><span style={{color: color}}>↱</span></b>
+            {" "}
             {/*<span style={{*/}
             {/*    height: '10px',*/}
             {/*    width: '10px',*/}
