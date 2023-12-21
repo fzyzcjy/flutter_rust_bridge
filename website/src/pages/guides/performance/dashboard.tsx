@@ -55,7 +55,7 @@ export default class Dashboard extends React.Component<{}, MyComponentState> {
                         {
                             this.state.summary.map(([name, value]) => <tr key={name}>
                                 <td>{name}</td>
-                                {platforms.map((x) => <td>{value[x][0].benchValue.toFixed(3)}</td>)}
+                                {platforms.map((x) => <td>{value[x] ? value[x][0].benchValue.toFixed(3) : 'no data yet'}</td>)}
                             </tr>)
                         }
                         </tbody>
