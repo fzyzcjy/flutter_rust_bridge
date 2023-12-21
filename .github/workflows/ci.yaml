@@ -365,7 +365,7 @@ jobs:
           - image: ubuntu-latest
             version: nightly-2023-12-16
           - image: ubuntu-latest
-            version: ${{ env.FRB_MSRV_RUST_VERSION }}
+            version: $env.FRB_MSRV_RUST_VERSION
 
     steps:
       # setup
