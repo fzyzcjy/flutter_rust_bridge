@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-dev.3
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* This is still a separate version to see whether the readme image layout works for pub.dev and crates.io.
+
 ## 2.0.0-dev.2
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
