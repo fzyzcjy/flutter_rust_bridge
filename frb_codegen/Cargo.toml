@@ -7,7 +7,7 @@ license.workspace = true
 name = "flutter_rust_bridge_codegen"
 repository.workspace = true
 version.workspace = true
-rust-version = "1.72.0"
+rust-version = "1.74.0"
 
 [lib]
 name = "lib_flutter_rust_bridge_codegen"
