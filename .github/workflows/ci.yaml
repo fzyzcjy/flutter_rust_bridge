@@ -369,7 +369,7 @@ jobs:
           # run on all rust packages, though only neede for frb_rust and frb_codegen
           - image: ubuntu-latest
           # update this, if a later MSVR is needed
-            version: 1.70.0
+            version: 1.74.0
 
     steps:
       # setup
