@@ -1,5 +1,6 @@
 generate-advantages:
     just _inkscape-export advantages 500 310
+    convert advantages.png -resize 400x248 advantages_small.png
 
 _inkscape-export stem w h:
     /Applications/Inkscape.app/Contents/MacOS/inkscape --export-filename="{{stem}}.png" "{{stem}}.svg" -w {{w}} -h {{h}}
