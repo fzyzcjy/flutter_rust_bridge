@@ -432,7 +432,9 @@ Future<void> generateWebsiteMerge() async {
   await exec('mkdir -p website/merged_target');
 
   await exec('cp -r website/build/ $_kWebsiteDir');
+
   await exec('cp -r website/v1_mdbook/book/ $_kWebsiteDir/v1');
+
   await exec('rm $_kWebsiteDir/demo.html');
   await exec('mkdir $_kWebsiteDir/demo');
   await exec('cp -r frb_example/gallery/build/web/* $_kWebsiteDir/demo');
@@ -440,11 +442,13 @@ Future<void> generateWebsiteMerge() async {
   await exec(
       'cp ${exec.pwd}website/build/demo.html ${exec.pwd}$_kWebsiteDir/demo/index.html');
   // _generateWebsiteMergeDemoIndexHtml();
+
   await exec('mkdir -p $_kWebsiteDir/dev/bench');
   for (final name in ['data.js', 'index.html']) {
     await exec(
         'curl https://raw.githubusercontent.com/fzyzcjy/flutter_rust_bridge/gh-pages/dev/bench/$name -o $_kWebsiteDir/dev/bench/$name');
   }
+
   await exec('ls -al $_kWebsiteDir ; ls -al $_kWebsiteDir/demo');
 }
 
