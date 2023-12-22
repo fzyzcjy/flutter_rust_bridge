@@ -21,7 +21,14 @@ Map<String, dynamic> _transformCodecovReportInner(Map<String, dynamic> raw) {
 
 Map<String, dynamic> _transformFile(
     String filename, Map<String, dynamic> srcData) {
-  final ansData = srcData.map((key, rawValue) {
+  var ans = srcData;
+  ans = _transformByMimickingLcovInfo(ans);
+  ans = _transformByCodeComments(filename, ans);
+  return ans;
+}
+
+Map<String, dynamic> _transformByMimickingLcovInfo(Map<String, dynamic> raw) {
+  return raw.map((key, rawValue) {
     // mimic lcov.info feature (lcov.info is used in Dart side)
     final ansValue = () {
       if (rawValue is! String || !rawValue.contains('/')) return rawValue;
@@ -29,11 +36,16 @@ Map<String, dynamic> _transformFile(
     }();
     return MapEntry(key, ansValue);
   });
+}
+
+Map<String, dynamic> _transformByCodeComments(
+    String filename, Map<String, dynamic> raw) {
+  final ans = {...raw};
 
   final fileLines = File(filename).readAsStringSync().split('\n');
 
   var ignoring = false;
-  var removeCount = 0;
+  // var removeCount = 0;
   for (var i = 0; i < fileLines.length; ++i) {
     final lineContent = fileLines[i];
     final lineNumber = i + 1;
@@ -46,16 +58,16 @@ Map<String, dynamic> _transformFile(
     }
 
     if (ignoring) {
-      final removed = ansData.remove(lineNumber.toString());
+      final removed = ans.remove(lineNumber.toString());
       if (removed != null) {
-        removeCount++;
+        // removeCount++;
       }
     }
   }
 
-  if (removeCount > 0) {
-    print('transformCodecovReport remove $removeCount lines from $filename');
-  }
+  // if (removeCount > 0) {
+  //   print('transformCodecovReport remove $removeCount lines from $filename');
+  // }
 
-  return ansData;
+  return ans;
 }
