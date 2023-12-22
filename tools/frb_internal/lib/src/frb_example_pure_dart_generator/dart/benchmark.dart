@@ -2,6 +2,8 @@
 // migrated from manual code). But when adding more tests, we can refactor and avoid it.
 import 'dart:convert';
 
+import 'package:recase/recase.dart';
+
 String generateBenchmark() {
   final benchmarks = [
     ..._benchmarkPrimeNumber(),
@@ -108,8 +110,9 @@ class _Benchmark {
 
     final benchName = jsonEncode({
       'category': category,
-      'approach': approach.name,
-      'direction': direction?.name,
+      'approach': ReCase(approach.name).pascalCase,
+      'direction':
+          direction == null ? null : ReCase(direction!.name).pascalCase,
       'asynchronous': asynchronous,
       for (final arg in args) 'arg_${arg.name}': '\$${arg.name}',
     });
