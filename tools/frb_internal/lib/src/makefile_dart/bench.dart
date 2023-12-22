@@ -70,11 +70,15 @@ Future<void> benchMerge() async {
 
 const _kPackage = 'frb_example/pure_dart';
 
-Future<void> benchDartNative(BenchConfig config) async {
-  await runPubGetIfNotRunYet(_kPackage);
+Future<void> _dartBuild() async {
   await exec(
       'dart --enable-experiment=native-assets build benchmark/simple_benchmark.dart -o build/simple_benchmark/',
       relativePwd: _kPackage);
+}
+
+Future<void> benchDartNative(BenchConfig config) async {
+  await runPubGetIfNotRunYet(_kPackage);
+  await _dartBuild();
   await exec(
       'build/simple_benchmark/simple_benchmark.exe benchmark build/simple_benchmark/benchmark_result.json ${config.filter ?? ""}',
       relativePwd: _kPackage);
@@ -99,6 +103,9 @@ Future<void> benchFlamegraphCompile() async {
   await exec(
       'gcc -shared -o build/simple_benchmark.so build/simple_benchmark.S',
       relativePwd: _kPackage);
+
+  // In order to build native Rust code
+  await _dartBuild();
 }
 
 Future<void> benchFlamegraphRun(BenchFlamegraphRunConfig config) async {
