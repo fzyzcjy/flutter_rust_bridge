@@ -40,7 +40,8 @@ class _TypedName {
 
 String _generate({
   required String category,
-  required String stem,
+  String? direction,
+  required String approach,
   required bool asynchronous,
   String? setupDataType,
   List<_TypedName> args = const [],
@@ -49,7 +50,8 @@ String _generate({
   String extra = '',
   String Function(String className, String benchmarkName)? raw,
 }) {
-  final partialName = '${category}_${stem}_${asynchronous ? "Async" : "Sync"}';
+  final partialName =
+      '${category}_$approach${direction != null ? "_$direction" : ""}_${asynchronous ? "Async" : "Sync"}';
   final className = '${partialName}_Benchmark';
   final benchName =
       '$partialName${args.map((arg) => "_${arg.name}\$${arg.name}").join("")}';
@@ -98,19 +100,19 @@ List<String> _benchmarkVoidFunction() {
   return [
     _generate(
       category: category,
-      stem: 'Std',
+      approach: 'Std',
       asynchronous: true,
       run: 'await benchmarkVoidTwinNormal();',
     ),
     _generate(
       category: category,
-      stem: 'Void',
+      approach: 'Void',
       asynchronous: false,
       run: 'benchmarkVoidTwinSync();',
     ),
     _generate(
       category: category,
-      stem: 'VoidRaw',
+      approach: 'Raw',
       asynchronous: false,
       run: 'rawWire.benchmark_raw_void_sync();',
     ),
@@ -118,7 +120,7 @@ List<String> _benchmarkVoidFunction() {
     // https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
     _generate(
       category: category,
-      stem: 'VoidRawByIsolate',
+      approach: 'Raw',
       asynchronous: true,
       run: '''
         await Isolate.run(() async {
@@ -140,7 +142,8 @@ List<String> _benchmarkBytes() {
     for (final asynchronous in [true, false])
       _generate(
         category: category,
-        stem: 'InputBytes',
+        approach: 'Frb',
+        direction: 'Input',
         asynchronous: asynchronous,
         args: args,
         setupDataType: 'Uint8List',
@@ -150,7 +153,8 @@ List<String> _benchmarkBytes() {
       ),
     _generate(
       category: category,
-      stem: 'InputBytesRaw',
+      approach: 'Raw',
+      direction: 'Input',
       asynchronous: false,
       args: args,
       setupDataType: 'Uint8List',
@@ -165,7 +169,8 @@ List<String> _benchmarkBytes() {
     for (final asynchronous in [true, false])
       _generate(
         category: category,
-        stem: 'OutputBytes',
+        approach: 'Frb',
+        direction: 'Output',
         asynchronous: asynchronous,
         args: args,
         run:
@@ -173,7 +178,8 @@ List<String> _benchmarkBytes() {
       ),
     _generate(
       category: category,
-      stem: 'OutputBytesRaw',
+      approach: 'Raw',
+      direction: 'Output',
       asynchronous: true,
       args: args,
       raw: (className, benchmarkName) => '''
@@ -242,7 +248,8 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
     for (final sse in [false, true]) ...[
       _generate(
         category: category,
-        stem: 'BinaryTreeInput${sse ? "Sse" : ""}',
+        approach: 'Frb${sse ? "Sse" : ""}',
+        direction: 'Input',
         asynchronous: false,
         args: args,
         setupDataType: 'BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""}',
@@ -268,7 +275,8 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
       ),
       _generate(
         category: category,
-        stem: 'BinaryTreeOutput${sse ? "Sse" : ""}',
+        approach: 'Frb${sse ? "Sse" : ""}',
+        direction: 'Output',
         asynchronous: false,
         args: args,
         run:
@@ -277,7 +285,8 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
     ],
     _generate(
       category: category,
-      stem: 'BinaryTreeInputProtobuf',
+      approach: 'Protobuf',
+      direction: 'Input',
       asynchronous: false,
       args: args,
       setupDataType: 'BinaryTreeProtobuf',
@@ -287,7 +296,8 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
     ),
     _generate(
       category: category,
-      stem: 'BinaryTreeOutputProtobuf',
+      approach: 'Protobuf',
+      direction: 'Output',
       asynchronous: false,
       args: args,
       run: '''
@@ -298,7 +308,8 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
     ),
     _generate(
       category: category,
-      stem: 'BinaryTreeInputJson',
+      approach: 'Json',
+      direction: 'Input',
       asynchronous: false,
       args: args,
       setupDataType: 'BenchmarkBinaryTreeTwinSync',
@@ -316,7 +327,8 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
     ),
     _generate(
       category: category,
-      stem: 'BinaryTreeOutputJson',
+      approach: 'Json',
+      direction: 'Output',
       asynchronous: false,
       args: args,
       run: '''
@@ -346,7 +358,8 @@ List<String> _benchmarkBlob() {
     for (final sse in [false, true]) ...[
       _generate(
         category: category,
-        stem: 'BlobInput${sse ? "Sse" : ""}',
+        approach: 'Frb${sse ? "Sse" : ""}',
+        direction: 'Input',
         asynchronous: false,
         args: args,
         setupDataType: 'BenchmarkBlobTwinSync${sse ? "Sse" : ""}',
@@ -355,7 +368,8 @@ List<String> _benchmarkBlob() {
       ),
       _generate(
         category: category,
-        stem: 'BlobOutput${sse ? "Sse" : ""}',
+        approach: 'Frb${sse ? "Sse" : ""}',
+        direction: 'Output',
         asynchronous: false,
         args: args,
         run: 'benchmarkBlobOutputTwinSync${sse ? "Sse" : ""}(size: len);',
@@ -363,7 +377,8 @@ List<String> _benchmarkBlob() {
     ],
     _generate(
       category: category,
-      stem: 'BlobInputProtobuf',
+      approach: 'Protobuf',
+      direction: 'Input',
       asynchronous: false,
       args: args,
       setupDataType: 'BlobProtobuf',
@@ -379,7 +394,8 @@ List<String> _benchmarkBlob() {
     ),
     _generate(
       category: category,
-      stem: 'BlobOutputProtobuf',
+      approach: 'Protobuf',
+      direction: 'Output',
       asynchronous: false,
       args: args,
       run: '''
@@ -390,7 +406,8 @@ List<String> _benchmarkBlob() {
     ),
     _generate(
       category: category,
-      stem: 'BlobInputJson',
+      approach: 'Json',
+      direction: 'Input',
       asynchronous: false,
       args: args,
       setupDataType: 'BenchmarkBlobTwinSyncSse',
@@ -408,7 +425,8 @@ List<String> _benchmarkBlob() {
     ),
     _generate(
       category: category,
-      stem: 'BlobOutputJson',
+      approach: 'Json',
+      direction: 'Output',
       asynchronous: false,
       args: args,
       run: '''
