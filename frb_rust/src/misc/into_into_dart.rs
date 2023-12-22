@@ -152,6 +152,7 @@ mod chrono_impls {
 }
 
 #[cfg(test)]
+#[cfg(not(target_family = "wasm"))]
 mod tests {
     use crate::misc::into_into_dart::IntoIntoDart;
     use allo_isolate::ZeroCopyBuffer;
