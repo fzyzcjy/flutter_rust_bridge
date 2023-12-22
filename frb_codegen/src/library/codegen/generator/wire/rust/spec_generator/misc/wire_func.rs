@@ -166,13 +166,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
 
     if matches!(&func.output, IrType::RustAutoOpaque(_)) {
         if func.fallible() {
-            let error_type =
-                if (func.inputs.iter()).any(|x| matches!(x.ty, IrType::RustAutoOpaque(_))) {
-                    "anyhow::Error"
-                } else {
-                    "()"
-                };
-            ans = format!("Result::<_,{error_type}>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans}))");
+            ans = format!("Result::<_,anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans}?))");
         } else {
             ans = format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans})");
         }
@@ -248,11 +242,15 @@ fn generate_code_closure(
     code_call_inner_func_result: &str,
 ) -> String {
     let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
+    let mut maybe_result = "".to_string();
+    if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {
+        maybe_result = "-> Result::<_,anyhow::Error>".to_string()
+    };
     match func.mode {
         IrFuncMode::Sync => {
             format!(
                 "{code_decode}
-                transform_result_{codec}((move || {{
+                transform_result_{codec}((move || {maybe_result} {{
                     {code_inner_decode} {code_call_inner_func_result}
                 }})())"
             )
@@ -262,7 +260,7 @@ fn generate_code_closure(
             let maybe_await = if func.rust_async { ".await" } else { "" };
             format!(
                 "{code_decode} move |context| {maybe_async_move} {{
-                    transform_result_{codec}((move || {maybe_async_move} {{
+                    transform_result_{codec}((move || {maybe_result} {maybe_async_move} {{
                         {code_inner_decode} {code_call_inner_func_result}
                     }})(){maybe_await})
                 }}"
