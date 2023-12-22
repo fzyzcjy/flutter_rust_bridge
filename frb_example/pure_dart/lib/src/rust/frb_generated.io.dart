@@ -7,6 +7,7 @@ import 'api/array.dart';
 import 'api/async_misc.dart';
 import 'api/async_spawn.dart';
 import 'api/attribute.dart';
+import 'api/benchmark_misc.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
@@ -26369,6 +26370,20 @@ class RustLibWire implements BaseWire {
   late final _wire_next_user_id_twin_normal =
       _wire_next_user_id_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_user_id_twin_normal>)>();
+
+  void wire_benchmark_void_semi_serialize(
+    int port_,
+  ) {
+    return _wire_benchmark_void_semi_serialize(
+      port_,
+    );
+  }
+
+  late final _wire_benchmark_void_semi_serializePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_benchmark_void_semi_serialize');
+  late final _wire_benchmark_void_semi_serialize =
+      _wire_benchmark_void_semi_serializePtr.asFunction<void Function(int)>();
 
   void wire_datetime_local_twin_normal(
     int port_,

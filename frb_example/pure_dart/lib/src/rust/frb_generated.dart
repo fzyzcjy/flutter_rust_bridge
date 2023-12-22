@@ -7,6 +7,7 @@ import 'api/array.dart';
 import 'api/async_misc.dart';
 import 'api/async_spawn.dart';
 import 'api/attribute.dart';
+import 'api/benchmark_misc.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
@@ -297,6 +298,8 @@ abstract class RustLibApi extends BaseApi {
 
   Future<UserIdTwinNormal> nextUserIdTwinNormal(
       {required UserIdTwinNormal userId, dynamic hint});
+
+  Future<void> benchmarkVoidSemiSerialize({dynamic hint});
 
   Future<DateTime> datetimeLocalTwinNormal({required DateTime d, dynamic hint});
 
@@ -5266,6 +5269,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kNextUserIdTwinNormalConstMeta => const TaskConstMeta(
         debugName: "next_user_id_twin_normal",
         argNames: ["userId"],
+      );
+
+  @override
+  Future<void> benchmarkVoidSemiSerialize({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_benchmark_void_semi_serialize(port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kBenchmarkVoidSemiSerializeConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkVoidSemiSerializeConstMeta => const TaskConstMeta(
+        debugName: "benchmark_void_semi_serialize",
+        argNames: [],
       );
 
   @override

@@ -16394,6 +16394,11 @@ pub extern "C" fn wire_next_user_id_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_void_semi_serialize(port_: i64) {
+    wire_benchmark_void_semi_serialize_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_datetime_local_twin_normal(port_: i64, d: i64) {
     wire_datetime_local_twin_normal_impl(port_, d)
 }
