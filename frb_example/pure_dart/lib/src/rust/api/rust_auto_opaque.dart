@@ -223,6 +223,10 @@ class RwLockNonCloneSimpleTwinNormal extends RustOpaque {
   static Future<RwLockNonCloneSimpleTwinNormal> newTwinNormal({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinNormalNewTwinNormal(hint: hint);
 
+  /// named constructor
+  static Future<RwLockNonCloneSimpleTwinNormal> newWithResult({dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalNewWithResult(hint: hint);
+
   static Future<void> staticMethodArgBorrowTwinNormal(
           {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
       RustLib.instance.api

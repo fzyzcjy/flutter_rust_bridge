@@ -28795,6 +28795,11 @@ pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_with_result(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_new_with_result_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,

@@ -4399,6 +4399,9 @@ abstract class RustLibApi extends BaseApi {
   Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewTwinNormal(
       {dynamic hint});
 
+  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewWithResult(
+      {dynamic hint});
+
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
       {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
 
@@ -43720,6 +43723,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kNonCloneSimpleTwinNormalNewTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "NonCloneSimpleTwinNormal_new_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewWithResult(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_NonCloneSimpleTwinNormal_new_with_result(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kNonCloneSimpleTwinNormalNewWithResultConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalNewWithResultConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_new_with_result",
         argNames: [],
       );
 

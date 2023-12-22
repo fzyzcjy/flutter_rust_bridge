@@ -54520,6 +54520,21 @@ class RustLibWire implements BaseWire {
       _wire_NonCloneSimpleTwinNormal_new_twin_normalPtr
           .asFunction<void Function(int)>();
 
+  void wire_NonCloneSimpleTwinNormal_new_with_result(
+    int port_,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_new_with_result(
+      port_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_new_with_resultPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_NonCloneSimpleTwinNormal_new_with_result');
+  late final _wire_NonCloneSimpleTwinNormal_new_with_result =
+      _wire_NonCloneSimpleTwinNormal_new_with_resultPtr
+          .asFunction<void Function(int)>();
+
   void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
