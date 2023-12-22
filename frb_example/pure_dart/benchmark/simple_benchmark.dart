@@ -12,14 +12,14 @@ import 'src/generated.dart';
 Future<void> main(List<String> args) async {
   await RustLib.init();
 
-  final [modeStr, pathOutput, platform, ...] = args;
+  final [modeStr, pathOutput, ...] = args;
   final mode = _Mode.values.byName(modeStr);
 
   final filterStr = args.get(3) ?? '.*';
   final filterRegex = RegExp(filterStr);
 
   final emitter = JsonEmitter();
-  final allBenchmarks = createBenchmarks(emitter: emitter, platform: platform);
+  final allBenchmarks = createBenchmarks(emitter: emitter);
   print('allBenchmarks=${allBenchmarks.map((e) => e.name).toList()}');
 
   final interestBenchmarks = [

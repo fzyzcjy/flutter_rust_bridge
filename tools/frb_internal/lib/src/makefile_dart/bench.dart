@@ -14,11 +14,9 @@ List<Command<void>> createCommands() {
 
 @CliOptions()
 class BenchConfig {
-  final String partialName;
   final String? filter;
 
   const BenchConfig({
-    required this.partialName,
     required this.filter,
   });
 }
@@ -30,6 +28,6 @@ Future<void> benchDartNative(BenchConfig config) async {
       'dart --enable-experiment=native-assets build benchmark/simple_benchmark.dart -o build/simple_benchmark/',
       relativePwd: package);
   await exec(
-      'build/simple_benchmark/simple_benchmark.exe benchmark build/simple_benchmark/benchmark_result.json ${config.partialName} ${config.filter ?? ""}',
+      'build/simple_benchmark/simple_benchmark.exe benchmark build/simple_benchmark/benchmark_result.json ${config.filter ?? ""}',
       relativePwd: package);
 }
