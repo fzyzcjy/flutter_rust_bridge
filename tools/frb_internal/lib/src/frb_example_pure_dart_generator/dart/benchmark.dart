@@ -34,7 +34,14 @@ const _kBinaryTreeNodeName = 'HelloWorld';
 
 List<MaybeAsyncBenchmarkBase> createBenchmarks({required ScoreEmitter emitter}) {
   return [
-    ${benchmarks.map((e) => '${e.className}(emitter: emitter),\n').join("")}
+    ${benchmarks.expand(
+            (bench) => bench.argValues.isEmpty
+                ? ['${bench.className}(emitter: emitter),\n']
+                : [
+                    for (final argValue in bench.argValues)
+                      '${bench.className}(${bench.args.single.name}: $argValue, emitter: emitter),\n'
+                  ],
+          ).join("")}
   ];
 }
 
@@ -56,6 +63,7 @@ class _Benchmark {
   final bool asynchronous;
   final String? setupDataType;
   final List<_TypedName> args;
+  final List<String> argValues;
   final String setup;
   final String run;
   final String extra;
@@ -68,6 +76,7 @@ class _Benchmark {
     required this.asynchronous,
     this.setupDataType,
     this.args = const [],
+    this.argValues = const [],
     this.setup = '',
     required this.run,
     this.extra = '',
@@ -79,6 +88,8 @@ class _Benchmark {
 
   @override
   String toString() {
+    assert(args.isNotEmpty == argValues.isNotEmpty);
+
     final benchName = jsonEncode({
       'category': category,
       'approach': approach,
@@ -169,6 +180,7 @@ List<_Benchmark> _benchmarkVoidFunction() {
 List<_Benchmark> _benchmarkBytes() {
   const category = 'Bytes';
   const args = [_TypedName('int', 'len')];
+  const argValues = ['0', '10000', '1000000'];
 
   return [
     for (final asynchronous in [true, false])
@@ -178,6 +190,7 @@ List<_Benchmark> _benchmarkBytes() {
         direction: 'Input',
         asynchronous: asynchronous,
         args: args,
+        argValues: argValues,
         setupDataType: 'Uint8List',
         setup: 'setupData = Uint8List(len);',
         run:
@@ -189,6 +202,7 @@ List<_Benchmark> _benchmarkBytes() {
       direction: 'Input',
       asynchronous: false,
       args: args,
+      argValues: argValues,
       setupDataType: 'Uint8List',
       setup: 'setupData = Uint8List(len);',
       run: '''
@@ -205,6 +219,7 @@ List<_Benchmark> _benchmarkBytes() {
         direction: 'Output',
         asynchronous: asynchronous,
         args: args,
+        argValues: argValues,
         run:
             '${asynchronous ? "await" : ""} benchmarkOutputBytesTwin${asynchronous ? "Normal" : "Sync"}(size: len);',
       ),
@@ -214,6 +229,7 @@ List<_Benchmark> _benchmarkBytes() {
       direction: 'Output',
       asynchronous: true,
       args: args,
+      argValues: argValues,
       raw: (className, benchmarkName) => '''
         final receivePort = RawReceivePort();
         late final sendPort = receivePort.sendPort.nativePort;
@@ -257,6 +273,7 @@ List<_Benchmark> _benchmarkBytes() {
 List<_Benchmark> _benchmarkBinaryTree() {
   const category = 'BinaryTree';
   const args = [_TypedName('int', 'depth')];
+  const argValues = ['0', '5', '10'];
 
   return [
     for (final sse in [false, true]) ...[
@@ -266,6 +283,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
         direction: 'Input',
         asynchronous: false,
         args: args,
+        argValues: argValues,
         setupDataType: 'BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""}',
         setup: 'setupData = _createTree(depth);',
         run:
@@ -293,6 +311,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
         direction: 'Output',
         asynchronous: false,
         args: args,
+        argValues: argValues,
         run:
             'benchmarkBinaryTreeOutputTwinSync${sse ? "Sse" : ""}(depth: depth);',
       ),
@@ -303,6 +322,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       direction: 'Input',
       asynchronous: false,
       args: args,
+      argValues: argValues,
       setupDataType: 'BinaryTreeProtobuf',
       setup: 'setupData = _createTreeProtobuf(depth);',
       run:
@@ -330,6 +350,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       direction: 'Output',
       asynchronous: false,
       args: args,
+      argValues: argValues,
       run: '''
         final raw = benchmarkBinaryTreeOutputProtobufTwinSync(depth: depth);
         final proto = BinaryTreeProtobuf.fromBuffer(raw);
@@ -342,6 +363,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       direction: 'Input',
       asynchronous: false,
       args: args,
+      argValues: argValues,
       setupDataType: 'BenchmarkBinaryTreeTwinSync',
       setup:
           'setupData = BinaryTree_Frb_Input_Sync_Benchmark._createTree(depth);',
@@ -362,6 +384,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       direction: 'Output',
       asynchronous: false,
       args: args,
+      argValues: argValues,
       run: '''
     final raw = benchmarkBinaryTreeOutputJsonTwinSync(depth: depth);
     // TODO: Should use json_serialize to further generate Dart objects
@@ -376,6 +399,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
 List<_Benchmark> _benchmarkBlob() {
   const category = 'Blob';
   const args = [_TypedName('int', 'len')];
+  const argValues = ['0', '10000', '1000000'];
 
   String setupDataSimple({required bool sse}) => '''
         setupData = BenchmarkBlobTwinSync${sse ? "Sse" : ""}(
@@ -393,6 +417,7 @@ List<_Benchmark> _benchmarkBlob() {
         direction: 'Input',
         asynchronous: false,
         args: args,
+        argValues: argValues,
         setupDataType: 'BenchmarkBlobTwinSync${sse ? "Sse" : ""}',
         setup: setupDataSimple(sse: sse),
         run: 'benchmarkBlobInputTwinSync${sse ? "Sse" : ""}(blob: setupData);',
@@ -403,6 +428,7 @@ List<_Benchmark> _benchmarkBlob() {
         direction: 'Output',
         asynchronous: false,
         args: args,
+        argValues: argValues,
         run: 'benchmarkBlobOutputTwinSync${sse ? "Sse" : ""}(size: len);',
       ),
     ],
@@ -412,6 +438,7 @@ List<_Benchmark> _benchmarkBlob() {
       direction: 'Input',
       asynchronous: false,
       args: args,
+      argValues: argValues,
       setupDataType: 'BlobProtobuf',
       setup: '''
         setupData = BlobProtobuf(
@@ -429,6 +456,7 @@ List<_Benchmark> _benchmarkBlob() {
       direction: 'Output',
       asynchronous: false,
       args: args,
+      argValues: argValues,
       run: '''
         final raw = benchmarkBlobOutputProtobufTwinSync(size: len);
         final proto = BlobProtobuf.fromBuffer(raw);
@@ -441,6 +469,7 @@ List<_Benchmark> _benchmarkBlob() {
       direction: 'Input',
       asynchronous: false,
       args: args,
+      argValues: argValues,
       setupDataType: 'BenchmarkBlobTwinSyncSse',
       setup: setupDataSimple(sse: true),
       run:
@@ -460,6 +489,7 @@ List<_Benchmark> _benchmarkBlob() {
       direction: 'Output',
       asynchronous: false,
       args: args,
+      argValues: argValues,
       run: '''
         final raw = benchmarkBlobOutputJsonTwinSync(size: len);
         // TODO: Should use json_serialize to further generate Dart objects
