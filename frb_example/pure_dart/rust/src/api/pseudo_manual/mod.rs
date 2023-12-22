@@ -9,6 +9,7 @@ pub mod attribute_twin_rust_async_sse;
 pub mod attribute_twin_sse;
 pub mod attribute_twin_sync;
 pub mod attribute_twin_sync_sse;
+pub mod benchmark_api;
 pub mod benchmark_api_twin_rust_async;
 pub mod benchmark_api_twin_rust_async_sse;
 pub mod benchmark_api_twin_sse;

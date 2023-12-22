@@ -6,24 +6,28 @@ import 'dart:io';
 
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 
-import 'src/benchmark_classes.dart';
 import 'src/benchmark_utils.dart';
+import 'src/generated.dart';
 
 Future<void> main(List<String> args) async {
   await RustLib.init();
 
-  final [modeStr, pathOutput, partialName, ...] = args;
+  final [modeStr, pathOutput, ...] = args;
   final mode = _Mode.values.byName(modeStr);
 
-  final filterStr = args.get(3) ?? '.*';
+  final filterStr = args.get(2) ?? '.*';
   final filterRegex = RegExp(filterStr);
 
-  final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
+  final emitter = JsonEmitter();
   final allBenchmarks = createBenchmarks(emitter: emitter);
+  print('allBenchmarks=${allBenchmarks.map((e) => e.name).toList()}');
+
   final interestBenchmarks = [
     for (final b in allBenchmarks)
       if (filterRegex.hasMatch(b.name)) b
   ];
+  print(
+      'filterStr=$filterStr interestBenchmarks=${interestBenchmarks.map((e) => e.name).toList()}');
 
   for (final benchmark in interestBenchmarks) {
     switch (mode) {
@@ -31,9 +35,10 @@ Future<void> main(List<String> args) async {
         await benchmark.reportMaybeAsync();
 
       case _Mode.loop:
-        final loopCount = int.parse(args[4]);
+        final loopCount = int.parse(args[3]);
         final stopwatch = Stopwatch()..start();
-        print('Mode=loop START loopCount=$loopCount');
+        print(
+            'Mode=loop START benchmark=${benchmark.name} loopCount=$loopCount');
         await benchmark.loop(loopCount);
         print('Mode=loop END totalTime(us)=${stopwatch.elapsedMicroseconds}');
     }
