@@ -93,7 +93,7 @@ class Bytes_Frb_Input_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
 
   @override
   Future<void> run() async {
-    benchmarkInputBytesTwinNormal(bytes: setupData);
+    await benchmarkInputBytesTwinNormal(bytes: setupData);
   }
 }
 
@@ -113,7 +113,7 @@ class Bytes_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
 
   @override
   void run() {
-    benchmarkInputBytesTwinSync(bytes: setupData);
+    await benchmarkInputBytesTwinSync(bytes: setupData);
   }
 }
 
@@ -153,7 +153,7 @@ class Bytes_Frb_Output_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
 
   @override
   Future<void> run() async {
-    benchmarkOutputBytesTwinNormal(size: len);
+    await benchmarkOutputBytesTwinNormal(size: len);
   }
 }
 
@@ -170,7 +170,7 @@ class Bytes_Frb_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
 
   @override
   void run() {
-    benchmarkOutputBytesTwinSync(size: len);
+    await benchmarkOutputBytesTwinSync(size: len);
   }
 }
 
