@@ -234,7 +234,6 @@ const sidebars = {
                             label: 'Raw visualization',
                             href: 'https://fzyzcjy.github.io/flutter_rust_bridge/dev/bench/',
                         },
-                        'guides/performance/flamegraph',
                     ],
                 },
                 {
