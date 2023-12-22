@@ -31,20 +31,44 @@ ${chunks.join("\n")}
   ''';
 }
 
+class _TypedName {
+  final String type;
+  final String name;
+
+  const _TypedName(this.type, this.name);
+}
+
 String _generate({
   required String stem,
   required bool asynchronous,
-  required String body,
+  String setupDataType = 'Null',
+  List<_TypedName> args = const [],
+  String setup = '',
+  required String run,
 }) {
-  final name = '$stem${asynchronous ? "Async" : "Sync"}';
+  final benchName =
+      '${stem}_${asynchronous ? "Async" : "Sync"}${args.map((arg) => "_${arg.name}\$${arg.name}").join("")}';
+
+  final functionSetup = asynchronous
+      ? 'Future<void> setup() async { $setup }'
+      : 'void setup() { $setup }';
 
   final functionRun = asynchronous
-      ? 'Future<void> run() async { $body }'
-      : 'void run() { $body }';
+      ? 'Future<void> run() async { $run }'
+      : 'void run() { $run }';
 
   return '''
-class ${name}Benchmark extends Enhanced${asynchronous ? "Async" : "Sync"}BenchmarkBase {
-  const ${name}Benchmark({super.emitter}) : super('$name');
+class ${benchName}Benchmark extends Enhanced${asynchronous ? "Async" : "Sync"}BenchmarkBase {
+  late final $setupDataType setupData;
+  ${args.map((arg) => 'final ${arg.type} ${arg.name};\n').join('')}
+  
+  const ${benchName}Benchmark({
+    ${args.map((arg) => 'required this.${arg.name},\n').join('')}
+    super.emitter,
+  }) : super('$benchName');
+  
+  @override
+  $functionSetup
 
   @override
   $functionRun
@@ -57,24 +81,24 @@ List<String> _benchmarkVoidFunction() {
     _generate(
       stem: 'Void',
       asynchronous: true,
-      body: 'benchmarkVoidTwinNormal();',
+      run: 'benchmarkVoidTwinNormal();',
     ),
     _generate(
       stem: 'Void',
       asynchronous: false,
-      body: 'benchmarkVoidTwinSync();',
+      run: 'benchmarkVoidTwinSync();',
     ),
     _generate(
       stem: 'VoidRaw',
       asynchronous: false,
-      body: 'rawWire.benchmark_raw_void_sync();',
+      run: 'rawWire.benchmark_raw_void_sync();',
     ),
     // For example:
     // https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
     _generate(
       stem: 'VoidRawByIsolate',
       asynchronous: false,
-      body: '''
+      run: '''
         await Isolate.run(() async {
           // This library loading may not be optimal, just a rough test
           final wire = RustLibWire.fromExternalLibrary(await loadExternalLibrary(
@@ -87,6 +111,17 @@ List<String> _benchmarkVoidFunction() {
 }
 
 List<String> _benchmarkBytes() {
+  return [
+    _generate(
+      stem: 'InputBytes',
+      asynchronous: true,
+      args: const [_TypedName('int', 'len')],
+      setupDataType: 'Uint8List',
+      setup: 'setupData = Uint8List(len);',
+      run: 'benchmarkInputBytesTwinNormal(bytes: setupData);',
+    ),
+  ];
+
   return '''
 class InputBytesAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
   final Uint8List bytes;
@@ -94,9 +129,6 @@ class InputBytesAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
   InputBytesAsyncBenchmark(int len, {super.emitter})
       : bytes = Uint8List(len),
         super('InputBytesAsync_Len\$len');
-
-  @override
-  Future<void> run() async => benchmarkInputBytesTwinNormal(bytes: bytes);
 }
 
 class InputBytesSyncBenchmark extends EnhancedBenchmarkBase {
