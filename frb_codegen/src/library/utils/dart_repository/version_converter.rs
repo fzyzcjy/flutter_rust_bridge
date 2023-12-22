@@ -28,24 +28,25 @@ impl From<&DartDependencyVersion> for CargoDependencyVersion {
     }
 }
 
-impl PubspecYamlDependencyVersion {
-    pub(crate) fn version(&self) -> Option<DartDependencyVersion> {
-        match self {
-            PubspecYamlDependencyVersion::Inline(v) => Some(v.clone()),
-            PubspecYamlDependencyVersion::Multiline { version } => version.clone(),
-        }
-    }
-}
-
-impl TryFrom<&PubspecYamlDependencyVersion> for DartPackageVersion {
-    type Error = anyhow::Error;
-    fn try_from(version: &PubspecYamlDependencyVersion) -> Result<Self, Self::Error> {
-        if let Some(ref version) = version.version() {
-            return Self::try_from(version);
-        }
-        bail!("no version found")
-    }
-}
+// TODO unused code found by codecov, maybe remove it
+// impl PubspecYamlDependencyVersion {
+//     pub(crate) fn version(&self) -> Option<DartDependencyVersion> {
+//         match self {
+//             PubspecYamlDependencyVersion::Inline(v) => Some(v.clone()),
+//             PubspecYamlDependencyVersion::Multiline { version } => version.clone(),
+//         }
+//     }
+// }
+//
+// impl TryFrom<&PubspecYamlDependencyVersion> for DartPackageVersion {
+//     type Error = anyhow::Error;
+//     fn try_from(version: &PubspecYamlDependencyVersion) -> Result<Self, Self::Error> {
+//         if let Some(ref version) = version.version() {
+//             return Self::try_from(version);
+//         }
+//         bail!("no version found")
+//     }
+// }
 
 impl TryFrom<&PubspecLockPackage> for DartPackageVersion {
     type Error = anyhow::Error;
