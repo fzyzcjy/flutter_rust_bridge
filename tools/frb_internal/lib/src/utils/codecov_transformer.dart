@@ -26,6 +26,7 @@ Map<String, dynamic> _transformFile(
   var ans = srcData;
   ans = _transformByMimickingLcovInfo(ans);
   ans = _transformByCodeComments(fileLines, ans);
+  ans = _transformByPatterns(fileLines, ans);
   return ans;
 }
 
@@ -70,4 +71,17 @@ Map<String, dynamic> _transformByCodeComments(
   // }
 
   return ans;
+}
+
+Map<String, dynamic> _transformByPatterns(
+    List<String> fileLines, Map<String, dynamic> raw) {
+  // Ignore code coverage for things like `#[derive(Debug)]`,
+  // since this is by Rust compiler and is surely correct
+  final regex = RegExp(r'^\s*#\[derive\(.*\)\]\s*$');
+
+  return raw.map((key, value) {
+    final fileLine = fileLines[int.parse(key) - 1];
+    final shouldKeep = !regex.hasMatch(fileLine);
+    return MapEntry(key, shouldKeep ? value : null);
+  });
 }
