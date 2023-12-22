@@ -2,9 +2,6 @@
 // and is auto-generated from `benchmark_api.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-// Note: This file contains tons of duplicated code! Because it is only for benchmarking
-// and many are ad-hoc code.
-
 #![allow(unused_variables)]
 
 use crate::auxiliary::protobuf_for_benchmark::{BinaryTreeProtobuf, BlobProtobuf};

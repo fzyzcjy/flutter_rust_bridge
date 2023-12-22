@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
@@ -41,16 +43,15 @@ abstract class EnhancedAsyncBenchmarkBase extends AsyncBenchmarkBase
 }
 
 class JsonEmitter extends ScoreEmitter {
-  final String Function(String) namer;
   final items = <Map<String, Object?>>[];
 
-  JsonEmitter({required this.namer});
+  JsonEmitter();
 
   @override
   void emit(String testName, double value) {
     const PrintEmitter().emit(testName, value);
     items.add({
-      'name': namer(testName),
+      'name': testName,
       'unit': "Microseconds",
       'value': value,
     });
@@ -59,3 +60,10 @@ class JsonEmitter extends ScoreEmitter {
 
 // ignore: invalid_use_of_internal_member, invalid_use_of_protected_member
 late final RustLibWire rawWire = (RustLib.instance.api as RustLibApiImpl).wire;
+
+final String currentPlatformName = () {
+  if (Platform.isWindows) return 'Windows';
+  if (Platform.isMacOS) return 'Macos';
+  if (Platform.isLinux) return 'Linux';
+  throw UnimplementedError();
+}();

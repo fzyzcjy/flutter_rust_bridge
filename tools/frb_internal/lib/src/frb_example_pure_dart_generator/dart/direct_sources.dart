@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart/benchmark.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart/builder.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/direct_sources.dart';
 import 'package:recase/recase.dart';
@@ -7,6 +8,7 @@ Map<String, String> generateDartDirectSources() {
     'pseudo_manual/primitive_test.dart': _generatePrimitive(),
     'pseudo_manual/optional_primitive_test.dart': _generateOptionalPrimitive(),
     'pseudo_manual/primitive_list_test.dart': _generatePrimitiveList(),
+    '../../benchmark/src/generated.dart': generateBenchmark(),
   };
 }
 

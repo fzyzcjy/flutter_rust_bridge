@@ -1,6 +1,3 @@
-// Note: This file contains tons of duplicated code! Because it is only for benchmarking
-// and many are ad-hoc code.
-
 #![allow(unused_variables)]
 
 use crate::auxiliary::protobuf_for_benchmark::{BinaryTreeProtobuf, BlobProtobuf};

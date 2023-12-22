@@ -7,7 +7,7 @@ import 'api/array.dart';
 import 'api/async_misc.dart';
 import 'api/async_spawn.dart';
 import 'api/attribute.dart';
-import 'api/benchmark_api.dart';
+import 'api/benchmark_misc.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
@@ -39,6 +39,7 @@ import 'api/pseudo_manual/attribute_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/attribute_twin_sse.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync_sse.dart';
+import 'api/pseudo_manual/benchmark_api.dart';
 import 'api/pseudo_manual/benchmark_api_twin_rust_async.dart';
 import 'api/pseudo_manual/benchmark_api_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/benchmark_api_twin_sse.dart';
@@ -26370,274 +26371,16 @@ class RustLibWire implements BaseWire {
       _wire_next_user_id_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_user_id_twin_normal>)>();
 
-  void wire_benchmark_binary_tree_input_json_twin_normal(
-    int port_,
-    ffi.Pointer<wire_cst_list_prim_u_8> raw,
-  ) {
-    return _wire_benchmark_binary_tree_input_json_twin_normal(
-      port_,
-      raw,
-    );
+  WireSyncRust2DartSse wire_benchmark_void_semi_serialize() {
+    return _wire_benchmark_void_semi_serialize();
   }
 
-  late final _wire_benchmark_binary_tree_input_json_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-      'wire_benchmark_binary_tree_input_json_twin_normal');
-  late final _wire_benchmark_binary_tree_input_json_twin_normal =
-      _wire_benchmark_binary_tree_input_json_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
-
-  void wire_benchmark_binary_tree_input_protobuf_twin_normal(
-    int port_,
-    ffi.Pointer<wire_cst_list_prim_u_8> raw,
-  ) {
-    return _wire_benchmark_binary_tree_input_protobuf_twin_normal(
-      port_,
-      raw,
-    );
-  }
-
-  late final _wire_benchmark_binary_tree_input_protobuf_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(
-                      ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-          'wire_benchmark_binary_tree_input_protobuf_twin_normal');
-  late final _wire_benchmark_binary_tree_input_protobuf_twin_normal =
-      _wire_benchmark_binary_tree_input_protobuf_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
-
-  void wire_benchmark_binary_tree_input_twin_normal(
-    int port_,
-    ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> tree,
-  ) {
-    return _wire_benchmark_binary_tree_input_twin_normal(
-      port_,
-      tree,
-    );
-  }
-
-  late final _wire_benchmark_binary_tree_input_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
-                  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>)>>(
-      'wire_benchmark_binary_tree_input_twin_normal');
-  late final _wire_benchmark_binary_tree_input_twin_normal =
-      _wire_benchmark_binary_tree_input_twin_normalPtr.asFunction<
-          void Function(
-              int, ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>)>();
-
-  void wire_benchmark_binary_tree_output_json_twin_normal(
-    int port_,
-    int depth,
-  ) {
-    return _wire_benchmark_binary_tree_output_json_twin_normal(
-      port_,
-      depth,
-    );
-  }
-
-  late final _wire_benchmark_binary_tree_output_json_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_benchmark_binary_tree_output_json_twin_normal');
-  late final _wire_benchmark_binary_tree_output_json_twin_normal =
-      _wire_benchmark_binary_tree_output_json_twin_normalPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_benchmark_binary_tree_output_protobuf_twin_normal(
-    int port_,
-    int depth,
-  ) {
-    return _wire_benchmark_binary_tree_output_protobuf_twin_normal(
-      port_,
-      depth,
-    );
-  }
-
-  late final _wire_benchmark_binary_tree_output_protobuf_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_benchmark_binary_tree_output_protobuf_twin_normal');
-  late final _wire_benchmark_binary_tree_output_protobuf_twin_normal =
-      _wire_benchmark_binary_tree_output_protobuf_twin_normalPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_benchmark_binary_tree_output_twin_normal(
-    int port_,
-    int depth,
-  ) {
-    return _wire_benchmark_binary_tree_output_twin_normal(
-      port_,
-      depth,
-    );
-  }
-
-  late final _wire_benchmark_binary_tree_output_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_benchmark_binary_tree_output_twin_normal');
-  late final _wire_benchmark_binary_tree_output_twin_normal =
-      _wire_benchmark_binary_tree_output_twin_normalPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_benchmark_blob_input_json_twin_normal(
-    int port_,
-    ffi.Pointer<wire_cst_list_prim_u_8> raw,
-  ) {
-    return _wire_benchmark_blob_input_json_twin_normal(
-      port_,
-      raw,
-    );
-  }
-
-  late final _wire_benchmark_blob_input_json_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-      'wire_benchmark_blob_input_json_twin_normal');
-  late final _wire_benchmark_blob_input_json_twin_normal =
-      _wire_benchmark_blob_input_json_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
-
-  void wire_benchmark_blob_input_protobuf_twin_normal(
-    int port_,
-    ffi.Pointer<wire_cst_list_prim_u_8> raw,
-  ) {
-    return _wire_benchmark_blob_input_protobuf_twin_normal(
-      port_,
-      raw,
-    );
-  }
-
-  late final _wire_benchmark_blob_input_protobuf_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-      'wire_benchmark_blob_input_protobuf_twin_normal');
-  late final _wire_benchmark_blob_input_protobuf_twin_normal =
-      _wire_benchmark_blob_input_protobuf_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
-
-  void wire_benchmark_blob_input_twin_normal(
-    int port_,
-    ffi.Pointer<wire_cst_benchmark_blob_twin_normal> blob,
-  ) {
-    return _wire_benchmark_blob_input_twin_normal(
-      port_,
-      blob,
-    );
-  }
-
-  late final _wire_benchmark_blob_input_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
-                  ffi.Pointer<wire_cst_benchmark_blob_twin_normal>)>>(
-      'wire_benchmark_blob_input_twin_normal');
-  late final _wire_benchmark_blob_input_twin_normal =
-      _wire_benchmark_blob_input_twin_normalPtr.asFunction<
-          void Function(
-              int, ffi.Pointer<wire_cst_benchmark_blob_twin_normal>)>();
-
-  void wire_benchmark_blob_output_json_twin_normal(
-    int port_,
-    int size,
-  ) {
-    return _wire_benchmark_blob_output_json_twin_normal(
-      port_,
-      size,
-    );
-  }
-
-  late final _wire_benchmark_blob_output_json_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_benchmark_blob_output_json_twin_normal');
-  late final _wire_benchmark_blob_output_json_twin_normal =
-      _wire_benchmark_blob_output_json_twin_normalPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_benchmark_blob_output_protobuf_twin_normal(
-    int port_,
-    int size,
-  ) {
-    return _wire_benchmark_blob_output_protobuf_twin_normal(
-      port_,
-      size,
-    );
-  }
-
-  late final _wire_benchmark_blob_output_protobuf_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_benchmark_blob_output_protobuf_twin_normal');
-  late final _wire_benchmark_blob_output_protobuf_twin_normal =
-      _wire_benchmark_blob_output_protobuf_twin_normalPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_benchmark_blob_output_twin_normal(
-    int port_,
-    int size,
-  ) {
-    return _wire_benchmark_blob_output_twin_normal(
-      port_,
-      size,
-    );
-  }
-
-  late final _wire_benchmark_blob_output_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_benchmark_blob_output_twin_normal');
-  late final _wire_benchmark_blob_output_twin_normal =
-      _wire_benchmark_blob_output_twin_normalPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_benchmark_input_bytes_twin_normal(
-    int port_,
-    ffi.Pointer<wire_cst_list_prim_u_8> bytes,
-  ) {
-    return _wire_benchmark_input_bytes_twin_normal(
-      port_,
-      bytes,
-    );
-  }
-
-  late final _wire_benchmark_input_bytes_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-      'wire_benchmark_input_bytes_twin_normal');
-  late final _wire_benchmark_input_bytes_twin_normal =
-      _wire_benchmark_input_bytes_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
-
-  void wire_benchmark_output_bytes_twin_normal(
-    int port_,
-    int size,
-  ) {
-    return _wire_benchmark_output_bytes_twin_normal(
-      port_,
-      size,
-    );
-  }
-
-  late final _wire_benchmark_output_bytes_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_benchmark_output_bytes_twin_normal');
-  late final _wire_benchmark_output_bytes_twin_normal =
-      _wire_benchmark_output_bytes_twin_normalPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_benchmark_void_twin_normal(
-    int port_,
-  ) {
-    return _wire_benchmark_void_twin_normal(
-      port_,
-    );
-  }
-
-  late final _wire_benchmark_void_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_benchmark_void_twin_normal');
-  late final _wire_benchmark_void_twin_normal =
-      _wire_benchmark_void_twin_normalPtr.asFunction<void Function(int)>();
+  late final _wire_benchmark_void_semi_serializePtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartSse Function()>>(
+          'wire_benchmark_void_semi_serialize');
+  late final _wire_benchmark_void_semi_serialize =
+      _wire_benchmark_void_semi_serializePtr
+          .asFunction<WireSyncRust2DartSse Function()>();
 
   void wire_datetime_local_twin_normal(
     int port_,
@@ -30618,6 +30361,275 @@ class RustLibWire implements BaseWire {
   late final _wire_next_user_id_twin_sync_sse =
       _wire_next_user_id_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_benchmark_binary_tree_input_json_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_binary_tree_input_json_twin_normal(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_json_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_binary_tree_input_json_twin_normal');
+  late final _wire_benchmark_binary_tree_input_json_twin_normal =
+      _wire_benchmark_binary_tree_input_json_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_binary_tree_input_protobuf_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_binary_tree_input_protobuf_twin_normal(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+          'wire_benchmark_binary_tree_input_protobuf_twin_normal');
+  late final _wire_benchmark_binary_tree_input_protobuf_twin_normal =
+      _wire_benchmark_binary_tree_input_protobuf_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_binary_tree_input_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> tree,
+  ) {
+    return _wire_benchmark_binary_tree_input_twin_normal(
+      port_,
+      tree,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_input_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>)>>(
+      'wire_benchmark_binary_tree_input_twin_normal');
+  late final _wire_benchmark_binary_tree_input_twin_normal =
+      _wire_benchmark_binary_tree_input_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal>)>();
+
+  void wire_benchmark_binary_tree_output_json_twin_normal(
+    int port_,
+    int depth,
+  ) {
+    return _wire_benchmark_binary_tree_output_json_twin_normal(
+      port_,
+      depth,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_json_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_json_twin_normal');
+  late final _wire_benchmark_binary_tree_output_json_twin_normal =
+      _wire_benchmark_binary_tree_output_json_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_binary_tree_output_protobuf_twin_normal(
+    int port_,
+    int depth,
+  ) {
+    return _wire_benchmark_binary_tree_output_protobuf_twin_normal(
+      port_,
+      depth,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_protobuf_twin_normal');
+  late final _wire_benchmark_binary_tree_output_protobuf_twin_normal =
+      _wire_benchmark_binary_tree_output_protobuf_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_binary_tree_output_twin_normal(
+    int port_,
+    int depth,
+  ) {
+    return _wire_benchmark_binary_tree_output_twin_normal(
+      port_,
+      depth,
+    );
+  }
+
+  late final _wire_benchmark_binary_tree_output_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_binary_tree_output_twin_normal');
+  late final _wire_benchmark_binary_tree_output_twin_normal =
+      _wire_benchmark_binary_tree_output_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_blob_input_json_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_blob_input_json_twin_normal(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_json_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_blob_input_json_twin_normal');
+  late final _wire_benchmark_blob_input_json_twin_normal =
+      _wire_benchmark_blob_input_json_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_blob_input_protobuf_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> raw,
+  ) {
+    return _wire_benchmark_blob_input_protobuf_twin_normal(
+      port_,
+      raw,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_protobuf_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_blob_input_protobuf_twin_normal');
+  late final _wire_benchmark_blob_input_protobuf_twin_normal =
+      _wire_benchmark_blob_input_protobuf_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_blob_input_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_benchmark_blob_twin_normal> blob,
+  ) {
+    return _wire_benchmark_blob_input_twin_normal(
+      port_,
+      blob,
+    );
+  }
+
+  late final _wire_benchmark_blob_input_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_benchmark_blob_twin_normal>)>>(
+      'wire_benchmark_blob_input_twin_normal');
+  late final _wire_benchmark_blob_input_twin_normal =
+      _wire_benchmark_blob_input_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_benchmark_blob_twin_normal>)>();
+
+  void wire_benchmark_blob_output_json_twin_normal(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_json_twin_normal(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_json_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_blob_output_json_twin_normal');
+  late final _wire_benchmark_blob_output_json_twin_normal =
+      _wire_benchmark_blob_output_json_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_blob_output_protobuf_twin_normal(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_protobuf_twin_normal(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_protobuf_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_blob_output_protobuf_twin_normal');
+  late final _wire_benchmark_blob_output_protobuf_twin_normal =
+      _wire_benchmark_blob_output_protobuf_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_blob_output_twin_normal(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_blob_output_twin_normal(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_blob_output_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_blob_output_twin_normal');
+  late final _wire_benchmark_blob_output_twin_normal =
+      _wire_benchmark_blob_output_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_input_bytes_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8> bytes,
+  ) {
+    return _wire_benchmark_input_bytes_twin_normal(
+      port_,
+      bytes,
+    );
+  }
+
+  late final _wire_benchmark_input_bytes_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'wire_benchmark_input_bytes_twin_normal');
+  late final _wire_benchmark_input_bytes_twin_normal =
+      _wire_benchmark_input_bytes_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8>)>();
+
+  void wire_benchmark_output_bytes_twin_normal(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_output_bytes_twin_normal(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_output_bytes_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_output_bytes_twin_normal');
+  late final _wire_benchmark_output_bytes_twin_normal =
+      _wire_benchmark_output_bytes_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_void_twin_normal(
+    int port_,
+  ) {
+    return _wire_benchmark_void_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_benchmark_void_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_benchmark_void_twin_normal');
+  late final _wire_benchmark_void_twin_normal =
+      _wire_benchmark_void_twin_normalPtr.asFunction<void Function(int)>();
 
   void wire_benchmark_binary_tree_input_json_twin_rust_async(
     int port_,
@@ -66125,22 +66137,6 @@ final class wire_cst_user_id_twin_normal extends ffi.Struct {
   external int value;
 }
 
-final class wire_cst_benchmark_binary_tree_twin_normal extends ffi.Struct {
-  external ffi.Pointer<wire_cst_list_prim_u_8> name;
-
-  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> left;
-
-  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> right;
-}
-
-final class wire_cst_benchmark_blob_twin_normal extends ffi.Struct {
-  external ffi.Pointer<wire_cst_list_prim_u_8> first;
-
-  external ffi.Pointer<wire_cst_list_prim_u_8> second;
-
-  external ffi.Pointer<wire_cst_list_prim_u_8> third;
-}
-
 final class wire_cst_list_Chrono_Duration extends ffi.Struct {
   external ffi.Pointer<ffi.Int64> ptr;
 
@@ -66808,6 +66804,22 @@ final class wire_cst_customized_twin_sync extends ffi.Struct {
 final class wire_cst_user_id_twin_sync extends ffi.Struct {
   @ffi.Uint32()
   external int value;
+}
+
+final class wire_cst_benchmark_binary_tree_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> name;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> left;
+
+  external ffi.Pointer<wire_cst_benchmark_binary_tree_twin_normal> right;
+}
+
+final class wire_cst_benchmark_blob_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> first;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> second;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> third;
 }
 
 final class wire_cst_benchmark_binary_tree_twin_rust_async extends ffi.Struct {
