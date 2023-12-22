@@ -3,7 +3,7 @@
 import 'dart:convert';
 
 String generateBenchmark() {
-  final chunks = [
+  final benchmarks = [
     ..._benchmarkVoidFunction(),
     ..._benchmarkBytes(),
     ..._benchmarkBinaryTree(),
@@ -31,7 +31,13 @@ import 'protobuf_for_benchmark/protobuf_for_benchmark.pb.dart';
 
 const _kBinaryTreeNodeName = 'HelloWorld';
 
-${chunks.join("\n")}
+List<MaybeAsyncBenchmarkBase> createBenchmarks({required ScoreEmitter emitter}) {
+  return [
+    ${benchmarks.map((e) => '${e.className}(emitter: emitter),\n').join("")}
+  ];
+}
+
+${benchmarks.map((e) => '$e\n').join("")}
   ''';
 }
 
@@ -67,10 +73,11 @@ class _Benchmark {
     this.raw,
   });
 
+  String get className =>
+      '${category}_$approach${direction != null ? "_$direction" : ""}_${asynchronous ? "Async" : "Sync"}_Benchmark';
+
   @override
   String toString() {
-    final className =
-        '${category}_$approach${direction != null ? "_$direction" : ""}_${asynchronous ? "Async" : "Sync"}_Benchmark';
     final benchName = jsonEncode({
       'category': category,
       'approach': approach,

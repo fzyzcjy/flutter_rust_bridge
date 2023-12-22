@@ -16,6 +16,40 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 import 'benchmark_utils.dart';
 import 'protobuf_for_benchmark/protobuf_for_benchmark.pb.dart';
 
+const _kBinaryTreeNodeName = 'HelloWorld';
+
+List<MaybeAsyncBenchmarkBase> createBenchmarks(
+    {required ScoreEmitter emitter}) {
+  return [
+    VoidFunction_Std_Async_Benchmark(emitter: emitter),
+    VoidFunction_Void_Sync_Benchmark(emitter: emitter),
+    VoidFunction_Raw_Sync_Benchmark(emitter: emitter),
+    VoidFunction_Raw_Async_Benchmark(emitter: emitter),
+    Bytes_Frb_Input_Async_Benchmark(emitter: emitter),
+    Bytes_Frb_Input_Sync_Benchmark(emitter: emitter),
+    Bytes_Raw_Input_Sync_Benchmark(emitter: emitter),
+    Bytes_Frb_Output_Async_Benchmark(emitter: emitter),
+    Bytes_Frb_Output_Sync_Benchmark(emitter: emitter),
+    Bytes_Raw_Output_Async_Benchmark(emitter: emitter),
+    BinaryTree_Frb_Input_Sync_Benchmark(emitter: emitter),
+    BinaryTree_Frb_Output_Sync_Benchmark(emitter: emitter),
+    BinaryTree_FrbSse_Input_Sync_Benchmark(emitter: emitter),
+    BinaryTree_FrbSse_Output_Sync_Benchmark(emitter: emitter),
+    BinaryTree_Protobuf_Input_Sync_Benchmark(emitter: emitter),
+    BinaryTree_Protobuf_Output_Sync_Benchmark(emitter: emitter),
+    BinaryTree_Json_Input_Sync_Benchmark(emitter: emitter),
+    BinaryTree_Json_Output_Sync_Benchmark(emitter: emitter),
+    Blob_Frb_Input_Sync_Benchmark(emitter: emitter),
+    Blob_Frb_Output_Sync_Benchmark(emitter: emitter),
+    Blob_FrbSse_Input_Sync_Benchmark(emitter: emitter),
+    Blob_FrbSse_Output_Sync_Benchmark(emitter: emitter),
+    Blob_Protobuf_Input_Sync_Benchmark(emitter: emitter),
+    Blob_Protobuf_Output_Sync_Benchmark(emitter: emitter),
+    Blob_Json_Input_Sync_Benchmark(emitter: emitter),
+    Blob_Json_Output_Sync_Benchmark(emitter: emitter),
+  ];
+}
+
 class VoidFunction_Std_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   VoidFunction_Std_Async_Benchmark({
     super.emitter,
@@ -220,23 +254,6 @@ class Bytes_Raw_Output_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   }
 }
 
-const _kBinaryTreeNodeName = 'HelloWorld';
-
-BinaryTreeProtobuf _createTreeProtobuf(int depth) {
-  if (depth == 0) {
-    return BinaryTreeProtobuf(
-      name: _kBinaryTreeNodeName,
-      left: null,
-      right: null,
-    );
-  }
-  return BinaryTreeProtobuf(
-    name: _kBinaryTreeNodeName,
-    left: _createTreeProtobuf(depth - 1),
-    right: _createTreeProtobuf(depth - 1),
-  );
-}
-
 class BinaryTree_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBinaryTreeTwinSync setupData;
   final int depth;
@@ -363,6 +380,21 @@ class BinaryTree_Protobuf_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   @override
   void run() {
     benchmarkBinaryTreeInputProtobufTwinSync(raw: setupData.writeToBuffer());
+  }
+
+  static BinaryTreeProtobuf _createTreeProtobuf(int depth) {
+    if (depth == 0) {
+      return BinaryTreeProtobuf(
+        name: _kBinaryTreeNodeName,
+        left: null,
+        right: null,
+      );
+    }
+    return BinaryTreeProtobuf(
+      name: _kBinaryTreeNodeName,
+      left: _createTreeProtobuf(depth - 1),
+      right: _createTreeProtobuf(depth - 1),
+    );
   }
 }
 
