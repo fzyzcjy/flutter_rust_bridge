@@ -73,7 +73,7 @@ where
 
 // ref: into_dart.rs
 macro_rules! impl_into_into_dart_for_tuple {
-    ($( ($($A:ident)+ ; $($AD:ident)+) ; $($N:ident)+ )*) => {$(
+    ($( ($($A:ident)+ ; $($AD:ident)+ ; $($N:tt)+) )*) => {$(
         impl<$($A: IntoIntoDart<$AD>, $AD: IntoDart),+> IntoIntoDart<($($AD),+,)> for ($($A),+,)
         where
             $($A: IntoIntoDart<$AD>, $AD: IntoDart),+,
@@ -82,7 +82,7 @@ macro_rules! impl_into_into_dart_for_tuple {
                 (
                     $(
                         self.$N.into_into_dart(),
-                    ),+
+                    )+
                 )
             }
         }
