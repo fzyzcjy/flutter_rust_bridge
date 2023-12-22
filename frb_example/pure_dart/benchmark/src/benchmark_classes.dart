@@ -2,12 +2,9 @@
 
 import 'package:benchmark_harness/benchmark_harness.dart';
 
-import 'benchmark_classes/binary_tree.dart';
-import 'benchmark_classes/blob.dart';
-import 'benchmark_classes/bytes.dart';
-import 'benchmark_classes/compute_prime.dart';
-import 'benchmark_classes/void_function.dart';
 import 'benchmark_utils.dart';
+import 'generated.dart';
+import 'manual_benchmarks.dart';
 
 List<MaybeAsyncBenchmarkBase> createBenchmarks(
     {required ScoreEmitter emitter}) {
