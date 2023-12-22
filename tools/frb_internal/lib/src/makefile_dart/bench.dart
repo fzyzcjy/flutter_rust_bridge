@@ -56,6 +56,6 @@ Future<void> benchMerge() async {
 
   final pathOutput = exec.pwd;
   File('${pathOutput}merged_benchmark.json').writeAsStringSync(outputContent);
- 
+
   await exec('cat $pathOutput');
 }
