@@ -21,10 +21,12 @@ Future<void> main(List<String> args) async {
   final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
   final allBenchmarks = createBenchmarks(emitter: emitter);
   print('allBenchmarks=${allBenchmarks.map((e) => e.name).toList()}');
+
   final interestBenchmarks = [
     for (final b in allBenchmarks)
       if (filterRegex.hasMatch(b.name)) b
   ];
+  print('interestBenchmarks=${interestBenchmarks.map((e) => e.name).toList()}');
 
   for (final benchmark in interestBenchmarks) {
     switch (mode) {
@@ -34,7 +36,8 @@ Future<void> main(List<String> args) async {
       case _Mode.loop:
         final loopCount = int.parse(args[4]);
         final stopwatch = Stopwatch()..start();
-        print('Mode=loop START loopCount=$loopCount');
+        print(
+            'Mode=loop START benchmark=${benchmark.name} loopCount=$loopCount');
         await benchmark.loop(loopCount);
         print('Mode=loop END totalTime(us)=${stopwatch.elapsedMicroseconds}');
     }
