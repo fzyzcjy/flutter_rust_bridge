@@ -43,8 +43,11 @@ Future<void> benchDartNative(BenchConfig config) async {
 }
 
 Future<void> benchMerge() async {
+  final pattern = '${exec.pwd}downloaded-artifacts/**/*.json';
+  print('glob pattern: $pattern');
+
   final inputFiles = [
-    for (final file in Glob('downloaded-artifacts/**/*.json').listSync())
+    for (final file in Glob(pattern).listSync())
       if (file is File) file as File
   ];
   print('benchMerge inputFiles=$inputFiles');
