@@ -2,7 +2,7 @@
 
 import 'dart:math';
 
-import '../benchmark_utils.dart';
+import 'benchmark_utils.dart';
 
 // For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
 class ComputePrimeBenchmark extends EnhancedBenchmarkBase {
