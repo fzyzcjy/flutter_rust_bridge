@@ -280,6 +280,11 @@ jobs:
   bench_upload:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
+    needs:
+      # NOTE We do this to ensure bench upload *after* deploy website.
+      # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
+      - deploy_website
+      - bench_dart_native
 
     steps:
       - TODO
