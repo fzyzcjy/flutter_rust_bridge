@@ -248,14 +248,14 @@ jobs:
 
   bench_dart_native:
     name: 'Bench :: Dart :: Native'
-    runs-on: ${{ matrix.image_and_name.image }}
+    runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
       matrix:
-        image_and_name:
-          - {image: windows-2019, name: Windows}
-          - {image: macos-11, name: Macos}
-          - {image: ubuntu-20.04, name: Ubuntu}
+        image:
+          - windows-2019
+          - macos-11
+          - ubuntu-20.04
 
     steps:
       # setup
@@ -275,7 +275,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal bench-dart-native --partial-name ${{ matrix.image_and_name.name }}
+      - run: ./frb_internal bench-dart-native
 
       - uses: actions/upload-artifact@v4
         with:

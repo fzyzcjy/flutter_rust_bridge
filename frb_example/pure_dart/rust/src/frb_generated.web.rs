@@ -732,10 +732,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncS
         }
     }
 }
-impl CstDecode<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
+impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -745,7 +745,7 @@ impl CstDecode<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
             "Expected 3 elements, got {}",
             self_.length()
         );
-        crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+        crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal {
             name: self_.get(0).cst_decode(),
             left: self_.get(1).cst_decode(),
             right: self_.get(2).cst_decode(),
@@ -853,10 +853,10 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::benchmark_api::BenchmarkBlobTwinNormal>
+impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -866,7 +866,7 @@ impl CstDecode<crate::api::benchmark_api::BenchmarkBlobTwinNormal>
             "Expected 3 elements, got {}",
             self_.length()
         );
-        crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+        crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal {
             first: self_.get(0).cst_decode(),
             second: self_.get(1).cst_decode(),
             third: self_.get(2).cst_decode(),
@@ -9185,10 +9185,12 @@ impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
         Box::new(self.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>>
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
         Box::new(self.cst_decode())
     }
 }
@@ -10360,123 +10362,6 @@ pub fn wire_next_user_id_twin_normal(
     user_id: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_next_user_id_twin_normal_impl(port_, user_id)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_binary_tree_input_json_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    raw: String,
-) {
-    wire_benchmark_binary_tree_input_json_twin_normal_impl(port_, raw)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_binary_tree_input_protobuf_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    raw: Box<[u8]>,
-) {
-    wire_benchmark_binary_tree_input_protobuf_twin_normal_impl(port_, raw)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_binary_tree_input_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    tree: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_benchmark_binary_tree_input_twin_normal_impl(port_, tree)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_binary_tree_output_json_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    depth: i32,
-) {
-    wire_benchmark_binary_tree_output_json_twin_normal_impl(port_, depth)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_binary_tree_output_protobuf_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    depth: i32,
-) {
-    wire_benchmark_binary_tree_output_protobuf_twin_normal_impl(port_, depth)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_binary_tree_output_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    depth: i32,
-) {
-    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_blob_input_json_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    raw: String,
-) {
-    wire_benchmark_blob_input_json_twin_normal_impl(port_, raw)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_blob_input_protobuf_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    raw: Box<[u8]>,
-) {
-    wire_benchmark_blob_input_protobuf_twin_normal_impl(port_, raw)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_blob_input_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_benchmark_blob_input_twin_normal_impl(port_, blob)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_blob_output_json_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    size: i32,
-) {
-    wire_benchmark_blob_output_json_twin_normal_impl(port_, size)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_blob_output_protobuf_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    size: i32,
-) {
-    wire_benchmark_blob_output_protobuf_twin_normal_impl(port_, size)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_blob_output_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    size: i32,
-) {
-    wire_benchmark_blob_output_twin_normal_impl(port_, size)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_input_bytes_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    bytes: Box<[u8]>,
-) {
-    wire_benchmark_input_bytes_twin_normal_impl(port_, bytes)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_output_bytes_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    size: i32,
-) {
-    wire_benchmark_output_bytes_twin_normal_impl(port_, size)
-}
-
-#[wasm_bindgen]
-pub fn wire_benchmark_void_twin_normal(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_benchmark_void_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -12200,6 +12085,123 @@ pub fn wire_next_user_id_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_next_user_id_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_json_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: String,
+) {
+    wire_benchmark_binary_tree_input_json_twin_normal_impl(port_, raw)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_protobuf_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: Box<[u8]>,
+) {
+    wire_benchmark_binary_tree_input_protobuf_twin_normal_impl(port_, raw)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_input_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    tree: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_benchmark_binary_tree_input_twin_normal_impl(port_, tree)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_json_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: i32,
+) {
+    wire_benchmark_binary_tree_output_json_twin_normal_impl(port_, depth)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_protobuf_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: i32,
+) {
+    wire_benchmark_binary_tree_output_protobuf_twin_normal_impl(port_, depth)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_binary_tree_output_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    depth: i32,
+) {
+    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_json_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: String,
+) {
+    wire_benchmark_blob_input_json_twin_normal_impl(port_, raw)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_protobuf_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    raw: Box<[u8]>,
+) {
+    wire_benchmark_blob_input_protobuf_twin_normal_impl(port_, raw)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_input_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    blob: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_benchmark_blob_input_twin_normal_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_json_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: i32,
+) {
+    wire_benchmark_blob_output_json_twin_normal_impl(port_, size)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_protobuf_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: i32,
+) {
+    wire_benchmark_blob_output_protobuf_twin_normal_impl(port_, size)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_blob_output_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: i32,
+) {
+    wire_benchmark_blob_output_twin_normal_impl(port_, size)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_input_bytes_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    bytes: Box<[u8]>,
+) {
+    wire_benchmark_input_bytes_twin_normal_impl(port_, bytes)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_output_bytes_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    size: i32,
+) {
+    wire_benchmark_output_bytes_twin_normal_impl(port_, size)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_void_twin_normal(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_benchmark_void_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]

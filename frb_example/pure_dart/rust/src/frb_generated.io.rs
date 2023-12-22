@@ -862,11 +862,11 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncS
         }
     }
 }
-impl CstDecode<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
+impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>
     for wire_cst_benchmark_binary_tree_twin_normal
 {
-    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
-        crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+        crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal {
             name: self.name.cst_decode(),
             left: self.left.cst_decode(),
             right: self.right.cst_decode(),
@@ -936,11 +936,11 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::benchmark_api::BenchmarkBlobTwinNormal>
+impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal>
     for wire_cst_benchmark_blob_twin_normal
 {
-    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBlobTwinNormal {
-        crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal {
+        crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal {
             first: self.first.cst_decode(),
             second: self.second.cst_decode(),
             third: self.third.cst_decode(),
@@ -1399,13 +1399,12 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncS
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncSse>::cst_decode(*wrap).into()
     }
 }
-impl CstDecode<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>
+impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>
     for *mut wire_cst_benchmark_binary_tree_twin_normal
 {
-    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal {
+    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>::cst_decode(*wrap)
-            .into()
+        CstDecode::<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>::cst_decode(*wrap).into()
     }
 }
 impl
@@ -1463,12 +1462,15 @@ impl
         .into()
     }
 }
-impl CstDecode<crate::api::benchmark_api::BenchmarkBlobTwinNormal>
+impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal>
     for *mut wire_cst_benchmark_blob_twin_normal
 {
-    fn cst_decode(self) -> crate::api::benchmark_api::BenchmarkBlobTwinNormal {
+    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::benchmark_api::BenchmarkBlobTwinNormal>::cst_decode(*wrap).into()
+        CstDecode::<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal>::cst_decode(
+            *wrap,
+        )
+        .into()
     }
 }
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync>
@@ -4049,13 +4051,14 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTw
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse>::cst_decode(*wrap).into()
     }
 }
-impl CstDecode<Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>>
+impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>>
     for *mut wire_cst_benchmark_binary_tree_twin_normal
 {
-    fn cst_decode(self) -> Box<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
+    fn cst_decode(
+        self,
+    ) -> Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<crate::api::benchmark_api::BenchmarkBinaryTreeTwinNormal>::cst_decode(*wrap)
-            .into()
+        CstDecode::<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>> for *mut wire_cst_benchmark_binary_tree_twin_rust_async {
@@ -16391,102 +16394,6 @@ pub extern "C" fn wire_next_user_id_twin_normal(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_benchmark_binary_tree_input_json_twin_normal(
-    port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
-) {
-    wire_benchmark_binary_tree_input_json_twin_normal_impl(port_, raw)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_binary_tree_input_protobuf_twin_normal(
-    port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
-) {
-    wire_benchmark_binary_tree_input_protobuf_twin_normal_impl(port_, raw)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_binary_tree_input_twin_normal(
-    port_: i64,
-    tree: *mut wire_cst_benchmark_binary_tree_twin_normal,
-) {
-    wire_benchmark_binary_tree_input_twin_normal_impl(port_, tree)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_binary_tree_output_json_twin_normal(port_: i64, depth: i32) {
-    wire_benchmark_binary_tree_output_json_twin_normal_impl(port_, depth)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_binary_tree_output_protobuf_twin_normal(port_: i64, depth: i32) {
-    wire_benchmark_binary_tree_output_protobuf_twin_normal_impl(port_, depth)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_binary_tree_output_twin_normal(port_: i64, depth: i32) {
-    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_blob_input_json_twin_normal(
-    port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
-) {
-    wire_benchmark_blob_input_json_twin_normal_impl(port_, raw)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_blob_input_protobuf_twin_normal(
-    port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
-) {
-    wire_benchmark_blob_input_protobuf_twin_normal_impl(port_, raw)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_blob_input_twin_normal(
-    port_: i64,
-    blob: *mut wire_cst_benchmark_blob_twin_normal,
-) {
-    wire_benchmark_blob_input_twin_normal_impl(port_, blob)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_blob_output_json_twin_normal(port_: i64, size: i32) {
-    wire_benchmark_blob_output_json_twin_normal_impl(port_, size)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_blob_output_protobuf_twin_normal(port_: i64, size: i32) {
-    wire_benchmark_blob_output_protobuf_twin_normal_impl(port_, size)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_blob_output_twin_normal(port_: i64, size: i32) {
-    wire_benchmark_blob_output_twin_normal_impl(port_, size)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_input_bytes_twin_normal(
-    port_: i64,
-    bytes: *mut wire_cst_list_prim_u_8,
-) {
-    wire_benchmark_input_bytes_twin_normal_impl(port_, bytes)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_output_bytes_twin_normal(port_: i64, size: i32) {
-    wire_benchmark_output_bytes_twin_normal_impl(port_, size)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_benchmark_void_twin_normal(port_: i64) {
-    wire_benchmark_void_twin_normal_impl(port_)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_datetime_local_twin_normal(port_: i64, d: i64) {
     wire_datetime_local_twin_normal_impl(port_, d)
 }
@@ -18025,6 +17932,102 @@ pub extern "C" fn wire_next_user_id_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_next_user_id_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_json_twin_normal(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_binary_tree_input_json_twin_normal_impl(port_, raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_protobuf_twin_normal(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_binary_tree_input_protobuf_twin_normal_impl(port_, raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_input_twin_normal(
+    port_: i64,
+    tree: *mut wire_cst_benchmark_binary_tree_twin_normal,
+) {
+    wire_benchmark_binary_tree_input_twin_normal_impl(port_, tree)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_json_twin_normal(port_: i64, depth: i32) {
+    wire_benchmark_binary_tree_output_json_twin_normal_impl(port_, depth)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_protobuf_twin_normal(port_: i64, depth: i32) {
+    wire_benchmark_binary_tree_output_protobuf_twin_normal_impl(port_, depth)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_binary_tree_output_twin_normal(port_: i64, depth: i32) {
+    wire_benchmark_binary_tree_output_twin_normal_impl(port_, depth)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_json_twin_normal(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_blob_input_json_twin_normal_impl(port_, raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_protobuf_twin_normal(
+    port_: i64,
+    raw: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_blob_input_protobuf_twin_normal_impl(port_, raw)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_input_twin_normal(
+    port_: i64,
+    blob: *mut wire_cst_benchmark_blob_twin_normal,
+) {
+    wire_benchmark_blob_input_twin_normal_impl(port_, blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_json_twin_normal(port_: i64, size: i32) {
+    wire_benchmark_blob_output_json_twin_normal_impl(port_, size)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_protobuf_twin_normal(port_: i64, size: i32) {
+    wire_benchmark_blob_output_protobuf_twin_normal_impl(port_, size)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_blob_output_twin_normal(port_: i64, size: i32) {
+    wire_benchmark_blob_output_twin_normal_impl(port_, size)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_input_bytes_twin_normal(
+    port_: i64,
+    bytes: *mut wire_cst_list_prim_u_8,
+) {
+    wire_benchmark_input_bytes_twin_normal_impl(port_, bytes)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_output_bytes_twin_normal(port_: i64, size: i32) {
+    wire_benchmark_output_bytes_twin_normal_impl(port_, size)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_void_twin_normal(port_: i64) {
+    wire_benchmark_void_twin_normal_impl(port_)
 }
 
 #[no_mangle]
