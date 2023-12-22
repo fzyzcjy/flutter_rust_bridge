@@ -121,7 +121,7 @@ class _Benchmark {
       'approach': approachName,
       'direction': directionName,
       'asynchronous': asynchronous,
-      for (final arg in args) 'arg_${arg.name}': '\$${arg.name}',
+      if (args.isNotEmpty) 'arg': '\$${args.single.name}',
       'platform': '\$currentPlatformName',
     });
 
