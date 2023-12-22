@@ -22,8 +22,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                     ));
                 }
-                #[cfg_attr(coverage_nightly, coverage(off))]
+                // frb-coverage:ignore-start
                 _ => unreachable!(),
+                // frb-coverage:ignore-end
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -33,8 +34,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
                 IrTypeDelegate::Backtrace => r#"format!("{:?}", self)"#.to_owned(),
                 IrTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
-                #[cfg_attr(coverage_nightly, coverage(off))]
+                // frb-coverage:ignore-start
                 _ => unreachable!(),
+                // frb-coverage:ignore-end
             },
         };
         Some(simple_delegate_encode(
@@ -66,8 +68,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 IrTypeDelegate::Backtrace => "inner".to_owned(),
                 IrTypeDelegate::AnyhowException => "AnyhowException(inner)".to_owned(),
-                #[cfg_attr(coverage_nightly, coverage(off))]
+                // frb-coverage:ignore-start
                 _ => unreachable!(),
+                // frb-coverage:ignore-end
             },
             Lang::RustLang(_) => match &self.ir {
                 IrTypeDelegate::Array(_) => {
@@ -83,8 +86,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                     ));
                 }
-                #[cfg_attr(coverage_nightly, coverage(off))]
+                // frb-coverage:ignore-start
                 _ => unreachable!(),
+                // frb-coverage:ignore-end
             },
         };
 

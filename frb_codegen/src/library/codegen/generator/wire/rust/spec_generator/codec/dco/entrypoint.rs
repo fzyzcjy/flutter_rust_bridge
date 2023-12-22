@@ -30,7 +30,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
 }
 
 impl WireRustCodecEntrypointTrait<'_> for DcoWireRustCodecEntrypoint {
-    #[cfg_attr(coverage_nightly, coverage(off))]
+    // frb-coverage:ignore-start
     fn generate_func_params(
         &self,
         _func: &IrFunc,
@@ -39,7 +39,6 @@ impl WireRustCodecEntrypointTrait<'_> for DcoWireRustCodecEntrypoint {
         unreachable!()
     }
 
-    #[cfg_attr(coverage_nightly, coverage(off))]
     fn generate_func_call_decode(
         &self,
         _func: &IrFunc,
@@ -47,4 +46,5 @@ impl WireRustCodecEntrypointTrait<'_> for DcoWireRustCodecEntrypoint {
     ) -> String {
         unreachable!()
     }
+    // frb-coverage:ignore-end
 }

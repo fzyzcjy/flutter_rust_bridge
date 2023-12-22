@@ -2,9 +2,10 @@ use super::{BaseCodec, Rust2DartMessageTrait};
 use crate::platform_types::DartAbi;
 use std::any::Any;
 
-#[cfg_attr(coverage_nightly, coverage(off))]
+// frb-coverage:ignore-start
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct CstCodec;
+// frb-coverage:ignore-end
 
 impl BaseCodec for CstCodec {
     type Message = Rust2DartMessageCst;
