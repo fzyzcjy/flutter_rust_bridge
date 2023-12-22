@@ -31,8 +31,9 @@ pub fn is_js_value(ty: &IrType) -> bool {
         IrType::Delegate(inner) => is_js_value(&inner.get_delegate()),
         IrType::Optional(inner) => is_js_value(&inner.inner),
         IrType::Primitive(_) | IrType::PrimitiveList(_) => false,
-        #[cfg_attr(coverage_nightly, coverage(off))]
+        // frb-coverage:ignore-start
         IrType::Dynamic(_) | IrType::Ownership(_) | IrType::Unencodable(_) => unreachable!(),
+        // frb-coverage:ignore-end
     }
 }
 

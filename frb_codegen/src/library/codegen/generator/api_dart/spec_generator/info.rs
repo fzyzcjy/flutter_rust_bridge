@@ -203,7 +203,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        rust_type_to_dart_type(&self.ir.inner.rust_api_type())
+        rust_type_to_dart_type(&self.ir.inner.rust_api_type(), self.ir.brief_name)
     }
 }
 
@@ -231,16 +231,18 @@ impl<'a> ApiDartGeneratorInfoTrait for UnencodableApiDartGenerator<'a> {
     }
 }
 
-fn rust_type_to_dart_type(rust: &str) -> String {
+fn rust_type_to_dart_type(rust: &str, brief_name: bool) -> String {
     lazy_static! {
-        static ref OPAQUE_FILTER: Regex =
-            Regex::new(r"(\bdyn|'static|\bDartSafe|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b")
-                .unwrap();
+        static ref OPAQUE_FILTER: Regex =Regex::new(r"(\bdyn|'static|\bDartSafe|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b").unwrap();
+        static ref OPAQUE_BRIEF_NAME_FILTER: Regex =Regex::new(r"(\bRwLock)\b").unwrap();
     }
+
     let rust = rust.split("::").last().unwrap();
-    OPAQUE_FILTER
-        .replace_all(rust, "")
-        .replace(char_not_alphanumeric, "_")
+    let mut rust = OPAQUE_FILTER.replace_all(rust, "").to_string();
+    if brief_name {
+        rust = OPAQUE_BRIEF_NAME_FILTER.replace_all(&rust, "").to_string();
+    }
+    rust.replace(char_not_alphanumeric, "_")
         .to_case(Case::Pascal)
 }
 
