@@ -155,7 +155,7 @@ List<String> _benchmarkBytes() {
         setupDataType: 'Uint8List',
         setup: 'setupData = Uint8List(len);',
         run:
-            'await benchmarkInputBytesTwin${asynchronous ? "Normal" : "Sync"}(bytes: setupData);',
+            '${asynchronous ? "await" : ""} benchmarkInputBytesTwin${asynchronous ? "Normal" : "Sync"}(bytes: setupData);',
       ),
     _generate(
       category: category,
@@ -180,7 +180,7 @@ List<String> _benchmarkBytes() {
         asynchronous: asynchronous,
         args: args,
         run:
-            'await benchmarkOutputBytesTwin${asynchronous ? "Normal" : "Sync"}(size: len);',
+            '${asynchronous ? "await" : ""} benchmarkOutputBytesTwin${asynchronous ? "Normal" : "Sync"}(size: len);',
       ),
     _generate(
       category: category,

@@ -119,7 +119,7 @@ class Bytes_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
 
   @override
   void run() {
-    await benchmarkInputBytesTwinSync(bytes: setupData);
+    benchmarkInputBytesTwinSync(bytes: setupData);
   }
 }
 
@@ -179,7 +179,7 @@ class Bytes_Frb_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
 
   @override
   void run() {
-    await benchmarkOutputBytesTwinSync(size: len);
+    benchmarkOutputBytesTwinSync(size: len);
   }
 }
 
