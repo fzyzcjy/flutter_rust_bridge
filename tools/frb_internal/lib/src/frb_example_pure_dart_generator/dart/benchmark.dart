@@ -1,6 +1,13 @@
 // NOTE: Currently it still contains a lot of duplicates (because it was
 // migrated from manual code). But when adding more tests, we can refactor and avoid it.
 String generateBenchmark() {
+  final chunks = [
+    ..._benchmarkVoidFunction(),
+    ..._benchmarkBytes(),
+    ..._benchmarkBinaryTree(),
+    ..._benchmarkBlob(),
+  ];
+
   return '''
 // ignore_for_file: invalid_use_of_internal_member, invalid_use_of_protected_member
 
@@ -20,54 +27,66 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 import 'benchmark_utils.dart';
 import 'protobuf_for_benchmark/protobuf_for_benchmark.pb.dart';
 
-${_benchmarkVoidFunction()}
-${_benchmarkBytes()}
-${_benchmarkBinaryTree()}
-${_benchmarkBlob()}
+${chunks.join("\n")}
   ''';
 }
 
-String _benchmarkVoidFunction() {
+String _generate({
+  required String stem,
+  required bool asynchronous,
+  required String body,
+}) {
+  final name = '$stem${asynchronous ? "Async" : "Sync"}';
+
+  final functionRun = asynchronous
+      ? 'Future<void> run() async { $body }'
+      : 'void run() { $body }';
+
   return '''
-class VoidAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
-  const VoidAsyncBenchmark({super.emitter}) : super('VoidAsync');
+class ${name}Benchmark extends Enhanced${asynchronous ? "Async" : "Sync"}BenchmarkBase {
+  const ${name}Benchmark({super.emitter}) : super('$name');
 
   @override
-  Future<void> run() async => benchmarkVoidTwinNormal();
-}
-
-class VoidSyncBenchmark extends EnhancedBenchmarkBase {
-  const VoidSyncBenchmark({super.emitter}) : super('VoidSync');
-
-  @override
-  void run() => benchmarkVoidTwinSync();
-}
-
-class VoidSyncRawBenchmark extends EnhancedBenchmarkBase {
-  VoidSyncRawBenchmark({super.emitter}) : super('VoidSyncRaw');
-
-  @override
-  void run() => rawWire.benchmark_raw_void_sync();
-}
-
-// For example:
-// https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
-class VoidAsyncRawByIsolateBenchmark extends EnhancedAsyncBenchmarkBase {
-  VoidAsyncRawByIsolateBenchmark({super.emitter})
-      : super('VoidAsyncRawByIsolate');
-
-  @override
-  Future<void> run() async => await Isolate.run(() async {
-        // This library loading may not be optimal, just a rough test
-        final wire = RustLibWire.fromExternalLibrary(await loadExternalLibrary(
-            RustLib.kDefaultExternalLibraryLoaderConfig));
-        wire.benchmark_raw_void_sync();
-      });
+  $functionRun
 }
   ''';
 }
 
-String _benchmarkBytes() {
+List<String> _benchmarkVoidFunction() {
+  return [
+    _generate(
+      stem: 'Void',
+      asynchronous: true,
+      body: 'benchmarkVoidTwinNormal();',
+    ),
+    _generate(
+      stem: 'Void',
+      asynchronous: false,
+      body: 'benchmarkVoidTwinSync();',
+    ),
+    _generate(
+      stem: 'VoidRaw',
+      asynchronous: false,
+      body: 'rawWire.benchmark_raw_void_sync();',
+    ),
+    // For example:
+    // https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
+    _generate(
+      stem: 'VoidRawByIsolate',
+      asynchronous: false,
+      body: '''
+        await Isolate.run(() async {
+          // This library loading may not be optimal, just a rough test
+          final wire = RustLibWire.fromExternalLibrary(await loadExternalLibrary(
+              RustLib.kDefaultExternalLibraryLoaderConfig));
+          wire.benchmark_raw_void_sync();
+        });
+      ''',
+    ),
+  ];
+}
+
+List<String> _benchmarkBytes() {
   return '''
 class InputBytesAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
   final Uint8List bytes;
@@ -165,7 +184,7 @@ class OutputBytesAsyncRawBenchmark extends EnhancedAsyncBenchmarkBase {
   ''';
 }
 
-String _benchmarkBinaryTree() {
+List<String> _benchmarkBinaryTree() {
   return '''
 const _kBinaryTreeNodeName = 'HelloWorld';
 
@@ -319,7 +338,7 @@ class BinaryTreeOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
   ''';
 }
 
-String _benchmarkBlob() {
+List<String> _benchmarkBlob() {
   return '''
 class BlobInputSyncBenchmark extends EnhancedBenchmarkBase {
   final BenchmarkBlobTwinSync blob;
