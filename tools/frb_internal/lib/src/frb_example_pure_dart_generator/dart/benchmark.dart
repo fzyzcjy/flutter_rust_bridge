@@ -39,6 +39,7 @@ class _TypedName {
 }
 
 String _generate({
+  required String category,
   required String stem,
   required bool asynchronous,
   String? setupDataType,
@@ -48,7 +49,7 @@ String _generate({
   String extra = '',
   String Function(String className, String benchmarkName)? raw,
 }) {
-  final partialName = '${stem}_${asynchronous ? "Async" : "Sync"}';
+  final partialName = '${category}_${stem}_${asynchronous ? "Async" : "Sync"}';
   final className = '${partialName}_Benchmark';
   final benchName =
       '$partialName${args.map((arg) => "_${arg.name}\$${arg.name}").join("")}';
@@ -92,18 +93,23 @@ class $className extends Enhanced${asynchronous ? "Async" : ""}BenchmarkBase {
 }
 
 List<String> _benchmarkVoidFunction() {
+  const category = TODO;
+
   return [
     _generate(
+      category: category,
       stem: 'Void',
       asynchronous: true,
       run: 'await benchmarkVoidTwinNormal();',
     ),
     _generate(
+      category: category,
       stem: 'Void',
       asynchronous: false,
       run: 'benchmarkVoidTwinSync();',
     ),
     _generate(
+      category: category,
       stem: 'VoidRaw',
       asynchronous: false,
       run: 'rawWire.benchmark_raw_void_sync();',
@@ -111,6 +117,7 @@ List<String> _benchmarkVoidFunction() {
     // For example:
     // https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
     _generate(
+      category: category,
       stem: 'VoidRawByIsolate',
       asynchronous: true,
       run: '''
@@ -126,11 +133,13 @@ List<String> _benchmarkVoidFunction() {
 }
 
 List<String> _benchmarkBytes() {
+  const category = TODO;
   const args = [_TypedName('int', 'len')];
 
   return [
     for (final asynchronous in [true, false])
       _generate(
+        category: category,
         stem: 'InputBytes',
         asynchronous: asynchronous,
         args: args,
@@ -140,6 +149,7 @@ List<String> _benchmarkBytes() {
             'benchmarkInputBytesTwin${asynchronous ? "Normal" : "Sync"}(bytes: setupData);',
       ),
     _generate(
+      category: category,
       stem: 'InputBytesRaw',
       asynchronous: false,
       args: args,
@@ -154,6 +164,7 @@ List<String> _benchmarkBytes() {
     ),
     for (final asynchronous in [true, false])
       _generate(
+        category: category,
         stem: 'OutputBytes',
         asynchronous: asynchronous,
         args: args,
@@ -161,6 +172,7 @@ List<String> _benchmarkBytes() {
             'benchmarkOutputBytesTwin${asynchronous ? "Normal" : "Sync"}(size: len);',
       ),
     _generate(
+      category: category,
       stem: 'OutputBytesRaw',
       asynchronous: true,
       args: args,
@@ -205,6 +217,7 @@ List<String> _benchmarkBytes() {
 }
 
 List<String> _benchmarkBinaryTree() {
+  const category = TODO;
   const args = [_TypedName('int', 'depth')];
 
   return [
@@ -228,6 +241,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
     ''',
     for (final sse in [false, true]) ...[
       _generate(
+        category: category,
         stem: 'BinaryTreeInput${sse ? "Sse" : ""}',
         asynchronous: false,
         args: args,
@@ -253,6 +267,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
         ''',
       ),
       _generate(
+        category: category,
         stem: 'BinaryTreeOutput${sse ? "Sse" : ""}',
         asynchronous: false,
         args: args,
@@ -261,6 +276,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
       ),
     ],
     _generate(
+      category: category,
       stem: 'BinaryTreeInputProtobuf',
       asynchronous: false,
       args: args,
@@ -270,6 +286,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
           'benchmarkBinaryTreeInputProtobufTwinSync(raw: setupData.writeToBuffer());',
     ),
     _generate(
+      category: category,
       stem: 'BinaryTreeOutputProtobuf',
       asynchronous: false,
       args: args,
@@ -280,6 +297,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
       ''',
     ),
     _generate(
+      category: category,
       stem: 'BinaryTreeInputJson',
       asynchronous: false,
       args: args,
@@ -297,6 +315,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
       ''',
     ),
     _generate(
+      category: category,
       stem: 'BinaryTreeOutputJson',
       asynchronous: false,
       args: args,
@@ -312,6 +331,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
 }
 
 List<String> _benchmarkBlob() {
+  const category = TODO;
   const args = [_TypedName('int', 'len')];
 
   String setupDataSimple({required bool sse}) => '''
@@ -325,6 +345,7 @@ List<String> _benchmarkBlob() {
   return [
     for (final sse in [false, true]) ...[
       _generate(
+        category: category,
         stem: 'BlobInput${sse ? "Sse" : ""}',
         asynchronous: false,
         args: args,
@@ -333,6 +354,7 @@ List<String> _benchmarkBlob() {
         run: 'benchmarkBlobInputTwinSync${sse ? "Sse" : ""}(blob: setupData);',
       ),
       _generate(
+        category: category,
         stem: 'BlobOutput${sse ? "Sse" : ""}',
         asynchronous: false,
         args: args,
@@ -340,6 +362,7 @@ List<String> _benchmarkBlob() {
       ),
     ],
     _generate(
+      category: category,
       stem: 'BlobInputProtobuf',
       asynchronous: false,
       args: args,
@@ -355,6 +378,7 @@ List<String> _benchmarkBlob() {
           'benchmarkBlobInputProtobufTwinSync(raw: setupData.writeToBuffer());',
     ),
     _generate(
+      category: category,
       stem: 'BlobOutputProtobuf',
       asynchronous: false,
       args: args,
@@ -365,6 +389,7 @@ List<String> _benchmarkBlob() {
       ''',
     ),
     _generate(
+      category: category,
       stem: 'BlobInputJson',
       asynchronous: false,
       args: args,
@@ -382,6 +407,7 @@ List<String> _benchmarkBlob() {
       ''',
     ),
     _generate(
+      category: category,
       stem: 'BlobOutputJson',
       asynchronous: false,
       args: args,
