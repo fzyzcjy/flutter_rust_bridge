@@ -45,9 +45,16 @@ String _generate({
   List<_TypedName> args = const [],
   String setup = '',
   required String run,
+  String Function(String className, String benchmarkName)? raw,
 }) {
+  final partialName = '${stem}_${asynchronous ? "Async" : "Sync"}';
+  final className = '${partialName}Benchmark';
   final benchName =
-      '${stem}_${asynchronous ? "Async" : "Sync"}${args.map((arg) => "_${arg.name}\$${arg.name}").join("")}';
+      '$partialName${args.map((arg) => "_${arg.name}\$${arg.name}").join("")}';
+
+  if (raw != null) {
+    return raw(className, benchName);
+  }
 
   final functionSetup = asynchronous
       ? 'Future<void> setup() async { $setup }'
@@ -58,11 +65,11 @@ String _generate({
       : 'void run() { $run }';
 
   return '''
-class ${benchName}Benchmark extends Enhanced${asynchronous ? "Async" : "Sync"}BenchmarkBase {
+class $className extends Enhanced${asynchronous ? "Async" : "Sync"}BenchmarkBase {
   late final $setupDataType setupData;
   ${args.map((arg) => 'final ${arg.type} ${arg.name};\n').join('')}
   
-  const ${benchName}Benchmark({
+  const $className({
     ${args.map((arg) => 'required this.${arg.name},\n').join('')}
     super.emitter,
   }) : super('$benchName');
@@ -111,92 +118,81 @@ List<String> _benchmarkVoidFunction() {
 }
 
 List<String> _benchmarkBytes() {
+  const args = [_TypedName('int', 'len')];
+
   return [
     for (final asynchronous in [true, false])
       _generate(
         stem: 'InputBytes',
         asynchronous: asynchronous,
-        args: const [_TypedName('int', 'len')],
+        args: args,
         setupDataType: 'Uint8List',
         setup: 'setupData = Uint8List(len);',
         run:
             'benchmarkInputBytesTwin${asynchronous ? "Normal" : "Sync"}(bytes: setupData);',
       ),
+    _generate(
+      stem: 'InputBytesRaw',
+      asynchronous: false,
+      args: args,
+      setupDataType: 'Uint8List',
+      setup: 'setupData = Uint8List(len);',
+      run: '''
+        final raw = rawWire.benchmark_raw_new_list_prim_u_8(bytes.length);
+        raw.ptr.asTypedList(raw.len).setAll(0, bytes);
+        final ans = rawWire.benchmark_raw_input_bytes(raw);
+        if (ans != 0) throw Exception();
+      ''',
+    ),
+    for (final asynchronous in [true, false])
+      _generate(
+        stem: 'OutputBytes',
+        asynchronous: asynchronous,
+        args: args,
+        run:
+            'benchmarkOutputBytesTwin${asynchronous ? "Normal" : "Sync"}(size: len);',
+      ),
+    _generate(
+      stem: 'OutputBytesRaw',
+      asynchronous: true,
+      args: args,
+      raw: (className, benchmarkName) => '''
+        final receivePort = RawReceivePort();
+        late final sendPort = receivePort.sendPort.nativePort;
+        final int len;
+        final completers = <int, Completer<Uint8List>>{};
+        var nextId = 1;
+
+        $className({required this.len, super.emitter})
+            : super($benchmarkName) {
+          receivePort.handler = (dynamic response) {
+            final bytes = response as Uint8List;
+            final messageId = ByteData.view(bytes.buffer).getInt32(0, Endian.big);
+            // indeed a sublist view of the bytes
+            completers.remove(messageId)!.complete(bytes);
+          };
+        }
+
+        @override
+        Future<void> teardown() async {
+          receivePort.close();
+        }
+
+        @override
+        Future<void> run() async {
+          final messageId = nextId++;
+          final completer = Completer<Uint8List>();
+          completers[messageId] = completer;
+
+          rawWire.benchmark_raw_output_bytes(sendPort, messageId, len);
+          final result = await completer.future;
+
+          // sanity check
+          if (result.length != len + 4) throw Exception();
+        }
+      ''',
+    ),
   ];
-
-  return '''
-class InputBytesSyncRawBenchmark extends EnhancedBenchmarkBase {
-  final Uint8List bytes;
-
-  InputBytesSyncRawBenchmark(int len, {super.emitter})
-      : bytes = Uint8List(len),
-        super('InputBytesSyncRaw_Len\$len');
-
-  @override
-  void run() {
-    final raw = rawWire.benchmark_raw_new_list_prim_u_8(bytes.length);
-    raw.ptr.asTypedList(raw.len).setAll(0, bytes);
-    final ans = rawWire.benchmark_raw_input_bytes(raw);
-    if (ans != 0) throw Exception();
-  }
-}
-
-class OutputBytesAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
-  final int len;
-
-  OutputBytesAsyncBenchmark(this.len, {super.emitter})
-      : super('OutputBytesAsync_Len\$len');
-
-  @override
-  Future<void> run() async => benchmarkOutputBytesTwinNormal(size: len);
-}
-
-class OutputBytesSyncBenchmark extends EnhancedBenchmarkBase {
-  final int len;
-
-  OutputBytesSyncBenchmark(this.len, {super.emitter})
-      : super('OutputBytesSync_Len\$len');
-
-  @override
-  void run() => benchmarkOutputBytesTwinSync(size: len);
-}
-
-class OutputBytesAsyncRawBenchmark extends EnhancedAsyncBenchmarkBase {
-  final receivePort = RawReceivePort();
-  late final sendPort = receivePort.sendPort.nativePort;
-  final int len;
-  final completers = <int, Completer<Uint8List>>{};
-  var nextId = 1;
-
-  OutputBytesAsyncRawBenchmark(this.len, {super.emitter})
-      : super('OutputBytesAsyncRaw_Len\$len') {
-    receivePort.handler = (dynamic response) {
-      final bytes = response as Uint8List;
-      final messageId = ByteData.view(bytes.buffer).getInt32(0, Endian.big);
-      // indeed a sublist view of the bytes
-      completers.remove(messageId)!.complete(bytes);
-    };
-  }
-
-  @override
-  Future<void> teardown() async {
-    receivePort.close();
-  }
-
-  @override
-  Future<void> run() async {
-    final messageId = nextId++;
-    final completer = Completer<Uint8List>();
-    completers[messageId] = completer;
-
-    rawWire.benchmark_raw_output_bytes(sendPort, messageId, len);
-    final result = await completer.future;
-
-    // sanity check
-    if (result.length != len + 4) throw Exception();
-  }
-}
-  ''';
 }
 
 List<String> _benchmarkBinaryTree() {
