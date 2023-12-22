@@ -227,7 +227,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinNormal(obj.instanceMethodArgOwnTwinNormal());
   });
   test('instance newWithResult', () async {
-    final obj = await RwLockNonCloneSimpleTwinNormal.newWithResult();
+    final obj = await NonCloneSimpleTwinNormal.newWithResult();
     await futurizeVoidTwinNormal(obj.instanceMethodArgBorrowTwinNormal());
   });
 
