@@ -4378,7 +4378,7 @@ abstract class RustLibApi extends BaseApi {
   Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewTwinNormal(
       {dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewWithResult(
+  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewWithResult(
       {dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
@@ -43705,7 +43705,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewWithResult(
+  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewWithResult(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
