@@ -301,6 +301,10 @@ jobs:
           path: downloaded-artifacts/
           pattern: '*-benchmark'
       - run: tree downloaded-artifacts
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+          architecture: x64
 
       - run: ./frb_internal bench-merge
 
