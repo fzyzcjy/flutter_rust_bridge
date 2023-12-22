@@ -1,7 +1,14 @@
+// ignore_for_file: avoid_print
+
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:glob/glob.dart';
+import 'package:glob/list_local_fs.dart';
 
 part 'bench.g.dart';
 
@@ -9,6 +16,7 @@ List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand('bench-dart-native', benchDartNative,
         _$populateBenchConfigParser, _$parseBenchConfigResult),
+    SimpleCommand('bench-merge', benchMerge),
   ];
 }
 
@@ -32,4 +40,22 @@ Future<void> benchDartNative(BenchConfig config) async {
   await exec(
       'build/simple_benchmark/simple_benchmark.exe benchmark build/simple_benchmark/benchmark_result.json ${config.partialName} ${config.filter ?? ""}',
       relativePwd: package);
+}
+
+Future<void> benchMerge() async {
+  final inputFiles = [
+    for (final file in Glob('downloaded-artifacts/**.json').listSync())
+      if (file is File) file as File
+  ];
+  print('benchMerge inputFiles=$inputFiles');
+
+  final outputContent = jsonEncode([
+    for (final file in inputFiles)
+      ...(jsonDecode(file.readAsStringSync()) as List<dynamic>)
+  ]);
+
+  final pathOutput = exec.pwd;
+  File('${pathOutput}merged_benchmark.json').writeAsStringSync(outputContent);
+ 
+  await exec('cat $pathOutput');
 }

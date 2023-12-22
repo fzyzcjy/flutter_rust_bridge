@@ -277,6 +277,11 @@ jobs:
       # execute
       - run: ./frb_internal bench-dart-native --partial-name ${{ matrix.image_and_name.name }}
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.job }}--${{ matrix.image_and_name.image }}--benchmark
+          path: target/coverage
+
   bench_upload:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
@@ -287,7 +292,18 @@ jobs:
       - bench_dart_native
 
     steps:
-      - TODO
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: downloaded-artifacts/
+          pattern: '*-benchmark'
+      - run: tree downloaded-artifacts
+
+      - run: ./frb_internal bench-merge
+
       - uses: benchmark-action/github-action-benchmark@v1
         # Warn: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#run-only-on-your-branches
         if: github.event_name != 'pull_request'
@@ -779,12 +795,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           path: downloaded-artifacts/
-
+          pattern: '*-coverage'
       - run: tree downloaded-artifacts
 
       - uses: codecov/codecov-action@v3
