@@ -71,77 +71,35 @@ where
     }
 }
 
-// These tuple impls should probably be a macro, but that is not easily possible with macro_rules because of the field access
-impl<A, AD, B, BD> IntoIntoDart<(AD, BD)> for (A, B)
-where
-    A: IntoIntoDart<AD>,
-    AD: IntoDart,
-    B: IntoIntoDart<BD>,
-    BD: IntoDart,
-{
-    fn into_into_dart(self) -> (AD, BD) {
-        (self.0.into_into_dart(), self.1.into_into_dart())
-    }
+// ref: into_dart.rs
+macro_rules! impl_into_into_dart_for_tuple {
+    ($( ($($A:ident)+ ; $($AD:ident)+) ; $($N:ident)+ )*) => {$(
+        impl<$($A: IntoIntoDart<$AD>, $AD: IntoDart),+> IntoIntoDart<($($AD),+,)> for ($($A),+,)
+        where
+            $($A: IntoIntoDart<$AD>, $AD: IntoDart),+,
+        {
+            fn into_into_dart(self) -> ($($AD),+,) {
+                (
+                    $(
+                        self.$N.into_into_dart(),
+                    ),+
+                )
+            }
+        }
+    )*};
 }
-impl<A, AD, B, BD, C, CD> IntoIntoDart<(AD, BD, CD)> for (A, B, C)
-where
-    A: IntoIntoDart<AD>,
-    AD: IntoDart,
-    B: IntoIntoDart<BD>,
-    BD: IntoDart,
-    C: IntoIntoDart<CD>,
-    CD: IntoDart,
-{
-    fn into_into_dart(self) -> (AD, BD, CD) {
-        (
-            self.0.into_into_dart(),
-            self.1.into_into_dart(),
-            self.2.into_into_dart(),
-        )
-    }
-}
-impl<A, AD, B, BD, C, CD, D, DD> IntoIntoDart<(AD, BD, CD, DD)> for (A, B, C, D)
-where
-    A: IntoIntoDart<AD>,
-    AD: IntoDart,
-    B: IntoIntoDart<BD>,
-    BD: IntoDart,
-    C: IntoIntoDart<CD>,
-    CD: IntoDart,
-    D: IntoIntoDart<DD>,
-    DD: IntoDart,
-{
-    fn into_into_dart(self) -> (AD, BD, CD, DD) {
-        (
-            self.0.into_into_dart(),
-            self.1.into_into_dart(),
-            self.2.into_into_dart(),
-            self.3.into_into_dart(),
-        )
-    }
-}
-impl<A, AD, B, BD, C, CD, D, DD, E, ED> IntoIntoDart<(AD, BD, CD, DD, ED)> for (A, B, C, D, E)
-where
-    A: IntoIntoDart<AD>,
-    AD: IntoDart,
-    B: IntoIntoDart<BD>,
-    BD: IntoDart,
-    C: IntoIntoDart<CD>,
-    CD: IntoDart,
-    D: IntoIntoDart<DD>,
-    DD: IntoDart,
-    E: IntoIntoDart<ED>,
-    ED: IntoDart,
-{
-    fn into_into_dart(self) -> (AD, BD, CD, DD, ED) {
-        (
-            self.0.into_into_dart(),
-            self.1.into_into_dart(),
-            self.2.into_into_dart(),
-            self.3.into_into_dart(),
-            self.4.into_into_dart(),
-        )
-    }
+
+impl_into_into_dart_for_tuple! {
+    (A ; AD ; 0)
+    (A B ; AD BD ; 0 1)
+    (A B C ; AD BD CD ; 0 1 2)
+    (A B C D ; AD BD CD DD ; 0 1 2 3)
+    (A B C D E ; AD BD CD DD ED ; 0 1 2 3 4)
+    (A B C D E F ; AD BD CD DD ED FD ; 0 1 2 3 4 5)
+    (A B C D E F G ; AD BD CD DD ED FD GD ; 0 1 2 3 4 5 6)
+    (A B C D E F G H ; AD BD CD DD ED FD GD HD ; 0 1 2 3 4 5 6 7)
+    (A B C D E F G H I ; AD BD CD DD ED FD GD HD ID ; 0 1 2 3 4 5 6 7 8)
+    (A B C D E F G H I J ; AD BD CD DD ED FD GD HD ID JD ; 0 1 2 3 4 5 6 7 8 9)
 }
 
 // more generic impls do not work because they crate possibly conflicting trait impls
