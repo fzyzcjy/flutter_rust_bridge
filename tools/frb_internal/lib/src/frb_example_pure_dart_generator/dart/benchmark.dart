@@ -49,7 +49,7 @@ String _generate({
   String Function(String className, String benchmarkName)? raw,
 }) {
   final partialName = '${stem}_${asynchronous ? "Async" : "Sync"}';
-  final className = '${partialName}Benchmark';
+  final className = '${partialName}_Benchmark';
   final benchName =
       '$partialName${args.map((arg) => "_${arg.name}\$${arg.name}").join("")}';
 
