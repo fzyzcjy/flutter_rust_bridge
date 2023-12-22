@@ -26,7 +26,8 @@ Future<void> main(List<String> args) async {
     for (final b in allBenchmarks)
       if (filterRegex.hasMatch(b.name)) b
   ];
-  print('interestBenchmarks=${interestBenchmarks.map((e) => e.name).toList()}');
+  print(
+      'filterStr=$filterStr interestBenchmarks=${interestBenchmarks.map((e) => e.name).toList()}');
 
   for (final benchmark in interestBenchmarks) {
     switch (mode) {
@@ -34,7 +35,7 @@ Future<void> main(List<String> args) async {
         await benchmark.reportMaybeAsync();
 
       case _Mode.loop:
-        final loopCount = int.parse(args[4]);
+        final loopCount = int.parse(args[3]);
         final stopwatch = Stopwatch()..start();
         print(
             'Mode=loop START benchmark=${benchmark.name} loopCount=$loopCount');
