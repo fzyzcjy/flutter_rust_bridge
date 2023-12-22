@@ -4,6 +4,8 @@ import 'dart:convert';
 
 import 'package:recase/recase.dart';
 
+const _kArea = 'PureDart';
+
 String generateBenchmark() {
   final benchmarks = [
     ..._benchmarkPrimeNumber(),
@@ -114,6 +116,7 @@ class _Benchmark {
     assert(args.isNotEmpty == argValues.isNotEmpty);
 
     final benchName = jsonEncode({
+      'area': _kArea,
       'task': task,
       'approach': approachName,
       'direction': directionName,
