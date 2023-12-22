@@ -30,9 +30,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     })?;
                 Some(Args::Generic(ir_types))
             }
-            PathArguments::Parenthesized(args) => Some(Args::Signature(
-                self.parse_parenthesized_generic_arguments(args)?,
-            )),
+            // not used yet (detected by codecov)
+            // syn doc says "The `(A, B) -> C` in `Fn(A, B) -> C`",
+            // thus it seems we will not use it here.
+            //
+            // PathArguments::Parenthesized(args) => Some(Args::Signature(
+            //     self.parse_parenthesized_generic_arguments(args)?,
+            // )),
         };
         Ok(NameComponent { ident, args })
     }
@@ -48,22 +52,23 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .collect()
     }
 
-    fn parse_parenthesized_generic_arguments(
-        &mut self,
-        args: &ParenthesizedGenericArguments,
-    ) -> Result<Vec<IrType>> {
-        let input_types = args
-            .inputs
-            .iter()
-            .map(|ty| self.parse_type(ty))
-            .collect::<Result<Vec<_>>>()?;
-
-        let output_type = self.parse_return_type(&args.output)?;
-
-        Ok({
-            let mut ans = vec![output_type];
-            ans.extend(input_types);
-            ans
-        })
-    }
+    // not used yet
+    // fn parse_parenthesized_generic_arguments(
+    //     &mut self,
+    //     args: &ParenthesizedGenericArguments,
+    // ) -> Result<Vec<IrType>> {
+    //     let input_types = args
+    //         .inputs
+    //         .iter()
+    //         .map(|ty| self.parse_type(ty))
+    //         .collect::<Result<Vec<_>>>()?;
+    //
+    //     let output_type = self.parse_return_type(&args.output)?;
+    //
+    //     Ok({
+    //         let mut ans = vec![output_type];
+    //         ans.extend(input_types);
+    //         ans
+    //     })
+    // }
 }
