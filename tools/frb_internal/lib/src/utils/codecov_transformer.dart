@@ -21,9 +21,11 @@ Map<String, dynamic> _transformCodecovReportInner(Map<String, dynamic> raw) {
 
 Map<String, dynamic> _transformFile(
     String filename, Map<String, dynamic> srcData) {
+  final fileLines = File(filename).readAsStringSync().split('\n');
+
   var ans = srcData;
   ans = _transformByMimickingLcovInfo(ans);
-  ans = _transformByCodeComments(filename, ans);
+  ans = _transformByCodeComments(fileLines, ans);
   return ans;
 }
 
@@ -39,10 +41,8 @@ Map<String, dynamic> _transformByMimickingLcovInfo(Map<String, dynamic> raw) {
 }
 
 Map<String, dynamic> _transformByCodeComments(
-    String filename, Map<String, dynamic> raw) {
+    List<String> fileLines, Map<String, dynamic> raw) {
   final ans = {...raw};
-
-  final fileLines = File(filename).readAsStringSync().split('\n');
 
   var ignoring = false;
   // var removeCount = 0;
