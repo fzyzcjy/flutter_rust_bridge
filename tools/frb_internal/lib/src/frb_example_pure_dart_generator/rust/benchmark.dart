@@ -9,12 +9,33 @@ use std::collections::HashMap;
 use std::hint::black_box;
 
 ${_benchmarkVoidFunction()}
+${_benchmarkBytes()}
+${_benchmarkBinaryTree()}
+${_benchmarkBlob()}
   ''';
 }
 
 String _benchmarkVoidFunction() {
   return '''
 pub fn benchmark_void_twin_normal() {}
+  ''';
+}
+
+String _benchmarkBytes() {
+  return '''
+$TODO
+  ''';
+}
+
+String _benchmarkBinaryTree() {
+  return '''
+$TODO
+  ''';
+}
+
+String _benchmarkBlob() {
+  return '''
+$TODO
   ''';
 }
 
