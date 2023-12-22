@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/benchmark.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/builder.dart';
 
 Map<String, String> generateRustDirectSources() {
@@ -5,6 +6,7 @@ Map<String, String> generateRustDirectSources() {
     'pseudo_manual/primitive.rs': _generatePrimitive(),
     'pseudo_manual/optional_primitive.rs': _generateOptionalPrimitive(),
     'pseudo_manual/primitive_list.rs': _generatePrimitiveList(),
+    'pseudo_manual/benchmark.rs': generateBenchmark(),
   };
 }
 

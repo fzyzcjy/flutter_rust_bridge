@@ -1,0 +1,3 @@
+String generateBenchmark() {
+  return TODO;
+}
