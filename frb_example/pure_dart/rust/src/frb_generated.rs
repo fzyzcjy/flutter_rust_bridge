@@ -130,7 +130,7 @@ fn wire_last_number_twin_normal_impl(
             move |context| {
                 transform_result_dco((move || {
                     Result::<_, ()>::Ok(crate::api::array::last_number_twin_normal(api_array))
-                })() )
+                })())
             }
         },
     )
