@@ -54,15 +54,16 @@ Map<String, dynamic> _transformByCodeComments(
     if (lineContent.contains('frb-coverage:ignore-start')) {
       ignoring = true;
     }
-    if (lineContent.contains('frb-coverage:ignore-end')) {
-      ignoring = false;
-    }
 
     if (ignoring) {
       final removed = ans.remove(lineNumber.toString());
       if (removed != null) {
         // removeCount++;
       }
+    }
+
+    if (lineContent.contains('frb-coverage:ignore-end')) {
+      ignoring = false;
     }
   }
 
