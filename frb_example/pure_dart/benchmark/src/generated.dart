@@ -16,109 +16,183 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 import 'benchmark_utils.dart';
 import 'protobuf_for_benchmark/protobuf_for_benchmark.pb.dart';
 
-class VoidAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
-  const VoidAsyncBenchmark({super.emitter}) : super('VoidAsync');
+class Void_AsyncBenchmark extends EnhancedAsyncBenchmarkBase {
+  late final Null setupData;
+
+  Void_AsyncBenchmark({
+    super.emitter,
+  }) : super('Void_Async');
 
   @override
-  Future<void> run() async => benchmarkVoidTwinNormal();
-}
-
-class VoidSyncBenchmark extends EnhancedBenchmarkBase {
-  const VoidSyncBenchmark({super.emitter}) : super('VoidSync');
+  Future<void> setup() async {}
 
   @override
-  void run() => benchmarkVoidTwinSync();
+  Future<void> run() async {
+    await benchmarkVoidTwinNormal();
+  }
 }
 
-class VoidSyncRawBenchmark extends EnhancedBenchmarkBase {
-  VoidSyncRawBenchmark({super.emitter}) : super('VoidSyncRaw');
+class Void_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
+
+  Void_SyncBenchmark({
+    super.emitter,
+  }) : super('Void_Sync');
 
   @override
-  void run() => rawWire.benchmark_raw_void_sync();
-}
-
-// For example:
-// https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
-class VoidAsyncRawByIsolateBenchmark extends EnhancedAsyncBenchmarkBase {
-  VoidAsyncRawByIsolateBenchmark({super.emitter})
-      : super('VoidAsyncRawByIsolate');
-
-  @override
-  Future<void> run() async => await Isolate.run(() async {
-        // This library loading may not be optimal, just a rough test
-        final wire = RustLibWire.fromExternalLibrary(await loadExternalLibrary(
-            RustLib.kDefaultExternalLibraryLoaderConfig));
-        wire.benchmark_raw_void_sync();
-      });
-}
-
-class InputBytesAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
-  final Uint8List bytes;
-
-  InputBytesAsyncBenchmark(int len, {super.emitter})
-      : bytes = Uint8List(len),
-        super('InputBytesAsync_Len$len');
-
-  @override
-  Future<void> run() async => benchmarkInputBytesTwinNormal(bytes: bytes);
-}
-
-class InputBytesSyncBenchmark extends EnhancedBenchmarkBase {
-  final Uint8List bytes;
-
-  InputBytesSyncBenchmark(int len, {super.emitter})
-      : bytes = Uint8List(len),
-        super('InputBytesSync_Len$len');
-
-  @override
-  void run() => benchmarkInputBytesTwinSync(bytes: bytes);
-}
-
-class InputBytesSyncRawBenchmark extends EnhancedBenchmarkBase {
-  final Uint8List bytes;
-
-  InputBytesSyncRawBenchmark(int len, {super.emitter})
-      : bytes = Uint8List(len),
-        super('InputBytesSyncRaw_Len$len');
+  void setup() {}
 
   @override
   void run() {
-    final raw = rawWire.benchmark_raw_new_list_prim_u_8(bytes.length);
-    raw.ptr.asTypedList(raw.len).setAll(0, bytes);
+    benchmarkVoidTwinSync();
+  }
+}
+
+class VoidRaw_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
+
+  VoidRaw_SyncBenchmark({
+    super.emitter,
+  }) : super('VoidRaw_Sync');
+
+  @override
+  void setup() {}
+
+  @override
+  void run() {
+    rawWire.benchmark_raw_void_sync();
+  }
+}
+
+class VoidRawByIsolate_AsyncBenchmark extends EnhancedAsyncBenchmarkBase {
+  late final Null setupData;
+
+  VoidRawByIsolate_AsyncBenchmark({
+    super.emitter,
+  }) : super('VoidRawByIsolate_Async');
+
+  @override
+  Future<void> setup() async {}
+
+  @override
+  Future<void> run() async {
+    await Isolate.run(() async {
+      // This library loading may not be optimal, just a rough test
+      final wire = RustLibWire.fromExternalLibrary(await loadExternalLibrary(
+          RustLib.kDefaultExternalLibraryLoaderConfig));
+      wire.benchmark_raw_void_sync();
+    });
+  }
+}
+
+class InputBytes_AsyncBenchmark extends EnhancedAsyncBenchmarkBase {
+  late final Uint8List setupData;
+  final int len;
+
+  InputBytes_AsyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('InputBytes_Async_len$len');
+
+  @override
+  Future<void> setup() async {
+    setupData = Uint8List(len);
+  }
+
+  @override
+  Future<void> run() async {
+    benchmarkInputBytesTwinNormal(bytes: setupData);
+  }
+}
+
+class InputBytes_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Uint8List setupData;
+  final int len;
+
+  InputBytes_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('InputBytes_Sync_len$len');
+
+  @override
+  void setup() {
+    setupData = Uint8List(len);
+  }
+
+  @override
+  void run() {
+    benchmarkInputBytesTwinSync(bytes: setupData);
+  }
+}
+
+class InputBytesRaw_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Uint8List setupData;
+  final int len;
+
+  InputBytesRaw_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('InputBytesRaw_Sync_len$len');
+
+  @override
+  void setup() {
+    setupData = Uint8List(len);
+  }
+
+  @override
+  void run() {
+    final raw = rawWire.benchmark_raw_new_list_prim_u_8(setupData.length);
+    raw.ptr.asTypedList(raw.len).setAll(0, setupData);
     final ans = rawWire.benchmark_raw_input_bytes(raw);
     if (ans != 0) throw Exception();
   }
 }
 
-class OutputBytesAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
+class OutputBytes_AsyncBenchmark extends EnhancedAsyncBenchmarkBase {
+  late final Null setupData;
   final int len;
 
-  OutputBytesAsyncBenchmark(this.len, {super.emitter})
-      : super('OutputBytesAsync_Len$len');
+  OutputBytes_AsyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('OutputBytes_Async_len$len');
 
   @override
-  Future<void> run() async => benchmarkOutputBytesTwinNormal(size: len);
+  Future<void> setup() async {}
+
+  @override
+  Future<void> run() async {
+    benchmarkOutputBytesTwinNormal(size: len);
+  }
 }
 
-class OutputBytesSyncBenchmark extends EnhancedBenchmarkBase {
+class OutputBytes_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
   final int len;
 
-  OutputBytesSyncBenchmark(this.len, {super.emitter})
-      : super('OutputBytesSync_Len$len');
+  OutputBytes_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('OutputBytes_Sync_len$len');
 
   @override
-  void run() => benchmarkOutputBytesTwinSync(size: len);
+  void setup() {}
+
+  @override
+  void run() {
+    benchmarkOutputBytesTwinSync(size: len);
+  }
 }
 
-class OutputBytesAsyncRawBenchmark extends EnhancedAsyncBenchmarkBase {
+class OutputBytesRaw_AsyncBenchmark extends EnhancedAsyncBenchmarkBase {
   final receivePort = RawReceivePort();
   late final sendPort = receivePort.sendPort.nativePort;
   final int len;
   final completers = <int, Completer<Uint8List>>{};
   var nextId = 1;
 
-  OutputBytesAsyncRawBenchmark(this.len, {super.emitter})
-      : super('OutputBytesAsyncRaw_Len$len') {
+  OutputBytesRaw_AsyncBenchmark({required this.len, super.emitter})
+      : super('OutputBytesRaw_Async_len$len') {
     receivePort.handler = (dynamic response) {
       final bytes = response as Uint8List;
       final messageId = ByteData.view(bytes.buffer).getInt32(0, Endian.big);
@@ -148,21 +222,6 @@ class OutputBytesAsyncRawBenchmark extends EnhancedAsyncBenchmarkBase {
 
 const _kBinaryTreeNodeName = 'HelloWorld';
 
-BenchmarkBinaryTreeTwinSync _createTree(int depth) {
-  if (depth == 0) {
-    return BenchmarkBinaryTreeTwinSync(
-      name: _kBinaryTreeNodeName,
-      left: null,
-      right: null,
-    );
-  }
-  return BenchmarkBinaryTreeTwinSync(
-    name: _kBinaryTreeNodeName,
-    left: _createTree(depth - 1),
-    right: _createTree(depth - 1),
-  );
-}
-
 BinaryTreeProtobuf _createTreeProtobuf(int depth) {
   if (depth == 0) {
     return BinaryTreeProtobuf(
@@ -178,33 +237,77 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
   );
 }
 
-class BinaryTreeInputSyncBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBinaryTreeTwinSync tree;
-
-  BinaryTreeInputSyncBenchmark(int depth, {super.emitter})
-      : tree = _createTree(depth),
-        super('BinaryTreeInputSync_Depth$depth');
-
-  @override
-  void run() => benchmarkBinaryTreeInputTwinSync(tree: tree);
-}
-
-class BinaryTreeOutputSyncBenchmark extends EnhancedBenchmarkBase {
+class BinaryTreeInput_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final BenchmarkBinaryTreeTwinSync setupData;
   final int depth;
 
-  BinaryTreeOutputSyncBenchmark(this.depth, {super.emitter})
-      : super('BinaryTreeOutputSync_Depth$depth');
+  BinaryTreeInput_SyncBenchmark({
+    required this.depth,
+    super.emitter,
+  }) : super('BinaryTreeInput_Sync_depth$depth');
 
   @override
-  void run() => benchmarkBinaryTreeOutputTwinSync(depth: depth);
+  void setup() {
+    setupData = _createTree(depth);
+  }
+
+  @override
+  void run() {
+    benchmarkBinaryTreeInputTwinSync(tree: setupData);
+  }
+
+  static BenchmarkBinaryTreeTwinSync _createTree(int depth) {
+    if (depth == 0) {
+      return BenchmarkBinaryTreeTwinSync(
+        name: _kBinaryTreeNodeName,
+        left: null,
+        right: null,
+      );
+    }
+    return BenchmarkBinaryTreeTwinSync(
+      name: _kBinaryTreeNodeName,
+      left: _createTree(depth - 1),
+      right: _createTree(depth - 1),
+    );
+  }
 }
 
-class BinaryTreeInputSyncSseBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBinaryTreeTwinSyncSse tree;
+class BinaryTreeOutput_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
+  final int depth;
 
-  BinaryTreeInputSyncSseBenchmark(int depth, {super.emitter})
-      : tree = _createTree(depth),
-        super('BinaryTreeInputSyncSse_Depth$depth');
+  BinaryTreeOutput_SyncBenchmark({
+    required this.depth,
+    super.emitter,
+  }) : super('BinaryTreeOutput_Sync_depth$depth');
+
+  @override
+  void setup() {}
+
+  @override
+  void run() {
+    benchmarkBinaryTreeOutputTwinSync(depth: depth);
+  }
+}
+
+class BinaryTreeInputSse_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final BenchmarkBinaryTreeTwinSyncSse setupData;
+  final int depth;
+
+  BinaryTreeInputSse_SyncBenchmark({
+    required this.depth,
+    super.emitter,
+  }) : super('BinaryTreeInputSse_Sync_depth$depth');
+
+  @override
+  void setup() {
+    setupData = _createTree(depth);
+  }
+
+  @override
+  void run() {
+    benchmarkBinaryTreeInputTwinSyncSse(tree: setupData);
+  }
 
   static BenchmarkBinaryTreeTwinSyncSse _createTree(int depth) {
     if (depth == 0) {
@@ -220,38 +323,57 @@ class BinaryTreeInputSyncSseBenchmark extends EnhancedBenchmarkBase {
       right: _createTree(depth - 1),
     );
   }
-
-  @override
-  void run() => benchmarkBinaryTreeInputTwinSyncSse(tree: tree);
 }
 
-class BinaryTreeOutputSyncSseBenchmark extends EnhancedBenchmarkBase {
+class BinaryTreeOutputSse_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
   final int depth;
 
-  BinaryTreeOutputSyncSseBenchmark(this.depth, {super.emitter})
-      : super('BinaryTreeOutputSyncSse_Depth$depth');
+  BinaryTreeOutputSse_SyncBenchmark({
+    required this.depth,
+    super.emitter,
+  }) : super('BinaryTreeOutputSse_Sync_depth$depth');
 
   @override
-  void run() => benchmarkBinaryTreeOutputTwinSyncSse(depth: depth);
-}
-
-class BinaryTreeInputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
-  final BinaryTreeProtobuf tree;
-
-  BinaryTreeInputSyncProtobufBenchmark(int depth, {super.emitter})
-      : tree = _createTreeProtobuf(depth),
-        super('BinaryTreeInputSyncProtobuf_Depth$depth');
+  void setup() {}
 
   @override
-  void run() =>
-      benchmarkBinaryTreeInputProtobufTwinSync(raw: tree.writeToBuffer());
+  void run() {
+    benchmarkBinaryTreeOutputTwinSyncSse(depth: depth);
+  }
 }
 
-class BinaryTreeOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
+class BinaryTreeInputProtobuf_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final BinaryTreeProtobuf setupData;
   final int depth;
 
-  BinaryTreeOutputSyncProtobufBenchmark(this.depth, {super.emitter})
-      : super('BinaryTreeOutputSyncProtobuf_Depth$depth');
+  BinaryTreeInputProtobuf_SyncBenchmark({
+    required this.depth,
+    super.emitter,
+  }) : super('BinaryTreeInputProtobuf_Sync_depth$depth');
+
+  @override
+  void setup() {
+    setupData = _createTreeProtobuf(depth);
+  }
+
+  @override
+  void run() {
+    benchmarkBinaryTreeInputProtobufTwinSync(raw: setupData.writeToBuffer());
+  }
+}
+
+class BinaryTreeOutputProtobuf_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
+  final int depth;
+
+  BinaryTreeOutputProtobuf_SyncBenchmark({
+    required this.depth,
+    super.emitter,
+  }) : super('BinaryTreeOutputProtobuf_Sync_depth$depth');
+
+  @override
+  void setup() {}
 
   @override
   void run() {
@@ -261,12 +383,25 @@ class BinaryTreeOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BinaryTreeInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBinaryTreeTwinSync tree;
+class BinaryTreeInputJson_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final BenchmarkBinaryTreeTwinSync setupData;
+  final int depth;
 
-  BinaryTreeInputSyncJsonBenchmark(int depth, {super.emitter})
-      : tree = _createTree(depth),
-        super('BinaryTreeInputSyncJson_Depth$depth');
+  BinaryTreeInputJson_SyncBenchmark({
+    required this.depth,
+    super.emitter,
+  }) : super('BinaryTreeInputJson_Sync_depth$depth');
+
+  @override
+  void setup() {
+    setupData = BinaryTreeInput_SyncBenchmark._createTree(depth);
+  }
+
+  @override
+  void run() {
+    benchmarkBinaryTreeInputJsonTwinSync(
+        raw: jsonEncode(setupData, toEncodable: _toJson));
+  }
 
   // Normally use `json_serializable`, but we only use for benchmark so manually write
   static Map<String, dynamic> _toJson(dynamic tree) => {
@@ -274,17 +409,19 @@ class BinaryTreeInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
         'left': tree.left,
         'right': tree.right,
       };
-
-  @override
-  void run() => benchmarkBinaryTreeInputJsonTwinSync(
-      raw: jsonEncode(tree, toEncodable: _toJson));
 }
 
-class BinaryTreeOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
+class BinaryTreeOutputJson_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
   final int depth;
 
-  BinaryTreeOutputSyncJsonBenchmark(this.depth, {super.emitter})
-      : super('BinaryTreeOutputSyncJson_Depth$depth');
+  BinaryTreeOutputJson_SyncBenchmark({
+    required this.depth,
+    super.emitter,
+  }) : super('BinaryTreeOutputJson_Sync_depth$depth');
+
+  @override
+  void setup() {}
 
   @override
   void run() {
@@ -296,78 +433,125 @@ class BinaryTreeOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BlobInputSyncBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBlobTwinSync blob;
-
-  BlobInputSyncBenchmark(int len, {super.emitter})
-      : blob = BenchmarkBlobTwinSync(
-          first: Uint8List(len),
-          second: Uint8List(len),
-          third: Uint8List(len),
-        ),
-        super('BlobInputSyncBenchmark_Len$len');
-
-  @override
-  void run() => benchmarkBlobInputTwinSync(blob: blob);
-}
-
-class BlobOutputSyncBenchmark extends EnhancedBenchmarkBase {
+class BlobInput_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final BenchmarkBlobTwinSync setupData;
   final int len;
 
-  BlobOutputSyncBenchmark(this.len, {super.emitter})
-      : super('BlobOutputSync_Len$len');
+  BlobInput_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('BlobInput_Sync_len$len');
 
   @override
-  void run() => benchmarkBlobOutputTwinSync(size: len);
-}
-
-BenchmarkBlobTwinSyncSse _createBlob(int len) => BenchmarkBlobTwinSyncSse(
+  void setup() {
+    setupData = BenchmarkBlobTwinSync(
       first: Uint8List(len),
       second: Uint8List(len),
       third: Uint8List(len),
     );
-
-class BlobInputSyncSseBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBlobTwinSyncSse blob;
-
-  BlobInputSyncSseBenchmark(int len, {super.emitter})
-      : blob = _createBlob(len),
-        super('BlobInputSyncSseBenchmark_Len$len');
+  }
 
   @override
-  void run() => benchmarkBlobInputTwinSyncSse(blob: blob);
+  void run() {
+    benchmarkBlobInputTwinSync(blob: setupData);
+  }
 }
 
-class BlobOutputSyncSseBenchmark extends EnhancedBenchmarkBase {
+class BlobOutput_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
   final int len;
 
-  BlobOutputSyncSseBenchmark(this.len, {super.emitter})
-      : super('BlobOutputSyncSse_Len$len');
+  BlobOutput_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('BlobOutput_Sync_len$len');
 
   @override
-  void run() => benchmarkBlobOutputTwinSyncSse(size: len);
-}
-
-class BlobInputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
-  final BlobProtobuf blob;
-
-  BlobInputSyncProtobufBenchmark(int len, {super.emitter})
-      : blob = BlobProtobuf(
-          first: Uint8List(len),
-          second: Uint8List(len),
-          third: Uint8List(len),
-        ),
-        super('BlobInputSyncProtobufBenchmark_Len$len');
+  void setup() {}
 
   @override
-  void run() => benchmarkBlobInputProtobufTwinSync(raw: blob.writeToBuffer());
+  void run() {
+    benchmarkBlobOutputTwinSync(size: len);
+  }
 }
 
-class BlobOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
+class BlobInputSse_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final BenchmarkBlobTwinSyncSse setupData;
   final int len;
 
-  BlobOutputSyncProtobufBenchmark(this.len, {super.emitter})
-      : super('BlobOutputSyncProtobuf_Len$len');
+  BlobInputSse_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('BlobInputSse_Sync_len$len');
+
+  @override
+  void setup() {
+    setupData = BenchmarkBlobTwinSyncSse(
+      first: Uint8List(len),
+      second: Uint8List(len),
+      third: Uint8List(len),
+    );
+  }
+
+  @override
+  void run() {
+    benchmarkBlobInputTwinSyncSse(blob: setupData);
+  }
+}
+
+class BlobOutputSse_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
+  final int len;
+
+  BlobOutputSse_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('BlobOutputSse_Sync_len$len');
+
+  @override
+  void setup() {}
+
+  @override
+  void run() {
+    benchmarkBlobOutputTwinSyncSse(size: len);
+  }
+}
+
+class BlobInputProtobuf_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final BlobProtobuf setupData;
+  final int len;
+
+  BlobInputProtobuf_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('BlobInputProtobuf_Sync_len$len');
+
+  @override
+  void setup() {
+    setupData = BlobProtobuf(
+      first: Uint8List(len),
+      second: Uint8List(len),
+      third: Uint8List(len),
+    );
+  }
+
+  @override
+  void run() {
+    benchmarkBlobInputProtobufTwinSync(raw: setupData.writeToBuffer());
+  }
+}
+
+class BlobOutputProtobuf_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
+  final int len;
+
+  BlobOutputProtobuf_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('BlobOutputProtobuf_Sync_len$len');
+
+  @override
+  void setup() {}
 
   @override
   void run() {
@@ -377,12 +561,29 @@ class BlobOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BlobInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBlobTwinSyncSse blob;
+class BlobInputJson_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final BenchmarkBlobTwinSyncSse setupData;
+  final int len;
 
-  BlobInputSyncJsonBenchmark(int len, {super.emitter})
-      : blob = _createBlob(len),
-        super('BlobInputSyncJsonBenchmark_Len$len');
+  BlobInputJson_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('BlobInputJson_Sync_len$len');
+
+  @override
+  void setup() {
+    setupData = BenchmarkBlobTwinSyncSse(
+      first: Uint8List(len),
+      second: Uint8List(len),
+      third: Uint8List(len),
+    );
+  }
+
+  @override
+  void run() {
+    benchmarkBlobInputJsonTwinSync(
+        raw: jsonEncode(setupData, toEncodable: _toJson));
+  }
 
   // Normally use `json_serializable`, but we only use for benchmark so manually write
   static Map<String, dynamic> _toJson(dynamic blob) => {
@@ -390,17 +591,19 @@ class BlobInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
         'second': blob.second,
         'third': blob.third,
       };
-
-  @override
-  void run() => benchmarkBlobInputJsonTwinSync(
-      raw: jsonEncode(blob, toEncodable: _toJson));
 }
 
-class BlobOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
+class BlobOutputJson_SyncBenchmark extends EnhancedBenchmarkBase {
+  late final Null setupData;
   final int len;
 
-  BlobOutputSyncJsonBenchmark(this.len, {super.emitter})
-      : super('BlobOutputSyncJson_Len$len');
+  BlobOutputJson_SyncBenchmark({
+    required this.len,
+    super.emitter,
+  }) : super('BlobOutputJson_Sync_len$len');
+
+  @override
+  void setup() {}
 
   @override
   void run() {
