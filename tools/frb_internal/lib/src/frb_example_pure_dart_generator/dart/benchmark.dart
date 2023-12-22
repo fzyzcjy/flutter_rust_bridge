@@ -19,6 +19,7 @@ import 'dart:ffi';
 import 'dart:isolate';
 import 'dart:typed_data';
 
+import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
