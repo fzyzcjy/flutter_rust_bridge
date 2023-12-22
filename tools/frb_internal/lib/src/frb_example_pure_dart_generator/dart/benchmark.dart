@@ -284,7 +284,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
       asynchronous: false,
       args: args,
       setupDataType: 'BenchmarkBinaryTreeTwinSync',
-      setup: 'setupData = BinaryTreeInput_SyncBenchmark._createTree(depth);',
+      setup: 'setupData = BinaryTreeInput_Sync_Benchmark._createTree(depth);',
       run:
           'benchmarkBinaryTreeInputJsonTwinSync(raw: jsonEncode(setupData, toEncodable: _toJson));',
       extra: '''
