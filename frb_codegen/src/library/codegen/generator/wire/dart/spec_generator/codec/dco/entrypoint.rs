@@ -28,8 +28,9 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 }
 
 impl WireDartCodecEntrypointTrait<'_> for DcoWireDartCodecEntrypoint {
-    #[cfg_attr(coverage_nightly, coverage(off))]
+    // frb-coverage:ignore-start
     fn generate_dart2rust_inner_func_stmt(&self, _func: &IrFunc, _wire_func_name: &str) -> String {
         unreachable!()
     }
+    // frb-coverage:ignore-end
 }
