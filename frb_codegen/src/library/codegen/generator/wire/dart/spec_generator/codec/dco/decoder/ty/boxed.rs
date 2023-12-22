@@ -7,7 +7,10 @@ use crate::codegen::ir::ty::IrType::*;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerator<'a> {
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     fn generate_impl_decode_body(&self) -> String {
+        // frb-coverage:ignore-end
         match &*self.ir.inner {
             StructRef(_)
             | DartOpaque(_)

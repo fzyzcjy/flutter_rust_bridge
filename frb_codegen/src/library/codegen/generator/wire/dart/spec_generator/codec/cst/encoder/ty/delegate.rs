@@ -109,7 +109,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
         }
     }
 
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     fn dart_wire_type(&self, target: Target) -> String {
+        // frb-coverage:ignore-end
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Web) => "String".into(),
             // (IrTypeDelegate::StringList, Target::Web) => "List<String>".into(),
