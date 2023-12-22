@@ -15,7 +15,7 @@ Future<void> main(List<String> args) async {
   final [modeStr, pathOutput, ...] = args;
   final mode = _Mode.values.byName(modeStr);
 
-  final filterStr = args.get(3) ?? '.*';
+  final filterStr = args.get(2) ?? '.*';
   final filterRegex = RegExp(filterStr);
 
   final emitter = JsonEmitter();
