@@ -68,6 +68,11 @@ impl FrbAttributes {
                 dart2rust: CodecMode::Sse,
                 rust2dart: CodecMode::Sse,
             }
+        } else if self.any_eq(&FrbAttribute::SemiSerialize) {
+            CodecModePack {
+                dart2rust: CodecMode::Cst,
+                rust2dart: CodecMode::Sse,
+            }
         } else {
             CodecModePack {
                 dart2rust: CodecMode::Cst,
@@ -107,6 +112,7 @@ mod frb_keyword {
     syn::custom_keyword!(sync);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(serialize);
+    syn::custom_keyword!(semi_serialize);
     syn::custom_keyword!(dart_metadata);
     syn::custom_keyword!(import);
 }
@@ -118,6 +124,8 @@ enum FrbAttribute {
     Sync,
     Opaque,
     Serialize,
+    // NOTE: Undocumented, since this name may be suboptimal and is subject to change
+    SemiSerialize,
     Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
     Default(FrbAttributeDefaultValue),
 }
@@ -146,6 +154,10 @@ impl Parse for OptionFrbAttribute {
             input
                 .parse::<frb_keyword::serialize>()
                 .map(|_| FrbAttribute::Serialize)?
+        } else if lookahead.peek(frb_keyword::semi_serialize) {
+            input
+                .parse::<frb_keyword::semi_serialize>()
+                .map(|_| FrbAttribute::SemiSerialize)?
         } else if lookahead.peek(frb_keyword::dart_metadata) {
             input.parse().map(FrbAttribute::Metadata)?
         } else if lookahead.peek(Token![default]) {

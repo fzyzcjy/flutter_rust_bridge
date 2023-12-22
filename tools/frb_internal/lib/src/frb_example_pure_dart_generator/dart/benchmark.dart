@@ -27,6 +27,7 @@ import 'dart:typed_data';
 
 import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:frb_example_pure_dart/src/rust/api/benchmark_misc.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync_sse.dart';
@@ -65,6 +66,7 @@ class _TypedName {
 enum _Approach {
   frb,
   frbSse,
+  frbCstSse,
   raw,
   protobuf,
   json,
@@ -207,6 +209,12 @@ List<_Benchmark> _benchmarkVoidFunction() {
       approach: _Approach.frb,
       asynchronous: false,
       run: 'benchmarkVoidTwinSync();',
+    ),
+    const _Benchmark(
+      task: task,
+      approach: _Approach.frbCstSse,
+      asynchronous: false,
+      run: 'benchmarkVoidSemiSerialize();',
     ),
     const _Benchmark(
       task: task,

@@ -4251,6 +4251,8 @@ void wire_handle_customized_struct_twin_normal(int64_t port_,
 
 void wire_next_user_id_twin_normal(int64_t port_, struct wire_cst_user_id_twin_normal *user_id);
 
+void wire_benchmark_void_semi_serialize(int64_t port_);
+
 void wire_datetime_local_twin_normal(int64_t port_, int64_t d);
 
 void wire_datetime_utc_twin_normal(int64_t port_, int64_t d);
@@ -11955,6 +11957,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_void_semi_serialize);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_rust_async_sse);

@@ -9,6 +9,7 @@ import 'dart:typed_data';
 
 import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:frb_example_pure_dart/src/rust/api/benchmark_misc.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync_sse.dart';
@@ -28,6 +29,7 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
     PrimeNumber_Na_Sync_Benchmark(number: 900000000013, emitter: emitter),
     VoidFunction_Frb_Async_Benchmark(emitter: emitter),
     VoidFunction_Frb_Sync_Benchmark(emitter: emitter),
+    VoidFunction_FrbCstSse_Sync_Benchmark(emitter: emitter),
     VoidFunction_Raw_Sync_Benchmark(emitter: emitter),
     VoidFunction_Raw_Async_Benchmark(emitter: emitter),
     Bytes_Frb_Input_Async_Benchmark(len: 0, emitter: emitter),
@@ -153,6 +155,21 @@ class VoidFunction_Frb_Sync_Benchmark extends EnhancedBenchmarkBase {
   @override
   void run() {
     benchmarkVoidTwinSync();
+  }
+}
+
+class VoidFunction_FrbCstSse_Sync_Benchmark extends EnhancedBenchmarkBase {
+  VoidFunction_FrbCstSse_Sync_Benchmark({
+    super.emitter,
+  }) : super(
+            '{"area":"PureDart","task":"VoidFunction","approach":"FrbCstSse","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}');
+
+  @override
+  void setup() {}
+
+  @override
+  void run() {
+    benchmarkVoidSemiSerialize();
   }
 }
 
