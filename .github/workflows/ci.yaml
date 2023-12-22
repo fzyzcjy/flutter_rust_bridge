@@ -277,7 +277,12 @@ jobs:
       # execute
       - run: ./frb_internal bench-dart-native --partial-name ${{ matrix.image_and_name.name }}
 
-      # store
+  bench_upload:
+    name: 'Bench :: Upload'
+    runs-on: ubuntu-latest
+
+    steps:
+      - TODO
       - uses: benchmark-action/github-action-benchmark@v1
         # Warn: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#run-only-on-your-branches
         if: github.event_name != 'pull_request'
