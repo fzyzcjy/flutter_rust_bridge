@@ -19,6 +19,23 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
 
 I want to keep it in beta for a while (though CI has all passed), to allow publishing API breaking changes, and hear your thoughts and suggestions about it!
 
+## 📚 Quickstart
+
+Create a working app and see it live, by running:
+
+```shell
+cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && \
+    flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
+```
+
+(Optional) Edit `rust/src/api/simple.rs` to something like `format!("Hi, {name}!")`, then see the change by:
+
+```shell
+flutter_rust_bridge_codegen generate && flutter run
+```
+
+For more elaborated quickstart, please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart).
+
 ## 🚀 Advantages
 
 ### 0. In One Sentence
