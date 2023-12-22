@@ -58,10 +58,24 @@ class _TypedName {
   const _TypedName(this.type, this.name);
 }
 
+enum _Approach {
+  frb,
+  frbSse,
+  raw,
+  protobuf,
+  json,
+  na,
+}
+
+enum _Direction {
+  input,
+  output,
+}
+
 class _Benchmark {
   final String category;
-  final String? direction;
-  final String approach;
+  final _Direction? direction;
+  final _Approach approach;
   final bool asynchronous;
   final String? setupDataType;
   final List<_TypedName> args;
@@ -146,7 +160,7 @@ List<_Benchmark> _benchmarkPrimeNumber() {
     // For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
     const _Benchmark(
       category: category,
-      approach: 'Normal',
+      approach: _Approach.na,
       asynchronous: false,
       args: [_TypedName('int', 'number')],
       argValues: ['90000049', '9000000001', '900000000013'],
@@ -173,19 +187,19 @@ List<_Benchmark> _benchmarkVoidFunction() {
   return [
     const _Benchmark(
       category: category,
-      approach: 'Frb',
+      approach: _Approach.frb,
       asynchronous: true,
       run: 'await benchmarkVoidTwinNormal();',
     ),
     const _Benchmark(
       category: category,
-      approach: 'Frb',
+      approach: _Approach.frb,
       asynchronous: false,
       run: 'benchmarkVoidTwinSync();',
     ),
     const _Benchmark(
       category: category,
-      approach: 'Raw',
+      approach: _Approach.raw,
       asynchronous: false,
       run: 'rawWire.benchmark_raw_void_sync();',
     ),
@@ -193,7 +207,7 @@ List<_Benchmark> _benchmarkVoidFunction() {
     // https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
     const _Benchmark(
       category: category,
-      approach: 'Raw',
+      approach: _Approach.raw,
       asynchronous: true,
       run: '''
         await Isolate.run(() async {
@@ -216,8 +230,8 @@ List<_Benchmark> _benchmarkBytes() {
     for (final asynchronous in [true, false])
       _Benchmark(
         category: category,
-        approach: 'Frb',
-        direction: 'Input',
+        approach: _Approach.frb,
+        direction: _Direction.input,
         asynchronous: asynchronous,
         args: args,
         argValues: argValues,
@@ -228,8 +242,8 @@ List<_Benchmark> _benchmarkBytes() {
       ),
     const _Benchmark(
       category: category,
-      approach: 'Raw',
-      direction: 'Input',
+      approach: _Approach.raw,
+      direction: _Direction.input,
       asynchronous: false,
       args: args,
       argValues: argValues,
@@ -245,8 +259,8 @@ List<_Benchmark> _benchmarkBytes() {
     for (final asynchronous in [true, false])
       _Benchmark(
         category: category,
-        approach: 'Frb',
-        direction: 'Output',
+        approach: _Approach.frb,
+        direction: _Direction.output,
         asynchronous: asynchronous,
         args: args,
         argValues: argValues,
@@ -255,8 +269,8 @@ List<_Benchmark> _benchmarkBytes() {
       ),
     _Benchmark(
       category: category,
-      approach: 'Raw',
-      direction: 'Output',
+      approach: _Approach.raw,
+      direction: _Direction.output,
       asynchronous: true,
       args: args,
       argValues: argValues,
@@ -309,8 +323,8 @@ List<_Benchmark> _benchmarkBinaryTree() {
     for (final sse in [false, true]) ...[
       _Benchmark(
         category: category,
-        approach: 'Frb${sse ? "Sse" : ""}',
-        direction: 'Input',
+        approach: sse ? _Approach.frbSse : _Approach.frb,
+        direction: _Direction.input,
         asynchronous: false,
         args: args,
         argValues: argValues,
@@ -337,8 +351,8 @@ List<_Benchmark> _benchmarkBinaryTree() {
       ),
       _Benchmark(
         category: category,
-        approach: 'Frb${sse ? "Sse" : ""}',
-        direction: 'Output',
+        approach: sse ? _Approach.frbSse : _Approach.frb,
+        direction: _Direction.output,
         asynchronous: false,
         args: args,
         argValues: argValues,
@@ -348,8 +362,8 @@ List<_Benchmark> _benchmarkBinaryTree() {
     ],
     const _Benchmark(
       category: category,
-      approach: 'Protobuf',
-      direction: 'Input',
+      approach: _Approach.protobuf,
+      direction: _Direction.input,
       asynchronous: false,
       args: args,
       argValues: argValues,
@@ -376,8 +390,8 @@ List<_Benchmark> _benchmarkBinaryTree() {
     ),
     const _Benchmark(
       category: category,
-      approach: 'Protobuf',
-      direction: 'Output',
+      approach: _Approach.protobuf,
+      direction: _Direction.output,
       asynchronous: false,
       args: args,
       argValues: argValues,
@@ -389,8 +403,8 @@ List<_Benchmark> _benchmarkBinaryTree() {
     ),
     const _Benchmark(
       category: category,
-      approach: 'Json',
-      direction: 'Input',
+      approach: _Approach.json,
+      direction: _Direction.input,
       asynchronous: false,
       args: args,
       argValues: argValues,
@@ -410,8 +424,8 @@ List<_Benchmark> _benchmarkBinaryTree() {
     ),
     const _Benchmark(
       category: category,
-      approach: 'Json',
-      direction: 'Output',
+      approach: _Approach.json,
+      direction: _Direction.output,
       asynchronous: false,
       args: args,
       argValues: argValues,
@@ -443,8 +457,8 @@ List<_Benchmark> _benchmarkBlob() {
     for (final sse in [false, true]) ...[
       _Benchmark(
         category: category,
-        approach: 'Frb${sse ? "Sse" : ""}',
-        direction: 'Input',
+        approach: sse ? _Approach.frbSse : _Approach.frb,
+        direction: _Direction.input,
         asynchronous: false,
         args: args,
         argValues: argValues,
@@ -454,8 +468,8 @@ List<_Benchmark> _benchmarkBlob() {
       ),
       _Benchmark(
         category: category,
-        approach: 'Frb${sse ? "Sse" : ""}',
-        direction: 'Output',
+        approach: sse ? _Approach.frbSse : _Approach.frb,
+        direction: _Direction.output,
         asynchronous: false,
         args: args,
         argValues: argValues,
@@ -464,8 +478,8 @@ List<_Benchmark> _benchmarkBlob() {
     ],
     const _Benchmark(
       category: category,
-      approach: 'Protobuf',
-      direction: 'Input',
+      approach: _Approach.protobuf,
+      direction: _Direction.input,
       asynchronous: false,
       args: args,
       argValues: argValues,
@@ -482,8 +496,8 @@ List<_Benchmark> _benchmarkBlob() {
     ),
     const _Benchmark(
       category: category,
-      approach: 'Protobuf',
-      direction: 'Output',
+      approach: _Approach.protobuf,
+      direction: _Direction.output,
       asynchronous: false,
       args: args,
       argValues: argValues,
@@ -495,8 +509,8 @@ List<_Benchmark> _benchmarkBlob() {
     ),
     _Benchmark(
       category: category,
-      approach: 'Json',
-      direction: 'Input',
+      approach: _Approach.json,
+      direction: _Direction.input,
       asynchronous: false,
       args: args,
       argValues: argValues,
@@ -515,8 +529,8 @@ List<_Benchmark> _benchmarkBlob() {
     ),
     const _Benchmark(
       category: category,
-      approach: 'Json',
-      direction: 'Output',
+      approach: _Approach.json,
+      direction: _Direction.output,
       asynchronous: false,
       args: args,
       argValues: argValues,
