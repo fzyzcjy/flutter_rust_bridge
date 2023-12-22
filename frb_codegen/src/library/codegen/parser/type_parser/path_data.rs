@@ -31,6 +31,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 Some(Args::Generic(ir_types))
             }
             // not used yet (detected by codecov)
+            #[cfg_attr(coverage_nightly, coverage(off))]
+            _ => unreachable!(),
             // syn doc says "The `(A, B) -> C` in `Fn(A, B) -> C`",
             // thus it seems we will not use it here.
             //
