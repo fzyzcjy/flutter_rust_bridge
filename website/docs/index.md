@@ -24,9 +24,15 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
 
 I want to keep it in beta for a while (though CI has all passed), to allow publishing API breaking changes, and hear your thoughts and suggestions about it!
 
+## 🍀 What's this?
+
+* Just write down some ***normal*** Rust code (even with arbitrary types, closure, `&mut`, async, etc)
+* And call it from Flutter, as if Rust code is ***normal*** Flutter code
+* The bridge will generate all needed glues in between
+
 ## 📚 Quickstart
 
-Create a working app and see it live, by running:
+Create a working Flutter + Rust app and see it live, by running:
 
 ```shell
 cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && \
@@ -42,10 +48,6 @@ flutter_rust_bridge_codegen generate && flutter run
 For more elaborated quickstart, please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart).
 
 ## 🚀 Advantages
-
-### 0. In One Sentence
-
-Just write down some normal Rust code (possibly with unencodable types, closure, `&mut`, async, etc), and call it from Flutter as if it is normal Dart(Flutter) code; the bridge will generate all needed glues in between.
 
 <img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
 
@@ -114,7 +116,7 @@ fn f(a: String, b: Vec<String>) -> MyStruct { ... }
 print(f(a: 'Hello', b: ['Tom']));
 ```
 
-### Example 2: Fancy
+### Example 2: Show off skills ;)
 
 Let's see how fancy we can support:
 
