@@ -60,18 +60,6 @@ typedef struct wire_cst_user_id_twin_normal {
   uint32_t value;
 } wire_cst_user_id_twin_normal;
 
-typedef struct wire_cst_benchmark_binary_tree_twin_normal {
-  struct wire_cst_list_prim_u_8 *name;
-  struct wire_cst_benchmark_binary_tree_twin_normal *left;
-  struct wire_cst_benchmark_binary_tree_twin_normal *right;
-} wire_cst_benchmark_binary_tree_twin_normal;
-
-typedef struct wire_cst_benchmark_blob_twin_normal {
-  struct wire_cst_list_prim_u_8 *first;
-  struct wire_cst_list_prim_u_8 *second;
-  struct wire_cst_list_prim_u_8 *third;
-} wire_cst_benchmark_blob_twin_normal;
-
 typedef struct wire_cst_list_Chrono_Duration {
   int64_t *ptr;
   int32_t len;
@@ -598,6 +586,18 @@ typedef struct wire_cst_customized_twin_sync {
 typedef struct wire_cst_user_id_twin_sync {
   uint32_t value;
 } wire_cst_user_id_twin_sync;
+
+typedef struct wire_cst_benchmark_binary_tree_twin_normal {
+  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_benchmark_binary_tree_twin_normal *left;
+  struct wire_cst_benchmark_binary_tree_twin_normal *right;
+} wire_cst_benchmark_binary_tree_twin_normal;
+
+typedef struct wire_cst_benchmark_blob_twin_normal {
+  struct wire_cst_list_prim_u_8 *first;
+  struct wire_cst_list_prim_u_8 *second;
+  struct wire_cst_list_prim_u_8 *third;
+} wire_cst_benchmark_blob_twin_normal;
 
 typedef struct wire_cst_benchmark_binary_tree_twin_rust_async {
   struct wire_cst_list_prim_u_8 *name;
@@ -4251,41 +4251,6 @@ void wire_handle_customized_struct_twin_normal(int64_t port_,
 
 void wire_next_user_id_twin_normal(int64_t port_, struct wire_cst_user_id_twin_normal *user_id);
 
-void wire_benchmark_binary_tree_input_json_twin_normal(int64_t port_,
-                                                       struct wire_cst_list_prim_u_8 *raw);
-
-void wire_benchmark_binary_tree_input_protobuf_twin_normal(int64_t port_,
-                                                           struct wire_cst_list_prim_u_8 *raw);
-
-void wire_benchmark_binary_tree_input_twin_normal(int64_t port_,
-                                                  struct wire_cst_benchmark_binary_tree_twin_normal *tree);
-
-void wire_benchmark_binary_tree_output_json_twin_normal(int64_t port_, int32_t depth);
-
-void wire_benchmark_binary_tree_output_protobuf_twin_normal(int64_t port_, int32_t depth);
-
-void wire_benchmark_binary_tree_output_twin_normal(int64_t port_, int32_t depth);
-
-void wire_benchmark_blob_input_json_twin_normal(int64_t port_, struct wire_cst_list_prim_u_8 *raw);
-
-void wire_benchmark_blob_input_protobuf_twin_normal(int64_t port_,
-                                                    struct wire_cst_list_prim_u_8 *raw);
-
-void wire_benchmark_blob_input_twin_normal(int64_t port_,
-                                           struct wire_cst_benchmark_blob_twin_normal *blob);
-
-void wire_benchmark_blob_output_json_twin_normal(int64_t port_, int32_t size);
-
-void wire_benchmark_blob_output_protobuf_twin_normal(int64_t port_, int32_t size);
-
-void wire_benchmark_blob_output_twin_normal(int64_t port_, int32_t size);
-
-void wire_benchmark_input_bytes_twin_normal(int64_t port_, struct wire_cst_list_prim_u_8 *bytes);
-
-void wire_benchmark_output_bytes_twin_normal(int64_t port_, int32_t size);
-
-void wire_benchmark_void_twin_normal(int64_t port_);
-
 void wire_datetime_local_twin_normal(int64_t port_, int64_t d);
 
 void wire_datetime_utc_twin_normal(int64_t port_, int64_t d);
@@ -4893,6 +4858,41 @@ WireSyncRust2DartSse wire_handle_customized_struct_twin_sync_sse(uint8_t *ptr_,
 WireSyncRust2DartSse wire_next_user_id_twin_sync_sse(uint8_t *ptr_,
                                                      int32_t rust_vec_len_,
                                                      int32_t data_len_);
+
+void wire_benchmark_binary_tree_input_json_twin_normal(int64_t port_,
+                                                       struct wire_cst_list_prim_u_8 *raw);
+
+void wire_benchmark_binary_tree_input_protobuf_twin_normal(int64_t port_,
+                                                           struct wire_cst_list_prim_u_8 *raw);
+
+void wire_benchmark_binary_tree_input_twin_normal(int64_t port_,
+                                                  struct wire_cst_benchmark_binary_tree_twin_normal *tree);
+
+void wire_benchmark_binary_tree_output_json_twin_normal(int64_t port_, int32_t depth);
+
+void wire_benchmark_binary_tree_output_protobuf_twin_normal(int64_t port_, int32_t depth);
+
+void wire_benchmark_binary_tree_output_twin_normal(int64_t port_, int32_t depth);
+
+void wire_benchmark_blob_input_json_twin_normal(int64_t port_, struct wire_cst_list_prim_u_8 *raw);
+
+void wire_benchmark_blob_input_protobuf_twin_normal(int64_t port_,
+                                                    struct wire_cst_list_prim_u_8 *raw);
+
+void wire_benchmark_blob_input_twin_normal(int64_t port_,
+                                           struct wire_cst_benchmark_blob_twin_normal *blob);
+
+void wire_benchmark_blob_output_json_twin_normal(int64_t port_, int32_t size);
+
+void wire_benchmark_blob_output_protobuf_twin_normal(int64_t port_, int32_t size);
+
+void wire_benchmark_blob_output_twin_normal(int64_t port_, int32_t size);
+
+void wire_benchmark_input_bytes_twin_normal(int64_t port_, struct wire_cst_list_prim_u_8 *bytes);
+
+void wire_benchmark_output_bytes_twin_normal(int64_t port_, int32_t size);
+
+void wire_benchmark_void_twin_normal(int64_t port_);
 
 void wire_benchmark_binary_tree_input_json_twin_rust_async(int64_t port_,
                                                            struct wire_cst_list_prim_u_8 *raw);

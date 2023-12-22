@@ -7,7 +7,6 @@ import 'api/array.dart';
 import 'api/async_misc.dart';
 import 'api/async_spawn.dart';
 import 'api/attribute.dart';
-import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
@@ -39,6 +38,7 @@ import 'api/pseudo_manual/attribute_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/attribute_twin_sse.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync_sse.dart';
+import 'api/pseudo_manual/benchmark_api.dart';
 import 'api/pseudo_manual/benchmark_api_twin_rust_async.dart';
 import 'api/pseudo_manual/benchmark_api_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/benchmark_api_twin_sse.dart';
@@ -21246,67 +21246,6 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic> user_id) =>
       wasmModule.wire_next_user_id_twin_normal(port_, user_id);
 
-  void wire_benchmark_binary_tree_input_json_twin_normal(
-          NativePortType port_, String raw) =>
-      wasmModule.wire_benchmark_binary_tree_input_json_twin_normal(port_, raw);
-
-  void wire_benchmark_binary_tree_input_protobuf_twin_normal(
-          NativePortType port_, Uint8List raw) =>
-      wasmModule.wire_benchmark_binary_tree_input_protobuf_twin_normal(
-          port_, raw);
-
-  void wire_benchmark_binary_tree_input_twin_normal(
-          NativePortType port_, List<dynamic> tree) =>
-      wasmModule.wire_benchmark_binary_tree_input_twin_normal(port_, tree);
-
-  void wire_benchmark_binary_tree_output_json_twin_normal(
-          NativePortType port_, int depth) =>
-      wasmModule.wire_benchmark_binary_tree_output_json_twin_normal(
-          port_, depth);
-
-  void wire_benchmark_binary_tree_output_protobuf_twin_normal(
-          NativePortType port_, int depth) =>
-      wasmModule.wire_benchmark_binary_tree_output_protobuf_twin_normal(
-          port_, depth);
-
-  void wire_benchmark_binary_tree_output_twin_normal(
-          NativePortType port_, int depth) =>
-      wasmModule.wire_benchmark_binary_tree_output_twin_normal(port_, depth);
-
-  void wire_benchmark_blob_input_json_twin_normal(
-          NativePortType port_, String raw) =>
-      wasmModule.wire_benchmark_blob_input_json_twin_normal(port_, raw);
-
-  void wire_benchmark_blob_input_protobuf_twin_normal(
-          NativePortType port_, Uint8List raw) =>
-      wasmModule.wire_benchmark_blob_input_protobuf_twin_normal(port_, raw);
-
-  void wire_benchmark_blob_input_twin_normal(
-          NativePortType port_, List<dynamic> blob) =>
-      wasmModule.wire_benchmark_blob_input_twin_normal(port_, blob);
-
-  void wire_benchmark_blob_output_json_twin_normal(
-          NativePortType port_, int size) =>
-      wasmModule.wire_benchmark_blob_output_json_twin_normal(port_, size);
-
-  void wire_benchmark_blob_output_protobuf_twin_normal(
-          NativePortType port_, int size) =>
-      wasmModule.wire_benchmark_blob_output_protobuf_twin_normal(port_, size);
-
-  void wire_benchmark_blob_output_twin_normal(NativePortType port_, int size) =>
-      wasmModule.wire_benchmark_blob_output_twin_normal(port_, size);
-
-  void wire_benchmark_input_bytes_twin_normal(
-          NativePortType port_, Uint8List bytes) =>
-      wasmModule.wire_benchmark_input_bytes_twin_normal(port_, bytes);
-
-  void wire_benchmark_output_bytes_twin_normal(
-          NativePortType port_, int size) =>
-      wasmModule.wire_benchmark_output_bytes_twin_normal(port_, size);
-
-  void wire_benchmark_void_twin_normal(NativePortType port_) =>
-      wasmModule.wire_benchmark_void_twin_normal(port_);
-
   void wire_datetime_local_twin_normal(NativePortType port_, Object d) =>
       wasmModule.wire_datetime_local_twin_normal(port_, d);
 
@@ -22297,6 +22236,67 @@ class RustLibWire extends BaseWire {
               int rust_vec_len_, int data_len_) =>
           wasmModule.wire_next_user_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
+
+  void wire_benchmark_binary_tree_input_json_twin_normal(
+          NativePortType port_, String raw) =>
+      wasmModule.wire_benchmark_binary_tree_input_json_twin_normal(port_, raw);
+
+  void wire_benchmark_binary_tree_input_protobuf_twin_normal(
+          NativePortType port_, Uint8List raw) =>
+      wasmModule.wire_benchmark_binary_tree_input_protobuf_twin_normal(
+          port_, raw);
+
+  void wire_benchmark_binary_tree_input_twin_normal(
+          NativePortType port_, List<dynamic> tree) =>
+      wasmModule.wire_benchmark_binary_tree_input_twin_normal(port_, tree);
+
+  void wire_benchmark_binary_tree_output_json_twin_normal(
+          NativePortType port_, int depth) =>
+      wasmModule.wire_benchmark_binary_tree_output_json_twin_normal(
+          port_, depth);
+
+  void wire_benchmark_binary_tree_output_protobuf_twin_normal(
+          NativePortType port_, int depth) =>
+      wasmModule.wire_benchmark_binary_tree_output_protobuf_twin_normal(
+          port_, depth);
+
+  void wire_benchmark_binary_tree_output_twin_normal(
+          NativePortType port_, int depth) =>
+      wasmModule.wire_benchmark_binary_tree_output_twin_normal(port_, depth);
+
+  void wire_benchmark_blob_input_json_twin_normal(
+          NativePortType port_, String raw) =>
+      wasmModule.wire_benchmark_blob_input_json_twin_normal(port_, raw);
+
+  void wire_benchmark_blob_input_protobuf_twin_normal(
+          NativePortType port_, Uint8List raw) =>
+      wasmModule.wire_benchmark_blob_input_protobuf_twin_normal(port_, raw);
+
+  void wire_benchmark_blob_input_twin_normal(
+          NativePortType port_, List<dynamic> blob) =>
+      wasmModule.wire_benchmark_blob_input_twin_normal(port_, blob);
+
+  void wire_benchmark_blob_output_json_twin_normal(
+          NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_blob_output_json_twin_normal(port_, size);
+
+  void wire_benchmark_blob_output_protobuf_twin_normal(
+          NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_blob_output_protobuf_twin_normal(port_, size);
+
+  void wire_benchmark_blob_output_twin_normal(NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_blob_output_twin_normal(port_, size);
+
+  void wire_benchmark_input_bytes_twin_normal(
+          NativePortType port_, Uint8List bytes) =>
+      wasmModule.wire_benchmark_input_bytes_twin_normal(port_, bytes);
+
+  void wire_benchmark_output_bytes_twin_normal(
+          NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_output_bytes_twin_normal(port_, size);
+
+  void wire_benchmark_void_twin_normal(NativePortType port_) =>
+      wasmModule.wire_benchmark_void_twin_normal(port_);
 
   void wire_benchmark_binary_tree_input_json_twin_rust_async(
           NativePortType port_, String raw) =>
@@ -30643,50 +30643,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_next_user_id_twin_normal(
       NativePortType port_, List<dynamic> user_id);
 
-  external void wire_benchmark_binary_tree_input_json_twin_normal(
-      NativePortType port_, String raw);
-
-  external void wire_benchmark_binary_tree_input_protobuf_twin_normal(
-      NativePortType port_, Uint8List raw);
-
-  external void wire_benchmark_binary_tree_input_twin_normal(
-      NativePortType port_, List<dynamic> tree);
-
-  external void wire_benchmark_binary_tree_output_json_twin_normal(
-      NativePortType port_, int depth);
-
-  external void wire_benchmark_binary_tree_output_protobuf_twin_normal(
-      NativePortType port_, int depth);
-
-  external void wire_benchmark_binary_tree_output_twin_normal(
-      NativePortType port_, int depth);
-
-  external void wire_benchmark_blob_input_json_twin_normal(
-      NativePortType port_, String raw);
-
-  external void wire_benchmark_blob_input_protobuf_twin_normal(
-      NativePortType port_, Uint8List raw);
-
-  external void wire_benchmark_blob_input_twin_normal(
-      NativePortType port_, List<dynamic> blob);
-
-  external void wire_benchmark_blob_output_json_twin_normal(
-      NativePortType port_, int size);
-
-  external void wire_benchmark_blob_output_protobuf_twin_normal(
-      NativePortType port_, int size);
-
-  external void wire_benchmark_blob_output_twin_normal(
-      NativePortType port_, int size);
-
-  external void wire_benchmark_input_bytes_twin_normal(
-      NativePortType port_, Uint8List bytes);
-
-  external void wire_benchmark_output_bytes_twin_normal(
-      NativePortType port_, int size);
-
-  external void wire_benchmark_void_twin_normal(NativePortType port_);
-
   external void wire_datetime_local_twin_normal(NativePortType port_, Object d);
 
   external void wire_datetime_utc_twin_normal(NativePortType port_, Object d);
@@ -31341,6 +31297,50 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_next_user_id_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
+
+  external void wire_benchmark_binary_tree_input_json_twin_normal(
+      NativePortType port_, String raw);
+
+  external void wire_benchmark_binary_tree_input_protobuf_twin_normal(
+      NativePortType port_, Uint8List raw);
+
+  external void wire_benchmark_binary_tree_input_twin_normal(
+      NativePortType port_, List<dynamic> tree);
+
+  external void wire_benchmark_binary_tree_output_json_twin_normal(
+      NativePortType port_, int depth);
+
+  external void wire_benchmark_binary_tree_output_protobuf_twin_normal(
+      NativePortType port_, int depth);
+
+  external void wire_benchmark_binary_tree_output_twin_normal(
+      NativePortType port_, int depth);
+
+  external void wire_benchmark_blob_input_json_twin_normal(
+      NativePortType port_, String raw);
+
+  external void wire_benchmark_blob_input_protobuf_twin_normal(
+      NativePortType port_, Uint8List raw);
+
+  external void wire_benchmark_blob_input_twin_normal(
+      NativePortType port_, List<dynamic> blob);
+
+  external void wire_benchmark_blob_output_json_twin_normal(
+      NativePortType port_, int size);
+
+  external void wire_benchmark_blob_output_protobuf_twin_normal(
+      NativePortType port_, int size);
+
+  external void wire_benchmark_blob_output_twin_normal(
+      NativePortType port_, int size);
+
+  external void wire_benchmark_input_bytes_twin_normal(
+      NativePortType port_, Uint8List bytes);
+
+  external void wire_benchmark_output_bytes_twin_normal(
+      NativePortType port_, int size);
+
+  external void wire_benchmark_void_twin_normal(NativePortType port_);
 
   external void wire_benchmark_binary_tree_input_json_twin_rust_async(
       NativePortType port_, String raw);
