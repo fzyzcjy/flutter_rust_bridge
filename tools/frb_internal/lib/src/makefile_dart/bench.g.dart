@@ -9,14 +9,10 @@ part of 'bench.dart';
 // **************************************************************************
 
 BenchConfig _$parseBenchConfigResult(ArgResults result) => BenchConfig(
-      partialName: result['partial-name'] as String,
       filter: result['filter'] as String?,
     );
 
 ArgParser _$populateBenchConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'partial-name',
-  )
   ..addOption(
     'filter',
   );
