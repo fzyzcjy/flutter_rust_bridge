@@ -1,19 +1,20 @@
-# Who is using
+# Who is using it
 
-As an initial version of this page,
+As an initial version of this page, I briefly list some very rough data here.
+
+## Data from GitHub `dependents`: Open-source projects
+
+:::caution
+The lists below exclude *all* projects using the bridge if they are not open-source, which we know is a lot.
+Therefore, the lists are very incomplete.
+:::
+
 I utilized the [GitHub "dependents" feature](https://github.com/fzyzcjy/flutter_rust_bridge/network/dependents)
 (note: use the dropdown at right-top to view dependents for each of the packages in this repository),
 use some [scripts](https://stackoverflow.com/questions/58734176/how-to-use-github-api-to-get-a-repositorys-dependents-information-in-github)
 to download it,
 and temporarily filtered all repositories with >=3 stars (because they can be forks; this is super coarse and should be tuned later).
 
-This approach excludes all projects using flutter_rust_bridge if not open-source, which is a lot.
-Therefore, this list is very incomplete. 
-
-In addition, if you are using flutter_rust_bridge,
-feel free to add your name to the list if you like.
-
-* Non-open-source projects which are not shown in this list
 * (52029 stars) https://github.com/rustdesk/rustdesk
 * (8324 stars) https://github.com/Sangwan5688/BlackHole
 * (5949 stars) https://github.com/KRTirtho/spotube
@@ -132,3 +133,35 @@ feel free to add your name to the list if you like.
 * (3 stars) https://github.com/loaden/gitgui
 * (3 stars) https://github.com/peaqnetwork/peaq-network-charmev
 * (3 stars) https://github.com/powpingdone/miogenes
+
+## Data from `pub.dev`: Open source non-app libraries
+
+:::caution
+Again, this excludes non-open-source projects.
+Even more, this excludes all open source apps (as long as they are not *libraries*).
+:::
+
+Please directly visit the [the "dependency" search](https://pub.dev/packages?q=dependency%3Aflutter_rust_bridge&sort=popularity)
+page for results.
+Since it has a nice GUI, there is no need to scrape and list here.
+
+Remark: GitHub stars are surely not the only thing to measure a package.
+For example, according to Dart pub.dev, many people are using [this package](https://pub.dev/packages/metadata_god)
+that depends on flutter_rust_bridge (top 7% as of writing),
+but [its GitHub](https://github.com/KRTirtho/metadata_god) only has <20 stars.
+
+## Indirect data: Popularity in `pub.dev`
+
+Given that there seems no way to directly provide a list of non-open-source projects,
+here is another metric as a reference.
+
+By [official definition](https://pub.dev/help/scoring), the "popularity" metric is:
+
+> Popularity measures the number of apps that depend on a package over the past 60 days. We show this as a percentile from 100% (among the top 1% most used packages) to 0% (the least used package). We are investigating if we can provide absolute usage counts in a future version See this issue.
+>
+> Although this score is based on actual download counts, it compensates for automated tools such as continuous builds that fetch the package on each change request.
+
+The value is `96%` as of writing.
+
+Every metric has drawbacks. For example, see [this discussion](https://github.com/dart-lang/pub-dev/issues/2714).
+
