@@ -112,36 +112,19 @@ List<String> _benchmarkVoidFunction() {
 
 List<String> _benchmarkBytes() {
   return [
-    _generate(
-      stem: 'InputBytes',
-      asynchronous: true,
-      args: const [_TypedName('int', 'len')],
-      setupDataType: 'Uint8List',
-      setup: 'setupData = Uint8List(len);',
-      run: 'benchmarkInputBytesTwinNormal(bytes: setupData);',
-    ),
+    for (final asynchronous in [true, false])
+      _generate(
+        stem: 'InputBytes',
+        asynchronous: asynchronous,
+        args: const [_TypedName('int', 'len')],
+        setupDataType: 'Uint8List',
+        setup: 'setupData = Uint8List(len);',
+        run:
+            'benchmarkInputBytesTwin${asynchronous ? "Normal" : "Sync"}(bytes: setupData);',
+      ),
   ];
 
   return '''
-class InputBytesAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
-  final Uint8List bytes;
-
-  InputBytesAsyncBenchmark(int len, {super.emitter})
-      : bytes = Uint8List(len),
-        super('InputBytesAsync_Len\$len');
-}
-
-class InputBytesSyncBenchmark extends EnhancedBenchmarkBase {
-  final Uint8List bytes;
-
-  InputBytesSyncBenchmark(int len, {super.emitter})
-      : bytes = Uint8List(len),
-        super('InputBytesSync_Len\$len');
-
-  @override
-  void run() => benchmarkInputBytesTwinSync(bytes: bytes);
-}
-
 class InputBytesSyncRawBenchmark extends EnhancedBenchmarkBase {
   final Uint8List bytes;
 
