@@ -28,7 +28,7 @@ cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && \
     flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
 ```
 
-(Optional) Edit `rust/src/api/simple.rs` to something like `format!("Hi, {name}!")`, then see the change by:
+**(Optional)** Edit `rust/src/api/simple.rs` (e.g. `Hello` -> `Hi`), then see the change by:
 
 ```shell
 flutter_rust_bridge_codegen generate && flutter run
