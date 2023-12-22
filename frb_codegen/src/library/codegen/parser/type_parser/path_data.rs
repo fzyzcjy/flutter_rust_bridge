@@ -5,10 +5,7 @@ use crate::if_then_some;
 use anyhow::Result;
 use anyhow::{anyhow, Context};
 use quote::ToTokens;
-use syn::{
-    AngleBracketedGenericArguments, GenericArgument, ParenthesizedGenericArguments, Path,
-    PathArguments, PathSegment,
-};
+use syn::{AngleBracketedGenericArguments, GenericArgument, Path, PathArguments, PathSegment};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn extract_path_data(&mut self, path: &Path) -> Result<Vec<NameComponent>> {
