@@ -10,7 +10,11 @@ List<Command<void>> createCommands() {
     SimpleConfigCommand('bench-dart-native', benchDartNative,
         _$populateBenchConfigParser, _$parseBenchConfigResult),
     SimpleCommand('bench-flamegraph-compile', benchFlamegraphCompile),
-    SimpleCommand('bench-flamegraph-run', benchFlamegraphRun),
+    SimpleConfigCommand(
+        'bench-flamegraph-run',
+        benchFlamegraphRun,
+        _$populateBenchFlamegraphRunConfigParser,
+        _$parseBenchFlamegraphRunConfigResult),
   ];
 }
 
@@ -20,6 +24,17 @@ class BenchConfig {
 
   const BenchConfig({
     required this.filter,
+  });
+}
+
+@CliOptions()
+class BenchFlamegraphRunConfig {
+  final String filter;
+  final int loopCount;
+
+  const BenchFlamegraphRunConfig({
+    required this.filter,
+    required this.loopCount,
   });
 }
 
@@ -56,8 +71,8 @@ Future<void> benchFlamegraphCompile() async {
       relativePwd: _kPackage);
 }
 
-Future<void> benchFlamegraphRun() async {
+Future<void> benchFlamegraphRun(BenchFlamegraphRunConfig config) async {
   await exec(
-      "sudo flamegraph -o build/my_flamegraph.svg -- ~/temp/dartaotruntime build/simple_benchmark.so loop build/whatever.out whatever 'VoidFunction.*Frb.*false' 10000000",
+      "sudo flamegraph -o build/my_flamegraph.svg -- ~/temp/dartaotruntime build/simple_benchmark.so loop build/whatever.out '${config.filter}' ${config.loopCount}",
       relativePwd: _kPackage);
 }
