@@ -2,6 +2,7 @@ pub mod array;
 pub mod async_misc;
 pub mod async_spawn;
 pub mod attribute;
+pub mod benchmark_misc;
 pub mod chrono_type;
 pub mod comment;
 pub mod dart_dynamic;
