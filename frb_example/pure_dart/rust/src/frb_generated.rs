@@ -400,19 +400,18 @@ fn wire_next_user_id_twin_normal_impl(
         },
     )
 }
-fn wire_benchmark_void_semi_serialize_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+fn wire_benchmark_void_semi_serialize_impl(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "benchmark_void_semi_serialize",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::benchmark_misc::benchmark_void_semi_serialize())
-                })())
-            }
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(crate::api::benchmark_misc::benchmark_void_semi_serialize())
+            })())
         },
     )
 }

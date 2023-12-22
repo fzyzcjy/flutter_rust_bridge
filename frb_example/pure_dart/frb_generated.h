@@ -4251,7 +4251,7 @@ void wire_handle_customized_struct_twin_normal(int64_t port_,
 
 void wire_next_user_id_twin_normal(int64_t port_, struct wire_cst_user_id_twin_normal *user_id);
 
-void wire_benchmark_void_semi_serialize(int64_t port_);
+WireSyncRust2DartSse wire_benchmark_void_semi_serialize(void);
 
 void wire_datetime_local_twin_normal(int64_t port_, int64_t d);
 

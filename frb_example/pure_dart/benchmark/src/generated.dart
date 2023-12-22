@@ -29,6 +29,7 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
     PrimeNumber_Na_Sync_Benchmark(number: 900000000013, emitter: emitter),
     VoidFunction_Frb_Async_Benchmark(emitter: emitter),
     VoidFunction_Frb_Sync_Benchmark(emitter: emitter),
+    VoidFunction_FrbSse_Sync_Benchmark(emitter: emitter),
     VoidFunction_FrbCstSse_Sync_Benchmark(emitter: emitter),
     VoidFunction_Raw_Sync_Benchmark(emitter: emitter),
     VoidFunction_Raw_Async_Benchmark(emitter: emitter),
@@ -155,6 +156,21 @@ class VoidFunction_Frb_Sync_Benchmark extends EnhancedBenchmarkBase {
   @override
   void run() {
     benchmarkVoidTwinSync();
+  }
+}
+
+class VoidFunction_FrbSse_Sync_Benchmark extends EnhancedBenchmarkBase {
+  VoidFunction_FrbSse_Sync_Benchmark({
+    super.emitter,
+  }) : super(
+            '{"area":"PureDart","task":"VoidFunction","approach":"FrbSse","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}');
+
+  @override
+  void setup() {}
+
+  @override
+  void run() {
+    benchmarkVoidTwinSyncSse();
   }
 }
 

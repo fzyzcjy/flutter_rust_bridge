@@ -16394,8 +16394,9 @@ pub extern "C" fn wire_next_user_id_twin_normal(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_benchmark_void_semi_serialize(port_: i64) {
-    wire_benchmark_void_semi_serialize_impl(port_)
+pub extern "C" fn wire_benchmark_void_semi_serialize(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_void_semi_serialize_impl()
 }
 
 #[no_mangle]
