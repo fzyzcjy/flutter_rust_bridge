@@ -18,6 +18,49 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # ----------------------------------- deploy -----------------------------------
+
+  # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
+  deploy_website:
+    name: 'Deploy :: Website'
+    runs-on: ubuntu-latest
+
+    steps:
+      # setup
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: nightly
+          target: wasm32-unknown-unknown
+          components: rust-src,rustfmt
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+          cache-dependency-path: website/yarn.lock
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: "latest"
+      - name: Setup `mdbook-mermaid`
+        run: cargo install mdbook-mermaid
+
+      # execute
+      - run: ./frb_internal generate-website
+
+      # deploy
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/merged_target/flutter_rust_bridge
 
   # ----------------------------------- lint -----------------------------------
 
@@ -68,40 +111,6 @@ jobs:
 
       # execute
       - run: ./frb_internal lint-dart
-
-  # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
-  lint_docusaurus:
-    name: 'Lint :: Website'
-    runs-on: ubuntu-latest
-
-    steps:
-      # setup
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - uses: subosito/flutter-action@v2
-        with:
-          cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: nightly
-          target: wasm32-unknown-unknown
-          components: rust-src,rustfmt
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: yarn
-          cache-dependency-path: website/yarn.lock
-      - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
-        with:
-          mdbook-version: "latest"
-      - name: Setup `mdbook-mermaid`
-        run: cargo install mdbook-mermaid
-
-      # execute
-      - run: ./frb_internal generate-website
 
   # ----------------------------------- codegen -----------------------------------
 
