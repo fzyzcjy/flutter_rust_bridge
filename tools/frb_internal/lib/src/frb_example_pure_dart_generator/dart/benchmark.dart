@@ -75,7 +75,7 @@ enum _Direction {
 }
 
 class _Benchmark {
-  final String category;
+  final String task;
   final _Direction? direction;
   final _Approach approach;
   final bool asynchronous;
@@ -88,7 +88,7 @@ class _Benchmark {
   final String Function(String className, String benchmarkName)? raw;
 
   const _Benchmark({
-    required this.category,
+    required this.task,
     this.direction,
     required this.approach,
     required this.asynchronous,
@@ -107,14 +107,14 @@ class _Benchmark {
       direction == null ? null : ReCase(direction!.name).pascalCase;
 
   String get className =>
-      '${category}_$approachName${directionName != null ? "_$directionName" : ""}_${asynchronous ? "Async" : "Sync"}_Benchmark';
+      '${task}_$approachName${directionName != null ? "_$directionName" : ""}_${asynchronous ? "Async" : "Sync"}_Benchmark';
 
   @override
   String toString() {
     assert(args.isNotEmpty == argValues.isNotEmpty);
 
     final benchName = jsonEncode({
-      'category': category,
+      'task': task,
       'approach': approachName,
       'direction': directionName,
       'asynchronous': asynchronous,
@@ -161,12 +161,12 @@ class $className extends Enhanced${asynchronous ? "Async" : ""}BenchmarkBase {
 }
 
 List<_Benchmark> _benchmarkPrimeNumber() {
-  const category = 'PrimeNumber';
+  const task = 'PrimeNumber';
 
   return [
     // For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.na,
       asynchronous: false,
       args: [_TypedName('int', 'number')],
@@ -189,23 +189,23 @@ List<_Benchmark> _benchmarkPrimeNumber() {
 }
 
 List<_Benchmark> _benchmarkVoidFunction() {
-  const category = 'VoidFunction';
+  const task = 'VoidFunction';
 
   return [
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.frb,
       asynchronous: true,
       run: 'await benchmarkVoidTwinNormal();',
     ),
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.frb,
       asynchronous: false,
       run: 'benchmarkVoidTwinSync();',
     ),
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.raw,
       asynchronous: false,
       run: 'rawWire.benchmark_raw_void_sync();',
@@ -213,7 +213,7 @@ List<_Benchmark> _benchmarkVoidFunction() {
     // For example:
     // https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.raw,
       asynchronous: true,
       run: '''
@@ -229,14 +229,14 @@ List<_Benchmark> _benchmarkVoidFunction() {
 }
 
 List<_Benchmark> _benchmarkBytes() {
-  const category = 'Bytes';
+  const task = 'Bytes';
   const args = [_TypedName('int', 'len')];
   const argValues = ['0', '10000', '1000000'];
 
   return [
     for (final asynchronous in [true, false])
       _Benchmark(
-        category: category,
+        task: task,
         approach: _Approach.frb,
         direction: _Direction.input,
         asynchronous: asynchronous,
@@ -248,7 +248,7 @@ List<_Benchmark> _benchmarkBytes() {
             '${asynchronous ? "await" : ""} benchmarkInputBytesTwin${asynchronous ? "Normal" : "Sync"}(bytes: setupData);',
       ),
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.raw,
       direction: _Direction.input,
       asynchronous: false,
@@ -265,7 +265,7 @@ List<_Benchmark> _benchmarkBytes() {
     ),
     for (final asynchronous in [true, false])
       _Benchmark(
-        category: category,
+        task: task,
         approach: _Approach.frb,
         direction: _Direction.output,
         asynchronous: asynchronous,
@@ -275,7 +275,7 @@ List<_Benchmark> _benchmarkBytes() {
             '${asynchronous ? "await" : ""} benchmarkOutputBytesTwin${asynchronous ? "Normal" : "Sync"}(size: len);',
       ),
     _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.raw,
       direction: _Direction.output,
       asynchronous: true,
@@ -322,14 +322,14 @@ List<_Benchmark> _benchmarkBytes() {
 }
 
 List<_Benchmark> _benchmarkBinaryTree() {
-  const category = 'BinaryTree';
+  const task = 'BinaryTree';
   const args = [_TypedName('int', 'depth')];
   const argValues = ['0', '5', '10'];
 
   return [
     for (final sse in [false, true]) ...[
       _Benchmark(
-        category: category,
+        task: task,
         approach: sse ? _Approach.frbSse : _Approach.frb,
         direction: _Direction.input,
         asynchronous: false,
@@ -357,7 +357,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
         ''',
       ),
       _Benchmark(
-        category: category,
+        task: task,
         approach: sse ? _Approach.frbSse : _Approach.frb,
         direction: _Direction.output,
         asynchronous: false,
@@ -368,7 +368,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       ),
     ],
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.protobuf,
       direction: _Direction.input,
       asynchronous: false,
@@ -396,7 +396,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       ''',
     ),
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.protobuf,
       direction: _Direction.output,
       asynchronous: false,
@@ -409,7 +409,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       ''',
     ),
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.json,
       direction: _Direction.input,
       asynchronous: false,
@@ -430,7 +430,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
       ''',
     ),
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.json,
       direction: _Direction.output,
       asynchronous: false,
@@ -448,7 +448,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
 }
 
 List<_Benchmark> _benchmarkBlob() {
-  const category = 'Blob';
+  const task = 'Blob';
   const args = [_TypedName('int', 'len')];
   const argValues = ['0', '10000', '1000000'];
 
@@ -463,7 +463,7 @@ List<_Benchmark> _benchmarkBlob() {
   return [
     for (final sse in [false, true]) ...[
       _Benchmark(
-        category: category,
+        task: task,
         approach: sse ? _Approach.frbSse : _Approach.frb,
         direction: _Direction.input,
         asynchronous: false,
@@ -474,7 +474,7 @@ List<_Benchmark> _benchmarkBlob() {
         run: 'benchmarkBlobInputTwinSync${sse ? "Sse" : ""}(blob: setupData);',
       ),
       _Benchmark(
-        category: category,
+        task: task,
         approach: sse ? _Approach.frbSse : _Approach.frb,
         direction: _Direction.output,
         asynchronous: false,
@@ -484,7 +484,7 @@ List<_Benchmark> _benchmarkBlob() {
       ),
     ],
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.protobuf,
       direction: _Direction.input,
       asynchronous: false,
@@ -502,7 +502,7 @@ List<_Benchmark> _benchmarkBlob() {
           'benchmarkBlobInputProtobufTwinSync(raw: setupData.writeToBuffer());',
     ),
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.protobuf,
       direction: _Direction.output,
       asynchronous: false,
@@ -515,7 +515,7 @@ List<_Benchmark> _benchmarkBlob() {
       ''',
     ),
     _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.json,
       direction: _Direction.input,
       asynchronous: false,
@@ -535,7 +535,7 @@ List<_Benchmark> _benchmarkBlob() {
       ''',
     ),
     const _Benchmark(
-      category: category,
+      task: task,
       approach: _Approach.json,
       direction: _Direction.output,
       asynchronous: false,
