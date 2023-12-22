@@ -44,18 +44,19 @@ Future<void> benchDartNative(BenchConfig config) async {
 
 Future<void> benchMerge() async {
   final inputFiles = [
-    for (final file in Glob('downloaded-artifacts/**.json').listSync())
+    for (final file in Glob('downloaded-artifacts/**/*.json').listSync())
       if (file is File) file as File
   ];
   print('benchMerge inputFiles=$inputFiles');
+  if (inputFiles.isEmpty) throw Exception('No input files, are you sure?');
 
   final outputContent = jsonEncode([
     for (final file in inputFiles)
       ...(jsonDecode(file.readAsStringSync()) as List<dynamic>)
   ]);
 
-  final pathOutput = exec.pwd;
-  File('${pathOutput}merged_benchmark.json').writeAsStringSync(outputContent);
+  final pathOutput = '${pathOutput}merged_benchmark.json';
+  File(pathOutput).writeAsStringSync(outputContent);
 
   await exec('cat $pathOutput');
 }
