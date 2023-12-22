@@ -101,8 +101,13 @@ class _Benchmark {
     this.raw,
   });
 
+  String get approachName => ReCase(approach.name).pascalCase;
+
+  String? get directionName =>
+      direction == null ? null : ReCase(direction!.name).pascalCase;
+
   String get className =>
-      '${category}_$approach${direction != null ? "_$direction" : ""}_${asynchronous ? "Async" : "Sync"}_Benchmark';
+      '${category}_$approachName${directionName != null ? "_$directionName" : ""}_${asynchronous ? "Async" : "Sync"}_Benchmark';
 
   @override
   String toString() {
@@ -110,9 +115,8 @@ class _Benchmark {
 
     final benchName = jsonEncode({
       'category': category,
-      'approach': ReCase(approach.name).pascalCase,
-      'direction':
-          direction == null ? null : ReCase(direction!.name).pascalCase,
+      'approach': approachName,
+      'direction': directionName,
       'asynchronous': asynchronous,
       for (final arg in args) 'arg_${arg.name}': '\$${arg.name}',
     });
