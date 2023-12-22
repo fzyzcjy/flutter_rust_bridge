@@ -270,15 +270,14 @@ jobs:
 
       # store
       - uses: benchmark-action/github-action-benchmark@v1
+        # Warn: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#run-only-on-your-branches
+        if: github.event_name != 'pull_request'
         with:
           name: Flutter Rust Bridge Benchmark
           tool: customSmallerIsBetter
           output-file-path: frb_example/pure_dart/build/simple_benchmark/benchmark_result.json
-          auto-push: false
-      - name: Push benchmark result
-        # Warn: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#run-only-on-your-branches
-        if: github.event_name != 'pull_request'
-        run: git push 'https://fzyzcjy:${{ secrets.GITHUB_TOKEN }}@github.com/fzyzcjy/flutter_rust_bridge.git' gh-pages:gh-pages
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
 
   # ----------------------------------- test -----------------------------------
 
