@@ -6,8 +6,8 @@ import 'dart:io';
 
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 
-import 'src/benchmark_classes.dart';
 import 'src/benchmark_utils.dart';
+import 'src/generated.dart';
 
 Future<void> main(List<String> args) async {
   await RustLib.init();

@@ -4,6 +4,7 @@ import 'dart:convert';
 
 String generateBenchmark() {
   final benchmarks = [
+    ..._benchmarkPrimeNumber(),
     ..._benchmarkVoidFunction(),
     ..._benchmarkBytes(),
     ..._benchmarkBinaryTree(),
@@ -135,6 +136,34 @@ class $className extends Enhanced${asynchronous ? "Async" : ""}BenchmarkBase {
 }
   ''';
   }
+}
+
+List<_Benchmark> _benchmarkPrimeNumber() {
+  const category = 'PrimeNumber';
+
+  return [
+    // For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
+    const _Benchmark(
+      category: category,
+      approach: 'Normal',
+      asynchronous: false,
+      args: [_TypedName('int', 'number')],
+      argValues: ['90000049', '9000000001', '900000000013'],
+      run: '''
+        final ans = isPrime(number);
+        if (!ans) throw Exception('unexpected');
+      ''',
+      extra: '''
+        static bool isPrime(int n) {
+          final sqrtN = sqrt(n);
+          for (var i = 2; i <= sqrtN; ++i) {
+            if (n % i == 0) return false;
+          }
+          return true;
+        }
+      ''',
+    ),
+  ];
 }
 
 List<_Benchmark> _benchmarkVoidFunction() {

@@ -22,6 +22,9 @@ const _kBinaryTreeNodeName = 'HelloWorld';
 List<MaybeAsyncBenchmarkBase> createBenchmarks(
     {required ScoreEmitter emitter}) {
   return [
+    PrimeNumber_Normal_Sync_Benchmark(number: 90000049, emitter: emitter),
+    PrimeNumber_Normal_Sync_Benchmark(number: 9000000001, emitter: emitter),
+    PrimeNumber_Normal_Sync_Benchmark(number: 900000000013, emitter: emitter),
     VoidFunction_Std_Async_Benchmark(emitter: emitter),
     VoidFunction_Void_Sync_Benchmark(emitter: emitter),
     VoidFunction_Raw_Sync_Benchmark(emitter: emitter),
@@ -93,6 +96,33 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
     Blob_Json_Output_Sync_Benchmark(len: 10000, emitter: emitter),
     Blob_Json_Output_Sync_Benchmark(len: 1000000, emitter: emitter),
   ];
+}
+
+class PrimeNumber_Normal_Sync_Benchmark extends EnhancedBenchmarkBase {
+  final int number;
+
+  PrimeNumber_Normal_Sync_Benchmark({
+    required this.number,
+    super.emitter,
+  }) : super(
+            '{"category":"PrimeNumber","approach":"Normal","direction":null,"asynchronous":false,"arg_number":"$number"}');
+
+  @override
+  void setup() {}
+
+  @override
+  void run() {
+    final ans = isPrime(number);
+    if (!ans) throw Exception('unexpected');
+  }
+
+  static bool isPrime(int n) {
+    final sqrtN = sqrt(n);
+    for (var i = 2; i <= sqrtN; ++i) {
+      if (n % i == 0) return false;
+    }
+    return true;
+  }
 }
 
 class VoidFunction_Std_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
