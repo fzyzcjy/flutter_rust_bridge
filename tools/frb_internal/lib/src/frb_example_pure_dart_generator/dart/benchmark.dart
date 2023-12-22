@@ -122,19 +122,19 @@ List<_Benchmark> _benchmarkVoidFunction() {
   const category = 'VoidFunction';
 
   return [
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Std',
       asynchronous: true,
       run: 'await benchmarkVoidTwinNormal();',
     ),
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Void',
       asynchronous: false,
       run: 'benchmarkVoidTwinSync();',
     ),
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Raw',
       asynchronous: false,
@@ -142,7 +142,7 @@ List<_Benchmark> _benchmarkVoidFunction() {
     ),
     // For example:
     // https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Raw',
       asynchronous: true,
@@ -175,7 +175,7 @@ List<_Benchmark> _benchmarkBytes() {
         run:
             '${asynchronous ? "await" : ""} benchmarkInputBytesTwin${asynchronous ? "Normal" : "Sync"}(bytes: setupData);',
       ),
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Raw',
       direction: 'Input',
@@ -289,7 +289,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
             'benchmarkBinaryTreeOutputTwinSync${sse ? "Sse" : ""}(depth: depth);',
       ),
     ],
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Protobuf',
       direction: 'Input',
@@ -316,7 +316,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
         }
       ''',
     ),
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Protobuf',
       direction: 'Output',
@@ -328,7 +328,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
         dummyValue ^= proto.hashCode;
       ''',
     ),
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Json',
       direction: 'Input',
@@ -348,7 +348,7 @@ List<_Benchmark> _benchmarkBinaryTree() {
             };
       ''',
     ),
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Json',
       direction: 'Output',
@@ -398,7 +398,7 @@ List<_Benchmark> _benchmarkBlob() {
         run: 'benchmarkBlobOutputTwinSync${sse ? "Sse" : ""}(size: len);',
       ),
     ],
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Protobuf',
       direction: 'Input',
@@ -415,7 +415,7 @@ List<_Benchmark> _benchmarkBlob() {
       run:
           'benchmarkBlobInputProtobufTwinSync(raw: setupData.writeToBuffer());',
     ),
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Protobuf',
       direction: 'Output',
@@ -446,7 +446,7 @@ List<_Benchmark> _benchmarkBlob() {
             };
       ''',
     ),
-    _Benchmark(
+    const _Benchmark(
       category: category,
       approach: 'Json',
       direction: 'Output',
