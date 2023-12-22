@@ -8,7 +8,7 @@ const _kArea = 'PureDart';
 
 String generateBenchmark() {
   final benchmarks = [
-    ..._benchmarkPrimeNumber(),
+    ..._benchmarkMisc(),
     ..._benchmarkVoidFunction(),
     ..._benchmarkBytes(),
     ..._benchmarkBinaryTree(),
@@ -166,13 +166,11 @@ class $className extends Enhanced${asynchronous ? "Async" : ""}BenchmarkBase {
   }
 }
 
-List<_Benchmark> _benchmarkPrimeNumber() {
-  const task = 'PrimeNumber';
-
+List<_Benchmark> _benchmarkMisc() {
   return [
     // For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
     const _Benchmark(
-      task: task,
+      task: 'PrimeNumber',
       approach: _Approach.na,
       asynchronous: false,
       args: [_TypedName('int', 'number')],
