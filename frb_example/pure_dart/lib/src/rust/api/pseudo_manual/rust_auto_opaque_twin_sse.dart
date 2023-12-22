@@ -7,120 +7,113 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinSse(
-        {required RwLockNonCloneSimpleTwinSse arg,
+        {required NonCloneSimpleTwinSse arg,
         required int expect,
         dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueArgOwnTwinSse(arg: arg, expect: expect, hint: hint);
 
 Future<void> rustAutoOpaqueArgBorrowTwinSse(
-        {required RwLockNonCloneSimpleTwinSse arg,
+        {required NonCloneSimpleTwinSse arg,
         required int expect,
         dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueArgBorrowTwinSse(arg: arg, expect: expect, hint: hint);
 
 Future<void> rustAutoOpaqueArgMutBorrowTwinSse(
-        {required RwLockNonCloneSimpleTwinSse arg,
+        {required NonCloneSimpleTwinSse arg,
         required int expect,
         required int adder,
         dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueArgMutBorrowTwinSse(
         arg: arg, expect: expect, adder: adder, hint: hint);
 
-Future<RwLockNonCloneSimpleTwinSse> rustAutoOpaqueReturnOwnTwinSse(
+Future<NonCloneSimpleTwinSse> rustAutoOpaqueReturnOwnTwinSse(
         {required int initial, dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueReturnOwnTwinSse(initial: initial, hint: hint);
 
-Future<RwLockNonCloneSimpleTwinSse> rustAutoOpaqueArgOwnAndReturnOwnTwinSse(
-        {required RwLockNonCloneSimpleTwinSse arg, dynamic hint}) =>
+Future<NonCloneSimpleTwinSse> rustAutoOpaqueArgOwnAndReturnOwnTwinSse(
+        {required NonCloneSimpleTwinSse arg, dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueArgOwnAndReturnOwnTwinSse(arg: arg, hint: hint);
 
 Future<void> rustAutoOpaqueTwoArgsTwinSse(
-        {required RwLockNonCloneSimpleTwinSse a,
-        required RwLockNonCloneSimpleTwinSse b,
+        {required NonCloneSimpleTwinSse a,
+        required NonCloneSimpleTwinSse b,
         dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueTwoArgsTwinSse(a: a, b: b, hint: hint);
 
 Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinSse(
-        {required RwLockNonCloneSimpleTwinSse a,
-        required String b,
-        dynamic hint}) =>
+        {required NonCloneSimpleTwinSse a, required String b, dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueNormalAndOpaqueArgTwinSse(a: a, b: b, hint: hint);
 
 /// "+" inside the type signature
 Future<void> rustAutoOpaquePlusSignArgTwinSse(
-        {required RwLockBoxMyTraitTwinSse arg, dynamic hint}) =>
+        {required BoxMyTraitTwinSse arg, dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaquePlusSignArgTwinSse(arg: arg, hint: hint);
 
-Future<RwLockBoxMyTraitTwinSse> rustAutoOpaquePlusSignReturnTwinSse(
-        {dynamic hint}) =>
+Future<BoxMyTraitTwinSse> rustAutoOpaquePlusSignReturnTwinSse({dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaquePlusSignReturnTwinSse(hint: hint);
 
 Future<void> rustAutoOpaqueCallableArgTwinSse(
-        {required RwLockBoxFnStringString arg, dynamic hint}) =>
+        {required BoxFnStringString arg, dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueCallableArgTwinSse(arg: arg, hint: hint);
 
-Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturnTwinSse(
-        {dynamic hint}) =>
+Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinSse({dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueCallableReturnTwinSse(hint: hint);
 
 Future<void> rustAutoOpaqueTraitObjectArgOwnTwinSse(
-        {required RwLockBoxHelloTraitTwinSse arg,
+        {required BoxHelloTraitTwinSse arg,
         required String expect,
         dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueTraitObjectArgOwnTwinSse(
         arg: arg, expect: expect, hint: hint);
 
 Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinSse(
-        {required RwLockBoxHelloTraitTwinSse arg,
+        {required BoxHelloTraitTwinSse arg,
         required String expect,
         dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueTraitObjectArgBorrowTwinSse(
         arg: arg, expect: expect, hint: hint);
 
 Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinSse(
-        {required RwLockBoxHelloTraitTwinSse arg,
+        {required BoxHelloTraitTwinSse arg,
         required String expect,
         dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueTraitObjectArgMutBorrowTwinSse(
         arg: arg, expect: expect, hint: hint);
 
-Future<RwLockBoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnOneTwinSse(
+Future<BoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnOneTwinSse(
         {dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueTraitObjectReturnOwnOneTwinSse(hint: hint);
 
-Future<RwLockBoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnTwoTwinSse(
+Future<BoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnTwoTwinSse(
         {dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueTraitObjectReturnOwnTwoTwinSse(hint: hint);
 
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(
-        {required RwLockStructWithGoodAndOpaqueFieldTwinSse arg,
-        dynamic hint}) =>
+        {required StructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(
             arg: arg, hint: hint);
 
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSse(
-        {required RwLockStructWithGoodAndOpaqueFieldTwinSse arg,
-        dynamic hint}) =>
+        {required StructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSse(
             arg: arg, hint: hint);
 
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSse(
-        {required RwLockStructWithGoodAndOpaqueFieldTwinSse arg,
-        dynamic hint}) =>
+        {required StructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint}) =>
     RustLib.instance.api
         .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSse(
             arg: arg, hint: hint);
 
-Future<RwLockStructWithGoodAndOpaqueFieldTwinSse>
+Future<StructWithGoodAndOpaqueFieldTwinSse>
     rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse(
             {dynamic hint}) =>
         RustLib.instance.api
@@ -129,77 +122,77 @@ Future<RwLockStructWithGoodAndOpaqueFieldTwinSse>
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>>
 @sealed
-class RwLockBoxFnStringString extends RustOpaque {
-  RwLockBoxFnStringString.dcoDecode(dynamic wire)
+class BoxFnStringString extends RustOpaque {
+  BoxFnStringString.dcoDecode(dynamic wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  RwLockBoxFnStringString.sseDecode(int ptr, int externalSizeOnNative)
+  BoxFnStringString.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_RwLockBoxFnStringString,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RwLockBoxFnStringString,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr,
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_BoxFnStringString,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BoxFnStringString,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxFnStringStringPtr,
   );
 }
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSse>>>
 @sealed
-class RwLockBoxHelloTraitTwinSse extends RustOpaque {
-  RwLockBoxHelloTraitTwinSse.dcoDecode(dynamic wire)
+class BoxHelloTraitTwinSse extends RustOpaque {
+  BoxHelloTraitTwinSse.dcoDecode(dynamic wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  RwLockBoxHelloTraitTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+  BoxHelloTraitTwinSse.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSsePtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinSse,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinSsePtr,
   );
 }
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSse + Send + Sync>>>
 @sealed
-class RwLockBoxMyTraitTwinSse extends RustOpaque {
-  RwLockBoxMyTraitTwinSse.dcoDecode(dynamic wire)
+class BoxMyTraitTwinSse extends RustOpaque {
+  BoxMyTraitTwinSse.dcoDecode(dynamic wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  RwLockBoxMyTraitTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+  BoxMyTraitTwinSse.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_RwLockBoxMyTraitTwinSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSsePtr,
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_BoxMyTraitTwinSse,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinSsePtr,
   );
 }
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSse>>
 @sealed
-class RwLockNonCloneSimpleTwinSse extends RustOpaque {
-  RwLockNonCloneSimpleTwinSse.dcoDecode(dynamic wire)
+class NonCloneSimpleTwinSse extends RustOpaque {
+  NonCloneSimpleTwinSse.dcoDecode(dynamic wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  RwLockNonCloneSimpleTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneSimpleTwinSse.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSsePtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleTwinSse,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinSsePtr,
   );
 
   Future<void> instanceMethodArgBorrowTwinSse({dynamic hint}) =>
@@ -218,38 +211,37 @@ class RwLockNonCloneSimpleTwinSse extends RustOpaque {
         that: this,
       );
 
-  Future<RwLockNonCloneSimpleTwinSse> instanceMethodReturnOwnTwinSse(
+  Future<NonCloneSimpleTwinSse> instanceMethodReturnOwnTwinSse(
           {dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseInstanceMethodReturnOwnTwinSse(
         that: this,
       );
 
   /// named constructor
-  static Future<RwLockNonCloneSimpleTwinSse> newCustomNameTwinSse(
-          {dynamic hint}) =>
+  static Future<NonCloneSimpleTwinSse> newCustomNameTwinSse({dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinSseNewCustomNameTwinSse(hint: hint);
 
   /// unnamed constructor
-  static Future<RwLockNonCloneSimpleTwinSse> newTwinSse({dynamic hint}) =>
+  static Future<NonCloneSimpleTwinSse> newTwinSse({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseNewTwinSse(hint: hint);
 
   static Future<void> staticMethodArgBorrowTwinSse(
-          {required RwLockNonCloneSimpleTwinSse arg, dynamic hint}) =>
+          {required NonCloneSimpleTwinSse arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseStaticMethodArgBorrowTwinSse(
           arg: arg, hint: hint);
 
   static Future<void> staticMethodArgMutBorrowTwinSse(
-          {required RwLockNonCloneSimpleTwinSse arg, dynamic hint}) =>
+          {required NonCloneSimpleTwinSse arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseStaticMethodArgMutBorrowTwinSse(
           arg: arg, hint: hint);
 
   static Future<void> staticMethodArgOwnTwinSse(
-          {required RwLockNonCloneSimpleTwinSse arg, dynamic hint}) =>
+          {required NonCloneSimpleTwinSse arg, dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinSseStaticMethodArgOwnTwinSse(arg: arg, hint: hint);
 
-  static Future<RwLockNonCloneSimpleTwinSse> staticMethodReturnOwnTwinSse(
+  static Future<NonCloneSimpleTwinSse> staticMethodReturnOwnTwinSse(
           {dynamic hint}) =>
       RustLib.instance.api
           .nonCloneSimpleTwinSseStaticMethodReturnOwnTwinSse(hint: hint);
@@ -257,20 +249,20 @@ class RwLockNonCloneSimpleTwinSse extends RustOpaque {
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSse>>
 @sealed
-class RwLockStructWithGoodAndOpaqueFieldTwinSse extends RustOpaque {
-  RwLockStructWithGoodAndOpaqueFieldTwinSse.dcoDecode(dynamic wire)
+class StructWithGoodAndOpaqueFieldTwinSse extends RustOpaque {
+  StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(dynamic wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  RwLockStructWithGoodAndOpaqueFieldTwinSse.sseDecode(
+  StructWithGoodAndOpaqueFieldTwinSse.sseDecode(
       int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSse,
+        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSse,
     rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSse,
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSse,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSsePtr,
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSsePtr,
   );
 }
