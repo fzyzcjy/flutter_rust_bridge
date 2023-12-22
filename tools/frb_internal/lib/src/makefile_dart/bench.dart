@@ -55,7 +55,7 @@ Future<void> benchMerge() async {
       ...(jsonDecode(file.readAsStringSync()) as List<dynamic>)
   ]);
 
-  final pathOutput = '${pathOutput}merged_benchmark.json';
+  final pathOutput = '${exec.pwd}merged_benchmark.json';
   File(pathOutput).writeAsStringSync(outputContent);
 
   await exec('cat $pathOutput');
