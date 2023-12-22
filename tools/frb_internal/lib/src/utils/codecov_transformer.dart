@@ -7,18 +7,20 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 
 void transformCodecovReport(String path) {
   print('transformCodecovReport act on $path');
-  simpleActFile(path, (raw) => jsonEncode(_transformCodecovReportInner(jsonDecode(raw))));
+  simpleActFile(
+      path, (raw) => jsonEncode(_transformCodecovReportInner(jsonDecode(raw))));
 }
 
 // format: https://docs.codecov.com/docs/codecov-custom-coverage-format
 Map<String, dynamic> _transformCodecovReportInner(Map<String, dynamic> raw) {
   return {
-    'coverage': (raw['coverage'] as Map<String, dynamic>)
-        .map((filename, data) => MapEntry(filename, _transformFile(filename, data))),
+    'coverage': (raw['coverage'] as Map<String, dynamic>).map(
+        (filename, data) => MapEntry(filename, _transformFile(filename, data))),
   };
 }
 
-Map<String, dynamic> _transformFile(String filename, Map<String, dynamic> srcData) {
+Map<String, dynamic> _transformFile(
+    String filename, Map<String, dynamic> srcData) {
   final ansData = {...srcData};
   final fileLines = File(filename).readAsStringSync().split('\n');
 
