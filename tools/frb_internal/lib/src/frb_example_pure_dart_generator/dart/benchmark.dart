@@ -53,35 +53,40 @@ String _generate({
   final benchName =
       '$partialName${args.map((arg) => "_${arg.name}\$${arg.name}").join("")}';
 
+  final String classInside;
   if (raw != null) {
-    return raw(className, benchName);
+    classInside = raw(className, benchName);
+  } else {
+    final functionSetup = asynchronous
+        ? 'Future<void> setup() async { $setup }'
+        : 'void setup() { $setup }';
+
+    final functionRun = asynchronous
+        ? 'Future<void> run() async { $run }'
+        : 'void run() { $run }';
+
+    classInside = '''
+      late final $setupDataType setupData;
+      ${args.map((arg) => 'final ${arg.type} ${arg.name};\n').join('')}
+      
+      $className({
+        ${args.map((arg) => 'required this.${arg.name},\n').join('')}
+        super.emitter,
+      }) : super('$benchName');
+      
+      @override
+      $functionSetup
+
+      @override
+      $functionRun
+      
+      $extra
+    ''';
   }
 
-  final functionSetup = asynchronous
-      ? 'Future<void> setup() async { $setup }'
-      : 'void setup() { $setup }';
-
-  final functionRun = asynchronous
-      ? 'Future<void> run() async { $run }'
-      : 'void run() { $run }';
-
   return '''
-class $className extends Enhanced${asynchronous ? "Async" : "Sync"}BenchmarkBase {
-  late final $setupDataType setupData;
-  ${args.map((arg) => 'final ${arg.type} ${arg.name};\n').join('')}
-  
-  const $className({
-    ${args.map((arg) => 'required this.${arg.name},\n').join('')}
-    super.emitter,
-  }) : super('$benchName');
-  
-  @override
-  $functionSetup
-
-  @override
-  $functionRun
-  
-  $extra
+class $className extends Enhanced${asynchronous ? "Async" : ""}BenchmarkBase {
+  $classInside
 }
   ''';
 }
@@ -91,7 +96,7 @@ List<String> _benchmarkVoidFunction() {
     _generate(
       stem: 'Void',
       asynchronous: true,
-      run: 'benchmarkVoidTwinNormal();',
+      run: 'await benchmarkVoidTwinNormal();',
     ),
     _generate(
       stem: 'Void',
@@ -107,7 +112,7 @@ List<String> _benchmarkVoidFunction() {
     // https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
     _generate(
       stem: 'VoidRawByIsolate',
-      asynchronous: false,
+      asynchronous: true,
       run: '''
         await Isolate.run(() async {
           // This library loading may not be optimal, just a rough test
@@ -141,8 +146,8 @@ List<String> _benchmarkBytes() {
       setupDataType: 'Uint8List',
       setup: 'setupData = Uint8List(len);',
       run: '''
-        final raw = rawWire.benchmark_raw_new_list_prim_u_8(bytes.length);
-        raw.ptr.asTypedList(raw.len).setAll(0, bytes);
+        final raw = rawWire.benchmark_raw_new_list_prim_u_8(setupData.length);
+        raw.ptr.asTypedList(raw.len).setAll(0, setupData);
         final ans = rawWire.benchmark_raw_input_bytes(raw);
         if (ans != 0) throw Exception();
       ''',
@@ -167,7 +172,7 @@ List<String> _benchmarkBytes() {
         var nextId = 1;
 
         $className({required this.len, super.emitter})
-            : super($benchmarkName) {
+            : super('$benchmarkName') {
           receivePort.handler = (dynamic response) {
             final bytes = response as Uint8List;
             final messageId = ByteData.view(bytes.buffer).getInt32(0, Endian.big);
@@ -228,7 +233,8 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
         args: args,
         setupDataType: 'BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""}',
         setup: 'setupData = _createTree(depth);',
-        run: 'benchmarkBinaryTreeInputTwinSync${sse ? "Sse" : ""}(tree: tree);',
+        run:
+            'benchmarkBinaryTreeInputTwinSync${sse ? "Sse" : ""}(tree: setupData);',
         extra: '''
           static BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""} _createTree(int depth) {
             if (depth == 0) {
@@ -261,7 +267,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
       setupDataType: 'BinaryTreeProtobuf',
       setup: 'setupData = _createTreeProtobuf(depth);',
       run:
-          'benchmarkBinaryTreeInputProtobufTwinSync(raw: tree.writeToBuffer());',
+          'benchmarkBinaryTreeInputProtobufTwinSync(raw: setupData.writeToBuffer());',
     ),
     _generate(
       stem: 'BinaryTreeOutputProtobuf',
@@ -278,9 +284,9 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
       asynchronous: false,
       args: args,
       setupDataType: 'BenchmarkBinaryTreeTwinSync',
-      setup: 'setupData = TODO._createTree(depth);',
+      setup: 'setupData = BinaryTreeInput_SyncBenchmark._createTree(depth);',
       run:
-          'benchmarkBinaryTreeInputJsonTwinSync(raw: jsonEncode(tree, toEncodable: _toJson));',
+          'benchmarkBinaryTreeInputJsonTwinSync(raw: jsonEncode(setupData, toEncodable: _toJson));',
       extra: '''
         // Normally use `json_serializable`, but we only use for benchmark so manually write
         static Map<String, dynamic> _toJson(dynamic tree) => {
@@ -291,7 +297,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
       ''',
     ),
     _generate(
-      stem: 'BinaryTreeOutputProtobuf',
+      stem: 'BinaryTreeOutputJson',
       asynchronous: false,
       args: args,
       run: '''
@@ -322,9 +328,9 @@ List<String> _benchmarkBlob() {
         stem: 'BlobInput${sse ? "Sse" : ""}',
         asynchronous: false,
         args: args,
-        setupDataType: 'BenchmarkBlobTwinSync',
+        setupDataType: 'BenchmarkBlobTwinSync${sse ? "Sse" : ""}',
         setup: setupDataSimple(sse: sse),
-        run: 'benchmarkBlobInputTwinSync${sse ? "Sse" : ""}(blob: blob);',
+        run: 'benchmarkBlobInputTwinSync${sse ? "Sse" : ""}(blob: setupData);',
       ),
       _generate(
         stem: 'BlobOutput${sse ? "Sse" : ""}',
@@ -345,7 +351,8 @@ List<String> _benchmarkBlob() {
           third: Uint8List(len),
         );
       ''',
-      run: 'benchmarkBlobInputProtobufTwinSync(raw: blob.writeToBuffer());',
+      run:
+          'benchmarkBlobInputProtobufTwinSync(raw: setupData.writeToBuffer());',
     ),
     _generate(
       stem: 'BlobOutputProtobuf',
@@ -361,10 +368,10 @@ List<String> _benchmarkBlob() {
       stem: 'BlobInputJson',
       asynchronous: false,
       args: args,
-      setupDataType: 'BenchmarkBlobTwinSync',
+      setupDataType: 'BenchmarkBlobTwinSyncSse',
       setup: setupDataSimple(sse: true),
       run:
-          'benchmarkBlobInputJsonTwinSync(raw: jsonEncode(blob, toEncodable: _toJson));',
+          'benchmarkBlobInputJsonTwinSync(raw: jsonEncode(setupData, toEncodable: _toJson));',
       extra: '''
         // Normally use `json_serializable`, but we only use for benchmark so manually write
         static Map<String, dynamic> _toJson(dynamic blob) => {
@@ -375,7 +382,7 @@ List<String> _benchmarkBlob() {
       ''',
     ),
     _generate(
-      stem: 'BlobOutputProtobuf',
+      stem: 'BlobOutputJson',
       asynchronous: false,
       args: args,
       run: '''
