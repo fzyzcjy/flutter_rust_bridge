@@ -1,9 +1,16 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
+
+void transformCodecovReport(String path) {
+  simpleActFile(path, (raw) => jsonEncode(_transformCodecovReportInner(jsonDecode(raw))));
+}
+
 // format: https://docs.codecov.com/docs/codecov-custom-coverage-format
-Future<Map<String, dynamic>> transformCodecovReport(Map<String, dynamic> raw) async {
+Map<String, dynamic> _transformCodecovReportInner(Map<String, dynamic> raw) {
   return {
     'coverage': (raw['coverage'] as Map<String, dynamic>)
         .map((filename, data) => MapEntry(filename, _transformFile(filename, data))),

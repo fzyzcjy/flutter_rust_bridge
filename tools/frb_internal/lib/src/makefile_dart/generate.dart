@@ -14,6 +14,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
@@ -22,49 +23,28 @@ part 'generate.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('generate-internal', generateInternal,
-        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
     SimpleConfigCommand(
-        'generate-run-frb-codegen-command-generate',
-        generateRunFrbCodegenCommandGenerate,
-        _$populateGeneratePackageConfigParser,
-        _$parseGeneratePackageConfigResult),
-    SimpleConfigCommand(
-        'generate-run-frb-codegen-command-integrate',
-        generateRunFrbCodegenCommandIntegrate,
-        _$populateGeneratePackageConfigParser,
-        _$parseGeneratePackageConfigResult),
+        'generate-internal', generateInternal, _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate-run-frb-codegen-command-generate', generateRunFrbCodegenCommandGenerate,
+        _$populateGeneratePackageConfigParser, _$parseGeneratePackageConfigResult),
+    SimpleConfigCommand('generate-run-frb-codegen-command-integrate', generateRunFrbCodegenCommandIntegrate,
+        _$populateGeneratePackageConfigParser, _$parseGeneratePackageConfigResult),
     // more detailed command, can be used to execute just a portion of the main command
-    SimpleConfigCommand(
-        'generate-internal-frb-example-pure-dart',
-        generateInternalFrbExamplePureDart,
-        _$populateGenerateConfigParser,
-        _$parseGenerateConfigResult),
-    SimpleConfigCommand('generate-internal-rust', generateInternalRust,
-        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
-    SimpleConfigCommand('generate-internal-book-help', generateInternalBookHelp,
+    SimpleConfigCommand('generate-internal-frb-example-pure-dart', generateInternalFrbExamplePureDart,
         _$populateGenerateConfigParser, _$parseGenerateConfigResult),
     SimpleConfigCommand(
-        'generate-internal-contributor',
-        generateInternalContributor,
-        _$populateGenerateConfigParser,
+        'generate-internal-rust', generateInternalRust, _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate-internal-book-help', generateInternalBookHelp, _$populateGenerateConfigParser,
         _$parseGenerateConfigResult),
-    SimpleConfigCommand('generate-internal-readme', generateInternalReadme,
-        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
-    SimpleConfigCommand(
-        'generate-internal-dart-source',
-        generateInternalDartSource,
-        _$populateGenerateConfigParser,
+    SimpleConfigCommand('generate-internal-contributor', generateInternalContributor, _$populateGenerateConfigParser,
+        _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate-internal-readme', generateInternalReadme, _$populateGenerateConfigParser,
+        _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate-internal-dart-source', generateInternalDartSource, _$populateGenerateConfigParser,
         _$parseGenerateConfigResult),
     SimpleConfigCommand(
-        'generate-website',
-        generateWebsite,
-        _$populateGenerateWebsiteConfigParser,
-        _$parseGenerateWebsiteConfigResult),
-    SimpleConfigCommand(
-        'generate-website-build',
-        generateWebsiteBuild,
-        _$populateGenerateWebsiteConfigParser,
+        'generate-website', generateWebsite, _$populateGenerateWebsiteConfigParser, _$parseGenerateWebsiteConfigResult),
+    SimpleConfigCommand('generate-website-build', generateWebsiteBuild, _$populateGenerateWebsiteConfigParser,
         _$parseGenerateWebsiteConfigResult),
     SimpleCommand('generate-website-merge', generateWebsiteMerge),
     SimpleCommand('generate-website-serve', generateWebsiteServe),
@@ -191,8 +171,7 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
     print('customConverted=$customConverted');
 
     final fileAllContributorsrc = File('${exec.pwd}/.all-contributorsrc');
-    final allContributorsrcOld =
-        jsonDecode(fileAllContributorsrc.readAsStringSync());
+    final allContributorsrcOld = jsonDecode(fileAllContributorsrc.readAsStringSync());
 
     final contributorNamesNew = [
       'fzyzcjy',
@@ -202,20 +181,15 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
       ...allContributorsrcOld,
       'contributors': [
         for (final login in contributorNamesNew)
-          allContributorsrcOld['contributors']
-              .where((x) => x['login'] == login)
-              .single
+          allContributorsrcOld['contributors'].where((x) => x['login'] == login).single
       ]
     };
 
-    if (allContributorsrcNew['contributors'].length !=
-        allContributorsrcOld['contributors'].length) {
-      throw Exception(
-          'num contributors does not agree, maybe you forget to put contributors in $customPath?');
+    if (allContributorsrcNew['contributors'].length != allContributorsrcOld['contributors'].length) {
+      throw Exception('num contributors does not agree, maybe you forget to put contributors in $customPath?');
     }
 
-    fileAllContributorsrc.writeAsStringSync(
-        const JsonEncoder.withIndent('  ').convert(allContributorsrcNew));
+    fileAllContributorsrc.writeAsStringSync(const JsonEncoder.withIndent('  ').convert(allContributorsrcNew));
 
     final messageTextNew = [
       for (final item in customConverted)
@@ -242,8 +216,7 @@ void _replaceCustomMessageText(String customMessageText) {
     '${exec.pwd}README.md',
     (raw) => simpleReplaceSection(
       raw,
-      prelude:
-          '<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->',
+      prelude: '<!-- CUSTOM-MESSAGE:START - Do not remove or modify this section -->',
       postlude: '<!-- CUSTOM-MESSAGE:END -->',
       inside: customMessageText,
     ),
@@ -285,14 +258,12 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     for (final package in kDartNonExamplePackages) {
       await runPubGetIfNotRunYet(package);
-      await exec('dart run build_runner build --delete-conflicting-outputs',
-          relativePwd: package);
+      await exec('dart run build_runner build --delete-conflicting-outputs', relativePwd: package);
     }
   });
 }
 
-Future<void> generateRunFrbCodegenCommandGenerate(
-    GeneratePackageConfig config) async {
+Future<void> generateRunFrbCodegenCommandGenerate(GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runPubGetIfNotRunYet(config.package);
     await executeFrbCodegen(
@@ -304,19 +275,15 @@ Future<void> generateRunFrbCodegenCommandGenerate(
   });
 }
 
-Future<void> generateRunFrbCodegenCommandIntegrate(
-    GeneratePackageConfig config) async {
+Future<void> generateRunFrbCodegenCommandIntegrate(GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config,
-      extraArgs:
-          "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock'",
-      () async {
+      extraArgs: "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock'", () async {
     final dirPackage = path.join(exec.pwd!, config.package);
 
     // Use temp dir within the repo. If use system-wide temp directory,
     // may see "OS Error: Cross-device link, errno = 18" and cannot use the
     // cheap "move directory" operation.
-    final dirTemp = path.join(exec.pwd!, 'target',
-        'GenerateRunFrbCodegenCommandIntegrate', randomTempDirName());
+    final dirTemp = path.join(exec.pwd!, 'target', 'GenerateRunFrbCodegenCommandIntegrate', randomTempDirName());
     print('Pick temporary directory: $dirTemp');
     await Directory(dirTemp).create(recursive: true);
 
@@ -336,8 +303,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         );
 
       case 'frb_example/flutter_via_integrate':
-        await exec('flutter create flutter_via_integrate',
-            relativePwd: 'frb_example');
+        await exec('flutter create flutter_via_integrate', relativePwd: 'frb_example');
         await executeFrbCodegen(
           'integrate --local',
           relativePwd: config.package,
@@ -351,8 +317,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 
     // move back compilation cache to speed up future usage
     for (final subPath in ['build', 'rust/target']) {
-      await _renameDirIfExists(
-          path.join(dirTempOriginal, subPath), path.join(dirPackage, subPath));
+      await _renameDirIfExists(path.join(dirTempOriginal, subPath), path.join(dirPackage, subPath));
     }
   });
 }
@@ -366,14 +331,16 @@ Future<RunCommandOutput> executeFrbCodegen(
 }) async {
   if (postRelease) {
     assert(!coverage);
-    return await exec('flutter_rust_bridge_codegen $cmd',
-        relativePwd: relativePwd);
+    return await exec('flutter_rust_bridge_codegen $cmd', relativePwd: relativePwd);
   } else {
-    return await exec(
-      'cargo ${coverage ? "llvm-cov run --codecov --output-path ${getCoverageDir(coverageName)}/codecov.json" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+    final outputCodecovPath = '${getCoverageDir(coverageName)}/codecov.json';
+    final ans = await exec(
+      'cargo ${coverage ? "llvm-cov run --codecov --output-path $outputCodecovPath" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
       relativePwd: relativePwd,
       extraEnv: {'RUST_BACKTRACE': '1'},
     );
+    if (coverage) transformCodecovReport(outputCodecovPath);
+    return ans;
   }
 }
 
@@ -382,8 +349,7 @@ Future<void> _renameDirIfExists(String src, String dst) async {
   await Directory(src).rename(dst);
 }
 
-Future<void> _wrapMaybeSetExitIfChanged(
-    GenerateConfig config, Future<void> Function() inner,
+Future<void> _wrapMaybeSetExitIfChanged(GenerateConfig config, Future<void> Function() inner,
     {String? extraArgs}) async {
   // Before actually executing anything, check whether git repository is already dirty
   await _maybeSetExitIfChanged(config, extraArgs: extraArgs);
@@ -392,8 +358,7 @@ Future<void> _wrapMaybeSetExitIfChanged(
   await _maybeSetExitIfChanged(config, extraArgs: extraArgs);
 }
 
-Future<void> _maybeSetExitIfChanged(GenerateConfig config,
-    {String? extraArgs}) async {
+Future<void> _maybeSetExitIfChanged(GenerateConfig config, {String? extraArgs}) async {
   if (config.setExitIfChanged) {
     await exec('git diff --exit-code ${extraArgs ?? ""}');
   }
@@ -439,8 +404,7 @@ Future<void> generateWebsiteMerge() async {
   await exec('mkdir $_kWebsiteDir/demo');
   await exec('cp -r frb_example/gallery/build/web/* $_kWebsiteDir/demo');
   await exec('rm $_kWebsiteDir/demo/pkg/.gitignore');
-  await exec(
-      'cp ${exec.pwd}website/build/demo.html ${exec.pwd}$_kWebsiteDir/demo/index.html');
+  await exec('cp ${exec.pwd}website/build/demo.html ${exec.pwd}$_kWebsiteDir/demo/index.html');
   // _generateWebsiteMergeDemoIndexHtml();
 
   await exec('mkdir -p $_kWebsiteDir/dev/bench');
@@ -484,6 +448,5 @@ Future<void> generateWebsiteMerge() async {
 // }
 
 Future<void> generateWebsiteServe() async {
-  await exec('python -m http.server 8765',
-      relativePwd: 'website/merged_target');
+  await exec('python -m http.server 8765', relativePwd: 'website/merged_target');
 }
