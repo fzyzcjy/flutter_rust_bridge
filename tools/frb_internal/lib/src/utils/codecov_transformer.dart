@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 
 void transformCodecovReport(String path) {
+  print('transformCodecovReport act on $path');
   simpleActFile(path, (raw) => jsonEncode(_transformCodecovReportInner(jsonDecode(raw))));
 }
 
