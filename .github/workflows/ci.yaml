@@ -279,7 +279,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.job }}--${{ matrix.image_and_name.image }}--benchmark
+          name: ${{ github.job }}--${{ matrix.image }}--benchmark
           path: frb_example/pure_dart/build/simple_benchmark/benchmark_result.json
 
   bench_upload:
