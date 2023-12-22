@@ -20,6 +20,7 @@ Future<void> main(List<String> args) async {
 
   final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
   final allBenchmarks = createBenchmarks(emitter: emitter);
+  print('allBenchmarks=${allBenchmarks.map((e) => e.name).toList()}');
   final interestBenchmarks = [
     for (final b in allBenchmarks)
       if (filterRegex.hasMatch(b.name)) b
