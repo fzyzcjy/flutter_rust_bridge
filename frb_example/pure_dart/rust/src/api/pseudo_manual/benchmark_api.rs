@@ -1,7 +1,3 @@
-// NOTE: This file is mimicking how a human developer writes tests,
-// and is auto-generated from `benchmark_api.rs` by frb_internal
-// Please do not modify manually, but modify the origin and re-run frb_internal generator
-
 #![allow(unused_variables)]
 
 use crate::auxiliary::protobuf_for_benchmark::{BinaryTreeProtobuf, BlobProtobuf};
@@ -10,36 +6,33 @@ use protobuf::Message;
 use std::collections::HashMap;
 use std::hint::black_box;
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_void_twin_rust_async_sse() {}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_input_bytes_twin_rust_async_sse(bytes: Vec<u8>) -> i32 {
+pub fn benchmark_void_twin_normal() {}
+  
+pub fn benchmark_input_bytes_twin_normal(bytes: Vec<u8>) -> i32 {
     bytes.into_iter().map(|x| x as i32).sum()
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_output_bytes_twin_rust_async_sse(size: i32) -> Vec<u8> {
+pub fn benchmark_output_bytes_twin_normal(size: i32) -> Vec<u8> {
     vec![0; size as usize]
 }
-
+  
 // The `serde` is only used for comparison test
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
-pub struct BenchmarkBinaryTreeTwinRustAsyncSse {
+pub struct BenchmarkBinaryTreeTwinNormal {
     pub name: String,
-    pub left: Option<Box<BenchmarkBinaryTreeTwinRustAsyncSse>>,
-    pub right: Option<Box<BenchmarkBinaryTreeTwinRustAsyncSse>>,
+    pub left: Option<Box<BenchmarkBinaryTreeTwinNormal>>,
+    pub right: Option<Box<BenchmarkBinaryTreeTwinNormal>>,
 }
 
-fn create_binary_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinRustAsyncSse {
+fn create_binary_tree(depth: i32, name: &str) -> BenchmarkBinaryTreeTwinNormal {
     if depth == 0 {
-        BenchmarkBinaryTreeTwinRustAsyncSse {
+        BenchmarkBinaryTreeTwinNormal {
             name: name.to_owned(),
             left: None,
             right: None,
         }
     } else {
-        BenchmarkBinaryTreeTwinRustAsyncSse {
+        BenchmarkBinaryTreeTwinNormal {
             name: name.to_owned(),
             left: Some(Box::new(create_binary_tree(depth - 1, name))),
             right: Some(Box::new(create_binary_tree(depth - 1, name))),
@@ -74,34 +67,26 @@ fn create_binary_tree_map<T>(creator: impl Fn(i32, &str) -> T) -> HashMap<i32, T
 }
 
 lazy_static! {
-    static ref BINARY_TREES: HashMap<i32, BenchmarkBinaryTreeTwinRustAsyncSse> =
+    static ref BINARY_TREES: HashMap<i32, BenchmarkBinaryTreeTwinNormal> =
         create_binary_tree_map(create_binary_tree);
     static ref BINARY_TREES_PROTOBUF: HashMap<i32, BinaryTreeProtobuf> =
         create_binary_tree_map(create_binary_tree_protobuf);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_binary_tree_input_twin_rust_async_sse(
-    tree: BenchmarkBinaryTreeTwinRustAsyncSse,
-) {
+pub fn benchmark_binary_tree_input_twin_normal(tree: BenchmarkBinaryTreeTwinNormal) {
     black_box(tree);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_binary_tree_output_twin_rust_async_sse(
-    depth: i32,
-) -> BenchmarkBinaryTreeTwinRustAsyncSse {
+pub fn benchmark_binary_tree_output_twin_normal(depth: i32) -> BenchmarkBinaryTreeTwinNormal {
     BINARY_TREES.get(&depth).unwrap().to_owned()
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_binary_tree_input_protobuf_twin_rust_async_sse(raw: Vec<u8>) {
+pub fn benchmark_binary_tree_input_protobuf_twin_normal(raw: Vec<u8>) {
     let data = BinaryTreeProtobuf::parse_from_bytes(&raw).unwrap();
     black_box(data);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_binary_tree_output_protobuf_twin_rust_async_sse(depth: i32) -> Vec<u8> {
+pub fn benchmark_binary_tree_output_protobuf_twin_normal(depth: i32) -> Vec<u8> {
     BINARY_TREES_PROTOBUF
         .get(&depth)
         .unwrap()
@@ -109,52 +94,46 @@ pub async fn benchmark_binary_tree_output_protobuf_twin_rust_async_sse(depth: i3
         .unwrap()
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_binary_tree_input_json_twin_rust_async_sse(raw: String) {
-    let obj: BenchmarkBinaryTreeTwinRustAsyncSse = serde_json::from_str(&raw).unwrap();
+pub fn benchmark_binary_tree_input_json_twin_normal(raw: String) {
+    let obj: BenchmarkBinaryTreeTwinNormal = serde_json::from_str(&raw).unwrap();
     black_box(obj);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_binary_tree_output_json_twin_rust_async_sse(depth: i32) -> String {
+pub fn benchmark_binary_tree_output_json_twin_normal(depth: i32) -> String {
     serde_json::to_string(BINARY_TREES.get(&depth).unwrap()).unwrap()
 }
-
+  
 // The `serde` is only used for comparison test
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
-pub struct BenchmarkBlobTwinRustAsyncSse {
+pub struct BenchmarkBlobTwinNormal {
     pub first: Vec<u8>,
     pub second: Vec<u8>,
     pub third: Vec<u8>,
 }
 
-fn create_blob(size: i32) -> BenchmarkBlobTwinRustAsyncSse {
+fn create_blob(size: i32) -> BenchmarkBlobTwinNormal {
     let data = vec![0; size as _];
-    BenchmarkBlobTwinRustAsyncSse {
+    BenchmarkBlobTwinNormal {
         first: data.clone(),
         second: data.clone(),
         third: data,
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_blob_input_twin_rust_async_sse(blob: BenchmarkBlobTwinRustAsyncSse) {
+pub fn benchmark_blob_input_twin_normal(blob: BenchmarkBlobTwinNormal) {
     black_box(blob);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_blob_output_twin_rust_async_sse(size: i32) -> BenchmarkBlobTwinRustAsyncSse {
+pub fn benchmark_blob_output_twin_normal(size: i32) -> BenchmarkBlobTwinNormal {
     create_blob(size)
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_blob_input_protobuf_twin_rust_async_sse(raw: Vec<u8>) {
+pub fn benchmark_blob_input_protobuf_twin_normal(raw: Vec<u8>) {
     let data = BlobProtobuf::parse_from_bytes(&raw).unwrap();
     black_box(data);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_blob_output_protobuf_twin_rust_async_sse(size: i32) -> Vec<u8> {
+pub fn benchmark_blob_output_protobuf_twin_normal(size: i32) -> Vec<u8> {
     let data = vec![0; size as _];
     let output = BlobProtobuf {
         first: data.clone(),
@@ -165,13 +144,13 @@ pub async fn benchmark_blob_output_protobuf_twin_rust_async_sse(size: i32) -> Ve
     output.write_to_bytes().unwrap()
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_blob_input_json_twin_rust_async_sse(raw: String) {
-    let obj: BenchmarkBlobTwinRustAsyncSse = serde_json::from_str(&raw).unwrap();
+pub fn benchmark_blob_input_json_twin_normal(raw: String) {
+    let obj: BenchmarkBlobTwinNormal = serde_json::from_str(&raw).unwrap();
     black_box(obj);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn benchmark_blob_output_json_twin_rust_async_sse(size: i32) -> String {
+pub fn benchmark_blob_output_json_twin_normal(size: i32) -> String {
     serde_json::to_string(&create_blob(size)).unwrap()
 }
+  
+  
