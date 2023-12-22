@@ -45,6 +45,7 @@ String _generate({
   List<_TypedName> args = const [],
   String setup = '',
   required String run,
+  String extra = '',
   String Function(String className, String benchmarkName)? raw,
 }) {
   final partialName = '${stem}_${asynchronous ? "Async" : "Sync"}';
@@ -79,6 +80,8 @@ class $className extends Enhanced${asynchronous ? "Async" : "Sync"}BenchmarkBase
 
   @override
   $functionRun
+  
+  $extra
 }
   ''';
 }
@@ -191,28 +194,17 @@ List<String> _benchmarkBytes() {
           if (result.length != len + 4) throw Exception();
         }
       ''',
+      run: '',
     ),
   ];
 }
 
 List<String> _benchmarkBinaryTree() {
-  return '''
-const _kBinaryTreeNodeName = 'HelloWorld';
+  const args = [_TypedName('int', 'depth')];
 
-BenchmarkBinaryTreeTwinSync _createTree(int depth) {
-  if (depth == 0) {
-    return BenchmarkBinaryTreeTwinSync(
-      name: _kBinaryTreeNodeName,
-      left: null,
-      right: null,
-    );
-  }
-  return BenchmarkBinaryTreeTwinSync(
-    name: _kBinaryTreeNodeName,
-    left: _createTree(depth - 1),
-    right: _createTree(depth - 1),
-  );
-}
+  return [
+    '''
+const _kBinaryTreeNodeName = 'HelloWorld';
 
 BinaryTreeProtobuf _createTreeProtobuf(int depth) {
   if (depth == 0) {
@@ -228,125 +220,89 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
     right: _createTreeProtobuf(depth - 1),
   );
 }
-
-class BinaryTreeInputSyncBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBinaryTreeTwinSync tree;
-
-  BinaryTreeInputSyncBenchmark(int depth, {super.emitter})
-      : tree = _createTree(depth),
-        super('BinaryTreeInputSync_Depth\$depth');
-
-  @override
-  void run() => benchmarkBinaryTreeInputTwinSync(tree: tree);
-}
-
-class BinaryTreeOutputSyncBenchmark extends EnhancedBenchmarkBase {
-  final int depth;
-
-  BinaryTreeOutputSyncBenchmark(this.depth, {super.emitter})
-      : super('BinaryTreeOutputSync_Depth\$depth');
-
-  @override
-  void run() => benchmarkBinaryTreeOutputTwinSync(depth: depth);
-}
-
-class BinaryTreeInputSyncSseBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBinaryTreeTwinSyncSse tree;
-
-  BinaryTreeInputSyncSseBenchmark(int depth, {super.emitter})
-      : tree = _createTree(depth),
-        super('BinaryTreeInputSyncSse_Depth\$depth');
-
-  static BenchmarkBinaryTreeTwinSyncSse _createTree(int depth) {
-    if (depth == 0) {
-      return BenchmarkBinaryTreeTwinSyncSse(
-        name: _kBinaryTreeNodeName,
-        left: null,
-        right: null,
-      );
-    }
-    return BenchmarkBinaryTreeTwinSyncSse(
-      name: _kBinaryTreeNodeName,
-      left: _createTree(depth - 1),
-      right: _createTree(depth - 1),
-    );
-  }
-
-  @override
-  void run() => benchmarkBinaryTreeInputTwinSyncSse(tree: tree);
-}
-
-class BinaryTreeOutputSyncSseBenchmark extends EnhancedBenchmarkBase {
-  final int depth;
-
-  BinaryTreeOutputSyncSseBenchmark(this.depth, {super.emitter})
-      : super('BinaryTreeOutputSyncSse_Depth\$depth');
-
-  @override
-  void run() => benchmarkBinaryTreeOutputTwinSyncSse(depth: depth);
-}
-
-class BinaryTreeInputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
-  final BinaryTreeProtobuf tree;
-
-  BinaryTreeInputSyncProtobufBenchmark(int depth, {super.emitter})
-      : tree = _createTreeProtobuf(depth),
-        super('BinaryTreeInputSyncProtobuf_Depth\$depth');
-
-  @override
-  void run() =>
-      benchmarkBinaryTreeInputProtobufTwinSync(raw: tree.writeToBuffer());
-}
-
-class BinaryTreeOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
-  final int depth;
-
-  BinaryTreeOutputSyncProtobufBenchmark(this.depth, {super.emitter})
-      : super('BinaryTreeOutputSyncProtobuf_Depth\$depth');
-
-  @override
-  void run() {
-    final raw = benchmarkBinaryTreeOutputProtobufTwinSync(depth: depth);
-    final proto = BinaryTreeProtobuf.fromBuffer(raw);
-    dummyValue ^= proto.hashCode;
-  }
-}
-
-class BinaryTreeInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBinaryTreeTwinSync tree;
-
-  BinaryTreeInputSyncJsonBenchmark(int depth, {super.emitter})
-      : tree = _createTree(depth),
-        super('BinaryTreeInputSyncJson_Depth\$depth');
-
-  // Normally use `json_serializable`, but we only use for benchmark so manually write
-  static Map<String, dynamic> _toJson(dynamic tree) => {
-        'name': tree.name,
-        'left': tree.left,
-        'right': tree.right,
-      };
-
-  @override
-  void run() => benchmarkBinaryTreeInputJsonTwinSync(
-      raw: jsonEncode(tree, toEncodable: _toJson));
-}
-
-class BinaryTreeOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
-  final int depth;
-
-  BinaryTreeOutputSyncJsonBenchmark(this.depth, {super.emitter})
-      : super('BinaryTreeOutputSyncJson_Depth\$depth');
-
-  @override
-  void run() {
+    ''',
+    for (final sse in [false, true]) ...[
+      _generate(
+        stem: 'BinaryTreeInput${sse ? "Sse" : ""}',
+        asynchronous: false,
+        args: args,
+        setupDataType: 'BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""}',
+        setup: 'setupData = _createTree(depth);',
+        run: 'benchmarkBinaryTreeInputTwinSync${sse ? "Sse" : ""}(tree: tree);',
+        extra: '''
+          static BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""} _createTree(int depth) {
+            if (depth == 0) {
+              return BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""}(
+                name: _kBinaryTreeNodeName,
+                left: null,
+                right: null,
+              );
+            }
+            return BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""}(
+              name: _kBinaryTreeNodeName,
+              left: _createTree(depth - 1),
+              right: _createTree(depth - 1),
+            );
+          }
+        ''',
+      ),
+      _generate(
+        stem: 'BinaryTreeOutput${sse ? "Sse" : ""}',
+        asynchronous: false,
+        args: args,
+        run:
+            'benchmarkBinaryTreeOutputTwinSync${sse ? "Sse" : ""}(depth: depth);',
+      ),
+    ],
+    _generate(
+      stem: 'BinaryTreeInputProtobuf',
+      asynchronous: false,
+      args: args,
+      setupDataType: 'BinaryTreeProtobuf',
+      setup: 'setupData = _createTreeProtobuf(depth);',
+      run:
+          'benchmarkBinaryTreeInputProtobufTwinSync(raw: tree.writeToBuffer());',
+    ),
+    _generate(
+      stem: 'BinaryTreeOutputProtobuf',
+      asynchronous: false,
+      args: args,
+      run: '''
+        final raw = benchmarkBinaryTreeOutputProtobufTwinSync(depth: depth);
+        final proto = BinaryTreeProtobuf.fromBuffer(raw);
+        dummyValue ^= proto.hashCode;
+      ''',
+    ),
+    _generate(
+      stem: 'BinaryTreeInputJson',
+      asynchronous: false,
+      args: args,
+      setupDataType: 'BenchmarkBinaryTreeTwinSync',
+      setup: 'setupData = TODO._createTree(depth);',
+      run:
+          'benchmarkBinaryTreeInputJsonTwinSync(raw: jsonEncode(tree, toEncodable: _toJson));',
+      extra: '''
+        // Normally use `json_serializable`, but we only use for benchmark so manually write
+        static Map<String, dynamic> _toJson(dynamic tree) => {
+              'name': tree.name,
+              'left': tree.left,
+              'right': tree.right,
+            };
+      ''',
+    ),
+    _generate(
+      stem: 'BinaryTreeOutputProtobuf',
+      asynchronous: false,
+      args: args,
+      run: '''
     final raw = benchmarkBinaryTreeOutputJsonTwinSync(depth: depth);
     // TODO: Should use json_serialize to further generate Dart objects
     // Otherwise this comparison is unfair (JSON does fewer amount of work)
     final json = jsonDecode(raw);
     dummyValue ^= json.hashCode;
-  }
-}
-  ''';
+      ''',
+    ),
+  ];
 }
 
 List<String> _benchmarkBlob() {
