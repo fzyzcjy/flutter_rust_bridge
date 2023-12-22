@@ -21,7 +21,17 @@ Map<String, dynamic> _transformCodecovReportInner(Map<String, dynamic> raw) {
 
 Map<String, dynamic> _transformFile(
     String filename, Map<String, dynamic> srcData) {
-  final ansData = srcData.map((key, rawValue) {
+  final fileLines = File(filename).readAsStringSync().split('\n');
+
+  var ans = srcData;
+  ans = _transformByMimickingLcovInfo(ans);
+  ans = _transformByCodeComments(fileLines, ans);
+  ans = _transformByPatterns(fileLines, ans);
+  return ans;
+}
+
+Map<String, dynamic> _transformByMimickingLcovInfo(Map<String, dynamic> raw) {
+  return raw.map((key, rawValue) {
     // mimic lcov.info feature (lcov.info is used in Dart side)
     final ansValue = () {
       if (rawValue is! String || !rawValue.contains('/')) return rawValue;
@@ -29,11 +39,14 @@ Map<String, dynamic> _transformFile(
     }();
     return MapEntry(key, ansValue);
   });
+}
 
-  final fileLines = File(filename).readAsStringSync().split('\n');
+Map<String, dynamic> _transformByCodeComments(
+    List<String> fileLines, Map<String, dynamic> raw) {
+  final ans = {...raw};
 
   var ignoring = false;
-  var removeCount = 0;
+  // var removeCount = 0;
   for (var i = 0; i < fileLines.length; ++i) {
     final lineContent = fileLines[i];
     final lineNumber = i + 1;
@@ -41,21 +54,35 @@ Map<String, dynamic> _transformFile(
     if (lineContent.contains('frb-coverage:ignore-start')) {
       ignoring = true;
     }
+
+    if (ignoring) {
+      ans.remove(lineNumber.toString());
+      // if (removed != null) {
+      // removeCount++;
+      // }
+    }
+
     if (lineContent.contains('frb-coverage:ignore-end')) {
       ignoring = false;
     }
-
-    if (ignoring) {
-      final removed = ansData.remove(lineNumber.toString());
-      if (removed != null) {
-        removeCount++;
-      }
-    }
   }
 
-  if (removeCount > 0) {
-    print('transformCodecovReport remove $removeCount lines from $filename');
-  }
+  // if (removeCount > 0) {
+  //   print('transformCodecovReport remove $removeCount lines from $filename');
+  // }
 
-  return ansData;
+  return ans;
+}
+
+Map<String, dynamic> _transformByPatterns(
+    List<String> fileLines, Map<String, dynamic> raw) {
+  // Ignore code coverage for things like `#[derive(Debug)]`,
+  // since this is by Rust compiler and is surely correct
+  final regex = RegExp(r'^\s*#\[derive\(.*\)\]\s*$');
+
+  return raw.map((key, value) {
+    final fileLine = fileLines[int.parse(key) - 1];
+    final shouldKeep = !regex.hasMatch(fileLine);
+    return MapEntry(key, shouldKeep ? value : null);
+  });
 }
