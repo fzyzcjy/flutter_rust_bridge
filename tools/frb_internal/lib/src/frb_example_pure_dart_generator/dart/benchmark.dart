@@ -173,13 +173,13 @@ List<_Benchmark> _benchmarkVoidFunction() {
   return [
     const _Benchmark(
       category: category,
-      approach: 'Std',
+      approach: 'Frb',
       asynchronous: true,
       run: 'await benchmarkVoidTwinNormal();',
     ),
     const _Benchmark(
       category: category,
-      approach: 'Void',
+      approach: 'Frb',
       asynchronous: false,
       run: 'benchmarkVoidTwinSync();',
     ),
