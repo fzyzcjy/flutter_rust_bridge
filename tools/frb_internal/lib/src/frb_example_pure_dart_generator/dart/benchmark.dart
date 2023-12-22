@@ -4,11 +4,14 @@ String generateBenchmark() {
   return '''
 // ignore_for_file: invalid_use_of_internal_member, invalid_use_of_protected_member
 
+import 'dart:async';
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:isolate';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
