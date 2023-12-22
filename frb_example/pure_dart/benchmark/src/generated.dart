@@ -27,6 +27,11 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
     PrimeNumber_Na_Sync_Benchmark(number: 90000049, emitter: emitter),
     PrimeNumber_Na_Sync_Benchmark(number: 9000000001, emitter: emitter),
     PrimeNumber_Na_Sync_Benchmark(number: 900000000013, emitter: emitter),
+    IntParse_Na_Sync_Benchmark(number: "0", emitter: emitter),
+    IntParse_Na_Sync_Benchmark(number: "1000000000", emitter: emitter),
+    Base64Encode_Na_Sync_Benchmark(len: 0, emitter: emitter),
+    Base64Encode_Na_Sync_Benchmark(len: 10, emitter: emitter),
+    Base64Encode_Na_Sync_Benchmark(len: 100, emitter: emitter),
     VoidFunction_Frb_Async_Benchmark(emitter: emitter),
     VoidFunction_Frb_Sync_Benchmark(emitter: emitter),
     VoidFunction_FrbSse_Sync_Benchmark(emitter: emitter),
@@ -126,6 +131,47 @@ class PrimeNumber_Na_Sync_Benchmark extends EnhancedBenchmarkBase {
       if (n % i == 0) return false;
     }
     return true;
+  }
+}
+
+class IntParse_Na_Sync_Benchmark extends EnhancedBenchmarkBase {
+  final String number;
+
+  IntParse_Na_Sync_Benchmark({
+    required this.number,
+    super.emitter,
+  }) : super(
+            '{"area":"PureDart","task":"IntParse","approach":"Na","direction":null,"asynchronous":false,"arg":"$number","platform":"$currentPlatformName"}');
+
+  @override
+  void setup() {}
+
+  @override
+  void run() {
+    final ans = int.parse(number);
+    dummyValue ^= ans;
+  }
+}
+
+class Base64Encode_Na_Sync_Benchmark extends EnhancedBenchmarkBase {
+  late final String setupData;
+  final int len;
+
+  Base64Encode_Na_Sync_Benchmark({
+    required this.len,
+    super.emitter,
+  }) : super(
+            '{"area":"PureDart","task":"Base64Encode","approach":"Na","direction":null,"asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+
+  @override
+  void setup() {
+    setupData = 'HelloWorld' * (len ~/ 10);
+  }
+
+  @override
+  void run() {
+    final ans = base64Encode(utf8.encode(setupData));
+    dummyValue ^= ans.hashCode;
   }
 }
 

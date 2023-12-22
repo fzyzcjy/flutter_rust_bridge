@@ -189,6 +189,30 @@ List<_Benchmark> _benchmarkMisc() {
         }
       ''',
     ),
+    const _Benchmark(
+      task: 'IntParse',
+      approach: _Approach.na,
+      asynchronous: false,
+      args: [_TypedName('String', 'number')],
+      argValues: ['"0"', '"1000000000"'],
+      run: '''
+        final ans = int.parse(number);
+        dummyValue ^= ans;
+      ''',
+    ),
+    const _Benchmark(
+      task: 'Base64Encode',
+      approach: _Approach.na,
+      asynchronous: false,
+      args: [_TypedName('int', 'len')],
+      argValues: ['0', '10', '100'],
+      setupDataType: 'String',
+      setup: "setupData = 'HelloWorld' * (len ~/ 10);",
+      run: '''
+        final ans = base64Encode(utf8.encode(setupData));
+        dummyValue ^= ans.hashCode;
+      ''',
+    ),
   ];
 }
 
