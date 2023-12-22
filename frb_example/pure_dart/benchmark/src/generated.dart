@@ -23,11 +23,11 @@ const _kBinaryTreeNodeName = 'HelloWorld';
 List<MaybeAsyncBenchmarkBase> createBenchmarks(
     {required ScoreEmitter emitter}) {
   return [
-    PrimeNumber_Normal_Sync_Benchmark(number: 90000049, emitter: emitter),
-    PrimeNumber_Normal_Sync_Benchmark(number: 9000000001, emitter: emitter),
-    PrimeNumber_Normal_Sync_Benchmark(number: 900000000013, emitter: emitter),
-    VoidFunction_Std_Async_Benchmark(emitter: emitter),
-    VoidFunction_Void_Sync_Benchmark(emitter: emitter),
+    PrimeNumber_Na_Sync_Benchmark(number: 90000049, emitter: emitter),
+    PrimeNumber_Na_Sync_Benchmark(number: 9000000001, emitter: emitter),
+    PrimeNumber_Na_Sync_Benchmark(number: 900000000013, emitter: emitter),
+    VoidFunction_Frb_Async_Benchmark(emitter: emitter),
+    VoidFunction_Frb_Sync_Benchmark(emitter: emitter),
     VoidFunction_Raw_Sync_Benchmark(emitter: emitter),
     VoidFunction_Raw_Async_Benchmark(emitter: emitter),
     Bytes_Frb_Input_Async_Benchmark(len: 0, emitter: emitter),
@@ -99,14 +99,14 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
   ];
 }
 
-class PrimeNumber_Normal_Sync_Benchmark extends EnhancedBenchmarkBase {
+class PrimeNumber_Na_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int number;
 
-  PrimeNumber_Normal_Sync_Benchmark({
+  PrimeNumber_Na_Sync_Benchmark({
     required this.number,
     super.emitter,
   }) : super(
-            '{"category":"PrimeNumber","approach":"Normal","direction":null,"asynchronous":false,"arg_number":"$number"}');
+            '{"category":"PrimeNumber","approach":"Na","direction":null,"asynchronous":false,"arg_number":"$number"}');
 
   @override
   void setup() {}
@@ -126,11 +126,11 @@ class PrimeNumber_Normal_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class VoidFunction_Std_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
-  VoidFunction_Std_Async_Benchmark({
+class VoidFunction_Frb_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
+  VoidFunction_Frb_Async_Benchmark({
     super.emitter,
   }) : super(
-            '{"category":"VoidFunction","approach":"Std","direction":null,"asynchronous":true}');
+            '{"category":"VoidFunction","approach":"Frb","direction":null,"asynchronous":true}');
 
   @override
   Future<void> setup() async {}
@@ -141,11 +141,11 @@ class VoidFunction_Std_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   }
 }
 
-class VoidFunction_Void_Sync_Benchmark extends EnhancedBenchmarkBase {
-  VoidFunction_Void_Sync_Benchmark({
+class VoidFunction_Frb_Sync_Benchmark extends EnhancedBenchmarkBase {
+  VoidFunction_Frb_Sync_Benchmark({
     super.emitter,
   }) : super(
-            '{"category":"VoidFunction","approach":"Void","direction":null,"asynchronous":false}');
+            '{"category":"VoidFunction","approach":"Frb","direction":null,"asynchronous":false}');
 
   @override
   void setup() {}
