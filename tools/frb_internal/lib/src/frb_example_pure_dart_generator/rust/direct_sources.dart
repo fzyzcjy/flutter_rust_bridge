@@ -6,7 +6,7 @@ Map<String, String> generateRustDirectSources() {
     'pseudo_manual/primitive.rs': _generatePrimitive(),
     'pseudo_manual/optional_primitive.rs': _generateOptionalPrimitive(),
     'pseudo_manual/primitive_list.rs': _generatePrimitiveList(),
-    'pseudo_manual/benchmark.rs': generateBenchmark(),
+    'pseudo_manual/benchmark_api.rs': generateBenchmark(),
   };
 }
 
