@@ -1,5 +1,7 @@
 // NOTE: Currently it still contains a lot of duplicates (because it was
 // migrated from manual code). But when adding more tests, we can refactor and avoid it.
+import 'dart:convert';
+
 String generateBenchmark() {
   final chunks = [
     ..._benchmarkVoidFunction(),
@@ -50,11 +52,15 @@ String _generate({
   String extra = '',
   String Function(String className, String benchmarkName)? raw,
 }) {
-  final partialName =
-      '${category}_$approach${direction != null ? "_$direction" : ""}_${asynchronous ? "Async" : "Sync"}';
-  final className = '${partialName}_Benchmark';
-  final benchName =
-      '$partialName${args.map((arg) => "_${arg.name}\$${arg.name}").join("")}';
+  final className =
+      '${category}_$approach${direction != null ? "_$direction" : ""}_${asynchronous ? "Async" : "Sync"}_Benchmark';
+  final benchName = jsonEncode({
+    'category': category,
+    'approach': approach,
+    'direction': direction,
+    'asynchronous': asynchronous,
+    for (final arg in args) 'arg_${arg.name}': '\$${arg.name}',
+  });
 
   final String classInside;
   if (raw != null) {
