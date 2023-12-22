@@ -53,6 +53,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     string: format!("std::sync::RwLock<{}>", inner.rust_api_type()),
                     segments: vec![],
                 })),
+                brief_name: true,
             },
         };
 
