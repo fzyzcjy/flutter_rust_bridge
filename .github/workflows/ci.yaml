@@ -114,7 +114,7 @@ jobs:
       matrix:
         image:
           - windows-2019
-          - macos-13
+          - macos-11
           - ubuntu-20.04
         package:
           - frb_example--dart_minimal
@@ -124,9 +124,9 @@ jobs:
           - frb_example--flutter_via_integrate
         exclude:
           - {image: windows-2019, package: frb_example--deliberate_bad}
-          - {image: macos-13, package: frb_example--deliberate_bad}
+          - {image: macos-11, package: frb_example--deliberate_bad}
           - {image: windows-2019, package: frb_example--flutter_via_integrate}
-          - {image: macos-13, package: frb_example--flutter_via_integrate}
+          - {image: macos-11, package: frb_example--flutter_via_integrate}
 
     steps:
       # setup
@@ -166,7 +166,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - macos-13
+          - macos-11
           - windows-2019
           - ubuntu-20.04
         package:
@@ -245,7 +245,7 @@ jobs:
       matrix:
         image_and_name:
           - {image: windows-2019, name: Windows}
-          - {image: macos-13, name: Macos}
+          - {image: macos-11, name: Macos}
           - {image: ubuntu-20.04, name: Ubuntu}
 
     steps:
@@ -328,7 +328,7 @@ jobs:
       matrix:
         info:
           # run on various platforms
-          - image: macos-13
+          - image: macos-11
             version: ''
           - image: windows-2019
             version: ''
@@ -377,7 +377,7 @@ jobs:
       matrix:
         image:
           - windows-2019
-          - macos-13
+          - macos-11
           - ubuntu-20.04
         package:
           - frb_dart
@@ -388,11 +388,11 @@ jobs:
           - frb_example--deliberate_bad
         exclude:
           - {image: windows-2019, package: frb_utils}
-          - {image: macos-13, package: frb_utils}
+          - {image: macos-11, package: frb_utils}
           - {image: windows-2019, package: tools--frb_internal}
-          - {image: macos-13, package: tools--frb_internal}
+          - {image: macos-11, package: tools--frb_internal}
           - {image: windows-2019, package: frb_example--deliberate_bad}
-          - {image: macos-13, package: frb_example--deliberate_bad}
+          - {image: macos-11, package: frb_example--deliberate_bad}
 
     steps:
       # setup
@@ -547,7 +547,7 @@ jobs:
   test_flutter_native_android:
     name: 'Test :: Flutter :: Native:: Android'
     # Must use MacOS because of reasons mentioned in `android-emulator-runner`'s readme.
-    runs-on: macos-13
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -607,7 +607,7 @@ jobs:
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
     name: 'Test :: Flutter :: Native:: iOS'
-    runs-on: macos-13
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
