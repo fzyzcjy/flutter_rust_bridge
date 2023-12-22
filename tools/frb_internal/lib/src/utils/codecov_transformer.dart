@@ -56,10 +56,10 @@ Map<String, dynamic> _transformByCodeComments(
     }
 
     if (ignoring) {
-      final removed = ans.remove(lineNumber.toString());
-      if (removed != null) {
-        // removeCount++;
-      }
+      ans.remove(lineNumber.toString());
+      // if (removed != null) {
+      // removeCount++;
+      // }
     }
 
     if (lineContent.contains('frb-coverage:ignore-end')) {
