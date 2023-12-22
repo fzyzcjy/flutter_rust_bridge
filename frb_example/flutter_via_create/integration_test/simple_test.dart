@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_via_create/main.dart';
 import 'package:flutter_via_create/src/rust/frb_generated.dart';
